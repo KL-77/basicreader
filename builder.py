@@ -4,10 +4,21 @@ import time
 
 # --- CONFIGURATION ---
 FEED_URLS = [
-    "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
-    "https://feeds.bbci.co.uk/news/rss.xml",
+    "https://feeds.arstechnica.com/arstechnica/index",
+    "https://futurism.com/feed",
     "https://techcrunch.com/feed/",
-    "https://news.ycombinator.com/rss",
+    "https://feeds.feedburner.com/TheAtlantic",
+    "https://rsshub.app/reuters/technology",
+    "https://rsshub.app/reuters/world",
+    "https://rss.slashdot.org/Slashdot/slashdot",
+    "https://slate.com/feeds/news-and-politics.rss",
+    "https://techxplore.com/rss-feed/",
+    "https://www.theregister.co.uk/headlines.atom",
+    "https://www.thedebrief.org/feed/",
+    "https://www.theverge.com/rss/index.xml",
+    "https://www.technologyreview.com/topnews.rss",
+    "https://thenextweb.com/feed/",
+    "https://www.theinformation.com/feed"
 ]
 # ---------------------
 
