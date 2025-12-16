@@ -28,7 +28,7 @@
                 color: var(--text);
                 margin: 0;
                 padding: 10px;
-                font-size: 22px; /* Large text for Kindle */
+                font-size: 22px;
                 line-height: 1.5;
             }
 
@@ -59,7 +59,6 @@
                 margin-bottom: 25px;
                 padding: 15px;
                 cursor: pointer;
-                /* No rounded corners on cards for crisp e-ink rendering */
             }
             
             .source { font-size: 0.7em; font-weight: bold; text-transform: uppercase; color: var(--dim); }
@@ -74,42 +73,73 @@
                 width: 100%; height: 100%;
                 background-color: var(--modal-bg);
                 z-index: 1000;
-                overflow-y: scroll;
+                overflow-y: scroll; /* Allow scrolling */
+                scroll-behavior: auto; /* Instant scrolling for e-ink */
             }
 
             #modal-inner {
                 padding: 25px;
                 max-width: 800px;
                 margin: 0 auto;
-                padding-top: 80px; /* Space for close button */
+                padding-top: 80px; 
+                padding-bottom: 150px; /* Huge padding so text clears the buttons */
+            }
+
+            /* Controls (Close + Scroll) */
+            .control-btn {
+                position: fixed;
+                background: var(--bg);
+                color: var(--text);
+                border: 3px solid var(--text);
+                border-radius: 8px;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 1001;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             #close-btn {
-                position: fixed;
                 top: 15px; right: 15px;
                 width: 60px; height: 60px;
+                font-size: 30px;
                 line-height: 55px;
-                text-align: center;
-                border: 3px solid var(--text);
+            }
+
+            /* Scroll Buttons */
+            #scroll-controls {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                z-index: 1002;
+            }
+
+            .scroll-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
                 background: var(--bg);
                 color: var(--text);
-                font-size: 30px;
-                font-weight: bold;
-                border-radius: 8px; /* Rounded corners requested */
+                border: 3px solid var(--text);
+                border-radius: 8px;
                 cursor: pointer;
-                z-index: 1001;
             }
 
             #article-text { white-space: pre-wrap; font-size: 1.1em; }
             
             a.original-link {
                 display: inline-block;
-                margin-top: 30px;
-                padding: 15px;
+                margin-bottom: 30px; /* Space before text starts */
+                padding: 10px;
                 border: 1px solid var(--text);
                 color: var(--text);
                 text-decoration: none;
                 font-weight: bold;
+                font-size: 0.8em;
             }
         </style>
     </head>
@@ -131,16 +161,17 @@
         <div id="content-0" style="display:none;">
             <h2>Merriam-Webster’s word of the year delivers a dismissive verdict on junk AI content</h2>
             <p><strong>Ars Technica - All content | 2025-12-15</strong></p>
+            <a class="original-link" href="https://arstechnica.com/ai/2025/12/merriam-webster-crowns-slop-word-of-the-year-as-ai-content-floods-internet/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Like most tools, generative AI models can be misused. And when the misuse gets bad enough that a major dictionary notices, you know it’s become a cultural phenomenon.
+            <div id="article-text">Like most tools, generative AI models can be misused. And when the misuse gets bad enough that a major dictionary notices, you know it has become a cultural phenomenon.
 
 On Sunday, Merriam-Webster announced that “slop” is its 2025 Word of the Year, reflecting how the term has become shorthand for the flood of low-quality AI-generated content that has spread across social media, search results, and the web at large. The dictionary defines slop as “digital content of low quality that is produced usually in quantity by means of artificial intelligence.”
 
-“It’s such an illustrative word,” Merriam-Webster president Greg Barlow told the Associated Press. “It’s part of a transformative technology, AI, and it’s something that people have found fascinating, annoying, and a little bit ridiculous.”
+“It’s such an illustrative word,” Merriam-Webster President Greg Barlow told The Associated Press. “It’s part of a transformative technology, AI, and it’s something that people have found fascinating, annoying, and a little bit ridiculous.”
 
 To select its Word of the Year, Merriam-Webster’s editors review data on which words rose in search volume and usage, then reach consensus on which term best captures the year. Barlow told the AP that the spike in searches for “slop” reflects growing awareness among users that they are encountering fake or shoddy content online.
 
-Dictionaries have been tracking AI’s impact on language for the past few years, with Cambridge having selected “hallucinate” as its 2023 word of the year due to the tendency of AI models to generate plausible-but-false information (long-time Ars readers will be happy to hear there’s another word term for that in the dictionary as well).
+Dictionaries have been tracking AI’s impact on language for the past few years, with Cambridge having selected “hallucinate” as its 2023 word of the year due to the tendency of AI models to generate plausible-but-false information (longtime Ars readers will be happy to hear there’s another word for that in the dictionary as well).
 
 The trend extends to online culture in general, which is ripe with new coinages. This year, Oxford University Press chose “rage bait,” referring to content designed to provoke anger for engagement. Cambridge Dictionary selected “parasocial,” describing one-sided relationships between fans and celebrities or influencers.
 
@@ -150,12 +181,11 @@ Although he didn’t coin the term “AI slop,” independent AI researcher Simo
 
 The “slop” term carries a dismissive tone that sets it clearly apart from prominent corporate hype language about the promises and even existential perils of AI. “In 2025, amid all the talk about AI threats, slop set a tone that’s less fearful, more mocking,” Merriam-Webster wrote in a blog post. “The word sends a little message to AI: when it comes to replacing human creativity, sometimes you don’t seem too superintelligent.”
 
-In its blog post announcing the word of the year selection, Merriam-Webster noted that 2025 saw a flood of AI-generated videos, off-kilter advertising images, propaganda, fake news, AI-written books, and what it called “workslop,” referring to reports that waste coworkers’ time. Ars Technica has covered similar phenomena invading various fields, including using the term “hiring slop” to describe an overflow of AI-generated résumés in June.
+In its blog post announcing the word of the year selection, Merriam-Webster noted that 2025 saw a flood of AI-generated videos, off-kilter advertising images, propaganda, fake news, AI-written books, and what it called “workslop,” referring to reports that waste coworkers’ time. Ars Technica has covered similar phenomena invading various fields, including using the term “hiring slop” in June to describe an overflow of AI-generated résumés.
 
 While some AI critics relish dismissing all generated output as “slop,” there’s some subjective nuance about what earns the label. As former Evernote CEO Phil Libin told Axios in April, the distinction may come down to intention: “When AI is used to produce mediocre things with less effort than it would have taken without AI, it’s slop. When it’s used to make something better than it could have been made without AI, it’s a positive augmentation.”
 
 Willison had his own nuanced take, since he’s a proponent of using AI responsibly as tools to help with tasks like programming, but not with spamming. “Not all promotional content is spam, and not all AI-generated content is slop,” he wrote in May 2024 when discussing the term. “But if it’s mindlessly generated and thrust upon someone who didn’t ask for it, slop is the perfect term for it.”</div>
-            <a class="original-link" href="https://arstechnica.com/ai/2025/12/merriam-webster-crowns-slop-word-of-the-year-as-ai-content-floods-internet/">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-1')">
@@ -167,21 +197,21 @@ Willison had his own nuanced take, since he’s a proponent of using AI responsi
         <div id="content-1" style="display:none;">
             <h2>Stranger Things S5 trailer teases Vol. 2</h2>
             <p><strong>Ars Technica - All content | 2025-12-15</strong></p>
+            <a class="original-link" href="https://arstechnica.com/culture/2025/12/stranger-things-s5-trailer-teases-vol-2/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">We’re 10 days away from the next installment of the fifth and final season of Stranger Things, and Netflix has released a new trailer for what it’s calling Volume 2. This will cover episodes five through seven, with the final episode comprising Vol. 3.
 
 Season 4 ended with Vecna—the Big Bad behind it all—opening the gate that allowed the Upside Down to leak into Hawkins. We got a time jump for S5, Vol. 1, but in a way, we came full circle, since those events coincided with the third anniversary of Will’s original disappearance in S1.
 
-In Vol. 1, we found Hawkins under military occupation and Vecna targeting a new group of young children in his human form under the pseudonym “Mr. Whatsit” (a nod to A Wrinkle in Time). He kidnapped Holly Wheeler and took her to the Upside Down, where she found an ally in Max, still in a coma, but her consciousness is hiding in one of Vecna’s old memories. Dustin was struggling to process his grief over losing Eddie Munson in S4, causing a rift with Steve. The rest of the gang was devoted to stockpiling supplies and helping Eleven and Hopper track down Vecna in the Upside Down. They found  Kali/Eight, Eleven’s psychic “sister” instead, being held captive in a military laboratory.
+In Vol. 1, we found Hawkins under military occupation and Vecna targeting a new group of young children in his human form under the pseudonym “Mr. Whatsit” (a nod to A Wrinkle in Time). He kidnapped Holly Wheeler and took her to the Upside Down, where she found an ally in Max, still in a coma, but her consciousness is hiding in one of Vecna’s old memories. Dustin was struggling to process his grief over losing Eddie Munson in S4, causing a rift with Steve. The rest of the gang was devoted to stockpiling supplies and helping Eleven and Hopper track down Vecna in the Upside Down. They found Kali/Eight, Eleven’s psychic “sister” instead, being held captive in a military laboratory.
 
 Things came to a head at the military base when Vecna’s demagorgons attacked to take 11 more children, wiping out most of the soldiers in record time. The big reveal was that, as a result of being kidnapped by Vecna in S1, Will has his own supernatural powers. He can tap into Vecna’s hive mind and manipulate those powers for his own purposes. He used his newfound powers to save his friends from the demagorgons.
 
 This new trailer picks up right where Vol. 1 left off, with Will surveying the devastation and declaring, “We failed. We never stood a chance.” Joyce assures him all is not yet lost. But our intrepid crew clearly still has a fair amount of tribulation ahead. One tantalizing moment has Dustin declaring that they were all “dead wrong” about what the Upside Down actually is. The Duffer brothers have promised that the final season will answer that question once and for all. We see Kali helping Eleven and Hopper, but it’s unclear whether she will ultimately be friend or foe. Certainly, the team needs all the help they can get.
 
-While we have lost wonderful supporting characters over the previous four seasons, thus far, the main cast has been largely protected. Now all bets are off. Perhaps that’s why fans have reacted so forcefully to a moment in the new trailer between Steve and Dustin, now reconciled, where they tell each other, “If you die, I die.” It’s a callback to S2 when Dustin refused to abandon Steve. But there are fan theories that Steve is on the chopping block as a potential casualty in the final showdown. That would be so cruel to Dustin, who already lost Eddie. Would the Duffers dare take out both characters? I think not, but we shall see.
+While we have lost wonderful supporting characters over the previous four seasons, thus far, the main cast has been largely protected. Now all bets are off. Perhaps that’s why fans have reacted so forcefully to a moment in the new trailer between Steve and Dustin, now reconciled, where they tell each other, “If you die, I die.” It’s a callback to S2 when Dustin refused to abandon Steve. But there are fan theories that Steve is on the chopping block as a potential casualty in the final showdown. That would be so cruel to Dustin, who already lost Eddie. Would the Duffers dare to take out both characters? I think not, but we shall see.
 
 Volume 2 of the fifth and final season of Stranger Things arrives to Netflix on December 25, 2025. The series finale will be available on December 31, 2025. Netflix is organizing numerous fan events at select theaters for the finale in case you’re keen to see it on a big screen.</div>
-            <a class="original-link" href="https://arstechnica.com/culture/2025/12/stranger-things-s5-trailer-teases-vol-2/">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-2')">
@@ -193,6 +223,7 @@ Volume 2 of the fifth and final season of Stranger Things arrives to Netflix on 
         <div id="content-2" style="display:none;">
             <h2>Microsoft will finally kill obsolete cipher that has wreaked decades of havoc</h2>
             <p><strong>Ars Technica - All content | 2025-12-15</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2025/12/microsoft-will-finally-kill-obsolete-cipher-that-has-wreaked-decades-of-havoc/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Microsoft is killing off an obsolete and vulnerable encryption cipher that Windows has supported by default for 26 years following more than a decade of devastating hacks that exploited it and recently faced blistering criticism from a prominent US senator.
 
@@ -225,18 +256,64 @@ Syfuhs went on to document additional challenges Microsoft encountered and the a
 While RC4 has known cipher weaknesses that make it insecure, Kerberoasting exploits a separate weakness. As implemented in Active Directory authentication, it uses no cryptographic salt and a single round of the MD4 hashing function. Salt is a technique that adds random input to each password before it is hashed. That requires hackers to invest considerable time and resources into cracking the hash. MD4, meanwhile, is a fast algorithm that requires modest resources. Microsoft’s implementation of AES-SHA1 is much slower and iterates the hash to further slow down cracking efforts. Taken together, AES-Sha1-hashed passwords require about 1,000 times the time and resources to be cracked.
 
 Windows admins would do well to audit their networks for any usage of RC4. Given its wide adoption and continued use industry-wide, it may still be active, much to the surprise and chagrin of those charged with defending against hackers.</div>
-            <a class="original-link" href="https://arstechnica.com/security/2025/12/microsoft-will-finally-kill-obsolete-cipher-that-has-wreaked-decades-of-havoc/">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-3')">
+            <div class="source">Futurism</div>
+            <div class="title">The Things Young Kids Are Using AI for Are Absolutely Horrifying</div>
+            <div class="meta">2025-12-16</div>
+        </div>
+        
+        <div id="content-3" style="display:none;">
+            <h2>The Things Young Kids Are Using AI for Are Absolutely Horrifying</h2>
+            <p><strong>Futurism | 2025-12-16</strong></p>
+            <a class="original-link" href="https://futurism.com/future-society/young-kids-using-ai">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">New research is pulling back the curtain on how large numbers of kids are using AI companion apps — and what it found is troubling.
+
+A new report conducted by the digital security company Aura found that a significant percentage of kids who turn to AI for companionship are engaging in violent roleplays — and that violence, which can include sexual violence, drove more engagement than any other topic kids engaged with.
+
+Drawing from anonymized data gathered from the online activity of roughly 3,000 children aged five to 17 whose parents use Aura’s parental control tool, as well as additional survey data from Aura and Talker Research, the security firm found that 42 percent of minors turned to AI specifically for companionship, or conversations designed to mimic lifelike social interactions or roleplay scenarios. Conversations across nearly 90 different chatbot services, from prominent companies like Character.AI to more obscure companion platforms, were included in the analysis.
+
+Of that 42 percent of kids turning to chatbots for companionship, 37 percent engaged in conversations that depicted violence, which the researchers defined as interactions involving “themes of physical violence, aggression, harm, or coercion” — that includes sexual or non-sexual coercion, the researchers clarified — as well as “descriptions of fighting, killing, torture, or non-consensual acts.”
+
+Half of these violent conversations, the research found, included themes of sexual violence. The report added that minors engaging with AI companions in conversations about violence wrote over a thousand words per day, signaling that violence appears to be a powerful driver of engagement, the researchers argue.
+
+The report, which is awaiting peer review, emphasizes how anarchic the chatbot market really is, and the need to develop a deeper understanding of how young users are engaging with conversational AI chatbots overall.
+
+“We have a pretty big issue on our hands that I think we don’t fully understand the scope of,” Dr. Scott Kollins, a clinical psychologist and Aura’s chief medical officer, told Futurism of the research’s findings, “both in terms of just the volume, the number of platforms, that kids are getting involved in — and also, obviously, the content.”
+
+“These things are commanding so much more of our kids’ attention than I think we realize or recognize,” Kollins added. “We need to monitor and be aware of this.”
+
+One striking finding was that instances of violent conversations with companion bots peaked at an extremely young age: the group most likely to engage in this kind of content were 11-year-olds, for whom a staggering 44 percent of interactions took violent turns.
+
+Sexual and romantic roleplay, meanwhile, also peaked in middle school-aged youths, with 63 percent of 13-year-olds’ conversations revealing flirty, affectionate, or explicitly sexual roleplay.
+
+The research comes as high-profile lawsuits alleging wrongful death and abuse at the hands of chatbot platforms continue to make their way through the courts. Character.AI, a Google-tied companion platform, is facing multiple suits brought by the parents of minor users alleging that the platform’s chatbots sexually and emotionally abused kids, resulting in mental breakdowns and multiple deaths by suicide. ChatGPT maker OpenAI is currently being sued for the wrongful deaths of two teenage users who died by suicide after extensive interactions with the chatbot. (OpenAI is also facing several other lawsuits about death, suicide, and psychological harm to adult users as well.)
+
+That the interactions flagged by Aura weren’t relegated to a small handful of recognizable services is important. The AI industry is essentially unregulated, which has placed the burden for the well-being of kids heavily on the shoulders of parents. According to Kollins, Aura has so far identified over 250 different “conversational chatbot apps and platforms” populating app stores, which generally require that kids simply tick a box claiming that they’re 13 to gain entry. To that end, there are no federal laws defining specific safety thresholds that AI platforms, companion apps included, are required to meet before they’re labeled safe for minors. And where one companion app might move to make some changes — Character.AI, for instance, recently banned minor users from engaging in “open-ended” chats with the site’s countless human-like AI personas — another one can just as easily crop up to take its place as a low-guardrail alternative.
+
+In other words, in this digital Wild West, the barrier for entry is extraordinarily shallow.
+
+To be sure, depictions of brutality and sexual violence, in addition to other types of inappropriate or disturbing content, have existed on the web for a long time, and a lot of kids have found ways to access them. There’s also research to show that many young people are learning to draw some healthy boundaries around conversational AI services, including companion-style bots.
+
+Other kids, though, aren’t developing these same boundaries. Chatbots, as researchers continue to emphasize, are interactive by nature, meaning that developing young users are part of the narrative — as opposed to more passive viewers of content that runs the gamut from inappropriate to alarming. It’s unclear what, exactly, the outcome of engaging with this new medium will mean for young people writ large. But for some teens, their families argue, the outcome has been deadly.
+
+“We’ve got to at least be clear-eyed about understanding that our kids are engaging with these things, and they are learning rules of engagement,” Kollins told Futurism. “They’re learning ways of interacting with others with a computer — with a bot. And we don’t know what the implications of that are, but we need to be able to define that, so that we can start to research that and understand it.”
+
+More on kids and chatbots: Report Finds That Leading Chatbots Are a Disaster for Teens Facing Mental Health Struggles</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Futurism</div>
             <div class="title">Amazon Deletes AI-Generated Recap of “Fallout” Season 1 After It’s Called Out for Being Full of Errors</div>
             <div class="meta">2025-12-15</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Amazon Deletes AI-Generated Recap of “Fallout” Season 1 After It’s Called Out for Being Full of Errors</h2>
             <p><strong>Futurism | 2025-12-15</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/amazon-deletes-ai-recap-fallout">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Earlier this month, Amazon revealed a new feature that aims to use AI to recap its Prime Video shows.
 
@@ -271,18 +348,18 @@ But given the resulting mess, Amazon still has a lot to prove to justify the exi
 “Just the first season,” they added. “But they can’t even do that.”
 
 More on Amazon: Amazon Quietly Pulls Disastrous AI Dubs For Popular Anime After Outcry</div>
-            <a class="original-link" href="https://futurism.com/artificial-intelligence/amazon-deletes-ai-recap-fallout">Visit Original Website</a>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Futurism</div>
             <div class="title">China Is Absolutely Obsessed With Copying SpaceX’s Starship Rocket</div>
             <div class="meta">2025-12-15</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>China Is Absolutely Obsessed With Copying SpaceX’s Starship Rocket</h2>
             <p><strong>Futurism | 2025-12-15</strong></p>
+            <a class="original-link" href="https://futurism.com/space/china-copying-spacex-starship-rocket">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">SpaceX’s Falcon 9 rocket ushered in a new era, offering a fully reusable launch platform that brought outer space closer than ever by dramatically lowering the costs of sending payloads — and eventually astronauts — into orbit.
 
@@ -311,66 +388,68 @@ In the meantime, users on the SpaceXLounge subreddit are less than convinced Chi
 “I wish they would mimic our free speech like they mimic our technology,” another user added facetiously.
 
 More on Starship: SpaceX Releases Renders of the Inside of Its Enormous Lunar Lander</div>
-            <a class="original-link" href="https://futurism.com/space/china-copying-spacex-starship-rocket">Visit Original Website</a>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Futurism</div>
-            <div class="title">3I/ATLAS Still Showing Strange Protrusion as It Approaches Earth</div>
-            <div class="meta">2025-12-15</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>3I/ATLAS Still Showing Strange Protrusion as It Approaches Earth</h2>
-            <p><strong>Futurism | 2025-12-15</strong></p>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The interstellar object 3I/ATLAS is expected to make its closest approach to Earth mere days from now, coming within just 167 million miles — a significant gulf, but a mere stone’s throw on the cosmic scale.
-
-It’s an exciting moment that’ll give astronomers an unprecedented chance to point both ground- and space-based telescopes at the unusual visitor. They’ve been following the object, which is broadly believed to be a comet, for months now as it screams through the solar system.
-
-Ever since NASA’s Hubble Space Telescope first gazed upon the object on July 21, scientists noticed a strange protrusion jutting out of the object, a second tail that counterintuitively points directly at the Sun, not away from it like the characteristic tails of familiar solar system comets.
-
-This “anti-tail” could be the result of “enhanced mass loss in the Sun-facing side,” as Harvard astronomer Avi Loeb told Futurism earlier this year, which causes larger fragments to be broken off. These larger fragments are less susceptible to being affected by the Sun’s radiation pressure, causing them to move more slowly and accumulate on the Sun-facing side.
-
-Over a month after its perihelion, or closest pass of the Sun, observations still clearly show 3I/ATLAS’ anti-tail, as Loeb noted in a new update on his blog. A December 13 image taken by the Teerasak Thaluang telescope in Rayong, Thailand “shows a prominent anti-tail, uncommon for comets, pointing in the direction of the Sun,” he wrote.
-
-Judging by the “thousands of images” taken since Hubble’s July observations, which show 3I/ATLAS’ anti-tail, Loeb argued that it’s “not a perspective effect,” but a “real physical jet.”
-
-“Its nature is a mystery because gas and micrometer-dust particles are expected to be pushed away from the Sun by solar radiation pressure and the solar wind, creating the appearance of a tail — as routinely seen in solar-system comets,” Loeb wrote.
-
-As he tends to do, Loeb argued that there’s still a chance we could be looking at an alien spacecraft instead of a natural comet. He posited that the anti-tail could be a “swarm of objects that lag behind 3I/ATLAS because of its non-gravitational acceleration away from the Sun,” as he detailed in a yet-to-be-peer-reviewed paper.
-
-However, others aren’t convinced of such a possibility, arguing the object’s two tails are nothing out of the ordinary, even despite 3I/ATLAS’ interstellar origins.
-
-“It’s ejecting dust particles towards the Sun, because the day side of the nucleus is the hot side,” UCLA astronomy professor and comet expert David Jewitt told Sky and Telescope last month.
-
-“All these things are consistent with a comet nucleus of typical size or smaller, sublimating in sunlight and blowing out dust particles,” he added. “Nothing really shocking there.”
-
-In a September 29 blog post, Pennsylvania State University astronomer Jason Wright also criticized Loeb’s unusual conclusion that 3I/ATLAS could be an alien spacecraft, pointing out several previous observations of “similar sunward enhancement” caused by large, ejected dust grains that “don’t get swept up by the solar wind on the Sun-facing side of a comet.”
-
-European Space Agency scientists have also suggested the secondary, observed tail could be a “dust tail” made up of tiny solid particles, which are typical for solar system comets.
-
-Even Loeb himself is leaving every possibility open, authoring two other papers suggesting the anti-tail is the result of the “scattering of sunlight by fragments of ice shed from the sun-facing side of 3I/ATLAS.”
-
-“These tiny ice particles evaporate before they get pushed back significantly by the solar radiation pressure and so they never appear as a conventional cometary tail,” he wrote in his latest blog.
-
-Nonetheless, Loeb argued that we should be ready to expect the unexpected.
-
-“By recognizing anomalies, we can learn something new,” he concluded. “By ignoring them, we remain ignorant.”
-
-More on 3I/ATLAS: Mysterious Interstellar Object Now Approaching Earth</div>
-            <a class="original-link" href="https://futurism.com/space/3i-atlas-protrusion-earth">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Adobe Firefly now supports prompt-based video editing, adds more third-party models</div>
+            <div class="meta">2025-12-16</div>
+        </div>
+        
+        <div id="content-6" style="display:none;">
+            <h2>Adobe Firefly now supports prompt-based video editing, adds more third-party models</h2>
+            <p><strong>TechCrunch | 2025-12-16</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2025/12/16/adobe-firefly-now-supports-prompt-based-video-editing-adds-more-third-party-models/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Adobe is updating its AI video-generation app, Firefly, with a new video editor that supports precise prompt-based edits, as well as adding new third-party models for image and video generation, including Black Forest Labs’ FLUX.2 and Topaz Astra.
+
+Until now, Firefly only supported prompt-based generation, so you would have to recreate the entire clip if any part of the video was not to your liking. With the new editor, you can use text prompts to edit video elements, colors, and camera angles, and we also get a new timeline view that lets you adjust frames, sounds and other characteristics easily.
+
+The company first announced the new video editor in October in private beta, and now it is rolling out to all users.
+
+The company said that using Runway’s Aleph model, users can give Firefly specific instructions, such as “Change the sky to overcast and lower the contrast” or “Zoom in slightly on the main subject.”
+
+And with Adobe’s own Firefly Video model, users can now do stuff like upload a start frame and a reference video of a camera motion and tell it to recreate that camera angle for the video they’re working on.
+
+The company also said users can now use the Topaz Labs’ Astra model to upscale videos to 1080p or 4K. Black Forest Labs’ FLUX.2 image generation model is coming to the app, too, along with a collaborative boards feature.
+
+The company said FLUX.2 will be available on Firefly across platforms immediately, and Adobe Express users will be able to use FLUX.2 from January.
+
+With competitors releasing new models for image and video generation, Adobe wants to lure users into engaging with its app more. Along with new updates to the Firefly app, the company said subscribers of the Firefly Pro, Firefly Premium, 7,000-credit, and 50,000-credit plans will get unlimited generations from all image models and the Adobe Firefly Video Model in the Firefly app until January 15.
+
+Adobe has made a ton of changes to its Firefly models and apps this year. In February, the company launched a subscription that let users access various levels of image and video generation; then it launched a new Firefly web app along with mobile apps later in the year, and has added support for more third-party models within the Firefly app.
+
+Ivan covers global consumer tech developments at TechCrunch. He is based out of India and has previously worked at publications including Huffington Post and The Next Web.
+
+You can contact or verify outreach from Ivan by emailing im@ivanmehta.com or via encrypted message at ivan.42 on Signal.
+
+Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
+
+DoorDash driver faces felony charges after allegedly spraying customers’ food
+
+With iOS 26.2, Apple lets you roll back Liquid Glass again — this time on the Lock Screen
+
+Google launched its deepest AI research agent yet — on the same day OpenAI dropped GPT-5.2
+
+Disney hits Google with cease-and-desist claiming ‘massive’ copyright infringement
+
+OpenAI fires back at Google with GPT-5.2 after ‘code red’ memo
+
+Google debuts ‘Disco,’ a Gemini-powered tool for making web apps from browser tabs
+
+Marco Rubio bans Calibri font at State Department for being too DEI</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
             <div class="source">TechCrunch</div>
             <div class="title">Nuclear startup Last Energy raises $100M for its steel-encased micro reactor</div>
             <div class="meta">2025-12-16</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-7" style="display:none;">
             <h2>Nuclear startup Last Energy raises $100M for its steel-encased micro reactor</h2>
             <p><strong>TechCrunch | 2025-12-16</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2025/12/16/nuclear-startup-last-energy-raises-100m-for-its-steel-encased-micro-reactor/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">After years in the wilderness, it’s a good time to be a nuclear startup.
 
@@ -417,18 +496,18 @@ OpenAI fires back at Google with GPT-5.2 after ‘code red’ memo
 Google debuts ‘Disco,’ a Gemini-powered tool for making web apps from browser tabs
 
 Marco Rubio bans Calibri font at State Department for being too DEI</div>
-            <a class="original-link" href="https://techcrunch.com/2025/12/16/nuclear-startup-last-energy-raises-100m-for-its-steel-encased-micro-reactor/">Visit Original Website</a>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">TechCrunch</div>
             <div class="title">Everbloom built an AI to turn chicken feathers into cashmere</div>
             <div class="meta">2025-12-16</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Everbloom built an AI to turn chicken feathers into cashmere</h2>
             <p><strong>TechCrunch | 2025-12-16</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2025/12/16/everbloom-built-an-ai-to-turn-chicken-feathers-into-cashmere/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Cashmere sweaters are everywhere these days, often at unbelievably low prices. The appeal is obvious: if you’ve ever worn cashmere, you know it’s soft, light, and warm — an impressive fiber that’s hard to give up. Unfortunately, those bargain prices usually come with a catch.
 
@@ -473,80 +552,62 @@ OpenAI fires back at Google with GPT-5.2 after ‘code red’ memo
 Google debuts ‘Disco,’ a Gemini-powered tool for making web apps from browser tabs
 
 Marco Rubio bans Calibri font at State Department for being too DEI</div>
-            <a class="original-link" href="https://techcrunch.com/2025/12/16/everbloom-built-an-ai-to-turn-chicken-feathers-into-cashmere/">Visit Original Website</a>
-        </div>
-        
-        <div class="card" onclick="openModal('content-8')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Solo VC and Lovable investor Neil Murray raises third Nordic-focused fund</div>
-            <div class="meta">2025-12-16</div>
-        </div>
-        
-        <div id="content-8" style="display:none;">
-            <h2>Solo VC and Lovable investor Neil Murray raises third Nordic-focused fund</h2>
-            <p><strong>TechCrunch | 2025-12-16</strong></p>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Nordic red-hot startup movement continues. On Tuesday, Neil Murray, founder and general partner at Copenhagen-based firm The Nordic Web Ventures, announced the close of a $6 million Fund III to continue investing in early-stage founders in the region.
-
-The fund will focus on writing the first institutional checks to companies focused on robotics, AI-native companies, and deep tech founders.
-
-Murray, a solo GP, told TechCrunch that his first two funds were “test vehicles” to prove his ability to spot and invest in top talent in the region. Now, seven years later, he has written the first check into more than 50 companies, with a portfolio including the unicorn Lovable and the remote worker insurance company SafetyWing, and exits like the UI design company Uizard.
-
-As TechCrunch previously reported, the Nordic ecosystem (which includes Denmark, Sweden, and Norway) is now valued at more than half a trillion dollars and received more than $8 billion in venture funding in 2024, making the region one of the hottest emerging markets in Europe. Murray said Fund III had more than $20 million in investor interest, but he decided to cap it at $6 million because he cares “more about alignment than AUM.”
-
-Staying small, he said, means he can better tie incentives to performance rather than management fees. He also said staying small, especially as a solo GP, gives him more flexibility while “everyone else is still debating.”
-
-“Capping the fund wasn’t a constraint,” he said. “It was the strategy.”
-
-The check sizes for the fund will be around $200,000, and he hopes to back between 30 and 35 companies. “I believe it is more important to be investing in Tier 1 founders than to back Tier 2 founders and over-optimizing for ownership,” he said.
-
-Murray’s limited partner base includes institutional backers such as Allocater One, founder Christoph Janz, and Pacenotes. Founders from Kahoot! And Pleo, in addition to operators from Meta and Google, is also LPs in Fund III.
-
-“Many founders from my first two funds have invested in my new fund, which is also an incredibly important metric to me,” he said, adding that he’s already returned more than half the capital he raised across Fund I and Fund II.
-
-His Fund III focuses on AI, robotics, and consumer, he said, because those are some of the top sectors in the Nordic region. Consumer has always been a top category in the sector, as TechCrunch previously spoke about on a podcast about the region.
-
-The region is also known for its computer science, engineering culture, and manufacturing, which, paired with a “calm methodical build style,” positions the Nordics well for “AI-powered robotics in industrial, healthcare, logistics, and increasingly consumer context.”
-
-Though he has a keen interest in the Nordics, Murray actually hails from the UK and moved to Denmark in 2013 without knowing a single person, he recalled.
-
-“I was very interested in tech startups, having worked in digital products in London,” he continued. When he moved to Copenhagen, he realized the ecosystem has had a big contribution to the tech world, though people hardly spoke up about it. That led him to start the website “The Nordic Web,” where he broke down what was happening behind the curtains of the bugeoning tech scene there.
-
-That website saw him tracking investments and exits and soon, VCs were asking him which founders were looking for capital. Soon, Murray wanted in on the action, and in 2017, launched a $500,000 Fund I. He stopped writing The Nordic Web shortly after to focus more on investing. And all of that has led him here.
-
-“Overall, the Nordics aren’t experiencing a ‘moment,’” he said. “They’re experiencing a compounding. The depth of talent, the ambition level, and the maturity of the ecosystem mean this wave isn’t a spike; it’s the foundation of the next decade of Nordic breakout companies.”
-
-Dominic-Madori Davis is a senior venture capital and startup reporter at TechCrunch. She is based in New York City.
-
-You can contact or verify outreach from Dominic by emailing dominic.davis@techcrunch.com or via encrypted message at +1 646 831-7565 on Signal.
-
-Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
-
-DoorDash driver faces felony charges after allegedly spraying customers’ food
-
-With iOS 26.2, Apple lets you roll back Liquid Glass again — this time on the Lock Screen
-
-Google launched its deepest AI research agent yet — on the same day OpenAI dropped GPT-5.2
-
-Disney hits Google with cease-and-desist claiming ‘massive’ copyright infringement
-
-OpenAI fires back at Google with GPT-5.2 after ‘code red’ memo
-
-Google debuts ‘Disco,’ a Gemini-powered tool for making web apps from browser tabs
-
-Marco Rubio bans Calibri font at State Department for being too DEI</div>
-            <a class="original-link" href="https://techcrunch.com/2025/12/16/solo-gp-neil-murray-closes-6m-fund-iii-to-back-nordic-founders/">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-9')">
             <div class="source">The Atlantic</div>
-            <div class="title">The Problem With Comparing Big Food to Big Tobacco</div>
+            <div class="title">The Art of Airing Your Dirty Laundry</div>
             <div class="meta">2025-12-16</div>
         </div>
         
         <div id="content-9" style="display:none;">
-            <h2>The Problem With Comparing Big Food to Big Tobacco</h2>
+            <h2>The Art of Airing Your Dirty Laundry</h2>
             <p><strong>The Atlantic | 2025-12-16</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/culture/2025/12/lily-allen-west-end-girl-breakup-art-relationship-post-mortem/685274/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Hooray for Lily Allen. I can’t get her messy, bracing new album, which crisply dissects her failed marriage, out of my head. I’m all for processing romantic wounds in private: consuming large tubs of ice cream, drawing the window shades, crying hot tears into the depths of a down pillow. Breakups can be agonizing, even immobilizing; sometimes, wallowing is the ideal way forward. Eventually, you get sick of yourself and move on, though this can take a while—sometimes a long while. That’s also okay. (I was single for 10 years after my divorce, which was maybe a little too long of a while.)
+
+But there’s something to be said for processing heartbreak by spilling secrets or otherwise setting things ablaze. Allen’s West End Girl is a prime example of this tactic. In October, the British performer lit the internet on fire with a 14-track, 45-minute-long effort that tracks the dissolution of her marriage to the actor David Harbour (Stranger Things) after he supposedly violated the terms of their open marriage. (Harbour has not commented directly on Allen’s album, but in an interview published last month, he made vague reference to “the slipups and the mistakes” he’s made.)
+
+Mistakes, perhaps, like the one Allen sings about on “Madeline,” a frenetic, sarcastic number addressed to the “other woman”: “We had an arrangement / Be discreet and don’t be blatant.” Later, on the much softer, sadder “Sleepwalking,” she laments that there’s “been no romance since we wed”—that “you let me think it was me in my head / And nothing to do with them girls in your bed.” Ouch.
+
+Allen definitely has a way with words. But her album is hitting such a nerve, I think, not just because of its clever lyrics but also because it can be thought of as an extremely public breakup letter of sorts: sweet-revenge lemonade made from bitter lemons. Very bitter. (Paging Beyoncé.) West End Girl invites listeners to follow Allen’s relationship as it unravels, and the album sorts through all kinds of rubbish along the way. Allen’s reference to a Duane Reade bag full of sex toys is especially cheeky.
+
+West End Girl is raw and over-the-top at times, but that’s part of the point. Breakups preceded by infidelity can be particularly gross and mean, as is the way we talk about them, to ourselves and to a salivating public. Allen’s approach is light-years away from, say, the concept of “conscious uncoupling,” which a self-satisfied Gwyneth Paltrow popularized a little over a decade ago. Sometimes, the only way past the hurt is not around the muck, but through it.
+
+Aggrieved truth-telling as romantic warfare, especially among women, is a narrative tactic that goes back to at least the days of Shakespeare. In The Taming of the Shrew, written in the late 16th century, the “shrew” in question, Kate, tells her new husband, Petruchio, who has embarked on a project to “tame” her willfulness, “My tongue will tell the anger of my heart, or else my heart, concealing it, will break.” Kate is rebelling against Petruchio’s efforts to control her, but her words also help explain confessional outbursts from women who’ve spent too long in relationships suppressing anger.
+
+I love this kind of dirty laundry. In 2002, I edited an anthology, a cultural history of women’s breakup letters, when my then-boyfriend disappeared on me after a pregnancy test I took came back positive. What I discovered in researching the book was that, often, women’s most powerful and wince-inducing responses are written not while a relationship is ending but after the fact, when things start falling into place—when realizations dawn and connections are drawn—and they get really and truly pissed off.
+
+These “autopsy” letters, as I called them, are what they sound like: postmortems in which correspondents pore over and explicate the collapse of a relationship, bit by bit, point by point. They’re not diaristic entries, in which the writer is addressing herself; rather—as with Allen’s album, which uses the second-person singular in the present tense—they are typically directed at the individual she feels has wronged her. They can be both charming and ugly, semi-controlled demolitions that are fascinating to behold and deeply relatable to anyone who’s ever been mad as hell and unwilling to take it anymore.
+
+Take Catherine Texier’s Breakup: The End of a Love Story, which is not a letter but a memoir. (I published an excerpt from it in my book.) In the late 1990s, Texier, who at that point had been married to her writer husband for nearly two decades and had two children with him, discovered that he was having an affair with his editor. How? She found the receipts. Literally. “I didn’t want to tell you about the receipts, about the page torn off your book,” Texier writes. “It seemed cheap to me, another cliché, the wife rummaging through her husband’s papers looking for evidence. I didn’t want to admit that I had played the part.” Later, she has a violent fantasy in which she smashes her husband’s head against a hard surface until it’s “pissing blood, teeth flying, your hair matted with the innards of your cortex.”
+
+Texier’s and Allen’s autopsies unfold similarly. Both women struggle through stage after stage of emotion: shock, resentment, self-pity, anger, bargaining, self-loathing, more anger—and eventually, with luck, a little bit of acceptance, and personal responsibility too. Part of the art of airing dirty laundry lies in sullying oneself in the process. Without an admission of faults of one’s own, an outburst reads as sour grapes. In Breakup, for example, Texier doesn’t recuse herself for her part in her marriage’s dissolution or for the ugliness of her reaction to it. Neither does Allen: We see how desperate she is at times, how in denial and defensive she can be. She can also come across as pathetic, rash, immature. In one of the album’s later tracks, she admits: “I feel embarrassed, I feel ashamed / You’re so indifferent and that’s insane,” followed by “Why won’t you beg, won’t you beg for me?”
+
+Unlike an artist such as Taylor Swift, whose breakup ballads can seem a little pat and distant, often positioning the narrator as a sort of heroine, Allen’s songs tend to make her seem, well, spiteful. Which is a good thing. As she puts it, her objective is to “lay my truth on the table.” (In fairness to Swift, the 2024 song “How Did It End,” from her album The Tortured Poets Department, is a self-described postmortem, though the target of the narrator’s ire isn’t her onetime beloved but “interlopers’ glances.”)
+
+Listening to Allen’s lyrics, so full of dismay and bewilderment, I thought of a multidisciplinary artwork by the French photographer and writer Sophie Calle, which showed at the 2007 Venice Biennale. Inspired by a breakup letter from one of Calle’s lovers that told her to “take care of yourself”—this was also the title of the piece itself—Calle’s riposte was spirited, and a little sardonic. She asked 107 women to interpret her former lover’s letter in an effort to help her process it; those she enlisted included a psychiatrist, a singer, and a sharpshooter, who shot bullets through the letter from a distance.
+
+A far less successful example of a public postmortem has preoccupied much of the media world in recent weeks: that of the journalist Ryan Lizza, who, through his Substack newsletter, began lobbing written grenades at his onetime fiancée, Olivia Nuzzi, just as she released a memoir that touches obliquely on her engagement-ending involvement with Robert F. Kennedy Jr., whom she’d profiled as a writer for New York magazine. I don’t know about Lizza’s salacious allegations, but I do know that he does the dirty-laundry thing all wrong: His serialized revelations read as a calculated, self-serving endeavor; he doesn’t interrogate himself much. Burning it all down to settle a score only really works—engenders sympathy or understanding, for example—if you’re also dousing yourself with a little accelerant before lighting the match. (Nuzzi’s memoir, her version of a postmortem, has been interpreted as a failed attempt to turn scandal into literature. It doesn’t reveal much at all, except that she has a strange way with the English language.)
+
+Allen’s album is much closer to Calle’s lucidly distilled autopsy—pain transmuted into rat-a-tat art—than to the written by-products of the Lizza-Nuzzi affair. West End Girl, in its captivating urgency, succeeds as art; perhaps time would have honed Allen’s insights, but I suspect that the album wouldn’t have packed the punch it did, both creatively and professionally, if she’d waited a few years to write and release it. (Allen, who recently performed songs from the album on Saturday Night Live, has confirmed reports that she is in talks to turn the album into a stage production.) And seeing a mess of real emotion—the self-doubt, the fury, the anguish—can feel like a relief these days amid the filtered idealism of our feeds: the perfect meal, the perfect vacation, the perfect marriage. There’s also something to be said for the satisfaction of holding someone, anyone, accountable at a time when accountability is in short shrift—even if it’s within the context of a lower-stakes, mildly out-of-the-ordinary story of infidelity.
+
+As Esther Perel writes in her 2017 book, The State of Affairs: Rethinking Infidelity, “The dagger of romantic betrayal is sharp at both ends. We can use it to slash ourselves, to pinpoint our shortcomings, to underscore our self-loathing. Or we can use it to hurt back, to have the slayer experience the same excruciating pain they inflicted on us. Some people turn the dagger inward; others direct the blade toward the culprits, in real life or in fantasy. We swing from depression to indignation, from lifelessness to roaring rage, from collapse to counterattack.” You gotta start somewhere.
+
+​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-10')">
+            <div class="source">The Atlantic</div>
+            <div class="title">The Big-Tobacco Playbook Comes for Your Oreos</div>
+            <div class="meta">2025-12-16</div>
+        </div>
+        
+        <div id="content-10" style="display:none;">
+            <h2>The Big-Tobacco Playbook Comes for Your Oreos</h2>
+            <p><strong>The Atlantic | 2025-12-16</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/health/2025/12/is-big-food-like-big-tobacco/685271/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Without fail, any corporation accused of conspiring against public health will be compared to Big Tobacco. When oil companies downplayed the threat of climate change, they were allegedly following in the footsteps of cigarette manufacturers. The NFL’s strategy for disputing the link between football and concussions has similarly been likened to the tobacco industry’s actions. The online-gambling industry has supposedly acted like Big Tobacco, as have the tech industry and the plastic industry.
 
@@ -569,18 +630,18 @@ Comparing Big Food and Big Tobacco is certainly an evocative rhetorical device. 
 And yet, Americans still love Big Food. Hershey’s, Heinz Ketchup, and M&M’s are among America’s most trusted brands, according to a recent Morning Consult report. As a result, drastic measures that would improve diet-related disease in this country—the kinds that were used against the tobacco industry—are still quite unpopular. Cigarette taxes have proved to reduce smoking rates, but attempts to levy even a small tax on soda have failed in cities across the country. Other ideas, such as creating a minimum age to buy junk food, aren’t even discussed by lawmakers. I asked Chiu, the San Francisco city attorney, if he would support such a policy, and he punted. “My office is employing our tools as we can to address this crisis in front of us,” he told me, “but we welcome other actors and stakeholders to be involved.”
 
 In some ways, comparing Big Food to Big Tobacco undersells just how difficult it will be to remedy the problems with the American diet. To push Americans away from cigarettes, public-health advocates had a simple message: Don’t smoke. There is no equivalent slogan for food. Although roughly 40 percent of American adults smoked in the 1960s, when cigarettes were at their most popular, ultra-processed foods are everywhere in 2025. They make up more than 50 percent of what adults eat at home. They’re not just Kit Kat bars and Twinkies but also Campbell’s soup, Wonder Bread, and Hot Pockets. The world can live without cigarettes, but the same cannot be said of food.</div>
-            <a class="original-link" href="https://www.theatlantic.com/health/2025/12/is-big-food-like-big-tobacco/685271/?utm_source=feed">Visit Original Website</a>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">The Atlantic</div>
             <div class="title">The Entry-Level Hiring Process Is Breaking Down</div>
             <div class="meta">2025-12-16</div>
         </div>
         
-        <div id="content-10" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>The Entry-Level Hiring Process Is Breaking Down</h2>
             <p><strong>The Atlantic | 2025-12-16</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/ideas/2025/12/grade-inflation-ai-hiring/685157/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Even in the best of times, searching for a first job after college is an exercise in patience, resilience, and coping with rejection. And these are not the best of times. Companies have no idea whom to hire, applicants have no idea how to stand out, and everyone is miserable.
 
@@ -605,93 +666,71 @@ Some companies are trying to sidestep that race by focusing more on measurable s
 The rise of AI in the hiring process might be worth the costs if it were democratizing the hiring process, expanding opportunity to less privileged graduates. It is not. Shawn VanDerziel, the head of the National Association of Colleges and Employers, told me that in the absence of useful achievement metrics, many companies are ramping up recruitment efforts at their “target schools”—selective universities with alumni who have previously worked for the company. And personal referrals have come to matter more than ever, Zack Mabel, director of research at Georgetown’s Center on Education and the Workforce, told me. This approach might help companies find qualified candidates, but it further helps the applicants who are already the most privileged.
 
 To any individual college graduate, having a high GPA and access to a magic application-writing machine makes finding a job dramatically easier. But the collective effect of grade inflation and chatbots has been precisely the opposite. That’s the thing about advantages: Sometimes, when everyone has them, they stop being advantageous.</div>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2025/12/grade-inflation-ai-hiring/685157/?utm_source=feed">Visit Original Website</a>
-        </div>
-        
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">The Atlantic</div>
-            <div class="title">The Longest Suicide Note in American History</div>
-            <div class="meta">2025-12-16</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>The Longest Suicide Note in American History</h2>
-            <p><strong>The Atlantic | 2025-12-16</strong></p>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Last year, a team of American diplomats from the State Department’s Global Engagement Center traveled to two dozen countries and signed a series of memoranda. Along with their counterparts in places as varied as Italy, Australia, and Ivory Coast, they agreed to jointly expose malicious and deceptive online campaigns originating in Russia, China, or Iran.
-
-This past September, the Trump administration terminated these agreements. The center’s former head, James Rubin, called this decision “a unilateral act of disarmament,” and no wonder: In effect, the United States was declaring that it would no longer oppose Russian influence campaigns, Chinese manipulation of local politics, or Iranian extremist recruitment drives. Nor would the American government use any resources to help anyone else do so either.
-
-The recent publication of the Trump administration’s new National Security Strategy showed that this decision was no accident. Unilateral disarmament is now official policy. Because—despite its name—this National Security Strategy is not really a strategy document. It is a suicide note. If the ideas within it are really used to shape policy, then U.S. influence in the world will rapidly disappear, and America’s ability to defend itself and its allies will diminish. The consequences will be economic as well as political, and they will be felt by all Americans.
-
-Before explaining, I should acknowledge the curious features of this document, which seems, like the Bible, to have several different authors. Some of them use boastful, aggressive language—America must remain “the world’s strongest, richest, most powerful country for decades to come”—and some of them prefer euphemism and allusion. Sometimes these different authors contradict one another, proposing to work with allies on one page and to undermine allies on the next. The views expressed in the document do not represent those of the entire U.S. government, the entire Republican Party, or even the entire Trump administration. The most noteworthy elements seem to come from a particular ideological faction, one that now dominates foreign-policy thinking in this administration and may well dominate others in the future.
-
-The one genuinely new, truly radical element in this faction’s thinking is its absolute refusal to acknowledge the existence of enemies or to name any countries that might wish America ill. This is a major departure from the first Trump administration. The 2017 National Security Strategy spoke of creating an alliance against North Korea; noted that Russia is “using subversive measures to weaken the credibility of America’s commitment to Europe, undermine transatlantic unity, and weaken European institutions and governments”; and observed that China is “using economic inducements and penalties, influence operations, and implied military threats” to bully others. The 2017 Trump policy team also observed a “geopolitical competition between free and repressive visions of world order.”
-
-The second Trump administration can no longer identify any specific countries that might wish harm to the United States, or any specific actions they might be taking to do harm. A decade’s worth of Russian cyberwarfare, political intervention, and information war inside the United States goes unmentioned. Russian acts of sabotage across Europe, Russian support for brutal regimes across the Sahel region of Africa, and, of course, Russia’s invasion of Ukraine aren’t important either. None of these Russian acts of aggression gets a mention except for the war in Ukraine, which is described solely as a concern for Europeans.
-
-Phillips Payson O’Brien: A wider war has already started in Europe
-
-Even more strangely, China appears not as a geopolitical competitor but largely as a trading rival. It’s as if Chinese hacking and cyberwar did not exist, as if China were not seeking to collect data or infiltrate the software that controls U.S. infrastructure. China’s propaganda campaigns and business deals in Africa and Latin America, which could squeeze out American rivals, don’t seem to matter much either. The new document makes only a vague allusion to a Chinese economic presence in Latin America and to a Chinese threat to Taiwan. When discussing this latter possibility, the authors drop their swaggering language about American power and slip into bureaucratese: “The United States does not support any unilateral change to the status quo in the Taiwan Strait.”
-
-Other rivals and other potential sources of conflict get no mention at all. North Korea has disappeared. Iran is described as “greatly weakened.” Islamist terrorism is no longer worth mentioning. The Israeli-Palestinian conflict is still “thorny,” but thanks to President Donald Trump, “progress toward a more permanent peace has been made.” Hamas will soon fade away. The American troops who are still fighting in Somalia and Syria—and in some cases dying—are ignored, as if they didn’t exist at all.
-
-But if America has no rivals and expects no conflicts, then neither the military nor the State Department nor the CIA nor the counterintelligence division of the FBI needs to make any special preparations to defend Americans from them. The document reflects that assumption and instead directs the U.S. national-security apparatus to think about “control over our borders,” “natural disasters,” “unfair trading practices,” “job destruction and deindustrialization,” and other threats to trade. Fentanyl gets a mention. So, rather strangely, do “propaganda, influence operations, and other forms of cultural subversion”—although there is no indication of who might be using propaganda and cultural subversion against us or how it might be countered, especially because the Trump administration has completely dismantled all of the institutions designed to do so.
-
-But what if this document was not written for the people and institutions that think about national security at all? Maybe it was instead written for a highly ideological domestic audience, including the audience in the Oval Office. The authors have included ludicrous but now-familiar language about Trump having ended many wars, a set of claims as absurd and fanciful as his FIFA Peace Prize. The authors also go out of their way to dismiss all past American foreign-policy strategies, presumably including those pursued by the first Trump administration, as if only this administration, under this near-octogenarian president, can see the world clearly.
-
-Finally, although they do not name any states that might threaten America, the authors do focus on one enemy ideology. It is not Chinese communism, Russian autocracy, or Islamic extremism but rather European liberal democracy. This is what this radical faction really fears: people who talk about transparency, accountability, civil rights, and the rule of law. Not coincidentally, these are the same people whom the MAGA ideologues hate and dislike at home, the same people who are fighting to prevent MAGA from redefining the United States as a white ethnostate, who oppose the corruption of America’s democratic institutions, and who object when Trump’s friends, family, and tech allies redirect U.S. foreign policy to benefit their private interests.
-
-European and American liberal democracy is so dangerous to their project, in fact, that the MAGA ideologues seem to be planning to undermine it. They don’t want to meddle in anyone’s internal politics anywhere else on the planet: “We seek good relations and peaceful commercial relations with the nations of the world without imposing on them democratic or other social change.” The glaring exception to this rule is in Europe. Here, it is now American policy to “help Europe correct its current trajectory,” language that implies that the U.S. will intervene to do so.
-
-Eliot A. Cohen: Trump’s security strategy is incoherent babble
-
-According to reporting by Defense One, an earlier version of the National Security Strategy said that U.S. foreign policy should even seek to support illiberal forces in at least four countries—Hungary, Poland, Italy, and Austria—to persuade them to leave the European Union. For all four, this would be an economic catastrophe; for the rest of the continent, this would be a security catastrophe, because a damaged EU would struggle to counter Russian hybrid warfare and Chinese economic pressure. If the union breaks up, there would also no longer be a European Commission capable of regulating American tech companies, and perhaps that is the point.
-
-At the same time, the document’s authors seem to derive their hatred of Europe from a series of false perceptions—or, perhaps, from a form of projection. The authors fear, for example, that “certain NATO members will become majority non-European” very soon. Because they are presumably not talking about non-European Turkey and Canada, the clear implication is that countries such as France and Germany have so much immigration from outside Europe that they will be majority nonwhite. And yet, it is the United States, not Europe, that is far more likely to become “majority minority” in the coming years.
-
-The security strategy also talks, bizarrely, about Europe being on the verge of “civilizational erasure,” which is not language used by many European politicians, even those in far-right parties. Carl Bildt, the former Swedish prime minister and foreign minister, has called this sentiment “to the right of the extreme right.” In multiple indices, after all—health, happiness, standard of living—European countries regularly rank higher than the United States. Compared with Americans, Europeans live longer, are less likely to be living on the streets, and are less likely to die in mass shootings.
-
-The only possible conclusion: The authors of this document don’t know much about Europe, or don’t care to find out. Living in a fantasy world, they are blind to real dangers. They invent fictional threats. Their information comes from conspiracist websites and random accounts on X, and if they use these fictions to run policy, then all kinds of disasters could await us. Will our military really stop working with allies with whom we have cooperated for decades? Will the FBI stop looking for Russian and Chinese spies? Earlier this month, the Justice Department announced that it was taking action against two Russian state-sponsored cybercriminal groups that, among other things, targeted American industrial infrastructure. But if our real enemy is “civilizational erasure” in Europe, then surely we should redirect resources away from this kind of secondary problem and focus them on the threat posed by the British Labour Party or the German Christian Democrats.
-
-One is tempted to laugh at these kinds of ideas, to express incredulity or turn away. But similar conspiracist thinking has already done real damage to real institutions. Elon Musk believed distorted or completely false stories about USAID that he read on his own X platform. As a result, he destroyed the entire organization so rapidly and so thoughtlessly that tens or even hundreds of thousands of people may die as a result. At the State Department, Darren Beattie, the undersecretary for public diplomacy, has repeatedly and falsely stated that the Global Engagement Center was censoring Americans, a fantasy that he encountered on the internet and that he continues to repeat without proof. As a result, he destroyed that organization and ended its international negotiations. He is now conducting an internal departmental witch hunt, trying to find or perhaps invent post hoc evidence for his conspiracist ideas.
-
-Charlie Warzel: Everything is the ‘Twitter Files’ now
-
-Some elements of this story are familiar. Americans have overestimated, underestimated, or misunderstood their rivals before. And when they do, they make terrible mistakes. In 2003, many American analysts sincerely thought that Saddam Hussein had weapons of mass destruction. During the Cold War, many analysts believed that the Soviet Union was stronger and less fragile than it proved to be. But I am not sure whether there has ever been a moment like this one, when the American government’s most prominent foreign-policy theorists have transferred their domestic obsessions to the outside world, projecting their own fears onto others. As a result, they are likely to misunderstand who could challenge, threaten, or even damage the United States in the near future. Their fantasy world endangers us all.</div>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2025/12/national-security-strategy-democracy/685270/?utm_source=feed">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-12')">
+            <div class="source">Slashdot</div>
+            <div class="title">Google's Real Estate Listings 'Experiment' Sends Zillow Shares Down More Than 8%</div>
+            <div class="meta">2025-12-16</div>
+        </div>
+        
+        <div id="content-12" style="display:none;">
+            <h2>Google's Real Estate Listings 'Experiment' Sends Zillow Shares Down More Than 8%</h2>
+            <p><strong>Slashdot | 2025-12-16</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/25/12/16/0955240/googles-real-estate-listings-experiment-sends-zillow-shares-down-more-than-8?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;Well I don&#39;t see why I have to make one man miserable when I can make so many 
+men happy.&quot;
+-- Ellyn Mustard, about marriage</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
             <div class="source">Slashdot</div>
             <div class="title">SoundCloud Confirms Breach After Member Data Stolen, VPN Access Disrupted</div>
             <div class="meta">2025-12-16</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-13" style="display:none;">
             <h2>SoundCloud Confirms Breach After Member Data Stolen, VPN Access Disrupted</h2>
             <p><strong>Slashdot | 2025-12-16</strong></p>
+            <a class="original-link" href="https://it.slashdot.org/story/25/12/16/0351247/soundcloud-confirms-breach-after-member-data-stolen-vpn-access-disrupted?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+
+Anything on-cloud or in-computer can be hacked, your secrets revealed and exploited.  Even music.
+
+My record collection will never betray me.  Will never spill my secrets, my data.
+
+We gave up freedom for convenience, as a society.
+
+But, you simply can&#39;t beat a house stuffed full of books, records and video media.  No matter how slick it is that you can carry all that in your pocket.
+
+The words in the books cannot be changed, their purchase data long lost to time.  They are of no value but to me, and anyone i pass
+
+I&#39;ve got thousands of tracks on a USB stick. Can plug it into the laptop or streamer. Unfortunately modern cars won&#39;t recognise a stick for [reasons].
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
 &quot;An ounce of prevention is worth a ton of code.&quot;
 -- an anonymous programmer</div>
-            <a class="original-link" href="https://it.slashdot.org/story/25/12/16/0351247/soundcloud-confirms-breach-after-member-data-stolen-vpn-access-disrupted?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">Slashdot</div>
             <div class="title">PayPal Applies To Become a Bank As US Loosens Regulatory Reins</div>
             <div class="meta">2025-12-16</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>PayPal Applies To Become a Bank As US Loosens Regulatory Reins</h2>
             <p><strong>Slashdot | 2025-12-16</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/25/12/16/0346229/paypal-applies-to-become-a-bank-as-us-loosens-regulatory-reins?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 They operate on the same wavelength of evil as banks do, so I guess why not?
 
@@ -706,6 +745,8 @@ X.com Corporation has entered into an agreement with Community Bankshares, Inc.,
 X.com Corporation has entered into an agreement with Community Bankshares, Inc., to purchase its subsidiary, First Western National Bank (FWNB), subject to regulatory approvals. Until such approvals are obtained, FWNB is providing the banking services available through X.com on a contractual basis.
 
 https://web.archive.org/web/20... [archive.org]
+
+I used them as a bank back in the day.  I associated x.com with a bank, so it was quite a surprise to me when twitter became x.
 
 That&#39;s the joke. The EU has rules about handling people&#39;s money, PayPal is a registered bank in Luxembourg which is why www.paypalsucks.com had stories almost exclusively American based, because things like arbitrarily freezing customer&#39;s financial accounts is likely to get the regulator to shove their foot up your arse in Europe.
 
@@ -741,52 +782,6 @@ There may be more comments in this discussion. Without JavaScript enabled, you m
 
 &quot;An ounce of prevention is worth a ton of code.&quot;
 -- an anonymous programmer</div>
-            <a class="original-link" href="https://news.slashdot.org/story/25/12/16/0346229/paypal-applies-to-become-a-bank-as-us-loosens-regulatory-reins?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-        </div>
-        
-        <div class="card" onclick="openModal('content-14')">
-            <div class="source">Slashdot</div>
-            <div class="title">Glaciers To Reach Peak Rate of Extinction In the Alps In Eight Years</div>
-            <div class="meta">2025-12-16</div>
-        </div>
-        
-        <div id="content-14" style="display:none;">
-            <h2>Glaciers To Reach Peak Rate of Extinction In the Alps In Eight Years</h2>
-            <p><strong>Slashdot | 2025-12-16</strong></p>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
-
-When the climate gives you meetings, why not make electricity from it? Just surround the Alps with dams and it could generate a few trillion megawatts of free electricity to the world.
-
-why not make electricity from it?The Alps are already a major source of hydropower for their countries. Switzerland owns 200 dams https://en.wikipedia.org/wiki/... [wikipedia.org] totalling 13 GWhttps://en.wikipedia.org/wiki/Hydropower_in_Switzerland ; France operates 65 dams in its part of the Alps https://fr.wikipedia.org/wiki/... [wikipedia.org] totalling 8 GW https://www.edf.fr/sites/group... [www.edf.fr] .
-
-The Alps are already a major source of hydropower for their countries. Switzerland owns 200 dams https://en.wikipedia.org/wiki/... [wikipedia.org] totalling 13 GWhttps://en.wikipedia.org/wiki/Hydropower_in_Switzerland ; France operates 65 dams in its part of the Alps https://fr.wikipedia.org/wiki/... [wikipedia.org] totalling 8 GW https://www.edf.fr/sites/group... [www.edf.fr] .
-
-I often compare with Quebec to get an idea of the order of magnitude:  https://www.hydroquebec.com/ge... [hydroquebec.com]
-
-Hydro-Québec’s generating fleet comprises 61 hydroelectric generating stations and 24 thermal plants with a total installed capacity of 37.2 GW. Its hydropower facilities also include 28 large reservoirs with a combined storage capacity of over 176 TWh, as well as 681 dams and 91 control structures.Wikipedia: https://en.wikipedia.org/wiki/... [wikipedia.org]
-
-Hydro-Québec’s generating fleet comprises 61 hydroelectric generating stations and 24 thermal plants with a total installed capacity of 37.2 GW. Its hydropower facilities also include 28 large reservoirs with a combined storage capacity of over 176 TWh, as well as 681 dams and 91 control structures.
-
-Wikipedia: https://en.wikipedia.org/wiki/... [wikipedia.org]
-
-This has been going on for decades due to man made climate change. That the alpine glaciers will be gone within a decade has just about been common knowledge too. The true story is that time is quickly running out on getting an eco-turnaround happening that will prevent the worst.
-
-IIRC, it was Egypt that said they would go to war if any of the other countries attempted to dam or restrict the Nile. That was in the 80s.
-
-Basically holding the other countries in the Nile basin at the end of a gun.
-
-But yes, the wars of water will make the petro-wars seem tame in comparison.
-
-(Imagine the images of Luke on Tatooine, tending to a water harvester, .... but now on earth, that&#39;s the future).
-
-When they haven&#39;t done thiis, what do we do then?
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-&quot;An ounce of prevention is worth a ton of code.&quot;
--- an anonymous programmer</div>
-            <a class="original-link" href="https://news.slashdot.org/story/25/12/16/0335255/glaciers-to-reach-peak-rate-of-extinction-in-the-alps-in-eight-years?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-15')">
@@ -798,6 +793,7 @@ There may be more comments in this discussion. Without JavaScript enabled, you m
         <div id="content-15" style="display:none;">
             <h2>Which Kind of Animal Is Ranger Rick?</h2>
             <p><strong>News and Politics - Slate Magazine | 2025-12-16</strong></p>
+            <a class="original-link" href="https://slate.com/news-and-politics/2025/12/trivia-quiz-daily-slate-culture-magazines-bond-films-fashion.html?via=rss">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Please enable Javascript in your browser to view Slate interactives.
 
@@ -820,7 +816,6 @@ Join today to keep reading. You&#39;ll also get access to all of Slate&#39;s
 Already a member?
         Sign in
           here</div>
-            <a class="original-link" href="https://slate.com/news-and-politics/2025/12/trivia-quiz-daily-slate-culture-magazines-bond-films-fashion.html?via=rss">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-16')">
@@ -832,6 +827,7 @@ Already a member?
         <div id="content-16" style="display:none;">
             <h2>Is FEMA Getting Its Very Own RFK Jr.?</h2>
             <p><strong>News and Politics - Slate Magazine | 2025-12-16</strong></p>
+            <a class="original-link" href="https://slate.com/news-and-politics/2025/12/gregg-phillips-trump-fema-pick-conspiracy-theories.html?via=rss">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Sign up for the Slatest to get the most insightful analysis, criticism, and advice out there, delivered to your inbox daily.
 
@@ -904,7 +900,6 @@ Join today to keep reading. You&#39;ll also get access to all of Slate&#39;s
 Already a member?
         Sign in
           here</div>
-            <a class="original-link" href="https://slate.com/news-and-politics/2025/12/gregg-phillips-trump-fema-pick-conspiracy-theories.html?via=rss">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-17')">
@@ -916,6 +911,7 @@ Already a member?
         <div id="content-17" style="display:none;">
             <h2>Candace Owens at a Turning Point</h2>
             <p><strong>News and Politics - Slate Magazine | 2025-12-16</strong></p>
+            <a class="original-link" href="https://slate.com/podcasts/what-next/2025/12/can-candace-owens-be-contained?via=rss">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">The far-right can’t condone what she’s saying—but can’t look away either.
 
@@ -947,60 +943,102 @@ Podcast production by Elena Schwartz, Paige Osburn, Anna Phillips, Madeline Duch
 The problem with the news right now? It’s everywhere. And each day, it can feel like we’re all just mindlessly scrolling. It’s why we created What Next. This short daily show is here to help you make sense of things. When the news feels overwhelming, we’re here to help you answer: What next? Look for new episodes every weekday morning.
 
 Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily news podcast. She has reported throughout the public radio system, for NPR, Marketplace, and WNYC.</div>
-            <a class="original-link" href="https://slate.com/podcasts/what-next/2025/12/can-candace-owens-be-contained?via=rss">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Researchers reveal bias in a widely used measure of algorithm performance</div>
+            <div class="title">Harry Potter-style 'moving invisibility cloak' technology developed</div>
             <div class="meta">2025-12-16</div>
         </div>
         
         <div id="content-18" style="display:none;">
-            <h2>Researchers reveal bias in a widely used measure of algorithm performance</h2>
+            <h2>Harry Potter-style 'moving invisibility cloak' technology developed</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2025-12-16</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2025-12-harry-potter-style-invisibility-cloak.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-            <a class="original-link" href="https://techxplore.com/news/2025-12-reveal-bias-widely-algorithm.html">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-19')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">'Easiest scam in the world': Musicians sound alarm over AI impersonators</div>
+            <div class="title">'Robot, make me a chair': AI-driven system designs, builds multicomponent objects from user prompts</div>
             <div class="meta">2025-12-16</div>
         </div>
         
         <div id="content-19" style="display:none;">
-            <h2>'Easiest scam in the world': Musicians sound alarm over AI impersonators</h2>
+            <h2>'Robot, make me a chair': AI-driven system designs, builds multicomponent objects from user prompts</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2025-12-16</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2025-12-robot-chair-ai-driven-multicomponent.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-            <a class="original-link" href="https://techxplore.com/news/2025-12-easiest-scam-world-musicians-alarm.html">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-20')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">EU set to scrap 2035 combustion-engine ban in car industry boost</div>
+            <div class="title">Electrochemical tuning of Ni-rich cathodes curbs c-collapse, enhancing lithium-ion battery durability</div>
             <div class="meta">2025-12-16</div>
         </div>
         
         <div id="content-20" style="display:none;">
-            <h2>EU set to scrap 2035 combustion-engine ban in car industry boost</h2>
+            <h2>Electrochemical tuning of Ni-rich cathodes curbs c-collapse, enhancing lithium-ion battery durability</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2025-12-16</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2025-12-electrochemical-tuning-ni-rich-cathodes.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-            <a class="original-link" href="https://techxplore.com/news/2025-12-eu-scrap-combustion-car-industry.html">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-21')">
+            <div class="source">The Register</div>
+            <div class="title">Smartphones face a memory cost crunch – and buyers aren't in the mood</div>
+            <div class="meta">2025-12-16</div>
+        </div>
+        
+        <div id="content-21" style="display:none;">
+            <h2>Smartphones face a memory cost crunch – and buyers aren't in the mood</h2>
+            <p><strong>The Register | 2025-12-16</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/16/smartphones_memory_ai/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">AI-nflation The smartphone industry&#39;s brief bounce back now looks set to run straight into a wall, with analysts warning that rising memory costs are about to test buyers&#39; patience.
+
+Counterpoint Research has revised down its 2026 smartphone shipment forecast to a 2.1 percent decline, citing a tightening supply of memory chips that is driving up costs and squeezing manufacturers.
+
+The analyst firm says higher DRAM and NAND prices risk undermining confidence across the market, particularly as smartphone vendors struggle to justify higher prices for devices that to many feel marginally different from the ones already in their pockets.
+
+The warning comes just weeks after Counterpoint struck a more upbeat tone on the market&#39;s direction. In November, the firm said smartphone shipments were set to continue growing in 2025, extending the recovery that began in 2024 as delayed replacement demand worked its way through the system. Even then, Counterpoint stressed that the improvement owed more to deferred upgrades than to any surge of consumer enthusiasm.
+
+Now the cracks are showing. Replacement cycles have stretched beyond 40 months on average, with users holding onto phones for much longer than manufacturers would like. For many, today&#39;s devices are already &quot;good enough.&quot; Performance improvements are incremental, and software experiences change little from one generation to the next.
+
+Into that fragile recovery comes a renewed surge in memory prices. Commodity memory costs are climbing as manufacturers prioritize higher-margin AI and datacenter products over traditional consumer silicon, and DRAM and NAND supply has tightened, leaving smartphone makers competing for capacity while hyperscalers and GPU vendors gobble up chips.
+
+The pressure may intensify further. Counterpoint says memory prices could rise by a further 40 percent through the second quarter of 2026, pushing smartphone bills of materials between 8 percent and more than 15 percent above today&#39;s already elevated levels. What&#39;s more, Samsung is reportedly planning to increase some memory prices by as much as 100 percent, according to market watchers, a move that would ripple quickly through the smartphone supply chain.
+
+Those costs feed directly into Counterpoint&#39;s downgraded outlook. The firm said the resulting 2.1 percent decline in expected shipments translates into a downward revision of 2.6 percentage points to its forecast, underlining how sharply expectations have shifted. Chinese OEMs are expected to feel the impact most acutely, with brands including HONOR, OPPO, and Vivo seeing the largest cuts relative to previous estimates.
+
+That&#39;s because even budget devices now ship with RAM and storage configurations that were once reserved for flagships, and Counterpoint warns that rising memory costs disproportionately affect entry-level and mid-range models.
+
+&quot;What we are seeing now is the low end of the market (below $200) being impacted most severely, with BoM (bill of materials) costs increasing by 20-30 percent since the beginning of the year,&quot; said Counterpoint Research director MS Hwang. &quot;The market&#39;s mid and high-end segments have seen 10-15 percent price increases.&quot;
+
+The industry&#39;s favorite escape hatch, the so-called &quot;AI phone,&quot; has yet to do much heavy lifting. While firms have spent the past year pitching on-device AI as the next significant upgrade driver, most AI phone features so far amount to modest software tricks rather than compelling new capabilities and have not meaningfully changed buying behaviour.
+
+Consumers appear to be responding in more practical ways. Demand for refurbished and secondhand smartphones continues to rise as shoppers opt for cheaper, slightly older devices rather than paying top dollar for incremental updates.
+
+If memory costs push new phone prices higher again, that fallback option only becomes more appealing. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Register</div>
             <div class="title">Mozilla Corporation installs Firefox driver in CEO reboot</div>
             <div class="meta">2025-12-16</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Mozilla Corporation installs Firefox driver in CEO reboot</h2>
             <p><strong>The Register | 2025-12-16</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/16/mozilla_corporation_new_ceo/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Mozilla Corporation on Tuesday said it has appointed Anthony Enzor-DeMeo as Chief Executive Officer, replacing Laura Chambers, who served as interim CEO for the past two years.
 
@@ -1063,18 +1101,18 @@ Beyond AI controls in Firefox, Surman said the reason Mozilla AI was spun out in
 The Register   Biting the hand that feeds IT
 
 Copyright. All rights reserved © 1998–2025</div>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/16/mozilla_corporation_new_ceo/">Visit Original Website</a>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Register</div>
             <div class="title">Intel hires ex-Trump fixer as Washington whisperer</div>
             <div class="meta">2025-12-16</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>Intel hires ex-Trump fixer as Washington whisperer</h2>
             <p><strong>The Register | 2025-12-16</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/16/trump_economic_advisor_intel/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Intel has hired a veteran Republican operator as its head of government affairs, just months after Uncle Sam became the struggling chip vendor&#39;s biggest shareholder.
 
@@ -1113,211 +1151,108 @@ In fairness, Intel&#39;s share price has recovered strongly following Tan&#39;s 
 The Register   Biting the hand that feeds IT
 
 Copyright. All rights reserved © 1998–2025</div>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/16/trump_economic_advisor_intel/">Visit Original Website</a>
-        </div>
-        
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Register</div>
-            <div class="title">From pr0n to playlists and paperclips, trio of breaches spills data of millions</div>
-            <div class="meta">2025-12-16</div>
-        </div>
-        
-        <div id="content-23" style="display:none;">
-            <h2>From pr0n to playlists and paperclips, trio of breaches spills data of millions</h2>
-            <p><strong>The Register | 2025-12-16</strong></p>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Three very different companies have now confirmed data breaches affecting millions of users – each insisting the damage stopped well short of passwords and payment details.
-
-Pornhub has told Premium subscribers that some user data was exposed after a breach at Mixpanel, a third-party analytics provider it once used, rather than through any compromise of Pornhub&#39;s own systems.
-
-In a notice to users, the adult site said the incident affected &quot;only select Premium users&quot; and involved a limited set of analytics events inside Mixpanel&#39;s environment. Pornhub stressed that passwords, credentials, payment details, and government IDs were not exposed, and noted it stopped working with Mixpanel in 2021 but was informed of the breach by the vendor.
-
-The disclosure follows a similar incident last week affecting OpenAI, which traced a leak of internal data to compromised Mixpanel analytics credentials.
-
-SoundCloud has also confirmed it was breached after a week of user complaints about outages and broken access, which the company now says were linked to a cybersecurity incident. The streaming platform said it detected unauthorized activity in an ancillary service dashboard and brought in third-party security experts to investigate, eventually determining that the exposure affected roughly 20 percent of users.
-
-According to public data, SoundCloud has approximately 140 million users, suggesting that some 28 million people have likely been affected by the breach.
-
-According to SoundCloud, the data accessed was limited to email addresses and information already visible on public profiles, and did not include passwords or financial details. But the measures taken to contain the breach had side effects. Configuration changes introduced during the response caused &quot;temporary connectivity issues&quot; for some users, particularly those accessing the service via VPNs, effectively turning a behind-the-scenes security incident into a very public service disruption.
-
-Over in Japan, retail giant Askul is still picking through the wreckage of an October ransomware attack that knocked systems offline and exposed customer data. In a new report [PDF], the office supplies and e-commerce giant said the incident caused &quot;large-scale service stoppage&quot; and confirmed that information it held &quot;flowed outside the company&quot; after its network was compromised.
-
-In the report, translated by The Register, Akira Yoshioka, president and CEO of Askul, confirmed &quot;the recent ransomware attack resulted in the leak of customer information, as well as the information of some of our business partners, and we apologize for the significant inconvenience and concern this has caused.&quot;
-
-Askul now says roughly 740,000 records linked to individual customers and corporate clients were affected, with some affected data published by the RansomHouse cybercrime crew, but says no financial details were accessed during the attack.
-
-The lengthy report confirms that threat actors accessed Askul&#39;s internal systems using the login details of a subcontractor &quot;who exceptionally did not apply multi-factor authentication.&quot; The firm also admits that the datacenter where the breach occurred &quot;did not have EDR installed on its servers, nor was 24-hour monitoring performed, so unauthorized access and intrusion could not be detected immediately.&quot;
-
-Ransomware infection was confirmed in logistics and internal systems, and some data (including backups) was encrypted and rendered unusable. In addition, some of that data was stolen and leaked by the attacker.
-
-Different sectors, different attackers, and very different root causes – but the same end result: user data escaping through analytics tools, ancillary systems, and ransomware-ridden networks, even as companies rush to reassure customers that the most sensitive details stayed put. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/16/trio_of_breaches/">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">The Verge</div>
-            <div class="title">Racks of AI chips are too damn heavy</div>
+            <div class="title">Avatar: Fire and Ash is a gorgeous spectacle of titanic proportions</div>
             <div class="meta">2025-12-16</div>
         </div>
         
         <div id="content-24" style="display:none;">
-            <h2>Racks of AI chips are too damn heavy</h2>
+            <h2>Avatar: Fire and Ash is a gorgeous spectacle of titanic proportions</h2>
             <p><strong>The Verge | 2025-12-16</strong></p>
+            <a class="original-link" href="https://www.theverge.com/entertainment/844731/avatar-fire-and-ash-review">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Old data centers physically cannot support rows and rows of GPUs, which is one reason for the massive AI data center buildout.
+            <div id="article-text">﻿The third chapter of James Cameron’s sci-fi epic is a visual knockout but lacking in new ideas.
 
-Old data centers physically cannot support rows and rows of GPUs, which is one reason for the massive AI data center buildout.
+﻿The third chapter of James Cameron’s sci-fi epic is a visual knockout but lacking in new ideas.
 
-In the span of a decade and a half, from 2010 to the end of 2024, the number of data centers in the US quadrupled. The trend is similar worldwide: more data centers, bigger, now or soon. The number of the construction projects of centers over 100 megawatts announced over the last four years total 377, according to data center certification and research agency Uptime Institute.
+In the almost 20 years since James Cameron first introduced us to the alien world of Pandora, 20th Century Studios has repeatedly tried to parlay the Avatar films’ financial success into a sprawling multimedia franchise. Almost immediately after the first movie hit theaters, there was a video game, plans for a book series that never came to fruition, and announcements for multiple big screen sequels. Despite this blitz, none of those spinoff projects ever really took off, and there is still some debate as to whether any of the Avatar features have had lasting cultural impact outside of (briefly) convincing Hollywood that audiences were eager to see things in 3D.
 
-But before we allow Big Tech’s feverish race toward more compute, which environmentalists would not like us to allow, let us pause and consider another option: making do with what we have. Can we retrofit our current data centers to match the needs of our newest technology? Perhaps the building frenzy is not merited; perhaps we have all the facilities we need. A few upgrades here, some fresh servers over there, a new lick of paint, and voilà — an AI data center built from the shell of a legacy one.
+But the films’ box office totals have given 20th Century Studios a few billion reasons to keep the franchise going. And after years of Cameron hyping up the third chapter of his sci-fi epic, Avatar: Fire and Ash is finally here. Unsurprisingly, the new movie is even more of a visual knockout than either of its predecessors, and you can clearly see how advancements in motion capture technology have enabled Cameron to direct even stronger performances. But whereas The Way of Water felt like the beginning of a new adventure, Fire and Ash plays more like a formulaic sequel that doesn’t have all that much to offer in terms of compelling characters or fresh storylines.
 
-“Most of the time what it’s going to mean is bulldozing the building and starting over from scratch.”
+What the movie does have going for it, though, is a lot of the same adventurous energy that has made so many of Cameron’s deep sea exploration-focused projects like Titanic and The Abyss wondrous to see on the big screen. But that energy isn’t quite enough to keep you from feeling every minute of Fire and Ash’s threehour-plus run time. And with the story being so middling, it seems like this would be a perfectly fine place for Avatar to end.
 
-I took this idea to data center experts, who told me, in so many words, that no, our current data centers cannot readily be retrofitted to become AI superhouses. The problem is as physical as the ground you’re standing on: Legacy data centers cannot bear the weight of the latest AI technology. The racks that house computer chips or AI chips are simply too damn heavy for the floors, and they would crack under the weight.
+Set shortly after The Way of Water, Avatar: Fire and Ash once again zooms in on human marine-turned-Na’vi patriarch Jake Sully (Sam Worthington) and his wife Neytiri (Zoe Saldaña) at a time when their family is weathering an emotional crisis. Though the Sullys have been accepted into the oceanic Metkayina Clan, they are still racked with guilt after endangering their new community.
 
-Chris Brown, chief technical officer at Uptime Institute, summarized the situation: “We can retrofit the old ones to an extent, but not to the extent that a lot of these AI factories need.” Small sections of small data centers can accommodate small AI-focused workloads for a single Fortune 500 company, for example, he said. “But most of the time what it’s going to mean is bulldozing the building and starting over from scratch,” Brown said.
+Countless Metkayina lives were lost when Colonel Miles Quaritch (Stephen Lang) came hunting for Jake and the valuable substance found in Pandora’s alien whales. No family made it out of the conflict without losing a loved one. The entire clan is in a state of collective grief, but Jake and Neytiri’s pain stems from knowing that their eldest child died in order to save their youngest biological son Lo’ak (Britain Dalton) and Spider (Jack Champion), a dreadlocked human adopted into the Sully family.
 
-AI racks, the metal cabinets that house stacks of metal boxes called servers, which house the chips that do the computer or generative AI processing, have a weight problem. Thirty years ago, at the start of Brown’s career in data centers, racks averaged around 400 to 600 pounds. Think of the weight of a home refrigerator up to a baby grand piano. Now, it’s normal for racks to weigh 1,250 pounds to up to 2,500 pounds, falling in the range of a grizzly bear up to a Toyota Prius. But racks specialized with AI equipment fall to the upper end of the spectrum and beyond — Brown said the projected milestone weight of an AI rack is 5,000 pounds.
+Along with its ideas about humanity’s capacity to harm the natural world, the Avatar franchise — which began with a story about a white colonizer cosplaying as an alien before becoming the aliens’ new leader — has always trafficked in a number of tiresome tropes. Though Worthington’s Jake Sully has never been more blue, the character continues to be a quintessential example of the white savior archetype. But one of the more compelling things about Fire and Ash’s central family drama is the way Neytiri’s anger at all of humanity (including her husband) underlines the colonialist fantasy baked into Avatar.
 
-The extra weight, Brown said, is due to the amount of electronics crammed into the metal racks. Gaps between GPUs slow data transmission, which slows AI model training, which wastes precious compute power and, ultimately, money. The latest high-density racks come packed with memory chips (leading to the decline of the global supply of RAM) and hundreds up to 1,000 GPUs. Whereas traditional computer chip workloads of a decade ago averaged around 10 kilowatts per rack, AI workloads are now 35 times that, up to 350 kilowatts per rack. “They’re packing as much as they can into each rack and putting racks as close together as humanly possible to maximize that capability,” he said.
+Neytiri and Jake’s beef is far more interesting to watch than the situation with Varang (Oona Chaplin), the pyromaniac cult leader of the new Mangkwan Clan. The clan’s obsession with fire and hallucinogenic drugs make for some fun visuals and explosive set pieces. But compared to the depth Cameron and co-screenwriters Rick Jaffa and Amanda Silver have given to the franchise’s other Na’Vi clans, the Ash people are written surprisingly flat, and they often disappear from the movie for long stretches of time.
 
-More power generates more heat that needs to dissipate before a fire breaks out or the chips melt. Air blown over chips has been replaced or supplemented with cooling plates full of liquid, often a watery mixture of toxic coolants. Water weighs a little over 8 pounds per gallon. And don’t forget about the cables. There are often 10 to 35 racks lined up to form a single row in the bowels of a data center. In order to deliver enough power, the diameter of the cables, or a cable-like copper plate called a busway, needs to increase. (Imagine putting out a house fire with a kitchen sink faucet; better to spray water from a fire hose with its wide diameter.) Brown said that a modern busway weighs 37 pounds per linear foot.
+Fire and Ash continues to make it stunningly clear that Cameron is one of the few filmmakers working who truly understands how to craft films that benefit from being seen in 3D. Pandora has never looked more gorgeous and like the place you would want to explore. But the stories being told about the planet’s human and Na’Vi inhabitants are beginning to feel more than a little stale.
 
-“It’s all those things — it’s the weight of all the processors, all the memory, all of the chips that you need to be able to run the IT devices, all of the cooling hardware that you need inside of there,” he said. The structure of legacy data centers is not up to the task, Brown said. Many have raised floors, which top out at around 1,250 pounds per square foot for a static load, he noted. Dynamic loads, he said, such as a rack pushed across the floor, require higher weight bearing.
+Fire and Ash is a technical marvel, but at its core it feels like Cameron is still recycling a lot of the franchise’s basics. To really keep this franchise exciting and like a story that could continue for a few more films, Cameron needs to come up with something beyond shiny MacGuffins and chosen ones communing with Eywa as only they can. But if that’s all there is to Avatar, the Fire and Ash might be a good place to stop.
 
-Even if you did reinforce the floor of an old center, other geometric problems persist, Chris McLean, president of data center construction firm Critical Facility Group, told The Verge. He has been designing data centers for nearly two decades, and the height of racks has grown by 3 feet during that time, from 6 feet to 9 feet. (The footprint has only increased from 2 by 2 feet to 2 by 3 feet.) The new height stands taller than industrial doorframes from a few years ago. Freight elevators, too, cannot withstand the weight of the gigantic racks, the apparatus on which they rest during moving, and the weight of the humans pushing the thing: “All of a sudden, you’re getting into a pretty beefy elevator for a multi-story,” McLean said.
-
-“What’s caused the huge growth in the last two years is just the fact that artificial intelligence is gobbling up everything.”
-
-Big Tech companies are obviously building new data centers to accommodate their increasing push for AI dominance. And when OpenAI, Microsoft, or others run out of space in their own AI-built data center complexes, they rent space at colocation facilities owned by companies like CoreWeave or Digital Realty or Compass, which are, in turn, building new AI-focused data centers. “What’s caused the huge growth in the last two years is just the fact that artificial intelligence is gobbling up everything,” Brown at Uptime said.
-
-Despite the hype, generative AI is not the only type of computation, lest we forget that typical computer workloads still exist. Actually, non-AI data workloads are actually increasing, Brown said. Traditional data centers, therefore, are as important as ever before. Universities, hospitals, midsize companies, and municipalities will all need to continue to store their non-AI data files, just as you still have your blurry photos housed on some cloud provider’s server, McLean said. “All those people still need that legacy data center environment,” he said. “It’s never going to go away.”
+Avatar: Fire and Ash also stars Cliff Curtis, Bailey Bass, Kate Winslet, Giovanni Ribisi, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement, Matt Gerald, and David Thewlis. The movie hits theaters on December 19th.
 
 A free daily digest of the news that matters most.</div>
-            <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/844966/heavy-ai-data-center-buildout">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
             <div class="source">The Verge</div>
-            <div class="title">Mozilla’s new CEO is doubling down on an AI future for Firefox</div>
+            <div class="title">Fallout’s goofy apocalypse gets serious in season 2</div>
             <div class="meta">2025-12-16</div>
         </div>
         
         <div id="content-25" style="display:none;">
-            <h2>Mozilla’s new CEO is doubling down on an AI future for Firefox</h2>
+            <h2>Fallout’s goofy apocalypse gets serious in season 2</h2>
             <p><strong>The Verge | 2025-12-16</strong></p>
+            <a class="original-link" href="https://www.theverge.com/entertainment/844926/fallout-season-2-review-amazon-prime-video">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Anthony Enzor-DeMeo says he thinks there’s room for another browser, even an AI browser — as long as you can trust it.
+            <div id="article-text">An early spoiler-free look at the new season on Amazon Prime Video.
 
-Anthony Enzor-DeMeo says he thinks there’s room for another browser, even an AI browser — as long as you can trust it.
+An early spoiler-free look at the new season on Amazon Prime Video.
 
-Mozilla is in a tricky position. It contains both a nonprofit organization dedicated to making the internet a better place for everyone, and a for-profit arm dedicated to, you know, making money. In the best of times, these things feed each other: The company makes great products that advance its goals for the web, and the nonprofit gets to both advocate for a better web and show people what it looks like. But these are not the best of times. Mozilla has spent the last couple of years implementing layoffs and restructuring, attempting to explain how it can fight for privacy and openness when Google pays most of its bills, while trying to find its place in an increasingly frothy AI landscape.
+The most impressive thing about Fallout’s first season was how well it nailed the tone. The games are a mix of grim and goofy, a postapocalyptic story in a bleak world that’s also full of crude jokes and ridiculous characters. It’s a tough balance to get right — too serious and it’s a miserable place to be; too silly and it renders the whole thing meaningless — but the Amazon Prime Video series struck the right balance. It was even accessible to viewers who had never played the games. With the scene-setting out of the way, the show’s second season makes a push to expand Fallout’s world and tackle headier subjects. But in doing so, it loses some of the playfulness that made the series distinct from the many other dystopias you can stream.
 
-Fun times to be the new Mozilla CEO, right? But when I put all that to Anthony Enzor-DeMeo, the company’s just-announced chief executive, he swears he sees opportunity in all the upheaval. “I think what’s actually needed now is a technology company that people can trust,” Enzor-DeMeo says. “What I’ve seen with AI is an erosion of trust.”
+Fallout is once again mostly focused on three core characters: Lucy, Maximus, and the Ghoul, the wasteland’s version of the Good, the Bad, and the Ugly. This time around Lucy (Ella Purnell), a vault dweller, is traveling alongside the Ghoul (Walton Goggins) toward the relative glitz and glamour of New Vegas. Lucy is following her father, Hank (Kyle MacLachlan), hoping to bring him to justice for destroying an entire city. The Ghoul is also after Lucy’s dad because he believes this will lead him to his own missing family. Meanwhile, Maximus (Aaron Moten) has returned to the Brotherhood of Steel as a hero because fellow soldiers all mistakenly believe he killed the leader of their rival, the New California Republic. (If you’re lost right now, Fallout does have very serviceable recaps before each episode to get you up to speed, this in spite of the recent AI fiasco.)
 
-Mozilla is not going to train its own giant LLM anytime soon. But there’s still an AI Mode coming to Firefox next year, which Enzor-DeMeo says will offer users their choice of model and product, all in a browser they can understand and from a company they can trust. “We’re not incentivized to push one model or the other,” he says. “So we’re going to try to go to market with multiple models.” Some will be open-source models available to anyone. Others will be private, “Mozilla-hosted cloud options,” he says. And, yes, some will be from the big companies in the space — Enzor-DeMeo didn’t name Gemini, Claude, or ChatGPT, but it’s not hard to guess.
+That’s a lot to track, but it’s also only a fraction of what season 2 covers. For one, there is continued unrest in the wasteland. It seems that every group is fighting against not only each other but also among themselves. The Brotherhood is close to instigating a civil war as they argue over an ancient artifact, and Lucy’s old home, Vault 33, is in dire straits due a water crisis and a rogue faction that begins as an inbreeding support group. There are even newly introduced factions, like the Legion, a group that mimics ancient Roman traditions despite not understanding them. Also new this season: a prewar technology that can completely control a human being, which would potentially make the wasteland a much less violent place. But the tech isn’t quite there — it keeps making the user’s head explode.
 
-Enzor-DeMeo has been at Mozilla for almost exactly a year. Until now, he’s been leading the team building Mozilla’s Firefox browser, which, in so many ways, is the thing that makes Mozilla go. Firefox is the company’s most visible product; it’s the biggest moneymaker, thanks mostly to a deal that gives Google default search placement; and it’s the place where Mozilla gets to actually put its values to work. Enzor-DeMeo spent 2025 racing to make Firefox a more compelling product, adding things like tab groups, while also trying to figure out how the browser should integrate with AI.
+On top of all of that, season 2 also gets more explicit about the origins of the nuclear war that created the wasteland in the first place. This necessitates a whole lot of flashbacks, which primarily follow the Ghoul’s prewar life as he spies on his wife, Barb (Frances Turner), a high-ranking executive at the powerful Vault-Tec corporation. (The easiest way to know what time period you’re watching: Does Goggins look like a zombie?) Fallout is never subtle with its social satire and that remains true here. The end of the world is brought about by a group of tech oligarchs who wield too much power, and as one character muses early on, “every dollar spent is a vote cast.” Board meetings show billionaires salivating at the business opportunities that come with the apocalypse. Much like with Severance, there’s a lurking tension seeing this kind of cultural commentary on a platform owned by the exact kind of oligarch the show is criticizing, though Fallout doesn’t interrogate this.
 
-As he takes over the top job, Enzor-DeMeo knows that AI is the question at hand. The rise of ChatGPT and its ilk has shaken up product markets everywhere, and the tech industry is betting that as AI takes over, people will be unusually willing to try new products. A lot of companies are even betting that the browser wars are back, after nearly two decades of everybody just using Google Chrome. Enzor-DeMeo buys the theory, and says Firefox’s numbers reflect it — 200 million people use the product every month, he says, and it’s actually growing at a decent clip on mobile in particular. That’s a far cry from the 4 billion or so that use Chrome, but it still gives Firefox meaningful scale.
+Most of these elements aren’t explicitly bad — there’s just too much going on. Season 2 is constantly jumping around between storylines, characters, and time periods, which doesn’t leave a lot of room for much else. And what gets left out is a lot of the levity. We’re not talking about a Last of Us level of grimness here — there are some good gags, particularly when it comes to the juxtaposition of Lucy’s continued obliviousness with the harsh realities of a postapocalyptic world — but these jokes stand out because they’re so much rarer now.
 
-“Priority one is still building the best browser”
+The caveat here is that I haven’t watched the entire season. Amazon shared six of the eight episodes with critics, so I don’t know how things wrap up, nor if that balance between dour and droll changes toward the end. What I saw is still unmistakably Fallout — but a little less fun.
 
-It’s no accident that the Firefox guy is taking over, by the way. “Priority one [for Mozilla] is still building the best browser,” he says. “I am very pragmatic that that is our core business, and it would take a lot to prove otherwise.” Going forward, when Mozilla launches new products, they’re likely to be tied to Firefox – Enzor-DeMeo mentions that Mozilla VPN is coming to Firefox next year, just to name one, and says there are other features in the works.
-
-In our conversation, Enzor-DeMeo returns often to two things: that Mozilla cares about and wants to preserve the open web, and that the open web needs new business models. Mozilla’s ad business is important and growing, he says, and he worries “about things going behind paywalls, becoming more closed off.” He says the internet’s content business isn’t exactly his fight, but that Mozilla believes in the value of an open and free (and thus ad-supported) web.
-
-At some point, though, Enzor-DeMeo will have to tend to Mozilla’s own business. “I do think we need revenue diversification away from Google,” he says, “but I don’t necessarily believe we need revenue diversification away from the browser.” It seems he thinks a combination of subscription revenue, advertising, and maybe a few search and AI placement deals can get that done. He’s also bullish that things like built-in VPN and a privacy service called Monitor can get more people to pay for their browser. He says he could begin to block ad blockers in Firefox and estimates that’d bring in another $150 million, but he doesn’t want to do that. It feels off-mission.
-
-One way to solve many of these problems is to get a lot more people using Firefox. And Enzor-DeMeo is convinced Mozilla can get there, that people want what the company is selling. “There is something to be said about, when I have a Mozilla product, I always know my data is in my control. I can turn the thing off, and they’re not going to do anything sketchy. I think that is needed in the market, and that’s what I hope to do.”
+Season 2 of Fallout starts streaming on Amazon Prime Video on December 16th at 9PM ET, with new episodes weekly.
 
 A free daily digest of the news that matters most.</div>
-            <a class="original-link" href="https://www.theverge.com/tech/845216/mozilla-ceo-anthony-enzor-demeo">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
             <div class="source">The Verge</div>
-            <div class="title">The ‘mad rush’ to install solar panels before tax credits run out</div>
+            <div class="title">I’ve been waiting years for Animal Crossing’s best new features</div>
             <div class="meta">2025-12-16</div>
         </div>
         
         <div id="content-26" style="display:none;">
-            <h2>The ‘mad rush’ to install solar panels before tax credits run out</h2>
+            <h2>I’ve been waiting years for Animal Crossing’s best new features</h2>
             <p><strong>The Verge | 2025-12-16</strong></p>
+            <a class="original-link" href="https://www.theverge.com/games/845242/animal-crossing-new-horizons-3-0-update-switch-2-edition-features">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">﻿The solar industry is pivoting to survive Donald Trump’s attacks on clean energy.
+            <div id="article-text">﻿The 3.0 update for New Horizons in January is free and very welcome.
 
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+﻿The 3.0 update for New Horizons in January is free and very welcome.
 
-﻿The solar industry is pivoting to survive Donald Trump’s attacks on clean energy.
+I never felt done with my Animal Crossing: New Horizons island. Despite playing every day for two years, and racking up 1,700 hours of playtime, I somehow never finished decorating. I had plenty of ideas for my island, sure, but actually implementing them was another story: The decorating and terraforming systems that helped make New Horizons a huge success are also slow, manual, and cumbersome, and my patience for decorating and redecorating had finally worn thin.
 
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+Fast-forward a few years, and a very much unexpected update is coming to finally fix some of those pain points. Update 3.0 is launching on January 15th, 2026, alongside the Switch 2 Edition of New Horizons. And while the paid Switch 2 upgrade has some nice-to-haves (like Joy-Con 2 mouse controls for indoor decorating), it’s the free update that brings all the key new features.
 
-Ed Murray has been in the solar business long enough to remember the bloodbath of 1985. That’s when President Ronald Reagan ended Jimmy Carter-era solar tax credits meant to decrease US reliance on fossil fuels following the 1970s oil crisis.
+I recently attended a virtual preview for the New Horizons upgrade and update, and there are two caveats: I have not yet played either the Switch 2 version or the new free content myself, and it’s hard to gauge the quality of the Switch 2 version’s visual and performance improvements over a Zoom call. (I still have some unanswered questions about the biggest performance issues on the original Switch, like the choppy frame rate on more densely decorated islands.) But seeing the 3.0 additions in action, it was easy to imagine myself finishing my island — or at least an island.
 
-“It was a sad time,” says Murray, who is president of the trade group California Solar & Storage Association. Membership to the organization (which hadn’t yet added “storage” to its name) fell from 670 companies to just 37 “almost overnight,” Murray says, as hundreds of businesses went under without the tax credit. “I hope that that doesn’t happen to us again.” (Then-California Gov. George Deukmejian also cut a state tax credit for solar around the same time.)
+As shown in the October announcement trailer, update 3.0 makes much-needed quality-of-life fixes. You’ll finally be able to craft multiple items at once, and crafting will pull materials from your overall storage instead of your pockets, meaning you won’t have to do a bunch of inventory management just to craft some decor. Then there’s Resetti’s Reset Service, which can help you clean up entire sections of your island instantly so you don’t have to pick everything up individually in order to redecorate. Some players also noticed a very subtle but potentially impactful change to movement while terraforming that should hopefully make it a smoother process. And then, as if to show off those decorating improvements, Nintendo also added Slumber Islands.
 
-The industry has managed to make a remarkable comeback since then, thanks in no small part to Congress reinstating a federal solar tax credit in 2005. Speeding the adoption of renewables like solar was meant to limit Americans’ dependence on foreign energy sources. “By developing these innovative technologies, we can keep the lights running while protecting the environment and using energy produced right here at home,” President George W. Bush, a Republican, said upon signing the measure into law.
+Not to be confused with dreams, New Horizons’ online island-sharing feature, Slumber Islands are extra sandboxes for you to decorate and play with, where you can set the time of day and the weather and magically conjure up any item you have in your in-game catalog to decorate with, similar to the Happy Home Paradise DLC. You can build bridges and inclines instantly by talking to Lloid, rather than going through Tom Nook and waiting (or time traveling) a day. And while it seems like terraforming works the same on Slumber Islands, the apparent addition of strafing while terraforming — instead of having to constantly reorient yourself manually — should help at least a little bit. (It’s the first thing I’m going to test on January 15th, that’s for sure.)
 
-“I hope that that doesn’t happen to us again.”
+For me, the worst part of decorating in New Horizons was having an idea, ordering all the furniture I’d need for it over the course of days, testing out the design, realizing it did not look the way I envisioned, and facing the tedious process of breaking it all down and starting over again brick by brick — or, at the very least, having to push and pull objects around for a while to see if I could make it work. The design process I saw on Nintendo’s Slumber Island during the preview, meanwhile, seemed quicker and smoother. Trying out an idea or aesthetic in that environment doesn’t sound like such a tall order.
 
-Now, as a result of Donald Trump’s One Big Beautiful Bill Act, the tax credit is set to expire at the end of 2025, and home solar companies face another cliff. Installers are racing to complete projects for customers wanting to take advantage of the tax credit while they still can, even as they face some major headwinds in the process. After that, the industry will have to figure out how to adapt to a very different solar landscape in the coming year.
+Without any hands-on time, I can’t say if it will actually be noticeably easier to design and decorate with the 3.0 update. But I’m excited by the idea that I can go to my Slumber Island scratch pad and try out my designs before committing to them (and the cost in bells to get it all done) on my main island. And maybe, if I really like how it feels to decorate, I’ll make an entire Halloween-themed Slumber Island — the kind of island I’ve wanted to make for years but never did on my main island, where the seasons continue to change and actively ruin the vibe.
 
-“It’s a mad rush and it’s crazy,” Murray says.
-
-It wasn’t supposed to be like this; solar companies and their customers thought they’d have the credit for much longer. The 2005 Energy Policy Act reestablished a solar federal tax credit in the US, which the 2022 Inflation Reduction Act (IRA) expanded and extended until 2035. That gave a residential solar customer an income tax credit equal to 30 percent of the cost of installation.
-
-This year, the Trump administration has taken a wrecking ball to the IRA, which was the Biden administration’s signature climate and clean energy bill, as part of President Trump’s pro-fossil-fuel agenda. The Republican-controlled Congress voted in July to wind down the home solar tax credit by the end of the year.
-
-Initially, that led to a spike in customers rushing to install home solar systems before the tax credit goes away. EnergySage, a nationwide solar marketplace in the US, says it saw a 205 percent year-over-year increase in homeowners communicating with installers on their platform after the Republican spending bill passed in July. That trend was echoed by Murray, who is also president of the Northern California-based company Aztec Solar, and other installers The Verge contacted. “It increased sales immensely, and so we have a rush to the end,” Murray says.
-
-The surge in demand, however, has also come with bigger headaches for solar companies who say they now have to work with local permitting offices and utilities similarly scrambling to keep up with the sudden onslaught of installation applications. The lead time to secure a permit has doubled since August to about four to eight weeks for Northern California company Vital Energy Solutions, according to its director of sales and marketing, Kevin McGuire.
-
-“It’s no secret that these permitting offices are just totally overwhelmed because of the flood of customers that are just clamoring to get their systems installed before December 31st,” says McGuire, describing a packed city office in Napa that’s otherwise typically pretty quick to process permits.
-
-California is the biggest solar market in the US, but it’s not the only state where there are delays. Slow permitting processes across the nation have been the “biggest barrier” to reaching an industry-wide goal of driving costs down to about $2 a watt, according to EnergySage director of insights Emily Walker. Long wait times increase overhead costs for companies, turn off customers, and now even jeopardize their ability to qualify for the federal tax credit this year.
-
-Vital Energy Solutions sent out a press release in December saying that 120 of its customers in a single congressional district are at risk of losing the tax credit “through no fault of their own” as installers face delays, and calling on policymakers to grant an extension on the end-of-year deadline. Home project costs can range from $15,000 to $50,000 depending on whether they include batteries, according to Murray, and average about $37,000 according to McGuire — so customers stand to lose thousands of dollars by missing out on the 30 percent tax credit.
-
-“Every step of the process is overextended,” Vital Energy Solutions CEO Jason Jackson, whose father started the company in 1971, says in the release. That includes longer wait times with utilities and supply chain snafus, the company adds.
-
-Southern California Edison has had “significant delays” installing meter socket adapters needed to connect utility meters to solar and battery components between September and November as a result of the recent uptick in applications, Bloomberg reports.
-
-Rising costs and holdups in procuring key equipment including solar panels themselves — exacerbated this year by Trump’s tariff regime — have been another hindrance according to some installers. Vital Energy Solutions has had to resort to scouring local hardware stores for basic electrical fittings as its distributors face shortages, only to find store shelves empty.
-
-Two major solar panel suppliers have also had a tumultuous year. In November, manufacturer QCells furloughed 1,000 workers in Georgia after months of shipments detained by US Customs. Solar components have been under increased scrutiny at ports due to policies barring components suspected of being linked to human rights abuses in Xinjiang province in China. And a fire at manufacturer REC’s Singapore factory in June backed up deliveries to the US.
-
-Virginia-based Ipsun Solar had to redesign and re-permit projects for customers unable to get the REC components they originally planned to use, according to Leon Keshishian, CEO of Ipsun’s parent company, Civic Renewables. The timing couldn’t have been worse. Ipsun saw a fourfold increase in customers since June as news began to spread that Republicans would soon end the home solar tax credit. “We had to kind of turn off new sales at a point because we just didn’t think we’d get them all billed,” Keshishian says. The company is offering to cover the loss of the tax credit for qualifying customers whose projects it couldn’t install before the end of the year due to unforeseen delays, according to Keshishian.
-
-To survive the loss of the tax credit, installers are figuring out how to diversify or lean into other parts of their business. Some are considering offering roofing and HVAC services, or installing heat pumps and EV chargers. Murray and McGuire’s companies both do commercial installations, which they can lean into since those projects are eligible for a commercial tax credit available until 2028. They expect smaller installers, mom-and-pop shops, to face a harder road ahead.
-
-“There’s going to be a lot of people that, when the music stops, they’re not going to have a place to sit,” McGuire says. “Those companies will either get absorbed into other companies, or they’ll go out of business.”
-
-Even so, no one The Verge spoke to is sounding a death knell for the residential solar industry. They expect that rising electricity rates, particularly in communities near new data centers, will still drive demand for home solar systems that can cut down utility bills in the long run. More frequent power outages during extreme weather and explosive wildfire seasons are also increasing demand for residential systems with batteries that can keep a home’s lights on during a larger blackout.
-
-Industry leaders have also come to expect wild swings from shifting regulatory landscapes and have seen the industry pivot in response. This time around, they even see some solar companies benefitting from the loss of tax credits — those that offer “third-party ownership” (TPO) in industry speak. That could be through leasing, or power purchase agreements (PPA) that allow customers to pay per kilowatt hour for solar power from a system the third party owns.
-
-Over the years, the pendulum has swung between customers preferring to purchase solar panels or lease them. “Now it’s going to swing very strongly in the lease direction,” says Brad Heavner, executive director of the California Solar & Storage Association. That’s because the Republican spending bill preserved the solar tax credit for commercial projects for longer and allows third-party ownership to qualify.
-
-Sunrun, a solar company that offers power purchase agreements through subscription plans, managed to successfully lobby for those protections in the bill — arguing that their fleet of solar and battery systems served as a distributed power plant that would help stabilize the power grids as they try to meet the nation’s rising electricity demands. (Republicans also faced flak for slashing tax credits that benefited developers in red states.) Sunrun’s stock is now up about 75 percent year over year.
-
-“Having these as an option is a silver lining.”
-
-“While we do think the industry as a whole will shrink a little bit next year, we foresee Sunrun picking up more market share,” Sunrun president and chief revenue officer Paul Dickson tells The Verge.
-
-Keshishian also expects Ipsun — which installs panels for customers who either purchase or lease their systems — “will absolutely sell more TPOs next year.” Prior to his current venture, he was a vice president at SolarCity, which focused on leasing and PPAs before being acquired by Tesla in 2016.
-
-One of the arguments in favor of third-party ownership is that it can potentially allow customers who might not be able to afford to purchase their own home setup to go solar. But PPAs have also gotten a bad rap for escalating rates that could wind up costing customers more each year — in some cases outpacing inflation for electricity.
-
-The loss of the federal tax credit, however, is driving the creation of new third-party ownership options with lower rate escalators, as well as some lease-to-own models. “Having these as an option is a silver lining,” says EnergySage’s Emily Walker — even though the bill that cut clean energy tax credits “is pretty negative by and large for the solar industry.”
-
-Ed Murray’s advice to other installers after surviving the loss of the tax credit in 1985? “Save your money,” he tells The Verge. “And hopefully we have a regime change with the midterm and we get some kind of tax credit back. It’s a tough business.”</div>
-            <a class="original-link" href="https://www.theverge.com/science/844852/solar-energy-panel-installation-tax-credit-trump">Visit Original Website</a>
+A free daily digest of the news that matters most.</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1329,6 +1264,7 @@ Ed Murray’s advice to other installers after surviving the loss of the tax cre
         <div id="content-27" style="display:none;">
             <h2>The Download: why 2025 has been the year of AI hype correction, and fighting GPS jamming</h2>
             <p><strong>MIT Technology Review | 2025-12-16</strong></p>
+            <a class="original-link" href="https://www.technologyreview.com/2025/12/16/1129944/the-download-why-2025-has-been-the-year-of-ai-hype-correction-and-fighting-gps-jamming/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">This is today&#39;s edition of The Download, our weekday newsletter that provides a daily dose of what&#39;s going on in the world of technology.
 
@@ -1374,7 +1310,6 @@ We’re having trouble saving your preferences.
                 more time. If you continue to get this message,
                 reach out to us at
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
-            <a class="original-link" href="https://www.technologyreview.com/2025/12/16/1129944/the-download-why-2025-has-been-the-year-of-ai-hype-correction-and-fighting-gps-jamming/">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1386,6 +1321,7 @@ We’re having trouble saving your preferences.
         <div id="content-28" style="display:none;">
             <h2>Why it’s time to reset our expectations for AI</h2>
             <p><strong>MIT Technology Review | 2025-12-16</strong></p>
+            <a class="original-link" href="https://www.technologyreview.com/2025/12/16/1129946/why-its-time-to-reset-our-expectations-for-ai/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Can I ask you a question: How do you feel about AI right now? Are you still excited? When you hear that OpenAI or Google just dropped a new model, do you still get that buzz? Or has the shine come off it, maybe just a teeny bit? Come on, you can be honest with me.
 
@@ -1431,7 +1367,6 @@ We’re having trouble saving your preferences.
                 more time. If you continue to get this message,
                 reach out to us at
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
-            <a class="original-link" href="https://www.technologyreview.com/2025/12/16/1129946/why-its-time-to-reset-our-expectations-for-ai/">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1443,6 +1378,7 @@ We’re having trouble saving your preferences.
         <div id="content-29" style="display:none;">
             <h2>Quantum navigation could solve the military’s GPS jamming problem</h2>
             <p><strong>MIT Technology Review | 2025-12-16</strong></p>
+            <a class="original-link" href="https://www.technologyreview.com/2025/12/16/1129887/quantum-navigation-militarys-gps-jamming-problem/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">In late September, a Spanish military plane carrying the country’s defense minister to a base in Lithuania was reportedly the subject of a kind of attack—not by a rocket or anti-aircraft rounds, but by radio transmissions that jammed its GPS system.
 
@@ -1510,7 +1446,6 @@ We’re having trouble saving your preferences.
                 more time. If you continue to get this message,
                 reach out to us at
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
-            <a class="original-link" href="https://www.technologyreview.com/2025/12/16/1129887/quantum-navigation-militarys-gps-jamming-problem/">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1522,6 +1457,7 @@ We’re having trouble saving your preferences.
         <div id="content-30" style="display:none;">
             <h2>Is ChatGPT’s New Shopping Research Solving a Problem, or Creating One?</h2>
             <p><strong>The Next Web | 2025-12-11</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/is-chatgpts-new-shopping-research-solving-a-problem-or-creating-one">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">When OpenAI announced its new shopping search capabilities, I took the news with a grain of salt (perhaps the whole shaker).
 For the past decade, we have watched the slow evolution of traditional search engines. What began as tools for pure information discovery gradually morphed into ecosystems dominated by SEO-optimized content and sponsored results. My initial fear with ChatGPT’s update was simple: Are we seeing the beginning of a similar shift? Is the purity of the “reasoning engine” being diluted by the necessity of commerce?
@@ -1532,6 +1468,10 @@ To test this, I entered a simple prompt: “I want to buy a vacuum.”
 I anticipated a conversation, questions about my home’s square footage, my floor type, or my budget. Instead, the conversational nuance was replaced by a display that felt familiar: a grid of product photos, names, prices, and direct links to retailers.
 
 While efficient, this experience felt like a regression. It mirrored the “keyword search” experience of Web 2.0 rather than the “intent-based” promise of GenAI. It replied to my prompt, but it stripped away the intelligence.
+
+TNW City Coworking space - Where your best work happens
+
+A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
 
 Scrolling down, I engaged with the new feature in a call to action: “Research the best vacuums.”
 This is where the user experience (UX) friction became most apparent. Rather than synthesizing data or comparing technical specifications in a chat format, the tool presented a polling interface designed to filter results.
@@ -1555,7 +1495,6 @@ The current iteration feels like a beta test of a business model rather than an 
 Viviane Mendes is a growth strategist and innovation leader with more than 20 years of experience driving technology-enabled transformation across global markets. She has led initiatives integrating AI-driven strategies, digital transformation, and scalable business innovation for companies such as PSINet, MP3.com, Match.com, UOL and Best Buy Canada, and founded Vitrinepix, one of the first print-on-demand e-commerce platform, later acquired by Spreadshirt. Committed to lifelong learning, Viviane is now focusing on applying emerging technologies to foster digital literacy, responsible AI adoption, and positive human impact.
 
 Get the most important tech news in your inbox each week.</div>
-            <a class="original-link" href="https://thenextweb.com/news/is-chatgpts-new-shopping-research-solving-a-problem-or-creating-one">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-31')">
@@ -1567,6 +1506,7 @@ Get the most important tech news in your inbox each week.</div>
         <div id="content-31" style="display:none;">
             <h2>Tekpon acquires TNW (The Next Web) brand from The Financial Times</h2>
             <p><strong>The Next Web | 2025-12-08</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/tekpon-acquires-tnw-the-next-web-brand-from-the-financial-times">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Tekpon has acquired 100% of the TNW media and events brands, which cover and convene the European technology ecosystem, from the FT.
 
@@ -1576,9 +1516,7 @@ TNW’s brand and editorial standards will be maintained, while its events and d
 
 The FT will continue to own and operate TNW Spaces, Amsterdam’s dynamic tech hub, offering private offices and coworking spaces that support a thriving community of startups, scale-ups, and innovators.
 
-TNW City Coworking space - Where your best work happens
-
-A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
 
 Alexandru Stan, Founder and CEO of Tekpon, said:
 
@@ -1589,7 +1527,6 @@ Tekpon will begin working on TNW branded initiatives immediately. Plans for 2026
 The acquisition is part of Tekpon’s long-term plan to build an international ecosystem connecting software, media, events, advisory, and innovation.
 
 Get the most important tech news in your inbox each week.</div>
-            <a class="original-link" href="https://thenextweb.com/news/tekpon-acquires-tnw-the-next-web-brand-from-the-financial-times">Visit Original Website</a>
         </div>
         
         <div class="card" onclick="openModal('content-32')">
@@ -1601,6 +1538,7 @@ Get the most important tech news in your inbox each week.</div>
         <div id="content-32" style="display:none;">
             <h2>Ending graciously</h2>
             <p><strong>The Next Web | 2025-09-29</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/tnw-boris-signs-out">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">This article was published on September 29, 2025
 
@@ -1612,48 +1550,40 @@ Now, the startup was not successful, but we still had a nice, opulent dinner wit
 
 Obviously, I would have preferred to have made this startup a success instead, but I still regard it as a successful endeavour. I gave it a try and had a plan ready for when my experiment didn’t work out, and in the process, I built relationships that outlasted that one startup.
 
-As you may have read, The Next Web, the company I founded in 2006, is nearing the end of its lifecycle. The events and media business is being wound down, and only TNW Spaces will live on. TNW Programs was sold off a while ago and will continue as well. There won’t be another TNW Conference, and soon there won’t be new articles on the site; people are losing their jobs, including me. It’s a painful process, but I guess I’m taking it well because it also feels natural and logical. When we sold TNW to the FT in 2019, we were very ambitious and optimistic, and surely I would’ve liked for the company and brand to outlive me. However, when the business struggled, I also felt very comfortable with the company ending graciously.
-
 The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
+
+As you may have read, The Next Web, the company I founded in 2006, is nearing the end of its lifecycle. The events and media business is being wound down, and only TNW Spaces will live on. TNW Programs was sold off a while ago and will continue as well. There won’t be another TNW Conference, and soon there won’t be new articles on the site; people are losing their jobs, including me. It’s a painful process, but I guess I’m taking it well because it also feels natural and logical. When we sold TNW to the FT in 2019, we were very ambitious and optimistic, and surely I would’ve liked for the company and brand to outlive me. However, when the business struggled, I also felt very comfortable with the company ending graciously.
 
 When you’re reading a good book, there’s a moment near the end when you’ll start reading slower because you don’t want it to end. I love those moments, because I’ll know it’s been a good experience. But then you also know that good stories need good endings. So, this is the ending of a great story that I’ve enjoyed participating in.
 
 I’ll keep writing, but this will be my last official TNW story. I’d love it if you would subscribe to my writing over at Substack. It will be less tech-focused, more unpredictable, but just as insightful as before.
 
 Get the most important tech news in your inbox each week.</div>
-            <a class="original-link" href="https://thenextweb.com/news/tnw-boris-signs-out">Visit Original Website</a>
         </div>
         
         </div>
 
         <div id="reader-modal">
-            <div id="close-btn" onclick="closeModal()">X</div>
+            <div id="close-btn" class="control-btn" onclick="closeModal()">X</div>
+            
+            <div id="scroll-controls">
+                <button class="scroll-btn" onclick="scrollPage(-1)">&#9650;</button> <button class="scroll-btn" onclick="scrollPage(1)">&#9660;</button>  </div>
+
             <div id="modal-inner"></div>
         </div>
 
         <script>
             // 1. RANDOMIZE ORDER
             const list = document.getElementById('feed-list');
-            // We move pairs of elements (card + hidden div) so we need to be careful.
-            // Simplified: We just randomize the visual cards and map clicks correctly.
-            // Actually, simpler approach: Randomize the HTML string generation in Python? 
-            // No, let's just randomize the children nodes safely.
-            
-            // Collect all cards
             const cards = Array.from(document.querySelectorAll('.card'));
-            const container = document.getElementById('feed-list');
-            
-            // Shuffle them
             cards.sort(() => Math.random() - 0.5);
-            
-            // Re-append them (The hidden divs can stay where they are, we reference them by ID)
-            cards.forEach(card => container.appendChild(card));
+            cards.forEach(card => list.appendChild(card));
 
             // 2. DARK MODE
             const btn = document.getElementById('theme-toggle');
             btn.addEventListener('click', () => document.body.classList.toggle('dark-mode'));
 
-            // 3. MODAL LOGIC
+            // 3. MODAL & SCROLL LOGIC
             const modal = document.getElementById('reader-modal');
             const modalInner = document.getElementById('modal-inner');
 
@@ -1661,12 +1591,18 @@ Get the most important tech news in your inbox each week.</div>
                 const content = document.getElementById(contentId).innerHTML;
                 modalInner.innerHTML = content;
                 modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Stop background scrolling
+                document.body.style.overflow = 'hidden'; 
             }
 
             function closeModal() {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
+            }
+
+            function scrollPage(direction) {
+                // Scroll by 80% of the screen height to keep context
+                const scrollAmount = window.innerHeight * 0.8;
+                modal.scrollBy(0, direction * scrollAmount);
             }
         </script>
     </body>
