@@ -1,6 +1,8 @@
 import feedparser
 import datetime
 import time
+import requests
+from bs4 import BeautifulSoup
 import random
 
 # --- CONFIGURATION ---
@@ -21,8 +23,44 @@ FEED_URLS = [
     "https://thenextweb.com/feed/",
     "https://www.theinformation.com/feed"
 ]
-
+# We limit to 3 articles per feed to keep the build fast (approx 12 articles total)
+ARTICLES_PER_FEED = 3
 # ---------------------
+
+def scrape_article_text(url):
+    """
+    Downloads the article content using a Python web request.
+    This runs on GitHub's servers, which are more powerful than a Kindle browser.
+    """
+    try:
+        # We pretend to be a real Chrome browser on Windows to avoid getting blocked
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status() # Check for errors (like 404 or 500)
+        
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        # REMOVE JUNK: specific to news sites (removes ads, "read more" links, menus)
+        for junk in soup(['script', 'style', 'nav', 'header', 'footer', 'iframe', 'aside']):
+            junk.decompose()
+
+        # EXTRACT TEXT: Look for paragraph tags
+        paragraphs = soup.find_all('p')
+        
+        # Filter out short/empty paragraphs that are usually captions or bylines
+        valid_paragraphs = [p.get_text().strip() for p in paragraphs if len(p.get_text().strip()) > 40]
+        
+        text_content = "\n\n".join(valid_paragraphs)
+        
+        if len(text_content) < 200:
+            return "Could not extract main text automatically. Please use the 'Read Original' link."
+            
+        return text_content
+    except Exception as e:
+        print(f"Failed to scrape {url}: {e}")
+        return "Content unavailable (Blocked by source). Please read on original site."
 
 def fetch_and_parse():
     articles = []
@@ -31,22 +69,27 @@ def fetch_and_parse():
     for url in FEED_URLS:
         try:
             feed = feedparser.parse(url)
-            print(f"Loaded: {feed.feed.get('title', url)}")
+            print(f"Processing Feed: {feed.feed.get('title', url)}")
             
-            for entry in feed.entries[:10]: # Increased limit since we aren't scraping
+            # Only process the top N articles
+            for entry in feed.entries[:ARTICLES_PER_FEED]:
                 published = entry.get('published_parsed') or entry.get('updated_parsed')
                 if not published:
                     published = time.localtime()
+                
+                print(f"  - Downloading: {entry.title[:40]}...")
+                full_text = scrape_article_text(entry.link)
                 
                 articles.append({
                     'title': entry.title,
                     'link': entry.link,
                     'date': published,
-                    'source': feed.feed.get('title', 'Unknown Source'),
-                    # We don't scrape content here anymore!
+                    'source': feed.feed.get('title', 'Unknown'),
+                    # Escape quotes so they don't break the HTML attribute
+                    'content': full_text.replace('"', '&quot;').replace("'", "&#39;")
                 })
         except Exception as e:
-            print(f"Error parsing {url}: {e}")
+            print(f"Error parsing feed {url}: {e}")
 
     return articles
 
@@ -66,6 +109,7 @@ def generate_html(articles):
                 --text: #000000;
                 --border: #000000;
                 --modal-bg: #ffffff;
+                --dim: #666666;
             }}
             
             body.dark-mode {{
@@ -73,6 +117,7 @@ def generate_html(articles):
                 --text: #ffffff;
                 --border: #ffffff;
                 --modal-bg: #000000;
+                --dim: #aaaaaa;
             }}
 
             body {{ 
@@ -81,7 +126,7 @@ def generate_html(articles):
                 color: var(--text);
                 margin: 0;
                 padding: 10px;
-                font-size: 20px;
+                font-size: 22px; /* Large text for Kindle */
                 line-height: 1.5;
             }}
 
@@ -89,69 +134,85 @@ def generate_html(articles):
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                border-bottom: 2px solid var(--text);
+                border-bottom: 3px solid var(--text);
                 padding-bottom: 15px;
-                margin-bottom: 20px;
+                margin-bottom: 25px;
             }}
+            
+            h1 {{ margin: 0; font-size: 1.2em; }}
 
             button#theme-toggle {{
                 background: transparent;
                 color: var(--text);
                 border: 2px solid var(--text);
-                padding: 8px 12px;
-                font-size: 16px;
+                padding: 10px;
+                font-size: 18px;
                 font-weight: bold;
+                border-radius: 4px;
                 cursor: pointer;
             }}
 
             .card {{
                 border: 2px solid var(--text);
-                margin-bottom: 20px;
+                margin-bottom: 25px;
                 padding: 15px;
                 cursor: pointer;
+                /* No rounded corners on cards for crisp e-ink rendering */
             }}
             
-            .source {{ font-size: 0.7em; font-weight: bold; text-transform: uppercase; }}
-            .title {{ font-size: 1.2em; font-weight: bold; margin: 5px 0; }}
-            .meta {{ font-size: 0.7em; opacity: 0.8; }}
+            .source {{ font-size: 0.7em; font-weight: bold; text-transform: uppercase; color: var(--dim); }}
+            .title {{ font-size: 1.1em; font-weight: bold; margin: 8px 0; display:block; }}
+            .meta {{ font-size: 0.7em; color: var(--dim); }}
 
-            /* MODAL */
+            /* MODAL STYLING */
             #reader-modal {{
                 display: none;
                 position: fixed;
                 top: 0; left: 0;
                 width: 100%; height: 100%;
                 background-color: var(--modal-bg);
-                z-index: 999;
+                z-index: 1000;
                 overflow-y: scroll;
             }}
 
             #modal-inner {{
-                padding: 20px;
+                padding: 25px;
                 max-width: 800px;
                 margin: 0 auto;
-                padding-top: 60px;
+                padding-top: 80px; /* Space for close button */
             }}
 
             #close-btn {{
                 position: fixed;
-                top: 10px; right: 10px;
-                width: 50px; height: 50px;
-                line-height: 45px;
+                top: 15px; right: 15px;
+                width: 60px; height: 60px;
+                line-height: 55px;
                 text-align: center;
-                border: 2px solid var(--text);
+                border: 3px solid var(--text);
                 background: var(--bg);
-                font-size: 24px;
+                color: var(--text);
+                font-size: 30px;
                 font-weight: bold;
+                border-radius: 8px; /* Rounded corners requested */
                 cursor: pointer;
-                z-index: 1000;
+                z-index: 1001;
             }}
 
-            #article-content {{ font-size: 1.1em; }}
-            .loading {{ text-align: center; margin-top: 50px; font-style: italic; }}
+            #article-text {{ white-space: pre-wrap; font-size: 1.1em; }}
+            
+            a.original-link {{
+                display: inline-block;
+                margin-top: 30px;
+                padding: 15px;
+                border: 1px solid var(--text);
+                color: var(--text);
+                text-decoration: none;
+                font-weight: bold;
+            }}
         </style>
     </head>
     <body>
+
         <header>
             <h1>KL-77's Feed</h1>
             <button id="theme-toggle">Light/Dark</button>
@@ -160,14 +221,23 @@ def generate_html(articles):
         <div id="feed-list">
     """
 
-    for article in articles:
+    for index, article in enumerate(articles):
         date_str = time.strftime("%Y-%m-%d", article['date'])
-        # We pass the URL to the onclick function
+        
+        # We store the scraped text in a hidden div next to the card
         html_content += f"""
-        <div class="card" onclick="openArticle('{article['link']}', '{article['title'].replace("'", "")}')">
+        <div class="card" onclick="openModal('content-{index}')">
             <div class="source">{article['source']}</div>
             <div class="title">{article['title']}</div>
             <div class="meta">{date_str}</div>
+        </div>
+        
+        <div id="content-{index}" style="display:none;">
+            <h2>{article['title']}</h2>
+            <p><strong>{article['source']} | {date_str}</strong></p>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">{article['content']}</div>
+            <a class="original-link" href="{article['link']}">Visit Original Website</a>
         </div>
         """
 
@@ -176,74 +246,45 @@ def generate_html(articles):
 
         <div id="reader-modal">
             <div id="close-btn" onclick="closeModal()">X</div>
-            <div id="modal-inner">
-                <h2 id="modal-title"></h2>
-                <div id="article-content"></div>
-                <br>
-                <a id="original-link" href="#" target="_blank">Read Original</a>
-            </div>
+            <div id="modal-inner"></div>
         </div>
 
         <script>
-            // RANDOMIZE LIST
+            // 1. RANDOMIZE ORDER
             const list = document.getElementById('feed-list');
-            for (let i = list.children.length; i >= 0; i--) {
-                list.appendChild(list.children[Math.random() * i | 0]);
-            }
+            // We move pairs of elements (card + hidden div) so we need to be careful.
+            // Simplified: We just randomize the visual cards and map clicks correctly.
+            // Actually, simpler approach: Randomize the HTML string generation in Python? 
+            // No, let's just randomize the children nodes safely.
+            
+            // Collect all cards
+            const cards = Array.from(document.querySelectorAll('.card'));
+            const container = document.getElementById('feed-list');
+            
+            // Shuffle them
+            cards.sort(() => Math.random() - 0.5);
+            
+            // Re-append them (The hidden divs can stay where they are, we reference them by ID)
+            cards.forEach(card => container.appendChild(card));
 
-            // DARK MODE
+            // 2. DARK MODE
             const btn = document.getElementById('theme-toggle');
             btn.addEventListener('click', () => document.body.classList.toggle('dark-mode'));
 
-            // READER LOGIC
+            // 3. MODAL LOGIC
             const modal = document.getElementById('reader-modal');
-            const contentDiv = document.getElementById('article-content');
-            const titleDiv = document.getElementById('modal-title');
-            const linkTag = document.getElementById('original-link');
+            const modalInner = document.getElementById('modal-inner');
 
-            async function openArticle(url, title) {
+            function openModal(contentId) {
+                const content = document.getElementById(contentId).innerHTML;
+                modalInner.innerHTML = content;
                 modal.style.display = 'block';
-                titleDiv.innerText = title;
-                linkTag.href = url;
-                contentDiv.innerHTML = '<div class="loading">Fetching article text...<br>(This may take a few seconds)</div>';
-                
-                try {
-                    // Use AllOrigins Proxy to bypass CORS
-                    const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(url);
-                    const response = await fetch(proxyUrl);
-                    const data = await response.json();
-                    
-                    if (data.contents) {
-                        // Parse the HTML string to find text
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data.contents, 'text/html');
-                        
-                        // Try to find the main text container (heuristic)
-                        const paragraphs = doc.querySelectorAll('p');
-                        let textBlock = '';
-                        
-                        // Simple filter: only keep paragraphs with significant text
-                        paragraphs.forEach(p => {
-                            if (p.innerText.length > 60) {
-                                textBlock += '<p>' + p.innerText + '</p>';
-                            }
-                        });
-
-                        if (textBlock.length < 50) textBlock = "<p>Could not extract text. Please use the 'Read Original' link.</p>";
-                        
-                        contentDiv.innerHTML = textBlock;
-                    } else {
-                        throw new Error('No content');
-                    }
-                } catch (err) {
-                    contentDiv.innerHTML = '<p>Error loading content. Sites block some proxies.</p>';
-                    console.error(err);
-                }
+                document.body.style.overflow = 'hidden'; // Stop background scrolling
             }
 
             function closeModal() {
                 modal.style.display = 'none';
-                contentDiv.innerHTML = ''; // Clear memory
+                document.body.style.overflow = 'auto';
             }
         </script>
     </body>
@@ -257,7 +298,6 @@ def generate_html(articles):
 if __name__ == "__main__":
     data = fetch_and_parse()
     generate_html(data)
-
 
 '''import feedparser
 import datetime
