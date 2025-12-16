@@ -1,0 +1,694 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My RSS Aggregator</title>
+        <style>
+            body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f0f2f5; }
+            h1 { text-align: center; color: #333; }
+            .update-time { text-align: center; color: #666; font-size: 0.9em; margin-bottom: 30px; }
+            .card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.2s; }
+            .card:hover { transform: translateY(-2px); }
+            .source { color: #e74c3c; font-weight: bold; font-size: 0.8em; text-transform: uppercase; }
+            .title { display: block; font-size: 1.2em; font-weight: bold; margin: 8px 0; color: #2c3e50; text-decoration: none; }
+            .title:hover { color: #3498db; }
+            .meta { color: #95a5a6; font-size: 0.85em; }
+        </style>
+    </head>
+    <body>
+        <h1>My Personal Feed</h1>
+        <div class="update-time">Last updated: 2025-12-16 06:52:15 UTC</div>
+        <div id="feed-list">
+    
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cewjzkw875vo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">UK says South Korea trade deal will bring billions into economy</a>
+            <div class="meta">2025-12-16 06:46</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/crl938n0872o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">How the Maga world became divided - and what that means for Trump</a>
+            <div class="meta">2025-12-16 06:33</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/sport/cricket/articles/c62377nyn65o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Khawaja left out for Stokes' most 'important game'</a>
+            <div class="meta">2025-12-16 06:23</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/16/world/asia/bondi-shooting-gunmen-philippines-isis.html" class="title" target="_blank">Bondi Suspects Were in Southern Philippines, Where ISIS Is Active</a>
+            <div class="meta">2025-12-16 06:09</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/sport/golf/articles/cz94qy9n30ko?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Innovation, evolution, revolution - golf's new faces championing change</a>
+            <div class="meta">2025-12-16 06:07</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/16/opinion/europe-decline-economy-china.html" class="title" target="_blank">Europe Is in Decline. Good.</a>
+            <div class="meta">2025-12-16 06:00</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/16/world/australia/sydney-bondi-suspects-neighborhood-bonnyrigg.html" class="title" target="_blank">In Sydney Suburb Where Suspects Lived, Neighbor Saw ‘No Dramas’</a>
+            <div class="meta">2025-12-16 06:00</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/16/business/volkswagen-dresden-factory-closed.html" class="title" target="_blank">Volkswagen to End Production at German Plant, a First in Company History</a>
+            <div class="meta">2025-12-16 05:00</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/us/donald-trump-jr-engaged-bettina-anderson.html" class="title" target="_blank">Donald Trump Jr. Is Engaged to Bettina Anderson, a Palm Beach Socialite</a>
+            <div class="meta">2025-12-16 04:55</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/obituaries/joe-ely-dead.html" class="title" target="_blank">Joe Ely, Texas-Born Troubadour of the Open Road, Dies at 78</a>
+            <div class="meta">2025-12-16 04:53</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/us/politics/drug-boat-strikes-pacific.html" class="title" target="_blank">U.S. Strikes 3 More Boats in Eastern Pacific, Killing 8</a>
+            <div class="meta">2025-12-16 04:52</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://terrytao.wordpress.com/2025/12/08/the-story-of-erdos-problem-126/" class="title" target="_blank">Erdős Problem #1026</a>
+            <div class="meta">2025-12-16 04:49</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cpvd81470v1o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Trump files $5bn defamation lawsuit against BBC over Panorama speech edit</a>
+            <div class="meta">2025-12-16 04:12</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/opinion/contributors/holiday-gifts-presents-free.html" class="title" target="_blank">600 Readers Told Us About the Best Gifts They Ever Got. These Are the Top 13.</a>
+            <div class="meta">2025-12-16 04:09</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://apple.github.io/ml-sharp/" class="title" target="_blank">Sharp</a>
+            <div class="meta">2025-12-16 04:06</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/c5y9glg2076o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Ben & Jerry's row deepens as three board members removed</a>
+            <div class="meta">2025-12-16 04:05</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/us/politics/pelosi-stock-trading-ban.html" class="title" target="_blank">Pelosi Long Resisted Stock-Trading Ban for Congress, Fueling Suspicion</a>
+            <div class="meta">2025-12-16 04:05</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/videos/c4g40413206o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">BBC visits flower-lined Bondi Pavilion after attack</a>
+            <div class="meta">2025-12-16 03:31</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/nyregion/hanukkah-menorah-nyc-jews-australia.html" class="title" target="_blank">At a Dark Moment, Jews in New York Celebrate the Festival of Lights</a>
+            <div class="meta">2025-12-16 03:10</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://www.koi.ai/blog/urban-vpn-browser-extension-ai-conversations-data-collection" class="title" target="_blank">8M users' AI conversations sold for profit by "privacy" extensions</a>
+            <div class="meta">2025-12-16 03:03</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cnv26103d1go?at_medium=RSS&at_campaign=rss" class="title" target="_blank">University students facing course 'cold spots' as enrolments fall</a>
+            <div class="meta">2025-12-16 02:24</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cgr1z48rvxro?at_medium=RSS&at_campaign=rss" class="title" target="_blank">US and UK urge China to release Hong Kong's Jimmy Lai</a>
+            <div class="meta">2025-12-16 02:12</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/us/politics/kushner-trump-hotel-deal-serbia.html" class="title" target="_blank">Kushner’s Firm Pulls Out of Trump-Branded Hotel Deal in Serbia</a>
+            <div class="meta">2025-12-16 02:10</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/us/politics/trump-rob-reiner.html" class="title" target="_blank">Trump’s Post Attacking Rob Reiner After Stabbing Death Draws Immediate Outrage</a>
+            <div class="meta">2025-12-16 02:06</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/ckgml4xm49ko?at_medium=RSS&at_campaign=rss" class="title" target="_blank">The Papers: 'Tears, flowers and silence' in Bondi and 'Streeting's fury'</a>
+            <div class="meta">2025-12-16 01:52</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://www.ycombinator.com/companies/rollstack-2/jobs/QPqpb1n-software-engineer-typescript-us-canada" class="title" target="_blank">Rollstack (YC W23) is hiring multiple software engineers (TypeScript) US/Canada</a>
+            <div class="meta">2025-12-16 01:51</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/c79729j799jo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">How I beat my hospital phobia to become a midwife</a>
+            <div class="meta">2025-12-16 01:26</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/ckgz318y8elo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Children with cancer scammed out of millions fundraised for their treatment, BBC finds</a>
+            <div class="meta">2025-12-16 01:25</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/movies/nick-reiner-drugs-rehab-heroin-cocaine.html" class="title" target="_blank">Nick Reiner’s Struggles With Drugs Left His Parents ‘Desperate’</a>
+            <div class="meta">2025-12-16 01:23</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/us/politics/trump-sues-bbc.html" class="title" target="_blank">Trump Files $10 Billion Suit Over BBC Documentary</a>
+            <div class="meta">2025-12-16 01:12</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/us/politics/kash-patel-fbi.html" class="title" target="_blank">FBI Director Kash Patel, Eager for Spotlight, Casts Aside Caution in Social Media Posts</a>
+            <div class="meta">2025-12-16 00:34</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/sport/football/articles/cy47wj05xgqo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Where does Old Trafford thriller rank among best Premier League games?</a>
+            <div class="meta">2025-12-16 00:29</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/sport/football/articles/cy47wj05xgqo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Where does Old Trafford thriller rank among best Premier League games?</a>
+            <div class="meta">2025-12-16 00:29</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://quill-os.org/" class="title" target="_blank">Quill OS: An open-source OS for Kobo's eReaders</a>
+            <div class="meta">2025-12-16 00:22</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/vcs-discuss-why-most-consumer-ai-startups-still-lack-staying-power/" class="title" target="_blank">VCs discuss why most consumer AI startups still lack staying power</a>
+            <div class="meta">2025-12-16 00:22</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/business/media/robert-samuelson-dead.html" class="title" target="_blank">Robert Samuelson, Award-Winning Economics Columnist, Dies at 79</a>
+            <div class="meta">2025-12-16 00:20</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://www.flaggingdown.com/p/the-bob-dylan-concert-for-just-one" class="title" target="_blank">The Bob Dylan concert for just one person</a>
+            <div class="meta">2025-12-16 00:18</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cvgj14l3v8vo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">What we know about Nick Reiner, son arrested in death of director Rob Reiner</a>
+            <div class="meta">2025-12-16 00:18</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/sport/football/articles/c1lr7jp8gvdo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Who has made Troy's Premier League team of the week?</a>
+            <div class="meta">2025-12-16 00:14</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/sport/football/articles/cx2edrx69rjo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">A 'throwback' to Man Utd's past, defensive chaos and a mesmerising classic</a>
+            <div class="meta">2025-12-16 00:13</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cg7vez25ly5o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">UK launches taskforce to 'break down barriers' for women in technology</a>
+            <div class="meta">2025-12-16 00:04</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/c70rk80p9eqo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Thousands of drivers wrongly fined for speeding since 2021</a>
+            <div class="meta">2025-12-16 00:03</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/sport/football/articles/cg7vedj1zz4o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Rohl's Rangers roll on - should Celtic & Hearts be worried?</a>
+            <div class="meta">2025-12-15 23:51</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://rkblog.dev/posts/pc-hardware/pc-on-arm/x86_versus_arm_native_game/" class="title" target="_blank">Native vs. emulation: World of Warcraft game performance on Snapdragon X Elite</a>
+            <div class="meta">2025-12-15 23:47</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/openai-backed-biotech-firm-chai-discovery-raises-130m-series-b-at-1-3b-valuation/" class="title" target="_blank">OpenAI-backed biotech firm Chai Discovery raises $130M Series B at $1.3B valuation</a>
+            <div class="meta">2025-12-15 23:41</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cm2v10jn378o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">'Mate, get away from here, something bad's happened': How BBC reporter's day at the beach turned to fear</a>
+            <div class="meta">2025-12-15 23:34</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/c62vd7dkdpyo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Whole-of-society effort needed to deter Russia threat, armed forces chief says</a>
+            <div class="meta">2025-12-15 23:22</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/business/ford-electric-vehicles-hybrids.html" class="title" target="_blank">Ford Will Take $19.5 Billion Hit as It Rolls Back E.V. Plans</a>
+            <div class="meta">2025-12-15 23:10</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/sport/football/videos/cwyxk81kd8zo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Watch Man Utd and Bournemouth's eight-goal thriller</a>
+            <div class="meta">2025-12-15 23:02</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/arts/television/anthony-geary-dead.html" class="title" target="_blank">Anthony Geary, Luke on ‘General Hospital,’ Dies at 78</a>
+            <div class="meta">2025-12-15 22:58</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/i-hate-that-i-love-riversides-ai-driven-rewind-for-podcasters/" class="title" target="_blank">I hate that I love Riverside’s AI-driven ‘Rewind’ for podcasters</a>
+            <div class="meta">2025-12-15 22:53</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://www.reuters.com/world/americas/jetblue-flight-averts-mid-air-collision-with-us-air-force-jet-2025-12-15/" class="title" target="_blank">JetBlue flight averts mid-air collision with US Air Force jet</a>
+            <div class="meta">2025-12-15 22:48</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/us/syria-killed-soldiers-iowa-national-guard.html" class="title" target="_blank">U.S. Soldiers and Translator Killed in Syria Are Identified</a>
+            <div class="meta">2025-12-15 22:43</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cgqzed1vjw5o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">MI6 chief: 'We are operating in space between peace and war'</a>
+            <div class="meta">2025-12-15 22:20</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/disneys-openai-deal-is-exclusive-for-just-one-year-then-its-open-season/" class="title" target="_blank">Disney’s OpenAI deal is exclusive for just one year — then it’s open season</a>
+            <div class="meta">2025-12-15 22:17</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/nvidia-bulks-up-open-source-offerings-with-an-acquisition-and-new-open-ai-models/" class="title" target="_blank">Nvidia bulks up open source offerings with an acquisition and new open AI models</a>
+            <div class="meta">2025-12-15 22:00</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cy4709kylkxo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Epstein's UK flights had alleged British abuse victims on board, BBC finds</a>
+            <div class="meta">2025-12-15 22:00</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://andrewmccalip.com/space-datacenters" class="title" target="_blank">Economics of Orbital vs. Terrestrial Data Centers</a>
+            <div class="meta">2025-12-15 21:56</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/movies/rob-reiner-films-activism.html" class="title" target="_blank">Rob Reiner Made Clear What He Believed In, Onscreen and Off</a>
+            <div class="meta">2025-12-15 21:55</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://www.wired.com/story/ford-kills-electric-f-150-lightning-for-hybrid/" class="title" target="_blank">Ford kills the All-Electric F-150</a>
+            <div class="meta">2025-12-15 21:46</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://johnlian.net/posts/hdmi-cec/" class="title" target="_blank">Fix HDMI-CEC weirdness with a Raspberry Pi and a $7 cable</a>
+            <div class="meta">2025-12-15 21:37</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/videos/cg4ngvn64lxo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Watch: What to know about the growing US military presence in Puerto Rico</a>
+            <div class="meta">2025-12-15 21:32</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/ce8qnzd680ro?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Rob Reiner's son Nick arrested for murder after director and wife found dead</a>
+            <div class="meta">2025-12-15 21:26</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://www.thebignewsletter.com/p/secret-documents-show-pepsi-and-walmart" class="title" target="_blank">Secret Documents Show Pepsi and Walmart Colluded to Raise Food Prices</a>
+            <div class="meta">2025-12-15 21:24</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/ford-is-starting-a-battery-storage-business-to-power-data-centers-and-the-grid/" class="title" target="_blank">Ford is starting a battery storage business to power data centers and the grid</a>
+            <div class="meta">2025-12-15 21:17</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://www.bbc.com/news/articles/cj69d89l8l5o" class="title" target="_blank">Canada's Carney called out for 'utilizing' British spelling</a>
+            <div class="meta">2025-12-15 21:15</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/fords-next-f-150-lightning-will-have-a-gas-generator-as-it-pivots-away-from-large-evs/" class="title" target="_blank">Ford’s next F-150 Lightning will have a gas generator as it pivots away from large EVs</a>
+            <div class="meta">2025-12-15 21:05</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/world/europe/zelensky-berlin-ukraine-witkoff-russia-peace-talks.html" class="title" target="_blank">Ukraine and Allies Agree on Security Guarantee for Peace Proposal</a>
+            <div class="meta">2025-12-15 20:57</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/creative-commons-announces-tentative-support-for-ai-pay-to-crawl-systems/" class="title" target="_blank">Creative Commons announces tentative support for AI ‘pay-to-crawl’ systems</a>
+            <div class="meta">2025-12-15 20:54</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://questdb.com/blog/async-profiler-kernel-bug/" class="title" target="_blank">A kernel bug froze my machine: Debugging an async-profiler deadlock</a>
+            <div class="meta">2025-12-15 20:52</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/lightspeed-raises-record-9b-in-fresh-capital/" class="title" target="_blank">Lightspeed raises record $9B in fresh capital</a>
+            <div class="meta">2025-12-15 20:32</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://expandingawareness.org/blog/the-appropriate-amount-of-effort-is-zero/" class="title" target="_blank">The appropriate amount of effort is zero</a>
+            <div class="meta">2025-12-15 20:09</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/science/covid-ecology-anthropause-birds.html" class="title" target="_blank">How the Pandemic Lockdowns Changed a Songbird’s Beak</a>
+            <div class="meta">2025-12-15 20:00</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/merriam-webster-names-slop-the-word-of-the-year/" class="title" target="_blank">Merriam-Webster names ‘slop’ the word of the year</a>
+            <div class="meta">2025-12-15 19:47</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://umbrel.com" class="title" target="_blank">Umbrel – Personal Cloud</a>
+            <div class="meta">2025-12-15 19:27</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/googles-dark-web-report-feature-will-no-longer-be-available-starting-in-february/" class="title" target="_blank">Google’s ‘dark web report’ feature will no longer be available starting in February</a>
+            <div class="meta">2025-12-15 19:19</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/gift-guide-techcrunchs-favorite-things/" class="title" target="_blank">Gift guide: TechCrunch’s favorite things</a>
+            <div class="meta">2025-12-15 18:41</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://hpjansson.org/chafa/" class="title" target="_blank">Chafa: Terminal Graphics for the 21st Century</a>
+            <div class="meta">2025-12-15 18:16</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/sport/articles/c17x8rep7p5o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Mariah Carey to perform at Winter Olympics opening ceremony</a>
+            <div class="meta">2025-12-15 18:00</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/threads-adds-new-communities-tests-badges-for-highly-engaged-members/" class="title" target="_blank">Threads adds new communities, tests badges for highly engaged members</a>
+            <div class="meta">2025-12-15 18:00</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/c246dnyjylqo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Resident doctors vote to go ahead with strike in England as hospitals battle flu wave</a>
+            <div class="meta">2025-12-15 17:54</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/c8dy54e6ljqo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">How Bondi's Hanukkah festival turned from joy to horror within minutes</a>
+            <div class="meta">2025-12-15 17:39</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/c87l4nrvrdvo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">'We don't blame dad for killing mum, he was ill'</a>
+            <div class="meta">2025-12-15 17:35</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/lidar-maker-luminar-files-for-bankruptcy/" class="title" target="_blank">Lidar-maker Luminar files for bankruptcy</a>
+            <div class="meta">2025-12-15 17:34</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/cqjg9vprx4eo?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Liverpool parade attacker lied about 'panicking' and drove at crowds in rage, court told</a>
+            <div class="meta">2025-12-15 17:13</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://www.science.org/doi/10.1126/sciadv.adx7892" class="title" target="_blank">Cosmic-ray bath in a past supernova gives birth to Earth-like planets</a>
+            <div class="meta">2025-12-15 17:01</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/zoom-brings-its-ai-assistant-to-the-web-with-access-to-free-users/" class="title" target="_blank">Zoom brings its AI assistant to the web with access to free users</a>
+            <div class="meta">2025-12-15 16:58</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/netflix-responds-to-concerns-about-wbd-deal/" class="title" target="_blank">Netflix responds to concerns about WBD deal</a>
+            <div class="meta">2025-12-15 16:28</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/facebook-messengers-desktop-app-is-no-more/" class="title" target="_blank">Facebook Messenger’s desktop app is no more</a>
+            <div class="meta">2025-12-15 16:26</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/tesla-starts-testing-robotaxis-in-austin-with-no-safety-driver/" class="title" target="_blank">Tesla starts testing robotaxis in Austin with no safety driver</a>
+            <div class="meta">2025-12-15 15:16</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/snapchat-rolls-out-its-end-of-year-recaps/" class="title" target="_blank">Snapchat rolls out its end-of-year Recaps</a>
+            <div class="meta">2025-12-15 15:13</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://support.google.com/websearch/answer/16767242?hl=en" class="title" target="_blank">We are discontinuing the dark web report</a>
+            <div class="meta">2025-12-15 14:56</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">TechCrunch</span>
+            <a href="https://techcrunch.com/2025/12/15/first-voyage-raises-2-5m-for-its-ai-companion-helps-you-build-habits/" class="title" target="_blank">First Voyage raises $2.5M for its AI companion that helps you build habits</a>
+            <div class="meta">2025-12-15 14:48</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/ckgz15d5718o?at_medium=RSS&at_campaign=rss" class="title" target="_blank">A 10-year-old, two rabbis and a Holocaust survivor - who are the victims?</a>
+            <div class="meta">2025-12-15 13:22</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">NYT > Top Stories</span>
+            <a href="https://www.nytimes.com/2025/12/15/style/best-breakup-lines.html" class="title" target="_blank">The 52 Best Breakup Lines (Said in Real Life)</a>
+            <div class="meta">2025-12-15 12:51</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://marcusolang.substack.com/p/im-kenyan-i-dont-write-like-chatgpt" class="title" target="_blank">I'm Kenyan. I don't write like ChatGPT, ChatGPT writes like me</a>
+            <div class="meta">2025-12-15 12:12</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.com/news/articles/c20gl66r0wno?at_medium=RSS&at_campaign=rss" class="title" target="_blank">'I've grown up in fear': Jewish Australians say rising antisemitism made attack predictable</a>
+            <div class="meta">2025-12-15 11:28</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://nanohub.org/resources/43623/download/Essential_Semiconductor_Physics.pdf" class="title" target="_blank">Essential Semiconductor Physics [pdf]</a>
+            <div class="meta">2025-12-13 18:19</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.co.uk/sounds/play/p0mnfl33?at_medium=RSS&at_campaign=rss" class="title" target="_blank">​​Starmer Says a Doctor Strike Would be 'Reckless'</a>
+            <div class="meta">2025-12-13 16:30</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.co.uk/sounds/play/p0mnc4k5?at_medium=RSS&at_campaign=rss" class="title" target="_blank">Democrats release photos of Trump from Epstein estate</a>
+            <div class="meta">2025-12-13 04:15</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://runmat.org/blog/in-defense-of-matlab-whiteboard-style-code" class="title" target="_blank">In Defense of Matlab Code</a>
+            <div class="meta">2025-12-12 20:13</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://blog.owenlacey.dev/posts/are-you-the-one-is-free-money/" class="title" target="_blank">“Are you the one?” is free money</a>
+            <div class="meta">2025-12-12 06:47</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://lowkpro.com/blog/creating-c-closures-from-lua-closures.html" class="title" target="_blank">Creating C closures from Lua closures</a>
+            <div class="meta">2025-12-11 19:08</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://seths.blog/2025/12/understanding-carriage/" class="title" target="_blank">Understanding carriage</a>
+            <div class="meta">2025-12-11 00:11</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://newsletter.squishy.computer/p/natures-many-attempts-to-evolve-a" class="title" target="_blank">Nature's many attempts to evolve a Nostr</a>
+            <div class="meta">2025-12-10 23:54</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://lucabaggi.com/posts/ssl-docker/" class="title" target="_blank">Debugging TLS failures in distroless containers</a>
+            <div class="meta">2025-12-10 23:16</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://phys.org/news/2025-11-intensity-molecular-1d-2d-3d.html" class="title" target="_blank">Light intensity steers molecular assemblies into 1D, 2D or 3D structures</a>
+            <div class="meta">2025-12-10 15:54</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://newrepublic.com/article/201598/john-updike-wrote" class="title" target="_blank">John Updike wrote it all down</a>
+            <div class="meta">2025-12-09 20:20</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">Hacker News</span>
+            <a href="https://github.com/KaiPereira/Cheetah-MX4-Mini" class="title" target="_blank">Show HN: I designed my own 3D printer motherboard</a>
+            <div class="meta">2025-12-06 17:21</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.co.uk/iplayer/episode/m002nbvt?at_mid=Ce3yhX5ed0&at_campaign=Robbie_Savage_Managing_Macclesfield_FC&at_medium=display_ad&at_campaign_type=owned&at_nation=NET&at_audience_id=SS&at_product=iplayer&at_brand=m002nbvt&at_ptr_name=bbc&at_ptr_type=media&at_format=image&at_objective=consumption&at_link_title=Robbie_Savage_Managing_Macclesfield_FC&at_bbc_team=BBC" class="title" target="_blank">Robbie Savage takes on his first football manager job</a>
+            <div class="meta">2025-12-04 06:00</div>
+        </div>
+        
+        <div class="card">
+            <span class="source">BBC News</span>
+            <a href="https://www.bbc.co.uk/news/10628994?at_medium=RSS&at_campaign=rss" class="title" target="_blank">BBC News app</a>
+            <div class="meta">2025-04-30 14:04</div>
+        </div>
+        
+        </div>
+    </body>
+    </html>
+    
