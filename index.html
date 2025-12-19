@@ -154,139 +154,163 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Riot Games is making an anti-cheat change that could be rough on older PCs</div>
+            <div class="title">The evolution of expendability: Why some ants traded armor for numbers</div>
             <div class="meta">2025-12-19</div>
         </div>
         
         <div id="content-0" style="display:none;">
-            <h2>Riot Games is making an anti-cheat change that could be rough on older PCs</h2>
+            <h2>The evolution of expendability: Why some ants traded armor for numbers</h2>
             <p><strong>Ars Technica - All content | 2025-12-19</strong></p>
-            <a class="original-link" href="https://arstechnica.com/gadgets/2025/12/some-valorant-players-need-to-update-their-pc-bios-to-keep-anti-cheat-software-happy/">Visit Original Website</a>
+            <a class="original-link" href="https://arstechnica.com/science/2025/12/the-evolution-of-expendability-why-some-ants-traded-armor-for-numbers/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">At this point, most competitive online multiplayer games on the PC come with some kind of kernel-level anti-cheat software. As we’ve written before, this is software that runs with more elevated privileges than most other apps and games you run on your PC, allowing it to load in earlier and detect advanced methods of cheating. More recently, anti-cheat software has started to require more Windows security features like Secure Boot, a TPM 2.0 module, and virtualization-based memory integrity protection.
+            <div id="article-text">The trade-off between quality and quantity is a fundamental economic dilemma. Now, a team of British, American, and Japanese researchers describes how it applies to biology, as well. They have discovered that this dilemma most likely shaped the evolutionary trajectory of ants, one of Earth’s most successful groups of organisms.
 
-Riot Games, best known for titles like Valorant and League of Legends and the Vanguard anti-cheat software, has often been one of the earliest to implement new anti-cheat requirements. There’s already a long list of checks that systems need to clear before they’ll be allowed to play Riot’s games online, and now the studio is announcing a new one: a BIOS update requirement that will be imposed on “certain players” following Riot’s discovery of a UEFI bug that could allow especially dedicated and motivated cheaters to circumvent certain memory protections.
+Their study reveals that, as ant societies grew in complexity and numbers, they didn’t just make their workers smaller—they also made them cheaper.
 
-In short, the bug affects the input-output memory management unit (IOMMU) “on some UEFI-based motherboards from multiple vendors.” One feature of the IOMMU is to protect system memory from direct access during boot by external hardware devices, which otherwise might manipulate the contents of your PC’s memory in ways that could enable cheating.
+In the insect world, the exoskeleton known as the cuticle serves as a protective barrier against predators, pathogens, and desiccation, while providing the structural framework for muscle attachment. But this protection comes at a price. Building a robust cuticle requires significant amounts of nitrogen and rare minerals like zinc and manganese. While skimping on armor for an individual insect may be a death sentence, the evolution of ants apparently found a way around it.
 
-The patch for these security vulnerabilities (CVE-2025-11901,  CVE-2025‑14302, CVE-2025-14303, and CVE-2025-14304) fixes a problem where this pre-boot direct memory access (DMA) protection could be disabled even if it was marked as enabled in the BIOS, creating a small window during the boot process where DMA devices could gain access to RAM.
+“There’s this question in biology of what happens to individuals as societies they are in get more complex?” said Evan Economo, an entomologist at the University of Maryland and co-author of the study. “For example, the individuals may themselves become simpler because tasks that a solitary organism would need to complete can be handled by a collective.”
 
-The relative obscurity and complexity of this hardware exploit means that Vanguard isn’t going to be enforcing these BIOS requirements on every single player of its games. For now, it will just apply to “restricted” players of Valorant whose systems, for one reason or another, are “too similar to cheaters who get around security features in order to become undetectable to Vanguard.”
+Economo’s team hypothesized that the metabolic balance behind investing in cuticles in social insects like ants could favor the collective over the individual. The idea was that a colony of 10,000 workers could lose a few individuals to a predator without much consequence, so investing heavily in each worker’s defenses would seem like a waste of precious nutrients. To test this hypothesis, they examined whether ant lineages that maintain massive, specialized workforces reduce the investment in their individual workers’ exoskeletons.
 
-But Riot says it’s considering rolling the BIOS requirement out to all players in Valorant‘s highest competitive ranking tiers (Ascendant, Immortal, and Radiant), where there’s more to be gained from working around the anti-cheat software. And Riot anti-cheat analyst Mohamed Al-Sharifi says the same restrictions could be turned on for League of Legends, though they aren’t currently. If users are blocked from playing by Vanguard, they’ll need to download and install the latest BIOS update for their motherboard before they’ll be allowed to launch the game.
+To test this idea, the researchers needed to pull off a comparative study on the anatomy of ants at an unprecedented scale. “We worked with scans of ant specimens and species from all over the world to capture the global diversity of ants,” Economo says. The team used a massive database called Antscan, which contains three-dimensional X-ray microtomography imaging of ants from around the globe.
 
-The vulnerability is known to affect four of the largest PC motherboard makers: ASRock, Asus, Gigabyte, and MSI. All four have released updates for at least some of their newer motherboards, while other boards have updates coming later. According to the vulnerability note, it’s unclear whether systems from OEMs like Dell, Lenovo, Acer, or HP are affected.
+Microtomography works similarly to medical CT scans, but at a vastly higher resolution. Still, on its own, the technique could only generate lots of precise data—it still had to be interpreted. Parsing through 3D imagery of over 880 specimens, including workers, queens, and males belonging to over 500 different species, was another challenge. “The 3D scanning itself is a very advanced technology,” says Arthur Matte, a researcher at the University of Cambridge and lead author of the study. “But once you have the ants in three dimensions, it’s still very hard to segment manually every tissue you’re interested in.”
 
-ASRock’s security bulletin about the issue says it affects Intel boards based on the 500-, 600-, 700-, and 800-series chipsets; MSI only lists the 600- and 700-series chipsets. Asus is also missing the 800-series, but says the vulnerability affects boards based on even older 400-series Intel chipsets; Gigabyte, meanwhile, covers 600-through-800-series Intel chipsets, but is also the only vendor to mention patches for AMD’s 600- and 800-series chipsets (any motherboard with an AM5 socket, in short).
+To solve this, Matte developed a computer vision algorithm for “unsupervised segmentation.” Because the cuticle is always the outermost tissue of an arthropod, the algorithm could automatically identify and measure the volume of the exoskeleton across all ants in the dataset.
 
-Collectively, all of these chipsets cover Intel’s 10th-generation Core processors and newer, and AMD Ryzen 7000 series and newer.
+The first thing scientists noticed when the results poured in was that cuticle investment varied wildly, ranging from 6 percent to 35 percent of an ant’s total body volume. So, the next thing they focused on was figuring out the reasons behind these variations.
 
-What’s unclear is whether the boards and chipsets that go unmentioned by each vendor aren’t getting a patch because they don’t need a patch, if they will be patched but they just aren’t being mentioned, or if they aren’t getting a patch at all. The bulletins at least suggest that 400- and 500-series Intel chipsets and 600- and 800-series AMD chipsets could be affected, but not all vendors have promised patches for them.
+The team started checking how factors like diet, temperature, humidity, and foraging style correlated with the size of the cuticle. To get a handle on this, segmented 3D scans were fed into evolutionary models. “One of the most insightful things we did was to individually remove such variables from the models to estimate their contributions to the final cuticle investment,” Matte explains. This way, scientists learned that temperature was responsible for just 12 percent of variation in cuticle size and diet—especially its nitrogen content—explained another 37 percent. But the factor that had the strongest impact on the model was the colony size.
 
-Crucially, they also don’t mention support for AMD’s socket AM4 chipsets in the 300-through-500 chipset families, or Intel’s 2018-era 300-series chipsets. These boards support Intel’s 8th- and 9th-generation Core CPUs and AMD’s Ryzen 2000, 3000, and 5000 CPU families—all slightly older chips, but CPUs that are otherwise capable of supporting Windows 11 and the standard list of security features that Vanguard requires to do its thing.
+Ants that invested less in their cuticle tended to have significantly larger colony sizes. More surprisingly, this reduction in cuticle investment and the resulting increase in colony size appeared to be associated with higher diversification rates. In biological terms, squishier ants could evolve to occupy new niches much faster than their heavily armored cousins. “Requiring less nitrogen could make these ants more versatile and able to conquer new environments,” Matte suggests. This efficiency may have allowed ants to transition from a diet of high-protein prey to more abundant but less nutritious liquid sugar sources, like honeydew or floral nectar.
 
-We bring this up because the prospect of BIOS-version-based anti-cheat checks raises the possibility that gamers on somewhat older systems could find themselves locked out of games with no recourse, if their system configuration is deemed suspicious or vulnerable and their motherboard or PC manufacturer isn’t offering an update.
+“Ants reduce per-worker investment in one of the most nutritionally expensive tissues for the good of the collective,” Matte explains. “They’re shifting from self-investment toward a distributed workforce.”
 
-Practically speaking, this may not be an issue that affects many players. Even if the BIOS requirement is applied to all top-tier Valorant players, people playing these games at high levels are also usually people who upgrade their systems aggressively, seeking real and perceived competitive advantages that come with higher frame rates and less lag. But if these kinds of requirements creep down Valorant’s competitive ladder or if they become a more common requirement in other anti-cheat software, it could pose a problem for those with older or hand-me-down PCs.
+The researchers think the pattern they observed in ants reflects a more universal trend in the evolution of societal complexity. The transition from solitary life to complex societies echoes the transition from single-celled organisms to multicellular ones.
 
-And while some people may be happy to have an excuse to buy a shiny, new upgrade, the fact is that PC upgrading is less rewarding and more difficult right now than it has been in the past. Recent CPU and GPU updates have provided relatively modest performance benefits, and rolling shortages of GPUs, RAM, and other components mean upgrading can get expensive pretty quickly; a motherboard upgrade frequently requires a CPU upgrade and/or a new RAM kit to go along with it. Anything that might force users to upgrade their hardware before they would otherwise want to is worth eyeing skeptically.
+In a single-celled organism, a cell must be a “jack-of-all-trades,” performing every function necessary for survival. In a multicellular animal, however, individual cells often become simpler and more specialized, relying on the collective for protection and resources.
 
-We’ve contacted Riot, Intel, AMD, and multiple motherboard vendors for comment to determine whether these older boards are affected by the IOMMU bug and whether they’ll be patched. We’ll update the article if we receive a response.</div>
+“It’s a pattern that echoes the evolution of multicellularity, where cooperative units can be individually simpler than a solitary cell, yet collectively capable of far greater complexity,” says Matte. Still, the question of whether underinvesting in individuals to boost the collective makes sense for creatures other than ants remains open, and it most likely isn’t as much about nutritional economics as it is about sex.
+
+The study focused on ants that already have a reproductive division of labor, one where workers do not reproduce. This social structure is likely the key prerequisite for the cheap worker strategy. For the team, this is the reason we haven’t, at least so far, found similar evolutionary patterns in more complex social organisms like wolves, which live in packs—or humans with their amazingly complex societies. Wolves and people are both social, but maintain a high degree of individual self-interest regarding reproduction. Ant workers could be made expendable because they don’t pass their own genes—they are essentially extensions of the queen’s reproductive strategy.
+
+Before looking for signs of ant-like approaches to quality versus quantity dilemmas in other species, the team wants to take an even closer look at ants. Economo, Matte, and their colleagues seek to expand their analysis to other ant tissues, such as the nervous system and muscles, to see if the cheapening of individuals extends beyond the exoskeleton. They are also looking at ant genomes to see what genetic innovations allowed for the shift from quality to quantity.  “We still need a lot of work to understand ants’ evolution,” Matte says.
+
+Science Advances. 2025. DOI: 10.1126/sciadv.adx8068</div>
         </div>
         
         <div class="card" onclick="openModal('content-1')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Not too big, not too expensive: The Chevrolet Equinox EV</div>
+            <div class="title">Switch 2 pub backs off Game Key Cards after leaking lower-cost cartridge options</div>
             <div class="meta">2025-12-19</div>
         </div>
         
         <div id="content-1" style="display:none;">
-            <h2>Not too big, not too expensive: The Chevrolet Equinox EV</h2>
+            <h2>Switch 2 pub backs off Game Key Cards after leaking lower-cost cartridge options</h2>
             <p><strong>Ars Technica - All content | 2025-12-19</strong></p>
-            <a class="original-link" href="https://arstechnica.com/cars/2025/12/the-chevrolet-equinox-ev-is-high-on-comfort-and-convenience/">Visit Original Website</a>
+            <a class="original-link" href="https://arstechnica.com/gaming/2025/12/cheaper-lower-capacity-switch-2-cartridges-could-mean-fewer-game-key-cards/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">There’s a lot of goodwill out there for the Chevrolet Bolt. As maybe the first properly affordable longer-range electric car on the market, the Bolt wasn’t perfect. It didn’t charge very fast, and people found the seats quite uncomfortable. But it could get more than 230 miles on a single charge—a lot in 2017—and you didn’t have to be flush to afford one. Oh, and it was also pretty good to drive. I know I was a fan from the first time I tried a prototype at CES in 2016.
+            <div id="article-text">The Switch 2’s data-free, download-enabling Game Key Cards have proved controversial with players who worry about long-term ownership and access issues to their purchases. But they’ve remained popular with publishers that want to save production costs on a boxed Switch 2 game release, since Game Key Cards don’t include any of the expensive flash memory found on a standard Switch 2 cartridge.
 
-Understandably, Bolt fans were upset when Chevy decided to kill off the car. Yes, it lacked features compared to more modern EVs, but it is also the brand‘s bestselling EV by quite a country mile. “Not to worry,” said the executives, who told us they had something better coming built on the platform they used to call Ultium but don’t anymore. Starting at around the same $35,000 price tag the Bolt launched with, this would be the new Equinox EV.
+Now, though, at least one publisher has publicly suggested that Nintendo is offering cheaper Switch 2 cartridge options with smaller storage capacities, lowering production costs in a way that could make full cartridge releases more viable for many games on the console.
 
-That $34,995 price tag was perhaps a bit more appealing when the car was eligible for the now-dead $7,500 IRS clean vehicle tax credit. Truth be told, the LT1 spec is a little bare-boned, and you’ll need to step up to the LT2 we tested—which starts at $40,295—if you want things like heated seats or wireless charging for your devices. (The good news here is that people looking for a bargain should know that used Equinox EVs with decent specs are already much cheaper, just a year after the car’s launch.) And let’s not forget, when the Bolt was young, the more expensive trim was almost $42,000.
+Earlier this week, R-Type Dimensions III publisher Inin Games explained to customers that it couldn’t switch from Game Key Cards to a “full physical cartridge” for the retail version of the Switch 2 game without “significantly rais[ing] manufacturing costs.” Those additional costs would “force us to increase the retail price by at least €15 [about $20],” Inin Games wrote at the time.
 
-You get quite a lot more EV for the money in 2025 than you did in 2017. The Equinox EV is a whole vehicle class bigger, at 190.6 inches (4,840 mm) long, 77 inches (1,954 mm) wide, and 64.8 inches (1,646 mm) tall. It’s also a lot more comfortable than the subcompact was. The seats haven’t been pared down to save space and weight, and the suspension does a decent job of insulating you from the potholes that always grow around this time of year. And there’s a useful amount of storage space, with 26.4 cubic feet (748 L) of cargo volume with the rear seats in use or 57.2 cubic feet (1,620 L) with the rear seats down.
+In an update posted to social media earlier today, though, the publisher said that “there is no better timing: two days ago Nintendo announced two new smaller cartridge [storage capacity] sizes for Nintendo Switch 2. This allows us to recalculate production in a way that wasn’t possible before.”
 
-At the heart of the car, between the axles, lives the 85 kWh lithium-ion battery pack, which gives the Equinox EV an EPA range of 319 miles (513 km) on a full charge. Unhelpfully, GM quotes charging as “up to 36 miles of range per hour of charging” for AC level 2 charging (at up to 11.5 kW), or “approximately 77 miles of range in 10 minutes” with a DC fast charger of up to 150 kW, but no 0–100 percent time for AC or 10–80 time for DC charging. We fast-charged the car from 34 percent, without preconditioning the battery first. Charging peaked at 75 kW and took about 45 minutes to reach 80 percent. The charge port is CCS1, although Chevrolet will sell you an adapter to use NACS chargers.
+As such, Inin said it has decided to replace the Game Key Cards that were going to be in the game’s retail box with full physical cartridges. That change will result in the game’s asking price going up by €10 (about $13) “due to still higher production costs,” Inin explained. Still, that’s still less than the “at least €15” Inin was speculatively quoting for the same change just days ago. And Inin said early pre-order customers for R-Type Dimensions III won’t have to pay the increased price, essentially getting the full cartridge at no additional cost.
 
-On a full charge, in below-freezing weather, the Equinox reported an estimated 311 miles (500 km) of range, and during our week we averaged 3.5 miles/kWh, despite using the car’s heater because there’s enough else going on in the world that we don’t need to shiver in our cars to prove a point.
+Inin Games later updated its official blog to remove any reference to the “new smaller cartridge sizes” it previously said Nintendo had “announced.” The publisher also backtracked in a social media update, clarifying that “there has been no official announcement or confirmation from Nintendo concerning cartridge storage capacities.”
 
-An all-wheel-drive version is available, but we tested the front-wheel drive Equinox EV. The permanent magnet synchronous motor generates 220 hp (164 kW) and 243 lb-ft (329 Nm), which is enough to keep things feeling peppy. There are two levels of lift-off regenerative braking available for the one-pedal driving mode, which you toggle on or off via a persistent icon on the 17.7-inch infotainment screen, but even when one-pedal driving is set to off, there’s still some degree of lift-off regen, so you can’t coast the Equinox as you might with a European or Korean EV.
+But Inin can’t exactly unring the bell at this point, even if Nintendo wants to publicly disavow the change. Inin’s initial announcement also aligned with earlier rumors that Nintendo would be rolling out 16GB and 32GB Switch 2 game cartridges as an option alongside the 64GB cartridges that have been the only ones available thus far.
 
-The infotainment screen is bright, legible, and responsive, and the onboard Google Maps navigation works well, particularly with voice inputs. I have to give props to the backup camera, too—one of the crispest and highest resolution I’ve encountered all year. But other voice commands for the Android Automotive OS-based infotainment didn’t always work. And I’ll be frank, I missed being able to use Apple CarPlay, both for listening to my own music and for the messaging integration.
-
-GM has solved the first half of that problem—last week, it started rolling out an Apple Music app to its newer EVs. But the fact remains that removing CarPlay (and Android Auto) was an anti-consumer move by General Motors, which evidently convinced itself that doing so would create the kind of recurring revenue stream that delights stock analysts. Whether those calculations took into account lost sales from customers who won’t buy a car without phone casting remains a question.
-
-Most of the Equinox’s advanced driver assists are standard equipment, including automatic emergency braking (forward, reverse, and rear cross traffic) and lane keeping. But if you want adaptive cruise control you’ll need to spend $3,355 on the Active Safety Package 3, (which comes with three years of OnStar One service, plus an enhanced parking assist), as well as the $3,100 “Convenience Pack II” that adds ventilation and more power adjustment to the front seats, a heads-up display, heated rear seats, dual-zone AC, LED head- and taillights, bigger wheels, and a rear camera mirror.
-
-Although it took a few days, I found myself jelling with the Equinox EV. Even from the perspective of a Bolt fan—for families looking to replace an older Bolt that need something a little larger without being a behemoth, this compact electric crossover makes a compelling case. And those Chevrolet EV fans who need something smaller can take solace in the fact that the Bolt returns next year, with an all-new lithium iron phosphate battery and all-new infotainment.</div>
+The information Inin shared suggests that those smaller cartridge options could cost a publisher $5 to $10 less than they would have paid for the older, higher-capacity cartridges. That might not sound like much in the grand scheme of things, but it might be just enough to make a full physical release economically palatable for Switch 2 publishers that can fit their game in a smaller memory footprint. That should be welcome news for gamers who are tired of seeing that “Game Key Card” notice on the front of their Switch 2 retail packaging.</div>
         </div>
         
         <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Trump’s energy secretary orders a Washington state coal plant to remain open</div>
+            <div class="title">LG TVs’ unremovable Copilot shortcut is the least of smart TVs’ AI problems</div>
             <div class="meta">2025-12-19</div>
         </div>
         
         <div id="content-2" style="display:none;">
-            <h2>Trump’s energy secretary orders a Washington state coal plant to remain open</h2>
+            <h2>LG TVs’ unremovable Copilot shortcut is the least of smart TVs’ AI problems</h2>
             <p><strong>Ars Technica - All content | 2025-12-19</strong></p>
-            <a class="original-link" href="https://arstechnica.com/science/2025/12/trumps-energy-secretary-orders-a-washington-state-coal-plant-to-remain-open/">Visit Original Website</a>
+            <a class="original-link" href="https://arstechnica.com/gadgets/2025/12/lg-tvs-unremovable-copilot-shortcut-is-the-least-of-smart-tvs-ai-problems/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">SEATTLE—The last coal-fired power plant in Washington state was set to go cold at the end of the year. It would then switch to natural gas, cutting carbon emissions in half.
+            <div id="article-text">Online fury erupted this week after an LG TV owner claimed that a firmware update installed unremovable generative AI software on their smart TV.
 
-The shutdown had been in the works for 15 years and was mandated by state law. It required the Canadian energy company that owns the power plant, TransAlta, to retrain workers and ease the local community’s economic transition.
+The controversy began on Saturday, when a Reddit user posted about the sudden appearance of a Microsoft Copilot icon on their device (something Windows users are all too familiar with). The Reddit user claimed that a “new software update installed Copilot” onto their LG TV and that it couldn’t be deleted.
 
-But the farewell to coal was canceled this week by the Trump administration. In furtherance of the president’s crusade to keep America’s coal plants burning, the Department of Energy announced Tuesday that an “emergency exists” in the Pacific Northwest “due to a shortage of electricity.” To keep the lights on, Energy Secretary Chris Wright said that the Centralia electric generating facility in southwest Washington must continue to burn coal for at least 90 more days.
+“Pre-installed crap is universally dogshit. If I wanted it, I’d have installed it myself eventually. The whole reason it’s bundled is because no one would choose it… Burn your television,” another Reddit user responded in the thread, which has 36,000 upvotes as of this writing.
 
-“Issuance of this order will meet the emergency and serve the public interest,” said Wright, who issued a similar order last summer that blocked the planned retirement of an aging coal-fired plant in Michigan.
+Some news outlets covered the move this week, reporting that LG customers were upset by an “unremovable Microsoft Copilot installation” and that other LG TV owners could expect to get it the next time they update their device.
 
-There is, however, no imminent shortage of electricity in Washington state or across the Pacific Northwest, according to state officials and regional energy experts.
+LG has since admitted that it used a webOS update to force Copilot onto some of its TVs. However, the firmware update didn’t install the Copilot application but rather a shortcut to the Copilot web app, which opens in the TV’s integrated web browser, LG spokesperson Chris De Maria told The Verge. De Maria added that “features such as microphone input are activated only with the customer’s explicit consent.”
 
-“Let’s be clear: there’s no emergency here,” said a joint statement by Washington Gov. Bob Ferguson, along with the state’s attorney general and ecology director. “The Trump administration has conveniently ignored the law and the facts. The TransAlta power plant is days away from completing its shutdown—a milestone the company and the state have been working toward since 2011. The workers have moved on. There’s no coal left to burn.”
+LG’s spokesperson said the company added the “shortcut icon to enhance customer accessibility and convenience.” LG, like other companies, has failed to prove why people need their non-computing devices, such as computer mice or earbuds, to provide instant access to third-party chatbots.
 
-The governor’s office and local environmental groups said they were examining the Trump administration order and may fight it in court. TransAlta said in a statement that it is “evaluating” the federal order but remains committed to a coal-to-gas conversion at the Centralia plant.
+For those annoyed about the web app shortcut, De Maria said today that LG “will take steps to allow users to delete the shortcut icon if they wish.” He didn’t provide more details.
 
-The year-end emergency that does exist in Washington state has been caused by record-setting rainfall and widespread flooding. (President Donald Trump has declared a federal emergency and authorized disaster assistance.) Thousands of people have been displaced and damage to major highways will take months to repair.
+Even with LG’s concession, it may become more difficult to avoid chatbots on TVs.
 
-“It is so ironic, when we have a real emergency, that they picked this time to fabricate an energy emergency,” said KC Golden, a member of the Northwest Power and Conservation Council, an interstate agency created by Congress to ensure reliable power while protecting the environment.
+LG says it will let people delete the Copilot icon from their TVs soon, but it still has plans to weave the service throughout webOS. The Copilot web app rollout seems to have been a taste of LG’s bigger plans to add Copilot to some of its 2025 OLED TVs. In a January announcement, LG said Copilot will help users find stuff to watch by “allowing users to efficiently find and organize complex information using contextual cues.” LG also said Copilot would “proactively” identify potential user problems and offer “timely, effective solutions.”
 
-While there is no emergency electricity shortfall in the Pacific Northwest, the region, like much of the United States, does have a serious and worsening long-term electricity supply problem.
+Some TVs from LG’s biggest rival, Samsung, have included Copilot since August. Owners of supporting 2025 TVs can speak to Copilot using their remote’s microphone. They can also access Copilot via the Tizen OS homescreen’s Apps tab or through the TVs’ Click to Search feature, which lets users press a dedicated remote button to search for content while watching live TV or Samsung TV Plus. Users can also ask the TV to make AI-generated wallpapers or provide real-time subtitle translations.
 
-Washington and Oregon are home to about 100 data centers. Oregon is second only to Virginia in data center capacity, and the centers consume 11 percent of Oregon’s power supply, nearly three times the national average, according to the Sightline Institute, a Seattle think tank.
+Copilot similarly rolled out automatically onto supporting Samsung TVs. Users can avoid Copilot by not using the above features, and they may be able to remove the Copilot icon from their TV’s Apps section.
 
-Energy use is rising along with the region’s booming high-tech economy, its outsized appetite for electric cars (The Seattle Times reported that 26 percent of new cars registered in Washington in October were EVs) and the climate-change-driven growth of home air-conditioning. The Northwest could face a 9-gigawatt shortfall of power by 2030, according to a recent utility-funded report by the energy consulting group E3. Nine gigawatts is roughly the electricity load of Oregon.
+But Copilot will still be integrated into Tizen OS, and Samsung appears eager to push chatbots into TVs, including by launching Perplexity’s first TV app. Amazon, which released Fire TVs with Alexa+ this year, is also exploring putting chatbots into TVs.
 
-“We are facing a real energy supply challenge and we have been slow to take up that challenge,” said Golden, who represents Washington state on the Northwest power council.
+After the backlash LG faced this week, companies may reconsider installing AI apps on people’s smart TVs. A better use of large language models in TVs may be as behind-the-scenes tools to improve TV watching. People generally don’t buy smart TVs to make it easier to access chatbots.
 
-The Pacific Northwest gets more of its power from hydroelectric dams than any other part of the country (60 percent in Washington), and the region has long been blessed with cheap electricity rates. But drought and changing weather patterns (less snow, more rain) have hammered the reliability of the system, which draws most of its power from big federal dams on the Columbia River, North America’s largest hydroelectric resource.
+But this development is still troubling for anyone who doesn’t want an AI chatbot in their TV at all.
 
-Grand Coulee Dam, the largest electricity producer in the United States, last year generated about half as much power as it did in 2012, according to the US Energy Information Administration. Power production in the Northwest and across the West fell to a 22-year low in 2022–2023, largely because of a years-long drought.
+Subtle integrations of generative AI that make it easier for people to do things like figure out the name of “that movie” may have practical use, but there are reasons to be wary of chatbot-wielding TVs.
 
-Making matters worse, the Bonneville Power Administration, a federal agency that sells electricity from Columbia River dams and operates a high-voltage transmission system, has been exceedingly slow to connect new sources of power—wind and solar—to the grid. An investigation this year by ProPublica and Oregon Public Broadcasting found that of 469 large renewable projects that applied to connect to Bonneville’s system since 2015, one was approved. Bonneville has said it is working to speed up the process. ProPublica also found that Oregon and Washington—while promising to eliminate fossil fuels from the grid—trailed most states in connecting large solar and wind projects.
+Chatbots add another layer of complexity to understanding how a TV tracks user activity. With a chatbot involved, smart TV owners will be subject to complicated smart TV privacy policies and terms of service, as well as the similarly verbose rules of third-party AI companies. This will make it harder for people to understand what data they’re sharing with companies, and there’s already serious concern about the boundaries smart TVs are pushing to track users, including without consent.
 
-“It takes too long to build new transmission,” said Lauren McCloy, utility and regulatory director of the NW Energy Coalition, an alliance of environmental groups, local utilities and local government agencies. “But we are all working on it.”
+Chatbots can also contribute to smart TV bloatware. Unwanted fluff, like games, shopping shortcuts, and flashy ads, already disrupts people who just want to watch TV.
 
-McCloy said that the entire Pacific Northwest is trying “to focus on how we can meet our clean energy goals and keep the lights on.” She added that in all the meetings she has attended in recent years, “I haven’t heard anyone in this region point to the [Centralia] coal plant as a solution to this challenge.”
+LG’s Copilot web app is worthy of some grousing, but not necessarily because of the icon that users will eventually be able to delete. The more pressing issue is the TV industry’s shift toward monetizing software with user tracking and ads.
 
-Washington state codified its intention to move away from fossil fuels in 2019. The law mandates the closure this year of all coal-fired plants. It also requires carbon-neutral power production by 2030 and an electricity supply system that is free of greenhouse gas emissions by 2045. Mushrooming power demands of data centers, combined with halting integration of wind and solar into the grid, have raised questions about the state’s ability to enforce its law.
-
-This article originally appeared on Inside Climate News, a nonprofit, non-partisan news organization that covers climate, energy and the environment. Sign up for their newsletter here.</div>
+If you haven’t already, now is a good time to check out our guide to breaking free from smart TV ads and tracking.</div>
         </div>
         
         <div class="card" onclick="openModal('content-3')">
+            <div class="source">Futurism</div>
+            <div class="title">The Epstein Files Release Website Is Completely Busted</div>
+            <div class="meta">2025-12-19</div>
+        </div>
+        
+        <div id="content-3" style="display:none;">
+            <h2>The Epstein Files Release Website Is Completely Busted</h2>
+            <p><strong>Futurism | 2025-12-19</strong></p>
+            <a class="original-link" href="https://futurism.com/future-society/epstein-files-release-busted">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Now that the Department of Justice is releasing hundreds of thousands of long-awaited records from its investigation into deceased sex trafficker and billionaire financier Jeffrey Epstein, the public finally has a chance to see the full extent of his damning web of connections in the highest echelons of power for themselves.
+
+After finally going live on Friday, the Justice Department portal that allows you to search the “full Epstein library” appears to be either broken, or at least not fully up to speed, because entering obviously relevant search terms are turning up zilch.
+
+Enter “Trump,” for example, and there will be “no results found.” Search “Epstein,” and still nada. The issue was flagged by Ben Collins of The Onion notoriety, and other users took notice.
+
+In all, it’s not a good look for the Trump administration, which has — surprise — underdelivered on the president’s promise to expose Epstein’s dealings. A first batch of Epstein files released shortly after he took office offered little that the public didn’t already know. It ignited an uproar in July, when the DoJ said it wouldn’t release anymore files to the public, before backtracking in the face of overwhelmingly negative public reception.
+
+This waffling on the Epstein issue may or may not have something to do with the fact that Trump seems to have had pretty close ties to Epstein. Trump has repeatedly played down his past friendship with the deceased billionaire, though his name has come up repeatedly in a batch of Epstein’s emails released by the House Oversight Committee last month. The committee also released a photo of what appears to be a signed letter Trump wrote to Epstein for his 50th birthday, featuring a crude sketch of a woman’s torso and a memorable sendoff hoping that “may every day be another wonderful secret.”
+
+It’s worth mentioning at this point that not all of the documents have been released yet, in spite of a hard deadline set by Congress for Friday. Deputy Attorney General Todd Blanche said that some materials were being withheld and cited ongoing investigations, per the New York Times, and that more that would be released over the coming weeks. We’ll have to wait, then, until either more documents are released or the DOJ website starts working, to see if there’s anything meaningfully new.
+
+More on Epstein: New Photos Show That Epstein’s Island Contained the Creepiest Dentist’s Facility We’ve Ever Seen</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Futurism</div>
             <div class="title">Furious Residents Say AI Data Centers Are Sucking Up the Great Lakes</div>
             <div class="meta">2025-12-19</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Furious Residents Say AI Data Centers Are Sucking Up the Great Lakes</h2>
             <p><strong>Futurism | 2025-12-19</strong></p>
             <a class="original-link" href="https://futurism.com/science-energy/data-centers-great-lakes">Visit Original Website</a>
@@ -318,13 +342,13 @@ Meanwhile, the water level of the Great Lakes is receding fast. “We’re about
 More on data centers: First Responders Are Being Overwhelmed by Data Center Fires</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Futurism</div>
             <div class="title">TikTok Accounts Are Using AI Slop to Sell Seeds to Plants That Don’t Exist</div>
             <div class="meta">2025-12-19</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>TikTok Accounts Are Using AI Slop to Sell Seeds to Plants That Don’t Exist</h2>
             <p><strong>Futurism | 2025-12-19</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/tiktok-ai-slop-seeds-plants-dont-exist">Visit Original Website</a>
@@ -372,118 +396,26 @@ Another video shows an adult cat’s face literally blinking its eyes as its dis
 More on AI slop: AI “Research” Papers Are Complete Slop, Experts Say</div>
         </div>
         
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Futurism</div>
-            <div class="title">Investors Warn That Humanoid Robots Are the Next Financial Bubble</div>
-            <div class="meta">2025-12-19</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Investors Warn That Humanoid Robots Are the Next Financial Bubble</h2>
-            <p><strong>Futurism | 2025-12-19</strong></p>
-            <a class="original-link" href="https://futurism.com/future-society/humanoid-robot-financial-bubble">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">AI powered robots are slowly making their way into our world, from delivery bots on wheels to caregiver bots for the planet’s growing elderly population.
-
-Nothing has captured the imagination of investors quite like humanoid robots, though, as they’ve poured untold billions into the sector amid hype that bots shaped like humans stand to impact almost every part of society — particularly by replacing jobs everywhere from domestic labor to the factory floor.
-
-But a venture capitalist is now issuing a warning: that the current surge of investment dollars toward humanoid robots has the makings of the next financial bubble. Despite all the viral robot dancing videos, she says, the reality is that there are still an imposing number of technical kinks to work out — and hence, startups in the space are a long way from generating profits.
-
-“[I]nvestors should remain disciplined and back companies that have realistic goals based on economics, not hype,” said Daiva Rakauskaitė, partner and manager at Aneli Capital, a venture capital firm based in Lithuania, in a company statement. “From day one, startups should aim for early revenue streams through licensing, partnerships and have a clear model of monetization in the near future. The same revenue-first philosophy can be applied to any field.”
-
-She’s not the only one sounding the alarm. China’s leading economic planner, China’s National Development and Reform Commission, has warned that there’s a bubble forming around robotics and startups are making too similar robots from each other, which is inadvertently crowding out money for important research.
-
-That’s on top of skepticism from robotics pioneer Rodney Brooks, inventor of the Roomba vacuum bot, who wrote earlier this year that all these investment dollars are a waste and humanoid robots are not safe enough to perform human tasks due to issues with hand dexterity and walking, among other lingering technical problems. In a nutshell, the gulf between what humanoid robots can do versus marketing hype is huge, Brooks said.
-
-“We’re going to go through a big hype, and then there’s going to be a trough of disappointment,” he told The New York Times. (Underlining his warning: Roomba’s maker iRobot filed for bankruptcy this week.)
-
-But we seem to be on a runaway train when it comes to humanoid robots, because “AI gives humanoids a commercial potential that was previously not possible,” the statement from Aneli reads.
-
-In an October report from business analytics outfit CB Insights, the AI sector grabbed over 50 percent of more than $95 billion in venture capital funding in the third quarter of this year, while industrial humanoid robotic startups bagged 17 business deals.
-
-But that report also warns about hype in the robotics space, saying it still faces “fundamental challenges with inference, dexterity, reliability, and cost, which limit initial use cases to structured environments like factories and warehouses with a controlled and predictable set of tasks.”
-
-So what’s going to happen once the froth is gone: more humanoid robots dancing and working in factories — or junky vaporware bots collecting dust in our closets?
-
-More on AI: Cory Doctorow Says the AI Industry Is About to Collapse</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-6')">
             <div class="source">TechCrunch</div>
-            <div class="title">Where are investors placing their bets next year? AI, AI, AI.</div>
+            <div class="title">Rocket Lab wins another defense-related space contract</div>
             <div class="meta">2025-12-19</div>
         </div>
         
         <div id="content-6" style="display:none;">
-            <h2>Where are investors placing their bets next year? AI, AI, AI.</h2>
+            <h2>Rocket Lab wins another defense-related space contract</h2>
             <p><strong>TechCrunch | 2025-12-19</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2025/12/19/where-are-investors-placing-their-bets-next-year-ai-ai-ai/">Visit Original Website</a>
+            <a class="original-link" href="https://techcrunch.com/2025/12/19/rocket-lab-wins-another-defense-related-space-contract/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Investors at TechCrunch Disrupt did not shy away from admitting they are interested in mainly one thing: artificial intelligence.
+            <div id="article-text">Rocket Lab has won an $816 million contract — its largest to date — with the U.S. Space Development Agency as the company continues to diversify beyond its “rocket company” label.
 
-Nina Achadjian from Index, Jerry Chen from Greylock and Peter Deng from Felicis, all spoke about the latest obsession in venture capital and how startups can stand out in a quickly crowding market. The environment is moving fast, Achadjian told the crowd, and companies are experiencing unprecedented growth.
+The company said Friday that its subsidiary, Rocket Lab USA, was awarded a prime contract by the Space Development Agency (SDA) to design and manufacture 18 satellites. The satellites will be quipped with advanced missile warning, tracking, and defense sensors for the agency’s Tracking Layer Tranche 3 program.
 
-“We spend an enormous, enormous amount of time really assessing the entrepreneur and how resilient they will be able to be in a moment where things are just rapidly changing,” Achadjian said. Now more than ever, founders have to lean into showing their passion, domain expertise, and remain honest about their product market fit, she said.
+This contract is separate from an existing $515 million award to deliver satellites for SDA’s Transport Layer-Beta Tranche 2 program. That program aims to provide a satellite communications network in low Earth orbit that sends encrypted, low-latency data to the military.
 
-“There is so much demand from enterprise companies to try the latest and greatest AI, sometimes there’s false positives of product market fit,” she explained, “and you can get a lot of revenue with not having true ROI,” meaning customers who are getting their return on investment.
+Together, Rocket Lab has SDA contracts valued at more than $1.3 billion.
 
-That leads another consideration VCs are looking for: an ability to pivot as the market twists and turns. “There’s a joke that, like, 1000 startups die and that’s why being resilient is really important,” Achadjian continued.
-
-Deng, who used to work at OpenAI, added to Achadjian’s statements. He said founders need to find their unique data flywheels that are going to separate them from the hordes of everyone pitching the exact same idea, especially since the enterprise companies likely testing their products are also testing out a few other competitors at the same time.
-
-“If you’re able to go deep and really solve a true need for them,” in a way they cannot do themselves, then managing data is “where the important part is,” he said.
-
-Founders should also have an answer for why their product will not just be a feature added into the foundational models, Achadjian said. It may be okay if a founder doesn’t know if the model makers are working on a competor but they should have a hypothesis on how the business is defensible when pitching investors.
-
-Right now, what’s working in AI seems to be three things, Chen noted: Chat apps, coding apps, and AI in customer service. But there is still so much more change to happen throughout early every sector and industry.
-
-Deng is excited by AI-enabled marketplaces. Achadjian, meanwhile, thinks that this could be the moment for robotics, while Chen is curious to see how AI impacts SaaS and othermarkets not yet directly impacted.
-
-As for what’s not AI and exciting? “Pen and paper processes and digitize them,” Achadjian said. There’s a lot of blue-collar industries that, incredibly, still do many processes manually, she continued. But, they acknowledged even that is ripe for the opportunity to be automated by AI.
-
-Dominic-Madori Davis is a senior venture capital and startup reporter at TechCrunch. She is based in New York City.
-
-You can contact or verify outreach from Dominic by emailing dominic.davis@techcrunch.com or via encrypted message at +1 646 831-7565 on Signal.
-
-Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
-
-Tech provider for NHS England confirms data breach
-
-Google’s vibe-coding tool Opal comes to Gemini
-
-Google tests an email-based productivity assistant
-
-Hacking group says it’s extorting Pornhub after stealing users’ viewing data
-
-DoorDash driver faces felony charges after allegedly spraying customers’ food</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-7')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Cursor continues acquisition Spree with Graphite deal</div>
-            <div class="meta">2025-12-19</div>
-        </div>
-        
-        <div id="content-7" style="display:none;">
-            <h2>Cursor continues acquisition Spree with Graphite deal</h2>
-            <p><strong>TechCrunch | 2025-12-19</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2025/12/19/cursor-continues-acquisition-spree-with-graphite-deal/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">AI coding assistant Cursor announced that it has acquired Graphite, a startup that uses AI to review and debug code.
-
-Although the terms of the deal were not disclosed, Axios reported that Cursor paid “way over” Graphite’s last valuation of $290 million, which was set when the five-year-old company raised a $52 million Series B earlier this year.
-
-The tie-up makes strategic sense. The output of code generated by AI is often buggy, forcing engineers to spend a lot of time on corrections. Even though Cursor offers AI-powered code review through its Bugbot product, Graphite’s specialized toolset provides a distinct capability called a ‘stacked pull request,’ which enables developers to work on multiple dependent changes simultaneously without waiting for approvals.
-
-Combining AI-powered code writing with AI-powered code review tools speeds up the process from drafting code to shipping it.
-
-Other startups providing AI-powered code review include CodeRabbit, valued at $550 million in September, and a smaller competitor, Greptile, which announced a $25 million Series A this fall.
-
-Michael Truell, co-founder and CEO of Cursor, first met Graphite’s co-founders, Merrill Lutsky, Greg Foster, and Thomas Reimers, before launching the company as a Neo Scholar, a prestigious program for college students run by Neo, Ali Partovi’s early-stage venture firm. Neo backed Graphite at the seed stage, according to PitchBook data.
-
-Furthermore, both Cursor and Graphite have other investors in common, including Accel and Andreessen Horowitz.
-
-Cursor, which was last at $29 billion in November, has been on an acquisition spree. Last month, it purchased Growth by Design, a tech recruiting strategy company. In July, Cursor scooped up the talent from AI-powered CRM startup Koala for a post-money valuation of $129 million, according to PitchBook.
+Rocket Lab has expanded into defense and has more recently said it would bid for multibillion-dollar Department of Defense initiatives like Golden Dome.
 
 Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
 
@@ -500,26 +432,76 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
+        <div class="card" onclick="openModal('content-7')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Building venture-backable companies in heavily regulated spaces</div>
+            <div class="meta">2025-12-19</div>
+        </div>
+        
+        <div id="content-7" style="display:none;">
+            <h2>Building venture-backable companies in heavily regulated spaces</h2>
+            <p><strong>TechCrunch | 2025-12-19</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2025/12/19/building-venture-backable-companies-in-heavily-regulated-spaces/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Building in regulated industries adds a massive hurdle to the already challenging journey of building a startup. And this week on Build Mode, Startup Battlefield editor Isabelle Johannessen spoke to two founders who are working to make progress  in industries ripe for disruption, despite the regulatory headaches that might have deterred many other people.
+
+In this episode, we’re talking about life and death and how regulatory clearance doesn’t have to be a damper on innovation but it will elongate timelines and require careful planning from the jump.
+
+Isabelle is first joined by Gabriel Sanchez, the CEO and co-founder of Enspectra Health. The company has built a device that aims to do away with the need for dermatologist skin biopsies. Sanchez breaks down his decade-long journey to receiving FDA clearance. Throughout the interview, Sanchez offers tactical advice to anyone in the midst of a long regulatory process and explains how he’s kept his company afloat and his team motivated despite the uncertainties.
+
+Next, Isabelle speaks with Tom Harries, the co-founder of Earth Funeral, an end-of-life startup that has developed a new process that transforms human remains into soil. Harries didn’t have to lead his team through a long FDA approval process (because the FDA is primarily concerned with the living), but his company has faced its own legislative challenges. Earth Funeral launched at a time when its alternative process was only legal in one state. And though its path to expansion doesn’t hinge on accreditation or approval from a government agency, it does depend on legislative bodies and voters who may be discomforted by a new way to lay a loved one to rest.
+
+New episodes of Build Mode drop every Thursday. Subscribe to the podcast or watch on YouTube. Isabelle Johannessen is our host. Build Mode is produced and edited by Maggie Nye. Audience Development is led by Morgan Little. And a special thanks to the Foundry and Cheddar video teams.
+
+Isabelle leads Startup Battlefield, TechCrunch’s iconic launchpad and competition for the world’s most promising early-stage startups.
+
+You can contact or verify outreach from Isabelle by emailing isabelle.johannessen@techcrunch.com.
+
+She scouts top founders across 99+ countries and prepares them to pitch on the Disrupt stage in front of tier-one investors and global media. Before TechCrunch, she designed and led international startup acceleration programs across Japan, Korea, Italy, and Spain—connecting global founders with VCs and helping them successfully enter the U.S. market. With a Master’s in Entrepreneurship & Disruptive Innovation—and a past life as a professional singer—she brings a blend of strategic rigor and stage presence to help founders craft compelling stories and stand out in crowded markets.
+
+Maggie Nye is a Podcast Producer for TechCrunch based in Denver, Colorado. Previously, she worked as the Brand and Content Manager for BUILT BY GIRLS where she developed an interest in tech and a passion for creating equitable and welcoming professional tech spaces. She holds a bachelor’s degree in Journalism with a minor in English from Hofstra University in New York.
+
+You can contact or verify outreach from Maggie by emailing maggie@techcrunch.com.
+
+Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
+
+Tech provider for NHS England confirms data breach
+
+Google’s vibe-coding tool Opal comes to Gemini
+
+Google tests an email-based productivity assistant
+
+Hacking group says it’s extorting Pornhub after stealing users’ viewing data
+
+DoorDash driver faces felony charges after allegedly spraying customers’ food</div>
+        </div>
+        
         <div class="card" onclick="openModal('content-8')">
             <div class="source">TechCrunch</div>
-            <div class="title">Elon Musk’s $56B Tesla pay package restored by Delaware Supreme Court</div>
+            <div class="title">Former Patagonia CEO Rose Marcario resigns from Rivian’s board</div>
             <div class="meta">2025-12-19</div>
         </div>
         
         <div id="content-8" style="display:none;">
-            <h2>Elon Musk’s $56B Tesla pay package restored by Delaware Supreme Court</h2>
+            <h2>Former Patagonia CEO Rose Marcario resigns from Rivian’s board</h2>
             <p><strong>TechCrunch | 2025-12-19</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2025/12/19/elon-musks-56b-tesla-pay-package-restored-by-delaware-supreme-court/">Visit Original Website</a>
+            <a class="original-link" href="https://techcrunch.com/2025/12/19/former-patagonia-ceo-rose-marcario-resigns-from-rivians-board/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Delaware Supreme Court has reinstated Elon Musk’s $56 billion Tesla pay package from 2018, overturning last year’s ruling by the state’s Chancery Court, according to an opinion published Friday.
+            <div id="article-text">Former Patagonia CEO Rose Marcario is resigning from her position on Rivian’s board of directors, according to a Friday afternoon stock exchange filing.
 
-The state supreme court’s decision draws to a close a years-long battle that left such a bad taste in Musk’s mouth that he moved its incorporation out of Delaware to Texas, which prompted other companies to follow suit.
+Rivian wrote in the filing that Marcario’s last day will be on January 1, and that she is leaving “to focus on other commitments.” Rivian’s board will shrink from eight members to seven upon her resignation.
 
-Tesla will now likely revoke a $29 billion pay package it offered Musk earlier this year, which was meant as a hedge against the possibility that they would lose the Delaware Supreme Court appeal. The $1 trillion compensation package awarded to Musk in November is separate from that, and will continue to exist going forward, giving Musk a series of lofty goals to hit in order to unlock the full value.
+Marcario’s departure and the downsizing of Rivian’s board comes on the eve of an important year for the company. Rivian plans to start selling its more affordable R2 SUV in the first half of 2026. The upcoming R2 is supposed to reach a much wider market than the company’s current R1 SUV and pickup truck and the EV maker has plans to make hundreds of thousands of them per year, including at a new factory in Georgia. Rivian is also looking to expand its automated driving features next year, which it detailed at last week’s inaugural Autonomy & AI Day event.
 
-The 2018 award also set out a number of milestones that Musk had to hit in order to unlock the full value. Musk and Tesla hit all of those goals, but not before a shareholder filed suit over the award in 2018, arguing that it had been improperly negotiated and that shareholders weren’t properly informed of the conflicts of interest at play.
+Marcario has served on Rivian’s board since January 2021, a role she took after 12 years as an executive (and eventual CEO) of Patagonia. Before her appointment, Rivian CEO RJ Scaringe often described his aim for the company to become “the Patagonia of EVs.”
 
-After years of back-and-forth, including a trial where Musk testified, the Chancery Court judge overseeing the case agreed with the plaintiff and initially struck down the pay package in January 2024. Tesla held a vote at its annual meeting in 2024 where shareholders “re-approved” the package, but the judge confirmed her decision in December 2024. Tesla appealed soon after.
+Rivian said Friday that Marcario will continue her role as chair of the board of trustees overseeing the Rivian Foundation. She serves on that board alongside Scaringe, Rivian’s chief sustainability officer Anisa Kamadoli Costa, and conservationist Ed M. Norton.
+
+Formed just before the company’s blockbuster 2021 IPO, the Rivian Foundation was initially handed 1% of the company’s equity in order to make “the natural world” a “stakeholder in [Rivian’s] success.” The foundation remained quiet for the first few years as Rivian’s stock price fell from its post-IPO highs, and announced its first $10 million in grants in 2024.
+
+This year, the Rivian Foundation has publicized another $2.6 million in awards on its website.
+
+“We would like to thank her for her stewardship on the Rivian board over the past 5 years, and look forward to her continued leadership on the Rivian Foundation,” a spokesperson for the company said in a statement.
 
 Sean O’Kane is a reporter who has spent a decade covering the rapidly-evolving business and technology of the transportation industry, including Tesla and the many startups chasing Elon Musk. Most recently, he was a reporter at Bloomberg News where he helped break stories about some of the most notorious EV SPAC flops. He previously worked at The Verge, where he also covered consumer technology, hosted many short- and long-form videos, performed product and editorial photography, and once nearly passed out in a Red Bull Air Race plane.
 
@@ -540,11 +522,59 @@ DoorDash driver faces felony charges after allegedly spraying customers’ food<
         
         <div class="card" onclick="openModal('content-9')">
             <div class="source">The Atlantic</div>
-            <div class="title">What Jeffrey Epstein Didn’t Understand About <em>Lolita</em></div>
+            <div class="title">Today’s <em>Atlantic </em>Trivia: Jabs at Past Presidents</div>
             <div class="meta">2025-12-19</div>
         </div>
         
         <div id="content-9" style="display:none;">
+            <h2>Today’s <em>Atlantic </em>Trivia: Jabs at Past Presidents</h2>
+            <p><strong>The Atlantic | 2025-12-19</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/newsletters/2025/12/daily-trivia-questions-answers-week-12/685286/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Updated with new questions at 5 p.m. on December 19, 2025.
+
+When I visited the Snapple website this week, I was served one of the drink brand’s famous fun facts: that a jiffy is an “actual time measurement equaling 1/100th of a second.” Fun indeed! And arguably even a little bit true!
+
+In 2013 in The Atlantic, Adrienne LaFrance courageously exposed that many of Snapple’s bottle-cap facts were false. I wished to determine whether the company had since cleaned up its act; the intervening rebrand from “Real Facts” (scare quotes theirs) to Real Facts (no quotes!) felt like a vow.
+
+Alas, a jiffy was first proposed as the name for the time light takes to travel one centimeter in a vacuum—about 33 trillionths of a second. In electronics, a jiffy might be 1/50 or 1/60 of a second. Only in Linux computing specifically can it be 1/100 of a second, and even then only sometimes.
+
+Oh well. I did not have the heart to check the next statement: “Mangoes can get sunburned.” Whatever, sure. For the foreseeable future, stick with Atlantic Trivia for your fun facts.
+
+Find last week’s questions here, and to get Atlantic Trivia in your inbox every day, sign up for The Atlantic Daily.
+
+You might have seen that Donald Trump installed plaques underneath the presidential portraits he hung in the White House. Some inscriptions are more pointed than others. But my colleague Alexandra Petri didn’t want less-recent commanders-in-chief to miss out on that signature Trump tone—so she imagined some more blurbs herself.
+
+For today’s Atlantic Trivia, read the “inscriptions” on Alexandra’s made-up plaques, then determine which president each describes:
+
+And by the way, did you know that a famous portrait of Calvin Coolidge’s wife, Grace, hangs in the White House’s China Room? Her red dress matches the hue of the room; combined with the blue sky and the Coolidges’ white collie, it creates a patriotic colorscape within the portrait.
+
+She initially wanted to wear white. The artist, however, was set on his palette, so President Coolidge tried to offer a mutually agreeable solution: “She could still wear the white dress and we’d dye the dog.”
+
+How did you do? Come back Monday for more questions, or click here for last week’s. And if you think up a great question after reading an Atlantic story—or simply want to share a fact—send it my way at [email protected].
+
+And by the way, did you know that Europe has a whole menagerie of surreal Christmas characters? Unfortunately, a lot of them are at least a little bit evil.
+
+Sweden’s gift-delivering gnome might hurt your livestock. Several figures across Central Europe are armed with switches. The Francophone Père Fouettard used to kill and eat children before Father Christmas recruited him to be his slightly less sadistic enforcer. An Icelandic Yule cat also eats kids. An Icelandic ogress also also eats kids.
+
+Is this why we leave cookies out for Santa?! To sate what would otherwise be a most grisly appetite?
+
+And by the way, did you know that we owe the word quarantine to the Venetians? In the 15th century, the city required any ship arriving from a disease-stricken area to wait in the water for 40 days—quaranta in Italian—before entering Venice. At that point, it could safely be assumed that no one aboard was harboring plague.
+
+Perhaps a solution for Venice’s overtourism today? You really want to see St. Mark’s Square? No problem—now just wait six weeks for it.
+
+And by the way, did you know that the country of Liberia was founded when formerly enslaved Black Americans migrated there en masse in the mid-19th century? It’s the oldest republic in Africa (it declared independence in 1847), and it’s the only state there never colonized or occupied by a European power.
+
+Its first 10 presidents were all born in the United States, and its capital, Monrovia, is the only in the world (other than America’s) to honor an American—namely, President James Monroe.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-10')">
+            <div class="source">The Atlantic</div>
+            <div class="title">What Jeffrey Epstein Didn’t Understand About <em>Lolita</em></div>
+            <div class="meta">2025-12-19</div>
+        </div>
+        
+        <div id="content-10" style="display:none;">
             <h2>What Jeffrey Epstein Didn’t Understand About <em>Lolita</em></h2>
             <p><strong>The Atlantic | 2025-12-19</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/magazine/2026/02/jeffrey-epstein-nabokov-lolita/685320/?utm_source=feed">Visit Original Website</a>
@@ -582,14 +612,14 @@ But just as the notion that Epstein read and understood Lolita is implausible, t
 This article appears in the February 2026 print edition with the headline “What Jeffrey Epstein Didn’t Understand About Lolita.” When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">The Atlantic</div>
-            <div class="title">Like the Iraq War, but Worse</div>
+            <div class="title">A Nakedly Imperialistic President</div>
             <div class="meta">2025-12-19</div>
         </div>
         
-        <div id="content-10" style="display:none;">
-            <h2>Like the Iraq War, but Worse</h2>
+        <div id="content-11" style="display:none;">
+            <h2>A Nakedly Imperialistic President</h2>
             <p><strong>The Atlantic | 2025-12-19</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/politics/2025/12/iraq-venezuela-trump-oil-drugs/685342/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -624,78 +654,85 @@ Trump has long benefited from his contrast with the second Bush administration�
 Yet Trump’s saber-rattling against Venezuela confirms that his argument with neoconservatism was never about the hubris of exporting democracy or a faith in pacifistic leadership. Trump’s main complaint about Bush was that he squandered an opportunity to enrich the U.S. by caring too much about international law and the dignity of the Iraqi people. For all their arrogant blundering, neoconservatives were at least motivated by ideals about promoting American values around the world. Trump seems eager to replace this doctrine with an old and naked form of imperialism.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">The Atlantic</div>
-            <div class="title">How to Treat Purveyors of Baseless Speculation</div>
+        <div class="card" onclick="openModal('content-12')">
+            <div class="source">Slashdot</div>
+            <div class="title">TikTok Owner Signs Deal To Avoid US Ban</div>
             <div class="meta">2025-12-19</div>
         </div>
         
-        <div id="content-11" style="display:none;">
-            <h2>How to Treat Purveyors of Baseless Speculation</h2>
-            <p><strong>The Atlantic | 2025-12-19</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2025/12/conspiracy-rumors-brown-shooter-lost-credibility/685346/?utm_source=feed">Visit Original Website</a>
+        <div id="content-12" style="display:none;">
+            <h2>TikTok Owner Signs Deal To Avoid US Ban</h2>
+            <p><strong>Slashdot | 2025-12-19</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/25/12/19/2150202/tiktok-owner-signs-deal-to-avoid-us-ban?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">For three days before police identified the Portuguese man who apparently killed two Brown University undergraduates and an MIT professor, a certain squalid sector of social media was astir with one question: Where is Mustapha Kharbouch? Kharbouch, a Brown undergraduate and Palestinian activist, was floated as a culprit by @0hour1, an anonymous X account with 270,400 followers. Others claimed that Kharbouch was “allegedly, possibly … a suspect” (whatever that means), and amateur forensic podiatrists reported a “97.8% gait match” between Kharbouch and the killer. The Agence France-Presse has a roundup of prominent figures who amplified suspicion of Kharbouch, including the podcaster Tim Pool and the financier Bill Ackman. Brown took down, without explanation, webpages that mentioned Kharbouch, and some said that deletion looked awfully suspicious.
+            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Where was he? Presumably he was busy interviewing libel lawyers, and calculating how much of his Brown tuition could be paid off by suing those who accused him of killing his classmates. Some of his tormentors have gone to their websites and taken down, without explanation, their accusations. Some might say that deletion also looks awfully suspicious, the evidence of a bad conscience and possibly good legal advice.
-
-Xochitl Gonzalez: America is failing its children
-
-Other speculation was less damaging, but still wrong. The Morning Meeting’s Mark Halperin relayed a rumor that the killer had targeted Ella Cook, a conservative student and one of the victims. And The Jerusalem Post indicated that Iran might have taken out the MIT physicist, Nuno Loureiro, although now it appears that that was a Portuguese-on-Portuguese murder without geopolitical significance.
-
-The Brown and MIT shootings were unusual because so many days elapsed without any useful images or clues about the killer or his choice of victim. The desperation of the police came across unsettlingly in their press conferences. And just as starving castaways start nibbling on shoe leather, social media started giving credence to harmful nonsense; even journalists like Halperin reported speculation that they knew had little to support it. (“If I were editing The New York Times, I don’t think I’d put it in the paper,” he said, before airing the rumor and demonstrating the distinction between his own show and The New York Times.) The Jerusalem Post is a good example of media autophagy, the self-consumption of its own apparent speculation.
-
-Hungry mouths demand feeding, and I suppose it is unreasonable to expect total abstention from speculation when there is no more nourishing substance on offer. But we were all adrift in the lifeboat together, and some started consuming their own piss sooner than others. The shootings were so obviously senseless—one theory is that the killer was angry at physics, the discipline from which he’d washed out decades ago, and shot a bunch of intro-to-economics students by accident—that the only lessons to be extracted from the experience are these incidental ones.
-
-Who speculated? Who started the speculation? Who refrained from speculation, and who stayed silent even as the hunger for information became unbearable? Those who consumed all that speculative junk and liked it are beyond hope. Others, who are salvageable, might log off, take a walk, or otherwise forswear digital information. But that is the wrong approach.
-
-Helen Lewis: MAGA influencers don’t understand what journalism is
-
-It is better to keep score. Those who speculated wildly have earned eternal blocks from me on social media. To spread rumors without substantiation shows disregard for the object of those rumors, of course. Moreover, it shows indifference to the victims of the shootings. If you care about dead students and professors, you have to care about accurately, rather than indiscriminately, identifying those who killed them. Some speculated more directly than others. The right-wing activist Pamela Geller implied that Kharbouch was a “murdering Muslim.” Another right-wing activist, Laura Loomer, said Brown’s removal of Kharbouch’s webpages was part of “a massive coverup to protect the identity of the shooter.” Another right-wing activist, the assistant attorney general for civil rights, Harmeet Dhillon, merely called the scrubbing “concerning.” But they all bet some amount of credibility on the relevance of this student to the investigation. And it is important that because they lost that bet, they lose credibility along with it.
-
-Keeping score also means rewarding those who said nothing when they knew nothing. (To my knowledge, no one knew anything. If someone wrote, three days ago, that the Brown massacre “has all the hallmarks of a Lusophone, plasma-physics-related homicide,” then all I can say is Tiro-te o chapéu—I doff my hat to you. Immediate follow.) Most established news organizations, including The New York Times, Fox News, and WPRI, seem to have followed this basic rule, and limited their coverage to relaying their own failure, along with everyone else’s, to come up with any leads. Sometimes eating nothing is the healthiest option. This week was not a bad one for mainstream media.</div>
+The reason why worry kills more people than work is that more people
+worry than work.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-12')">
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">Slashdot</div>
+            <div class="title">YouTuber's Livestream Appears On White House Website</div>
+            <div class="meta">2025-12-19</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
+            <h2>YouTuber's Livestream Appears On White House Website</h2>
+            <p><strong>Slashdot | 2025-12-19</strong></p>
+            <a class="original-link" href="https://yro.slashdot.org/story/25/12/19/2144258/youtubers-livestream-appears-on-white-house-website?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+
+Fire all the &quot;DEI hires&quot; who know how to do stuff, and this is what you are left with...
+
+No news here. The country is currently ran by a bunch of people with the mental capacity of a 5 year old.  This is not surprising in the least.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+The reason why worry kills more people than work is that more people
+worry than work.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">Slashdot</div>
             <div class="title">Riot Games Is Making an Anti-Cheat Change That Could Be Rough On Older PCs</div>
             <div class="meta">2025-12-19</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>Riot Games Is Making an Anti-Cheat Change That Could Be Rough On Older PCs</h2>
             <p><strong>Slashdot | 2025-12-19</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/25/12/19/2135223/riot-games-is-making-an-anti-cheat-change-that-could-be-rough-on-older-pcs?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-13')">
-            <div class="source">Slashdot</div>
-            <div class="title">Microsoft Made Another Copilot Ad Where Nothing Actually Works</div>
-            <div class="meta">2025-12-19</div>
-        </div>
-        
-        <div id="content-13" style="display:none;">
-            <h2>Microsoft Made Another Copilot Ad Where Nothing Actually Works</h2>
-            <p><strong>Slashdot | 2025-12-19</strong></p>
-            <a class="original-link" href="https://slashdot.org/story/25/12/19/1932210/microsoft-made-another-copilot-ad-where-nothing-actually-works?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-14')">
-            <div class="source">Slashdot</div>
-            <div class="title">All That Cheap Chinese Stuff Is Now Europe's Problem</div>
-            <div class="meta">2025-12-19</div>
-        </div>
-        
-        <div id="content-14" style="display:none;">
-            <h2>All That Cheap Chinese Stuff Is Now Europe's Problem</h2>
-            <p><strong>Slashdot | 2025-12-19</strong></p>
-            <a class="original-link" href="https://slashdot.org/story/25/12/19/1925205/all-that-cheap-chinese-stuff-is-now-europes-problem?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">While I agree with you 100% that what they&#39;re doing is BS
+
+They seem to fear manipulation of the Microsoft hypervisor running VBS. Which is comforting in a way, at least we know their rootkit doesn&#39;t go that deep.
+
+There&#39;s also the matter of what to do with the cheaters.I think it&#39;s best to silently cripple them so they suck at the game and lose a lot. Nothing overt, just a mild degradation of all their abilities.Make them miss some most of their shots and inflict less damage, make them heal slower, move slower, make more noise, etc etc. Handicap them just enough so that they seem to suck monkey balls at this game.Not all the time, not everywhere. Mess with them just enough so the game still seems legit but will always be a miserable experience for them.
+
+There&#39;s also the matter of what to do with the cheaters.
+
+I think it&#39;s best to silently cripple them so they suck at the game and lose a lot. Nothing overt, just a mild degradation of all their abilities.
+
+Make them miss some most of their shots and inflict less damage, make them heal slower, move slower, make more noise, etc etc. Handicap them just enough so that they seem to suck monkey balls at this game.
+
+Not all the time, not everywhere. Mess with them just enough so the game still seems legit but will always be a miserable experience for them.
+
+&quot;... a BIOS update requirement that will be imposed on &quot;certain players&quot; following Riot&#39;s discovery of a UEFI bug that could allow especially dedicated and motivated cheaters to circumvent certain memory protections.&quot;
+
+How sad that anyone would be this motivated to cheat, and even sadder that companies are basically forced to employ more and more draconian measures to combat it, burdening the legit players who just want to enjoy the game.
+
+In conclusion, cheaters suck- they ruin everything for everyone, everywh
+
+I stopped playing multiplayer games years ago because I can&#39;t run my own server and only invite my friends and players I trust into it. Now I just play the single player version of more modern games that require a rootkit on a computer with no Internet access. Yo ho ho and a bottle of rum.
+
+Let&#39;s stop pretending this has anything to do with cheating. The cat and mouse game has been going on for decades, yet there are more cheaters than ever. Cheating is impossible to stop on the user side, there are always going to be workarounds like players building a literal robot to move the mouse  [pcworld.com]. But there is one way that can actually prevent cheating, in fact we&#39;ve known about it for as long as games existed: playing with people you know and trust. Except you can&#39;t, because games don&#39;t have directIP and
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+The reason why worry kills more people than work is that more people
+worry than work.</div>
         </div>
         
         <div class="card" onclick="openModal('content-15')">
@@ -1079,11 +1116,67 @@ Copyright. All rights reserved © 1998–2025</div>
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">The Verge</div>
-            <div class="title">Next-generation nuclear reactors could get a boost from the National Defense Authorization Act</div>
+            <div class="title">Did a publisher’s slip-up reveal smaller Switch 2 cartridges?</div>
             <div class="meta">2025-12-19</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Did a publisher’s slip-up reveal smaller Switch 2 cartridges?</h2>
+            <p><strong>The Verge | 2025-12-19</strong></p>
+            <a class="original-link" href="https://www.theverge.com/news/848462/nintendo-switch-2-smaller-cartridges-inin-games">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">ININ Games quickly walked back a statement saying Nintendo will offer smaller capacity cartridges for physical game releases on Switch 2.
+
+ININ Games quickly walked back a statement saying Nintendo will offer smaller capacity cartridges for physical game releases on Switch 2.
+
+On Friday, retro and arcade game publisher ININ Games surprisingly announced it’s been able to “recalculate production” on offering a physical version of R-Type Dimensions III for the Switch 2 because “Two days ago Nintendo announced two new smaller cartridge sizes for Nintendo Switch 2.” Physical games on the Switch 2 have been something of a contentious topic; full physical games are reportedly expensive for developers, while game-key cards don’t actually have the game on the cart.
+
+But later in the day, ININ removed that line from its post and published a significant correction: “There has been no official announcement or confirmation from Nintendo concerning cartridge storage capacities. Any references to specific storage sizes should not be interpreted as official information from Nintendo.” However, it will still be able to offer the physical Switch 2 version of R-Type Dimensions III, though by tacking on €10 to the retail price.
+
+Nintendo didn’t immediately reply to a request for comment. Solid information about why more developers don’t offer games fully on-cartridge is hard to find, though it may come down to cost. In May, a Brazilian Nintendo journalist reported that, based on leaks from Arc System Works, Nintendo only offered two types of physical games for developers: a 64GB cartridge and the game-key card. The YouTube channel Physical Paradise has also reported that the cost of a physical cartridge is “about” $16, “which is quite expensive.”
+
+Niko Partners analyst Daniel Ahmad, replying to ININ Games’ initial announcement about the new cartridge sizes, said on X that “cost was always the primary factor between key cards vs full cart releases.”
+
+If you do, please email me at jay.peters@theverge.com or message me on Signal @jaypeters.11.
+
+It’s unclear exactly how much more affordable additional cartridge capacity sizes could be or why the company might offer them to developers now. New York University games professor Joost van Dreunen tells me it could be because of the rising cost of memory; his two cents is that this “is in anticipation of memory going up in cost soon, allowing Nintendo to charge a more reasonable price especially for third-party games.”
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">The Verge</div>
+            <div class="title">Gemini isn’t replacing Google Assistant on Android just yet</div>
+            <div class="meta">2025-12-19</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
+            <h2>Gemini isn’t replacing Google Assistant on Android just yet</h2>
+            <p><strong>The Verge | 2025-12-19</strong></p>
+            <a class="original-link" href="https://www.theverge.com/news/848455/google-assistant-gemini-upgrade-2026">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Google’s timeline for switching devices to Gemini now lands in 2026.
+
+Google’s timeline for switching devices to Gemini now lands in 2026.
+
+Google isn’t quite ready to replace Assistant with Gemini on Android devices. The company said on Friday that it will “continue our work to upgrade Assistant users to Gemini on mobile devices into 2026,” instead of its original plans to make the switch by the end of 2025.
+
+“We’re adjusting our previously announced timeline to make sure we deliver a seamless transition,” Google says. Once the transition away from Google Assistant is complete, users will no longer be able to access the voice assistant on devices that meet the minimum requirements to run Gemini. Users also won’t be able to download the Google Assistant app.
+
+Google has already brought Gemini to Wear OS smart watches, Android Auto, and Nest and Google Home devices.
+
+This year, Google took steps toward replacing Assistant with Gemini on Android by giving users the ability to initiate phone calls, set timers, and send messages through Gemini without Gemini Apps Activity toggled on. The change allows people to use Gemini’s assistant-like capabilities while opting out of having their interactions used for AI training.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-26')">
+            <div class="source">The Verge</div>
+            <div class="title">Next-generation nuclear reactors could get a boost from the National Defense Authorization Act</div>
+            <div class="meta">2025-12-19</div>
+        </div>
+        
+        <div id="content-26" style="display:none;">
             <h2>Next-generation nuclear reactors could get a boost from the National Defense Authorization Act</h2>
             <p><strong>The Verge | 2025-12-19</strong></p>
             <a class="original-link" href="https://www.theverge.com/science/848445/nuclear-energy-ndaa-defense-bill">Visit Original Website</a>
@@ -1101,214 +1194,6 @@ The defense bill, which Congress passed earlier this week, includes two amendmen
 Those are “big wins” that make nuclear exports more attractive in the global market, Rowen Price, senior policy advisor for nuclear energy at center-left think tank Third Way, says in an email to The Verge.
 
 The bill also directs the Department of Defense to create an executive agent role “for installation and operational nuclear energy.”
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-25')">
-            <div class="source">The Verge</div>
-            <div class="title">We found 80 stocking stuffers under $100 that are actually useful</div>
-            <div class="meta">2025-12-19</div>
-        </div>
-        
-        <div id="content-25" style="display:none;">
-            <h2>We found 80 stocking stuffers under $100 that are actually useful</h2>
-            <p><strong>The Verge | 2025-12-19</strong></p>
-            <a class="original-link" href="https://www.theverge.com/gadgets/843079/best-stocking-stuffers-christmas-ideas-2025">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Each of these stocking stuffers is a small yet useful upgrade that also makes for a great gift.
-
-Each of these stocking stuffers is a small yet useful upgrade that also makes for a great gift.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-Let’s face it, it’s easy to fixate on the big gifts that crowd around the Christmas tree. However, we’d argue that the true treasures are the small, useful, and thoughtful gifts tucked within stockings. That’s why, for this guide, we’ve pooled together a bunch of tried-and-tested gadgets and goods to help bolster someone’s everyday carry or, at the very least, provide them with something that comes in clutch every once in a while. It certainly isn’t about gag gifts and cheap trinkets.
-
-The good news is that many of the items we’ve highlighted in our guides to the best gifts under $25, best gifts under $50, and best gifts under $100 also meet the criteria for a good stocking stuffer, as most of them can easily fit in a bag and improve your daily routine. This includes a location tracker for keeping tabs on your belongings, a pocket-friendly set of wireless earbuds, and a handy multitool for making small repairs around the house, all of which can be found below.
-
-AirTags can function as a second set of eyes for iPhone owners, allowing you to keep tabs on everything from your car keys to your backpack. That’s because the ultra wideband location trackers tap into Apple’s extensive Find My network, which allows for impressively precise tracking and lets users share the tracker with up to five other people for even greater peace of mind.
-
-Most people don’t want to wrangle cables… and who can blame them? Not us, which is why several folks at The Verge own Baseus’ handy, retractable USB-C option. The Free2Pull comes in two sizes, each of which conveniently pulls the excess cable into a small puck that’s far tidier and easier to manage than a loose cord.
-
-This Landmark Project keychain can add a bit of color and personality to an otherwise vanilla set of keys. The retro-inspired doohickey features a glossy emboss finish and harkens back to classic motel tags, while reminding you to respect the great outdoors. It’s also made of durable ABS plastic and features metal hardware, so it should withstand miles upon miles of abuse.
-
-Anker’s Nano Travel Adapter is a versatile charger for globe-trotters. It features four plug types, providing compatibility in over 200 countries, along with an AC connector, two USB-A ports, and two USB-C ports. The adapter is also relatively tiny — each plug type either extends / retracts or folds up — so it’s easy to slot into your bag.
-
-Powerful power banks don’t have to be cumbersome. Iniu’s 10,000mAh P50 is about as thick as a deck of cards, but features 45W charging speeds, two USB-C ports, and one USB-A port. Its braided lanyard also doubles as a USB-C cable, providing everything you need to keep all of your electronics fully juiced on the go.
-
-Clair Obscur: Expedition 33 breaks the mold of classic RPGs. The story is just as grandiose and gripping as the best Final Fantasy games, but by allowing you to dodge and parry every enemy attack, it flips more traditional turn-based combat on its head. Then there’s the score and visually striking world, both of which are just as refreshing to behold.
-
-The Notes app is great, but sometimes pen and paper are where it’s at. Field Notes are small enough to fit in your pocket or a small bag, yet spacious enough to house all your big ideas and errant thoughts. The “Flora” Edition can even add a much-needed pop of color to any desk setup.
-
-The original LifeStraw was designed for those heading into the backcountry. The new LifeStraw Sip? Not so much. The reusable steel straw is geared more toward travelers than outdoor enthusiasts, though fortunately it still manages to remove about 99.99 percent of microplastics, bacteria, and parasites from your drinking water.
-
-Crumbs don’t stand a chance on your keyboard with OXO’s laptop cleaner. The double-sided tool has a retractable soft brush that gets into tiny crevices to sweep away dust, and the microfiber pad can remove fingerprints and smudges on screens. I’ve been using one for the past few years, and it’s great for quickly tidying up after a long day of clacking away.
-
-Leatherman’s Skeletool CX comes with a 25-year warranty and all the basics you need for everyday use. The convenient multitool conceals a sturdy steel blade, a pair of pliers, and a large bit driver within its compact build, which easily slides into your pocket. It’s the kind of gadget that proves you don’t need every tool under the sun just to get the job done.
-
-CMF’s higher-end earbuds offer a lot for the price, including active noise cancellation and a transparency mode that should keep you aware of your surroundings. The charging case also has a smart dial that lets you adjust the volume and switch between noise modes, while multipoint support means the Buds Pro 2 can connect to two devices simultaneously.
-
-Donkey Kong Bananza for the Nintendo Switch 2 is a bona fide system seller. Made by the same team behind Super Mario Odyssey, it delivers satisfying punch action and environmental destruction. If you want a game where you can — if you’ll excuse the pun — go ape shit, then Bananza is for you.
-
-The Amazon Smart Plug is a simple and inexpensive way to automate gadgets around your home. For instance, you can instruct Alexa to turn on a lamp that’s connected to the plug or control it via the Alexa app — no smart home hub required. The plug is compatible with most devices with an on / off switch, including fans, coffee makers, and other common household devices. It’s also great for controlling holiday lights.
-
-Anker’s 3-in-1 charger features a trifold design, making it easy to fold down and throw in a bag. Its main wireless pad supplies up to 15W of power to your phone, while the other two are suitable for charging a smartwatch and a pair of wireless earbuds. Your purchase comes with a 40W adapter and 5-foot USB-C cable, too, giving you everything you need to start charging.
-
-If your giftee ever had a soft spot for Nintendo’s Game Boy Advance SP, the RG 34XXSP won’t disappoint. Anbernic’s newer handheld emulator sports a classic clamshell design with a 3.4-inch 720p IPS display, as well as dual joysticks, four shoulder buttons, and a 3:2 aspect ratio that’s ideal for retro titles like Golden Sun and The Legend of Zelda: The Minish Cap.
-
-Instead of sifting through a rat’s nest of cables, Anker’s dual-headed USB-C cable makes it easier to travel light. Thanks to its 2-in-1 design, you can charge two devices simultaneously — like a laptop and smartphone — with a peak power output of 140W. You don’t have to worry about the cable fraying, either, as it’s made from a durable braided nylon and has been tested to survive more than 10,000 bends.
-
-There are few better ways to pass the time than getting lost in a good book (I’m reading Thomas Pynchon’s new Shadow Ticket). The latest base-model Kindle is our favorite cheap ebook reader, with a sharp 6-inch display, an adjustable frontlight, and a battery that lasts up to six weeks. And at just 158 grams, its lightweight design makes it easy to carry and hold for extended reading sessions.
-
-The AirFly Pro 2 can amp up the sound quality of in-flight entertainment, making it a handy tool for frequent travelers. The long-lasting Bluetooth adapter can sync with two pairs of wireless earbuds or headphones at once, allowing you and a partner to share a movie, a podcast, or music without relying on the subpar earbuds most airlines provide.
-
-Between the noise of airport terminals and snoring seat companions, traveling can be loud. Loop’s reusable Quiet 2 deliver 24 decibels of noise reduction, so you can snooze even when the person next to you is watching a movie at full volume. They’re made from a light, flexible silicone and come with four ear tip sizes, including an extra-small option.
-
-The allure of Ugreen’s 65W Nexode charger is simple: It features a built-in retractable USB-C cable, so you don’t need an extra accessory to charge your gadgets. The cable extends to over 2 feet and securely locks at any length. It also features additional USB-C and USB-A ports, allowing you to charge three devices simultaneously.
-
-With the film adaptation of Project Hail Mary just around the corner, now’s a great time to catch up on the book from The Martian author Andy Weir. The space odyssey chronicles one man’s mission to save the Earth; however, in doing so, it also explores the nature of sacrifice, friendship, and particle physics. Lots and lots of particle physics.
-
-The MX Anywhere 3S is a compact, do-everything mouse that travels well. It offers 8K DPI tracking, so movements cover big distances, and it works on glass. The MagSpeed wheel can rip through long docs or switch to precise ratchets. It can pair with up to three devices over Bluetooth, works with both macOS and Windows, and offers up to 70 days of battery life.
-
-This single-use camera from Kodak comes preloaded with 27 exposures of Tri-X 400, a gorgeous, grainy black-and-white film. It sports a 30mm f/10 plastic lens that churns out decently sharp images, plus a built-in flash that you can turn on and off via a button on the front. Like most single-use cameras, this one has a lens with a fixed focus range (about 3 feet to infinity) and shutter speed of 1/125 second.
-
-Good, screen-free entertainment can be hard to come by for kids — which is where the latest Yoto Mini comes in. The travel-friendly audio gadget features a clock, an alarm, white noise, and a night light; however, its real selling point is that you can use it to play music and tell stories via a robust collection of more than 1,000 cards.
-
-Who needs magnets when you have suction cups? Octobuddy’s cheap silicone mount works with most phones to provide hands-free flexibility whenever necessary. It features 24 single-sided cups, which allow you to stick your phone to a mirror, window, or any other surface you think will provide that perfect TikTok angle.
-
-The Lego Animal Crossing Stargazing with Celeste set lets fans bring Animal Crossing into the real world. With just 78 pieces, you can build a peaceful outdoor scene featuring Celeste, the astronomy-loving owl. It also connects to other Animal Crossing playsets, if your giftee wants to expand on it.
-
-This past year might not have been as life-shattering for most as 2020, but we’d argue life doesn’t have to be pure chaos for a stress ball to come in handy. The NeeDoh Groovy Glob, like all of Schylling’s colorful dough-filled shapes, makes for an inexpensive release that can be squeezed, squashed, and pulled to your heart’s content.
-
-Bluetooth earbuds are all the rage, but you’d be surprised how often a wired pair comes in handy. Apple’s EarPods have a surprisingly good microphone, never need to be charged, and should work with all your USB-C devices. An inline controller on the earbuds’ cable lets you change your volume and pause or skip tracks.
-
-Glocusent’s Bookmark Style Reading Light is the perfect gift for those who burn the midnight oil reading. The clip-on USB light offers a lightweight design and multiple brightness levels, providing a soft, warm glow that’s dim enough that it won’t disturb anyone else trying to get some shut-eye nearby.
-
-You’ve heard of procedurally generated video games, but how about procedurally generated paper dungeon crawlers? Each 60-page Dungeon Notebook is completely unique and requires nothing other than a six-sided die and a pencil, which give you the means to navigate a variety of floors filled with coins, four-legged baddies, and hearts.
-
-Holiday meals can leave you with a full belly and a foul-smelling fridge, which is where the Fun Guy comes in. The playful odor absorber can add a whimsical touch to your kitchen while serving a practical need. Just pop the mushroom top and load the smiley, spore-tacular container with baking soda to keep unwanted odors at bay.
-
-Sucker Punch’s follow-up to Ghost of Tsushima is everything you could want in a sequel. The open-world revenge epic brims with fluid combat and a host of welcome narrative twists, all set against the gorgeous backdrop of Japan’s Edo period. It’s precisely the type of game photo modes were made for, even if you never use them.
-
-Part wall wart, part magnetic wireless charger, Twelve South’s StandBy-ready PowerBug is about as unique as chargers come. The simple contraption can top off both MagSafe and Qi2-compatible devices — including the latest Google Pixel models — while simultaneously supplying 35W charging speeds to a second gadget via USB-C.
-
-A swivelable spork might not be what your giftee had in mind for the next addition to their keychain, but hear us out: they’ll no longer have to ask for disposable cutlery, and they’ll never be without a dignified way to munch on the go. It’s also, you know, good for the environment.
-
-Idlewild’s slim ballpoint pens look as good as they write. Each features a scratch-proof barrel, black ink, and a colorful, two-tone design, which makes them a lively piece of desk decor and the perfect instrument for jotting down thoughts in your favorite notebook. See? Who needs ChatGPT, anyway?
-
-Everybody forgets to bring their charging cable with them from time to time, but it’s a lot harder to do with Nomad’s ChargeKey. The 6-inch zinc cable comes attached to a loop, which is easy to affix to the same ring as your keys. It even supports up to 240W of power and 10Gbps data transfer speeds, despite its short stature.
-
-Scissors are overrated. Slice’s retractable box cutter has been a mainstay in our gift guides for years, primarily because the finger-friendly ceramic blade is great for tearing through packing tape and cutting plastic wrapping. The comfy tool also features a sturdy, reinforced nylon handle and a hooked design that makes it easy to stow when not in use.
-
-Keychains make for a great gift, even if we do live in an age when keys themselves are becoming a bit of a novelty. Veraloop’s 7-inch Colorblock is a sturdy two-tone option made from deadstock and polyester, one that easily attaches to your purse, pouch, or other bags via the included carabiner.
-
-Do you ever wish you could turn on your coffee maker or hit the light switch without getting up? The SwitchBot Bot lets you do that. All you need to do is stick the inexpensive contraption on a standard button or rocker switch, which will allow you to control or schedule your pet feeder, garage door, and a wide range of other devices from your smartphone.
-
-Anker’s compact Prime Power Bank is a wall charger that doubles as a portable battery, delivering a total output of up to 65W through its two USB-C ports. At home, you can leave it plugged in like a standard wall charger. Hit the road, though, and the 9,600mAh battery can simultaneously power your phone and laptop or other gadgets.
-
-The Fanttik X9 Pro can inflate a car tire in under a minute, making routine maintenance fast and easy. There are four one-click presets for cars, motorcycles, bikes, and balls, along with a manual mode that reaches a maximum pressure of 150 PSI. A flexible hose makes it easy to reach into tight spaces, and the battery lasts for up to 23 minutes without shutting off.
-
-Metroid Prime 4 is still a first-person adventure game like prior entries in the series, but this time around, bounty hunter Samus Aran is armed with a motorcycle and a slate of psychic powers. Not all of the new gameplay elements work, but Beyond is a fitting follow-up to what came before, with a lore-heavy story, great combat, and plenty of eerie exploration.
-
-Psh. Who needs an onslaught of push notifications and heart rate monitoring, anyway? Casio’s retro, Y2K-styled WS-B1000 pairs with your phone via Bluetooth and lets you track steps, set timers, and perform only the most basic wristwatch functions imaginable. Nothing more, nothing less.
-
-This 8-in-1 USB-C hub delivers plenty of connectivity, including ethernet, a 4K / 60Hz-capable HDMI port, microSD / SD card readers, USB-C, and USB-A. It can also power your laptop with up to 85W of power.
-
-The Wuben G5 is a rechargeable flashlight about the size of a Zippo lighter, which makes it easy to slip into your pocket. The main light rotates 180 degrees and delivers up to 400 lumens, which you can easily adjust with a scroll wheel. The battery can last up to 65 hours, and a second multicolor LED can cycle through the entire spectrum.
-
-Lego’s Happy Plants can add a little burst of joy to your desk or bookshelf. The set features two playful builds — specifically a baby dracaena and a baby pilea — which fit neatly into a pair of bright, smiley pots. They’re easy to assemble and fun to fiddle with at just 217 pieces, and it’s impossible to be in a bad mood when you look at them considering their adorable faces.
-
-While the Nintendo Switch 2 comes with a respectable 256GB of internal storage, Samsung’s P9 microSD Express card provides double the capacity for your digital library. It offers sequential read speeds of up to 800 MB/s, promising quick launch and load times. It’s also compatible with a wide range of gadgets, including cameras, tablets, and drones with a microSD USH-I slot.
-
-Whether you’re indoors or outdoors, you’ve got to keep your hands warm. Warmth keeps your digits limber, and these rechargeable hand warmers are a great asset, lasting up to 20 hours per charge and going up to 130 degrees Fahrenheit.
-
-Soldering can be intimidating for beginners, but iFixit’s FixHub smart soldering iron makes it simple. It quickly heats up fast via USB-C, and packs safety features like a heat-resistant magnetic storage cap, an LED warning light, and motion sensors to automatically shut off if it falls from your hand. You can also adjust the iron’s temperature settings via your laptop or the Android app.
-
-Don’t get tripped up by the “poetry” part — the Magnetic Poetry Kit is really just about having fun with words. The Original Edition comes with more than 300 magnetic tiles to mix and match, allowing you to cover your fridge with random thoughts, inside jokes, and other carefully chosen creations.
-
-With a sharp rotating blade, Worx’s electric scissors make light work of tougher materials, including quarter-inch plastic, fabric, leather, and cardboard. A safety switch ensures it doesn’t unintentionally turn on, too, while a blade guard can help prevent an unwanted trip to the emergency room.
-
-It’s still hard believe the Amazfit Active 2 retails for less than $100. The humble smartwatch includes everything from offline navigation and voice commands to a strength training mode that can auto-detect sets, reps, and rest periods. It also features a vivid OLED display and a super stylish watchface — which isn’t something often associated with affordable fitness trackers.
-
-If you don’t like the idea of using a hotel towel, then Matador’s Ultralight Travel Towel deserves a spot in your bag. The large version is roughly the size of a standard towel, yet it can pack down into a small mesh bag. It’s made from a soft nanofiber material that can absorb double its weight, and it wrings out easily, so it dries fast. The towel is also machine washable, so you can easily get it ready for your next journey.
-
-You’ll probably need a good pick-me-up while traveling, but you don’t have to settle for bad gas station coffee. First Ascent’s Instant Coffee gives you a solid caffeine boost and a flavor that holds up well, with light, medium, and dark roasts. You just pour it in hot water, stir, and it’s done. Don’t you just love the smell of fresh coffee?
-
-If you’re on a DIY kick, iFixit’s Pro Tech Go Toolkit deserves a spot in your bag. The portable driver kit includes a variety of specialty bits needed to open devices ranging from phones to laptops and gaming consoles. It also comes with tweezers, spudgers, a small suction cup, and opening picks to pry open your devices. Good luck on your repairs!
-
-Percival Everett’s first work of fiction earned him the Pulitzer this year — and it’s no surprise. The bold 2024 tale serves as a reworking of Huck Finn as told by the enslaved man who travels with him down the Mississippi, and although it’s dead serious at times due to the subject matter, it’s also inventive, poetic, and surprisingly funny.
-
-8BitDo’s Micro is a pocket-friendly, 16-button wireless game controller compatible with iOS, Android, and the Nintendo Switch. It can make playing mobile games easier than tapping a touchscreen, and it’s perfect for playing NES, SNES, Game Boy, and Game Boy Advance titles on the Nintendo Switch.
-
-Lego delivered a gigantic dose of nostalgia with a near-perfect replica of Nintendo’s 1989 handheld. The 421-piece set captures the Game Boy’s many buttons, grilles, and curves remarkably well, while the lenticular screen inserts give the illusion of a working unit. It even comes with several brick-ified cartridges you insert into a slot in the back.
-
-While most people are content to store their files in the cloud, some content is too precious not to save on personal digital devices. Sandisk’s multi-plug flash drive makes it easy to move data between phones, tablets, and computers.
-
-Two things most people need at some point are a flashlight and a Bluetooth tracker. So why not gift both devices at once? The FlashFinder is a rechargeable, 300-lumen light outfitted with a magnetic mount you can track via Apple’s Find My network, so you never have to worry about trying to find the flashlight — or your keys — again.
-
-If you own an Android phone, the Google Pixel Buds 2A are a solid, relatively cheap pair of wireless earbuds. They offer crisp sound quality, a comfy design, and solid ANC, which is great given their budget-friendly price tag. They even offer built-in support for Gemini and, unlike the entry-level AirPods, a purple option!
-
-Pocket-friendly power banks that come with built-in USB-C cables are beloved, and it’s easy to see why. Anker’s 10,000mAh Zolo with 30W charging speeds is just big enough, and fast enough, to quickly recharge most small gadgets.
-
-Anker’s 67W Prime charger features two USB-C ports and one USB-A port, along with retractable prongs, rendering it one of our go-to travel companions. It’s a gadget that lets you easily charge a MacBook Air and a Nintendo Switch 2 with a port to spare.
-
-If you attach the Kershaw Recap to your keychain, you’ll always be ready to tackle tiny repairs. The multitool features a flathead screwdriver tip, a bottle opener, and can even double as a pry bar. Plus, it’s made from a durable steel, so it can handle everyday wear and tear, whether you’re tightening the occasional screw or cracking a cold one.
-
-Uno Go is a more portable version of the classic card game. Whether you’re on a plane, at the park, or waiting in line, you can get in a few quick rounds before having to tuck it away in your pocket. It’s an easy way to combat boredom — and a heck of a lot better than staring at a phone or tablet screen.
-
-Amazon’s Echo Spot is a smart alarm clock that can also show you the weather, play music, and set timers. It features a bright, 2.83-inch touchscreen, but you’ll primarily interact with it using your voice, which lets you carry out all sorts of Alexa-based commands.
-
-A basic timer may seem like a thoughtless gift, but there are many tasks we procrastinate on every day that could be more easily managed if we dedicated a little bit of time to them. A visual Pomodoro timer, such as the colorful MOD (Home Edition), is key to helping break tasks into manageable, bite-sized chunks.
-
-It’s not the timeless look that makes Distil’s Folly Sunglasses attractive — though they do look quite good. The real appeal lies in their hidden neodymium magnets, which allow you to clip the polarized shades to your shirt or bag without having to worry about them falling off. That alone is worth the $69 price tag.
-
-A level is an essential tool for DIYers, and none is more foolproof than Franklin’s 12-inch Light Level. The magnetic device turns red when it’s crooked and green when it’s level, so you don’t have to rely solely on a bubble vial (though it includes two built-in bubble vials as well). It runs on a single AA battery and can be seen from almost every angle, regardless of how bright your environment is.
-
-Nomad’s leather MagSafe wallet snaps to the back of your iPhone and has enough space to hold up to four cards. More importantly, it offers integration with Apple’s vast Find My network, allowing you to track its location. Its battery can last up to five months, too, and it can be topped off on a Qi wireless charger.
-
-Anker’s Laptop Power Bank is a lifesaver for anyone on the go. It boasts a 25,000mAh capacity and a total output of up to 165W, allowing you to charge a powerful MacBook Pro to 50 percent in less than 30 minutes. The portable battery also features two built-in USB-C cables, one of which is retractable, so you needn’t worry about tossing yet another cable in your bag.
-
-Stanley’s classic eight-ounce flask is great for tailgating, camping, and summer BBQs. It features a pocket-friendly design, a wide mouth for easy refills, and a hinge-connected cap that won’t get dropped or lost. The flask also features a durable stainless steel design that’s leakproof, ensuring your libation of choice doesn’t spill.
-
-If your TV struggles to run streaming apps well (or at all), consider Onn’s 4K Streaming Device. It supports Dolby Vision HDR and all your favorite apps via the Google TV interface, from Netflix and Disney Plus to YouTube. Recommendations are pulled from across services, and you can even use Google Assistant to search for shows and movies using your voice instead of the remote.
-
-Whether you’re into birding, hiking, or just getting a closer look at far-off signs and locales, you’ll look cool whipping out the ol’ Zoom Tube. This monocular telescope comes in some truly fabulous color schemes, and even if it can’t rival a legitimate pair of binos, it still affords you clear 8x magnification and a terrific field of view.
-
-GE’s 800-lumen Wi-Fi bulbs serve as a great entry point for making your home a little smarter. The color-changing LED bulbs work with Alexa and Google Assistant without a hub, and they support Matter for interoperability with Apple Home, making them a great choice if you’re unsure which smart home platform your giftee uses.
-
-JLab’s ultra-portable speaker can pump out the holiday tunes wherever you celebrate. It offers up to eight hours of continuous playtime, and it can pair with a second Pop Party to create stereo sound. You can also customize the speaker’s RGB lighting, while its IP55 rating means it can endure an accidental spill.
-
-Even the most advanced smartphone cameras struggle to stabilize shaky video. However, with the DJI Osmo Mobile 7, you can attach your phone and record pro-level footage that’s silky smooth, whether you’re vlogging or capturing holiday shenanigans. The handy gimbal features easy-to-use controls, an ergonomic handle, and a built-in tripod, so you can place it on a flat surface if necessary.
-
-Finding the right video game to gift can be a challenge, but Paladone’s cartridge-shaped coasters are a fun alternative for fans of the 8-bit era. Each coaster features cover art from a popular game — whether it be Super Mario Bros., The Legend of Zelda, or Metroid — and can be hand-washed should a beverage spill on it.
-
-Tough hikes require tough socks — or they should, anyway. Luckily, Darn Tough’s merino micro-crew socks offer a well-balanced blend of comfort, cushioning, and durability. In fact, they’re so durable the company continues to pair them with a lifetime guarantee should anything happen to them. No receipt necessary.
-
-Leatherman’s compact Free T4 is a nice entry into the world of multitools, and the one I carry every day. Despite its smaller size, it features 12 tools, including a 420HC knife and spring-action scissors. My favorite is the combination package opener and awl, which is great for opening boxes and plastic blister packaging. Plus, it comes with Leatherman’s famed 25-year warranty.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-26')">
-            <div class="source">The Verge</div>
-            <div class="title">ChatGPT will now let you pick how nice it is</div>
-            <div class="meta">2025-12-19</div>
-        </div>
-        
-        <div id="content-26" style="display:none;">
-            <h2>ChatGPT will now let you pick how nice it is</h2>
-            <p><strong>The Verge | 2025-12-19</strong></p>
-            <a class="original-link" href="https://www.theverge.com/news/848435/openai-chatgpt-characteristics-update-warmth-enthusiasm">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">OpenAI is making it easier to edit emails with ChatGPT, too.
-
-OpenAI is making it easier to edit emails with ChatGPT, too.
-
-OpenAI will now give you the ability to dial up — or down — ChatGPT’s warmth and enthusiasm. An update rolling out on Friday gives you the option to choose whether you want “more” or “less” of these personality traits, or stick with the default.
-
-There are also options to tweak how often ChatGPT uses emoji, headers, and lists. You can find these settings by tapping the menu at the top left corner of the ChatGPT app, selecting your profile, heading to Personalization, and choosing Add Characteristics. Alongside these options, you can pick a “personality” for the AI chatbot, including whether it’s quirky, professional, friendly, cynical, and more.
-
-Another update changes the way you write emails with ChatGPT, as you can now update and format text directly inside the chat. You can also highlight chunks of text and ask ChatGPT to make specific changes to it, rather than attempting to direct ChatGPT to that section in a separate prompt.
 
 A free daily digest of the news that matters most.</div>
         </div>
@@ -1632,11 +1517,11 @@ TNW’s brand and editorial standards will be maintained, while its events and d
 
 The FT will continue to own and operate TNW Spaces, Amsterdam’s dynamic tech hub, offering private offices and coworking spaces that support a thriving community of startups, scale-ups, and innovators.
 
+Alexandru Stan, Founder and CEO of Tekpon, said:
+
 TNW City Coworking space - Where your best work happens
 
 A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
-
-Alexandru Stan, Founder and CEO of Tekpon, said:
 
 TNW is one of Europe’s most respected technology brands. Its legacy, its community, and its influence have shaped the European tech scene for nearly twenty years. This acquisition accelerates our mission to connect the global SaaS and AI ecosystem and supports Europe’s position in the next decade of innovation.
 
