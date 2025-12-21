@@ -881,7 +881,7 @@ See the full advent calendar here, where a new image will be revealed each day u
             <p><strong>Slashdot | 2025-12-21</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/25/12/21/020235/bell-labs-unix-tape-from-1974-successfully-dumped-to-a-tarball?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 Fire up simh (or your real PDP-11) and step back in time.
 
@@ -898,6 +898,8 @@ i am curious of the condition of the tape. was this a situation where we got one
 there&#39;s a video in the summary, you could try to guess the condition from it: https://discuss.systems/@ricci... [discuss.systems]
 
 Since we&#39;re stepping back in time, I’m going there. Imagine a Beowulf cluster of tape readers! Ignoring if a cluster of tape readers even makes sense.
+
+It&#39;s great that they managed to restore this. Aside from the purely historic interest, early Unix had some fascinating tools - translators for B and SNOBOL and other languages, a text to speech converter, the m6 macro processor, the tmg compiler generator, and the early versions of roff/nroff/troff are very interesting too.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
@@ -949,7 +951,9 @@ Here is what keeps happening to me. I keep falling into the same trap.
 
 I throw various simple things at the AI, sort of a Google replacement, and it gives me what I want. I&#39;ll have several successes. And then it will lead me down the wrong rabbit hole, misdirect me, refuse to break out of it&#39;s mistaken path, and waste way way way too much of my time chasing my tail.
 
-Eventually, I&#39;ll arrive at my destination and I&#39;ll ask it why the fuck it took such a circuitous route full of errors and straight up lies to get
+Eventually, I&#39;ll arrive at my destination and I&#39;ll ask it why the fuck it took such a circuitous route full of errors and straight up lies to get to the simple and correct answer. It&#39;ll respond saying that it&#39;s complicated and that it doesn&#39;t have all the answers, sorry.
+
+Tomorrow, I&#39;ll start with it all over again like a crack addict.
 
 Yep, this is when the context is full. Nuke the chat and start again.
 
@@ -1064,6 +1068,10 @@ Been using the Claude CLI the last few weeks and it has definitely been a great 
 
 I&#39;ve had it port some code from OpenGL to QRhi (similar t
 
+When using AI to quickly mock up small chunks of code I find it an accelerator.  And I do mean small.
+
+But when code scales up simple systems or API&#39;s it falls apart pretty quickly.  As the scale of the system grows the requirements grow even faster.  GDPR, PII, FIRB, NIST, all start to pile up on as code bases grow.  AI lacks the understand of the &quot;business&quot; need.  So you get this blob of code out and then you have to spend large amounts of time understanding it so you can re-factor it because the AI engine
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
 &quot;A mind is a terrible thing to have leaking out your ears.&quot;
@@ -1081,9 +1089,7 @@ There may be more comments in this discussion. Without JavaScript enabled, you m
             <p><strong>Slashdot | 2025-12-20</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/25/12/20/2059205/parrot-os-switches-to-kde-plasma-desktop?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
-
-Perhaps waylandx [github.com] could help?  Might not work for a whole desktop, though.
+            <div id="article-text">Perhaps waylandx [github.com] could help?  Might not work for a whole desktop, though.
 
 Sadly shade doesn&#39;t work current with kwin on Wayland.  It&#39;s very annoying. Also focus follows mouse is quirky on Wayland.  Other than that KDE on Wayland is pretty fantastic.
 
@@ -1338,11 +1344,53 @@ Dahlia Lithwick writes about the courts and the law for Slate and hosts the podc
         
         <div class="card" onclick="openModal('content-21')">
             <div class="source">The Register</div>
+            <div class="title">NIST tried to pull the pin on NTP servers after blackout caused atomic clock drift</div>
+            <div class="meta">2025-12-21</div>
+        </div>
+        
+        <div id="content-21" style="display:none;">
+            <h2>NIST tried to pull the pin on NTP servers after blackout caused atomic clock drift</h2>
+            <p><strong>The Register | 2025-12-21</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/21/nist_ntp_outage_warning/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">A staffer at the USA’s National Institute of Standards and Technology (NIST) tried to disable backup generators powering some of its Network Time Protocol infrastructure, after a power outage around Boulder, Colorado, led to errors.
+
+As explained in a mailing list post by Jeffrey Sherman, a NIST supervisory physicist who maintains the institute’s atomic clocks, “The atomic ensemble time scale at our Boulder campus has failed due to a prolonged utility power outage.”
+
+Sherman, whose LinkedIn bio proclaims he is “One of the few federal employee actually paid to watch the clocks all day,” says one impact of the incident “is that the Boulder Internet Time Services no longer have an accurate time reference.”
+
+That’s bad because one of the things NIST uses its atomic clocks for is to provide a Network Time Protocol service, the authoritative source of timing information that the computing world relies on so that diverse systems can synchronize events. If NTP isn’t working, outcomes can include difficulties authenticating between systems, meaning applications can become unstable.
+
+At this point, readers might wonder why NIST can’t just turn off the inaccurate service. Sherman said a backup generator kicked in and kept the servers running.
+
+“I will attempt to disable them [the generators] to avoid disseminating incorrect time,” he wrote.
+
+But the storms that caused the outage were so severe, only emergency services personnel are allowed to visit the site.
+
+His post says he has seen “strong evidence one of the crucial generators has failed. In the downstream path is the primary signal distribution chain, including to the Boulder Internet Time Service.”
+
+“Another campus building houses additional clocks backed up by a different power generator; if these survive it will allow us to re-align the primary time scale when site stability returns without making use of external clocks or reference signals,” he added.
+
+Xcel Energy, the local utility, blamed the outage on strong winds and as of Saturday night local time (7:00PM MT Dec 20, 2:00AM UTC Dec 21) advised most customers would have power again within three hours.
+
+However at the time of writing – 00:15 MT Dec 21 – NIST’s status page states the Boulder site is experiencing “Facility outages” and a “< 4.8us clock error.” That’s about four microseconds.
+
+NIST told CBS News it warned users such as telcos and aerospace organizations that weather around Boulder could cause problems, and advised them to tap the org’s other sources of time information.
+
+That’s sound advice as best practice for using NTP is to specify multiple servers, and failover from troubled sources of time info to accurate ones. This incident therefore shouldn’t trouble the prudent, but may leave some NTP feed users unawares if they rely solely on the Boulder facility’s time feeds. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-22')">
+            <div class="source">The Register</div>
             <div class="title">Tired of sky-high memory prices? Buckle up, we're in this for the long haul</div>
             <div class="meta">2025-12-20</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Tired of sky-high memory prices? Buckle up, we're in this for the long haul</h2>
             <p><strong>The Register | 2025-12-20</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/20/memory_prices_dram/">Visit Original Website</a>
@@ -1404,13 +1452,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Register</div>
             <div class="title">Infinite Machine e-scooter is like the offspring of a Vespa and a Cybertruck</div>
             <div class="meta">2025-12-19</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>Infinite Machine e-scooter is like the offspring of a Vespa and a Cybertruck</h2>
             <p><strong>The Register | 2025-12-19</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/19/infinite_machine_electric_scooter/">Visit Original Website</a>
@@ -1464,62 +1512,6 @@ Cohen said he expects the target market in the US will be those who appreciate t
 Cohen expects the Olto will have broader appeal.
 
 &quot;For Olto, I think it&#39;s for everyone,&quot; he said &quot;I think it&#39;s the mom in Brooklyn dropping her kids to school. I think it&#39;s the person that is single and wants to commute to work. I think it&#39;s the SoCal kid that&#39;s going to school. This is an accessible vehicle. It&#39;s very easy to ride, very approachable, and affordable.&quot; ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Register</div>
-            <div class="title">ATM jackpotting gang accused of unleashing Ploutus malware across US</div>
-            <div class="meta">2025-12-19</div>
-        </div>
-        
-        <div id="content-23" style="display:none;">
-            <h2>ATM jackpotting gang accused of unleashing Ploutus malware across US</h2>
-            <p><strong>The Register | 2025-12-19</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2025/12/19/tren_de_aragua_atm/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">A Venezuelan gang described by US officials as &quot;a ruthless terrorist organization&quot; faces charges over alleged deployment of malware on ATMs across the country, illegally siphoning millions of dollars.
-
-Two indictments were returned in Nebraska, collectively charging 54 alleged members of the Tren de Aragua (TdA) gang in connection with a spate of ATM jackpotting attacks.
-
-The gang allegedly deployed a variant of Ploutus malware on ATMs across the US. Court documents assert that TdA members would travel in groups and compromise ATMs managed by certain banks and credit unions.
-
-The alleged gang members would inspect each ATM for external security features before opening the machine&#39;s door, checking for alarms being triggered or law enforcement rushing to the scene.
-
-Once they confirmed a machine could be safely tampered with, the suspects would either remove the ATM&#39;s hard drive and install the Ploutus variant before reinstalling it, or in some cases simply replace the hard drive with one that already had Ploutus installed. Other instances saw the malware deployed using external thumb drives.
-
-Thought to be first observed in Mexico back in 2013, Ploutus malware targets the cash-dispensing module of ATMs, allowing attackers to issue commands that force the machine to spurt out bills.
-
-According to data shared by the Justice Department, ATM jackpotting attacks have seen more than $40 million stolen via physical device tampering and malware deployment since 2020. It did not share specific figures about how much of that could be attributed to TdA.
-
-&quot;Tren de Aragua is not just a criminal gang; they are a ruthless terrorist organization that preys on communities, spreads fear, and bankrolls violence across borders,&quot; said Mark Zito, special agent in charge at HSI Kansas City.
-
-&quot;HSI and our law enforcement partners will track you down, break up your networks, and ensure you never find safe harbor in the United States. Our mission is to protect American families from predators who think they can operate with impunity. We will not tolerate foreign terrorists stealing from our citizens and threatening our homeland. Our communities are safer today because of the relentless work of this team, and we are just getting started.&quot;
-
-Across the various indictments against alleged TdA members in Nebraska over the past year are additional charges related to assault, money laundering, and sex trafficking of minors.
-
-The announcement comes as the US announces a broader crackdown on the Venezuelan gang, with a slew of indictments across various states charging hundreds of alleged members since January.
-
-The DOJ in Washington also unsealed indictments on Thursday related to other violent crimes committed by more than 70 alleged members, including murder, kidnapping, and drug trafficking.
-
-Two of the group&#39;s suspected leaders were indicted in Colorado on various charges, including RICO offenses, while the alleged mastermind and co-leader of TdA, Hector Rusthenford Guerrero Flores, was charged in New York.
-
-Flores remains at large, although there is a $5 million bounty on his head. The co-leader of TdA escaped from Venezuela&#39;s Tocorón prison in 2012, allegedly with the help of Jimena Romina Araya Navarro – another TdA leader – before being sent back in 2013.
-
-Tocorón was notoriously lawless for years, but during the early 2000s, TdA began to assemble, and by the following decade, it assumed total control of the prison, infamously building amenities such as the Tokio nightclub, a zoo, a swimming pool, and more.
-
-In 2023, Venezuelan authorities regained control of the facility in an operation that saw 11,000 officers storm the grounds, but Flores and his associates reportedly escaped days before.
-
-In other states, New Mexico charged 11 alleged members over violent and armed crimes, and in Texas, more suspected high-ranking members and those in leadership roles were charged with cocaine trafficking, murder, and extortion.
-
-The renewed focus on tackling TdA began in February when Attorney General Pamela Bondi expanded the remit of Joint Task Force Vulcan. Created in 2019, it was originally tasked with bringing down MS-13 gang members, but is now also responsible for handling TdA.
-
-&quot;Immediately upon taking office, I directed the Department of Justice to fiercely pursue the total elimination of cartels and transnational criminal organizations,&quot; said Bondi.
-
-&quot;This latest multi-state series of charges underscores the Trump Administration&#39;s unwavering commitment to restoring public safety, dismantling violent trafficking networks, and ridding our country of Tren de Aragua terrorists.&quot; ®
 
 The Register   Biting the hand that feeds IT
 
