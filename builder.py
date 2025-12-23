@@ -21,10 +21,11 @@ FEED_URLS = [
     "https://www.theverge.com/rss/index.xml",
     "https://www.technologyreview.com/topnews.rss",
     "https://thenextweb.com/feed/",
-    "https://www.theinformation.com/feed"
+    "https://www.theinformation.com/feed",
+    "https://news.google.com/rss/search?q=site%3Areuters.com&hl=en-US&gl=US&ceid=US%3Aen"
 ]
 # Limit articles to keep things fast
-ARTICLES_PER_FEED = 3
+ARTICLES_PER_FEED = 6
 # ---------------------
 
 def scrape_article_text(url):
