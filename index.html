@@ -1181,9 +1181,7 @@ How did you do? Come back tomorrow for more questions, or click here for last we
             <p><strong>Slashdot | 2025-12-23</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/25/12/23/0050202/garmin-emergency-autoland-has-first-save?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-Go to the VASAviation link on YouTube instead, it plays the recording: https://www.youtube.com/watch?... [youtube.com]
+            <div id="article-text">Go to the VASAviation link on YouTube instead, it plays the recording: https://www.youtube.com/watch?... [youtube.com]
 
 Its voice sounds like automated robotic voices from 30 years ago, which in itself is actually good .. EXCEPT it didn&#39;t properly pause between words. They need to update it so it pauses correctly between words. Robotic voice is useful though.
 
@@ -1368,6 +1366,10 @@ There are two reasons why the 1980s thought process of &quot;change your passwor
 2} If a password is compromised, it should be changed immediately, not in 90 days, and if it&#39;s not compromised it shouldn&#39;t be changed, because of #1. 
 Rewriting the entire codebase when the vast, vast, vast majority of it has an insane number of people-hours testing it and vetting it is ins
 
+NIST SP 800-63 has formalized this. Specifically, look up Section 3.1.1.2 in SP 800-63B-4, released just this year. Minimum length 15, max length at least 64, but no other requirements, including complexity or regular rotation. Unicode is supposed to be accepted, normalized against a standard process (that one I don&#39;t remember, but it&#39;s documented), with one code point counting as one character. Filtering for known bad passwords or patterns is strongly encouraged.
+
+I pushed through an implementation at our co
+
 Aim for the stars, be happy with the moom, but don&#39;t be surprised if you get lost in space.
 
 Okay, I added that last bit, but it seems so appropriate here.
@@ -1416,6 +1418,8 @@ One of their former Microsofties, Joel Spolsky, warned about this... https://www
 
 Microsoft will do the rewrite, and then suddenly decide for  reasons, to go back to the old source code...And Rust gives the promise of memory security, efficiency, but there was another language that had that facade, Java. Professional managers and the hype o
 
+I love it when Microsoft shoots itself in the foot.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
 After a number of decimal places, nobody gives a damn.</div>
@@ -1432,9 +1436,7 @@ After a number of decimal places, nobody gives a damn.</div>
             <p><strong>Slashdot | 2025-12-23</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/25/12/22/226229/alphabet-acquires-data-center-and-energy-infrastructure-company-intersect-for-475-billion?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-Privatize the profits, Socialize the losses.
+            <div id="article-text">Privatize the profits, Socialize the losses.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
@@ -1452,9 +1454,7 @@ After a number of decimal places, nobody gives a damn.</div>
             <p><strong>Slashdot | 2025-12-22</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/25/12/22/2158219/cyberattack-disrupts-frances-postal-service-banking-during-christmas-rush?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
-
-The disruption came a week after France&#39;s government was targeted by a cyberattack that targeted the Interior Ministry, in charge of national security.I summarise this second case for you: 22 y.o. Melvin L. from Saint-Sulpice-Laurière (800 inhabitants) who lived with his mother after interrupting his secondary studies during the COVID pandemic. Was previously judged from swatting, SIM swapping (in which several victims lost some thousands of euros). Melvin managed to get passwords to access &quot;Pablo&quot; and &quot;Icasso&quot;, two portals used by police services. Using this access, he obtained codes that ultimately granted him access to police databases, where he c
+            <div id="article-text">The disruption came a week after France&#39;s government was targeted by a cyberattack that targeted the Interior Ministry, in charge of national security.I summarise this second case for you: 22 y.o. Melvin L. from Saint-Sulpice-Laurière (800 inhabitants) who lived with his mother after interrupting his secondary studies during the COVID pandemic. Was previously judged from swatting, SIM swapping (in which several victims lost some thousands of euros). Melvin managed to get passwords to access &quot;Pablo&quot; and &quot;Icasso&quot;, two portals used by police services. Using this access, he obtained codes that ultimately granted him access to police databases, where he c
 
 The disruption came a week after France&#39;s government was targeted by a cyberattack that targeted the Interior Ministry, in charge of national security.
 
@@ -2902,9 +2902,9 @@ We already have a dedicated team at tekpon operating the platform, events, and c
 
 TNW is already a global media platform with millions of readers. We’re not starting over. We are building forward.
 
-The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
-
 Technology is entering a decisive stage: AI is reshaping workflows, distribution is shifting, capital is becoming more selective, and founders are expected to demonstrate value rather than potential.
+
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
 
 The world doesn’t need more noise.
 It needs clarity, execution, and access to trustworthy knowledge and people.
@@ -2965,6 +2965,8 @@ Every December, roadmaps get locked, budgets get approved, and board decks are p
 For a while, that was survivable. Experience, pattern recognition, and cheap capital covered the gaps. You could hire around bottlenecks, overstaff critical teams, or quietly pivot away from the messiest parts of the system. Then AI showed up and became the perfect distraction. Pilots, PoCs, Copilot seats, and “AI initiatives” created visible activity and bought time.
 
 In 2026, that grace period ends. Boards and CFOs are shifting from “show me you are experimenting” to “show me measurable impact, this year.” Not because they stopped believing in AI, but because the market no longer rewards vague promises. Every AI dollar will need a traceable path to productivity, quality, or customer value.
+
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
 
 If you run engineering, you probably recognise this scene. You present a slide with AI highlights. Adoption is up. Developers say they like the tools. You share a few anecdotes about faster coding and smoother reviews. Then the CFO asks a simple question: “Exactly how is this budget changing output and outcomes?”
 
@@ -3047,6 +3049,8 @@ Yet, just a few weeks ago, a twist arrived: the tech platform Tekpon acquired 10
 While, myself, trying to read people’s opinions on this topic, I read this comment in one article, from one former TNW editor-in-chief that said: “The Next Web shaped my career, my life… it’s very sad to see it die”.
 
 I asked myself: Why do we always assume that just because one chapter ends, the whole story is over? Yes, taking over TNW is a heavy inheritance, especially with all eyes on us and expectations sky-high.
+
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
 
 And I’ll admit, doubts crept in: Am I too small for this? Could someone more experienced do it better? Probably. But here I am, stepping up regardless. Because this isn’t just another blog or brand; TNW is a living ecosystem, a vital community. Its story deserves to continue, and I’m determined to help write the next chapter.
 
@@ -3209,9 +3213,7 @@ Now, the startup was not successful, but we still had a nice, opulent dinner wit
 
 Obviously, I would have preferred to have made this startup a success instead, but I still regard it as a successful endeavour. I gave it a try and had a plan ready for when my experiment didn’t work out, and in the process, I built relationships that outlasted that one startup.
 
-TNW City Coworking space - Where your best work happens
-
-A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
 
 As you may have read, The Next Web, the company I founded in 2006, is nearing the end of its lifecycle. The events and media business is being wound down, and only TNW Spaces will live on. TNW Programs was sold off a while ago and will continue as well. There won’t be another TNW Conference, and soon there won’t be new articles on the site; people are losing their jobs, including me. It’s a painful process, but I guess I’m taking it well because it also feels natural and logical. When we sold TNW to the FT in 2019, we were very ambitious and optimistic, and surely I would’ve liked for the company and brand to outlive me. However, when the business struggled, I also felt very comfortable with the company ending graciously.
 
@@ -3302,6 +3304,174 @@ Get the most important tech news in your inbox each week.</div>
             <h2>Stocks, precious metals rise; yen on intervention watch - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2025-12-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQRl9ZMEhxUGQyQ1djVHgzRzl2Q0JmX3QyeGhsS2wzWnc0bGtxSTVXaGRmLVpPX1FjVlBYdlBuTVFfNG92TVBERTZtMnRXSEd2QTI0WnpSeGU4dHdCWHpEV21GNDRpdkxpcWdUdzdPbEJHcXVLZ3dmUDVFb2dwS2FPU25tOA?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-72')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">Where The Second UAP Disclosure Act Failure May Now Steer The Ark of Human History - The Debrief</div>
+            <div class="meta">2024-12-19</div>
+        </div>
+        
+        <div id="content-72" style="display:none;">
+            <h2>Where The Second UAP Disclosure Act Failure May Now Steer The Ark of Human History - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2024-12-19</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxObGVVU1lJUXZkdjM3TnJKN0hBZlB6Mml4RXIwSHRyVWZQdEl5eXN6R0M1LXhkTTZTZDhmTGtVMGJSVFU5UHpmZHhUaUFwWXBzYnh1MHRSV1JiVzk3c2NfMW5ia2JTYTY3d1dfNEVGUHA0OGZNN2xMTWg1Rm80WlJOUF94ZDQzQWZLOU5QcWFKa3Y2V0lpdjJGMHdwOTQ2SE9LcGluYTlJZ3NKZw?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-73')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">“No Longer a Futuristic Concept”: Scientists Build Real-World Magnetic Cloaking Device Capable of Shielding Complex Shapes - The Debrief</div>
+            <div class="meta">2025-12-22</div>
+        </div>
+        
+        <div id="content-73" style="display:none;">
+            <h2>“No Longer a Futuristic Concept”: Scientists Build Real-World Magnetic Cloaking Device Capable of Shielding Complex Shapes - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2025-12-22</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxQTVlmWjE0Wk9WemxzQmhCM18tVmt6Qkd1cEREazlMQUFiLUlYQkxqYUxDSmR5T2VaMFh1LXoyNnRPRmdwNE9qZndYV2NaRzBQa2Zpcjc2bnRRSWdMYWpCYzkyekx1ZURuTWdRV0o3ZXRRN3VNVllmcWluZnc4WDFUTE42TGt6RGxKTGxUVFppXzM4bVR0Y1lPQkl4U3ZvUTdGT3RzRzlEUnVtMkJQNEotdEdsanJ0MGlqM0thc1BkVldjakFIdnZVUV9QRml6VS1BTHVwNjh1cGMtTWc?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-74')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">Bermuda Mystery Surfaces with Discovery of Massive Underground Structure, Revealing a New Deep-Earth Anomaly - The Debrief</div>
+            <div class="meta">2025-12-16</div>
+        </div>
+        
+        <div id="content-74" style="display:none;">
+            <h2>Bermuda Mystery Surfaces with Discovery of Massive Underground Structure, Revealing a New Deep-Earth Anomaly - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2025-12-16</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxNdUR1Y1dQWHdmUzZBUzJVZzdEU05CVEF6emQtb1ZfYkhHdlFhSm5XNXoyWUU4d1RiNmpMaENWdUNHRGQzY2xVdmgzMVdDU2RvQkZYb3ZrUnhDdTJEcnBqYmJrN3p1MXNOSkNXdGd3QlZGWkk3QS1oVkZ6UWwtN0c2b1R5NWpSR2lqV016U1JNczYzbkkxWWtvSmZ5cXBRN2tsaklnVGV1WExzWEJpNWhYRXc5eEc0ZG5iOVRLT0x2N01wZW1NRWNwX0F6QQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-75')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">Mysterious ‘Little Foot’ Could Be an Unidentified Humanlike Species, Researchers Conclude - The Debrief</div>
+            <div class="meta">2025-12-16</div>
+        </div>
+        
+        <div id="content-75" style="display:none;">
+            <h2>Mysterious ‘Little Foot’ Could Be an Unidentified Humanlike Species, Researchers Conclude - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2025-12-16</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOT204Tkk5Nzg5eWVoWHRsZmhQUGs0a29RRl8zYi1QbnJ0WjBIWjdhWWdRaks4MUtKcGhLYjBreGFIc3BmWGdjSlNQOGNwYlA4cm03MXZEa24wYWRFaDlBM2tGVldnMXEwcFR6SXV2Q3NmcUVkMFl3Q3FxLTE1LXV3MVo5ZDd6eGJfRUViNVNmVWQ5ZU5lcVJVaHdKVWM1bkd5ZnVMVjFwWm5oeWlRakNZ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-76')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">Ancient Pottery Shows Humans Were Doing Math 3,000 Years Before Numbers Existed - The Debrief</div>
+            <div class="meta">2025-12-20</div>
+        </div>
+        
+        <div id="content-76" style="display:none;">
+            <h2>Ancient Pottery Shows Humans Were Doing Math 3,000 Years Before Numbers Existed - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2025-12-20</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPYmVKVmd6TVphcGliQlZhNzYyRDViM1oxSFhZY0xOM3BjMHVwSW5KQmxVcXBfMTBqXy0wRGh2eW5yeFg0NjNsTFFuOVktZ1UtV3dvaWx6Z0pjaEYzUk9yTzZ1T2dFbnBwVEI4NEhLeHpZLUZ0ZTZkbVFTc3VscEsxM1g4ckFFOGItQlZRU0ZVNWppWWtEaHlTUzRtdWFDcnVpOEx2Tg?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-77')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">3I/ATLAS Is Making Its Closest Approach to Earth Today—Here’s Everything You Need to Know - The Debrief</div>
+            <div class="meta">2025-12-19</div>
+        </div>
+        
+        <div id="content-77" style="display:none;">
+            <h2>3I/ATLAS Is Making Its Closest Approach to Earth Today—Here’s Everything You Need to Know - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2025-12-19</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPekVLb0JtbkhNbFBSd3JMVVVlSGZINGgzUjVwOWgxSGRDNEt6cmRtVjlPb3ZheTRHczNwYWljZVdvWkgya0xxM2Z0XzZaQ21Ndzd6YWtBUUtlVEdGUF9FbVpUeDNSMFpwMnRsOEpza24wd3ZubjNNU3RUb09kMEhNYnpNcXZxM1ppSXdWWjBqWkhXUTVvd2ZyV0RPTzNiQXptdTVpczlVSzYwM25zakY1WTBB?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-78')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">OpenAI Is Getting More Efficient at Running Its AI, Internal Financials Show - The Information</div>
+            <div class="meta">2025-12-21</div>
+        </div>
+        
+        <div id="content-78" style="display:none;">
+            <h2>OpenAI Is Getting More Efficient at Running Its AI, Internal Financials Show - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2025-12-21</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQdmI2di13dk1valhrLTJ0dE5pemNJYVNEc3h0UENkX0wyMFZidU54cUlsZm1EYmxMaTdTQWphZmI3VzBpa0hDNUYyMUFteU0xZXBScUQ0MmZZYk1DR0lxV3k2X29BRFFhLU11YkoyZ25hNGp3VTRPejdpUWV3MTlpb29XZVk0R3cweGRlWHdxemhYdTdlenZwUC14UkMtUUhteFE?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-79')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">How OpenAI’s Organizational Problems Hurt ChatGPT - The Information</div>
+            <div class="meta">2025-12-18</div>
+        </div>
+        
+        <div id="content-79" style="display:none;">
+            <h2>How OpenAI’s Organizational Problems Hurt ChatGPT - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2025-12-18</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQUEZrWnU1LUdoRDBZd1J4Q1VyUldPVE1fY3ZQQl9sQk9qT1dYSWdSQXhId0o4eWs2Qmx2VGRDVGdxNjB4NTlfLUNnUGdQLWR2elRsSWFpQ1F2NHRwRWZZVngzSTZGeVM4UjV5X3ppU01WMVlZWVQ2SlM1bFJWTTd6eUVhcnRfQXoxU3d5aQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-80')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">Inside the Balancing Act Over Google’s Compute Crunch - The Information</div>
+            <div class="meta">2025-12-19</div>
+        </div>
+        
+        <div id="content-80" style="display:none;">
+            <h2>Inside the Balancing Act Over Google’s Compute Crunch - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2025-12-19</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNX2FaSVBQcjhvekFlWFd4OFlsSEN2c3FwNEllOGFDSWV2NmdaQXExSnFoR2w4TFdjbU54Q19kamM2TnVaQ2FyMHF1UUNtenpjQWFCbnhvbzlndlFlcm9Gbm04bFp3RUQ0amxpVjExSmtQUllsek9PemRJMVdmekVHeVpWNThEaVdwMTdV?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-81')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">OpenAI’s ChatGPT Problem - The Information</div>
+            <div class="meta">2025-12-18</div>
+        </div>
+        
+        <div id="content-81" style="display:none;">
+            <h2>OpenAI’s ChatGPT Problem - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2025-12-18</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9qcVNlTEhRTE9RLWVOYkE3RnYzRmZkV01HaV85bzRZTWtSVVExRFptMVlqbDNJYlRTeTdkQU8tN2VVLUJkM3JCMkQ0RzBqUlFsNmJ5UjkyS1JJTlkzWXhBMkJwdlZ3TFIzVWZQUFJOSDU?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-82')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">Inside Apple’s iPhone Road Map, From Foldable Screens to Curved Glass Cases - The Information</div>
+            <div class="meta">2025-12-16</div>
+        </div>
+        
+        <div id="content-82" style="display:none;">
+            <h2>Inside Apple’s iPhone Road Map, From Foldable Screens to Curved Glass Cases - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2025-12-16</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQblFYOGMxREc1cnkyTlNwUWc1eEIwT2xzc0NBWG4wTDRpLTc2V21MaTJlOXZmRlJpYU5DWkVURUxLcjAxdWVsNG5aZkR6OWZTZDF0UUVCWnVOeVVZR0dUTmJGMWd1bVpxSV9GRHZmeGp2VkRCU00zQzJKNG8wSENnVTE2bWs1TkE0SW96c3hsV0FJVl9pRjQzRmc0cTdEWWNQV1lwX2J5Zzc?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-83')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">Microsoft’s Nadella Pressures Deputies to Accelerate Copilot Improvements - The Information</div>
+            <div class="meta">2025-12-22</div>
+        </div>
+        
+        <div id="content-83" style="display:none;">
+            <h2>Microsoft’s Nadella Pressures Deputies to Accelerate Copilot Improvements - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2025-12-22</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOVHgzamtDTVZ0QlFzcVZHMFFpVTdwMTd4aVdrbWpRXy01M1ZqRmRCQTZsdk1HdzZrWXB2d0JOX3Y4YlV2aUQ2a2Z4X1pXTTU3ck1CQjMyUEhLaFF1dmNsRnZPYXpfNnkxOUdpSk95N1BYSkJLb0lEVXJVaEdJVVViR0dOQmoxU0hpZE5DU3NRa2R3ZGducjVTY1dVV2RxOElfeWtld3JvQUtOZ0xUenc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
