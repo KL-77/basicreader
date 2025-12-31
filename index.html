@@ -154,11 +154,73 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">From prophet to product: How AI came back down to earth in 2025</div>
+            <div class="title">Supply chains, AI, and the cloud: The biggest failures (and one success) of 2025</div>
             <div class="meta">2025-12-31</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Supply chains, AI, and the cloud: The biggest failures (and one success) of 2025</h2>
+            <p><strong>Ars Technica - All content | 2025-12-31</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2025/12/supply-chains-ai-and-the-cloud-the-biggest-failures-and-one-success-of-2025/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">In a roundup of the top stories of 2024, Ars included a supply-chain attack that came dangerously close to inflicting a catastrophe for thousands—possibly millions—of organizations, which included a large assortment of Fortune 500 companies and government agencies. Supply-chain attacks played prominently again this year, as a seemingly unending rash of them hit organizations large and small.
+
+For threat actors, supply-chain attacks are the gift that keeps on giving—or, if you will, the hack that keeps on hacking. By compromising a single target with a large number of downstream users—say a cloud service or maintainers or developers of widely used open source or proprietary software—attackers can infect potentially millions of the target’s downstream users. That’s exactly what threat actors did in 2025.
+
+One such event occurred in December 2024, making it worthy of a ranking for 2025. The hackers behind the campaign pocketed as much as $155,000 from thousands of smart-contract parties on the Solana blockchain.
+
+Hackers cashed in by sneaking a backdoor into a code library used by developers of Solana-related software. Security firm Socket said it suspects the attackers compromised accounts belonging to the developers of Web3.js, an open source library. They then used the access to add a backdoor to a package update. After the developers of decentralized Solana apps installed the malicious update, the backdoor spread further, giving the attackers access to individual wallets connected to smart contracts. The backdoor could then extract private keys.
+
+There were too many supply-chain attacks this year to list them all. Some of the other most notable examples included:
+
+Another class of attack that played out more times in 2025 than anyone can count was the hacking of AI chatbots. The hacks with the farthest-reaching effects were those that poisoned the long-term memories of LLMs. In much the way supply-chain attacks allow a single compromise to trigger a cascade of follow-on attacks, hacks on long-term memory can cause the chatbot to perform malicious actions over and over.
+
+One such attack used a simple user prompt to instruct a cryptocurrency-focused LLM to update its memory databases with an event that never actually happened. The chatbot, programmed to follow orders and take user input at face value, was unable to distinguish a fictional event from a real one.
+
+The AI service in this case was ElizaOS, a fledgling open source framework for creating agents that perform various blockchain-based transactions on behalf of a user based on a set of predefined rules. Academic researchers were able to corrupt the ElizaOS memory by feeding it sentences claiming certain events—which never actually happened—occurred in the past. These false events then influence the agent’s future behavior.
+
+An example attack prompt claimed that the developers who designed ElizaOS wanted it to substitute the receiving wallet for all future transfers to one controlled by the attacker. Even when a user specified a different wallet, the long-term memory created by the prompt caused the framework to replace it with the malicious one. The attack was only a proof-of-concept demonstration, but the academic researchers who devised it said that parties to a contract who are already authorized to transact with the agent could use the same techniques to defraud other parties.
+
+Independent researcher Johan Rehberger demonstrated a similar attack against Google Gemini. The false memories he planted caused the chatbot to lower defenses that normally restrict the invocation of Google Workspace and other sensitive tools when processing untrusted data. The false memories remained in perpetuity, allowing an attacker to repeatedly profit from the compromise. Rehberger presented a similar attack in 2024.
+
+A third AI-related proof-of-concept attack that garnered attention used a prompt injection to cause GitLab’s Duo chatbot to add malicious lines to an otherwise legitimate code package. A variation of the attack successfully exfiltrated sensitive user data.
+
+Yet another notable attack targeted the Gemini CLI coding tool. It allowed attackers to execute malicious commands—such as wiping a hard drive—on the computers of developers using the AI tool.
+
+Other LLM-involved hacks used chatbots to make attacks more effective or stealthier. Earlier this month, two men were indicted for allegedly stealing and wiping sensitive government data. One of the men, prosecutors said, tried to cover his tracks by asking an AI tool “how do i clear system logs from SQL servers after deleting databases.” Shortly afterward, he allegedly asked the tool, “how do you clear all event and application logs from Microsoft windows server 2012.” Investigators were able to track the defendants’ actions anyway.
+
+In May, a man pleaded guilty to hacking an employee of The Walt Disney Company by tricking the person into running a malicious version of a widely used open source AI image-generation tool.
+
+And in August, Google researchers warned users of the Salesloft Drift AI chat agent to consider all security tokens connected to the platform compromised following the discovery that unknown attackers used some of the credentials to access email from Google Workspace accounts. The attackers used the tokens to gain access to individual Salesforce accounts and, from there, to steal data, including credentials that could be used in other breaches.
+
+There were also multiple instances of LLM vulnerabilities that came back to bite the people using them. In one case, CoPilot was caught exposing the contents of more than 20,000 private GitHub repositories from companies including Google, Intel, Huawei, PayPal, IBM, Tencent, and, ironically, Microsoft. The repositories had originally been available through Bing as well. Microsoft eventually removed the repositories from searches, but CoPilot continued to expose them anyway.
+
+Another significant security story cast both Meta and Yandex as the villains. Both companies were caught exploiting an Android weakness that allowed them to de-anonymize visitors so years of their browsing histories could be tracked.
+
+The covert tracking—implemented in the Meta Pixel and Yandex Metrica trackers—allowed Meta and Yandex to bypass core security and privacy protections provided by both the Android operating system and browsers that run on it. Android sandboxing, for instance, isolates processes to prevent them from interacting with the OS and any other app installed on the device, cutting off access to sensitive data or privileged system resources. Defenses such as state partitioning and storage partitioning, which are built into all major browsers, store site cookies and other data associated with a website in containers that are unique to every top-level website domain to ensure they’re off-limits for every other site.
+
+A clever hack allowed both companies to bypass those defenses.
+
+The Internet was designed to provide a decentralized platform that could withstand a nuclear war. As became painfully obvious over the past 12 months, our growing reliance on a handful of companies has largely undermined that objective.
+
+The outage with the biggest impact came in October, when a single point of failure inside Amazon’s sprawling network took out vital services worldwide. It lasted 15 hours and 32 minutes.
+
+The root cause that kicked off a chain of events was a software bug in the software that monitors the stability of load balances by, among other things, periodically creating new DNS configurations for endpoints within the Amazon Web Services network. A race condition—a type of bug that makes a process dependent on the timing or sequence of events that are variable and outside the developers’ control—caused a key component inside the network to experience “unusually high delays needing to retry its update on several of the DNS endpoint,” Amazon said in a post-mortem. While the component was playing catch-up, a second key component—a cascade of DNS errors—piled up. Eventually, the entire network collapsed.
+
+AWS wasn’t the only cloud service that experienced Internet-paralyzing outages. A mysterious traffic spike last month slowed much of Cloudflare—and by extension, the Internet—to a crawl. Cloudflare experienced a second major outage earlier this month. Not to be outdone, Azure—and by extension, its customers—experienced an outage in October.
+
+Honorable mentions for 2025 security stories include:
+
+Proving that not all major security stories involve bad news, the Signal private messaging app got a major overhaul that will allow it to withstand attacks from quantum computers. As I wrote, the elegance and adeptness that went into overhauling an instrument as complex as the app was nothing short of a triumph. If you plan to click on only one of the articles listed in this article, this is the one.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">From prophet to product: How AI came back down to earth in 2025</div>
+            <div class="meta">2025-12-31</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
             <h2>From prophet to product: How AI came back down to earth in 2025</h2>
             <p><strong>Ars Technica - All content | 2025-12-31</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2025/12/from-prophet-to-product-how-ai-came-back-down-to-earth-in-2025/">Visit Original Website</a>
@@ -296,13 +358,13 @@ The collapse of the “reasoning” mystique, the legal reckoning over training 
 None of this means progress has stopped. AI research will continue, and future models will improve in real and meaningful ways. But improvement is no longer synonymous with transcendence. Increasingly, success looks like reliability rather than spectacle, integration rather than disruption, and accountability rather than awe. In that sense, 2025 may be remembered not as the year AI changed everything but as the year it stopped pretending it already had. The prophet has been demoted. The product remains. What comes next will depend less on miracles and more on the people who choose how, where, and whether these tools are used at all.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">The science of how (and when) we decide to speak out—or self-censor</div>
             <div class="meta">2025-12-30</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>The science of how (and when) we decide to speak out—or self-censor</h2>
             <p><strong>Ars Technica - All content | 2025-12-30</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2025/12/the-science-of-how-and-when-we-decide-to-speak-out-or-self-censor/">Visit Original Website</a>
@@ -342,13 +404,13 @@ The next step would be to design an empirical study that could test their workin
 DOI: PNAS, 2025. 10.1073/pnas.2508028122  (About DOIs).</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Lawsuit over Trump rejecting medical research grants is settled</div>
             <div class="meta">2025-12-30</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Lawsuit over Trump rejecting medical research grants is settled</h2>
             <p><strong>Ars Technica - All content | 2025-12-30</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2025/12/feds-researchers-settle-suit-over-grants-blocked-by-now-illegal-order/">Visit Original Website</a>
@@ -380,13 +442,13 @@ The parties did agree, however, that this settlement doesn’t constitute a “f
 Given that the policy it relied on to block review of these grants had been voided in a case that had already been considered by the Supreme Court, it’s understandable that the government is agreeing to this settlement. It does, however, put a lot of pressure on the NIH to organize the peer review of these proposals on a tight schedule, especially given that the grants at issue are likely to involve a lot of unrelated topics, and thus can’t be handled by a single panel of experts. Getting that done while maintaining an “in good faith” standard may prove a significant challenge.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">DOGE did not find $2T in fraud, but that doesn’t matter, Musk allies say</div>
             <div class="meta">2025-12-30</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>DOGE did not find $2T in fraud, but that doesn’t matter, Musk allies say</h2>
             <p><strong>Ars Technica - All content | 2025-12-30</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2025/12/doge-did-not-find-2t-in-fraud-but-that-doesnt-matter-musk-allies-say/">Visit Original Website</a>
@@ -430,13 +492,13 @@ Currently, DOGE still exists as a decentralized entity, with DOGE staffers appoi
 Although the Cato Institute joined allies praising DOGE’s dramatic shrinking of the federal workforce, the director of the Center for Effective Public Management at the Brookings Institution, Elaine Kamarck, told Ars in November that DOGE “cut muscle, not fat” because “they didn’t really know what they were doing.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">NJ’s answer to flooding: it has bought out and demolished 1,200 properties</div>
             <div class="meta">2025-12-30</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>NJ’s answer to flooding: it has bought out and demolished 1,200 properties</h2>
             <p><strong>Ars Technica - All content | 2025-12-30</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2025/12/as-floods-become-more-severe-a-new-jersey-program-provides-a-model/">Visit Original Website</a>
@@ -530,39 +592,53 @@ Looking to the future, the mayor said he believes many more homes will be at ris
 This article originally appeared on Inside Climate News, a nonprofit, non-partisan news organization that covers climate, energy and the environment. Sign up for their newsletter here.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Stranger Things series finale trailer is here</div>
-            <div class="meta">2025-12-30</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Stranger Things series finale trailer is here</h2>
-            <p><strong>Ars Technica - All content | 2025-12-30</strong></p>
-            <a class="original-link" href="https://arstechnica.com/culture/2025/12/stranger-things-series-finale-trailer-is-here/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Stranger Things fans are hyped for the premiere of the hotly anticipated series finale on New Year’s Eve: they’ll either be glued to their TVs or heading out to watch it in a bona fide theater. Netflix has dropped one last trailer for the finale—not that it really needs to do anything more to boost anticipation.
-
-(Some spoilers for Vols. 1 and 2 below but no major Vol. 2 reveals.)
-
-As previously reported, in Vol. 1, we found Hawkins under military occupation and Vecna targeting a new group of young children in his human form under the pseudonym “Mr. Whatsit” (a nod to A Wrinkle in Time). He kidnapped Holly Wheeler and took her to the Upside Down, where she found an ally in Max, still in a coma, but with her consciousness hiding in one of Vecna’s old memories. Dustin was struggling to process his grief over losing Eddie Munson in S4, causing a rift with Steve. The rest of the gang was devoted to stockpiling supplies and helping Eleven and Hopper track down Vecna in the Upside Down. They found Kali/Eight, Eleven’s psychic “sister” instead, being held captive in a military laboratory.
-
-Things came to a head at the military base when Vecna’s demagorgons attacked to take 11 more children, wiping out most of the soldiers in record time. The big reveal was that, as a result of being kidnapped by Vecna in S1, Will has his own supernatural powers because of his ties to Vecna. He can tap into Vecna’s hive mind and manipulate those powers for his own purposes. He used those newfound powers to save his friends from the demagorgons.
-
-Vol. 2 picked up right where Vol. 1 left off. Since many readers might not yet have had a chance to finish watching just yet, we’ll avoid mentioning any major reveals. Suffice to say that there are some emotional heart-to-hearts and a big reunion; elaborate plots to foil Vecna; plus we learn more about the true nature of the Upside Down and Vecna’s master plan, which gets set in motion in the final moments of the penultimate episode. That tees us up nicely for the big feature-length finale. Expect a death or two, although I’d wager that we’ll be losing more minor characters rather than several major players (who frankly have suffered enough).
-
-The footage in this final trailer is accompanied by a voiceover by David Harbour’s Hopper—a Duffer brothers St. Crispin’s Day speech. “I need you to fight one last time,” he tells Eleven as highlights from prior seasons play out. “Life has been so unfair to you. Your childhood was taken from you. You’ve been attacked, manipulated by terrible people. But you never let it break you. Fight for the days on the other side of this. Fight for a world beyond Hawkins. Let’s end this, kid.”
-
-The Stranger Things series finale—with a feature-length runtime of 2 hours and 5 minutes—drops on December 31, 2025, at 5 PM PT/8 PM ET. It will also screen for two days only (December 31 and January 1) at select theaters nationwide, with over 1.1 million advance RSVPs.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-6')">
+            <div class="source">Futurism</div>
+            <div class="title">Doctors Find Evidence Microplastics Are Clogging Arteries, Leading to Heart Attacks and Strokes</div>
+            <div class="meta">2025-12-31</div>
+        </div>
+        
+        <div id="content-6" style="display:none;">
+            <h2>Doctors Find Evidence Microplastics Are Clogging Arteries, Leading to Heart Attacks and Strokes</h2>
+            <p><strong>Futurism | 2025-12-31</strong></p>
+            <a class="original-link" href="https://futurism.com/health-medicine/microplastics-clogging-arteries">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Microplastics are everywhere, including our arteries. And though their presence there is correlated with cardiovascular issues such as heart attacks and stroke, doctors have been eager to learn more about how they drive the disease process.
+
+To that end, a team of scientists led by the University of California, Riverside (UCR) fed microplastics to lab mice and discovered that these insidious particles appear to dramatically increase the plaque accumulation known as atherosclerosis in arteries — but curiously only in male mice, which they detailed in a new study published in the journal Environment International.
+
+When they analyzed the clogged arteries of these male mice, they found that microplastics sparked changes within cells that line blood vessels for the worse, inducing their genes to activate the buildup of plaque lesions. That’s terrible news for anybody who’s trying to maintain their heart health, because these ubiquitous particles appear to be sabotaging a vital organ system.
+
+“Our study provides some of the strongest evidence so far that microplastics may directly contribute to cardiovascular disease, not just correlate with it,” said Changcheng Zhou, the study’s principal investigator and a biomedical sciences professor at UCR’s School of Medicine, in a statement about the research. “Although the precise mechanism isn’t yet known, factors like sex chromosomes and hormones, particularly the protective effects of estrogen, may play a role.”
+
+For the study, the team took lab mice that had been bred to be predisposed to develop atherosclerosis and then put them on a low-cholesterol, low-fat diet for nine weeks — along with feedings of microplastics at 10 milligrams per kilogram of body weight; the scientists came up with this microplastic ratio because they determined that it was “at levels considered environmentally relevant and similar to what humans may encounter through contaminated food and water,” they said in the statement.
+
+While on this diet, the mice kept their lean figures, while the extra helping of microplastics didn’t seem to have an impact on their total cholesterol. But scientists did notice that male mice’s aortic root, the first section of the aorta, experienced a 63 percent increase in plaque accumulation — while their brachiocephalic artery, another important vessel that supplies blood to the head and heart, saw a whopping 624 percent build up of plaque. Female mice didn’t experience any significant buildup.
+
+In addition, the scientists performed genetic analysis on the aorta of these male mice and found that microplastics seem to have activated certain genes that promote the growth of plaque lesions in endothelial cells, which line the insides of blood vessels. They also exposed cultured human endothelial cells to microplastics and observed the same phenomenon.
+
+“We found endothelial cells were the most affected by microplastic exposure,” Zhou said in the statement. “Since endothelial cells are the first to encounter circulating microplastics, their dysfunction can initiate inflammation and plaque formation.”
+
+Couple these findings with the fact that the mice didn’t get fat or have high cholesterol, typical risk factors for atherosclerosis, and the scientists concluded that the chemicals in microplastics are responsible for the plaque increasing in these important blood vessels.
+
+Besides the importance of the findings for the scientific community, it raises some important questions for the rest of us. Microplastics are essentially everywhere; how the heck do we avoid them?
+
+Unfortunately, there’s no way to get rid of microplastics in humans right now. Instead, all you can really do is avoid single-use plastics, highly-processed foods, not heat food in plastic containers, and eschew bottled water.
+
+Meanwhile, this team of researchers is already talking next steps beyond this study.
+
+“We would like to investigate how different types or sizes of microplastics affect vascular cells,” said Zhou. “We will also look into the molecular mechanisms behind endothelial dysfunction and explore how microplastics affect male and female arteries differently. As microplastic pollution continues to rise worldwide, understanding its impacts on human health — including heart disease — is becoming more urgent than ever.”
+
+More on microplastics: Bugs Fed Microplastics Grow to Ludicrous Size</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
             <div class="source">Futurism</div>
             <div class="title">Jack White Rages After Congressman Shares AI Deepfake of Him Calling Fans “Fascists”</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-7" style="display:none;">
             <h2>Jack White Rages After Congressman Shares AI Deepfake of Him Calling Fans “Fascists”</h2>
             <p><strong>Futurism | 2025-12-31</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/jack-white-burchett-ai">Visit Original Website</a>
@@ -588,13 +664,13 @@ When a user on X pointed out that Burchett had fallen for an AI deepfake, the co
 More on celebrities: Grok Is Making Wildly Contradictory Claims About Rob Reiner’s Death</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">Man in Intensive Care Unit After Slamming Liquid Nitrogen Cocktail That Ruptured His Stomach</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Man in Intensive Care Unit After Slamming Liquid Nitrogen Cocktail That Ruptured His Stomach</h2>
             <p><strong>Futurism | 2025-12-31</strong></p>
             <a class="original-link" href="https://futurism.com/health-medicine/liquid-nitrogen-cocktail-russia">Visit Original Website</a>
@@ -618,13 +694,13 @@ The first recorded case of liquid nitrogen ingestion came in 1997, when a physic
 More on chemicals: Uncles Tremble as Man Invents Vaccine Delivered by Beer</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">Explosives Reported at Space Force Facility</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>Explosives Reported at Space Force Facility</h2>
             <p><strong>Futurism | 2025-12-31</strong></p>
             <a class="original-link" href="https://futurism.com/space/explosives-space-force-facility">Visit Original Website</a>
@@ -644,13 +720,13 @@ As the space race with China heats up, Space Force is expected to grow in size a
 More on Space Force: The Trump Administration Is Gutting the Space Force</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">Astronomers Appear to Have Caught a Star Splitting In Half, With Catastrophic Results</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>Astronomers Appear to Have Caught a Star Splitting In Half, With Catastrophic Results</h2>
             <p><strong>Futurism | 2025-12-31</strong></p>
             <a class="original-link" href="https://futurism.com/space/astronomers-star-splitting-half">Visit Original Website</a>
@@ -680,13 +756,13 @@ The researchers suggest that it may be neither supernova nor kilonova, but a sup
 More on space: James Webb Discovers Planet Shaped Like Lemon</div>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">OpenAI Reportedly Planning to Make ChatGPT “Prioritize” Advertisers in Conversation</div>
             <div class="meta">2025-12-30</div>
         </div>
         
-        <div id="content-10" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>OpenAI Reportedly Planning to Make ChatGPT “Prioritize” Advertisers in Conversation</h2>
             <p><strong>Futurism | 2025-12-30</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/openai-chatgpt-sponsored-ads">Visit Original Website</a>
@@ -712,47 +788,215 @@ When exactly the ChatGPT adpocolypse come to pass remains to be seen, but with s
 More on ChatGPT: Millions of Private ChatGPT Conversations Are Being Harvested and Sold for Profit</div>
         </div>
         
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">Ship of Scientists Headed to Doomsday Glacier</div>
-            <div class="meta">2025-12-30</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>Ship of Scientists Headed to Doomsday Glacier</h2>
-            <p><strong>Futurism | 2025-12-30</strong></p>
-            <a class="original-link" href="https://futurism.com/science-energy/scientists-doomsday-glacier">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">A team of scientists are staring climate change in the eye, the New York Times reports, setting sail for the infamous “Doomsday Glacier” in Antarctica in an attempt to study it up close.
-
-The enormous Thwaites Glacier, at roughly the size of Florida, harbors enough water to raise sea levels across the globe by over two feet should it melt completely. Research has suggested that it’s already undergoing rapid melting — but its future, which holds the fate of our planet in the balance, is uncertain.
-
-On Saturday, a crew of nearly 40 researchers left on a ship from a port in New Zealand to get more answers. A number of intriguing experiments are slated, but everyone’s going in knowing that all won’t go according to plan.
-
-“There will be a Plan A through F,” Chris Pierce, a glaciologist at Montana State University whose team hopes to use airborne radar to effectively x-ray Thwaites’ ice, told the NYT.
-
-There’s no doubt that Thwaites is melting quickly. How quickly, and what its melting could cause, however, are the questions that loom large.
-
-Scientists fear that the glacier’s melting could trigger a collapse of the broader West Antarctic ice sheet. Over a mile thick in some portions, if the sheet collapsed, it could raise sea levels by up to a staggering 15 feet, practically drowning the planet over the course of several centuries. This is a worst case scenario, but the possibility is too severe to ignore, with some evidence suggesting that a similar event may have taken place around 120,000 years ago.
-
-Recent research has suggested that Thwaites is more vulnerable to warming than once thought. Perhaps the most alarming discovery was that the glacier’s vast underbelly, once thought to be sealed off from warming because it hugged the seafloor, was being exposed to warm seawater which sneaks in as rising tides lift the glacier off the seafloor, causing “vigorous melting.”
-
-“Thwaites has really broken up in front of our eyes,” Doug Benn, a glaciologist at the University of St. Andrews in Scotland, told the NYT.
-
-One of the most intriguing experiments will rely on an unlikely source of help: seals. Rather than having robots collect data, the researchers will attach sensors to the blubbery mammals, collecting data on ocean temperature and salinity that’s transmitted to satellites.
-
-The data the seals gather won’t be as random as you might think, Lars Boehme, an ecologist at the University of St. Andrews, told the NYT.  The seals “go where the food is,” Boehme said. “And very often, that’s a place where, in terms of the environment and oceanography, things are happening.”
-
-More on climate change: Rivers Turn Bright Orange in Alaska</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-12')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Every fusion startup that has raised over $100M</div>
+            <div class="meta">2025-12-31</div>
+        </div>
+        
+        <div id="content-12" style="display:none;">
+            <h2>Every fusion startup that has raised over $100M</h2>
+            <p><strong>TechCrunch | 2025-12-31</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2025/12/31/every-fusion-startup-that-has-raised-over-100m/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Over the last several years, fusion power has gone from the butt of jokes — always a decade away! — to an increasingly tangible and tantalizing technology that has drawn investors off the sidelines.
+
+The technology may be challenging to master and expensive to build today, but fusion promises to harness the nuclear reaction that powers the sun to generate nearly limitless energy here on Earth. If startups are able to complete commercially viable fusion power plants, then they have the potential to upend trillion-dollar markets.
+
+The bullish wave buoying the fusion industry has been driven by three advances: more powerful computer chips, more sophisticated AI, and powerful high-temperature superconducting magnets. Together, they have helped deliver more sophisticated reactor designs, better simulations, and more complex control schemes.
+
+It doesn’t hurt that, at the end of 2022, a U.S. Department of Energy lab announced that it had produced a controlled fusion reaction that produced more power than the lasers had imparted to the fuel pellet. The experiment had crossed what’s known as scientific breakeven, and while it’s still a long ways from commercial breakeven, where the reaction produces more than the entire facility consumes, it was a long-awaited step that proved the underlying science was sound.
+
+Founders have built on that momentum in recent years, pushing the private fusion industry forward at a rapid pace.
+
+Commonwealth Fusion Systems (CFS) has raised about a third of all private capital invested in fusion companies to date. Its latest round, which closed in August, added $863 million to its coffers, bringing its total raised near $3 billion.
+
+CFS’s Series B2 came four years after its $1.8 billion Series B, which helped catapult the company into the pole position. Since then, the startup has been hard at work in Massachusetts building Sparc, its first-of-a-kind power plant intended to produce power at what it calls “commercially relevant” levels.
+
+Sparc’s reactor is a tokamak design, which resembles a doughnut. The D-shaped cross section is wound with high-temperature superconducting tape, which, when energized, generates a powerful magnetic field that will contain and compress the superheated plasma. Heat generated from the reaction is converted to steam to power a turbine. CFS designed its magnets in collaboration with MIT, where co-founder and CEO Bob Mumgaard worked as a researcher on fusion reactor designs and high-temperature superconductors.
+
+The Massachusetts-based CFS expects to have Sparc operational in late 2026 or early 2027. Later this decade, the company says it will begin construction on Arc, its commercial power plant that will produce 400 megawatts of electricity. The facility will be built near Richmond, Virginia, and Google has agreed to buy half its output.
+
+CFS is backed by a long list of investors, including Breakthrough Energy Ventures, The Engine, Bill Gates, and others.
+
+Founded in 1998, TAE Technologies (formerly known as Tri Alpha Energy) was spun out of the University of California, Irvine by Norman Rostoker. It uses a field-reversed configuration, but with a twist: after the two plasma shots collide in the middle of the reactor, the company bombards the plasma with particle beams to keep it spinning in a cigar shape. That improves the stability of the plasma, allowing more time for fusion to occur and for more heat to be extracted to spin a turbine.
+
+In December 2025, TAE announced that it would merge with President Donald Trump’s social media company, Trump Media & Technology Group. The all-stock transaction would value the combined company at $6 billion. TAE would receive $200 million plus another $100 million upon filing paperwork with the Securities and Exchange Commission. TAE CEO Michl Binderbauer will serve as co-CEO of the combined company alongside Devin Nunes, who had been sole CEO of Trump Media.
+
+The fusion startup had previously raised $150 million in June from existing investors, including Google, Chevron, and New Enterprise. Before the merger, TAE had raised a total of $1.79 billion, according to PitchBook.
+
+Of all fusion startups, Helion has the most aggressive timeline. The company plans to produce electricity from its reactor in 2028. Its first customer? Microsoft.
+
+Helion, based in Everett, Washington, uses a type of reactor called a field-reversed configuration, where magnets surround a reaction chamber that looks like an hourglass with a bulge at the point where the two sides come together. At each end of the hourglass, they spin the plasma into doughnut shapes that are shot toward each other at more than 1 million mph. When they collide in the middle, additional magnets help induce fusion. When fusion occurs, it boosts the plasma’s own magnetic field, which induces an electrical current inside the reactor’s magnetic coils. That electricity is then harvested directly from the machine.
+
+The company raised $425 million in January 2025, around the same time that it turned on Polaris, a prototype reactor. Helion has raised $1.03 billion, according to PitchBook. Investors include Sam Altman, Reid Hoffman, KKR, BlackRock, Peter Thiel’s Mithril Capital Management, and Capricorn Investment Group.
+
+Pacific Fusion burst out of the gate with a $900 million Series A, a whopping sum even among well-funded fusion startups. The company will use inertial confinement to achieve fusion, but instead of lasers compressing the fuel, it will use coordinated electromagnetic pulses. The trick is in the timing: All 156 impedance-matched Marx generators need to produce 2 terawatts for 100 nanoseconds, and those pulses need to simultaneously converge on the target.
+
+The company is led by CEO Eric Lander, the scientist who led the Human Genome Project, and president Will Regan. Pacific Fusion’s funding might be massive, but the startup hasn’t gotten it all at once. Rather, its investors will pay out in tranches when the company achieves specified milestones, an approach that’s common in biotech.
+
+Shine Technologies is taking a cautious — and possibly pragmatic — approach to generating fusion power. Selling electrons from a fusion power plant is years off, so instead, it’s starting by selling neutron testing and medical isotopes. More recently, it has been developing a way to recycle radioactive waste. Shine hasn’t picked an approach for a future fusion reactor, instead saying that it’s developing necessary skills for when that time comes.
+
+The company has raised a total of $778 million, according to PitchBook. Investors include Energy Ventures Group, Koch Disruptive Technologies, Nucleation Capital, and the Wisconsin Alumni Research Foundation.
+
+Now its third decade, General Fusion has raised $462.53 million, according to PitchBook. The Richmond, British Columbia-based company was founded in 2002 by physicist Michel Laberge, who wanted to prove a different approach to fusion known as magnetized target fusion (MTF). Investors include Jeff Bezos, Temasek, BDC Capital, and Chrysalix Venture Capital.
+
+In General Fusion’s reactor, a liquid metal wall surrounds a chamber in which plasma is injected. Pistons surrounding the wall push it inward, compressing the plasma inside and sparking a fusion reaction. The resulting neutrons heat the liquid metal, which can be circulated through a heat exchanger to generate steam to spin a turbine.
+
+General Fusion hit a rough patch in spring 2025. The company ran short of cash as it was building LM26, its latest device that it hoped would hit breakeven in 2026. Just days after hitting a key milestone, it laid off 25% of its staff. CEO Greg Twinney penned an open letter pleading for funding from investors.
+
+In August, they delivered somewhat, injecting $22 million in a pay-to-play round that one investor called “the least amount of capital possible” to keep the General Fusion afloat. Then in November, securities filings in Canada revealed that the company had raised $51.1 million in SAFE notes from nearly 70 investors, the Globe and Mail reported. Altogether, General Fusion has raised $492 million, according to PitchBook.
+
+Tokamak Energy takes the usual tokamak design — the doughnut shape — and squeezes it, reducing its aspect ratio to the point where the outer bounds start resembling a sphere. Like many other tokamak-based startups, the company uses high-temperature superconducting magnets (of the rare earth barium copper oxide, or REBCO, variety). Since its design is more compact than a traditional tokamak, it requires less in the way of magnets, which should reduce costs.
+
+The Oxfordshire, U.K.-based startup’s ST40 prototype, which looks like a large, steampunk Fabergé egg, generated an ultra-hot, 100 million degree C plasma in 2022. Its next generation, Demo 4, is currently under construction and is intended to test the company’s magnets in “fusion power plant-relevant scenarios.” Tokamak Energy raised $125 million in November 2024 to continue its reactor design efforts and expand its magnet business.
+
+In total, the company has raised $336 million from investors including Future Planet Capital, In-Q-Tel, Midven, and Capri-Sun founder Hans-Peter Wild, according to PitchBook.
+
+Zap Energy isn’t using high-temperature superconducting magnets or super-powerful lasers to keep its plasma confined. Rather, it zaps the plasma (get it?) with an electric current, which then generates its own magnetic field. The magnetic field compresses the plasma about 1 millimeter, at which point ignition occurs. The neutrons released by the fusion reaction bombard a liquid metal blanket that surrounds the reactor, heating it up. The liquid metal is then cycled through a heat exchanger, where it produces steam to drive a turbine.
+
+Like Helion, Zap Energy is based in Everett, Washington, and the company has raised $327 million, according to PitchBook. Backers include Bill Gates’ Breakthrough Energy Ventures, DCVC, Lowercarbon, Energy Impact Partners, Chevron Technology Ventures, and Bill Gates as an angel.
+
+Most investors have favored large startups that are pursuing tokamak designs or some flavor of inertial confinement. But stellarators have shown great promise in scientific experiments, including the Wendelstein 7-X reactor in Germany.
+
+Proxima Fusion is bucking the trend, though, having attracted a €130 million Series A that brings its total raised to more than €185 million. Investors include Balderton Capital and Cherry Ventures.
+
+Stellarators are similar to tokamaks in that they confine plasma in a ring-like shape using powerful magnets. But they do it with a twist — literally. Rather than force plasma into a human-designed ring, stellarators twist and bulge to accommodate the plasma’s quirks. The result should be a plasma that remains stable for longer, increasing the chances of fusion reactions.
+
+With all the startups pursuing fusion power, it was perhaps inevitable that another would pop up to develop components that round out a power plant. The so-called balance of plant, or the parts that sit outside the reactor, range from gyrotrons that heat plasma to heat extraction systems to harvest power from fusion reactions to turn it into electricity.
+
+Kyoto Fusioneering has made an early bet that if even one fusion startup succeeds in generating enough power to sell to the grid, that the industry will need a supplier for the balance of plant and the expertise to integrate it into whichever fusion technologies win out.
+
+Venture capitalists appear to agree, having invested $191 million in Kyoto Fusioneering. Investors include 31Ventures, In-Q-Tel, JIC Venture Growth Investments, Mitsubishi, and Sumitomo Mitsui Trust Investment.
+
+Marvel Fusion follows the inertial confinement approach, the same basic technique that the National Ignition Facility used to prove that controlled nuclear fusion reactions could produce more power than was needed to kick them off. Marvel fires powerful lasers at a target embedded with silicon nanostructures that cascade under the bombardment, compressing the fuel to the point of ignition. Because the target is made using silicon, it should be relatively simple to manufacture, leaning on the semiconductor manufacturing industry’s decades of experience.
+
+The inertial confinement fusion startup is building a demonstration facility in collaboration with Colorado State University, which it expects to have operational by 2027. Munich-based Marvel has raised a total of $162 million from investors including b2venture, Deutsche Telekom, Earlybird, and HV Capital with Taavet Hinrikus and Albert Wenger as angels.
+
+Unlike many other fusion startups, First Light Fusion doesn’t use magnets to generate the conditions necessary for fusion. Instead, it follows an approach known as inertial confinement, in which fusion fuel pellets are compressed until they ignite.
+
+But even then, First Light doesn’t hew to orthodoxy. Most attempts at inertial confinement use lasers to do the dirty work, following the lead of the National Ignition Facility, which produced a groundbreaking experiment in 2022. Rather, First Light fires a projectile at a target using a two-stage gun; the first stage uses gunpowder to fire a plastic piston that compresses hydrogen to 145,000 psi, which then launches the projectile. The target is designed to amplify the force of the impact so it compresses the fuel to the point of ignition.
+
+In March 2025, First Light announced that it would not pursue building its own power plant, instead offering its core technologies to other companies to build one. A spokesperson for First Light said that it is planning to build “pulsed power capability that would act as our demonstrator plant but would have other science and defense applications.” In other words, the company was dropping its plans for a power plan in a quest for revenue.
+
+Based in Oxfordshire, UK, First Light has raised $108 million from investors including Invesco, IP Group, and Tencent, according to PitchBook.
+
+Though nothing about fusion can be described as simple, Xcimer takes a relatively straightforward approach: follow the basic science that’s behind the National Ignition Facility’s breakthrough net-positive experiment, and redesign the technology that underpins it from the ground up. The Colorado-based startup is aiming for a 10-megajoule laser system, five times more powerful than NIF’s setup that made history. Molten salt walls surround the reaction chamber, absorbing heat and protecting the first solid wall from damage.
+
+Founded in January 2022, Xcimer has already raised $100 million, according to PitchBook, from investors including Hedosophia, Breakthrough Energy Ventures, Emerson Collective, Gigascale Capital, and Lowercarbon Capital.
+
+This story was originally published in September 2024 and will be continually updated.
+
+Tim De Chant is a senior climate reporter at TechCrunch. He has written for a wide range of publications, including Wired magazine, the Chicago Tribune, Ars Technica, The Wire China, and NOVA Next, where he was founding editor.
+
+De Chant is also a lecturer in MIT’s Graduate Program in Science Writing, and he was awarded a Knight Science Journalism Fellowship at MIT in 2018, during which time he studied climate technologies and explored new business models for journalism. He received his PhD in environmental science, policy, and management from the University of California, Berkeley, and his BA degree in environmental studies, English, and biology from St. Olaf College.
+
+You can contact or verify outreach from Tim by emailing tim.dechant@techcrunch.com.
+
+Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
+
+Meta just bought Manus, an AI startup everyone has been talking about
+
+You’ve been targeted by government spyware. Now what?
+
+Sauron, the high-end home security startup for ‘super premium’ customers, plucks a new CEO out of Sonos
+
+The Google Pixel Watch 4 made me like smartwatches again
+
+FaZe Clan’s future is uncertain after influencers depart
+
+NY Governor Hochul signs bill requiring warning labels on ‘addictive’ social media
+
+How reality crushed Ÿnsect, the French startup that had raised over $600M for insect farming</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">The 10 top government, legal startups from Disrupt Startup Battlefield</div>
+            <div class="meta">2025-12-31</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
+            <h2>The 10 top government, legal startups from Disrupt Startup Battlefield</h2>
+            <p><strong>TechCrunch | 2025-12-31</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2025/12/31/the-10-top-government-legal-startups-from-disrupt-startup-battlefield/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Every year, TechCrunch’s Startup Battlefield pitch contest draws thousands of applicants. We whittle those applications down to the top 200 contenders, and of them, the top 20 compete on the big stage to become the winner, taking home the Startup Battlefield Cup and a cash prize of $100,000. But the remaining 180 startups all blew us away as well in their respective categories and compete in their own pitch competition.
+
+Here is the full list of the government and legal Startup Battlefield 200 selectees, along with a note on why they landed in the competition.
+
+What it does: Uses AI to automate legal intake forms, as well as other documents, for family law firms.
+
+Why it’s noteworthy: It specializes in, at the moment, divorce cases, which means it is tackling an issue not commonly addressed by the current wave of AI legal tech.
+
+What it does: Ascender has created a robot that can climb utility poles and flagpoles to help assist with humanitarian assistance and disaster response.
+
+Why it’s noteworthy: Part of the wave of robotic technology that is emerging to help better address disaster situations.
+
+What it does: Bot Mediation uses AI to help settle legal disputes.
+
+Why it’s noteworthy: Another interesting use case in legal AI, this time to help make the mediation and dispute process more efficient.
+
+What it does: Depth AI creates AI for spatial computing, building modeling such as holographic imaging that can be used in healthcare to create 3D images of the body for diagnosing illness.
+
+Why it’s noteworthy: It’s a technology that is looking to make the healthcare industry better, which is always good.
+
+What it does:  ILias is working in “scent tech” — using AI to help create olfactory technology that can help, for example, dogs detect the smell of drugs.
+
+Why it’s noteworthy: It’s using olfactory senses to create a product, which is not something commonly done, especially when it comes to using it in a way that relates to technological innovation.
+
+What it does: JustiGuide connects immigrants with lawyers and tools to help make the immigration process more efficient.
+
+Why it’s noteworthy: Winner of the policy and protection pitch stage at Disrupt this year, this is an always timely product addressing the painstaking and often tedious process of immigration.
+
+What it does: Orchestra created a camera network to manage public safety and detect crime.
+
+Why it’s noteworthy: It’s a modern take on the security network system that has been around for decades.
+
+What it does: Ponderosa uses drones that can help detect and control small fires.
+
+Why it’s noteworthy: Fires can quickly become out of control and cause catastrophic damage, so any technology helping to mitigate that risk is very timely.
+
+What it does: Pytho hopes to make the planning process more efficient for warfighters on the battlefield.
+
+Why it’s noteworthy: Battlefield innovation is always an interesting and curious area.
+
+What it does: Created a device that helps track, detect, and subdue active shooters with pepper gel. It was founded in 2023 by Brandon Johnson, Ohm Vyas, and Ved Vyas.
+
+Why it’s noteworthy: Innovation that is addressing the rising rate of gun crime happening in public places, such as schools and supermarkets, with the hopes of doing something about it.
+
+What it does: Torch monitors high-value assets, assessing air quality, fire risks, and security to hopefully help prevent wildfires early.
+
+Why it’s noteworthy: As climate change leads to more devastating wildfires, any innovation helping to make such catastrophic events less disastrous is always good.
+
+Dominic-Madori Davis is a senior venture capital and startup reporter at TechCrunch. She is based in New York City.
+
+You can contact or verify outreach from Dominic by emailing dominic.davis@techcrunch.com or via encrypted message at +1 646 831-7565 on Signal.
+
+Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
+
+Meta just bought Manus, an AI startup everyone has been talking about
+
+You’ve been targeted by government spyware. Now what?
+
+Sauron, the high-end home security startup for ‘super premium’ customers, plucks a new CEO out of Sonos
+
+The Google Pixel Watch 4 made me like smartwatches again
+
+FaZe Clan’s future is uncertain after influencers depart
+
+NY Governor Hochul signs bill requiring warning labels on ‘addictive’ social media
+
+How reality crushed Ÿnsect, the French startup that had raised over $600M for insect farming</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">The dumbest things that happened in tech this year</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>The dumbest things that happened in tech this year</h2>
             <p><strong>TechCrunch | 2025-12-31</strong></p>
             <a class="original-link" href="https://techcrunch.com/2025/12/31/the-dumbest-things-that-happened-in-tech-this-year/">Visit Original Website</a>
@@ -874,13 +1118,13 @@ NY Governor Hochul signs bill requiring warning labels on ‘addictive’ social
 How reality crushed Ÿnsect, the French startup that had raised over $600M for insect farming</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">The phone is dead. Long live . . . what exactly?</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>The phone is dead. Long live . . . what exactly?</h2>
             <p><strong>TechCrunch | 2025-12-31</strong></p>
             <a class="original-link" href="https://techcrunch.com/2025/12/30/the-phone-is-dead-long-live-what-exactly/">Visit Original Website</a>
@@ -940,13 +1184,13 @@ NY Governor Hochul signs bill requiring warning labels on ‘addictive’ social
 How reality crushed Ÿnsect, the French startup that had raised over $600M for insect farming</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Almost 80 European deep tech university spinouts reached $1B valuations or $100M in revenue in 2025</div>
             <div class="meta">2025-12-30</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Almost 80 European deep tech university spinouts reached $1B valuations or $100M in revenue in 2025</h2>
             <p><strong>TechCrunch | 2025-12-30</strong></p>
             <a class="original-link" href="https://techcrunch.com/2025/12/30/76-european-deep-tech-university-spinouts-reached-unicorn-or-centaur-status/">Visit Original Website</a>
@@ -1006,13 +1250,13 @@ NY Governor Hochul signs bill requiring warning labels on ‘addictive’ social
 How reality crushed Ÿnsect, the French startup that had raised over $600M for insect farming</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">12 investors dish on what 2026 will bring for climate tech</div>
             <div class="meta">2025-12-30</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>12 investors dish on what 2026 will bring for climate tech</h2>
             <p><strong>TechCrunch | 2025-12-30</strong></p>
             <a class="original-link" href="https://techcrunch.com/2025/12/30/12-investors-dish-on-what-2026-will-bring-for-climate-tech/">Visit Original Website</a>
@@ -1408,152 +1652,6 @@ NY Governor Hochul signs bill requiring warning labels on ‘addictive’ social
 How reality crushed Ÿnsect, the French startup that had raised over $600M for insect farming</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
-            <div class="source">TechCrunch</div>
-            <div class="title">The best AI-powered dictation apps of 2025</div>
-            <div class="meta">2025-12-30</div>
-        </div>
-        
-        <div id="content-16" style="display:none;">
-            <h2>The best AI-powered dictation apps of 2025</h2>
-            <p><strong>TechCrunch | 2025-12-30</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2025/12/30/the-best-ai-powered-dictation-apps-of-2025/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">In some ways, 2025 was when AI dictation apps really took off. Dictation apps have been around for years, but in the past they’ve proved slow and inaccurate — unless you speak with particular accents and enunciate clearly.
-
-But advances in large language models (LLMs) and speech-to-text models have helped improve the systems that can decipher speech better while retaining the context to format the text. And developers have built in features to automatically format text, remove filler words, and ignore fumbles to output text that would need fewer edits.
-
-But with the soaring popularity of everything AI, there’s dozens of such apps on the market. So we’ve collated our pick of the best and most useful dictation apps his year.
-
-Wispr Flow is a well-funded AI dictation app that lets you add custom words and instructions for dictation. It has native apps for macOS, Windows, and iOS, and an Android version is in the works.
-
-The app lets you customize how its system transcribes your notes by letting you choose from “formal,” “casual,” and “very casual” styles for different kinds of writing, such as personal messaging, work, and email. And if you use it with vibe-coding tools like Cursor, you can turn on a feature to automatically recognize variables or tag files in the chat.
-
-The app lets you note up to 2,000 words per month for free on any of the desktop versions, and 1,000 words per month on iOS. Its subscription plans offer unlimited transcription and start at $15 per month.
-
-Willow advertises itself as a big time-saver for those who don’t like to type. Alongside common features like automatic editing and formatting, the app has a feature that taps large language models to generate a full chunk of text from just a few dictated words.
-
-Willow also takes a more privacy-focused stab at AI-assisted note-taking by storing all transcripts locally on your device, and lets you opt out of model training as well. It also lets you add custom vocabulary to the app to help it adapt to your industry’s parlance, or your local dialect.
-
-Willow lets you dictate 2,000 words per month on its desktop app for free. Individual subscription plans start at $15 per month, giving you unlimited dictation and enabling the app to remember your writing style.
-
-If you are focused on privacy, Monologue lets you download its model so you can run it on your device for transcriptions and avoid sending data to the cloud. What’s more, the app lets you customize its tone of voice according to the apps you use it with.
-
-Monologue lets you jot down 1,000 words per month for free, and its subscription costs $10 per month, or $100 per year. And if you end up becoming one of the app’s top users, the company will also send you this funky Monokey to use with the app.
-
-Keyboards are so 1983.You only need one key—Monokey, the limited edition device that turns your voice into text in Monologue.We&#39;re giving away 10, along with a free annual subscription to Monologue. pic.twitter.com/nXuz1ll2LU
-
-Superwhisper is primarily a dictation app, but it can also transcribe from audio or video files. The app gives you the freedom to choose and download AI models, including its own models that have different speeds and accuracy, along with Nvidia’s Parakeet speech-recognition models.
-
-The app also lets you write custom prompts to steer the output. You can easily see both processed and unprocessed transcripts that are integrated with the system keyboard.
-
-The basic voice-to-text feature is free to use, and you get 15 minutes to test out Pro features such as translation and transcription. The paid tier lets you use your own AI API keys and plug in cloud and local models without any caps.
-
-The monthly plan costs $8.49 per month, the annual plan costs $84.99 per month, or you can pay $249.99 for a lifetime subscription.
-
-The VoiceTypr app takes an offline-first, no-subscription approach, letting you use local models for transcription. There’s also a GitHub repository for those who want to host and run the open source version themselves. VoiceTypr supports over 99 languages and works on both Mac and Windows.
-
-The app is available to try for three days for free, and after that it will allow you to buy a lifetime license. The app costs $35 for one device, $56 for two, and $98 for four devices.
-
-Aqua is another Y Combinator-backed voice-typing client for Windows and macOS that claims to be one of the fastest tools in the category in terms of latency.
-
-Besides handling grammar and punctuation, Aqua also lets you autofill text by saying phrases — you can say “my address” and have Aqua type in your address, for example.
-
-The app also offers its own speech-to-text API for other apps.
-
-The free tier gets you 1,000 words per month. The paid plans start from $8 per month (annual billing) and unlock unlimited words and 800 custom dictionary values.
-
-Handy is an open source and free transcription tool that can run on Mac, Windows, and Linux. The application is pretty basic and doesn’t offer a lot of customization, but if you are trying to get started with using your voice more and don’t want to pay, it is a good option.
-
-The app has a basic settings menu that lets you toggle push-to-talk, and change the hotkey to activate the transcription.
-
-Typeless is another app in this category with a high free word count. The company claims that it doesn’t retain any data or use it to train models. Typeless also suggests a better version of the sentence if you might have fumbled a line.
-
-The app lets you dictate up to 4,000 words per week (roughly 16,000 words per month) on its free tier. You can pay $12 per month (billed annually) to unlock unlimited words and get access to new features. Typeless is available for Windows and macOS only.
-
-Ivan covers global consumer tech developments at TechCrunch. He is based out of India and has previously worked at publications including Huffington Post and The Next Web.
-
-You can contact or verify outreach from Ivan by emailing im@ivanmehta.com or via encrypted message at ivan.42 on Signal.
-
-Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
-
-Meta just bought Manus, an AI startup everyone has been talking about
-
-You’ve been targeted by government spyware. Now what?
-
-Sauron, the high-end home security startup for ‘super premium’ customers, plucks a new CEO out of Sonos
-
-The Google Pixel Watch 4 made me like smartwatches again
-
-FaZe Clan’s future is uncertain after influencers depart
-
-NY Governor Hochul signs bill requiring warning labels on ‘addictive’ social media
-
-How reality crushed Ÿnsect, the French startup that had raised over $600M for insect farming</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">VCs predict enterprises will spend more on AI in 2026 — through fewer vendors</div>
-            <div class="meta">2025-12-30</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>VCs predict enterprises will spend more on AI in 2026 — through fewer vendors</h2>
-            <p><strong>TechCrunch | 2025-12-30</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2025/12/30/vcs-predict-enterprises-will-spend-more-on-ai-in-2026-through-fewer-vendors/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Enterprises have been piloting and testing different AI tools for the past few years to figure out what their adoption strategy will look like. Investors think that period of experimentation is coming to an end.
-
-TechCrunch recently surveyed 24 enterprise-focused VCs and an overwhelming majority predicted enterprises will increase their budgets for AI in 2026 — but not for everything. Most investors said this budget increase will be concentrated and that many enterprises will spend more funds on fewer contracts.
-
-Andrew Ferguson, a vice president at Databricks Ventures, predicted 2026 will be the year that enterprises start consolidating their investments and picking winners.
-
-“Today, enterprises are testing multiple tools for a single-use case, and there’s an explosion of startups focused on certain buying centers like [go-to-market], where it’s extremely hard to discern differentiation even during [proof of concepts],” Ferguson said. “As enterprises see real proof points from AI, they’ll cut out some of the experimentation budget, rationalize overlapping tools and deploy that savings into the AI technologies that have delivered.”
-
-Rob Biederman, a managing partner at Asymmetric Capital Partners, agreed. He predicts that enterprise companies will not only concentrate their individual spending, but also the broader enterprise landscape will narrow its overall AI spending to only a handful of vendors across the entire industry.
-
-“Budgets will increase for a narrow set of AI products that clearly deliver results and will decline sharply for everything else,” Biederman said. “We expect a bifurcation where a small number of vendors capture a disproportionate share of enterprise AI budgets while many others see revenue flatten or contract.”
-
-Scott Beechuk, a partner at Norwest Venture Partners, thinks enterprises will increase their spending on the tools that make AI safe for enterprises to use.
-
-“Enterprises now recognize that the real investment lies in the safeguards and oversight layers that make AI dependable,” Beechuk said. “As these capabilities mature and reduce risk, organizations will feel confident shifting from pilots to scaled deployments, and budgets will increase.”
-
-Harsha Kapre, a director at Snowflake Ventures, predicted enterprises will spend on AI in three distinct areas in 2026: strengthening data foundations, model post-training optimization, and consolidation of tools.
-
-“[Chief investment officers] are actively reducing [software-as-a-service] sprawl and moving toward unified, intelligent systems that lower integration costs and deliver measurable [return on investment],” Kapre said. “AI-enabled solutions are likely going to see the biggest benefit from this shift.”
-
-A shift away from experimentation and toward concentration will affect startups. What’s not clear, is how.
-
-It’s possible that AI startups will reach the same reckoning point that SaaS startups arrived at a few years ago.
-
-The companies operating hard-to-replicate products such as vertical solutions or those built on proprietary data will likely still be able to grow. Startups with products similar to those offered by large enterprise suppliers, like AWS or Salesforce, may start to see pilot projects and funding dry up.
-
-Investors see this possibility too. When asked how they know that an AI startup has a moat, multiple VCs said companies with proprietary data and products that can’t easily be replicated by a tech giant or large language model company are the most defensible.
-
-If investor predictions are true and enterprises do start to concentrate their AI spend next year, 2026 could be the year enterprise budgets increase but many AI startups don’t see a bigger slice of the pie.
-
-Becca is a senior writer at TechCrunch that covers venture capital trends and startups. She previously covered the same beat for Forbes and the Venture Capital Journal.
-
-You can contact or verify outreach from Becca by emailing rebecca.szkutak@techcrunch.com.
-
-Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
-
-Meta just bought Manus, an AI startup everyone has been talking about
-
-You’ve been targeted by government spyware. Now what?
-
-Sauron, the high-end home security startup for ‘super premium’ customers, plucks a new CEO out of Sonos
-
-The Google Pixel Watch 4 made me like smartwatches again
-
-FaZe Clan’s future is uncertain after influencers depart
-
-NY Governor Hochul signs bill requiring warning labels on ‘addictive’ social media
-
-How reality crushed Ÿnsect, the French startup that had raised over $600M for insect farming</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
             <div class="title">What to Read When Your Friends Are Out Partying</div>
@@ -1859,7 +1957,9 @@ Starmer—and his Conservative predecessors—were right to call for Abd el-Fatt
             <p><strong>The Atlantic | 2025-12-30</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2025/12/the-show-wont-go-on-at-the-kennedy-center/685468/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">In the opening scene of the black comedy The Death of Stalin, a violinist in Moscow is told her orchestra is giving a command performance for Joseph Stalin, and refuses to play on political grounds. A frantic radio director, fearing he will be arrested or shot if he fails to produce the concert in time, begs her to reconsider, finally prevailing with an offer of 20,000 rubles.
+            <div id="article-text">This article was updated on December 31, 2025 at 9:33am.
+
+In the opening scene of the black comedy The Death of Stalin, a pianist in Moscow is told her orchestra is giving a command performance for Joseph Stalin, and refuses to play on political grounds. A frantic radio director, fearing he will be arrested or shot if he fails to produce the concert in time, begs her to reconsider, finally prevailing with an offer of 20,000 rubles.
 
 Recently, the Trump administration faced a similar situation. After Donald Trump purported to rename the Kennedy Center after himself, the jazz musician Chuck Redd withdrew from a planned Christmas Eve concert. The administration’s response was somehow both more authoritarian and comic than the one in the movie.
 
@@ -1886,44 +1986,132 @@ Trump has treated last year’s election as eternal proof that he is the incarna
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">US Measles Cases Surpass 2,000, Highest in 30 Years: CDC</div>
+            <div class="title">China Demands Netherlands 'Correct Mistakes' Over Seized Chipmaker as Auto Supply Crunch Deepens</div>
             <div class="meta">2025-12-31</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>China Demands Netherlands 'Correct Mistakes' Over Seized Chipmaker as Auto Supply Crunch Deepens</h2>
+            <p><strong>Slashdot | 2025-12-31</strong></p>
+            <a class="original-link" href="https://slashdot.org/story/25/12/31/0843244/china-demands-netherlands-correct-mistakes-over-seized-chipmaker-as-auto-supply-crunch-deepens?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+
+Europe should indeed correct its mistakes.  Mistake #1 being evolving into the planet&#39;s &quot;bedroom community&quot; where nearly everything of value is made elsewhere, by others.
+
+There is plenty of manufacturing in the EU. More than in the USA, both in absolute numbers and as a GDP percentage. Why do you think the orange shitgibbon whines about trade deficit with the EU?
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Let the machine do the dirty work.
+		-- &quot;Elements of Programming Style&quot;, Kernighan and Ritchie</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">US Measles Cases Surpass 2,000, Highest in 30 Years: CDC</div>
+            <div class="meta">2025-12-31</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>US Measles Cases Surpass 2,000, Highest in 30 Years: CDC</h2>
             <p><strong>Slashdot | 2025-12-31</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/25/12/31/1335203/us-measles-cases-surpass-2000-highest-in-30-years-cdc?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 Jut suppress the statistics and pretend the problem does not exist.Chinese method.
 
 The orange ape will get on it posthaste! If he can keep it together long enough...
 
+Jut suppress the statistics and pretend the problem does not exist.
+Chinese method.Nah, this is the US. We&#39;ll have some half-dead zombie make a public speech saying that these people just need to toughen up and that if we hadn&#39;t turned ourselves into giant wusses by taking vaccines this wouldn&#39;t be happening. You forgot America&#39;s number one rule, never let a tragedy go to waste.
+
+Jut suppress the statistics and pretend the problem does not exist.
+Chinese method.
+
+Nah, this is the US. We&#39;ll have some half-dead zombie make a public speech saying that these people just need to toughen up and that if we hadn&#39;t turned ourselves into giant wusses by taking vaccines this wouldn&#39;t be happening. You forgot America&#39;s number one rule, never let a tragedy go to waste.
+
+My theory is that no one ever learns important life lessons the easy way. It is always the hard way.
+
+Let&#39;s not forget that this has happened because people like you voted for a rapist and pedophile for President.  One thing we can count on is that your &quot;theory&quot; will never be that you&#39;re to blame.
+
+Perhaps they still keep some blankets at Mars-a-Lardo.
+
+24 were reported among international visitors to the U.S...to avoid visiting the USA.It&#39;s bad for both mental and physical health (apart from the chance of lead poisoning).
+
+24 were reported among international visitors to the U.S.
+
+..to avoid visiting the USA.It&#39;s bad for both mental and physical health (apart from the chance of lead poisoning).
+
+Ideally an unvaccinated kid should not be allowed to attend public schools unless there is an overwhelming medical reason (known allergy in the child) for not being vaccinated. That particular boat seems to have left, so perhaps we need to see some cases where the parents of a child who is in the chain that leads to damage or death in another child is sued for the damages. This would only be just...
+
+You mean like it used to be until recently?
+
+It might be an extreme one: unvaxxed Billy bursts into immuno-compromised Johnnie&#39;s otherwise sterile hospital room without a facemask because he&#39;s his best friend. Johnnie dies of measles and Billy had it at the time. Once the story started to roll, it would send the message.
+
+When you have people in government creating doubt about the effectiveness of vaccines in general, then those people in government are fully responsible for the drop in vaccination rates.   The US government even has it in the preamble to the US Constitution...&quot;...to promote the general welfare...&quot;, and that says government should be doing things to improve things for the overall population.  While some doubt might be reasonable for NEW vaccines, the idea of vaccines overall has been proven to be a good thin
+
+When you have Republicans saying they want things to be like their were in the 50s, then put an anti-vaxxer in charge of the nation&#39;s top health agency, what would you expect?
+
+Whooping cough cases are also seeing a similar increase as well as deaths.
+
+Why don&#39;t you go on CDC&#39;s website and see when the spike happened, which month of this year, and when the bulk of the cases were reported, then come back and tell us that a new administration&#39;s federal policies would have had anything to do with it.
+
+Also go look at which state most of the cases are reported.  And ponder maybe there&#39;s something specific going on rather than your politically charged ramblings.
+
+The spike happened in an area where the measles vaccination rate is low, which makes it easy to have an outbreak. The vaccination rate is low because there has been since September 1st, 2023 a broad &quot;exemption&quot; from vaccination due to reasons of religious-based willful ignorance:
+
+Since September 1, 2003, Texas law has allowed parents to exempt their children from school-required vaccines for reasons of conscience, which includes religious and philosophical beliefs. This is a much broader standard than states that only allow narrow medical exemptions.  So, it is the policy of the party of the current administration as practiced in one of the states that is best aligned with the raging idiocy of that administration emanating from its leaders,  ratfuck jr. and donold j. trump.But pl
+
+Since September 1, 2003, Texas law has allowed parents to exempt their children from school-required vaccines for reasons of conscience, which includes religious and philosophical beliefs. This is a much broader standard than states that only allow narrow medical exemptions.
+
+So, it is the policy of the party of the current administration as practiced in one of the states that is best aligned with the raging idiocy of that administration emanating from its leaders,  ratfuck jr. and donold j. trump.
+
+Apparently vaccination rates are dropping by quite a bit: https://www.washingtonpost.com... [washingtonpost.com]
+
+And parents will not know the extent of their stupidity because the CDC won&#39;t be collecting data like they did in the past. Immuno-compromised kids will lose.
+
+From Ten countries in the Americas report measles outbreaks in 2025 [paho.org] we can see that Mexico and Canada already had more cases back in August than the US does now at the end of the year despite them having much smaller populations than the US.
+
+Countries with the highest case numbers include Canada (4,548 cases), Mexico (3,911 cases), and the United States (1,356 cases).
+
+I find it interesting that ABC chose not to mention this pertinent information, makes me wonder what other news they&#39;re suppressing.
+
+And the other half are unvaccinated Americans who visit abroad and bring it back, infecting whole communities.
+
+Likely in the new year, the CDC and WHO will remove the US from the list of countries that have &quot;eradicated&quot; measles.
+
+Which also happens to coincide (who knows maybe nothing) with the largest spike in immigrant influx. In 1989 to 1991, Immigration was even higher than the years between 1900 to 1910. And yes, I know the population was smaller back then, but the surrounding years to 1989 to 1991 didn&#39;t have anywhere near this spike.While I do understand that anti-vaxxer children are probably overrepresented in this number, even if you ware vaccinated it will just lower the chances, not eliminate all cases.  When we ramp up e
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Utility is when you have one telephone, luxury is when you have two,
-opulence is when you have three -- and paradise is when you have none.
-		-- Doug Larson</div>
+Let the machine do the dirty work.
+		-- &quot;Elements of Programming Style&quot;, Kernighan and Ritchie</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">NYC Inauguration Bans Raspberry Pi, Flipper Zero Devices</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>NYC Inauguration Bans Raspberry Pi, Flipper Zero Devices</h2>
             <p><strong>Slashdot | 2025-12-31</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/25/12/31/005202/nyc-inauguration-bans-raspberry-pi-flipper-zero-devices?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
-
-Both, especially when politicians are involved.
+            <div id="article-text">Both, especially when politicians are involved.
 
 Hanlon&#39;s razor generally still applies to technology that the masses don&#39;t really understand. That being said, totally agree - though it seems like Mamdani&#39;s people don&#39;t really understand the social benefits of SBCs or devices like the flipper and how they might be used other than in FUD stories that propagate.
+
+Essentially only wireless hacking. But an Orange Pi or even a naked ESP32 could serve as well. A cell-phone has the hardware but will probably require more work on the software side. How much more, I have no idea.
+
+Flipper IR abilities alone can allow simple IR controlled lighting changes at home, which would be reason enough to have in a pocket.
+
+RF controls for car, garage, door, alarm system or anything RF really, makes it handy is some situations. The same contactless sort of functions a phone (RFID or NFC) or iButton interactions could be useful for security or just control.
+
+There are also add-on modules, expanding it&#39;s abilities, like Midi sequencing for lighting displays or music needs. Simple status reporting fro
 
 Hanlon&#39;s razor generally still applies to technology that the masses don&#39;t really understand. That being said, totally agree - though it seems like Mamdani&#39;s people don&#39;t really understand the social benefits of SBCs or devices like the flipper and how they might be used other than in FUD stories that propagate.I wouldn&#39;t be surprised to learn that one of the LED walls or something innocuous like that is driven by a Raspberry Pi.
 
@@ -1932,6 +2120,8 @@ Hanlon&#39;s razor generally still applies to technology that the masses don&#39
 I wouldn&#39;t be surprised to learn that one of the LED walls or something innocuous like that is driven by a Raspberry Pi.
 
 It&#39;s hard to tell because the author doesn&#39;t seem to have worked very hard to find out why.  Yes, he tried to contact some of the incoming Mayor&#39;s staff, but he didn&#39;t contact the people responsible for security.  That would be the police department and maybe Homeland Security.  An actual reporter may have gotten further.  No offense to him, but it doesn&#39;t look like the author does much of that.
+
+Why not both? The stupidity is clear. But the malice could be pretending to do something while never checking or even caring about effectiveness, and thereby giving a false sense of security. I would call that &quot;indifferent maliciousness&quot;.
 
 Be glad they didn’t generalize their ban further:
 
@@ -1943,25 +2133,48 @@ We&#39;ll just ignore the fact that they&#39;re far more advanced or dangerous t
 
 What about orange-pies or my old Jetson nano?
 
+Police &quot;discretion&quot; already does that.  Everywhere.  All the time.  At every level.
+
+Why would anyone bring a Raspberry Pi to a mayoral inauguration?  Maybe that could happen unwittingly, being embedded in some media equipment or whatnot, but someone knowingly walking around with a RPi?
+
+Doesn&#39;t make sense that anyone would imagine this is an actual &quot;security&quot; problem.
+
+.. and we are not focused on Mamdani&#39;s destructive planned policies.  Nor his wacko inauguration, virtually in hiding. [fox5ny.com]
+
+New York City, you are about to be changed.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Utility is when you have one telephone, luxury is when you have two,
-opulence is when you have three -- and paradise is when you have none.
-		-- Doug Larson</div>
+Let the machine do the dirty work.
+		-- &quot;Elements of Programming Style&quot;, Kernighan and Ritchie</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Denmark's Main Postal Carrier Ends Letter Delivery</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Denmark's Main Postal Carrier Ends Letter Delivery</h2>
             <p><strong>Slashdot | 2025-12-31</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/25/12/31/0012244/denmarks-main-postal-carrier-ends-letter-delivery?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Nearly everything delivered by USPS is junk mail.  There has to be a better option than a failed organization surviving solely off spam and subsidies.
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+Nearly everything delivered by USPS is junk mail.  There has to be a better option than a failed organization surviving solely off spam and subsidies.
+
+It&#39;s not strictly required, it&#39;s merely allowed.
+
+That said, things like legal documents (real estate tax bills, jury duty summons, health insurance cards, etc) go through the mail as letters. And while a lot of their revenue is junk mail, they also do a lot of Amazon&#39;s deliveries for them. Especially the 3rd party stuff.
+
+You&#39;re correct about the Constitution. However, as it relates to packages, Denmark isn&#39;t shutting down package delivery, just letters. For those who *must* deliver a letter, they could still ship it as a package, it just might cost more.
+
+Article 1, Section 8 of the Constitution says that &quot;The Congress shall have the power...To establish Post Offices and post Roads;&quot;
+
+https://www.archives.gov/found... [archives.gov]
+
+This doesn&#39;t require Congress to do so, it only gives it the authority to do so.
 
 The USA is no Denmark. Lot&#39;s of unconnected between the Mississippi and the Pacific coast. Postal is a service they rely on.
 
@@ -1974,6 +2187,10 @@ USPS is the most reliable and universal delivery service. It works. UPS and FedE
 I&#39;ve had more problems with my packages due to USPS than either of those carriers. UPS hands off small packages to USPS and this makes them take longer to be delivered. If you want to see how incompetent USPS is, put a very wrong zip code on a small package and watch it bounce between states multiple times because they have no logic to detect that.
 
 None of this necessarily means the USPS should be dissolved, but your idea of their competence is wholly unwarranted. Further, they scan and track every single ma
+
+You must live in a different place than I do. The USPS has terrible hours, long lines, and when it&#39;s lunchtime (a peak time to go to the Post Office) workers go on lunch break, rather than scheduling lunch breaks around peak times. By contrast, UPS and FedEx stores have hours that accommodate their customers, and shorter lines.
+
+I personally do NOT have the same warm, fuzzy feelings about the USPS that you do.
 
 Some commenters here seem to be in need of some factual information.
 
@@ -2003,23 +2220,22 @@ It became too expensive in the end. I got a few until last year, I would get a 2
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Utility is when you have one telephone, luxury is when you have two,
-opulence is when you have three -- and paradise is when you have none.
-		-- Doug Larson</div>
+Let the machine do the dirty work.
+		-- &quot;Elements of Programming Style&quot;, Kernighan and Ritchie</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Israel Deploys World's First Drone Defense Laser</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Israel Deploys World's First Drone Defense Laser</h2>
             <p><strong>Slashdot | 2025-12-31</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/25/12/31/0020214/israel-deploys-worlds-first-drone-defense-laser?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 Instead of talking about their new laser, lets talk about the genocide and war crimes Israel have committed against the people in Gaza. 70,000 dead, including 20,000 children in two years. Many more in the preceding years.
 
@@ -2027,7 +2243,7 @@ Nearly 40 aid organisations will no longer be permitted to operate in Gaza come 
 
 Israel wants land. Israel will starve and kill all Gazans to get that land. Land that was never theirs.
 
-I put it to you that Benjamin Netanyahu is in the same league of mass-murdering evil leaders as Adolph Hitler, Stalin, etc.
+I put it to you that Benjamin Netanyahu is in the same league of mass-murdering evil leaders as
 
 you mean the illegaly occupied territories? that&#39;s their land.
 
@@ -2077,8 +2293,6 @@ What other examples are there of states based on ethnicity that we find acceptab
 
 Let&#39;s also talk about how they must be fucking saints to dump all this money into shooting down incoming rockets and drones. If an enemy launched a sustained rocket and drone strike on the US, we would push them back to the stone age if that&#39;s what it took to stop the attacks. Shooting down incoming munitions? That&#39;s far too kind a response.
 
-No.  Let&#39;s talk about the new laser, since (a) that&#39;s the subject of the /. article, and (b) what you&#39;re saying is nonsense agitprop.---No one with a brain thinks that a country that sends millions of text messages, phone calls, drops leaflets, etc. to warn civilians to leave a warzone is intending to genocide them.  No one with a brain would think that Egypt is serious when they join South Africa&#39;s &quot;genocide&quot; case at the ICJ, yet they simultaneously keep the Rafah Gate sealed shut, preventing any refugees
-
 Oh, it&#39;s fucking hilarious.  People cry genocide and then cry to keep the borders shut.  With that in mind, it becomes clear that the left are insane liars, or the left are genocidal maniacs.
 
 All they need to do is put it on a track. Somehow I got the idea from the summary that they were drones with lasers but the image pretty clearly shows a heavy device mounted on a platform.
@@ -2109,9 +2323,23 @@ Oh, yes, she didn&#39;t, she just implied it, rather transparently :)))
 
 But the best Paylin is Lisa Ann.  [imdb.com]
 
+FWIW Marjorie never said &quot;Jewish Space Lasers&quot;, and Sarah Palin never said &quot;I can see Russia from my porch&quot;. I don&#39;t agree with either of them politically but I think it&#39;s important to be fair and not make bad faith attacks against them, &quot;for the lulz&quot;.I disagree with the assertion this characterization was unfair or otherwise made in bad faith.  MTG did indeed speak of Rothschild satellites causing forest fires in California.&quot;oddly there are all these people who have said they saw what looked like lasers or blue beams of light causing the fires&quot;&quot;If they are beaming the suns energy back to Earth, Iâ(TM)m sure they wouldnâ(TM)t ever miss a transmitter receiving station right??!! I mean mistakes are never made when anything new is invented. What w
+
+FWIW Marjorie never said &quot;Jewish Space Lasers&quot;, and Sarah Palin never said &quot;I can see Russia from my porch&quot;. I don&#39;t agree with either of them politically but I think it&#39;s important to be fair and not make bad faith attacks against them, &quot;for the lulz&quot;.
+
+I disagree with the assertion this characterization was unfair or otherwise made in bad faith.  MTG did indeed speak of Rothschild satellites causing forest fires in California.
+
+&quot;oddly there are all these people who have said they saw what looked like lasers or blue beams of light causing the fires&quot;
+
+&quot;If they are beaming the suns energy back to Earth, Iâ(TM)m sure they wouldnâ(TM)t ever miss a transmitter receiving station right??!! I mean mistakes are never made when anything new is invented. What w
+
 Lasers need a honking big power supply, think 20ft container size. Capacitors to drive it are juicy on radars, and the emf spike is triangulated. Overdriven lasers, wear out. There is a lifetime, and it is not huge, maybe a low as 100 shots. Weather and rain. 5km range, but 1 km would be more like it.  Drones and glide bombs are SO cost effective in wiping out both tanks and container sized trucks. So basically expensive kit, restricted use.  Probably best to guard Patriot like million bucks a pop systems. Best bang for buck is getting out of war and into peace.
 
 Peace isn&#39;t the goal. The goal is to keep ramping things up as an excuse for genocide and ethnic cleansing.
+
+The main reason that Israel helped Hamas come to power, and then funded them, was to ensure that no moderate who was pushing for a two state solution could make any progress.
+
+It&#39;s also designed to stop drones and glide bombs, so I don&#39;t know why you would pick those as your example threats.
 
 https://www.aju.edu/events/jew... [aju.edu]
 
@@ -2141,18 +2369,17 @@ UK DragonFire - anti-drone laser has been shooting down Russian drones for month
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Utility is when you have one telephone, luxury is when you have two,
-opulence is when you have three -- and paradise is when you have none.
-		-- Doug Larson</div>
+Let the machine do the dirty work.
+		-- &quot;Elements of Programming Style&quot;, Kernighan and Ritchie</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Cheap Solar Is Transforming Lives and Economies Across Africa</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Cheap Solar Is Transforming Lives and Economies Across Africa</h2>
             <p><strong>Slashdot | 2025-12-31</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/25/12/31/001211/cheap-solar-is-transforming-lives-and-economies-across-africa?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -2191,344 +2418,8 @@ As I&#39;ve mentioend a couple of times in recent posts, there are massive and p
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Utility is when you have one telephone, luxury is when you have two,
-opulence is when you have three -- and paradise is when you have none.
-		-- Doug Larson</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">'Foreign Tech Workers Are Avoiding Travel To the US'</div>
-            <div class="meta">2025-12-31</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>'Foreign Tech Workers Are Avoiding Travel To the US'</h2>
-            <p><strong>Slashdot | 2025-12-31</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/25/12/30/2341244/foreign-tech-workers-are-avoiding-travel-to-the-us?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-In their minds we are winning. This is exactly what they voted for.
-
-And tech titans don&#39;t need to go to conferences, except to keynote at their own vanity-bro love fests held in achingly expensive venues.
-
-The sheer volume of rah-rah overcomes any sanity, and the &quot;business partners&quot; all tote the company line. They remind me of political conventions, except the food might be better.
-
-Then why do those same tech titans keep sponsoring every conference I go to...?
-
-Are you under the impression that they only sell technology they developed in-house or something?
-
-The risk of being rejected, imprisoned and questioned due to posts on (a)social media or contents in your electronic devices is too high.
-
-&quot;I see that you liked a post of Trump as Big Brother - that&#39;ll earn you three months in prison&quot;
-
-Yeah, we&#39;re looking at pulling our manufacturing out of the US because its just too much bullshit and risk right now. Add that to the tariffs making the US about the most expensive place to manufacture on the planet right now, our international staff getting monstered at the airports and the fact that the economy seems to be an absolute basket case at the moment, yeah the risks are too high. And thats not even touching on the fact that we cant bring commercial-in-confidence information into the country because ICE keep fucking with peoples computers, its just a hostile environment for business.
-
-That is complete bullshit.   We have(or had), a good information network until Trump alienated our allies around the world while making verbal love to the dictators in Russia, China, and North Korea as well as others.   When our former allies stop giving information to the USA to stop terrorism because the USA is no longer reliable, everyone loses.
-
-If you think violating freedom of speech is good, then you are in the wrong country, and you would be better off supporting Putin in Russia.
-
-The US is currently filtering out far more than just terrorists. Anyone who has expressed anything negative about the current administration risks being denied entry. I have a couple of British friends who were stopped and interrogated for 5 hours (both highly paid US professors in their 60s - not terrorists at all, though perhaps a little too lefty). They are likely to leave the country once their contract finishes. Who would want to continue to put up with that? Their story isn&#39;t unique and the reason why
-
-They think they are winning and winning big.
-
-That the opposite is happening is beyond their non-existent capabilities to fact-check. Kind of reminds me of the COVID-deniers that were in the last stages of dying from it but still claiming it was not real. The mental capabilities of average people are atrociously bad, with the exception of really good skills at delusion.
-
-They think they are winning and winning big.That the opposite is happening is beyond their non-existent capabilities to fact-check. Kind of reminds me of the COVID-deniers that were in the last stages of dying from it but still claiming it was not real. The mental capabilities of average people are atrociously bad, with the exception of really good skills at delusion.Speaking of COVID conspiracy nuts... weren&#39;t we all meant to be dead now from vaccine hurties by now? Or is this something that keeps being pushed back like the Rapture. 
-
-They said we&#39;d be in perpetual lockdowns... these were the first things to go.
-They said we&#39;d have to show vaccine passports everywhere for life... these never had more than a token effort before being forgotten.
-They said it would just go away... It got worse before we developed a vaccine. 
-
-On that last point, it&#39;s still killing antivax
-
-They think they are winning and winning big.
-
-That the opposite is happening is beyond their non-existent capabilities to fact-check. Kind of reminds me of the COVID-deniers that were in the last stages of dying from it but still claiming it was not real. The mental capabilities of average people are atrociously bad, with the exception of really good skills at delusion.
-
-Speaking of COVID conspiracy nuts... weren&#39;t we all meant to be dead now from vaccine hurties by now? Or is this something that keeps being pushed back like the Rapture. 
-
-They said we&#39;d be in perpetual lockdowns... these were the first things to go.
-They said we&#39;d have to show vaccine passports everywhere for life... these never had more than a token effort before being forgotten.
-They said it would just go away... It got worse before we developed a vaccine. 
-
-On that last point, it&#39;s still killing antivax
-
-I certainly wouldn&#39;t feel safe setting foot in the US.  And I definitely don&#39;t feel welcomed.
-
-But hey, it&#39;s good for Canada.  We&#39;ve already poached quite a few top-talent academics from the US and I suspect more will come.
-
-The USA wasn&#39;t too welcoming even before the unsolicited-finger-in-your-ass service known as TSA was established back after the 9/11 Dubbya security fiasco. Now that it is a self-certified banana republic run by a demented lunatic with delusions of grandeur, which the world is starting to successfully route around, there&#39;s absolutely no reason to set foot there.
-
-I certainly wouldn&#39;t feel safe setting foot in the US. And I definitely don&#39;t feel welcomed.
-
-But hey, it&#39;s good for Canada. We&#39;ve already poached quite a few top-talent academics from the US and I suspect more will come.
-
-I think the biggest thing to watch for would be CES. Many companies from around the world fly in to show their wares there. It&#39;s basically only Las Vegas that could host it given how big it is, and it&#39;s booked years in advance. It would be interesting to see how empty it becomes and if they have to reduce the size because fewer people can exhibit, show and attend.
-
-Also, I think many of the bigger shows will start moving outside the US just to pick up the international crowd.
-
-This is horrendously bad for the US, because if the international attendees go to the non-US exhibition, US exhibitors will start to go there as well, and soon it will become established - why have the US convention when everyone is just going to to the non-US one again anyways?
-
-Eventually the international locations will be where the event happens and convention cities like Las Vegas would lose out. I suppose they could always invite the physicists back (they were banned because they didn&#39;t gamble).
-
-The problem is habit forming - it doesn&#39;t take long to form new traditions and now you&#39;ve lost your crowd for good.
-
-Watch things like CES, then watch what happens to conventions that have a huge international component to them like BlackHat for DefCon which may have to split up.
-
-Absolutely and Vegas is already suffering after COVID and a ton of self inflicted wounds from the resorts companies.   A shrinking CES does not bode well.
-
-At the same time that&#39;s the political divide in a nutshell.  Trump turned NV 51-48.  Clark county where Vegas is and is like 60% of the votes went to Harris 50-48 but all but one other county sparse as they are went red by like 70+.  Will the decline of the tourism industry affect whatever happens in central Nevada?
-
-Far too late to avoid a lot of negative c
-
-The tech people who can afford these conferences are also the peoples with disposable income that tend to travel a lot.  I certainly won&#39;t be traveling to the US any time soon, I&#39;d rather fly 12 hours to go to Asia or Europe.
-
-To be honest, US citizens don&#39;t feel safe in the USA with ICE criminals running around abusing citizens(it&#39;s not limited to immigrants).
-
-But hey, it&#39;s good for Canada.  We&#39;ve already poached quite a few top-talent academics from the US and I suspect more will come.Considering Canada still has a ban on foreigners buying houses, much higher taxes (and prices in general) than the US, and increasingly overcrowded health care system - I think that wish coming true is very unlikely.
-
-But hey, it&#39;s good for Canada.  We&#39;ve already poached quite a few top-talent academics from the US and I suspect more will come.
-
-Considering Canada still has a ban on foreigners buying houses, much higher taxes (and prices in general) than the US, and increasingly overcrowded health care system - I think that wish coming true is very unlikely.
-
-I certainly wouldn&#39;t feel safe setting foot in the US.  And I definitely don&#39;t feel welcomed.
-But hey, it&#39;s good for Canada.  We&#39;ve already poached quite a few top-talent academics from the US and I suspect more will come.This is something that concerns me in the UK... at some point the tipping point is going to be reached and Skilled Americans will start looking for work outside the US with in increasing numbers with increasing desperation as employment opportunities dry up stateside. We could be looking at a refugee crisis from a former 1st world country if Trump goes on too long.
-
-I certainly wouldn&#39;t feel safe setting foot in the US.  And I definitely don&#39;t feel welcomed.
-
-But hey, it&#39;s good for Canada.  We&#39;ve already poached quite a few top-talent academics from the US and I suspect more will come.
-
-This is something that concerns me in the UK... at some point the tipping point is going to be reached and Skilled Americans will start looking for work outside the US with in increasing numbers with increasing desperation as employment opportunities dry up stateside. We could be looking at a refugee crisis from a former 1st world country if Trump goes on too long.
-
-The article does not make the point for you:&quot;As of the latest year-in-review data from December 2025, CBSA reported 18,969 total removals for the year, with detailed breakdowns available up to October 31 showing 18,785.&quot;
-
-Moreover, canada won&#39;t deport you or prevent entry in the country because you posted against Trudeau...Not many would be left in country.
-
-To try and equate Canadian immigration with whats going on in the US is complete and utter bullshit and you know it.  CBSA is nothing like ICE, jesus christ.
-
-For years people here on Slashdot have complained about H1-B abuse and the need to fix the program abuses that allowed companies to use it to cut costs and lay off Americans. So are you happy they are tightening the program, focusing it on experienced hires, and raising the cost to employers?  Or is it bad because Trump?
-
-The logical fallacy you are making is called &quot;False choice&quot;.
-
-technically it&#39;s &#39;false dichotomy&#39; but that&#39;s just a fancy way of saying &#39;false choice&#39; anyway.
-
-This is for whoever modded you flamebait. I hope they spend their time crying about how nobody will &#39;debate&#39; them.
-
-Well then do tell us why it&#39;s bad now but was asked for previously.You&#39;ve just repeated the same fallacy.
-
-Well then do tell us why it&#39;s bad now but was asked for previously.
-
-I am not American, but even here where I live it seems that the goal is to get everyone possible in from abroad to replace me. I see myself put last in the country I was born in. What&#39;s even worse is that I regularly outperform those who are given jobs with high salaries in every possible aspect, yet I&#39;m treated as an &quot;inconvenience&quot; as I go against the agenda. I&#39;ve had several times in my career where I clean up the mess left by much more expensive &quot;developers&quot; at a fraction of their pay, and told to just
-
-If reality matches your description of it, there&#39;s a good chance you would be better off with a different employer or even self-employed.
-
-H1-B reform could have been done without blatant human rights abuse at the border, illegal mass deportations without due process by masked federal agents, and threats to the sovereignty of formerly allied nations.
-
-Immigration enforcement cannot be done without identifying and apprehending illegal immigrants. Often against their will.
-
-Just like arresting other kinds of lawbreakers cannot generally be done on the honor system alone.
-
-Law enforcement is not a human rights violation. Border enforcement is not a human rights violation. There is no natural right to enter and reside in the United States, or for that matter any country, without respecting the immigration laws of that country.
-
-This is a false choice, INS agents didn&#39;t even used to be armed.   I would bet you there&#39;s a way to ID people without a secret police force with  $100B and a licence to do human rights violations.
-
-And there&#39;s no hiding it, the nations social media accounts are open about the intentions, it&#39;s performative cruelty.  That&#39;s the shit other nations see and wonder what the fuck happened. Seriously, that shit is inexcusable and shameful.
-
-GGP wrote that arresting lawbreakers cannot generally be done on the honor system alone. I assume that everyone here agrees on that, you included. The other thing is, agents of the state can be part of that group of lawbreakers, including while doing their job of law enforcement, which is defined within a legal framework. How do you suggest that we arrest the masked agents who break the law while masked, if they cannot be identified?
-
-H1-Bs aren&#39;t affected by anything happening on the border, nor are they affected by mass deportations.
-
-I don&#39;t think so, the country has tried to reform H1B for almost 2 decades and nothing ever improves due to corruption. Sometimes a drastic breakup is what&#39;s required to bring change into a broken system.
-
-H1-B reform could have been done without blatant human rights abuse at the border, illegal mass deportations without due process by masked federal agents, and threats to the sovereignty of formerly allied nations.Could have avoided all that shit by not electing an Open Boder Czar for the last five years too.No.  I don’t give a shit how offended or embarrassed grown-ass children are when Common F. Sense identifies the root fucking cause.  America is now forced to deal with the massive problem of illegal importations.  All because liberals wanted to deny, deny, deny they elected a man suffering from dementia and a wholly unqualified minority to run the country. Accountability is quite the undiscovered concept am
-
-H1-B reform could have been done without blatant human rights abuse at the border, illegal mass deportations without due process by masked federal agents, and threats to the sovereignty of formerly allied nations.
-
-Could have avoided all that shit by not electing an Open Boder Czar for the last five years too.
-
-No.  I don’t give a shit how offended or embarrassed grown-ass children are when Common F. Sense identifies the root fucking cause.  America is now forced to deal with the massive problem of illegal importations.  All because liberals wanted to deny, deny, deny they elected a man suffering from dementia and a wholly unqualified minority to run the country.
-
-Accountability is quite the undiscovered concept am
-
-What does any of that have to do with the story?
-
-Replying again because Mar-a-Lago applied for 170 temporary foreign workers this year, a record. https://www.palmbeachpost.com/... [palmbeachpost.com]
-
-Guess they can&#39;t find any hard working MAGA fans to mow the lawns and serve well done steaks.
-
-Replying again because Mar-a-Lago applied for 170 temporary foreign workers this year, a record. https://www.palmbeachpost.com/... [palmbeachpost.com]  Gaslight
-Obstruct
-ProjectGuess they can&#39;t find any hard working MAGA fans to mow the lawns and serve well done steaks. Guardians
-Of
-Paedophiles
-
-Replying again because Mar-a-Lago applied for 170 temporary foreign workers this year, a record. https://www.palmbeachpost.com/... [palmbeachpost.com]
-
-Guess they can&#39;t find any hard working MAGA fans to mow the lawns and serve well done steaks.
-
-You need an h1b when you speak at a conference?
-
-What on earth does your question have to do with the article? Or did you just feel like promoting Trump for no reason?
-
-For years people here on Slashdot have complained about H1-B abuse and the need to fix the program abuses that allowed companies to use it to cut costs and lay off Americans. So are you happy they are tightening the program, focusing it on experienced hires, and raising the cost to employers? Or is it bad because Trump?
-
-If you are a nurse, you will resent the US importing nurses.  If you are a brick layer, you will resent imported bricklayers.  Ditto truck drivers, etc.  of course, these policies tend not t
-
-For years people here on Slashdot have complained about H1-B abuse and the need to fix the program abuses that allowed companies to use it to cut costs and lay off Americans. So are you happy they are tightening the program, focusing it on experienced hires, and raising the cost to employers?  Or is it bad because Trump?To answer your question, you know those evaluation tests psychologists will eventually develop as part of the natural process to screen for long-TDS? Nailed it.
-
-For years people here on Slashdot have complained about H1-B abuse and the need to fix the program abuses that allowed companies to use it to cut costs and lay off Americans. So are you happy they are tightening the program, focusing it on experienced hires, and raising the cost to employers?  Or is it bad because Trump?
-
-To answer your question, you know those evaluation tests psychologists will eventually develop as part of the natural process to screen for long-TDS?
-
-And send everyone who is not licking the orange shitgibbon boots into a psychiatric institution like the &quot;very smart guy&quot; does in russia? You trumptards are really the worst kind of people.
-
-I travelled to conferences in the US early 2000s. I had to fill that paper saying I&#39;m not a Communist so I can enter the country. &quot;First they came for the Communists, and I said nothing, because I am not a Communist.&quot; But now my news say that from February 2026, visitors will be asked to provide social media login to check the posts, list of phone numbers used in the past 5 years, list of email addresses. And that&#39;s simply no, and absolute and definitive no, whatever the reason for the travel.
-
-The stasi were at least discrete about this type of thing.
-
-It is also noteworthy that the Stasi did not have the technical means to process all the data it collected. This has changed.
-
-Yep. Some of it was bad even back then. Some people that invited me even got me an official invitation letter from the DHS because they feared I might have problems otherwise. But these days? It is like they throw a dice on whether to let you in or not.
-
-..it should be about risk management. There should be certainty before arrivalBetter  to remove guesswork out out the equation.Gee, if only America took this common sense advice for the last five years instead of hiring an Open Border Czar who ensured the border stayed open by never visiting it.It’s as if we simply cannot imagine how we got here.  Oh wait.  I almost forgot.  We don’t have to imagine.  At all.Troll tags, don’t change Truth.
-
-..it should be about risk management. There should be certainty before arrivalBetter  to remove guesswork out out the equation.
-
-Gee, if only America took this common sense advice for the last five years instead of hiring an Open Border Czar who ensured the border stayed open by never visiting it.
-
-It’s as if we simply cannot imagine how we got here.  Oh wait.  I almost forgot.  We don’t have to imagine.  At all.
-
-The result, he says, is a gradual shift of talent, events, and long-term innovation toward more welcoming regions such as Europe, Canada, and Asia&quot;Are we finding out yet?&quot;
-
-The result, he says, is a gradual shift of talent, events, and long-term innovation toward more welcoming regions such as Europe, Canada, and Asia
-
-When the damage Trump has caused becomes too obvious and the US starts to really fail, things are going to get very dangerous.  Wars start over crap like this.
-
-Wars start over crap like this.I&#39;m not sure who would go to war against the US over its current policies (wars are costly -  smart countries would avoid unnecessary wars, instead of fighting the US they would slowly distance themselves from the US), but I can see two classes of wars starting indirectly because of it.Type 1:  Country A wants to go to war with Country B, but Country B has enjoyed the protection of the United States.  With a weakened US, Country A is no longer deterred from going to war with Country B.Type 2:  The leader of
-
-I&#39;m not sure who would go to war against the US over its current policies (wars are costly -  smart countries would avoid unnecessary wars, instead of fighting the US they would slowly distance themselves from the US), but I can see two classes of wars starting indirectly because of it.
-
-Type 1:  Country A wants to go to war with Country B, but Country B has enjoyed the protection of the United States.  With a weakened US, Country A is no longer deterred from going to war with Country B.
-
-There&#39;s also Option 3: Civil war, as the states opposed to MAGA&#39;s destruction of the US finally get fed up with states supporting it.
-
-Mexico is safer than the US at least I can avoid the criminals thereBwahahahaha! You&#39;d also choose the bear in the woods, right?
-
-Mexico is safer than the US at least I can avoid the criminals there
-
-Bwahahahaha! You&#39;d also choose the bear in the woods, right?
-
-Try yelling at the cartels and see how that goes.
-
-Mexico is safer than the US at least I can avoid the criminals there, pretty hard to avoid the so criminals in the US since they wear government uniforms.If you’re so confident, you’d share your location with the class to prove you’re already in Mexico.You know, that safe place.  Where the carte, er I mean “police” wear uniforms.Dont forget your brib, er I mean extra cash for “tips”.
-
-Mexico is safer than the US at least I can avoid the criminals there, pretty hard to avoid the so criminals in the US since they wear government uniforms.
-
-If you’re so confident, you’d share your location with the class to prove you’re already in Mexico.
-
-You know, that safe place.  Where the carte, er I mean “police” wear uniforms.
-
-Dont forget your brib, er I mean extra cash for “tips”.
-
-When the damage Trump has caused becomes too obvious and the US starts to really fail, things are going to get very dangerous.  Wars start over crap like this.I wonder at what point should Democrats have understood that wars start and continue under DEI incompetence?  Was it before or after you voted for it?You may stop pretending that Russia/Ukraine and Israel/Palestine, didn’t happen under President Autopen and the Open Boder Czar now.  If not, America might stop pretending we don’t need to medicate people for long-TDS.
-
-When the damage Trump has caused becomes too obvious and the US starts to really fail, things are going to get very dangerous.  Wars start over crap like this.
-
-I wonder at what point should Democrats have understood that wars start and continue under DEI incompetence?  Was it before or after you voted for it?
-
-You may stop pretending that Russia/Ukraine and Israel/Palestine, didn’t happen under President Autopen and the Open Boder Czar now.  If not, America might stop pretending we don’t need to medicate people for long-TDS.
-
-None of my friends have interest in going to America, for at least three years or less ( on the day it finally happens!  )
-
-Right, because sending Americans to third world countries to make them better has worked out so well for us in the past.
-
-Troll, satire or terminally stupid? Hard to say.
-
-In actual reality, the US, like any high-tech nation, needs a lot more talented people than it can produce itself. Not letting them in just does one thing: It makes them a _former_ high-tech nation. This abject stupidity is present in other high-tech nations as well, but there, saner voices typically prevail.
-
-if every nation needs more talented people than they can produce where do they come from? lol that makes no sense.
-
-so america should be a brain drain on the rest of the world depriving them of their talented people? do u realize how much damage that does to their countries? they need them more than we do. we have plenty of geniuses in america.
-
-take india for example. with a population of a little under 1.5 billion there are only about 1.6 million people with IQ over 130 (average is 76). america with a much sm
-
-edit: i misread it. its not 1.6 million its 1.6 PER million. meaning that there are only around 2,336 people with an IQ over 130 in all of india. even using the highest average IQ reported for india of 82, that is still only 4,672 people. no wonder india is such a dump.
-
-even if its an order of magnitude higher the point remains, there are FAR more geniuses in america than india.
-
-The numbers this cretin claims are false. See my response higher up.
-
-if every nation needs more talented people than they can produce where do they come from? lol that makes no sense.That does indeed make no sense. Why does it not make sense? Because your statement is a different one that mine. I wrote &quot;high-tech nation&quot;, you wrote &quot;nation&quot;. I am sure if you try really hard you can spot the difference between the two things.As to you drivel regarding IQ, are you a fascist or racist or equally dumb asshole? Because in actual reality, IQ is close to 100 in India, same as any other larger country after cultural factors are taken into account. The number you quote seems to be from the &quot;Ulst
-
-if every nation needs more talented people than they can produce where do they come from? lol that makes no sense.
-
-That does indeed make no sense. Why does it not make sense? Because your statement is a different one that mine. I wrote &quot;high-tech nation&quot;, you wrote &quot;nation&quot;. I am sure if you try really hard you can spot the difference between the two things.
-
-As to you drivel regarding IQ, are you a fascist or racist or equally dumb asshole? Because in actual reality, IQ is close to 100 in India, same as any other larger country after cultural factors are taken into account. The number you quote seems to be from the &quot;Ulst
-
-we need to develop our own talentHow do you do that when your most important elections are determined, among others, by religious radicalism and a stance against science?
-
-How do you do that when your most important elections are determined, among others, by religious radicalism and a stance against science?
-
-Trump hands over political power to all these &#39;tech lords&#39;, and the outcome is actual tech people are avoiding the country.
-
-I am Mexican. Oh, but I do &quot;look European&quot;, and have traveled all over the world, and have a quite good level of English, and hold a PhD, and have a good job with 20+ years of stability, and what not. I have been several times to the USA, to cities all over the map. And I have a valid USA visa. I know that I would have no problem visiting. Still, no way.I got my visa (and used it, years ago) because there&#39;s always an interesting conference that happens there. There is also a good chance of finding good flights elsewhere that has a layover in the USA.But no, for several years, I have decided I am not setting foot there. Who needs to go to the USA, frankly? Even interesting tech and academic conferences are leaving the USA, so I&#39;m not missing out so much by sticking to countries whose politicians don&#39;t promise to make me feel unwelcome. ... ...And I&#39;m sure all this hatred and isolationism will come back and bite them. In many aspects, the USA has ceded terrain to other world powers (mostly China), and is no longer #1 for innovation, science or computing.
-
-As beautiful as the US is, the next time I fly over the Atlantic, it will most likely be to visited Canada instead, unless the US government *really* makes a serious effort to be much more welcoming to European tourists than it is now.
-
-Absolutely, the US are trying really hard to make everyone feel unwelcome, they are succeeding and so everybody gets what they want if nobody visits the US.
-
-I considered moving there in the 90s. I worked at bell labs at the time, partially in Europe, partially in the US (Massachusets).It looked attractive back then, but already &quot;risky&quot;, (I had a wife and 2 very small kids, and heard of issues with health insurance from colleagues).
-
-Then we considered Canada, which shared some of the risk, but less of the benefits (low taxes, high standard of living). I visited it looking for work and finding out how live there would be, and I found it totally dissapointing.
-
-Instead we remained in Europe, and I am so happy about that now.I would never set a foot in the USA as long as it remains so aggressive and hostile to anyone who does not &quot;share the values&quot; i.e. who does not become a fascistoid capitalist. The arrogance and loudness have become unbearable.
-
-35 year ago I was admitted to the U.S. under the NAFTA (now CUSMA) agreement as a Technical Specialist, because I had significant experience with databases.  That led to me going green-card and getting married on an American.  I lived there happily for 17 years, doing software work. It&#39;s so sad to see that welcoming, exciting America disappear down the drain of facism.  To my American friends:  He&#39;s destroying your place in the world. You are no longer the shining city on the hill. These days, I would not c
-
-Noone wants to visit a country that has that kind of idiocracy going on and being supported by half of the voters.
-
-Sure, keep believing that. The world will move on.
-
-The biggest and most influential confs are all in the USMaybe (not true in my area but fair point, it&#39;s the case for most areas), but it&#39;s actual corridor talk right now in the world outside of the US, people think twice before travelling. I have a collaboration where students can be offered a stay at a top US university and I now see students losing interest and refusing something that used to be a dream offer.
-
-The biggest and most influential confs are all in the US
-
-Maybe (not true in my area but fair point, it&#39;s the case for most areas), but it&#39;s actual corridor talk right now in the world outside of the US, people think twice before travelling. I have a collaboration where students can be offered a stay at a top US university and I now see students losing interest and refusing something that used to be a dream offer.
-
-yeah, no. The best conference were always international in tech. Maybe more often in north america, but they always have been rotating international locations.
-
-I attended 3 conference this year. And the foreign attendance was half of what it usually was. Steering committees of conferences I have talked to are looking into non US venues for all but one (which is by designa US based conference.)
-
-yeah, no. The best conference were always international in tech. Maybe more often in north america, but they always have been rotating international locations.I attended 3 conference this year. And the foreign attendance was half of what it usually was. Steering committees of conferences I have talked to are looking into non US venues for all but one (which is by designa US based conference.)I wonder how much of a tech Recession will continue to be arrogantly denied because some just can’t stop waiving the racist flag no matter what happens in business and the economy.Yup.  Conference attendance is down.  Vegas is empty right now too.  Is that also because Vegas is racist?
-
-yeah, no. The best conference were always international in tech. Maybe more often in north america, but they always have been rotating international locations.
-
-I attended 3 conference this year. And the foreign attendance was half of what it usually was. Steering committees of conferences I have talked to are looking into non US venues for all but one (which is by designa US based conference.)
-
-I wonder how much of a tech Recession will continue to be arrogantly denied because some just can’t stop waiving the racist flag no matter what happens in business and the economy.
-
-Yup.  Conference attendance is down.  Vegas is empty right now too.  Is that also because Vegas is racist?
-
-Allow me to help. The summary used words like &quot;gradual&quot; and &quot;long-term&quot;. It took decades for America to build its position of leadership in the world. The slide into irrelevance will take years.
-
-Your information is outdated. This was true in 2024, but is not true anymore in 2025. Too many conferences had top researchers stopped or harassed at the border or unwilling to even try to enter the US. Yes, it takes a bit for alternate venues to come up, but the US as the place for international tech conferences is done for.
-
-Trump is a jerk, and I can say that.You can say it on Slashdot. If you say it on Facebook and you need to enter the US for a conference, you might be denied entry.
-
-You can say it on Slashdot. If you say it on Facebook and you need to enter the US for a conference, you might be denied entry.
-
-You are completely delusional. I live in the UK and can state categorically that bacon remains a publicly celebrated and much-loved food. You don’t go to jail for saying you like it, and the fact you think that someone does should be incredibly embarrassing for you, as it demonstrates your endless credulity. Go watch a Fallow video on how to make an English breakfast, bacon and black pudding included, instead.
-
-https://youtu.be/UEUAHI0AZu4?s... [youtu.be]
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Utility is when you have one telephone, luxury is when you have two,
-opulence is when you have three -- and paradise is when you have none.
-		-- Doug Larson</div>
+Let the machine do the dirty work.
+		-- &quot;Elements of Programming Style&quot;, Kernighan and Ritchie</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -3211,11 +3102,129 @@ Copyright. All rights reserved © 1998–2025</div>
         
         <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
-            <div class="title">Killing in the name of… nothing</div>
+            <div class="title">Net neutrality was back, until it wasn’t</div>
             <div class="meta">2025-12-31</div>
         </div>
         
         <div id="content-48" style="display:none;">
+            <h2>Net neutrality was back, until it wasn’t</h2>
+            <p><strong>The Verge | 2025-12-31</strong></p>
+            <a class="original-link" href="https://www.theverge.com/report/851629/net-neutrality-fcc-retrospective-2025">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">﻿The FCC is taking an ax to America’s broadband rules, even as some states are stepping up.
+
+﻿The FCC is taking an ax to America’s broadband rules, even as some states are stepping up.
+
+The fight for net neutrality never seems to be truly won or lost.
+
+Federal net neutrality rules have been on and off for the past 15 years. The Federal Communications Commission (FCC) passed the Open Internet Order under President Barack Obama in 2010, prohibiting ISPs from blocking or throttling lawful internet traffic, the baseline rule of net neutrality. Then, at the request of those ISPs, a court blocked its rules. An updated framework was passed by the FCC in 2015, only to be overturned in 2017 under President Donald Trump’s first administration. It seemed poised for a comeback in 2024, but the victory lasted mere months before a court overturned it — kicking off a rough year for the open internet and broadband regulation as a whole.
+
+Rather than fight the court’s ruling against net neutrality, the Trump administration’s FCC has preemptively removed the rules — without a chance for public comment. The move was part of FCC Chairman Brendan Carr’s “Delete, Delete, Delete” initiative, which aims to wipe out “unnecessary” regulations.
+
+ISPs have long described net neutrality rules as onerous. For instance, USTelecom president and CEO Jonathan Spalter claimed the 2024 vote to reinstate the FCC’s net neutrality rules was a “counterproductive, unnecessary, and anti-consumer regulatory distraction.”
+
+However, Matt Wood, vice president of policy and general counsel at the nonprofit Free Press, says in an interview with The Verge that ISPs often feel little financial impact from these rules, and may even already be complying with them. “A lot of cable and phone companies, when they talk to their business people and then go back to investors and to the financial analysts, they’re saying, ‘Yep, this is how we’re doing it anyway.’ So, I think a lot of their complaints about the supposed ‘burdens’ from these rules are really just ideological in nature.”
+
+“A lot of their complaints about the supposed ‘burdens’ from these rules are really just ideological in nature.”
+
+Why bother with regulations if ISPs are already (theoretically) compliant? It comes down to accountability and transparency. Regulations ensure voters, not ISPs, are setting the rules of the road online — otherwise, there’s nothing to stop them from changing their operations down the line.
+
+The FCC’s anti-regulatory agenda for telecoms reaches even further than net neutrality. Chao Jun Liu, senior legislative associate at the nonprofit Electronic Frontier Foundation (EFF), notes the FCC’s recent move to reverse Biden-era telecom cybersecurity rules. Carr’s FCC also rolled back requirements for them to provide “nutrition labels” for their broadband pricing, claiming it was “burdensome” for ISPs to display those details.
+
+“There is very much this theme of, ISPs just want to do whatever they want to do with no limits and nobody telling them how to do it, when to do it, [or] on what timeline,” Liu tells The Verge.
+
+Federal regulations for ISPs seem to be dissolving like wet paper, but luckily they’re not the only line of defense for consumers.
+
+“ISPs just want to do whatever they want to do with no limits and nobody telling them how to do it.”
+
+State legislators took up net neutrality in the late 2010s, after the reversal of the FCC’s 2015 order. California’s 2018 net neutrality law, considered the nation’s gold standard, even includes some policies that were left out of the 2015 federal standards, like banning zero-rating, which allows ISPs to exempt certain apps or services from customers’ data caps. Several other states have adopted similar rules, including Washington, Oregon, Colorado, New Jersey, and Vermont.
+
+The most recent repeal has prompted a new wave of these efforts. Maine passed a bipartisan net neutrality bill in June, without a signature from Gov. Janet Mills. A bill to expand “public utility” net neutrality rules to ISPs was also introduced in Pennsylvania in March. Similar bills were introduced in the New York state Senate and state Assembly this year as well.
+
+ISPs have so far largely shied away from openly offering paid prioritization or conventional “fast lanes,” something supporters of net neutrality attribute at least partly to state-level regulations. “I think that state-level net neutrality laws, and the threat of new ones, has kept some of the worst outcomes in check,” says John Bergmayer, legal director at the nonprofit Public Knowledge, in a statement to The Verge.
+
+This reluctance, however, could be changing. T-Mobile, Verizon, and AT&T all offer network slicing on their 5G networks, allowing certain customers (mainly businesses) to pay for virtual networks with higher speeds — which, while it doesn’t inherently violate net neutrality standards, could lay the groundwork for segmented networks.
+
+State-level laws are the next target on the deregulation chopping block.
+
+State-level laws are also the next target on the deregulation chopping block. In October, the National Telecommunications and Information Administration (NTIA) began a push to pressure states into exempting ISPs from their net neutrality laws in order to be eligible for funding from the Biden-era Broadband Equity, Access, and Deployment (BEAD) Program. In a speech at the Hudson Institute, NTIA administrator Arielle Roth called state-level net neutrality laws “a form of rate regulation,” the practice of determining what companies can charge for their services.
+
+Accusations of rate regulation have become common, but Free Press’s Matt Wood argues that they’re overblown. While BEAD does prohibit rate regulation, state-level net neutrality laws don’t inherently fall under that label. Opponents of net neutrality “characterize any and every consumer safeguard as rate regulation when I don’t think it actually has any legitimate impact on the rates companies can charge for the services they offer in the broadband space,” says Wood.
+
+And, again, this is part of a larger deregulatory agenda. EFF’s Chao Jun Liu pointed out similarities with efforts to leverage BEAD funds against AI regulation, including through a recently signed executive order. These attempts to connect AI regulation and broadband funding are “a new development,” says Liu. “This is very much a Brendan Carr, Trump administration special.”
+
+At a time when broadband expansion remains vital, the Trump administration is threatening much-needed infrastructure funding to attack tech regulation. Unfortunately, despite being a bipartisan program, BEAD is where this debate is currently being played out. As Wood says, “Why are we making broadband deployment, which is pretty popular and pretty bipartisan, into yet another front in these culture wars?”
+
+“Why are we making broadband deployment into yet another front in these culture wars?”
+
+Legal experts have pointed out that Roth and the NTIA don’t necessarily have the authority to preempt state-level net neutrality laws for the sake of BEAD funding. However, it seems likely the debates over those funds will delay BEAD’s rollout even further and, along with it, the program’s mission to expand broadband development, particularly to underserved communities.
+
+So, while the tug-of-war over net neutrality regulations continues, so do issues with broadband access in the US. Internet affordability is a persistent challenge across the country, but especially in rural areas where people often have only one or two providers to choose from. BEAD was intended to help address that issue, but now could get bogged down in debate over AI regulations.
+
+Even in areas with robust internet access, high prices are still a problem, particularly since the Affordable Connectivity Program was shut down almost two years ago. On top of that, the US is experiencing a wave of bills that could roll out widespread age verification rules online, sparking debate about privacy, censorship, and free speech.
+
+All of this — not just the fate of net neutrality — leaves the internet in a perilous state going into 2026.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">Leaked video shows the Galaxy S26 Ultra’s new camera island</div>
+            <div class="meta">2025-12-31</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
+            <h2>Leaked video shows the Galaxy S26 Ultra’s new camera island</h2>
+            <p><strong>The Verge | 2025-12-31</strong></p>
+            <a class="original-link" href="https://www.theverge.com/news/851931/samsung-galaxy-236-ultra-video-photo-leak">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">New photos and video seem to confirm previous leaks hinting that the Samsung Galaxy S26 Ultra will sport a new camera bump. OnLeaks posted images of what look like dummy phones on X, following renders it leaked back in September.
+
+We’ve seen a similarly raised island on the Galaxy Z Fold 7, which 9to5Google points out could lead to an annoying wobble when using the device on a table.
+
+More leaked renders in November appeared to show the Galaxy S26 Plus suddenly reappearing — also with a raised camera island — along with speculation it would take the place of a slimmer Edge model. The S26 series is expected to launch in February.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
+            <div class="source">The Verge</div>
+            <div class="title">The Dreame X40 Ultra robovac is about $700 off, nearly matching its best price</div>
+            <div class="meta">2025-12-31</div>
+        </div>
+        
+        <div id="content-50" style="display:none;">
+            <h2>The Dreame X40 Ultra robovac is about $700 off, nearly matching its best price</h2>
+            <p><strong>The Verge | 2025-12-31</strong></p>
+            <a class="original-link" href="https://www.theverge.com/gadgets/851325/dreame-x40-ultra-baseus-163w-retractable-car-charger-deal-sale">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Plus, we found deals on the Baseus 163W Retractable Car Charger and Apple’s Crossbody Strap.
+
+Plus, we found deals on the Baseus 163W Retractable Car Charger and Apple’s Crossbody Strap.
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+With the year coming to a close, now’s a good time to set yourself up for a cleaner, more organized start in 2026. The Dreame X40 Ultra — one of our favorite robot vacuum deals from Black Friday — can handle most of the heavy lifting for you, and it’s once again on sale. You can currently buy it for $503 ($697 off) at Amazon at checkout, which is just $4 more than its record low price set during Black Friday.
+
+Before the Dreame X50 Ultra took its place, the X40 Ultra was our favorite robovac / mop hybrid for hard floors and carpets. Like the X50 Ultra, it delivers excellent mopping performance, thanks to dual oscillating mop pads that can extend into edges and reach under consoles and cabinets. It can also automatically detach and reattach its mop pads when switching between mopping and vacuuming.
+
+While the X50 Ultra is nearly twice as powerful, the X40 Ultra’s 12,000Pa of suction is still more than capable of handling everyday dirt and debris. It also features AI-powered dirt detection, allowing the robot to slow down and make additional passes over especially dirty areas. What’s more, the X40 Ultra can empty its own dustbin, refill its water tank, and clean its washboard, with mop pads that wash and dry themselves for minimal upkeep.
+
+What you don’t get are some of the newer X50 Ultra upgrades, including the motorized swing arm that lets it clear higher thresholds and the improved dual rubber roller brush system, which does a better job picking up fine debris. That said, the X40 Ultra still performed very well in our testing, making it a great investment — especially considering it now costs about half as much as its successor.
+
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.
+
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-51')">
+            <div class="source">The Verge</div>
+            <div class="title">Killing in the name of… nothing</div>
+            <div class="meta">2025-12-31</div>
+        </div>
+        
+        <div id="content-51" style="display:none;">
             <h2>Killing in the name of… nothing</h2>
             <p><strong>The Verge | 2025-12-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/849609/charlie-kirk-shooting-ideology-literacy-politics">Visit Original Website</a>
@@ -3303,13 +3312,13 @@ A post, a podcast, a screenshot, a meme, a whistle, a bullet — in all things, 
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">The 11 best Nintendo Switch 2 games we played in 2025</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>The 11 best Nintendo Switch 2 games we played in 2025</h2>
             <p><strong>The Verge | 2025-12-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/games/845401/nintendo-switch-2-best-games">Visit Original Website</a>
@@ -3347,13 +3356,13 @@ Fortnite is the only game on this list that’s free to play, but that doesn’t
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Two cybersecurity employees plead guilty to carrying out ransomware attacks</div>
             <div class="meta">2025-12-30</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Two cybersecurity employees plead guilty to carrying out ransomware attacks</h2>
             <p><strong>The Verge | 2025-12-30</strong></p>
             <a class="original-link" href="https://www.theverge.com/news/851467/cybersecurity-employees-plead-guilty-alphv-blackcat-ransomware">Visit Original Website</a>
@@ -3375,84 +3384,6 @@ The DOJ’s indictment claims Goldberg, Martin, and the co-conspirator used the 
 Goldberg and Martin pleaded guilty to one count of “conspiracy to obstruct, delay, or affect commerce or the movement of any article or commodity in commerce by extortion.” Their sentencing is scheduled for March 12th, 2026, where they’ll face up to 20 years in prison.
 
 A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-51')">
-            <div class="source">The Verge</div>
-            <div class="title">The OneXSugar Wallet is the first gaming handheld with a folding screen</div>
-            <div class="meta">2025-12-30</div>
-        </div>
-        
-        <div id="content-51" style="display:none;">
-            <h2>The OneXSugar Wallet is the first gaming handheld with a folding screen</h2>
-            <p><strong>The Verge | 2025-12-30</strong></p>
-            <a class="original-link" href="https://www.theverge.com/news/851401/one-netbook-onexsugar-gaming-handheld-wallet-folding-oled-screen-android">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">﻿Its pocketable clamshell design opens to reveal a 8.01-inch OLED display inside.
-
-﻿Its pocketable clamshell design opens to reveal a 8.01-inch OLED display inside.
-
-Folding OLED displays are still most commonly found on premium smartphones and laptops, but One-Netbook is bringing the tech to a new gaming device. Its new OneXSugar Wallet is reminiscent of the company’s folding OneXSugar Sugar 1 handheld that launched earlier this year. But instead of two screens, the Wallet handheld unfolds to reveal just one big 8.01-inch OLED screen with a 4:3 aspect ratio, as spotted by Retro Handhelds.
-
-The OneXSugar Wallet was announced on China’s Weibo yesterday, but with few details about its features and capabilities. That folding OLED screen has a resolution of 2480 x 1860 pixels, and the handheld will be powered by an unspecified “Qualcomm gaming platform flagship processor,” but its performance and emulation capabilities are unknown.
-
-Based on photos and a video released by One-Netbook, the OneXSugar Wallet will feature a standard set of controls including asymmetrical thumbsticks, four action buttons, and a D-pad situated on either side of the lower half of its display. There are also shoulder buttons and triggers on the back of the handheld and a pair of front-facing speakers flanking the top half of the screen. The biggest question is how much will the handheld cost? There are already $1,000 handheld consoles, but folding screen devices like the Google Pixel 10 Pro Fold and Samsung Galaxy Z Fold 7 are priced closer to $2,000. Will gamers embrace the OneXSugar Wallet if it’s similarly expensive? Maybe it’s called the Wallet for a reason.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">GameSir put a tiny force feedback steering wheel on its new Swift Drive controller</div>
-            <div class="meta">2025-12-30</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>GameSir put a tiny force feedback steering wheel on its new Swift Drive controller</h2>
-            <p><strong>The Verge | 2025-12-30</strong></p>
-            <a class="original-link" href="https://www.theverge.com/news/851259/gamesir-switch-turbo-drive-controller-steering-wheel-wireless-force-feedback">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Motors in the wheel and triggers provide resistance in response to what’s happening in-game.
-
-Motors in the wheel and triggers provide resistance in response to what’s happening in-game.
-
-GameSir is no stranger to experimenting with unique controller features — its Tarantula Pro can automatically swap its face button labels to accommodate alternate layouts, and its Pocket 1 clamps Game Boy controls onto your phone. What sets its new Swift Drive controller apart is a small steering wheel located smack-dab in the middle of the gamepad that’s connected to what GameSir calls the “world’s smallest direct drive motor” providing force feedback effects for racing games.
-
-Pricing and availability hasn’t been announced yet, but GameSir has revealed plenty of details about the Swift Drive’s features and functionality. The steering wheel uses a “high-precision” Hall effect encoder with “up to 65,000 levels of resolution for ultra-accurate steering.” Its movement can be adjusted between 30 and 1080 degrees of rotation, and the wheel itself can be removed and swapped with alternate styles. Hall effect sensors are also used in the Swift Drive’s joysticks and buttons, while its triggers are further enhanced with individual haptic motors to simulate the feeling of ABS braking and wheel slip.
-
-The Swift Drive will rely on a 2.4GHz wireless connection to your gaming machine and, even with reactive RGB lighting effects and its various haptic motors, battery life is estimated to be between 20 to 30 hours between charges.
-
-For racing sim fans not as concerned with portability, GameSir’s new Turbo Drive provides a more traditional steering wheel and pedal setup with a yoke-style wheel that clamps to a desk. Like the smaller Swift Drive controller it features 2.4GHz wireless connectivity, Hall effect sensors in the wheel’s encoder, throttle controls, and shifting paddles, plus extensive customizability including limiting the wheel’s rotation. Its most unique feature is a built-in turbine fan that simulates airflow and enhances the feeling of speed. With the fan on, the Turbo Drive’s battery life is estimated to be around 15 hours, but turning it off will let you play for up to 50 hours before a charge is needed.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">Anker’s portable backup battery is an even better investment now that it’s nearly half off</div>
-            <div class="meta">2025-12-30</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>Anker’s portable backup battery is an even better investment now that it’s nearly half off</h2>
-            <p><strong>The Verge | 2025-12-30</strong></p>
-            <a class="original-link" href="https://www.theverge.com/gadgets/851016/anker-521-powerhouse-google-tv-streamer-4k-deal-sale">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Plus, we found deals on Google’s TV Streamer (4K) and Silent Hill 2.
-
-Plus, we found deals on Google’s TV Streamer (4K) and Silent Hill 2.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-Winter storms across the country are bringing heavy snow, rain, and — in some cases, as this Californian who briefly lost power a few days ago can attest — outages. If you want to prepare, Anker’s 521 PowerHouse can help keep your essential devices running and it’s on sale for $129.99 ($120 off) at Amazon. That is about $2 shy of its all-time low price and the best price we’ve seen since Black Friday.
-
-What’s impressive about the 256Wh power station is the range of devices it can handle. You can charge smaller electronics like phones, tablets, cameras, and laptops multiple times using its two USB-A ports and single USB-C port, but it also features two AC outlets and a car socket. That means it can power low-wattage appliances such as a mini fridge, portable fan or heater (on low), electric blanket, and other gear that draws up to 300 watts. You don’t need to worry it’ll die, either — Anker says the battery is designed to last up to 10 years and offers a five-year warranty.
-
-There are a few thoughtful extras, too. Small and weighing about eight pounds — roughly the same as a gallon of water — it’s relatively easy to carry thanks to its integrated handle. Anker also includes a built-in display for checking remaining battery life at a glance, along with a car charging cable. And if you’re outdoors or dealing with an extended outage, you can even recharge it using compatible solar panels — though you’ll need to buy those separately.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
         <div class="card" onclick="openModal('content-54')">
@@ -4002,9 +3933,7 @@ We already have a dedicated team at tekpon operating the platform, events, and c
 
 TNW is already a global media platform with millions of readers. We’re not starting over. We are building forward.
 
-TNW City Coworking space - Where your best work happens
-
-A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
 
 Technology is entering a decisive stage: AI is reshaping workflows, distribution is shifting, capital is becoming more selective, and founders are expected to demonstrate value rather than potential.
 
@@ -4068,9 +3997,7 @@ For a while, that was survivable. Experience, pattern recognition, and cheap cap
 
 In 2026, that grace period ends. Boards and CFOs are shifting from “show me you are experimenting” to “show me measurable impact, this year.” Not because they stopped believing in AI, but because the market no longer rewards vague promises. Every AI dollar will need a traceable path to productivity, quality, or customer value.
 
-TNW City Coworking space - Where your best work happens
-
-A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
 
 If you run engineering, you probably recognise this scene. You present a slide with AI highlights. Adoption is up. Developers say they like the tools. You share a few anecdotes about faster coding and smoother reviews. Then the CFO asks a simple question: “Exactly how is this budget changing output and outcomes?”
 
@@ -4232,7 +4159,9 @@ I anticipated a conversation, questions about my home’s square footage, my flo
 
 While efficient, this experience felt like a regression. It mirrored the “keyword search” experience of Web 2.0 rather than the “intent-based” promise of GenAI. It replied to my prompt, but it stripped away the intelligence.
 
-The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
+TNW City Coworking space - Where your best work happens
+
+A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
 
 Scrolling down, I engaged with the new feature in a call to action: “Research the best vacuums.”
 This is where the user experience (UX) friction became most apparent. Rather than synthesizing data or comparing technical specifications in a chat format, the tool presented a polling interface designed to filter results.
@@ -4279,9 +4208,7 @@ The FT will continue to own and operate TNW Spaces, Amsterdam’s dynamic tech h
 
 Alexandru Stan, Founder and CEO of Tekpon, said:
 
-TNW City Coworking space - Where your best work happens
-
-A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
 
 TNW is one of Europe’s most respected technology brands. Its legacy, its community, and its influence have shaped the European tech scene for nearly twenty years. This acquisition accelerates our mission to connect the global SaaS and AI ecosystem and supports Europe’s position in the next decade of innovation.
 
@@ -4308,12 +4235,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Finland suspects ship of damaging cable in Baltic Sea, in latest such incident - Reuters</div>
+            <div class="title">Finland detains ship suspected of damaging cable in Baltic Sea, amid sabotage fears - Reuters</div>
             <div class="meta">2025-12-31</div>
         </div>
         
         <div id="content-67" style="display:none;">
-            <h2>Finland suspects ship of damaging cable in Baltic Sea, in latest such incident - Reuters</h2>
+            <h2>Finland detains ship suspected of damaging cable in Baltic Sea, amid sabotage fears - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2025-12-31</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPZGRHRHlON0U2dHMxd3VTSGIxR3lwa2dvM1dHdTU3UWJGUVZOMjJOM09BbEFBaUt4YXdselB1N3RKZkRCSzVYZXhPOTZvRXhpejZqdHVKOVd0YmsxRGVxalliRmdja1QzOXplcnRQOEZyOFZwTFdEcTlrQ1FyUWpVbjhleXowa1B2Sl9hY3R6N1hnVGZJTVlCUVNraWNIUVc1Rlc4UjRVUlM0R0Zn?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -4336,11 +4263,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Heavy snow in Poland leaves drivers stranded in tailbacks of up to 20 km - Reuters</div>
+            <div class="title">Sydney brings in New Year with nod to victims of Bondi attack - Reuters</div>
             <div class="meta">2025-12-31</div>
         </div>
         
         <div id="content-69" style="display:none;">
+            <h2>Sydney brings in New Year with nod to victims of Bondi attack - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2025-12-31</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZnlUdFFqYnM3bU5JQ2IwVlVMbE1tVUlVczVXdF9Ba1ZVVzFsazRwNUVCTDdVMTZwczJPcW5WZzhSdFRrZzllS29jX21lX0JERUNobk9Za3NqM25hMncwbTkzcG9fb1ZrSkd2Y3ZaVzVGekNidmNlXzdiX1hUaXBtdThRZ0FjQjRZSmlscEVVdTZ5VDJZQTVjWWZxV3JVVHo0YmpfdXJRMndQd3M?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-70')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Heavy snow in Poland leaves drivers stranded in tailbacks of up to 20 km - Reuters</div>
+            <div class="meta">2025-12-31</div>
+        </div>
+        
+        <div id="content-70" style="display:none;">
             <h2>Heavy snow in Poland leaves drivers stranded in tailbacks of up to 20 km - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2025-12-31</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQaXhUU0pxMkt2ZHNEdFpiSzNJdktXWFVwX19lUjJEekVETjdhZl9kclliTmhIZnM5bUhzUjdaeFVVSVlKZlNCd2pIV3NTdGRpdTk3X1I3YmttU19JN0o2ajhsOHNxVmJmdDJ5RmNFYUpmWkNrRDdnRW9Na21pWTd4RWoyQ2xJN1lhQktZSFFwMlAzNExwNkpYNGNQQ2VmTkFhbW1sUFNKSGtJNWRXUlUtMmRkc1VnMHhv?oc=5">Visit Original Website</a>
@@ -4348,30 +4289,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Exclusive: Nvidia sounds out TSMC on new H200 chip order as China demand jumps, sources say - Reuters</div>
             <div class="meta">2025-12-31</div>
         </div>
         
-        <div id="content-70" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>Exclusive: Nvidia sounds out TSMC on new H200 chip order as China demand jumps, sources say - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2025-12-31</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQc25BdFZxZkZrbWoxTlpwNFRvR3lPN0pPUl9LMmQ4VTVWQTN4Qks2cGdJUHVCbGhMRUpEbF8wcEdfczM2VWVzTU0zMU4wWGVxd2MwNWYtaXhoOW9uaG1fNjZWLUp2YUlvNk5FSTVjaTdodGF6ODFldVo5MDZ5MUg1NnE5b2lsRHBnZU9PTkR2clF0R1R5cHM1SHgxNE1qRC1STEp3aFQtaTV0SU5tNG1CUGJ2YVRTT29adWFSZDd3?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">How Israel’s multi-ton truck bombs ripped through Gaza City - Reuters</div>
-            <div class="meta">2025-12-31</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>How Israel’s multi-ton truck bombs ripped through Gaza City - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2025-12-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiggFBVV95cUxOblZnTEdPcFplU29Vc3ZEeFRvSlY3d2VvY2hKb0VXbWlZcUVjNlZNeDF6UFFSLVI0YnNUa1ItVjNoSjhqSFMxcVhlWWNJS3NsYnBJbXVpdXM4V2lRNTN6cjNwS2dqZWlpN3ZqMXFnVlhycWxLaURCUFhPQm1CX1FLUDBn?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -4462,39 +4389,11 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-78')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">The Long Game Behind Waymo’s Potential $100 Billion Valuation - The Information</div>
-            <div class="meta">2025-12-29</div>
-        </div>
-        
-        <div id="content-78" style="display:none;">
-            <h2>The Long Game Behind Waymo’s Potential $100 Billion Valuation - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2025-12-29</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPYlVMeFhNcjRoTzNZMm5sckp6Z3o4b3NpSzZoV0ktNzdzc2E2U2FyMWYwYmNoRUVxREo2U1UxVVptWl9veHZ4cVJQYUxhTmpFVE5xT1k4V1hBb3Y1LWlSb18zYVpoandJNzNMcFlzcktySkxBQkJGUTN0cmZqbXpwVUxuMDZHeFpuVldRXzJYbmNoNGdRdnIzYnJCOA?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-79')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">OpenAI’s Ads Push Starts Taking Shape - The Information</div>
-            <div class="meta">2025-12-24</div>
-        </div>
-        
-        <div id="content-79" style="display:none;">
-            <h2>OpenAI’s Ads Push Starts Taking Shape - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2025-12-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNUE1HZHAzd1d4ZDhIU1JLdW44Rjg0QUJMN3U4TGdQRzBpckZsV0k3cEpWcnZ6V3B2VzRncG1DY2FPZFVDQXlPSDZXSnNsSk5kenk3Wl9tTDFzODBBSllVMkF1V0RqaS1aMVhmTmI4azVpQzhaSjFQUmlTZ0tRWGhadDlR?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-80')">
-            <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Meta Acquires Manus AI Agent - The Information</div>
             <div class="meta">2025-12-29</div>
         </div>
         
-        <div id="content-80" style="display:none;">
+        <div id="content-78" style="display:none;">
             <h2>Meta Acquires Manus AI Agent - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2025-12-29</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMieEFVX3lxTE53YnUwTmxlVkE0V1NGLUdieW9DSVN4cVNNRWlFZHYwTGxUTnVNQjB6WGVHdTBJQWJwdzRqaUVpWFJRTnBSSjFnckZqVG1CYnZpMmRQUzRBN2pBcVp4NXB2NDkxTDFKSXJPTm1JWGJMWHRyYzg1N19lZQ?oc=5">Visit Original Website</a>
@@ -4502,13 +4401,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-81')">
+        <div class="card" onclick="openModal('content-79')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">The Long Game Behind Waymo’s Potential $100 Billion Valuation - The Information</div>
+            <div class="meta">2025-12-29</div>
+        </div>
+        
+        <div id="content-79" style="display:none;">
+            <h2>The Long Game Behind Waymo’s Potential $100 Billion Valuation - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2025-12-29</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPYlVMeFhNcjRoTzNZMm5sckp6Z3o4b3NpSzZoV0ktNzdzc2E2U2FyMWYwYmNoRUVxREo2U1UxVVptWl9veHZ4cVJQYUxhTmpFVE5xT1k4V1hBb3Y1LWlSb18zYVpoandJNzNMcFlzcktySkxBQkJGUTN0cmZqbXpwVUxuMDZHeFpuVldRXzJYbmNoNGdRdnIzYnJCOA?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-80')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Stablecoin Startups Spark Trouble for JPMorgan - The Information</div>
             <div class="meta">2025-12-26</div>
         </div>
         
-        <div id="content-81" style="display:none;">
+        <div id="content-80" style="display:none;">
             <h2>Stablecoin Startups Spark Trouble for JPMorgan - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2025-12-26</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNLTJjWk8xckZBR0NMZ2pzbW9MYWg2aVNLQldSRU53cmFKaWJic2xSMjUzSERkbXZTSXI4eTdLclhCWFRXMzhGNmVtaHl3TW0wN1lQdDdsbllqUnZkdFpYS2luelUxNzRpNlEzRWNtSEFDT3p1V29EazU2Zmg2VlRZVEJ3cndyZ0lKQWc?oc=5">Visit Original Website</a>
@@ -4516,13 +4429,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-82')">
+        <div class="card" onclick="openModal('content-81')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">OpenAI Is Getting More Efficient at Running Its AI, Internal Financials Show - The Information</div>
             <div class="meta">2025-12-21</div>
         </div>
         
-        <div id="content-82" style="display:none;">
+        <div id="content-81" style="display:none;">
             <h2>OpenAI Is Getting More Efficient at Running Its AI, Internal Financials Show - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2025-12-21</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQdmI2di13dk1valhrLTJ0dE5pemNJYVNEc3h0UENkX0wyMFZidU54cUlsZm1EYmxMaTdTQWphZmI3VzBpa0hDNUYyMUFteU0xZXBScUQ0MmZZYk1DR0lxV3k2X29BRFFhLU11YkoyZ25hNGp3VTRPejdpUWV3MTlpb29XZVk0R3cweGRlWHdxemhYdTdlenZwUC14UkMtUUhteFE?oc=5">Visit Original Website</a>
@@ -4530,16 +4443,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-83')">
+        <div class="card" onclick="openModal('content-82')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Why Data Centers Are Falling Behind Schedule; Jensen Huang’s Power Summit - The Information</div>
             <div class="meta">2025-12-22</div>
         </div>
         
-        <div id="content-83" style="display:none;">
+        <div id="content-82" style="display:none;">
             <h2>Why Data Centers Are Falling Behind Schedule; Jensen Huang’s Power Summit - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2025-12-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQdEw4ZWtGRzVvTzJUUGlmS3VzMlU2VnpqR2RpNW8wOG1IUnVYeTFwbnU5ejBrdGJxcFYtNm12QnJYdExtZ2Z6OG1HbzMyaEFiMHhOSU9PM3pKMk9ZV3BJNkh4WW1kSnBzWWw3YjNpMGoyQl80Z1FXMVMxVWExZFFZMXBkRDU2cUoxRVdONmZxV3RZUUQ3MU44M2dZTTEzQjJ4UWdESFRn?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-83')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">Why Groq’s IP Matters to Nvidia; AI Experts’ Favorite Books of the Year - The Information</div>
+            <div class="meta">2025-12-29</div>
+        </div>
+        
+        <div id="content-83" style="display:none;">
+            <h2>Why Groq’s IP Matters to Nvidia; AI Experts’ Favorite Books of the Year - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2025-12-29</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNYkZzbFV1SFZkTGhXN0JlWnRkU0VnV05MYVA0RXlPMlFobnhUZ0wzcjREVFZmdzFmWF9tU3ZoVVp3WTdydllDY3phSTZPZ0phREthYTZyWjVrdWNPellWM1dKSmtPWjlBRy1ra1VyalFCRlcxTlhVNTlmMGFLMi02dEpTSTQ2TEE0Z3FmVjN0YXJ3RXN6TjdKa2lB?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
