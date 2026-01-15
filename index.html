@@ -154,11 +154,101 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Bully Online mod taken down abruptly one month after launch</div>
+            <div class="title">Are people avoiding iOS 26 because of Liquid Glass? It’s complicated.</div>
             <div class="meta">2026-01-15</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Are people avoiding iOS 26 because of Liquid Glass? It’s complicated.</h2>
+            <p><strong>Ars Technica - All content | 2026-01-15</strong></p>
+            <a class="original-link" href="https://arstechnica.com/gadgets/2026/01/are-people-avoiding-ios-26-because-of-liquid-glass-its-complicated/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Last week, news about the adoption rates for Apple’s iOS 26 update started making the rounds. The new update, these reports claim, was being installed at dramatically lower rates than past iOS updates. And while we can’t infer anything about why people might choose not to install iOS 26, the conclusion being jumped to is that iPhone users are simply desperate to avoid the redesigned Liquid Glass user interface.
+
+The numbers do, in fact, look bad: Statcounter data for January suggests that the various versions of iOS 26 are running on just 16.6 percent of all devices, compared to around 70 percent for the various versions of iOS 18. The iOS 18.7 update alone—released at the same time as iOS 26.0 in September for people who wanted the security patches but weren’t ready to step up to a brand-new OS—appears to be running on nearly one-third of all iOS devices.
+
+Those original reports were picked up and repeated because they tell a potentially interesting story of the “huge if true” variety: that users’ aversion to the Liquid Glass design is so intense and widespread that it’s actively keeping users away from the operating system. But after examining our own traffic numbers, as well as some technical changes made in iOS 26, it appears Statcounter’s data is dramatically undercounting the number of iOS 26 devices in the wild.
+
+We’ve taken a high-level look at all iPhone traffic across all Condé Nast websites for October, November, and December of 2025 and compared it to traffic from October, November, and December of 2024. This data suggests that iOS 26 is being adopted more slowly than iOS 18 was the year before—roughly 76 percent of all iPhone pageviews came from devices running iOS 18 in December of 2024, compared to about 45 percent for iOS 26 in December of 2025.
+
+That’s not as cataclysmic a dropoff as Statcounter’s data suggests, even before considering other mitigating factors—iOS 26 dropped support for 2018’s iPhone XS, XS Max, and XR, for example, while iOS 18 ran on every iPhone that could run iOS 17.
+
+But it’s still a much slower rate of adoption than we’re used to for most iOS versions, and it’s something to monitor as we get closer to iOS 27 and Apple’s first opportunity to make major changes to Liquid Glass. And to monitor it, it’s important to be able to measure it correctly. There have been behind-the-scenes changes to iOS 26 that appear to have thrown off Statcounter’s data collection—let’s talk about those, about what our own data shows, and about why you may want to upgrade to iOS 26 soon even if you don’t care for Liquid Glass.
+
+It turns out that telling an iOS 18 device from an iOS 26 device is harder than it ought to be, and that’s because of a change Apple made to Safari in iOS 26.
+
+Web analytics software (and services like Statcounter) attempt to gather device data by looking at the browser’s user agent string, a short list of information about the hardware, operating system, browser, and browser engine. There are benign and useful reasons to collect this kind of data. If you’re a web developer fielding a ton of user complaints from people who are all using a specific browser or OS version, it can help you narrow down what the issue is and test a fix. You could also use the user agent string to decide whether to show the desktop or mobile version of your site to a user.
+
+But if this information is too accurate or detailed, it can lead to “fingerprinting&quot;—the ability for sites to identify a specific user or specific type of user from their user-agent string. Browser makers have taken steps, both together and separately, to reduce the amount of fingerprinting that is possible.
+
+And occasionally, browsers will intentionally misrepresent their user agent string for compatibility reasons. For example, the default user agent string for Safari running on modern versions of iPadOS claims that the browser is running on top of macOS to make sites rendered on an iPad work more like sites rendered on a Mac. Apple froze the macOS version in Safari’s user agent string to 10.15.7 several years ago, partly to reduce fingerprinting and partly to resolve compatibility problems that some sites had when Apple put “macOS 11” in the user agent string after decades of macOS 10.
+
+All of this is to say: information derived from the user-agent string is only as accurate as the OSes and browsers that are reporting their user-agent strings. And in iOS 26, Apple decided to freeze the iOS version in Safari’s user agent string to version 18 in order to reduce fingerprinting (credit to developer and blogger Niels Leenheer, who both explained this change and confirmed with Apple engineer Karl Dubost why it was made).
+
+Which explains why anyone looking at Statcounter’s data could draw incorrect conclusions about iOS 26 adoption: because most iOS users are running Safari, and because all Safari versions running on iOS 26 are claiming to be running on iOS 18.6 or 18.7 instead.
+
+Only third-party browsers like Google Chrome or Microsoft Edge are reporting an iOS version of 26 in their user agent strings, so what Statcounter is inadvertently measuring is the number of Chrome users who have updated to iOS 26, not the total number of users who have updated.
+
+There is a workaround for this, at least for iOS. Safari on iOS 26 will report an iOS version of 18.6 or 18.7, but it also reports a Safari version of 26.x. This isn’t as useful on macOS, where Safari 26 could be running on macOS 14 Sonoma, macOS 15 Sequoia, or macOS 26 Tahoe. But on iOS, Safari 26 only runs on iOS 26, so it’s a useful proxy for identifying the operating system version.
+
+For these stats, we’ve grouped together all devices claiming to run Safari 26 on an iPhone, regardless of whether the underlying iOS version is listed as 18.x or 26.x (some apps or third-party browsers using Apple’s built-in WebKit engine can still identify themselves as “Safari,” though Chrome, Edge, and Mozilla Firefox at least report their own user-agent strings). We’ve compared those numbers to all devices claiming to run Safari 18 on iPhones claiming to run iOS 18. This does screen out users running third-party browsers on iPhones, but Statcounter data suggests that the ratio of Safari to Chrome users on iOS hasn’t changed much over that period.
+
+What’s interesting is that for October 2024 and October 2025—the first full month that iOS 18 and iOS 26 were available, respectively—adoption numbers don’t look all that different. About 25 percent of iPhone pageviews across all Condé Nast were served to devices running Safari on iOS 18, compared to 22 percent for iOS 26 the following year. That is a step down, but it suggests that early adopters weren’t repelled en masse by Liquid Glass or anything else about the operating system.
+
+But the gap widens over the next two months, which does suggest that “normal” users aren’t in a rush to get the update. By December 2024, our data shows that 76 percent of iPhone Safari pageviews were going to iOS 18 devices, compared to just 45 percent for iOS 26 in December 2025.
+
+Adoption of new iOS versions does plateau after a while. Adoption of iOS 18 hit 80 percent in January 2025, according to our data, and then rose more slowly afterward, peaking at around 91 percent in August 2025. Those stats are in the same ballpark as both Statcounter data (78 percent as of August 2025) and the last stats Apple has published (82 percent of all iPhones as of June 2025) for iOS 18. (We’ve asked the company if it has any updated internal stats to share and will update the article if we receive a response.)
+
+We’ll see where iOS 26 eventually settles. If I’m Apple, I’m a bit less worried about slower adoption as long as iOS 26 eventually hits that same 80 to 90 percent range. But if usage settles significantly below that historical watermark, it could signal a more lasting negative response to the iOS 26 update that needs to be addressed in future versions.
+
+However you feel about Liquid Glass, we’re getting to the point that upgrading is going to become necessary for people who want security patches and functional fixes for their phones.
+
+For a short time after each new iOS version is released, Apple continues to provide security patches for the previous version of iOS, for people who would rather wait for early bugs in the new OS to be patched. The company started this practice in 2021, when it provided security patches for iOS 14 for a couple of months after the release of iOS 15. But those patches don’t last forever, and eventually devices that can upgrade to the new operating system will need to do it to stay patched.
+
+Apple never formally announces when these security updates have stopped, but you can tell by looking at the company’s security updates page. The iOS 18.7, 18.7.1, and 18.7.2 updates all apply to the “iPhone XS and later.” But the iOS 18.7.3 update released on December 12, 2025, only applies to the iPhone XS, iPhone XS Max, and iPhone XR. It’s a subtle difference, but it means that Apple is only continuing to patch iOS 18 on devices that can’t run iOS 26.
+
+This is standard practice for iPhones and iPads, but it differs from the update model Apple uses for macOS—any Mac can continue to download and install security updates for macOS 14 Sonoma and macOS 15 Sequoia, regardless of whether they’re eligible for the macOS 26 Tahoe upgrade.
+
+If you skipped the early versions of iOS 26 and iPadOS 26 because of Liquid Glass, the good news is that Apple provided options to allow users to tone down the effect. The iOS 26.1 update added a “tinted” option for Liquid Glass, increasing the interface’s contrast and opacity to help with the legibility issues you’ll occasionally run into with the default settings. The company also added opacity controls for the lock screen clock in iOS 26.2. Personally, I also found it helpful to switch the Tabs view in the Safari settings from “Compact” to “Bottom” to make the browser look and act more like it did in its iOS 18-era iteration.
+
+Those settings may feel like half-measures to hardcore Liquid Glass haters who just want Apple to revert to its previous design language. But if you’ve got a modern iPhone or iPad and you want to stay up to date and secure, those toggles (plus additional controls for motion and transparency in the Accessibility settings) may at least ease the transition for you.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Many Bluetooth devices with Google Fast Pair vulnerable to “WhisperPair” hack</div>
+            <div class="meta">2026-01-15</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
+            <h2>Many Bluetooth devices with Google Fast Pair vulnerable to “WhisperPair” hack</h2>
+            <p><strong>Ars Technica - All content | 2026-01-15</strong></p>
+            <a class="original-link" href="https://arstechnica.com/gadgets/2026/01/researchers-reveal-whisperpair-attack-to-eavesdrop-on-google-fast-pair-headphones/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Pairing Bluetooth devices can be a pain, but Google Fast Pair makes it almost seamless. Unfortunately, it may also leave your headphones vulnerable to remote hacking. A team of security researchers from Belgium’s KU Leuven University has revealed a vulnerability dubbed WhisperPair that allows an attacker to hijack Fast Pair-enabled devices to spy on the owner.
+
+Fast Pair is widely used, and your device may be vulnerable even if you’ve never used a Google product. The bug affects more than a dozen devices from 10 manufacturers, including Sony, Nothing, JBL, OnePlus, and Google itself. Google has acknowledged the flaw and notified its partners of the danger, but it’s up to these individual companies to create patches for their accessories. A full list of vulnerable devices is available on the project’s website.
+
+The researchers say that it takes only a moment to gain control of a vulnerable Fast Pair device (a median of just 10 seconds) at ranges up to 14 meters. That’s near the limit of the Bluetooth protocol and far enough that the target wouldn’t notice anyone skulking around while they hack headphones.
+
+Once an attacker has forced a connection to a vulnerable audio device, they can perform relatively innocuous actions, such as interrupting the audio stream or playing audio of their choice. However, WhisperPair also allows for location tracking and microphone access. So the attacker can listen in on your conversations and follow you around via the Bluetooth device in your pocket. The researchers have created a helpful video dramatization (below) that shows how WhisperPair can be used to spy on unsuspecting people.
+
+The flaw arises from an incomplete implementation of the Fast Pair standard. Bluetooth devices that get a Fast Pair connection request are supposed to accept only when in pairing mode. However, the researchers say that many devices fail this check and will pair regardless. WhisperPair forces the connection through via the regular Bluetooth pairing process.
+
+When vulnerabilities are found in phone or computer software, it’s a relatively simple matter to get patches rolled out, as most devices now support automatic updates for critical issues. Accessories aren’t quite the same, though. Many people never install accessory apps on their devices, so they never move beyond the original firmware.
+
+WhisperPair is even more problematic because you cannot disable Fast Pair functionality on supported devices. The only thing you can do is install the companion app and wait for an update. Google says it has pushed an update to its own vulnerable devices, but the researchers tell Wired that it was a simple matter to find a workaround for that patch. It may take weeks or months for all the affected devices to be fully fixed, particularly when there’s so much confusion about what needs to be fixed.
+
+Google has said it is not aware of WhisperPair being leveraged in the wild. However, the risk of that goes up now that it’s public. If you’re worried someone has used this flaw to gain access to your headphones, all you can do is factory reset them, forcing the attacker to redo the hack. It’s also smart to keep the official app installed so you can get firmware updates as soon as they’re available.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-2')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Bully Online mod taken down abruptly one month after launch</div>
+            <div class="meta">2026-01-15</div>
+        </div>
+        
+        <div id="content-2" style="display:none;">
             <h2>Bully Online mod taken down abruptly one month after launch</h2>
             <p><strong>Ars Technica - All content | 2026-01-15</strong></p>
             <a class="original-link" href="https://arstechnica.com/gaming/2026/01/online-mod-for-rockstars-classic-bully-is-abruptly-taken-down-after-one-month/">Visit Original Website</a>
@@ -180,13 +270,13 @@ In 2015, Rockstar banned the developers of the popular FiveM mod for Grand Theft
 Now part of Rockstar, the FiveM team has just this week rolled out a new curated digital storefront for roleplaying mods in GTA V. While that’s not exactly a replacement for the now-defunct Bully Online project, it certainly does seem primed to be more lucrative for Rockstar itself.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Wikipedia signs AI training deals with Microsoft, Meta, and Amazon</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Wikipedia signs AI training deals with Microsoft, Meta, and Amazon</h2>
             <p><strong>Ars Technica - All content | 2026-01-15</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/01/wikipedia-will-share-content-with-ai-firms-in-new-licensing-deals/">Visit Original Website</a>
@@ -210,13 +300,13 @@ Meanwhile, the foundation’s own experiments with generative AI have met resist
 Wikipedia founder Jimmy Wales told The Associated Press that he welcomes AI models training on Wikipedia data. “I’m very happy personally that AI models are training on Wikipedia data because it’s human curated,” Wales said. “I wouldn’t really want to use an AI that’s trained only on X, you know, like a very angry AI.” But he drew a line at free access: “You should probably chip in and pay for your fair share of the cost that you’re putting on us.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Key Senate staffer is “begging” NASA to get on with commercial space stations</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Key Senate staffer is “begging” NASA to get on with commercial space stations</h2>
             <p><strong>Ars Technica - All content | 2026-01-15</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/01/key-senate-staffer-is-begging-nasa-to-get-on-with-commercial-space-stations/">Visit Original Website</a>
@@ -250,13 +340,13 @@ Cruz also played a key role in the confirmation process of Isaacman, whose nomin
 “I have high hopes,” she said. “And I think the way that he’s responded to the Crew 11 situation has been refreshing. It’s clear that he is taking it very seriously, and their communication has been almost in near real-time with us, and very clear and concise. So that has been really lovely. And then it’s clear that he wants to make sure that Artemis II goes off not just as quickly as possible but as safely.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">US government to take 25% cut of AMD, NVIDIA AI sales to China</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>US government to take 25% cut of AMD, NVIDIA AI sales to China</h2>
             <p><strong>Ars Technica - All content | 2026-01-15</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/01/us-government-to-take-25-cut-of-amd-nvidia-ai-sales-to-china/">Visit Original Website</a>
@@ -308,119 +398,47 @@ China dominates the market for a host of critical minerals, including rare earth
 © 2026 The Financial Times Ltd. All rights reserved. Not to be redistributed, copied, or modified in any way.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">The difficulty of driving an EV in the “most beautiful race in the world”</div>
-            <div class="meta">2026-01-15</div>
-        </div>
-        
-        <div id="content-4" style="display:none;">
-            <h2>The difficulty of driving an EV in the “most beautiful race in the world”</h2>
-            <p><strong>Ars Technica - All content | 2026-01-15</strong></p>
-            <a class="original-link" href="https://arstechnica.com/features/2026/01/the-difficulty-of-driving-an-ev-in-the-most-beautiful-race-in-the-world/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">On the first day of this year’s Mille Miglia, a voice rose from the crowds gathered on the shore of Lago di Garda to shout “no sound, no feeling!”at my Polestar 3. Italians love their cars, and they revealed a clear preference for internal combustion engines over the next four days and over 1,200 km of driving. But plenty of other spectators smiled and waved, and some even did a double-take at seeing an electric vehicle amid the sea of modern Ferraris and world-class vintage racers taking on this modern regulation rally.
-
-I flew to Italy to join the Mille Miglia “Green,” which, for the past five years, has sought to raise awareness of sustainability and electric cars amid this famous (some might say infamous) race. And despite mixed reactions from the Italian crowds, our Polestar 3 performed quite well as it traced a historical route from Brescia to Rome and back.
-
-The route snaked a trail through the Italian countryside based on the original speed race’s first 12 outings, but instead of going for overall pace, we spent five days competing against six other EVs for points based on time, distance, and average speed. Our team included a Polestar 2 and 4, and we faced a Mercedes-Benz G 580 with EQ Technology, an Abarth 600e, a Lotus Eletre, and a BYD Denza Z9GT saloon.
-
-I was nervous when I arrived to participate in the drive. I still had to learn how to actually compete in a regulation rally, and my co-driver Chris Rosales and I lacked familiarity with the charging infrastructure of Europe. On our first day leaving Brescia, I took over navigation duties, given my experience with interpreting roadbook Christmas trees while chasing the Dakar Rally in 2023. But day one quickly revealed that navigation wouldn’t factor much into the challenge, as our ragtag convoy of EVs and support cars had a dedicated pace car and police cruiser to lead us through the day.
-
-Instead, the points-earning time trials of the Mille Miglia Green threw us for a loop. In the roadbook, red-highlighted short sections ranged from eight seconds to four minutes, while in the real world, little red stop signs dictated the start and end of these timed stints. Without any coaching, and having read an iffy English translation of the rulebook, we struggled to set the proper pace while counting down on an iPhone stopwatch through 24 time trials. Sometimes we went too fast and had to brake to a snail’s pace before the finish, and other times we clearly drove too slowly and had to floor it.
-
-By the time we handed in our stamped timecard at the end of the road in Ferrara over seven hours later—with no stops for food, water, coffee, or even a restroom in between—the challenge of charging emerged for the first time. But first, we had a quick 30-minute break for dinner, which was an eight-minute walk from where we were directed to park, and there was a 10-minute line for the single available restroom. We then hopped back in the Polestar 3 for another 1.5-hour drive to Bologna, where we desperately needed to charge the car before trying to get some sleep ahead of an early wakeup the next morning.
-
-We followed two new Italian friends driving the Polestar 2 over to a local “fast” charger but discovered that with both of our cars plugged in, the station maxed out at just a 48 kW charge speed. This meant we wouldn’t top up until around midnight—not exactly great given the next morning’s 3:30 am wakeup call—so Rosales and I drove five minutes to another charge station with multiple 300 kW plugs.
-
-By the time we got there, though, a fleet of Denza, Lotus, and Abarth crews had already arrived—and the Lotuses wouldn’t recognize one of the chargers. Facing the prospect of waiting in a slow line, we drove 15 minutes to another station, operated by a company called Intuity, and used a charger that peaked at 170 kW to add 62 kWh in 32 minutes, bringing us up to 90 percent SOC with 330 km of range showing on the Polestar’s gauge screen.
-
-I awoke in the dark morning to a text from my co-driver, who cheerfully informed me that we’d finished the first day dead last in the Green ranking. OK, time to lock in—and this was my day to drive. Day two featured a bevy of similar time trials, which we now understood better, as well as an average-speed challenge along a portion of our route to Siena. But even holding steady by a few hundred meters into the 8.61 km at a dictated average speed of 31 km/h, other cars started passing us.
-
-Halfway through, I asked Rosales to figure out how long it would take to cover the distance at that speed, and we realized our speedometer must be a few km/h off. So I again punched the pedal at the last second and managed a perhaps ill-judged overtake. We figured we might have reached the end somewhere near the prescribed average speed.
-
-My heart rate jumped a bit during that maneuver, but for most of the day, we cruised along behind the pace car and police escort, traversing spectacular hillside roads through some of the most gorgeous countryside on the planet. The timed portion of the day ended in Siena’s picturesque Palazzo Publico, where we parked for lunch as around 400 classics competing in the standard Mille Miglia pulled in behind us.
-
-But this day ended with a parade through Rome, so we scarfed down lunch and headed off to charge once again. This time, the Polestar team took pity on our jetlag and let us climb into a support car to nap as our 3 topped up.
-
-Unfortunately, the logistics of juggling three race entries and three support cars proved too overwhelming, and our team ran hours behind schedule, resulting in the entire group missing the parade through the streets of Rome. It was a massive failure from an optics perspective, given the crowds and photo ops, but it was also a bummer for us drivers, since the historic Mille always ran from Brescia to Rome and back at top speed.
-
-My partner and I awoke at 4 am the next morning to discover we had moved up a place—hooray! Despite our speedometer issues, my decision to sprint ahead at the end of the average-speed section had clearly paid off. OK, we were learning. But on day three’s route northward from Rome, the entire EV group made a wrong turn almost immediately. From the navigator’s seat, I hollered at Rosales not to follow. Alone on the correct route, we discovered the pace car, which waved us ahead to wait for the lost teams.
-
-Luckily, this afforded us a chance to discover the true heart of the Mille Miglia, mixing it up with the modern Ferraris ahead through winding hills as the early morning mist burned off. From hillside town to hillside town, V12 engines echoing off the marble walls of tiny towns, we could imagine the fun of racing in the early days.
-
-When a few owners stopped for coffee and pastries, we did too, and I sipped the best espresso doppio I’ve had in years. Talk about quintessential Italian life! But the reverie proved short-lived. In my overcaffeinated, sleep-deprived state, I soon made a math error that cost us a few seconds in the next average speed trial.
-
-After the first sector, we regrouped with the rest of the Green cars and got caught behind Ferraris driving interminably slowly on a gravel section right during a time trial. (Ahead of us, last year’s Green winner Mirco Magni sacrificed a whole stage to let a gap grow. Later, he explained that the penalty for missing the time by five seconds is the same as for five minutes, something we never located in the English rulebook translation.)
-
-That night, we got a miraculous five hours of sleep, but I still woke up concerned about our rankings. Sure enough, we’d done well in scoring but also earned two “TC” penalties. I slipped behind the wheel of the Polestar, but today we decided to stop for espresso early in the morning, as we’d learned to enjoy ourselves the day before. This time, the vintage cars caught up with us, and I sipped my desperately needed caffeine while watching as a support crew swapped out fouled spark plugs on a Bugatti Type 37.
-
-We then hustled to keep up with a veritable fleet of the open-wheel Bugattis and Alfa Romeos while driving up one of the most incredible mountain roads I’ve ever been on. In the Polestar, we could have easily sprinted away, but we instead sat transfixed by the sight, sound, and smell of tall tires squealing, engines roaring and belching smoke, and drivers and passengers leaning into turns as hard as possible. Really, these century-old cars drove harder than the support crews, eventually getting bound up into clumps on the tight roads west of Cervia.
-
-Rosales and I got chewed out at lunch that day for breaking off from the Green group, but we shrugged it off. With a points win well out of reach, we wanted to enjoy the Mille Miglia more than worry about caravanning through the country at low speeds behind the pace car and police escort.
-
-The last day dashed any hope of exploring more vintage fun, though. Instead, we traveled at something nearer to parade pace through small towns on the loop back to Brescia. Out of boredom, I started trying to drift around every roundabout, and we hoped to nail the time trials and maybe jump up the rankings one or two spots. In the end, though, despite doing second or third best in points and penalties after the first day’s mistakes, we wound up beating only the Polestar 2 and G 580 in the Green—not bad, in fairness, for two absolute amateurs using an iPhone stopwatch and Waze speedometer instead of the legit rally computers in every other car.
-
-Would I do the Mille Miglia again? Only with a rally computer, but also only in a vintage car. The rules stipulate that only classics from 1957 and earlier qualify, which creates the real challenge of keeping the car running in the scorching heat. Still, in the classic race, there are fewer restrictions that the Green put on us. I’d probably choose a Lancia, Alfa, or Fiat, though a Gullwing, Bugatti, or four-cam 356 Carrera would do, too, of course. Plus, the race covered around 1,900 km this year, with transits we used as opportunities to sleep or charge, resulting in our scant 1,202.88-km total distance raced.
-
-But we discovered that an EV can compete in the Mille Miglia Green, and our Polestar 3 consistently outperformed its range estimates while managing just shy of 20 kW per 100 km each day. We noticed only a couple of glitches, including a volume knob that repeatedly stopped working. We also had to do a hard reset after a momentary bricking.
-
-Still, it was hard to escape the general feeling—from both the race organizers and the general public—that we were something of an afterthought, second-class citizens relegated to staying in our place well apart from the main event, parking sometimes 600 meters from the historical cars at stops and being scolded when we tried to join the actual competition cars. But Polestar nonetheless notched another win for Mirco Magni and his co-driver Federico Giavardi in the 2.
-
-On the other hand, the time commitment of charging made the Mille Miglia Green a sleep-deprivation challenge as much as anything. We always started before the classics, so a couple of hours dedicated to adding electrons resulted in an average night’s sleep of just four hours—seriously hard to maintain for five days straight, especially while doing mental math in a moving car, all while battling jetlag.
-
-Perhaps the rules should allow only EV conversions of classic cars, which typically have less range and therefore pose a greater challenge by requiring charging during stages. Or the Green cars could earn points not just in the time trials and average-speed sections but also based on total distance covered and range remaining. This would make navigation and efficiency more important, as opposed to the motorcycle “slow race” style of points and penalty scoring that did not reward us for our superior roadbook skills.
-
-Either would be a different style of regulation rally, but those tweaks would also provide a style of competition more in line with the original spirit of the Mille Miglia speed race, an undeniably enjoyable affair that truly earns the nickname “the most beautiful race in the world.”</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Exclusive: Volvo tells us why having Gemini in your next car is a good thing</div>
-            <div class="meta">2026-01-15</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Exclusive: Volvo tells us why having Gemini in your next car is a good thing</h2>
-            <p><strong>Ars Technica - All content | 2026-01-15</strong></p>
-            <a class="original-link" href="https://arstechnica.com/cars/2026/01/exclusive-volvo-tells-us-why-having-gemini-in-your-next-car-is-a-good-thing/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Next week, Volvo shows off its new EX60 SUV to the world. It’s the brand’s next electric vehicle, one built on an all-new, EV-only platform that makes use of the latest in vehicle design trends, like a cell-to-body battery pack, large weight-saving castings, and an advanced electronic architecture run by a handful of computers capable of more than 250 trillion operations per second. This new software-defined platform even has a name: HuginCore, after one of the two ravens that collected information for the Norse god Odin.
-
-It’s not Volvo’s first reference to mythology. “We have Thor’s Hammer [Volvo’s distinctive headlight design] and now we have HuginCore… one of the two trusted Ravens of Oden. He sent Hugin and Muninn out to fly across the realms and observe and gather information and knowledge, which they then share with Odin that enabled him to make the right decisions as the ruler of Asgard,” said Alwin Bakkenes, head of global software engineering at Volvo Cars.
-
-“And much like Hugin, the way we look at this technology platform, it collects information from all of the sensors, all of the actuators in the vehicle. It understands the world around the vehicle, and it enables us to actually anticipate around what lies ahead,” Bakkenes told me.
-
-HuginCore is actually Volvo’s second-generation software-defined vehicle platform, one that incorporates hard-learned lessons from cars like the EX90. “The transformation that we did to really becoming a tech company that has control over its own stack—so hardware and software… I can’t lie. It’s been a tough journey. So the EX90 has been a tough journey to get it to launch. And we also had some issues in the beginning, and the learnings that we took from it, we actually brought into what we’re doing with EX60,” Bakkenes said.
-
-Good news for existing Volvo owners: The arrival of the platform (called SPA3) and HuginCore doesn’t mean your SPA2 Volvo is going to be abandoned.
-
-“Of course there’s, at some point, cars go into maintenance, but the majority of the fleet of cars that we have out, we intend to keep on the latest software baselines,” Bakkenes said. While he wouldn’t be drawn on whether HuginCore will be part of the midlife refresh process for SPA2 cars like the EX90, those SUVs do feature the same powerful Nvidia Drive AGX Orin system-on-a-chip that’s integral to making this all work.
-
-“The core compute platform as such, even though we’ve made some changes in EX60 and optimized it, a lot of it is actually common with, for example, SPA2. So a lot of code is being… We have what we call the superset tech stack. We have a superset of code and we do manifest-based configuration towards a specific hardware variant, which means that we actually deploy the same towards a SPA2 car and a SPA3 car, for example, in terms of a lot of functionality,” Bakkenes said.
-
-Nvidia isn’t the only thing powering HuginCore, though. Qualcomm is another partner, and it is supplying its Snapdragon 8255 SoC. Together, that gives “a lot of inference compute… and it’s flexible inference compute. So it enables us to develop AI-based algorithm models for self-driving, for other tasks in the car as well, and do that flexibly. And as we do this, it’s not just that we build a car which is great today, but we are building the foundation with Hugin, which is a flexible compute platform which has access to essentially all the sensors and all the actuators in the car so we can evolve this over time,” he said.
-
-Volvo was an early adopter of Google’s automotive services, and it’s adding Gemini to the EX60 to give the car a true conversational AI assistant. I’ve long been on record as in favor of good voice control systems in cars, but they have to be natural, and from the sounds of it, this will be. Yes, you can use it to do things like navigate to a specific address or play a particular song. But you can also be a little more vague. Notwithstanding Volvo’s rocky experience with the EX90, the brand’s long-standing and fiercely defended reputation for safety is reassuring when it comes to integrating AI agents into its cars.
-
-“If you don’t know exactly where you want to go, you can give vague destination settings; if you want to play a song that you vaguely remember who did it and it was about something, you can talk about it in natural ways and it will actually help you find what you’re looking for, but that’s just the tip of the iceberg,” Bakkenes said.
-
-The AI agent knows exactly what car it’s in and has access to all of Volvo’s manuals and resources, as well as the greater Internet. It knows how to use the car and can explain it. “I want to understand how I share my digital key. I can open up a manual or something, but I can actually just ask, how do I share my digital key to a friend or to a valet? Or how do I charge? How do I open the charge lid? How do I do this, et cetera? And it just knows all of these things. So you can converse around it without going through the thick manual,” he explained.
-
-Bakkenes shared examples of using the AI agent to find out if a particular model of TV was in stock at a nearby store, and whether it would fit in his car. You can tell it to remember a location, which it can correlate to appointments in your calendar and suggest directions. Another mode, called Gemini Live, sounds really quite useful.
-
-“I’ve actually used it in the morning to get information about collecting Reddit feedback, so summarizing Reddit feedback from last week’s feedback on our product, for example. And when I get to work and I open up Gemini, I have the transcript of the discussion, so I can actually pick up there and keep the context. It also keeps context,” Bakkenes said.
-
-If that works as described, it sounds like quite the productivity boost—one I’ll test out by seeing if it helps me write my notes for the EX60 when (if) I get to drive it later this year. Given that it knows everything about the EX60, I even suggested that Volvo have the AI agent give the product briefing during the first drive—we’ll see if the company takes me up on that in time.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-6')">
+            <div class="source">Futurism</div>
+            <div class="title">New Law Would Let Grok Victims Sue Creeps Who Generated Nonconsensual Nudes</div>
+            <div class="meta">2026-01-15</div>
+        </div>
+        
+        <div id="content-6" style="display:none;">
+            <h2>New Law Would Let Grok Victims Sue Creeps Who Generated Nonconsensual Nudes</h2>
+            <p><strong>Futurism | 2026-01-15</strong></p>
+            <a class="original-link" href="https://futurism.com/future-society/new-law-grok-victims-sue">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">On Tuesday, the US senate passed a new law that would allow victims to sue individuals who use AI models like Grok to generate non-consensual nudes and other sexually explicit images.
+
+Dubbed the Disrupt Explicit Forged Images and Non-Consensual Edits (DEFIANCE) Act, it expands on another law passed last year, the Take It Down Act, which made it illegal to distribute nonconsensual intimate images and required social media companies to remove them within 48 hours, by empowering victims to go after the people responsible for generating the images, including seeking damages and imposing restraining orders, Bloomberg noted.
+
+The new law was put forth by Senator Dick Durbin (D-Ill) and passed unanimously.
+
+“Give to the victims their day in court to hold those responsible who continue to publish these images at their expense,” Durbin said in a speech on the Senate floor, via The Hill. “Today, we are one step closer to making this a reality.”
+
+The bill comes as Elon Musk’s X is facing vociferous public backlash after his AI chatbot Grok was used to generate thousands of nudes and sexually explicit images of both adults and children whose photos had been posted to the platform. The volume of these images was so overwhelming that the AI content analysis firm Copyleaks estimated the bot was generating a nonconsensually sexualized image every single minute.
+
+The lack of response from xAI, the Musk-owned AI startup that develops Grok, has only further catalyzed the outrage from the public and regulators alike, to say nothing of Musk’s blasé attitude to it all. He only indirectly addressed the pornographic generations without ever explicitly mentioning them by asserting in a post that “anyone using Grok to make illegal content will suffer the same consequences as if they upload illegal content.” He also joked that the nonconsensual undressing “trend” was “way funnier” than the trends started by other AI chatbots.
+
+If Musk has failed to comprehend the gravity of the situation, governments have not. Some countries, including Malaysia and Indonesia, have moved to ban access to his website entirely. UK prime minister Keir Starmer warned that he would bring the hammer down on X while the country’s communications regulator, Ofcom, launched an official investigation into the company.
+
+“Imagine losing control of your own likeness or identity,” said Durbin, per The Hill. “Imagine that happening to you when you were in high school. Imagine how powerless victims feel when they cannot remove illicit content, cannot prevent it from being reproduced repeatedly and cannot prevent new images from being created.”
+
+“The consequences can be profound,” he added.
+
+The DEFIANCE Act now needs to pass a vote in the House before it can officially become law. It had already passed a vote in the Senate when it was previously proposed in 2024, but didn’t pass the lower chamber. Now, with the outrage over Grok, it may stand a better chance.
+
+More on AI: Opposition to Elon Musk’s AI Stripping Clothing Off Children Is Nearly Universal, Polling Shows</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
             <div class="source">Futurism</div>
             <div class="title">Entire Space Station Down to Skeleton Crew After NASA Evacuation</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-7" style="display:none;">
             <h2>Entire Space Station Down to Skeleton Crew After NASA Evacuation</h2>
             <p><strong>Futurism | 2026-01-15</strong></p>
             <a class="original-link" href="https://futurism.com/space/space-station-three-astronauts-nasa-evacuation">Visit Original Website</a>
@@ -462,13 +480,13 @@ NASA astronaut and Crew-11 member Michael Fincke called it a “bittersweet” m
 More on the evacuation: NASA Announces Emergency Evacuation From Space Station</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">A Man Bought Meta’s AI Glasses, and Ended Up Wandering the Desert in Search of Aliens</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>A Man Bought Meta’s AI Glasses, and Ended Up Wandering the Desert in Search of Aliens</h2>
             <p><strong>Futurism | 2026-01-15</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/meta-ai-glasses-desert-aliens">Visit Original Website</a>
@@ -678,13 +696,13 @@ During one interview, Daniel joked that he bought Meta’s AI glasses so he coul
 More on AI psychosis: Doctors Warn That AI Companions Are Dangerous</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">Tech Billionaire Forced to Rename Humongous Yacht After Realizing It Spelled Something Horrible Backwards</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>Tech Billionaire Forced to Rename Humongous Yacht After Realizing It Spelled Something Horrible Backwards</h2>
             <p><strong>Futurism | 2026-01-15</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/larry-ellison-yacht-name">Visit Original Website</a>
@@ -714,13 +732,13 @@ Others were exhausted from hearing about some of the wealthiest people on the pl
 More on Ellison: Trump Adviser Admits Larry Ellison Is “Shadow President of the United States”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">Google Now Stuffing Ads Into Its AI Products</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>Google Now Stuffing Ads Into Its AI Products</h2>
             <p><strong>Futurism | 2026-01-15</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/google-ai-ads">Visit Original Website</a>
@@ -744,13 +762,13 @@ So while users might be growing wary of Google’s AI search tools, they can at 
 More on Google: Google Settles With Families Who Say It Killed Their Teen Children</div>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">Music Fans Explode With Joy as Bandcamp Bans AI Music</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-10" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>Music Fans Explode With Joy as Bandcamp Bans AI Music</h2>
             <p><strong>Futurism | 2026-01-15</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/bandcamp-bans-ai-music">Visit Original Website</a>
@@ -782,49 +800,75 @@ As welcome Bandcamp’s stance is, it remains to be seen how enforcing this poli
 More on AI: Duffer Brothers Accused of Using ChatGPT for Final Season of “Stranger Things”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">ICE Reportedly Stole a 10th Grader’s Phone, Then Seemingly Sold It for Cash</div>
-            <div class="meta">2026-01-14</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>ICE Reportedly Stole a 10th Grader’s Phone, Then Seemingly Sold It for Cash</h2>
-            <p><strong>Futurism | 2026-01-14</strong></p>
-            <a class="original-link" href="https://futurism.com/future-society/ice-phone-teenager">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Immigrations and Customs Enforcement (ICE) agents reportedly stole a teenage boy’s phone — and then seemingly pawned it afterwards for cash.
-
-That detail comes from alarming new reporting from ProPublica that documents more than forty cases of ICE agents putting civilians in chokeholds and other moves that can block breathing.
-
-One of these civilians was tenth grader Arnoldo Bazan, who was getting McDonald’s with his father, Arnulfo Bazan Carrillo, when they were pulled over by masked agents. According to Arnoldo, after several agents violently tackled his father — who is undocumented — to the ground, with one pressing a knee into his neck, another put the 16-year-old in a suffocating chokehold. When he told the agent that he was a citizen and a minor, the agent didn’t stop.
-
-“I started screaming with everything I had, because I couldn’t even breathe,” Arnoldo told ProPublica. “I felt like I was going to pass out and die.”
-
-Arnoldo took footage of the encounter, but his phone was confiscated after he was taken into custody. Later, when he used the Find My feature to track down his device, it led him to a vending machine for used electronics several miles away and near an ICE detention center, according to the reporting. Someone — we can only guess who — had apparently sold Arnoldo’s phone after ICE had confiscated it.
-
-The idea of ICE stealing and then selling somebody’s phone is jarring.
-
-“Not the key part of this story, obviously,” wrote tech journalist Mike Masnick in response, “but they *sold* his phone?”
-
-“Yes,” ProPublica clarified, writing that “immigration agents not only took Arnoldo’s phone, the 10th grader had to use Find My Phone to locate it — in a vending machine for used electronics, close to an ICE detention center.”
-
-Arnoldo’s story comes after the killing of a woman by an ICE agent in Minneapolis last week becoming a flashpoint for ICE’s increasingly visible presence in several US cities, where they have brutalized civilians, wantonly detained both citizens and non-citizens alike, and clashed with onlookers and protestors. The woman, 37-year-old Renee Good, was shot by veteran ICE agent Jonathan Ross in her car after Good began turning her vehicle away from the officer. Moments after gunning her down, the agent can be heard calling Good a “f**king b**ch.”
-
-President Trump defended the actions and accused Good of behaving “horribly,” and even asserted that she didn’t simply try to run the agent over, but had actually done so, despite every available shred of video evidence to the contrary.
-
-After being detained and released by ICE, Arnoldo’s family took him to Texas Children’s Hospital, where staff moved him to a trauma unit after identifying signs of the chokehold, according to ProPublica. Records show that doctors ordered dozens of CT scans and x-rays, including for his head, neck, and spine. His family says that the agents threatened to charge Arnoldo with assaulting an officer if his dad didn’t agree to be deported. The father is now in Mexico.
-
-More on ICE: ICE Is Now Wandering the Streets, Scanning People’s Faces to Check If They’re Citizens</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-12')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Iran’s internet shutdown is now one of its longest ever, as protests continue</div>
+            <div class="meta">2026-01-15</div>
+        </div>
+        
+        <div id="content-12" style="display:none;">
+            <h2>Iran’s internet shutdown is now one of its longest ever, as protests continue</h2>
+            <p><strong>TechCrunch | 2026-01-15</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/01/15/irans-internet-shutdown-is-now-one-of-its-longest-ever-as-protests-continue/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">As of Thursday, 92 million Iranians have been completely blocked from accessing the internet for more than a week, in what is now one of the longest nationwide internet shutdowns ever, according to experts.
+
+Last Thursday, Iran’s leadership blocked internet and phone access across the whole country in response to massive anti-government protests, which began at the end of last year and have prompted a brutal and deadly crackdown from authorities.
+
+As of this writing, Iranians have not been able to access the internet for more than 170 hours. The previous longest shutdowns in the country lasted around 163 hours in 2019, and 160 hours in 2025, according to Isik Mater, the director of research at NetBlocks, a web monitoring company that tracks internet disruptions.
+
+Mater said that the current shutdown in Iran is the third longest on record, after the internet shutdown in Sudan in mid-2021 that lasted around 35 days, followed by the outage in Mauritania in July 2024, which lasted 22 days.
+
+“Iran’s shutdowns remain among the most comprehensive and tightly enforced nationwide blackouts we’ve observed, particularly in terms of population affected,” Mater told TechCrunch.
+
+The exact ranking depends on how each organization measures a shutdown.
+
+Zach Rosson, a researcher who studies internet disruptions at the digital rights nonprofit AccessNow, told TechCrunch that according to its data, the ongoing shutdown in Iran is on a path to crack the top ten longest shutdowns in history.
+
+Iran’s government has a long track record of shutting down access to the internet at times of protest and civil unrest, often making it more difficult to monitor the protests from outside of the country.
+
+A U.S.-based human rights group estimates that there have been more than 600 protests in cities across Iran, and according to one estimate, the Iranian government’s violent crackdown has led to the deaths of at least 2,000 people.
+
+The shutdown in Iran on January 8 was sudden, cutting government institutions like the foreign ministry from the internet. Since then, some government departments, and some parts of the economy, such as bank transfers and payment processors at gas stations, had their access restored, as The Financial Times reported this week.
+
+According to The Guardian, a relatively small but unknown number of Iranians have been using Starlink terminals smuggled into the country to connect to the internet. In 2022, the Biden administration carved an exemption to the U.S. government’s sanctions against Iran to “increase support for internet freedom,” and allow U.S. tech companies to provide connectivity to Iranians for free, paving the way for Starlink to operate in Iran.
+
+Authorities have since cracked down on Starlink users by making it illegal to own a Starlink terminal, jamming entire neighborhoods, and confiscating the devices.
+
+This week, President Donald Trump threatened military intervention if Iranian forces continue to use violence, all the while reducing personnel at a military base in neighboring Qatar, amid concerns of a possible retaliatory strike. The U.S. military also reportedly redirected a naval strike group from the South China Sea to the Middle East.
+
+On Wednesday, however, Trump said he had information that “the killing has stopped and the executions won’t take place,” but conceded that, “who knows?”
+
+Meanwhile, the United Kingdom shuttered its embassy in Iran’s capital Tehran and evacuated its staff. Iran temporarily closed off its airspace on Wednesday.
+
+Lorenzo Franceschi-Bicchierai is a Senior Writer at TechCrunch, where he covers hacking, cybersecurity, surveillance, and privacy.
+
+You can contact or verify outreach from Lorenzo by emailing lorenzo@techcrunch.com, via encrypted message at +1 917 257 1382 on Signal, and @lorenzofb on Keybase/Telegram.
+
+Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
+
+Mira Murati’s startup, Thinking Machines Lab, is losing two of its co-founders to OpenAI
+
+Digg launches its new Reddit rival to the public
+
+Anthropic’s new Cowork tool offers Claude Code without the code
+
+Google’s Gemini to power Apple’s AI features like Siri
+
+Google co-founders may be leaving California
+
+Google announces a new protocol to facilitate commerce using AI agents
+
+I met a lot of weird robots at CES — here are the most memorable</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
             <div class="source">TechCrunch</div>
             <div class="title">The US imposes 25% tariff on Nvidia’s H200 AI chips headed to China</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-13" style="display:none;">
             <h2>The US imposes 25% tariff on Nvidia’s H200 AI chips headed to China</h2>
             <p><strong>TechCrunch | 2026-01-15</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/15/the-us-imposes-25-tariff-on-nvidias-h200-ai-chips-headed-to-china/">Visit Original Website</a>
@@ -872,13 +916,13 @@ Google announces a new protocol to facilitate commerce using AI agents
 I met a lot of weird robots at CES — here are the most memorable</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">OpenAI invests in Sam Altman’s brain computer interface startup Merge Labs</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>OpenAI invests in Sam Altman’s brain computer interface startup Merge Labs</h2>
             <p><strong>TechCrunch | 2026-01-15</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/15/openai-invests-in-sam-altmans-brain-computer-interface-startup-merge-labs/">Visit Original Website</a>
@@ -942,13 +986,13 @@ Google announces a new protocol to facilitate commerce using AI agents
 I met a lot of weird robots at CES — here are the most memorable</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">Wikimedia Foundation announces new AI partnerships with Amazon, Meta, Microsoft, Perplexity, and others</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Wikimedia Foundation announces new AI partnerships with Amazon, Meta, Microsoft, Perplexity, and others</h2>
             <p><strong>TechCrunch | 2026-01-15</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/15/wikimedia-foundation-announces-new-ai-partnerships-with-amazon-meta-microsoft-perplexity-and-others/">Visit Original Website</a>
@@ -984,13 +1028,13 @@ Google announces a new protocol to facilitate commerce using AI agents
 I met a lot of weird robots at CES — here are the most memorable</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">How one startup is using prebiotics to try and ease the copper shortage</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>How one startup is using prebiotics to try and ease the copper shortage</h2>
             <p><strong>TechCrunch | 2026-01-15</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/15/how-one-startup-is-using-prebiotics-to-try-and-ease-the-copper-shortage/">Visit Original Website</a>
@@ -1013,19 +1057,19 @@ Typically, companies isolate or engineer strains that show promise in boosting c
 
 Milshteyn suspects that part of the problem is that microbes aren’t solo actors. It’s like casting a star without a supporting cast. Microbes live in diverse communities where each plays a role. Bumping up the population of one strain can only do so much.
 
-Another part of the problem is that we’ve only scratched the surface on understanding microbes in ore heaps. “When you look into the microbial community that’s present in the material, typically well over 90% of it are things that we’ve never seen before,” Milshteyn said
+Another part of the problem is that we’ve only scratched the surface on understanding microbes in ore heaps. “When you look into the microbial community that’s present in the material, typically well over 90% of it are things that we’ve never seen before,” Milshteyn said.
 
-Conditions inside a heap leach, as the acid-laced piles of ore are called, are challenging to replicate in a lab. The pH is low, around two, and there are clays and other metals floating around, all of which undermine the usual molecular tools scientists use to understand microbial communities.
+Conditions inside a heap leach, as the acid-laced piles of ore are called, are challenging to replicate in a lab. The pH is low, around 2, and there are clays and other metals floating around, all of which undermine the usual molecular tools scientists use to understand microbial communities.
 
 “Everything that the industry has done has really focused on that tiny fraction that people have been able to grow in the lab,” he said. “Typically, it’s in the 5% range that you can culture.”
 
-So instead of trying to isolate a few star performers, Transition is working to raise the entire community up. The company applies low cost, mostly inorganic compounds that are already found at mining sites.
+So instead of trying to isolate a few star performers, Transition is working to raise the entire community up. The company applies low-cost, mostly inorganic compounds that are already found at mining sites.
 
-“What we’re focused on is not necessarily boosting one or two species, but we’re we are trying to nudge the community towards the higher functional state,” he said. “We’ve observed that in the lab.”
+“What we’re focused on is not necessarily boosting one or two species, but we’re trying to nudge the community towards the higher functional state,” he said. “We’ve observed that in the lab.”
 
 In lab samples that Transition has applied its proprietary cocktail to, the startup has been able to extract 90% of the copper from the ore, up from 60% using traditional methods.
 
-Outside of the lab, Milshteyn expects the efficacy to drop a bit, though not by much. Traditional heap leaches extract around 30% to 60% of the copper in the ore. He thinks Transition can bring that up to at least 50% to 70%, maybe as higher.
+Outside of the lab, Milshteyn expects the efficacy to drop a bit, though not by much. Traditional heap leaches extract around 30% to 60% of the copper in the ore. He thinks Transition can bring that up to at least 50% to 70%, maybe higher.
 
 Each mine has a different microbial community, so Transition plans to tailor its additives based on initial testing. As the company gathers more data, Milshteyn thinks that eventually he and his team will be able to predict what a mine needs in advance.
 
@@ -1035,7 +1079,7 @@ After Transition has proven it works in the lab, then it’ll apply its treatmen
 
 “We’re leaving 65% of material behind” at typical mines, Milshteyn said. “We may as well get as much out of it as we can.”
 
-Update 8 am PT: The article previously referred to Transition’s additives as probiotics instead of prebiotics.
+Update: The article previously referred to Transition’s additives as probiotics instead of prebiotics.
 
 Tim De Chant is a senior climate reporter at TechCrunch. He has written for a wide range of publications, including Wired magazine, the Chicago Tribune, Ars Technica, The Wire China, and NOVA Next, where he was founding editor.
 
@@ -1060,13 +1104,13 @@ Google announces a new protocol to facilitate commerce using AI agents
 I met a lot of weird robots at CES — here are the most memorable</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">US senators demand answers from X, Meta, Alphabet, and others on sexualized deepfakes</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>US senators demand answers from X, Meta, Alphabet, and others on sexualized deepfakes</h2>
             <p><strong>TechCrunch | 2026-01-15</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/15/us-senators-demand-answers-from-x-meta-alphabet-on-sexualized-deepfakes/">Visit Original Website</a>
@@ -1093,23 +1137,23 @@ In response to the letter, X pointed to its announcement regarding its update to
 
 “We do not and will not allow any non-consensual intimate media (NCIM) on Reddit, do not offer any tools capable of making it, and take proactive measures to find and remove it,” a Reddit spokesperson said in an emailed statement. “Reddit strictly prohibits NCIM, including depictions that have been faked or AI-generated. We also prohibit soliciting this content from others, sharing links to “nudify” apps, or discussing how to create this content on other platforms,” the spokesperson added.
 
-Alphabet, Snap, TikTok and Meta did not immediately respond to requests for comment.
+Alphabet, Snap, TikTok, and Meta did not immediately respond to requests for comment.
 
 The letter demands the companies provide:
 
-The letter is signed by Senators Lisa Blunt Rochester (D-Del.), Tammy Baldwin (D-Wis.), Richard Blumenthal (D-Conn.), Kirsten Gillibrand (D-N.Y.), Mark Kelly (D-Ariz.), Ben Ray Luján (D-N.M.), Brian Schatz (D-Hawaii), and Adam Schiff (D-Calif.).
+The letter is signed by Senators Lisa Blunt Rochester (D-Del.), Tammy Baldwin (D-Wis.), Richard Blumenthal (D-Conn.), Kirsten Gillibrand (D-NY), Mark Kelly (D-Ariz.), Ben Ray Luján (D-NM), Brian Schatz (D-Hawaii), and Adam Schiff (D-Calif.).
 
 The move comes just a day after xAI’s owner Elon Musk said that he was “not aware of any naked underage images generated by Grok.” Later on Wednesday, California’s attorney general opened an investigation into xAI’s chatbot, following mounting pressure from governments across the world incensed by the lack of guardrails around Grok that allowed this to happen.
 
-xAI has maintained that it takes action to remove “illegal content on X, including [CSAM] and non-consensual nudity,” though neither the company nor Musk have addressed the fact that Grok was allowed to generate such edits in the first place.
+xAI has maintained that it takes action to remove “illegal content on X, including [CSAM] and non-consensual nudity,” though neither the company nor Musk have addressed the fact that Grok was allowed to generate such content in the first place.
 
-The problem isn’t constrained to non-consensual manipulated sexualized imagery either. While not all AI-based image generation and editing services let users “undress” people, they do let one easily generate deepfakes. To pick a few examples, OpenAI’s Sora 2 reportedly allowed users to generate explicit videos featuring children; Google’s Nano Banana seemingly generated an image showing Charlie Kirk being shot; and racist videos made with Google’s AI video model are garnering millions of views on social media.
+The problem isn’t constrained to nonconsensual manipulated sexualized imagery either. While not all AI-based image generation and editing services let users “undress” people, they do let one easily generate deepfakes. To pick a few examples, OpenAI’s Sora 2 reportedly allowed users to generate explicit videos featuring children; Google’s Nano Banana seemingly generated an image showing Charlie Kirk being shot; and racist videos made with Google’s AI video model are garnering millions of views on social media.
 
-The issue grows even more complex when Chinese image and video generators come into the picture. Many Chinese tech companies and apps — especially those linked to ByteDance — offer easy ways to edit faces, voices and videos, and those outputs have spread to Western social platforms. China has stronger synthetic content labeling requirements that don’t exist in the U.S. on the federal level, where the masses instead rely on fragmented and dubiously enforced policies from the platforms themselves.
+The issue grows even more complex when Chinese image and video generators come into the picture. Many Chinese tech companies and apps — especially those linked to ByteDance — offer easy ways to edit faces, voices, and videos, and those outputs have spread to Western social platforms. China has stronger synthetic content labeling requirements that don’t exist in the U.S. on the federal level, where the masses instead rely on fragmented and dubiously enforced policies from the platforms themselves.
 
-U.S. lawmakers have already passed some legislation seeking to rein in deepfake pornography, but the impact has been limited. The Take It Down Act, which became federal law in May, is meant to criminalize the creation and dissemination of non-consensual, sexualized imagery. But a number of provisions in the law make it difficult to hold image-generating platforms accountable, as they focus most of the scrutiny on individual users instead.
+U.S. lawmakers have already passed some legislation seeking to rein in deepfake pornography, but the impact has been limited. The Take It Down Act, which became federal law in May, is meant to criminalize the creation and dissemination of nonconsensual, sexualized imagery. But a number of provisions in the law make it difficult to hold image-generating platforms accountable, as they focus most of the scrutiny on individual users instead.
 
-Meanwhile, a number states are trying to take matters into their own hands to protect consumers and elections. This week, New York Governor Kathy Hochul proposed laws that would require AI-generated content to be labeled as such, and ban non-consensual deepfakes in specified periods leading up to elections, including depictions of opposition candidates.
+Meanwhile, a number of states are trying to take matters into their own hands to protect consumers and elections. This week, New York governor Kathy Hochul proposed laws that would require AI-generated content to be labeled as such, and ban nonconsensual deepfakes in specified periods leading up to elections, including depictions of opposition candidates.
 
 Ram is a financial and tech reporter and editor. He covered North American and European M&A, equity, regulatory news and debt markets at Reuters and Acuris Global, and has also written about travel, tourism, entertainment and books.
 
@@ -1118,54 +1162,6 @@ You can contact or verify outreach from Ram by emailing ram.iyer@techcrunch.com.
 Rebecca Bellan is a senior reporter at TechCrunch where she covers the business, policy, and emerging trends shaping artificial intelligence. Her work has also appeared in Forbes, Bloomberg, The Atlantic, The Daily Beast, and other publications.
 
 You can contact or verify outreach from Rebecca by emailing rebecca.bellan@techcrunch.com or via encrypted message at rebeccabellan.491 on Signal.
-
-Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
-
-Mira Murati’s startup, Thinking Machines Lab, is losing two of its co-founders to OpenAI
-
-Digg launches its new Reddit rival to the public
-
-Anthropic’s new Cowork tool offers Claude Code without the code
-
-Google’s Gemini to power Apple’s AI features like Siri
-
-Google co-founders may be leaving California
-
-Google announces a new protocol to facilitate commerce using AI agents
-
-I met a lot of weird robots at CES — here are the most memorable</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Spotify raises its subscription prices in the U.S. again</div>
-            <div class="meta">2026-01-15</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>Spotify raises its subscription prices in the U.S. again</h2>
-            <p><strong>TechCrunch | 2026-01-15</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/01/15/spotify-raises-its-subscription-prices-in-the-u-s-again/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Spotify raised prices for its subscription plan in the U.S. for the third time in three years, as it hiked the monthly plan from $11.99 per month to $12.99 per month.
-
-The company sent an email to its paid users notifying them of the new price, which is applicable from the next monthly billing cycle.
-
-“Occasional updates to pricing across our markets reflect the value that Spotify delivers, enabling us to continue offering the best possible experience and benefit artists,” the company said in a blog post.
-
-In November 2025, Financial Times reported that the audio platform is set to raise prices in the U.S in the first quarter of 2026. According to the report, analysts from JPMorgan predicted that this hike could increase Spotify’s revenue by $500 million.
-
-The company has made similar hikes in markets like the UK and Switzerland last year.
-
-Spotify first hiked prices in the U.S. in 2023, going from $9.99 per month to $10.99 per month. In June 2024, it made another bump of $1 per month in the individual subscription plan.
-
-The company has more than 281 million paid users all over the globe, and 25% of them are from North America, acorrding the its Q3 2025 results.
-
-Besides the U.S., Spotify is raising prices in Estonia and Latvia.
-
-Ivan covers global consumer tech developments at TechCrunch. He is based out of India and has previously worked at publications including Huffington Post and The Next Web.
-
-You can contact or verify outreach from Ivan by emailing im@ivanmehta.com or via encrypted message at ivan.42 on Signal.
 
 Plan ahead for the 2026 StrictlyVC events. Hear straight-from-the-source candid insights in on-stage fireside sessions and meet the builders and backers shaping the industry. Join the waitlist to get first access to the lowest-priced tickets and important updates.
 
@@ -1678,33 +1674,155 @@ In the airtight world of populist logic, no evidence for Warren’s beliefs is n
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Many People Who Come Off GLP-1 Drugs Regain Weight Within 2 Years, Review Suggests</div>
+            <div class="title">Microsoft is Closing Its Employee Library and Cutting Back on Subscriptions</div>
             <div class="meta">2026-01-15</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Microsoft is Closing Its Employee Library and Cutting Back on Subscriptions</h2>
+            <p><strong>Slashdot | 2026-01-15</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/01/15/1754223/microsoft-is-closing-its-employee-library-and-cutting-back-on-subscriptions?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+Digital versions can be quietly &#39;updated&#39; and &#39;corrected&#39; to whatever the powers that be (whether political or corporate) want them to be.
+
+This is much harder with physical printed books.
+
+Also, without the old physical documents in the library it will be much harder to check whether LLM output is accurate or just AI slop.
+
+They chopped the books up into confetti and read them with AI scanners.
+
+Yes, thank you! That was Rainbow&#39;s End by Vinge. I was thinking about this yesterday, couldn&#39;t remember which book it was... thought it was Rudy Rucker. If LLMs have already consumed the sum total of digitized human knowledge, the next step is to digitize all the remaining books... probably destructively.
+
+Why store books when we can build palaces for the rich?
+
+&quot;Listen folks, we&#39;ve spent hundreds of billions of dollars on this pattern matching lying machine by dad-gumit, y&#39;all are gonna use it!&quot;
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;The hottest places in Hell are reserved for those who, in times of moral
+crisis, preserved their neutrality.&quot;
+-- Dante</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Many People Who Come Off GLP-1 Drugs Regain Weight Within 2 Years, Review Suggests</div>
+            <div class="meta">2026-01-15</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Many People Who Come Off GLP-1 Drugs Regain Weight Within 2 Years, Review Suggests</h2>
             <p><strong>Slashdot | 2026-01-15</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/01/15/1717234/many-people-who-come-off-glp-1-drugs-regain-weight-within-2-years-review-suggests?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
 
 It&#39;s not surprising that people would regain weight after coming off the drugs.  They didn&#39;t actually fix anything.  Besides, as Chris Rock said, the money is in the medicine, not the cure.  https://www.youtube.com/watch?... [youtube.com]
 
+Who&#39;d have thought you&#39;d actually have to eat right and get  a reasonable amount of exercise?  I&#39;d guess that those that kept the weight off actually did change their habits.  I get that it&#39;s hard, many people grow up with parents who think pizza is healthy.  So, they grow up fat, and it&#39;s probably much more difficult to loose weight you&#39;ve always had since childhood, than it is if you just let yourself go because of life happenings.Obesity is a complex multi-variable equation and no two bodies are the same.  What works one year, can fail the next.   The majority do get obese from making reckless choices, but many, myself included, have genetic predispositions that make it nearly impossible to lose weight and keep it off.  My entire family is fat and nearly all eat responsibly.  I am more responsible than the overwhelming majority of skinny people on the planet and I am a chubby fucker...not as fat as I would be if I wasn&#39;t, but it&#39;s a
+
+Who&#39;d have thought you&#39;d actually have to eat right and get  a reasonable amount of exercise?  I&#39;d guess that those that kept the weight off actually did change their habits.  I get that it&#39;s hard, many people grow up with parents who think pizza is healthy.  So, they grow up fat, and it&#39;s probably much more difficult to loose weight you&#39;ve always had since childhood, than it is if you just let yourself go because of life happenings.
+
+Obesity is a complex multi-variable equation and no two bodies are the same.  What works one year, can fail the next.   The majority do get obese from making reckless choices, but many, myself included, have genetic predispositions that make it nearly impossible to lose weight and keep it off.  My entire family is fat and nearly all eat responsibly.  I am more responsible than the overwhelming majority of skinny people on the planet and I am a chubby fucker...not as fat as I would be if I wasn&#39;t, but it&#39;s a
+
+I don&#39;t think it&#39;s malicious. Most people who lose weight by any sort of diet end up putting it back on. The whole concept of a &quot;diet&quot; is inherently flawed. It should be looked at more like treating alcoholism or drug addiction, except that you can&#39;t go cold turkey, and you probably can&#39;t even control your lifestyle.
+
+What we fundamentally need is a device that monitors our calorie intake and our calorie expenditure and starts asserting itself when our budget is off. The one nature provided isn&#39;t working out.
+
+Treating alcoholism:  what, something like AA (where you admit that you&#39;re putting your trust in a higher power) or NA?You do realize some people&#39;s bodies are wired different, so they&#39;ll gain weight if they even look at a pizza, and others (like me) can eat anything without gaining or losing anything (weighted within 1-2 pounds either up or down for the last like 18 years).
+
+Of course, the weight comes back when you stop using the appetite suppressant and you go back to eating what you ate before when you gai
+
+The drug suppresses your apatite. It does not change the underlying habits or permanently alter your urges. So when you stop taking the drug, you end up right back on the road that got you there in the first place.
+
+Frankly, a drug that DOES permanently alter your behavior would be far more troubling.=Smidge=
+
+It does not.  That is not how the drug works but is, instead, a common side effect.
+
+Can always count on you to lecture about things you do not know.
+
+Sometimes, not always.  And exercise does matter, it&#39;s just not a primary difference maker.
+
+&quot;The goal of the drugs is to make money...&quot;
+
+Drugs don&#39;t have goals.  It&#39;s easy to say inflammatory things when you don&#39;t any knowledge or skin in the game and can&#39;t be bothered to say what you really mean.  Doctors certainly do care &quot;what happens to people&quot;..
+
+GLP-1 drugs are absolutely a long-term solution to lose weight and keep the weight off, if you take the drug long term.
+
+I lost a lot of weight successfully before through a low-calorie, high protein diet, not through exercise - about 40 lbs, to get me back to healthy BMI. Most diets are not sustainable over the long term, unfortunately. Mine was no exception. Within 2 years, I regained all the weight. And 10 years later, an extra 10.
+
+With the GLP-1 drugs, I lost 20 lbs in about 5 months. I have another 30 lbs
+
 It&#39;s their lifestyle that made them obese in the first place. Much easier to just live in denial and keep taking a pill that damages your system than actually address the root causes.
+
+False.  People are obese for many different reasons, one thing they all have in common is not wanting to be obese.
+
+&quot;...keep taking a pill that damages your system ...&quot;
+
+&quot;...than actually address the root causes.&quot;
+
+Which you clearly do not know, but you certainly feel superior about.
 
 You can treat the symptoms but you probably need to change your habits too.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+Have you or anyone you know ever taken a GLP-1? If so, you may be entitled to compensation.
+
+10 years? things like ozempic are a recent thing.
+
+Stuff like this helps control your appetite and all that, and leaves you with saggy arms like Fat Bastard in Austin Powers.
+
+Everyone knows that going off of GLPs results in rebound; this has been known for a long time, the article provides nothing new.  But GLPs can facilitate other lifestyle changes, like diet and exercise.  Even fasting.  If one keeps those changes and then goes off of GLPs, the weight loss can be maintained, even continued.  First hand knowledge.
+
+The article may show nothing new, but the study is important.  The result of the study was not surprising, but it needed to be done.
+
+IIUC, it was suggested in public by medical professionals over a year ago that GLP-1 antagonists were a temporary measure, and cessation would result in a rebound.  But it needed to be proven.  (It probably still needs more proof, but I haven&#39;t been following it, and I&#39;m a programmer, not a biologist or a medic.)
+
+I dropped 2 pounds a week banging your mom.
+
+&quot;The indulgent, heavy-eating, heavy-drinking lifestyle still remains once you go off the drug.&quot;
+
+Please tell us all how ignorant you are.  People taking these drugs, as a group, do NOT have heavy-eating, heavy-drinking lifestyles compared to the general population.  You know who does?  Young people.
+
+&quot;People who insist they gain weight even when dieting virtually always underestimate the calories they are taking in, barring serious health problems. &quot;Weight management is about a lot more than &quot;calories taken in&quot;
+
+Actually, it does change habits.  It tends to remove obsessive thoughts about food.  It tends to break the habits of what you eat and when.
+
+But that&#39;s not sufficient.  Those habits appeared because of some underlying reason, which hasn&#39;t been addressed.  And we don&#39;t know what those underlying reasons are.  Your assumption of what doesn&#39;t change is not found in the experimental studies or therelevant case histories I&#39;ve read about.  So something else is going on.
+
+Diabetes: Over 40% of adults told they have diabetes have ever used GLP-1s, with usage highest in middle-aged adults (50-64).
+  Obesity/Overweight: About a quarter of adults told they are overweight or obese have used these drugs.
+  Heart Disease: Around a quarter of adults with heart disease have used GLP-1s.
+
+This isn&#39;t the same as &quot;are using&quot;, but it would suggest the answer is &quot;many, many&quot;, particularly given that these drugs are fairly new
+
+Everything that I have heard and read about GLP-1 drugs, this fact is among the first that people point out.
+
+The point is getting a positive feedback loop started.
+
+GLP1 drugs are amazing miracle drugs on the 21st century but they aren&#39;t magic. All they do is tell the body to lower its weight set point.
+
+If your TDEE is 1500 calories and you use glp1 agonists to lose weight, then you HAVE to keep waiting at 1500 calories. If you instantly to back to eating 3k calories a day then yes you will get fat.
+
+This isn&#39;t rocket science and the problems with normies is they are their own worst enemies. If you want to eat more, you need to increase the calories OUT side of CICO which
+
+locking in genetic changes is not difficult.  viruses do it all the time and we know exactly how to use them to do it ourselves.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;The hottest places in Hell are reserved for those who, in times of moral
+crisis, preserved their neutrality.&quot;
+-- Dante</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Amazon Threatens 'Drastic Action' After Saks Bankruptcy</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Amazon Threatens 'Drastic Action' After Saks Bankruptcy</h2>
             <p><strong>Slashdot | 2026-01-15</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/01/15/176246/amazon-threatens-drastic-action-after-saks-bankruptcy?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1721,6 +1839,8 @@ But Bezos is silent on the death of democracy, despite owning a newspaper that c
 
 The WaPo motto &quot;Democracy Dies in Darkness&quot; does not actually specify whether Bezos (and WaPo) is against darkness when profit is involved.
 
+Damn good point.  I was just biased in my reading.
+
 &quot;That newspaper announced sometime last year that they&#39;d always be in favor of free markets and capitalism.&quot;
 
 A clear lie, Republicans and billionaires oppose free markets.  Free markets require regulation.
@@ -1732,6 +1852,32 @@ Republicans and billionaires oppose free markets.  Free markets require regulati
 &quot;Free regulated markets&quot; is an oxymoron. Republicans and billionaires love free markets. They oppose regulated ones. Or at least they want regulations that favor their side.
 
 The power of the government has grown too large when one is forced to practice sycophancy and kiss the ring of the reigning potentate. No matter which political camp you occupy.
+
+wapo and NYT and all the other &quot;liberal&quot; media was running negative stories on biden all day long, they couldnt stop talking about his so called senility at every turn
+
+also lest we forget the 2016 wapo column &quot;donald the dove, hillary the hawk&quot; or almost everything maggie haberman wrote, they have and continue to sanwash the admin whenever given the oppurtunity
+
+the idea these outlets are in the bag for democrats is actually republican propaganda and you all slurp it up like trumps ran
+
+Oh, the WaPo is a total fucking mess now.  It was pretty decent before Bozos bought and ruined it, kind of like Nazi Musk and Twitter.
+
+But Bezos is silent on the death of democracy, despite owning a newspaper that claims otherwise.Because there is no &quot;death of democracy&quot;. I&#39;ve heard this hysterical horseshit all my long life. Everytime a Republican wins the White House, it means democracy died. Funny that I heard it for Reagan, both Bushes, and now Trump, and yet we keep having elections and Democrats win the White House sometimes too. &quot;Democracy Died&quot; just means that you threw a tantrum because your candidate didn&#39;t win.It&#39;s always same stupid fucking thing: if we don&#39;t stop them this time, it&#39;s over! Democracy will die! This is the
+
+But Bezos is silent on the death of democracy, despite owning a newspaper that claims otherwise.
+
+Because there is no &quot;death of democracy&quot;. I&#39;ve heard this hysterical horseshit all my long life. Everytime a Republican wins the White House, it means democracy died. Funny that I heard it for Reagan, both Bushes, and now Trump, and yet we keep having elections and Democrats win the White House sometimes too. &quot;Democracy Died&quot; just means that you threw a tantrum because your candidate didn&#39;t win.
+
+It&#39;s always same stupid fucking thing: if we don&#39;t stop them this time, it&#39;s over! Democracy will die! This is the
+
+Democracies gradually erode before they suddenly collapse. Others in the past who noted the erosion were justified to be alarmed.
+
+Right now, things seem different. I fear there is a &quot;gathering storm&quot; -- to borrow the words of Winston Churchill regarding the prelude to World War II. Trump is openly threatening a NATO nation, and by extension, the Western alliance.
+
+I suspect you and I are old enough to recognize the potential historic parallels that are unfolding now.
+
+My hope is to be in Hawaii on a farm with established agriculture and a steady, independent water supply before WWIII strikes.  I fear I won&#39;t make it.
+
+Reagan and both Bushes took pickaxes to the foundation of Democracy.  Trump got the steamshovel.   He literally knocked down a wing of the White House so he and his cronies can have nicer parties.  He literally sent a mob into the Capitol.  Are you congenitally blind or willfully so?
 
 A 2.5 trillion dollar company is losing 0.02% of it&#39;s value because of a bad investment. Somebody DO SOMETHING.
 
@@ -1755,6 +1901,10 @@ Chapter 7 is liquidation (there is no actual Chapter 8).
 
 You&#39;re right. Sorry for the misinformation.
 
+No such thing as Chapter 8. You&#39;re describing Chapter 7
+
+Yes, already addressed by CommunityMember above. My bad.
+
 To this day, Amazon has not been able to integrate Whole Foods into the Amazon family.  Their internal systems are still Whole Foods, not Amazon.  That was 7.5 years ago.  Here&#39;s how bad things are.
 
 I do a search for the closest Whole Foods to where I live.  I select the link to the store site.  My local store shows somewhere in another state. I have to manually select my closest store and Make It My Store even though I selected the link to my closest store.
@@ -1769,21 +1919,31 @@ Only exceeded by the likes of Google and Microsoft. But Amazon is catching up.
 
 But still a long way to catch up to Meta, let alone AOL-Times-Warner...
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+it seems to me as if Amazon has probably done this plenty of times before.
+
+does anyone else think that Amazon is just pissed off that Saks wouldnâ(TM)t spend the money back on Amazon again? Itâ(TM)s the same circular scheme going on in the tech industry, and Amazon was trying to start it with Saks.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;The hottest places in Hell are reserved for those who, in times of moral
+crisis, preserved their neutrality.&quot;
+-- Dante</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">The United States Needs Fewer Bus Stops</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>The United States Needs Fewer Bus Stops</h2>
             <p><strong>Slashdot | 2026-01-15</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/01/15/1648212/the-united-states-needs-fewer-bus-stops?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">I highly recommend you study the videos on this channel. Smarter minds and all that. Been there, done that, etc.
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+I highly recommend you study the videos on this channel. Smarter minds and all that. Been there, done that, etc.
 
 https://www.youtube.com/@NotJu... [youtube.com]
 
@@ -1800,6 +1960,34 @@ How does Tokyo manage to be denser than pretty much every American city but stil
 Isn&#39;t Tokyo where they have people who cram passengers into subway cars because they&#39;re so crowded?  And aren&#39;t they having an affordability crisis there?
 
 &quot;According to Tokyo Kantei, the income multiple for newly constructed apartments in Japan was 8.19 in 2019, indicating that the average price of a new apartment was over eight times the average annual income. This figure highlights the serious affordability crisis faced by many residents. The Demo
+
+Sure, when buying and compare that to again, NYC and SF, what are their multiples?
+
+https://www.numbeo.com/cost-of... [numbeo.com]
+
+Cost of Living Including Rent in Tokyo is 55.4% lower than in San Francisco, CA
+
+https://livingcost.org/cost/sa... [livingcost.org]
+
+The cost of living in San Francisco is 142% more expensive than in Tokyo.
+
+And again, take into consideration the Tokyo metro is multiple times larger and more population than NYC or SF, so again, how do they do it?
+
+Back in the real world, most people want to live in a nice house with a big yard and not in a Stalinist concrete tower block.
+
+The real world looks a lot more like millions of Americans choosing to live in cities rather than out in the burbs from where I&#39;m sitting.
+
+Why do people who don&#39;t like urban areas think everyone doesn&#39;t?
+
+Sure, and then in the real world they all get high blood pressure from absurdly long and congested commutes because of car-dependent sprawl.
+
+Is it actually better to grow vertically? You&#39;re compounding congestion at a fantastic rate rather than spreading the traffic around.
+
+Except that tall buildings don&#39;t cause congestion, parking garages do. [streetsblog.org]
+
+Traffic is a solved problem. When buses no longer get stuck [youtu.be] in car traffic, people will ride them, freeing up a LOT of space on the roads [imgur.com] for everyone who still has to drive.
+
+It&#39;s cheap to restripe a car lane into a lane for buses, emergency vehicles, and right turning traffic. Then run both local and limit
 
 You can color code your bus stops and have a route alternate between 2 or more colors. A decent sign with schedule information and an identifier on the bus will help people understand why the bus just flew past them but another one will be arriving in 12 minutes.
 
@@ -1824,6 +2012,10 @@ It doesn&#39;t work the way people who make these studies t
 This. But public transport is infamously shit in the USA so I don&#39;t suspect a sane solution to come out of the USA. The actual movement time for busses is rarely a limiting factor. It&#39;s changes, waiting at the station, it&#39;s the bus being stuck in traffic due to shitty prioritisation and lack of bus lanes.
 
 Removing stops is not the answer, it only fucks over the old and disabled.
+
+&quot;Removing stops is not the answer, it only fucks over the old and disabled&quot;a very popular bakery in a neighborhood i lived in some years back used to have a bus stop at the door which was removed because drivers complained about not being to stop / drop off at the corner.the closest stop is now 200 feet away. today we woke up to about 1 foot of snow which is challenging even for those who are not elderly nor disabled
+
+200 feet? It is in no way practical to cater to everyone who needs walks less than 200 feet for public transportation. No country or city does that regardless of weather patterns.
 
 As you say, this change may make buses travel faster but if I have to walk half a mile more to get to from from the nearest bus stop it&#39;s added twenty minutes to my trip.
 
@@ -1856,9 +2048,21 @@ Walk to station, wait for train, get off at next station and wait half an hour f
 
 Trains were a great 19th century solution to getting lots of industrial workers from point A to point B at the same time, but we&#39;re not living in the 19th century any more.
 
+Look to Japan.Yes look to Japan, but look far more closely. Trains serve a different function than buses and buses still exist. Train ridership in Japan is high as people often work in different wards to where they live, it&#39;s medium to long distance transit, not local transit. In fact if you look at what trains are available you&#39;ll find little more than a single large ring with a 10km diameter going from Tokyo to Shinjuku connecting different cities in the greater Tokyo area, and the JR line cutting across the north of t
+
+Yes look to Japan, but look far more closely. Trains serve a different function than buses and buses still exist. Train ridership in Japan is high as people often work in different wards to where they live, it&#39;s medium to long distance transit, not local transit. In fact if you look at what trains are available you&#39;ll find little more than a single large ring with a 10km diameter going from Tokyo to Shinjuku connecting different cities in the greater Tokyo area, and the JR line cutting across the north of t
+
 We need smaller lighter carsBetter yet, no cars so buses aren&#39;t blocked by packed streets.More and more European cities are banning private transport from city centers because it has various advantages beside improved public transport.
 
 Better yet, no cars so buses aren&#39;t blocked by packed streets.More and more European cities are banning private transport from city centers because it has various advantages beside improved public transport.
+
+Better yet, no cars so buses aren&#39;t blocked by packed streets.Certainly in Seattle, the reason busses often move so slow isn&#39;t due to the frequency of stops... it&#39;s because they&#39;re stuck in automobile traffic. Even the dedicated bus lanes frequently get blocked by cars needing to turn off, since at that point those cars have to also be in those lanes.Light rail works much better in that regard, but it&#39;s quite expensive to build... and also can&#39;t cover a broad area the way busses can.
+
+Better yet, no cars so buses aren&#39;t blocked by packed streets.
+
+Certainly in Seattle, the reason busses often move so slow isn&#39;t due to the frequency of stops... it&#39;s because they&#39;re stuck in automobile traffic. Even the dedicated bus lanes frequently get blocked by cars needing to turn off, since at that point those cars have to also be in those lanes.
+
+Light rail works much better in that regard, but it&#39;s quite expensive to build... and also can&#39;t cover a broad area the way busses can.
 
 The problem with busses is that people still have to walk or use their wheelchair quite a ways to their destinationThe problem is that this is a problem. The average American is not mentally and/or physically equipped to walk long distances, and there isn&#39;t enough walkable infrastructure.Lots of chickens and eggs.
 
@@ -1884,11 +2088,31 @@ The important metric needs to be how well served the people are.  Average speeds
 
 If you make it a pain in the ass to use busses and trains, then people will just go back to cars. Either buying their own, or renting per ride via Uber or something. If you&#39;re going to use a bus, then you&#39;re just going to have to accept that it&#39;s slow mode of transport. But it still beats walking in the snow.
 
+Yes likely, but you miss the entire point.  More stops and slower average speeds might make the &quot;mode of transport&quot; faster, travel times include more than just the time you&#39;re on the bus.  You have to travel to and from the stops as well, and that average walking distance is much lower when there are many more stops.
+
+The important metric needs to be how well served the people are.This is America. The important metric is to make public transport useless and make people more car dependent. It&#39;s especially stupid comparing it to European cities. Most people only catch a bus a couple of stops in Europe, because then they will be connected to another form of transit. I.e. You use your bus to get to the tram, metro, or trainstation, one of which will likely be within 1-2km of you so it really doesn&#39;t matter if it travels at 10km/h or 12km/h.
+
+The important metric needs to be how well served the people are.
+
+This is America. The important metric is to make public transport useless and make people more car dependent. It&#39;s especially stupid comparing it to European cities. Most people only catch a bus a couple of stops in Europe, because then they will be connected to another form of transit. I.e. You use your bus to get to the tram, metro, or trainstation, one of which will likely be within 1-2km of you so it really doesn&#39;t matter if it travels at 10km/h or 12km/h.
+
+&quot;The important metric is to make public transport useless and make people more car dependent.&quot;
+
+It&#39;s the same metric, you&#39;re just pointing out that many think the lowest possible result is the goal.  Beside, the article presumes that the goal is to improve public transportation, when there are plenty that want to make sure that doesn&#39;t happen.  Ask Elon Musk.
+
 3 MPH is a quite brisk walk.   8 mph is a 7.5 minute mile.   Most people can&#39;t run one mile that fast much less a bunch in a row.
 
 With fewer stops, there will be more walking. They don&#39;t even mention the health benefits of getting people to walk more, even if it&#39;s just a bit more.
 
 Yeah, I really miss walking half a mile through the snow to and from the bus stop at forty below zero.
+
+I&#39;m retired now, but I used to do that.  Still more pleasant than driving in traffic.  Once I&#39;m on the bus, I pull out a book and have a pleasant read while the bus driver deals with the weather and the traffic.
+
+With fewer stops, there will be more walking.You misspelled &quot;driving&quot;, I heard that this is a national fetish in America.
+
+With fewer stops, there will be more walking.
+
+You misspelled &quot;driving&quot;, I heard that this is a national fetish in America.
 
 1) Tap on, single fare OR Tap On, Tap Off OR Tap On, Multiple Journeys within an hour in that fare (e.g., London)2) Don&#39;t accept cash, payment card or travelcard only (e.g., London Oyster)3) Dedicated bus lanes in busy stretches of road4) Don&#39;t stop too often, but don&#39;t go too far the other way either, it depends on the population density of that area5) Different bus stands for different routes, so prevent contention at the single bus stop (at busy stops)6) Accessibility mus
 
@@ -1896,25 +2120,51 @@ Also high frequency to allow for a turn up and go service is often more importan
 
 6 buses an hour is the minimum for people to not feel they are risking a long wait if they use the bus option.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+In most places that I have used urban bus lines, the problem is not the frequency of stops nor the annoying delays of having to service the needs of paying passengers. Rather it it the common practice of routing busses in the general traffic to crawl along with the rest. Same applies to light rail systems. This stuff will work smoothly and efficiently if a dedicated laneway is made available. But in most places I am sure the real estate is not available. So instead we will punish the riders by making them w
+
+1) Busses often have to deal with non-busses blocking their space.  Right turn lanes for example, encourage cars to sit there and block it.
+
+2) Kneeling busses exist because they do not put curbs high enough.  If the curb is as high as the bus, you do not need the bus to kneel, you just need an extension.
+
+3) Busses are overloaded.  There are lines waiting for the bus during non-rush hour.  If you have busses coming every 5 minutes in rush hour rather than every 10 or 15, no line
+
+More stops means people don&#39;t have to walk as far to get to a stop, obviously.  But on lightly-used bus routes, or routes with very high frequency, the bus isn&#39;t going to be stopping at every stop anyway, so there&#39;s not much benefit to eliminating stops that aren&#39;t used very often.  If the bus just drives past it then it&#39;s no different than if it&#39;s not there at all.
+
+That said, regardless of service speed, a benefit to removing stops is that you can make the ones that remain better.  Instead of every stop jus
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;The hottest places in Hell are reserved for those who, in times of moral
+crisis, preserved their neutrality.&quot;
+-- Dante</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Apple is Fighting for TSMC Capacity as Nvidia Takes Center Stage</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Apple is Fighting for TSMC Capacity as Nvidia Takes Center Stage</h2>
             <p><strong>Slashdot | 2026-01-15</strong></p>
             <a class="original-link" href="https://apple.slashdot.org/story/26/01/15/166213/apple-is-fighting-for-tsmc-capacity-as-nvidia-takes-center-stage?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+
+people will talk like this and then decalre &quot;yeah i voted for trump, 4 times!&quot; and not see the dissonance
 
 This isn&#39;t possible with the current AI tech. And ending the need for work is not going to elimate property ownership and wealth as a source of social and politcal power.AI may eventually accellerate a bloody class war, as the economy and social hierarchy are upturned from these potential technological advancements.
 
 But humans will cling to owning things and controlling other people long past any practical need to do so. Post scarcity will be hacked with artificial scarity, and in a way we have been doing th
+
+Just hypothetically suppose that AI fulfills all those promises.
+
+As long as there&#39;s something we humans can do that robots/AI can&#39;t do, therer&#39;s economical incentive to keep us working as much as possible on that, the same hours we work now, as it gives you an edge vs economies that don&#39;t do that.
+
+Our productivity today is already multiples of decades ago, and somehow we&#39;re still working just as much, why would anything ever change that?
+
+And if literally everything can be automated, how long before those in po
 
 Perish the thought that all the rabid Apple fanbois/girls will have to buy other phone brands.
 
@@ -1930,16 +2180,20 @@ I find iOS unacceptable. I&#39;d stop using mobile devices entirely if it were t
 
 ... is smiling and whispering &quot;Real men have fabs&quot;
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;The hottest places in Hell are reserved for those who, in times of moral
+crisis, preserved their neutrality.&quot;
+-- Dante</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Wikipedia Signs AI Licensing Deals On Its 25th Birthday</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Wikipedia Signs AI Licensing Deals On Its 25th Birthday</h2>
             <p><strong>Slashdot | 2026-01-15</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/01/15/1516207/wikipedia-signs-ai-licensing-deals-on-its-25th-birthday?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -2023,61 +2277,19 @@ Is that sarcasm? Not a fan of “doing your own research”. We can’t trust th
 
 I spent thirty years in high tech - much with direct Bell Labs lineage - and the “do your own research” crowd? Morons.
 
+ArchieBunker is in fact a moron and has a blind spot when it comes to bias. Thinks he&#39;s &quot;smart&quot; because he tinkers with electronics and holds politically correct opinions and sneers sarcastically at wrongthinkers.No. Impossible. The mods love him so far!
+
+ArchieBunker is in fact a moron and has a blind spot when it comes to bias. Thinks he&#39;s &quot;smart&quot; because he tinkers with electronics and holds politically correct opinions and sneers sarcastically at wrongthinkers.
+
+No. Impossible. The mods love him so far!
+
 Aren&#39;t we all just sitting around waiting for a handful of people to own every fucking thing on this planet.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Anthropic's Index Shows Job Evolution Over Replacement</div>
-            <div class="meta">2026-01-15</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Anthropic's Index Shows Job Evolution Over Replacement</h2>
-            <p><strong>Slashdot | 2026-01-15</strong></p>
-            <a class="original-link" href="https://slashdot.org/story/26/01/15/1436248/anthropics-index-shows-job-evolution-over-replacement?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">If people get more efficient using AI, then people will be fired.Greed is blinded by greed.  Doesn’t matter how smart they are or were when that shit takes over.The pathetic Catch-22 being presented to graduates today, is you better be able to prove you can augment your job with AI.  Otherwise, you’re not “future-proof” enough for Greed to pretend it will hire AI augmentees just long enough for AGI to come along.Then, every motherfucker who ain’t a cyborg is getting fired.  Because of annoying meatsack needs like sleep, food, and medical ins
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-If people get more efficient using AI, then people will be fired.
-
-Greed is blinded by greed.  Doesn’t matter how smart they are or were when that shit takes over.
-
-The pathetic Catch-22 being presented to graduates today, is you better be able to prove you can augment your job with AI.  Otherwise, you’re not “future-proof” enough for Greed to pretend it will hire AI augmentees just long enough for AGI to come along.
-
-Then, every motherfucker who ain’t a cyborg is getting fired.  Because of annoying meatsack needs like sleep, food, and medical ins
-
-The pathetic Catch-22 being presented to graduates today, is you better be able to prove you can augment your job with AI. Otherwise, you’re not “future-proof” enough for Greed to pretend it will hire AI augmentees just long enough for AGI to come along.Then, every motherfucker who ain’t a cyborg is getting fired. ...This assumes that AGI will come along, and soon. IMO, it&#39;s more likely that LLM&#39;s continue to augment the way work is being done, rather than replacing real jobs (which seems to be what the article is saying as well).Case in point - TFS: &quot;Claude completes college-degree tasks successfully 66% of the time versus 70% for simpler work.&quot;Barring true AGI, in a future where LLM&#39;s are much better at predicting the right completion, they&#39;ll still need hand holding. This is certainly a significant change, but so was
-
-The pathetic Catch-22 being presented to graduates today, is you better be able to prove you can augment your job with AI. Otherwise, you’re not “future-proof” enough for Greed to pretend it will hire AI augmentees just long enough for AGI to come along.
-
-Then, every motherfucker who ain’t a cyborg is getting fired. ...
-
-This assumes that AGI will come along, and soon. IMO, it&#39;s more likely that LLM&#39;s continue to augment the way work is being done, rather than replacing real jobs (which seems to be what the article is saying as well).
-
-Case in point - TFS: &quot;Claude completes college-degree tasks successfully 66% of the time versus 70% for simpler work.&quot;
-
-Barring true AGI, in a future where LLM&#39;s are much better at predicting the right completion, they&#39;ll still need hand holding. This is certainly a significant change, but so was
-
-When the threat of AI/AGI first came on, most arrogant meatsacks assumed it would take Perfect AI to replace them at their job.
-
-Most fallible humans don’t realize it will only take Good E. Nuff AI to replace them.  Because that is exactly how they landed their human job in the first place.  You were good enough to hire.  Nowhere near perfect.
-
-The need for UBI will happen far sooner than Greed N. Corruption realizes.  That doesn’t put Greed in charge.  That puts Greed on the fucking menu.  With Mass Chaos in charge.
-
-It did not hurt to have a new circus in charge of destabilizing the economy to the point most companies would cut back at the same time, to greater lengths than before.
-
-You&#39;ll have to forgive him: He&#39;s been afraid of robots ever since he first saw Chuck E Cheese.
-
-I see people, who are not programmers at all, creating automation solutions for their businesses:  https://slashdot.org/comments.... [slashdot.org]
-
-People are using AI to help them create content that otherwise wouldn&#39;t have been created ever https://youtube.com/shorts/un8... [youtube.com]  just because this is in someone&#39;s fantasy does not mean they have resources to make it real until AI stepped in.
-
-We generate and put edit videos for advertising that otherwise wouldn&#39;t even be possible, because it would have required a movie crew and I
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+&quot;The hottest places in Hell are reserved for those who, in times of moral
+crisis, preserved their neutrality.&quot;
+-- Dante</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2435,11 +2647,25 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Novel thick electrode enhances battery power and capacity for a 75% increase in output</div>
+            <div class="title">Ontario's proposed nuclear waste repository poses millennia-long ethical questions</div>
             <div class="meta">2026-01-15</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>Ontario's proposed nuclear waste repository poses millennia-long ethical questions</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-15</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-01-ontario-nuclear-repository-poses-millennia.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Novel thick electrode enhances battery power and capacity for a 75% increase in output</div>
+            <div class="meta">2026-01-15</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>Novel thick electrode enhances battery power and capacity for a 75% increase in output</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-15</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-01-thick-electrode-battery-power-capacity.html">Visit Original Website</a>
@@ -2447,13 +2673,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Fire-safe all-solid-state batteries move closer to commercialization</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Fire-safe all-solid-state batteries move closer to commercialization</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-15</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-01-safe-solid-state-batteries-closer.html">Visit Original Website</a>
@@ -2461,13 +2687,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">This TikTok star sharing Australian animal stories doesn't exist—it's AI Blakface</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>This TikTok star sharing Australian animal stories doesn't exist—it's AI Blakface</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-15</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-01-tiktok-star-australian-animal-stories.html">Visit Original Website</a>
@@ -2475,13 +2701,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Amazon expands 'sovereign cloud' in Europe</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Amazon expands 'sovereign cloud' in Europe</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-15</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-01-amazon-sovereign-cloud-europe.html">Visit Original Website</a>
@@ -2489,13 +2715,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Beware of online ads with elaborate backstories. They may not be from a real small business</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Beware of online ads with elaborate backstories. They may not be from a real small business</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-15</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-01-beware-online-ads-elaborate-backstories.html">Visit Original Website</a>
@@ -2503,27 +2729,59 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">In a warming world, freshwater production is moving deep beneath the sea</div>
+        <div class="card" onclick="openModal('content-42')">
+            <div class="source">The Register</div>
+            <div class="title">OpenAI to serve up ChatGPT on Cerebras’ AI dinner plates in $10B+ deal</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-41" style="display:none;">
-            <h2>In a warming world, freshwater production is moving deep beneath the sea</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-15</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-01-world-freshwater-production-deep-beneath.html">Visit Original Website</a>
+        <div id="content-42" style="display:none;">
+            <h2>OpenAI to serve up ChatGPT on Cerebras’ AI dinner plates in $10B+ deal</h2>
+            <p><strong>The Register | 2026-01-15</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/15/openai_cerebras_ai/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">OpenAI says it will deploy 750 megawatts worth of Nvidia competitor Cerebras&#39; dinner-plate sized accelerators through 2028 to bolster its inference services.
+
+The deal, which will see Cerebras take on the risk of building and leasing datacenters to serve OpenAI, is valued at more than $10 billion, sources familiar with the matter tell El Reg.
+
+By integrating Cerebras&#39; wafer-scale compute architecture into its inference pipeline, OpenAI can take advantage of the chip&#39;s massive SRAM capacity to speed up inference. Each of the chip startup&#39;s WSE-3 accelerators measures in at 46,225 mm2 and is equipped with 44 GB of SRAM.
+
+Compared to the HBM found on modern GPUs, SRAM is several orders of magnitude faster. While a single Nvidia Rubin GPU can deliver around 22 TB/s of memory bandwidth, Cerebras&#39; chips achieve nearly 1,000x that at 21 Petabytes a second.
+
+All that bandwidth translates into extremely fast inference performance. Running models like OpenAI&#39;s gpt-oss 120B, Cerebras&#39; chips can purportedly achieve single user performance of 3,098 tokens a second as compared to 885 tok/s for competitor Together AI, which uses Nvidia GPUs.
+
+In the age of reasoning models and AI agents, faster inference means models can &quot;think&quot; for longer without compromising on interactivity.
+
+&quot;Integrating Cerebras into our mix of compute solutions is all about making our AI respond much faster. When you ask a hard question, generate code, create an image, or run an AI agent, there is a loop happening behind the scenes: you send a request, the model thinks, and it sends something back,&quot; OpenAI explained in a recent blog post. &quot;When AI responds in real time, users do more with it, stay longer, and run higher-value workloads.&quot;
+
+However, Cerebras&#39; architecture has some limitations. SRAM isn&#39;t particularly space efficient, which is why, despite the chip&#39;s impressive size, they only pack about as much memory as a six-year-old Nvidia A100 PCIe card.
+
+Because of this, larger models need to be parallelized across multiple chips, each of which are rated for a prodigious 23 kW of power. Depending on the precision used, the number of chips required can be considerable. At 16-bit precision, which Cerebras has historically preferred for its higher-quality outputs, every billion parameters ate up 2 GB of SRAM capacity. As a result, even modest models like Llama 3 70B required at least four of its CS-3 accelerators to run.
+
+It&#39;s been nearly two years since Cerebras unveiled a new wafer scale accelerator, and since then the company&#39;s priorities have shifted from training to inference. We suspect the chip biz&#39;s next chip may dedicate a larger area to SRAM and add support for modern block floating point data types like MXFP4, which should dramatically increase the size of the models that can be served on a single chip.
+
+Having said that, the introduction of a model router with the launch of OpenAI&#39;s GPT-5 last summer should help mitigate Cerebras&#39; memory constraints. The approach ensures that the vast majority of requests fielded by ChatGPT are fulfilled by smaller cost-optimized models. Only the most complex queries run on OpenAI&#39;s largest and most resource-intensive models.
+
+It&#39;s also possible that OpenAI may choose to run a portion of its inference pipeline on Cerebras&#39; kit. Over the past year, the concept of disaggregated inference has taken off.
+
+In theory, OpenAI could run compute-heavy prompt processing on AMD or Nvidia GPUs and offload token generation to Cerebras&#39; SRAM packed accelerators for the workload&#39;s bandwidth-constrained token generation phase. Whether this is actually an option will depend on Cerebras.
+
+&quot;This is a Cloud service agreement. We build out datacenters with our equipment for OpenAI to power their models with the fastest inference,&quot; a company spokesperson told El Reg when asked about the possibility of using its CS-3s in a disaggregated compute architecture.
+
+This doesn&#39;t mean it won&#39;t happen, but it would be on Cerebras to deploy the GPU systems required to support such a configuration in its datacenters alongside its waferscale accelerators. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-42')">
+        <div class="card" onclick="openModal('content-43')">
             <div class="source">The Register</div>
             <div class="title">Apple, Google pulled into Grok controversy as campaigners demand app store takedown</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>Apple, Google pulled into Grok controversy as campaigners demand app store takedown</h2>
             <p><strong>The Register | 2026-01-15</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/15/apple_google_pulled_into_grok/">Visit Original Website</a>
@@ -2557,13 +2815,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">A simple CodeBuild flaw put every AWS environment at risk – and pwned 'the central nervous system of the cloud'</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>A simple CodeBuild flaw put every AWS environment at risk – and pwned 'the central nervous system of the cloud'</h2>
             <p><strong>The Register | 2026-01-15</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/15/codebuild_flaw_aws/">Visit Original Website</a>
@@ -2643,13 +2901,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">Budget smartphones will be hit hardest as memory prices rise</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Budget smartphones will be hit hardest as memory prices rise</h2>
             <p><strong>The Register | 2026-01-15</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/15/memory_crisis_smartphones/">Visit Original Website</a>
@@ -2687,13 +2945,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">Windows App forgets how to log in with first security update of the year</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Windows App forgets how to log in with first security update of the year</h2>
             <p><strong>The Register | 2026-01-15</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/15/windows_app_credential_failures/">Visit Original Website</a>
@@ -2725,13 +2983,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">Teach an AI to write buggy code, and it starts fantasizing about enslaving humans</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Teach an AI to write buggy code, and it starts fantasizing about enslaving humans</h2>
             <p><strong>The Register | 2026-01-15</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/15/llm_fine_tuning_misalignment/">Visit Original Website</a>
@@ -2765,49 +3023,79 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">US regulator tells GM to hit the brakes on customer tracking</div>
+        <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">Apple lost the AI race — now the real challenge starts</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-47" style="display:none;">
-            <h2>US regulator tells GM to hit the brakes on customer tracking</h2>
-            <p><strong>The Register | 2026-01-15</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/15/ftc_gm_tracking_ban/">Visit Original Website</a>
+        <div id="content-48" style="display:none;">
+            <h2>Apple lost the AI race — now the real challenge starts</h2>
+            <p><strong>The Verge | 2026-01-15</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/861957/google-apple-ai-deal-iphone-gemini">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Federal Trade Commission has banned General Motors and subsidiary OnStar from sharing drivers&#39; precise location and behavior data with consumer reporting agencies for five years under a 20-year consent order finalized January 14.
+            <div id="article-text">It’s time to turn Apple Intelligence into something people actually care about.
 
-According to the order [PDF], GM turned connected cars into surveillance devices by collecting and selling driver data without clearly informing customers. The settlement prohibits location and driving data sharing with consumer reporting agencies and requires explicit permission for future connected car data collection.
+It’s time to turn Apple Intelligence into something people actually care about.
 
-The finalized settlement follows a proposed deal reached a year ago, and comes almost two years after a New York Times probe revealed how GM and OnStar collected, used, and sold drivers&#39; detailed telematics data through a feature known as Smart Driver. That reporting showed the data – including precise location, hard braking, acceleration, speed, and even seatbelt use – ended up with data brokers such as LexisNexis and Verisk, which in turn sold it to insurance companies that could use it to influence customers&#39; premiums.
+For an AI loser, Apple did an awful lot of winning last year.
 
-Smart Driver was pitched as a free add-on inside GM&#39;s connected car apps, framed as a way to encourage safer driving. The FTC&#39;s complaint, first unveiled in January 2025, paints a murkier picture, accusing GM of steering drivers into OnStar and Smart Driver while downplaying how much location and driving data was being collected – and who it would ultimately be sold to.
+The mess that was the Apple Intelligence rollout was embarrassing, to be sure, but through it all, the company kept doing what it does best: selling iPhones. With this week’s news that it’ll use Gemini models to power the long-awaited smarter Siri, Apple seems to have taken a big ‘ol L in the whole AI race. But there’s still a major challenge ahead — and Apple isn’t out of the running just yet.
 
-GM shut down Smart Driver across all of its brands in April 2024, citing customer backlash. The company said it unenrolled users at the same time and severed the third-party telematics deals that fed data to LexisNexis and Verisk.
+Apple Intelligence got off to a well-documented rough start in 2024. The iPhone 16 was “Built for Apple Intelligence,” but shipped without it. Features arrived over the next few months, but the so-called smarter Siri never materialized. Apple execs admitted they had gone back to the drawing board, people in charge were shuffled around, and it all looked like a big failure on Apple’s part.
 
-Under the terms of the FTC&#39;s order, GM must obtain consent from drivers before collecting or sharing covered data. The order also requires GM to give consumers a straightforward way to request a copy of their data, ask for its deletion, and disable the collection of precise geolocation data entirely.
+But it doesn’t exactly seem like people are ready to ditch their iPhones for Google’s Gemini-imbued Android phones. According to IDC’s Q3 2025 report, “Demand for Apple’s new iPhone 17 lineup was robust, with pre-orders surpassing those of the previous generation.” Counterpoint Research calls Apple the global smartphone “market leader” in 2025 with 10 percent year-over-year growth in market share. Meanwhile, Apple Intelligence is much less prominent in the iPhone 17’s marketing than it was with the 16; you have to scroll halfway down the iPhone 17’s product page before you get to the first mention.
 
-The FTC says GM may still share location data with emergency responders and use it internally for research and development. GM confirmed it also sometimes shares anonymized data with select partners to support projects including traffic analysis and road safety.
+The stalling tactic worked, but these days investors break out in hives if you don’t mention AI every five minutes. Apple had to come up with something in the way of a strategy, and in the second half of 2025, we started hearing reports that it might be looking at outside partners, rather than building its own models from scratch. It wouldn’t be totally unprecedented; Apple already lets users access ChatGPT directly in iOS and has promised from the beginning that it would add more third-party LLMs in this fashion. But this week’s deal isn’t about adding a quick way to chat with Gemini on an iPhone. You can already do that in the Gemini app. This is about building smarter Siri on Google’s models and running it all in Apple’s Private Cloud Compute. If and when a smarter Siri arrives this year, it’ll have some serious Gemini DNA.
 
-In a statement, GM said: &quot;General Motors has reached a settlement agreement with the Federal Trade Commission to address privacy concerns about our now-discontinued Smart Driver program. Respecting our customers&#39; privacy and earning their trust is deeply important to us. Although Smart Driver was created to promote safer driving behavior, we ended that program due to customer feedback.&quot;
+You could argue Apple made the right call from a business standpoint, but was it the right Apple move? Consider Tim Cook’s own words in a 2009 earnings call: “We believe that we need to own and control the primary technologies behind the products we make…” That was the foundation of the company’s push to develop its own silicon, which has absolutely been a winning strategy. But either Apple thinks AI models aren’t a primary technology after all — more like an underlying service it will build products on top of — or it has made a serious misjudgment about AI as the next platform shift and risks falling behind. Low stakes stuff!
 
-It has also folded its sprawling US privacy notices into a single document. The company argued that the FTC order goes &quot;above and beyond existing law,&quot; largely codifies changes GM says it has already made, and will remain in effect for 20 years.
+That’s the challenge: turning Apple Intelligence into a product people actually want, not one that they feel indifferent toward
 
-For regulators, this looks less like a one-off and more like a warning shot. Carmakers eager to squeeze value out of connected cars will need to be clearer with drivers about what&#39;s collected and sold, or risk finding a regulator in the road ahead. ®
+And to be sure, Apple doesn’t control the destiny of every part of the iPhone. It hasn’t gone out and built a search engine, or its own wireless network, or an algorithmic social media platform. All of those things run on an iPhone, but they aren’t core parts of the iPhone’s identity, and AI could very well wind up the same way. Maybe there’s a hint in the way that Apple has seemingly shifted from encouraging developers to adopt its own App Intents framework to using the Anthropic-developed MCP as the basis for agentic features. If AI just needs to find the right hooks to get things done, then the particular models it’s running matter less. But it all hinges on the product that Apple creates around AI — and that starts with Siri.
 
-The Register   Biting the hand that feeds IT
+That’s the real challenge ahead of Apple: turning Apple Intelligence into a product people actually want, not one that they feel indifferent toward. It needs to turn Siri into the thing the company has promised all along, not a glorified timer-setting machine. Apple can make a beautiful product — no doubt. Can it do that without control over its own models? Can it do that faster than Google or Jony Ive or any other competitor ready to make a run at the garden walls? The deal may be inked, but the real work starts now.
 
-Copyright. All rights reserved © 1998–2025</div>
+A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-48')">
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">Democrats push FTC to investigate Trump Mobile</div>
+            <div class="meta">2026-01-15</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
+            <h2>Democrats push FTC to investigate Trump Mobile</h2>
+            <p><strong>The Verge | 2026-01-15</strong></p>
+            <a class="original-link" href="https://www.theverge.com/news/862821/democrats-elizabeth-warren-aoc-ftc-trump-mobile-investigation-letter">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Elizabeth Warren and other lawmakers want the FTC to investigate Trump Mobile’s alleged ‘false advertising.’
+
+Elizabeth Warren and other lawmakers want the FTC to investigate Trump Mobile’s alleged ‘false advertising.’
+
+Elizabeth Warren and other Democrat lawmakers have written an open letter to the Federal Trade Commission (FTC) asking for an investigation into alleged “false advertising and deceptive practices” from Trump Mobile. The company first announced its T1 Phone more than six months ago, but is yet to ship a single phone to buyers.
+
+The letter is signed by 11 Democrats, led by Senator Warren and Congressman Robert Garcia. It references Trump Mobile’s since-deleted “Made in America” branding; the fact that it’s been taking $100 deposits for the phone without anything to show for it; and a social media ad which, as the letter notes, The Verge identified as an edited render of a Samsung Galaxy S25 Ultra.
+
+The letter asks if the FTC has already opened an investigation into Trump Mobile’s apparent violations, and if not, why not, before asking the agency to “commit to treating Trump Mobile according to the same standards and enforcement priorities applied to other companies.”
+
+“The American people deserve to know that consumer protection laws apply equally to all businesses, regardless of political connections,” the letter states. “The FTC’s response to any violations of consumer protection law by Trump Mobile will serve as a critical test of the FTC’s independence and commitment to its mission of ‘protecting the public from deceptive or unfair business practices.’”
+
+Warren and several of the other lawmakers behind the letter had signed a separate letter last summer addressed to the heads of the FTC and several other agencies to ask how they would avoid “undue political influence” around regulation of Trump Mobile. Today’s letter notes that Warren and the other lawmakers “received no response from the FTC.”
+
+Got inside information on Trump Mobile or the Trump Phone? Reach out securely from a personal device to tips@theverge.com, or see our How to Tip Us page.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">Here are the best AirPods deals you can get right now</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>Here are the best AirPods deals you can get right now</h2>
             <p><strong>The Verge | 2026-01-15</strong></p>
             <a class="original-link" href="https://www.theverge.com/21302051/best-apple-airpods-deals">Visit Original Website</a>
@@ -2845,13 +3133,13 @@ Update, January 15th: Adjusted pricing and availability.
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Amazon is buying copper harvested by bacteria for its data centers</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Amazon is buying copper harvested by bacteria for its data centers</h2>
             <p><strong>The Verge | 2026-01-15</strong></p>
             <a class="original-link" href="https://www.theverge.com/news/862820/amazon-arizona-copper-mine-data-centers">Visit Original Website</a>
@@ -2871,13 +3159,13 @@ Nuton produced the first copper cathode using bioleaching in December, also at t
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Pijama wants to bring more indie films to a global audience</div>
             <div class="meta">2026-01-15</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Pijama wants to bring more indie films to a global audience</h2>
             <p><strong>The Verge | 2026-01-15</strong></p>
             <a class="original-link" href="https://www.theverge.com/entertainment/862676/pijama-streaming-movies">Visit Original Website</a>
@@ -2901,142 +3189,34 @@ Pijama’s debut comes just a few weeks after the launch of Letterboxd’s Video
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
-            <div class="source">The Verge</div>
-            <div class="title">I’ve tested the latest Switch 2 controllers, and this one is the best</div>
-            <div class="meta">2026-01-15</div>
-        </div>
-        
-        <div id="content-51" style="display:none;">
-            <h2>I’ve tested the latest Switch 2 controllers, and this one is the best</h2>
-            <p><strong>The Verge | 2026-01-15</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/791574/best-switch-2-controllers">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Not everyone wants to spend $90 on a single controller. Luckily, we found affordable third-party options that are great.
-
-Not everyone wants to spend $90 on a single controller. Luckily, we found affordable third-party options that are great.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-If you choose to get an extra controller for your Nintendo Switch 2, you can spend a lot — and get a lot in return. Buying Nintendo’s own $89 Switch 2 Pro Controller, for instance, will net you the console’s only wireless controller with a 3.5mm headphone jack for private listening, not to mention great-feeling rumble, OS-level rear button customization, and a slick design. It’s not perfect, but it’s otherwise the total package in terms of features.
-
-But it’d be a disservice to you to call it a day there. There are several third-party models that are cheaper, yet don’t make too many compromises in terms of features. I’ve spent time testing a handful of them, including new ones as they release, and there’s a small batch of models that I think will satisfy most people, with a range of styles, prices, and features.
-
-Every controller I’ve included in this guide is compatible with both the Switch 2 and the original Switch (all of them can remotely wake the Switch 2), as well as PC. Each offering also includes better, longer-lasting joystick technology than you’ll get with Nintendo’s flagship controller; the Switch 2 Pro Controller’s potentiometer-based joysticks are prone to degradation over time, after all, but our picks include either Hall effect or TMR joysticks. I’ve highlighted any controller-specific perks in the blurbs below.
-
-I put my pricey Nintendo Switch 2 Pro Controller away and cycle in each of these candidates for multi-session tests with a mix of Switch 2 games. I spend time assessing their ergonomics, button location, and the quality of each button press and trigger pull. I also strive to test each controller’s unique functions.
-
-Most people would rather spend $89.99 on two games, not a single controller. We sought cheaper alternatives to Nintendo’s fantastic Switch 2 Pro Controller, but we hate compromising on features and quality as much as anyone. We aim to include wireless gamepads that can remotely wake the Switch 2, as well as offerings that feature good-feeling rumble and a few extras, such as amiibo support.
-
-Our top picks are just as comfortable to use as Nintendo’s flagship gamepad — perhaps more comfortable, depending on your taste. We’ve included picks with Xbox- and PlayStation-style stick layouts, too, as well as one that feels similar to the Nintendo Switch 2 Pro Controller.
-
-Nintendo opted for potentiometer-based joysticks in its pricey Switch 2 controller, which may result in “stick drift” later on, assuming last-gen controller tech is anything to go by. Every pick in this guide, however, builds on that technology with either Hall effect or tunneling magnetoresistance (TMR) joysticks, which are drift-resistant by design.
-
-Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, Steam Deck, mobile / Connectivity: Bluetooth, wired / Connector type: USB-C / Mappable rear buttons: Yes, two / Software customization: No / Rumble: Yes, HD / NFC: Yes / Motion: Yes / Power: Built-in rechargeable 1,200mAh battery / Console wake-up: Yes
-
-The EasySMX S10 is nearly as capable and comfortable as the Switch 2 Pro Controller, yet it’s $30 cheaper at its retail price of $59.99. It’s full of surprises, too, including the best adaptation of Nintendo’s HD rumble that I’ve felt in a third-party controller. It’s also one of the few options that can remotely wake the Switch 2 from sleep mode via Bluetooth. Lastly, it includes amiibo support — another rare feature to find in a third-party gamepad.
-
-However, the S10 isn’t a Switch 2 Pro copycat; it’s a lot grippier, both around the grips themselves and on its stick caps. Button presses and trigger pulls feel different from most other controllers, too, yielding a softer press and shorter travel, which is likely to be the most divisive aspect of the S10. One of my favorite aspects of the S10’s design is its swappable eight-way (circular) D-pad, making diagonal attacks in Hollow Knight: Silksong considerably easier to execute than with a four-way D-pad.
-
-If I could change one thing about the S10, it’d be the system-level buttons (screenshot, GameChat, and home). They’re crammed awkwardly just below the D-pad and right stick.
-
-Adjustable tension TMR thumbsticksQuiet, floating D-pad
-
-Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, mobile / Connectivity: Bluetooth, wired / Connector type: USB-C / Mappable rear buttons: Yes, four / Software customization: Coming in 2026 / Rumble: Yes / NFC: No / Motion: Yes / Power: Built-in rechargeable battery, 950mAh / Console wake-up: Yes
-
-Building off the design of its KingKong 3 controllers, GuliKit’s new TT Pro is focused on cramming in more features while keeping the price reasonable… for now. (More on that later.) There are some big changes, such as the inclusion of TMR thumbsticks in a PlayStation-style stick layout. And notably, both sticks have adjustable tension (like the Xbox Elite Series 2 controller) via a Phillips head screw that’s revealed once you pop off the stick caps. A tool is included that lets you dial in the sticks to be fast and flighty or have them resist snapping back to their original resting place. It’s great to see in a controller that costs well under $100.
-
-The TT Pro has the best floating, eight-way directional pad I’ve used. I play games in the living room while my wife reads, and she can’t hear its quiet yet tactile clicks, even as I’m having a frantic battle in Hollow Knight: Silksong. Like the KingKong 3 Max, the TT Pro features adjustable trigger stops (full Hall effect analog pull or tactile click), and you can install up to four rear paddles to map buttons to. Other niceties include extra face buttons and a tool to remove them in the box (in case you want an Xbox-style face button layout while connected to a PC). It comes in a hard case with a Hyperlink Gen 2 wireless controller adapter, which makes it easier to connect the TT Pro (and myriad other controllers) to your Switch 2. It also offers lower latency over Bluetooth than what your PC might offer, regardless of the controller it’s paired to.
-
-Although $59.99 may be more than some want to spend, GuliKit told The Verge that its retail cost is actually $70.58, so for now it’s available at a discount. As for how it differs from the step-up TT Max, which costs $20 more, here are the highlights: The Pro doesn’t include extra stick caps of varying heights, nor can its firmware switch between emulating a four- or eight-way D-pad like the Max can (the Pro only supports eight-way). Also, while both controllers support Auto-Pilot Gaming, GuliKit’s feature that writes button commands to memory and executes them when activated with a button combo, the Pro has less memory than the Max (10 seconds versus 10 minutes).
-
-Comfy and compactSilent sticks and buttonsGood feature set for $50
-
-Loud shoulder buttonsSystem-level buttons are tough to feel for
-
-Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, mobile / Connectivity: Bluetooth, wired / Connector type: USB-C / Mappable rear buttons: Yes, two / Software customization: Yes / Rumble: Yes, HD / NFC: Yes / Motion: Yes / Power: Built-in rechargeable battery, 1,000mAh / Console wake-up: Yes
-
-It’s clear that Mobapad’s primary goal with its $71 Chitu 2 controller was to convince people they were using Nintendo’s Switch 2 Pro Controller in a blind test. It crushed that goal. The curves feel identical to Nintendo’s $90 gamepad, as do the soft clicks of the customizable GL and GR rear buttons. The rumble is good, and its TMR sticks are nearly silent even when I deliberately try to wiggle them chaotically. It’s great to have a controller that feels so similar yet doesn’t skimp on features.
-
-Build quality is stellar, with the pink color option being particularly nice. As with its whisper-quiet TMR sticks, most of the Chitu 2’s other buttons and triggers don’t yield a clacky sound. However, there are some small issues that may not bother you: Its floating directional pad is a little louder and mushier than the one GuliKit uses in the TT Pro, and its pair of L and R bumpers are louder to press than the clicking of the analog sticks. Another button-related issue is that the home and screenshot buttons sit nearly flush with the plastic housing, making them tough to feel for without looking.
-
-Incredible value in terms of specs and comfort
-
-Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, mobile / Connectivity: Bluetooth, wired / Connector type: USB-C / Mappable rear buttons: No / Software customization: No / Rumble: Yes / NFC: No / Motion: Yes / Power: Built-in rechargeable 950mAh battery / Console wake-up: Yes
-
-GuliKit’s ES Pro is a love letter to the Xbox controller, but for Switch 2. It’s just $29.99, which is a steal considering this gamepad features an eight-way D-pad that’s great for fighting games, Metroidvanias, and retro titles where it’s an advantage to easily be able to aim diagonally (a setting can make it so that it only registers inputs for the cardinal directions, if you prefer).
-
-The ES Pro doesn’t need to do much to justify its price, but it does so anyway. It features tunneling magnetoresistance (TMR) joysticks that are resistant to drifting and offer improved power efficiency compared to Hall effect tech, just like the EasySMX S10. Similarly, it can be set up to remotely wake your Switch 2 or OG Switch console from across the room using its own set of strange, one-time-only instructions that you can view in its instruction manual.
-
-I’ve got almost no qualms with this controller, except for its bad rumble. It just has no subtlety, rumbling in an all-or-nothing manner. I was happier using the ES Pro with the vibrations off, which isn’t any fun. Additionally, it’s far less complete than the S10, as it lacks built-in amiibo support and a C button for GameChat; however, depending on your needs, those omissions might not matter to you.
-
-Includes dock and 2.4GHz dongleHighly customizableComfortable for small hands
-
-Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, Steam Deck, mobile / Connectivity: Bluetooth, 2.4GHz, wired / Connector type: USB-C / Mappable rear buttons: Yes, two / Software customization: Yes / Rumble: Yes / NFC: No / Motion: Yes / Power: Built-in rechargeable 1,000mAh battery / Console wake-up: Yes
-
-8BitDo’s Pro 3 is a great yet pricey Switch 2 Pro alternative with a PlayStation-style stick layout. At $69.99, it’s not as affordable (nor as value-packed) as the top contenders. However, the Pro 3 offers a lot of customization, some being cosmetic, while other aspects can impact gameplay.
-
-It has a lot going for it, with TMR joysticks, two back paddles, and a total of three shoulder buttons per side thanks to new custom M buttons. Its analog stick caps can be popped off in favor of glossy arcade stick-style nubs, which were my preferred choice in fighting games (plus, they just look cool). Its ABXY buttons can be suctioned off with an included tool to swap the layout as needed, and for visual flair, each controller includes colored buttons to evoke a retro Nintendo console. Also, it has trigger locks, letting you set triggers to have a short, clicky pull or the default travel distance.
-
-However, I’d skip the Pro 3 if you want good rumble feedback. It’s pretty lousy on that front, to the point that I preferred to turn off rumble entirely in games. In case you’re considering the similarly priced Ultimate 2 Bluetooth, it also has bad rumble, but it’s a great controller otherwise that offers similar features with an Xbox-style stick layout.
-
-I’m expecting to receive an EasySMX S10 Lite to test soon. It’s a cheaper version of the S10 that lacks amiibo support but has what seems like every other feature found in the pricier model.
-
-Update, January 15th: Adjusted pricing / availability and added a pair of newer gamepads, specifically the GuliKit TT Pro and Mobapad Chitu 2.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">Raspberry Pi&#8217;s new add-on board has 8GB of RAM for running gen AI models</div>
-            <div class="meta">2026-01-15</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>Raspberry Pi&#8217;s new add-on board has 8GB of RAM for running gen AI models</h2>
-            <p><strong>The Verge | 2026-01-15</strong></p>
-            <a class="original-link" href="https://www.theverge.com/news/862748/raspberry-pi-ai-hat-2-gen-ai-ram">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Raspberry Pi 5 can shift AI-related workloads to the $130 AI HAT +2.
-
-The Raspberry Pi 5 can shift AI-related workloads to the $130 AI HAT +2.
-
-Raspberry Pi is launching a new add-on board capable of running generative AI models locally on the Raspberry Pi 5. Announced on Thursday, the $130 AI HAT+ 2 is an upgraded — and more expensive — version of the module launched last year, now offering 8GB of RAM and a Hailo 10H chip with 40 TOPS of AI performance.
-
-Once connected, the Raspberry Pi 5 will use the AI HAT+ 2 to handle AI-related workloads while leaving the main board’s Arm CPU available to complete other tasks. Unlike the previous AI HAT+, which is focused on image-based AI processing, the AI HAT+ 2 comes with onboard RAM and can run small gen AI models like Llama 3.2 and DeepSeek-R1-Distill, along with a series of Qwen models. You can train and fine-tune AI models using the device as well.
-
-A demo shared by Raspberry Pi shows how you can use the add-on board to power an AI model capable of generating a text-based description of a camera stream, as well as answer a question about whether there are any people in the scene. Another shows how you can translate text from French to English with Qwen2.
-
-However, tech YouTuber Jeff Geerling found that a standalone Raspberry Pi 5 with 8GB of RAM generally outperformed the AI HAT+ 2 across the supported models. Geerling links the lower performance to power draw, as the Pi 5 can operate at up to 10 watts, while the AI HAT+ 2 is limited to 3W.
-
-Though the AI HAT+ 2 may be ideal for specific use cases, Geerling notes that the add-on board’s extra 8GB of RAM is “not quite enough to give this HAT an advantage over just paying for the bigger 16GB Pi with more RAM, which will be more flexible and run models faster.” The AI HAT+ released last year, can also handle AI image processing for a cheaper $70 starting price.
-
-Raspberry Pi says more and “larger” AI models “are being readied for updates, and should be available to install soon after launch.”
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
-            <div class="title">Amazon is turning Fallout’s postapocalypse into a reality show</div>
+            <div class="title">An OpenAI safety research lead departed for Anthropic</div>
             <div class="meta">2026-01-15</div>
         </div>
         
         <div id="content-53" style="display:none;">
-            <h2>Amazon is turning Fallout’s postapocalypse into a reality show</h2>
+            <h2>An OpenAI safety research lead departed for Anthropic</h2>
             <p><strong>The Verge | 2026-01-15</strong></p>
-            <a class="original-link" href="https://www.theverge.com/streaming/862738/fallout-shelter-reality-show-amazon-prime-video">Visit Original Website</a>
+            <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/862402/openai-safety-lead-model-policy-departs-for-anthropic-alignment-andrea-vallone">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Fallout Shelter is coming from the same minds behind Squid Game: The Challenge.
+            <div id="article-text">Andrea Vallone has joined Anthropic’s alignment team.
 
-Fallout Shelter is coming from the same minds behind Squid Game: The Challenge.
+Andrea Vallone has joined Anthropic’s alignment team.
 
-Move over Squid Game: another bleak fictional world is being turned into competitive reality television. In the midst of season 2 of Fallout, Amazon has announced a new series called Fallout Shelter. According to a casting call, the show will put competitors inside of Fallout’s iconic vaults and then test their survival skills in a re-creation of the postapocalyptic world. Presumably there will be no Deathclaws.
+One of the most controversial issues in the AI industry over the past year was what to do when a user displays signs of mental health struggles in a chatbot conversation. OpenAI’s head of that type of safety research, Andrea Vallone, has now joined Anthropic.
 
-Set inside Vault-Tec’s bomb-proof vaults, Fallout Shelter drops a diverse group of contestants into an immersive, high-stakes world inspired by the games’ signature dark humor, retro-futurism, and post-apocalyptic survival storytelling. Across a series of escalating challenges, strategic dilemmas, and moral crossroads, contestants must prove their ingenuity, teamwork, and resilience as they compete for safety, power, and ultimately a huge cash prize.
+”Over the past year, I led OpenAI’s research on a question with almost no established precedents: how should models respond when confronted with signs of emotional over-reliance or early indications of mental health distress?” Vallone wrote in a LinkedIn post a couple of months ago.
 
-The show is being produced by the same company behind Squid Game: The Challenge and The Traitors, though there’s no word yet on when it will premiere. But it’ll span 10 episodes whenever it does start streaming. And given the popularity of the live-action Fallout adaptation, it’s no surprise the streamer is looking for relatively quick and easy ways to capitalize on that success. The biggest question, though, is if every contestant gets a working Pip-Boy.
+Vallone, who spent three years at OpenAI and built out the “model policy” research team there, worked on how to best deploy GPT-4, OpenAI’s reasoning models, and GPT-5, as well as developing training processes for some of the AI industry’s most popular safety techniques, such as rule-based rewards. Now, she’s joined the alignment team at Anthropic, a group tasked with understanding AI models’ biggest risks and how to address them.
+
+Vallone will be working under Jan Leike, the OpenAI safety research lead who departed the company in May 2024 due to concerns that OpenAI’s “safety culture and processes have taken a backseat to shiny products.”
+
+Leading AI startups have increasingly incited controversy over the past year over users’ struggles with mental health, which can spiral deeper after confiding in AI chatbots, especially since safety guardrails tend to break down in longer conversations. Some teens have died by suicide, or adults have committed murder, after confiding in the tools. Several families have filed wrongful death suits, and there has been at least one Senate subcommittee hearing on the matter. Safety researchers have been tasked with addressing the problem.
+
+Sam Bowman, a leader on the alignment team, wrote in a LinkedIn post that he was “proud of how seriously Anthropic is taking the problem of figuring out how an AI system should behave.”
+
+In a LinkedIn post on Thursday, Vallone wrote that she’s “eager to continue my research at Anthropic, focusing on alignment and fine-tuning to shape Claude’s behavior in novel contexts.”
 
 A free daily digest of the news that matters most.</div>
         </div>
@@ -3727,11 +3907,39 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: Repsol, Maurel & Prom applying for US licenses to export Venezuelan oil, sources say - Reuters</div>
+            <div class="title">Cuba to accept US aid as Washington warns against interference - Reuters</div>
             <div class="meta">2026-01-15</div>
         </div>
         
         <div id="content-66" style="display:none;">
+            <h2>Cuba to accept US aid as Washington warns against interference - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-01-15</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPOUw2Y0gxUEFBbElvalpNcU5VX29BTy1qU3FaYWptNG81WFVXOWt6ZG8xc0dpeWtqMnpxeVNUU19EeXk4cEZyaWw5QVJpTTdXMmFBVHdsY3NMT0l4bXF4NnJhaE1ZV01qUHpZOXdIS3NYTjBvLWczUlh5QlVXVzI4aDhESjVpbU1aaU0xaF9NZFoxbW5qYjFuOHZRNHNsNGtFWjRBT0tUQW9HYlU?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Trump unveils healthcare plan - Reuters</div>
+            <div class="meta">2026-01-15</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>Trump unveils healthcare plan - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-01-15</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMie0FVX3lxTE0zWFJLeVAzeDhyRkJuZDlQUloyR3g0NGdMOTlheUxfbkJFUGR1SGdXb3RYOXpfNy03YTRJVHlLS0xmY0xmNl9WMW1qYmhRd0llMUxIZ1JLUU9xakV1LUVTdXdRbFAyUVFManhfS3QtVXRZQXN2a05lQXJWWQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Exclusive: Repsol, Maurel & Prom applying for US licenses to export Venezuelan oil, sources say - Reuters</div>
+            <div class="meta">2026-01-15</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
             <h2>Exclusive: Repsol, Maurel & Prom applying for US licenses to export Venezuelan oil, sources say - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-15</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNMFpreFZVeWl2MUNOdXBfamVTei14aG9Jb3NnSFN6V1F1djZzWXVKRkM3QXJ1NkZqWURlTnhfNTlWNWc0ZEdKZUdHZV9UMll1d1lRQUh4dXpYVy1iWlRFMkNiZ2Y2UVFyS1Ztci0tcE04YUwxS0RwaHB5TnQ5QVZpOXRfM0hzc0h3NklpZWh3SWdRZ1pUdjhUYTZZQV9sYVB5VnNVTXFySlQ1QW1YNzBhZTB0alJNTzJfY2lRelZZLUk5VDQ?oc=5">Visit Original Website</a>
@@ -3739,72 +3947,44 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US judge allows Equinor to restart New York offshore wind project - Reuters</div>
-            <div class="meta">2026-01-15</div>
-        </div>
-        
-        <div id="content-67" style="display:none;">
-            <h2>US judge allows Equinor to restart New York offshore wind project - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-01-15</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOTjZNMGxBVHEzZTNTRm5jc0NiYVBUVEZtdEVhdGMwMTFtNzdwT3M0TUI2cEhzbHVick1qa1BPRlNLMHpwbTZYeHNJZXRhcFlQY3JkRHZacmM4cVBVWnJGV2xnRjY5Uzc0dzNxNUJjVGdHQjhwMkg0MVhBdGdMTGptdlQxS3o3YmFpRnJ4VDJRZURSUkVEcGxWUVZwNkFJM1Q4R0R6RzFmazdjT1lHV1J3bnBUSVMxZjBUcnZN?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-68')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Putin says the world is getting more dangerous but is silent on Maduro and Iran - Reuters</div>
-            <div class="meta">2026-01-15</div>
-        </div>
-        
-        <div id="content-68" style="display:none;">
-            <h2>Putin says the world is getting more dangerous but is silent on Maduro and Iran - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-01-15</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOZzhtRGwtaG1DNkt5S3pKSWZ5QmI0NU1udVc4d0ZGdlhhZVhUWldEaEhwaXRZQkxyTGY4VjRrclMyMmdNUzh3OUVHcmlyUHVVRjFKa0h2bmhaaUQ0X0l0a3JNYXdLS3lNSHNrWTAxTEduTE5mSjF5dDh0Y3BhTFZEWTdqTVFuOEtuQ3hKYUFIcl9HZjlfS29qSzZDaktETTU0LVpYWkJFSUE3Zm1JdDlfTU1R?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US imposes sanctions on Iran over crackdown on protesters - Reuters</div>
+            <div class="title">Explosion causes large fire in Dutch town of Utrecht, four injured - Reuters</div>
             <div class="meta">2026-01-15</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>US imposes sanctions on Iran over crackdown on protesters - Reuters</h2>
+            <h2>Explosion causes large fire in Dutch town of Utrecht, four injured - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-15</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPM2t1S1A1TG12UktTNDVRTXVHX29FZ25VZkJFQmRObUE5UXlMVU50dHdrYXFQSE9saWwtNGx1MlBOUGNoTDRfTm1GNzFzVTJ2MEJwRUpOU3IxNjJobGpRRFpKVU04bGVQSEtIM0hlNEF6djhyUU9oSm1wbEpWVmw2OWI0MTMyUWlhbXBORmxTeTNVay1sQTd6OHd0bHR4ZHpEYXVwZ25RWHI?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQNEl0N2taUDJfdnVnWTNwN0ljWjROU2cxRmJIUXR0RTJzaVZ0bjNRbTdMX1VKYVRMVS16M3hNTVlvVWNLb2VWLXJsczd1eTJzNFdiVVRIdm9IdnV6LUxvMTFTSGpKQUFvSVNwMkhXX05FV3NMN0s3emw0dVl4LUxyQ2ZiODNPM3VZNUhFeGNTQVZ1UQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Verizon offers $20 credit to customers affected by massive wireless outage - Reuters</div>
+            <div class="title">Four Arab states urged against US-Iran escalation, official says - Reuters</div>
             <div class="meta">2026-01-15</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>Verizon offers $20 credit to customers affected by massive wireless outage - Reuters</h2>
+            <h2>Four Arab states urged against US-Iran escalation, official says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-15</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQVGZZX1R6RV9hTlhHSlBfQzVHYk82VkJDM1V4SU8zRnBRT1FQMEp5dXdPcHNIbV9ZOUxkSzFjcFZlNzAxMTVra0d6V19EcktjUEpBandndEprVXZqbjV5UV9XdENXRGhsb3RIbkVOY1UtUlNZV09MVldlclZSQXcweG1aSDUwYVZGLXNzNTBtbUxEMk1sU2ZIT29tOVh6MURaSlB5VDZTT09Vc1pPQTJxdHpyOGh3aFBPbHJRZGJRVUZHcW1fajIwNQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQZzlCcGdvQ3ZKRTluM0RzU1lrN2NSQnNqQUtTcTZRbWdiaFZsS1ZCNU9zUDJkSXdFMmZCTUJiYzdZcGJrSFVzWUlwOHk5c1l6QUUtRlVJOW5vbVFvN2lxVlVWdUszQmVjODNmYkJXSEU3eERMOWRzOWo3NjJGMlNjRVNkQVlheTBzQ1JNeFNMd1hzWEFwRUROOXlGQjJiVmVNOTNFenVYRkRaYnlhTWxJUmwxa3daLTFVZmQtU2ljQQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">IMF needs voting majority of members to recognize Venezuela government to restore ties - Reuters</div>
+            <div class="title">US judge allows Equinor to restart New York offshore wind project - Reuters</div>
             <div class="meta">2026-01-15</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>IMF needs voting majority of members to recognize Venezuela government to restore ties - Reuters</h2>
+            <h2>US judge allows Equinor to restart New York offshore wind project - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-15</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPNGtWYm1felNobXpYZEJkV0JEY2x1WnRnckVMTlRNTE1OZUVBejJtdUZmV2g1Q0t0dkp0ZmhMUklIT1hQU3ROdmUwNUFfOWtOVHdkV1RoY0dYa3k3eEt2TUs3clNGUXlxUkhwa2ZMVWxwWjY5Mm9rREd3WEVIc1ZYRm55amJzc2lZLXRGZGRnLS16bDVvUzVhdVVYOW5hclR0RHVTb2xYUVZzdW9yaWtaZ1pIaG5tMEgwS0ZoTWlxTTEzTXJSZzVR?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOTjZNMGxBVHEzZTNTRm5jc0NiYVBUVEZtdEVhdGMwMTFtNzdwT3M0TUI2cEhzbHVick1qa1BPRlNLMHpwbTZYeHNJZXRhcFlQY3JkRHZacmM4cVBVWnJGV2xnRjY5Uzc0dzNxNUJjVGdHQjhwMkg0MVhBdGdMTGptdlQxS3o3YmFpRnJ4VDJRZURSUkVEcGxWUVZwNkFJM1Q4R0R6RzFmazdjT1lHV1J3bnBUSVMxZjBUcnZN?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
