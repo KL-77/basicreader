@@ -154,11 +154,51 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Doctors face-palm as RFK Jr.’s top vaccine advisor questions need for polio shot</div>
+            <div class="title">OpenAI spills technical details about how its AI coding agent works</div>
             <div class="meta">2026-01-26</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>OpenAI spills technical details about how its AI coding agent works</h2>
+            <p><strong>Ars Technica - All content | 2026-01-26</strong></p>
+            <a class="original-link" href="https://arstechnica.com/ai/2026/01/openai-spills-technical-details-about-how-its-ai-coding-agent-works/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">On Friday, OpenAI engineer Michael Bolin published a detailed technical breakdown of how the company’s Codex CLI coding agent works internally, offering developers insight into AI coding tools that can write code, run tests, and fix bugs with human supervision. It complements our article in December on how AI agents work by filling in technical details on how OpenAI implements its “agentic loop.”
+
+AI coding agents are having something of a “ChatGPT moment,” where Claude Code with Opus 4.5 and Codex with GPT-5.2 have reached a new level of usefulness for rapidly coding up prototypes, interfaces, and churning out boilerplate code. The timing of OpenAI’s post details the design philosophy behind Codex just as AI agents are becoming more practical tools for everyday work.
+
+These tools aren’t perfect and remain controversial for some software developers. While OpenAI has previously told Ars Technica that it uses Codex as a coding tool to help develop the Codex product itself, we also discovered, through hands-on experience, that these tools can be astonishingly fast at simple tasks but remain brittle beyond their training data and require human oversight for production work. The rough framework of a project tends to come fast and feels magical, but filling in the details involves tedious debugging and workarounds for limitations the agent cannot overcome on its own.
+
+Bolin’s post doesn’t shy away from these engineering challenges. He discusses the inefficiency of quadratic prompt growth, performance issues caused by cache misses, and bugs the team discovered (like MCP tools being enumerated inconsistently) that they had to fix.
+
+The level of technical detail is somewhat unusual for OpenAI, which has not published similar breakdowns of how other products like ChatGPT work internally, for example (there’s a lot going on under that hood we’d like to know). But we’ve already seen how OpenAI treats Codex differently during our interview with them in December, noting that programming tasks seem ideally suited for large language models.
+
+It’s worth noting that both OpenAI and Anthropic open-source their coding CLI clients on GitHub, allowing developers to examine the implementation directly, whereas they don’t do the same for ChatGPT or the Claude web interface.
+
+Bolin’s post focuses on what he calls “the agent loop,” which is the core logic that orchestrates interactions between the user, the AI model, and the software tools the model invokes to perform coding work.
+
+As we wrote in December, at the center of every AI agent is a repeating cycle. The agent takes input from the user and prepares a textual prompt for the model. The model then generates a response, which either produces a final answer for the user or requests a tool call (such as running a shell command or reading a file). If the model requests a tool call, the agent executes it, appends the output to the original prompt, and queries the model again. This process repeats until the model stops requesting tools and instead produces an assistant message for the user.
+
+That looping process has to start somewhere, and Bolin’s post reveals how Codex constructs the initial prompt sent to OpenAI’s Responses API, which handles model inference. The prompt is built from several components, each with an assigned role that determines its priority: system, developer, user, or assistant.
+
+The instructions field comes from either a user-specified configuration file or base instructions bundled with the CLI. The tools field defines what functions the model can call, including shell commands, planning tools, web search capabilities, and any custom tools provided through Model Context Protocol (MCP) servers. The input field contains a series of items that describe the sandbox permissions, optional developer instructions, environment context like the current working directory, and finally the user’s actual message.
+
+As conversations continue, each new turn includes the complete history of previous messages and tool calls. This means the prompt grows with every interaction, which has performance implications. According to the post, because Codex does not use an optional “previous_response_id” parameter that would allow the API to reference stored conversation state, every request is fully stateless (that is, it sends the entire conversation history with each API call rather than the server retrieving it from memory). Bolin says this design choice simplifies things for API providers and makes it easier to support customers who opt into “Zero Data Retention,” where OpenAI does not store user data.
+
+The quadratic growth of prompts over a conversation is inefficient, but Bolin explains that prompt caching mitigates this issue somewhat. Cache hits only work for exact prefix matches within a prompt, which means Codex must carefully avoid operations that could cause cache misses. Changing the available tools, switching models, or modifying the sandbox configuration mid-conversation can all invalidate the cache and hurt performance.
+
+The ever-growing prompt length is directly related to the context window, which limits how much text the AI model can process in a single inference call. Bolin writes that Codex automatically compacts conversations when token counts exceed a threshold, just as Claude Code does. Earlier versions of Codex required manual compaction via a slash command, but the current system uses a specialized API endpoint that compresses context while preserving summarized portions of the model’s “understanding” of what happened through an encrypted content item.
+
+Bolin says that future posts in his series will cover the CLI’s architecture, tool implementation details, and Codex’s sandboxing model.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Doctors face-palm as RFK Jr.’s top vaccine advisor questions need for polio shot</div>
+            <div class="meta">2026-01-26</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
             <h2>Doctors face-palm as RFK Jr.’s top vaccine advisor questions need for polio shot</h2>
             <p><strong>Ars Technica - All content | 2026-01-26</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/01/do-we-really-need-polio-shots-deep-thoughts-by-rfk-jr-advisor-get-dragged/">Visit Original Website</a>
@@ -190,13 +230,13 @@ The AAP’s updated recommendations are largely the same as the schedule from la
 “The AAP will continue to provide recommendations for immunizations that are rooted in science and are in the best interest of the health of infants, children and adolescents of this country,” AAP President Andrew Racine said in the announcement.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Why has Microsoft been routing example.com traffic to a company in Japan?</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>Why has Microsoft been routing example.com traffic to a company in Japan?</h2>
             <p><strong>Ars Technica - All content | 2026-01-26</strong></p>
             <a class="original-link" href="https://arstechnica.com/information-technology/2026/01/odd-anomaly-caused-microsofts-network-to-mishandle-example-com-traffic/">Visit Original Website</a>
@@ -228,13 +268,13 @@ Questions sent to Microsoft include: How are autodiscover records added at Micro
 There’s still reason for concern. In 2024, Microsoft revealed that one of its admins had assigned administrative privileges to a test account on the company network and then forgot about it. Russia-state hackers seized on the gaffe to gain initial access to Microsoft’s system. They went on to root through the network and monitor top executives’ email for two months. The routing misconfiguration for example.com raises the question: What other possibly more severe errors lurk on the network?</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Apple's AirTag 2 is easier to find thanks to new chip</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Apple's AirTag 2 is easier to find thanks to new chip</h2>
             <p><strong>Ars Technica - All content | 2026-01-26</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/01/apple-introduces-new-airtag-with-better-range-and-a-louder-speaker/">Visit Original Website</a>
@@ -254,13 +294,13 @@ To be clear, the new AirTag doesn’t introduce any major new features that aren
 The price remains unchanged, at $29 for one AirTag or $99 for a pack of four. The new model is available for order on Apple’s website now and will hit physical stores later this week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">“Wildly irresponsible”: DOT's use of AI to draft safety rules sparks concerns</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>“Wildly irresponsible”: DOT's use of AI to draft safety rules sparks concerns</h2>
             <p><strong>Ars Technica - All content | 2026-01-26</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/01/wildly-irresponsible-dots-use-of-ai-to-draft-safety-rules-sparks-concerns/">Visit Original Website</a>
@@ -310,13 +350,13 @@ Immediately, Google encouraged other federal leaders to launch their own efforts
 DOT did not immediately respond to Ars’ request for comment.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">How to encrypt your PC's disk without giving the keys to Microsoft</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>How to encrypt your PC's disk without giving the keys to Microsoft</h2>
             <p><strong>Ars Technica - All content | 2026-01-26</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/01/how-to-encrypt-your-pcs-disk-without-giving-the-keys-to-microsoft/">Visit Original Website</a>
@@ -350,30 +390,6 @@ Here’s how to check your current encryption status and the steps to follow if 
 Once your disk is re-encrypted, your PC should work just as it did before. The actual encryption technology hasn’t changed at all—all we’ve done is change where the recovery key is saved.
 
 This does put the burden on the user if and when it comes time to use your recovery key. You’ll have to remember where you put it and not get it mixed up with any other recovery keys you’ve stored for other PCs or old Windows installations. But for anyone concerned about Microsoft giving their device’s encryption keys to the government or anyone else with a valid subpoena, the extra hassle may be worth it in exchange for the added privacy and peace of mind.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">The brothers meet Yoshi in Super Mario Galaxy Movie trailer</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>The brothers meet Yoshi in Super Mario Galaxy Movie trailer</h2>
-            <p><strong>Ars Technica - All content | 2026-01-26</strong></p>
-            <a class="original-link" href="https://arstechnica.com/culture/2026/01/yoshi-joins-the-fun-in-latest-super-mario-galaxy-movie-trailer/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Universal Pictures and Illumination dropped a new trailer for the upcoming Super Mario Galaxy Movie, and gaming fans will no doubt be delighted at the news that Yoshi, the little green dinosaur, features prominently, along with plenty of other Easter eggs for sharp-eyed fans.
-
-As previously reported, the first attempt at a Super Mario movie adaptation in 1993 was notoriously a dismal failure, although it still has its ’90s-nostalgic fans. But 2023’s Super Mario Bros. Movie won over gaming fans who were skeptical about another adaptation—including Ars Senior Gaming Editor Kyle Orland.
-
-The 2023 film reintroduced Mario and Luigi, two tight-knit but struggling Brooklyn plumbers who got separated when they unexpectedly fell into the fantastical Mushroom Kingdom. Mario sought Princess Peach’s help to rescue his brother from the evil clutches of Bowser, ruler of the Dark Lands, who was keen to marry Peach and threatened to destroy the Mushroom Kingdom with a Super Star if she refused him. So Peach led Mario on a quest to recruit allies and stop Bowser for good. They succeeded, shrinking Bowser and imprisoning him in a jar. Mario and Luigi moved to the Mushroom Kingdom and continued their plumbing work there.
-
-The main voice cast is returning for the sequel: Chris Pratt as Mario, Charlie Day as Luigi, Anya Taylor-Joy as Princess Peach, Jack Black as Bowser, Keegan-Michael Key as the anthropomorphic mushroom Toad, and Kevin Michael Richardson as Bowser’s advisor and informant Kamek. We’re also getting two new cast members: Brie Larson as Princess Rosalina, protector of the cosmos and the Lumas, and Benny Safdie as Bowser, Jr., Bowser’s son and heir to the throne. Directors Aaron Horvath and Michael Jelenic are also back, as is screenwriter Matthew Fogel.
-
-Details on the actual plot are fuzzy, but the first trailer (released last November) focused on Bowser and Bowser Jr., who seemed intent on freeing his dad and (one assumes) taking revenge on the brothers. This latest trailer shows Mario and Luigi at the scene of a “troubled” pipe in the desert of San Kingdom, populated by the sombrero-wearing Tostarenans. When they clear away some rubble covering an opening, who should be lurking inside but Yoshi—not a monster to hit with fire flowers, but a friendly green dinosaur. Yoshi is keen to join the team, although Toad seems less than impressed.
-
-The Super Mario Galaxy Movie hits theaters on April 1, 2026.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -600,11 +616,141 @@ More on generative AI: San Diego Comic Con Quietly Bans AI Art</div>
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
+            <div class="title">Google pays $68 million to settle claims its voice assistant spied on users</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-12" style="display:none;">
+            <h2>Google pays $68 million to settle claims its voice assistant spied on users</h2>
+            <p><strong>TechCrunch | 2026-01-27</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/01/26/google-pays-68-million-to-settle-claims-its-voice-assistant-spied-on-users/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Google agreed to pay $68 million to settle claims its voice assistant illegally spied on users to, among other things, serve them advertisements, Reuters reports.
+
+Google did not admit wrongdoing in the settlement of the class-action case, which accused the firm of “unlawful and intentional interception and recording of individuals’ confidential communications without their consent and subsequent unauthorized disclosure of those communications to third parties.” The suit further claimed that “information gleaned from these recordings was wrongly transmitted to third parties for targeted advertising and for other purposes.”
+
+The case centered on “false accepts,” wherein Google Assistant is alleged to have activated and recorded the user’s communications even if they had not intentionally prompted it to do so with a wake word. TechCrunch reached out to Google for comment.
+
+Americans have long suspected that their devices inappropriately spy on them. Those suspicions have led, increasingly, to claims of legal wrongdoing. In 2021, Apple agreed to pay $95 million to settle claims its voice assistant, Siri, had recorded their conversations without a prompt from users.
+
+Google, like other tech giants, has faced other privacy-related litigation in recent years. Last year, the company agreed to pay $1.4 billion to the state of Texas to settle two lawsuits that claimed the company had violated its data privacy laws.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+Subscribe for the industry’s biggest tech news
+
+Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
+
+TechCrunch Mobility is your destination for transportation news and insight.
+
+Startups are the core of TechCrunch, so get our best coverage delivered weekly.
+
+Provides movers and shakers with the info they need to start their day.
+
+By submitting your email, you agree to our Terms and Privacy Notice.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">AI chip startup Ricursive hits $4B valuation two months after launch</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
+            <h2>AI chip startup Ricursive hits $4B valuation two months after launch</h2>
+            <p><strong>TechCrunch | 2026-01-27</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/01/26/ai-chip-startup-ricursive-hits-4b-valuation-two-months-after-launch/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Ricursive Intelligence, a startup building an AI system to design and automatically improve AI chips, has raised $300 million at a $4 billion valuation. The company said Monday the round was led by Lightspeed.
+
+Ricursive says the system will be able to create its own silicon substrate layer and speed up AI chip improvements. Rinse and repeat to get to AGI, the founders say.
+
+The Series A comes just two months since the company formally launched with a seed investment led by Sequoia. It has raised $335 million total, reports The New York Times.
+
+Ricursive was founded by former Google researchers CEO Anna Goldie and CTO Azalia Mirhoseini. Their work on a novel reinforcement learning method for designing chip layouts, called AlphaChip, has been used in four generations of Google’s TPU chip, the startup says.
+
+DST Global, Nvidia’s venture capital arm NVentures, Felicis Ventures, 49 Palms Ventures, and Radical AI are also investors.
+
+Ricursive is not to be confused with the similarly named startup Recursive, reportedly founded by well-known natural language processing neural networks researcher Richard Socher. That Recursive is also in talks to raise a giant round at a $4 billion valuation, Bloomberg reported last week. And it is also working on AI systems that improve themselves.
+
+And these two are not the only new startups working on the concept. As TechCrunch previously reported, Naveen Rao’s new AI hardware startup, named Unconventional AI, is also working on an intelligent substrate. In December it raised a $475 million seed round at a $4.5 billion valuation led by Andreessen Horowitz and Lightspeed Ventures, with participation from Lux Capital and DCVC.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+Subscribe for the industry’s biggest tech news
+
+Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
+
+TechCrunch Mobility is your destination for transportation news and insight.
+
+Startups are the core of TechCrunch, so get our best coverage delivered weekly.
+
+Provides movers and shakers with the info they need to start their day.
+
+By submitting your email, you agree to our Terms and Privacy Notice.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-14')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Meta to test premium subscriptions on Instagram, Facebook, and WhatsApp</div>
+            <div class="meta">2026-01-26</div>
+        </div>
+        
+        <div id="content-14" style="display:none;">
+            <h2>Meta to test premium subscriptions on Instagram, Facebook, and WhatsApp</h2>
+            <p><strong>TechCrunch | 2026-01-26</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/01/26/meta-to-test-premium-subscriptions-on-instagram-facebook-and-whatsapp/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Meta plans to test new subscriptions that give people access to exclusive features on it apps, the company told TechCrunch on Monday. The tech giant said the new subscriptions will unlock more productivity and creativity, along with expanded AI capabilities.
+
+In the coming months, Meta said it will offer a premium experience on Instagram, Facebook, and WhatsApp that gives users access to special features and more control over how they share and connect, while keeping the core experiences free. Meta doesn’t appear to be locked into one strategy, noting that it will test a variety of subscription features and bundles, and that each app subscription will have a distinct set of exclusive features.
+
+Meta also shared that it plans to scale Manus, an AI agent it recently acquired for a reported $2 billion, as part of its subscription plans.
+
+Meta is taking a two-fold approach to Manus. The company is going to integrate Manus into Meta products, while continuing to sell standalone subscriptions to businesses. Meta has already been spotted working on adding a shortcut to Manus AI on Instagram, according to a screenshot shared by reverse engineer Alessandro Paluzzi, who often finds unreleased features while they’re still under development.
+
+Additionally, Meta plans to test subscriptions for AI features, such as Vibes video generation. Vibes is Meta’s AI-powered short-form video experience built into the Meta AI app that lets people create and remix AI-generated videos. Although Vibes has been free since its launch last year, Meta now plans to offer freemium access to Vibes video creation, with the option to subscribe to unlock additional video creation opportunities each month.
+
+While it’s unknown what the paid features on WhatsApp and Facebook will look like, Paluzzi notes that the new subscription on Instagram will let users create unlimited audience lists, the ability to see a list of followers who don’t follow you back, and the option to view a Story without the poster seeing that you viewed it.
+
+It’s worth noting that the new subscriptions will be separate from Meta Verified. The tech giant says it’s going to use what it learned from Meta Verified to evolve its subscription business to include more offerings it thinks everyday users, creators, and businesses will want.
+
+Meta Verified is aimed at content creators and businesses, as it comes with a verified badge, 24/7 direct support, impersonation protections, search optimization, exclusive stickers, and more. While these features aren’t aimed at everyday users or non-creators, the new subscriptions will be designed for a broader audience.
+
+The launch of additional subscriptions will allow Meta to generate more revenue; however, many users may be deterred by subscription fatigue. With so many paid services competing for monthly spending, Meta will have to offer a compelling product to get users to sign up for yet another subscription.
+
+Snap has proven there is a market for social media subscriptions, as its Snapchat+ offering continues to be a revenue driver. Snapchat+, which starts at $3.99 per month for exclusive features, has topped 16 million subscribers, more than doubling since early 2024.
+
+Meta says it plans to listen to its community of users and gather feedback as it starts rolling out the subscriptions in the coming months.
+
+Aisha is a consumer news reporter at TechCrunch. Prior to joining the publication in 2021, she was a telecom reporter at MobileSyrup. Aisha holds an honours bachelor’s degree from University of Toronto and a master’s degree in journalism from Western University.
+
+You can contact or verify outreach from Aisha by emailing aisha@techcrunch.com or via encrypted message at aisha_malik.01 on Signal.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+TikTok users freak out over app’s ‘immigration status’ collection — here’s what it means
+
+Researchers say Russian government hackers were behind attempted Poland power outage
+
+Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ laptops: Reports
+
+Capital One acquires Brex for a steep discount to its peak valuation, but early believers are laughing all the way to the bank
+
+Not to be outdone by OpenAI, Apple is reportedly developing an AI wearable
+
+Anthropic’s CEO stuns Davos with Nvidia criticism
+
+SpaceX didn’t properly inspect crane before collapse at Starbase, OSHA says</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-15')">
+            <div class="source">TechCrunch</div>
             <div class="title">Some international attendees are skipping 2026 GDC due to safety fears and growing ICE presence</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Some international attendees are skipping 2026 GDC due to safety fears and growing ICE presence</h2>
             <p><strong>TechCrunch | 2026-01-26</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/26/some-international-attendees-are-skipping-2026-gdc-due-to-safety-fears-and-growing-ice-presence/">Visit Original Website</a>
@@ -643,27 +789,27 @@ Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ lapt
 
 Capital One acquires Brex for a steep discount to its peak valuation, but early believers are laughing all the way to the bank
 
-Anthropic’s CEO stuns Davos with Nvidia criticism
+Not to be outdone by OpenAI, Apple is reportedly developing an AI wearable
 
-Humans&, a ‘human-centric’ AI startup founded by Anthropic, xAI, Google alums, raised $480M seed round
+Anthropic’s CEO stuns Davos with Nvidia criticism
 
 SpaceX didn’t properly inspect crane before collapse at Starbase, OSHA says</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Vinod Khosla publicly disavows Keith Rabois’ comments on ICE shooting</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Vinod Khosla publicly disavows Keith Rabois’ comments on ICE shooting</h2>
             <p><strong>TechCrunch | 2026-01-26</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/26/vinod-khosla-publicly-disavows-keith-rabois-comments-on-ice-shooting/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">To understand the stance of an unwavering Trump loyalist after a federal border patrol agent shocked the nation this weekend by shooting another American citizen in Minneapolis, look no further than Khosla Ventures partner Keith Rabois.
+            <div id="article-text">To understand the stance of an unwavering Trump loyalist after a federal border patrol agent shocked the nation this weekend by shooting an American citizen in Minneapolis, look no further than Khosla Ventures partner Keith Rabois.
 
-Rabois’ public support for U.S. Immigration and Customs Enforcement actions in the killing of Alex Pretti, made via posts on X, was so vehement that Khosla Ventures partner Ethan Choi and firm founder Vinod Khosla both publicly disavowed it.
+Rabois’ public support for Border Patrol’s actions in the killing of Alex Pretti, made via posts on X, was so vehement that Khosla Ventures partner Ethan Choi and firm founder Vinod Khosla both publicly disavowed it.
 
 Rabois argued that Pretti was at fault, writing that the protester was committing a “felony.” One of Rabois’ posts said, “no law enforcement has shot an innocent person. illegals are committing violent crimes every day.” Another said: “he unequivocally attempted to draw his weapon. fuck you.” In another post that discussed citizens’ ability to exercise their First, Second, and Fourth Amendment rights, the VC weighed in: “yes but interfering w a law enforcement operation is not protected by any of those amendments.”
 
@@ -671,7 +817,7 @@ Among other comments, Rabois went on to say he doesn’t believe that the Minnea
 
 X reacted as you might expect. Other Trump supporters cheered Rabois on, while those who condemn ICE’s actions argued with and condemned the investor.
 
-The situation spiraled so much that when one person suggested that founders remove Khosla from their cap tables altogether, Khosla partner Choi piped up to distance himself.
+The situation spiraled so much that when one person suggested that founders remove Khosla Ventures from their cap tables altogether, Khosla partner Choi piped up to distance himself.
 
 Choi posted: “I want to make it clear that Keith doesn’t represent everyone’s views here at @khoslaventures, at least not mine. What happened in Minnesota is plain wrong. Don’t know how you could really see it differently. Sad to see a person’s life taken unnecessarily.”
 
@@ -701,20 +847,20 @@ Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ lapt
 
 Capital One acquires Brex for a steep discount to its peak valuation, but early believers are laughing all the way to the bank
 
-Anthropic’s CEO stuns Davos with Nvidia criticism
+Not to be outdone by OpenAI, Apple is reportedly developing an AI wearable
 
-Humans&, a ‘human-centric’ AI startup founded by Anthropic, xAI, Google alums, raised $480M seed round
+Anthropic’s CEO stuns Davos with Nvidia criticism
 
 SpaceX didn’t properly inspect crane before collapse at Starbase, OSHA says</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">YouTubers sue Snap for alleged copyright infringement in training its AI models</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>YouTubers sue Snap for alleged copyright infringement in training its AI models</h2>
             <p><strong>TechCrunch | 2026-01-26</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/26/youtubers-sue-snap-for-alleged-copyright-infringement-in-training-its-ai-models/">Visit Original Website</a>
@@ -745,289 +891,104 @@ Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ lapt
 
 Capital One acquires Brex for a steep discount to its peak valuation, but early believers are laughing all the way to the bank
 
-Anthropic’s CEO stuns Davos with Nvidia criticism
-
-Humans&, a ‘human-centric’ AI startup founded by Anthropic, xAI, Google alums, raised $480M seed round
-
-SpaceX didn’t properly inspect crane before collapse at Starbase, OSHA says</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-15')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Here’s the tech powering ICE’s deportation crackdown</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-15" style="display:none;">
-            <h2>Here’s the tech powering ICE’s deportation crackdown</h2>
-            <p><strong>TechCrunch | 2026-01-26</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/01/26/heres-the-tech-powering-ices-deportation-crackdown/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">President Donald Trump said he would make countering immigration one of his flagship policies during his second term in the White House, promising an unprecedented number of deportations.
-
-A year in, data shows that deportations by Immigration and Customs Enforcement (ICE) and Customs and Border Protection have surpassed at least 350,000 people.
-
-ICE has taken center stage in Trump’s mass removal campaign, raiding homes, workplaces, and public parks in search of undocumented people, prompting widespread protests and resistance from communities across the United States.
-
-ICE uses several technologies to identify and surveil individuals. Homeland Security has also leveraged the shadow of Trump’s deportations to challenge long-standing legal norms, including forcibly entering homes to arrest people without a judicial warrant, a move that legal experts say violates the Fourth Amendment protections against unreasonable searches and seizures.
-
-Here are some of the technologies that ICE is relying on.
-
-ICE has a technology known as cell-site simulators to snoop on cellphones. These surveillance devices, as the name suggests, are designed to appear as a cellphone tower, tricking nearby phones into connecting to them. Once that happens, the law enforcement authorities who are using the cell-site simulators can locate and identify the phones in their vicinity, and potentially intercept calls, text messages, and internet traffic.
-
-Cell-site simulators are also known as “stingrays,” based on the brand name of one of the earliest versions of the technology, which was made by U.S. defense contractor Harris (now L3Harris); or IMSI catchers, a technology that can capture a nearby cell phone’s unique identifier, which law enforcement can use for identifying the phone’s owner.
-
-In the last two years, ICE has signed contracts for more than $1.5 million with a company called TechOps Specialty Vehicles (TOSV), which produces customized vans for law enforcement.
-
-A contract worth more than $800,000, dated May 8, 2025, said TOSV will provide “Cell Site Simulator (CSS) Vehicles to support the Homeland Security Technical Operations program.”
-
-TOSV president Jon Brianas told TechCrunch that the company does not manufacture the cell-site simulators, but rather integrates them “into our overall design of the vehicle.”
-
-Cell-site simulators have long been controversial for several reasons.
-
-These devices are designed to trick all nearby phones to connect to them, which means that, by design, they gather the data of many innocent people. Also, authorities have sometimes deployed them without first obtaining a warrant.
-
-Authorities have also tried to keep their use of the technology secret in court, withholding information and even accepting plea deals and dropping cases rather than disclose information about their use of cell-site simulators. In a court case in 2019 in Baltimore, it was revealed that prosecutors were instructed to drop cases rather than violate a non-disclosure agreement with the company that makes the devices.
-
-Clearview AI is perhaps the most well-known facial-recognition company today. For years, the company promised to be able to identify any face by searching through a large database of photos it had scraped from the internet.
-
-On Monday, 404 Media reported that ICE has signed a contract with the company to support its law enforcement arm, Homeland Security Investigations (HSI), “with capabilities of identifying victims and offenders in child sexual exploitation cases and assaults against law enforcement officers.”
-
-According to a government procurement database, the contract signed last week is worth $3.75 million.
-
-ICE has had other contracts with Clearview AI in the last couple of years. In September 2024, the agency purchased “forensic software” from the company, a deal worth $1.1 million. The year before, ICE paid Clearview AI nearly $800,000 for “facial recognition enterprise licenses.”
-
-Clearview AI did not respond to a request for comment.
-
-ICE is also using a facial-recognition app called Mobile Fortify, which federal agents use to identify people on the street. The app relies on scanning a person’s driver’s license photo against 200 million photos, much of the data sourced from state driver’s license databases.
-
-Contact Us
-			Do you have more information about ICE and the technology it uses? We would love to learn how this affects you. From a non-work device, you can contact Lorenzo Franceschi-Bicchierai securely on Signal at +1 917 257 1382, or via Telegram and Keybase @lorenzofb, or email. You also can contact TechCrunch via SecureDrop.
-
-In September 2024, ICE signed a contract worth $2 million with Israeli spyware maker Paragon Solutions. Almost immediately, the Biden administration issued a “stop work order,” putting the contract under review to make sure it complied with an executive order on the government’s use of commercial spyware.
-
-Because of that order, for nearly a year, the contract remained in limbo. Then, last week, the Trump administration lifted the stop-work order, effectively reactivating the contract.
-
-At this point, the status of Paragon’s relationship with ICE in practice is unclear.
-
-The records entry from last week said that the contract with Paragon is for “a fully configured proprietary solution including license, hardware, warranty, maintenance, and training.” Practically speaking, unless the hardware installation and training were done last year, it may take some time for ICE to have Paragon’s system up and running.
-
-It’s also unclear if the spyware will be used by ICE or HSI, an agency whose investigations are not limited to immigration, but also cover online child sexual exploitation, human trafficking, financial fraud, and more.
-
-Paragon has long tried to portray itself as an “ethical” and responsible spyware maker, and now has to decide if it’s ethical to work with Trump’s ICE. A lot has happened to Paragon in the last year. In December, American private equity giant AE Industrial purchased Paragon, with a plan to merge it with cybersecurity company RedLattice, according to Israeli tech news site Calcalist.
-
-In a sign that the merger may have taken place, when TechCrunch reached out to Paragon for comment on the reactivation of the ICE contract last week, we were referred to RedLattice’s new vice president of marketing and communications, Jennifer Iras.
-
-RedLattice’s Iras did not respond to a request for comment for this article, nor for last week’s article.
-
-In the last few months, Paragon has been ensnared in a spyware scandal in Italy, where the government has been accused of spying on journalists and immigration activists. In response, Paragon cut ties with Italy’s intelligence agencies.
-
-In mid-September, ICE’s law enforcement arm, Homeland Security Investigations, signed a contract with Magnet Forensics for $3 million.
-
-This contract is specifically for software licenses so that HSI agents can “recover digital evidence, process multiple devices,” and “generate forensic reports,” according to the contract description.
-
-Magnet is the current maker of the phone hacking and unlocking devices known as Graykey. These devices essentially give law enforcement agents the ability to connect a locked phone to them, unlock it, and access the data inside of it.
-
-Magnet Forensics, which merged with Graykey maker Grayshift in 2023, did not respond to a request for comment.
-
-At the end of September, 404 Media reported that ICE bought access to an “all-in-one” surveillance tool that allows the agency to search through databases of historical cellphone location data, as well as social media information.
-
-The tool appears to be made of two products called Tangles and Webloc, which are made by a company called Penlink. One of the tools promises to leverage “a proprietary data platform to compile, process, and validate billions of daily location signals from hundreds of millions of mobile devices, providing both forensic and predictive analytics,” according to a redacted contract found by 404 Media.
-
-The redacted contract does not identify which one of the tools makes that promise, but given its description, it’s likely Webloc. Forbes previously cited a case study that said Webloc can search a given location to “monitor trends of mobile devices that have given data at those locations and how often they have been there.”
-
-This type of cellphone location data is harvested by companies around the world using software development kits (SDKs) embedded in regular smartphone apps, or with an online advertising process called real-time bidding (RTB), where companies bid in real-time to place an ad on the screen of a cellphone user based on their demographic or location data. The latter process has the by-product of giving ad tech companies that kind of personal data.
-
-Once collected, this mass of location data is transferred to a data broker who then sells it to government agencies. Thanks to this layered process, authorities have used this type of data without getting a warrant by simply purchasing access to the data.
-
-The other tool, Tangles, is an “AI-powered open-source intelligence” tool that automates “the search and analysis of data from the open, deep, and the dark web,” according to Penlink’s official site.
-
-Forbes reported in September that ICE spent $5 million on Penlink’s two tools.
-
-Penlink did not respond to a request for comment.
-
-ICE relies on automated license plate reader (ALPR) companies to follow drivers across a large swath of the U.S., noting where people go and when.
-
-ICE also leans on its connections with local law enforcement agencies, which have contracts with ALPR providers, like surveillance company Flock Safety, to obtain immigration data by the back door. Flock is one of the largest ALPR providers, with over 40,000 license plate scanners around the United States, and only getting larger with its partnerships with other companies, such as video surveillance company Ring.
-
-Efforts by ICE to informally request data from local law enforcement have prompted some police departments to cut off federal agencies from their access.
-
-Border Patrol runs its own surveillance network of ALPR cameras, the Associated Press reported.
-
-For years, ICE has used the legal research and public records data broker LexisNexis to support its investigations.
-
-In 2022, two non-profits obtained documents via Freedom of Information Act requests, which revealed that ICE performed more than 1.2 million searches over seven months using a tool called Accurint Virtual Crime Center. ICE used the tool to check the background information of migrants.
-
-A year later, The Intercept revealed that ICE was using LexisNexis to detect suspicious activity and investigate migrants before they even committed a crime, a program that a critic said enabled “mass surveillance.”
-
-According to public records, LexisNexis currently provides ICE “with a law enforcement investigative database subscription (LEIDS) which allows access to public records and commercial data to support criminal investigations.”
-
-This year, ICE has paid $4.7 million to subscribe to the service.
-
-LexisNexis spokesperson Jennifer Richman told TechCrunch that ICE has used the company’s product “data and analytics solutions for decades, across several administrations.”
-
-“Our commitment is to support the responsible and ethical use of data, in full compliance with laws and regulations, and for the protection of all residents of the United States,” said Richman, who added that LexisNexis “partners with more than 7,500 federal, state, local, tribal, and territorial agencies across the United States to advance public safety and security.”
-
-Data analytics and surveillance technology giant Palantir has signed several contracts with ICE in the last year. The biggest contract, worth $18.5 million from September 2024, is for a database system called “Investigative Case Management,” or ICM.
-
-The contract for ICM goes back to 2022, when Palantir signed a $95.9 million deal with ICE. The Peter Thiel-founded company’s relationship with ICE dates back to the early 2010s.
-
-Earlier this year, 404 Media, which has reported extensively on the technology powering Trump’s deportation efforts, and particularly Palantir’s relationship with ICE, revealed details of how the ICM database works. The tech news site reported that it saw a recent version of the database, which allows ICE to filter people based on their immigration status, physical characteristics, criminal affiliation, location data, and more.
-
-According to 404 Media, “a source familiar with the database” said it is made up of ‘tables upon tables’ of data and that it can build reports that show, for example, people who are on a specific type of visa who came into the country at a specific port of entry, who came from a specific country, and who have a specific hair color (or any number of hundreds of data points).”
-
-The tool, and Palantir’s relationship with ICE, was controversial enough that sources within the company leaked to 404 Media an internal wiki where Palantir justifies working with Trump’s ICE.
-
-Palantir is also developing a tool called “ImmigrationOS,” according to a contract worth $30 million revealed by Business Insider.
-
-ImmigrationOS is said to be designed to streamline the “selection and apprehension operations of illegal aliens,” give “near real-time visibility” into self-deportations, and track people overstaying their visa, according to a document first reported on by Wired.
-
-First published on September 13, 2025, and updated on September 18, 2025, to include Magnet Forensics’ new contract, again on October 8, 2025, to include cell-site simulators and location data, and again on January 26, 2026, to include license plate readers.
-
-Lorenzo Franceschi-Bicchierai is a Senior Writer at TechCrunch, where he covers hacking, cybersecurity, surveillance, and privacy.
-
-You can contact or verify outreach from Lorenzo by emailing lorenzo@techcrunch.com, via encrypted message at +1 917 257 1382 on Signal, and @lorenzofb on Keybase/Telegram.
-
-Zack Whittaker is the security editor at TechCrunch. He also authors the weekly cybersecurity newsletter, this week in security.
-
-He can be reached via encrypted message at zackwhittaker.1337 on Signal. You can also contact him by email, or to verify outreach, at zack.whittaker@techcrunch.com.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-TikTok users freak out over app’s ‘immigration status’ collection — here’s what it means
-
-Researchers say Russian government hackers were behind attempted Poland power outage
-
-Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ laptops: Reports
-
-Capital One acquires Brex for a steep discount to its peak valuation, but early believers are laughing all the way to the bank
+Not to be outdone by OpenAI, Apple is reportedly developing an AI wearable
 
 Anthropic’s CEO stuns Davos with Nvidia criticism
-
-Humans&, a ‘human-centric’ AI startup founded by Anthropic, xAI, Google alums, raised $480M seed round
-
-SpaceX didn’t properly inspect crane before collapse at Starbase, OSHA says</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-16')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Social network UpScrolled sees surge in downloads following TikTok’s US takeover</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-16" style="display:none;">
-            <h2>Social network UpScrolled sees surge in downloads following TikTok’s US takeover</h2>
-            <p><strong>TechCrunch | 2026-01-26</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/01/26/social-network-upscrolled-sees-surge-in-downloads-following-tiktoks-us-takeover/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">In the wake of TikTok’s U.S. ownership change last week, some users are seeking out alternative platforms. One app gaining traction is UpScrolled, a social network that pledges to remain impartial to political agendas. The app currently ranks 12th overall in Apple’s App Store and second in the social networking category.
-
-UpScrolled blends familiar features from Instagram and X, letting users share photos, videos, and text posts, discover new content, and send direct messages.
-
-The app was founded last year by Issam Hijazi, a Palestinian-Jordanian-Australian technologist, with the aim of giving users a place to “freely express thoughts, share moments, and connect with others,” according to the app’s website. The team behind the app says they’re “building a platform that belongs to the people who use it — not to hidden algorithms or outside agendas.”
-
-“UpScrolled is the foundation for a digital ecosystem that puts power back into the hands of the people — not the corporations,” Hijazi said in a statement on UpScrolled’s website. “It’s more than just an alternative to Meta, X, or TikTok — it’s a reimagining of what social media should be: a space where creators, communities, and businesses thrive independently, with real control, transparency, and accountability.”
-
-The app, available on both iOS and Android, is grappling with a surge of new users but says it’s scaling to keep up with the demand.
-
-According to data from the market intelligence provider Appfigures, UpScrolled saw approximately 41,000 downloads between Thursday, the day the TikTok deal was finalized, and Saturday, accounting for nearly one-third of its lifetime installs. UpScrolled has seen an average of about 14,000 daily downloads since Thursday, representing a 2,850% increase in daily downloads.
-
-In total, the app has been downloaded 140,000 times to date, with 75,000 of those being U.S.-based installs.
-
-“Well, this is new … You showed up so fast our servers tapped out,” the company wrote in a post on X. “Frustrating? Yes. Emotional? Also yes. We’re a tiny team building what Big Tech stopped being. Right now we’re scaling on caffeine to keep up with what YOU started. Bear with us. We’re on it.”
-
-The surge comes as TikTok announced last Thursday that it signed a deal with a group of non-Chinese investors to form a majority American-owned joint venture to keep the social app operating in the U.S. TikTok’s Chinese parent ByteDance owns less than 20% of the new entity, while the venture’s three managing investors — Oracle, private equity firm Silver Lake, and Abu Dhabi-based investment company MGX — each hold a 15% stake. Some users worry that TikTok’s new U.S. investors may have political allegiances to Trump.
-
-Following the takeover, some users accused the app of potentially censoring certain political content. This criticism included a handful of high-profile users, including Senator Chris Murphy and singer Billie Eilish, who raised concerns that TikTok was suppressing or limiting posts criticizing ICE. Additionally, some said they were unable to search for information about ongoing protests in Minneapolis following the killing of Alex Pretti by border patrol agents.
-
-However, TikTok attributed these issues to an ongoing data center outage, which has been impacting its app’s functionality.
-
-Concerns also grew when TikTok released an updated privacy policy that allows the app to track users’ GPS coordinates, among other things. This led to some users encouraging people to delete the app in favor of alternatives, with UpScrolled being one of the popular choices, largely due to its promise to not shadowban anyone and give “every post a fair chance to be seen.”
-
-UpScrolled isn’t the only app that’s seeing a surge in users following the takeover. Skylight, a TikTok alternative built on open source technology, says it has now topped over 380,000 sign-ups and is continuing to grow.
-
-Aisha is a consumer news reporter at TechCrunch. Prior to joining the publication in 2021, she was a telecom reporter at MobileSyrup. Aisha holds an honours bachelor’s degree from University of Toronto and a master’s degree in journalism from Western University.
-
-You can contact or verify outreach from Aisha by emailing aisha@techcrunch.com or via encrypted message at aisha_malik.01 on Signal.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-TikTok users freak out over app’s ‘immigration status’ collection — here’s what it means
-
-Researchers say Russian government hackers were behind attempted Poland power outage
-
-Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ laptops: Reports
-
-Capital One acquires Brex for a steep discount to its peak valuation, but early believers are laughing all the way to the bank
-
-Anthropic’s CEO stuns Davos with Nvidia criticism
-
-Humans&, a ‘human-centric’ AI startup founded by Anthropic, xAI, Google alums, raised $480M seed round
-
-SpaceX didn’t properly inspect crane before collapse at Starbase, OSHA says</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Rad Power Bikes reaches deal to sell itself for $13.2M</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>Rad Power Bikes reaches deal to sell itself for $13.2M</h2>
-            <p><strong>TechCrunch | 2026-01-26</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/01/26/rad-power-bikes-reaches-deal-to-sell-itself-for-13-2-million/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Electric bike company Rad Power Bikes has reached a deal to sell itself to a company called Life Electric Vehicles Holdings (or Life EV) for around $13.2 million, a little more than a month after entering the bankruptcy process.
-
-Florida-based Life EV bills itself as a “developer, manufacturer, and distributor in the light electric vehicle industry.” It offers a number of electric bikes for sale on its website, although most of them were labeled as “sold out” at the time this article was published.
-
-A filing to the bankruptcy docket over the weekend shows that five entities participated in an auction on the Rad Power assets on January 22. The first bid came in at $8 million, and parties traded bids until Life Electric Vehicles came away as the winner. When accounting for Rad Power’s liabilities, the total value of the bid is $14.9 million.
-
-Another e-bike company called Retrospec had the second-highest bid of $13 million and is being labeled as the “backup bidder” in case the deal with Life EV falls through. The bids were a steep discount to Rad Power’s peak $1.65 billion valuation, which was reached in October 2021, per PitchBook. The company has raised a total of $329.2 million, according to PitchBook data.
-
-The acquisition still needs to be approved by the bankruptcy judge.
-
-Rad Power is not the only company in the micromobility world to seek bankruptcy protection in recent years. Peers like VanMoof and Cake went through restructurings and found new owners. Scooter company Bird also went through the bankruptcy process.
-
-It’s not clear what Life EV plans to do with Rad Power; Life EV CEO Robert Provost directed questions to Rad Power. “There is still a process underway and there is an exciting future being planned for Rad Power,” he wrote in a message.
-
-TechCrunch was unable to reach Rad Power for comment; this article will be updated if the company responds.
-
-Like many of those peers, Rad Power saw a huge increase in sales during the pandemic but struggled as that momentum dried up.
-
-The company went through multiple rounds of layoffs in recent years, juggled CEOs, and more recently had trouble with some of its older batteries catching fire. The Consumer Product Safety Commission found 31 reported fires tied to the batteries.
-
-Rad Power told TechCrunch at the time that it “firmly stands behind our batteries and our reputation as leaders in the e-bike industry, and strongly disagrees with the CPSC’s characterization of certain Rad batteries as defective or unsafe.”
-
-Sean O’Kane is a reporter who has spent a decade covering the rapidly-evolving business and technology of the transportation industry, including Tesla and the many startups chasing Elon Musk. Most recently, he was a reporter at Bloomberg News where he helped break stories about some of the most notorious EV SPAC flops. He previously worked at The Verge, where he also covered consumer technology, hosted many short- and long-form videos, performed product and editorial photography, and once nearly passed out in a Red Bull Air Race plane.
-
-You can contact or verify outreach from Sean by emailing sean.okane@techcrunch.com or via encrypted message at okane.01 on Signal.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-TikTok users freak out over app’s ‘immigration status’ collection — here’s what it means
-
-Researchers say Russian government hackers were behind attempted Poland power outage
-
-Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ laptops: Reports
-
-Capital One acquires Brex for a steep discount to its peak valuation, but early believers are laughing all the way to the bank
-
-Anthropic’s CEO stuns Davos with Nvidia criticism
-
-Humans&, a ‘human-centric’ AI startup founded by Anthropic, xAI, Google alums, raised $480M seed round
 
 SpaceX didn’t properly inspect crane before collapse at Starbase, OSHA says</div>
         </div>
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
-            <div class="title">ICE Is Failing the Legitimacy Test</div>
+            <div class="title">Gregory Bovino Gets Demoted</div>
             <div class="meta">2026-01-26</div>
         </div>
         
         <div id="content-18" style="display:none;">
+            <h2>Gregory Bovino Gets Demoted</h2>
+            <p><strong>The Atlantic | 2026-01-26</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/politics/2026/01/greg-bovino-demoted-minneapolis-border-patrol/685770/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Gregory Bovino has been removed from his role as Border Patrol “commander at large” and will return to his former job in El Centro, California, where he is expected to retire soon, according to a DHS official and two people with knowledge of the change.
+
+Bovino’s sudden demotion is the clearest sign yet that the Trump administration is reconsidering its most aggressive tactics after the killing Saturday of 37-year-old Alex Pretti by Border Patrol agents under Bovino’s command.
+
+Earlier today, President Trump appeared to signal in a series of social-media posts a tactical shift in the administration’s mass-deportation campaign. Trump wrote that he spoke with Minnesota Governor Tim Walz—whom the White House has blamed for inciting violence—and the two men are now on “a similar wavelength.” Tom Homan, the former ICE chief whom Trump has designated “border czar,” will head to Minnesota to assume command of the federal mobilization there, Trump said.
+
+Homeland Security Secretary Kristi Noem and her close adviser Corey Lewandowski, who were Bovino’s biggest backers at DHS, are also at risk of losing their jobs, two of the people told me.
+
+Read: The hype man of Trump’s mass deportations
+
+For the past seven months, Bovino has been the public face of a traveling immigration crackdown on cities governed by Democrats. Noem and other Trump officials gave Bovino the “commander” title and sent him and his masked border agents to Chicago, Charlotte, New Orleans, and then Minneapolis. Bovino became a MAGA social-media star as he traveled the country with his own film crew and used social media to hit back at Democratic politicians and random critics online. Veteran ICE and CBP officials grew more and more uneasy as Bovino worked outside his agency’s chain of command and appeared to relish his role as a political actor.
+
+In Minneapolis, the Trump administration used Bovino as its lead spokesperson, scheduling daily press conferences where he defended agents’ rough tactics and cast blame on protesters and local officials. Border Patrol commanders typically avoid engaging in political arguments with elected officials.
+
+Bovino’s fall comes two days after Border Patrol agents in Minneapolis fatally shot Pretti, an intensive-care nurse who worked with veterans. Hours after the shooting, Bovino appeared at a press conference and echoed statements by the Department of Homeland Security alleging Pretti sought to “massacre” the federal agents. Bovino repeatedly claimed that Border Patrol agents, not Pretti, were the victims.
+
+Videos of the encounter showed no evidence for his claims. Pretti, who was licensed to carry a concealed weapon, did not draw a firearm or attack the agents. The videos show one agent disarming Pretti in the moments just before another agent shot him in the back.
+
+DHS and U.S. Customs and Border Protection officials did not immediately respond to questions about Bovino’s departure from Minnesota and his current role. Asked about Bovino and Noem, a White House spokesperson referred to Press Secretary Karoline Leavitt’s statement today that Noem has the president’s “utmost confidence and trust.”
+
+In another post, Trump said he also spoke with Minneapolis Mayor Jacob Frey. “Lots of progress is being made!” the president wrote. “Tom Homan will be meeting with him tomorrow in order to continue the discussion.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">What the Administration Is Signaling to Federal Agents After Minnesota</div>
+            <div class="meta">2026-01-26</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
+            <h2>What the Administration Is Signaling to Federal Agents After Minnesota</h2>
+            <p><strong>The Atlantic | 2026-01-26</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/01/trump-minnesota-shootings-ice-border-patrol/685771/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">This is an edition of The Atlantic Daily, a newsletter that guides you through the biggest stories of the day, helps you discover new ideas, and recommends the best in culture. Sign up for it here.
+
+Perhaps the most disturbing part of the Trump administration’s immigration operation in Minnesota is not just that agents of the state are killing peacefully protesting citizens on the streets. It’s that they’re doing it with the expectation of impunity, backed by top government officials who are brazenly lying about what happened.
+
+The response from President Trump, Homeland Security Secretary Kristi Noem, and other officials has sent a clear message: When immigration agents kill peaceful protesters, the government will defend them unconditionally, no matter if clear video evidence contradicts its version of events. It will resist investigating shootings, and it will do everything it can to block probes by other authorities. Vice President Vance has even claimed that federal agents have “absolute immunity” for their actions. This approach all but guarantees more killings.
+
+The culture of impunity runs from the bottom to the top. It includes the federal agents who shot Alex Pretti, a 37-year-old ICU nurse, multiple times in Minneapolis on Saturday morning, despite videos that appear to show that the agents had already removed his holstered gun, and despite knowing that many bystanders were filming. (If this is what Border Patrol feels comfortable doing on camera, one can only guess how they might act in private.) It also encompasses the administration officials who offered false accounts immediately, without bothering to wait for the facts.
+
+Videos show Pretti filming officers before being pepper-sprayed and tackled by multiple officers, who then shot him while he was on the ground. Yet the Homeland Security secretary accused Pretti of “domestic terrorism” and said that he’d “attacked” agents, a claim that FBI Director Kash Patel repeated. Noem also said that Pretti had been “brandishing” a gun. (He had been legally carrying a concealed weapon, a right that the administration has previously celebrated.) Deputy Attorney General Todd Blanche argued that because Pretti was shouting and had “a phone right up to ICE’s face,” he was not protesting peacefully. The Trump aide Stephen Miller labeled him an “assassin,” and the Border Patrol commander Greg Bovino said that Pretti “wanted to do maximum damage and massacre law enforcement.” No known evidence backs any of this up, and videos show that much of it is provably false.
+
+When law-enforcement officers shoot civilians, it is common—if unsavory—for government officials to defend them. The Trump administration has gone far beyond this. Fatal shootings are almost always subject to investigation. After an ICE agent killed Renee Good earlier this month, Blanche (who once was Trump’s personal lawyer) said that the FBI would not launch a civil-rights investigation into the shooting. Instead, MS NOW reported, the Justice Department instructed the FBI to seek a search warrant to investigate Good for possible criminal liability. A federal magistrate rejected the warrant, which is unusual—except that, as the magistrate noted, Good is dead and could not legally be considered a suspect. An FBI agent resigned after she was allegedly pressured to stop pursuing a civil-rights inquiry into the ICE officer, Jonathan Ross, who’d shot Good.
+
+Something similar started to play out immediately after Pretti’s death. Federal agencies seem unsure what, if any, investigation is occurring, according to The Washington Post, although White House Press Secretary Karoline Leavitt said today that DHS and CBP are investigating the Pretti shooting, including reviewing body-cam footage. Federal agents refused to give even “the most basic information” to Minneapolis police at the scene, Chief Brian O’Hara said yesterday, and they initially blocked the Minnesota Bureau of Criminal Apprehension, the state’s criminal-investigation office, from accessing the crime scene. The state then went to court and obtained an order from a (Trump-appointed) federal judge blocking the destruction of evidence. That such a move was even necessary is astonishing.
+
+A state-level agency like the BCA has nowhere near the resources or expertise that federal agencies do, and local investigators face legal hurdles when investigating federal agents. Yet administration officials have so clearly declared their position with lies and prejudicial statements that any federal investigation would be suspect from the start—another example of how Trump’s politicization of the Justice Department has undermined its ability to do its job.
+
+Compared with the aftermath of Good’s shooting, more Republicans are expressing concerns about the operation in Minneapolis and Pretti’s killing. Even Trump has vacillated somewhat. He blamed Democrats for Pretti’s death but was noncommittal in a conversation with The Wall Street Journal about whether the agents involved had acted appropriately, in contrast to his quick blaming of Good for her own death. He has since conceded that ICE agents may have made a “mistake” in her case. Vance has also backtracked some, abandoning his claims of “absolute immunity.” (Law-enforcement officers are entitled to what’s known as “qualified immunity,” or protection from liability unless breaking clear legal or constitutional boundaries.)
+
+Even as Republicans grow wary, they have tried to blame Trump’s aides rather than the president himself; Oklahoma Governor Kevin Stitt, for example, lamented that the president was “getting bad advice.” But the culture of impunity proceeds directly from Trump. He has enthusiastically embraced the idea that the federal government should serve his personal whims. He argued that investigations into himself, even for overt offenses such as taking home boxes of sensitive documents, were improper. And he has made clear that when people act to assist him, whether they are aides or January 6 rioters, he will use his clemency powers to protect them from consequences.
+
+Trump has spent years dehumanizing immigrants, exhorting law enforcement to treat suspects more roughly, and attacking the rule of law. The killings in Minnesota aren’t the collateral damage of Trump’s approach to governance. They’re a direct result.
+
+Here are three new stories from The Atlantic:
+
+Anyone who thinks the contemplative life amounts to a form of quietism or a retreat from the world’s suffering should spend some time shadowing Joan Halifax, the Zen priest and anthropologist. I’d been curious about Halifax for years, ever since I heard about an annual trek that she leads through the mountains of Nepal, bringing a cadre of doctors and dentists to remote mountain villages with little access to health care.
+
+Each summer over the course of two weeks or so, this Nomads Clinic covers more than 100 miles on foot and horseback, at altitudes of nearly 18,000 feet. These “medical mountaineers,” as they’ve been called, all volunteers, sleep in tents, often in freezing temperatures. But after some 40 annual trips to Nepal—Halifax is normally based in Santa Fe—she recently decided it was time to hang it up.
+
+Watch. Last Saturday’s “Weekend Update” segment (streaming on Peacock) explains how Saturday Night Live benefits from making pop culture a little bit cringe, Michael Tedder writes.
+
+Read. Before her murder made her a true-crime obsession, Elizabeth Short was a real person. Black Dahlia tries to separate truth from myth in the infamous case, Sarah Weinman writes.
+
+Last Wednesday, covering President Trump’s speech at the World Economic Forum, I remarked, “Perhaps the Germans have a word for the experience of watching your country’s leader embarrass himself and the country on the global stage.” Several Germanophone readers wrote in to tell me that, in fact, they do—or at least one that partly captures the feeling. Fremdscham is a term for vicarious embarrassment, a sort of inverse of schadenfreude. I’m going to have to add this one to my vocabulary. Now, if we can only find a way to shoehorn presidential presence into it!
+
+Rafaela Jinich contributed to this newsletter.
+
+When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-20')">
+            <div class="source">The Atlantic</div>
+            <div class="title">ICE Is Failing the Legitimacy Test</div>
+            <div class="meta">2026-01-26</div>
+        </div>
+        
+        <div id="content-20" style="display:none;">
             <h2>ICE Is Failing the Legitimacy Test</h2>
             <p><strong>The Atlantic | 2026-01-26</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/01/policing-open-carry-minnesota-pretti/685767/?utm_source=feed">Visit Original Website</a>
@@ -1057,13 +1018,13 @@ Contrary to the administration’s feverish claims, the protesters in Minneapoli
 There is a lot of overlap between the elected officials who exhort Americans to carry guns wherever they like, and the ones who tend to stand by law-enforcement officers who use lethal force. These positions are not always contradictory, but in this situation they are flatly incompatible. If elected officials are going to stump for the Second Amendment, and at the same time refuse to hold a federal agency accountable for killing an American exercising that very right, the country is at risk of losing any right to protest. And the federal government is calling into question its legitimacy.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">The Worst Thing About the Black Dahlia Case</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>The Worst Thing About the Black Dahlia Case</h2>
             <p><strong>The Atlantic | 2026-01-26</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/books/2026/01/woman-who-became-black-dahlia/685739/?utm_source=feed">Visit Original Website</a>
@@ -1105,13 +1066,13 @@ Look past the need for narrative and there, out on the horizon, is Elizabeth Sho
 ​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">How to Have a ‘Don’t-Know Mind’</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>How to Have a ‘Don’t-Know Mind’</h2>
             <p><strong>The Atlantic | 2026-01-26</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/science/2026/01/consciousness-journey-zen-meditation/685647/?utm_source=feed">Visit Original Website</a>
@@ -1201,13 +1162,13 @@ This essay was adapted from Michael Pollan’s book, A World Appears: A Journey 
 ​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">Photos: Snow and Ice Blanket the U.S.</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>Photos: Snow and Ice Blanket the U.S.</h2>
             <p><strong>The Atlantic | 2026-01-26</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/photography/2026/01/photos-snow-and-ice-across-usa/685756/?utm_source=feed">Visit Original Website</a>
@@ -1215,194 +1176,101 @@ This essay was adapted from Michael Pollan’s book, A World Appears: A Journey 
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
-            <div class="source">The Atlantic</div>
-            <div class="title">Colleges Are Stuck Between Bad Options for Fighting Hateful Ideas</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-22" style="display:none;">
-            <h2>Colleges Are Stuck Between Bad Options for Fighting Hateful Ideas</h2>
-            <p><strong>The Atlantic | 2026-01-26</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/01/college-antisemitism-free-speech-university-florida/685743/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Pity Chris Summerlin, the dean of students at the University of Florida. He’s being sued by an anti-Semite, and that’s not the worst of his predicament. So far, judges who have ruled on the case have given mixed verdicts on whether he is likely to win or lose at trial. Summerlin deserves to lose on the merits: He expelled a law-school student for speech that, while morally degenerate, is properly protected by the First Amendment. And––this is the pitiable part––it’s easy to see how he might have concluded that giving a bigot grounds to win a civil-rights lawsuit was his best option.
-
-College deans and administrators keep confronting the same dilemma: They face intense pressure to punish speech that elicits fear or moral disgust on campus. They also have legal obligations—and face countervailing pressure—to refrain from violating the free-speech rights of students. They cannot always do both. The result is cases such as Damsky v. Summerlin—cases that might be avoided under a better approach to fighting anti-Semitism and other hateful ideas.
-
-Preston Damsky was a law student at the University of Florida who was open about his belief that America was founded by and for the white race and that its racial character should be preserved, by force if necessary. According to court documents, he wrote in one assignment that “the founding generations” fought, killed, and died for their sovereignty, and argued, “We are not yet so outnumbered and so neutered that we cannot seize back what is rightfully ours.” To survive “as masters in the ancestral lands of their ancestors,” he wrote in another paper, “the People” must exercise “their revolutionary right to dismember or overthrow” the government, “a process which no deskbound jurist can gleefully look forward to; for it will be a controversy decided not by the careful balance of Justitia’s scales, but by the gruesome slashing of her sword.”
-
-Neither passage was initially deemed to violate school rules, however much they upset Damsky’s peers. But they informed the way that administrators reacted when Damsky went on X on March 21 and posted the following:
-
-My position on Jews is simple: whatever Harvard professor Noel Ignatiev meant by his call to “abolish the White race by any means necessary” is what I think must be done with Jews. Jews must be abolished by any means necessary.
-
-Ignatiev, who died in 2019, was a factory worker who entered academia late in life as a Marxist and gained minor notoriety with his 1995 book, How the Irish Became White. A few years prior, he co-founded a journal called Race Traitor. He believed that whiteness and white privilege were social constructs that impeded working-class solidarity and that people ought to renounce their privilege and become “unwhite,” thus abolishing whiteness. “Without the privileges attached to it, the white race would not exist, and white skin would have no more social significance than big feet,” he once said.
-
-After Damsky invoked Ignatiev in his X post, a Jewish law professor replied, “Are you saying you would murder me and my family? Is that your position?” To which Damsky retorted, “Did Ignatiev want Whites murdered? If so, were his words as objectionable as mine? If Ignatiev sought genocide, then surely a genocide of all Whites would be an even greater outrage than a genocide of all Jews, given the far greater number of Whites.”
-
-The exchange troubled many observers inside and outside the university, though they differed on what to make of it. Should Damsky’s statement that “Jews must be abolished by any means necessary” be received as a portent of murderous violence? Was it the hateful rhetoric of a contemptible but presumably nonmurderous anti-Semite? Or, given the reference to a leftist academic who wanted to abolish whiteness, was it the snide trolling of a shitposter mocking a double standard? No one knew for sure. Even the closest readers of the post could trouble themselves wondering if Damsky’s words implied something more than a call for members of that group to voluntarily abjure their own identity.
-
-Soon, Damsky was suspended, then expelled. In suspending Damsky, the school asserted that he’d “created a material and substantial disruption to the academic operation of the UF College of Law.” When it expelled him, it cited provisions in its student code that prohibit “disruptive conduct” and “harassment”––but both provisions state that whatever they prohibit does not include “conduct protected by the First Amendment.”
-
-In subsequent legal proceedings, the University of Florida would defend the expulsion of the student, arguing that Damsky’s words constituted “true threats,” which are not protected by the First Amendment, and were disruptive. Though public schools can prohibit some speech that is “substantially disruptive to learning,” even if, outside of schooling, the same speech would be protected, there is disagreement about whether and how that precedent applies to higher education. “UF cannot hold its adult students to a standard created for students as young as five years old,” the ACLU stated in an amicus brief supporting Damsky as he sought a preliminary injunction to reverse his expulsion. “That is especially true when the adult is engaging in speech off-campus.”
-
-To win at that preliminary stage, Damsky had to show a substantial likelihood that he would prevail in the case overall. He cleared that high hurdle, according to Judge Allen Winsor. “Some may assume that anyone uttering such commentary is more likely to act violently than someone who does not,” he wrote in his U.S. District Court opinion, but “the test is whether Damsky’s posts constituted a ‘serious expression’ that he meant ‘to commit an act of unlawful violence.’” Acknowledging that “many would not love the idea of attending school with someone who burns crosses, marches in Nazi parades, or engages in countless other forms of offensive expression,” Winsor noted—quoting Justice William Brennan’s landmark First Amendment ruling in Texas v. Johnson—it is still the case that “the government may not prohibit the expression of an idea simply because society finds the idea itself offensive or disagreeable.” Nor, the judge ruled, did the university meet the burden for showing the speech to be disruptive in a way that rendered it unprotected.
-
-But the judge’s order to reinstate Damsky was paused pending appeal. And the Eleventh Circuit Court of Appeals ruled that in its estimation, the University of Florida was likely to prevail, because under the precedent set in Tinker v. Des Moines Independent Community School District, “the First Amendment does not protect speech that ‘materially disrupts classwork or involves substantial disorder or invasion of the rights of others.’” The trial court, and perhaps future appeals-court judges and the Supreme Court, will decide if they agree with the panel’s ruling that “UF students, faculty, and staff could reasonably interpret Damsky’s posts as threatening violence on UF’s campus,” and that the community “could reasonably interpret Damsky’s posts as promoting extralegal violence, and schools can regulate at least some speech that calls for illegal conduct.” (I hope other judges disagree: Such a precedent would suggest that college students can be expelled for political speech as common as “abolish whiteness,” “globalize the intifada,” and “no justice, no peace.”)
-
-When a college decisively loses at any stage of free-speech litigation, civil libertarians typically point to the loss as a powerful case for honoring the First Amendment if only out of self-interest: Don’t expel a student like that dean did, or your school will get sued and lose too. But colleges are caught between conflicting incentives right now. Few in higher education have forgotten the 2023 congressional hearings in which Representative Elise Stefanik questioned the presidents of Harvard, MIT, and the University of Pennsylvania about anti-Semitism on campus. Each leader was asked, “Does calling for the genocide of Jews violate your rules, conduct codes, or harassment policies?” All attempted nuanced answers. For example, was the call for genocide targeted at an individual, thus amounting to harassing conduct, or was it mere vile speech?
-
-Their answers, though legally sound, elicited a furious backlash. Stefanik called on the presidents to resign. The House passed a resolution calling the presidents “evasive and dismissive” and condemning “their failure to clearly state that calls for the genocide of Jews constitute harassment and violate their institutions’ codes of conduct.” Kathy Hochul, the governor of New York, wrote a letter to college presidents asserting that calls for genocide violate New York’s Human Rights Law, Title VI of the Civil Rights Act, and SUNY’s code of conduct; she threatened “enforcement action” if colleges and universities were found not in compliance. In Florida, Governor Ron DeSantis said that he wanted the college presidents to lose their jobs (the fate that befell Liz Magill, who resigned as Penn’s president because of that viral congressional hearing on anti-Semitism). Donald Trump and his administration would later target those same universities with anti-Semitism probes and regulatory actions that threatened billions of dollars in federal funding while severely constraining their autonomy.
-
-For administrators at the University of Florida, who declined to comment while this litigation is ongoing, the message was presumably clear: If a student calls for the genocide of Jews, deciding whether to punish them based on whether the First Amendment technically protected the speech would be seen as suspect by federal and state officials––and might, if history repeated itself, result in job loss and significant funding losses.
-
-Then along came Damsky with a social-media post that concluded, “Jews must be abolished by any means necessary.”
-
-“Confronting the fact pattern in his case, an institution might well ask their legal advisers if they could justify punishing the speech,” Jackie Gharapour Wernz, an attorney who advises educational institutions about complying with nondiscrimination laws such as Title VI and Title IX, told me. And she could imagine a legal adviser signing off on a punishment, despite its risks. “If they act, they may get sued for violating free-speech rights,” she explained. “If they don’t act, they may face complaints or lawsuits from students or employees claiming they’re ignoring or contributing to a hostile environment. In a very real sense, the institution is choosing which lawsuit it wants.” Institutions may decide to consider a range of risks, she said, “including political pressure, federal attention, and backlash from different parts of the community, and sometimes those pressures drive decisions as much as the legal merits.” An institution might even want to lose in court, she said, “because that gives them cover later to say, We actually can’t punish this speech.”
-
-Damsky’s lawyer, Anthony Sabatini, believes that the political climate is affecting what would normally be a simple case about unambiguously protected speech. “UF clearly tried to use heightened political concerns about antisemitism (or what gets called antisemitism) to pressure the district judge, as you’ll see in their pleadings,” he told me via email. “The Trump administration is clearly using Title VI to unlawfully attempt to stop lawful criticism of Israel by equating it with antisemitism and will lose in court on that.”
-
-Of course, college administrators might also punish speech of the sort Damsky deployed out of a desire to oppose anti-Semitism or to protect the educational experience of Jews. Kenneth L. Marcus, the founder and leader of the Louis D. Brandeis Center for Human Rights Under Law, a legal organization focused on fighting anti-Semitism, argues that anti-discrimination law is a vital tool for protecting the rights of Jewish students and any others targeted on the basis of their race, color, or national origin. “Whenever we take seriously our civil-rights laws, there will be questions about conduct that falls in a gray area between protected speech and unprotected activity,” he told me. “Just because there are some tough cases doesn’t mean that we should throw out the rules altogether.”
-
-It is dangerous, he argued, “to minimize threats and to assume that persons involved in threatening communications don’t mean what they’re saying seriously.” In the Damsky case, “administrators simply cannot wait for apparently violent threats to turn lethal before they take action,” he argued. “Can you imagine if the university had done nothing and then the speaker actually followed up on his apparent threat by making an actual effort to abolish Jews by any means necessary? The university would at a minimum be held liable for its failure to exercise due care, and it should be.”
-
-While I agree with Marcus that “the world that we’re living in since October 7, 2023, is one in which Jewish Americans and others face continuing and real threats,” and that anti-Semitism must be fought in any healthy and morally decent society, there is no simple correlation between acts of violence and rhetoric of the sort Damsky spewed. His words clearly don’t meet the long-standing Supreme Court threshold for “true threats,” and insofar as a student is secretly planning violence, expulsion presumably wouldn’t stop them. I also doubt that compelling colleges to punish students like Damsky, despite the lack of a strong legal case, is an effective way to fight anti-Semitism.
-
-While no one, least of all Jews, deserves to live in a world with anti-Semites, nonviolent ones included, we do live in such a world. In a country where Tucker Carlson and Candace Owens expose massive audiences to the most nonsensical conspiracy theories, and as vile an anti-Semite as Nick Fuentes has more than 1 million followers on X, insulating schools from anti-Semitism is impossible. Administrators cannot make it disappear. They can, however, help students improve at countering bad ideas.
-
-The academic philosopher Dan Williams recently argued that establishment institutions “have clung to a set of habits and norms—most fundamentally, an aversion to engaging with illiberal ideas to avoid ‘platforming’ and ‘normalising’ them—adapted to a world that no longer exists.” From his perspective, which I find persuasive, the modern internet makes this sort of aversion unwise: Gatekeepers don’t exist in the digital era, and “once established institutions lost the privilege to control the public conversation, they acquired an obligation to participate within it.” I’d feel more hopeful about the ability of American institutions to adapt if universities prepared the rising generation to rebut history’s worst ideas rather than trying to suppress them.
-
-If Damsky returns to law school, some classmates will treat him as a social pariah who deserves scorn. Some will fear for his everlasting soul as he transgresses morality by indulging hatred. To forbear bigots is no easy thing, and it is not for me to judge how others do it. But I hope some of his classmates would use the presence of an anti-Semitic white nationalist to hone the strongest and most persuasive arguments against his views. I hope some would study the example of Daryl Davis, the Black musician who has successfully talked multiple members of the Klu Klux Klan into giving up their hoods, and that others would follow the example of the New College of Florida students who converted a white-nationalist classmate into an anti-racist activist.
-
-Anti-discrimination laws have a role to play in academia: College administrators have an obligation to ensure that no student is denied educational opportunities on the basis of their race, religion, ethnicity, or national origin, and that, insofar as their student bodies include bigots, they don’t harass or bully Jews or anyone else. But the policing of speech that is protected by the First Amendment is both unlawful and insufficient. Perhaps, in a world where hateful speech can be distributed to mass audiences more easily than ever before, it’s even counterproductive.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">How the Bernie Goetz Shootings Explain the Trump Era</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-23" style="display:none;">
-            <h2>How the Bernie Goetz Shootings Explain the Trump Era</h2>
-            <p><strong>The Atlantic | 2026-01-26</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/01/bernie-goetz-shooting-racial-resentment/685726/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Without Trumpism, Democrats and anti–Donald Trump conservatives tell themselves, America can once again be the nation it always was. This political moment, many feel certain, is an aberration, an unfortunate detour from who we are and what we stand for. Surely, they hope, if the MAGA Republicans can just be unseated in this fall’s midterm elections, then once Trump leaves office, this country can get back on track.
-
-But the political space we inhabit has deep roots. It did not erupt out of nowhere in 2016. The racialized rage and contempt for the rule of law that so thoroughly mark the present are the products of a longer political project set in motion during the 1980s, when the Reagan Revolution—itself anchored in white resentment—recast racial violence as necessary and defensible, restoring to it a legitimacy that had not been seen since the Jim Crow era and the Gilded Age.
-
-Clint Smith: Those who try to erase history will fail
-
-One particularly notorious event, which took place four decades ago on a New York City subway car just three days before Christmas, both reflected and fueled this dramatic political shift. On December 22, 1984, a downtown-bound 2 train rattled out of the 14th Street station, its walls layered in graffiti, its riders reading newspapers or staring silently in the exhausted intimacy of a city still struggling to rebound from a major fiscal crisis in the 1970s—and finding this new decade even more challenging.
-
-On the subway car that day were four Black teenagers who lived in the same housing project in the heart of the South Bronx—Darrell Cabey, James Ramseur, Barry Allen, and Troy Canty. This neighborhood had been especially ravaged in recent years: recreational opportunities ended, public libraries closed, streets left grim by an illegal economy of drugs and sex that had become one of the few remaining ways to make money. With little else to do on what was an unseasonably balmy afternoon, this group of friends decided to head into Manhattan. Their plan for the day was modest and desperate at once—to stop at a video arcade, jimmy open a few coin receptacles, and come away with at least a few stolen dollars in their pockets.
-
-Seated in the same car, directly across from two of the teenagers, was a white loner named Bernie Goetz. A 37-year-old single, self-employed electronics nerd living in Greenwich Village, Goetz was also trying to simply live his life in a city coming apart at the seams. He still had a decent income and a roof over his head, but Goetz’s own material security did not temper the growing resentment he felt every time he stepped outside his apartment and onto city streets. Disconcerting numbers of unhoused people were in Union Square Park, and visibly ill men—gaunt, with lesions and ragged coughs—streamed each day into the emergency room at the nearby St. Vincent’s Hospital. Meanwhile, trash littered the sidewalks and piled up on stoops, and the illicit economy seemed to occupy every corner.
-
-Goetz understood this disorder not as the product of scant civic resources or state retreat but rather as the result of liberal misrule—do-gooder bureaucrats, failed social programs, and a city that had coddled the undeserving and the criminal. He had long since concluded that ordinary men like him would just have to look out for themselves.
-
-When he took his seat on the 2 train that Saturday, Goetz had just spent a frustrating morning working on a piece of electrical equipment and had decided to head downtown for a bit. As he now regularly did, he was carrying a loaded .38-caliber Smith & Wesson hidden in a quick-draw holster inside his waistband.
-
-Canty took in the white guy who had boarded at Union Square, paused the fooling-around that he had been doing with his friends—slapping at the plastic straps that hung from the ceiling of the train car, joking loudly—and greeted the man. Encouraged when he got a terse “Fine” after a “How are you?” Canty asked if the man had $5. He didn’t mind panhandling. That had become a way of life for the city’s poorest residents, young and old alike.
-
-Allen was even more encouraged when this man stood slowly, turning as if he might be getting his wallet. But then Goetz swung back around, assumed a combat stance, and began firing.
-
-Within seconds, Goetz shot Canty in the chest and Allen, who had been standing nearby, in the back as he tried to flee. Goetz next aimed his weapon at Ramseur and then Cabey, who sat farther down the car. He hit Ramseur, who was also trying to run. The bullet pierced Ramseur’s arm and entered his chest through his side. But Goetz’s fourth bullet missed Cabey, and the shooter was, as he later made clear, determined to take every one of the kids out.
-
-As Cabey cowered in his seat, Goetz walked over to him and said, “You seem to be all right. Here’s another,” before shooting at him again from point-blank range.
-
-Goetz didn’t kill these teenagers, but not because he hadn’t tried. He later said, “If I had more bullets, I would have shot ’em all again and again. My problem was I ran out of bullets.”
-
-Yet this man, who then disappeared into the tunnels of the NYC subway system and remained on the lam for nine days, was not reviled as a vicious and violent criminal by a stunning number of New Yorkers, particularly white ones. Goetz became an overnight celebrity, heralded as a real-life “Death Wish Vigilante,” a reference to the blockbuster movies of this era, in which Charles Bronson plays a regular white guy who chooses to meet urban threats with lethal force. Here was a man who had had enough, who had done what others wished they could.
-
-Goetz’s victims were, in turn, villainized and bombarded with hate mail. No matter that these young people were all only 18 or 19, and also unarmed and slight, the tallest of them only 5 feet 6 inches. No matter that Goetz had severed Cabey’s spinal cord and permanently paralyzed him from the waist down. No matter that Ramseur was found dead, likely from suicide, on an anniversary of this horrific event, and that Allen would descend into drug addiction.
-
-They were deemed thugs and animals, and were said to symbolize all that was wrong with America’s cities as well as with the liberals who had enabled the city’s poor, lazy, and criminal elements. They were proof that hard-working Americans were under siege. These teens had gotten exactly what they deserved.
-
-But the public’s reaction to the subway shooting was neither obvious nor inevitable; it was actively cultivated. Doing much of the work to normalize hatred and violence after the event were conservative, misinformation-driven media that were themselves aggressive and ascendant. The Goetz case was a long-awaited opportunity, particularly for the conservative Australian media mogul Rupert Murdoch, who dreamed of making his paper the New York Post the dominant tabloid in NYC and then taking over the entire U.S. news-media market.
-
-From the moment that Goetz pulled the trigger on Cabey, Ramseur, Allen, and Canty, columnists from both the New York Post and the other major New York tabloid trying to hold its own, the Daily News, framed the case as a referendum on self-defense rather than an act of attempted murder. Even though the teens were the ones in ICUs and Goetz had been carrying an illegal weapon on the train that day, they were the “predator” and he was the “prey.”
-
-During the 1980s, both tabloids pandered to the racial resentments and fears of white New Yorkers when covering all of the city’s ills. The New York Post seemed to practically invite readers to cheer for acts of white rage—in the Goetz case and the brutal white-mob killings of Black New Yorkers in Howard Beach and later in Bensonhurst—as well as to steadfastly ignore the civic wreckage that had paved the way for such acts of lawlessness in the first place.
-
-Facts had begun to matter less and less. For example, even though it was fiction, a story that the teenagers Goetz shot were wielding sharpened screwdrivers soon became gospel in tabloid and mainstream press alike. This very much mattered to how the public felt about the case.
-
-But what mattered more was a political shift that was taking place, one that had made it possible for the right-leaning media to profit so handsomely off the resentment and rage of ordinary people.
-
-In 1980, Ronald Reagan took the White House. He insisted that government was bloated and inefficient, that liberal social programs bred only dependency and crime, and that law-abiding citizens, implicitly white, had been abandoned in favor of a lazy “underclass,” often marked explicitly as Black. The Reagan administration counted on Murdoch’s newspapers to hammer away at these messages on its behalf.
-
-According to Reagan Republicans, America’s problems could be solved by cutting federal spending, slashing taxes, and gutting regulations on business. If the rich thrived, their argument went, the benefits would trickle downward to the nation as a whole.
-
-The desire to do all of these things was not new—it had long animated the ambitions of the country’s wealthiest Americans. Ever since the New Deal had constructed a meaningful social safety net in response to the devastation of the Great Depression, the rich had sought to weaken labor, shrink the public sector, delegitimize redistributive social policies, deregulate finance and industry, and drive taxes lower. They had long insisted that private control of public life simply made sense.
-
-Yet it was politically risky for any administration to openly slash the tax base that funded public schools, affordable housing, city services, and public-health systems. As jobs disappear, wages fall, housing and health care grow scarce, and education becomes an engine of debt, people might not only be left poorer; they also might demand accountability and redress.
-
-Reagan Republicans fully understood the political risks of dismantling more than 50 years of public policy, yet—more effectively than any of their predecessors—they succeeded in manufacturing the popular consent needed to do precisely that. The key to this achievement was a simple but devastating insight: The most effective way to discredit liberal social policy was to starve it of resources and then point to its inevitable failure. As the Reagan aide James Cicconi explained in an internal memo, the era of “decreasing governmental resources” would make  the “liberal approach” to governance “impossible to sustain financially.” This would force the adoption of “alternatives.”
-
-With each passing year of the 1980s, this engineered collapse was recast as proof that the nation’s problems flowed from liberal social, political, and racial policies, and from the supposed moral failures of people who, it was claimed, simply did not want to work. Inequality was framed as meritocracy.
-
-As the Reagan Revolution matured, taxes were slashed and regulations rolled back; in turn, the social programs and city services upon which ordinary Americans depended were devastated. And as the rich grew richer and the lives of ordinary people grew more difficult, the narratives emanating from the White House down continued to blame the deepening crisis—the rise in homelessness, the AIDS epidemic, the garbage-strewn streets, the turn to illegal economies—not on policy choices but on bad people. Crime, disease, and addiction were cast as moral failures rather than as the predictable consequences of political decisions.
-
-Arguments such as these distracted the public from rethinking the true cost of stripping public coffers and actively widening the country’s income gap. In this sense, politicians interested in remaking the economy in ways more favorable to the rich did not merely rely on racialized resentment; they also helped ensure that anger would be directed downward, toward those even less fortunate than themselves.
-
-White Americans in particular were offered a Faustian bargain during the Reagan ’80s: accept a thinner safety net, a harsher economy, and a more unequal society—but in return, receive the emotional satisfaction of seeing the “right” people punished by an ever-expanding criminal-justice system, and the tacit assurance that if they happened to visit their own frustrations on someone who did not look like them, that same system would protect them.
-
-Ultimately, the fueling of racial fear did extraordinary political and cultural work, fixing public attention on crime rather than wage theft, on disorder rather than deregulation, on punishment rather than the public good. The Goetz saga proved just how effectively narratives of crime, and outright misinformation, could be used to discredit government, justify inequality, and legitimize extrajudicial violence—all while claiming the mantle of common sense.
-
-When he was finally apprehended, Goetz claimed that he had no regrets for what he did. He made no apologies for wanting “to kill those guys; I wanted to maim those guys; I wanted to make them suffer in every way I could”—not because his victims were armed (they were not), but because he felt besieged and abandoned, and thus justified in striking back. He railed at the assistant district attorney who took his statement: The subway system was “a disaster,” crime in the city was “a disaster,” and the government in charge of all of it was “a disgrace.”
-
-Goetz’s journey through the justice system reinforced the idea that his worldview had merit. A grand jury was convened despite extraordinary public pressure to simply let him skate, and then it declined to indict Goetz on attempted-murder charges. However, word got out that Goetz had confessed to gunning down the teens, had told detectives that “robbery had nothing to do [with] it,” and, what is more, had admitted to shooting Cabey a second time. A second grand jury was convened that indicted Goetz for a range of serious charges, including attempted murder. In the trial that followed, however, a jury of Goetz’s peers decided that, despite the evidence mounted against him, he was guilty of only the most minor gun charges he faced.
-
-Goetz served eight months in jail. The message sent to the American public was unmistakable: It is perfectly okay for at least some people to take the law into their own hands.
-
-Goetz’s case helped build the early architecture of conservative tabloid media and inflammatory talk radio. This seeded the ecosystem of social media and Fox News coverage that, together, perfected the art of viral outrage and the mobilization of economic anxiety for political ends. And although mainstream news outlets did not openly revel in—or explicitly justify—the Goetz shootings, they did privilege coverage of urban crime and disorder over careful, sustained attention to the structural conditions and policy choices that made cities less safe and eroded the material security of ordinary people.
-
-Equally significant was the fact that the economic and cultural transformation that this country had undergone since the 1980s was never a project confined to conservative politicians. Politicians across party lines contributed to the steady dismantling of America’s social safety net and the stoking of resentment and rage, even as they worked to channel these for their own partisan ends. Bill Clinton would deliver the most devastating blow to welfare; Trump would perfect the art of turning fear into fury.
-
-We are still living today through the long Reagan Revolution: A teenager crosses state lines with an assault rifle and is hailed as a patriot for killing protesters; a mob storms the Capitol, convinced that violence is necessary to “save” democracy, and is pardoned; an ICE agent shoots and kills a mother and is said to have acted in self-defense, despite all evidence to the contrary; politicians denounce crime while simultaneously cutting the very social programs that ordinary people need to survive and that help sustain safe communities.
-
-Gal Beckerman: Minnesota had its Birmingham moment
-
-Trump did not invent these dynamics; he inherited them. He did not create the legitimacy of white grievance. And he did not usher in a new age of white racial violence or escalating income inequality; he has merely decided to unabashedly incite the former and defend the latter.
-
-As the country moves toward the 2026 midterms, the temptation will be to treat our current racial, political, and economic crisis as a sharp break from the past; to search for singular villains; and to imagine that a return to normalcy is just one election away. But political cultures do not change course simply because their most flamboyant representatives enter or exit the stage.
-
-The hard and necessary task now is to reckon with how past moments such as the Bernie Goetz shootings of 1984 helped remake the boundaries of how much racial violence, inequality, hatred, and indifference we as a society are willing to quietly endorse or even embrace. Only by confronting our history honestly can we begin to understand why appeals to fear remain potent, why calls for punishment eclipse demands for justice, and why the promise of democracy has been so unevenly realized.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">Microsoft's Latest AI Chip Claims Performance Edge Over Amazon and Google</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-24" style="display:none;">
+            <h2>Microsoft's Latest AI Chip Claims Performance Edge Over Amazon and Google</h2>
+            <p><strong>Slashdot | 2026-01-27</strong></p>
+            <a class="original-link" href="https://hardware.slashdot.org/story/26/01/26/2244208/microsofts-latest-ai-chip-claims-performance-edge-over-amazon-and-google?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">At least that seems to be the most common reaction.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;Yeah, but you&#39;re taking the universe out of context.&quot;</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">California Tech CEO and EV Pioneer Arrested, Accused of Murder</div>
+            <div class="meta">2026-01-26</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
+            <h2>California Tech CEO and EV Pioneer Arrested, Accused of Murder</h2>
+            <p><strong>Slashdot | 2026-01-26</strong></p>
+            <a class="original-link" href="https://yro.slashdot.org/story/26/01/26/2237252/california-tech-ceo-and-ev-pioneer-arrested-accused-of-murder?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+Check his nightstand for books on how to kill your wife.
+
+And more recently on Rich Nerds Behaving Badly,  Nima Momeni [abc7news.com] chimed in.
+
+In Iran, I don&#39;t think you need to hide the fact that you&#39;ve murdered your wife - just claim she didn&#39;t defer to you enough, or she talked to a man who wasn&#39;t a family member.
+
+You know, like on the Project 2025 &quot;extras&quot; wishlist.
+
+They originally thought she was 25 to 35, and she&#39;s 58.  They originally thought it was an accident, and now think it is murder... by a guy who is basically a retiree.
+
+Murder for hire, I could maybe believe, but in the absence of a lot more detail, this is kind of stretching credibility here.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;Yeah, but you&#39;re taking the universe out of context.&quot;</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Gemini In Google Calendar Now Helps You Find the Best Meeting Time For All Attendees</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Gemini In Google Calendar Now Helps You Find the Best Meeting Time For All Attendees</h2>
             <p><strong>Slashdot | 2026-01-26</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/01/26/2230202/gemini-in-google-calendar-now-helps-you-find-the-best-meeting-time-for-all-attendees?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
 
 I don&#39;t enter everything I do into Google Calendar.  Who does?  Everybody who needs to be in a meeting?  I don&#39;t think so.  Most people don&#39;t even use it.  So this will be good in a company where everybody is required to use their Google Calendar 100%?  Sound like a terrible place to work.
 
 Hasn&#39;t Exchange offered this for decades? Wasn&#39;t that one of the main &quot;benefits&quot; of locking yourself into the MS ecosystem?
 
+Hasn&#39;t Exchange offered this for decades? Wasn&#39;t that one of the main &quot;benefits&quot; of locking yourself into the MS ecosystem?Next up: email address auto-completion powered by Gemini!
+
+Hasn&#39;t Exchange offered this for decades? Wasn&#39;t that one of the main &quot;benefits&quot; of locking yourself into the MS ecosystem?
+
+Next up: email address auto-completion powered by Gemini!
+
 Sneaky! What this does is now everybody&#39;s boss makes their employees use Google calendar!
+
+Ah, yes. Windows Outlook had something like this more than a decade ago. I haven&#39;t worked in a Windows shop since around 2010 and you didn&#39;t have to manually look up individual participant&#39;s calendars to schedule meetings. (Though, IIRC, some managers chose to restrict access to their calendars.)
+
+Congratulations, Google, on reinventing the wheel.
+
+They are getting desperate and hope nobody notices. To be fair, most people will not.
+
+They know where you are. They know where you&#39;ve been. They know what you bought. They know what you&#39;re doing. They know what you&#39;re wearing. They know what you&#39;re watching. They know what you&#39;re browsing. They know what you wrote. They know what you deleted. Google knows best because they know everything about you.
+
+Text me if I need to make a decision and just give me a synopsis.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Did you know that if you took all the economists in the world and lined
-them up end to end, they&#39;d still point in the wrong direction?</div>
+&quot;Yeah, but you&#39;re taking the universe out of context.&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Google Settles $68 Million Lawsuit Claiming It Recorded Private Conversations</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Google Settles $68 Million Lawsuit Claiming It Recorded Private Conversations</h2>
             <p><strong>Slashdot | 2026-01-26</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/01/26/2222213/google-settles-68-million-lawsuit-claiming-it-recorded-private-conversations?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1411,24 +1279,35 @@ them up end to end, they&#39;d still point in the wrong direction?</div>
 
 Always the same , lawyers get paid the lion share and the crumbs are left to the plaintiffs. Never participate in a class action lawsuit. Do it yourself.
 
+Always the same , lawyers get paid the lion share and the crumbs are left to the plaintiffs. Never participate in a class action lawsuit. Do it yourself.
+
+The problem with doing it yourself is the cost. Class actions are because stealing from a million is less expensive than stealing from one.
+
+If I steal $1,000,000 from you, you&#39;d probably use the courts to get back at me. But if I steal $10 from 100,000 people, it&#39;s not worth people&#39;s time, effort and money to sue. I make the same money and get away scot-free
+
+Always the same , lawyers get paid the lion share and the crumbs are left to the plaintiffs. Never participate in a class action lawsuit. Do it yourself.Megacorps have a legal team on standby reserved just for those Us vs. You cases, with that entire departmental budget filed under “For Fucks and Funsies”, funded through 2087.Good luck.
+
+Always the same , lawyers get paid the lion share and the crumbs are left to the plaintiffs. Never participate in a class action lawsuit. Do it yourself.
+
+Megacorps have a legal team on standby reserved just for those Us vs. You cases, with that entire departmental budget filed under “For Fucks and Funsies”, funded through 2087.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Did you know that if you took all the economists in the world and lined
-them up end to end, they&#39;d still point in the wrong direction?</div>
+&quot;Yeah, but you&#39;re taking the universe out of context.&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">DOT Plans To Use Google Gemini AI To Write Regulations</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>DOT Plans To Use Google Gemini AI To Write Regulations</h2>
             <p><strong>Slashdot | 2026-01-26</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/01/26/1948215/dot-plans-to-use-google-gemini-ai-to-write-regulations?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">DUI and other cases can&#39;t be in forced in court any more?
 
 This is what an LLM would want us to believe. Youâ(TM)re not fooling anyone, bot
 
@@ -1450,7 +1329,23 @@ A bit like an AI centipede!And I&#39;m sure we&#39;ll get great results from a b
 
 And I&#39;m sure we&#39;ll get great results from a bunch of AI metaphorically shitting in each others mouths.
 
+What are the odds? Probably about the same as now.
+
+Yeah, but a human being can also generate it.
+
+Do you really think a human being can&#39;t shit out a &quot;proposed rule&quot; in three days? Fuck, I bet many proposed rules can be written in an hour. The issue isn&#39;t the time taken to create a proposed rule, it&#39;s the effort needed before to determine what kind of rule it should be, and the time afterwards where the rule is reviewed by safety experts.
+
+NONE of those parts are somehow possible to pass on to Spicy Autocomplete in any serious manner. You really want the propose
+
 Well, that might just fit the Trump administration quite well.
+
+calling the department the &quot;point of the spear&quot;Or more accurately: &quot;the spout of the slop pail&quot;.
+
+calling the department the &quot;point of the spear&quot;
+
+Or more accurately: &quot;the spout of the slop pail&quot;.
+
+calling the department the &quot;point of the spear&quot;Or more accurately: &quot;the spout of the slop pail&quot;.The blown-out sphincter of the anus.
 
 calling the department the &quot;point of the spear&quot;Or more accurately: &quot;the spout of the slop pail&quot;.
 
@@ -1472,7 +1367,9 @@ Also, when rules are being written thoughtlessly, the fact that you can write th
 
 I come here to concur on your argument on the thoughtless rules. This is so incredible it has to be an April 1st joke.
 
-The problem isn&#39;t even the AI, it is believing that &quot;good enough&quot; and &quot;mere minutes&quot; are a good properties for government work.The only interpretation I can figure is they hired incompetents who believe the problem of government is ability to draft, because they haven&#39;t studied anything useful nor have relevant experience at government agencies. The drafting is the easy part, of course, peop
+The problem isn&#39;t even the AI, it is believing that &quot;good enough&quot; and &quot;mere minutes&quot; are a good properties for government work.The only interpretation I can figure is they hired incompetents who believe the problem of government is ability to draft, because they haven&#39;t studied anything useful nor have relevant experience at government agencies. The drafting is the easy part, of course, people who work for government in functions involving drafting learn that skill in law school, they can do it in mere minutes already. The question is not how fast one can draft, it is what to draft. Making sure this is the right change to make is what takes months.
+
+Also what is the point of &quot;flooding&quot; (even forgetting the &quot;shit&quot; part)? Governing isn&#39;t a competition on how many regulations one can publish in a day. I can&#39;t help but think they&#39;re trying to be evil in some way which isn&#39;t totally clear yet.
 
 I was going to spell it &quot;ARRRGGGGHHH&quot; but your way works just as well. When will the madness end? Either Trump or &quot;AI&quot; or preferably both.
 
@@ -1500,19 +1397,22 @@ If you&#39;re not doing those things, then you&#39;re just generating low-qualit
 
 A good point- and this administration would never do anything like that
 
+The AI can probably get the regs 95% there and help weed out loopholes and ways to game the system.
+
+First, they train the LLM with the many thousands of pages of federal regulations.  Then, they use the LLM to 10x the number of pages.Shazam!  They have more input to continue training, and the cycle repeats ad nauseam.  Even the lawyer-bots won&#39;t be able to keep up.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Did you know that if you took all the economists in the world and lined
-them up end to end, they&#39;d still point in the wrong direction?</div>
+&quot;Yeah, but you&#39;re taking the universe out of context.&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Valve Facing UK Lawsuit Over Pricing and Commissions</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Valve Facing UK Lawsuit Over Pricing and Commissions</h2>
             <p><strong>Slashdot | 2026-01-26</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/01/26/1941259/valve-facing-uk-lawsuit-over-pricing-and-commissions?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1527,131 +1427,19 @@ Yeah I don&#39;t understand this recent backlash against Steam. They provide an 
 
 The conclusion of your comment is also my conclusion on the subject, or very close to it. There are plenty of interested parties, the funding didn&#39;t have to come from epic games. Since valve is by far the best at what they do the other players can&#39;t outcompete them.
 
+Yeah I don&#39;t understand this recent backlash against Steam. They provide an amazing service.
+
+And yet, when Apple provides all the same services, their fees are called &quot;excessive&quot;.
+
+That&#39;s the problem - everyone says Apple&#39;s fees are excessive, they sue Apple over it, and now it&#39;s moving to other stores doing the same thing because if Apple was excessive, Steam offering the same services was also excessive.
+
+That&#39;s what&#39;s happening. Of course, one could also argue that you don&#39;t have to use Steam if you don&#39;t wan
+
 So, some dumb cunt, who knows nothing about children or welfare, is bringing a case against Steam that has nothing to with either children or their welfare?
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Did you know that if you took all the economists in the world and lined
-them up end to end, they&#39;d still point in the wrong direction?</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-28')">
-            <div class="source">Slashdot</div>
-            <div class="title">New California Law Means Big Changes For Photos of Homes in Real Estate Listings</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-28" style="display:none;">
-            <h2>New California Law Means Big Changes For Photos of Homes in Real Estate Listings</h2>
-            <p><strong>Slashdot | 2026-01-26</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/26/01/26/1938228/new-california-law-means-big-changes-for-photos-of-homes-in-real-estate-listings?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-There was a local forum about houses etc, and a 800+ post thread with &quot;glorious&quot; photos from real estate agents. It wasn&#39;t just altered photos but also weird camera angles and odd photos. My favourites:- TV lying on its side in the basement for storage. With the picture on.- Several photos of the garden but none that showed the whole thing. In one of the photos inside you could see out of the window that the garden photos avoided a 1 meter tall light-blue concrete snail sculpture.- Stove top edited to look like kitchen table. They forgot to remove the knobs on the front.- A brothel with all the equipment (presumably bankrupt due to covid-19)
-
-- A brothel with all the equipmentJust what a bachelor would call &quot;furnished&quot;.
-
-Just what a bachelor would call &quot;furnished&quot;.
-
-The fools who buy houses like it&#39;s something on amazon are why we need laws like this.  My neighbor bought his house online without looking at it and it sits empty because they ended up disliking it. They didn&#39;t move in just looked at it once and realized they couldn&#39;t fit and his wife never has been seen again after that 1st visit.
-
-No, the reason laws like this are needed is to stop unscrupulous, dishonest real estate agents trying to rip people off.
-
-No, the reason laws like this are needed is to stop unscrupulous, dishonest real estate agents trying to rip people off.Here in Florida you pretty much have to at least Photoshop the lawn on any vacant home, because if it hasn&#39;t been actively maintained it&#39;ll either be overgrown or mostly dead, depending on what the weather has been doing.That, at least, is actually less dishonest than the pictures fast food restaurants use for their menu.  If you buy the house and do the necessary yard work, you actually can end up with a lawn that looks like the photo.  There&#39;s nothing you can do to get McDonald&#39;s to give you a burger that
-
-No, the reason laws like this are needed is to stop unscrupulous, dishonest real estate agents trying to rip people off.
-
-Here in Florida you pretty much have to at least Photoshop the lawn on any vacant home, because if it hasn&#39;t been actively maintained it&#39;ll either be overgrown or mostly dead, depending on what the weather has been doing.
-
-That, at least, is actually less dishonest than the pictures fast food restaurants use for their menu.  If you buy the house and do the necessary yard work, you actually can end up with a lawn that looks like the photo.  There&#39;s nothing you can do to get McDonald&#39;s to give you a burger that
-
-I really can’t find fault here. If you doctor photos then you have to provide the originals. How is that bad?
-
-We don&#39;t need laws to protect him, obviously, if he can afford to buy a home he doesn&#39;t need. In fact we need laws for protection FROM people like him, who are reducing the housing supply. The solution is an empty unit tax.
-
-Actually, not rich; so he&#39;s even more foolish!He was stuck a few years trying to buy another house and renting the mistake then selling his existing house and juggling the whole mess of debt. He didn&#39;t get to build his dream house or buy one as over sized as he said wanted...making it seem even more stupid; but I think if he had the money he&#39;d have torn it down.
-
-The real estate agent is happy to have a busy open house.  Everyone else suffers from wasted time, inefficient markets, and occasionally being suckered into a bad deal.
-
-Yeah, your neighbor doesn&#39;t sound smart. But that doesn&#39;t mean that we should allow other people to post misleading pictures.
-
-Even at the best, fake ai pictures are wasting people&#39;s time having to go to the house showing that they wouldn&#39;t have otherwise gone to if factual images were posted.
-
-They should have added a provision in the law that expressly forbids making any property photo look like a creepy glowing Thomas Kinkade painting. That would cover most of the issues.
-
-Although they should also ban using whatever software straightens out all the curved lines in their ultra-fisheye lens images. It just don&#39;t look right.
-
-Should Have Probited Altered PhotosThey&#39;re trying to, the difficulty is in defining what makes a photo &quot;altered&quot;.  It&#39;s actually surprisingly hard to do, and something journalism struggles with despite over 150 years of clarifications.
-In journalism, some elements are explicitly allowed: exposure levels, color balance, a choice for B/W versus color.  Some are explicitly prohibited by most outlets, like adding or removing items. Reenacting an event instead of being photos of the actual event are generally prohibited. Even something seemingly
-
-They&#39;re trying to, the difficulty is in defining what makes a photo &quot;altered&quot;.  It&#39;s actually surprisingly hard to do, and something journalism struggles with despite over 150 years of clarifications.
-
-In journalism, some elements are explicitly allowed: exposure levels, color balance, a choice for B/W versus color.  Some are explicitly prohibited by most outlets, like adding or removing items. Reenacting an event instead of being photos of the actual event are generally prohibited. Even something seemingly
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Did you know that if you took all the economists in the world and lined
-them up end to end, they&#39;d still point in the wrong direction?</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">GTA 6's Physical Release Could Be Delayed To 2027 Because of Leaks</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>GTA 6's Physical Release Could Be Delayed To 2027 Because of Leaks</h2>
-            <p><strong>Slashdot | 2026-01-26</strong></p>
-            <a class="original-link" href="https://games.slashdot.org/story/26/01/26/1929203/gta-6s-physical-release-could-be-delayed-to-2027-because-of-leaks?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Don&#39;t most &quot;physical copies&quot; nowadays just come with an essentially empty disc? For example, the physical release of Doom: The Dark Ages had no data on disc, just a stub so it could validate you own the game and let you download it. Pretty shady, but you&#39;d have had to download a 100GB day-zero patch anyways so why put anything on the disc at all?
-
-Could someone please elaborate on the entire point of releasing a digital version and a &quot;boxed&quot; version at different times?  The hell is the difference and why are fans excited about that concept?  Do I get trading cards and limited edition stickers in the landfill version, with the added bonus of waiting weeks longer for it?
-
-I&#39;m guessing this is a move buried in pointless capitalistic greed driven by bullshit hype that executives hope will still work on an audience who didn&#39;t exactly wait around to make Duk
-
-Some people like to collect physical objects. That includes a box, even if it&#39;s empty. There&#39;s still a market for it, so they&#39;ll sell it. The days of being able to play a game offline entirely from the disc are long gone, though.
-
-Some people like to collect physical objects. That includes a box, even if it&#39;s empty. There&#39;s still a market for it, so they&#39;ll sell it. The days of being able to play a game offline entirely from the disc are long gone, though. &quot;We are getting more and more information that the box version will not be released simultaneously with the digital version&quot; If the digital version gets released on time (I say that loosely) why exactly are we writing articles sounding the alarm for nerds who collect empty boxes again?  Is this a story for game players or art collectors?
-
-Some people like to collect physical objects. That includes a box, even if it&#39;s empty. There&#39;s still a market for it, so they&#39;ll sell it. The days of being able to play a game offline entirely from the disc are long gone, though.
-
-&quot;We are getting more and more information that the box version will not be released simultaneously with the digital version&quot; If the digital version gets released on time (I say that loosely) why exactly are we writing articles sounding the alarm for nerds who collect empty boxes again?  Is this a story for game players or art collectors?
-
-&quot;We are getting more and more information that the box version will not be released simultaneously with the digital version&quot;
-
-If the digital version gets released on time (I say that loosely) why exactly are we writing articles sounding the alarm for nerds who collect empty boxes again?  Is this a story for game players or art collectors?
-
-Because you need to print and have the physical copies ahead of time...Using the word &quot;need&quot; here, is a bit laughable in the 21st Century that has already distributed digital-only games.
-
-Because you need to print and have the physical copies ahead of time...
-
-Using the word &quot;need&quot; here, is a bit laughable in the 21st Century that has already distributed digital-only games.
-
-Offering an effectively empty box at a big markup is definitely anti consumer. But that&#39;s true of literally any software sale where you don&#39;t get media you can install from without a network connection. A digital download that you can install from later without approval from a server is better than a disc where you can&#39;t, let alone no disc.
-
-One could hope you got a version on a disc that you could run when their auth servers are long gone but that is probably not going to happen
-
-Considering just how bad the single player game was for GTA 5, I&#39;m taking a pass on this next one...so I really don&#39;t care about the release.
-
-What was so bad about the single player game? It was fine, and a lot of fun. It didn&#39;t get all of the additions that online got over the years, but considering the stupid shit like flying motorcycles that was added, that isn&#39;t really a bad thing.
-
-We all know that any physical release of a game as big as GTA6 is going to need a day-one patch anyway. So make it that the game wont play until it&#39;s been patched.
-
-If disks leak early, they will be useless to anyone until release day anyway.
-
-Not that the physical media will help since it&#39;ll probably copy most of the files over to the SSD but at least users have a copy of it - at least for a little bit. Because the normal trend these days is to crap out a broken gold master and immediately drop a massive patch over the top.
-
-I&#39;ve become really unexcited about Rockstar lately. Stupid, unnecessary game launcher. Overwhelming focus on multiplayer/shark cards, though it&#39;s a money-maker, so...hard to fault them from a business standpoint, but really hate it from a gamer standpoint. Lack of focus on PC.
-
-But I&#39;m probably just not their target market anymore.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Did you know that if you took all the economists in the world and lined
-them up end to end, they&#39;d still point in the wrong direction?</div>
+&quot;Yeah, but you&#39;re taking the universe out of context.&quot;</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2081,11 +1869,71 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">The Register</div>
-            <div class="title">AWS's inevitable destiny: becoming the next Lumen</div>
+            <div class="title">Vibe coding may be hazardous to open source</div>
             <div class="meta">2026-01-26</div>
         </div>
         
         <div id="content-42" style="display:none;">
+            <h2>Vibe coding may be hazardous to open source</h2>
+            <p><strong>The Register | 2026-01-26</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/26/vibe_coding_hazardous_open_source/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Tailwind Labs CEO Adam Wathan recently blamed AI for forcing him to lay off three workers.
+
+Tailwind Labs oversees the development of the open source Tailwind CSS framework. And according to Wathan, AI coding tools came between the company and its customers, reducing traffic to the website, which in turn hit product exposure.
+
+&quot;Traffic to our docs is down about 40 percent from early 2023 despite Tailwind being more popular than ever,&quot; he wrote in a GitHub Issues post earlier this month. &quot;The docs are the only way people find out about our commercial products, and without customers we can&#39;t afford to maintain the framework.&quot;
+
+A recent pre-print paper cites the situation at Tailwind Labs as evidence that the increasing adoption of AI coding tools represents a breaking change for the open source community.
+
+The paper, titled Vibe Coding Kills Open Source, was written by Miklós Koren (Central European University, KRTK, CEPR and CESifo), Gábor Békés (Central European University, KRTK, and CEPR), Julian Hinz (Bielefeld University and Kiel Institute for the World Economy), and Aaron Lohmann (Kiel Institute for the World Economy).
+
+Essentially, the paper argues that AI tools install open source dependencies in a way that comes between software developers and project maintainers, undermining interactions that potentially return value to those doing the work of software maintenance.
+
+&quot;Vibe coding raises productivity by lowering the cost of using and building on existing code, but it also weakens the user engagement through which many maintainers earn returns,&quot; the authors argue. &quot;When OSS is monetized only through direct user engagement, greater adoption of vibe coding lowers entry and sharing, reduces the availability and quality of OSS, and reduces welfare despite higher productivity.&quot;
+
+Co-author Koren, a professor of economics at Central European University in Vienna, Austria, told The Register in an email that evidence of AI tools weakening engagement with the open source community is mostly circumstantial.
+
+&quot;There is a documented decline in Stack Overflow questions after the launch of ChatGPT; and it is faster than in countries where ChatGPT was not accessible,&quot; he said. &quot;There are many similar anecdotes circulating on social media. In fact, we started working on the paper before Tailwind&#39;s case became publicized.&quot;
+
+Koren said the paper&#39;s findings represent an extrapolation about what he and his co-authors know given an economic model of the open source software ecosystem.
+
+&quot;We know that developers have adopted vibe coding very fast,&quot; he said. &quot;[Anthropic CEO] Dario Amodei has famously said at the Axios AI+ Summit in September 2025 that &#39;70, 80, 90 percent of the code written in Anthropic is written by Claude.&#39; So users of vibe coding find it easy to switch to this mode of building software. This implies that human attention towards producers of OSS is shrinking.&quot;
+
+The impact of that attention shift is not measured only in terms of revenue. Rather, it&#39;s assessed as an amalgamation of the rewards available to open source developers, such as community recognition, reputation, and job prospects, Koren said, pointing to a recent paper [PDF] that found &quot;only about 0.1 percent of the total value created by OSS developers is captured by them.&quot;
+
+Koren said that the impact of the adoption of AI tools differs depending on the size and governance of the project.
+
+&quot;High-quality projects can still thrive,&quot; he said. &quot;OSS developers need visibility of their project to gather useful feedback from users, recruit new developers and maintainers, and to garner kudos from the community. We don&#39;t think that large OSS projects will disappear overnight. But it will be harder to get beyond the &#39;cold start problem&#39; and get an otherwise promising project off the ground. Or maintainers of marginally successful projects may lose their motivation and stop contributing. The proverbial &#39;random person in Nebraska&#39; may give up.&quot;
+
+Koren said this is a systematic issue that needs industry collective action.
+
+&quot;Traditionally, OSS work is not directly compensated by users not because they don&#39;t value OSS, but because of the frictions involved,&quot; he explained. &quot;I may use dozens of libraries for any given project. I will not look up each individual maintainer and give them a fraction of a cent. There are ongoing funding drives at GitHub or npm, but these do not solve the problem because they still need the user to pay attention and to open their wallet.&quot;
+
+But AI companies could help, Koren argues, noting that most LLM inference is done by a handful of large providers like OpenAI, Anthropic, or third-party providers like OpenRouter and Groq.
+
+&quot;Metering the usage of each OSS library would be technically simple to do,&quot; he said. &quot;This could serve as the basis for a revenue-sharing deal. Much like Spotify pays artists based on playtime, OSS developers could share some of the LLM revenue based on actual usage.&quot;
+
+Armin Ronacher, creator of Flask and an experienced open source developer, told The Register in an email that while AI has altered open source, he&#39;s reserving judgment.
+
+&quot;AI is definitely changing a lot about the dynamics of open source,&quot; Ronacher said. &quot;In particular, it makes code cheaper and it changes the associated calculations. Open source right now sees a lot more low-quality contributions, but on the other hand, it might strengthen some key projects where trust comes from strong maintainers with a track record.
+
+&quot;I think it&#39;s too early to say where this will land. This is a massive shift and we will see the effects in a few years. It will take some rewiring and it&#39;s very hard to come to conclusions until it all settles again.
+
+&quot;In general I don&#39;t try to think much about alarmism on any of this right now. All the energy put into meta discussions right now seems wasted until we find a new normal.&quot; ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">The Register</div>
+            <div class="title">AWS's inevitable destiny: becoming the next Lumen</div>
+            <div class="meta">2026-01-26</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
             <h2>AWS's inevitable destiny: becoming the next Lumen</h2>
             <p><strong>The Register | 2026-01-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/26/aws_destiny_lumen_corey_quinn/">Visit Original Website</a>
@@ -2135,13 +1983,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">Canva among ~100 targets of ShinyHunters Okta identity-theft campaign</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Canva among ~100 targets of ShinyHunters Okta identity-theft campaign</h2>
             <p><strong>The Register | 2026-01-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/26/shinyhunters_okta_sso_campaign/">Visit Original Website</a>
@@ -2173,13 +2021,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">How one developer used Claude to build a memory-safe extension of C</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>How one developer used Claude to build a memory-safe extension of C</h2>
             <p><strong>The Register | 2026-01-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/26/trapc_claude_c_memory_safe_robin_rowe/">Visit Original Website</a>
@@ -2253,13 +2101,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">Microsoft's Maia 200 promises Blackwell levels of performance for two-thirds the power</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Microsoft's Maia 200 promises Blackwell levels of performance for two-thirds the power</h2>
             <p><strong>The Register | 2026-01-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/26/microsoft_maia_200/">Visit Original Website</a>
@@ -2325,13 +2173,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">US ownership of TikTok off to a rocky start as outage continues into second day</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>US ownership of TikTok off to a rocky start as outage continues into second day</h2>
             <p><strong>The Register | 2026-01-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/26/tiktok_outage_datacenter_power/">Visit Original Website</a>
@@ -2349,46 +2197,6 @@ The TikTok USDS Joint Venture confirmed the issue to The Register, explaining th
 It would make sense that the company is experiencing a widespread outage, given the massive winter storm that barreled across much of the US over the weekend. We asked the Joint Venture if the storm and service outage were related multiple times, but a spokesperson didn&#39;t answer the question.
 
 Some TikTok users noted the outage coincided with the federal agents&#39; fatal shooting of a second American citizen in Minneapolis - this time Alex Pretti - and speculated that it was an attempt to restrict the flow of information about the incident. A TikTok USDS Joint Venture spokesperson told us that TikTok content guidelines haven&#39;t changed since the majority American-owned joint venture was established. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">Claude can now disgorge interface elements from other apps</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Claude can now disgorge interface elements from other apps</h2>
-            <p><strong>The Register | 2026-01-26</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/26/claude_mcp_apps_arrives/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Anthropic&#39;s Claude can now present the interfaces of other applications within its chat window, thanks to an extension of the Model Context Protocol (MCP).
-
-Claude has long been able to fetch data from third-party applications through an MCP server connection. That capability has been expanded to present user interface elements like charts, forms, and dashboards, allowing third-party apps to be operated from within the chat window.
-
-&quot;Claude already connects to your tools and takes actions on your behalf,&quot; the company said in a blog post. &quot;Now those tools show up right in the conversation, so you can see what&#39;s happening and collaborate in real time.&quot;
-
-The change makes Claude&#39;s chat environment more like a cross-application interface layer – users no longer have to switch application focus to access app-specific tools. It could pose a challenge to operating system makers like Apple, Google, and Microsoft, similar to the one presented by web browsers – it reduces the need to interact with the operating system.
-
-And it&#39;s not just Claude that stands to benefit. The extension, called MCP Apps, should be available in other vendors&#39; AI applications, including Goose, Visual Studio Code, and ChatGPT, either today or soon.
-
-The MCP Apps Extension (SEP-1865) was first proposed back in November 2025 and is based on MCP-UI and the OpenAI Apps SDK. It allows MCP servers to deliver interactive user interface elements that hosts can render in-conversation, rather than returning data alone.
-
-&quot;MCP Apps address a real gap between what agentic tools can provide and how users naturally want to interact with them,&quot; said Clare Liguori, senior principal engineer at AWS, in remarks accompanying the MCP blog post. &quot;The ability to render dynamic interfaces directly in conversation makes it easier to leverage MCP server capabilities in practical ways.&quot;
-
-Initially, this ability to be proxied within Claude is limited to Anthropic&#39;s launch partners: Amplitude, Asana, Box, Canva, Clay, Figma, Hex, monday.com, Slack, and (soon) Salesforce. But expect that to expand over time as other software makers adapt their apps.
-
-Image of Figma in Claude via MCP Apps extension - Click to enlarge
-
-MCP Apps surface third-party interface elements in iframes, but with additional capabilities like logging events for debugging, opening links in the user&#39;s browser, sending follow-up messages, and updating the underlying model&#39;s context.
-
-&quot;Running UI from MCP servers means running code you didn&#39;t write within your MCP host,&quot; the MCP post explains, citing various security layers like iframe sandboxing, pre-declared templates for prevailing HTML content prior to rendering, auditable messages, and host-managed approvals for UI-initiated tool calls.
-
-Whether those defenses prove sufficient to avoid creating novel risks will be tested in time. ®
 
 The Register   Biting the hand that feeds IT
 
@@ -3512,25 +3320,39 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump says he is raising tariffs on certain South Korean imports to 25% - Reuters</div>
-            <div class="meta">2026-01-26</div>
+            <div class="title">Bovino removed from his role as US Border Patrol commander at large, The Atlantic reports - Reuters</div>
+            <div class="meta">2026-01-27</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Trump says he is raising tariffs on certain South Korean imports to 25% - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-01-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOaEpDODZJT1JsUG9iS1ZQMVF3eGdJZmYyXzZTeTRVcERaLWhJR3Z0REl6NG5UYXM4NnJHWWpWanhzTXpyX283WE9tbmZmTVNHN2ZnWTNHTXJSN0pheUg3YkRSaEdPV1c2SC1xYkJWNS1paHZRa2VyR3hTN2NUT18wQWVNS1lreF80VFBvejJNVC1CMjJGS0ZDc0FTUFdPUGtMUm1zblYzLVhEckNTdk9xMjQxdjYyNTRzTThB?oc=5">Visit Original Website</a>
+            <h2>Bovino removed from his role as US Border Patrol commander at large, The Atlantic reports - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-01-27</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPT3h1dF9obWFLSDdLUmpCcF8wanZkUUE5eE5mNUpRSUlra3FQX1JjWGFOdzBDNmlCTjlpSnJqSEMxeVJWeW93bVRoZlNyMXJhclpfaG5MZUkyQTRPS1RCZ1lmY1VBdF8tZWNrdUdpUlFFaC1zdnJMVEY2MDFvdzk1ZXp1OEdsM2wzQV9JSVZQUTUzb3RUWEFib241NlE3dU1IYUJ2N0dfMUxkOVQwenMzN3Y4WTFTUQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Trump says he is raising tariffs on South Korean imports after trade deal delays - Reuters</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>Trump says he is raising tariffs on South Korean imports after trade deal delays - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-01-27</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOaEpDODZJT1JsUG9iS1ZQMVF3eGdJZmYyXzZTeTRVcERaLWhJR3Z0REl6NG5UYXM4NnJHWWpWanhzTXpyX283WE9tbmZmTVNHN2ZnWTNHTXJSN0pheUg3YkRSaEdPV1c2SC1xYkJWNS1paHZRa2VyR3hTN2NUT18wQWVNS1lreF80VFBvejJNVC1CMjJGS0ZDc0FTUFdPUGtMUm1zblYzLVhEckNTdk9xMjQxdjYyNTRzTThB?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Trump's immigration approval drops to record low, Reuters/Ipsos poll finds - Reuters</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-68" style="display:none;">
             <h2>Trump's immigration approval drops to record low, Reuters/Ipsos poll finds - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-26</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOQ2RpMEVNcEMydXVQMTBfMHhXUkxjRWZ2UWJYOWdVdElUZXFvWG5FUjU3bjhyOW03YjFpOGlxZ2Y0YndOT2pFVVB4SUNKUU9zdHVFZFB0NzB2NkRqaFlndEhESmh2SHd0MWRwWkhGYnJWaFFnVG9oZ3V4R0sxR0xWVDRFNVE5QkY2alp5NUtLOGJwdUJtRE1nWG90cVh5NlZWakJZU1VsLTRXOVBLUE5icXF5aw?oc=5">Visit Original Website</a>
@@ -3538,27 +3360,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Republican quits Minnesota governor race, criticizing ICE surge - Reuters</div>
+            <div class="title">US proposes slight rise in 2027 Medicare insurer payments, shares fall - Reuters</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-68" style="display:none;">
-            <h2>Republican quits Minnesota governor race, criticizing ICE surge - Reuters</h2>
+        <div id="content-69" style="display:none;">
+            <h2>US proposes slight rise in 2027 Medicare insurer payments, shares fall - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPd1Mwb1F1MXJka19jRVNQTkFXcVFJREc0Z3p2c3ZXeUNFRFhqczVuUDdXRFdGVlpETlU5WGZVb2szNFYtdjAxVDJfb2dfQW9vNnBmUS1qUGJELUhWWU9FT1J2UUpKMFRzV1RFU2J1M1VBbzJKUU1xM3ozT0RNYjJqd0ZKN2gwcUJJY0VVYXhBVGpSY2ZjTEU0MmFFVkw4Nnk2dE0tTWFpZnRrajRRT3E1NHNUbzBRUQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxPdUF3VXBkbVhvc1JFSHhHeUl3Y1VJelQ2c0Utb2lsa0RGN0NadklyVjdxaE1vdVBCcktNVExsSkI3ZkRhbVFyLWk1WUkxbDRXekFpWDhxcGxjVVE1TnZHR2llZTBOTWowZFBqSG85dHByX0lKaEJrWkJrZDBHWHFpLVoxMFJ2RmxtNEc1R2xWaEhrNWNCNmJjRmNVR3RKRlA5UUtsOFhZNUdKTVZPdndsVjg5UHVISE1ZSHhTT0c1ODdqMllEZ0N2M29BcTlBcDFfWGhIeXYwZkpIakMxdjFtYkp0Zw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Top US Border Patrol official Bovino, some agents to leave Minneapolis, CNN reports - Reuters</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>Top US Border Patrol official Bovino, some agents to leave Minneapolis, CNN reports - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-26</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOdFotbGt5d0RmVmhCSUYyY1JyRDVEZDdJc09qSXZjUjNkZWFwWFl2Y19mN2FoS0swLVZ3c3pKbk1FdkxHeE5XSHh5REVEMGNfYW5uMWJMTDlBNTdqZ2JVTk5ZNjhXYTF4cTVZcDI0c2pfVDZhNnVsbzdlN0ZxenZFV2ZVck5lemF0RTBFSHRSWTk2NHdYR201TFRCQ3NmaGpsZ0JVS3BkdzhaUFowRUxjUTl5TjdXWGdJM0VWV3AzNlE?oc=5">Visit Original Website</a>
@@ -3566,30 +3388,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Nvidia unveils AI models for faster, cheaper weather forecasts - Reuters</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>Nvidia unveils AI models for faster, cheaper weather forecasts - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-01-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNUUVnOHNUTlFwN3U2RkwzYVlvNUxKT3RVN2RWYlJ2TWxObnpYUmJCa0lEeUoxLVZIRVF4RDltVEdTSzZQVkVfZnZweGFqNmVfYmZZeGJDdFdiMVNUQlBHUkpFQ00zeENCQzdGYkxrN05ZQVRaTlVJcEdEQVIwTDA5R2JzeDNVNzNkRWFMOTRTM1lmNHhRYWJ4NC1mU0g5NTJoMW5XS2VpdUJzSllwak5tZmVnMnU?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US energy sector reels after winter storm knocks out 2 million bpd of crude output - Reuters</div>
+            <div class="title">Republican quits Minnesota governor race, criticizing ICE surge - Reuters</div>
             <div class="meta">2026-01-26</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>US energy sector reels after winter storm knocks out 2 million bpd of crude output - Reuters</h2>
+            <h2>Republican quits Minnesota governor race, criticizing ICE surge - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQUHBDRVktMHV3RnVaWWR5QUhGWG5ua2hMdXpVSUpMc25rUXB5U1Q2R3Y3V2FfXzZGU3lka2RWU3NmZWwxd21hdWk2aDJRZk1XRmlBNENxdzFkaU9FU0R0TXhrMFZaWFNTVXJrTnBYNTAyUkFvZ2dfWWo0SGJ2dnZqWW1pOVpSUEg2WVVlQm15RzZlaFlJT0ZMODZSWXVWcVlsTUxiNjk0aGtyQzhpSzdqb0IyQmozZzczVlp3UTJvWXoyMGpqZS1zRVdLMA?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPd1Mwb1F1MXJka19jRVNQTkFXcVFJREc0Z3p2c3ZXeUNFRFhqczVuUDdXRFdGVlpETlU5WGZVb2szNFYtdjAxVDJfb2dfQW9vNnBmUS1qUGJELUhWWU9FT1J2UUpKMFRzV1RFU2J1M1VBbzJKUU1xM3ozT0RNYjJqd0ZKN2gwcUJJY0VVYXhBVGpSY2ZjTEU0MmFFVkw4Nnk2dE0tTWFpZnRrajRRT3E1NHNUbzBRUQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
