@@ -183,7 +183,7 @@ That looping process has to start somewhere, and Bolin’s post reveals how Code
 
 The instructions field comes from either a user-specified configuration file or base instructions bundled with the CLI. The tools field defines what functions the model can call, including shell commands, planning tools, web search capabilities, and any custom tools provided through Model Context Protocol (MCP) servers. The input field contains a series of items that describe the sandbox permissions, optional developer instructions, environment context like the current working directory, and finally the user’s actual message.
 
-As conversations continue, each new turn includes the complete history of previous messages and tool calls. This means the prompt grows with every interaction, which has performance implications. According to the post, because Codex does not use an optional “previous_response_id” parameter that would allow the API to reference stored conversation state, every request is fully stateless (that is, it sends the entire conversation history with each API call rather than the server retrieving it from memory). Bolin says this design choice simplifies things for API providers and makes it easier to support customers who opt into “Zero Data Retention,” where OpenAI does not store user data.
+As conversations continue, each new turn includes the complete history of previous messages and tool calls. This means the prompt grows with every interaction, which has performance implications. According to the post, because Codex does not use an optional “previous_response_id” parameter that would allow the API to reference stored conversation state, every request is fully stateless (that is, it sends the entire conversation history with each API call rather than the server retrieving it from memory). Bolin says this design choice simplifies things for API providers and makes it easier to support customers who opt in to “Zero Data Retention,” where OpenAI does not store user data.
 
 The quadratic growth of prompts over a conversation is inefficient, but Bolin explains that prompt caching mitigates this issue somewhat. Cache hits only work for exact prefix matches within a prompt, which means Codex must carefully avoid operations that could cause cache misses. Changing the available tools, switching models, or modifying the sandbox configuration mid-conversation can all invalidate the cache and hurt performance.
 
@@ -616,11 +616,83 @@ More on generative AI: San Diego Comic Con Quietly Bans AI Art</div>
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
-            <div class="title">Northwood Space secures a $100M Series B and a $50M Space Force contract</div>
+            <div class="title">Uber launches an ‘AV Labs’ division to gather driving data for robotaxi partners</div>
             <div class="meta">2026-01-27</div>
         </div>
         
         <div id="content-12" style="display:none;">
+            <h2>Uber launches an ‘AV Labs’ division to gather driving data for robotaxi partners</h2>
+            <p><strong>TechCrunch | 2026-01-27</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/01/27/uber-launches-an-av-labs-division-to-gather-driving-data-for-robotaxi-partners/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Uber has more than 20 autonomous vehicle partners, and they all want one thing: data. So the company says it’s going to make that available through a new division called Uber AV Labs.
+
+Despite the name, Uber is not returning to developing its own robotaxis, which it stopped doing after one of its test vehicles killed a pedestrian in 2018. (Uber ultimately sold off the division in 2020 in a complex deal with Aurora.) But it will send its own cars out into cities adorned with sensors to collect data for partners like Waymo, Waabi, Lucid Motors, and others — though no contracts are signed just yet.
+
+Broadly speaking, self-driving cars are in the middle of a shift away from rules-based operation and toward relying more on reinforcement learning. As that happens, real-world driving data has become hugely valuable for training these systems.
+
+Uber told TechCrunch the autonomous vehicle companies that want this data the most are the ones that have already been collecting a lot of it themselves. It’s a sign that, like many of the frontier AI labs, they’ve come to realize that “solving” the most extreme edge cases is a volume game.
+
+Right now, the size of an autonomous vehicle company’s fleet creates a physical limit to how much data it can collect. And while many of these companies create simulations of real-world environments to hedge against edge cases, nothing beats driving on actual roads — and driving a lot — when it comes to discovering all the strange, difficult, and flat-out unexpected scenarios that cars wind up in.
+
+Waymo provides an example of this gap. The company has had autonomous vehicles in operation or in testing for a decade, and yet its current robotaxis have recently been caught illegally passing stopped school buses.
+
+Having access to a larger pool of driving data could help robotaxi companies solve some of those problems before or as they creep up, Uber’s chief technology officer Praveen Neppalli Naga told TechCrunch in an exclusive interview.
+
+And Uber wont be charging for it. At least not yet.
+
+“Our goal, primarily, is to democratize this data, right? I mean, the value of this data and having partners’ AV tech advancing is far bigger than the money we can make from this,” he said.
+
+Uber’s VP of engineering Danny Guo said the lab has to build the basic data foundation first before it figures out the product market fit. “Because if we don’t do this, we really don’t believe anybody else can,” Guo said. “So as someone who can potentially unlock the whole industry and accelerate the whole ecosystem, we believe we have to take on this responsibility right now.”
+
+The new AV Labs division is starting out small. So far, it just has one car (a Hyundai Ioniq 5, though Uber says it is not married to a single model), and Guo told TechCrunch that his team was still literally screwing on sensors like lidars, radars, and cameras.
+
+“We don’t know if the sensor kit will fall off, but that’s the scrappiness we have,” he said with a laugh. “I think it will take a while for us to say, deploy 100 cars to the road to start collecting data. But the prototype is there.”
+
+Partners won’t receive raw data. Once the Uber AV Labs fleet is up and running, Naga said the division will “have to massage and work on the data to help fit to the partners.” This “semantic understanding” layer is what the driving software at companies like Waymo will be pulling from to improve a robotaxi’s real-time path planning.
+
+Even then, Guo said there will likely be an interstitial step taken, where Uber will essentially plug a partner’s driving software into the AV Labs cars to be run in “shadow mode.” Any time the Uber AV Labs driver does something different from what the autonomous vehicle software does in shadow mode, Uber will flag that to the partner company.
+
+This will not only help discover shortcomings in the driving software, but also help train the models to drive more like a human and less like a robot, Guo said.
+
+If this approach sounds familiar, it is because it’s essentially what Tesla has been doing to train its own autonomous vehicle software over the last decade. Uber’s approach lacks the same scale, though, as Tesla has millions of customer cars driving on roads around the world every day.
+
+That doesn’t bother Uber. Guo said he expects to do more targeted data collection based on the needs of the autonomous vehicle companies.
+
+“We have 600 cities that we can pick and choose [from]. If the partner tell us a particular city they’re interested in, we can just deploy our [cars],” he said.
+
+Naga said the company expects to grow this new division to a few hundred people within a year, and that Uber wants to move quickly. And while he sees a future in which Uber’s whole fleet of ride-hail vehicles could be leveraged to collect even more training data, he knows the new division has to start somewhere.
+
+“From our conversations with our partners, they’re just saying: ‘give us anything that will be helpful.’ Because the amount of data Uber can collect just outweighs everything that they can possibly do with their own data collection,” Guo said.
+
+Sean O’Kane is a reporter who has spent a decade covering the rapidly-evolving business and technology of the transportation industry, including Tesla and the many startups chasing Elon Musk. Most recently, he was a reporter at Bloomberg News where he helped break stories about some of the most notorious EV SPAC flops. He previously worked at The Verge, where he also covered consumer technology, hosted many short- and long-form videos, performed product and editorial photography, and once nearly passed out in a Red Bull Air Race plane.
+
+You can contact or verify outreach from Sean by emailing sean.okane@techcrunch.com or via encrypted message at okane.01 on Signal.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+Anthropic launches interactive Claude apps, including Slack and other workplace tools
+
+TikTok users freak out over app’s ‘immigration status’ collection — here’s what it means
+
+Researchers say Russian government hackers were behind attempted Poland power outage
+
+Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ laptops: Reports
+
+Capital One acquires Brex for a steep discount to its peak valuation, but early believers are laughing all the way to the bank
+
+Not to be outdone by OpenAI, Apple is reportedly developing an AI wearable
+
+Anthropic’s CEO stuns Davos with Nvidia criticism</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Northwood Space secures a $100M Series B and a $50M Space Force contract</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
             <h2>Northwood Space secures a $100M Series B and a $50M Space Force contract</h2>
             <p><strong>TechCrunch | 2026-01-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/27/northwood-space-secures-a-100m-series-b-and-a-50m-space-force-contract/">Visit Original Website</a>
@@ -667,11 +739,11 @@ You can contact or verify outreach from Sean by emailing sean.okane@techcrunch.c
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
+Anthropic launches interactive Claude apps, including Slack and other workplace tools
+
 TikTok users freak out over app’s ‘immigration status’ collection — here’s what it means
 
 Researchers say Russian government hackers were behind attempted Poland power outage
-
-Here’s what you should know about the US TikTok deal
 
 Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ laptops: Reports
 
@@ -682,13 +754,13 @@ Not to be outdone by OpenAI, Apple is reportedly developing an AI wearable
 Anthropic’s CEO stuns Davos with Nvidia criticism</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">‘Among the worst we’ve seen’: report slams xAI’s Grok over child safety failures</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>‘Among the worst we’ve seen’: report slams xAI’s Grok over child safety failures</h2>
             <p><strong>TechCrunch | 2026-01-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/27/among-the-worst-weve-seen-report-slams-xais-grok-over-child-safety-failures/">Visit Original Website</a>
@@ -745,11 +817,11 @@ You can contact or verify outreach from Rebecca by emailing rebecca.bellan@techc
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
+Anthropic launches interactive Claude apps, including Slack and other workplace tools
+
 TikTok users freak out over app’s ‘immigration status’ collection — here’s what it means
 
 Researchers say Russian government hackers were behind attempted Poland power outage
-
-Here’s what you should know about the US TikTok deal
 
 Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ laptops: Reports
 
@@ -760,13 +832,13 @@ Not to be outdone by OpenAI, Apple is reportedly developing an AI wearable
 Anthropic’s CEO stuns Davos with Nvidia criticism</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">South Korea’s Edenlux set for U.S. debut of eye-strain wellness device</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>South Korea’s Edenlux set for U.S. debut of eye-strain wellness device</h2>
             <p><strong>TechCrunch | 2026-01-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/26/south-koreas-edenlux-set-for-u-s-debut-of-eye-strain-wellness-device/">Visit Original Website</a>
@@ -805,11 +877,11 @@ Kate Park is a reporter at TechCrunch, with a focus on technology, startups and 
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
+Anthropic launches interactive Claude apps, including Slack and other workplace tools
+
 TikTok users freak out over app’s ‘immigration status’ collection — here’s what it means
 
 Researchers say Russian government hackers were behind attempted Poland power outage
-
-Here’s what you should know about the US TikTok deal
 
 Microsoft gave FBI a set of BitLocker encryption keys to unlock suspects’ laptops: Reports
 
@@ -820,13 +892,13 @@ Not to be outdone by OpenAI, Apple is reportedly developing an AI wearable
 Anthropic’s CEO stuns Davos with Nvidia criticism</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Qualcomm backs SpotDraft to scale on-device contract AI with valuation doubling toward $400M</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Qualcomm backs SpotDraft to scale on-device contract AI with valuation doubling toward $400M</h2>
             <p><strong>TechCrunch | 2026-01-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/26/qualcomm-backs-spotdraft-to-scale-on-device-contract-ai-with-valuation-doubling-toward-400m/">Visit Original Website</a>
@@ -880,13 +952,13 @@ Not to be outdone by OpenAI, Apple is reportedly developing an AI wearable
 Anthropic’s CEO stuns Davos with Nvidia criticism</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Google pays $68M to settle claims its voice assistant spied on users</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Google pays $68M to settle claims its voice assistant spied on users</h2>
             <p><strong>TechCrunch | 2026-01-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/01/26/google-pays-68-million-to-settle-claims-its-voice-assistant-spied-on-users/">Visit Original Website</a>
@@ -900,46 +972,6 @@ The case centered on “false accepts,” wherein Google Assistant is alleged to
 Americans have long suspected that their devices inappropriately spy on them. Those suspicions have led, increasingly, to claims of legal wrongdoing. In 2021, Apple agreed to pay $95 million to settle claims its voice assistant, Siri, had recorded their conversations without a prompt from users.
 
 Google, like other tech giants, has faced other privacy-related litigation in recent years. Last year, the company agreed to pay $1.4 billion to the state of Texas to settle two lawsuits that claimed it had violated the state’s data privacy laws.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-Subscribe for the industry’s biggest tech news
-
-Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
-
-TechCrunch Mobility is your destination for transportation news and insight.
-
-Startups are the core of TechCrunch, so get our best coverage delivered weekly.
-
-Provides movers and shakers with the info they need to start their day.
-
-By submitting your email, you agree to our Terms and Privacy Notice.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">AI chip startup Ricursive hits $4B valuation two months after launch</div>
-            <div class="meta">2026-01-27</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>AI chip startup Ricursive hits $4B valuation two months after launch</h2>
-            <p><strong>TechCrunch | 2026-01-27</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/01/26/ai-chip-startup-ricursive-hits-4b-valuation-two-months-after-launch/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Ricursive Intelligence, a startup building an AI system to design and automatically improve AI chips, has raised $300 million at a $4 billion valuation. The company said Monday the round was led by Lightspeed.
-
-Ricursive says the system will be able to create its own silicon substrate layer and speed up AI chip improvements. Rinse and repeat to get to AGI, the founders say.
-
-The Series A comes just two months since the company formally launched with a seed investment led by Sequoia. It has raised $335 million total, reports The New York Times.
-
-Ricursive was founded by former Google researchers CEO Anna Goldie and CTO Azalia Mirhoseini. Their work on a novel reinforcement learning method for designing chip layouts, called AlphaChip, has been used in four generations of Google’s TPU chip, the startup says.
-
-DST Global, Nvidia’s venture capital arm NVentures, Felicis Ventures, 49 Palms Ventures, and Radical AI are also investors.
-
-Ricursive is not to be confused with the similarly named startup Recursive, reportedly founded by well-known natural language processing neural networks researcher Richard Socher. That Recursive is also in talks to raise a giant round at a $4 billion valuation, Bloomberg reported last week. And it is also working on AI systems that improve themselves.
-
-And these two are not the only new startups working on the concept. As TechCrunch previously reported, Naveen Rao’s new AI hardware startup, named Unconventional AI, is also working on an intelligent substrate. In December it raised a $475 million seed round at a $4.5 billion valuation led by Andreessen Horowitz and Lightspeed Ventures, with participation from Lux Capital and DCVC.
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass — and if you’re among the first 500 registrants, score a +1 pass at 50% off.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
@@ -1334,38 +1366,70 @@ This essay was adapted from Michael Pollan’s book, A World Appears: A Journey 
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">ReactOS Celebrates 30 Years</div>
+            <div class="title">Microsoft Is Refreshing the Xbox Cloud Gaming Web Experience</div>
             <div class="meta">2026-01-27</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Microsoft Is Refreshing the Xbox Cloud Gaming Web Experience</h2>
+            <p><strong>Slashdot | 2026-01-27</strong></p>
+            <a class="original-link" href="https://games.slashdot.org/story/26/01/27/0556242/microsoft-is-refreshing-the-xbox-cloud-gaming-web-experience?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+We gamers expect the word retiring, not refreshing. Unless you are a Bryan.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Artificial intelligence has the same relation to intelligence as
+artificial flowers have to flowers.
+		-- David Parnas</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">ReactOS Celebrates 30 Years</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>ReactOS Celebrates 30 Years</h2>
             <p><strong>Slashdot | 2026-01-27</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/01/27/0053233/reactos-celebrates-30-years?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 I don&#39;t think I&#39;ve ever seen an article sit around this long with no comments.
 
 Well, if you&#39;re into ReactOS, I guess it&#39;s proof that you&#39;re not in a rush for anything.
 
+The latest releases of WINE and Proton are doing amazing things. Then looking at FEX-Emu running native 32 & 64-bit Windows software on an ARM Linux PC and having the performance to play modern games.
+
+That said. React could serve some purpose in terms of compatibility. There are still XP installs in many manufacturing and medical research faculties due to multi million dollar devices that don&#39;t have drivers for anything new.
+
+If React could run on modern hardware, while still supporting these older devices
+
+The problem is ReactOS is a clone of XP more or less. XP is literally so far in the rear view mirror that adults graduating college and entering the workforce were still breast feeding and in a way nobody would get judgmental about when it was released. Its been so long since older workers used it for the most part that any system vaguely similar will be just as familiar or thought about the other way have no more or less learning curve. Slap XFCE or really even KDE on some Linux distro and it will be as us
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Two wrights don&#39;t make a rong, they make an airplane.  Or bicycles.</div>
+Artificial intelligence has the same relation to intelligence as
+artificial flowers have to flowers.
+		-- David Parnas</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Lawsuit Alleges That WhatsApp Has No End-to-End Encryption</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Lawsuit Alleges That WhatsApp Has No End-to-End Encryption</h2>
             <p><strong>Slashdot | 2026-01-27</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/01/27/0550249/lawsuit-alleges-that-whatsapp-has-no-end-to-end-encryption?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
 
 Gee, what would lead anyone think they were capable of doing such a thing?
 
@@ -1377,7 +1441,11 @@ I believe the great Harvard-educated philosopher Mark Zuckerberg said it best wh
 
 - WhatsApp supposedly uses the Signal protocol(*), which is as good as is gets with regards to E2EE
 
-- End to end is only as good as the said end-points. In addition to being closed source, the WhatsApp has multiple problems: an AI functionality that needs to send all your chats back to Meta&#39;s cloud unencrypted (as it&#39;s not relying on locally running models) so the AI can summarize and whatever else shit they are advertising; WhatsApp by default backs its data up onto the cloud, so if you l
+- End to end is only as good as the said end-points. In addition to being closed source, the WhatsApp has multiple problems: an AI functionality that needs to send all your chats back to Meta&#39;s cloud unencrypted (as it&#39;s not relying on locally running models) so the AI can summarize and whatever else shit they are advertising; WhatsApp by default backs its data up onto the cloud, so if you lose your phone you can still recover instead of needing to start a new account from scratch.
+
+So I presume it&#39;s a lawsuit where both parties are technically right:- Meta is technically right in affirming that they use the current best standard for E2EE (they mostly are)- The plaintiff are right that the clients (Android app, web app, etc.) are completely leaking data in a zillion different ways (what&#39;s the point in having the best E2EE if said End is going to blast that precious private information in all possible directions?!)
+
+(*): Minus a couple of bits. WhatsApp doesn&#39;t use Signal&#39;s implementation (sealed sender) to hide the meta data of who is chatting with whom AFAIK they only encrypt the message body; the protocol can work without ever needing phone numbers, Signal client is getting there eventually, WhatsApp isn&#39;t touching that either.
 
 it would be a lot more difficult to establish communications with new users
 
@@ -1409,6 +1477,8 @@ Here we are, arguing about end-to-end-to-man-in-the-middle word trickery, when t
 
 If it&#39;s just tls then you only have a public key, which is not &quot;having the key&quot;.  Having the private key is what qualifies and for TLS that remains on the server side.
 
+and then there&#39;s GMail with it&#39;s version of &quot;encrypted email&quot;, which only indicates that the first SMTP connection in the chain was secured by TLS.Wording does matter, but wording is the trickery.
+
 Meta, calls the claims &quot;false and absurd.&quot; 
 Meta also says they routinely see false claims and speculation like this in lots of users&#39; WhatsApp messages - and none are true. ;-)
 
@@ -1422,7 +1492,19 @@ It would be such a brazen lie that it makes me skeptical of the allegations of t
 
 They claim end-to-end using signal protocol and we know that&#39;s true because the traffic can be analyzed.
 
+Yes they can ... however WA runs on the Signal backbone.
+
+Would be kind of braindead, to pay the fees and then torpedo out the privacy.
+
 When E2EE was first rolled out, a message appeared in each chat saying that communications were now secure. I always wondered how they managed to distribute the keys without Facebook ever gaining access to them. I long suspected that they might secretly keep a copy of the keys, perhaps obtained during the key distribution process itself. Now those suspicions are gone
+
+You generate the keys on the device.Obviously, you can make the app malicious, and just sent the key(s) to the mothership anyway.
+
+However the principle is to generate the key pair on the device and sent the public one home and to communication partners.
+
+It gets a bit more tricky, when you have multiple devices that need to have the same private key. But it is not complicated.
+
+you can read how XMPP usage of the signal protocol deals with this: https://xmpp.org/extensions/xe... [xmpp.org]
 
 Any supposedly secure attachment you send to your colleague will be openly stored on their phone in a place where they don&#39;t know what exists and will not likely be able to delete it
 
@@ -1430,27 +1512,39 @@ Whatsapp by default backs up unencrypted to Google/ Apple.  So Google / Apple ca
 
 Beyond this, it would surprise me if certain spy agencies didn&#39;t have a mass surveillance backdoor.  The only question is how widespread it is and how that data is being used.  For the special cases, you could hack the whole phone / compute instead of just whatsapp.
 
+I&#39;ve not bothered to read the actual lawsuit, but most likely Whatsapp really is fully end-to-end encrypted. So if the lawsuit is asserting what the summary says, it will fail.
+
+However, if Meta really can read messages, then they have copies of all the private client-side keys stored on their own systems, thus they can decrypt any message they want (and potentially be hacked and expose all the keys as well).
+
+In other words the communications are protected against any man-in-the-middle, except Meta that is.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Two wrights don&#39;t make a rong, they make an airplane.  Or bicycles.</div>
+Artificial intelligence has the same relation to intelligence as
+artificial flowers have to flowers.
+		-- David Parnas</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">China Hacked Downing Street Phones For Years</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>China Hacked Downing Street Phones For Years</h2>
             <p><strong>Slashdot | 2026-01-27</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/01/27/0138225/china-hacked-downing-street-phones-for-years?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 It&#39;s weird to see a global espionage saga and say, &quot;well that&#39;s dumb. I am not a wizard with nation state resources, but I could so that on a casual weekend.&quot; Their security sucks so much that my grandson could probably accidentally do that while settling up a game server.
 
 Dumb?  That&#39;s being polite!  BJ&#39;s phone number was on a web site for 15 years: https://www.bbc.co.uk/news/uk-... [bbc.co.uk]
+
+Lots of weird things, however the weirdest is that this comes out just immediately after, not before, they approve a huge new Chinese embassy. Likely it&#39;s been held up as a secret deliberately to not interfere with the process?
+
+Or right before his trip to China...some people fail to see the obvious. It&#39;s all political sabotage by sinophobes.
 
 The difference is the western countries admit when they get hacked.  (Not sure if the US still counts - will find out in 2028).
 
@@ -1470,6 +1564,16 @@ When you say Canada will be the 51st state then it&#39;s a joke.  When the presi
 
 End result China&#39;s IQ reduces by 10 points listening to limey blabber.
 
+End result China&#39;s IQ reduces by 10 points listening to limey blabber.Considering Boris Johnson was in power for nearly 3 years I&#39;d be surprised if it only dropped by 10 points. 
+
+Whiff Whaff.
+
+End result China&#39;s IQ reduces by 10 points listening to limey blabber.
+
+Considering Boris Johnson was in power for nearly 3 years I&#39;d be surprised if it only dropped by 10 points. 
+
+Whiff Whaff.
+
 Never trust anyone with the self-aggrandising job title &#39;Chief Mouser&#39;.
 
 They&#39;ve likely been feeding the Chinese bogus crap for years knowing the phones were being tapped.
@@ -1477,6 +1581,8 @@ They&#39;ve likely been feeding the Chinese bogus crap for years knowing the pho
 And Liz &quot;Bested by head of lettuce&quot; Truss.
 
 You do realise they&#39;re not directly responsible for the security apparatus, right?
+
+You think all their WhatsApping was approved and monitored and correctly secured?  Or in US terms, use of Signal: https://en.wikipedia.org/wiki/... [wikipedia.org]
 
 You know it will be run by Fujitsu, Capita, or Palantir, so of course their private data will be safe and secure, if over budget by an order of magnitude.
 
@@ -1487,6 +1593,8 @@ https://militarnyi.com/en/news... [militarnyi.com]
 Tesla also collects all kinds of data, and despite their &quot;opt-out&quot; claims, you can&#39;t fully opt out except by disabling their networking with an axe.
 
 One of these companies is friendly with the PLA and the other isn&#39;t.  That&#39;s the difference.
+
+One of these companies is friendly with the PLA, the other is friendly with the trumpistani terrorist state.
 
 What is a &quot;most honourable order of the bath&quot;? I assume it isn&#39;t something given you in the Hogwash school of magic.
 
@@ -1508,23 +1616,23 @@ Always good to have your take on virtually every story these days cut and pasted
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Two wrights don&#39;t make a rong, they make an airplane.  Or bicycles.</div>
+Artificial intelligence has the same relation to intelligence as
+artificial flowers have to flowers.
+		-- David Parnas</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Reddit Lawyers Force Founder to Redact 'WallStreetBets' From Miami Event</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Reddit Lawyers Force Founder to Redact 'WallStreetBets' From Miami Event</h2>
             <p><strong>Slashdot | 2026-01-27</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/01/27/0147238/reddit-lawyers-force-founder-to-redact-wallstreetbets-from-miami-event?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
-
-The people who built/run the Nebula online streaming video to shy away from this sort of thing are probably feeling pretty good about themselves right now. Youtube video creators are probably sweating bullets right now. A lot of people &quot;invested&quot; in youtube channels over the years, according to this, youtube owns the IP (or at least, branding) of channels like Mr. Beast, Veratasium, etc etc
+            <div id="article-text">The people who built/run the Nebula online streaming video to shy away from this sort of thing are probably feeling pretty good about themselves right now. Youtube video creators are probably sweating bullets right now. A lot of people &quot;invested&quot; in youtube channels over the years, according to this, youtube owns the IP (or at least, branding) of channels like Mr. Beast, Veratasium, etc etc
 
 Social structures are all about fucking over the little guy.  Best of luck starting a new community platform without big money backing, and even then, best of luck.
 
@@ -1556,6 +1664,16 @@ Which sucks, is unfair, etc... but also American law.
 
 and can thus be ignored everywhere else in the world.
 
+and can thus be ignored everywhere else in the world.The problem is that this kind of thing gets them into even greater hot water in countries with civilised law. 
+
+By claiming ownership, they&#39;re effectively admitting that they&#39;re a publisher, meaning they&#39;ll be bound by laws regarding publishing and broadcasting. They&#39;ve just given up the &quot;we&#39;re not responsible, all the content is user created&quot; defence when it comes to violating broadcast or publishing laws. That excuse was skating on some very thing ice as it was.
+
+and can thus be ignored everywhere else in the world.
+
+The problem is that this kind of thing gets them into even greater hot water in countries with civilised law. 
+
+By claiming ownership, they&#39;re effectively admitting that they&#39;re a publisher, meaning they&#39;ll be bound by laws regarding publishing and broadcasting. They&#39;ve just given up the &quot;we&#39;re not responsible, all the content is user created&quot; defence when it comes to violating broadcast or publishing laws. That excuse was skating on some very thing ice as it was.
+
 It&#39;s not every day you see somebody use the courts to pound a blunt screwdriver into their own nuts. I hope the lawyers are OK.
 
 Does anybody truly give a damn about reddit drama?
@@ -1574,16 +1692,18 @@ Because of inertia people while whine and moan but do nothing else of substance.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Two wrights don&#39;t make a rong, they make an airplane.  Or bicycles.</div>
+Artificial intelligence has the same relation to intelligence as
+artificial flowers have to flowers.
+		-- David Parnas</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Apple Launches AirTag 2 With Improved Range, Louder Speaker</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Apple Launches AirTag 2 With Improved Range, Louder Speaker</h2>
             <p><strong>Slashdot | 2026-01-27</strong></p>
             <a class="original-link" href="https://apple.slashdot.org/story/26/01/27/0047225/apple-launches-airtag-2-with-improved-range-louder-speaker?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1622,6 +1742,8 @@ Those same features exist in the original AirTag - that is just marketing wanker
 
 The old ones will alert you to an unknown tracker just as well as the new ones will - you seem to have a mistaken understanding here.
 
+I use an Airtag for it&#39;s &quot;unofficial&quot; secondary use as a pet tracker, for which it is surprisingly effective in my neighborhood because seemingly everyone has an iPhone. It&#39;s not perfect, but it&#39;s still far lighter than a GPS tracking collar and has much better battery life. While the extra range and louder speaker are super useful to me, I&#39;m a bit worried what these new &quot;industry first privacy protections&quot; are. Is it going to realize what it&#39;s being used for and decide to randomly disable itself because I&#39;
+
 Still no hole so you can actually attach it to something.
 
 If there was a built in hole how would they sell you a case for it?
@@ -1632,49 +1754,9 @@ So, they are actually pretty close to spot on. 50 percent louder can be heard ro
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Two wrights don&#39;t make a rong, they make an airplane.  Or bicycles.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">TikTok Alternative 'Skylight' Soars To 380K+ Users After TikTok US Deal Finalized</div>
-            <div class="meta">2026-01-27</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>TikTok Alternative 'Skylight' Soars To 380K+ Users After TikTok US Deal Finalized</h2>
-            <p><strong>Slashdot | 2026-01-27</strong></p>
-            <a class="original-link" href="https://tech.slashdot.org/story/26/01/27/0036229/tiktok-alternative-skylight-soars-to-380k-users-after-tiktok-us-deal-finalized?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
-
-Someone says &quot;authoritarianism is bad&quot;, and you assume that they&#39;re talking about Trump. Weird.
-
-Nice try, but your side has been screaming about Trump for a full decade. TDS is a real thing, get help.
-
-&quot;orange man bad&quot; Why yes, he is. I&#39;m glad you finally see that. What monument to civilized society builds an army of masked Gestappo men out of thugs (see where he has been recruiting if you doubt this) and is building his own secure bunker under the expected new ballroom where the East Wing once stood?
-
-Why would he need his own army of thugs? Why would he need a new secure bunker when one already exists under the White House? Even a dolt can figure that out.
-
-Ignore the ignorant leftists who downvoted you. Your take is based. TDS is real and is fomented by having a completely one sided media diet; ironic considering the topic at hand.
-
-BlueSky/SkyLight are decentralized platforms owned by public benefit corporations.TikTok is still owned by ByteDance which is at least CCP-adjacent (arguably bad), but the US implementation of its algorithm is now controlled by  a group of Great American Patriots and Investors, the Biggest in the World  [truthsocial.com] (arguably worse).
-
-These social media sites are all lost money. They come and go.
-
-Linux showed the blueprint when it toppled Microsoft, now this generations task is to do the same to social media.
-
-Well if it&#39;s open source I hope they beat UpScrolled that the TikTok users are apparently also fleeing to today:
-
-https://www.engadget.com/socia... [engadget.com]
-
-[ Okay, so I&#39;m an old fart and not the target audience... ]
-
-Relaxing after work with my 3 screens. Anything without a web interface is a non starter.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Two wrights don&#39;t make a rong, they make an airplane.  Or bicycles.</div>
+Artificial intelligence has the same relation to intelligence as
+artificial flowers have to flowers.
+		-- David Parnas</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1988,11 +2070,39 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Micron builds $24 bn Singapore chip fab as AI demand soars</div>
+            <div class="title">New method helps explain how solar cells can repair themselves using sunlight</div>
             <div class="meta">2026-01-27</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>New method helps explain how solar cells can repair themselves using sunlight</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-27</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-01-method-solar-cells-sunlight.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Microsoft unveils latest AI chip to reduce reliance on Nvidia</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
+            <h2>Microsoft unveils latest AI chip to reduce reliance on Nvidia</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-27</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-01-microsoft-unveils-latest-ai-chip.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-38')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Micron builds $24 bn Singapore chip fab as AI demand soars</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-38" style="display:none;">
             <h2>Micron builds $24 bn Singapore chip fab as AI demand soars</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-01-micron-bn-singapore-chip-fab.html">Visit Original Website</a>
@@ -2000,13 +2110,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">French lawmakers pass bill banning social media for under-15s</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>French lawmakers pass bill banning social media for under-15s</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-01-french-lawmakers-bill-social-media.html">Visit Original Website</a>
@@ -2014,13 +2124,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Hybrid cars top choice for consumers in Europe in 2025: data</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Hybrid cars top choice for consumers in Europe in 2025: data</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-01-hybrid-cars-choice-consumers-europe.html">Visit Original Website</a>
@@ -2028,13 +2138,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Geothermal energy has the potential to reshape global power supply</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Geothermal energy has the potential to reshape global power supply</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-01-geothermal-energy-potential-reshape-global.html">Visit Original Website</a>
@@ -2042,41 +2152,179 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">How to include fossil fuel communities in Canada's clean energy transition</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-40" style="display:none;">
-            <h2>How to include fossil fuel communities in Canada's clean energy transition</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-26</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-01-fossil-fuel-communities-canada-energy.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Artificial metacognition: Giving an AI the ability to 'think' about its 'thinking'</div>
-            <div class="meta">2026-01-26</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Artificial metacognition: Giving an AI the ability to 'think' about its 'thinking'</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-01-26</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-01-artificial-metacognition-ai-ability.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-42')">
+            <div class="source">The Register</div>
+            <div class="title">NASA begins formal anomaly review after MAVEN probe lost in space</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-42" style="display:none;">
+            <h2>NASA begins formal anomaly review after MAVEN probe lost in space</h2>
+            <p><strong>The Register | 2026-01-27</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/nasa_anomaly_review_maven/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">NASA is setting up an anomaly review board to look into the fate of its Mars Atmosphere and Volatile Evolution (MAVEN) spacecraft, which was last heard from on December 6.
+
+Attempts to make contact with the Mars orbiter are ongoing. The final fragments of data indicated that the spacecraft was tumbling and had possibly changed trajectory. The MAVEN team is analyzing snippets of data recovered from a December 6 radio science campaign to develop a timeline of possible events and likely root causes of the issue.
+
+James Godfrey, retired Spacecraft Operations Manager for ESA&#39;s Mars Express, pondered what might have happened to MAVEN in a message to The Register.
+
+&quot;The fact that it appears to be rotating in an unexpected manner (tumbling?) and might have experienced an orbital change (I guess from inconsistent Doppler data) does suggest an energetic event.
+
+&quot;It&#39;s unlikely that anything has hit it – not much space debris at Mars. So more likely something onboard.&quot;
+
+If the spacecraft had entered a normal safe mode, controllers should have been able to communicate with it. &quot;So whatever has happened, it hasn&#39;t been able to reach safe mode for some unknown reason,&quot; Godfrey speculated.
+
+&quot;So problems that could result in loss of attitude, possible orbit change, would suggest problems affecting GNC [Guidance, Navigation, and Control]. Could be an onboard computer failure, stuck valve, run out of fuel etc. Possibly a problem with the reaction wheels? In any case, something that caused the thrusters to fire in an unbalanced fashion from which the spacecraft was unable to recover autonomously.&quot;
+
+All possibilities are bad news for MAVEN, both as a mission and a telecommunications relay for NASA&#39;s Mars rovers, Curiosity and Perseverance. The spacecraft entered Mars orbit on September 22, 2014, with a two-year planned mission. It has since endured for well over a decade, gathering data on the planet&#39;s atmosphere.
+
+Attempts to contact the probe were further complicated by the solar conjunction, when the Sun lies between the Earth and Mars, blocking communication.
+
+Godfrey noted this was &quot;a more challenging conjunction than the run-of-the-mill&quot; and the fact &quot;the Sun being very active at the moment won&#39;t help.&quot;
+
+All of which makes MAVEN&#39;s recovery at this stage improbable. The thermal and power status of the spacecraft is not known, nor is its location.
+
+The assembly of a formal anomaly review board is an indicator that, while NASA has yet to throw in the towel, things are not looking good for MAVEN, and managers want to understand what happened. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">The Register</div>
+            <div class="title">France to replace US videoconferencing wares with unfortunately named sovereign alternative</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
+            <h2>France to replace US videoconferencing wares with unfortunately named sovereign alternative</h2>
+            <p><strong>The Register | 2026-01-27</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/france_videoconferencing_visio/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">France has officially told Zoom, Teams, and the rest of the US videoconferencing herd to take a hike in favor of its own homegrown app.
+
+The plan, announced on Monday, is to shove US videoconferencing tools out of the French public sector altogether, with Zoom, Teams, Webex, and Google Meet making way for a state-built alternative that Paris says keeps its data, infrastructure, and legal exposure firmly at home.
+
+The platform, called Visio, is being developed and rolled out by the government&#39;s Interministerial Directorate for Digital Affairs (DINUM) and is set to become the default, and eventually exclusive, video meeting tool for public servants.
+
+The announcement was made by the Ministry of the Economy and Finance as part of France&#39;s broader push for digital sovereignty. The government says that using foreign videoconferencing platforms exposes official communications to overseas infrastructure, laws, and political pressures it would rather avoid.
+
+&quot;This project is a concrete illustration of the Prime Minister and the Government&#39;s commitment to regaining our digital independence,&quot; said David Amiel, minister delegate for the Civil Service and State Reform. &quot;We cannot risk having our scientific exchanges, our sensitive data, and our strategic innovations exposed to non-European actors. Digital sovereignty is simultaneously an imperative for our public services, an opportunity for our businesses, and insurance against future threats.&quot;
+
+According to the announcement, Visio has already been tested by tens of thousands of civil servants and is now being scaled up for wider use across ministries, agencies, and public bodies. The plan is for Visio to be in routine use across the state by 2027, after which external videoconferencing licenses would no longer be renewed. Large parts of the public sector, including tax and social security bodies, have already started the switch.
+
+Security is the main sales pitch, with Paris stressing that Visio runs on infrastructure it controls and is built to comply with French and EU data protection and confidentiality rules. There&#39;s money in it as well, at least on paper: Paris estimates that moving 100,000 users off commercial platforms saves around €1 million a year in license fees.
+
+France is also keen to stress that Visio is not meant to be a bare-bones substitute. The platform will, eventually at least, boast transcription and live captions, but without shipping the audio off to someone else&#39;s cloud. The subtext is less about convenience and more about avoiding US jurisdiction over data.
+
+However, there is one small but telling irony lurking in the announcement. Calling a state videoconferencing platform &quot;Visio&quot; all but guarantees confusion with Microsoft&#39;s long-established diagramming software of the same name, suggesting that, while France is moving to cut US dependencies, it may not have spent quite as much time on branding.
+
+Whether Visio sticks or joins the long list of state IT projects that never quite replace the tools people actually like will only become clear over time. For now, though, France has made its position clear: when it comes to official video calls, Uncle Sam is no longer invited. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-44')">
+            <div class="source">The Register</div>
+            <div class="title">Succession: Linux kernel community gets continuity plan for post-Linus era</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-44" style="display:none;">
+            <h2>Succession: Linux kernel community gets continuity plan for post-Linus era</h2>
+            <p><strong>The Register | 2026-01-27</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/linux_continuity_plan/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The Linux kernel project has finally answered one of the biggest questions gripping the community: what happens if Linus Torvalds is no longer able to lead it?
+
+The &quot;Linux project continuity document,&quot; drafted by Dan Williams, was merged into its documentation last week, just ahead of the release of Linux 6.19-rc7. Notably, the document&#39;s path is Documentation/process/conclave.rst.
+
+It notes that the kernel development project is &quot;widely distributed, with over 100 maintainers each working to keep changes moving through their own repositories.&quot;
+
+But &quot;the final step... is a centralized one where changes are pulled into the mainline repository.&quot; And that is &quot;normally done by Linus Torvalds,&quot; though &quot;there are others who can do that work when the need arises.&quot;
+
+It delicately adds: &quot;Should the maintainers of that repository become unwilling or unable to do that work going forward (including facilitating a transition), the project will need to find one or more replacements without delay.&quot;
+
+So what will happen? The process centers on &quot;$ORGANIZER&quot; who is &quot;the last Maintainer Summit organizer or the current Linux Foundation (LF) Technical Advisory Board (TAB) Chair as a backup.&quot;
+
+The document says: &quot;Within 72 hours, $ORGANIZER will open a discussion with the invitees of the most recently concluded Maintainers Summit. A meeting of those invitees and the TAB, either online or in-person, will be set as soon as possible in a way that maximizes the number of people who can participate.&quot;
+
+In the event of no summit happening in the previous 15 months, the TAB will choose the attendees. Invitees can bring in other maintainers as needed. The meeting will be chaired by $ORGANIZER and will &quot;consider options for the ongoing management of the top-level kernel repository consistent with the expectation that it maximizes the long term health of the project and its community.&quot;
+
+&quot;Next steps&quot; will then be communicated to the broader community through the ksummit@lists.linux.dev mailing list. The Linux Foundation, with guidance from the TAB, will &quot;take the steps necessary to support and implement this plan.&quot;
+
+The document follows discussion of succession and continuity at the 2025 Maintainers Summit. This included what would happen during a &quot;smooth transition&quot; if Torvalds decides it is time to move on, as well as the process &quot;should something happen.&quot;
+
+While Torvalds has a firm grip on Linux, as the continuity plan notes, he has himself mused on his own future and the fact the maintainer community, at least for the kernel, is getting grayer.
+
+At the Open Source Summit in 2024, he noted: &quot;Some people are probably still disappointed that I&#39;m still here. I mean, it is absolutely true that kernel maintainers are aging.&quot;
+
+He was asked by fellow pioneer Dirk Hohndel of Verizon what the community needs to do to ensure the next generation is ready, &quot;so that in 10, 15, 20, 30 years your role can be handed off to someone else.&quot;
+
+Torvalds replied: &quot;We&#39;ve always had a lot of people who are very competent and could step up.&quot; As for an aging community, he said new people still come in and become main developers within three years. &quot;It&#39;s not impossible at all.&quot;
+
+And Torvalds is not the only maintainer making plans as the open source community matures. Some projects have, of course, fallen by the wayside over the years. Some remain embedded in the ecosystem, even as their originators and maintainers get older.
+
+One option is handing them over to a foundation. Others like curl originator Daniel Stenberg have remained fiercely independent – with discreet arrangements to pass on their GitHub details when the time comes. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-45')">
+            <div class="source">The Register</div>
+            <div class="title">Japan doubles down on Trump's Genesis AI supercomputing effort</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-45" style="display:none;">
+            <h2>Japan doubles down on Trump's Genesis AI supercomputing effort</h2>
+            <p><strong>The Register | 2026-01-27</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/japan_ai_genesis/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Japan&#39;s RIKEN scientific research institute and Fujitsu are working with America&#39;s Argonne National Laboratory (ANL) and Nvidia to build and operate next-gen compute infrastructure for AI and high-performance computing (HPC), in line with President Trump&#39;s Genesis Mission.
+
+RIKEN says the four organizations have agreed a memorandum of understanding (MoU) to develop system software and applications for science and engineering purposes, and promote the use of AI for scientific research.
+
+Areas where the group is expected to cooperate include future computing architectures, where they&#39;ll jointly define and prototype next-gen tech for typical HPC workloads such as modeling and simulation, but also the integration of AI into these workflows.
+
+RIKEN claims the participants hope to develop a shared software ecosystem, in the form of an open and interoperable software stack to support AI-enabled scientific discoveries.
+
+In addition, the organizations will team up to develop autonomous laboratory workflows to advance the integration of AI and physical science, as well as the convergence of quantum computing and supercomputing.
+
+&quot;RIKEN will lead global efforts in advancing sophisticated use of AI technologies for scientific research through this four-party agreement within the framework of Japan-US cooperation aligned with the US Department of Energy&#39;s (DOE) Genesis Mission,&quot; said the research institute&#39;s President Makoto Gonokami.
+
+Unveiled last year, Genesis was pitched by the Trump administration as a national effort to develop and use AI for scientific discoveries.
+
+So it seems Tokyo is not too worried about aligning itself with Washington on science and technology, while governments and businesses in Europe are growing increasingly concerned about their own reliance on US tech giants for cloud services and other areas of compute.
+
+&quot;This collaboration represents a pivotal step forward in harnessing the transformative potential of AI and high-performance computing to address pressing scientific challenges in energy, national security, and fundamental research,&quot; said Argonne&#39;s Laboratory Director Paul Kearns.
+
+&quot;Together we&#39;re building a foundation for next-generation computing architectures and AI-driven scientific discovery that advances the Genesis Mission goals.&quot;
+
+This isn&#39;t the first MoU between RIKEN and ANL. The two research bodies signed another on AI for scientific research in 2024.
+
+RIKEN is already working with Fujitsu and Nvidia on the successor to Japan&#39;s Fugaku supercomputer, formerly the most powerful computer in the world until the introduction of the first exascale systems.
+
+Codenamed &quot;FugakuNEXT,&quot; this will be another system built with processors based on Arm cores, with Fujitsu winning the contract to develop it last year. Soon after, the Japanese tech corporation signed a deal with Nvidia to supply GPU accelerators and help design the hardware to incorporate them into the supercomputer. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">Microsoft illegally installed cookies on schoolkid's tech, data protection ruling finds</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Microsoft illegally installed cookies on schoolkid's tech, data protection ruling finds</h2>
             <p><strong>The Register | 2026-01-27</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/microsft_illegally_installed_cookies_ruling_austra_school/">Visit Original Website</a>
@@ -2104,13 +2352,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">High Court to grill London cops over live facial recognition creep</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>High Court to grill London cops over live facial recognition creep</h2>
             <p><strong>The Register | 2026-01-27</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/high_court_lfr/">Visit Original Website</a>
@@ -2148,189 +2396,41 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
-            <div class="source">The Register</div>
-            <div class="title">NASA confirms command error temporarily felled TESS planet hunter</div>
-            <div class="meta">2026-01-27</div>
-        </div>
-        
-        <div id="content-44" style="display:none;">
-            <h2>NASA confirms command error temporarily felled TESS planet hunter</h2>
-            <p><strong>The Register | 2026-01-27</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/nasa_tess_error/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">NASA has confirmed that its planet hunter, TESS (Transiting Exoplanet Survey Satellite), entered safe mode due to a command error that inadvertently left the spacecraft&#39;s solar arrays angled away from the Sun.
-
-TESS was recovered days after entering safe mode due to discharged batteries. This was caused by the vehicle&#39;s solar panels being pointed away from the Sun, which meant the batteries could not charge sufficiently. The incident was the result of a command transmitted from the ground.
-
-The plan was to slew TESS to point at a target. When it entered safe mode, TESS was conducting a week-long observation of comet 3I/ATLAS.
-
-A NASA spokesperson told The Register that there were no guardrails in place to prevent this scenario, although there were protections to prevent the spacecraft&#39;s batteries from draining completely. It is likely these kicked in and sent the spacecraft into safe mode, from which it could be recovered.
-
-A spacecraft&#39;s safe mode shuts down all but the most essential systems, usually maintains attitude control, and awaits instructions from controllers. It is designed to protect the vehicle.
-
-A spokesperson at the space agency added: &quot;The mission is reviewing and updating procedures to prevent this command error from happening in the future.&quot;
-
-In many ways, TESS was lucky. There are plenty of examples of spacecraft being left borked after a command from Earth had unintended consequences. The Viking 1 Mars lander, for example, ended its mission in 1982 after a faulty command from Earth terminated communications, and attempts to regain contact proved unsuccessful.
-
-There is also the Solar and Heliospheric Observatory (SOHO) probe, a joint NASA-ESA project. In 1998, a step was skipped in a routine calibration procedure, effectively disabling the spacecraft&#39;s normal safe mode and triggering a catastrophic series of events that left the spacecraft tumbling in space. It was only through some impressive engineering teamwork and persistence that SOHO was located and eventually recovered.
-
-Fortunately, TESS&#39;s safe mode worked as designed and kept the spacecraft in a state where engineers could restore it after realizing that something had not gone to plan.
-
-However, it will be interesting to see how a command that resulted in a borked spacecraft was sent up in the first place, and how NASA&#39;s boffins plan to ensure this doesn&#39;t happen again. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-45')">
-            <div class="source">The Register</div>
-            <div class="title">'Ralph Wiggum' loop prompts Claude to vibe-clone commercial software for $10 an hour</div>
-            <div class="meta">2026-01-27</div>
-        </div>
-        
-        <div id="content-45" style="display:none;">
-            <h2>'Ralph Wiggum' loop prompts Claude to vibe-clone commercial software for $10 an hour</h2>
-            <p><strong>The Register | 2026-01-27</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/ralph_wiggum_claude_loops/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Feature Open source developer Geoff Huntley wrote a script that sometimes makes him nauseous. That&#39;s becaues it uses agentic AI and coding assistants to create high-quality software at such tiny cost, he worries it will upend his profession.
-
-Here&#39;s the script :
-
-while :; do cat PROMPT.md | claude-code ; done
-
-Huntley describes the software as &quot;a bash loop that feeds an AI&#39;s output (errors and all) back into itself until it dreams up the correct answer. It is brute force meets persistence.&quot; He calls the code and the technique it enables &quot;Ralph,&quot; a homage to 1980s slang for vomiting, and to Simpsons character Ralph Wiggum and his combination of ignorance, persistence, and optimism.
-
-The Register put it to Huntley that current human-in-the-loop practices mean developers use AI coding assistants as if playing table tennis: They send a prompt to produce some code over the net, and the LLM bats back some code. He accepted the metaphor, which assumes the developer/bot game continues until the human is satisfied the AI produced something useful, picks up the ball, and goes away to work.
-
-Huntley&#39;s approach changes the game by telling a coding assistant to attempt to satisfy a developer&#39;s requests, assess whether it did so, then try again until it delivers the desired results. Humans remain in the loop, but enter the software development process later and less often than is the case today.
-
-The developer has used his approach, and Anthropic&#39;s Claude Code service, to clone commercial products, a job it can achieve if provided with resources including source code, specs, and product documentation.
-
-Huntley has documented how he used Ralph to create an a tax app for the ZX Spectrum, and later reverse-engineered and cloned an Atlassian product.
-
-Huntley told us he used his techniques to clone a version of open source software a commercial vendor offers under a license he feels doesn&#39;t meet his needs. After accessing the company&#39;s source code and trans-piling it into another language, he used Ralph to drive Claude Code and create a clone. The results weren&#39;t great because he didn&#39;t have a spec for the product, but feeding the vendor&#39;s documentation into his loop meant Claude eventually produced better software.
-
-The developer told The Register AI can tackle such tasks while consuming about US $10 of compute and/or SaaS resources each hour, a sum he points out is far closer to wages paid to fast food workers than the far better salaries earned by software developers.
-
-Huntley even used his approach to develop a new programming language that he called &quot;Cursed.&quot;
-
-&quot;It&#39;s cursed in its lexical structure, it&#39;s cursed in how it was built, it&#39;s cursed that this is possible, it&#39;s cursed in how cheap this was, and it&#39;s cursed through how many times I&#39;ve sworn at Claude,&quot; he wrote.
-
-He also wonders if the fact it was possible to create Cursed might have hexed the software industry. Which is why Huntley&#39;s creation sometimes makes him feel nauseous, and why through 2025 he sometimes paused work on his ideas.
-
-But he kept talking about them with other developers, and after a visit to Silicon Valley noticed considerable interest in his approach – especially among startups.
-
-He says many participants in prominent startup incubator Y Combinator now use Ralph, and that the buzz their efforts created eventually saw Anthropic learn of his work and create a Ralph Wiggum Plugin for its Claude Code product. The creator of Claude Code, Boris Cherny, has said he uses Ralph.
-
-Huntley thinks he has stumbled upon an idea that can change software development, and perhaps entire industries.
-
-Developers, he argues, should now spend more time thinking about writing loops that drive coding assistants to produce better output, rather than persisting with code reviews.
-
-&quot;Agile and standups doesn&#39;t make sense any more,&quot; Huntley said. &quot;The days of being a Jira ticket monkey are over.&quot;
-
-He also thinks that Ralph poses a profound challenge to any business. &quot;Companies have a brand that can&#39;t be cloned and goodwill that can&#39;t be cloned,&quot; he told The Register. &quot;But product features can now be cloned.&quot;
-
-Huntley therefore expects that startups will use Ralph to clone existing businesses – especially SaaS outfits – and undercut the prices they charge because they can afford to do so using agentic coding that costs $10 an hour instead of having to pay a full staff of human coders.
-
-And that&#39;s a scenario that could make many, many, people feel very sick indeed. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-46')">
-            <div class="source">The Register</div>
-            <div class="title">Office zero-day exploited in the wild forces Microsoft OOB patch</div>
-            <div class="meta">2026-01-27</div>
-        </div>
-        
-        <div id="content-46" style="display:none;">
-            <h2>Office zero-day exploited in the wild forces Microsoft OOB patch</h2>
-            <p><strong>The Register | 2026-01-27</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/office_zeroday_exploited_in_the/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Microsoft has issued an emergency Office patch after confirming a zero-day flaw is already being used in real world attacks.
-
-The flaw, tracked as CVE-2026-21509, and slapped with a CVSS score of 7.8, falls into Microsoft&#39;s &quot;security feature bypass&quot; bucket. In practice, this means attackers can dodge protections that are supposed to stop unsafe legacy components from running. Those components include COM and OLE – old Windows plumbing that&#39;s been at the heart of document-based attacks for years and clearly hasn&#39;t earned its retirement yet.
-
-According to Microsoft, exploitation doesn&#39;t hinge on the Office preview pane – often a red flag in past campaigns – but still requires little effort once a victim is persuaded to open a booby-trapped file. In its advisory, the company describes the issue as a case of &quot;reliance on untrusted inputs in a security decision,&quot; a polite way of saying Office can be talked into doing things it shouldn&#39;t.
-
-&quot;Reliance on untrusted inputs in a security decision in Microsoft Office allows an unauthorized attacker to bypass a security feature locally,&quot; Microsoft said. &quot;An attacker must send a user a malicious Office file and convince them to open it.&quot;
-
-The flaw hits most current Office builds, from Office 2016 and 2019 through to the LTSC releases and Microsoft 365 Apps for Enterprise. Updates are out for newer versions, but anyone still running Office 2016 or 2019 is stuck waiting. Microsoft says fixes for those editions aren&#39;t ready yet and will ship &quot;as soon as possible.&quot;
-
-In the meantime, Redmond is pointing affected customers toward mitigation steps that it says can reduce exploitation risk. Those involve manually blocking vulnerable COM and OLE controls via the Windows registry by adding a specific COM Compatibility key and setting a Compatibility Flags DWORD value. It&#39;s the sort of workaround that many organizations will struggle to deploy consistently at scale.
-
-Microsoft has been tight-lipped about how CVE-2026-21509 is being abused, offering no details on attack campaigns, victim profiles, or impact. The company credited its own Microsoft Threat Intelligence Center, Microsoft Security Response Center, and Office Product Group Security Team with discovering the issue.
-
-The US Cybersecurity and Infrastructure Security Agency has been quick to add the flaw to its Known Exploited Vulnerabilities catalog, giving Federal Civilian Executive Branch agencies until February 16 to apply available fixes.
-
-The patch comes only days after Microsoft sounded the alarm about CVE-2026-20805, a separate Windows bug already under attack, giving 2026 an uncomfortably familiar feel. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">Voyager 2's close encounter with Uranus wasn't in the original plan</div>
-            <div class="meta">2026-01-27</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Voyager 2's close encounter with Uranus wasn't in the original plan</h2>
-            <p><strong>The Register | 2026-01-27</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/01/27/40_years_voyager_2_uranus/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">It is 40 years since Voyager 2 performed the first and, so far, only flyby of the planet Uranus. The resulting trove of data, however, was a bonus that almost didn&#39;t happen.
-
-At the time of Voyager 2&#39;s launch, Uranus wasn&#39;t part of the formal plan. The mission was referred to for a long time as the Mariner Jupiter-Saturn project. The JPL engineers famously had other ideas and ensured the spacecraft had enough fuel to continue on a trajectory to Uranus and beyond if the mission was approved.
-
-As it was, Voyager 1 performing a successful flyby of Saturn&#39;s moon Titan meant that Voyager 2 could continue on the Grand Tour, taking in Uranus and Neptune.
-
-Former Voyager scientist Garry Hunt told The Register: &quot;It was a fantastic encounter because it almost didn&#39;t happen. After Saturn, we had the scan platform problem. If that problem had not been resolved, there wouldn&#39;t have been a Uranus encounter.&quot;
-
-Following the Saturn encounter, the Voyager scan platform, an assembly that allowed cameras to pan and tilt, seized on the horizontal axis. The failure would have resulted in a significant data loss and was traced to a lubrication problem. Engineers were able to rectify the issue remotely, and the probe dodged a bullet on its way to Uranus.
-
-&quot;It was a testing encounter,&quot; recalled Hunt. &quot;In the interim period between the &#39;82 encounter with Saturn and getting to Uranus, the engineers had to reorganize how the scan platform was operating. The computer system had to be altered again. All the sequencing had to be dealt with in a new manner, and we had to prepare a wobbling spacecraft to take low-exposure images in a very dark environment and get that information back to Earth.&quot;
-
-The focus had, after all, been on Jupiter and Saturn. While the probe&#39;s makers had filled the fuel tanks before launch, going to Uranus and Neptune was not a given. &quot;We made sure, from an engineering perspective, it could do it. But they said, &#39;Oh dear, you haven&#39;t got any money.&#39;&quot;
-
-The funding came, and Hunt recalled that serious work on what needed to be done started in early 1983. As well as software changes on the spacecraft (updates were made to use novel compression methods and avoid sending back black images when nothing was in view), antennas on Earth were upgraded to pick up the increasingly faint Voyager 2 signal.
-
-&quot;It was an incredible achievement,&quot; said Hunt, &quot;an achievement for engineering, which science has obviously been able to explore more.&quot;
-
-The flyby produced a tremendous amount of data about Uranus (or &quot;George&quot; if its 18th-century discoverer, William Herschel, had his way) – the planet had a magnetic field that was not aligned with its rotational axis. Additional rings appeared in Voyager 2&#39;s data, and images of the moon Miranda showed signs consistent with a violent impact that may have blown it apart and allowed it to reform.
-
-The probe came within just over 50,000 miles of the planet&#39;s cloud tops, but many cloud features were obscured by a layer of haze.
-
-Hunt reckoned that any future mission would need to not only enter orbit but also drop a probe into the atmosphere to learn more about the planet.
-
-This brings up the awkward question of when the next mission might be launched, and who would do it. The politics of modern America are unlikely to permit another decades-spanning mission like Voyager, and even with modern propulsion systems, getting to Uranus will take many years. China&#39;s Tianwen-5 might visit Uranus or Neptune in the 2050s, assuming it launches in 2035 and isn&#39;t cancelled in the meantime.
-
-Hunt thinks the European Space Agency has a chance of mounting a mission to Uranus, although it did not respond when The Register asked.
-
-Finally, Hunt revealed that amid the flyby preparations, time was set aside to ensure everyone pronounced &quot;Uranus&quot; the approved way. &quot;We had been briefed very strongly by the public relations people at JPL on how to pronounce &#39;Uranus&#39; because the Australians were pronouncing it... incorrectly (which I will not mention)... and Americans found this somewhat embarrassing.&quot;
-
-So there you have it. An answer to the question posed by Spitting Image (a UK satirical show featuring puppets of popular figures) all those years ago. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">Google Photos now lets you describe how to transform images into video</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-48" style="display:none;">
+            <h2>Google Photos now lets you describe how to transform images into video</h2>
+            <p><strong>The Verge | 2026-01-27</strong></p>
+            <a class="original-link" href="https://www.theverge.com/news/868510/google-photos-image-to-video-text-prompt-support">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">﻿The tool was previously limited to subtle or randomized video generation options.
+
+﻿The tool was previously limited to subtle or randomized video generation options.
+
+Google is giving Photos users more control over the app’s generative AI photo-to-video feature. Google Photos now supports text prompts for video generation, according to the update announcement on Monday, allowing users to describe the specific movement, style, or effect they want to see when bringing still images to life.
+
+Text prompts join the existing “Subtle Movement” and “I’m feeling lucky” options that are already available for Google Photos’ image-to-video tool — neither of which allowed users to enter their own descriptions to guide the results. Google says Photos will provide prompt suggestions “for instant video inspiration,” and that text prompts can be edited to fine-tune the resulting video generations.
+
+The new text prompt feature is restricted to users who are 18 or older. This age restriction only applies to Google’s image-to-video tool in Photos, however — text prompts have been available for the same capabilities in Gemini for some time, and are available to any users who are 13 or older. The ability to add descriptive prompts brings Photos’ image-to-video tool more in line with rival AI editors like xAI’s Grok, which was notably abused to undress photos of real people and children.
+
+Generative AI features in Google Photos aren’t available in all regions yet, and the exact functionality can vary by location. You can check out Google’s support page for more information about current restrictions.
+
+The update also allows Google Photos users to include audio by default in every video they create using the image-to-video feature, producing videos that are ready to publish online without any additional editing. In another update, Google introduced a new Google Photos picker for Gmail that makes it easier to share images and videos from your albums, collections, and shared albums over email. The feature allows you to select multiple photos and videos at the same time, and search for specific photos and album names.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
             <div class="source">The Verge</div>
             <div class="title">Roland’s TR-1000 is the ultimate drum machine</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-49" style="display:none;">
             <h2>Roland’s TR-1000 is the ultimate drum machine</h2>
             <p><strong>The Verge | 2026-01-27</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/867819/roland-tr-1000-drum-machine-review">Visit Original Website</a>
@@ -2390,13 +2490,13 @@ Photography by Terrence O’Brien / The Verge
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">All rise for JudgeGPT</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>All rise for JudgeGPT</h2>
             <p><strong>The Verge | 2026-01-27</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/868151/ai-judges-arbitration">Visit Original Website</a>
@@ -2510,13 +2610,13 @@ McCormack says colleagues who were resistant to AI even a year ago are beginning
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Xbox Cloud Gaming’s new design teases the future of Xbox console UI</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Xbox Cloud Gaming’s new design teases the future of Xbox console UI</h2>
             <p><strong>The Verge | 2026-01-27</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/868434/xbox-cloud-gaming-new-ui-future-xbox-console-design">Visit Original Website</a>
@@ -2540,13 +2640,13 @@ Microsoft is looking for feedback on this new Xbox Cloud Gaming UI, before it ro
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Instagram, Facebook, and WhatsApp will test premium subscriptions</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Instagram, Facebook, and WhatsApp will test premium subscriptions</h2>
             <p><strong>The Verge | 2026-01-27</strong></p>
             <a class="original-link" href="https://www.theverge.com/news/868439/meta-premium-subscription-ai-facebook-instagram-whatsapp">Visit Original Website</a>
@@ -2568,13 +2668,13 @@ Meta could be preparing these premium subscription plans to claw back some of th
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Strava and Komoot finally bring offline maps to Apple Watch</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Strava and Komoot finally bring offline maps to Apple Watch</h2>
             <p><strong>The Verge | 2026-01-27</strong></p>
             <a class="original-link" href="https://www.theverge.com/news/868418/strava-and-komoot-finally-bring-offline-maps-to-apple-watch">Visit Original Website</a>
@@ -2596,61 +2696,88 @@ DesFit has an excellent overview of the Komoot app, which does the basics for no
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">TikTok is still down, here are all the latest updates</div>
+        <div class="card" onclick="openModal('content-54')">
+            <div class="source">MIT Technology Review</div>
+            <div class="title">The Download: OpenAI’s plans for science, and chatbot age verification</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-53" style="display:none;">
-            <h2>TikTok is still down, here are all the latest updates</h2>
-            <p><strong>The Verge | 2026-01-27</strong></p>
-            <a class="original-link" href="https://www.theverge.com/news/868379/tiktok-us-trump-oracle-broken-rumors-power-outage">Visit Original Website</a>
+        <div id="content-54" style="display:none;">
+            <h2>The Download: OpenAI’s plans for science, and chatbot age verification</h2>
+            <p><strong>MIT Technology Review | 2026-01-27</strong></p>
+            <a class="original-link" href="https://www.technologyreview.com/2026/01/27/1131767/the-download-openais-plans-for-science-and-chatbot-age-verification/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">More than a day after TikTok’s issues began, TikTok USDS says the problems are the result of a power outage at a data center and subsequent cascading systems failure.
+            <div id="article-text">This is today&#39;s edition of The Download, our weekday newsletter that provides a daily dose of what&#39;s going on in the world of technology.
 
-Starting early Sunday morning, TikTok’s now under new ownership US arm started breaking down just a couple of days after Oracle & Co took the reins. Its For You page algorithm is suddenly unreliable, while features like comments are failing to load or loading slowly, and publishing new videos seems nearly impossible for many people.
+In the three years since ChatGPT’s explosive debut, OpenAI’s technology has upended a remarkable range of everyday activities at home, at work, and in schools.Now OpenAI is making an explicit play for scientists. In October, the firm announced that it had launched a whole new team, called OpenAI for Science, dedicated to exploring how its large language models could help scientists and tweaking its tools to support them.
 
-Rumors of censorship targeting anti-ICE protesting or attempting to block discussion of Jeffrey Epstein appear to be misguided (even the governor of California is resharing misinformation now), with problems blocking traffic to all kinds of videos and messages on the service through Monday night.
+So why now? How does a push into science fit with OpenAI’s wider mission? And what exactly is the firm hoping to achieve? I put these questions to Kevin Weil, a vice president at OpenAI who leads the new OpenAI for Science team, in an exclusive interview. Read the full story.
 
-Read on below for the latest updates about the ongoing TikTok problems.
+Why chatbots are starting to check your age
 
-TikTok’s US service crashed early Sunday morning, and as of late Monday night, it still hasn’t fully recovered.
+How do tech companies check if their users are kids?This question has taken on new urgency recently thanks to growing concern about the dangers that can arise when children talk to AI chatbots. For years Big Tech asked for birthdays (that one could make up) to avoid violating child privacy laws, but they weren’t required to moderate content accordingly.Now, two developments over the last week show how quickly things are changing in the US and how this issue is becoming a new battleground, even among parents and child-safety advocates. Read the full story.
 
-After finally announcing the problem started with a power outage at an unnamed partner’s data center, TikTok USDS followed up with an updated statement saying, “While the network has been recovered, the outage caused a cascading systems failure that we’ve been working to resolve together with our data center partner,” and listing some of the bugs users are experiencing. There’s still no ETA for a full fix.
+This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here.
 
-Despite claims floating around social media, the truth is a bit more complicated, not least by the fact that TikTok in the US is still largely down, about a day and a half after its data center power outage problems started.
+Humans have long dreamed of living among the stars, and for two decades hundreds of us have done so aboard the International Space Station (ISS). But a new era is about to begin in which private companies operate orbital outposts—with the promise of much greater access to space than before.
 
-While tweets from random users, the governor of California, and PopBase claimed TikTok US DMs now censor “Epstein,” testing it from our end showed that its messaging feature bans many innocuous single-word messages, like “test.” Using the convicted sex offender’s name in a sentence, however, goes through unbanned.
+The ISS is aging and is expected to be brought down from orbit into the ocean in 2031. To replace it, NASA has awarded more than $500 million to several companies to develop private space stations, while others have built versions on their own. Read why we made them one of our 10 Breakthrough Technologies this year, and check out the rest of the list.
 
-TikTok says a power outage is causing ongoing issues and outages that started in the US early Sunday morning. In an email to The Verge, TikTok USDS spokesperson Jamie Favazza pointed to a statement posted to the joint venture’s newly-created X account, which says the company has been “working to restore our services following a power outage at a U.S. data center impacting TikTok and other apps we operate.”
+I’ve combed the internet to find you today’s most fun/important/scary/fascinating stories about technology.
 
-On Sunday, many US users, including some of us here at The Verge, reported not being able to upload videos to TikTok or see most new videos, including new videos uploaded successfully by users from outside the US. Others said that their algorithm appeared to “reset,” though it’s unclear if that’s linked to the power outage, too.
+1 Tech workers are pressuring their bosses to condemn ICE The biggest companies and their leaders have remained largely silent so far. (Axios)+ Hundreds of employees have signed an anti-ICE letter. (NYT $)+ Formerly politically-neutral online spaces have become battlegrounds. (WP $)2 The US Department of Transport plans to use AI to write new safety rulesPlease don’t do this. (ProPublica)+ Failure to catch any errors could lead to civilian deaths. (Ars Technica)
 
-TikTok has suffered from extensive problems on its first weekend after completing a transaction that changed the ownership of its US arm. According to Downdetector, the issues initially spiked in the early hours of Sunday morning, but many users, including editors here at The Verge, are still reporting errors.
+3 The FBI is investigating Minnesota Signal chats tracking federal agentsBut free speech advocates claim the information is legally obtained. (NBC News)+ A judge has ordered a briefing on whether Minnesota is being illegally punished. (Wired $)
 
-On Monday morning, TikTok USDS head of communications Jamie Favazza responded to our inquiries, pointing to a post on a newly-created X account for the US joint venture that said its current issues are the result of a data center power outage.
+4 TikTok users claim they’re unable to send “Epstein” in direct messagesBut the company says it doesn’t know why. (NPR)+ Users are also experiencing difficulty uploading anti-ICE videos. (CNN)+ TikTok’s first weekend under US ownership hasn’t gone well. (The Verge)+ Gavin Newsom wants to probe whether TikTok is censoring Trump-critical content. (Politico)5 Grok is not safe for children or teensThat’s the finding of a new report digging into the chatbot’s safety measures. (TechCrunch)+ The EU is investigating whether it disseminates illegal content, too. (Reuters)
 
-Whether this is just a regular outage or a result of this week’s changes in management, reports tracked on Downdetector and Reddit confirm many people are having trouble loading TikTok right now.
+6 The US is on the verge of losing its measles-free statusFollowing a year of extensive outbreaks. (Undark)+ Measles is surging in the US. Wastewater tracking could help. (MIT Technology Review)
 
-If the mobile app loads, it’s not consistently showing comments or other features, and the algorithm managing the For You page doesn’t feel like it’s working correctly.
+7 Georgia has become the latest US state to consider banning data centersJoining Maryland and Oklahoma’s stance. (The Guardian)+ Data centers are amazing. Everyone hates them. (MIT Technology Review)
 
-Update, January 26th: TikTok is still having problems in the US, which it says are connected to a data center power outage.
+8 The future of Saudi Arabia’s futuristic city is in perilThe Line was supposed to house 9 million people. Instead, it could become a data center hub. (FT $)+ We got an exclusive first look at it back in 2022. (MIT Technology Review)
 
-TikTok is officially under new ownership in the US, and that could spell big changes for the video-sharing app. On January 22nd, ByteDance – TikTok’s Chinese parent company — and a group of investors closed a $14 billion deal to spin off the platform’s US operations, introducing a new slate of American executives.
+9 Where do Earth’s lighter elements go? 🌍New research suggests they might be hiding deep inside its core. (Knowable Magazine)10 AI-generated influencers are getting increasingly surrealFeaturing virtual conjoined twins, and triple-breasted women. (404 Media)+ Why ‘nudifying’ tech is getting steadily more dangerous. (Wired $)
 
-The Silver Lake investment firm, Abu Dhabi’s MGX, and the cloud giant Oracle will each have 15 percent stakes in the new TikTok US Data Security (USDS) Joint Venture LLC. ByteDance will still hold a 19.9 percent stake in the company, in line with the divest-or-ban law that went into effect last year — though the deal was pushed through with help from President Donald Trump in persistent disregard of the law.
+&quot;Humanity is about to be handed almost unimaginable power, and it is deeply unclear whether our social, political, and technological systems possess the maturity to wield it.&quot;
 
-A free daily digest of the news that matters most.</div>
+—Anthropic CEO Dario Amodei sounds the alarm about what he sees as the imminent dangers of AI superintelligence in a new 38-page essay, Axios reports.
+
+Why one developer won’t quit fighting to connect the US’s gridsMichael Skelly hasn’t learned to take no for an answer. For much of the last 15 years, the energy entrepreneur has worked to develop long-haul transmission lines to carry wind power across the Great Plains, Midwest, and Southwest. But so far, he has little to show for the effort.
+
+Skelly has long argued that building such lines and linking together the nation’s grids would accelerate the shift from coal- and natural-gas-fueled power plants to the renewables needed to cut the pollution driving climate change. But his previous business shut down in 2019, after halting two of its projects and selling off interests in three more.
+
+Skelly contends he was early, not wrong. And he has a point: markets and policymakers are increasingly coming around to his perspective. Read the full story.
+
+A place for comfort, fun and distraction to brighten up your day. (Got any ideas? Drop me a line or skeet &#39;em at me.)
+
++ Cats on the cover of the New Yorker! Need I say more?+ Here’s how to know when you truly love someone.+ This orphaned baby seal is just too cute.+ I always had a sneaky suspicion that Depeche Mode and the Cure make for perfect bedfellows.
+
+Plus: OpenAI is sounding the &quot;code red&quot; alarm
+
+Plus: TikTok has finally signed a deal to keep operating in the US
+
+Plus: This company is developing gene therapies for muscle growth, erectile dysfunction, and “radical longevity”
+
+Plus: China has built a major chip-making machine
+
+Discover special offers, top stories,
+            upcoming events, and more.
+
+We’re having trouble saving your preferences.
+                Try refreshing this page and updating them one
+                more time. If you continue to get this message,
+                reach out to us at
+                customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-54')">
+        <div class="card" onclick="openModal('content-55')">
             <div class="source">MIT Technology Review</div>
             <div class="title">Inside OpenAI’s big play for science</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-54" style="display:none;">
+        <div id="content-55" style="display:none;">
             <h2>Inside OpenAI’s big play for science</h2>
             <p><strong>MIT Technology Review | 2026-01-26</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/01/26/1131728/inside-openais-big-play-for-science/">Visit Original Website</a>
@@ -2703,7 +2830,7 @@ The key things that GPT-5 seems to be good at are finding references and connect
 
 Most of the scientists OpenAI reached out to back up Weil’s position.
 
-Robert Scherrer, a professor of physics and astronomy at Vanderbilt University, only played around with ChatGPT for fun (“I used to it rewrite the theme song for Gilligan’s Island in the style of Beowulf, which it did very well,” he tells me) until his Vanderbilt colleague Alex Lupsasca, a fellow physicist who now works part-time at OpenAI, told him that GPT-5 had helped solve a problem he’d been working on.
+Robert Scherrer, a professor of physics and astronomy at Vanderbilt University, only played around with ChatGPT for fun (“I used to it rewrite the theme song for Gilligan’s Island in the style of Beowulf, which it did very well,” he tells me) until his Vanderbilt colleague Alex Lupsasca, a fellow physicist who now works at OpenAI, told him that GPT-5 had helped solve a problem he’d been working on.
 
 Lupsasca gave Scherrer access to GPT-5 Pro, OpenAI’s $200-a-month premium subscription. “It managed to solve a problem that I and my graduate student could not solve despite working on it for several months,” says Scherrer.
 
@@ -2777,13 +2904,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-55')">
+        <div class="card" onclick="openModal('content-56')">
             <div class="source">MIT Technology Review</div>
             <div class="title">Why chatbots are starting to check your age</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-55" style="display:none;">
+        <div id="content-56" style="display:none;">
             <h2>Why chatbots are starting to check your age</h2>
             <p><strong>MIT Technology Review | 2026-01-26</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/01/26/1131726/why-chatbots-are-starting-to-check-your-age/">Visit Original Website</a>
@@ -2834,13 +2961,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-56')">
+        <div class="card" onclick="openModal('content-57')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The power of sound in a virtual world</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-56" style="display:none;">
+        <div id="content-57" style="display:none;">
             <h2>The power of sound in a virtual world</h2>
             <p><strong>MIT Technology Review | 2026-01-26</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/01/26/1124655/the-power-of-sound-in-a-virtual-world/">Visit Original Website</a>
@@ -3029,13 +3156,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-57')">
+        <div class="card" onclick="openModal('content-58')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The Download: why LLMs are like aliens, and the future of head transplants</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-57" style="display:none;">
+        <div id="content-58" style="display:none;">
             <h2>The Download: why LLMs are like aliens, and the future of head transplants</h2>
             <p><strong>MIT Technology Review | 2026-01-26</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/01/26/1131717/the-download-why-llms-are-like-aliens-and-the-future-of-head-transplants/">Visit Original Website</a>
@@ -3096,13 +3223,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-58')">
+        <div class="card" onclick="openModal('content-59')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The Download: chatbots for health, and US fights over AI regulation</div>
             <div class="meta">2026-01-23</div>
         </div>
         
-        <div id="content-58" style="display:none;">
+        <div id="content-59" style="display:none;">
             <h2>The Download: chatbots for health, and US fights over AI regulation</h2>
             <p><strong>MIT Technology Review | 2026-01-23</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/01/23/1131708/the-download-chatbots-for-health-and-us-fights-over-ai-regulation/">Visit Original Website</a>
@@ -3169,74 +3296,27 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-59')">
-            <div class="source">MIT Technology Review</div>
-            <div class="title">America’s coming war over AI regulation</div>
-            <div class="meta">2026-01-23</div>
-        </div>
-        
-        <div id="content-59" style="display:none;">
-            <h2>America’s coming war over AI regulation</h2>
-            <p><strong>MIT Technology Review | 2026-01-23</strong></p>
-            <a class="original-link" href="https://www.technologyreview.com/2026/01/23/1131559/americas-coming-war-over-ai-regulation/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">MIT Technology Review’s What’s Next series looks across industries, trends, and technologies to give you a first look at the future. You can read the rest of them here.
-
-In the final weeks of 2025, the battle over regulating artificial intelligence in the US reached a boiling point. On December 11, after Congress failed twice to pass a law banning state AI laws, President Donald Trump signed a sweeping executive order seeking to handcuff states from regulating the booming industry. Instead, he vowed to work with Congress to establish a “minimally burdensome” national AI policy, one that would position the US to win the global AI race. The move marked a qualified victory for tech titans, who have been marshaling multimillion-dollar war chests to oppose AI regulations, arguing that a patchwork of state laws would stifle innovation.
-
-In 2026, the battleground will shift to the courts. While some states might back down from passing AI laws, others will charge ahead, buoyed by mounting public pressure to protect children from chatbots and rein in power-hungry data centers. Meanwhile, dueling super PACs bankrolled by tech moguls and AI-safety advocates will pour tens of millions into congressional and state elections to seat lawmakers who champion their competing visions for AI regulation.
-
-Trump’s executive order directs the Department of Justice to establish a task force that sues states whose AI laws clash with his vision for light-touch regulation. It also directs the Department of Commerce to starve states of federal broadband funding if their AI laws are “onerous.” In practice, the order may target a handful of laws in Democratic states, says James Grimmelmann, a law professor at Cornell Law School. “The executive order will be used to challenge a smaller number of provisions, mostly relating to transparency and bias in AI, which tend to be more liberal issues,” Grimmelmann says.
-
-For now, many states aren’t flinching. On December 19, New York’s governor, Kathy Hochul, signed the Responsible AI Safety and Education (RAISE) Act, a landmark law requiring AI companies to publish the protocols used to ensure the safe development of their AI models and report critical safety incidents. On January 1, California debuted the nation’s first frontier AI safety law, SB 53—which the RAISE Act was modeled on—aimed at preventing catastrophic harms such as biological weapons or cyberattacks. While both laws were watered down from earlier iterations to survive bruising industry lobbying, they struck a rare, if fragile, compromise between tech giants and AI safety advocates.
-
-If Trump targets these hard-won laws, Democratic states like California and New York will likely take the fight to court. Republican states like Florida with vocal champions for AI regulation might follow suit. Trump could face an uphill battle. “The Trump administration is stretching itself thin with some of its attempts to effectively preempt [legislation] via executive action,” says Margot Kaminski, a law professor at the University of Colorado Law School. “It’s on thin ice.”
-
-But Republican states that are anxious to stay off Trump’s radar or can’t afford to lose federal broadband funding for their sprawling rural communities might retreat from passing or enforcing AI laws. Win or lose in court, the chaos and uncertainty could chill state lawmaking. Paradoxically, the Democratic states that Trump wants to rein in—armed with big budgets and emboldened by the optics of battling the administration—may be the least likely to budge.
-
-In lieu of state laws, Trump promises to create a federal AI policy with Congress. But the gridlocked and polarized body won’t be delivering a bill this year. In July, the Senate killed a moratorium on state AI laws that had been inserted into a tax bill, and in November, the House scrapped an encore attempt in a defense bill. In fact, Trump’s bid to strong-arm Congress with an executive order may sour any appetite for a bipartisan deal.
-
-The executive order “has made it harder to pass responsible AI policy by hardening a lot of positions, making it a much more partisan issue,” says Brad Carson, a former Democratic congressman from Oklahoma who is building a network of super PACs backing candidates who support AI regulation. “It hardened Democrats and created incredible fault lines among Republicans,” he says.
-
-While AI accelerationists in Trump’s orbit—AI and crypto czar David Sacks among them—champion deregulation, populist MAGA firebrands like Steve Bannon warn of rogue superintelligence and mass unemployment. In response to Trump’s executive order, Republican state attorneys general signed a bipartisan letter urging the FCC not to supersede state AI laws.
-
-With Americans increasingly anxious about how AI could harm mental health, jobs, and the environment, public demand for regulation is growing. If Congress stays paralyzed, states will be the only ones acting to keep the AI industry in check. In 2025, state legislators introduced more than 1,000 AI bills, and nearly 40 states enacted over 100 laws, according to the National Conference of State Legislatures.
-
-Efforts to protect children from chatbots may inspire rare consensus. On January 7, Google and Character Technologies, a startup behind the companion chatbot Character.AI, settled several lawsuits with families of teenagers who killed themselves after interacting with the bot. Just a day later, the Kentucky attorney general sued Character Technologies, alleging that the chatbots drove children to suicide and other forms of self-harm. OpenAI and Meta face a barrage of similar suits. Expect more to pile up this year. Without AI laws on the books, it remains to be seen how product liability laws and free speech doctrines apply to these novel dangers. “It’s an open question what the courts will do,” says Grimmelmann.
-
-While litigation brews, states will move to pass child safety laws, which are exempt from Trump’s proposed ban on state AI laws. On January 9, OpenAI inked a deal with a former foe, the child-safety advocacy group Common Sense Media, to back a ballot initiative in California called the Parents & Kids Safe AI Act, setting guardrails around how chatbots interact with children. The measure proposes requiring AI companies to verify users’ age, offer parental controls, and undergo independent child-safety audits. If passed, it could be a blueprint for states across the country seeking to crack down on chatbots.
-
-Fueled by widespread backlash against data centers, states will also try to regulate the resources needed to run AI. That means bills requiring data centers to report on their power and water use and foot their own electricity bills. If AI starts to displace jobs at scale, labor groups might float AI bans in specific professions. A few states concerned about the catastrophic risks posed by AI may pass safety bills mirroring SB 53 and the RAISE Act.
-
-Meanwhile, tech titans will continue to use their deep pockets to crush AI regulations. Leading the Future, a super PAC backed by OpenAI president Greg Brockman and the venture capital firm Andreessen Horowitz, will try to elect candidates who endorse unfettered AI development to Congress and state legislatures. They’ll follow the crypto industry’s playbook for electing allies and writing the rules. To counter this, super PACs funded by Public First, an organization run by Carson and former Republican congressman Chris Stewart of Utah, will back candidates advocating for AI regulation. We might even see a handful of candidates running on anti-AI populist platforms.
-
-In 2026, the slow, messy process of American democracy will grind on. And the rules written in state capitals could decide how the most disruptive technology of our generation develops far beyond America’s borders, for years to come.
-
-Four ways to think about this year&#39;s reckoning.
-
-Our AI writers make their big bets for the coming year—here are five hot trends to watch.
-
-By studying large language models as if they were living things instead of computer programs, scientists are discovering some of their secrets for the first time.
-
-In an exclusive interview, the AI pioneer shares his plans for his new Paris-based company, AMI Labs.
-
-Discover special offers, top stories,
-            upcoming events, and more.
-
-We’re having trouble saving your preferences.
-                Try refreshing this page and updating them one
-                more time. If you continue to get this message,
-                reach out to us at
-                customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-60')">
+            <div class="source">The Next Web</div>
+            <div class="title">Early Results from the TNW Council Concierge Revealed</div>
+            <div class="meta">2026-01-27</div>
+        </div>
+        
+        <div id="content-60" style="display:none;">
+            <h2>Early Results from the TNW Council Concierge Revealed</h2>
+            <p><strong>The Next Web | 2026-01-27</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/early-results-from-the-tnw-council-concierge-revealed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-61')">
             <div class="source">The Next Web</div>
             <div class="title">Noora Saksa steps in as new Slush CEO</div>
             <div class="meta">2026-01-27</div>
         </div>
         
-        <div id="content-60" style="display:none;">
+        <div id="content-61" style="display:none;">
             <h2>Noora Saksa steps in as new Slush CEO</h2>
             <p><strong>The Next Web | 2026-01-27</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/noora-saksa-steps-in-as-new-slush-ceo">Visit Original Website</a>
@@ -3268,13 +3348,13 @@ Noora Saksa has played a central role at Slush as Chief Operating & Financial Of
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-62')">
             <div class="source">The Next Web</div>
             <div class="title">Rainbow Weather raises $5.5M to refine real-time weather forecasting</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-62" style="display:none;">
             <h2>Rainbow Weather raises $5.5M to refine real-time weather forecasting</h2>
             <p><strong>The Next Web | 2026-01-26</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/rainbow-weather-raises-5-5m-to-refine-real-time-weather-forecasting">Visit Original Website</a>
@@ -3316,13 +3396,13 @@ Rainbow Weather is a next-gen climate tech startup for ultra-accurate short-term
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">The Next Web</div>
             <div class="title">Synthesia’s valuation jumps to $4B after $200M raise</div>
             <div class="meta">2026-01-26</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>Synthesia’s valuation jumps to $4B after $200M raise</h2>
             <p><strong>The Next Web | 2026-01-26</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/synthesias-valuation-jumps-to-4b-after-200m-raise">Visit Original Website</a>
@@ -3358,13 +3438,13 @@ But with deep enterprise adoption, a clear product focus, and backing from one o
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">The Next Web</div>
             <div class="title">TNW Weekly Briefing</div>
             <div class="meta">2026-01-25</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>TNW Weekly Briefing</h2>
             <p><strong>The Next Web | 2026-01-25</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/tnw-weekly-briefing-2">Visit Original Website</a>
@@ -3390,13 +3470,13 @@ EU Inc sets the future structure, high-risk tech phase-out enforces security now
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">The Next Web</div>
             <div class="title">Mews raises €255M to accelerate AI and automation in hospitality</div>
             <div class="meta">2026-01-24</div>
         </div>
         
-        <div id="content-64" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>Mews raises €255M to accelerate AI and automation in hospitality</h2>
             <p><strong>The Next Web | 2026-01-24</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/mews-raises-e255m-to-accelerate-ai-and-automation-in-hospitality">Visit Original Website</a>
@@ -3434,58 +3514,16 @@ But with strong adoption, a global footprint and a growing suite of automation t
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-65')">
-            <div class="source">The Next Web</div>
-            <div class="title">How Flippa Is Removing the Language Barrier from Global Deal-Making</div>
-            <div class="meta">2026-01-23</div>
-        </div>
-        
-        <div id="content-65" style="display:none;">
-            <h2>How Flippa Is Removing the Language Barrier from Global Deal-Making</h2>
-            <p><strong>The Next Web | 2026-01-23</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/how-flippa-is-removing-the-language-barrier-from-global-deal-making">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">For decades, access to high-quality deal flow and sophisticated M&A infrastructure has been largely designed for well-connected investors and industry giants. Small businesses and independent founders, particularly those operating outside English-speaking markets, may often find the barriers even higher. Language, geography, and limited access to networks could mean that opportunity stops at the border.
-
-Amidst this trend, Flippa, a platform for buying and selling digital businesses, is rewriting the script and dismantling those barriers. Under the leadership of CEO Blake Hutchison, the company has connected buyers and sellers across continents, linguistic differences, and price points, closing deals from $100,000 up to $10 million. Now, with the launch of its AI-powered multi-language Deal Room, Flippa is addressing what it sees as one of the last major points of disadvantage in global business deals and M&A, calling it the “Language Tax.”
-
-Founded in 2009, Flippa has grown into a global marketplace where entrepreneurs can buy and sell digital assets ranging from e-commerce stores and SaaS businesses to YouTube channels, online communities, and mobile applications. According to Hutchison, the platform supports users from 189 countries, attracting over 450,000 new buyers in the last two years alone. “Our internal data shows that cross-border transactions now account for approximately 85% of all deals completed on the platform,” Hutchison says. “That growth has been especially pronounced in Europe. As a highly fragmented market with high cross-border trade volume but multiple operating languages, I believe Europe often faces structural friction in cross-border dealmaking.”
-
-He notes that European businesses are increasingly being acquired by international buyers, with US-based acquirers representing a significant share of demand. Yet, as deal volumes continue to decline, Hutchison believes that language barriers have historically slowed or derailed otherwise viable transactions.
-
-The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
-
-The company’s new multi-language Deal Room is designed to remove that friction entirely. Within the Deal Room, Hutchison notes that buyers and sellers can now negotiate and transact in their preferred languages. “For example, a French seller can communicate in French with an Italian or English-speaking buyer, who receives the message instantly translated into their own language,” he says, explaining how replies can be translated back in real time, while preserving the original message for verification and clarity.
-
-Hutchison states, “Our goal is to make deal-making as efficient and approachable as possible. Whether you are a SaaS founder in Paris or an e-commerce operator in Berlin, you should be able to negotiate your exit in the language of your choice.”
-
-Alongside the Deal Room translation tool, Flippa has also launched a fully localized French version of its platform, with Spanish scheduled to follow shortly. The expansion reflects the user demand and the reality that French and Spanish are not only widely spoken across Europe, but globally. Spanish is spoken by 550 million people globally, and is spoken widely across the US and Brazil. Similarly, French, being the 5th most widely spoken language in the world, has 321 million speakers, with 61.8% of those speakers living in parts of North Africa and Sub-Saharan Africa, significantly extending the global reach of European-founded businesses.
-
-According to Hutchison, this shift comes as Europe’s M&A market continues to rise again, with an estimated USD412 billion in deal value, with mid-market and digital-first businesses representing one of the fastest-growing segments. Flippa’s role, according to Hutchison, has been to create infrastructure for businesses to source deals with greater reach than elite investment banks, but with a fraction of the cost.
-
-“We often describe Flippa as the investment bank for the 99%,” Hutchison says. “The difference now is that geography and language no longer define who gets access. The demand for cross-border deals was already there. The technology simply needed to catch up.”
-
-Flippa continues to integrate AI-driven discovery, valuation, and outreach tools through its proprietary LaurenAI engine. “The model is trained on more than 200,000 historical listings and transactions,” he explains. “The system then helps buyers identify opportunities, estimate enterprise value, and initiate conversations at scale.” It autonomously indexes the web to identify businesses across SaaS, e-commerce, apps, publishing, and next-generation media.
-
-Human expertise remains embedded in the process, with certified brokers and M&A professionals supporting transactions once a match is made. As Hutchison puts it, “LaurenAI gives people the ability to access off-market deals and build pipelines the same way Wall Street players do, but without the barriers of capital or connections.”
-
-He notes that entrepreneurs who may not feel confident negotiating complex deal terms in English can now access global liquidity without intermediaries or external advisors. At the same time, international buyers can gain visibility into high-quality European businesses that were previously difficult to source or engage.
-
-As digital entrepreneurship continues to globalize, Flippa is positioning itself at the center of a more inclusive M&A ecosystem, one where language is no longer a tax on ambition and opportunities. Flippa’s multi-language Deal Room represents a structural shift in how global deal-making can be done. For founders and buyers alike, it signals a future where the next meaningful transaction can begin in any language, from anywhere in the world.
-
-Get the most important tech news in your inbox each week.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump's Golden Dome missile shield marks one year with little progress - Reuters</div>
+            <div class="title">China could help end war in Ukraine, Finland's prime minister says - Reuters</div>
             <div class="meta">2026-01-27</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Trump's Golden Dome missile shield marks one year with little progress - Reuters</h2>
+            <h2>China could help end war in Ukraine, Finland's prime minister says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNMTBlTU16S3M1Ty1vaVJMRnlwMGNnNVQxZFpsRnZVMWJWTDFHWHoxaXdpTGhORzZWb1dONHV6bGJYaVRlUzhwZEhxdzhreVdBLXM3RlNXN1R0cHFKMVhhcUVWbmZhZEtvME5mX1dtaVFtbGFLYTkwYWRnSFU3LU1VbExkSDZISklOMFZURkNGS3otX0JfaERKMEx1OGRnYTlJSTJoQ1lQaERwVzJvaXRfRy1VeG5ZU05maEh0YnoyVlFWaTNJbk5QQnp1T18?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQTzZBdTQ4Mi05SFZVWTkybzFCVFN6WVpidlJtWWdBUjRabDNzaFl1bE1BOVpWSU8tSk9lOEMxOFJHNEctM1RCY2oxdjJlS2xrblRYckVxQndhUjZSLUoxUnU3RThobFd4cnJmYVpVVEdHWlNlYTV4U193NjFvUm5BWWhWdGo5OFNqOUFFYXpodnBXdERQSGM4TkF4dEt4bWV0NjJqalVYdlF6SzNzdkE?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3520,42 +3558,42 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">India, EU reach landmark trade deal, tariffs to be slashed on most goods - Reuters</div>
+            <div class="title">Trump's Golden Dome missile shield marks one year with little progress - Reuters</div>
             <div class="meta">2026-01-27</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>India, EU reach landmark trade deal, tariffs to be slashed on most goods - Reuters</h2>
+            <h2>Trump's Golden Dome missile shield marks one year with little progress - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxObmhYVjFfWEFhd29vWFpvUF83X0gzeEVrZGZadFFnQ0dEU0dSbjhFa0s4cUc0T1d6RXVzMjFreGdXTC1ZY2Z2cjlPMTItclBWQjFna05OR3k1TTl2bE9TckxrTGVtbVBPbXVmZDZ1c3dvenU4T3pSU1lDX0JHV2hJclk0X3JOZnY0RVlYaVc2TWRYRVRoVDQydWdDNUpVNVJTYVJWLVg2OHlxcVJqb1p2Q1doeTF1LXh1eWxfdWpPUTJHdw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNMTBlTU16S3M1Ty1vaVJMRnlwMGNnNVQxZFpsRnZVMWJWTDFHWHoxaXdpTGhORzZWb1dONHV6bGJYaVRlUzhwZEhxdzhreVdBLXM3RlNXN1R0cHFKMVhhcUVWbmZhZEtvME5mX1dtaVFtbGFLYTkwYWRnSFU3LU1VbExkSDZISklOMFZURkNGS3otX0JfaERKMEx1OGRnYTlJSTJoQ1lQaERwVzJvaXRfRy1VeG5ZU05maEh0YnoyVlFWaTNJbk5QQnp1T18?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">China's Anta Sports buys 29% Puma stake for $1.8 billion, rules out full takeover - Reuters</div>
+            <div class="title">Germany needs new partners as trusted alliances 'crumble', economy minister says - Reuters</div>
             <div class="meta">2026-01-27</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>China's Anta Sports buys 29% Puma stake for $1.8 billion, rules out full takeover - Reuters</h2>
+            <h2>Germany needs new partners as trusted alliances 'crumble', economy minister says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxNWU5KVUVna3FSeWpiZU9BZERDRVQyM3VvZWtTOVdLRHBjQ0Q2N1lidTNZZ3hPV3dOQUtSOTY0Y3czblRHYUgxUUQyTjlrc2ZtekRuOXRUR3l0bmZOV2VOV1B4N1FQMG5hclpYWjRvMlA4VURXMzhvRFh5cVUtc3UwbjA5SjhVcXVIdHJoamc1TjN3MnJrLXpVa0dqOTBkV1Z4Y1hGbUluV2VjckVxVjFqOGYxaVFaX1JmZzVoZ1AzclVKVXVERkZ2VzdjczBQQQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQU0pxSjRFWFZGSnBCSzU1WFBfU01tWWJaZVk0aEdaTHpQSU5BNWl4bUl3LTRfQkFHdVE2ZU9QNWdmckR1VW5VZUJkbnRHZUpqX19mYmVlR2xyWDZUYjcxVFktb0ZyeEFleERic2tnVkk1ZFBEcFEwVUppaDQ5dTFpTlBHcVBiV0FOaG93TTZJSnhRc29hYTVNZ3YzYnUyWEhRSWV5Y3dOcFpSSXhYVmFzYUY5bXFtbXc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">China to seek deeper cooperation with UK, Chinese ministries say - Reuters</div>
+            <div class="title">S&P, Nasdaq futures gain as corporate earnings stream in; Medicare rates hit insurers - Reuters</div>
             <div class="meta">2026-01-27</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>China to seek deeper cooperation with UK, Chinese ministries say - Reuters</h2>
+            <h2>S&P, Nasdaq futures gain as corporate earnings stream in; Medicare rates hit insurers - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-01-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQZXJQcjZHcTQ4T292WUNoOUhBczJkVUIwNGZzZXhkdTlEZjdsQmx2REhwTVlnUnVoZXJ4cUE3N2ttMUI4SG1VMnVsbE5wUU5DVjkyTlhkZWZ4a3hkNGQtTkR2SFVMUXNfaEt4bmVYSXBNcTdjX1V1U29nYTBIU1piV3NyUURhZkhBcDB2UmNhRkNJa1lBUmFUMzBpOXpabXFVTWtsdTRaSWxqdEpX?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNLUVVVXA3dmg4VmpvaFBxR0NpaG11cXh2MEpaRXJvNnJBc3FXNGYyanhLRFRuZWMzSmp6NEpzRWtzb1ZDT3pBYzcwZEtXamxpRFNLRGZ6bDlXNm9RSWVDYUNXVzQ4NjVUQzlWN3l4a1d3OWh1Z1ZYdWNHaDEwQ1VaR2hKMkFUcHdkSUZWSndtZ0gzR1VoVEFqQ1hTWHdZaEgySTFJbWtNTzJieXk5Y2lLUjFLWFYzYWdZV3Fmdnp3SExyY1E?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
