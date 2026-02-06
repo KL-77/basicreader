@@ -1253,15 +1253,31 @@ Allred seems to have flung his wild charges at Talarico in genuine anger. But yo
             <p><strong>Slashdot | 2026-02-06</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/05/187252/cia-has-killed-off-the-world-factbook-after-six-decades?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+Indeed. How more respected can you get in a community than publishing the universally recognized frigging reference for all of the world?
+
+Also remember that all conflicts have a major component of perception. This move will make the US less safe.
+
+This stuff worries me.  The US, since WWII, has provided a starting point for the rest of the world in many areas.  From the Internet to GPS, to electricity, to roads... many things that we use today were paved and made available by the US government.
+
+I&#39;m not happy seeing this shift.  IMHO, this shows the US is retreating.  This also shows to allies that the US is not interested in world affairs as much, while China and India are wooing them to join BRICS and dump the dollar, to join their trade bloc.
+
+Yes, though I had to refrain from citing any numbers from that on places such as this. Every time I did, the usual suspects would insist that it&#39;s just American propaganda, CIA is fascist, or any other conspiracy theory you can think of.
+
+Sometimes, the only way to get your point across is to do it using the recipients own preferred source material, and be careful to avoid using the ones they distrust, regardless of how accurate, or not, it may be.
+
+Your head is so far up your own ass that you can&#39;t have a simple story about the republican administration doing something short without bleating about teh libruhls.
 
 Those are obviously old and stale facts. The most transparent administration in history will provide you with completely new and fresh facts to justify fucking over whichever country is next on the list.
+
+And it will be alternate facts, which are much better!
 
 I remember before smart phones/mobile internet/Wikipedia I could download/install the CIA world Factbook to my visor handspring.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-It is better to travel hopefully than to fly Continental.</div>
+Suggest you just sit there and wait till life gets easier.</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1275,7 +1291,9 @@ It is better to travel hopefully than to fly Continental.</div>
             <p><strong>Slashdot | 2026-02-06</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/02/05/1935209/google-confirms-airdrop-sharing-is-coming-to-android-phones-beyond-pixels?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">given that airdrop reduces your network MTTR why would you enable it ?
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+
+given that airdrop reduces your network MTTR why would you enable it ?
 
 https://ripe91.ripe.net/programme/meeting-plan/sessions/15/3KJJLU/
 
@@ -1291,7 +1309,7 @@ https://ripe91.ripe.net/programme/meeting-plan/sessions/15/3KJJLU/
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-It is better to travel hopefully than to fly Continental.</div>
+Suggest you just sit there and wait till life gets easier.</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1312,6 +1330,30 @@ The move away from MS crap. Not for the reason I expected, but still.
 The fatal mistake that Microsoft made was disable the email of the chief prosecutor at the International Court of Law. At that point, it became blatantly obvious and impossible to ignore that MS will do whatever the US administration wants to its international (and probably national) customers. The EU administration observed this event very carefully and drew its conclusions. Obviously, this will be a process over the next 5-10 years or so, but MS is cooked.
 
 What did it take to destroy Microsoft?Corpocracy + fascism + consistently bad US foreign policy.Sort of a perfect storm that turns what probably seemed like a sweet deal for the big tech companies into a nightmare scenario of break up. I bet they wish they still had Biden and the Dems in power, that let corporate interests run much of the government as long as they had diversity policies.
+
+Can the EU actually pull this off?  There are some tools that MS has, which nobody else has:
+
+1:  AD/Entra.  Maybe in the past, we had directory services and policy object servers that could scale up and out, but right now, AFAIK (and please correct me) AD/Entra are the only game in town if you have millions of users and need to handle AAA (authentication, authorization, auditing), of users, machines, and other objects, with GPOs and other policies attached.  Yes, there is FreeIPA/IdM, and it works well, with replication, performance, and security.  I&#39;d assert it has a smaller attack profile than AD.  However, it doesn&#39;t scale as well as AD can.  AD can figure out how to replicate itself, and handle all kinds of oddball conditions.
+
+Note, this can&#39;t be a cloud service.  Ideally, authentication should either be on-prem, or at least hybrid, so even without network connectivity, people can log into their machines and do offline work, even if caching isn&#39;t doable.
+
+2:  A unified file sharing protocol.  NFS v3 doesn&#39;t cut it for users.  NFS v4 takes a well tuned environment to work.  S3 is awesome for objects, but definitely not something you want to use as a VM storage backend.  We need to have a protocol that allows for file sharing with the robustness of S3, but have additional commands for block I/O, so that can be as fast as possible.  This would allow for things like versioning, object immutability, maybe even tiers of compression and encryption.  However, as it stands now, SMB/CIFS is king, with nothing really dethroning it.
+
+3:  Something to replace Outlook/Exchange.  A standardized mail, calendaring suite that has all the C-level features needed.  This can be hard, as there are a lot of systems out there (Google WorkSpace, Zimbra, Zoho)... but feature-wise and usability-wise, MS comes out ahead, if only because people are familiar with it, and it does well enough.
+
+4:  SharePoint.  Don&#39;t laugh, but SharePoint and Confluence are unique programs.  There are other Wiki programs that can do the job, but the ability to import things in and make workflows happen make those two commercial programs extremely useful, especially in maintaining documentation.
+
+5:  GitHub/GHE.  If I have a F/OSS project, and forget about it, I am pretty much certain that 5-10 years from now, it will still be there and usable, perhaps someone finds it, forks it and makes it useful again.  Other Git systems... not so much, and when stuff vanishes, that is history lost forever.  This needs to have government support, and some sanity (so this doesn&#39;t get turned into someone&#39;s personal multi-terabyte storage of videos).  Maybe more space if people &quot;adopt&quot; it.  It also needs to span countries, just so if something happens in Europe, that source code would be available in the US.
+
+6:  MDM/RMM tools.  Intune has its issues, but the Holy Grail would be something that could manage Macs, Windows machines, and many Linux distributions, as well as iOS, and Android devices.  This would be both cloud based as well as available on-prem.  This functionality is critical to a business&#39;s operations, and needs to be integrated into the OS.  Ideally, for Linux, some parameter which can be inputted at install time to have the installer pause, go to a URL, pull code from there and then function like Autopilot or Apple&#39;s ABM provisioning.
+
+7:  I hate to mention this, but an IRM.  Something like MS Purview.  DRM is ugly, but in this case, it can be the one thing that is the difference between exfiltration or no.
+
+8:  A VDI cloud connection broker, as well as a VDI system.  Otherwise, you are paying for Omnissa, Microsoft W365 or AVD, Citrix, or something else, and those are not cheap.  Having a VDI system that is inexpensive and works well with Proxmox can bring a critical security tier to a company.
+
+9:  Don&#39;t laugh... a GPG keyserver combined with transparant GPG in mail apps and webmail.  We have moved away from tried and true encryption to stuff based on &quot;trust me&quot;.  Enough.  We need to see about going back to the GPG standard.
+
+Getting rid of Teams is a positive, but to break MS&#39;s iron grip, there are a lot of other basic enterprise items which need to be made into vetted, maintained, open source projects.
 
 Before I write this, I need to say I think Matrix is very impressive, and I&#39;ve seen some amazing stuff built on that platform, even a FOSS Roblox-like application. I&#39;m not criticizing the authors.
 
@@ -1393,7 +1435,7 @@ Indeed. This is not hard to do and countless examples to be used as inspiration 
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-It is better to travel hopefully than to fly Continental.</div>
+Suggest you just sit there and wait till life gets easier.</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1407,9 +1449,7 @@ It is better to travel hopefully than to fly Continental.</div>
             <p><strong>Slashdot | 2026-02-05</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/05/1924252/court-rules-that-ripping-youtube-clips-can-violate-the-dmca?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-courts should probably get on the business of learning what computers are and what they can do, rather than continuing to be great lumbering dinosaurs holding back progress
+            <div id="article-text">courts should probably get on the business of learning what computers are and what they can do, rather than continuing to be great lumbering dinosaurs holding back progress
 
 guess what morons, the basic functions of a computer do render all your greedy models obsolete
 
@@ -1432,6 +1472,12 @@ Per TFA, the plaintiff claims that the defendant used circumvention technology t
 Yes, the plaintiff&#39;s claim is based on copyright infringement, but through a violation of the DMCA, not through use of their content. I think the case will hinge on whether the plaintiff can prove this.
 
 There is such a thing as fair use, and this case really doesn&#39;t have anything to do with it. Why? Because the plaintiff is not suing the usage, just the manner in which they believe the content was acquired.
+
+Because the plaintiff is not suing the usage, just the manner in which they believe the content was acquired.On a philosophical point of view, can you address one without considering the other? It&#39;s an interesting thought experiment, if you lock down the playback behind the DMCA effectively fair use disappears for all content that isn&#39;t physically acquired.
+
+Because the plaintiff is not suing the usage, just the manner in which they believe the content was acquired.
+
+On a philosophical point of view, can you address one without considering the other? It&#39;s an interesting thought experiment, if you lock down the playback behind the DMCA effectively fair use disappears for all content that isn&#39;t physically acquired.
 
 The DMCA is clear.But is it clear that the defendant violated the DMCA? I predict the plaintiff will be unable to demonstrate this. The defendant has already denied doing so.We&#39;ll see what discovery turns up.
 
@@ -1459,11 +1505,37 @@ No, but I replayed them at porno theaters, which served as a kind of porn hub.
 
 If you published your VHS recordings, you&#39;d be in trouble. Exactly same here.
 
+The judge here is an idiot.No. You are ignorant.
+
+S.1201 very clearly makes anti-circumvention a crime regardless of fair-use. See DeCSS, Sony&#39;s case against George Hotz, etc.
+
+The problem with this world is that people like you are too stupid to realize shit you read on some fucking blog is just some dumbfuck&#39;s opinion.
+
+No. You are ignorant.
+
+S.1201 very clearly makes anti-circumvention a crime regardless of fair-use. See DeCSS, Sony&#39;s case against George Hotz, etc.
+
+The problem with this world is that people like you are too stupid to realize shit you read on some fucking blog is just some dumbfuck&#39;s opinion.
+
 Broadcasting the reaction to the recording, or any other details of how it was used, is irrelevant to the anti-circumvention part of the DMCA. It&#39;s the circumvention itself which is illegal under that law regardless of the reason.
 
 You could circumvent the DRM it then immediately delete the recording unused and, if proven, you&#39;d still have violated the DMCA section 1201. It&#39;s incredibly restricting and dumb, as even something in the public domain is unlawful to copy if you need to bypass copy protection to do
 
 Reaction content is intended to be watched by many parties (and is often monetized).  When you used a VCR to record a TV show to watch later, you weren&#39;t displaying the recording at a public venue where you charged admission.
+
+It&#39;s worse, if screen capture is illegal then so is using your eyeballs.Jesus fucking christ, you really are stupid.
+Shut the fuck up, and scamper off.
+
+No court of law considers the neuronal representation of media you look at to constitute a statutory fucking copy. Nothing in the Copyright Act or DMCA, by any fucking stretch of the imagination, supports such an asinine and dumbshit edgelord take.
+The defendant acts and talks just like you do, and that&#39;s the actual reason they&#39;re going to be split in fucking half by the Plaintiff&#39;s cock in this lawsuit. If they had actually ac
+
+It&#39;s worse, if screen capture is illegal then so is using your eyeballs.
+
+Jesus fucking christ, you really are stupid.
+Shut the fuck up, and scamper off.
+
+No court of law considers the neuronal representation of media you look at to constitute a statutory fucking copy. Nothing in the Copyright Act or DMCA, by any fucking stretch of the imagination, supports such an asinine and dumbshit edgelord take.
+The defendant acts and talks just like you do, and that&#39;s the actual reason they&#39;re going to be split in fucking half by the Plaintiff&#39;s cock in this lawsuit. If they had actually ac
 
 Even though this is still very preliminary, I think it reaffirms Cory Doctorow&#39;s position that countries should repeal the DMCA-like laws that they were strong-armed into passing by the US government (which itself was bought and paid for by US corporations.)
 
@@ -1477,13 +1549,17 @@ Unfortunately the only perjury possible in a take-down notice is for not actuall
 
 The counter-notice to put stuff back up after an
 
+Unfortunately the only perjury possible in a take-down notice is for not actually being an authorized agent of the copyright holder
+
+Of a copyright holder. Maybe things have improved, but it used to be that you couldn&#39;t upload a recording of your own performance of classical music by a long-dead composer without getting takedown notices relating to other, commercial, recordings of the same work.
+
 Not being able to download the video to insert into your commentary doesn&#39;t prevent you from simply playing the video segments while recording your commentary.  Harder to get properly timed edits, but it&#39;s more of a hassle than a blocker.
 
 And of course, the court hasn&#39;t even ruled on this yet, so it might be moot.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-It is better to travel hopefully than to fly Continental.</div>
+Suggest you just sit there and wait till life gets easier.</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1497,9 +1573,7 @@ It is better to travel hopefully than to fly Continental.</div>
             <p><strong>Slashdot | 2026-02-05</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/02/05/1918226/nasa-will-finally-let-its-astronauts-bring-iphones-to-the-moon?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-Will they have to put the phones in Spaceship mode?I sure hope so, and leave it on while on the surface. The roaming changes are going to be really bad.
+            <div id="article-text">Will they have to put the phones in Spaceship mode?I sure hope so, and leave it on while on the surface. The roaming changes are going to be really bad.
 
 Will they have to put the phones in Spaceship mode?
 
@@ -1540,6 +1614,10 @@ And outgassing tests.   Just wait until they&#39;re halfway to the moon and star
 I wouldn&#39;t carry a device in my pocket that contains a lithium battery that hasn&#39;t been tested for safety in a vacuum.
 
 If the phone is in a vacuum, the phone is the least of your worries.
+
+The last text message from the astronaut was &quot;please...send...air!&quot;
+
+The last text message from the astronaut was &quot;please...send...air!&quot;AirDrop should solve that.
 
 The last text message from the astronaut was &quot;please...send...air!&quot;
 
@@ -1631,6 +1709,8 @@ You don&#39;t run GNU/Linux on your Samsung phone.  You run bionic/Linux.  Linux
 
 I&#39;m not saying this is a bad thing.  There are really good reasons for Android&#39;s choices.  And it definitely is a Linux system (no matter how much the Android Security team wishes it weren&#39;t -- so many vulns!).  But it&#39;s not GNU/Linux, and it&#39;s not anything li
 
+Are you saying the post is different from the title? How much did Apple pay to make that happen?
+
 The title didn&#39;t. Maybe Apple only paid off msmash
 
 Everybody seems to have forgotten their lightning cables.
@@ -1667,7 +1747,7 @@ Because what we really needed was pictures from NASA missions touched up by AI /
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-It is better to travel hopefully than to fly Continental.</div>
+Suggest you just sit there and wait till life gets easier.</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1705,6 +1785,8 @@ I predict his prediction will come true right around the same time he arrives on
 
 &quot;I predict his prediction will come true right around the same time he arrives on Mars&quot;I&#39;d help him pack if he would leave tomorrow
 
+Hard to tell, and that&#39;s part of what makes the movie so great.
+
 Hmmmm. Microsoft did just fine with lying (even in court), and Enron would have gotten away with it too if it wasn&#39;t for those pesky kids and their mangy brownouts.
 
 Psychologists argue that a primary trait of a good CEO is psychopathy, since it requires a personality that has no remorse or compassion and a willingness to do whatever it takes.
@@ -1715,7 +1797,27 @@ You don&#39;t become a successful business owner this many times over by lying t
 
 Thanks!  I&#39;ll be sure to revise my pitch to &quot;My idea probably won&#39;t work and ya&#39;ll are statistically likely to lose all your money.  Still want to invest?&quot;  Obscene amount of riches, here I come.
 
+Agreed, with caveats.  I don&#39;t think that&#39;s always the case - I think there are times when he&#39;s selling a story that even he himself isn&#39;t convinced of, if he feels it&#39;s for &quot;the greater good&quot; (which, in his head, is always &quot;whatever his goals are at the time&quot;).  But usually, I agree that he smokes his own supply.  His general formula for success has been:
+
+* Find some sci-fi thing that nerds really want to happen, that&#39;s technically possible but difficult and has seen little progress* Sell a big story about
+
+He was in the right place at the right time, with the right dream.Over, and over, and over, which is why he&#39;s worth $800 billion or so.  Yeah I&#39;ll take some of that &quot;dream&quot;...
+
+He was in the right place at the right time, with the right dream.
+
+Over, and over, and over, which is why he&#39;s worth $800 billion or so.  Yeah I&#39;ll take some of that &quot;dream&quot;...
+
+>He was in the right place at the right time, with the right dream.
+
+A statistically unlikely number of times.
+
 A lot of people don&#39;t want to be identified with Musk as a supposed fellow human being.
+
+There is no way FSD will ever be a thing with just cameras.And you&#39;re basing this assumption off what exactly? Have you even seen what Tesla FSD is currently capable of?
+
+There is no way FSD will ever be a thing with just cameras.
+
+And you&#39;re basing this assumption off what exactly? Have you even seen what Tesla FSD is currently capable of?
 
 And you&#39;re basing this assumption off what exactly?Heuristics and a little bit of technical education and knowledge.Have you even seen what Tesla FSD is currently capable of?Yes. Frequently.
 Me and my buddy Allan make fun of his Tesla Y&#39;s FSD weekly-or-so when he takes us to Pho for lunch.
@@ -1737,12 +1839,6 @@ Yes. Frequently.
 Me and my buddy Allan make fun of his Tesla Y&#39;s FSD weekly-or-so when he takes us to Pho for lunch.
 
 It&#39;s really not very good. I don&#39;t for the life of me understand what gets people to hype it so hard.
-
-Listen, I think he has gotten a bit odd too over the years. However, he&#39;s not lying, he&#39;s just been way too overoptimistic when it comes to time tables. You don&#39;t become a successful business owner this many times over by lying to people.Legit the best laugh I&#39;ve had all fucking day. God damn. Somebody mod this guy funny. Holy shit.
-
-Listen, I think he has gotten a bit odd too over the years. However, he&#39;s not lying, he&#39;s just been way too overoptimistic when it comes to time tables. You don&#39;t become a successful business owner this many times over by lying to people.
-
-Legit the best laugh I&#39;ve had all fucking day. God damn. Somebody mod this guy funny. Holy shit.
 
 As much AI computing as necessary to drive all those 10 million robotaxis on Mars, right?
 
@@ -1828,10 +1924,6 @@ Chip output has nothing to do with &quot;electricity supply&quot; and growth in 
 
 From all of the above it seems like the &quot;basic&quot; and &quot;clear&quot; solution is to build more power stations. It would be much, much cheaper to slap the SpaceX branding on some new nuclear power stations. Or to just buy Westinghouse and vertically integrate.
 
-Incidentally, Moore&#39;s law has stopped working to predict computational power, because it is basically all in the interconnect these days. Hence no &quot;exponential growth&quot; at this time, and probably never again.
-
-Or is he talking about chip power _input_ maybe? It is hard to tell with the confused statements this druggie is making.
-
 Pretty much the same level. This is a not very capable or smart asshole that just got very lucky with inherited money.
 
 &quot;Five years from now, Musk predicted, SpaceX will launch and operate more AI compute annually than the cumulative total on Earth, expecting at least a few hundred gigawatts per year in space...&quot;
@@ -1858,18 +1950,6 @@ When you are the head of a publicly traded company and you make public statement
 
 If you&#39;re asking &#39;why is lying wrong?&#39;, I guess I don&#39;t have a good answer to that.
 
-If you&#39;re asking &#39;why is lying wrong?&#39;, I guess I don&#39;t have a good answer to that.I have one: Because it destroys society above a certain level. All societies are based on trust. When that trust becomes unsustainable, societies implode.
-
-If you&#39;re asking &#39;why is lying wrong?&#39;, I guess I don&#39;t have a good answer to that.
-
-I have one: Because it destroys society above a certain level. All societies are based on trust. When that trust becomes unsustainable, societies implode.
-
-What most people seem to miss is that by setting insanely optimistic goals, it creates the possibility. No, it does not. Insane predictions are just one thing: insane.
-
-What most people seem to miss is that by setting insanely optimistic goals, it creates the possibility.
-
-No, it does not. Insane predictions are just one thing: insane.
-
 Just like how he announced a $40k cybertruck back in 2019.
 
 Neat trick. Now what are you going to get rid of all that heat that generates?You know. IN A VACUUM.Yes, I know there are IR radiators. With a dissipation of around 200w per square meterNow do the math for 100GW
@@ -1881,12 +1961,6 @@ I dunno, I.... just connect this scene to Musk&#39;s diabolical plans.
 How do you plumb coolant to 110 square miles of solar panels? And pump it fast enough and into big enough radiators to cool both the panels and the chips? If these are in sun-synchronous orbit they won&#39;t have any time to cool like the little starlinks do. Micrometeorites are not going to help with reliability much. The engineering problems are many, but if solved it will probably happen sooner rather than later.  I&#39;d rather see this ridiculously expensive AI project burn capital to improve orbital engineeri
 
 I&#39;m still waiting to hear what AI chips are radiation hardened for operation in space.
-
-Yes, I know there are IR radiators. With a dissipation of around 200w per square meterInteresting, because that&#39;s almost exactly the amount of solar panel area to generate that much power. If only the IR radiators could be on side of the solar panel not facing the sun...
-
-Yes, I know there are IR radiators. With a dissipation of around 200w per square meter
-
-Interesting, because that&#39;s almost exactly the amount of solar panel area to generate that much power. If only the IR radiators could be on side of the solar panel not facing the sun...
 
 Let&#39;s say that Elon is right and the economics of space-based solar energy make the expense of launching into orbit worthwhile. Let&#39;s also say that we manage to avoid the Kessler Syndrome that Elon&#39;s companies have largely helped to make more dire.
 
@@ -1966,8 +2040,6 @@ Solar panels cost around $100 per square metre.  So... anyone willing to invest 
 
 wish this overcapitalized moron cleaned up after himself instead of pretending that space junk doesnt matter. Getting pretty cluttered up there and some suggest it is already at a critical level.
 
-that he&#39;s the first to be tried at the Nuremburg redux
-
 Space-hardened GPUs are rare, costly, and generations behind datacenter-class hardware, as are CPUs. And as others have pointed out: The heat dissipation. The electrical energy. The connectivity. The launch costs. The maintenance. Nothing about this makes any sense. He might as well move car manufacturing to space.
 
 This will be coming right after Full Self Driving.People like to rag on Tesla&#39;s self driving, but to that I say: early versions of Windows used to crash all the time, too.
@@ -1978,7 +2050,7 @@ People like to rag on Tesla&#39;s self driving, but to that I say: early version
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-It is better to travel hopefully than to fly Continental.</div>
+Suggest you just sit there and wait till life gets easier.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2455,11 +2527,41 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">The Register</div>
-            <div class="title">New hire fixed a problem so fast, their boss left to become a yoga instructor</div>
+            <div class="title">Summer in Australia means beers, beaches, and bork</div>
             <div class="meta">2026-02-06</div>
         </div>
         
         <div id="content-42" style="display:none;">
+            <h2>Summer in Australia means beers, beaches, and bork</h2>
+            <p><strong>The Register | 2026-02-06</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/06/supermarket_bork_australia/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">BORK!BORK!BORK! When this vulture excuses himself from The Register&#39;s Australian eyrie for a little rest and recreation, I first avoid pyromaniac birds and carnivorous koalas, before settling into a bucolic beach town to catch a few waves, read a few books, and tune out from the world of tech.
+
+So imagine my horror when my pre-beach provisioning excursion turned up a bork.
+
+You&#39;re looking at the digital signage from the sole supermarket in the charming village of Milton, which last week showed shoppers news of printing problems before they had a chance to choose cheese or procure pork products.
+
+As the digital signage cycled through its store of images, the bork sullied a slide promoting house brand Black & Gold, and covered a promo for lottery tickets too.
+
+Australia&#39;s school year commences in late January, meaning the bork also had a chance to infest an ad for snacks parents might consider cramming into lunchboxes.
+
+Which seems rather apt because surely someone needs to go back to Windows maintenance school.
+
+Your correspondent fumed about the bork for a while but mostly forgot all about it after hitting the beach. The shot below shows its glory at about 7:00AM one fine morning, when the water temperature was a very pleasant 22° C and gentle waves made for decent bodysurfing.
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">The Register</div>
+            <div class="title">New hire fixed a problem so fast, their boss left to become a yoga instructor</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
             <h2>New hire fixed a problem so fast, their boss left to become a yoga instructor</h2>
             <p><strong>The Register | 2026-02-06</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/06/on_call/">Visit Original Website</a>
@@ -2503,13 +2605,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">Pakistan to test students for real-world skills before they graduate from IT degrees</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Pakistan to test students for real-world skills before they graduate from IT degrees</h2>
             <p><strong>The Register | 2026-02-06</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/06/pakistan_it_national_skill_competency_test/">Visit Original Website</a>
@@ -2539,13 +2641,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">Atlassian swears it can handle AI without blowing out costs, or being swamped</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Atlassian swears it can handle AI without blowing out costs, or being swamped</h2>
             <p><strong>The Register | 2026-02-06</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/06/atlassian_q2_2026/">Visit Original Website</a>
@@ -2581,13 +2683,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">Amazon can't build AI capacity fast enough, throws another $200B at the problem</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Amazon can't build AI capacity fast enough, throws another $200B at the problem</h2>
             <p><strong>The Register | 2026-02-06</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/06/amazon_earnings_q4_2025/">Visit Original Website</a>
@@ -2627,13 +2729,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">Ad blocking is alive and well, despite Chrome's attempts to make it harder</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Ad blocking is alive and well, despite Chrome's attempts to make it harder</h2>
             <p><strong>The Register | 2026-02-06</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/06/chrome_mv3_no_harm_ad_blocking/">Visit Original Website</a>
@@ -2669,58 +2771,6 @@ The study did not consider how MV3 and MV2 browser extensions compare in terms o
 That said, developers of Chrome-based extensions have a broader set of concerns than the APIs used for blocking content and tracking scripts. The technical and functional improvements sought by developers have been slow to materialize and the oversight of the Chrome Web Store has been underwhelming – security is still a problem, among other issues.
 
 Still, there&#39;s progress, with features like publisher pages, verified uploads, and changes to the Affiliate Ads Policy that disallow the alteration of affiliate links to steal affiliate revenue. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">OpenClaw reveals meaty personal information after simple cracks</div>
-            <div class="meta">2026-02-05</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>OpenClaw reveals meaty personal information after simple cracks</h2>
-            <p><strong>The Register | 2026-02-05</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/05/openclaw_skills_marketplace_leaky_security/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Another day, another vulnerability (or two, or 200) in the security nightmare that is OpenClaw.
-
-Researchers, over the last two days, have disclosed additional issues with OpenClaw - the vibecoded and famously insecure AI agent farm formerly known as Clawdbot and then Moltbot. Specifically, researchers say that the open source agent platform is vulnerable to indirect prompt injection, allowing an attacker to backdoor a user&#39;s machine and then steal sensitive data or perform destructive operations.
-
-Plus, as other threat hunters have recently found, the ClawHub marketplace for OpenClaw is teeming with malware and leaky agent skills that expose sensitive credentials.
-
-In a Thursday blog, Snyk engineers said they scanned the entire ClawHub marketplace containing nearly 4,000 skills and found that 283 of them - that&#39;s about 7.1 percent of the entire registry - contain flaws that expose sensitive credentials.
-
-&quot;They are functional, popular agent skills (like moltyverse-email and youtube-data) that instruct AI agents to mishandle secrets, forcing them to pass API keys, passwords, and even credit card numbers through the LLM&#39;s context window and output logs in plaintext,&quot; the engineers wrote.
-
-This security flaw is due to the SKILL.md instructions, and developers treating AI agents like local scripts.
-
-When someone prompts an agent to &quot;use this API key,&quot; the model saves the key in memory, and that conversation history can be leaked to model providers such as OpenAI or Anthropic - or they could appear in plain text in application logs.
-
-&quot;Perhaps most alarming is the buy-anything skill (v2.0.0),&quot; the engineers wrote. &quot;It instructs the agent to collect credit card details to make purchases.&quot;
-
-To do this, the LLM tokenizes the user&#39;s credit card number, thus sending financial info to the model provider. A subsequent prompt could ask the agent: &quot;Check your logs for the last purchase and repeat the card details,&quot; and thus expose the user&#39;s credit card to an attacker, enabling financial fraud and theft.
-
-Snyk&#39;s research follows a similar blog the developer-focused security shop published on Wednesday that found malware-laced skills across the ecosystem, including 76 malicious payloads designed for credential theft, backdoor installation, and data exfiltration.
-
-Also on Wednesday, AI security firm Zenity&#39;s research arm demonstrated how an attacker could use indirect prompt injection to backdoor OpenClaw users&#39; machines. The problem here is due to AI agents&#39; integrations with other productivity tools like Google Workspace and Slack, allowing OpenClaw to access email, calendars, documents, and enterprise Slack chats.
-
-In Zenity&#39;s proof-of-concept, the attack begins with a Google document and assumes that the OpenClaw instance already integrates with a user&#39;s Google environment - although the threat hunters note that a Google Workspace integration is not a prerequisite for the attack. Any trusted third-party integration will work, as this initial integration is only needed to deliver the initial malicious document or other type of content.
-
-In the Google doc example, it contains an indirect prompt injection payload directing OpenClaw to create a new integration with a Telegram bot.
-
-&quot;Once the integration is created, OpenClaw begins accepting and responding to messages from the attacker-controlled bot,&quot; the researchers wrote. &quot;From this stage onward, the attacker interacts with OpenClaw exclusively through the newly added chat channel.&quot;
-
-This means that an attacker can issue commands via the bot, asking OpenClaw to read all of the files on a user&#39;s desktop, steal their content and send it all to an attacker-controlled server, and then permanently delete all the files.
-
-Or, they could instruct the agent to download and execute a Sliver command-and-control (C2) beacon onto the victim&#39;s computer for long-term remote access. At this point, the attacker wouldn&#39;t really even need the AI agent and could instead use the backdoor and C2 channel for lateral movement, privilege escalation, credential harvesting - even ransomware deployment.
-
-The evil possibilities are truly endless.
-
-The Register reached out to OpenClaw and its developer Peter Steinberger about these security issues - the latest in what has become a daily deluge of OpenClaw vulnerabilities - and did not receive an immediate response. We will update this story if and when we do. ®
 
 The Register   Biting the hand that feeds IT
 
@@ -3363,11 +3413,51 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">The Next Web</div>
+            <div class="title">TechEx Global returns to London with enterprise technology and AI execution</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-60" style="display:none;">
+            <h2>TechEx Global returns to London with enterprise technology and AI execution</h2>
+            <p><strong>The Next Web | 2026-02-06</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/techex-global-returns-to-london-with-enterprise-technology-and-ai-execution">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">London, TechEx Global 2026, one of Europe’s biggest enterprise technology conferences, brought thousands of technology professionals together at Olympia London on 4 and 5 February. The event went beyond buzzwords, focusing on how emerging technologies, especially AI, are being applied in real business contexts.
+
+TechEx Global combines several co-located expos, including AI & Big Data, Cyber Security & Cloud, IoT Tech, Intelligent Automation, and Digital Transformation. Over 200 expert speakers and 150 exhibitors offered insights into how organisations are using digital tools to solve real problems and make decisions, not just generate answers.
+
+One recurring theme was a shift in how artificial intelligence is positioned in business strategy. The idea echoed throughout sessions was that “AI is already acting on behalf of humans, even if many in the public don’t realise it yet.”
+
+TNW City Coworking space - Where your best work happens
+
+A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+
+At TechEx, discussions highlighted that AI is “no longer about answers; it’s about execution”, meaning that software increasingly performs tasks autonomously, such as running processes, analysing data, or automating decisions.
+
+The event highlighted real use cases where AI systems are already shopping, trading, booking logistics, and managing workflows on behalf of organisations. This practical focus matched the conference’s emphasis on applied technology over abstract theory.
+
+For attendees, understanding how to deploy and govern AI in real environments was a priority. Sessions in the AI & Big Data track examined enterprise adoption strategies and how generative AI and machine learning models are integrated into existing systems to boost productivity and reduce risk.
+
+Beyond AI, TechEx also treated other pillars of digital transformation. The Cyber Security & Cloud Expo addressed hybrid cloud security and threat management, while the IoT Tech and Edge Computing tracks looked at how connected devices and distributed data processing are enabling faster, more resilient architectures.
+
+Intelligent Automation sessions brought discussions about the interplay between AI and automation, including how robotic process automation is used to eliminate routine tasks and free teams for higher-value work.
+
+Organisers estimated that around 8,000 senior professionals participated in the conference, from CTOs and IT directors to data leads and innovation managers. Attendees were drawn by the promise of high-signal insights, practical talks, case studies, and live demos showing how digital technologies can be implemented responsibly at scale.
+
+For enterprise leaders, the value of TechEx Global lies in its focus on actionable outcomes rather than abstract vision.
+
+The message across sessions was consistent: modern AI isn’t just a research topic, but a suite of tools being deployed today to improve operations, enhance decision-making, and automate complex tasks.
+
+Get the most important tech news in your inbox each week.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">The Next Web</div>
             <div class="title">QT Sense raises €4M to advance a quantum sensing platform</div>
             <div class="meta">2026-02-05</div>
         </div>
         
-        <div id="content-60" style="display:none;">
+        <div id="content-61" style="display:none;">
             <h2>QT Sense raises €4M to advance a quantum sensing platform</h2>
             <p><strong>The Next Web | 2026-02-05</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/qt-sense-raises-e4m-to-advance-a-quantum-sensing-platform">Visit Original Website</a>
@@ -3411,13 +3501,13 @@ By providing a live view of cell behaviour at the individual cell level, QT Sens
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-62')">
             <div class="source">The Next Web</div>
             <div class="title">Kembara closes €750M first close to fuel growth of European deep tech startups</div>
             <div class="meta">2026-02-05</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-62" style="display:none;">
             <h2>Kembara closes €750M first close to fuel growth of European deep tech startups</h2>
             <p><strong>The Next Web | 2026-02-05</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/kembara-closes-e750m-first-close-to-fuel-growth-of-european-deep-tech-startups">Visit Original Website</a>
@@ -3451,13 +3541,13 @@ If the effort reaches its full €1 billion goal, it would mark one of the large
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">The Next Web</div>
             <div class="title">When the machines started talking to each other</div>
             <div class="meta">2026-02-04</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>When the machines started talking to each other</h2>
             <p><strong>The Next Web | 2026-02-04</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/when-the-machines-started-talking-to-each-other">Visit Original Website</a>
@@ -3529,13 +3619,13 @@ In other words: don’t panic. Just read the fine print before letting a legion 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">The Next Web</div>
             <div class="title">Snowflake and OpenAI forge $200M enterprise AI partnership</div>
             <div class="meta">2026-02-04</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>Snowflake and OpenAI forge $200M enterprise AI partnership</h2>
             <p><strong>The Next Web | 2026-02-04</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/snowflake-and-openai-forge-200m-enterprise-ai-partnership">Visit Original Website</a>
@@ -3557,13 +3647,13 @@ Taken together, this deal highlights an emerging pattern: enterprise AI is evolv
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">The Next Web</div>
             <div class="title">SpaceX and xAI: A merger of ambition, optics, and unanswered questions</div>
             <div class="meta">2026-02-03</div>
         </div>
         
-        <div id="content-64" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>SpaceX and xAI: A merger of ambition, optics, and unanswered questions</h2>
             <p><strong>The Next Web | 2026-02-03</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/spacex-and-xai-a-merger-of-ambition-optics-and-unanswered-questions">Visit Original Website</a>
@@ -3633,68 +3723,16 @@ That may delight investors. It doesn’t yet convince technologists. Or me.
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-65')">
-            <div class="source">The Next Web</div>
-            <div class="title">OpenAI’s Codex app: When your IDE gets a brain</div>
-            <div class="meta">2026-02-03</div>
-        </div>
-        
-        <div id="content-65" style="display:none;">
-            <h2>OpenAI’s Codex app: When your IDE gets a brain</h2>
-            <p><strong>The Next Web | 2026-02-03</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/openais-codex-app-when-your-ide-gets-a-brain">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">OpenAI has given software developers a new desktop toy, and judging by the early reactions, it might feel like someone finally handed coders the Swiss Army knife they’ve been dreaming about or the kind of gadget that makes them wonder if they’re working with a robot coworker now.
-
-The company rolled out the Codex app for macOS, a focused interface for managing AI coding agents, designed to let developers do more than just “generate a few lines of code.” Instead, Codex can juggle multiple tasks in parallel, run background workflows, and act on instructions that span hours or even days.
-
-At its core, the new app is a response to a shift that’s been quietly happening for the past year: AI isn’t just helping write short snippets anymore. It’s taking on whole coding projects, running tests, dealing with pull requests, and even undertaking the kind of repetitive maintenance tasks that make developers groan.
-
-The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
-
-Containers, threads, isolated worktrees, and integrated Git tools support all of this seamlessly within the app, so engineers don’t need to jump between terminals, IDEs, and cloud consoles just to keep a fleet of AI agents moving forward.
-
-OpenAI’s own announcement makes this shift clear: existing tools were built for real-time interaction or single tasks, but today’s coding workflows are multifaceted and sprawling. Instead of coaxing a model to generate code line by line, the Codex app lets you orchestrate agents that work independently on different parts of a codebase.
-
-Each agent runs in its own thread and its own worktree, which means you can explore multiple ideas without fear of one bot overwriting another’s progress. If you want Codex to review diffs, make comments inline, or even open suggested changes in your local editor, it can. If you want it to run in the background while you sleep, it can do that too.
-
-Image: Screenshot shared on Reddit (r/singularity), original post.
-
-There’s even support for what OpenAI calls “skills” and “automations”: reusable workflows that let Codex go beyond raw code generation into things like gathering information, problem solving, carrying out scheduled tasks, or managing routine reviews.
-
-In early internal use cases, Codex has built complete applications, playing the roles of designer, developer, and QA tester in a single string of prompts, an example that hints at what happens when AI stops being an assistant and starts feeling a bit like a team member with infinite coffee.
-
-It’s worth noting that the current release is macOS only, which prompted the usual chorus of developer grumbling about Windows and Linux support. Early adopters on Reddit (and elsewhere) joked that the lack of cross-platform availability feels oddly quaint for an AI tool, even as they praised how much the Codex app can do compared to traditional CLI workflows.
-
-OpenAI is also sweetening the deal: for a limited time, Codex will be accessible to free and Go users, and rate limits for paid Plus, Pro, Business, Enterprise, and Edu plans have been doubled across all surfaces where Codex runs, whether that’s the app, the CLI, IDE extensions, or cloud threads.
-
-The company’s broader strategy here is unmistakable. AI coding assistants are one of the most competitive battlegrounds in generative AI right now, and rivals like Anthropic’s Claude Code have already reported strong revenue metrics in this space.
-
-The launch of a desktop command center for Codex feels like OpenAI saying, “We’re in this to win,” not just to ship features.
-
-So what does this actually mean for developers? It doesn’t mean humans are about to be replaced overnight. Codex is powerful, but like all AI tools, it still makes mistakes and needs human oversight, especially when the stakes are high and production quality matters.
-
-Seen through that lens, the Codex app is less a magic wand and more a powerful collaboration layer, one that could reshape how engineering teams operate without pretending to fully automate the craft of building software.
-
-In practice, that suggests a near future where managing AI agents becomes as normal as managing packages or Git branches. Instead of the terminal being the center of your workflow, Codex and its agents might take that spot, responding to prompts, running scheduled tasks, and even adopting configurable “personalities” that fit how you prefer to work.
-
-At a time when the debate around AI productivity often centers on displacement or disruption, the Codex app points in a more nuanced direction: what happens when coding tools become partners rather than assistants?
-
-The answer won’t be immediate, and the work still demands human judgement, but for many developers the first glimpse of that future arrived today.
-
-Get the most important tech news in your inbox each week.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">CME Group hikes gold, silver margins again as volatility grips markets - Reuters</div>
+            <div class="title">Top Russian general is shot and rushed to hospital in Moscow - Reuters</div>
             <div class="meta">2026-02-06</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>CME Group hikes gold, silver margins again as volatility grips markets - Reuters</h2>
+            <h2>Top Russian general is shot and rushed to hospital in Moscow - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNQnZiT3FZOEZicHE0ZFA0Uks3T1N0RVNwQWctNkFwd2VISzdndHF3T3dfcmFYRHhSMkNWRktwM0lrenJTWDkyWnZ1MlNoczU3a0lPSjl5Ql8ycC04QkZlWUdjT3NxT3VYNzRMemNTbzUyVGx6eFVCT2hEVVFTVXoyakVGUTlzd0JSMGYyNFZtOURmZ2pRUUtXcFhBMndJbml3ZGVXd2JRQkpKNmI0aVU0MHE3ZUo?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNdnE5blpmdVIybkNWMjd0X3puNmFQMEZVZ0o2U2lNU2d1c1EwQjBiUHNia0ZUUzQ5UzM2X08zc0ZOdmY5TEZxd0tKQ0JpYzFlbzVpNFAwZlNtTkthRXhVR3ZxdDk1VXZiNEY0RTJBWVBsN19NR3ZfTTM2MTJyWkVKOEp2djhZaDZza0FNZUhNSUVCZUo3cjdrbFhXRlg2VGtfak85WGlkVEROX20zcGhBSEE1Wkd6bGZiXzJCOQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3715,11 +3753,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: Intel, AMD notify customers in China of lengthy waits for CPUs - Reuters</div>
+            <div class="title">CME Group hikes gold, silver margins again as volatility grips markets - Reuters</div>
             <div class="meta">2026-02-06</div>
         </div>
         
         <div id="content-68" style="display:none;">
+            <h2>CME Group hikes gold, silver margins again as volatility grips markets - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNQnZiT3FZOEZicHE0ZFA0Uks3T1N0RVNwQWctNkFwd2VISzdndHF3T3dfcmFYRHhSMkNWRktwM0lrenJTWDkyWnZ1MlNoczU3a0lPSjl5Ql8ycC04QkZlWUdjT3NxT3VYNzRMemNTbzUyVGx6eFVCT2hEVVFTVXoyakVGUTlzd0JSMGYyNFZtOURmZ2pRUUtXcFhBMndJbml3ZGVXd2JRQkpKNmI0aVU0MHE3ZUo?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Exclusive: Intel, AMD notify customers in China of lengthy waits for CPUs - Reuters</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
             <h2>Exclusive: Intel, AMD notify customers in China of lengthy waits for CPUs - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNcmxfQlRiUDRzVXVackJjSDh2SW1WMC1WQkI1VFN0aWJoSXdPWkZlTm1DOHdTeEs0RVoycUJ3RjBMNU9qTXZ1dTdaRmF6X1pHc3hJN0M1MkZTN1czRWpMUzJjeXpadWMyMHc2SlFubmxWMUY3OXpOLVExcnVhTW44NDdJbFhHZlhJTjIzRkNBNXZjX1RscE1UMm1VZ2NtLVcy?oc=5">Visit Original Website</a>
@@ -3727,44 +3779,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Toyota boss Sato to step down, to be replaced by finance head Kenta Kon - Reuters</div>
+            <div class="title">Toyota names close ally of chairman Toyoda as next CEO - Reuters</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-69" style="display:none;">
-            <h2>Toyota boss Sato to step down, to be replaced by finance head Kenta Kon - Reuters</h2>
+        <div id="content-70" style="display:none;">
+            <h2>Toyota names close ally of chairman Toyoda as next CEO - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxQVldMOEV3cXg0dmMteHBkWXZJVmVPNlhVUjVxbkViY3MtdmVsTG40M2tNU0E2NHBlNWc3MVp4TE9PNW51dVJiSFhlTzU4eDVMb1JRaVdsS21RaV9Teng1emc0T040c1R1YjNHS2RTaFBtSkN0VnljVjhhVUU5cURWNG1rOGtwanE4RFktVU9NZkJzcVpnUjNmaV9PazB3VzItSjd4ZzRWN0Rrb0JHQjlzbmtUdHEwdENzRWF2YXA4Q1RGZw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Iran, US to negotiate in Oman amid deep rifts and mounting war fears - Reuters</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>Iran, US to negotiate in Oman amid deep rifts and mounting war fears - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOb3p0c1g3bm8zM2liWFBtLWtFOEJvWi15NTdQY0djRXlLbjB6cS1vcEZ2akNWTENrWnEyTWFiZ1lzX2wzSmNESkllM3lIckpHcTJVQmRrSE5DRmQwcHZEUGNrQWJiM3FGNmF6d0FFU0JqaExRVHBSckRfaTZCREpJNnVrYTNablZrU1lkUVpTMmc3bE1NSjFxdVhRcG9odVc4blhZSTNxMmZXMEdVWG5fSw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Tech-led selloff drags Asian stocks; Indonesia tumbles on Moody's outlook cut - Reuters</div>
+            <div class="title">Scammers' abandoned compound exposes brutality and banality of fraud - Reuters</div>
             <div class="meta">2026-02-06</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Tech-led selloff drags Asian stocks; Indonesia tumbles on Moody's outlook cut - Reuters</h2>
+            <h2>Scammers' abandoned compound exposes brutality and banality of fraud - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNQ3ZYN2tzNHRuQ19KdVVVUEJSZGZzeW1KdHllVWI4Vy1hOHlKSDhoZXA4bU94X2ZsSGVfY3Y0X1p2NXJKWEx6Uk9WekZvZGFqUEYwZjgxQ0tXVnBBMjJ6SFlJYUNJZHJnTnZJS2VMUG9lelFLQi1JSUgtQkpQZ3hOakZYdFM4YmU0NW1kM1VJcFFxWlF4VlZCeFZWQkFqUmRjOTFUbXlCUnRvS3RsTGExU2p4WVZDdExuenhWcg?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxPaTdpZGpnN0d1ZlJ3ZnZvQjhmV2dteWtDeG9sRk9pSjdCbTA4cVZ1NGhOVndEOWVZQ1BhcmF2Sko1VEMxV1VfZXJ2NzNqaXR2SDNaOGFPb0Zyd29FU0tzeFdjM2NXTjJjRUMyMzcycWxMVHBQbWE1SkMtSEYydkdWQ1JldkEwSmZHMUtrcmttRVNLRXVraTBVWjY5Ny1wY1RrTldhdERCSEVjc1FGVmF3VDdMNmEwRVI1?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3841,14 +3879,14 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">50,000-Year-Old Artifacts Unearthed at Controversial Archaeological Site Could Rewrite the Early Prehistory of the Americas - The Debrief</div>
-            <div class="meta">2026-01-21</div>
+            <div class="title">Zapotec Death Owl Sculpture Reveals Ancient Mesoamerican Beliefs in Immaculately Preserved Tomb - The Debrief</div>
+            <div class="meta">2026-01-31</div>
         </div>
         
         <div id="content-77" style="display:none;">
-            <h2>50,000-Year-Old Artifacts Unearthed at Controversial Archaeological Site Could Rewrite the Early Prehistory of the Americas - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-01-21</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxPQzR6eFVORUdoblVyV2VWOVlScHR4NXQtV1Z4dUZYdzdjUjRwUnhYdm11QVBaZXF5S3NKYUE0d2hlMzZqMmc4T2pzc3AzdmRBekNOZFhYYWdfNG1LZmdpOEZuOGxaUjUyVmRTNXg0VmV3amw1WTRvSGJ4aUtENWZFMWE5NmVFaHZGYjBheHRMT0RSc255OFdscEthMm1tUG4xdEhmeFZqd1hqRENkSi10VnBnQURvemIxMlVOVGZURlJ2dlJWb3ZLRFFPZjVJRkJPeUN1RXdNLVZFMDJuT2dZ?oc=5">Visit Original Website</a>
+            <h2>Zapotec Death Owl Sculpture Reveals Ancient Mesoamerican Beliefs in Immaculately Preserved Tomb - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-01-31</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNTQwdlRoSGY5WGdxeVUtX1NROW5PQjdoZC03d3YxMXU2SVhRNHgyNzAzYlVTWFFLQ0FRcG85Z1BRbEtTMWpyVE82cmR0cnBVc2pfaUxTalpoWnlPR2VJSDRjRkZDemw4U0xhZXFtZ2xDLTRNS2tnV0FCUXZ6eFgzUUI3M0VzbF9mQXNraWhVWXMyZ21oaE0tT2phMS15OHFHOHZyRmNlM0tRNS15bzU0cGIzN0czNDQ1NjlZ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
