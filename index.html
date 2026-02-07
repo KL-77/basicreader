@@ -154,12 +154,114 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Randomly quoting Ray Bradbury did not save lawyer from losing case over AI errors</div>
+            <div class="title">Sixteen Claude AI agents working together created a new C compiler</div>
             <div class="meta">2026-02-06</div>
         </div>
         
         <div id="content-0" style="display:none;">
-            <h2>Randomly quoting Ray Bradbury did not save lawyer from losing case over AI errors</h2>
+            <h2>Sixteen Claude AI agents working together created a new C compiler</h2>
+            <p><strong>Ars Technica - All content | 2026-02-06</strong></p>
+            <a class="original-link" href="https://arstechnica.com/ai/2026/02/sixteen-claude-ai-agents-working-together-created-a-new-c-compiler/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Amid a push toward AI agents, with both Anthropic and OpenAI shipping multi-agent tools this week, Anthropic is more than ready to show off some of its more daring AI coding experiments. But as usual with claims of AI-related achievement, you’ll find some key caveats ahead.
+
+On Thursday, Anthropic researcher Nicholas Carlini published a blog post describing how he set 16 instances of the company’s Claude Opus 4.6 AI model loose on a shared codebase with minimal supervision, tasking them with building a C compiler from scratch.
+
+Over two weeks and nearly 2,000 Claude Code sessions costing about $20,000 in API fees, the AI model agents reportedly produced a 100,000-line Rust-based compiler capable of building a bootable Linux 6.9 kernel on x86, ARM, and RISC-V architectures.
+
+Carlini, a research scientist on Anthropic’s Safeguards team who previously spent seven years at Google Brain and DeepMind, used a new feature launched with Claude Opus 4.6 called “agent teams.” In practice, each Claude instance ran inside its own Docker container, cloning a shared Git repository, claiming tasks by writing lock files, then pushing completed code back upstream. No orchestration agent directed traffic. Each instance independently identified whatever problem seemed most obvious to work on next and started solving it. When merge conflicts arose, the AI model instances resolved them on their own.
+
+The resulting compiler, which Anthropic has released on GitHub, can compile a range of major open source projects, including PostgreSQL, SQLite, Redis, FFmpeg, and QEMU. It achieved a 99 percent pass rate on the GCC torture test suite and, in what Carlini called “the developer’s ultimate litmus test,” compiled and ran Doom.
+
+It’s worth noting that a C compiler is a near-ideal task for semi-autonomous AI model coding: The specification is decades old and well-defined, comprehensive test suites already exist, and there’s a known-good reference compiler to check against. Most real-world software projects have none of these advantages. The hard part of most development isn’t writing code that passes tests; it’s figuring out what the tests should be in the first place.
+
+The compiler also has clear limitations that Carlini was upfront about. It lacks a 16-bit x86 backend needed to boot Linux from real mode, so it calls out to GCC for that step. Its own assembler and linker remain buggy. Even with all optimizations enabled, it produces less efficient code than GCC running with all optimizations disabled. And the Rust code quality, while functional, does not approach what an expert Rust programmer would produce. “The resulting compiler has nearly reached the limits of Opus’s abilities,” Carlini wrote. “I tried (hard!) to fix several of the above limitations but wasn’t fully successful. New features and bugfixes frequently broke existing functionality.”
+
+Those limitations may actually be more informative than the successes. Carlini reports that toward the end of the project, fixing bugs and adding features “frequently broke existing functionality,” a pattern familiar to anyone who has watched a codebase grow beyond the point where any contributor fully understands it.
+
+And that limitation is even more common when dealing with AI coding agents, which lose coherence over time. The model hit this wall at around 100,000 lines, which suggests a practical ceiling for autonomous agentic coding, at least with current models.
+
+Anthropic describes the compiler as a “clean-room implementation” because the agents had no Internet access during development. But that framing is somewhat misleading. The underlying model was trained on enormous quantities of publicly available source code, almost certainly including GCC, Clang, and numerous smaller C compilers. In traditional software development, “clean room” specifically means the implementers have never seen the original code. By that standard, this isn’t one.
+
+On Hacker News, the distinction drew sharp debate, reflective of a controversial reception to the news among developers. “It was rather a brute force attempt to decompress fuzzily stored knowledge contained within the network,” wrote one commenter.
+
+The $20,000 figure also deserves some context. That number covers only API token costs and excludes the billions spent training the model, the human labor Carlini invested in building the scaffolding, and the decades of work by compiler engineers who created the test suites and reference implementations that made the project possible.
+
+And that scaffolding was not trivial, which makes any claim of “autonomous” work on the C compiler among the AI agents dubious. While the headline result is a compiler written without human pair-programming, much of the real work that made the project function involved designing the environment around the AI model agents rather than writing compiler code directly. Carlini spent considerable effort building test harnesses, continuous integration pipelines, and feedback systems tuned for the specific ways language models fail.
+
+He found, for example, that verbose test output polluted the model’s context window, causing it to lose track of what it was doing. To address this, Carlini designed test runners that printed only a few summary lines and logged details to separate files.
+
+He also found that Claude has no sense of time and will spend hours running tests without making progress, so he built a fast mode that samples only 1 percent to 10 percent of test cases. When all 16 agents got stuck trying to fix the same Linux kernel bug simultaneously, he used GCC as a reference oracle, randomly compiling most kernel files with GCC and only a subset with Claude’s compiler, so each agent could work on different bugs in different files.
+
+“Claude will work autonomously to solve whatever problem I give it,” Carlini wrote. “So it’s important that the task verifier is nearly perfect, otherwise Claude will solve the wrong problem.”
+
+None of this should obscure what the project actually demonstrates. A year ago, no language model could have produced anything close to a functional multi-architecture compiler, even with this kind of babysitting and an unlimited budget. The methodology of parallel agents coordinating through Git with minimal human supervision is novel, and the engineering tricks Carlini developed to keep the agents productive (context-aware test output, time-boxing, the GCC oracle for parallelization) could potentially represent useful contributions to the wider use of agentic software development tools.
+
+Carlini himself acknowledged feeling conflicted about his own results. “Building this compiler has been some of the most fun I’ve had recently, but I did not expect this to be anywhere near possible so early in 2026,” he wrote. He also raised concerns rooted in his previous career in penetration testing, noting that “the thought of programmers deploying software they’ve never personally verified is a real concern.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Penisgate erupts at Olympics; scandal exposes risks of bulking your bulge</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
+            <h2>Penisgate erupts at Olympics; scandal exposes risks of bulking your bulge</h2>
+            <p><strong>Ars Technica - All content | 2026-02-06</strong></p>
+            <a class="original-link" href="https://arstechnica.com/health/2026/02/penisgate-erupts-at-olympics-scandal-exposes-risks-of-bulking-your-budge/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">As the 2026 Olympic Winter Games begin today, news articles are swelling with juicy claims that male ski jumpers have injected their penises with fillers to gain a flight advantage.
+
+As the rumor goes, having a bigger bulge on a required 3D body scan taken in the pre-season could earn jumpers extra centimeters of material in their jumpsuits—and a suit’s larger nether regions provide more surface area to glide to the gold. Even a small increase can make a satisfying difference in this sport. A 2025 simulation-based study published in the journal Frontiers in Sports and Active Living suggested that every 2 cm of extra fabric in a ski jumpsuit could increase drag by about 4 percent and increase lift by about 5 percent. On a jump, that extra 2 cm of fabric amounts to an extra 5.8 meters, the simulations found.
+
+Elite ski jumpers are aware of the advantage and have already crotch-rocketed to scandal with related schemes. Last year, two Norwegian Olympic medalists, Marius Lindvik and Johann Andre Forfang, and three of their team officials were charged with cheating after an anonymous video showed the head coach and suit technician illegally restitching the crotch area of the two jumpers’ suits to make them larger. The jumpers received a three-month suspension, while the head coach, an assistant coach, and the technician faced a harsher 18-month ban.
+
+Injections are alleged to be a new, more drastic strategy. Rumors that jumpers were internally padding their peckers first came to light in January, when German newspaper Bild reported that there were “whispers” of jumpers using hyaluronic acid or possibly paraffin injections.
+
+Bild quoted Dr. Kamran Karim, a specialist at Maria-Hilf Hospital in Krefeld, Germany, as saying (translated): “There is the possibility of obtaining a temporary, optical thickening of the penis with the injection of paraffin or hyaluronic acid. … Such an injection, however, is not medically indicated and involves risks.”
+
+On Thursday, the injection claims sprang up again at a press conference in which journalists asked officials of the World Anti-Doping Agency about the claims. The agency’s director general said they were not aware of any claims and that non-doping means of enhancing performance are not in their purview. But according to the BBC, WADA President Witold Banka, who is from Poland, was “clearly entertained” by the questions, responding: “Ski jumping is very popular in Poland, so I promise you I’m going to look at it.”
+
+Bruno Sassi, the communications director for FIS, the international ski and snowboard federation, seemed less amused, telling the BBC, “There has never been any indication, let alone evidence, that any competitor has ever made use of a hyaluronic acid injection to attempt to gain a competitive advantage.”
+
+But what if they did? Here’s what we know about hyaluronic acid and paraffin for penis augmentation.
+
+While some news outlets have played up the “acid” part of its name, hyaluronic acid is not some nefarious flesh-melting hazard. It’s a common filler used for various clinical purposes.
+
+Hyaluronic acid is a polysaccharide that is naturally found in a wide variety of tissues in the human body, including the skin, eyes, and connective tissue. It’s a chief component of the extracellular matrix. It attracts water molecules to itself, creating volume that can provide structural support. In a pure form, it has no tissue or even species specificity and therefore is considered to have little risk of sparking immune responses.
+
+As such, hyaluronic acid gel fillers are used in a variety of medical procedures, with approval from the Food and Drug Administration. Hyaluronic acid (HA) fillers are injected into joints, particularly knees, to relieve pain from mild to moderate arthritis, which can decrease the natural amount of HA in joints. Age also decreases natural levels of HA, and one of the main uses of HA fillers is for cosmetic purposes—plumping lips and cheeks, and minimizing the appearance of wrinkles and fine lines in the face. HA fillers can also be used inside the eye in a variety of surgeries, including cataract extraction and corneal transplants. It can also be used topically for wound care and to relieve skin pain and itching.
+
+For these purposes, the most common adverse effects are pain, bruising, redness, itching, and swelling, which usually last for just a few days. In extremely rare cases, there can be more serious side effects from injections, such as bacterial infections, tissue death (from blocked blood flow), and a granulomatous foreign body reaction, in which the immune system tries to clear a foreign substance, such as bacterial impurities, leading to a collection of immune cells.
+
+A notable feature of HA fillers is that they have something of an antidote. For procedures that go wrong for whatever reason, clinicians can use hyaluronidase, an enzyme that breaks down hyaluronic acid, to dissolve the filler. Hyaluronidase is then rapidly deactivated and degraded in the body. But even without any dissolving, HA fillers offer only temporary effects, lasting between eight weeks and up to six months, for the various established uses.
+
+What is not on the list of established clinical purposes for HA fillers is penis augmentation. But that’s not from a lack of trying. Studies have looked at the possibility of using HA fillers for adding girth and length—and some of have reported positive results. But so far, there’s a lack of evidence to support safety and efficacy. Still, that hasn’t stopped cosmetic clinics around the world from offering it anyway.
+
+In a 2022 study in the Asian Journal of Andrology, researchers in China followed 38 patients who had HA filler injections, which seemed to provide desired results. One month after injections, the men saw an average increase of 3.4 cm in girth and 2.5 cm in length when flaccid. After a year, the measurements had decreased, but were still an increase of 2.4 cm in girth and 1.65 cm in length. Erect girth ended at an average increase of 0.8 cm. The researchers reported that only three patients had complications: two had swelling, and one had bleeding under the skin. All three cases resolved on their own.
+
+However, not all reports are so rosy. In a 2021 case study in BMC Urology, researchers in Australia reported the experience of a 31-year-old man who received penis HA fillers at a cosmetic clinic. He developed a severe penis infection soon after that led to sepsis and multi-organ failure, landing him in the intensive care unit. Doctors ended up surgically removing pus-stained filler from his penis, which laboratory tests found teeming with Streptococcus pyogenes.
+
+Another case study in 2021, published in a Japanese urology journal, reported that a 65-year-old man had to have part of his penis surgically removed after having HA fillers injected into the head of his penis. When he arrived at the hospital, black necrotic lesions and ulcers were readily visible.
+
+While things can go wrong with HA fillers, despite their legitimate clinical uses, the outcomes for paraffin injections are much darker. Amid the Olympics scandal, most of the focus has been on hyaluronic acid. But the initial Bild article introduced speculation that skiers could also use paraffin injections to jack up their junk, which would be a terrible idea.
+
+The use of injections of mineral oil or paraffin wax for cosmetic procedures dates back to at least 1899, when it was almost immediately found to have horrifying results. The injections lead to what’s called paraffinoma, in which the body tries to encapsulate and sequester the oil it can’t degrade. The result is tissue that looks like swiss cheese—with large spaces filled with oil. Over time, the tissue becomes thickened and scarred and can block lymphatic drainage. From the outside, it results in disfiguring and debilitating lesions. Some people initially ignored these disturbing results because, in some cases, the lesions can take years to develop.
+
+While such injections have largely been abandoned, cases occasionally crop up. That includes a 2002 report of a 64-year-old Michigan man who self-injected his penis with mineral oil to increase its girth. He used a series of shots over the course of 18 months. Two years after the last shot, he went to urologists because of an increasing mass in his penis that was causing erectile dysfunction and making it difficult to urinate. He reluctantly admitted to the oil injections only after his doctors suspected cancer. In the end, the doctors had to surgically remove the mass of oily nodules from all around his penis and circumcise him.
+
+Whatever is going on in the trousers of Olympic ski jumpers, let’s hope it doesn’t involve paraffin.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-2')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Lawyer sets new standard for abuse of AI; judge tosses case</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-2" style="display:none;">
+            <h2>Lawyer sets new standard for abuse of AI; judge tosses case</h2>
             <p><strong>Ars Technica - All content | 2026-02-06</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/02/randomly-quoting-ray-bradbury-did-not-save-lawyer-from-losing-case-over-ai-errors/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -240,13 +342,13 @@ Feldman told Failla that he also thought it was unprofessional for MacMull to sh
 At the hearing, MacMull asked if the court would allow him to seek payment of his fees, since he believes “there has been a multiplication of proceedings here that would have been entirely unnecessary if Mr. Feldman had done what I asked him to do that Sunday night in June.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Malicious packages for dYdX cryptocurrency exchange empties user wallets</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Malicious packages for dYdX cryptocurrency exchange empties user wallets</h2>
             <p><strong>Ars Technica - All content | 2026-02-06</strong></p>
             <a class="original-link" href="https://arstechnica.com/security/2026/02/malicious-packages-for-dydx-cryptocurrency-exchange-empties-user-wallets/">Visit Original Website</a>
@@ -270,13 +372,13 @@ The incident is at least the third time dYdX has been targeted in attacks. Previ
 Anyone using the platform should carefully examine all apps for dependencies on the malicious packages listed above.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Why $700 could be a "death sentence" for the Steam Machine</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Why $700 could be a "death sentence" for the Steam Machine</h2>
             <p><strong>Ars Technica - All content | 2026-02-06</strong></p>
             <a class="original-link" href="https://arstechnica.com/gaming/2026/02/why-a-bump-to-700-could-be-a-death-sentence-for-the-steam-machine/">Visit Original Website</a>
@@ -318,13 +420,13 @@ Futter agreed that whichever company could offer the lowest-cost machine that co
 In the end, how Valve handles Steam Machine pricing might depend on whether the company wants to “expand SteamOS beyond the enthusiast base and into territory currently held by PlayStation and Xbox,” as Van Dreunen put it. “The memory cost shock doesn’t threaten Valve’s ability to sell to its existing audience. It threatens the pace at which it can grow a new one.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">COVID-19 cleared the skies but also supercharged methane emissions</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>COVID-19 cleared the skies but also supercharged methane emissions</h2>
             <p><strong>Ars Technica - All content | 2026-02-06</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/02/covid-19-cleared-the-skies-but-also-supercharged-methane-emissions/">Visit Original Website</a>
@@ -364,76 +466,6 @@ That’s a piece of science that’s almost sure to get hopelessly distorted in 
 “Not really, because everyone needs clean air,” argues Peng. “It means that we must reduce anthropogenic methane emissions.” If it’s just to compensate for a cleaner atmosphere with less hydroxyl radicals, we’re likely going to need even more aggressive reductions than we previously thought. “I think that’s the only choice for the policy makers,” Peng adds.
 
 Science, 2026. DOI: 10.1126/science.adx8262</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-4')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Waymo leverages Genie 3 to create a world model for self-driving cars</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-4" style="display:none;">
-            <h2>Waymo leverages Genie 3 to create a world model for self-driving cars</h2>
-            <p><strong>Ars Technica - All content | 2026-02-06</strong></p>
-            <a class="original-link" href="https://arstechnica.com/google/2026/02/waymo-leverages-genie-3-to-create-a-world-model-for-self-driving-cars/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Google-spinoff Waymo is in the midst of expanding its self-driving car fleet into new regions. Waymo touts more than 200 million miles of driving that informs how the vehicles navigate roads, but the company’s AI has also driven billions of miles virtually, and there’s a lot more to come with the new Waymo World Model. Based on Google DeepMind’s Genie 3, Waymo says the model can create “hyper-realistic” simulated environments that train the AI on situations that are rarely (or never) encountered in real life—like snow on the Golden Gate Bridge.
-
-Until recently, the autonomous driving industry relied entirely on training data collected from real cars and real situations. That means rare, potentially dangerous events are not well represented in training data. The Waymo World Model aims to address that by allowing engineers to create simulations with simple prompts and driving inputs.
-
-Google revealed Genie 3 last year, positioning it as a significant upgrade over other world models by virtue of its long-horizon memory. In Google’s world model, you can wander away from a given object, and when you look back, the model will still “remember” how that object is supposed to look. In earlier attempts at world models, the simulation would lose that context almost immediately. With Genie 3, the model can remember details for several minutes.
-
-Autoregressive world models like Genie don’t actually create 3D spaces, but instead render video quickly enough that it feels like an explorable world. Naturally, video games are cited as a prime application for world models, so much so that gaming company stocks dropped when Google recently expanded access to the technology as Project Genie. However, the latency and still rather short memory of Genie make gaming uses far from a certainty. Nevertheless, Waymo says Genie 3 is actually ideal for simulating the kind of data it needs to train self-driving cars.
-
-The Waymo World Model is not just a straight port of Genie 3 with dashcam videos stuffed inside. Waymo and DeepMind used a specialized post-training process to make the new model generate both 2D video and 3D lidar outputs of the same scene. While cameras are great for visualizing fine details, Waymo says lidar is necessary to add critical depth information to what a self-driving car “sees” on the road—maybe someone should tell Tesla about that.
-
-Using a world model allows Waymo to take video from its vehicles and use prompts to change the route the vehicle takes, which it calls driving action control. These simulations, which come with lidar maps, reportedly offer greater realism and consistency than older reconstructive simulation methods.
-
-This model can also help improve the self-driving AI even without adding or removing everything. There are plenty of dashcam videos available for training self-driving vehicles, but they lack the multimodal sensor data of Waymo’s vehicles. Dropping such a video into the Waymo World Model generates matching sensor data, showing how the driving AI would have seen that situation.
-
-While the Waymo World Model can create entirely synthetic scenes, the company seems mostly interested in “mutating” the conditions in real videos. The blog post contains examples of changing the time of day or weather, adding new signage, or placing vehicles in unusual places. Or, hey, why not an elephant in the road?
-
-Waymo’s early test cities were consistently sunny (like Phoenix) with little inclement weather. These kinds of simulations could help the cars adapt to the more varied conditions. The new markets include places with more difficult conditions, including Boston and Washington, D.C.
-
-Of course, the benefit of the new AI model will depend on how accurately Genie 3 can simulate the real world. The test videos we’ve seen of Genie 3 run the gamut from pretty believable to uncanny valley territory, but Waymo believes the technology has improved to the point that it can teach self-driving cars a thing or two.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">To reuse or not reuse—the eternal debate of New Glenn's second stage reignites</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>To reuse or not reuse—the eternal debate of New Glenn's second stage reignites</h2>
-            <p><strong>Ars Technica - All content | 2026-02-06</strong></p>
-            <a class="original-link" href="https://arstechnica.com/space/2026/02/to-reuse-or-not-reuse-the-eternal-debate-of-new-glenns-second-stage-reignites/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Engineers at Blue Origin have been grappling with a seemingly eternal debate that involves the New Glenn rocket and the economics of flying it.
-
-The debate goes back at least 15 years, to the early discussions around the design of the heavy lift rocket. The first stage, of course, would be fully reusable. But what about the upper stage of New Glenn, powered by two large BE-3U engines?
-
-Around the same time, in the early 2010s, SpaceX was also trading the economics of reusing the second stage of its Falcon 9 rocket. Eventually SpaceX founder Elon Musk abandoned his goal of a fully reusable Falcon 9, choosing instead to recover payload fairings and push down manufacturing costs of the upper stage as much as possible. This strategy worked, as SpaceX has lowered its internal launch costs of a Falcon 9, even with a new second stage, to about $15 million. The company is now focused on making the larger Starship rocket fully reusable.
-
-New Glenn is quite a bit larger than the Falcon 9 vehicle, 98 meters in height compared to 70 meters, and with a 7-meter diameter compared to the Falcon 9’s 3.7 meters; but it is also smaller than Starship. Accordingly Blue Origin has struggled with whether to reuse the New Glenn upper stage or to seek to ruthlessly cut its manufacturing costs.
-
-Over the years, this internal debate has waxed and waned.
-
-A little more than five years ago, Blue Origin kicked off a project to develop a reusable stainless-steel upper stage known as “Project Jarvis.” This initiative was later abandoned. In the run-up to the first launch of New Glenn in early 2025, both the company’s founder, Jeff Bezos, and CEO, Dave Limp, told Ars in an interview that they were continuing to trade the options on New Glenn’s upper stage, known as GS2.
-
-However, a new job posting suggests the debate may be swinging back toward reusing GS2. The job, for a director of “Reusable Upper Stage Development,” was posted Thursday by the company.
-
-“As the Director of Program Management for the New Glenn Upper Stage and Payload Accommodations (GS2PA), you will work with the Vice President of New Glenn GS2PA and directly support the execution of a lean engineering initiative to incrementally develop a reusable upper stage,” the job description states. The salary range goes up to $284,430.30.
-
-New Glenn is an exceptional rocket, flying expertly on its debut in January 2025, and then shocking the aerospace world (in a good way) by making a stunning first stage landing at sea on just its second flight in November 2025.
-
-The first generation of the rocket is overengineered and very expensive. Although Ars does not have access to Blue Origin’s internal costs, sources have reliably indicated that it costs in excess of $100 million to manufacture a first stage and more than $50 million to build an upper stage.
-
-The first stage cost can be amortized over multiple launches, and that’s precisely what Blue Origin plans to do with the vehicle’s third launch, which will reuse the first stage that landed in November. However, flying super-expensive upper stages is no way to build a sustainable launch business.
-
-Right now, Blue Origin has the capacity to build a dozen second stages a year, and it is bringing a new facility online to manufacture more. Presumably, it will be able to shave some costs with rate manufacturing and a simpler second stage design. But this will have limits. The problem gets even worse with the planned upgrade to New Glenn, the 9×4 version of the rocket that will use four BE-3U engines. Such an upper stage probably will cost on the order of $100 million to manufacture.
-
-Hence the pressure on Blue Origin to find a pathway to reuse. The challenge is that reusing the upper stages of rockets is still something of an unknown. SpaceX is still experimenting with thermal protection for its Starship vehicle’s return from orbital velocities, and there will be a performance hit for propellant and landing gear mass. So the new director of upper stage development has their work cut out for them.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -668,11 +700,165 @@ More on Bitcoin: Bitcoin Is Crashing So Hard That Miners Are Unplugging Their Eq
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
+            <div class="title">An AI startup founder says he’s planning a ‘March for Billionaires’ in protest of California’s wealth tax</div>
+            <div class="meta">2026-02-07</div>
+        </div>
+        
+        <div id="content-12" style="display:none;">
+            <h2>An AI startup founder says he’s planning a ‘March for Billionaires’ in protest of California’s wealth tax</h2>
+            <p><strong>TechCrunch | 2026-02-07</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/02/06/an-ai-startup-founder-says-hes-planning-a-march-for-billionaires-in-protest-of-californias-wealth-tax/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The war on California’s proposed ‘Billionaire’s Tax’ is getting weird. This week, amid ongoing rancor from tech elites over the much maligned bill, it became apparent that someone was planning a so-called “March for Billionaires” in San Francisco. A website advertising the event popped up online, providing little in the way of context other than a pithy tagline: “Vilifying billionaires is popular. Losing them is expensive.”
+
+The immediate reaction was incredulity, and most people assumed the site was some sort of bizarre hoax. “this is a joke/satire right??” one social media user wrote not long after the news circulated. Now, however, the apparent organizer behind the event has revealed that the march is definitelynot a joke, and that it is scheduled to take place this coming Saturday.
+
+The San Francisco Examiner first reported that the event’s organizer had been revealed as Derik Kaufmann, the founder of AI startup RunRL, which previously participated in Y Combinator’s accelerator program. Kaufmann told the Examiner that the event was not being funded or organized by any outside group, no big monied associations or companies—just him.
+
+In a conversation with TechCrunch, Kaufmann — who also told the Examiner that he was no longer involved with RunRL — confirmed that the impetus for the upcoming rally was California’s proposed wealth tax, which the tech founder said he believed would be “quite damaging to the tech economy.”
+
+The policy in question, the Billionaire Tax Act, was introduced last year, and would require Californians worth over $1 billion to pay a one-time 5% tax on their total wealth. The legislation, which is backed by the state’s healthcare union SEIU (Service Employees International Union), could pay for important public services and help the state offset recent federal funding cuts, according to some experts. Nevertheless, the policy has led to loud protestations from some of the tech industry’s most prominent figures, many of whom have either threatened to leave California or have already left. It has also led to a monsoon of lobbying in the California legislature, in an effort to defeat the bill.
+
+When asked why he opposed the legislation, Kaufmann expressed concern for how the bill could impact the startup economy in Silicon Valley. “This tax in particular is fatally flawed,” he said. “It hits startup founders whose wealth is only on paper. They would be forced to liquidate shares on potentially unfavorable terms, incurring capital gains taxes and giving up control. Not to mention the difficulty of valuing private companies.”
+
+“Many founders would be hit with wildly disproportionate tax bills,” Kaufmann continued. “Additionally, there’s no precedent for this sort of comprehensive wealth tax in the US. Sweden eliminated theirs 20 years ago to avert capital flight and promote entrepreneurship and now has 50% more billionaires per capital than the US.”
+
+Online conversation about Kaufmann’s planned event has continued to alternate between incredulity and ridicule. “I can’t imagine billionaires marching in the street,” one social media user said, of the event.
+
+Kaufmann told TC that, so far, he isn’t aware of any actual billionaires planning to attend the march that has been organized in their honor. Kaufmann said that the event is likely to include “a few dozen attendees,” although he stressed that he really isn’t clear on how many people would show up.
+
+The ongoing outrage over the proposed tax is a little funny, given that it’s already been known for quite some time that the legislation has almost no chance of being enacted. That’s because California Governor Gavin Newsom has already stated that, should the bill somehow pass, he would veto it.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+Sam Altman got exceptionally testy over Claude Super Bowl ads
+
+Homeland Security is trying to force tech companies to hand over data about Trump critics
+
+Fintech CEO and Forbes 30 Under 30 alum has been charged for alleged fraud
+
+Two Stanford students launch $2M startup accelerator for students nationwide
+
+Notepad++ says Chinese government hackers hijacked its software updates for months
+
+Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">‘Industry’ season 4 captures tech fraud better than any show on TV right now</div>
+            <div class="meta">2026-02-07</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
+            <h2>‘Industry’ season 4 captures tech fraud better than any show on TV right now</h2>
+            <p><strong>TechCrunch | 2026-02-07</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/02/06/industry-season-4-captures-tech-fraud-better-than-any-show-on-tv-right-now/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">HBO’s hit financial thriller “Industry” has delivered one of its most compelling storylines yet this season: a hunt to expose a fraudulent fintech company called Tender.
+
+The show follows Harper Stern, who’s leading her newly launched investment firm and looking for a company to short — essentially, betting that its stock will crash. After a journalist tips her off that something’s wrong with Tender, she sends her associates, Sweetpea and Kwabena, to Ghana to investigate.
+
+What they discover is damning. “Fake users drive fake revenue drives fake cash,” Sweetpea tells Harper. The entire company appears to be built on fabricated numbers. “The thing is nothing.”
+
+What’s fascinating about this season of “Industry” is how well it speaks to this moment. Tender starts as a payment processing platform for adult content. The show references the very real (and still controversial) Online Safety Bill that the UK introduced, which has led to age verification and other enhanced rules for consuming adult content online. Because of its affiliation with adult content, Tender finds itself at odds with the new government’s regulation and must pivot or die, as the saying goes.
+
+Its CFO-turned-leader, Whitney, wants the company to pivot into a bank and has a plan to make that happen, including making Tender’s CEO, Henry, the face of that transformation. Whitney is the embodiment of every tech baron cliche. Move fast, break things. Win at all costs. He’s lobbying politicians for a banking license and hunting for merger opportunities.
+
+Harper, meanwhile, is leading her newly launched firm after feeling undermined at her previous firm and being called a DEI plant by the man who hired her (a nod to the decline of DEI in the past few years). She has teamed up with new friends and old frenemies and is looking for blood — meaning a company on the precipice of crashing. To her, Tender is that company.
+
+This puts her at odds with her friend Yasmin, who is married to Henry and is crafting communication and lobbying strategies for Tender. It’s pride and prejudice — the sugar and spice that help make the world go round.
+
+The show nails the tech world with such accuracy that reality itself starts to feel like satire. Even TechCrunch gets name-checked as part of Tender’s media playbook.
+
+There is commentary on fascism via the character Moritz, who lobbies against Western liberalism and is hesitant to sell his family’s bank to Whitney, whose last name is the Jewish-sounding Halberstram. The character is perhaps a nod to the rising “technofacism” criticism of some tech barons.
+
+Harper, meanwhile, is still a calculating sociopath. “My real passion lies with finding dead men walking,” she says at an investor breakfast. She ends up raising millions for her new firm.
+
+She is the one character whose existence strains credibility. Personality-wise, she has to be shrewdly calculating; unlike Yasmin and Henry, she has nothing to fall back on should she fail. But would the UK establishment, which is notoriously insular, exclusionary, and white, really let a Black American woman rise through their ranks and beat them at their own game?
+
+“Who needs realism when she’s such a great character,” one Black British founder told me.
+
+He said the show aptly captures how detached the UK upper class is from consequence and is actually one of the few shows he’s seen that “accurately portrays the ruthlessness of the British elite, specifically how they maneuver the media and governments to suit their own whims.”
+
+“Nepotism and lack of boundaries at work, people sleeping together for trade secrets, is very realistic and common, unfortunately,” one European investor added.
+
+Meanwhile, Yasmin is headed down a dark path. Earlier this season, she organized a ménage à trois between her husband, Henry, and Whitney’s assistant, Hayley. As the season continues, her behavior becomes so hedonistic that one reviewer has already likened her to Ghislaine Maxwell — perhaps a perfect emblem of what lies at the pits of money and power, and the role some women play in digging those holes.
+
+An Icarus moment could be on the way, however, at least for Whitney.
+
+By now, the audience is familiar with how founders in the real world sometimes use deception to overinflate success (like Charlie Javice’s Frank) and allegedly steal from investors and the public (the FTX crypto crash). There are many such infamous cases, and some are even referenced in the show. But perhaps the most relevant real-world parallel for Tender would be the ultimate implosion of the German fintech Wirecard a few years ago.
+
+Wirecard admitted that the billions in cash it reported having likely never existed, despite the company’s earlier claims that two banks in the Philippines were holding the funds. It was a tale of complex accounting and legal gray zones — much like the financial fraud depicted in Tender. Short sellers went after Wirecard, too, and one blog dubbed them “alternative whistleblowers” — people who step in when “the market, and the regulator, refuse to see what is right in front of them.”
+
+The philosophy is one that one could easily see Harper embracing soon enough, especially after Eric tells her at one point that “short-only work is ugly, hard, investigative,” and that it’s “anti-status quo, anti-establishment, anti-power.”
+
+With Wirecard, numerous people, including the CEO, were arrested, while the COO went on the run (and was also accused of being a Russian spy). Tender’s fate remains unrealized until the last few episodes run. One of the best parts about “Industry” is that it moves fast and breaks things. It is so clearly set in our time and so audacious in its demeanor that the audience is forced to pick their favorite anti-hero and go along for the ride.
+
+It’s a rush, a thrill; the visual embodiment of the absence of ethical capitalists. And yet, just like in real life, we can’t get enough.
+
+Dominic-Madori Davis is a senior venture capital and startup reporter at TechCrunch. She is based in New York City.
+
+You can contact or verify outreach from Dominic by emailing dominic.davis@techcrunch.com or via encrypted message at +1 646 831-7565 on Signal.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+Sam Altman got exceptionally testy over Claude Super Bowl ads
+
+Homeland Security is trying to force tech companies to hand over data about Trump critics
+
+Fintech CEO and Forbes 30 Under 30 alum has been charged for alleged fraud
+
+Two Stanford students launch $2M startup accelerator for students nationwide
+
+Notepad++ says Chinese government hackers hijacked its software updates for months
+
+Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-14')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Apple is working to make CarPlay compatible with AI chatbots like ChatGPT</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-14" style="display:none;">
+            <h2>Apple is working to make CarPlay compatible with AI chatbots like ChatGPT</h2>
+            <p><strong>TechCrunch | 2026-02-06</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/02/06/apple-is-working-to-make-carplay-compatible-with-ai-chatbots-like-chatgpt/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Apple CarPlay users may soon be able to talk to their favorite AI chatbot.
+
+Apple is reportedly working on how to support AI chatbot apps within CarPlay, according to Bloomberg, which cites anonymous sources.
+
+Apple CarPlay is an app that runs on an iPhone and wirelessly communicates with a vehicle’s infotainment system. It projects some of the apps found on a user’s phone onto the vehicle’s infotainment display. Drivers are able to interact with these apps, including AppleMusic, messaging, and navigation, through its voice assistant Siri.
+
+Apple’s next-generation CarPlay Ultra goes a step further, including the central touchscreen display and digital dashboard located right in front of the driver, and gives users control of certain vehicle settings.
+
+This latest move would theoretically bring Google’s Gemini, Anthropic’s Claude, and OpenAI’s ChatGPT into the car, and at the risk of putting its own Siri assistant in the backseat.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+Subscribe for the industry’s biggest tech news
+
+Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
+
+TechCrunch Mobility is your destination for transportation news and insight.
+
+Startups are the core of TechCrunch, so get our best coverage delivered weekly.
+
+Provides movers and shakers with the info they need to start their day.
+
+By submitting your email, you agree to our Terms and Privacy Notice.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-15')">
+            <div class="source">TechCrunch</div>
             <div class="title">From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads</h2>
             <p><strong>TechCrunch | 2026-02-06</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/06/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/">Visit Original Website</a>
@@ -746,13 +932,13 @@ Notepad++ says Chinese government hackers hijacked its software updates for mont
 Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">It just got easier for Claude to check in on your WordPress site</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>It just got easier for Claude to check in on your WordPress site</h2>
             <p><strong>TechCrunch | 2026-02-06</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/06/it-just-got-easier-for-claude-to-check-in-on-your-wordpress-site/">Visit Original Website</a>
@@ -761,9 +947,9 @@ Nvidia CEO pushes back against report that his company’s $100B OpenAI investme
 
 Notably, Claude is given read-only access, meaning it won’t be able to alter anything within a user’s CMS. However, last year WP claimed that it would eventually deliver “write” access to the MCP integration, presumably allowing users to conduct editorial tasks directly from a connected chatbot of their choosing.
 
-At any rate, after Claude is linked to an account, users can ask the chatbot all sorts of questions about the site data that it’s been given access to—from summarizing the site’s monthly web traffic to conducting analysis of which posts have low user engagement.
+At any rate, after Claude is linked to an account, users can ask the chatbot all sorts of questions about the site data that it’s been given access to — from summarizing the site’s monthly web traffic to conducting analysis of which posts have low user engagement.
 
-WordPress has also provided a list of template prompts for the chatbot—stuff like “Show me pending comments on my blog” or “Which of my sites gets the most traffic?” or “Show me which posts are generating the most discussion.” Others functions include comment management (“Show me pending comments on my blog”) and plugin management (“What plugins are installed on my main site?”).
+WordPress has also provided a list of template prompts for the chatbot — stuff like “Show me pending comments on my blog” or “Which of my sites gets the most traffic?” or “Show me which posts are generating the most discussion.” Others functions include comment management (“Show me pending comments on my blog”) and plug-in management (“What plug-ins are installed on my main site?”).
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
@@ -780,13 +966,13 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Prince Andrew advisor pitched Jeffrey Epstein on investing in EV startups like Lucid Motors</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Prince Andrew advisor pitched Jeffrey Epstein on investing in EV startups like Lucid Motors</h2>
             <p><strong>TechCrunch | 2026-02-06</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/06/prince-andrew-advisor-pitched-jeffrey-epstein-on-investing-in-ev-startups-like-lucid-motors/">Visit Original Website</a>
@@ -809,15 +995,15 @@ By the time of the Lucid emails, Epstein and Stern had been working together clo
 
 Stern is a mostly digital ghost with little information available about him on the internet prior to the release of the files.
 
-He is perhaps best-known as the director of Prince Andrew’s Pitch@Palace startup contest, which ran for a few years until Andrew’s connections to Epstein were exposed. Andrew himself even referred to Stern as a “ghost” in one 2010 email.
+He is perhaps best known as the director of Prince Andrew’s Pitch@Palace startup contest, which ran for a few years until Andrew’s connections to Epstein were exposed. Andrew even referred to Stern as a “ghost” in one 2010 email.
 
 Stern appears to have first approached Epstein in 2008, according to the emails released by the DOJ — just one month before the financier pled guilty to soliciting a minor for prostitution in Florida. Stern was creating a fund, called AGC Capital, to take advantage of the economic boom in China, and he wanted Epstein to invest.
 
 (It’s not clear how Stern was introduced to Epstein. Stern did not respond to a detailed list of questions for this article.)
 
-Stern, who is German, attended the University of London and Shi-Da University in China in the late 1990s, and served as chairman of Millenium Capital China, the Chinese arm of Millennium Capital Partners, according to the bio section of the AGC Capital pitch deck, which is in the DOJ’s files.
+Stern, who is German, attended the University of London and Shi-Da University in China in the late 1990s, and served as chairman of China Millennium Capital, the Chinese arm of Millennium Capital Partners, according to the bio section of the AGC Capital pitch deck, which is in the DOJ’s files.
 
-Stern also worked for Siemens negotiating “industrial Joint Ventures with Chinese State Owned enterprises,” before joining the Shanghai office of Deutsche Bank. He started a company called Asia Gateway in 2001 that “advised blue chip companies, Chinese enterprises as well as the Chinese government in growth strategies and investments.”
+Stern also worked for Siemens, negotiating “industrial Joint Ventures with Chinese State Owned enterprises,” before joining the Shanghai office of Deutsche Bank. He started a company called Asia Gateway in 2001 that “advised blue chip companies, Chinese enterprises as well as the Chinese government in growth strategies and investments.”
 
 These jobs appear to have helped Stern make connections with powerful and wealthy Chinese businessmen, including Li Botan — the son-in-law of the fourth-most senior leader in China under Xi Jinping’s predecessor Hu Jintao. (Li would eventually go on to become a founding investor in Canoo with Stern.)
 
@@ -833,11 +1019,11 @@ The relationship deepened over the following decade. The two men got close enoug
 
 It’s hard to say how fruitful the relationship was on the business side. But between 2009 and 2019, Stern brought Epstein a number of potential deals across various industries.
 
-Early on, he seems to have been dead set on starting a “secret” new fund with Epstein to invest in Chinese businesses together, which he referred to as JEDS – the two men’s initials combined. (It was also referred to in some emails as “Serpentine Group.”) Stern later pitched buying farmland in Russia, suggested purchasing the news organization Al-Jazeera and taking it public, discussed buying troubled music publisher EMI, and considered acquiring an apparently distressed (and unnamed) undersea cable company.
+Early on, he seemed dead set on starting a “secret” new fund with Epstein to invest in Chinese businesses together, which he referred to as JEDS — the two men’s initials combined. (It was also referred to in some emails as “Serpentine Group.”) Stern later pitched buying farmland in Russia, suggested purchasing the news organization Al Jazeera and taking it public, discussed buying troubled music publisher EMI, and considered acquiring an apparently distressed (and unnamed) undersea cable company.
 
 They also had their eyes on banks. Stern and Epstein attempted to buy Luxembourg-headquartered private bank Sal. Oppenheim, the emails show. In 2016, they even discussed a buyout of Deutsche Bank, which had for years transacted with Epstein.
 
-Stern repeatedly flaunted his connections with high-profile businessmen and politicians in his emails to Epstein and his other contacts. In February 2012, Stern suggested Epstein introduce Jes Staley — the head of J.P. Morgan’s investment bank at the time – to Malaysian politician Anwar Ibrahim.
+Stern repeatedly flaunted his connections with high-profile businessmen and politicians in his emails to Epstein and his other contacts. In February 2012, Stern suggested Epstein introduce Jes Staley — the head of J.P. Morgan’s investment bank at the time — to Malaysian politician Anwar Ibrahim.
 
 “I know Anwar well,” Stern wrote. “If he becomes prime minister of malayisa [Staley] will clean up and it could be a gold mine for JPM.” (Ibrahim lost a contested election in 2013 but became prime minister in 2022.)
 
@@ -878,132 +1064,101 @@ Sean O’Kane is a reporter who has spent a decade covering the rapidly-evolving
 You can contact or verify outreach from Sean by emailing sean.okane@techcrunch.com or via encrypted message at okane.01 on Signal.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Google- and Microsoft-backed Terradot acquires carbon-removal competitor</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-15" style="display:none;">
-            <h2>Google- and Microsoft-backed Terradot acquires carbon-removal competitor</h2>
-            <p><strong>TechCrunch | 2026-02-06</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/02/06/google-and-microsoft-backed-terradot-acquires-carbon-removal-competitor/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Carbon-removal startup Terradot is acquiring competitor Eion, the two companies announced today. The sale was driven largely by big investors like sovereign wealth funds, which want to work with companies that can handle large contracts. Eion was simply too small, Eion CEO Anastasia Pavlovic Hans told The Wall Street Journal.
-
-Both companies spread pulverized rocks on farm fields to absorb carbon dioxide from the atmosphere. Known as enhanced rock weathering (EWR), it speeds up a natural process and has the potential to be a low-cost way to remove carbon, but it requires large and distributed operations. The spread between what EWR companies would like to charge and what buyers would like to pay remains wide, according to a survey by CDR.fyi.
-
-California-based Terradot’s operations are centered on Brazil, where the company works with basalt as its mineral of choice, while Eion works in the U.S. and uses olivine. Terradot’s investor list includes Gigascale Capital, Google, Kleiner Perkins, and Microsoft, while Eion’s investors include AgFunder, Mercator Partners, and Overture.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-Subscribe for the industry’s biggest tech news
-
-Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
-
-TechCrunch Mobility is your destination for transportation news and insight.
-
-Startups are the core of TechCrunch, so get our best coverage delivered weekly.
-
-Provides movers and shakers with the info they need to start their day.
-
-By submitting your email, you agree to our Terms and Privacy Notice.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-16')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Maybe AI agents can be lawyers after all</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-16" style="display:none;">
-            <h2>Maybe AI agents can be lawyers after all</h2>
-            <p><strong>TechCrunch | 2026-02-06</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/02/06/maybe-ai-agents-can-be-lawyers-after-all/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Last month, I wrote about Mercor’s new benchmark measuring AI agents’ capabilities on professional tasks like law and corporate analysis. At the time, the scores were pretty dismal, with every major lab scoring under 25%, so we concluded lawyers were safe from AI displacement, at least for now.
-
-But AI capabilities can change a lot in a couple of weeks.
-
-This week’s release of Anthropic’s Opus 4.6 shook up the leaderboards, with Anthropic’s new model scoring just shy of 30% in one-shot trials, and an average of 45% when given a few more cracks at the problem. Notably, the release included a bunch of new agentic features, including “agent swarms,” which may have helped with this kind of multistep problem-solving.
-
-Regardless, the score is a huge jump from the previous state-of-the-art, and a sign that progress on foundation models isn’t slowing down. Mercor CEO Brendan Foody, who was particularly impressed, said, “jumping from 18.4% to 29.8% in a few months is insane.”
-
-Thirty percent is still a long way from 100%, so it’s not like lawyers need to be worried about getting replaced by machines next week. But they should be a lot less confident than they were last month!
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-Subscribe for the industry’s biggest tech news
-
-Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
-
-TechCrunch Mobility is your destination for transportation news and insight.
-
-Startups are the core of TechCrunch, so get our best coverage delivered weekly.
-
-Provides movers and shakers with the info they need to start their day.
-
-By submitting your email, you agree to our Terms and Privacy Notice.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">How Elon Musk is rewriting the rules on founder power</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>How Elon Musk is rewriting the rules on founder power</h2>
-            <p><strong>TechCrunch | 2026-02-06</strong></p>
-            <a class="original-link" href="https://techcrunch.com/video/how-elon-musk-is-rewriting-the-rules-on-founder-power/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Elon Musk has merged SpaceX and xAI, creating what might be the blueprint for a new Silicon Valley power structure. With his $800 billion net worth already rivaling historic conglomerate GE’s peak market cap, and Musk being vocal about his view that “tech victory is decided by velocity of innovation,” the question isn’t whether a personal conglomerate can be built, but rather how far Musk himself is going to take it.
-
-Watch as Equity dives into this new era of the “everything” business, whether we’ll see others like Sam Altman follow suit, and more of the week’s headlines.
-
-Subscribe to Equity on YouTube, Apple Podcasts, Overcast, Spotify and all the casts. You also can follow Equity on X and Threads, at @EquityPod.
-
-Theresa Loconsolo is an audio producer at TechCrunch focusing on Equity, the network’s flagship podcast. Before joining TechCrunch in 2022, she was one of 2 producers at a four-station conglomerate where she wrote, recorded, voiced and edited content, and engineered live performances and interviews from guests like lovelytheband. Theresa is based in New Jersey and holds a bachelors degree in Communication from Monmouth University. 
-You can contact or verify outreach from Theresa by emailing theresa.loconsolo@techcrunch.com.
-
-You can contact or verify outreach from Theresa by emailing theresa.loconsolo@techcrunch.com.
-
-You can contact or verify outreach from Theresa by emailing theresa.loconsolo@techcrunch.com.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-Sam Altman got exceptionally testy over Claude Super Bowl ads
-
-Homeland Security is trying to force tech companies to hand over data about Trump critics
-
-Fintech CEO and Forbes 30 Under 30 alum has been charged for alleged fraud
-
-Two Stanford students launch $2M startup accelerator for students nationwide
-
-Notepad++ says Chinese government hackers hijacked its software updates for months
-
-Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled
-
-Subscribe for the industry’s biggest tech news
-
-Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
-
-TechCrunch&#39;s AI experts cover the latest news in the fast-moving field.
-
-Every Monday, gets you up to speed on the latest advances in aerospace.
-
-Startups are the core of TechCrunch, so get our best coverage delivered weekly.
-
-By submitting your email, you agree to our Terms and Privacy Notice.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-18')">
+            <div class="source">The Atlantic</div>
+            <div class="title">Why Trump Is Picking Fights With Big U.S. Banks</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-18" style="display:none;">
+            <h2>Why Trump Is Picking Fights With Big U.S. Banks</h2>
+            <p><strong>The Atlantic | 2026-02-06</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/02/trump-jp-morgan-lawsuit-picking-fights-banks/685921/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">This is an edition of The Atlantic Daily, a newsletter that guides you through the biggest stories of the day, helps you discover new ideas, and recommends the best in culture. Sign up for it here.
+
+For as long as the Trump family has been cashing in on crypto, Don Jr., Eric, and their affiliates have deployed a particular narrative about their reasons for investing in the industry. Back in 2024, before the launch of a crypto empire that has now reportedly added at least $867 million to the family fortune, Don Jr. said on his podcast that digital assets were “obviously very appealing to guys like me who have been debanked”—an umbrella term for being cut off from a financial institution—“because they don’t check certain boxes.”
+
+That same narrative is behind the president’s current legal assault on major banks. When Donald Trump returned to office last year, he started going after some of the businesses and individuals who he believed had wronged him in the past. On the list were universities, white-shoe law firms, and some of America’s largest banks. In a recent $5 billion lawsuit against JPMorgan Chase and its CEO, Jamie Dimon, which follows a similar suit from last year against Capital One, Trump alleged that he had been debanked on unfair grounds. In court filings, he accused each firm of closing his accounts in 2021 due to “political and social motivations” and “unsubstantiated, ‘woke’ beliefs” that they needed to distance themselves “from President Trump and his conservative political views.” (The JPMorgan suit, which the company said has “no merit,” arrived a day after Dimon publicly criticized the president’s proposal to cap credit-card interest rates; Capital One has also denied Trump’s allegations and filed a motion to dismiss the case.)
+
+The Trumps were indeed cut off from some financial services in 2021. But although they claim that it had to do with political bias and checking “certain boxes,” there is likely a simpler explanation: the fact that, on January 6, the president fomented a riot at the Capitol and tried to overturn the results of a national election. In the weeks and months after the insurrection, Deutsche Bank and Signature Bank reportedly refused further dealings with Trump, and Capital One and JPMorgan closed many of his personal and business accounts. Part of the reason debanking has become such a flashpoint is that financial institutions aren’t required to explain to their customers why they’ve been cut off. Despite much speculation at the time, only Signature publicly provided reasoning for its decision, citing the Capitol attack.
+
+Debanking is a nebulous concept. It can include loan denials as well as account closures for financial or nonfinancial reasons, and it can encompass broad actions across multiple banks as well as a single action at one bank. It’s not clear whether JPMorgan and Capital One actually discriminated against Trump on the basis of his political views. And even if they are found to have done so, the law is not clear on whether that’s illegal.
+
+The legal experts I spoke with said that Trump’s argument is shaky. The Equal Credit Opportunity Act prevents discrimination against customers on the basis of race, color, religion, national origin, sex, marital status, and age—but, crucially, not political alignment. Beyond that, banks are mostly free to choose whom they do business with. And financial dealings with Trump were considered risky well before January 6, thanks to his history of business failures. In 2016, The New York Times reported that some bankers had captured the sentiment in a neat, two-word phrase: Donald risk.
+
+That risk was only exacerbated by the events of January 6 and by Trump’s impeachment soon after, when it became apparent that there would be some kind of reckoning for what had happened at the Capitol. Nicholas Anthony, a policy analyst at the Cato Institute, a libertarian think tank, told me that the riot was “very reasonable” grounds “for any institution to drop a client.” The banks “were wary of the public seeing them doing business with Trump-related organizations,” Graham Steele, a Stanford Law fellow who worked in the Treasury Department under Joe Biden, explained to me; they were also likely “worried that somehow the funds in their accounts would be found to have helped finance, frankly, an insurrection.”
+
+Even outside of these lawsuits, Trump has argued that conservatives are often targets for debanking. Last summer, he signed an executive order intended to protect customers who are debanked because of their political or religious beliefs. Although this may sound good on paper, he’s focused on the wrong issue. A 2025 review from Reuters found that out of the thousands of complaints about closed bank accounts filed with the Consumer Financial Protection Bureau, fewer than 1 percent of them “include the terms ‘politics,’ ‘religion,’ ‘conservative’ or ‘Christian.’”
+
+But exclusion from the American banking system remains a real problem, particularly for low-income people and people of color. There are few broad studies on the debanking phenomenon as Trump seems to understand it—but there’s plenty of data on the communities that have historically been excluded from the financial system. A 2023 report from the Federal Deposit Insurance Corporation found that Black, Hispanic, and American Indian households were unbanked (meaning they have no checking or savings account) at much higher rates than white households, and that the share of households with no form of mainstream credit at all (credit cards, mortgages, car loans) was higher among lower-income and less-educated households.
+
+“There are certain communities that have a legacy of having been redlined out of getting access to credit and financial services,” Steele said. “That’s the real debanking problem.” Trump’s lawsuits and executive order probably won’t do much to chip away at that systemic issue. The president may say that he is protecting those who face discrimination, but his goals here are, as usual, extremely personal.
+
+Here are three new stories from The Atlantic:
+
+With this week’s announcement of massive cuts at The Washington Post, the paper’s Book World supplement earned a dismal distinction: It may be the only newspaper book-review section to have been killed twice. The first time was in 2009, when papers across the country were slashing books coverage in an attempt to stave off budgetary apocalypse. So when the Post relaunched Book World in 2022, readers and writers reacted with the same mixture of amazement and trepidation inspired by the dinosaurs at Jurassic Park. The rebirth of a dead species was wonderful to see, but how would it end?
+
+Explore. You’ve never seen Super Bowl betting like this before, Jacob Stern writes.
+
+Read. In his new novel, Daniyal Mueenuddin attempts to bring together the stories of people whose lives rarely intersect in meaningful ways, Karan Mahajan writes.
+
+Rafaela Jinich contributed to this newsletter.
+
+When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">Winter Olympics Photo of the Day: Dynamic Cauldrons</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
+            <h2>Winter Olympics Photo of the Day: Dynamic Cauldrons</h2>
+            <p><strong>The Atlantic | 2026-02-06</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/photography/2026/02/winter-olympics-photo-day-dynamic-cauldrons/685910/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The torchbearers Deborah Compagnoni and Alberto Tomba light one of two Olympic cauldrons during the opening ceremony of the Milan Cortina Winter Olympics at Piazza Dibona in Milan, Italy, today. The Olympic flame, carried through all 110 provinces in Italy over the past 63 days, has reached its final destinations: a pair of identical cauldrons in Milan and Cortina d’Ampezzo. The dynamic structures, made of 1,440 aluminum components that expand and contract, hold the flame enclosed in a small container in their center, where it will stay lit until the end of the Games, on February 22.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-20')">
+            <div class="source">The Atlantic</div>
+            <div class="title">The Real Winner of TrumpRx</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-20" style="display:none;">
+            <h2>The Real Winner of TrumpRx</h2>
+            <p><strong>The Atlantic | 2026-02-06</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/health/2026/02/trumprx-prescription-drug-prices/685919/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Nothing about TrumpRx is subtle. When you open up the government’s new online drugstore, the first thing you see is a banner with giant text: “Find the world’s lowest prices on prescription drugs.” Launched last night, TrumpRx allows Americans to purchase certain medications at steep discounts—either by buying them directly from the drug company or by showing a coupon at the pharmacy. “Thanks to President Trump, the days of Big Pharma price-gouging are over,” the website says.
+
+TrumpRx does make a compelling case that the president has mounted an extraordinary effort to stop pharmaceutical companies from ripping off Americans. The website offers discounts on some 40 drugs—the result of months of negotiations between drugmakers and the Trump administration. In a press conference announcing TrumpRx yesterday, Trump boasted that “16 of the 17 largest pharmaceutical companies have signed agreements” to list their drugs on the website. “And the other one is coming,” he added. The Trump administration was able to negotiate a nearly 85 percent discount on a trio of drugs typically used as part of IVF. Americans can also buy Wegovy, the wildly popular weight-loss injection, for as little as $199 a month, a fraction of the original list price.
+
+But these are the exceptions. Most Americans looking for their prescription drugs won’t find that many deals on the site. Health care is complicated already, and TrumpRx apparently does not always offer the cheapest or best option. Those with insurance—some 85 percent of Americans—typically will get a better deal using the coverage they already have than they would paying out of pocket on TrumpRx. More than three-quarters of Americans with commercial insurance are eligible to pay $20 or less for a month’s supply of Xeljanz, a rheumatoid-arthritis drug. But customers paying cash via TrumpRx will still shell out more than $1,500.
+
+Read: Trump’s Ozempic deal has a major flaw
+
+Even people without insurance may be able to find better prices in some cases. Consider Protonix, a drug from Pfizer used to treat acid reflux. TrumpRx offers the drug for just over $200—a 55 percent discount from its typical $447. But what the website does not explain is that there’s a much cheaper, generic version of Protonix on the market (but not available through TrumpRx). According to GoodRx, a drug-discount website similar to TrumpRx, the generic version can be purchased for less than $10. The same is true for Pristiq, an antidepressant. Consumers can buy the drug for $200 on TrumpRx or get the generic via GoodRx for a tenth of the price. Patients going through financial hardships can also sometimes qualify for charity programs, which subsidize their prescriptions.
+
+The big winners of yesterday’s announcement seem to be not patients, but drug companies. The Trump administration got drugmakers to the negotiating table last year by writing letters to the companies threatening to “deploy every tool in our arsenal to protect American families from continued abusive drug pricing practices.” Drugmakers were able to turn the threat into a PR opportunity: When Pfizer cut a deal to participate in the program, the company’s CEO, Albert Bourla, was brought to the West Wing, where Trump called the drug company “one of the greatest in the world.”
+
+Drug companies have also successfully protected their ability to charge whatever they please for some of their biggest moneymakers. Yesterday, Trump claimed that the website includes discounts for “dozens of the most commonly used prescription drugs,” but many of the pharmaceutical industry’s best-selling products—some of which also are among their more expensive offerings—are absent from the website. Take Keytruda, Merck’s cancer drug that was the world’s best seller until it was recently surpassed by the weight-loss and diabetes injection tirzepatide: That drug retails for roughly $12,000 for a three-week course of treatment, and it is missing from TrumpRx. Of the top 10 best-selling prescription drugs in 2024, only one—Ozempic—is listed on TrumpRx.
+
+TrumpRx may become better with age. A White House press release from December named multiple additional drugs that are supposed to be included in TrumpRx but are not. The drugmaker Gilead Sciences, the White House touted in the press release, will sell one of its hepatitis-C medications for about $2,400 rather than its original asking price of nearly $25,000. Kush Desai, a White House spokesperson, told me in an email that only five companies’ drugs have been added to the TrumpRx website so far. In its negotiations, the administration has also secured commitments from drugmakers that when they launch new drugs, they will not charge Americans more than they charge individuals in similar nations, which has the potential to dramatically lower the prices Americans pay for new medicines. (It’s still unclear, however, if all of those new drugs will also be available on TrumpRx.)
+
+For Americans who find discounts on TrumpRx, the platform is likely to make a meaningful difference in their lives. It’s addressing, in its so-far-limited ways, a persistent problem in American life. That said, Trump has claimed before to have provided Americans with real relief at the pharmacy counter. During his first term, the president said that seniors would soon receive $200 discount cards in the mail that they could bring to the pharmacy to help defray the high costs of their drugs. The cards never showed up. This time, the downloadable coupons, at least, are real. They are branded with a golden eagle holding a TrumpRx ribbon in its talons.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">The Obama Meme on Trump’s Truth Social Was Exactly What It Looked Like</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-18" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>The Obama Meme on Trump’s Truth Social Was Exactly What It Looked Like</h2>
             <p><strong>The Atlantic | 2026-02-06</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/technology/2026/02/trump-truth-social-obama-ape/685913/?utm_source=feed">Visit Original Website</a>
@@ -1023,13 +1178,13 @@ The ape caricature still colors how Black people are received in America. But th
 The White House did not answer my questions about why the administration initially defended the video, or why it remained up on the president’s account for 12 hours. Even if a staffer did post the Obama video, its message is resonant with the president’s past statements and actions. Trump has called Somalis “low-IQ,” and his administration recently announced rules that will ban nearly 90 percent of African immigrant visa applicants.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">Today’s <em>Atlantic </em>Trivia: Do You Know Your Super Bowl Bets?</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Today’s <em>Atlantic </em>Trivia: Do You Know Your Super Bowl Bets?</h2>
             <p><strong>The Atlantic | 2026-02-06</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/02/daily-trivia-questions-answers-week-16/685857/?utm_source=feed">Visit Original Website</a>
@@ -1069,13 +1224,13 @@ And by the way, did you know that since going up in the late 1880s, the Eiffel T
 All right, so not that different on the colors. However, each hue is really three shades apiece; the bottom third of the tower is painted darker than the middle third, and the middle darker than the top so that the paint job looks uniform against the gradient of the blue(ish) sky.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">The Manosphere Breaks Containment</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>The Manosphere Breaks Containment</h2>
             <p><strong>The Atlantic | 2026-02-06</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/podcasts/2026/02/the-manosphere-breaks-containment/685907/?utm_source=feed">Visit Original Website</a>
@@ -1261,164 +1416,50 @@ Warzel: Yeah. Into the abyss together, you know?
 Warzel: Thank you again to my guest, Aidan Walker. If you liked what you saw here, new episodes of Galaxy Brain drop every Friday. You can subscribe to The Atlantic’s YouTube channel or on Apple, Spotify, or wherever it is that you get your podcasts about Clavicular. And if you want to support this work and the work of all my fellow journalists at The Atlantic, you can subscribe to the publication at TheAtlantic.com/Listener. That’s TheAtlantic.com/Listener. Thanks so much, and I’ll see you on the internet.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
-            <div class="source">The Atlantic</div>
-            <div class="title">The Evangelicals Who See Trump’s Viciousness As a Virtue</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-21" style="display:none;">
-            <h2>The Evangelicals Who See Trump’s Viciousness As a Virtue</h2>
-            <p><strong>The Atlantic | 2026-02-06</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/02/evangelicals-trump-national-prayer-breakfast/685908/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The National Prayer Breakfast was founded in 1953, when President Dwight Eisenhower accepted an invitation to join members of Congress to break bread together. Every president since has participated, regardless of party or religious persuasion. It offers an opportunity, according to its organizers, for political leaders to gather and pray collectively for our nation “in the spirit of love and reconciliation as Jesus of Nazareth taught 2,000 years ago.”  Donald Trump never got that memo—or, if he did, he’s found ways to ignore it.  In a rambling, 75-minute speech at the Prayer Breakfast yesterday, we saw the quintessential Trump. His comments were grievance-filled, narcissistic, conspiratorial, factually false, divisive, and insulting. He referred to his critics as “lunatics.” He engaged in projection, comparing them to “dictators” and “the gestapo.” He labeled Republican Representative Thomas Massie a “moron” because he won’t cast legislative votes the way Trump wants. Joe Biden is “Crooked Joe,” while Jacob Frey is “the horrible fake mayor” of Minneapolis. Trump praised El Salvador’s authoritarian President Nayib Bukele—Bukele has referred to himself as “the world’s coolest dictator”—for his “very strong prisons.” (The prison that Trump celebrates, Centro de Confinamiento del Terrorismo, known as CECOT, is notorious for its cruel and inhumane conditions.) Trump emphasized that Bukele—who also spoke at the National Prayer Breakfast—is “one of my favorite people.”
-
-Trump took credit for churches “coming back stronger than ever” and for religion being “hotter than ever.” He claimed he has “done more for religion than any other president”—apparently, before the age of Trump, Christians couldn’t say “Merry Christmas” in public—and argued that his predecessors in the White House “bailed out” on religion. “I don’t know how a person of faith can vote for a Democrat. I really don’t,” he said, adding, “They cheat.”
-
-The spirit of love and reconciliation that Jesus of Nazareth taught 2,000 years ago was not particularly evident in the words of the president. Of course, it never has been. No matter. The audience of some 3,500—the great majority of whom undoubtedly claim to be followers of Jesus—responded to Trump’s remarks with a standing ovation.
-
-It is testimony to the marketing genius of Donald Trump that he never sold himself to Christians as one of them—pious, devoted, merciful, forgiving, irenic, biblically literate, a faithful husband and father, a man of high moral standards. Instead, he sold himself as their protector. He didn’t hide his cruelty or his belief that the ends justify the means; doing so would have been impossible for him because they are central features of his personality. So he did the opposite: He presented himself to Christians as a fierce, even ruthless, warrior on their behalf. It worked. He built a huge, loyal, fanatical following.  At the National Prayer Breakfast, Trump recounted comments made about him by Robert Jeffress, the senior pastor of the First Baptist Church in Dallas and a stalwart Trump ally for a decade.
-
-Peter Wehner: MAGA Jesus is not the real Jesus
-
-According to Trump, the case Jeffress made on his behalf in 2016 went like this: “He may not have ever read the Bible, but he will be a much stronger messenger for us.” It was Jeffress who said at the time, “I want the meanest, toughest SOB I can find to protect this nation.”  Jerry Falwell Jr., then the president of Liberty University, put it this way in a 2018 tweet: “Conservatives & Christians need to stop electing ‘nice guys’. They might make great Christian leaders but the US needs street fighters like @realDonaldTrump at every level of government b/c the liberal fascists Dems are playing for keeps & many Repub leaders are a bunch of wimps!”  Tony Perkins, an ordained Southern Baptist minister and the president of the Family Research Council, a prominent evangelical activist group, admitted in 2018 that he and other evangelicals gave Trump a “mulligan” on his multiple affairs and hush-money payments to a porn star for a simple reason: Evangelicals “were tired of being kicked around by Barack Obama and his leftists. And I think they are finally glad that there’s somebody on the playground that is willing to punch the bully.” When asked what happened to turning the other cheek, Perkins replied, “You know, you only have two cheeks. Look, Christianity is not all about being a welcome mat which people can just stomp their feet on.”  They thrill to watch Trump savage his critics, and their devotion grows with every dehumanizing word, with every merciless act.
-
-If Henry VIII earned the title “Defender of the Faith,” why not Donald Trump?  It is odd to see the very same evangelicals who claim the Bible is inerrant and who criticize fellow Christians about matters such as ordaining women—on the grounds that they are being unfaithful to what Paul wrote in one of his Epistles, an interpretation that many biblical scholars dispute—dismiss Jesus’s most famous sermon. For these Christians, the teachings of the son of God take a back seat to the pronouncements of the king of Mar-a-Lago.  Much of today’s evangelical world sees Trump’s viciousness not as a vice but as a virtue, so long as it is employed against those they perceive as their enemies, against those whom they resent and for whom they have a seething hatred. Unless you’ve spent time in the evangelical world, fully appreciating the level of antipathy that exists toward Democrats and progressives is difficult. The only thing that exceeds it is the loathing reserved for the Christians and conservatives who broke with Trump because their commitment to their faith, and to cherished moral truths, required them to speak out against him.
-
-What i am describing isn’t true of all Christians, thankfully. Some have found the cumulative effect of Trump’s assault on Christian ethics too much. The Catholic Church and its American pope, Leo XIV, are speaking out prudentially but forcefully against the actions of the Trump administration. Mainline denominations, including the United Methodists, are stepping up. My friend Mark Labberton, a former president of Fuller Theological Seminary and a Presbyterian (PCUSA) pastor, traveled to Minneapolis to express solidarity with the people of that city after an ICE agent killed Renee Good. He joined many others in peaceful protests in subzero temperatures. Other pastors and theologians I respect, several of whom were formative in my journey of faith, signed a statement titled “Christ Alone: A Call to Faithful Resistance.” It nowhere mentions the president or his party, but it does take a prophetic stance “in a time of fear and capitulation in both the Church and in our civic life.”
-
-From the January/February 2024 Issue: My father, my faith, and Donald Trump
-
-“In this moment we specifically call on the Church and peoples across the political spectrum to recognize the clear and present danger of rising authoritarian rule to all of us, especially the most vulnerable,” the statement says. “We commit ourselves to resisting cruel or oppressive means of control and to standing in solidarity with the oppressed, the marginalized, and the silenced.”
-
-Even among evangelicals, support for Trump is hardly universal, and many pastors I know are quite disturbed by the damage he and his administration are doing. Yet they know full well that many within their congregations voted for Trump and still align themselves with the Republican Party. These ministers are therefore hesitant to speak out not only from the pulpit but in any capacity. They want to keep their head down.  That’s understandable. The best pastors I know are instinctively wary about speaking out politically; that’s not why they got into ministry in the first place. They don’t feel that it’s their job to offer political commentary, nor do many of them feel especially equipped to do so. They also realize that many people go to church seeking a safe haven from politics. They believe, too, and with some justification, that to take a stand, even with great care, might well split a congregation.
-
-Evangelical denominations and pastors, though, even those who are not deeply immersed in politics, are generally willing to speak out on culture-war issues that have political and sometimes legislative implications. I’ve seen this happen many times over the years.
-
-So the reluctance to take a prophetic stance in the realm of politics and culture is less a principled unwillingness than a selective one. Ministers, like most of the rest of us, are likely to wade into controversial waters only when it’s safe—in their case, when there is overwhelming agreement within a congregation on a set of issues. They speak out when the response from those in the pews is a resounding “Amen!” rather than even a handful of voices saying, “Oh no you don’t!”
-
-I don’t pretend these are easy matters for pastors to face. A minister of a conservative congregation might tell himself that the downside to speaking out against the sins of the authoritarian right, even judiciously and without partisan rancor, is too costly. They may fear that their ministry will be damaged, that offended parishioners will tune them out, and that they will gain nothing concrete.
-
-But aren’t prophets esteemed precisely for their willingness to tell difficult truths to the people of God? For being steadfast in the face of fierce criticism; for denouncing social injustice and idolatry, including political idolatry, when it’s unfashionable to do so; for issuing warnings when others fall silent; and for calling people to repentance during times of moral blindness?
-
-Non-maga evangelical pastors are going to face a set of difficult questions during the next three years: Under what conditions, if any, are you willing to speak out when a president and his administration repeatedly violate Christian ethics? Will you stay silent even when acts of cruelty, lawlessness, and injustice aren’t the exception but the norm? How much more indecency do you need to see before you act?
-
-My colleague Jonathan Rauch, an eminently fair-minded, reasonable, and wise writer, recently explained why, after heretofore avoiding the term, he has come around to the belief that Donald Trump’s governing style qualifies as fascist.
-
-Even if you disagree with Rauch’s conclusion, it’s still worth wrestling with his catalog of the president’s misdeeds, broken into 18 categories. And the case Rauch makes—that although America is not a fascist country, it has a fascist president—will almost certainly become stronger over time.
-
-At some point, then, it may become nearly impossible for pastors who are not fully on board with MAGA to look away, to stall for more time, to let others do the heavy lifting, or to tell themselves that things aren’t so bad, that silence is golden. A healthy church culture, like a healthy family culture, brings things into the open. It doesn’t avoid or close off conversations.
-
-Labberton, the Presbyterian pastor, once told me that the more highly contentious an issue is, the more likely he is to want to discuss it with his congregation in a way that is honest, open, and biblically informed. Of course, there will be a diversity of opinions. That’s not something to run from; it’s something to learn from.
-
-“Our reality is sufficiently complex that we need to invite one another along for the journey,” Labberton said. We need to invite one another into respectful conversations. “Together we need to instigate a long journey into God’s mercy and justice.” Pastors, and the congregations they lead, have to hope that we can summon the courage to go where God’s mercy and justice lead us.
-
-“Seldom, if ever, do I pause to answer criticism of my work and ideas,” Martin Luther King Jr. wrote. But when a group of white Alabama clergymen declared him an outside agitator whose efforts were “unwise and untimely,” he decided to respond. The result was “Letter From Birmingham Jail,” one of the most important documents in U.S. history.
-
-This letter, like all of King’s greatest works, cannot be understood apart from his Christian faith. Faith shaped his views on ethics and human dignity. It also gave him the courage to create tension in the cause of justice. “I am grateful to God that, through the influence of the Negro church, the way of nonviolence became an integral part of our struggle,” he wrote.
-
-The white pastors in Birmingham had a case to make. They didn’t want what they called “days of new hope” in Birmingham to be undone by “extreme measures” that would cause divisions. King, one of America’s great prophets, saw things differently. He wept over the laxity of the Church and reminded it of its high calling—not to be the master or the servant of the state, but rather its conscience.
-
-From the King issue: Martin Luther King Jr.’s ‘Letter From Birmingham Jail’
-
-I imagine that all of the white pastors I know think that if they had been a minister at that time—especially if they were a minister of churches that were made up of white segregationists—they would have found a way to speak up rather than be silent, would have stood with King instead of those who urged caution in the name of unity.
-
-The question now comes again in our time: What does it mean for the Church to be the conscience of the state?</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-22')">
-            <div class="source">The Atlantic</div>
-            <div class="title">Reading Is a Practice, Not a Chore</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-22" style="display:none;">
-            <h2>Reading Is a Practice, Not a Chore</h2>
-            <p><strong>The Atlantic | 2026-02-06</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/02/books-briefing-reading-practice-not-chore/685905/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">This is an edition of the Books Briefing, our editors’ weekly guide to the best in books. Sign up for it here.
-
-At least one fundamental human trait persists in the smartphone era: People seem to love a challenge. The internet teems with viral competitions, gamified health apps, and “life-maxxing” exercises of many kinds. Even those who resist the lure of screens—by, for instance, reading books—are frequently doing so with a kind of competitive zeal. A University of Pennsylvania professor has built a strict, rules-based classroom cult around reading. And this week in The Atlantic, Walt Hunter, who teaches English at Case Western Reserve University, wrote about his own attempt to buck alarming literacy trends by asking his students to read entire books.
-
-First, here are four stories from The Atlantic’s Books section:
-
-Hunter discovered that if you recalibrate a course to prioritize “developing a relationship” with authors and books (he eased up on writing assignments, for example), students will meet the challenge. After he swapped out short excerpts for full texts, his students “were reading everything, or most of it.” They proved it by identifying obscure passages without notes (and, because he quizzed them in the classroom, there wasn’t a chatbot within reach). Even more important, “they were experiencing life in a way that was not easy outside the class.” They were putting effort and time into a mental activity that scrolling on their phone couldn’t match.
-
-This is a feel-mostly-good story, but how useful is Hunter’s experiment for those of us who don’t have anything except our own willpower standing between us and the algorithms? Such readers might find value in another Atlantic article this week, in which Bekah Waalkes recommends books that can be read between errands. Waalkes suggests an attitude shift that doesn’t force you to choose between setting strict reading goals and giving up altogether. “All you need,” she writes, “is a willingness to dedicate a few minutes a day, and maybe a few new habits.”
-
-Hunter also describes reading as a feat of adult self-motivation. “You are not word-maxxing or optimizing information for efficiency,” he writes. “You are engaged in a singular practice, one with its own primary justification.” I like the word “practice,” because reading requires it, just like many other things grown-ups find fulfilling. We schedule activities—travel, socializing, cooking, exercise—so we can achieve everything we should do and everything we want to do (two categories that ideally overlap). With time, we get better at these things—and at finding a place for them in our life. So here’s my advice, if you need it: Schedule some reading time, wherever and whenever you can. Pick up one of Waalkes’s recommended books, or whatever you like. Set a timer, dive in, and find out what you&#39;re made of.
-
-What I learned when I finally started assigning the hard reading again.
-
-Like Austen’s other novels, Northanger Abbey contains a marriage plot. But it’s set apart from the rest of her work by a long, satirical section sending up gothic fiction and its fans. The book’s heroine, Catherine Morland, is an avid reader of the popular novels of the day, and has a specific fondness for Ann Radcliffe’s real-life 1794 best seller, The Mysteries of Udolpho, a tale of ghostly figures and hidden manuscripts. Catherine views herself as the hero of a similar story, and when she goes to the country house of a family she has befriended (the titular Northanger Abbey), she reinvents herself as the protagonist of a mystery. Austen is the master of depicting small faux pas, and Catherine commits many—she forces open cabinets in search of creepy documents; she begins to suspect that the family patriarch has murdered his wife. The chronic daydreamer can easily identify with Catherine’s near-delusional longing for something to happen beyond the courtships and evenings around the pianoforte that seem to make up the better part of her future.
-
-From our list: Six books you can get lost in
-
-📚 Frog: and Other Essays, by Anne Fadiman
-
-📚 The Mixed Marriage Project, by Dorothy Roberts
-
-With this week’s announcement of massive cuts at The Washington Post, the paper’s Book World supplement earned a dismal distinction: It may be the only newspaper book-review section to have been killed twice. The first time was in 2009, when papers across the country were slashing books coverage in an attempt to stave off budgetary apocalypse. So when the Post relaunched Book World in 2022, readers and writers reacted with the same mixture of amazement and trepidation inspired by the dinosaurs at Jurassic Park. The rebirth of a dead species was wonderful to see, but how would it end?
-
-When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.
-
-Sign up for The Wonder Reader, a Saturday newsletter in which our editors recommend stories to spark your curiosity and fill you with delight.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">The Moral Cost of Living in an Unequal Society</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-23" style="display:none;">
-            <h2>The Moral Cost of Living in an Unequal Society</h2>
-            <p><strong>The Atlantic | 2026-02-06</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/books/2026/02/this-is-where-the-serpent-lives-daniyal-mueenuddin-review/685884/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Books about masters and servants tend to come with an inborn flaw: They are written largely by those from the moneyed class, individuals who have seen the poor from above and must now, in their writing, illuminate their lives from within. This gap can sometimes be breached through immersive journalism of the kind championed by George Orwell in Down and Out in Paris and London or Barbara Ehrenreich in Nickel and Dimed. But such instances are rare, and even harder to achieve in countries like India or Pakistan—places with large domestic-worker populations where socioeconomic differences are so harshly inscribed that one can, more often than not, immediately infer a person’s status from their mannerisms and language.
-
-This is what makes the work of the Pakistani American writer Daniyal Mueenuddin so special and surprising. Mueenuddin is a U.S.-educated descendant of a Pakistani feudal family; he spent years running an estate in rural Punjab. In his prize-winning fiction, though, he is somehow able to enter the lives of the servant class with the same gentleness and attention that he lavishes on the ultrarich. The concerns of drivers, retainers, maids, and cooks exist alongside the romantic problems of Paris-hopping Pakistanis with cocaine addictions in his justly acclaimed debut collection, In Other Rooms, Other Wonders, from 2009. Small details shine. Reading about, say, the family life of Nawabdin, an electrician “who flourished on a signature ability, a technique for cheating the electric company by slowing down the revolutions of electric meters,” one wonders: How does he know so much? How does he re-create the lives of those immured within a feudal system without reinforcing his own position through condescending, morose social realism?
-
-Mueenuddin has cited the author Ivan Turgenev—himself an estate owner who captured the lives of both serfs and aristocrats in 19th-century Russia—as one of his inspirations. Turgenev, hampered by czarist censorship, did not write polemics about suffering serfs but instead created hyperrealist, idiosyncratic slices of life that would later inspire Ernest Hemingway. Turgenev’s stories, especially his 1852 collection, A Sportsman’s Notebook, indirectly led to the end of serfdom by humanizing the peasantry for Czar Alexander II. In short, Turgenev was the rare estate owner who listened.
-
-Mueenuddin does the same in his latest work, This Is Where the Serpent Lives. His first book in 17 years and his debut novel, it is a feast of sustained noticing, despite an overarching flaw. One of the main strands in Serpent is based, according to an interview with The New Yorker, on the life of a swashbuckling driver employed for years by Mueenuddin’s father. His fictional driver, Yazid, is the moral center of the novel, described as “an ambling bear” with huge sideburns “moving to his own North.” As a young orphan, Yazid was a cook’s apprentice who emulated the rich schoolboys he served, intending to slowly insinuate himself into their class—only to be thwarted by a jealous, older maidservant.
-
-Mueenuddin’s novel essentially comprises four novella-like storylines about grand landowning families and their employees in Pakistan from the 1950s to the present. Besides Yazid’s story, two short narratives follow reluctant feudal potentates. A final story, which takes up the majority of the novel, focuses on Yazid’s much younger protégé, Saqib, a servant boy of “fine sensibility and intelligence” who also seeks to join the upper class.
-
-Read: What does the literature of the working class look like?
-
-Mueenuddin’s novel suggests that there are moral costs to both the rich and the poor for living in a system that allows such little mobility. Wealthy characters verge on making reforms, then pull back at the slightest complication. In the process, they remain stuck within their “ordered purposeless” lives, as Mueenuddin wrote in his collection. The servants, meanwhile, who are “more fed than paid,” recognize that only the most brazen cheating and corruption can break them out of their squalid circumstances—the sort of corruption, of course, that has enabled the elite to thrive in a country where meaningful land reform never occurred and ancient inequalities persist. A novelist depicting both these classes must find an elegant way to integrate stories of inherited ennui and desperate striving. If Mueeneddin doesn’t entirely succeed, this is in part because the unyielding feudal order of Pakistan means that the lives of servants and masters rarely intersect in meaningful ways.
-
-Saqib’s story captures the dilemma of the aspirant even more fiercely than Yazid’s does. “Respectful but not servile,” Saqib enters the good graces of his mistress, Shahnaz Atar, an intelligent woman who, “like most Lahori women of her class,” Mueenuddin writes, “battled constantly to find and train and keep household servants.” Saqib is entrusted with more and more responsibility as he grows up, eventually setting up an ambitious cucumber-farming scheme on the Atars’ estate in rural Punjab. He figures that it will take one careful, major act of corruption to finally ascend to the elite: “Each untrue mark that he inscribed” in the account books would be, Mueenuddin writes, “another step in his emancipation.” Alas, it is this choice that gets him into trouble and causes the fine web of relationships around him to crumble, throwing him violently back to his origins as the mere son of a gardener.
-
-As in his story collection, Mueenuddin succeeds here in painting Yazid and Saqib and a host of secondary characters on the social ladder as distinct individuals, down to their faces and habits and family lives. He also shows how, at this late stage of history—in which Chinese smartphones, Western porn, and Facebook “confettied all over” the populace—the players are more aware than ever of their particular roles. Shahnaz, who grew up largely abroad, sees her position as mistress of an estate “through the lens of her Western politics and experience,” even studying the Russians, including Turgenev, to comprehend the complex social dynamics unfolding on her farm. Her husband’s cousin Rustom, who returns from America to take over his family’s land after his parents and grandfather die, finds himself tacitly okaying the beating of a worker from a rival estate. “What happened to college days and marching for justice in South Africa and in solidarity with ship workers in Poland?” he wonders. Meanwhile, Saqib carefully observes the behavior of his masters, the Atars, in order to model it—noting, for example, that they treat “eating as ceremony.”
-
-Read: When scarcity blurs the line between right and wrong
-
-What gives Mueenuddin a harder time is finding a structure that generates meaning from the interplay between the upper and the lower classes. His four stories follow no clear arc, flitting from one time period or character to another. In a short-story collection such as Other Rooms, the question of a narrative through line does not arise. You get discrete stories (or rooms!) about people from different classes, and the links between characters are subtle. In Serpent, however, Mueenuddin’s attempts to give the lives of Yazid and Saqib the same weight as those of the estate owners is strangely lopsided; his characters’ connections feel more circumstantial than inherent to the narrative. A 150-page novel about Saqib alone, for example, might have succeeded more than this brilliant but blowsy book, which had me writing, at page 100, “I still don’t know what this is about.”
-
-Alas, this pitfall has as much to do with the structure of Pakistani society as it does with the structure of the book. Although masters and servants occupy the same spaces, their lives don’t apply equal pressure on each other. A servant could have a tumultuous inner life, but unless he commits a major crime (as in, for instance, Aravind Adiga’s Booker-winning The White Tiger), his emotions are unlikely to infect the master. The master, in turn, usually lives in another sphere—one of extramarital affairs and boozy parties and corrupt business deals. Shahnaz, for example, simply turns away bitterly and sadly after Saqib’s crime. One wishes Mueenuddin had devised a narrative in which she experienced a deeper, more complicated fallout—an exception to the rule.
-
-And so lives that are disparate continue to feel wrenched apart. What we have here is not a novel at all but another linked short-story collection—if only Mueenuddin had named it as such! The lives of these characters are of superb interest. It is the form in which they live that is flawed.
-
-​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">Amazon's Tax Bill Plunges 87% After Tax Cuts</div>
+            <div class="meta">2026-02-07</div>
+        </div>
+        
+        <div id="content-24" style="display:none;">
+            <h2>Amazon's Tax Bill Plunges 87% After Tax Cuts</h2>
+            <p><strong>Slashdot | 2026-02-07</strong></p>
+            <a class="original-link" href="https://slashdot.org/story/26/02/06/1918235/amazons-tax-bill-plunges-87-after-tax-cuts?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+surely there are ways to help &quot;small business&quot; however the GOP defines such without also giving a luscious handj...er, handshake to companies that have never paid their fair share
+
+Wasn&#39;t the debt a big concern a year ago or have tariffs reduced it as promised?
+
+Yu need to butter up the rapist before you get these cuts.
+
+I guess we&#39;re not going to talk about the billions in tax breaks Democrat-leaning areas gave to Amazon, then?
+
+Just to be clear: both sides routinely do this, and it&#39;s wrong when they both do it.  But if you&#39;re going to complain about taxes, at least discuss the full picture.
+
+I for one don&#39;t have a problem with this. I give uncle Jeff a lot of money each year and I prefer he doesn&#39;t spend it frivolously in another country. Americans are pretty rich as it is, they don&#39;t need more money.
+
+Now, ideally, uncle Jeff should pay his share of taxes in my country, but he&#39;s a greedy foreigner who manipulates public opinion and undercuts local businesses, so it&#39;s a work in progress.
+
+Amazon gets its tax bill reduced by almost 90% while at the same time it produces a schlock film about an illegal immigrant who used chain migration to get their parents into the country.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
             <div class="source">Slashdot</div>
             <div class="title">Memory Prices Have Nearly Doubled Since Last Quarter</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>Memory Prices Have Nearly Doubled Since Last Quarter</h2>
             <p><strong>Slashdot | 2026-02-06</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/02/06/196241/memory-prices-have-nearly-doubled-since-last-quarter?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
 
 DDR, NAND, and even spinning rust has gone through the roof.
 
@@ -1473,19 +1514,20 @@ Courtesy for somebody that proudly posts grossly wrong numbers? Naa. Not justifi
 
 Nope. No amount of common courtesy makes your math work. Sorry, Charlie.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+It&#39;s no competition really. Billionaires get to decide the priority, and it will be for their money making data centers and not the nearby communities.
 
-Imagination is more important than knowledge.
-		-- Albert Einstein</div>
+The bloatware show is over. We coders aren&#39;t going to be allowed to import a massive library to solve some tiny problem in our projects. We might have to actually design and code up light weight solutions again if we want our programmers to actually fit on people&#39;s computers. People that put 8GB in their mid-range laptop are going to be stuck there for quite some time, at least another two CPU generations.And that doesn&#39;t mean you can write your apps to eat up 7GB of RAM, no people still will want to run mo
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Salesforce Shelves Heroku</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Salesforce Shelves Heroku</h2>
             <p><strong>Slashdot | 2026-02-06</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/02/06/1946233/salesforce-shelves-heroku?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1496,32 +1538,29 @@ No, Saleforce degraded their service as soon as they took over. It&#39;s been a 
 
 If Salesforce is not extracting a pound of flesh every year from each customer they have, they&#39;re not happy.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Imagination is more important than knowledge.
-		-- Albert Einstein</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Hidden Cameras in Chinese Hotels Are Livestreaming Guests To Thousands of Telegram Subscribers</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Hidden Cameras in Chinese Hotels Are Livestreaming Guests To Thousands of Telegram Subscribers</h2>
             <p><strong>Slashdot | 2026-02-06</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/06/1913211/hidden-cameras-in-chinese-hotels-are-livestreaming-guests-to-thousands-of-telegram-subscribers?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-Chinese sock puppet says, &quot;Forget all, this, look at this lovely distracting Epstein stuff!&quot;
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
 
 Indeed. Apparently, China has 16.5M hotel rooms. That means 1 in 91&#39;000 will have a camera in this scheme. I very much doubt the rest of the world is any better.
 
 My take is this is some mindless &quot;China BAAAD!&quot; propaganda piece. I wonder why they do not report on real problems with China. Maybe stories on things like spying on citizens, imprisoning citizens in internment camps, murdering citizens in the street hit a bit too close to home?
 
 So the Communist Party tracks every time you sneeze, but they had no idea this is going on? Either that, they are in on it.
+
+Me, I&#39;m tired of arseholes telling me their rules against nudity and sex-workers, are important.
 
 China isn&#39;t like North Korea, and even in North Korea they can&#39;t watch everyone all the time. Crime still happens.
 
@@ -1534,12 +1573,6 @@ It&#39;s nearly impossible to sweep a hotel daily for these cameras.  If you do 
 So... I like &#39;stocks in the public square for a month&#39;.
 
 This seems to have been a for profit operation, so they will be able to trace the money. I doubt whoever did it was careful enough to wipe the cameras clean of fingerprints anyway, let along manage good digital opsec.
-
-China isn&#39;t like North Korea, and even in North Korea they can&#39;t watch everyone all the time. Crime still happens.This statement, brought to you by the Grea, er..Meh Firewall of China.
-
-China isn&#39;t like North Korea, and even in North Korea they can&#39;t watch everyone all the time. Crime still happens.
-
-This statement, brought to you by the Grea, er..Meh Firewall of China.
 
 People who think that have never been to China. If they had been, they would have noticed that it&#39;s not like North Korea.
 
@@ -1559,24 +1592,23 @@ Apparently, China has approximately 16.5 million hotel rooms. Hence with at most
 
 This articles seems to be some more mindless &quot;China BAAAD!&quot; propaganda. There are quite a few problems with China. Maybe focus on the real ones instead of this trash-level reporting?
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+Srs look at this mess. SD clean up the old accounts taken over.
 
-Imagination is more important than knowledge.
-		-- Albert Einstein</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">AI.com Sells for $70 Million, the Highest Price Ever Disclosed for a Domain Name</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>AI.com Sells for $70 Million, the Highest Price Ever Disclosed for a Domain Name</h2>
             <p><strong>Slashdot | 2026-02-06</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/02/06/185213/aicom-sells-for-70-million-the-highest-price-ever-disclosed-for-a-domain-name?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 I have a wonderful business opportunity to offer you: NotARugPull dot something.  Please let me know your budget and I will let you know what &quot;something&quot; will be.
 
@@ -1598,19 +1630,16 @@ I bet $500 that behind the scenes this actually turns out to be a bunch of poorl
 
 Just like the last time we heard about an amazing &#39;agent&#39; thing and it was actually...wait for it...a bunch of poorly-paid remote workers in the Philippines.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Imagination is more important than knowledge.
-		-- Albert Einstein</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Big Tech's $1.1 Trillion Cloud Computing Backlog</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Big Tech's $1.1 Trillion Cloud Computing Backlog</h2>
             <p><strong>Slashdot | 2026-02-06</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/02/06/1749238/big-techs-11-trillion-cloud-computing-backlog?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1649,87 +1678,7 @@ The people making the purchases seem be purchasing the capacity because they thi
 
 Unlikely. This is not something that can be done fast. I wonder who will not survive the crash.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Imagination is more important than knowledge.
-		-- Albert Einstein</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">KPMG Pressed Its Auditor To Pass on AI Cost Savings</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>KPMG Pressed Its Auditor To Pass on AI Cost Savings</h2>
-            <p><strong>Slashdot | 2026-02-06</strong></p>
-            <a class="original-link" href="https://slashdot.org/story/26/02/06/1632210/kpmg-pressed-its-auditor-to-pass-on-ai-cost-savings?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
-
-How else is your consulting division going to sell A.I. to clients if your own audit figures don&#39;t back them up?
-
-..it should pass on cost savings from the rollout of AI and threatened to find a new accountant if it did not agree to a significant fee reduction..I estimate KPMG customers pulling this same excuse against KPMG, by the end of this sentence.Come to think of it, why do we even need human auditors at KPMG again?Yes, KPMG.  Be careful what you fuck others over for.  You just might earn it.
-
-..it should pass on cost savings from the rollout of AI and threatened to find a new accountant if it did not agree to a significant fee reduction..
-
-I estimate KPMG customers pulling this same excuse against KPMG, by the end of this sentence.
-
-Come to think of it, why do we even need human auditors at KPMG again?
-
-Yes, KPMG.  Be careful what you fuck others over for.  You just might earn it.
-
-Come to think of it, why do we even need KPMG again?
-
-Just waiting for it to turn out that AI cooked their books or missed some massive fraud, and they try to claim it&#39;s not their fault.
-
-Come to think of it, why do we even need human auditors at KPMG again?KPMG auditors are human? I guess I missed that news story!
-
-Come to think of it, why do we even need human auditors at KPMG again?
-
-KPMG auditors are human? I guess I missed that news story!
-
-This &quot;it&#39;s okay that AI makes mistakes because humans aren&#39;t perfect either&quot; is ridiculous.  The kinds of mistakes humans make are so far removed from the kinds of &#39;mistakes&#39; LLMs make that it&#39;s misleading to even call them mistakes.
-
-Humans, for example, will never accidentally summarize a document that don&#39;t exist.
-
-LLMs are not science fiction robots.  They are not &#39;electronic brains&#39; that think and reason.  The very idea is absurd on its face.
-
-Indeed. While humans also hallucinate occasionally and many are prone to really deranged cult-like behavior (see the &quot;pedo-protectors&quot; in the US, for example), humans will very rarely make the type of mistakes that LLMs make. Because LLM hallucinations look good and well researched while being total fabrications. Humans may deliver low-quality results, but they will be visibly low quality. Humans may also deliver high-quality fakes, but they will only do that intentionally (and hence often criminally, with
-
-I also wonder who professionals will feel signing off on AI work since they would then be legally responsible for it.Senior people will refuse and may outright leave. Junior people may get coerced into it. But guess what, there are seniority requirements for audit jobs, exactly for that reason. And once caught, an auditor can look for a job in a different field. Nobody will hire them again as auditor.
-
-I also wonder who professionals will feel signing off on AI work since they would then be legally responsible for it.
-
-Senior people will refuse and may outright leave. Junior people may get coerced into it. But guess what, there are seniority requirements for audit jobs, exactly for that reason. And once caught, an auditor can look for a job in a different field. Nobody will hire them again as auditor.
-
-and threatened to find a new accountant if it did not agree
-
-They sound like douchebags - was the intention to encourage the rejection?
-
-Auditing is about establishing the truth about the situation within the company. Which is why AI should never be allowed to be used in the context of auditing. Or at the very least the auditors should never rely on the AI-generated results provided by the company. What&#39;s stopping companies from telling AI to generate a set of data that would make them pass an audit, hiding the real facts? Auditors should rely on facts, not confabulations, and should dig as deep as necessary to uncover all the dirt that&#39;s hiding under the surface.
-
-Afterthought:Which is why auditors should actually be asking for more money because now they&#39;ve got to cut through even more corporate BS.
-
-The auditor is the one using AI. One of the things AI is good at is looking at lots of boring data and finding weird patterns.
-
-Auditors used to have to go through and check every transaction to see if someone screwed up or was fudging the numbers. Modern accounting practices plus software can pretty much do that automatically now, leaving the auditors to look for more subtle stuff. AI can help with that more subtle stuff.
-
-People didn&#39;t really think about or have any problem with trans people until people like yourself started shoving it down our throats constantly. That is why the inevitable backlash hit. We don&#39;t want dudes on our daughter&#39;s sports teams or in the female locker rooms, and we don&#39;t want predatory activists looking to trans our kids. Other than that, live your life.
-
-A junior developer earns $10 an hour because it takes them 10 hours to solve a problem.
-
-A senior developer bills $100 an hour because the same 10-hour project takes one hour. The productivity gain is reflected in higher value, not lower pay.
-
-If AI reduces audit time, that is a measurable productivity gain. But time reduction alone does not define value.
-
-If AI also improves detection, reduces risk, and increases reliability, then the value of the audit may increase even as the hours decrease.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Imagination is more important than knowledge.
-		-- Albert Einstein</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -3447,25 +3396,11 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: Vista Equity Partners and Intel to lead investment in AI chip startup SambaNova, sources say - Reuters</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-67" style="display:none;">
-            <h2>Exclusive: Vista Equity Partners and Intel to lead investment in AI chip startup SambaNova, sources say - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOM3JncDg0RmY2ekpyaTE1bktpM0VEaEp2NnJ4aHBncjRfcktKZ25MS1ZNZzZpcVBncExyYUxPMEdlUlZ1OXlhRjRqSEdJMlprc0J3S0lmaDZMUTcwZVlRTDAyRGVubzFZSVM1N1VkZ0xLY0k2ZTNwMGREY09NUTJVRmw3VnI1blRjSWdYMXlDb29Mbmp4anRLQ21EVzRUY0gzZFNTTzRzODAwMmo3N1JxS1RaU01weU01bVZobUdETE8?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-68')">
-            <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">US appeals court rejects challenge to Trump's efforts to ban DEI - Reuters</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-67" style="display:none;">
             <h2>US appeals court rejects challenge to Trump's efforts to ban DEI - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxNV2pVeEd5blRjSDJYYUdQRXpkRlU5U3ctQWlvdmtXVWVYMFI5OGkzcWEtYWxhSVNxYUtxd2lkSjRwLU9xMVhnVjU0MHlSX2M2N0ZoRkdIai1fSGZlcHhESHFvOFppc0pHd1dUWUFOU2xaVG56eEJ5NTUxSENqcFllSFg4LVBKNjA1WWt1cGxPc2dJUDIzNHFVVkVjWWYwTGxQMzVqSWhxRG5RTGlvS2Rj?oc=5">Visit Original Website</a>
@@ -3473,13 +3408,41 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Exclusive: Vista Equity Partners and Intel to lead investment in AI chip startup SambaNova, sources say - Reuters</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>Exclusive: Vista Equity Partners and Intel to lead investment in AI chip startup SambaNova, sources say - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOM3JncDg0RmY2ekpyaTE1bktpM0VEaEp2NnJ4aHBncjRfcktKZ25MS1ZNZzZpcVBncExyYUxPMEdlUlZ1OXlhRjRqSEdJMlprc0J3S0lmaDZMUTcwZVlRTDAyRGVubzFZSVM1N1VkZ0xLY0k2ZTNwMGREY09NUTJVRmw3VnI1blRjSWdYMXlDb29Mbmp4anRLQ21EVzRUY0gzZFNTTzRzODAwMmo3N1JxS1RaU01weU01bVZobUdETE8?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
         <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Union approves contract negotiated with Marathon for 30,000 oil industry workers - Reuters</div>
+            <div class="meta">2026-02-06</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
+            <h2>Union approves contract negotiated with Marathon for 30,000 oil industry workers - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxPQjV6Y1VyNkFtdGF0S2czNHpJNWNBYjNPeng0QjJWRzhjM21hamdIOVBiUU1xb2hHazZHS2twUDZZdzJBYlNhdmxVZWNRM2VBSy1YTjJRekUyTEw4bllyV01XUUkxT0JpOUF2RWNmRnh6Q1N3RW5YUW95WFMzeV9ublFHLUh6cHZIT1RWRGJtUWRSV002Wk1ySll0MGVjU09OS0hxUjI0dEpfNW9LNTJfMzRvUGVaNUUxWFM0Vy0zc28ySGw1blBONEh0MjRQRVJNekE?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">White House defends, then deletes, racist Trump post depicting Obamas as apes - Reuters</div>
             <div class="meta">2026-02-06</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>White House defends, then deletes, racist Trump post depicting Obamas as apes - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQeHN0WFNiU2t3T1FMczBzdWRQTlBhWEZOOW8wMjFzOWdXNGh3T2g2cTRkanc3YjlZSFlCeHRNODdDNmFublM2ZkJqcE8zSHgyc09pY3RMVDlaWGVhZEFhUmFSWUpMVjl5R2xVT3l2MzVZdkpVVXBIMEEwMllHSkVpTUdFUnQyODlZU1hOLW9QQmJWc1FCRTV3?oc=5">Visit Original Website</a>
@@ -3487,30 +3450,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US arrests suspect in 2012 Benghazi consulate attack, Bondi says - Reuters</div>
-            <div class="meta">2026-02-06</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>US arrests suspect in 2012 Benghazi consulate attack, Bondi says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPejdQMWR4VzE0RlZ0WnRySF9QUnRzNk94X25KYTNBMEVhdVNBTk5yQS1kYXR3ckZ6RU91RlhHSWtvaFRBRHRPTDd6aWZLWF9sT1ZnZXI0MUU1LVZLQ21ia3lsRXdXNXpWaEJVSENFdGlBQm1YWHpYTmR6TnZLcXZ6TkFlcXN0WWc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">EU targets Russian crude anew with far broader sanctions plan - Reuters</div>
+            <div class="title">Tesla executives say company is hiring to support Musk’s expanded solar strategy - Reuters</div>
             <div class="meta">2026-02-06</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>EU targets Russian crude anew with far broader sanctions plan - Reuters</h2>
+            <h2>Tesla executives say company is hiring to support Musk’s expanded solar strategy - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxObXZQWVAxTVAxUXNpYXZfNVhGcERMT0xGVU91YVFjeGpOUENETF9KcU1JTWl5NVBGUFVuc25lSjRUWmpkWWlkSDBma3pLYTNIOWlRTGd2U2E0cVl0OGpmVC1tVkRwMl9aaE1qTU9fcnVEV3AyVVVydGZuc2JpQ3Q1TVpEX0FIWnM4djBvNjl5M2dOM29sNWRYUDVGallMWnpwaTVn?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxQaFVFbjJtS0Exc2UzSUNQZW9aWmt5NnQyZV96N0VyeWNST3RIX2FEZjk0RWdOa1JrYjRfVVFWaTJLQTRtS1Q0ZklETEs3Y2x1RDYwTjhuQVU2LXloV0JKMk1PWV9VNjROaVQxcjQ1UnFncndOeWZOSE5TWHNqTjFnSmZXT2RtSGZaUTNIVjUyWXJBdi1IT1hEQzlOdnFYTUVUV09tRThVMjhfZ0w1aDk2U1V6SnhESTVKcDJ6b0RLcTEtUGNvRFVRTU9QRmJ6M0tXcEJMOHdFdm40NjZPV1E?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3587,14 +3536,14 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Zapotec Death Owl Sculpture Reveals Ancient Mesoamerican Beliefs in Immaculately Preserved Tomb - The Debrief</div>
-            <div class="meta">2026-01-31</div>
+            <div class="title">Did NASA Just Find ET's Home? Scientists Detect an Earth-like Planet Orbiting a Sun-like Star - The Debrief</div>
+            <div class="meta">2026-02-03</div>
         </div>
         
         <div id="content-77" style="display:none;">
-            <h2>Zapotec Death Owl Sculpture Reveals Ancient Mesoamerican Beliefs in Immaculately Preserved Tomb - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-01-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNTQwdlRoSGY5WGdxeVUtX1NROW5PQjdoZC03d3YxMXU2SVhRNHgyNzAzYlVTWFFLQ0FRcG85Z1BRbEtTMWpyVE82cmR0cnBVc2pfaUxTalpoWnlPR2VJSDRjRkZDemw4U0xhZXFtZ2xDLTRNS2tnV0FCUXZ6eFgzUUI3M0VzbF9mQXNraWhVWXMyZ21oaE0tT2phMS15OHFHOHZyRmNlM0tRNS15bzU0cGIzN0czNDQ1NjlZ?oc=5">Visit Original Website</a>
+            <h2>Did NASA Just Find ET's Home? Scientists Detect an Earth-like Planet Orbiting a Sun-like Star - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-02-03</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPdUlOM2dWR1lMcVVHMVNjREtZSXpibTVRUnBsQVNaODhKS0VNenVERWRaQjZRd1BKUXNQQTlKcTQzMmpnR0F4VERJQUFuTVJKVXktblVoQy1rSXpvRUR3V084LVB4US0wYkRxZmpYakV3WFNaUU03cXFBcWFMMnR3bllFYkRmQWI0eGR3T1A3LXJmSmc0YkhtbV9MWjV2VnNoLXR2b1VzREd6R1pfbW5ZalNLM2c3QQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3643,25 +3592,11 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-81')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Amazon Discusses Getting Special Access to OpenAI Tech - The Information</div>
-            <div class="meta">2026-02-04</div>
-        </div>
-        
-        <div id="content-81" style="display:none;">
-            <h2>Amazon Discusses Getting Special Access to OpenAI Tech - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-02-04</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxPM2g4UG9uck1maGVBM2d4X2JUcWYxanhOd1BwZEdET0pkUV94bHdiSnFvclZ5REt4M2RNZVA3cHdUT0RkUlhjdEdBbWRkdlZMdGIzbWhBTHlEWlVvclFoQllUdGswdjctY01LWXdwWFF5dHdENTVMOF9wemJEMjlyZDZHZ21kRXpXelNPbklKYXZGaHo4bmc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-82')">
-            <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Nvidia, Microsoft, Amazon in Talks to Invest Up to $60 Billion in OpenAI - The Information</div>
             <div class="meta">2026-01-28</div>
         </div>
         
-        <div id="content-82" style="display:none;">
+        <div id="content-81" style="display:none;">
             <h2>Nvidia, Microsoft, Amazon in Talks to Invest Up to $60 Billion in OpenAI - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-01-28</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOTHdSSDJTd1RFVDZELXVyb0dUdWsxRGxoN3lONUZNYmZELW1jdTdGcmhVMXBOa24wbHpTNERqQUpnWEYxQTBEdUtHV2NlWDQ2Uk9nNm92MGduOF8zZkhuQzlqdnpxeVNTTUxnR2NfSXl6TVVaRG80REN0TXF3NmFYN1NNeEs5LXFKS2ZCLXRHcm9GOXFMR0VCTURB?oc=5">Visit Original Website</a>
@@ -3669,16 +3604,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-83')">
+        <div class="card" onclick="openModal('content-82')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Epstein Files Reveal Deep Relationship With Venture Capitalist Masha Bucher - The Information</div>
             <div class="meta">2026-02-02</div>
         </div>
         
-        <div id="content-83" style="display:none;">
+        <div id="content-82" style="display:none;">
             <h2>Epstein Files Reveal Deep Relationship With Venture Capitalist Masha Bucher - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-02-02</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxPOVBseXNqWTgya1RnX2tvRERqSnZPcDExYlkwNTRZTlRzbDVCVTBtUUdzV3ZPMTRtYUFXUEZ4ZjdSOElwYk9YMERGbDA0SnFWdkktS1NfbXZtdWlIUlFYLXBvWlV5cEIzM3hsS1BGeEh3MXAtSDJOaExzMUMwYXlxQTVtMm1sOFhrVG0teGYwS2xwSFE3dzdzaXF3UXVOYlYzR3M4azJpWWpjemRkeWVz?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-83')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">A Major Anthropic Backer Quintuples an AI Math Startup’s Valuation in New Deal - The Information</div>
+            <div class="meta">2026-02-03</div>
+        </div>
+        
+        <div id="content-83" style="display:none;">
+            <h2>A Major Anthropic Backer Quintuples an AI Math Startup’s Valuation in New Deal - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-02-03</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQcjhSUUFMenJmSFk0Y3pIZ2R6enMzM1pGUURCTnJUU21FSEdVYzRoLTRWVUxROXg4OEM5ZWlGLVpnQ3B4WUJLLU5HSWVKUC1oaXhIcVNDU0YxWHFQRjd4VWpjOGFoRENQUVlzOVhtQVNQUzZxWHhlMXBxVVpsWi12aHEyQTJlVktLNU1qSXFXTG5NUDkzaW5fdUVQZ2M3Yk1hdWVBczRzN1FJRFhjQkVUdmxuX3lwNGt6YUtOTWlMVQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
