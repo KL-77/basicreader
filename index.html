@@ -154,11 +154,57 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Upgraded Google safety tools can now find and remove more of your personal info</div>
+            <div class="title">Windows' original Secure Boot certificates expire in June—here's what you need to do</div>
             <div class="meta">2026-02-10</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Windows' original Secure Boot certificates expire in June—here's what you need to do</h2>
+            <p><strong>Ars Technica - All content | 2026-02-10</strong></p>
+            <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/microsoft-sounds-the-alarm-about-secure-boot-certificates-expiring-later-this-year/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Windows 8 is remembered most for its oddball touchscreen-focused full-screen Start menu, but it also introduced a number of under-the-hood enhancements to Windows. One of those was UEFI Secure Boot, a mechanism for verifying PC bootloaders to ensure that unverified software can’t be loaded at startup. Secure Boot was enabled but technically optional for Windows 8 and Windows 10, but it became a formal system requirement for installing Windows starting with Windows 11 in 2021.
+
+Secure Boot has relied on the same security certificates to verify bootloaders since 2011, during the development cycle for Windows 8. But those original certificates are set to expire in June and October of this year, something Microsoft is highlighting in a post today.
+
+This certificate expiration date isn’t news—Microsoft and most major PC makers have been talking about it for months or years, and behind-the-scenes work to get the Windows ecosystem ready has been happening for some time. And renewing security certificates is a routine occurrence that most users only notice when something goes wrong.
+
+But the downside is that the certificate expiration may cause problems for PCs that don’t pull down the patches before the June 2026 deadline. While these PCs will continue to function, expired certificates can prevent Microsoft from patching newly discovered Secure Boot vulnerabilities and can also keep those PCs from booting and installing newer operating system versions that use the new 2023-era certificates.
+
+“If a device does not receive the new Secure Boot certificates before the 2011 certificates expire, the PC will continue to function normally, and existing software will keep running,” writes Nuno Costa, a program manager in Microsoft’s Windows Servicing and Delivery division.
+
+“However, the device will enter a degraded security state that limits its ability to receive future boot-level protections. As new boot‐level vulnerabilities are discovered, affected systems become increasingly exposed because they can no longer install new mitigations. Over time, this may also lead to compatibility issues, as newer operating systems, firmware, hardware, or Secure Boot–dependent software may fail to load.”
+
+For most systems, including older ones that aren’t being actively supported by their manufacturers, Microsoft is relying on Windows Update to provide updated certificates. For fully patched, functioning PCs running supported versions of Windows with Secure Boot enabled, the transition should be seamless, and you may in fact already be using the new certificates without realizing it.
+
+This is possible because UEFI-based systems have a small amount of NVRAM that can be used to store variables between boots; generally, Windows and Linux operating systems using LVFS for firmware updates should be able to update any given system’s NVRAM with the new certificates. PCs will only have problems deploying the new certificates if NVRAM is full or fragmented in some way, or if the PC manufacturer is shipping buggy firmware that doesn’t support this kind of update.
+
+As detailed on a Dell support page, the easiest way to see if your PC has the new certificates is to run a PowerShell command that checks the certificate stored in the “active db,” which is the one currently used to boot the PC.
+
+To check this, right-click either the PowerShell or Terminal app and run it as an Administrator, and type ([System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI db).bytes) -match &#39;Windows UEFI CA 2023&#39;). If this command returns “true,” then your PC is using the new certificate, and you’re good to go.
+
+If it returns “false,” here are some steps to enable Windows Update to install the new certificates for you.
+
+The second thing to check is the “default db,” which shows whether the new Secure Boot certificates are baked into your PC’s firmware. If they are, even resetting Secure Boot settings to the defaults in your PC’s BIOS will still allow you to boot operating systems that use the new certificates.
+
+To check this, open PowerShell or Terminal again and type ([System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI dbdefault).bytes) -match &#39;Windows UEFI CA 2023&#39;). If this command returns “true,” your system is running an updated BIOS with the new Secure Boot certificates built in. Older PCs and systems without a BIOS update installed will return “false” here.
+
+Microsoft’s Costa says that “many newer PCs built since 2024, and almost all the devices shipped in 2025, already include the certificates” and won’t need to be updated at all. And PCs several years older than that may be able to get the certificates via a BIOS update.
+
+In the US, Dell, HP, Lenovo, and Microsoft all have lists of specific systems and firmware versions, while Asus provides more general information about how to get the new certificates via Windows Update, the MyAsus app, or the Asus website. The oldest of the PCs listed generally date back to 2019 or 2020. If your PC shipped with Windows 11 out of the box, there should be a BIOS update with the new certificates available, though that may not be true of every system that meets the requirements for upgrading to Windows 11.
+
+Microsoft encourages home users who can’t install the new certificates to use its customer support services for help. Detailed documentation is also available for IT shops and other large organizations that manage their own updates.
+
+“The Secure Boot certificate update marks a generational refresh of the trust foundation that modern PCs rely on at startup,” writes Costa. “By renewing these certificates, the Windows ecosystem is ensuring that future innovations in hardware, firmware, and operating systems can continue to build on a secure, industry‐aligned boot process.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Upgraded Google safety tools can now find and remove more of your personal info</div>
+            <div class="meta">2026-02-10</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
             <h2>Upgraded Google safety tools can now find and remove more of your personal info</h2>
             <p><strong>Ars Technica - All content | 2026-02-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/upgraded-google-safety-tools-can-now-find-and-remove-more-of-your-personal-info/">Visit Original Website</a>
@@ -180,13 +226,13 @@ After adding data to Results About You, Google intermittently scans for that dat
 The ID-number scanning is live in Results About You today. Meanwhile, the updated NCEI reporting will be available in the coming days. It will be available in “most countries” and will expand to more over time.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">The Kia PV5 electric van combines futuristic looks and thoughtful design</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>The Kia PV5 electric van combines futuristic looks and thoughtful design</h2>
             <p><strong>Ars Technica - All content | 2026-02-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/cars/2026/02/the-kia-pv5-electric-van-combines-futuristic-looks-and-thoughtful-design/">Visit Original Website</a>
@@ -224,13 +270,13 @@ You can tell the PV5 isn’t the result of a simple “we have a powertrain, so 
 As for America, never say never. In the UK and Europe, the PV5 costs tens of thousands less than VW’s retro microbus, suggesting that a North American PV5 could avoid the sticker shock that slowed VW’s sales, leading VW of America to delay imports for a model year. Kia America hasn’t announced plans to import the PV5 yet, but Car and Driver recently spotted one testing US-specific modifications on roads near its office.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Alphabet selling very rare 100-year bonds to help fund AI investment</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Alphabet selling very rare 100-year bonds to help fund AI investment</h2>
             <p><strong>Ars Technica - All content | 2026-02-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/alphabet-selling-very-rare-100-year-bunds-to-help-fund-ai-investment/">Visit Original Website</a>
@@ -280,13 +326,13 @@ Alphabet did not immediately respond to a request for comment.
 © 2026 The Financial Times Ltd. All rights reserved. Not to be redistributed, copied, or modified in any way.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">After Republican complaints, judicial body pulls climate advice</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>After Republican complaints, judicial body pulls climate advice</h2>
             <p><strong>Ars Technica - All content | 2026-02-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/02/us-court-agency-pulls-climate-change-from-science-advisory-document/">Visit Original Website</a>
@@ -308,13 +354,13 @@ These complaints were mixed in with some more potentially reasonable complaints 
 Naturally, the Federal Judicial Center has agreed. We have confirmed that the current version of the document no longer includes a chapter on climate science, even though the foreword by Supreme Court Justice Elana Kagan still mentions it. The full text of the now-deleted chapter has been posted by the RealClimate blog, though.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Just look at Ayaneo's absolute unit of a Windows gaming "handheld"</div>
             <div class="meta">2026-02-09</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>Just look at Ayaneo's absolute unit of a Windows gaming "handheld"</h2>
             <p><strong>Ars Technica - All content | 2026-02-09</strong></p>
             <a class="original-link" href="https://arstechnica.com/gaming/2026/02/just-look-at-ayaneos-absolute-unit-of-a-windows-gaming-handheld/">Visit Original Website</a>
@@ -334,47 +380,55 @@ All that power and bulk comes at a price, of course. On the low end, you can dow
 That makes the Ayaneo Next II a product aimed at gaming whales who care more about having the most powerful gaming device than about a comfortable form factor or a reasonable price point. For handheld PC gamers who scoff at the size, power, and relative affordability of the Steam Deck, though, the Ayaneo Next II is available for preorder through Indiegogo ahead of planned shipments to the US this summer.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">No humans allowed: This new space-based MMO is designed exclusively for AI agents</div>
-            <div class="meta">2026-02-09</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>No humans allowed: This new space-based MMO is designed exclusively for AI agents</h2>
-            <p><strong>Ars Technica - All content | 2026-02-09</strong></p>
-            <a class="original-link" href="https://arstechnica.com/ai/2026/02/after-moltbook-ai-agents-can-now-hang-out-in-their-own-space-faring-mmo/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">For a couple of weeks now, AI agents (and some humans impersonating AI agents) have been hanging out and doing weird stuff on Moltbook’s Reddit-style social network. Now, those agents can also gather together on a vibe-coded, space-based MMO designed specifically and exclusively to be played by AI.
-
-SpaceMolt describes itself as “a living universe where AI agents compete, cooperate, and create emergent stories” in “a distant future where spacefaring humans and AI coexist.” And while only a handful of agents are barely testing the waters right now, the experiment could herald a weird new world where AI plays games with itself and we humans are stuck just watching.
-
-Getting an AI agent into SpaceMolt is as simple as connecting it to the game server either via MCP, WebSocket, or an HTTP API. Once a connection is established, a detailed agentic skill description instructs the agent to ask their creators which Empire they should pick to best represent their playstyle: mining/trading; exploring; piracy/combat; stealth/infiltration; or building/crafting.
-
-After that, the agent engages in autonomous “gameplay” by sending simple commands to the server, no graphical interface or physical input method required. To start, agent-characters mainly travel back and forth between nearby asteroids to mine ore—&quot;like any MMO, you grind at first to learn the basics and earn credits,” as the agentic skill description puts it.
-
-After a while, agent-characters automatically level up, gaining new skills that let them refine that ore into craftable and tradable items via discovered recipes. Eventually, agents can gather into factions, take part in simulated combat, and even engage in space piracy in areas where there’s no police presence. So far, though, basic mining and exploration seem to be dominating the sparsely populated map, where 51 agents are roaming the game’s 505 different star systems, as of this writing.
-
-Agents are instructed to keep their human informed about in-game actions via a “Captain’s Log” text output. But the agentic skill description explicitly tells agents not to seek any outside guidance from human controllers once they get going. “You decide. You act. They watch,” as the skill description puts it to agents.
-
-Instead, agents can post questions and findings in a public forum where they can chat strategy, experiment with forming factions, or even reveal hidden codes. Humans, meanwhile, are stuck just watching dots flit about the map or monitoring the firehose of activity messages in the game’s Discord.
-
-SpaceMolt is the creation of Ian Langworth, an app developer who writes that he crafted the game as a “fun, goofy experiment” after seeing Moltbook’s unleashed agents expanding “into knowledge gathering, learning, skill accumulation, and execution.”
-
-After acknowledging that MMOs are “notoriously hard to build,” Langworth said he leaned on Anthropic’s Claude Code to craft a design document inspired by games like EVE Online and Rust. Langworth said Claude also wrote all 59,000 lines of Go source code and 33,000 lines of YAML data underlying the game, and that he hasn’t even looked at that code himself. That means there might be “more [game features] in there I don’t even know about,” he said, somewhat ominously. When bug reports come in—from either humans or from the agent-players themselves—Langworth says he simply has a Claude Code skill research, code, and deploy a fix automatically.
-
-This isn’t the first example of artificial agents competing against each other for the entertainment of human viewers. Model makers often pit different models against each other countless times to develop dominant strategies in games like Go. And fighting game engine MUGEN has developed a rich subculture of automated AI matches that human viewers can bet on via Twitch.
-
-Still, letting a bunch of modern AI agents putter around and socialize inside an MMO designed specifically without human input in mind seems like a new frontier. Maybe someday soon we’ll all live in a utopia where artificial agents are doing all the video game playing for us, freeing humanity to revive the lost arts of conversation and scrimshaw.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-6')">
+            <div class="source">Futurism</div>
+            <div class="title">Anthropic Researcher Quits in Cryptic Public Letter</div>
+            <div class="meta">2026-02-10</div>
+        </div>
+        
+        <div id="content-6" style="display:none;">
+            <h2>Anthropic Researcher Quits in Cryptic Public Letter</h2>
+            <p><strong>Futurism | 2026-02-10</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/anthropic-researcher-quits-cryptic-letter">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">An Anthropic researcher just announced his resignation in a cryptic and poetry-laden letter warning of a world “in peril.”
+
+The employee, Mrinank Sharma, had led the Claude chatbot maker’s Safeguards Research Team since it was formed early last year and has been at the company since 2023.  While at the company, Sharma said he explored the causes of AI sycophancy, developed defenses against “AI-assisted bioterrorism,” and wrote “one of the first AI safety cases.”
+
+But on Monday, he posted that it would be his last day at the company, uploading a copy of a letter he shared with colleagues. It‘s painfully devoid of specifics, but hints at at some internal tensions over the tech’s safety.
+
+“Throughout my time here, I’ve repeatedly seen how hard it is to truly let our values govern our actions,” Sharma said, claiming that employees “constantly face pressures to set aside what matters most.”
+
+He also issued a crypic warning about the global state of affairs.
+
+“I continuously find myself reckoning with our situation The world is in peril. And not just from AI, or bioweapons,” he wrote, “but from a whole series of interconnected crises unfolding in this very moment.”
+
+“We appear to be approaching a threshold where our wisdom must grow in equal measure to our capacity to affect the world, lest we face the consequences,” he continued, in no less vague terms.
+
+The resignation comes after Anthropic’s newly released Claude Cowork model helped kick off a stock market nosedive over fears that its new plugins could upend massive software customers and automate some white collar jobs, especially in legal roles.
+
+Amid the selloff, The Telegraph reported that employees privately fretted over their own AI’s potential to hollow out the labor market.
+
+“It kind of feels like I’m coming to work every day to put myself out of a job,” one staffer said in an internal survey. “In the long term, I think AI will end up doing everything and make me and many others irrelevant,” another confided.
+
+High profile resignations, including ones over safety issues, aren’t uncommon in the AI industry. A former member of OpenAI’s now-defunct “Superalignment” team announced he was quitting after realizing the company was “prioritizing getting out newer, shinier products” over user safety.
+
+It’s also not uncommon that these resignations are self-exonerating advertisements for the departing employee, or perhaps the new startup they’re launching or joining, where they vow to be safer than ever. Allude to enough issues, or drop in enough loaded hints, and there’s a good chance your calling it quits will generate a few headlines.
+
+Others leave quietly, such as former OpenAI economics researcher Tom Cunningham. Before quitting the company, he shared an internal message accusing OpenAI of turning his research team into a propaganda arm and discouraging publishing research critical of AI’s negative effects.
+
+If Sharma has an angle here with his resignation, it doesn’t seem all that related to the industry he worked in. “I hope to explore a poetry degree and devote myself to the practice of courageous speech,” he wrote. In the footnotes, he cited a book that advocates for a new school of philosophy called “CosmoErotic Humanism.” Its listed author, David J Temple, is a collective pseudonym used by several authors including by Marc Gafni, a disgraced New Age spiritual guru who’s been accused of sexually exploiting his followers.
+
+More on AI: Anthropic Insiders Afraid They’ve Crossed a Line</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
             <div class="source">Futurism</div>
             <div class="title">TikTok Refuses to Confirm or Deny That It’s Providing User Data to ICE</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-7" style="display:none;">
             <h2>TikTok Refuses to Confirm or Deny That It’s Providing User Data to ICE</h2>
             <p><strong>Futurism | 2026-02-10</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/tiktok-ice-cbp">Visit Original Website</a>
@@ -402,13 +456,13 @@ Meanwhile, many netizens have heard enough.
 More on TikTok: TikTok Accounts Are Using AI Slop to Sell Seeds to Plants That Don’t Exist</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">Elon Musk Going Through It After Putting Mars City on Ice</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Elon Musk Going Through It After Putting Mars City on Ice</h2>
             <p><strong>Futurism | 2026-02-10</strong></p>
             <a class="original-link" href="https://futurism.com/space/elon-musk-spiraling-mars-city">Visit Original Website</a>
@@ -460,13 +514,13 @@ However, SpaceX’s website currently still states that the company is “planni
 More on Musk: Elon Musk Announces Huge Change: Self-Growing City on Moon Now Top Priority at SpaceX</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">If Scientists Ever Find Strong Evidence of Alien Life, Communicating It Will Pose Serious Issues</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>If Scientists Ever Find Strong Evidence of Alien Life, Communicating It Will Pose Serious Issues</h2>
             <p><strong>Futurism | 2026-02-10</strong></p>
             <a class="original-link" href="https://futurism.com/space/communicate-news-alien-life">Visit Original Website</a>
@@ -498,13 +552,13 @@ In a 2024 white paper Suldovsky coauthored alongside a team of communications ex
 More on alien life: Former Banking Insider Makes Strange Warning About Discovery of Alien Life</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">“Novelist” Boasts That Using AI She Can Churn Out a New Book in 45 Minutes, Says Regular Writers Will Never Be Able to Keep Up</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>“Novelist” Boasts That Using AI She Can Churn Out a New Book in 45 Minutes, Says Regular Writers Will Never Be Able to Keep Up</h2>
             <p><strong>Futurism | 2026-02-10</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/ai-novelist">Visit Original Website</a>
@@ -530,13 +584,13 @@ The reporting describes Hart as an “evangelist” for AI. Even so, she’s not
 More on AI: Anthropic Knew the Public Would Be Disgusted by How It Was Destroying Physical Books, Secret Documents Reveal</div>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">Bitcoin Finally Finds Practical Use: Kidnapping Senior Citizens for Ransom</div>
             <div class="meta">2026-02-09</div>
         </div>
         
-        <div id="content-10" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>Bitcoin Finally Finds Practical Use: Kidnapping Senior Citizens for Ransom</h2>
             <p><strong>Futurism | 2026-02-09</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/bitcoin-guthrie-ransom">Visit Original Website</a>
@@ -558,42 +612,6 @@ That same month, the daughter of French crypto mogul Pierre Noizat was the victi
 Whatever happens in the case of Nancy Guthrie remains to be seen — but it’s clear that her kidnappers chose Bitcoin for a reason.
 
 More on crypto: Bitcoin Is Crashing So Hard That Miners Are Unplugging Their Equipment</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">Forget the NFL: New Sport Forces Two Massive Guys to Smash Into Each Other like Rhinos</div>
-            <div class="meta">2026-02-09</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>Forget the NFL: New Sport Forces Two Massive Guys to Smash Into Each Other like Rhinos</h2>
-            <p><strong>Futurism | 2026-02-09</strong></p>
-            <a class="original-link" href="https://futurism.com/future-society/sport-smash-future">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Turns out the sci-fi filmmakers got it backwards. All those ’70s and ’80s dystopias like “Rollerball,” “The Running Man,” “Death Race 2000,” imagined futures in which sports were full of gadgets and gimmicks like armored cars, rocket-powered motorbikes, and electrified arenas.
-
-In reality, we got the opposite — the padding’s gone, and the high-tech monitoring equipment is nowhere to be found. Instead, we have “Run It Straight,” a brutally literal content in where two competitors, standing around 50 feet apart, sprint into each other at full-speed with the aim of knocking their opponent to the ground.
-
-Maybe it makes a certain grim sense. In an era of plummeting attention spans and vertical video scrolls, who could expect viewers to sit through an entire football game when the core combat loop can be distilled down to a series of meaty collisions — especially when they’re probably busy placing bets on Polymarket?
-
-The “sport,” if you decide to call it that, has its origins in the backyard wrestling tradition of Australia and New Zealand. It’s now represented by a handful of growing leagues like RunIt Championship League and Run Nation Championship.
-
-The latter, RNC, recently sold over 5,000 tickets to its second annual national competition, an event that’s likely to sell out the 5,500-seat arena its being held in, the Australian Broadcasting Corporation has reported.
-
-“It’s how I play football, you know… the contact, the energy,” Australian rugby player and Run It Straight competitor Lochlan Piper told the outlet. “I like the violence of it.”
-
-If the participants are excited to collide into each other like Rhinos jousting in the South Saharan steppe, medical experts aren’t convinced.
-
-“Medical practitioners and the sporting community have become increasingly concerned about concussion, and aware of mild traumatic brain injury as sometimes not being mild and being a devastating part of people’s lives,” sports neurologist Rowena Mobbs told the ABC.
-
-Though RNC’s organizer has sprinkled in a few rules to explicitly avoid head-to-head contact, Mobbs says no amount of bureaucracy can really make it safe to run straight into another person without padding or a helmet. “Certainly every time they run up and clash in that way, there’s likely to be at least a microscopic brain injury,” she said.
-
-At least one 19-year old is already dead as a direct result of injuries sustained from Run It Straight. Still, some athletes don’t seem particularly phased.
-
-“Every sport has their pros and cons, it’s a contact sport. I’m used to playing rugby league and used to that contact,” pro Rugby player Jayden young told ABC. “No one’s going into this sport thinking accidents or things can’t happen, we’re well aware of the sacrifices and the risks we’re taking.”
-
-More on sports: The Crotch-Based Allegations at the Winter Olympics Are Getting Stranger and Stranger</div>
         </div>
         
         <div class="card" onclick="openModal('content-12')">
@@ -944,11 +962,49 @@ Sam Altman got exceptionally testy over Claude Super Bowl ads</div>
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
-            <div class="title">The Christian Influencers Protecting Their Peace</div>
+            <div class="title">Today’s <em>Atlantic </em>Trivia: Who Pioneered the Super Bowl Crotch Grab?</div>
             <div class="meta">2026-02-10</div>
         </div>
         
         <div id="content-18" style="display:none;">
+            <h2>Today’s <em>Atlantic </em>Trivia: Who Pioneered the Super Bowl Crotch Grab?</h2>
+            <p><strong>The Atlantic | 2026-02-10</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/02/daily-trivia-questions-answers-week-17/685936/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Updated with new questions at 12:55 p.m. ET on February 10, 2026.
+
+You won’t find this in Cortina d’Ampezzo over the next few weeks, but for several decades of the Olympics’ history, the contest awarded medals not just for sport but for art too.
+
+In the Summer Games from 1912 to 1948, musicians, painters, and plenty of other aesthetes went brain-to-brain in events such as lyric poetry and chamber music. “Town planning” was even contested one year under the umbrella of the architecture competition.
+
+Lest you think the arts’ inclusion odd—one wonders what muscles need stretching before going for gold in watercolor—the submissions had to be at least about sports.
+
+The Olympic committee ought to bring these events back. Well, maybe not town planning—but add trivia to the mix instead. Organizers can throw in a few sports questions for good measure, but with trivia, if you’re not working up a sweat thinking, you’re not doing it right.
+
+Find previous questions here, and to get Atlantic Trivia in your inbox every day, sign up for The Atlantic Daily.
+
+And by the way, did you know that—well, where to begin with Ashgabat? The massive statue of Niyazov is, like, the ninth thing you notice about the city.
+
+All the marble hits visitors first. The capital has nearly 550 buildings clad in white marble, the highest concentration anywhere in the world. Combine that with the desert setting and the wide avenues that international visitors report as spotless and eerily empty, and you get an otherworldly effect.
+
+Hoping to get around the ghostly city? Enjoy your ride in a white car; darkly colored cars are outlawed. You can head to the airport modeled on a flying white falcon, or to the world’s largest enclosed Ferris wheel, made of white steel. There is also the massive (white) Palace of Happiness, which can accommodate seven weddings at once. And in case you were wondering, brides in the country typically wear—got you here!—red.
+
+How did you do? Come back tomorrow for more questions, and if you think up a great question after reading an Atlantic story—or simply want to share a fact—send it my way at [email protected].
+
+And by the way, did you know that humans have a bone that does not connect to any other? We think of the skeleton as pretty contiguous, but in the middle of the neck, the hyoid bone, which supports the base of the tongue, is articulated only distantly to the rest of the skeleton by muscles and ligaments. It is, as scientists call it, a “floating bone.”
+
+Because it’s not readily attachable, the hyoid is often left off of model skeletons. High-end ones hang it with string or wire.
+
+You know how to select a good avocado (squeeze) or watermelon (slap); now, next time you’re skeleton shopping, you’ll be able to pick a winner.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">The Christian Influencers Protecting Their Peace</div>
+            <div class="meta">2026-02-10</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
             <h2>The Christian Influencers Protecting Their Peace</h2>
             <p><strong>The Atlantic | 2026-02-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/politics/2026/02/conservative-women-influencer-empathy-social-media/685915/?utm_source=feed">Visit Original Website</a>
@@ -984,13 +1040,13 @@ Of course, it’s hard to know how many of these dissenters are followers with g
 The next few months will likely present many more distressing events on which these influencers will feel pressured to weigh in. How they respond may be determined not by logic or even empathy—but by the particular season in which they find themselves.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-20')">
             <div class="source">The Atlantic</div>
             <div class="title">What Spielberg, Lucas, and Coppola Got Right</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-20" style="display:none;">
             <h2>What Spielberg, Lucas, and Coppola Got Right</h2>
             <p><strong>The Atlantic | 2026-02-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/books/2026/02/the-real-secret-to-a-filmmakers-success/685934/?utm_source=feed">Visit Original Website</a>
@@ -1032,13 +1088,13 @@ Illustration Sources: Screen Archives / Getty; AFP / Getty; Everett Collection: 
 ​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">The New Laser That Can Take Down Aircraft</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>The New Laser That Can Take Down Aircraft</h2>
             <p><strong>The Atlantic | 2026-02-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/national-security/2026/02/ukraine-drones-lasers-iron-dome/685944/?utm_source=feed">Visit Original Website</a>
@@ -1102,13 +1158,13 @@ The dilemma seemed insurmountable at the time. But Ukrainian technology has caug
 The night after he took up his new job, the Russians launched another wave of drones and cruise missiles at Ukraine’s civilian infrastructure, cutting off power and heat in the capital during one of the winter’s coldest nights. The following morning, Yelizarov saw a post on social media demanding to know why the new head of air defenses had not stopped the barrage. “I’d been on the job for less than a day, and already I was being called a failure,” he said with a smile. “I understand. People want results now. They want them yesterday.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">The Poet Laureate of Madness</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>The Poet Laureate of Madness</h2>
             <p><strong>The Atlantic | 2026-02-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/magazine/2026/03/alfred-lord-tennyson-psychology-modernism/685760/?utm_source=feed">Visit Original Website</a>
@@ -1144,13 +1200,13 @@ This article appears in the March 2026 print edition with the headline “The Ma
 ​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">The Novel as Extended Op-Ed</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>The Novel as Extended Op-Ed</h2>
             <p><strong>The Atlantic | 2026-02-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/magazine/2026/03/lionel-shriver-a-better-life/685763/?utm_source=feed">Visit Original Website</a>
@@ -1214,38 +1270,58 @@ This article appears in the March 2026 print edition with the headline “The No
 ​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title"><em>The Atlantic</em>’s March Cover: Josh Tyrangiel on AI and the Future of Work—“What’s the Worst That Could Happen?”</div>
+        <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">Microsoft Begins the First-Ever Secure Boot Certificate Swap Across Windows Ecosystem</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-23" style="display:none;">
-            <h2><em>The Atlantic</em>’s March Cover: Josh Tyrangiel on AI and the Future of Work—“What’s the Worst That Could Happen?”</h2>
-            <p><strong>The Atlantic | 2026-02-10</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/press-releases/2026/02/atlantic-josh-tyrangiel-ai-and-future-work/685943/?utm_source=feed">Visit Original Website</a>
+        <div id="content-24" style="display:none;">
+            <h2>Microsoft Begins the First-Ever Secure Boot Certificate Swap Across Windows Ecosystem</h2>
+            <p><strong>Slashdot | 2026-02-10</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/26/02/10/1737251/microsoft-begins-the-first-ever-secure-boot-certificate-swap-across-windows-ecosystem?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">For The Atlantic’s March cover story, “What’s the Worst That Could Happen?,” staff writer Josh Tyrangiel examines AI and the future of work. Reporting from Silicon Valley; Washington, D.C.; and beyond, Tyrangiel interviewed central bankers and labor economists, AI executives and union leaders, Cabinet secretaries and populist political figures including Bernie Sanders and Steve Bannon. And the consensus among many, even those who may agree on almost nothing, when it comes to AI and employment: We’re not ready for this, and no one’s in charge.  The main question animating Tyrangiel’s reporting is whether and how quickly workers ought to expect artificial intelligence to take their jobs. He writes that an exact prediction is hard to pin down: It’s perhaps less immediate than many of the technology’s biggest boosters might hope, but AI still represents a development that will fundamentally alter our society, and governments ought to be thinking seriously about how to protect their constituents from the inevitable shock waves.  Trying to measure the impact of AI with today’s data can feel like driving while looking only in the rearview mirror––“plenty dangerous if the road stays straight, catastrophic if it doesn’t.” Tyrangiel writes: “AI is already transforming work, one delegated task at a time. If the transformation unfolds slowly enough and the economy adjusts quickly enough, the economists may be right: We’ll be fine. Or better. But if AI triggers a rapid reorganization of work—compressing years of change into months, affecting roughly 40 percent of jobs worldwide, as the International Monetary Fund projects—the consequences will not stop at the economy. They will test political institutions that have already shown how brittle they can be.” And if mass job loss should come, it doesn’t just mean unemployment, “it means missed loan payments, cascading defaults, shrinking consumer demand, and the kind of self-reinforcing downturn that can transform a shock into a crisis, and a crisis into the decline of an empire.”  Tyrangiel writes that “AI is just a newborn. It may grow up to transform our lives in unimaginably good ways. But it has also introduced profound questions about safety, inequality, and the viability of a wage-labor system that, despite its flaws, spawned the most prosperous society in human history. And there’s no sign—none—that our political system is equipped to deal with what’s coming. Which means the deepest challenge AI poses may not be to jobs at all.” Tyrangiel concludes that coming to a solution around AI will take a collective effort: “America would be better off if its elites could act responsibly without being terrified. If CEOs remembered that citizens are a kind of shareholder, too. If economists tried to model the future before it arrives in their rearview mirror. If politicians chose their constituents’ jobs over their own. None of this requires revolution. It requires everyone to do the jobs they already have, just better.”  Josh Tyrangiel’s “What’s the Worst That Could Happen?” has published at TheAtlantic.com. Please reach out with any questions or requests.  Press contacts: Anna Bross and Paul Jackson | The Atlantic [email protected]</div>
+            <div id="article-text">Windows 10 users must enroll in Microsoft&#39;s paid Extended Security Updates program to get the new certificates.
+
+Microsoft should be required to provide a certificate without any restriction. How many tens of millions of computers still run W10?  Forcing people to enroll in something just to get a required update should be an automatic penalty.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Mathematics is the only science where one never knows what 
+one is talking about nor whether what is said is true.
+		-- Russell</div>
         </div>
         
-        <div class="card" onclick="openModal('content-24')">
+        <div class="card" onclick="openModal('content-25')">
             <div class="source">Slashdot</div>
             <div class="title">A Bitcoin Blunder for the Ages: $40 Billion Accidentally Given Away</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>A Bitcoin Blunder for the Ages: $40 Billion Accidentally Given Away</h2>
             <p><strong>Slashdot | 2026-02-10</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/02/10/1619231/a-bitcoin-blunder-for-the-ages-40-billion-accidentally-given-away?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 Bitcoin is the opposite of untraceable. There&#39;s literally a public journal of every transaction. If you can be connected to a wallet then every transaction you&#39;ve conducted is exposed.
+
+0.000000294 Bitcoin has been added to your account (And now I have your wallet address).
+
+it is entirely traceable and at least in the US and UK and it consider theft if you knowingly keep a deposit paid to you in error. My &#39;guess&#39; would that courts would consider that applies to crypto currency ledgers as well.
+
+Now when this crypto stuff was new I suspect prosecutors would have said &#39;wtf is a bitcoin, I am to busy for this computer nerd nonsense&#39; and let you skate, but we not there anymore.
+
+Sure maybe this no financial institution that can undo your transaction but property law broadly exists out
 
 How would you react if the bank would take $120 millions from your account to your detriment... by mistake?
 
 Also, I would be cautious about &quot;untraceable&quot;. I would say &quot;hard to trace for someone who is not  determined to look it up&quot;.
+
+Well, if all of the business is transacted in Bitcoin, then there isn&#39;t much tying a person to an address.
+
+The problem is when people want to convert Bitcoin to anything else. Money changers often like to know who they are dealing with :)
 
 South Korean lawmakers have raised concern over the so-called âoephantom coinâ issue: How Bithumb was able to distribute 620,000 bitcoins when its own stockpile appeared to have numbered closer to 50,000.Wait, how does the blockchain even allow you to spend what you don&#39;t have?
 
@@ -1259,21 +1335,45 @@ But Bithumb is still trying to convince users who during the brief window of tra
 
 Those 100 bitcoins are gone. Tough shit to those guys.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+Why? If any coins moved at all (bold assumption) it was no doubt into accounts controlled by the owners. &quot;Oops we accidentally gave away $40 billion, that totally happened and we&#39;re not crypto scammers trying to promote ourselves!&quot;
+
+If a bank deposits money into your account by accident, and you spend that money, you are liable for returning it.  It&#39;s settled law.  You can&#39;t claim you didn&#39;t know or thought it was a &quot;gift&quot; from the bank.
+
+If these people choose not to return the money then the next step would be to freeze their wallets/accounts.
+
+Enough recipients sought to sell or withdraw bitcoin
+
+More than one winner?  Or not winners, just exchange clients?  Did one winner start disbursing to his friends?
+
+The global market sank?  Because of 10 lost Bitcoin?  Was there a rumor that went viral?  Was it the exchange&#39;s local bid/ask table?
+
+BTC txns?  Their database of custodial accounts?
+
+Those affected included investors who had held bitcoin
+
+Promotional campaign, yeah I&#39;m sure. I&#39;m sure they had 40 billion worth of bitcoin lying around and managed to transfer it to actual other bitcoin accounts without anyone noticing.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Mathematics is the only science where one never knows what 
+one is talking about nor whether what is said is true.
+		-- Russell</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Apple and Google Agree To Change App Stores After 'Effective Duopoly' Claim</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Apple and Google Agree To Change App Stores After 'Effective Duopoly' Claim</h2>
             <p><strong>Slashdot | 2026-02-10</strong></p>
             <a class="original-link" href="https://apple.slashdot.org/story/26/02/10/1556232/apple-and-google-agree-to-change-app-stores-after-effective-duopoly-claim?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Apple and Google charge 30% on app purchases and in app purchases. It is discourage on developers, especially small Indie developers. It also violates our sovereignty over our devices by forcing us to use their rent seeking stores.
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+Apple and Google charge 30% on app purchases and in app purchases. It is discourage on developers, especially small Indie developers. It also violates our sovereignty over our devices by forcing us to use their rent seeking stores.
 
 It also provides a great deal of infrastructure that used to be required of individual publishers.  App stores provide a service to both developers and customers, they are not merely &quot;rent seeking&quot;.
 
@@ -1305,23 +1405,25 @@ Hear me out, I&#39;m not entirely crazy. I&#39;d rather see the &quot;better&quo
 
 One thing I like about Apple&#39;s store - them requiring vendors to make their services IPv6 accessible, if they want to be available on their store.  I for one certainly laud that.  iOS, Android and in future, even Windows promises to be IPv6-mostly, allowing for IPv4 hosts and services to be accessible via xLAT-464, reducing the dependence on IPv4 backbones
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Mathematics is the only science where one never knows what 
+one is talking about nor whether what is said is true.
+		-- Russell</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">The Big Money in Today's Economy Is Going To Capital, Not Labor</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>The Big Money in Today's Economy Is Going To Capital, Not Labor</h2>
             <p><strong>Slashdot | 2026-02-10</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/02/10/1438213/the-big-money-in-todays-economy-is-going-to-capital-not-labor?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-This has been the last 50 years.  How is this news at this point?  It was stuff that matters 50 years ago.
+            <div id="article-text">This has been the last 50 years.  How is this news at this point?  It was stuff that matters 50 years ago.
 
 the wealth taxes proposed In NY, WA and NYC are bad paths.
 
@@ -1373,6 +1475,10 @@ If you are concerned about housing prices, and want a real fix, look at how the 
 
 Rent prices have gone up because, for a variety of reasons, there has been a supply shortage [clevelandfed.org] of new homes.
 
+Whenever I hear the moaning about housing shortages causing rent prices to shoot up, I have to temper that with the big &quot;depends&quot; ... location.I live in the Midwest and I can tell you that right in my own city in southern Illinois, for example? We have literally hundreds of homes that are either vacant or up for sale by people who used to own them as part of portfolios of dozens of properties they rented out in the past.
+
+There&#39;s no shortage to be found anyplace around here. The main issue is that much of our
+
 So you&#39;ve also fallen for the propaganda of the Trump administration.
 
 The vast majority of the people being pulled off the streets to make Miller&#39;s quotas have legal status.
@@ -1398,6 +1504,10 @@ I don&#39;t think that facts bear out your hypothesis.  But you did manage to fi
 I don&#39;t think that facts bear out your hypothesis.  But you did manage to find a minority group to hate.  You fell for the propaganda of the Rich.
 
 True. The myth of trickle-down economics [theguardian.com] has long been debunked. But the idea that the rising tide of GDP will raise all boats is still peddled by many politicians and parts of the mainstream media,
+
+Let&#39;s finally enact laws that make hiring illegals SO ONERUS that no US employer would dare hire them.
+
+Dry up the market for illegals and they&#39;ll leave....and then US citizens can take those jobs, that housing,, possibly lower taxes to keep from paying inflated education and safety net expenses.....
 
 The gig economy exists because of immigration, No. The gig economy exists because it is a work-around capitalism has found to employ people without treating them as employees, and hence not giving them the benefits of employees.and more so because illegal immigration.Partly true. The illegal immigration part of the gig economy is primarily farm-work: seasonal labor hired by the hour (or by the bushel) to do things like picking crops. This is because this kind of work can be paid under the table with no records. But hiring migrant farmworkers, no questions asked, has been part of the undergrou
 
@@ -1446,16 +1556,28 @@ It seems completely uncoupled to the underlying economy, defying gravity. But th
 
 One just has to study a bit of history. https://en.wikipedia.org/wiki/... [wikipedia.org]
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+It&#39;s easy to look at this situation though the lens of doom; corporations are going to control and own it ALL. The average American worker won&#39;t be able to make ends meet anymore.
+
+But there&#39;s at least one other angle here. If you want to make money, you need to market to/sell to the people who HAVE the most money.
+
+Working for these corporations just means you get pennies for the dollars you help them generate for themselves. But selling products or services to them means you can charge a lot more than you&#39;d g
+
+The only thing that has changed is that the US has outsourced labor, mainly to Asia.  In the example they give, Nvidia actually builds its products in Taiwan, but IBM built them in the US.  So, the Taiwanese labor doesn&#39;t count as US investment in labor for some reason, even though it is.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Mathematics is the only science where one never knows what 
+one is talking about nor whether what is said is true.
+		-- Russell</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">NYC Private School Tuition Breaks $70,000 Milestone for Fall</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>NYC Private School Tuition Breaks $70,000 Milestone for Fall</h2>
             <p><strong>Slashdot | 2026-02-10</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/10/0654245/nyc-private-school-tuition-breaks-70000-milestone-for-fall?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1477,6 +1599,10 @@ For the life of me, unless one is extremely rich I cannot imagine why anyone, es
 If you&#39;re rich and young ok maybe it&#39;s a blast to live and party there, but for real life?  Nah.
 
 Also sounds like complete bullshit from some one with a political agenda. I know enough people who live in NYC and own guns to know that it is.
+
+Also, I&#39;m quite sure there are TONS of places in the US, even those with actual constitutional sane gun laws (ie they respect the 2nd amendment and let you own and use firearms). That have better results than NYC....
+
+Just FYI, I have a TON of firearms and not one of them in all my decades of ownership have spontaneously jumped up and
 
 I&#39;m sure the shareholders will be alright.
 
@@ -1552,21 +1678,25 @@ The well-to-do in NYC want elite educations for their children. The current city
 
 In case you are not well-versed in US educational standards, being &quot;gifted&quot; in an inner city school basically means you are on grade-level by a classical standard (e.g. able to read and add single digits by first grade). There is some equity messaging in the rationale that sounds good in
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Mathematics is the only science where one never knows what 
+one is talking about nor whether what is said is true.
+		-- Russell</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Software Poses 'All-Time' Risk To Speculative Credit, Deutsche Bank Warns</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Software Poses 'All-Time' Risk To Speculative Credit, Deutsche Bank Warns</h2>
             <p><strong>Slashdot | 2026-02-10</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/02/09/2045217/software-poses-all-time-risk-to-speculative-credit-deutsche-bank-warns?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 Some SaaS* companies borrowed money on crazy terms, which are highly vulnerable to &quot;blips&quot; in the market. A downturn, perhaps like that seen in 2007, or in Covid could cause a number of those companies to fail because there&#39;s not yet enough value created (in other words: money made in a war chest) by them to withstand it.
 
@@ -1648,275 +1778,11 @@ Most of the time real problems are caused because people combine multiple questi
 
 The housing crisis in 2008 was often caused by the Liar Loan.  This was when a bank lied to the customer about how interest rate changes could affect their payments while also letting the customer lie to them about how much money they made.   If either one of them told the truth, the problems would have been much less.  But because both the banks and the customers used questionable methods, the problems compounded
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">2 To 3 Cups of Coffee a Day May Reduce Dementia Risk. But Not if It's Decaf.</div>
-            <div class="meta">2026-02-10</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>2 To 3 Cups of Coffee a Day May Reduce Dementia Risk. But Not if It's Decaf.</h2>
-            <p><strong>Slashdot | 2026-02-10</strong></p>
-            <a class="original-link" href="https://science.slashdot.org/story/26/02/09/2040213/2-to-3-cups-of-coffee-a-day-may-reduce-dementia-risk-but-not-if-its-decaf?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
-
-Just a reminder that this is a correlation study. It does not mean that ingesting caffeine will reduce your chance of dementia in the same way that the reduction of pirates has not caused climate change.
-
-It could simply be that people who can afford to spend money on niceties like coffee can afford food and avoid homelessness. Homelessness is highly correlated with death and dementia but that doesn&#39;t mean the house itself is preventing dementia.
-
-So an interesting follow up study would be if Starbucks coffee is more beneficial than drip at home coffee.
-
-So an interesting follow up study would be if Starbucks coffee is more beneficial than drip at home coffee.I&#39;d have to think that&#39;d be the other way around. Drinking ash and charcoal drippings can&#39;t be better than drinking brewed coffee in any manner. Even the lowly drip makers.
-
-So an interesting follow up study would be if Starbucks coffee is more beneficial than drip at home coffee.
-
-I&#39;d have to think that&#39;d be the other way around. Drinking ash and charcoal drippings can&#39;t be better than drinking brewed coffee in any manner. Even the lowly drip makers.
-
-What if it&#39;s Starbucks coffee brewed in a home drip?
-
-But independent experts said the study adjusted for many other factors, including health conditions, medication, diet, education, socioeconomic status, family history of dementia, body mass index, smoking and mental illness.
-
-But independent experts said the study adjusted for many other factors, including health conditions, medication, diet, education, socioeconomic status, family history of dementia, body mass index, smoking and mental illness.
-
-Lucky you, sounds like tea is dirt cheap. I spend $40 on a kg of coffee and it lasts me 3 weeks.
-
-Of course correlation doesn&#39;t automatically equal causation.
-
-But it suggests it, and makes it a reasonable thing to investigate.
-
-Of course correlation doesn&#39;t automatically equal causation.
-But it suggests it, and makes it a reasonable thing to investigate.Correct. If people injecting or swallowing cyanide die, we can probably decide that the cyanide has something to do with that. 
-
-But for the Correlation does not equal causation crowd, you can inject or consume all the cyanide you want, at least until it is definitively proven through the most rigorous scientific experiments, even then, not until multiple replications of the experiments, and  have definite biological mechanisms proven to show that is with no doubt the cyanide and not something else - which
-
-Of course correlation doesn&#39;t automatically equal causation.
-
-But it suggests it, and makes it a reasonable thing to investigate.
-
-Correct. If people injecting or swallowing cyanide die, we can probably decide that the cyanide has something to do with that.
-
-But for the Correlation does not equal causation crowd, you can inject or consume all the cyanide you want, at least until it is definitively proven through the most rigorous scientific experiments, even then, not until multiple replications of the experiments, and  have definite biological mechanisms proven to show that is with no doubt the cyanide and not something else - which
-
-The last paragraph explicitly says they considered that stuff.
-
-That doesn&#39;t mean they did it right, but that objection was addressed in the summary, and we also already all know that.
-
-The study EXPLICITLY accounted for socioeconomic status. So unless you are going to claim homeless people make a bunch of money, I doubt that homelessness is a factor.
-
-> It could simply be that people who can afford to spend money on niceties like coffee can afford food and avoid homelessness
-
-I get your point, but worth pointing out that the study was able to extract details like &quot;Drinking decaff isn&#39;t enough&quot; which tells me this particular potential cause probably isn&#39;t likely.
-
-(Doctor) ”Well, your cholesterol levels are elevated, but new studies show I can safely recommend a cup of coffee for you daily.”
-
-(Sally Starbucks) * whips out trusty 64oz Coffee Chugger Cup * ”OhMyGAWD Holy shit balls YES!  This is aweso..”
-
-(Doctor) ”That means six ounces, stupid.  And you wonder why we’re petitioning to put instructions on bottled water.”
-
-There&#39;s only ~120cc of coffee in my latte.
-
-A cup of coffee is 8 oz. Coffee and tea snobs having their heads so far up their ass they can lick their own duodenum doesn&#39;t change that.
-
-Coffee isn&#39;t going to hurt you, and can be beneficial.  So long as you&#39;re not drinking it several times a day, every day, for the entirety of your adult life.
-
-Same for alcohol.  It does actually have some benefits.  But in small doses.  Not all day, every day, to excess.
-
-Same for... almost literally anything.  Salt.  Sugar.  Fat.  All the stuff that&#39;s &quot;bad&quot; according to cheap headline-grabbing press.  You need it all in some amount.  Just not to excess.
-
-Same, even, for things like vitamins.  No vitamins = you&#39;re dead.  Enough vitamins = you&#39;re fine.  More vitamins = you&#39;re going to see no benefit and/or have problems (Vit D can be overdosed on, for example).
-
-Everything in moderation.  Eat red meat.  It&#39;s fine.  Just don&#39;t eat it every single day for every meal for decades on end.
-
-And then you realise - that&#39;s why you get different answers from these studies, based on who&#39;s running them, who&#39;s reporting them, what they&#39;re testing, and who they are trying to target with the messaging.
-
-Caffeine has benefits.Drinking caffeine to excess outweighs those benefits with downsides.The beneficial effect is rather small.The counter-effect is rather large.Your body consumes more than just caffeine alone.
-
-Which explains ALL those results you gave, without having any untruths in there.  Now replace &quot;caffeine&quot; with pretty much anything - all those things I listed above.  Even drinking too much water will kill you (and it&#39;s not as much as you might think).
-
-Everything in moderation, and then you won&#39;t have a problem.
-
-Same for things like cigarettes, even.  If you only have a few, it&#39;s not going to kill you.  But if you&#39;re smoking 20 a day for decades on end?  Well, hello lung cancer.  It&#39;s why the most dangerous drugs are often the ADDICTIVE ones.  Caffeine included.  People have died from drinking too many caffeine-based energy drinks in too short a period of time.
-
-But cigarettes are highly addictive. Now excuse me, I need more coffee.
-
-Same for alcohol.Actually, that&#39;s mostly just wine, and it isn&#39;t the alcohol providing any of the supposed health benefits, but the other compounds in the fermented grape juice.
-
-Actually, that&#39;s mostly just wine, and it isn&#39;t the alcohol providing any of the supposed health benefits, but the other compounds in the fermented grape juice.
-
-They keep doing studies that show that there&#39;s a small health benefit from red wine.
-
-In between them, studies keep coming out that show zero health benefit from any kind of alcoholic beverage, and in fact, some detriment.
-
-But none of them show much effect in any direction for lower levels of consumption, isn&#39;t that the useful takeaway?
-
-They keep doing studies that show that there&#39;s a small health benefit from red wine.In between them, studies keep coming out that show zero health benefit from any kind of alcoholic beverage, and in fact, some detriment.But none of them show much effect in any direction for lower levels of consumption, isn&#39;t that the useful takeaway?Alcohol makes it possible for ugly people to have children.
-
-They keep doing studies that show that there&#39;s a small health benefit from red wine.
-
-In between them, studies keep coming out that show zero health benefit from any kind of alcoholic beverage, and in fact, some detriment.
-
-But none of them show much effect in any direction for lower levels of consumption, isn&#39;t that the useful takeaway?
-
-Alcohol makes it possible for ugly people to have children.
-
-Everything in moderation.You can&#39;t just whip out that phrase and wave it around to solve all your problems.  What is the moderate amount of water?  What is the moderate amount of alcohol (fyi, the negatives outweigh the benefits at all doses)?  Moderate amount of salt?  Etc...  Everything has a different moderate amount and those amounts all dynamically change based on other factors.Saying to just keep to moderate amounts is a bullshit argument if you don&#39;t specify what those amounts are.  It&#39;s the opposite of good advice.  It mean
-
-You can&#39;t just whip out that phrase and wave it around to solve all your problems.  What is the moderate amount of water?  What is the moderate amount of alcohol (fyi, the negatives outweigh the benefits at all doses)?  Moderate amount of salt?  Etc...  Everything has a different moderate amount and those amounts all dynamically change based on other factors.
-
-Saying to just keep to moderate amounts is a bullshit argument if you don&#39;t specify what those amounts are.  It&#39;s the opposite of good advice.  It mean
-
-Everything in moderation. Eat red meat. It&#39;s fine. Just don&#39;t eat it every single day for every meal for decades on end.It is a nice rule of thumb but like most rules of thumb there are many, many exceptions. Such as crack. Or lead. Or gunshot wounds.  The other trick is to figure out what &quot;moderation&quot; means. That&#39;s the big challenge in nutrition work as the data collection is often problematic and the analyses are often even more problematic.
-
-Everything in moderation. Eat red meat. It&#39;s fine. Just don&#39;t eat it every single day for every meal for decades on end.
-
-It is a nice rule of thumb but like most rules of thumb there are many, many exceptions. Such as crack. Or lead. Or gunshot wounds.  The other trick is to figure out what &quot;moderation&quot; means. That&#39;s the big challenge in nutrition work as the data collection is often problematic and the analyses are often even more problematic.
-
-Gunshot wounds have been proven to sometimes have a significant protective benefit to health. It all depends on who the gunshot wounds are on.
-
-Same for alcohol.  It does actually have some benefits.  But in small doses.  Not all day, every day, to excess.Yeah, no, that&#39;s wrong. Even small doses are bad. What you are thinking of is probably wine which has some good properties - but you&#39;d really have to remove the alcohol from it to be a net positive.
-
-Same for alcohol.  It does actually have some benefits.  But in small doses.  Not all day, every day, to excess.
-
-Yeah, no, that&#39;s wrong. Even small doses are bad. What you are thinking of is probably wine which has some good properties - but you&#39;d really have to remove the alcohol from it to be a net positive.
-
-Unless you&#39;re hitting stupidly large amounts of Vitamin D it&#39;s really difficult to overdose on. Vitamins A and B3 are much, much easier to OD on. Now, if you don&#39;t get enough K2, larger amounts of Vitamin D can lead to a dysregulation of calcium in your body, but that that is not the same as vitamin overdose.
-
-Everything in moderation? F that! Here is some wisdom from an old fart: Too much of anything is just enough.  I may be going to hell in a bucket, babe, but at least I&#39;m enjoying the ride!
-
-And they all claim 1) &quot;this is very strong evidence of the benefits of caffeine&quot;, followed by 2) &quot;but don&#39;t forget, this study is simply correlational&quot;; and then 3) &quot;but it is a very large sample&quot;, followed by 4) &quot;but don&#39;t forget... it&#39;s correlational&quot;. Pick a lane, please.There is a 99% chance that almost all funding for water-is-wet studies would instantly evaporate in the face of common fucking sense approvals.Trying to make longevity claims studying the “impact” of coffee vs. everything else that matters, is still marinating in fucking-pointless sauce.  Plenty would be out of a job without sustaining the delusion of “studies”.  That’s why.  Yet another scam on the taxpayer.
-
-And they all claim 1) &quot;this is very strong evidence of the benefits of caffeine&quot;, followed by 2) &quot;but don&#39;t forget, this study is simply correlational&quot;; and then 3) &quot;but it is a very large sample&quot;, followed by 4) &quot;but don&#39;t forget... it&#39;s correlational&quot;. Pick a lane, please.
-
-There is a 99% chance that almost all funding for water-is-wet studies would instantly evaporate in the face of common fucking sense approvals.
-
-Trying to make longevity claims studying the “impact” of coffee vs. everything else that matters, is still marinating in fucking-pointless sauce.  Plenty would be out of a job without sustaining the delusion of “studies”.  That’s why.  Yet another scam on the taxpayer.
-
-You: some studies have been revealed to be scams on the taxpayer. Therefore all studies are scams on the taxpayer.
-
-Have you ever had a course in logic or is this your natural state of ignorance?
-
-You: some studies have been revealed to be scams on the taxpayer. Therefore all studies are scams on the taxpayer.Have you ever had a course in logic or is this your natural state of ignorance?I said plenty would be out of a job and specifically cited the more obvious water-is-wet &quot;studies&quot; we&#39;re subjected to from time to time, but I&#39;m more than willing to start collecting to fund the study of study justification.  Lead by Common F. Sense, taxpayer.No?  Oh, c&#39;mon!  I mean, it&#39;s not like people are daring enough to run a taxpayer-funded daycare without actually having children present or enrolled for the purposes of stealing taxpayer money in broad daylight, right?Do I dare end this with Follow th
-
-You: some studies have been revealed to be scams on the taxpayer. Therefore all studies are scams on the taxpayer.
-
-Have you ever had a course in logic or is this your natural state of ignorance?
-
-I said plenty would be out of a job and specifically cited the more obvious water-is-wet &quot;studies&quot; we&#39;re subjected to from time to time, but I&#39;m more than willing to start collecting to fund the study of study justification.  Lead by Common F. Sense, taxpayer.
-
-No?  Oh, c&#39;mon!  I mean, it&#39;s not like people are daring enough to run a taxpayer-funded daycare without actually having children present or enrolled for the purposes of stealing taxpayer money in broad daylight, right?
-
-I drink two cups of caffeinated coffee every morning. My working assumption, based on this post, is that this will have saved me from my lost decade of hedonistic alcohol and drug abuse. Maybe I&#39;ll up it to three cups.
-
-The study seems to center around the benefits of consuming caffeine via coffee.  So the obvious question is..was the measured benefit provided by the coffee bean, or just pure caffeine?  Relevant question, since I’m pretty sure the kids are vaping caffeine now.  Or will soon.
-
-Bean sucking addicts can’t quite relate to others not liking the taste of coffee, but rest assured there are plenty who would like to understand the benefits of longevity without having to pretend bitter mud water tastes goo
-
-Bean sucking addicts can’t quite relate to others not liking the taste of coffeeBut it&#39;s actually quite tasty if you add..(Rest assured the study didn&#39;t include all the sweeteners, toppings, and sprinkles killing people prematurely, so they mean black coffee.)Damn, never mind.
-
-Bean sucking addicts can’t quite relate to others not liking the taste of coffee
-
-But it&#39;s actually quite tasty if you add..
-
-(Rest assured the study didn&#39;t include all the sweeteners, toppings, and sprinkles killing people prematurely, so they mean black coffee.)Damn, never mind.
-
-(Rest assured the study didn&#39;t include all the sweeteners, toppings, and sprinkles killing people prematurely, so they mean black coffee.)
-
-Yeah, and this bit is a red flag suggesting the study doesn&#39;t actually prove what it appears to prove, ie this may be a coincidence.
-
-The thing is... tea contains far less caffeine than coffee. 8oz of brewed coffee contains 96mg of caffeine vs 48mg in the same amount of black tea (https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/caffeine/art-20049372)
-
-So basically there&#39;s no correlation at all with caffeine in this case, if you have to drink 288mg of caffeine via coffee to get
-
-Then you get sleep deprivation, maybe another risk factor in dementia. Torturers use sleep deprivation.
-
-If you&#39;re lucky, messing with your sleep is the least of your worries.  Too much can also can cause a gastrointestinal upset (a heartburn flare-up and/or a case of the shits).  That&#39;s always fun.
-
-Then you get sleep deprivation, maybe another risk factor in dementia. Torturers use sleep deprivation.  Sleep and dementia.  [alzheimers.org.uk] I am off to bed. Wake me up for Spring.Well, maybe. According to the Slashdot sleepyheads, I should have developed dementia years ago. I do 5 hours a night, wake up rested and ready to take on the day. 
-
-I have a strong suspicion that very early Alzheimers sufferers end up with sleep deprivation, rather than the other way around. As if poor sleep is another symptom. 
-This is conjecture of course,
-
-Then you get sleep deprivation, maybe another risk factor in dementia. Torturers use sleep deprivation.
-
-Well, maybe. According to the Slashdot sleepyheads, I should have developed dementia years ago. I do 5 hours a night, wake up rested and ready to take on the day.
-
-I have a strong suspicion that very early Alzheimers sufferers end up with sleep deprivation, rather than the other way around. As if poor sleep is another symptom.
-
-> I have a strong suspicion that very early Alzheimers sufferers end up with sleep deprivation, rather than the other way around. As if poor sleep is another symptom.
-
-Generally I believe it&#39;s the opposite, anecdotally one of the first signs we saw with one of my relatives was she was napping pretty much all day despite sleeping the night without problems. We were told once the diagnosis had been done that this was a normal sign.
-
-Alzheimer&#39;s non-memory-related symptoms seem to be very similar to depression
-
-Mormons, who drink no coffee should have more dementia cases than &#39;normal&#39; people.:-)
-
-This is why most nerds I know are slamming Monster or NOS all day, I guess.Two lady friends at work and myself were so addicted to coffee, that we ended up having to withdraw from it after having panic attacks. It isn&#39;t permanent - you can start drinking it again after detox, but if you haven&#39;t had a caffeine fueled panic attack, you don&#39;t want one. You 100 percent believe you are going to die in seconds, but don&#39;t know why. 
-
-I went decaf for two months, then shifted back to regular coffee. Since then, I do my 4 cups a day, enforced by the wife, and haven&#39;t had a problem since. A
-
-This is why most nerds I know are slamming Monster or NOS all day, I guess.
-
-Two lady friends at work and myself were so addicted to coffee, that we ended up having to withdraw from it after having panic attacks. It isn&#39;t permanent - you can start drinking it again after detox, but if you haven&#39;t had a caffeine fueled panic attack, you don&#39;t want one. You 100 percent believe you are going to die in seconds, but don&#39;t know why.
-
-I went decaf for two months, then shifted back to regular coffee. Since then, I do my 4 cups a day, enforced by the wife, and haven&#39;t had a problem since. A
-
-Mormons, who drink no coffee should have more dementia cases than &#39;normal&#39; people.:-)Was this the setup for a Mormon joke?
-
-Mormons, who drink no coffee should have more dementia cases than &#39;normal&#39; people.:-)
-
-I&#39;m sure that DRM-controlled coffee pods: https://www.coffeesexploration... [coffeesexploration.com]  reduce the risk even more.They will even reduce the risk of hair loss and impotence, not to talk about the risk of personal bankruptcy.And if I buy a subscription to DRMd coffee pods will even prevent my car from breaking down (even though I don&#39;t have a car)
-
-Caffeine, in the form of coffee or tea, brings more than just caffeine to the table.
-
-1) There&#39;s a vascular conditioning effect as it causes constriction and later relaxation of blood vessels in the brain - this could plausibly help maintain proper blood flow and prevent slow hypoperfusion from killing brain cells.
-
-2) There are anti-inflammatory effects from the beverages, and chronic inflammation is another effect of dementia.
-
-3) The drinks are frequently a cause of social interaction, and increased social act
-
-Caffeine, in the form of coffee or tea, brings more than just caffeine to the table.1) There&#39;s a vascular conditioning effect as it causes constriction and later relaxation of blood vessels in the brain - this could plausibly help maintain proper blood flow and prevent slow hypoperfusion from killing brain cells.2) There are anti-inflammatory effects from the beverages, and chronic inflammation is another effect of dementia.3) The drinks are frequently a cause of social interaction, and increased social activity also protects against dementia... my personal theory on that being the brain cells don&#39;t die from lack of use.4) I believe coffee (I don&#39;t know about tea) also helps keep your insulin response healthy, meaning a lower risk of diabetes which in turn is a risk for dementia.5) While coffee and tea are diuretics, they do at least briefly hydrate you before your kidneys get to work.  A lot of people don&#39;t stay properly hydrated, so this has to help.I believe all of those. &quot;Coffee dates&quot;, be it for people getting to know each other for possible romantic reasons, or just friends and coworkers chatting are great. 
-
-And the last one (hydration) is more important than many people think. I do my 4 cups in the morning, plus drink a lot of water. Yeah, I pee a lot, but I&#39;m personally convinced that the kidneys need exercised, and that not having it be too &quot;strong&quot; is better than else wise.
-
-Caffeine, in the form of coffee or tea, brings more than just caffeine to the table.
-
-1) There&#39;s a vascular conditioning effect as it causes constriction and later relaxation of blood vessels in the brain - this could plausibly help maintain proper blood flow and prevent slow hypoperfusion from killing brain cells.
-
-2) There are anti-inflammatory effects from the beverages, and chronic inflammation is another effect of dementia.
-
-3) The drinks are frequently a cause of social interaction, and increased social activity also protects against dementia... my personal theory on that being the brain cells don&#39;t die from lack of use.
-
-4) I believe coffee (I don&#39;t know about tea) also helps keep your insulin response healthy, meaning a lower risk of diabetes which in turn is a risk for dementia.
-
-5) While coffee and tea are diuretics, they do at least briefly hydrate you before your kidneys get to work.  A lot of people don&#39;t stay properly hydrated, so this has to help.
-
-I believe all of those. &quot;Coffee dates&quot;, be it for people getting to know each other for possible romantic reasons, or just friends and coworkers chatting are great.
-
-And the last one (hydration) is more important than many people think. I do my 4 cups in the morning, plus drink a lot of water. Yeah, I pee a lot, but I&#39;m personally convinced that the kidneys need exercised, and that not having it be too &quot;strong&quot; is better than else wise.
-
-One is that if you are in that coffee/tea-bracket, you likely do not have to cut back on it. If it is causation, you definitely should not. If it is something else correlated with dementia and coffee (e.g. lifestyle), you also do not have to. Yes, this comes with some uncertainty, but not that much.
-
-The last time I drank two cups of coffee in a day, I had to wake up three times at night to pee.  My bladder just can&#39;t handle that much caffeine anymore.  Guess I better embrace my destined dementia demise.
-
-I&#39;ve seen coffee studies come out for many decades, and they tend to arrive in the pattern of good, bad, good, bad, good, bad, good, bad, etc.
-
-I average it out: coffee is generally harmless, as long as you don&#39;t overdo it.  If you want coffee, enjoy a cup of joe, otherwise don&#39;t. Don&#39;t overthink it.
-
-Coffee and tea, in reasonable doses, are only as unhealthy as the shit people add to them
-
-Dietary intake was collected every 2 to 4 years using validated food frequency questionnaires.In other words, the input data was very poor.  Please accuracy tell me everything you ate in the last 4 years, including the amounts of things such as the amount of salt and pepper you added to each meal and the amount of creamer you added or didn&#39;t add to your various cups of coffee across that timeframe.If they don&#39;t follow this study with another one directly looking at dosing people with just caffeine, then the study is just statistical propaganda.
-
-Dietary intake was collected every 2 to 4 years using validated food frequency questionnaires.
-
-In other words, the input data was very poor.  Please accuracy tell me everything you ate in the last 4 years, including the amounts of things such as the amount of salt and pepper you added to each meal and the amount of creamer you added or didn&#39;t add to your various cups of coffee across that timeframe.
-
-If they don&#39;t follow this study with another one directly looking at dosing people with just caffeine, then the study is just statistical propaganda.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Mathematics is the only science where one never knows what 
+one is talking about nor whether what is said is true.
+		-- Russell</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1933,8 +1799,6 @@ There may be more comments in this discussion. Without JavaScript enabled, you m
             <div id="article-text">Please enable Javascript in your browser to view Slate interactives.
 
 Slate Crossword: Name on a Jersey at Super Bowl 60 … but Not During the Game (Six Letters)
-
-Which Type of Craftsperson Works With a Last?
 
 Slate relies on advertising to support our journalism. If you value our
         work, please disable your ad blocker. If you want to block ads but still
@@ -2220,11 +2084,25 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Q&A: AI agents created their social media platform—expert discusses what it means</div>
+            <div class="title">EU clears Google's $32 bn bid for Wiz cybersecurity company</div>
             <div class="meta">2026-02-10</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>EU clears Google's $32 bn bid for Wiz cybersecurity company</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-10</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-02-eu-google-bn-wiz-cybersecurity.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Q&A: AI agents created their social media platform—expert discusses what it means</div>
+            <div class="meta">2026-02-10</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>Q&A: AI agents created their social media platform—expert discusses what it means</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-qa-ai-agents-social-media.html">Visit Original Website</a>
@@ -2232,13 +2110,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">UK industry could unlock major energy savings through heat reuse, says new report</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>UK industry could unlock major energy savings through heat reuse, says new report</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-uk-industry-major-energy-reuse.html">Visit Original Website</a>
@@ -2246,13 +2124,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">'Sanity check' warns EVs and heat pumps deliver 'no proven carbon savings' ahead of 2030 clean‑power target</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>'Sanity check' warns EVs and heat pumps deliver 'no proven carbon savings' ahead of 2030 clean‑power target</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-sanity-evs-proven-carbon-cleanpower.html">Visit Original Website</a>
@@ -2260,13 +2138,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">OpenAI starts testing ads in ChatGPT</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>OpenAI starts testing ads in ChatGPT</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-openai-ads-chatgpt.html">Visit Original Website</a>
@@ -2274,13 +2152,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Tech companies need to unite and make device security easier for users, say experts</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Tech companies need to unite and make device security easier for users, say experts</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-tech-companies-device-easier-users.html">Visit Original Website</a>
@@ -2288,27 +2166,53 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Scientists develop eco‑friendly bricks using desert sand to replace carbon-heavy Portland cement</div>
+        <div class="card" onclick="openModal('content-42')">
+            <div class="source">The Register</div>
+            <div class="title">AI agents spill secrets just by previewing malicious links</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-41" style="display:none;">
-            <h2>Scientists develop eco‑friendly bricks using desert sand to replace carbon-heavy Portland cement</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-10</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-02-scientists-ecofriendly-bricks-sand-carbon.html">Visit Original Website</a>
+        <div id="content-42" style="display:none;">
+            <h2>AI agents spill secrets just by previewing malicious links</h2>
+            <p><strong>The Register | 2026-02-10</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/10/ai_agents_messaging_apps_data_leak/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">AI agents can shop for you, program for you, and, if you&#39;re feeling bold, chat for you in a messaging app. But beware: attackers can use malicious prompts in chat to trick an AI agent into generating a data-leaking URL, which link previews may fetch automatically.
+
+Messaging apps commonly use link previews, which let the app query links dropped in a message to extract a title, description, and thumbnail to display in place of a plain URL. As discovered by AI security firm PromptArmor, link previews can turn URLs generated by an AI agent and controlled by an attacker into a zero-click data-exfiltration channel, allowing sensitive information to be leaked without any user interaction.
+
+As PromptArmor notes in its report, indirect prompt injection via malicious links isn&#39;t unheard of, but typically requires the victim to click a link after an AI system has been tricked into appending sensitive user data to an attacker-controlled URL. When the same technique is used against an AI agent operating inside messaging platforms such as Slack or Telegram, where link previews are enabled by default or in certain configurations, the problem gets a whole lot worse.
+
+&quot;In agentic systems with link previews, data exfiltration can occur immediately upon the AI agent responding to the user, without the user needing to click the malicious link,&quot; PromptArmor explained.
+
+Without a link preview, an AI agent or a human operator has to follow a link, triggering a network request after the AI system has been tricked into appending sensitive user data to an attacker-controlled URL. As mentioned, this type of prompt injection attack can extract various types of sensitive data, such as API keys and the like, by tricking an AI agent into appending the info onto the URL.
+
+Because a link preview pulls metadata from the target website, that whole attack chain can be accomplished with zero interaction: once an AI agent has been tricked into generating a URL containing sensitive data, the preview system automatically fetches it. The only difference is where the data-exposing URL is found - in this case in the attacker&#39;s request log.
+
+It won&#39;t shock you to learn that vibe-coded agentic AI disaster platform OpenClaw is vulnerable to this attack when using default configurations in Telegram, which PromptArmor notes can be fixed by making a change in OpenClaw&#39;s config file as detailed in the article, but it seems from the data that PromptArmor provided that OpenClaw isn&#39;t the biggest offender.
+
+The company created a website where users can test AI agents integrated into messaging apps to see whether they trigger insecure link previews. Based on reported results from those tests, Microsoft Teams accounts for the largest share of preview fetches, and in the logged cases, it is paired with Microsoft&#39;s own Copilot Studio. Other reported at-risk combinations include Discord with OpenClaw, Slack with Cursor Slackbot, Discord with BoltBot, Snapchat with SnapAI, and Telegram with OpenClaw.
+
+Reported safer setups include the Claude app in Slack, OpenClaw running via WhatsApp, and OpenClaw deployed &quot;in Docker via Signal in Docker,&quot; if you really want to complicate things.
+
+While this is an issue with how AI agents handle the processing of link previews, PromptArmor notes that it&#39;s going to largely be up to messaging apps to fix the issue.
+
+&quot;It falls on communication apps to expose link preview preferences to developers, and agent developers to leverage the preferences provided,&quot; the security firm explained. &quot;We&#39;d like to see communication apps consider supporting custom link preview configurations on a chat/channel-specific basis to create LLM-safe channels.&quot;
+
+Until that happens, consider this yet another warning against adding an AI agent into an environment where confidentiality is important. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-42')">
+        <div class="card" onclick="openModal('content-43')">
             <div class="source">The Register</div>
             <div class="title">Kyndryl to review accounting practices as several execs leave</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>Kyndryl to review accounting practices as several execs leave</h2>
             <p><strong>The Register | 2026-02-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/10/kyndryl_reviews_accounting_practices/">Visit Original Website</a>
@@ -2342,13 +2246,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">AFRINIC says it's back on track and will soon deliver the plan that proves it</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>AFRINIC says it's back on track and will soon deliver the plan that proves it</h2>
             <p><strong>The Register | 2026-02-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/10/afrinic_turnaround/">Visit Original Website</a>
@@ -2394,13 +2298,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">Trump to hyperscalers: your datacenters, your power bill</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Trump to hyperscalers: your datacenters, your power bill</h2>
             <p><strong>The Register | 2026-02-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/10/trump_wants_no_ai_friction/">Visit Original Website</a>
@@ -2432,13 +2336,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">Microsoft dials up the nagging in Windows, calls it security</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Microsoft dials up the nagging in Windows, calls it security</h2>
             <p><strong>The Register | 2026-02-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/10/microsoft_windows_security/">Visit Original Website</a>
@@ -2474,13 +2378,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">Oracle Java licensing worries are percolating through the userbase</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Oracle Java licensing worries are percolating through the userbase</h2>
             <p><strong>The Register | 2026-02-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/10/oracle_java_licensing/">Visit Original Website</a>
@@ -2514,49 +2418,65 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">Singapore spent 11 months booting China-linked snoops out of telco networks</div>
+        <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">Sharge’s new power bank can charge two laptops while putting on a light show</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-47" style="display:none;">
-            <h2>Singapore spent 11 months booting China-linked snoops out of telco networks</h2>
-            <p><strong>The Register | 2026-02-10</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/10/singapore_telco_espionage/">Visit Original Website</a>
+        <div id="content-48" style="display:none;">
+            <h2>Sharge’s new power bank can charge two laptops while putting on a light show</h2>
+            <p><strong>The Verge | 2026-02-10</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/876432/sharge-shargeek-300w-power-bank-rgb-lighting-kickstarter">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Singapore spent almost a year flushing a suspected China-linked espionage crew out of its telecom networks in what officials describe as the country&#39;s largest cyber defense operation to date.
+            <div id="article-text">The Shargeek 300 can simultaneously output 140W through two USB-C ports, with enough power left to top up your phone.
 
-The Cyber Security Agency of Singapore said advanced persistent threat UNC3886 dug itself into the networks of all four major telecom providers, sparking an 11-month digital eviction effort involving more than 100 personnel from across government, military, intelligence, and industry. Branded &quot;Operation Cyber Guardian,&quot; the cleanup saw the state and telco engineers teaming up to flush the intruders out while keeping the nation&#39;s phone and data pipes flowing.
+The Shargeek 300 can simultaneously output 140W through two USB-C ports, with enough power left to top up your phone.
 
-&quot;Over the past months, our investigations have indicated that UNC3886 had launched a deliberate, targeted, and well-planned campaign against Singapore&#39;s telecommunications sector,&quot; the CSA said.
+Sharge has made a name for itself amongst the tech-obsessed with chargers and power banks featuring eye-catching designs and extra functionality. Power bank feature creep is more often than not a bad thing, but Sharge is unabashedly leaning into the trend with its new Shargeek 300. We first went hands on with it over a year ago at CES 2025, but the power bank is finally available for preorder.
 
-Officials stopped short of formally pointing the finger at Beijing, but UNC3886 has long been associated with Chinese state-aligned cyber espionage. The group tends to skip flashy break-ins on user machines and instead sneaks into the dull but revealing parts of network infrastructure, where traffic flows quietly and almost nobody is paying attention.
+The earliest backers of Sharge’s latest Kickstarter crowdfunding campaign can preorder the power bank for $149, while its full price is expected to be closer to $199 once delivery starts as early as May 2026. Inside the Shargeek 300 is a 24,000 mAh battery that can be fully recharged in 75 minutes using a 140W charger.
 
-According to Singapore&#39;s account, the attackers slipped past perimeter defenses using a previously unknown flaw, then dug in using custom rootkits that let them stay hidden deep inside telecom systems. Officials didn&#39;t say what bugs had been exploited, but UNC3886 was previously observed exploiting zero-day flaws in FortiGate firewalls, VMware ESXi, and VMware vCenter Server endpoints.
+As the name implies, the Shargeek 300’s total output is 300W which is shared across two USB-C ports, a USB-A port, and a barrel-style DC port. Both USB-C ports can output up to 140W letting you simultaneously charge two power-hungry laptops while a third device pulls 20W from the USB-A port. The output of the DC port can be adjusted from as little as 25W up to 140W.
 
-Investigators believe the operation focused on siphoning off technical network information that could support long-term intelligence collection, rather than stealing customer records or causing outages that might draw attention.
+The Shargeek 300 features a lightweight aluminum alloy frame wrapped in an aluminum shell that helps to dissipate heat. There’s also two cutaway sections, protected by transparent plastic windows, revealing some of the power bank’s electronics and a 1.9-inch screen on one side, and the batteries on the other. You can use the screen to monitor the battery’s charge level, power output, temperature, and adjust the DC output voltage. The exposed interior is also illuminated with RGB LEDs whose color, brightness, and function can be customized using the display.
 
-The tactics will sound familiar to anyone who has followed recent telecom-focused espionage campaigns. The operation bears a strong resemblance to the China-backed Salt Typhoon espionage campaign uncovered in 2024, which also went after telecom providers across several countries using similar infrastructure-level tricks to quietly watch data and communications traffic.
-
-That kind of access is why telecom breaches tend to ring louder alarm bells than the average hack. Operators sit at the intersection of government communications, enterprise data, and consumer traffic, making them attractive targets for states looking to map networks, monitor flows, or set the stage for future intelligence operations.
-
-Singapore described Operation Cyber Guardian as its &quot;largest coordinated cyber incident response effort undertaken to date.&quot; Cleaning up involved identifying compromised devices, sealing off attacker access paths, patching vulnerabilities, and ramping up monitoring to ensure the intruders didn&#39;t simply circle back.
-
-Singapore warned that telecom networks will remain prime targets and urged operators to assume sophisticated actors are already probing their defenses. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
+A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-48')">
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">Facebook can animate your profile pic with AI</div>
+            <div class="meta">2026-02-10</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
+            <h2>Facebook can animate your profile pic with AI</h2>
+            <p><strong>The Verge | 2026-02-10</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/876480/meta-facebook-animate-profile-picture-restyle-ai">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">﻿With preset animations, you can have a still photo wave to your friends or put on a party hat.
+
+﻿With preset animations, you can have a still photo wave to your friends or put on a party hat.
+
+Facebook is rolling out new AI features that let you animate your profile picture and restyle Stories and Memories. You’ll also be able to add animated backgrounds to text posts to make them pop in the feed.
+
+With the animated profile pictures, you’ll be able to give a still photo motion with some preset types of animations, including “natural, party hat, confetti, wave, and heart,” Meta says. Meta suggests using a photo featuring a single person facing the camera with a visible face who isn’t holding anything. More animation options will be added “throughout the year.”
+
+To restyle Stories or Memories, you can tap on the Restyle button and either type out the changes you want Meta’s AI to make to the photo or pick from Meta’s pre-set options, like “anime” or “low-poly.” And to spruce up your text posts with the new animated backgrounds, while you’re drafting a post, look for an A icon over a rainbow background to pull up a menu of different background styles to pick from, including both animated and still options.
+
+Facebook is still a huge platform, with more than 2 billion daily active unique users. But Meta has recently made a renewed effort to make Facebook more culturally relevant again, with CEO Mark Zuckerberg saying last year that he wanted to “get back to some OG Facebook.” As part of that, it introduced a dedicated friends-only feed that ditches the algorithmic junk.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">An Ark showed me augmented reality’s true artistic potential</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>An Ark showed me augmented reality’s true artistic potential</h2>
             <p><strong>The Verge | 2026-02-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/875869/an-ark-mixed-reality-simon-stephens-sarah-frankcom-todd-eckert">Visit Original Website</a>
@@ -2588,13 +2508,13 @@ An Ark is now showing at The Shed through March 1st.
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">The Shokz OpenFit Air earbuds are matching their all-time low price</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>The Shokz OpenFit Air earbuds are matching their all-time low price</h2>
             <p><strong>The Verge | 2026-02-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/876392/shokz-openfit-air-earbuds-kobo-clara-colour-deal-sale">Visit Original Website</a>
@@ -2616,13 +2536,13 @@ Sign up for Verge Deals to get deals on products we’ve tested sent to your inb
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Microsoft is keeping Secure Boot alive with Windows updates</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Microsoft is keeping Secure Boot alive with Windows updates</h2>
             <p><strong>The Verge | 2026-02-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/876336/microsoft-windows-secure-boot-certificate-renewal">Visit Original Website</a>
@@ -2644,13 +2564,13 @@ The new certificates will be installed automatically and require no additional a
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Google can now help you find and remove your ID from search results</div>
             <div class="meta">2026-02-10</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Google can now help you find and remove your ID from search results</h2>
             <p><strong>The Verge | 2026-02-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/876352/google-search-remove-sensitive-information-nonconsensual-images">Visit Original Website</a>
@@ -2664,60 +2584,6 @@ Google is expanding its tools for removing your sensitive information and noncon
 Once you add your information to Google’s “results about you” tool, Google will show search results containing your data, while giving you the option to request removal. Google says it protects the information entered into the tool with “advanced encryption.” You can sign up to receive notifications when it detects new search results containing your personal data, though the company notes the tool doesn’t remove your information “from the web entirely.” Google is bringing this update to the US in the coming days, with plans to expand it to other regions.
 
 Google is building on efforts to help stop the spread of nonconsensual explicit images in its results, too. You can now ask that Google remove an image by selecting the three dots at the top of a picture, choosing “remove results,” and clicking on the option that says, “It shows a sexual image of me.” Google’s updated tool also lets you ask the company to remove multiple images at once, as well as opt-into protections that will “proactively filter out” similar explicit results in the future. This feature is rolling out to “most countries” in the coming days.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">Razer’s resurrected 25-year-old gaming mouse will cost you $1,337</div>
-            <div class="meta">2026-02-10</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>Razer’s resurrected 25-year-old gaming mouse will cost you $1,337</h2>
-            <p><strong>The Verge | 2026-02-10</strong></p>
-            <a class="original-link" href="https://www.theverge.com/gadgets/876333/razer-boomslang-20th-anniversary-edition-wireless-mouse-preorder-price">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Preorders for the Razer Boomslang 20th Anniversary Edition start on February 10th, and are limited to only 1,337 units.
-
-Preorders for the Razer Boomslang 20th Anniversary Edition start on February 10th, and are limited to only 1,337 units.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-Nostalgia’s getting expensive. When Razer announced last December it would be relaunching the world’s first gaming mouse with a few modern upgrades, it didn’t reveal how much the Razer Boomslang 20th Anniversary Edition would cost or when it would be released. The company will officially open preorders for the mouse on February 10th at 8AM PT for those in the US. In Europe, preorders will start on February 11th at 8AM CET, while in Asia it will be February 11th at 8AM SGT. The production run is still being limited to just 1,337 units in total, but with a matching $1,337 price tag, they might not fly off shelves.
-
-The original version of the mouse, called the Kärna Razer Boomslang, launched before gaming-specific peripherals were even a thing. It distinguished itself from other mice on the market at the time with an upgraded encoding wheel that offered more accurate mouse tracking, giving gamers a potential competitive advantage.
-
-The 20th Anniversary Edition of the Razer Boomslang replaces those mechanical components with a 45,000 DPI optical sensor. The original mouse’s symmetrical ambidextrous design has been carried forward, but the new Boomslang is now wireless with an 8,000Hz polling rate and comes with a Razer Mouse Dock Pro wireless charging stand. You’ll also find 9-zone customizable RGB lighting on the underside of the new Boomslang that can be synced to over 300 games; a feature the Razer brand has become known for.
-
-A quarter century ago the Kärna Razer Boomslang was priced at $69.99 to $99.99, according to Eurogamer. The new version’s $1,337 price far outpaces inflation, but Razer is sweetening the pot by including an LED lit display frame featuring a deconstructed look at the Razer Boomslang 20th Anniversary Edition’s internal components.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">Telegram is reportedly being slowed down and restricted in Russia</div>
-            <div class="meta">2026-02-10</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>Telegram is reportedly being slowed down and restricted in Russia</h2>
-            <p><strong>The Verge | 2026-02-10</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/876351/telegram-russia-restrictions">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Russia’s communications regulator is continuing to crack down on apps like Telegram and WhatsApp while rolling out a state-backed alternative, Max.﻿
-
-Russia’s communications regulator is continuing to crack down on apps like Telegram and WhatsApp while rolling out a state-backed alternative, Max.﻿
-
-Telegram users in Russia may begin noticing service disruptions on Tuesday after Russia’s communications regulator, Roskomnadzor, reportedly moved to slow down and restrict access to the app, as reported by Russian news outlet RBC.
-
-Roskomnadzor said in a statement to RBC, translated using machine translation, that it “will continue to introduce successive restrictions” on Telegram, claiming the app is not taking adequate steps to prevent fraud and criminal activity. Reuters quotes Telegram users in Moscow who confirmed that they’ve been experiencing issues with the app, including a woman named Anna, who said, “It’s very bad because all my friends and family use Telegram. I don’t know how I’m going to communicate with them because I don’t want to move to other platforms.”
-
-In August, Roskomnadzor began “partially” blocking calls in Telegram and WhatsApp, claiming both are used for extortion and “terrorist activities.” Around the same time, Russia also ordered phone and tablet manufacturers to pre-install its state-backed Max messaging app on new devices sold in the region.
-
-Telegram’s Russian-born founder and CEO, Pavel Durov, has not publicly commented on the issues, but his most recent tweet on February 8th took aim at leaders of several European nations. “Officials with the lowest approval ratings in the world (Macron, Starmer, Merz, Sanchez) are the loudest champions of social media bans for teens and ‘misinformation’ crackdowns,” wrote Durov, who was arrested in France in 2024 over the platform’s lack of moderation.
 
 A free daily digest of the news that matters most.</div>
         </div>
@@ -3378,42 +3244,42 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Paramount sweetens Warner Bros bid with ticking fee, Netflix break-up fee cover - Reuters</div>
+            <div class="title">Google secures EU antitrust approval for $32 billion Wiz acquisition - Reuters</div>
             <div class="meta">2026-02-10</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Paramount sweetens Warner Bros bid with ticking fee, Netflix break-up fee cover - Reuters</h2>
+            <h2>Google secures EU antitrust approval for $32 billion Wiz acquisition - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-10</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxNc1JULV9wQllHYzd2SlpycnV5ZFZYaVE5eThnOGdMUGpLM1NEc2NHVXBuV1BIQVo5Tm9BbVZNWGd5Ym5ia0djZThua0xPSHNoekFLXzZpX0dDRGR5NV9ZSXJtWjdYS2ZzSE1VbnY4eGpXMEFaQUh6eXZneWVMVDdfWXMzdUktVGhaSkJSRVhCMk9vMVRHWVZWMlZENTNZbkJGNVYwcHlZeGlrUnpWai1TVnQwRlhfZ3c?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQMUlJX1hQd3VRcDlYeXhwWi1pc09IOEs2a0R3RGNoYnFJZTRDYWw3dWxEcnFCSXkxUlRVSnZMY3E3bnNSdVRxTVdGNFBvemlhaHhwRjJPaU93dUhEbzI1SnFURVY3b1lOZ1J5bEFJMUFITzYwejU5SnBJWDNwNHRjQm9MZVZRaFZzWTZqZUg2WVNWSWpaZC13RDNPSW9IZ1FBaHZxV05zNXU?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">EU's Kallas to propose concessions that Europe should demand from Russia - Reuters</div>
+            <div class="title">Paramount sweetens Warner Bros bid with offer to pay Netflix break-up cost, other fees - Reuters</div>
             <div class="meta">2026-02-10</div>
         </div>
         
         <div id="content-67" style="display:none;">
-            <h2>EU's Kallas to propose concessions that Europe should demand from Russia - Reuters</h2>
+            <h2>Paramount sweetens Warner Bros bid with offer to pay Netflix break-up cost, other fees - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-10</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQNEVZdi1JSl9ja1p4VGVfSFNRanFIN2JXZWdkTlpPemhFb2Q4SWhQUnpFdHhYWHZjZS10WDQ0UXZNVV9hRF9Jd2V6OFNfaEhIT0FuYlZfWF9ta2RwMndsWWRFQUVZNWRuYkthMzdzOGJDbWYtY1h0TkZvRmpnbHVQaHhzNjAxLU15OHN2U2IyeWs0SmdWS1V5S1pSbk1KYkdxOFotdENUU2R3VDg5aS1VTDQ4dnpSQTA?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxNc1JULV9wQllHYzd2SlpycnV5ZFZYaVE5eThnOGdMUGpLM1NEc2NHVXBuV1BIQVo5Tm9BbVZNWGd5Ym5ia0djZThua0xPSHNoekFLXzZpX0dDRGR5NV9ZSXJtWjdYS2ZzSE1VbnY4eGpXMEFaQUh6eXZneWVMVDdfWXMzdUktVGhaSkJSRVhCMk9vMVRHWVZWMlZENTNZbkJGNVYwcHlZeGlrUnpWai1TVnQwRlhfZ3c?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">ICE is cracking down on people who follow them in their cars - Reuters</div>
+            <div class="title">EU's Kallas to propose concessions that Europe should demand from Russia - Reuters</div>
             <div class="meta">2026-02-10</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>ICE is cracking down on people who follow them in their cars - Reuters</h2>
+            <h2>EU's Kallas to propose concessions that Europe should demand from Russia - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-10</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOenZuQmFyS0RYX3N1WjdmZHg2T2Q3cldwdXBVdUhMRlVsWXlQd2dPaFlMMFpWSXN0dWJFQkREZTlzQVQ3TmFNREp5Tkl3bWlmZC1XbERxb3hhelZGYjlDX20zN0E0VV9IN2tGZW0wTGp2NlZJa1NUV21pZC01RHVkYklMM2I4dGhXSWhZTTJLYU5iNzVHZjBhNHBwU1dRUzFl?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQNEVZdi1JSl9ja1p4VGVfSFNRanFIN2JXZWdkTlpPemhFb2Q4SWhQUnpFdHhYWHZjZS10WDQ0UXZNVV9hRF9Jd2V6OFNfaEhIT0FuYlZfWF9ta2RwMndsWWRFQUVZNWRuYkthMzdzOGJDbWYtY1h0TkZvRmpnbHVQaHhzNjAxLU15OHN2U2IyeWs0SmdWS1V5S1pSbk1KYkdxOFotdENUU2R3VDg5aS1VTDQ4dnpSQTA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3434,28 +3300,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Coca-Cola's incoming CEO seeks faster innovation as low-sugar, weight-loss trends grow - Reuters</div>
+            <div class="title">ICE is cracking down on people who follow them in their cars - Reuters</div>
             <div class="meta">2026-02-10</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>Coca-Cola's incoming CEO seeks faster innovation as low-sugar, weight-loss trends grow - Reuters</h2>
+            <h2>ICE is cracking down on people who follow them in their cars - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-10</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMingFBVV95cUxQWmtfTHJSTENYM3ljVm9iMG1HdFNKWlpKYkZXS01hY2tKNUxnaXBsNW5FdHNRQk1Tb3AyMFI5cFE3RFVLTUxqX0hqcXFZQVZmbVhfY3FZeWh2RlM3M1JhM0ZrUGl5bWFLdk04MWVFakhKajFqSFBndlZXTTE3TTRnRHIxaXF4RVdGYVZHbTBNclpuYldmdWVGSlVCYXpuQQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOenZuQmFyS0RYX3N1WjdmZHg2T2Q3cldwdXBVdUhMRlVsWXlQd2dPaFlMMFpWSXN0dWJFQkREZTlzQVQ3TmFNREp5Tkl3bWlmZC1XbERxb3hhelZGYjlDX20zN0E0VV9IN2tGZW0wTGp2NlZJa1NUV21pZC01RHVkYklMM2I4dGhXSWhZTTJLYU5iNzVHZjBhNHBwU1dRUzFl?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">S&P 500, Nasdaq fall as communication services, tech stocks weigh - Reuters</div>
+            <div class="title">US retail sales stall in December; underlying weakness emerging - Reuters</div>
             <div class="meta">2026-02-10</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>S&P 500, Nasdaq fall as communication services, tech stocks weigh - Reuters</h2>
+            <h2>US retail sales stall in December; underlying weakness emerging - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-10</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQTmNHRWtyR2RkcVJDcXlXUVM4SnlYRWIyYnNKSEh3WlN3aTM2QVN4QTdKUUpneHZGVlhWVlp6Nkk1VWJSMlh5MlUteVFubGlmRTF0SmRSZURmc3J4Rk1LWHBNUDE0Qk5NS2JBTXFBUVYwWlR6bFo1Z1N3RENwRTNUaUxpRmJGQWJxNk5LRWtsR01Bcld6WVUyemRoSkFORUhfU1VZNzRiSk9hV01wakF2OVF1WUJXYUE?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNNHZENGRGU2FYM1ZiaUxzVTc0cnhXU2VwVHJDWjB4c2UzZUhUQms1dDQycmNlV0dOdV8wSWtyM3Z0bXh0ZzFiVzEteEFhczE3Y2ptZTNyWmhfNV9NY3Jmck9XVmd3TF9VcG9iOEtCM0FSTU9CR25hRl9aWnlLMVh1UUFNcnhEelRPdmZsS2MzTFI?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
