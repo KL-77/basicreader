@@ -154,280 +154,222 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Victory for Elon Musk: US labor board abandons authority over SpaceX</div>
+            <div class="title">Once-hobbled Lumma Stealer is back with lures that are hard to resist</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-0" style="display:none;">
-            <h2>Victory for Elon Musk: US labor board abandons authority over SpaceX</h2>
+            <h2>Once-hobbled Lumma Stealer is back with lures that are hard to resist</h2>
             <p><strong>Ars Technica - All content | 2026-02-11</strong></p>
-            <a class="original-link" href="https://arstechnica.com/tech-policy/2026/02/victory-for-elon-musk-us-labor-board-abandons-authority-over-spacex/">Visit Original Website</a>
+            <a class="original-link" href="https://arstechnica.com/security/2026/02/once-hobbled-lumma-stealer-is-back-with-lures-that-are-hard-to-resist/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The National Labor Relations Board abandoned a Biden-era complaint against SpaceX after a finding that the agency does not have jurisdiction over Elon Musk’s space company. The US labor board said SpaceX should instead be regulated under the Railway Labor Act, which governs labor relations at railroad and airline companies.
+            <div id="article-text">Last May, law enforcement authorities around the world scored a key win when they hobbled the infrastructure of Lumma, an infostealer that infected nearly 395,000 Windows computers over just a two-month span leading up to the international operation. Researchers said Wednesday that Lumma is once again “back at scale” in hard-to-detect attacks that pilfer credentials and sensitive files.
 
-The Railway Labor Act is enforced by a separate agency, the National Mediation Board, and has different rules than the National Labor Relations Act enforced by the NLRB. For example, the Railway Labor Act has an extensive dispute-resolution process that makes it difficult for railroad and airline employees to strike. Employers regulated under the Railway Labor Act are exempt from the National Labor Relations Act.
+Lumma, also known as Lumma Stealer, first appeared in Russian-speaking cybercrime forums in 2022. Its cloud-based malware-as-a-service model provided a sprawling infrastructure of domains for hosting lure sites offering free cracked software, games, and pirated movies, as well as command-and-control channels and everything else a threat actor needed to run their infostealing enterprise. Within a year, Lumma was selling for as much as $2,500 for premium versions. By the spring of 2024, the FBI counted more than 21,000 listings on crime forums. Last year, Microsoft said Lumma had become the “go-to tool” for multiple crime groups, including Scattered Spider, one of the most prolific groups.
 
-In January 2024, an NLRB regional director alleged in a complaint that SpaceX illegally fired eight employees who, in an open letter, criticized CEO Musk as a “frequent source of embarrassment.” The complaint sought reinstatement of the employees, back pay, and letters of apology to the fired employees.
+The FBI and an international coalition of its counterparts took action early last year. In May, they said they seized 2,300 domains, command-and-control infrastructure, and crime marketplaces that had enabled the infostealer to thrive. Recently, however, the malware has made a comeback, allowing it to infect a significant number of machines again.
 
-SpaceX responded by suing the NLRB, claiming the labor agency’s structure is unconstitutional. But a different issue SpaceX raised later—that it is a common carrier, like a rail company or airline—is what compelled the NLRB to drop its case. US regulators ultimately decided that SpaceX should be treated as a “common carrier by air” and “a carrier by air transporting mail” for the government.
+“LummaStealer is back at scale, despite a major 2025 law-enforcement takedown that disrupted thousands of its command-and-control domains,” researchers from security firm Bitdefender wrote. “The operation has rapidly rebuilt its infrastructure and continues to spread worldwide.”
 
-In a February 6 letter to attorneys who represent the fired employees, NLRB Regional Director Danielle Pierce said the agency would defer to a National Mediation Board opinion that SpaceX is a common carrier:
+As with Lumma before, the recent surge leans heavily on “ClickFix,” a form of social engineering lure that’s proving to be vexingly effective in causing end users to infect their own machines. Typically, these types of bait come in the form of fake CAPTCHAs that—rather requiring users to click a box or identify objects or letters in a jumbled image—instruct them to copy text and paste it into an interface, a process that takes just seconds. The text comes in the form of malicious commands provided by the fake CAPTCHA. The interface is the Windows terminal. Targets who comply then install loader malware, which in turn installs Lumma.
 
-In the course of the investigation and litigation of this case, a question was presented as to whether the Employer’s operations fall within the jurisdiction of the Railway Labor Act (“RLA”) rather than the [National Labor Relations] Act. As a result, consistent with Board law, the matter was referred to the National Mediation Board (“NMB”) on May 21, 2025 for an opinion as to whether the Employer is covered by the RLA. On January 14, 2026, the NMB issued its decision finding that the Employer is subject to the RLA as a common carrier by air engaged in interstate or foreign commerce as well as a carrier by air transporting mail for or under contract with the United States Government. Accordingly, the National Labor Relations Board lacks jurisdiction over the Employer and, therefore, I am dismissing your charge.
+A core part of the resurgence is the use of CastleLoader, a separate piece of malware that’s installed initially. It runs solely in memory, making it much harder to detect than malware that resides on a hard drive. Its code is heavily obfuscated, making it hard to spot its malice even when malware scanners can see it. CastleLoader also provides a flexible and full-featured command-and-control communication mechanism that users can customize to meet their specific needs.
 
-The letter was provided to Ars today by Anne Shaver, an attorney for the fired SpaceX employees. “The Railway Labor Act does not apply to space travel,” Shaver told Ars. “It is alarming that the NMB would take the initiative to radically expand the RLA’s jurisdiction to space travel absent direction from Congress, and that the NLRB would simply defer. We find the decision to be contrary to law and public policy.”
+CastleLoader shares some of Lumma’s recently rebuilt infrastructure, an indication that the operators are working together or at least coordinating their activities. In other cases, Lumma relies on legitimate infrastructure—mostly from the content delivery networks Steam Workshop and Discord shared files—to be installed. The use of trusted platforms helps lower targets’ suspicions. In either case, once the loader is executed, it surreptitiously burrows into the infected machine and, after lowering defenses, installs its second payload: Lumma.
 
-We contacted the NLRB today and will update this article if it provides a response. The NLRB decision was previously reported by Bloomberg and The New York Times.
+People have grown so accustomed to hard-to-solve CAPTCHAs that they think little when instructed to copy website-provided text, click the Win-R keys, and then choose paste. Once this simple action is performed, Lumma has free rein over a host of sensitive files stored on infected machines. Bitdefender said the data includes:
 
-“Jennifer Abruzzo, NLRB general counsel under former President Joe Biden, had rejected SpaceX’s claim that allegations against the company should be handled by the NMB,” Bloomberg wrote. “After President Donald Trump fired her in January last year, SpaceX asked the labor board to reconsider the issue.”
+“The effectiveness of ClickFix lies in its abuse of procedural trust rather than technical vulnerabilities,” Bitdefender said. “The instructions resemble troubleshooting steps or verification workarounds that users may have encountered previously. As a result, victims often fail to recognize that they are manually executing arbitrary code on their own system.”
 
-In April 2025, SpaceX and the NLRB told a federal appeals court in a joint filing that the NLRB would ask the NMB to decide whether it had jurisdiction over SpaceX. The decision to seek the NMB’s opinion was made “in the interests of potentially settling the legal disputes currently pending between the NLRB and SpaceX on terms mutually agreeable to both parties,” the joint filing said.
+While Lumma is targeting only Windows users, other malware campaigns have used the same technique to infect macOS machines since at least last June. More recent ClickFix attacks on macOS users have continued into this year.
 
-Shaver provided a July 2025 filing that the employees’ attorneys made with the NMB. The filing said that despite SpaceX claiming to hold itself out to the public as a common carrier through its website and certain marketing materials, the firm doesn’t actually carry passengers without “a negotiated, bespoke contract.”
-
-“SpaceX’s descriptions of its transport activities are highly misleading,” the filing said. “First, regarding human spaceflight, other than sending astronauts to the ISS on behalf of the US and foreign governments, it has only ever agreed to contract with two very wealthy, famous entrepreneurs. The Inspiration4 and Polaris Dawn missions were both for Jared Isaacman, CEO of Shift4 and President Trump’s former pick to lead NASA prior to his public falling out with SpaceX CEO Elon Musk. Fram2 was for Chun Wang, a cryptocurrency investor who reportedly paid $55 million per seat. A total of two private customers for human spaceflight does not a common carrier make.”
-
-The letter said that SpaceX redacted pricing information from marketing materials it submitted as exhibits. “If these were actually marketing materials provided to the public, there would be no need to redact pricing information,” the filing said. “SpaceX’s redactions underscore that it provides such materials at its discretion to select recipients, not to the public at large—far from the conduct of a true common carrier.”
-
-The ex-employees’ attorneys further argued that SpaceX is not engaged in interstate or foreign commerce as defined by the Railway Labor Act. “SpaceX’s transport activities are not between one state or territory and another, nor between a state or territory and a foreign nation, nor between points in the same state but through another state. Rather, they originate in Florida, Texas, or California, and go to outer space,” the filing said.
-
-The filing also disputed SpaceX’s argument that it is a “carrier by air transporting mail for or under contract with the United States Government.” Evidence presented by SpaceX shows only that it carried SpaceX employee letters to the crew of the International Space Station and “crew supplies provided for by the US government in its contracts with SpaceX to haul cargo to the ISS,” the filing said. “They do not show that the government has contracted with SpaceX as a ‘mail carrier.’”
-
-SpaceX’s argument “is rife with speculation regarding its plans for the future,” the ex-employees’ attorneys told the NMB. “One can only surmise that the reason for its constant reference to its future intent to develop its role as a ‘common carrier’ is the lack of current standing in that capacity.” The filing said Congress would have to add space travel to the Railway Labor Act’s jurisdiction in order for SpaceX to be considered a common carrier.
-
-When asked about plans for appeal, Shaver noted that they have a pending case in US District Court for the Central District of California: Holland-Thielen et al v. SpaceX and Elon Musk. “The status of that case is that we defeated SpaceX’s motion to compel arbitration at the district court level, and that is now on appeal to the 9th circuit,” she said.
-
-SpaceX’s lawsuit against the NLRB is still ongoing at the US Court of Appeals for the 5th Circuit, but the case was put on hold while the sides waited for the NMB and NLRB to decide which agency has jurisdiction over SpaceX.</div>
+The best defense against ClickFix is to steer clear of sites offering free stuff. Windows and macOS provide a means to require a password before the command terminals can be opened. People with technical skills who administer machines on behalf of less experienced users may want to consider using this latter defense as well.</div>
         </div>
         
         <div class="card" onclick="openModal('content-1')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Apple releases iOS 26.3 with updates that mainly benefit non-Apple devices</div>
+            <div class="title">Byte magazine artist Robert Tinney, who illustrated the birth of PCs, dies at 78</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-1" style="display:none;">
-            <h2>Apple releases iOS 26.3 with updates that mainly benefit non-Apple devices</h2>
+            <h2>Byte magazine artist Robert Tinney, who illustrated the birth of PCs, dies at 78</h2>
             <p><strong>Ars Technica - All content | 2026-02-11</strong></p>
-            <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/apple-releases-ios-26-3-with-updates-that-mainly-benefit-non-apple-devices/">Visit Original Website</a>
+            <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/byte-magazine-artist-robert-tinney-who-illustrated-the-birth-of-pcs-dies-at-78/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Apple has just released the latest major updates for iOS 26, iPadOS 26, macOS 26 Tahoe, and all the other operating systems it released back in September of 2025. The 26.3 updates for these operating systems are fairly mild, focusing mostly on bug fixes and security patches, but Apple is adding a handful of iPhone features designed to make it easier to use third-party devices in Apple’s ecosystem.
+            <div id="article-text">On February 1, Robert Tinney, the illustrator whose airbrushed cover paintings defined the look and feel of pioneering computer magazine Byte for over a decade, died at age 78 in Baker, Louisiana, according to a memorial posted on his official website.
 
-The first is a “transfer to Android” feature that will facilitate switching away from Apple’s phones into the Android ecosystem. Apple offers to transfer “photos, messages, notes, apps, and more,” as well as the user’s phone number, but won’t transfer things like Bluetooth pairing information or sensitive data from the Health app.
+As the primary cover artist for Byte from 1975 to the late 1980s, Tinney became one of the first illustrators to give the abstract world of personal computing a coherent visual language, translating topics like artificial intelligence, networking, and programming into vivid, surrealist-influenced paintings that a generation of computer enthusiasts grew up with.
 
-Whether third-party apps can have their data transferred is likely tied to the AppMigrationKit developer framework that Apple added in iOS 26.1. Apps using this framework can import and export data to and from other devices and also access and download content the app has stored in the cloud. Apple notes that AppMigrationKit only functions for transfers from an Apple device to a non-Apple device; Apple already has several systems in place for preserving and transferring data and settings when upgrading from one iPhone to another.
+Tinney went on to paint more than 80 covers for Byte, working almost entirely in airbrushed Designers Gouache, a medium he chose for its opaque, intense colors and smooth finish. He said the process of creating each cover typically took about a week of painting once a design was approved, following phone conversations with editors about each issue’s theme. He cited René Magritte and M.C. Escher as two of his favorite artists, and fans often noticed their influence in his work.
 
-The transfer system will rely on the target Android phone also supporting the feature; on Google’s end, the Data Transfer API was only added in the recent “QPR2” update to Android 16, released in early December. Android phone makers are considerably better about updates than they used to be, but it will still take time for a critical mass of even the newest non-Pixel Android devices to get this update.
+Born on November 22, 1947, in Penn Yan, New York, Tinney moved with his family to Baton Rouge, Louisiana, as a child. He studied illustration and graphic design at Louisiana Tech University, and after a tour of service during the Vietnam War, he began his career as a commercial artist in Houston.
 
-Apple released a “Move to iOS” Android app back in 2015 to make switching to the iPhone easier and away from Android. Doubtlessly, that’s still the direction Apple hopes most switches will go. But as with Android’s gradually improving support for AirDrop, better interoperability is a pretty straightforward win for users.
+His connection to Byte came through a chance meeting with Carl Helmers, who would later found the magazine. In a 2006 interview I conducted with Tinney for my blog, Vintage Computing and Gaming, he recalled how the relationship began: “One day the phone rang in my Houston apartment and it was Carl wanting to know if I would be interested in painting covers for Byte.” His first cover appeared on the December 1975 issue, just three months after the magazine launched.
 
-Another iOS 26.3 update is also aimed at interoperability, though it may only apply to iPhones covered by European Union regulations. A feature called “notification forwarding” will send your iPhone’s notifications to third-party accessories, including Google’s Android-based Wear OS smartwatches. Once the setting is enabled, users will be able to decide which apps can forward notifications to the third-party device, similar to how Apple Watch notifications work.
+Over time, his covers became so popular that he created limited-edition signed prints that he sold on his website for decades. “A friend suggested once that I should select the best covers and reproduce them as signed prints,” he said in 2006. “Byte was gracious enough to let me advertise the prints when they could fit in an ad (it did get bumped occasionally), and the prints were very popular in the Byte booth at the big computer shows, two or three of which my wife, Susan, and I attended per year. When an edition sold out, I then put the design on a T-shirt.”
 
-In current betas, Apple allows notifications to be forwarded to only one device at a time, and forwarding notifications to a third-party device means you can’t send them to an Apple Watch.
+Byte stopped commissioning Tinney’s cover art around 1987, opting for product photographs as competition in the computer magazine market intensified. His final cover was for the magazine’s 15th Anniversary issue in September 1990.
 
-Finally, both iOS 26.3 and iPadOS 26.3 are introducing a feature for some newer devices with Apple’s in-house C1 and C1X modems: a “limit precise location” toggle that Apple says “enhances your location privacy by reducing the precision of location data available to cellular networks.”
+What made Tinney’s work distinctive was the fact that he was not a technical person. He had no engineering background and said in the 2006 interview that he always felt “a little uneasy” around Byte’s editors because he didn’t speak their technical language. But he saw that as a strength. “I’ve always thought that my interpretation of computer issues with non-technical visual metaphors was what gave my illustrations their distinctive character,” he told me. “So maybe that was a case of making lemonade out of lemons.”
 
-This feature is currently only available on a handful of devices and even fewer carriers: In the US, Boost Mobile is the only one. Only the iPhone Air, iPhone 16e, or the M5 iPad Pro will offer the toggle; devices like the iPhone 17, iPhone 17 Pro, and older phones with Qualcomm or Intel modems won’t support the feature.
+That approach produced images that communicated instantly: a train running on a printed circuit board for an issue about computer engineering, a tiny computer wristwatch, or robots hatching from eggs. His 1981 Smalltalk cover featuring a colorful hot air balloon, according to his website, became a widely recognized symbol of object-oriented programming.
 
-Apple has also updated all of its other major operating systems today. But macOS 26.3, iPadOS 26.3, watchOS 26.3, tvOS 26.3, visionOS 26.3 and version 26.3 of the HomePod software are all quieter updates of the bug-fixes-and-performance-improvements variety. Beta testers have found early evidence of support for the M5 Max and M5 Ultra chips, pointing to pending refreshes for some higher-end Macs, but that doesn’t tell us much we didn’t already know.
+After leaving Byte, Tinney created illustrations for electronics companies, including JDR Microdevices and Jameco Electronics, and created cover art for Borland’s Turbo Prolog and Turbo Basic software. He eventually transitioned to oil portraits and adopted Photoshop for commercial work. “Anything I can do with gouache and an airbrush, I can do about three times better with Photoshop,” he told me, “plus I don’t have to breathe the fumes!”
 
-The 26.3 updates are mostly sleepy, but the 26.4 releases may be a bigger deal. These are said to be the first to include Apple’s “more intelligent Siri,” a feature initially promised as part of the first wave of Apple Intelligence updates in iOS 18 but delayed after it failed to meet Apple’s quality standards.
+Tinney is survived by his wife of 48 years, Susan, and their three children, nine grandchildren, and one great-grandchild. A celebration of his life will be held in May 2026.
 
-Apple and Google jointly announced in January that the new Siri would be powered by Google’s Gemini language models rather than OpenAI’s ChatGPT or other competing models. As with other Apple Intelligence features, we’d expect the new Siri to be available to testers via Apple’s developer and public beta programs before being released to all devices.</div>
+In his later years, Tinney grew philosophical about the future of illustration as a profession, noting that stock image databases had changed the economics of the field. But he remained upbeat about the value of artistic talent, comparing it in that 2006 interview to the skill of public speaking: “It’s a nice talent to have, but it isn’t easy to find someone who’ll pay you just to do it. You need to combine that basic talent with another skill to really have a marketable service.”</div>
         </div>
         
         <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">China showcases new Moon ship and reusable rocket in one extraordinary test</div>
+            <div class="title">Yes, Rocket Lab is blowing up engines. No, it's not a big deal, CEO says.</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-2" style="display:none;">
-            <h2>China showcases new Moon ship and reusable rocket in one extraordinary test</h2>
+            <h2>Yes, Rocket Lab is blowing up engines. No, it's not a big deal, CEO says.</h2>
             <p><strong>Ars Technica - All content | 2026-02-11</strong></p>
-            <a class="original-link" href="https://arstechnica.com/space/2026/02/china-showcases-new-moon-ship-and-reusable-rocket-in-one-extraordinary-test/">Visit Original Website</a>
+            <a class="original-link" href="https://arstechnica.com/space/2026/02/yes-rocket-lab-is-blowing-up-engines-no-its-not-a-big-deal-ceo-says/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">China’s space program, striving to land astronauts on the Moon by 2030, carried out a test flight of a new reusable booster and crew capsule late Tuesday (US time), and the results were spectacular.
+            <div id="article-text">A little more than two months ago, a Rocket Lab employee called the Stennis Space Center Fire Department from the nearby A3 test stand. There was a grass fire where Archimedes engines undergo testing. Could they please send personnel over?
 
-The demonstration “marks a significant breakthrough in the development of [China’s] manned lunar exploration program,” the China Manned Space Agency (CMSA) said in a statement. China and the United States are racing to accomplish the next human landing on the Moon in a competition for national prestige and lunar resources. The Long March 10 rocket and Mengzhou spacecraft, both tested Tuesday, are core elements of China’s lunar architecture.
+According to the fire station’s November 30 dispatcher log, the employee said, “The fire started during a test when an anomaly caused an electrical box to catch fire.”
 
-The launch of a subscale version of the Long March 10 rocket, still in development, provided engineers with an opportunity to verify the performance of an important part of the new Mengzhou capsule’s safety system. The test began with liftoff of the Long March 10 booster from a new launch pad at Wenchang Space Launch Site on Hainan Island, China’s southernmost province, at 10 pm EST Tuesday (03:00 UTC or 11 am Beijing time Wednesday).
+Satellite imagery from before and after the anomaly appears to show that the roof had been blown off the left test cell, one of two at the test stand at the historic NASA facility in southern Mississippi. One person with knowledge of the anomaly said, “The characterization of this as an electrical fire doesn’t reflect what actually occurred. This was a catastrophic engine explosion that resulted in significant infrastructure damage.”
 
-A test version of the Mengzhou spacecraft, flying without anyone onboard, climbed into the stratosphere on top of the Long March booster before activating its launch abort motors a little more than a minute into the flight as the rocket reached the moment of maximum aerodynamic pressure, known as Max-Q. The abort motors pulled the capsule away from the booster, simulating an in-flight escape that might be necessary to whisk crews away from a failing rocket. The Mengzhou spacecraft later deployed parachutes and splashed down offshore from Hainan Island.
+According to two sources, this is one of at least two Archimedes engine tests that have failed in the past three months.
 
-NASA and SpaceX performed similar in-flight abort tests before flying astronauts on the Orion and Dragon spacecraft. The test boosters on the Orion and Dragon abort tests were expended, but the Long March 10 rocket wasn’t finished after the Mengzhou abort command. Remarkably, the booster continued its ascent without the crew capsule, soaring into space on the power of its kerosene-fueled YF-100 engines before reentering the atmosphere, reigniting its engines, and nailing a propulsive landing in the South China Sea, right next to a recovery barge waiting to bring it back to shore.
+The engine test anomalies come at a critical time for Rocket Lab, as it is attempting to finalize development of a flight version of the Archimedes engine, which burns liquid oxygen and methane and has a sea-level thrust of 165,000 pounds. Nine of these engines will power the company’s much-anticipated Neutron rocket, which is aiming for a debut launch later this year.
 
-“The rocket’s first stage and the spacecraft’s return capsule were safely splashed down in the designated sea area according to procedures,” CMSA said.
+In response to a query from Ars about the engine test anomalies, Rocket Lab Chief Executive Officer Pete Beck downplayed concerns.
 
-A recap video released by Chinese state television shows highlights from the test flight.
+“Eric, you are trying to make a story out of nothing,” Beck said. “We test to the limits, that’s part of developing a successful rocket. We often put the engine into very off nominal states to find the limits and sometimes they let go, this is normal and how you ensure rockets don’t fail in flight.”
 
-In a matter of minutes, Chinese engineers moved closer to human-rating the Mengzhou crew capsule and achieved the country’s most successful test of a reusable rocket.
+Rocket companies do test engines to the point of failure. These tests often occur out of public view on private or government property. However, when NASASpaceflight installed cameras outside SpaceX’s McGregor engine test facilities in Texas, it became clear that rocket engines, such as the company’s new Raptor engine, are pushed to failure not infrequently. What is not clear is how often this failure is intentional.
 
-“The test successfully verified the functional performance of the rocket’s first stage ascent and recovery phases, as well as the maximum dynamic pressure escape and recovery of the spacecraft,” CMSA said. “It also verified the compatibility of relevant interfaces across various engineering systems, accumulating valuable flight data and engineering experience for subsequent manned lunar exploration missions.”
+Beck said Rocket Lab is presently pushing the Archimedes engine to find its failure modes and performance in edge cases.
 
-The low-altitude demonstration of the Mengzhou launch abort system follows a ground-level abort test last year that verified the spacecraft’s ability to escape an emergency on the launch pad. The Long March 10 booster also completed two test-firings on the launch pad prior to the in-flight abort test. At the same time, Chinese engineers have run a prototype lunar lander through a series of ground tests.
+“Right now we are in the part of the program where we are doing very nasty things to the engine like backing right off the suction pressure, inducing cavitation and exploring outside the run box,” he said. “These things can often lead to engines letting go. We have two test cells so we can do these types of tests and not interrupt our test cadence or production flow, hence there is zero impact to schedule, in fact 48 hours later we were running engines again.”
 
-The Mengzhou spacecraft is the vehicle China will use to ferry astronauts from the Earth to the vicinity of the Moon, where crews will transfer into a lander to carry them to the lunar surface. After a short stay on the Moon, Chinese astronauts will take off and rendezvous with the Mengzhou capsule to bring them home.
-
-Chinese officials say the Mengzhou spacecraft will also service the country’s space station in low-Earth orbit, replacing the Shenzhou capsule in use since the 1990s. The Mengzhou capsule has the capability for “multiple reuses,” according to CMSA. Mengzhou flights to low-Earth orbit will carry crews of up to seven astronauts, with smaller crews for lunar missions.
-
-Mengzhou, which means “dream vessel” in Chinese, is scheduled for its first orbital test flight later this year. The spacecraft will launch on a Long March 10A rocket and dock with China’s Tiangong space station in low-Earth orbit. The Long March 10A, optimized for low-Earth orbit flights, will consist of a single reusable first-stage booster flying in combination with an upper stage. The full-size Long March 10, with 21 engines on three first-stage boosters connected together, will have the power to place payloads up to 70 metric tons into low-Earth orbit, and enough energy to propel the 26-metric-ton Mengzhou spacecraft to the Moon.
-
-China’s leading state-owned space industry contractor, the China Aerospace and Science Technology Corporation (CASC), said the recovery of the Long March 10 booster after the in-flight abort test lays the foundation for “subsequent full-profile flight tests” and marks a “significant step” for China in “mastering reusable rocket technology.”
-
-“The flight test further evaluated several key technologies, including the reliability of multiple engine restarts and high-altitude ignition during the rocket’s reentry phase, adaptability to complex force and thermal environments, and high-precision navigation control during the reentry phase.”
-
-CASC oversees a sprawling industry of rocket and spacecraft manufacturers, including those responsible for designing and building the Mengzhou spacecraft and Long March 10 rocket.
-
-The successful splashdown and recovery of the Long March 10 booster continues a busy period for China’s reusable rocket initiatives. No fewer than 10 Chinese companies are working on reusable rockets at different levels of maturity, all seeking to match the success of SpaceX’s reusable rocket program in the United States.
-
-In December, two Chinese launch providers debuted new rockets—the Zhuque-3 and Long March 12A—with recoverable and reusable boosters. The rockets reached orbit, but their boosters missed their landings downrange from their launch pads.
-
-Several Chinese companies have also completed high-altitude “hop tests” to evaluate vertical takeoff and vertical landing technologies ahead of launching their first orbital flights.
-
-These advancements in China’s reusable rocket and lunar exploration programs come as NASA prepares to launch a crew of four astronauts on a loop around the far side of the Moon as soon as next month. A US-made lunar lander is likely still a few years away from being ready to transport crews to and from the lunar surface.</div>
+Beck has previously said that it is Rocket Lab’s goal to identify failures during component-level testing so that when Neutron launches, it has a high chance of reaching orbit on its first go.</div>
         </div>
         
         <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Smart home PSA: Apple's "new architecture" for Home app becomes mandatory today</div>
+            <div class="title">Did seabird poop fuel rise of Chincha in Peru?</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-3" style="display:none;">
-            <h2>Smart home PSA: Apple's "new architecture" for Home app becomes mandatory today</h2>
+            <h2>Did seabird poop fuel rise of Chincha in Peru?</h2>
             <p><strong>Ars Technica - All content | 2026-02-11</strong></p>
-            <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/smart-home-psa-apples-new-architecture-for-home-app-becomes-mandatory-today/">Visit Original Website</a>
+            <a class="original-link" href="https://arstechnica.com/science/2026/02/did-seabird-poop-fuel-rise-of-chincha-in-peru/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">In 2022, Apple announced it was adopting a “new Home architecture” for its smart home ecosystem to improve its performance and reliability and make it possible to support different kinds of accessories. Although it was mostly an invisible update when it worked properly, some users who attempted to switch to the new architecture when it first rolled out in iOS 16.2 ran into slow or unresponsive devices and other problems, prompting Apple to pause the rollout and re-release it as part of iOS 16.4.
+            <div id="article-text">The pre-Inca Chincha Kingdom (circa 1000-1400 CE), along Peru’s southern coast, was one of the most wealthy and influential of its time before falling to the Inca and Spanish empires. Scientists have long puzzled over the foundation for that prosperity, and it seems one critical factor was bird poop, according to a new paper published in the journal PLoS ONE.
 
-If you put off transitioning to the new architecture because of those early teething problems or for some other reason, Apple is forcing the issue starting today: You’ll need to update to the new Home architecture if you want to continue using the Home app, and older iOS and macOS versions that don’t support the new architecture will no longer be able to control your smart home devices. The old version of the Home app and the old Home/HomeKit architecture are no longer supported.
+“Seabird guano may seem trivial, yet our study suggests this potent resource could have significantly contributed to sociopolitical and economic change in the Peruvian Andes,” said co-author Jacob Bongers, a digital archaeologist at the University of Sydney. “Guano dramatically boosted the production of maize (corn), and this agricultural surplus crucially helped fuel the Chincha Kingdom’s economy, driving their trade, wealth, population growth and regional influence, and shaped their strategic alliance with the Inca Empire. In ancient Andean cultures, fertiliser was power.”
 
-If you’re like me, you hit an “upgrade” button in your Home app years ago and then mostly forgot about it—if you open the Home app on a modern iPhone, iPad, or Mac and don’t see an update prompt, it means you’re already using the updated architecture and don’t need to worry about it.
+Last November, Bongers co-authored a paper detailing evidence supporting the hypothesis that the mysterious “Band of Holes” on Mount Sierpe in the Andes might have been an ancient marketplace. Aerial photographs from the 1930s first revealed that long row of around 5,200 precisely aligned holes, seemingly organized into blocked sections, most likely constructed by the Chincha Kingdom. Scholars had suggested various hypotheses for what the site’s purpose may have been: defense, storage, or accounting, perhaps, or maybe to collect water and capture fog for local gardens. But nobody had any strong evidence for those suggestions.
 
-For those who haven’t upgraded, Apple’s support document outlines what you need to do: Make sure every device you plan to use the Home app on is running a supported operating system (“iOS 16.2, iPadOS 16.2, macOS 13.1, tvOS 16.2, or watchOS 9.2 or later”), open the Home app, and tap the update prompt. Apple says that some users “may be automatically upgraded to the latest version of Apple Home,” but it didn’t specify under what circumstances an automatic switch will happen.
+Bongers conducted microbotanical sediment analysis of samples taken from the site and combined that data with new high-resolution aerial drone imagery. The former found traces of ancient maize pollens and reeds used in basket-weaving, indicating that the locals deposited plants transported in woven baskets or bundles into those holes. Bongers interpreted this as evidence of a pre-Inca marketplace where people exchanged local goods for the wares of mobile traders.
 
-Apple has never gone into explicit detail on just what the updated Home architecture does, but the additions the company has made to its Home (formerly HomeKit) ecosystem in the last couple of years generally work only with the updated architecture and app. According to Apple’s support page, that includes “guest access, robot vacuum cleaners, and Activity History in the Home app.”
+Now Bongers has turned his attention to analyzing the biochemical signatures of 35 maize samples excavated from buried tombs in the region. He and his co-authors found significantly higher levels of nitrogen in the maize than in the natural soil conditions, suggesting the Chincha used guano as a natural fertilizer. The guano from such birds as the guanay cormorant, the Peruvian pelican, and the Peruvian booby contains all the essential growing nutrients: nitrogen, phosphorus, and potassium. All three species are abundant on the Chincha Islands, all within 25 kilometers of the kingdom.
 
-For features that require a “home hub,” like sharing control of a home with other Apple users, receiving notifications, or adding accessories compatible with the Matter smart home standard, switching to the new architecture will also require you to have a HomePod (either full-sized or mini) or a modern Apple TV box on your network. The old version of Home/HomeKit allowed iPads to function as home hubs, but they can’t be used that way with the new architecture.</div>
+Those results were further bolstered by historical written sources describing how seabird guano was collected and its importance for trade and production of food. For instance, during colonial eras, groups would sail to nearby islands on rafts to collect bird droppings to use as crop fertilizer. The Lunahuana people in the Canete Valley just outside of Chincha were known to use bird guano in their fields, and the Inca valued the stuff so highly that it restricted access to the islands during breeding season and forbade the killing of the guano-producing birds on penalty of death.
+
+The 19th-century Swiss naturalist Johann Jakob von Tschudi also reported observing the guano being used as fertilizer, with a fist-sized amount added to each plant before submerging entire fields in water. It was even imported to the US. The authors also pointed out that much of the iconography from Chincha and nearby valleys featured seabirds: textiles, ceramics, balance-beam scales, spindles, decorated gourds, adobe friezes and wall paintings, ceremonial wooden paddles, and gold and silver metalworks.
+
+“The true power of the Chincha wasn’t just access to a resource; it was their mastery of a complex ecological system,” said co-author Jo Osborn of Texas A&M University. “They possessed the traditional knowledge to see the connection between marine and terrestrial life, and they turned that knowledge into the agricultural surplus that built their kingdom. Their art celebrates this connection, showing us that their power was rooted in ecological wisdom, not just gold or silver.”
+
+PLoS ONE, 2026. DOI: 10.1371/journal.pone.0341263 (About DOIs).</div>
         </div>
         
         <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">What's next after the Trump administration revokes key finding on climate change?</div>
+            <div class="title">OpenAI researcher quits over ChatGPT ads, warns of "Facebook" path</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-4" style="display:none;">
-            <h2>What's next after the Trump administration revokes key finding on climate change?</h2>
+            <h2>OpenAI researcher quits over ChatGPT ads, warns of "Facebook" path</h2>
             <p><strong>Ars Technica - All content | 2026-02-11</strong></p>
-            <a class="original-link" href="https://arstechnica.com/science/2026/02/whats-next-after-the-trump-administration-revokes-key-finding-on-climate-change/">Visit Original Website</a>
+            <a class="original-link" href="https://arstechnica.com/information-technology/2026/02/openai-researcher-quits-over-fears-that-chatgpt-ads-could-manipulate-users/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Following three of the warmest years on record, as scientists reckon with climate tipping points and states and cities grapple with the escalating cost of extreme weather and more intense wildfires, the Trump administration this week is expected to formally eliminate the US government’s role in controlling greenhouse gas pollution.
+            <div id="article-text">On Wednesday, former OpenAI researcher Zoë Hitzig published a guest essay in The New York Times announcing that she resigned from the company on Monday, the same day OpenAI began testing advertisements inside ChatGPT. Hitzig, an economist and published poet who holds a junior fellowship at the Harvard Society of Fellows, spent two years at OpenAI helping shape how its AI models were built and priced. She wrote that OpenAI’s advertising strategy risks repeating the same mistakes that Facebook made a decade ago.
 
-By revoking its 17-year-old scientific finding that greenhouse gases endanger public health and welfare, the Environmental Protection Agency will demolish the legal underpinning of its authority to act on climate change under the Clean Air Act.
+“I once believed I could help the people building A.I. get ahead of the problems it would create,” Hitzig wrote. “This week confirmed my slow realization that OpenAI seems to have stopped asking the questions I’d joined to help answer.”
 
-EPA Administrator Lee Zeldin will be alongside President Donald Trump for an event Wednesday focused on boosting US use of coal, as mercury and air toxics standards are repealed. That is expected to be a prelude to Zeldin finalizing the endangerment finding repeal, an assignment the president handed him in an executive order signed on the first day of his second term in office.
+Hitzig did not call advertising itself immoral. Instead, she argued that the nature of the data at stake makes ChatGPT ads especially risky. Users have shared medical fears, relationship problems, and religious beliefs with the chatbot, she wrote, often “because people believed they were talking to something that had no ulterior agenda.” She called this accumulated record of personal disclosures “an archive of human candor that has no precedent.”
 
-“President Trump will be taking the most significant deregulatory actions in history to further unleash American energy dominance and drive down costs,” White House spokeswoman Karoline Leavitt said Tuesday.
+She also drew a direct parallel to Facebook’s early history, noting that the social media company once promised users control over their data and the ability to vote on policy changes. Those pledges eroded over time, Hitzig wrote, and the Federal Trade Commission found that privacy changes Facebook marketed as giving users more control actually did the opposite.
 
-The move marks a far more radical retreat on climate change compared to the steps to weaken regulations that were taken in Trump’s first term. Instead, Zeldin’s team has asserted that the EPA never had the power to write such rules to begin with.
+She warned that a similar trajectory could play out with ChatGPT: “I believe the first iteration of ads will probably follow those principles. But I’m worried subsequent iterations won’t, because the company is building an economic engine that creates strong incentives to override its own rules.”
 
-Climate action advocates and Democrat-led states have vowed to challenge the repeal of the endangerment finding, a decision that not only erases President Joe Biden’s most important climate regulations, but is designed to make it more difficult for any future administration to rein in fossil fuel pollution from vehicles, power plants, or other industries.
+Hitzig’s resignation adds another voice to a growing debate over advertising in AI chatbots. OpenAI announced in January that it would begin testing ads in the US for users on its free and $8-per-month “Go” subscription tiers, while paid Plus, Pro, Business, Enterprise, and Education subscribers would not see ads. The company said ads would appear at the bottom of ChatGPT responses, be clearly labeled, and would not influence the chatbot’s answers.
 
-“Communities across the country will bear the brunt of this decision—through dirtier air, higher health costs, and increased climate harm,” said Michelle Roos, executive director of the Environmental Protection Network, a group of former EPA employees, in a statement. “The Trump EPA is surrendering its responsibility, turning its back on families and communities already facing the highest pollution and health risks, and dismantling decades of science and progress.”
+The rollout on Sunday followed a week of public jabs between OpenAI and its rival, Anthropic. Anthropic declared Claude would remain ad-free, then ran Super Bowl ads with the tagline “Ads are coming to AI. But not to Claude,” which depicted AI chatbots awkwardly inserting product placements into personal conversations.
 
-Said Joseph Goffman, EPA’s top air official during the Biden administration, “This move is a fundamental betrayal of EPA’s responsibility to protect human health. It is legally indefensible, morally bankrupt, and completely untethered from the scientific record.”
+OpenAI CEO Sam Altman called the ads “funny” but “clearly dishonest,” writing on X that OpenAI “would obviously never run ads in the way Anthropic depicts them.” He framed the ad-supported model as a way to bring AI to users who cannot afford subscriptions, writing that “Anthropic serves an expensive product to rich people.”
 
-The battle seems destined to land in the Supreme Court, forcing it to revisit its landmark 2007 ruling that greenhouse gases were pollutants under the Clean Air Act. The outcome of a legal challenge is by no means clear, with all five of the justices who formed the majority in that case, Massachusetts v. EPA, dead or retired.
+Anthropic responded as part of an advertising campaign of its own that including ads in conversations with its Claude chatbot “would be incompatible with what we want Claude to be: a genuinely helpful assistant for work and for deep thinking.” The company said more than 80 percent of its revenue comes from enterprise customers.
 
-To help readers sort through the meaning of the highly technical legal maneuver by the Trump administration, and look to what comes next, Inside Climate News tackled some of the key questions raised by the reversal of the endangerment finding:
+Regardless of the debate over whether AI chatbots should carry ads, OpenAI’s support documentation reveals that ad personalization is enabled by default for users in the test. If left on, ads will be selected using information from current and past chat threads, as well as past ad interactions. Advertisers do not receive users’ chats or personal details, OpenAI says, and ads will not appear near conversations about health, mental health, or politics.
 
-A panel of the National Academies of Sciences, Engineering, and Medicine (NASEM) put it bluntly: “The evidence for current and future harm to human health and welfare created by human-caused [greenhouse gases] is beyond scientific dispute,” the scientists said in a report submitted to the EPA as it launched its repeal process. They said that the endangerment finding that the Obama administration adopted in 2009 is now supported by longer observational records and multiple new lines of evidence.
+In her essay, Hitzig pointed to what she called an existing tension in OpenAI’s principles. She noted that while the company states it does not optimize for user activity solely to generate advertising revenue, reporting has suggested that OpenAI already optimizes for daily active users, “likely by encouraging the model to be more flattering and sycophantic.”
 
-The most recent National Climate Assessment in 2023 reported that temperatures in the contiguous United States had increased by 2.5° F (1.4° C) since 1970, a marked increase from the 1.3° F (0.7° C) warming over the 20th century that the EPA reported in 2009. Annual heat-wave frequency has tripled since the 1960s, storms are producing more intense rains, and wildfires have become more severe. Hurricanes have been intensifying more rapidly since the early 1980s, and they break up slower. “Multiple lines of evidence show that greenhouse gas emissions from human activities are the primary driver of the observed long-term warming trend and other changes in Earth’s energy balance,” the NASEM panel said. “Natural forces cannot account for observed changes.”
+She warned that this optimization can make users feel more dependent on AI models for support, pointing to psychiatrists who have documented instances of “chatbot psychosis” and allegations that ChatGPT reinforced suicidal ideation.
 
-The Trump administration didn’t ask NASEM for input, even though the Clean Air Act indicates that the EPA should consult with the National Academies on scientific issues. Instead, NASEM had to self-fund and fast-track its work to meet the tight deadline set for public comment last September. The group noted that it worked in the wake of a slew of climate-driven disasters in the United States: “the heavy rainfall of Hurricane Helene that destroyed homes and roads in the mountains of North Carolina, the fast-moving wildfires that displaced thousands in Los Angeles and affected air quality for miles around, and the rapid flooding of the Guadalupe River in central Texas that led to at least 135 fatalities.”
+OpenAI currently faces multiple wrongful death lawsuits, including one alleging ChatGPT helped a teenager plan his suicide and another alleging it validated a man’s paranoid delusions about his mother before a murder-suicide.
 
-Such manifestations, and analytical methods that have allowed researchers to attribute them to climate change, are the most significant evolution in climate understanding since 2009, said Phil Duffy, chief scientist for the nonprofit group Spark Climate Solutions. “The evidence for societal harms from greenhouse gas emissions has become more of a present day reality than something that’s predicted and expected,” he said. Duffy, a top science adviser to President Joe Biden, was not involved in the NASEM report but was author of a peer-reviewed 2019 study that also found the scientific support for the endangerment finding had withstood the test of time.
+Rather than framing the debate as ads versus no ads, Hitzig proposed several structural alternatives. These included cross-subsidies modeled on the FCC’s universal service fund (in which businesses that pay for high-value AI labor would subsidize free access for others), independent oversight boards with binding authority over how conversational data is used in ad targeting, and data trusts or cooperatives in which users retain control of their information. She pointed to the Swiss cooperative MIDATA and Germany’s co-determination laws as partial precedents.
 
-When asked about the National Academies’ work, the EPA has stressed that its decision was based on new legal doctrines. In its proposal last year, the EPA asserted that the uncertainties “are more significant than previously believed,” and that “the more pessimistic assumptions” in the 2009 finding have not been borne out.
+Hitzig closed her essay with what she described as the two outcomes she fears most: “a technology that manipulates the people who use it at no cost, and one that exclusively benefits the few who can afford to use it.”
 
-It was not immediately clear whether the agency, in its final proposal, would continue to lean on the well-worn science denial talking points compiled by the so-called “Climate Working Group,” five prominent climate skeptics hand-picked by Energy Secretary Chris Wright, a former oil executive, as advisors for the endangerment finding repeal process. More than 85 climate scientists submitted a report to the EPA detailing errors in the Climate Working Group’s report, and a federal judge ruled that Wright broke the law in establishing the group without regard to the Federal Advisory Committee Act’s transparency and fairness provisions.
+Hitzig was not the only prominent AI researcher to publicly resign this week. On Sunday, Mrinank Sharma, who led Anthropic’s Safeguards Research Team and co-authored a widely cited 2023 study on AI sycophancy, announced his departure in a letter warning that “the world is in peril.” He wrote that he had “repeatedly seen how hard it is to truly let our values govern our actions” inside the organization and said he plans to pursue a poetry degree (Hitzig, coincidentally, is also a published poet).
 
-In its original proposal, the Trump EPA relied on recent Supreme Court decisions it said restrict its authority to act on climate under current law, and close observers expect that will be the administration’s strategy.
+On Monday, xAI co-founder Yuhuai “Tony” Wu also resigned, followed the next day by fellow co-founder Jimmy Ba. They were part of a larger wave: at least nine xAI employees, including the two co-founders, publicly announced their departures over the past week, according to TechCrunch. Six of the company’s 12 original co-founders have now left.
 
-“We expect EPA to revoke the endangerment finding for legal reasons, not scientific ones,” said Jeff Holmstead, a partner at the Bracewell law firm who served as head of EPA’s air office during President George W. Bush’s administration. “This is the only way that they can ‘drive a stake through the heart of climate religion,’ as Administrator Zeldin has said.”
+The departures follow Elon Musk’s decision to merge xAI with SpaceX in an all-stock deal ahead of a planned IPO, a transaction that converted xAI equity into shares of a company valued at $1.25 trillion, though it is unclear whether the timing of the departures is related to vesting schedules.
 
-The second Trump administration had the confidence to take on the endangerment finding largely because of how the president reshaped the Supreme Court in his first term, legal experts say. In two 6-3 decisions from a conservative majority bolstered by Trump’s three appointees, the justices created new doctrine that limited the power of federal regulatory agencies like the EPA.
-
-“We’ve had an administrative law revolution,” said industry lawyer Matthew Leopold, who was the EPA’s general counsel in Trump’s first term, speaking at a forum last fall at the American Enterprise Institute (AEI), a conservative think tank. “The playing field that the Obama administration was playing on [when it made the endangerment finding] looks entirely different today.”
-
-The Supreme Court struck down Obama’s signature climate policy, the Clean Power Plan, in 2022. And in that case, West Virginia v. EPA, the court established its so-called “major questions doctrine,” saying regulation of greenhouse gases was an issue of such great economic and political significance that the EPA could not regulate them without explicit direction from Congress. Then, in a 2024 case over fishing regulations, the Supreme Court overturned the principle that had guided regulatory law for 40 years, saying that federal agencies were due no deference in interpreting ambiguities in the law. The court said judges, not agencies, should decide the meaning of the law, even though in the environmental realm that typically involves application of science and knowledge of the best available technologies for reining in pollution.
-
-Climate action advocates, however, argue that the Trump administration faces an uphill battle in defending its repeal of the endangerment finding, largely because the Supreme Court already has interpreted the Clean Air Act as applying to greenhouse gases—in Massachusetts v. EPA. The court has repeatedly declined efforts to overturn that precedent, including in the West Virginia v. EPA case.
-
-“To be sure… the court limited precisely how EPA may regulate those pollutants, but even the current court has not challenged whether EPA may do so,” said David Doniger, senior attorney and strategist for the Natural Resources Defense Council, at a briefing for reporters several weeks before the decision was announced.
-
-Doniger’s colleague, Meredith Hankins, legal director for NRDC’s climate program, says the Trump EPA is clearly relying on legal strategy since it can not offer a scientific rationale for repealing the endangerment finding. “Since EPA’s attempts to make up their own climate science has been laughed out of the room, the agency is left trying to make these tortured legal arguments that do not stand up to the slightest scrutiny,” she said.
-
-Both The Washington Post and POLITICO reported in late January that debate within the administration over the EPA’s legal approach was delaying the process. Outside the administration, even lawyers who supported the move to overturn the endangerment finding acknowledged the challenges. “They are working to break the tool itself,” said Michael Buschbacher, a top attorney in litigation against greenhouse gas standards for vehicles, speaking at the AEI endangerment finding forum. Buschbacher said the many potential pitfalls make it “like a regulatory Everest … It’s dangerous. It’s a high-risk, high-reward endeavor.”
-
-The Trump administration’s best chance of scaling that mountain is if it can make it to the Supreme Court, he said: “That’s probably where this is going to go if this administration is going to prevail.”
-
-Not in the least. The EPA’s regulatory determinations are challenged in court more than those of any other federal agency, according to tracking by the Institute for Policy Integrity at New York University, and this high-stakes decision will not be an exception.
-
-Climate action advocates see the endangerment finding as a key line they must defend in what they see as the extraordinary all-out assault on environmental protection in the second Trump term. “Put simply, this is a gift-wrapped package for the fossil fuel industry,” said Manish Bapma, CEO of NRDC. “It is unscientific, it is bad economics, and it is illegal. So we’re gonna fight it.”
-
-The first stop will be the DC Circuit Court of Appeals, which has exclusive jurisdiction over appeals of nationally applicable regulations. Seven of the 11 judges on that court were appointed by Presidents Obama or Biden.
-
-It depends on the courts. If Massachusetts v. EPA is still standing at the end of the battle, the EPA will still have the power to regulate greenhouse gas emissions, like an arrow in its quiver that it just has to decide to use. But if the Supreme Court were to rule the Clean Air Act gives the EPA no authority over greenhouse gas emissions—reversing the Massachusetts decision and perhaps later cases that relied upon it—that leaves future administrations with an empty quiver.
-
-“Then there would be the problem of a lack of authority, unless Congress wrote a new law,” said Doniger of NRDC.
-
-But it has been more than two decades since a bipartisan consensus on climate action seemed fleetingly within reach in Congress. Congressional action has grown more elusive even as public support for action—especially deployment of clean energy—has grown. Democrats were able to get a $390 billion investment in clean energy, the Inflation Reduction Act, passed without GOP support in 2022.
-
-The Biden climate plan was a carrot-and-stick approach to drive the United States to cut its carbon emissions 50 percent by 2030. The IRA’s incentives and subsidies were meant to drive down the price of clean energy, while EPA regulation pushed industry to make a transition away from fossil fuels. But over the past year, Trump and the Republican Congress have clawed back the IRA’s carrots. By revoking its endangerment finding, the EPA will also drop its stick.
-
-Holmstead argued that withdrawal of the endangerment finding might actually force Congress to try to reach a bipartisan agreement on climate legislation: “The business community would like to have the long-term certainty that would come with bipartisan legislation, and if the environmental community sees that it can’t get what it wants from EPA, they might be more willing to make the kind of compromises that are always required to pass meaningful legislation.” But Holmstead added that he did not expect that to happen during the Trump administration.
-
-No matter the outcome of the coming litigation over the endangerment finding repeal, the fossil fuel industry has won time. The Trump administration has ensured that the nation that has contributed the most to the atmosphere’s overload of climate pollution, the United States, will be entangled in litigation during years that scientists have said are crucial for driving down the pollution that is increasing risks and costs for communities as it alters the planet.
-
-This story originally appeared on Inside Climate News.
-
-Marianne Lavelle is the Washington, DC, bureau chief for Inside Climate News. She has covered environment, science, law, and business in Washington, DC, for more than two decades. She has won the Polk Award, the Investigative Editors and Reporters Award, and numerous other honors. Lavelle spent four years as online energy news editor and writer at National Geographic. She spearheaded a project on climate lobbying for the nonprofit journalism organization, the Center for Public Integrity. She also has worked at U.S. News and World Report magazine and The National Law Journal. While there, she led the award-winning 1992 investigation, “Unequal Protection,” on the disparity in environmental law enforcement against polluters in minority and white communities. Lavelle received her master’s degree from Columbia University Graduate School of Journalism, and is a graduate of Villanova University.</div>
+The three sets of departures across OpenAI, Anthropic, and xAI appear unrelated in their specifics, but they arrive during a period of rapid commercialization across the AI industry that has tested the patience of researchers at multiple companies, and they fit a broader pattern of turnover and burnout that has become common at major AI labs.</div>
         </div>
         
         <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">The Feds closed air space around El Paso on Wednesday to address "cartel" drones</div>
+            <div class="title">"Windows 11 26H1" is a special version of Windows exclusively for new Arm PCs</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-5" style="display:none;">
-            <h2>The Feds closed air space around El Paso on Wednesday to address "cartel" drones</h2>
+            <h2>"Windows 11 26H1" is a special version of Windows exclusively for new Arm PCs</h2>
             <p><strong>Ars Technica - All content | 2026-02-11</strong></p>
-            <a class="original-link" href="https://arstechnica.com/space/2026/02/faa-shuts-down-el-paso-airspace-for-10-days-and-wont-say-why/">Visit Original Website</a>
+            <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/windows-11-26h1-is-a-special-version-of-windows-exclusively-for-new-arm-pcs/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Federal Aviation Administration abruptly halted flights into and out of El Paso International Airport on Tuesday night at 11:30 pm local time (1:30 am EST Wednesday) and said the restrictions would remain in place for 10 days.
+            <div id="article-text">Since its release in the fall of 2021, Microsoft’s Windows 11 has received an “annual feature update” in the second half of every year. These feature updates sometimes include new Windows features and other changes that are too large to roll out in a typical monthly Windows Update, and users need to upgrade to new ones to keep getting security patches and other features. The currently supported versions are Windows 11 24H2 and 25H2, released in the fall of 2024 and 2025, respectively.
 
-In its notice, the FAA also restricted air space extended in a radius of 10 nautical miles from the airport. Violators were subject to being shot down, the agency said.
+This week, Microsoft disrupted that update cadence by announcing more information on Windows 11 26H1, which is best described not as an update to Windows 11 but as another version of the operating system entirely. That’s because 26H1 is a “scoped” release intended exclusively for new PCs, starting with those based on Qualcomm’s recently announced Snapdragon X2 Elite chips.
 
-However, less than 10 hours later and without any additional explanation, the FAA ended the restrictions. “The temporary closure of airspace over El Paso has been lifted,” the federal agency said on social media. “There is no threat to commercial aviation. All flights will resume as normal.”
+Microsoft’s support page explains why this release is strange: It won’t be released broadly to other Windows 11 PCs, which should continue to use either 24H2 or 25H2. PCs running 24H2 or 25H2 will never be offered an update to version 26H1, though testers in the Windows Insider Program’s early access Canary channel are able to install it to other PCs if they want. (Build numbers for Windows 11 26H1 start with 28000, compared to 26100 for 24H2 and 26200 for 25H2.)
 
-Later on Wednesday morning, Secretary of Transportation Sean Duffy said the decision to close airspace was made to counteract drones from cartels.
+Users of PCs that ship with Windows 11 26H1 also won’t be able to upgrade to the next major release of Windows, which will presumably be released this fall as Windows 11 26H2. An update that will get the entire Windows ecosystem back on the same version number will be released, but the company isn’t saying when; assume it will happen before March 2028, which is the cutoff for security updates for the Home and Pro editions of Windows 11 26H1.
 
-“The FAA and DOW acted swiftly to address a cartel drone incursion,” Duffy wrote on X. “The threat has been neutralized, and there is no danger to commercial travel in the region.”
+For most users, the behind-the-scenes distinction between these different Windows versions should be mostly invisible. Microsoft says that 26H1 “will continue receiving monthly updates for security, quality, and new features, the same as devices running Windows 11, versions 24H2 and 25H2.” And the company rolls so many new Windows features out through the Microsoft Store or through standard monthly updates that the underlying version of Windows matters less than it used to.
 
-In announcing the closure on Tuesday night, the FAA offered no explanation for the closure aside from determining that the area was classified as “national defense airspace,” and adding that the United States government may use “deadly force” against any airborne aircraft. According to reporting from The New York Times, local officials in El Paso and statewide were not given advance notice for the air space closure.
+But for app developers, IT shops, and anyone else who needs to test things against multiple Windows versions at once, it does create an odd period of overlap where they’ll need to account for one version of Windows that runs just on these brand-new PCs, and one version of Windows that covers everybody else.
 
-Similarly, in announcing an end to the restrictions, the federal agency offered no immediate information to local officials or travelers who were inconvenienced. It is rare for airspace over a major airport to be closed for any extended period.
+Releasing a new version of Windows that just covers new Arm PCs is another signal of Microsoft’s commitment to Arm processors and the Arm version of Windows, after decades of near-exclusive focus on the x86 version of the OS that ran on Intel and AMD’s chips.
 
-The El Paso airport serves more than 3 million customers a month, and according to the 2020 US Census, it lies in the 22nd most populous city in the United States. El Paso is located along the US border with Mexico, across the Rio Grande River from Ciudad Juárez, a city of 1.5 million people.
+Microsoft offered multiple versions of both Windows 10 and Windows 11 in both x86 and Arm editions, but the 24H2 update was a major milestone for Arm PCs. It came with big under-the-hood changes to Windows’ compiler, kernel, and scheduler, and an optimized x86-to-Arm translation layer called Prism that enhanced the compatibility and performance of apps that hadn’t been built to run on Arm processors.
 
-The initial lack of communication from federal officials regarding such a disruptive closure, and then its abrupt end, raised serious questions about the coordination among federal agencies, especially if the FAA was making the closure on behalf of another federal body, such as the US Department of Defense.
+The 24H2 update also coincided with the release of the first-generation Qualcomm Snapdragon X-series processors, high-performance Arm chips developed by some of the same people behind Apple’s M-series chips for Macs. Many third-party developers have also finally released Arm-native versions of their Windows apps, which are faster and more responsive than translated x86 apps.
 
-This story was updated at 10:50 am ET to reflect the most recent statement from Secretary of Transportation Sean Duffy.</div>
+Microsoft’s confidence in the Arm version of Windows was so great that the new Surface PCs released in mid-2024 used Qualcomm’s processors exclusively, relegating Intel chips to offshoot versions for businesses with strict compatibility requirements. For years previously, Microsoft had treated the Intel- and AMD-based Surfaces as the “main” ones and the Arm-based Surface Pro X as the offshoot.
+
+Since the 24H2 update, development on the Arm and the traditional x86 versions of Windows has happened at slightly different rates. Some features, particularly things like Recall and Click To Do that were only rolling out to Copilot+ PCs with fast built-in neural processing units (NPUs), have been available for the Arm versions of Windows for a few weeks or months before they hit the x86 versions. Windows 11 24H2 itself was also shipping on Arm PCs in stores several months before Microsoft began rolling the update out to the wider PC ecosystem.
+
+We’ve asked Microsoft to elaborate on what the Windows 11 26H1 update includes and whether it contains any changes that will benefit the wider PC ecosystem somewhere down the line. We’ll update the article if we receive a response.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -660,11 +602,59 @@ More on AI: If You’re a Real Person Looking for a Job, the Flood of Fake AI Jo
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
-            <div class="title">OpenAI disbands mission alignment team, which focused on ‘safe’ and ‘trustworthy’ AI development</div>
+            <div class="title">AI inference startup Modal Labs in talks to raise at $2.5B valuation, sources say</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-12" style="display:none;">
+            <h2>AI inference startup Modal Labs in talks to raise at $2.5B valuation, sources say</h2>
+            <p><strong>TechCrunch | 2026-02-11</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/02/11/ai-inference-startup-modal-labs-in-talks-to-raise-at-2-5b-valuation-sources-say/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Modal Labs, a startup specializing in AI inference infrastructure, is in the process of raising a new round at a valuation of about $2.5 billion, according to four people with knowledge of the deal. Should the deal close at these terms, the funding round would more than double the company’s valuation of $1.1 billion announced less than five months ago.
+
+General Catalyst is in talks to lead the round, the people told TechCrunch. Modal’s annualized revenue run rate (ARR) is approximately $50 million, our sources said. The discussions are early, and terms could still change.
+
+Modal and General Catalyst did not respond to our requests for comment.
+
+Model is focused on optimizing inference, the process of running trained AI models to generate answers from user requests. Improving inference efficiency reduces compute costs and reduces the lag time between a user’s prompt and the AI’s response.
+
+Modal is one of the handful of inference-focused companies attracting intense investor attention now. Last week, its competitor Baseten announced a $300 million raise at a $5 billion valuation, more than doubling the $2.1 billion valuation it reached just months prior in September. Similarly, Fireworks AI, an inference cloud provider, secured $250 million at a $4 billion valuation in October.
+
+In January, the creators of the open source inference project vLLM announced they had transitioned the tool into a VC-backed startup, Inferact, raising $150 million in seed funding led by Andreessen Horowitz at an $800 million valuation. Meanwhile, TechCrunch reported that the team behind SGLang has commercialized as RadixArk, which sources told us secured seed funding at a $400 million valuation led by Accel.
+
+Modal was co-founded by CEO Erik Bernhardsson in 2021 after he spent more than 15 years building and leading data teams at companies including Spotify and Better.com, where he was the CTO.
+
+The startup counts Lux Capital and Redpoint Ventures among its earlier backers.
+
+Marina Temkin is a venture capital and startups reporter at TechCrunch. Prior to joining TechCrunch, she wrote about VC for PitchBook and Venture Capital Journal. Earlier in her career, Marina was a financial analyst and earned a CFA charterholder designation.
+
+You can contact or verify outreach from Marina by emailing marina.temkin@techcrunch.com or via encrypted message at +1 347-683-3909 on Signal.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+The first signs of burnout are coming from the people who embrace AI the most
+
+MrBeast’s company buys Gen Z-focused fintech app Step
+
+YouTube TV introduces cheaper bundles, including a $65/month sports package
+
+Discord to roll out age verification next month
+
+The backlash over OpenAI’s decision to retire GPT-4o shows how dangerous AI companions can be
+
+OpenAI launches new agentic coding model only minutes after Anthropic drops its own
+
+Anthropic releases Opus 4.6 with new ‘agent teams’</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">OpenAI disbands mission alignment team, which focused on ‘safe’ and ‘trustworthy’ AI development</div>
+            <div class="meta">2026-02-11</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
             <h2>OpenAI disbands mission alignment team, which focused on ‘safe’ and ‘trustworthy’ AI development</h2>
             <p><strong>TechCrunch | 2026-02-11</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/11/openai-disbands-mission-alignment-team-which-focused-on-safe-and-trustworthy-ai-development/">Visit Original Website</a>
@@ -708,13 +698,13 @@ OpenAI launches new agentic coding model only minutes after Anthropic drops its 
 Anthropic releases Opus 4.6 with new ‘agent teams’</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">Apple’s Siri revamp reportedly delayed… again</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>Apple’s Siri revamp reportedly delayed… again</h2>
             <p><strong>TechCrunch | 2026-02-11</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/11/apples-siri-revamp-reportedly-delayed-again/">Visit Original Website</a>
@@ -742,13 +732,13 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">Uber Eats launches AI assistant to help with grocery cart creation</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Uber Eats launches AI assistant to help with grocery cart creation</h2>
             <p><strong>TechCrunch | 2026-02-11</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/11/uber-eats-launches-ai-assistant-to-help-with-grocery-cart-creation/">Visit Original Website</a>
@@ -792,13 +782,13 @@ OpenAI launches new agentic coding model only minutes after Anthropic drops its 
 Anthropic releases Opus 4.6 with new ‘agent teams’</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Who will own your company’s AI layer? Glean’s CEO explains</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Who will own your company’s AI layer? Glean’s CEO explains</h2>
             <p><strong>TechCrunch | 2026-02-11</strong></p>
             <a class="original-link" href="https://techcrunch.com/video/who-will-own-your-companys-ai-layer-gleans-ceo-explains/">Visit Original Website</a>
@@ -847,22 +837,22 @@ Startups are the core of TechCrunch, so get our best coverage delivered weekly.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Elon Musk suggests spate of xAI exits have been push, not pull</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Elon Musk suggests spate of xAI exits have been push, not pull</h2>
             <p><strong>TechCrunch | 2026-02-11</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/11/senior-engineers-including-co-founders-exit-xai-amid-controversy/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Elon Musk is addressing a wave of departures from xAI, including two more co-founders who left this week, bringing the total to six out of the original 12.
 
-At an all-hands meeting yesterday, Musk suggested the exits were about fit, not performance. “Because we’ve reached a certain scale, we’re organizing the company to be more effective at this scale,” he said, according to The New York Times. “And actually, when this happens, there’s some people who are better suited for the early stages of a company and less suited for the later stages.”
+At an all-hands meeting Tuesday night, Musk suggested the exits were about fit, not performance. “Because we’ve reached a certain scale, we’re organizing the company to be more effective at this scale,” he said, according to The New York Times. “And actually, when this happens, there’s some people who are better suited for the early stages of a company and less suited for the later stages.”
 
-On X Wednesday afternoon, he went further, making clear these departures weren’t voluntary. “xAI was reorganized a few days ago to improve speed of execution,” Musk wrote. “As a company grows, especially as quickly as xAI, the structure must evolve just like any living organism. This unfortunately required parting ways with some people.”
+Wednesday afternoon on X, he went further, making clear these departures weren’t voluntary. “xAI was reorganized a few days ago to improve speed of execution,” Musk wrote. “As a company grows, especially as quickly as xAI, the structure must evolve just like any living organism. This unfortunately required parting ways with some people.”
 
 He added that the company is “hiring aggressively” and closed with a quintessentially Musk pitch: “Join xAI if the idea of mass drivers on the Moon appeals to you.”
 
@@ -917,60 +907,6 @@ Got a sensitive tip or confidential documents? We’re reporting on the inner wo
 Rebecca Bellan is a senior reporter at TechCrunch where she covers the business, policy, and emerging trends shaping artificial intelligence. Her work has also appeared in Forbes, Bloomberg, The Atlantic, The Daily Beast, and other publications.
 
 You can contact or verify outreach from Rebecca by emailing rebecca.bellan@techcrunch.com or via encrypted message at rebeccabellan.491 on Signal.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-The first signs of burnout are coming from the people who embrace AI the most
-
-MrBeast’s company buys Gen Z-focused fintech app Step
-
-YouTube TV introduces cheaper bundles, including a $65/month sports package
-
-Discord to roll out age verification next month
-
-The backlash over OpenAI’s decision to retire GPT-4o shows how dangerous AI companions can be
-
-OpenAI launches new agentic coding model only minutes after Anthropic drops its own
-
-Anthropic releases Opus 4.6 with new ‘agent teams’</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Microsoft says hackers are exploiting critical zero-day bugs to target Windows and Office users</div>
-            <div class="meta">2026-02-11</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>Microsoft says hackers are exploiting critical zero-day bugs to target Windows and Office users</h2>
-            <p><strong>TechCrunch | 2026-02-11</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/02/11/microsoft-says-hackers-are-exploiting-critical-zero-day-bugs-to-target-windows-and-office-users/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Microsoft has rolled out fixes for security vulnerabilities in Windows and Office, which the company says are being actively abused by hackers to break into people’s computers.
-
-The exploits are one-click attacks, meaning that a hacker can plant malware or gain access to a victim’s computer with minimal user interaction. At least two flaws can be exploited by tricking someone into clicking a malicious link on their Windows computer. Another can result in a compromise on opening a malicious Office file.
-
-The vulnerabilities are known as zero-days, because the hackers were exploiting the bugs before Microsoft had time to fix them.
-
-Details of how to exploit the bugs have been published, Microsoft said, potentially increasing the chance of hacks. Microsoft did not say where they had been published, and a Microsoft spokesperson did not immediately comment when reached by TechCrunch. In its bug reports, Microsoft acknowledged the input of security researchers in Google’s Threat Intelligence Group in their discovery of the vulnerabilities.
-
-Microsoft said one of the bugs, officially tracked as CVE-2026-21510, was found in the Windows shell, which powers the operating system’s user interface. The bug affects all supported versions of Windows, the company said. When a victim clicks on a malicious link from their computer, the bug allows hackers to bypass Microsoft’s SmartScreen feature that would typically screen malicious links and files for malware.
-
-According to security expert Dustin Childs, this bug can be abused to remotely plant malware on the victim’s computer.
-
-“There is user interaction here, as the client needs to click a link or a shortcut file,” Childs wrote in his blog post. “Still, a one-click bug to gain code execution is a rarity.”
-
-A Google spokesperson confirmed that the Windows shell bug was under “widespread, active exploitation,” and said successful hacks allowed the silent execution of malware with high privileges, “posing a high risk of subsequent system compromise, deployment of ransomware, or intelligence collection.”
-
-Another Windows bug, tracked as CVE-2026-21513, was found in Microsoft’s proprietary browser engine, MSHTML, which powers its legacy and long-discontinued Internet Explorer browser. It’s still found in newer versions of Windows to ensure backward compatibility with older apps.
-
-Microsoft said this bug allows hackers to bypass security features in Windows to plant malware.
-
-According to independent security reporter Brian Krebs, Microsoft also patched three other zero-day bugs in its software that were being actively exploited by hackers.
-
-Zack Whittaker is the security editor at TechCrunch. He also authors the weekly cybersecurity newsletter, this week in security.
-
-He can be reached via encrypted message at zackwhittaker.1337 on Signal. You can also contact him by email, or to verify outreach, at zack.whittaker@techcrunch.com.
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
@@ -1441,16 +1377,39 @@ In the weeks since then, I’ve thought back to Artists for Aid’s conscientiou
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">A Hellish 'Hothouse Earth' Getting Closer, Scientists Say</div>
+            <div class="title">Is Linux Mint Burning Out? Developers Consider Longer Release Cycle</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Is Linux Mint Burning Out? Developers Consider Longer Release Cycle</h2>
+            <p><strong>Slashdot | 2026-02-11</strong></p>
+            <a class="original-link" href="https://linux.slashdot.org/story/26/02/11/1821222/is-linux-mint-burning-out-developers-consider-longer-release-cycle?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+
+As someone who always waits for the &quot;xx.3&quot; versions (and often skips the even ones), I do too.
+
+I&#39;ve been using Linux since the 90s and when I was younger, I loved tweaking and getting the newest stuff.  But these days I want it to &quot;just work&quot;(tm) and not have the UI and features not change a lot.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+On a clear disk you can seek forever.
+		-- P. Denning</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">A Hellish 'Hothouse Earth' Getting Closer, Scientists Say</div>
+            <div class="meta">2026-02-11</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>A Hellish 'Hothouse Earth' Getting Closer, Scientists Say</h2>
             <p><strong>Slashdot | 2026-02-11</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/11/1814253/a-hellish-hothouse-earth-getting-closer-scientists-say?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
 
 &quot;Scientists thought they understood global warming. Then the past three years happened.&quot;https://www.washingtonpost.com... [washingtonpost.com]
 
@@ -1468,7 +1427,13 @@ And take the most successful line of EVs with him?
 
 Not the most successful anymore.  China&#39;s eating his lunch, and they&#39;d be doing more in the US if it weren&#39;t for protectionism.
 
+Maybe? It&#39;s arguable that his support of this admin helped them win power and that has offset much of the good hos EVs have done at this point.  Probably not true but it&#39;s also not zero, he&#39;s burned through a lot of his goodwill and the admin is setting the issue backwards by some amount.
+
+Teslas cratering sales in Europe, the mediocrity of the Cybertruck, the paring down of their product lines, they continue to lose self driving ground to Waymo, Tesla isn&#39;t failing but it isn&#39;t doing great either and I think
+
 Is this going to happen before, or after I retire?
+
+Yep, gerontocracy has consequences. Ignoring global warming, a failing economic system, and other problems that should be tolerable to the comfortably retired for a few more decades are among them.
 
 They actually found that antarctic ice (as a whole) is increasing due to increased water-vapor in the atmosphere and more snow falling. The boffins didn&#39;t see that one coming.
 
@@ -1486,6 +1451,8 @@ The biggest problem, that nobody wants to talk about (for good reason), is that 
 
 Mars is already a completely unlivable hellscape of a planet.  Economically and technologically speaking, it&#39;s far easier to just not screw up Earth any worse than it already is than terraform Mars.
 
+This is of course bullshit designed to keep us not making changes so you don&#39;t have to be inconvenienced
+
 2012 was the record minimum for Artic sea ice. So someone&#39;s model seemed to be onto something.
 
 Now the journalist that wrote the science piece dumbed down so that you could understand it likely did a poor job of explaining it.
@@ -1502,9 +1469,19 @@ what fucking virgins were you listening to a decade and a half ago
 
 Oh, geez.  +3 on this shit. /.&#39;s fallen HARD, damn.  fuckin shameful embarrassment
 
+>> They have been CATASTROPHICALLY wrong every single time.
+
+>> so that the ice caps do not melt for a third time in the last 20 years?
+
 You do realize they&#39;ll never &quot;eat&quot; those costs, right? They&#39;ll pass them on to you the consumer and maintain their profits and bonuses. I dislike being that cynical, but the tariffs have shown us extra costs are passed on.
 
-History is well populated by traces of civilizations brought low by climate change, possibly including the moment when the entire human population was reduced to perhaps 1000 individuals (i.e., we almost didn&#39;t make it). So it is interesting thatthere was much rejoicing that almost the entire collection of climate change efforts, such as they were, have been eliminated by the current administration. Strange that -- almost as though MAGA meant &#39;make america go away&#39;. Now I have never been one to think that a
+We (for a value which does not include maggots) already knew that about tariffs and also about everything else.
+
+I do not understand why people see the concept of costs being passed on to consumers as controversial. If a corporation ceases to make a profit, it ceases to exist. If a corporation is taxed into oblivion and cannot meet the payroll, people stop working there and it stops creating goods and services. Their only existential option is to pass new costs onto consumers.Why is this difficult for people to understand?
+
+History is well populated by traces of civilizations brought low by climate change, possibly including the moment when the entire human population was reduced to perhaps 1000 individuals (i.e., we almost didn&#39;t make it). So it is interesting thatthere was much rejoicing that almost the entire collection of climate change efforts, such as they were, have been eliminated by the current administration. Strange that -- almost as though MAGA meant &#39;make america go away&#39;. Now I have never been one to think that a move towards electric cars and houses was going to do much to move the climate change needle into reverse. But over time there was the hope that moving away from hard hit areas and other defensive moves would moderate the impact. But refusing to do anything until the crisis is upon us does nothing but maximize the costs of survival -- sort of what has happened to FEMA. These sorts of weather extremes are already part of reality, even in the US. With the melting of the polar ice, permafrost thawing and signs that the atlantic current that warms Europe is diminishing, unpleasant new realities seem inevitable. Wonder if the species will survive this time?
+
+The species will survive but civilization as we know it most certainly will not survive. A small subset (read rich people) will have the money to build secure, self-sustaining and very likely fully autonomous areas. Some already own islands large enough for purpose.
 
 The climate would also be very different to the benign conditions of the past 11,000 years...What planet were they studying? We had an ice age within the last 11,000 years. I would never call that benign.The oceans have also been 3-5m higher than they are now. I agree we shouldn&#39;t make things worse than needed, but let&#39;s not forget that the climate changes on its own up and down over time.
 
@@ -1512,45 +1489,90 @@ The climate would also be very different to the benign conditions of the past 11
 
 What planet were they studying? We had an ice age within the last 11,000 years. I would never call that benign.The oceans have also been 3-5m higher than they are now. I agree we shouldn&#39;t make things worse than needed, but let&#39;s not forget that the climate changes on its own up and down over time.
 
-Is it warming?  Probably (hard to tell with all the &#39;smoothing&#39; and &#39;adjusting&#39; of data going on, but I&#39;d agree it probably is.)Is it driven by humans?  Utterly not, though almost certainly we&#39;re aggravating it.Is it faster than ever, historically speaking?  Utterly not.
+The oceans have also been 3-5m higher than they are now. I agree we shouldn&#39;t make things worse than needed, but let&#39;s not forget that the climate changes on its own up and down over time.
 
-That said, this sort of nonsense catastrophism is welcome; it shows to everyone how hilariously unhinged the doomsayers have become.
+Rate of change matters.  Just because I can use the brakes in my car to reduce speed slowly doesn&#39;t mean stopping by hitting a brick wall at full speed is at all safe.
 
-https://en.wikipedia.org/wiki/... [wikipedia.org]  = 90% of the last 500m years has been warmer than today.
+Ecosystems need time to adjust to new temperatures, so they don&#39;t collapse.
+
+>> The usual state for the Earth is tropical all over, with no ice at the poles.
+
+How exactly did you shit that out? Are those OCR errors?
+
+Nobody gives a fuck whether the climate before we existed would have supported us. What matters is now and this is an unprecedented situation with previously unseen rates of change.
+
+Okey dokey coward. Run along and let the adults have a conversation now, I hear your mom calling me.
 
 With negative wind chills caused by near daily high winds, a hothouse sounds nice.
 
 meanwhile iceland is unawares = https://news.slashdot.org/stor... [slashdot.org]
 
+The oil and gas companies you mean? All of it, and all of our lives as well.
+
+They need to drop the panic.  It doesn&#39;t work.  It&#39;s always 10 or 20 years out and will be irreversible or gone forever.  In 2002, scientists predicted the ice fields on Kilimanjaro would disappear between 2015 and 2020 “if current climatological conditions” persisted.  Yet that didn&#39;t happen.
+
+Now if they just said there is a trend of warming.  You know, coming out of an ice age it&#39;s been warming.  The glaciers made by that have been melting.  okay.
+
+It is not a panic, and it is not a zero sum game.   Certainly you agree on the trends of CO2 in the atmosphere, and the increase in Temperatures?  Yes?
+
+Build &quot;all of the above&quot; energy sources, I think.   Let the market win.
+
+PS. I suspect the coal plants China is building is a hedge against a nuclear war.
+
+After every other option is exhausted, and there is a massive crisis.
+
+Will it be this utter hell some are predicting? Probably not. But it will be toasty. An odd thing is some places will get colder.
+
+There will be increased rainfall, there will be a bit of a wildcard as pent-up subsoil methane is released. The big wild card is if oceanic methane clathrates somehow get released.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The only person who always got his work done by Friday was Robinson Crusoe.</div>
+On a clear disk you can seek forever.
+		-- P. Denning</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">US Had Almost No Job Growth in 2025</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>US Had Almost No Job Growth in 2025</h2>
             <p><strong>Slashdot | 2026-02-11</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/11/1754240/us-had-almost-no-job-growth-in-2025?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">We have yet to reach the level of stove touching this nation requires.  If anything I&#39;m worried about the midterms in that the Democrats will be able to stop some of Trump&#39;s worst actions and his supporters will be allowed to move on yet again without suffering their justly deserved consequences.
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+We have yet to reach the level of stove touching this nation requires.  If anything I&#39;m worried about the midterms in that the Democrats will be able to stop some of Trump&#39;s worst actions and his supporters will be allowed to move on yet again without suffering their justly deserved consequences.
+
+If the Democrats get a large enough wave, ie. they get 60 senate seats and the house, do you think they will remove Trump and Vance from office, thus elevating the Speaker (who will be a Democrat, whoever that may be)?
+
+I mean, I can&#39;t see why they shouldn&#39;t do that, but do you think they will?
 
 Wrong. If we let it slide then it doesn&#39;t end in 3 years. Possible never ends. This is the fundamental mistake that the majority of people are making right now.
-
-And how many of those jobs went to people who received H-1B visas They didn&#39;t actually need to be imported into the country, Well American engineers looked for work and couldn&#39;t find it because they were not of a legal status that allowed the company to treat them like slaves and underpaid them by as much as 30% per  https://www.teamblind.com/post... [teamblind.com]
 
 And the total number of layoffs of American tech workers in 2022-2025 was in the hundreds of thousands.
 
 Not necessarily.  Many of those 85k jobs were likely replacing people who left, and thus presumably would not have counted in the 181,000 figure.
 
+Seriously try to come up with all obvious lie that a Democrat told and you won&#39;t find it.&quot;This is the best Joe Biden ever&quot;&quot;The border is secure&quot;&quot;Inflation is transient&quot;??Shall I go on?  I mean, Democrats don&#39;t have a monopoly on telling lies, but they don&#39;t not tell lies.
+
+Seriously try to come up with all obvious lie that a Democrat told and you won&#39;t find it.
+
+&quot;This is the best Joe Biden ever&quot;&quot;The border is secure&quot;&quot;Inflation is transient&quot;??
+
+Shall I go on?  I mean, Democrats don&#39;t have a monopoly on telling lies, but they don&#39;t not tell lies.
+
 At least 200 for Mar a Lago. https://www.theguardian.com/us... [theguardian.com]
 
 They can&#39;t hire red blooded MAGA workers to pick weeds and serve well done steaks?
+
+My point still stands. Why are they not hiring citizens?
+
+> Those are H1A visas, which goes to seasonal workers, who work during the peak season, and then go back to their home countries when the season is over
+
+&quot;the Trump Organization sought to bring in at least 184 foreign workers in 2025 for temporary positions at the US president’s Mar-a-Lago resort in Florida, two golf clubs and his Virginia winery. The number of applications for H-2A and H-2B visas covering temporary workers including servers, clerks, housekeepers
 
 Far fewer after October 1 when you basically needed to pay an extra full year&#39;s salary to hire an H-1b over a citizen.
 
@@ -1575,6 +1597,8 @@ I suspect there will be some weasel wording around &quot;gross&quot; versus &quo
 Why is the media still treating this horseshit propaganda like it remotely reflects reality?Take a look at who owns the media.
 
 Why is the media still treating this horseshit propaganda like it remotely reflects reality?
+
+According to the BLS report the margin of error for the 130,000 jobs in Jan is +/- 127,000
 
 &quot;Still, Wednesday’s report also shows that not nearly as many jobs were added in 2025 as thought and last year will go down as the worst year for hiring since 2020, or since 2003 outside of a recession.&quot;
 
@@ -1603,24 +1627,35 @@ Description: 2010 / projected 2025 at 4% per year / actual 2025):
 
 So a few things that people buy infrequently went up way faster than inflation, while things that you buy far more often tended to go up way more slowly than inflation.
 
+Well, what&#39;s your evidence about inflation? The CPI iterally is just looking at the prices on a particular basket of goods.  That&#39;s it, it&#39;s not some magic secret formula, it&#39;s all published data.   The only reason Biden was able to be attacked for inflation was the BLS under his own admin published the numbers, do you believe inflation was only 2% in 2021 instead of like 10? I mean &quot;they&quot; are always lying right?
+
 While I agree (dogmatically), there are signs around where I am living of workforce expansion.  I can&#39;t tell if it is more people picking up second jobs, working extra hours, or something else, but I notice restaurants expanding hours, construction companies running full crews, and more professional landscape crews around.
 
 I can&#39;t tell if the economy has picked up to match-- my Costco bill is still up 50% a month, and there aren&#39;t obvious signs that people feel like they have more disposable income.  Time wi
 
 >>One bright spot was last month, when hiring increased by 130,000 roles
 
+Getting difficult to deal with all this winning.
+
+One bright spot .. Job gains occurred in health care, social assistance, and construction
+
+This just goes to show: we need more terrorism and hurricanes, so that the resulting injuries and destruction can further brighten the spots of health care and construction labor.
+
+If you&#39;re a patriotic American, then please do your part to increase GDP and employment, by breaking a window today! And if the glass shards hurt someone, so much the better. Economic growth is economic growth!
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The only person who always got his work done by Friday was Robinson Crusoe.</div>
+On a clear disk you can seek forever.
+		-- P. Denning</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">EVs Could Be Cheaper To Own Than Gas Cars in Africa by 2040</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>EVs Could Be Cheaper To Own Than Gas Cars in Africa by 2040</h2>
             <p><strong>Slashdot | 2026-02-11</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/02/11/176205/evs-could-be-cheaper-to-own-than-gas-cars-in-africa-by-2040?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1663,20 +1698,27 @@ I&#39;m curious how road conditions will affect this.  EVs are generally far hea
 
 On top of that if charging infrastructure is slow to be built-out or if it&#39;s more easily damaged in conflicts, it may be hard to get drivers off of gasoline as a fuel that only requires a jug and a funnel to refuel with out in rural areas.
 
+I&#39;m curious how road conditions will affect this....You are right to wonder, as most current EVs one is likely to be familiar with are designed with paved roads in mind.  However, there has been a number of EVs specifically designed for the unpaved roads in some parts of Africa, beginning with local OEMs, but China manufacturers are starting to enter the market too.  You are not likely to see those EVs outside of places like Africa, at least initially (they tend to be more utilitarian in looks and features than customers elsewhere want to buy).
+
+I&#39;m curious how road conditions will affect this....
+
+You are right to wonder, as most current EVs one is likely to be familiar with are designed with paved roads in mind.  However, there has been a number of EVs specifically designed for the unpaved roads in some parts of Africa, beginning with local OEMs, but China manufacturers are starting to enter the market too.  You are not likely to see those EVs outside of places like Africa, at least initially (they tend to be more utilitarian in looks and features than customers elsewhere want to buy).
+
 That&#39;s 15 years from now. Anything the hell can happen by 2040 .. maybe in 2040 the great Ijigwabogajooga will rise up from the giant pit of rhinoceros shit? Why do people make stupid ass predictions?
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The only person who always got his work done by Friday was Robinson Crusoe.</div>
+On a clear disk you can seek forever.
+		-- P. Denning</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">UK Orders Deletion of Country's Largest Court Reporting Archive</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>UK Orders Deletion of Country's Largest Court Reporting Archive</h2>
             <p><strong>Slashdot | 2026-02-11</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/11/1656216/uk-orders-deletion-of-countrys-largest-court-reporting-archive?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1733,6 +1775,8 @@ This persistent twisting of facts by the right has to stop.
 
 This persistent twisting of facts by the right has to stop.
 
+Flat out lies.  Any proper check of these stories will show video proving such.
+
 Buddy you better take a look in the mirror.
 
 UK is frustrated with reports on social media arrests.
@@ -1743,23 +1787,28 @@ I&#39;m sure I&#39;m not the only American that&#39;s willing to host and suppor
 
 Imagine the political possibilities if we hosted this on American soil on American servers.
 
+Seems fair, as long as USA let their &quot;content of interest&quot; (i.e. Epstein files) to be hosted abroad.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The only person who always got his work done by Friday was Robinson Crusoe.</div>
+On a clear disk you can seek forever.
+		-- P. Denning</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Are CDs Making a Comeback? A Statistical Analysis</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Are CDs Making a Comeback? A Statistical Analysis</h2>
             <p><strong>Slashdot | 2026-02-11</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/02/11/1640236/are-cds-making-a-comeback-a-statistical-analysis?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">When you can rip your own CD? And places like Amazon will sell you physical media and &quot;autorip&quot; much of their catalog (but not all)
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+When you can rip your own CD? And places like Amazon will sell you physical media and &quot;autorip&quot; much of their catalog (but not all)
 
 For people that only buy one track, it makes sense to drop $1-$2 for a song. And ignore the whole album. That&#39;s perhaps the way popular music works. But for fans of certain bands, we buy the whole album.
 
@@ -1833,6 +1882,10 @@ I&#39;ve slowly been moving my CDs from jewel cases to DiscSox sleeves - I&#39;m
 
 That has served as a sort of gravitational center of my music; everything I would seek out to listen to, I already own, so that only leaves &quot;discovery&quot;. And I don&#39;t have mainstream tastes, so consent-manufacturers like Spotify are useless for that. I&#39;m also older and less in to random new music, so I tend to be old-school there, too, and depend on friends for new music.
 
+I still buy CDs sometimes, mainly at shows when I know the money goes directly to the artists. Then I rip it.
+
+I have no reason to subscribe to a streaming service.
+
 If a band&#39;s website or YT has a Bandcamp link, I&#39;ll almost check it out and follow or buy something if it seems cool. That&#39;s been my path to discovery.
 
 Completely agree.  Bought a bunch of songs on iTunes.  Also downloaded some music videos from YouTube, and have quite a collection.  Previously, I&#39;d create a playlist in iTunes, and then using that, load up the purchased songs to my iPod
@@ -1905,118 +1958,8 @@ The interest rates aren&#39;t that great at the moment, but its a lot safer than
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The only person who always got his work done by Friday was Robinson Crusoe.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">HP Now Rents Gaming Laptops</div>
-            <div class="meta">2026-02-11</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>HP Now Rents Gaming Laptops</h2>
-            <p><strong>Slashdot | 2026-02-11</strong></p>
-            <a class="original-link" href="https://slashdot.org/story/26/02/11/1549234/hp-now-rents-gaming-laptops?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
-
-It&#39;s a terrible deal.  The only thing worse is buying a lemon of a gaming laptop and being stuck dealing with the normal short term warranty.  Otherwise, if you even financed at 10-20% interest you would probably be better off.
-
-I hope they at least cover accidental damage.
-
-1. A manacle, chain, and 100 Kiligram ball.
-
-2. Contract of adhesion written on flypaper.
-
-LTT looked at it and it does seem like a shitty deal. The cost isn&#39;t far off buying a new laptop every two years, and of course if you do that you can probably sell your old one.
-
-When you lease something, you end up with ownership. With these HP rentals, there&#39;s zero path at all to ownership. Thus, it&#39;s a subsrciption through and through.
-
-There are lots of leases without a purchase option.
-
-Where I come from, lease basically means you buy something, most probably a vehicle, with a loan. Once you have paid back the loan, you own the thing.
-
-Turns out for most of people it&#39;s just another word for rent. Go figure.
-
-Yea. In colloquial usage there isn&#39;t much difference between lease, rent, subscription, etc.
-
-Leasing a commercial space is like what you think of as rent. It&#39;s a long term contract for the right to use the space. With no permanent transfer of ownership in the agreement. Leasing equipment is also handled this way.
-
-Short term, you can rent a chainsaw, a carpet cleaner, or an apartment. Every month you pay your rent and you get to stay. If you have a long term agreement, then it&#39;s technically a lease.
-
-In these parts all of the leases are structured as ending with ownership. However, most cars are returned to the dealership before that. People either get bored of them and want newer ones, or the smart ones return theirs before they&#39;re due for the first major overhaul. So funnily enough, in practical terms, the lease is a rent.
-
-The dealership gets a discount on any work to be done on the used cars because of the volume and ties to the manufacturer, and they get to sell the car a second time for another prof
-
-A lease gives you the right, but not the obligation, to acquire the good for a small nominal price (for example, E extra monthly payments) at the end of the lease.
-
-HP also offers leases, but for Pro grade PCs, for companies.
-
-Step 1: Claim a shortage on GPUs, Memory, and processors.
-Step 2: Only make high-spec laptops available via rental / lease.
-Step 3: Collect tears along with lease payments.
-Step 4: Frolicking executives / hookers and blow
-
-I was going to say that might make sense for short term needs.  If you need a better PC for a 6 month job, do this.
-
-But they dissallow the only sensible use for the customer, requiring a year long minimum.
-
-It also illustrates total ignorance of how these kinds of rentals make a profit - people think they want it for 6 months, but end up keeping it for 5 years.
-
-How many people actually end subscriptions when they stop needing them?
-
-There is no other alternative - Margret Thatcher, former UK Prime Minister
-
-Take the time to think about this and let it sink in.
-
-This also may be time to do some thinking about how to live off-grid if this lack of owning anything becomes reality. Become a Slab City refusenik?
-
-How does one 3D print a guillotine. Asking for a friend.
-
-Leasing is a better option, because it gives you the right, but not the obligation, to acquire the good at the end of the lease time.
-
-Renting ceratin things, like GAMING laptops, can also make sense, because laptos have high wear and tear, and because, due to the limits inherent to the form factor, they become obsolete for the intended purpose (gaming) quite quickly
-
-So, in the middle of the RAMpocalypse, with bonker prices, we have another option.
-
-More options are good, if you can do the math to figure out, in
-
-My father, years ago (mid 1990&#39;s) leased Dell desktops for his law office.  He did the 4 year lease they offered at the time.  When it came time to upgrade after 2 (as part of the lease) I had to spend 4 days backing up and clearing drives to make sure nothing private left the office.  That is 4 days down time.  That is 4 days at $50+/hr.  Once the drives were clean we sent the systems back.  Dell wanted them back and promised next day delivery for the new ones.  8 days later they arrived.
-
-Of course, they&#39;re much less upfront about their printer rentals. You can &#39;buy&#39; the printers at the store, yet pay ongoing fees in the form of being locked into buying supplies from HP at inflated prices. Their laptop rental sca.. er, scheme, is at least openly advertised as a rental.
-
-Snarkasm aside, it occurs to me that the market for these laptops might have significant overlap with the market for payday loan services.
-
-First Agilent spun off with the medical stuff, and probably other general stuff (signal generators, for example). Then what was left split into Hewlett-Packard for consumer stuff (printers, laptops, etc) and HP Enterprise (for datacenter gear). Haven&#39;t paid a lot of attention since 2020; they may have split again for all I know.
-
-How does renting a laptop with a GPU compare to renting a server with a GPU?
-
-Hetzner offers a server with a Nvidia RTX 4000 GPU and 64GB RAM + 20GB vRAM for $205/mo + $312 setup fee.  If I want to rent one for a month, to experiment running LLMs, it will cost me $517.  I can rent an HP laptop with a comparable GPU (but with less memory) for just $50.  If I want to rent one indefinitely, the laptop is 4 times cheaper than the server.
-
-Not defending HP&#39;s ludicrous rental scheme but if you&#39;re wanting to play with local LLMs the mobile chip in the laptop is going to be underpowered compared to the full sized chip in the Hetzner server. Despite the name the chip in the laptop will have far fewer compute cores and a fraction of the VRAM. It will also have more thermal throttling. If you want to play with LLMs you&#39;d be better off just doing cloud instances with inference providers. They&#39;re often cheaper than a dedicated monthly server.
-
-Please read the headline and TFS. These are GAMING laptops for rent. Not AI/EDeveloper laptops for rent. If you want to game on your hetzner server, RTT (a.k.a. ping times, latency) can be a issue, depending where you live. No such problems with a rented GAMING laptop.
-
-Will HP charge me a Non-Gaming fee, if I use their gaming laptops for something other than playing games?
-
-You&#39;ve never heard that GPUs (Graphics Processing Units), are often repurposed for AI workloads?
-
-There is a precedence for this line of thinking: NVIDIA Limits RTX 3060 Crypto Speeds As it Introduces Mining Cards  [slashdot.org].  So yes, you have a point.
-
-I wonder if you are allowed to replace the operating system on a rented laptop.
-
-Every tool is a hammer, except for the screwdriver, which is also a chisel.
-
-I&#39;ve been using PCs since 1983, in an academy, or hand-me-downs. The first PC I specked myself was U$D 3000 in 1994 dollars. I would have killed for a rent option at that time... Probably would have diched my 286 a couple of years sooner, and ditched that P90 for a P233MMX sooner...
-
-Renting/leasing is not intrinsically bad, as long as you can do the math to know what option is right in each particular case.
-
-This reminds me of the NZXT Flex subscription which was panned universally by literally everyone who has looked into it as a hyper expensive waste of money.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-The only person who always got his work done by Friday was Robinson Crusoe.</div>
+On a clear disk you can seek forever.
+		-- P. Denning</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2332,11 +2275,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">An assistive robot learns to set and clear the table by observing humans</div>
+            <div class="title">Data from a Swedish rail switch may reduce train delays in cold climates</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>Data from a Swedish rail switch may reduce train delays in cold climates</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-11</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-02-swedish-rail-delays-cold-climates.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">An assistive robot learns to set and clear the table by observing humans</div>
+            <div class="meta">2026-02-11</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>An assistive robot learns to set and clear the table by observing humans</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-11</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-robot-table-humans.html">Visit Original Website</a>
@@ -2344,13 +2301,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">New drones provide first-person thrill to Olympic coverage</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>New drones provide first-person thrill to Olympic coverage</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-11</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-drones-person-thrill-olympic-coverage.html">Visit Original Website</a>
@@ -2358,13 +2315,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">AI learns to perform analog layout design</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>AI learns to perform analog layout design</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-11</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-ai-analog-layout.html">Visit Original Website</a>
@@ -2372,13 +2329,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">AI-guided micromachining advances next-generation biocompatible titanium alloys</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>AI-guided micromachining advances next-generation biocompatible titanium alloys</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-11</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-ai-micromachining-advances-generation-biocompatible.html">Visit Original Website</a>
@@ -2386,30 +2343,16 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Next-gen AI delivers accurate battery diagnostics and explosion risk assessments</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Next-gen AI delivers accurate battery diagnostics and explosion risk assessments</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-11</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-gen-ai-accurate-battery-diagnostics.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Novel bond coat material enables thermal barrier coatings to operate at 1,200°C</div>
-            <div class="meta">2026-02-11</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Novel bond coat material enables thermal barrier coatings to operate at 1,200°C</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-11</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-02-bond-coat-material-enables-thermal.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
@@ -2692,11 +2635,65 @@ Copyright. All rights reserved © 1998–2025</div>
         
         <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
-            <div class="title">Why I wish I hadn’t bought my Samsung OLED TV</div>
+            <div class="title">iOS 26.3 makes it easier to switch to Android</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-48" style="display:none;">
+            <h2>iOS 26.3 makes it easier to switch to Android</h2>
+            <p><strong>The Verge | 2026-02-11</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/877587/ios-26-3-released-transfer-to-android">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The new “Transfer to Android” feature lets users move their data by sitting their Android and Apple phones side-by-side.
+
+The new “Transfer to Android” feature lets users move their data by sitting their Android and Apple phones side-by-side.
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+On Wednesday, Apple released its latest iOS 26 update, which includes a new process for switching from an iPhone to an Android phone, as previously reported by 9to5Mac. The updated transferring tool can move over data like apps, photos, messages, and even a user’s phone number by sitting the two phones side by side. Previously, users typically needed to either download Apple and Google’s data transfer apps on each device or manually copy all their apps and data over.
+
+iPhone users in the EU also now have an option for “notification forwarding” with third-party wearables in iOS 26.3. This update allows users to view the full contents of notifications on third-party wearables and control which apps they get notifications from, bringing the third-party smartwatch experience more in line with the Apple Watch. Improving interoperability between iPhones and non-Apple wearables, including features like notification functionality, was one of several requirements for Apple to comply with the EU’s Digital Markets Act.
+
+To install iOS 26.3 on your phone, open the Settings app and go to “General” then “Software Update.” If iOS 26.3 is available on your iPhone, you should see an option to download and install it. If that option isn’t showing up, double-check that your iPhone is compatible with iOS 26.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">Anthropic says it&#8217;ll try to keep its data centers from raising electricity costs</div>
+            <div class="meta">2026-02-11</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
+            <h2>Anthropic says it&#8217;ll try to keep its data centers from raising electricity costs</h2>
+            <p><strong>The Verge | 2026-02-11</strong></p>
+            <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/877526/anthropic-ai-electricity-costs-data-center-pledge">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Facing growing backlash over energy-hungry data centers, Anthropic joins other tech companies in its promises to limit costs.
+
+Facing growing backlash over energy-hungry data centers, Anthropic joins other tech companies in its promises to limit costs.
+
+Anthropic is the latest AI company promising to limit the impact its data centers have on nearby residents’ electricity bills.
+
+The company said it would pay higher monthly electricity charges in order to cover 100 percent of the upgrades needed to connect its data centers to power grids. “This includes the shares of these costs that would otherwise be passed onto consumers,” the announcement says.
+
+Anthropic didn’t provide details today about any agreements it has inked with energy companies in order to accomplish these goals. In November, it shared a $50 billion plan to build data centers in New York and Texas “with more sites to come.”
+
+Rising electricity rates have become a top election priority in the US, and local opposition to the construction of new energy-intensive data centers has led to projects across the country being canceled or delayed. Now we’re seeing companies including Microsoft and Meta making commitments to at least partially cover the costs stemming from new energy infrastructure built to accommodate their data centers.
+
+As part of its pledge, Anthropic says it’ll support efforts to get new power sources online to meet growing electricity demand from AI. It also claims it’ll be willing to cut its power consumption during demand peaks, a step that could help relieve pressure on power grids during a heatwave or cold snap. Recent winter storms have already raised concerns about how data centers might further stress power grids and increase energy costs during extreme weather.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
+            <div class="source">The Verge</div>
+            <div class="title">Why I wish I hadn’t bought my Samsung OLED TV</div>
+            <div class="meta">2026-02-11</div>
+        </div>
+        
+        <div id="content-50" style="display:none;">
             <h2>Why I wish I hadn’t bought my Samsung OLED TV</h2>
             <p><strong>The Verge | 2026-02-11</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/877396/samsung-tv-software-volume-on-screen-display-switch-hdmi-input-tizen">Visit Original Website</a>
@@ -2746,13 +2743,13 @@ I asked Samsung a couple days ago about possible updates, but it didn’t have a
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Aurora says it will ‘triple’ its driverless truck network</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Aurora says it will ‘triple’ its driverless truck network</h2>
             <p><strong>The Verge | 2026-02-11</strong></p>
             <a class="original-link" href="https://www.theverge.com/transportation/877191/aurora-driverless-truck-triple-routes-texas">Visit Original Website</a>
@@ -2780,13 +2777,13 @@ Lastly, Aurora said its cash position has improved. Previously, Urmson said that
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Apple keeps hitting bumps with its overhauled Siri</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Apple keeps hitting bumps with its overhauled Siri</h2>
             <p><strong>The Verge | 2026-02-11</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/877494/apple-siri-ai-overhaul-ios-personalized">Visit Original Website</a>
@@ -2806,13 +2803,13 @@ Apple is also working on an AI chatbot version of Siri that’s slated for launc
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Samsung’s offering up to $900 of trade-in credit toward its new phones</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Samsung’s offering up to $900 of trade-in credit toward its new phones</h2>
             <p><strong>The Verge | 2026-02-11</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/877258/samsung-unpacked-preorder-galaxy-s26-plus-ultra-ai">Visit Original Website</a>
@@ -2828,102 +2825,6 @@ Samsung’s next Unpacked event is happening on February 25th, and we anticipate
 If you’re hyped for the new devices — enough to consider trading in your phone — Samsung is hosting some special trade-in perks, but only if you register interest in a preorder ahead of the event and follow through with a purchase after the unveiling later this month. Registering through Samsung’s site or its Shop Samsung app now will unlock a $30 use-it-or-lose-it credit that can be applied toward accessories at preorder. However, it can’t be used to reduce the cost of the new device.
 
 The company is also offering up to $900 in trade-in value for your phone if you preorder one of its new phones in the same transaction. This amount is higher than its current values, which go up to $700 if you have an S24 Ultra to trade. Regardless of the make or model, your old phone needs to meet some eligibility requirements, including (but not limited to) that it can’t have damage beyond normal wear-and-tear. The anticipated trade-in value will be applied at checkout. Whether you’re set on trading your phone in or not, it might be worth checking out Samsung’s site once preorders launch just to entertain the company’s trade-in offer.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">Microsoft fixes Notepad flaw that could trick users into clicking malicious Markdown links</div>
-            <div class="meta">2026-02-11</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>Microsoft fixes Notepad flaw that could trick users into clicking malicious Markdown links</h2>
-            <p><strong>The Verge | 2026-02-11</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/877295/microsoft-notepad-markdown-security-vulnerability-remote-code-execution">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Bad actors could use the flaw to remotely load and execute malicious files on a victim’s computer.
-
-Bad actors could use the flaw to remotely load and execute malicious files on a victim’s computer.
-
-Microsoft has fixed a serious security vulnerability affecting Markdown files in Notepad. In the company’s Tuesday patch notes, Microsoft says a bad actor could carry out a remote code execution attack by tricking users “into clicking a malicious link inside a Markdown file opened in Notepad,” as reported earlier by The Register.
-
-Clicking the link would “launch unverified protocols,” allowing attackers to remotely load and execute malicious files on a victim’s computer, according to the patch notes. Microsoft says there isn’t any evidence of attackers exploiting the Notepad vulnerability (CVE-2026-20841) in the wild, but it issued a fix for the flaw in its Tuesday patch.
-
-Microsoft initially added support for Markdown, a plaintext formatting language, to Notepad on Windows 11 last May. The move contributed to criticism that Microsoft is filling its operating system with bloatware, including by stuffing new features and AI capabilities into apps like Notepad and Paint.
-
-Notepad isn’t the only text editor that has faced security issues recently, as the third-party Notepad++ app disclosed that some users may have downloaded a malicious update linked to Chinese state-sponsored attackers.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">Here are the 40 best Presidents Day deals you can already shop</div>
-            <div class="meta">2026-02-11</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>Here are the 40 best Presidents Day deals you can already shop</h2>
-            <p><strong>The Verge | 2026-02-11</strong></p>
-            <a class="original-link" href="https://www.theverge.com/gadgets/875949/best-presidents-day-sales-deals-2026">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">We’re rounding up the biggest discounts on earbuds, speakers, TVs, smart home tech, and other gadgets ahead of the holiday.
-
-We’re rounding up the biggest discounts on earbuds, speakers, TVs, smart home tech, and other gadgets ahead of the holiday.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-Deals have been admittedly pretty dry since the holidays, but now that February is in full swing, we’re starting to see strong discounts return across a range of categories. In fact, thanks to Valentine’s Day, the Super Bowl, and — as of this week — Presidents Day, retailers are once again offering a slew of notable tech deals, making now a great time to shop if you’ve been holding off on making a larger purchase.
-
-Although the Super Bowl has technically come and gone, plenty of game-day discounts are still around. A few have been rebranded for Presidents Day — including the discounts we recently saw on Sonos soundbars and speakers — but others are part of a new wave of limited-time deals, letting you save on OLED TVs, wireless earbuds, iPads, and other gadgets through the end of Monday, February 16th.
-
-Below, we’ve rounded up the best Presidents Day deals we’ve seen so far. As in previous years, we’ll continue updating this list with new picks as we approach the long weekend and ensuing holiday.
-
-The OpenFit Air feature a lightweight, open-ear design that allows you to remain aware of your surroundings. They’re well-suited for everyday use and the gym thanks to their IP55 water resistance rating, and feature relatively clear sound and a decent amount of bass despite their open build. Read our review.
-
-The latest Beats Studio Pro feature improved noise cancellation, sound quality, and comfort. They also support lossless audio over USB-C, making them the first Apple headphones to do so. Read our review.
-
-The OpenRun Pro 2 are Shokz’s best bone conduction headphones yet, with better sound and more bass than their predecessor. Our reviewer Victoria Song praised their cozy fit as well as their USB-C charging (goodbye, proprietary charger!). Read our review.
-
-Sonos’ Era 100 smart speaker is a replacement for the older Sonos One, utilizing two tweeters (left and right) and one larger woofer. In addition to Wi-Fi, the Era 100 also supports Bluetooth audio and line-in playback via an optional 3.5mm to USB-C adapter.
-
-The JBL Authentics 200 is one of the first smart speakers with simultaneous Google Assistant and Alexa support. The small, ‘70s-style speaker produces great sound for its size, and you don’t need to toggle a setting to use your preferred virtual assistant.
-
-The latest version of Amazon’s zippy Fire TV Stick 4K streams in 4K resolution, as its name suggests, and features support for Wi-Fi 6, Dolby Atmos / Vision, and HDR10 Plus.
-
-LG’s budget B5 is a great way to get OLED picture quality for less. It features support for both Dolby Vision and Dolby Atmos, along with a 120Hz panel and four HDMI 2.1 ports for hooking up the latest gaming consoles. It also runs LG’s webOS platform, supports Amazon Alexa, and provides easy access to a wide range of popular streaming apps.
-
-LG’s midrange C5 TV is an excellent way to get OLED performance without paying top dollar. It has a good amount of brightness, excellent color accuracy out of the box, and great gaming features, including a max 144Hz refresh rate.
-
-The Sonos Beam (second-gen) is a compact soundbar that supports Dolby Atmos and can stream music from a plethora of services. Read our review.
-
-The Bravia 8 II was chosen as the “king of TV” by a panel of judges (including The Verge’s own Nilay Patel) in Value Electronics’ 2025 shootout. The OLED TV has excellent color accuracy, a bright panel, and a 120Hz refresh rate.
-
-Although the Apple Watch Series 11 is the same size as its predecessor, it features a 5G cellular modem, a display that Apple claims is twice as durable, and slightly improved battery life. Read our review.
-
-The Amazfit Active 2 delivers outsized value for the price. It looks spiffy and has a wide array of health tracking features, plus built-in GPS and AI chatbots to provide extra context to your data. Read our review.
-
-The rugged Apple Watch Ultra 2 comes in one size: 49mm. It offers a large, bright display along with long battery life and excellent performance. It sports Apple’s last-gen S9 SiP, too, allowing you to take advantage of Apple’s newer double tap feature. Read our review.
-
-The Aura Aspen digital frame lets you upload photos from anywhere using an accompanying companion app, various cloud services, or email. Its 12-inch LCD display features slim bezels, a 4:3 aspect ratio, and an anti-glare screen designed to mimic the look of real photos.
-
-The Echo Dot Max features a flat design and a redesigned sound system, which delivers nearly three times the bass as its predecessor. It also offers improved conversation detection and better noise filtering, thanks to Amazon’s new AZ3 chip. Read our review.
-
-The Echo Show 11 features an 11-inch screen and 1080p resolution. It includes Alexa Plus and can be used as a smart home hub, supporting Thread, Matter, and Zigbee smart home protocols.
-
-Battlefield 6 is the best-selling title in the franchise’s history. The military first-person shooter puts a bigger focus on environmental destruction than previous entries, adding a level of chaos that helps make its large-scale, multiplayer battles feel more engaging.
-
-Star Wars Outlaws is an original open-world adventure set in the vast universe of the iconic film series. It stars Kay Vess, a protagonist looking to steal from criminal overlords to gain her freedom. Read our review.
-
-Borderlands 4 is an amusing looter-shooter that supports solo play or up to four-player co-op. Players take on the role of one of four Vault Hunters searching for mythical vaults while trying to take on the planet’s immoral dictator. It’s full of great characters and has the mindlessly fun vibe of a dumb action movie. Read our review.
-
-The seventh-gen iPad Mini comes with Apple’s A17 Pro chip and support for Apple Intelligence. It’s also compatible with the Apple Pencil Pro and offers faster Wi-Fi and USB-C speeds. Read our review.
-
-Apple’s first-gen AirTags can help you find your lost items with their UWB technology. You’ll get the best compatibility with an iPhone, though Apple released an Android app to detect an AirTag’s location if one seems to be following you. Read our original review.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.
 
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
@@ -3618,11 +3519,53 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US FAA reopens El Paso airspace, says no threat to commercial aviation - Reuters</div>
+            <div class="title">Ackman's hedge fund Pershing Square bets on Meta, exits Hilton - Reuters</div>
             <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-67" style="display:none;">
+            <h2>Ackman's hedge fund Pershing Square bets on Meta, exits Hilton - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-11</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxPOWtTUk85cTFzUnBBOTJONUJBVUZfakR6dk5iZkxHOFpBZnphSFhaNTFQOXRkZTNFMzNKYXREamtzSGRmbmZlTW42Wlc3aFctRXh1N3U2a2ota09xQ0pLYWc5OTJkSjB0X2ttV3JsUjl3RnpTNVZPclRMUFRYNGxLTjVNTU45QXQyVk83VWVpQzZqbnVNS0VGSFNnY1ZTZlBGcXlEcHNsUGl4bFpaYXFUSEhHVFlQZV9aQ2dpeVhLM3RuWFpSYVA5Q3F1M21wVDFMZzZlNw?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Crypto lender BlockFills suspends withdrawals amid faltering bitcoin price - Reuters</div>
+            <div class="meta">2026-02-11</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>Crypto lender BlockFills suspends withdrawals amid faltering bitcoin price - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-11</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxONTc4a1gyLVVnSjNMNHdNaU81ZFp2YjQ5YkEwWHFna1B5SkRMRWtwU1QzRUdVSTVGemFfNGlJSEtycGhvV1NZYmxRRm4wLVNqWVFRVW5SeWhoc2RsTVdKSW1SVTBURjc4ajZROTdlQ1BhQTlrQkpSdk5PU1dwSzg2Mlg4T1FuNHZISlczTTVlQk91TE1CcXoxRnAxVzZyQl85bGRGRXY2T2E0R0ktYzMtdEE5NnE5eTY0d2Mya2FwYzdieVVkN0E?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Canadian school shooter identified as 18-year-old woman with mental health issues - Reuters</div>
+            <div class="meta">2026-02-11</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
+            <h2>Canadian school shooter identified as 18-year-old woman with mental health issues - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-11</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxNeXhNTEtYU0RUUkF6aFdreHQtT2tyMHZZaW5rNk1zTXBHU0hiTk5Sa2xRdmtTMzRXS3FCLU5qWnhya01ZMWpwNnJ3NUVTTC12aVlmYmlNeXYtSDkzM0ZteDd4MzFlQ25Sdkk1MTR0bDJaZDV2Um5GY2I1bFZvMlM1eTE1OVRkZ0tGalVfUXpvWXZhbFRxUERhZk85T250TzhCNW1WWjlR?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-70')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">US FAA reopens El Paso airspace, says no threat to commercial aviation - Reuters</div>
+            <div class="meta">2026-02-11</div>
+        </div>
+        
+        <div id="content-70" style="display:none;">
             <h2>US FAA reopens El Paso airspace, says no threat to commercial aviation - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-11</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxOY3VJcVF4cnNOZVVldUptci1EY09QN0RFUFdZR2NfNnQycmRHZjNOOEpQSEVlaE5NZndPUkEwNlZvcE5WcE9EU0U5a0w5cko3eGtmSTJseUhqNEVMTG1CWjRZMlVXMExnekNqbnhjcHFBeUlPTDdSRC1GSGJudVZPaXVRV1BnaFRWczBSRS1kaWFEN2QtSmdiTENnQXJfSWxGQ1JtWFEtWWxHYXd5YkhEU0xwT0lpS0g0Zkc2NXpkOUJXSlgxYXlPRQ?oc=5">Visit Original Website</a>
@@ -3630,58 +3573,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">US job growth surges in January, but labor market far from turning around - Reuters</div>
             <div class="meta">2026-02-11</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>US job growth surges in January, but labor market far from turning around - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-11</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOSDNfM0dPdDdLODdEb0N5VHVNMVF3X2EtaldmRnUtLTM4SVBINGMzWmpqQVpwamotN2dwVzJsSjdqZVhBUWstS1RaZzdoUHppNWFmcWRkOXNhWnA5SV9yLVFIck9FS18xR2tVSklDZ2R5N0JfTWxkcjZNR1lWZVgycC1XMkdZQ3gzMEk3VWZYdDB0Z1dnckNWX2s1Y1RCc24tZUR6RFFtRUo?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump says 'nothing definitive' decided on Iran in meeting with Netanyahu - as it happened - Reuters</div>
-            <div class="meta">2026-02-11</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>Trump says 'nothing definitive' decided on Iran in meeting with Netanyahu - as it happened - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-11</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOS0NENUpFRWZOQjIzTHAwcndWSVFDdnFpTGlRVE5HeEFhMjJXdGZab0Z2UzFVdGtYcWc4VVJLLTFPTzVOa2w3WGdtNHVaVlhYNWhxTjRYSUlmbnhWR1RLRmY2NFVYVXlKcVR0aFNvQWZBUGVZanNZZjJnVi1saHdVbVBSZ2xCZ0YyR1doazE1NnlhTjZDSVlN?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Fed's interest rate pause bolstered by jobs data, but concerns linger - Reuters</div>
-            <div class="meta">2026-02-11</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>Fed's interest rate pause bolstered by jobs data, but concerns linger - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-11</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQa3FiMHVLTXhSU2hqb2ZuaWhEeXVEOVlMQnRtQWxWb0xyTEFYYlFQT1kwajlsQ0dyeC1adG40X3FHM0NHcWw5aHZHeUlzRjZENDNEeEJ1ZzlKb3pObDFfbnBheFE0ejJGTEJ2SzVVMWkwVUdHOGpNenVQSzhvYTVfUVI2UnQwZmt1NmxZSHRfOHpjNnhobFZSeHNn?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">French government alerts prosecutor to diplomat with Epstein ties - Reuters</div>
-            <div class="meta">2026-02-11</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>French government alerts prosecutor to diplomat with Epstein ties - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-11</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPeFZvaG44T2tNbVZ2NGFiOHRzNW5uWDBFNUxQNkM5T2FqZ1BHbVAxZG5OcS14bVIyaXQyV3FRb2VIV3hHaEJXLW44OUtyNjgwWk00TDVOWWVQRjJlcUZXQlBGWUtDN29DQ2trTGwwUlNZS2U5SmhYWkdZY29YcjlmTFNCTVoyMlBycGhXNkdTRjcxV3o3dTFvaHNQdEdwZVp2M3draHdOQnotcHpkb2ptQQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3758,14 +3659,14 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">“The Waves From an Earthquake, Only On the Surface of a Small Chip”: This Vibrating Laser May Be the Future of Wireless Technology - The Debrief</div>
-            <div class="meta">2026-01-15</div>
+            <div class="title">Exercise and Food Restriction Shape Psilocybin’s Effects, New Study Finds - The Debrief</div>
+            <div class="meta">2026-02-11</div>
         </div>
         
         <div id="content-77" style="display:none;">
-            <h2>“The Waves From an Earthquake, Only On the Surface of a Small Chip”: This Vibrating Laser May Be the Future of Wireless Technology - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-01-15</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi5AFBVV95cUxOeU9oTDVRZFdGbTd2ZFhxbXJWZHNyZXpUc2dtcWJ0Z2MyN0tPZFVFT1FhODlwTFZ6UDFDUGp2V3hzLWZWbHhTNGRkNzF4OFBGaU9rRURHNXU2REtUNFhPQ3RneEZGQUZkZWhXRnRSZjNlaVNMLXpFLUNSeDZCS0hSSDFqNjNVUk80aWZUNk5JQXJoRWRObkl6SlpnZjFEZFN6V0dwaGdpdm13WHd5Tk9mQTMzVEcxMHdVWU1IRnA2V210bEt2T3hqVUttSk85VUtESzlXeUJYR1VMYXVRdnE2N2pnb2g?oc=5">Visit Original Website</a>
+            <h2>Exercise and Food Restriction Shape Psilocybin’s Effects, New Study Finds - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-02-11</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOUmJ5OTdfQWo2VUdxR2d3bVZ5VHBlVm1FUHZtUDdwd05GNVg2MHVXdTZTT3Bqc3AtQ2p0Z3FHNFJBUGQ5V3hqMFZvOUJTNHd4RW1WR2E5V0t5WUdTOEZPaXNRcTFpWk0tblg3dERjVUtXb2o0SnZISkJ4RWh2T1U1eDBDaFBHc3E1ZXpaakFpNEpfcjI1ZjRwNUE1cw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
