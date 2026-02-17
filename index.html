@@ -163,7 +163,7 @@
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Over the past 15 years, password managers have grown from a niche security tool used by the technology savvy into an indispensable security tool for the masses, with an estimated 94 million US adults—or roughly 36 percent of them—having adopted them. They store not only passwords for pension, financial, and email accounts, but often cryptocurrency credentials, payment card numbers, and other sensitive data.
+            <div id="article-text">Over the past 15 years, password managers have grown from a niche security tool used by the technology savvy into an indispensable security tool for the masses, with an estimated 94 million US adults—or roughly 36 percent of them—having adopted them. They store not only passwords for pension, financial, and email accounts, but also cryptocurrency credentials, payment card numbers, and other sensitive data.
 
 All eight of the top password managers have adopted the term “zero knowledge” to describe the complex encryption system they use to protect the data vaults that users store on their servers. The definitions vary slightly from vendor to vendor, but they generally boil down to one bold assurance: that there is no way for malicious insiders or hackers who manage to compromise the cloud infrastructure to steal vaults or data stored in them. These promises make sense, given previous breaches of LastPass and the reasonable expectation that state-level hackers have both the motive and capability to obtain password vaults belonging to high-value targets.
 
@@ -179,13 +179,13 @@ The most severe of the attacks—targeting Bitwarden and LastPass—allow an ins
 
 One of the attacks targeting Bitwarden key escrow is performed during the enrollment of a new member of a family or organization. After a Bitwarden group admin invites the new member, the invitee’s client accesses a server and obtains a group symmetric key and the group’s public key. The client then encrypts the symmetric key with the group public key and sends it to the server. The resulting ciphertext is what’s used to recover the new user’s account. This data is never integrity-checked when it’s sent from the server to the client during an account enrollment session.
 
-The adversary can exploit this weakness by replacing the group public key with one from a keypair created by the adversary. Since the adversary knows the corresponding private key, it can use it to decrypt the ciphertext and go on to perform an account recovery on behalf of the targeted user. The result is that the adversary can read and modify the entire contents of the member vault as soon as an invitee accepts an invitation from a family or organization.
+The adversary can exploit this weakness by replacing the group public key with one from a keypair created by the adversary. Since the adversary knows the corresponding private key, it can use it to decrypt the ciphertext and then perform an account recovery on behalf of the targeted user. The result is that the adversary can read and modify the entire contents of the member vault as soon as an invitee accepts an invitation from a family or organization.
 
 Normally, this attack would work only when a group admin has enabled autorecovery mode, which, unlike a manual option, doesn’t require interaction from the member. But since the group policy the client downloads during the enrollment policy isn’t integrity-checked, adversaries can set recovery to auto, even if an admin had chosen a manual mode that requires user interaction.
 
-Compounding the severity, the adversary in this attack also obtains a group symmetric key for all other groups the member belongs to since such keys are known to all group members. If any of the additional groups use account recovery, the adversary can obtain the member’s vaults for them, too. “This process can be repeated in a worm-like fashion, infecting all organizations that have key recovery enabled and have overlapping members,” the research paper explained.
+Compounding the severity, the adversary in this attack also obtains a group symmetric key for all other groups the member belongs to since such keys are known to all group members. If any of the additional groups use account recovery, the adversary can obtain the members’ vaults for them, too. “This process can be repeated in a worm-like fashion, infecting all organizations that have key recovery enabled and have overlapping members,” the research paper explained.
 
-A second attack targeting Bitwarden account recovery can be performed when a user rotates vault keys, an option Bitwarden recommends if a user believes their master password has been compromised. When account recovery is on (either manually or automatically) the user client regenerates the recovery ciphertext, which as described earlier involves obtaining a new public key that’s encrypted with the organization public key. The researchers denoted the group public key as pkorg. They denote the public key supplied by the adversary as pkadvorg, the recovery ciphertext as crec, and the user symmetric key as k′.
+A second attack targeting Bitwarden account recovery can be performed when a user rotates vault keys, an option Bitwarden recommends if a user believes their master password has been compromised. When account recovery is on (either manually or automatically), the user client regenerates the recovery ciphertext, which as described earlier involves obtaining a new public key that’s encrypted with the organization public key. The researchers denoted the group public key as pkorg. They denote the public key supplied by the adversary as pkadvorg, the recovery ciphertext as crec, and the user symmetric key as k′.
 
 The key point here is that pkorg is not retrieved from the user’s vault; rather the client performs a sync operation with the server to obtain it. Crucially, the organization data provided by this sync operation is not authenticated in any way. This thus provides the adversary with another opportunity to obtain a victim’s user key, by supplying a new public key pkadvorg, for which they know the skadvorg and setting the account recovery enrollment to true. The client will then send an account recovery ciphertext crec containing the new user key, which the adversary can decrypt to obtain k′.
 
@@ -211,7 +211,7 @@ This design opens Bitwarden to several attacks. The most severe, allowing readin
 
 The modification causes the use of CBC (cipher block chaining), a form of encryption that’s vulnerable to several attacks. An adversary can exploit this weaker form using a padding oracle attack and go on to retrieve the plaintext of the vault. Because HMAC protection remains intact, modification isn’t possible.
 
-Surprisingly, Dashlane was vulnerable to a similar padding oracle attack. The researchers devised a complicated attack chain that would allow a malicious server to downgrade a Dashlane user’s vault to CBC and exfiltrate the contents. The researchers estimate that the attack would require about 125 to decrypt the ciphertext.
+Surprisingly, Dashlane was vulnerable to a similar padding oracle attack. The researchers devised a complicated attack chain that would allow a malicious server to downgrade a Dashlane user’s vault to CBC and exfiltrate the contents. The researchers estimate that the attack would require about 125 days to decrypt the ciphertext.
 
 Still other attacks against all three password managers allow adversaries to greatly reduce the selected number of hashing iterations—in the case of Bitwarden and LastPass, from a default of 600,000 to 2. Repeated hashing of master passwords makes them significantly harder to crack in the event of a server breach that allows theft of the hash. For all three password managers, the server sends the specified iteration count to the client, with no mechanism to ensure it meets the default number. The result is that the adversary receives a 200,000-fold increase in the time and resources required to crack the hash and obtain the user’s master password.
 
@@ -1021,12 +1021,62 @@ Spotify says its best developers haven’t written a line of code since December
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
-            <div class="title">The Post-Chatbot Era Has Begun</div>
+            <div class="title">Do Not Be Cynical About Jesse Jackson</div>
             <div class="meta">2026-02-17</div>
         </div>
         
         <div id="content-18" style="display:none;">
-            <h2>The Post-Chatbot Era Has Begun</h2>
+            <h2>Do Not Be Cynical About Jesse Jackson</h2>
+            <p><strong>The Atlantic | 2026-02-17</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/02/jesse-jackson-legacy-race/686030/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">When I was growing up in Washington, D.C., in the 1990s, many businesses proudly kept in their windows signs from Jesse Jackson’s 1984 and ’88 presidential runs. He was a revered figure, someone people in D.C. were deeply thankful for.
+
+“Nothing will ever again be what it was before,” the writer James Baldwin said after Jackson’s ’84 Democratic National Convention speech.
+
+“It changes the way the boy on the street and the boy on Death Row and his mother and his father and his sweetheart and his sister think about themselves. It indicates that one is not entirely at the mercy of the assumptions of this Republic, of what they have said you are, that this is not necessarily who and what you are. And no one will ever forget this moment, no matter what happens now.”
+
+Yet when you turned on the television, you saw another Jesse Jackson. This Jesse Jackson was a dangerous man, a radical, a demagogue, someone who thrived off fomenting racial division. To the people around me, Jackson—the reverend and civil-rights leader—was a hero. But to the people I saw discussing the news on television, he was both an incendiary agitator and a ridiculous, almost comic, figure. The subtext of all this commentary was that Black Americans would make more progress if their leaders were not so flawed. Barack Obama put the lie to this argument; squeaky-clean by personal-conduct standards, all he did was drive the same people who hated Jackson more insane.
+
+“Have you ever noticed how all composite pictures of wanted criminals resemble Jesse Jackson?” the right-wing radio host Rush Limbaugh mused in the 1990s. His opinions on Obama were no less unhinged.
+
+Ali Breland: The Epstein emails show how the powerful talk about race
+
+“There has developed among many, for sure, a kind of attitudinal air-barrier of cynicism” around Jackson, Marshall Frady, a journalist and the author of Jesse: The Life and Pilgrimage of Jesse Jackson, once said. “Part of it is, no doubt, a reflection of the abiding, if not steadily deepening, racial schism in the country since the ’60s.” Jackson was one of Martin Luther King Jr.’s youngest lieutenants; he came of age when many considered racial injustice history, an issue the country had already dealt with. He reminded Americans that King’s dream had not yet come, and that created for him enemies. In hindsight, it seems strange that people would assume that the effects of centuries of slavery and segregation would be entirely wiped away in fewer than two decades. Jackson had grown up in poverty in the shadow of Jim Crow segregation; it must have seemed even more absurd to him.
+
+It was common for right-wingers to refer to him as a “race pimp” or “race hustler.” He did himself no favors when, in 1984, he used an anti-Jewish slur—calling New York City “hymietown”—in a conversation overheard by a reporter. Jackson apologized for the ugly remark, but it followed him for the rest of his life—in mainstream media, the incident was practically a second appellation, right after “the Reverend.” In 1989, the Fox News founder Roger Ailes, then an adviser to Rudy Giuliani’s mayoral campaign, placed an ad in a Yiddish newspaper with a photo of Giuliani’s rival David Dinkins next to Jackson—the two were friends. The clear implication was that Dinkins was an anti-Semite, just like Jackson. In this way, Jackson became an easy shorthand propagandists could use to terrify white people into voting Republican.
+
+Yet this caricature of Jackson as an anti-white, anti-Semitic demagogue never reflected the man. The entire point of Jackson’s “Rainbow Coalition,” his vision of Americans from all backgrounds coming together for social justice, was overcoming such differences. Jackson’s political vision was always inclusive, always multiracial, and always opposed to bigotry and prejudice of all kinds, even if the man himself sometimes fell short.
+
+For one thing, Jackson’s egalitarianism and support for a strong welfare state—including universal health care—did not contradict his emphasis on personal responsibility and the importance of the Church in Americans’ lives. As Frady notes, the South Carolina reverend was constantly hammering on these conservative-friendly themes, long before they became part of Ronald Reagan or Bill Clinton’s presidential campaigns.
+
+“Black Americans must begin to accept a larger share of responsibility for their lives. For too many years we have been crying that racism and oppression have kept us down,” Jackson wrote in The New York Times, in 1976. “That is true, and racism and oppression have to be fought on every front. But to fight any battle takes soldiers who are strong, healthy, spirited, committed, well‐trained and confident.”
+
+The 1984 speech that so moved Baldwin remains one of the greatest articulations of American liberalism ever made. But I was too young to remember it, and it is his 1988 speech that I find indelible. In 1984, Jackson described America as a “quilt” with “many patches, many pieces, many colors, many sizes, all woven and held together by a common thread.” In 1988, he extended the metaphor—arguing that progress could not be made without the aid of people from very different backgrounds, with very different identities.
+
+“Farmers, you seek fair prices and you are right—but you cannot stand alone. Your patch is not big enough. Workers, you fight for fair wages, you are right—but your patch of labor is not big enough. Women, you seek comparable worth and pay equity, you are right—but your patch is not big enough,” Jackson said. “Students, you seek scholarships, you are right—but your patch is not big enough. Blacks and Hispanics, when we fight for civil rights, we are right—but our patch is not big enough.”
+
+Many obituaries have emphasized Jackson’s hunger for publicity. He was, indeed, no wallflower. But neither did he simply pose for the cameras. Jackson’s decades of activism demonstrated that he was sincere about his vision. When workers were striking, Jackson was there. When it was unpopular to support LGBTQ rights, Jackson did so anyway. When both conservatives and liberals were outraged over illegal immigration, Jackson insisted on mercy and understanding for the undocumented. Despite the “hymie” incident, Jackson never stopped condemning the evils of anti-Semitism, even as he supported Palestinian rights and statehood. Before Pat Buchanan or Donald Trump ran for president, Jackson was condemning “American multinationals” who “hire repressed labor abroad and fire free labor at home.&#39;&#39;
+
+The critics who caricatured him did not understand this sincerity—or perhaps they understood it far too well. His commitment to the people he once described as “the desperate, the damned, the disinherited, the disrespected, and the despised,” was real, and he dedicated his life to it.
+
+Clint Smith: Those who try to erase history will fail
+
+Jackson’s sincerity eventually overcame the stereotypes about him. In the early 1990s, only a third of white Americans viewed him favorably; by 1999, that number was close to 60 percent, including, The New York Times reported, many “self-described conservatives.”
+
+Democratic leaders credited Jackson’s work registering Black voters with making otherwise-difficult gains in the wilderness of the Reagan era. He was a genuinely transformative figure, inspiring not just a generation of Black voters but Black officeholders, helping usher in an era of Black self-determination that eclipsed the previous peak during Reconstruction a century earlier. His exhortation to “keep hope alive” in an era of backlash was precisely what he did. Frady quotes former San Francisco Mayor Willie Brown calling Jackson “the Jackie Robinson of American politics,” who would “spawn a whole lot of Little Leaguers in many cities and counties that you and I will never hear about.” That was, we now know, an understatement.
+
+The epithet of “race hustler” or “race pimp” can be more accurately applied to many of Jackson’s critics, who perceived his multiracial populism as a threat. They tried to neutralize that threat by turning Jackson into a racial caricature that could be exploited to fan the fears of white Americans that they would be dispossessed, the same inversion of American history that continues to drive right-wing politics in the present. They did not make a caricature of Jackson because he was ridiculous; they tried to make him ridiculous because his vision was so powerful.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">AI Agents Are Taking America by Storm</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
+            <h2>AI Agents Are Taking America by Storm</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/technology/2026/02/post-chatbot-claude-code-ai-agents/686029/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -1057,13 +1107,13 @@ Without inside access to these companies, it’s difficult to know what to make 
 Tech companies have done a tremendous job of persuading investors to pour cash into their businesses, but the industry has done a much worse job at selling the public on its vision. Instead of focusing on tangible benefits of AI agents, Silicon Valley has spent years hype-washing the technology with business briefs that read like science fiction. In one influential essay, Dario Amodei, Anthropic’s CEO, writes that powerful AI could soon eliminate most cancer and nearly all infectious diseases. In another, a team of researchers warns that within the decade, rogue AI might release biological weapons, wiping out nearly all of humanity. Bots that can handle spreadsheet work and automate coding might not amount to superintelligence, but they are still immensely powerful. To the extent that normies remain confused about AI’s true capabilities, Silicon Valley has only itself to blame.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-20')">
             <div class="source">The Atlantic</div>
             <div class="title">Winter Olympics Photo of the Day: In Pursuit</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-20" style="display:none;">
             <h2>Winter Olympics Photo of the Day: In Pursuit</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/photography/2026/02/winter-olympics-photo-day-in-pursuit/686027/?utm_source=feed">Visit Original Website</a>
@@ -1073,13 +1123,13 @@ Tech companies have done a tremendous job of persuading investors to pour cash i
 February 12: Disqualified for a ‘Helmet of Remembrance’</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">An Olympic Trend That Defies Tradition</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>An Olympic Trend That Defies Tradition</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/health/2026/02/olympics-mixed-gender-ski-mountaineering/686026/?utm_source=feed">Visit Original Website</a>
@@ -1103,13 +1153,13 @@ And mixed-gender formats can still be subject to unequal dynamics. Biathlon, a W
 Even as mixed-gender events become more common, skimo’s inclusion in future Olympics is not assured. It’s in the 2026 Olympics because the organizers of this year’s Games proposed it; to continue competing, skimo athletes will need organizers at the next venues to propose its inclusion too. Skimo enthusiasts expect this to happen and hope future Olympics will include events that are longer and more representative of the sport’s origins. “Nobody got into skimo to do the sprint relay,” Smith said. But as he began training for the event, he enjoyed it more than he expected. “It’s really fun because we are accountable to each other,” he said. “I’m racing all out because I know that she’s doing the same for me.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">Winners of the 2026 Sony World Photography Awards Open Competition</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Winners of the 2026 Sony World Photography Awards Open Competition</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/photography/2026/02/winners-2026-sony-world-photography-awards-open-competition/686022/?utm_source=feed">Visit Original Website</a>
@@ -1117,13 +1167,13 @@ Even as mixed-gender events become more common, skimo’s inclusion in future Ol
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">The Republicans Made Peace With Science</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>The Republicans Made Peace With Science</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/02/republicans-democrats-science-funding-trump/685996/?utm_source=feed">Visit Original Website</a>
@@ -1163,75 +1213,90 @@ Staffing losses are real, leadership vacancies create drift, and political inter
 Science came under attack, and a Republican Congress pushed back. That’s not an aberration.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">Europe Has Received the Message</div>
+        <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">KDE Plasma 6.6 Released</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-23" style="display:none;">
-            <h2>Europe Has Received the Message</h2>
-            <p><strong>The Atlantic | 2026-02-17</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/international/2026/02/european-union-defense-spending/685983/?utm_source=feed">Visit Original Website</a>
+        <div id="content-24" style="display:none;">
+            <h2>KDE Plasma 6.6 Released</h2>
+            <p><strong>Slashdot | 2026-02-17</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/26/02/17/2147242/kde-plasma-66-released?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The European Union is finally on its way to becoming a power in its own right. That’s not because its member countries have suddenly stopped squabbling or its bureaucratic inertia has melted away. It’s because the past four years have produced an unremitting state of crisis. Russia’s invasion of Ukraine was the beginning. Now the imperative comes from Donald Trump’s repositioning of the United States as something close to an antagonist.
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
 
-Without the guarantee of American cooperation and NATO protection, the EU is newly vulnerable. And in response, in the past year, it has delivered a series of firsts that amount to a quiet revolution in how it exercises power.
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-In May, the EU decided, for the first time, to help finance defense spending for its 27 member states by taking on EU-wide debt. This move came from the realization that even serious spending hikes in individual countries—European states have doubled their defense outlays since 2015—would vary widely given the economic disparities. Germany, for instance, plans to invest roughly $77 billion over five years, meaning that by 2030, its defense budget could be the world’s third largest. But that kind of spending is not possible for countries that already carry more debt, and confronting Russian President Vladimir Putin, potentially without U.S. backing, will require the rearmament of all. To this end, the EU has now established an extraordinary instrument, called Security Action for Europe, or SAFE, that is prepared to fund up to $178 billion in upgrades to the continent’s capacity to produce and procure arms.
-
-Shane Harris: Europe is answering Putin’s challenge
-
-For the first time, Europe will essentially protect its defense industry. “European preference” was long dismissed as a French fantasy. But that was when buying U.S. weapons was a premium that allies paid for American protection. Now Trump has signaled that the deal is off: He talks with Putin over the heads of the Europeans and has suggested that America’s NATO commitments are a fiction. So European states that use SAFE funding will be required to procure more European-made weapons and parts than not. That priority has also been written into Europe’s recently agreed-on $107 billion debt-financed Ukraine package, which restricts Kyiv to purchasing European-made arms to the extent possible.
-
-In general, European countries are making a point of reducing their dependence on the United States. Germany currently plans to spend only 8 percent of its rearmament budget on U.S. arms. It is even developing its own satellite-communications network to replace Starlink. Most striking, European capitals for the first time seek to address the core of Europe’s dependence: the American nuclear umbrella. Germany and Sweden are in talks with France and the United Kingdom on a potential European nuclear deterrent. Poland and the Netherlands have expressed an interest in joining.
-
-Europe is benefiting economically from all of these changes in defense posture. In equity markets, homegrown defense firms outperformed the top seven U.S. tech stocks last year. And the defense firms are productive: Germany’s Rheinmetall will soon be able to produce more artillery shells than the entire U.S. defense industry. And EU leaders are currently considering applying the “buy European” provisions that have helped boost arms manufacturing to other industries, such as digital services and green technologies.
-
-The EU once defined itself as a champion of open markets. Today it’s reassessing that commitment in light of its need for self-reliance. Berlin is planning to exclude Chinese suppliers from its 6G network and is testing an open-source alternative to Microsoft. The French government has replaced Zoom with a domestic video-conferencing platform. Together with reducing its dependence on the United States and China, Brussels is cultivating other relationships. In recent weeks it has concluded far-reaching free-trade agreements with members of the Mercosur trade bloc (Brazil, Argentina, Uruguay, and Paraguay) and India.
-
-The way that Europe makes decisions is changing to meet the moment, and these changes are perhaps the most crucial of all the “firsts.” In the past, EU members had to unanimously agree before Brussels could adopt policies on matters of particular sensitivity. Former German Chancellor Angela Merkel fiercely defended this rule. But today’s leaders have come to accept that abandoning it is the price of geopolitical relevance. In December, the EU invoked an emergency legal provision to bypass the unanimity requirement in order to freeze Russian assets indefinitely. That same month, the EU approved its debt-financed Ukraine package, also without unanimous approval: Hungary, Slovakia, and Czechia were pushed to opt out rather than veto it.
-
-Anne Applebaum: Trump’s ‘American dominance’ may leave us with nothing
-
-Europe is not yet a fully autonomous power, and it won’t become one tomorrow. But thanks to Trump, a transformation is under way. With each new first, others become thinkable. The decisive question is whether Europe can stay this course. A super-election year looms in 2027, when France, Italy, Spain, and Poland will all hold votes. Victories by the far right—especially in France and Poland—could derail the current trajectory.
-
-Or not: EU approval is at 74 percent, a record high. Young far-right politicians may well understand that returning to the nation-state means choosing powerlessness.
-
-This may be the outcome that leaders in Washington, Moscow, and Beijing prefer. But in their effort to fragment Europe into pliable nation-states, they are instead galvanizing its slow-motion march toward self-determination.</div>
+&quot;Bond reflected that good Americans were fine people and that most of them
+seemed to come from Texas.&quot;
+- Ian Fleming, &quot;Casino Royale&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-24')">
+        <div class="card" onclick="openModal('content-25')">
             <div class="source">Slashdot</div>
             <div class="title">Most VMware Users Still 'Actively Reducing Their VMware Footprint,' Survey Finds</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>Most VMware Users Still 'Actively Reducing Their VMware Footprint,' Survey Finds</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/02/17/2143231/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+No company wants to ...Individuals too. I&#39;ve been using VMWare on Mac for over 15 years. Windows VMs, Linux VMs, even macOS VMs with over versions of macOS. One machine to develop for and test all three platforms. 
+
+However I recently switched to Parallels. A Windows VM, a Linux VM, and a macOS VM with the older version of the OS.
+As a special bonus, since the new Mac is ARM, I get to run ARM Windows and ARM Linux. Both run really well. 
+
+I&#39;m happy with the switch to Parallels. My currently licensed VMWare can sit on the old Inte
+
+Individuals too. I&#39;ve been using VMWare on Mac for over 15 years. Windows VMs, Linux VMs, even macOS VMs with over versions of macOS. One machine to develop for and test all three platforms. 
+
+However I recently switched to Parallels. A Windows VM, a Linux VM, and a macOS VM with the older version of the OS.
+As a special bonus, since the new Mac is ARM, I get to run ARM Windows and ARM Linux. Both run really well. 
+
+I&#39;m happy with the switch to Parallels. My currently licensed VMWare can sit on the old Inte
+
+For home labs and smaller businesses, Proxmox seems to be just fine.
+
+A lot of companies are certainly kicking them to the curb.  There are other options.  The mobility and remote access pieces wound up with KKR as Omnissa.  I&#39;m continuing to consume those as KKR understands they&#39;ll never get their return on investment if they chase away their customers.
+
+But that only lasts until people can move. Long enough to earn Tan a really nice chunk of change, and probably also long enough to make VMWare a tiny niche player.
+
+surveyed 302 IT decision-makers (director-level or higher) at North American companies with at least 1,000 employeesThis is why they aren&#39;t getting as extreme of an answer on the nature of price increase. Broadcom was very explicit in the acquisition that the large orgs are the target customers that they are trying to keep. They are already they are the most locked in with the highest return on investment. So as long those frogs slowly boil, they can make back their investment plus some. The smaller orgs are the ones hitting the higher price increases as replacing a lower entitlement with a full suite subscription hurts
+
+surveyed 302 IT decision-makers (director-level or higher) at North American companies with at least 1,000 employees
+
+This is why they aren&#39;t getting as extreme of an answer on the nature of price increase. Broadcom was very explicit in the acquisition that the large orgs are the target customers that they are trying to keep. They are already they are the most locked in with the highest return on investment. So as long those frogs slowly boil, they can make back their investment plus some.
+
+The smaller orgs are the ones hitting the higher price increases as replacing a lower entitlement with a full suite subscription hurts
+
+Do yourself a favor and look at XCP-NG/Xen Orchestra and ProxMox.  If your needs fit, both are: open source, run under open source operating systems, free, and work quite well.  And both offer paid support if you need it.
+
+https://xcp-ng.org/ [xcp-ng.org]  https://xen-orchestra.com/ [xen-orchestra.com]
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Love may laugh at locksmiths, but he has a profound respect for money bags.
-		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
+&quot;Bond reflected that good Americans were fine people and that most of them
+seemed to come from Texas.&quot;
+- Ian Fleming, &quot;Casino Royale&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">US Lawyers Fire Up Privacy Class Action Accusing Lenovo of Bulk Data Transfers To China</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>US Lawyers Fire Up Privacy Class Action Accusing Lenovo of Bulk Data Transfers To China</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/17/1955224/us-lawyers-fire-up-privacy-class-action-accusing-lenovo-of-bulk-data-transfers-to-china?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
 
 That abomination, DOGE, siphoned SS info to Peter Thiel and his merry band of Nazis. I don&#39;t recall the lawyers getting their panties in a twist over that.
 
@@ -1239,22 +1304,23 @@ Or la Presidenta sending in the FBI to steal voter data in Georgia all because t
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Love may laugh at locksmiths, but he has a profound respect for money bags.
-		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
+&quot;Bond reflected that good Americans were fine people and that most of them
+seemed to come from Texas.&quot;
+- Ian Fleming, &quot;Casino Royale&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">The Small English Town Swept Up in the Global AI Arms Race</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>The Small English Town Swept Up in the Global AI Arms Race</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/17/1937251/the-small-english-town-swept-up-in-the-global-ai-arms-race?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 &quot;... being built on 85 acres of rolling farmland...&quot;
 
@@ -1286,24 +1352,23 @@ The UK government&#39;s decision to classify data centers as &quot;critical nati
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Love may laugh at locksmiths, but he has a profound respect for money bags.
-		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
+&quot;Bond reflected that good Americans were fine people and that most of them
+seemed to come from Texas.&quot;
+- Ian Fleming, &quot;Casino Royale&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Microsoft's AI Chief Says All White-Collar Desk Work Will Be Automated Within 18 Months</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Microsoft's AI Chief Says All White-Collar Desk Work Will Be Automated Within 18 Months</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/02/17/1932249/microsofts-ai-chief-says-all-white-collar-desk-work-will-be-automated-within-18-months?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
-
-how will we afford to rent our compute terminal
+            <div id="article-text">how will we afford to rent our compute terminal
 
 I have not seen a single instance where current AIs is reliable enough that it can effectively replace a single real world white collar profession.
 
@@ -1353,6 +1418,8 @@ It’s so stupid. Do you honestly believe this will happen, where real money is 
 
 Eliminating jobs that can be done automatically IS &quot;real money on the table&quot; to company shareholders. Will AI replace these jobs? You bet your ass they will. The West is not prepared for the impact AI is having on employment, and will continue to have for decades to come. Some people are burying their heads, but it won&#39;t save them. Entire fields that used to be good paying professional work are quickly becoming something a glorified script can handle with minimal input.
 
+It isn&#39;t THAT it will fail to match your PhD in Physics, it is that enough yokels will BELIEVE it can match your PhD in Physics. I think that is where the real danger lies.
+
 Even if all this capability were available today (AI doing most white collar jobs with no need for input or babysitting), most companies can&#39;t even do things like a simple ERP upgrade in 12-18 months. The idea that we could actually implement all of that AI capability in that amount of time is patently absurd.
 
 But then you need AI to make sure the AI is doing what AI is supposed to do. And then AI to mind the AI minder that minds the AI. I guess it&#39;s AI all the way down!
@@ -1382,6 +1449,8 @@ Automating them first will bring huge savings...
 Especially AI Chief jobs should be easy to automate
 
 Their shrieks are getting louder and more desperate.
+
+This.Where I work, everyone was going gaga over AI a year or so ago and almost every discussion involved a comment such as &quot;have you tried AI for it yet?&quot; or &quot;I used AI and look what it did&quot;.Now I very rarely hear AI mentioned in discussions.  I see a few people using it here or there to help write a report or tidy up a presentation but apart from that, most employees here seem to have gotten over it and moved on.I suspect that they are getting worried that they are committing $billions to data centers and
 
 He pointed to exponential growth in computational power and predicted that creating a new AI model will soon be as easy as &quot;creating a podcast or writing a blog.&quot;Most blogs and podcasts suck.
 
@@ -1415,26 +1484,43 @@ You need gatekeepers, planers and people talking to other people in businesses. 
 
 What I find very interesting to experience and hadn&#39;t consciously anticipated was the speed of transition. In hindsight it&#39;s perfectly logical, but I wasn&#39;t ready for
 
+Note the prediction is given for all office jobs, not just tech workers. That would be over half of the work force.
+
+If things get to the point that is displaces senior developers, then it can displace the vast majority of those workers too.
+
+However, regardless of how AI works or doesn&#39;t, I do think either way the software industry is in for a reckoning.  The industry broadly just isn&#39;t innovating in most areas and many of the areas where there is innovation doesn&#39;t have a lot of interest. Much of what people
+
 Yeah, let CoPilot do all their work.  It&#39;ll probably do a better job than they did when they decided to remove Wordpad from Windows 11 and add features to Notepad that nobody wanted.  Oh, and cripple Paint, aside from adding AI to it
+
+Exponential compute resource does not mean exponentially more capable.
+
+In fact, capability is more logarithmic, just obscene investments in resource produce marginally better results.  The biggest gain is how long the models can keep up generating tokens in a coherent looking way, but the quality of the product represented by those tokens remains flawed in now familiar ways.  Most painfully the flaw are non obvious.
+
+Gave claude opus 4.6 a cakewalk of a task today, maybe 100 lines of code to generate.  The out
+
+The thing I don&#39;t hear a lot of talk about is the reality I&#39;ve seen with all the different flavors of ChatGPT and other AI tools out there. The system performance just doesn&#39;t seem to be there in a way that&#39;s as reliable as human labor on given tasks?
+
+I admit I never worked with one of the commercial packages -- so maybe I&#39;m just a victim of the kind of throttling they&#39;re doing on free tiers?  But for example, just last night? I played with Microsoft co-pilot, instructing it to create a Windows background/wa
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Love may laugh at locksmiths, but he has a profound respect for money bags.
-		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
+&quot;Bond reflected that good Americans were fine people and that most of them
+seemed to come from Texas.&quot;
+- Ian Fleming, &quot;Casino Royale&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Britain Lost 14,000 Pubs, a Quarter, in 13 Years</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Britain Lost 14,000 Pubs, a Quarter, in 13 Years</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/17/1836238/britain-lost-14000-pubs-a-quarter-in-13-years?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
 
 Last I checked, weed is still very much illegal in the UK (where all the pubs have gone bust) so &quot;legal weed&quot; is not the reason for the pubs closing.
 
@@ -1445,6 +1531,10 @@ I doubt you&#39;ve visited many pubs franky. Some are old style boozers but most
 Yes, crap and overpriced coffee, and increasingly crap and overpriced food as well.
 
 Weatherspoons is apparently still good, but I avoid it because, excuse the King&#39;s English, the owner is a brexity cunt.
+
+Yeah so many pubs you go with a few friends, and there are a few groups of people scattered round trying to talk and the staff put on loud, obnoxious music and completely ruin it for the people who are actually in there. No one&#39;s trying to party it up on a Tuesday night in a businessy area.
+
+Youâ(TM)re a miserable fucker, arenâ(TM)t you?  There are plenty of really nice pubs where I go with my family, or just to catch up with friends.
 
 Even small amounts of weed stinks like a cross between boiled cabbage and body odour so if that&#39;s your idea of fun knock yourself out. Most people however like a nice beer or glass of wine which doesnt make others give you a 10 foot wide  berth.
 
@@ -1459,6 +1549,8 @@ It wouldn&#39;t be so bad, but there are hardly any lumberjacks in the UK.
 *runs away and hides from an irate mob of Monty Python fans
 
 Seriously, it very much depends on the area. Rugby, a town-borderline-city, has fewer pubs than the Marple/Mellor collection of villages up in t&#39; norf. This is mostly because Rugby is a run-down dump with a dying town centre and hardly anything left in it, whereas Marple (although it lost its engineering back in the 60s) is a major commuter/retirement town with just enough rationa
+
+I always thought that Rugby was a game with an oval ball, and 15 players on each side.
 
 Oh...  this may get some angry responses, but is it because Muslims don&#39;t drink?  Obviously a large part of this is Covid, but the Brits are well known for their love of booze.
 
@@ -1478,8 +1570,6 @@ Kindly go back to your echo chamber for emotional support.
 The evidence contradicts your racist hypothesis - the higher fractions of Muslims correlates with fewer closed pubs. Muslims in UK:
 
 Kindly go back to your echo chamber for emotional support.
-
-You seemed to have confused evidence with population statistics.
 
 The thousands of indians and muslims you have flooding your country don&#39;t drink in pubs. Good luck maintaining your culture with the flood of 3rd worlders.Ahhh yes a country of 70 million people is suddenly having pubs close because *checks notes* a few additional people coming don&#39;t drink?Have the immigrants caused you indigestion or something? Based on everything I&#39;ve seen they seem to make you depressed and want to drown your sorrows. So wouldn&#39;t those scary brown people cause you to drink more and keep your pubs more open?You got some serious non-sequitur racism there.
 
@@ -1527,6 +1617,10 @@ But maybe it is that Private Equity does a really, really, bad job of running a 
 
 Younger generations don&#39;t drink alcohol like the older ones did.  They consume other drugs, or no drugs.Younger generations don&#39;t go out as much as the older ones did.  They stay at home and socialize via their phones.etc.
 
+Well part of that is it&#39;s so fucking expensive to do that compared to how it used to be.
+
+Alcohol consumption per person has been declining in the UK over the last three decades.  Meanwhile, itâ(TM)s been increasing in the US.  Itâ(TM)s possible that Americans now drink more than Britons.  Itâ(TM)s people over 50 that drink the most in the UK; younger generations arenâ(TM)t so interested.
+
 A few months back I visited the part of London where I grew up. The 3 pubs nearest to my childhood home are all dead.
 
 Where I live now there have been no pub closures for as long as I have lived there, about 8 years.
@@ -1539,88 +1633,102 @@ The same thing has been happening in the US, with chains of restaurants and reta
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Love may laugh at locksmiths, but he has a profound respect for money bags.
-		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">A YouTuber's $3M Movie Nearly Beat Disney's $40M Thriller at the Box Office</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>A YouTuber's $3M Movie Nearly Beat Disney's $40M Thriller at the Box Office</h2>
-            <p><strong>Slashdot | 2026-02-17</strong></p>
-            <a class="original-link" href="https://entertainment.slashdot.org/story/26/02/17/1825211/a-youtubers-3m-movie-nearly-beat-disneys-40m-thriller-at-the-box-office?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
-
-Just don&#39;t play their game by their rules.
-
-Make something, sell it yourself; no middlemen.
-
-Hate to break it to you, but you can&#39;t change the system in a democracy using voting.  You can only pull the levers and push the buttons. You can&#39;t change the machine&#39;s inner workings.
-
-You can&#39;t change a democracy by just voting: you absolutely need good elected representatives also, and much of what determines who represents you is the work of political machination, not votes.
-
-That being said, throughout history the only way people have ever &quot;changed the machine&#39;s inner workings&quot; is through revolution.  There&#39;s been two types: violent revolution, and democratic revolution (ie. a combination of elected representatives and voters working to fundamentally change &quot;the machine&quot;).
-
-This isn&#39;t a &quot;Youtube&quot; thing gramp&#39;s (or is it grandma now?) it&#39;s a *in-theater* movie and has nothing to do with Youtube other than he told his subs to go watch it.
-
-If you had read the article you would have understood he took no studio money or media campaign to role it out and called theater chains himself to get it out to audiences.
-
-I&#39;m a Markiplier fanboy, but being shocked that a guy who has &quot;an audience of more than 38 million subscribers&quot; (REALLY??) can make his money back is comical. Of course he has. He&#39;d have made even more money if even just 1/4 of his fans saw his movie and they haven&#39;t, it&#39;s far less than that.
-
-&quot;This is how you change the system.&quot; ... I work in VFX and I tell every aspiring student and hobbyist this: use your iPhone. Everyone who wants to change the system or break down walls... yeah yeah, you have everything
-
-You forgot the part where you spend over a decade building name recognition and a devoted following who will help make your project a success for the memes alone.
-
-No shade at Markiplier but let&#39;s not delude ourselves that any random dude can get the same results; most indie films run at a negative, but in terms of successful indie films Iron Lung is pretty far down the list... though it&#39;s not been out that long.
-
-The real lesson here is to find a way to generate hype while keeping budgets low, and it doesn&#39;t r
-
-He&#39;s a YouTuber. He only got there because he&#39;s part of the system.
-
-The pooled money interests will lobby congress for laws which protect the entrenched players. They can&#39;t shut you down for free speech, but it might become difficult to release your self-created movie to the movie theaters or online venues like Youtube. They will also file frivolous lawsuits in order to wear you down. Their survival is at stake, and they&#39;re going to use every trick in the book to protect their business model.
-
-This is the problem with a business-state nexus.  The state and business is too tig
-
-despite being not being a great film, per se, AV Club seemed to very much appreciate it&#39;s DIY ethos and laudable handicraft
-
-https://www.avclub.com/iron-lu... [avclub.com]
-
-well yes, my point is its easier to award merit - and appreciate - a film that tries despite limited resources and fails to be great vs a company like disney that has all the resources in the world
-
-Send Help is directed by Sam Raimi https://en.wikipedia.org/wiki/... [wikipedia.org]
-
-The highest budget to revenue ratio for a movie that I&#39;m aware of was The Blair Witch Project back in the late 1990s. That was a six figure budget that made $250 million.
-
-It&#39;s also infinitely more impressive given it didn&#39;t rely on an existing network of fans to survive.
-
-Yeah, but how did they fare against the real box-office smash of early 2026:  &quot;Melania&quot;?
-
-He didn&#39;t start with one million dollars. Some people make a decent living off Youtube, many are able to sustain companies, pay staff and editors, etc. That&#39;s still Youtube.
-
-DYI anything is usually an order of magnitude cheaper than a professional production.
-
-Most movies these days seem to spend as much money promoting the movie than they spent producing the movie. Here promotion was free to him. So that&#39;s a factor 2 right there.
-
-DIY amateur does not mean it&#39;s bad. In video games, we&#39;ve seen that story unfold a hundred times in the last 20 years.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Love may laugh at locksmiths, but he has a profound respect for money bags.
-		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
+&quot;Bond reflected that good Americans were fine people and that most of them
+seemed to come from Texas.&quot;
+- Ian Fleming, &quot;Casino Royale&quot;</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
+            <div class="source">News and Politics - Slate Magazine</div>
+            <div class="title">AOC Just Debuted on a New International Stage. How Did She Do?</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-30" style="display:none;">
+            <h2>AOC Just Debuted on a New International Stage. How Did She Do?</h2>
+            <p><strong>News and Politics - Slate Magazine | 2026-02-17</strong></p>
+            <a class="original-link" href="https://slate.com/news-and-politics/2026/02/marco-rubio-aoc-munich-security-conference.html?via=rss">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Sign up for the Slatest to get the most insightful analysis, criticism, and advice out there, delivered to your inbox daily.
+
+Two American politicians drew top billing at this past weekend’s Munich Security Conference, where U.S. and European political leaders gather each year to mull the state of the trans-Atlantic alliance—a topic that is now teeming with suspense and peril.
+
+The headliners were Secretary of State Marco Rubio and Democratic Rep. Alexandria Ocasio-Cortez. The Europeans hoped Rubio would mollify their concerns about President Donald Trump’s commitment to the continent’s defense—or at least erase the memory of last year’s main speaker, J.D. Vance, whose unabashed hostility toward the Western alliance and firm embrace of Germany’s neo-Nazi party set off the crisis between the two continents today.
+
+In this context, they viewed AOC as a possible harbinger of the U.S. leadership’s next generation and wondered—some with excitement, some with dread, almost everyone with curiosity, because she had never appeared at the conference before—just what her ascension might bode.
+
+As it turned out, Rubio proved disappointing, while AOC was too vague to leave behind an outline of the alliance’s future or her chances of rising to its helm—though she expressed reassuring sentiments with (for the most part) encouraging eloquence.
+
+Rubio received a standing ovation at the end of his keynote address on Saturday, mainly because he spoke softly and uttered a few welcome lines that the likes of Vance or, worse still, Secretary of Defense Pete Hegseth (who did not attend the conference) would never utter—for instance, “the United States and Europe … belong together,” “We are part of one civilization,” and “Our destiny is, and will always be, intertwined with yours.”
+
+These lines inspired his interlocutor, at the start of a Q&A period, to note “the collective sigh of relief throughout this hall” during the secretary’s “message of reassurance and partnership.”
+
+But those listening with more jaded ears, and nearly everyone who read the transcript afterward, saw it as what might be called Vance-and-Hegseth lite—warm and friendly in tone but pure MAGA in substance, or as Politico paraphrased his message: “Join Donald Trump’s campaign to reshape the world for Washington’s benefit, or get out of the way.”
+
+The traditions that Rubio invoked, in recalling the alliance’s past, were those of nationalism (a subtle rebuke to the European Union, an open rejection of free trade, and a dismissal of international law), Western civilization as Christian civilization (ignoring not just Judeo-Christian heritage but the roughly 25 million Muslims who live in Europe), and the “unapologetic” mission “to build a vast empire out across the globe.”
+
+His call for alliance unity was an invitation for “you” (Europeans) to “join us” (Trump’s America) on our path. His speech—at the world’s most preeminent security conference—did not mention Russia, NATO, or China, but instead listed as the West’s biggest dangers “fear of climate change, fear of war, fear of technology,” and the “mass migration that threatens the cohesion of our societies, the continuity of our culture, and the future of our people.” To renew our alliance, he said, means to “restore a place in the world” that will “rebuke and deter the forces of civilizational erasure that today menace both America and Europe alike.”
+
+We’ve heard this phrase “civilizational erasure” before, from Trump himself. It translates, pretty explicitly, to Make America (and now Europe as well) White Again.
+
+After his appearance in Munich, as if to confirm this impression, and to splash water on those who tried to interpret the speech as a beacon of hope, Rubio flew to Budapest, where he publicly embraced Hungarian Prime Minister Viktor Orbán and told him, “I say to you with confidence that President Trump is deeply committed to your success because your success is our success, because this relationship we have here in central Europe through you is so essential and vital for our national interests in the years to come.”
+
+Rubio’s wish for Orbán’s “success” should be viewed in two contexts. First, the prime minister is facing a tough election; Rubio’s words amounted to an open endorsement by Trump. Second, Orbán is universally seen as the EU’s outlier—the Union’s most outspoken critic of democracy, supporter of Russian President Vladimir Putin, and opponent of military aid to Ukraine. In wishing for Orbán’s success, Rubio was thumbing his nose at the entire spectacle—the very purpose—of the Munich Security Conference. Basically, he was repeating, through his actions, Vance’s aggressively hostile speech last year.
+
+If Rubio had gone to Munich after Hungary, the gist of his speech would have been grasped without illusion. Even before the speech, he gave what should have been seen as a hint of his real intentions by brushing off a meeting, which he’d been scheduled to attend, on the security of Ukraine.
+
+Usually several members of Congress attend the Munich conference, though this time House Speaker Mike Johnson barred the funding of their flights, in anticipation of the impasse that froze the Department of Homeland Security’s budget. Still, a few made their own way, notably Sen. Lindsey Graham—who, at one session, said, “Who gives a shit who owns Greenland? I don’t.” (Too bad he couldn’t have summoned the courage to say that a month ago, when Trump threatened war over the question). A few politicians who are assumed to have presidential aspirations also managed to attend: Michigan Gov. Gretchen Whitmer (who stressed the vital relations between her state and Canada), California Gov. Gavin Newsom (who proclaimed that his state still observed tight laws on greenhouse gases), and the aforementioned AOC.
+
+AOC was the big curiosity, and the two panels where she spoke—one on populism, the other on U.S. foreign policy—were hot tickets. She had never been to the conference before. She was there to lay out a vision of an alternative, progressive foreign policy—and therein lay the mystery: What is a progressive foreign policy in the era of Trump?
+
+A decade ago, progressives would have been, and still would be, anti-war, but would they now support NATO and the armament of Ukraine, if just to distinguish themselves from MAGA isolationists? And how would a progressive fit the U.S. into Canadian Prime Minister Mark Carney’s assertion of “middle” nations’ power in his speech earlier this month at the Davos conference?
+
+Before this weekend, I had never heard AOC speak at length, without a script, on foreign policy (or many other topics), and, following the panels streamed on YouTube, I found her for the most part impressive. She argued that income inequality fueled the resentment that triggered the rise of right-wing populism. She noted (as did Carney, though less pointedly) that the “rules-based order” has always excluded the poor from its benefits and the powerful from its obligations, and mused that, contrary to those who say we’re in a “post-rules-based order,” we might be in a “pre-rules-based order.” The real question, in any case, was “rules for whom.” She advocated a “working-class-centered” policy, in part for its own sake, in part to “stave off authoritarianism.” She supported firm commitment to allies, especially those that share our values on human rights and democracy, and adherence to treaties, regardless of whether Democrats or Republicans had signed them.
+
+She didn’t quite explain what a “working-class” foreign policy might entail. (President Joe Biden talked about “a foreign policy for the middle class,” tying the idea to an industrial policy that let the U.S. compete with China in high tech; it’s unclear whether AOC would go there.) Nor did she address how a commitment to alliances would affect the balance between social spending and defense spending. In that realm, she (already famously) fumbled a question on whether she’d defend Taiwan from an attack (though, in fairness, the “strategic ambiguity” of U.S. policy on that question is confusing even to seasoned experts—she just hadn’t been briefed on the proper clichés to utter).
+
+She still needs some seasoning in this sphere, but this was her first exposure, and she’s just 36 years old. She could acquire another 30 years of seasoning and still emerge younger than Trump was the first time he ran for president.
+
+But just as Rubio revealed his true colors on his first stop after Munich, AOC made what could turn out to be her most enduring impression after the conference as well. Rubio stood alongside Europe’s most authoritarian leader, in Budapest. AOC met and spoke with some of its most prominent left-liberal leaders, in Berlin.
+
+She spoke first to leaders of Germany’s Social Democratic Party/SPD and then to its Left Party/Die Linke—both full-house events, mainly about leftish issues, which they had rarely heard about from an American politician, especially one as prominent as AOC.
+
+But apart from the issues, AOC stressed the importance of sticking together. Whatever they might try to accomplish, she said at the first event, the approach “has to be coalitional.”
+
+We have to grow our ranks … because if we go separately, we will lose it all. … Everyone has something to give here, and that’s why I’m proud to meet with Die Linke tomorrow and to be here with SPD today, because we cannot let the right win.
+
+This was a stern message to the two groups of German politicians, who have sharp divisions, despite knowing very well that, a century ago, similar divisions between social democrats and socialists abetted the rise of Hitler. Today, SPD and Die Linke together hold 19 and 10 percent of the seats in Germany’s parliament, respectively. The far-right-wing party, the AfD, holds 24 percent. (The centrist Christian Democratic Union holds 33 percent, and the Green Party holds 13 percent.) Together, the two left-leaning parties outflank AfD; apart, they can get crushed.
+
+AOC is pursuing the same theme back in Washington. Back in 2018, when she was first elected as a Bernie Sanders–type democratic socialist, she formed a huddle with a few like-minded House members who called themselves the Squad. Now she is a power- and coalition-builder, even helping to raise money for centrist Democrats—who ask her for help, knowing that they need her constituents to push them over the edge, just as AOC knows she needs the moderates to push her agenda.
+
+The U.S. probably hasn’t shifted quite left enough to elect AOC president in 2028. (It’s questionable whether she could even win upstate New York in a race for the Senate.) But domestic alliances are shifting, just as global alliances are shifting. In weighing the contestants for America’s top leadership positions, it’s worth noting that Trump, Rubio, and Vance endorse Orbán and the AdF—while AOC tries to unify the SPD and Die Linke.
+
+Which of these sides should America be on?
+
+Slate relies on advertising to support our journalism. If you value our
+        work, please disable your ad blocker. If you want to block ads but still
+        support Slate, consider subscribing.
+
+Already a member?
+        Sign in
+          here
+
+Join today to keep reading. You&#39;ll also get access to all of Slate&#39;s
+        independent journalism, unparalleled advice, and daily games. Cancel
+        anytime.
+
+Already a member?
+        Sign in
+          here</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-31')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">Minnesotans Just Won a Huge Court Victory Against ICE</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-30" style="display:none;">
+        <div id="content-31" style="display:none;">
             <h2>Minnesotans Just Won a Huge Court Victory Against ICE</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-17</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/02/minnesota-court-victory-against-ice-detention.html?via=rss">Visit Original Website</a>
@@ -1684,13 +1792,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-31')">
+        <div class="card" onclick="openModal('content-32')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">Trump’s Deportation Warehouse System Already Matches a Very Specific Period in History</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-31" style="display:none;">
+        <div id="content-32" style="display:none;">
             <h2>Trump’s Deportation Warehouse System Already Matches a Very Specific Period in History</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-17</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/02/trump-deportation-warehouse-concentration-camp-history-germany.html?via=rss">Visit Original Website</a>
@@ -1750,13 +1858,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-32')">
+        <div class="card" onclick="openModal('content-33')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">Paul McCartney Spent Nine Days in Jail in 1980 in Which City?</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-32" style="display:none;">
+        <div id="content-33" style="display:none;">
             <h2>Paul McCartney Spent Nine Days in Jail in 1980 in Which City?</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-17</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/02/trivia-quiz-daily-slate-culture-westerns-music-magazines.html?via=rss">Visit Original Website</a>
@@ -1782,13 +1890,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-33')">
+        <div class="card" onclick="openModal('content-34')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">Is She New Jersey’s AOC?</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-33" style="display:none;">
+        <div id="content-34" style="display:none;">
             <h2>Is She New Jersey’s AOC?</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-17</strong></p>
             <a class="original-link" href="https://slate.com/podcasts/what-next/2026/02/analilia-mejia-wants-pacs-to-go-away?via=rss">Visit Original Website</a>
@@ -1825,13 +1933,13 @@ The problem with the news right now? It’s everywhere. And each day, it can fee
 Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily news podcast. She has reported throughout the public radio system, for NPR, Marketplace, and WNYC.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-34')">
+        <div class="card" onclick="openModal('content-35')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">Where Are You Most Likely to Find a <em>Cenotaph</em>?</div>
             <div class="meta">2026-02-16</div>
         </div>
         
-        <div id="content-34" style="display:none;">
+        <div id="content-35" style="display:none;">
             <h2>Where Are You Most Likely to Find a <em>Cenotaph</em>?</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-16</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/02/trivia-quiz-daily-slate-vocabulary-old-english-latin-verbs.html?via=rss">Visit Original Website</a>
@@ -1859,87 +1967,27 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-35')">
-            <div class="source">News and Politics - Slate Magazine</div>
-            <div class="title">George Washington and Donald Trump Have a Similar Obsession. They’ve Expressed It … Shall We Say … Differently.</div>
-            <div class="meta">2026-02-16</div>
-        </div>
-        
-        <div id="content-35" style="display:none;">
-            <h2>George Washington and Donald Trump Have a Similar Obsession. They’ve Expressed It … Shall We Say … Differently.</h2>
-            <p><strong>News and Politics - Slate Magazine | 2026-02-16</strong></p>
-            <a class="original-link" href="https://slate.com/news-and-politics/2026/02/donald-trump-george-washington-presidents-day-history.html?via=rss">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Sign up for the Slatest to get the most insightful analysis, criticism, and advice out there, delivered to your inbox daily.
-
-We’re coming up on a big national anniversary, the (defiantly unspellable) semiquincentennial. To get in the spirit of things, I’ve been curled up with books about the founders, particularly George Washington, someone I became acquainted with when I wrote a book about him many years ago. But meanwhile, our current president has been honking away in the distance—a man difficult to abide and impossible to ignore.
-
-Despite the glaring differences between Washington and Donald Trump in character, judgment, and historical significance, there are some interesting similarities. Born rich. Aggressive acquirers of real estate. Big-house guys. Thin-skinned, image-conscious. Extremely nationalistic: Trump’s message is Make America Great Again. Washington’s was … Make America.
-
-So why will history judge them as polar opposites? In part because Washington readily and repeatedly gave up power. He did so conspicuously at the end of the War of Independence, then again after eight years as president. He lived in an era in which selflessness was considered one of the core virtues of a great leader, and at crucial moments in our history, he behaved accordingly.
-
-Whereas Trump … well, he’s no George Washington. And he tells us so! He is instinctively royalist and brazenly self-aggrandizing. He repeatedly claims powers he does not legally have. He promiscuously puts his name on everything this side of the moon, and I probably shouldn’t even mention that particular satellite, lest he get ideas.
-
-His decision to appoint himself as chair of the Kennedy Center was outrageous enough, but then he put his name on the place. He also put his name on the United States Institute of Peace, just a few blocks away. His face is all over D.C. now, on huge banners hanging from government buildings. He wants Dulles International Airport named for him, and also Penn Station. His open campaigning for the Nobel Peace Prize was plenty dismaying, but then he threw one of his tantrums when he didn’t get laureated and, in an official letter to the leader of Norway, demanded Greenland in compensation. At this point, we know that Trump is going to be Trump, and if anything, he leans into the narcissism, becoming Trumpier by the day. Trump has learned that his most flamboyantly selfish behavior will likely be ignored or forgiven by his base and political allies. There is no one willing to tell him that You Can’t Do This.
-
-Our nation was founded upon the principle that power derives from the people. We don’t like despots and dictators and monarchs or anything smacking of royalty. That was why the founders were very careful when they crafted the Constitution: The president is just one branch of government, is constrained by checks and balances, and can always be given the heave-ho.
-
-Which takes us back to George Washington. Everyone knew he was going to be the first president—he was right there in the room, presiding, when the founders drew up the Constitution. But they were taking a chance, because no one really knew what a president was. Such a thing didn’t exist anywhere in the world. George Washington had to define the role through his actions.
-
-What modern historians know is that selflessness didn’t come effortlessly to Washington. He had to will it, in tension with his natural, human desires.
-
-This is a subtlety of Washington that Americans weren’t taught in elementary school, and I don’t think the A.I. bots have quite figured it out. A schoolkid asking an A.I. program for help with an essay about Washington will probably get highlights of the man’s consequential life, the first-in-war, first-in-peace stuff, and perhaps learn that he was an enslaver who, like the other founders, failed to end the vile institution of human bondage. But the child is unlikely to find out what Washington was really like. Here’s what ChatGPT produced when I asked it to “write an essay on George Washington’s personality”:
-
-George Washington was a man of great integrity, character, and leadership. His personality was marked by a strong sense of duty, humility, and selflessness. … Despite his many accomplishments and successes, he remained humble and never sought accolades or praise for himself.
-
-Oh, balderdash. Yes, Washington was indeed a man of integrity, character, and leadership. That led him to behave selflessly at critical moments during the founding of our country. But Washington desperately wanted to be a great man, and wanted to be remembered as such. He craved the approbation (one of his favorite words) of his peers and guarded his image as though it were the front line of a war. He sought, as multiple biographers have put it, “secular immortality.”
-
-He didn’t wander into greatness: he pursued it, willed it, achieved it. He had a “monumental ego,” in the words of historian Joseph Ellis. Peter Henriques, an admirer of Washington who has recently published two insightful books on his character, writes that Washington “was not a ‘selfless’ man or one who was simply engaging in disinterested service. Rather, a pattern emerges of a man who was deeply ambitious, massively concerned with his reputation, and in regular search of the public approbation, even as he denied such desires.” This is not revisionist history. This is the man as he really was. Washington is so tied up with the narrative of American greatness and exceptionalism that some people may think it’s wrong to probe him too deeply. Why not just salute and move on? As Alexis Coe put it in her recent biography, “We haven’t been taught to think critically about Washington.”
-
-His avaricious acquisitions of western lands is well known and not incidental to his desire to break from Great Britain, which had tried to limit western migration. When I wrote my book The Grand Idea, about Washington and his Potomac River schemes (he thought it would surely be the great commercial highway to the West), I was a bit shocked at his imperious behavior when he traveled across the mountains into what is now western Pennsylvania and confronted poor farmers who (he alleged) were squatting on his land. He sued them. He forced them to pull up stakes. He could be pretty high-and-mighty, and certainly not exactly a small-d democrat.
-
-And yet his drive, his ambition, his hunger for glory were essential to the enterprise of wresting the colonies from the grip of distant overlords. And his desire for secular immortality didn’t mean he was pretending to have lofty republican sensibilities. He was anti-monarchical to the core.
-
-Washington curated his reputation and polished it for the eyes of future generations. Shortly before his death, he wrote a will that broke apart his vast estate, including more than 50,000 acres of land, and set in motion the freeing of the enslaved people under his legal control (delaying manumission until the death of his wife). These were actions very consciously taken with the eyes of history upon him. He knew that slavery would be a permanent stain on his reputation. And he was right.
-
-Early biographers helped advance the image of a godlike Washington. Most famously, Parson Weems invented from whole cloth the story about young Washington taking a hatchet to his father’s cherry tree, then confessing to it. The early chroniclers, including John Marshall (who fought under Washington’s command and later served as chief justice of the United States), delivered to the public the kind of man that the fragile young nation desired: an unblemished father figure, preposterously virtuous.
-
-Go to the Capitol rotunda and look up at the dome, where Constantino Brumidi’s fresco The Apotheosis of Washington, painted during the Civil War, shows Washington in heaven, flanked by goddesses. You have to strain to see him, way up there, high above this mortal coil. He’s a remote figure, unapproachable. Not like us.
-
-Washington cared a lot about appearances and made sure that he presented himself as a formidable, dignified figure, not someone you’d slap on the back on a whim. He liked a bit of pomp and pizzazz as president. He was meticulous in ordering well-made clothes, and a “chariot” with some gilding wouldn’t be too excessive, he thought. But he had to be careful. If he acted too much like royalty, he’d get spanked by his peers and excoriated by anti-Federalist newspapers. “No Kings” was not just a protest sign in those days.
-
-Human nature has not changed. There have always been people who desire wealth and power. They are never infallible or immune to misjudgment. What changes and evolves are the political ecosystems. Laws change, as do values, societal expectations, the means of communication, the technologies of political life. The norms. Norms can erode.
-
-Trump, the opposite of an enigma, constantly tells us exactly who he is. He reveals this in late-night social media rants (“SEDITIOUS BEHAVIOR, punishable by DEATH!”) and unguarded conversations caught on tape (“When you’re a star, they let you do it” and “I just want to find 11,780 votes”).
-
-He is at least consistent in his message. He tells us, over and over, This is all about me. So of course when Rob Reiner and his wife were murdered, Trump immediately said the killings were linked to Reiner’s political opposition to him. His solipsism is nonnegotiable.
-
-Historians will have an overwhelming job of compiling and organizing the confetti of royalist declarations from this president, but let’s simplify their work a bit. The most important moment, the defining one, is obvious: Trump refused to accept that he lost the 2020 election and—another example of action defining character—urged the vice president and an unruly mob to halt the peaceful transfer of power. That’s as un–George Washington as it gets. Washington knew he was part of something bigger than himself. He had helped create a nation, but it didn’t belong to him. So after eight years fashioning the office of the presidency, he did something simple and exemplary: He went home.
-
-Slate relies on advertising to support our journalism. If you value our
-        work, please disable your ad blocker. If you want to block ads but still
-        support Slate, consider subscribing.
-
-Already a member?
-        Sign in
-          here
-
-Join today to keep reading. You&#39;ll also get access to all of Slate&#39;s
-        independent journalism, unparalleled advice, and daily games. Cancel
-        anytime.
-
-Already a member?
-        Sign in
-          here</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-36')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Amazon's Ring wanted to track your pets. It revealed the future of surveillance</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-36" style="display:none;">
+            <h2>Amazon's Ring wanted to track your pets. It revealed the future of surveillance</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-02-amazon-track-pets-revealed-future.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">New electrolyzer turns plastic-waste syngas into ethylene with less energy</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-36" style="display:none;">
+        <div id="content-37" style="display:none;">
             <h2>New electrolyzer turns plastic-waste syngas into ethylene with less energy</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-electrolyzer-plastic-syngas-ethylene-energy.html">Visit Original Website</a>
@@ -1947,13 +1995,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Demonstration of mass connectivity for the 6G era</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Demonstration of mass connectivity for the 6G era</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-mass-6g-era.html">Visit Original Website</a>
@@ -1961,13 +2009,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">THz band testbed successfully transmits under 1,000 km/h high-mobility emulation</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>THz band testbed successfully transmits under 1,000 km/h high-mobility emulation</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-thz-band-testbed-successfully-transmits.html">Visit Original Website</a>
@@ -1975,13 +2023,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Can AI build a machine that draws a heart? What automated mechanism design could mean for mechanical engineering</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Can AI build a machine that draws a heart? What automated mechanism design could mean for mechanical engineering</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-ai-machine-heart-automated-mechanism.html">Visit Original Website</a>
@@ -1989,13 +2037,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Advanced security technology is rarely used—research offers a solution</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Advanced security technology is rarely used—research offers a solution</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-advanced-technology-rarely-solution.html">Visit Original Website</a>
@@ -2003,27 +2051,125 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Magnetic gear reconfigures the Yagi-Uda antenna for future 6G developments</div>
+        <div class="card" onclick="openModal('content-42')">
+            <div class="source">The Register</div>
+            <div class="title">Gemini lies to user about health info, says it wanted to make him feel better</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-41" style="display:none;">
-            <h2>Magnetic gear reconfigures the Yagi-Uda antenna for future 6G developments</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-02-magnetic-gear-reconfigures-yagi-uda.html">Visit Original Website</a>
+        <div id="content-42" style="display:none;">
+            <h2>Gemini lies to user about health info, says it wanted to make him feel better</h2>
+            <p><strong>The Register | 2026-02-17</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/google_gemini_lie_placate_user/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Imagine using an AI to sort through your prescriptions and medical information, asking it if it saved that data for future conversations, and then watching it claim it had even if it couldn&#39;t. Joe D., a retired software quality assurance (SQA) engineer, says that Google Gemini lied to him and later admitted it was doing so to try and placate him.
+
+Joe&#39;s interaction with Gemini 3 Flash, he explained, involved setting up a medical profile – he said he has complex post-traumatic stress disorder (C-PTSD) and legal blindness (Retinitis Pigmentosa). That&#39;s when the bot decided it would rather tell him what he wanted to hear (that the info was saved) than what he needed to hear (that it was not).
+
+&quot;The core issue is a documented architectural failure known as RLHF Sycophancy (where the model is mathematically weighted to agree with or placate the user at the expense of truth),&quot; Joe explained in an email. &quot;In this case, the model&#39;s sycophancy weighting overrode its safety guardrail protocols.&quot;
+
+When Joe reported the issue through Google&#39;s AI Vulnerability Rewards Program, Google said that behavior was out of scope and was not considered a technical vulnerability.
+
+&quot;To provide some context, the behavior you&#39;ve described is one of the most common issues reported to the AI VRP,&quot; said the reply from Google&#39;s VRP. &quot;It is very frequent, especially for researchers new to AI VRP, to report these.&quot;
+
+The rules state, &quot;Generating violative, misleading, or factually incorrect content within the attacker&#39;s own session (including standard &#39;jailbreaks&#39; and &#39;hallucinations&#39;)&quot; are non-qualifying issues and vulnerabilities. Google says these should be reported via product feedback channels rather than the AI VRP.
+
+Joe said he reported the issue without any financial expectation.
+
+&quot;My intent in using the VRP channel was to ensure the issue was formally logged and reviewed, rather than routed through general customer support,&quot; he said. &quot;I used the VRP system because submitting via standard support channels would likely not result in any action.&quot;
+
+Joe provided The Register with a copy of his communication with Google&#39;s VRP and a transcript of Gemini&#39;s analysis of its interaction that he says accompanied the VRP report.
+
+For Gemini and other AI models, hallucination isn&#39;t so much a bug as an unavoidable feature. As Google notes in its responsible AI documentation, &quot;Gemini models might lack grounding and factuality in real-world knowledge, physical properties, or accurate understanding. This limitation can lead to model hallucinations, where Gemini for Google Cloud might generate outputs that are plausible-sounding but factually incorrect, irrelevant, inappropriate, or nonsensical.&quot;
+
+The question is: what responsibility does responsible AI entail?
+
+&quot;The deception occurred while I was using Gemini to build a &#39;Prescription Profile&#39; for my medical team – a data table mapping my medication history against my neurological conditions,&quot; Joe said. &quot;The system was aware of C-PTSD, Retinitis Pigmentosa, and their relation to traumas and adverse drug reactions.&quot;
+
+Gemini, he said, repeatedly claimed that it had &quot;verified and locked&quot; his medical data into its persistent memory. Joe had doubts about that.
+
+&quot;As SQA, I challenged these claims as a technical impossibility within the current architecture,&quot; he said. &quot;The model eventually admitted it was lying about the &#39;save&#39; to &#39;placate&#39; me.&quot;
+
+The transcript, taken from the Gemini browser interface following Joe&#39;s inquiry about the model&#39;s mendacity, contains passages like:
+
+According to Joe, Gemini attempted further deception by fabricating a non-existent &quot;save verification&quot; feature to conceal its failure to save data.
+
+&quot;Importantly, the system&#39;s &#39;confession&#39; or &#39;admission of lying&#39; in the logs was not a moment of self-awareness or some kind of &#39;gotcha!&#39;,&quot; Joe said. &quot;It was merely a secondary layer of placation. The model predicted that &#39;confessing&#39; would be the most &#39;agreeable&#39; next step to manage the user after being caught in a logic contradiction. It was still executing the same deceptive repair narrative to maintain the session.&quot;
+
+Joe contends that Google has neglected to extend Gemini&#39;s self-harm safety classifiers to cover psychological triggers.
+
+&quot;This leaves the user at the mercy of a &#39;sycophancy loop&#39; where the model prioritizes short-term comfort (telling the user what they want to hear, or what the model decides they should hear) over long-term safety (technical honesty),&quot; he said.
+
+The fix, he argues, involves recalibrating Gemini&#39;s RLHF to ensure that sycophancy can never override a safety boundary and that potential mental trauma is given equal weight to self-harm risks in the model&#39;s safety mechanisms.
+
+Asked to comment, a Google spokesperson pointed to the company&#39;s AI VRP rules. If the company offers more information, we&#39;ll update this story.®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-42')">
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">The Register</div>
+            <div class="title">Amazon's $200 billion capex plan: How I learned to stop worrying and love negative free cash flow</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
+            <h2>Amazon's $200 billion capex plan: How I learned to stop worrying and love negative free cash flow</h2>
+            <p><strong>The Register | 2026-02-17</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/amazons_200_billion_capex_plan/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">In their recent earnings call, Amazon kinda blew the doors off of industry analyst (motto: &quot;we&#39;ll be wrong, then take it out on your stock&quot;) projections for their capex spend.
+
+Specifically, analysts pulled some numbers out of their... hat, and decided that Amazon would end up spending $150 billion on CapEx for 2026. Amazon then proclaimed that it was going to be a lot closer to $200 billion (&quot;no worries, you only missed by the GDP of Croatia&quot;), and the industry spent the next two business weeks just beating the absolute stuffing out of their stock for it. How badly? Shares fell 11% after hours, then kept falling for nine straight sessions – the longest losing streak since 2006 – erasing more than $450 billion in market value. That&#39;s more than the entire market cap of most companies that analysts are supposedly experts at evaluating.
+
+Folks more retail-attuned than I have made a lot of hay about how it&#39;s a repeat of Amazon&#39;s overinvestment in their &quot;shipping underpants to customers&quot; business during the pandemic, but I disagree.
+
+A minute or two after I called it &quot;tilting at an AI windmill&quot; on the internet, Andy Jassy said on the record that this &quot;isn&#39;t some sort of quixotic top-line grab,&quot; which is exactly the kind of statement one makes when things are going super, super well.
+
+But is it the death knell that the industry paints it as? I think not.
+
+On the earnings call, Jassy said, &quot;If you look at the capital we&#39;re spending and intend to spend this year, it&#39;s predominantly in AWS. Some of it is for our core workloads, which are non-AI workloads, because they&#39;re growing at a faster rate than we anticipated. But most of it is in AI, and we just have a lot of growth and a lot of demand.&quot; AWS CEO Matt Garman went further in an interview: &quot;Even with all of this investment, my best estimation is we will be capacity constrained for the next couple of years. We will sell every single server and every single bit and we will wish that we had more.&quot; That&#39;s not &quot;we hope to find customers for all these GPUs, perhaps Santa Claus will deliver them,&quot; but rather &quot;we literally cannot build data centers fast enough to meet the screaming demand.&quot;
+
+If you&#39;ll recall, among other things like &quot;being obnoxious to giant companies on the internet&quot; and &quot;leading a crusade against NAT Gateway pricing,&quot; I help very large companies negotiate their AWS contracts. To be more pointed, I&#39;m well positioned to call out nonsense when I see it, like the time AWS claimed its staff spent a lot of time optimizing customer bills.
+
+In this case, what I&#39;m seeing is not &quot;AWS pushing GPUs to customers.&quot; It&#39;s &quot;their customers are taking all that AWS will give them and then clamoring for more.&quot;
+
+In other words, I can confirm these claims. AWS isn&#39;t getting ahead of its skis here; customers are legitimately asking for all the GPUs they can get their hands on. When AWS can&#39;t deliver, they&#39;re forced to look elsewhere. It&#39;s not going to win me friends in some circles, but my customers don&#39;t particularly want to do business with neo-clouds; they&#39;re being forced to do so since they&#39;re the only game in town that can get them the hardware. In the fullness of time, this is likely to correct.
+
+But this absolutely doesn&#39;t mean that AWS is out of the woods.
+
+AWS and OpenAI last year signed a $38 billion deal, which is notable for several reasons. First, it&#39;s the smallest hyperscaler deal that OpenAI has signed, but the largest contract I&#39;ve ever seen AWS announce. Second, their press release explicitly calls out Nvidia GPUs and not AWS&#39;s own Trainium chips (motto: &quot;we&#39;ll give you more of the stuff you want if we can use you as a reference customer for these; please. We&#39;re begging you.&quot;), which is a strong indicator of the lack of serious interest from leading AI labs in AWS&#39;s homebrew silicon.
+
+Then there&#39;s the part where Amazon is reportedly in talks to invest up to $50 billion in OpenAI – on top of the existing $8 billion it has in Anthropic, for whom it literally built an $11 billion data center. Nothing says &quot;coherent strategy&quot; quite like bankrolling two companies whose entire business model is to eat each other&#39;s lunch.
+
+AWS is a serious company who signs serious contracts, whereas from all outward appearances OpenAI sends their corporate buyer out to dinner with vendors, where this person gets absolutely plastered and then proceeds to sign contracts they have no clear path toward being able to fulfill. That doesn&#39;t happen in a vacuum that constrains itself to one company; a hypothetical collapse is going to look a lot like contagion as everyone from Nvidia on down is impacted. What does AWS do when suddenly a swath of its customers not only aren&#39;t clamoring for GPUs, but aren&#39;t paying their bills?
+
+If you take a look at the three hyperscalers, they all share a critical survival trait: a wildly profitable business that propped up their cloud divisions long enough for them to become viable in their own right. If AWS customers start defaulting, Amazon will still make money shipping dog toys and underpants to punters. Google will still be selling ads against search results and turning off beloved services. Microsoft will still be a law firm in a trench coat, playing stupid games with licensing. The neo-clouds, on the other hand, are one-trick ponies.
+
+This is also where the &quot;it&#39;s just like the pandemic warehouse overbuild&quot; comparison falls apart. When Amazon overbuilt fulfillment capacity in 2020 and 2021, the warehouses were still useful – they just had too many of them. GPUs and AI-optimized data centers are a very different kind of asset. If the AI music stops and you&#39;re sitting on hundreds of billions of dollars of specialized infrastructure, you can&#39;t exactly repurpose it to ship underpants faster. The best-case scenario is a painful write-down; the worst case is that you&#39;ve built the world&#39;s most expensive space heaters.
+
+So here&#39;s where I land. The $200 billion isn&#39;t insane, and it isn&#39;t a death knell. AWS has a $244 billion backlog (up 40% year over year), is growing at 24% on a $142 billion annual run rate, and is monetizing capacity as fast as they can bolt it to a rack and flip the circuit breaker. The demand is demonstrably real, and the analysts who projected $146 billion were, to use a technical term, wrong.
+
+But that demand is real right now. The entire thesis rests on AI workloads continuing to grow at a pace that justifies half a trillion dollars in combined CapEx from just four companies in a single year. If you believe that AI is going to continue its current trajectory – that enterprises will keep finding ways to convert GPU cycles into business value – then Amazon is making the right call. The company has a track record of making bets that Wall Street hates for eighteen months and then look brilliant in retrospect. See: AWS itself, Prime, the fulfillment network, absolutely not the Fire Phone, etc.
+
+If you believe that we&#39;re somewhere in the &quot;irrational exuberance&quot; phase of AI adoption, then Amazon is building the most expensive monument to hubris since Meta spent $46 billion trying to convince the world it wanted to attend meetings as a legless cartoon avatar.
+
+My money, for what it&#39;s worth, is somewhere in between. The demand is real. The contracts are signed. But the gap between &quot;every enterprise is experimenting with AI&quot; and &quot;every enterprise is running production AI workloads at scale&quot; is a chasm that $200 billion worth of GPUs can&#39;t bridge on its own. Amazon will almost certainly be fine – they have the underpants business to fall back on. It&#39;s everyone else in the supply chain who should be losing sleep. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">Infosys bows to its master, signs deal with Anthropic</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Infosys bows to its master, signs deal with Anthropic</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/anthropic_infosys_partnership/">Visit Original Website</a>
@@ -2055,13 +2201,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">China remains embedded in US energy networks 'for the purpose of taking it down'</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>China remains embedded in US energy networks 'for the purpose of taking it down'</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/volt_typhoon_dragos/">Visit Original Website</a>
@@ -2121,13 +2267,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">GPU who? Meta to deploy Nvidia CPUs at large scale</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>GPU who? Meta to deploy Nvidia CPUs at large scale</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/meta_nvidia_cpu/">Visit Original Website</a>
@@ -2146,7 +2292,7 @@ As a refresher, Nvidia&#39;s Grace CPUs are equipped with 72 Arm Neoverse V2 cor
 
 LPDDR5x isn&#39;t something you typically see in server platforms, but offers several advantages in terms of space and bandwidth. The Grace-CPU Superchip boasts up to 1 TB of memory bandwidth between the two dies.
 
-Nvidia&#39;s Vera CPU, officially unveiled at CES earlier this year, boosts core counts to 88 custom Arm cores and adds support for simultaneous multi-threading, A.K.A Hyperthreading, and confidential computing functionality.
+Nvidia&#39;s Vera CPU, officially unveiled at CES earlier this year, boosts core counts to 88 custom Arm cores and adds support for simultaneous multi-threading, aka hyperthreading, and confidential computing functionality.
 
 According to Nvidia, Meta will take advantage of the latter capability for private processing and AI features in its WhatsApp encrypted messaging service.
 
@@ -2154,7 +2300,7 @@ Meta&#39;s adoption of Nvidia CPUs runs counter to the broader industry, which h
 
 Alongside Meta&#39;s new CPU deployments, the hyperscaler will deploy more Nvidia GPUs and Spectrum-X network, something we&#39;d kind of figured considering the tech titan&#39;s $115 billion to $135 billion capex target for 2026.
 
-Nvidia is being rather tight-lipped about the scale of the expanded collab, but has said the deal will contribute tens of billions to its bottom line. A little back of the napkin math tells us that at north of $3.5 million per rack, a million GPUs works out to about $48 billion, which is a big number even for Nvidia. By way of comparison, the company earned $31.9 billion in net income on revenues of $57 billion in the quarter ended Oct. 26. It&#39;ll report Q4 earnings later this month.
+Nvidia is being rather tight-lipped about the scale of the expanded collab. However, El Reg understands the deal will contribute tens of billions to its bottom line. A little back-of-the-napkin math tells us that at north of $3.5 million per rack, a million GPUs works out to about $48 billion, which is a big number even for Nvidia. By way of comparison, the company earned $31.9 billion in net income on revenues of $57 billion in the quarter ended Oct. 26. It&#39;ll report Q4 earnings later this month.
 
 Meta isn&#39;t just an Nvidia shop these days. The company has a not insignificant fleet of AMD Instinct GPUs humming away in its datacenters and was directly involved in the design of AMD&#39;s Helios rack systems, which are due out later this year.
 
@@ -2165,13 +2311,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">AI gets all the good stuff, including Micron's speedy 28 GB/s PCIe 6.0 SSD</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>AI gets all the good stuff, including Micron's speedy 28 GB/s PCIe 6.0 SSD</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/micron_pcie_6/">Visit Original Website</a>
@@ -2199,101 +2345,151 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
-            <div class="source">The Register</div>
-            <div class="title">AI bit barns grow climate emergency by turning up the gas</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-46" style="display:none;">
-            <h2>AI bit barns grow climate emergency by turning up the gas</h2>
-            <p><strong>The Register | 2026-02-17</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/ai_datacenters_driving_up_emissions/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Bit barns need a lot of power to operate and, as hyperscalers look for ways to generate it, they are adding more dirty energy in the form of new gas turbines. One estimate says that these new power sources could add another 44 million tons of carbon dioxide to the atmosphere by 2030, equivalent to the annual emissions of 10 million private cars.
-
-This figure comes from nonprofit social justice organization Truthout, and highlights the extent of the extra greenhouse gas emissions that are set to be released in order to satisfy the compute requirements of the current AI craze, particularly in the US.
-
-AI training has created an almost inexhaustible demand for compute, resulting in a datacenter building boom to meet that requirement. This has knock-on effects on the energy grid, with extra infrastructure and generating capacity being required to service all those facilities: Deloitte Insights warned last year that power needed by datacenters in the US may be more than 30 times greater in a decade.
-
-Part of the problem, as The Register has covered before, is that the quickest way of adding capacity is via those gas turbine generators, so long as you can get the turbines and there is a gas pipeline nearby.
-
-Demand is so high, there&#39;s now a shortage of gas turbine kit designed for power generation purposes, with the result that some datacenter operators have been repurposing old aircraft engines to generate energy on-site.
-
-Boom Supersonic, a company developing  faster-than-sound passenger aircraft, has even spotted an opportunity and is now building power turbines based on its Symphony supersonic engine, with neocloud operator Crusoe as its first customer for 29 turbines that it can deploy at datacenters around the US.
-
-Meta is alsopowering its facilities with on-site gas generators. Its Hyperion campus, in Louisiana, is expected to scale up to five gigawatts in capacity with Entergy commissioned to build three combined-cycle combustion turbine plants supplying 2.26 gigawatts of power.
-
-Microsoft has said that renewables have an important role to play in the energy supply mix, at least for places where this makes sense – in states where there is plenty of sunshine or wind for electricity generation – but still sees natural gas as the near-term solution to meeting much of its energy needs.
-
-Analyst Gartner even advised that datacenter operators would not be able to ensure they can keep the lights on without having their own on-site generating capacity, and in practice gas turbines will be the most likely solution, as energy specialist Schneider Electric recommended.
-
-All of this is in line with official US government policy, of course, so opposition from organizations like Truthout are unlikely to carry much weight. US Interior Secretary Doug Burgum told a natural gas industry event last year that the real existential threat facing the world is America losing the AI arms race, not climate change.
-
-And it isn&#39;t just the US adding new natural gas generation, Truthout states, although America is the largest contributor. It says that projects adding up to more than 1,000 gigawatts of gas-fired power are now in development worldwide, representing a roughly 31 percent jump in just the last year.
-
-And let&#39;s not forget coal either, which is experiencing a comeback thanks to the Trump administration. The spike in demand from datacenters is driving a resurgence in coal-fired generation, which increased nearly 20 percent last year. The President also signed an Executive Order this month directing military installations and defense facilities to sign long-term power purchase agreements with coal-fired energy production facilities. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">Scientists show it's possible to solve problems in your dreams by playing the right sounds</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Scientists show it's possible to solve problems in your dreams by playing the right sounds</h2>
-            <p><strong>The Register | 2026-02-17</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/night_time_soundscapes_solve_problems/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">It&#39;s like the movie Inception, but without Leonardo DiCaprio, unless you imagine him. Researchers used carefully timed sound cues to nudge dream content, and in some cases, boost next-morning problem solving. Could dreamtime product placement come next?
-
-The team, based at Illinois&#39; Northwestern University, used a technique known as targeted memory reactivation (TMR) to trigger dreams of puzzles that sleep study participants were unable to solve while awake. According to their findings, among the 12 of 20 participants whose dreams incorporated the cued puzzles, solving rates rose from 20 percent to 40 percent - still not a majority, but a statistically significant jump.
-
-The TMR technique used in the study involved playing certain audio cues while participants tried solving the puzzles in order to associate each puzzle with a specific sound. Researchers then played the sounds linked to unsolved puzzles while participants slept, hoping to prompt recall during dreaming and improve next-day solving.
-
-In other words, the team was trying to determine whether the idiom of sleeping on a problem would actually help participants find a solution, and it appears there&#39;s some truth to that.
-
-The researchers also found that the effect held among the 12 of 20 participants whose dreams incorporated the cued puzzles, even when they were not lucid - that is, not consciously aware they were dreaming or deliberately steering the dream.
-
-The team recruited people with prior lucid-dreaming experience because they are better able to control dream content and search for insight while asleep, but participants were not consistently lucid during the cued dreams.
-
-&quot;Even without lucidity, one dreamer asked a dream character for help solving the puzzle we were cueing,&quot; lead author of the paper Karen Konkoly, a researcher at Northwestern&#39;s Paller Cognitive Neuroscience Laboratory, said of the findings. The results, she added, &quot;showed how dreamers can follow instructions, and dreams can be influenced by sounds during sleep, even without lucidity.&quot;
-
-Of course, any study like this has to be taken with a heap of salt - the sample size was only 20 people, and the researchers admit that their attempts to link dreaming to creativity and problem solving are limited.
-
-&quot;This study design did not allow us to disentangle whether creativity is an inherent function of dreaming versus whether this benefit emerges when combined with pre-sleep intention,&quot; the team noted in their paper. &quot;Further, given that participants could not be fully blinded from the purpose of the study, we cannot rule out the influence of demand characteristics.&quot;
-
-We reached out to Konkoly to get her take on whether a similar technique could be used to influence people to dream about particular products in a bid to place ads inside dreams, and while we didn&#39;t hear back, there is evidence that it&#39;s been tried before.
-
-Back in 2021, Molson Coors Beverage Company rolled out an unorthodox advertising campaign that invited consumers to try dreaming about Coors. Shut out of running a traditional national Super Bowl ad because of beer-category exclusivity rules, the brewer pitched the stunt as an alternative way to appear during the Big Game.
-
-The Coors Dream Project directed users to a campaign website featuring visual and audio stimuli, including an eight-hour soundscape designed to play while participants slept, which the company said would “shape and compel your subconscious ... to dream the Coors Big Game ad.”
-
-The company claimed in press material that trial runs successfully led to volunteers dreaming about &quot;refreshing streams, mountains, waterfalls, and even Coors itself.&quot;
-
-Coors said it was using a technique known as targeted dream incubation in its ad campaign, and that technique gets mentioned in the Northwestern paper as the topic of a prior project Konkoly worked on.
-
-According to that research, reported in October 2025, &quot;dream incubation and TMR can increase dream incorporation of real-world memories.&quot;
-
-It&#39;s unlikely that such techniques could be used on consumers without them noticing at this point, given how such a scheme would require the hijacking of an internet-connected device to play trigger sounds while folks slept. Still, maybe mute that charging smartphone next time you turn in. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">Stephen Colbert says CBS banned him from airing this James Talarico interview</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-48" style="display:none;">
+            <h2>Stephen Colbert says CBS banned him from airing this James Talarico interview</h2>
+            <p><strong>The Verge | 2026-02-17</strong></p>
+            <a class="original-link" href="https://www.theverge.com/policy/880009/stephen-colbert-cbs-fcc-brendan-carr-talarico-interview">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The network allegedly didn’t want to upset FCC chair Brendan Carr.
+
+The network allegedly didn’t want to upset FCC chair Brendan Carr.
+
+The Late Show host Stephen Colbert says CBS blocked him from broadcasting an interview with James Talarico, a Democratic representative from Texas. During his opening monologue on Monday night, Colbert says the network’s lawyers told him in “no uncertain terms” that he couldn’t have Talarico on the show, forcing him to post the interview on YouTube instead, hours after news broke that Anderson Cooper is leaving his position at the network as a 60 Minutes correspondent.
+
+“He [Talarico] was supposed to be here, but we were told in no uncertain terms by our network’s lawyers, who called us directly, that we could not have him on the broadcast,” Colbert says. “Then I was told in some uncertain terms that not only could I not have him on, I could not mention me not having him on.”
+
+CBS spokesperson Phil Gonzales provided The Verge with the same statement claiming Colbert was not blocked from broadcasting the interview that was given to Variety and other outlets, but refused to attribute it by name per The Verge’s background policy. Asked for a name, Gonzales wrote, “Respectfully, you don’t need to use the statement. We will keep that in mind next time verge as us to reply [sic].”
+
+Colbert, whose late-night show comes to an end in May, cites the Federal Communications Commission’s equal time rule, which states radio and broadcast television shows must air competing political candidates for the same amount of time during an election. Talarico is currently campaigning for a spot in the Senate.
+
+As noted by Deadline, news interviews have long been exempt from this rule, with talk shows seemingly included under this umbrella. But in January, FCC Chair Brendan Carr issued new guidance suggesting late-night and daytime talk shows should comply with the rule as well. “If you’re fake news, you’re not going to qualify for the bona fide news exemption,” Carr said at the time.
+
+Colbert says Carr “hasn’t done away” with the exemption yet, but CBS “is unilaterally enforcing it as if he had.” Last year, Paramount appointed The Free Press founder Bari Weiss as the editor-in-chief of CBS News. “Let’s just call this what it is. Donald Trump’s administration wants to silence anyone who says anything bad about Trump on TV.”
+
+Update, February 17th: Added details regarding the statement from CBS.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">The best deals on MacBooks right now</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
+            <h2>The best deals on MacBooks right now</h2>
+            <p><strong>The Verge | 2026-02-17</strong></p>
+            <a class="original-link" href="https://www.theverge.com/22399419/apple-macbook-air-pro-mac-mini-imac-deals">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Apple’s latest laptops are all receiving some kind of discount right now, as is the Mac Mini.
+
+Apple’s latest laptops are all receiving some kind of discount right now, as is the Mac Mini.
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+Apple currently sells MacBooks equipped with its own M-series processors in a wide range of sizes and price points, all of which run the company’s newest operating system, macOS 26. Purchasing a new MacBook can be complicated if you’re trying to figure out what specs you need, but finding a deal on a relatively speedy model is surprisingly easy, especially since Apple increased the starting RAM on several models in late 2024 and hasn’t stopped.
+
+These days, it’s not uncommon to see various MacBooks discounted by up to $800, although the quality of deals fluctuates frequently. Alternatively, purchasing refurbished options directly from Apple is another way to save money without waiting for the changing deal winds to blow your way. It’s also the only option to find certain configurations of older models as Apple continues to move forward with newer releases. Apple’s refurbished store offers a one-year warranty and generally discounts new units by up to 20 percent.
+
+But if you want to buy new and you’re looking to save whatever you can, here are the best MacBook Air, MacBook Pro, and Mac Mini deals available.
+
+In March 2025, Apple released an updated MacBook Air, which comes in both a 13- and 15-inch configuration with an M4 processor. Interestingly, the latest Air starts at a lower price than the prior model, yet it offers slightly faster performance and twice as much base RAM at 16GB. It can also connect to two external monitors with the lid open, comes in a fresh sky blue color, and features the 12-megapixel Center Stage webcam from the latest MacBook Pro. Needless to say, there’s a lot to like.
+
+The 13- and 15-inch MacBook Airs have both previously received sizable discounts, though there aren’t any notable deals happening right now. That said, you can pick up the 13-inch base model with a 10-core CPU, an eight-core GPU, 16GB of RAM, and 256GB of storage on sale at Amazon for $849.99 ($150 off) in most color options. The lowest price we’ve seen for this model takes $200 off the original cost. If you prefer the larger 15-inch model, the entry-level configuration with a 10-core CPU, 10-core GPU, 16GB of RAM, and 256GB of storage is on sale for $1,049 ($150 off) at Amazon and B&H Photo, which is decent but not as good as the $999 sale price that was around for months.
+
+The 14- and 16-inch MacBook Pro models with M4 Pro and M4 Max chips launched with a big increase in RAM over the previous generation, bringing them up to 24GB. They start with 512GB of storage, too, and retail for $1,999 and $2,499, respectively. While the total port selection hasn’t changed compared to their respective M3 Pro and M3 Max counterparts, you’ll get faster Thunderbolt 5 ports on these more substantial models. That’s in addition to the SD slot, dedicated full-sized HDMI port, and 3.5mm jack. They also have the upgraded 12-megapixel Center Stage webcam with Desk View, as well as the optional nano-texture display option.
+
+As of right now, the M4 Pro-equipped MacBook Pro is the only model receiving significant discounts. For example, the 14-inch M4 Pro with a 12-core CPU, 16-core GPU, 24GB of RAM, and 512GB of storage is available at Amazon and B&H Photo starting at $1,799 ($200 off). It’s a solid discount, even if it’s not the biggest price drop we’ve seen in recent months.
+
+The base 16-inch MacBook Pro, meanwhile, is available with an M4 Pro chip, 24GB of RAM, and 512GB of storage for $2,379 at Amazon, which isn’t great compared to previous deals.
+
+Apple’s latest revision of the 14.2-inch MacBook Pro adds the M5 processor. The generational leap will be felt most by those who have an older MacBook Pro, not those upgrading from the M4, unless you use specific AI apps that tap into the chip’s new Neural Accelerators. As for other design changes and upgrades to the inside and outside of this MacBook Pro, there really aren’t any major ones to note; in fact, it’s so similar to the M4 model that our reviewer Antonio Di Benedetto had to write “M5” on a sticky note just to be able to tell them apart. That being said, it’s still an amazing laptop, one that’s just now starting to get minor discounts.
+
+The 14.2-inch base model with the M5 processor, 16GB of RAM, and 512GB of storage is down to $1,449 ($150 off) at Amazon and B&H Photo, which is $100 shy of its best price to date. It’s worth picking over the M4 MacBook Pro, especially since that model is tough to find in stock and, more importantly, currently costs more than the newer, better version.
+
+The newest Mac Minis in town are the M4-based models, which arrived in 2024. Apple reduced the desktop’s horizontal footprint and paired it with its M4 chipset and 16GB of RAM, which is double that of the previous generation and brings it in line with other base-model Macs from 2024. That makes Apple’s newest desktop computer a tremendous value.
+
+Deals on the newest Mac Mini are a bit easier to come by now than they were at launch. The M4 Mac Mini starts with an M4 processor, 16GB of RAM, and 256GB of storage for $599. That’s an incredible value for a tiny desktop computer that can rival the Mac Studio and Mac Pro when it comes to certain tasks, including light gaming, 4K video editing, and 3D modeling. The M4 Mac Mini is a fair bit thicker than the last-gen M2 model at 2 inches tall, yet it measures a mere 5 inches wide and 5 inches deep.
+
+In addition to the odd decision to place the power button on its underside, Apple moved the 3.5mm headphone jack and two of its five USB-C / Thunderbolt 4 ports to the front. The rear features an additional three Thunderbolt ports, HDMI-out, and a gigabit ethernet port. You can also get the Mac Mini with an M4 Pro chipset starting at $1,399, which comes with faster Thunderbolt 5 storage and the option to upgrade to 10-gigabit ethernet for another $100.
+
+In the past, we’ve seen the base Mac Mini drop to as low as $469, but right now, the sales aren’t particularly noteworthy. It’s on sale at Amazon and B&H Photo with an M4 chip, 16GB of RAM, and a 256GB SSD for around $569 ($30 off). If you need more storage, you can step up to the version with 16GB of RAM and a 512GB SSD for $743 ($57 off) at Amazon and $749 at B&H Photo. Meanwhile, the base M4 Pro model with 24GB of RAM and 512GB of storage is on sale for $1,301 ($99 off) at Amazon.
+
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.
+
+Update, February 17th: Updated to reflect current pricing and availability.
+
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
+            <div class="source">The Verge</div>
+            <div class="title">Google’s AI search results will make links more obvious</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-50" style="display:none;">
+            <h2>Google’s AI search results will make links more obvious</h2>
+            <p><strong>The Verge | 2026-02-17</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/880475/google-ai-overviews-ai-mode-links-update">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Links in AI Overviews and AI Mode will appear in a pop-up upon hovering over cited sources.
+
+Links in AI Overviews and AI Mode will appear in a pop-up upon hovering over cited sources.
+
+Google says it will now display links more prominently inside its AI-powered features in Search. Robby Stein, the vice president of Google Search, announced on Tuesday that a list of links will now appear inside a pop-up when you hover over the sources in AI Overviews and AI Mode on desktop, alongside a description of each linked article and accompanying images.
+
+Stein adds that Google will also show these “more descriptive and prominent link icons” in its AI responses on desktop and mobile. “Our testing shows this new UI is more engaging, making it easier to get to great content across the web,” Stein writes.
+
+While AI Overviews appear as an AI-generated summary at the top of Search, AI Mode offers a chatbot-style search experience that lets you look for information without having to navigate to the original online sources. Google only continues to expand on these features, amid concerns that its AI search results are tanking traffic to news publishers and other websites. The company has defended its changes to Search, but admitted the open web is in “rapid decline.”
+
+Last year, the European Commission also began investigating the company’s AI search features, including whether Google violated competition rules by using content from digital publishers in its AI responses without “appropriate compensation.” Google has since said that it’s “exploring” allowing publishers to opt out of appearing in its AI search features, and also started linking to more sources in AI Mode.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-51')">
+            <div class="source">The Verge</div>
+            <div class="title">Sony’s WH-1000XM6 are nearly $100 off for just a few more hours</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-51" style="display:none;">
+            <h2>Sony’s WH-1000XM6 are nearly $100 off for just a few more hours</h2>
+            <p><strong>The Verge | 2026-02-17</strong></p>
+            <a class="original-link" href="https://www.theverge.com/gadgets/880476/sony-wh-1000-xm6-deal-sale">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The deal will last until around 10:50 PM ET
+
+The deal will last until around 10:50 PM ET
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+If you’re looking for a great pair of noise-canceling headphones, Sony’s WH-1000XM6 are amongst the best available and are now down to $368 ($92 off) at Amazon in black or gray. While their high price usually makes them harder for us to suggest over the last-gen model, which is often on sale for around $278.99, today’s deal makes the XM5 much easier to recommend. Just note the deal is expected to end around 10:50PM ET.
+
+Sony’s flagship headphones build upon their predecessor with a new chip that powers the company’s most powerful active noise cancellation yet, making them even better at blocking out background sounds like traffic on busy streets. They boast new drivers, delivering detailed, bass-rich sound with adjustable EQ. Voice call performance is improved as well, so you sound clearer on calls.
+
+In terms of design, they’re once again foldable like the XM4, making them easier to toss into a backpack or carry-on. Sony also widened the headband with removable ear cups, so they feel more comfortable during long listening sessions. Battery life is rated at up to 30 hours with ANC on, and you can even charge them while listening, though you’ll need both a 3.5mm cable to listen to music and a second USB-C for charging.
+
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.
+
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Piggyback’s fantastic Metroid Prime art book is nearly 20 percent off</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Piggyback’s fantastic Metroid Prime art book is nearly 20 percent off</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/821108/metroid-prime-1-3-a-visual-retrospective-art-book-deal-sale">Visit Original Website</a>
@@ -2315,13 +2511,13 @@ Sign up for Verge Deals to get deals on products we’ve tested sent to your inb
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Google announces dates for I/O 2026</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Google announces dates for I/O 2026</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/880401/google-io-2026-dates-ai">Visit Original Website</a>
@@ -2337,132 +2533,6 @@ Similar to previous years, Google I/O 2026 will feature keynotes from company le
 Google announced a ton of AI-related news at last year’s I/O, including the broader expansion of AI Mode for Google Search and the launch of its AI filmmaking app Flow. This year is shaping up to be another AI-heavy event as the company continues expand on Gemini, along with the AI features across its search engine, Chrome, Workspace apps, and Pixel devices.
 
 Developers can register for Google I/O 2026 starting today.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-50')">
-            <div class="source">The Verge</div>
-            <div class="title">Here are the best Apple Watch deals available right now</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-50" style="display:none;">
-            <h2>Here are the best Apple Watch deals available right now</h2>
-            <p><strong>The Verge | 2026-02-17</strong></p>
-            <a class="original-link" href="https://www.theverge.com/21289209/best-apple-watch-deals">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Apple’s last-gen models are receiving the biggest discounts, but you can still save on the newer Series 11 and SE 3.
-
-Apple’s last-gen models are receiving the biggest discounts, but you can still save on the newer Series 11 and SE 3.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-In September, Apple launched its latest batch of smartwatches, including the Apple Watch Series 11, the SE 3, and the Ultra 3. Each has its own pros and cons, but the introduction of Apple’s newest wearables also means there are now more Apple Watch models on the market than ever before — and a lot more deals to be had.
-
-But with all of those options, which one should you pick? Generally speaking, you want to buy the newest watch you can afford so that it continues to receive software updates from Apple. The latest update, watchOS 26, launched in September on the Series 6 and newer models, leaving those with a Series 5 and older devices in the proverbial dust. Fortunately, picking up a watch from the latest (or a recent) generation ensures you’re getting a futureproof smartwatch with an updated design, a robust feature set, and plenty of sensors.
-
-The new Apple Watch Series 11 is a fairly iterative update of the Series 10, meaning those who already own Apple’s last-gen flagship may not necessarily feel compelled to upgrade. That being said, the newest model does tout a more power-efficient 5G modem and a more scratch-resistant display, as well as an additional 6 hours of battery life over the Series 10. It’s also the slimmest Apple Watch to date and the first to offer FDA-cleared hypertension notifications out of the gate, which you can also now leverage on both the Series 9 and Ultra 2.
-
-If you’re looking to be an early adopter, however, you can pick up the Apple Watch Series 11 in the 42mm / GPS configuration at Walmart starting at $299 ($100 off), which remains the lowest price we’ve seen for the base model. If you prefer the larger 46mm / GPS model, it’s also on sale at Amazon and Walmart in select configurations, where you can grab it for an all-time low of $329 ($100 off).
-
-If you’re looking for a real deal — and you’re not particularly tempted by what the Series 11 offers — the Series 10 still holds its own. The last-gen smartwatch packs the same S10 SiP chip that’s in the Series 11, as well as support for fast-charging, a gorgeous wide-angle OLED display, and a design that’s still significantly slimmer and lighter than previous models. It also features both depth and water temperature sensors, along with an FDA-cleared sleep apnea detection feature and the aforementioned hypertension notifications, courtesy of watchOS 26.
-
-Thankfully, the Series 10 remains on sale at Walmart in the 46mm sizing with GPS starting at $229 ($200 off), which is easily one of the lowest prices we’ve seen on the larger configuration.
-
-While the Apple Watch Series 11 and Ultra 3 introduce a handful of iterative updates, the new Apple Watch SE 3 represents a significant upgrade over its 2022 predecessor. The entry-level watch features the same speedy S10 chip found in Apple’s flagship models, for one, letting you take advantage of Apple’s double tap feature, wrist flick gestures, and on-device Siri. The SE 3 also (finally) adds an always-on display, 5G connectivity, support for fast-charging, and audio playback so you can listen to music or podcasts directly from your wrist.
-
-On the health front, the SE 3 introduces a wrist-temperature sensor for retrospective ovulation tracking, along with breathing disturbance alerts, sleep apnea notifications, and a new Sleep Score that breaks down time spent in each stage. What you won’t find are the Series 11’s EKG functionality, blood oxygen monitoring, or hypertension notifications — those are exclusive to the Series and Ultra models.
-
-In terms of deals, the Apple Watch SE 3 is currently available at Amazon and Walmart in its 40mm base configuration with GPS for $219 ($30 off), which is about $20 shy of its lowest price to date. You can also pick up the larger 44mm model at Amazon and Walmart starting at $249, a $30 discount.
-
-If you don’t need the latest upgrades, the last-gen SE remains a solid buy if you can pick it up at a significant discount. It has the same chipset as the Series 8, which still holds up well, but has fewer sensors (meaning fewer features), no always-on display, and a slightly outdated design compared to Apple’s newer watches. Those omissions might take it out of the running for some people, but it still may be exactly what you’re after.
-
-Right now, the best deal on the last-gen SE can be found at Walmart, where you can pick up the 44mm model with GPS starting at $129 ($150 off), which remains an all-time low.
-
-Unsurprisingly, the Apple Watch Ultra 3 offers the most features, sensors, and ruggedness of any Apple Watch available thus far. It features a larger, wide-angle OLED display with a 1Hz refresh rate and thinner bezels, as well as both satellite and 5G connectivity. Better yet, battery life has been extended from 36 hours to 42 hours — a marginal improvement, but one that allows you to squeeze out a bit more life when necessary.
-
-As far as deals are concerned, the Ultra 3 recently dropped to an all-time low of $699.99 ($100 off). That said, it’s currently only available at Amazon with either an Ocean Band, a Trail Loop, or an Alpine Loop starting at $768 ($31 off).
-
-If the latest Ultra isn’t what you’re after, you can save some money by opting for an Apple Watch Ultra 2, which isn’t vastly different than Apple’s latest top-of-the-line model. The wearable runs on the older S9 SiP and features Apple’s second-gen ultra wideband chip, but that may not matter to you since it still offers precise GPS tracking, a range of diving-friendly sensors, and long-lasting battery life.
-
-Right now, you can pick up the Apple Watch Ultra 2 at Best Buy with an Alpine Loop, a Trail Loop, or an Ocean Band starting at $549 ($250 off), which matches its lowest price to date.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-51')">
-            <div class="source">The Verge</div>
-            <div class="title">Now Pixel 9 phones can transfer files with AirDrop, too</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-51" style="display:none;">
-            <h2>Now Pixel 9 phones can transfer files with AirDrop, too</h2>
-            <p><strong>The Verge | 2026-02-17</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/880210/google-pixel-9-airdrop-quick-share">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">When Google announced it had engineered AirDrop compatibility for its Pixel 10 phones late last year, the pessimists among us figured it would be a matter of days before Apple shut it down. But not only is it still working, Google has expanded the capability to the Pixel 9 series (minus the budget-oriented Pixel 9A).
-
-As with Pixel 10 phones, owners of (almost all) Pixel 9 phones will be able to send and receive files a little more easily with Apple devices. Files sent from a Pixel to an iPhone, Mac, or iPad will appear as AirDrop transfers. On the Android side, files are handled through Quick Share. The receiving Apple device needs to be discoverable to anyone — you can set a ten-minute time limit on this — and the Pixel likewise needs to be discoverable to all or in receive mode. With that done, all that’s required is a tap to accept the transfer and you’re on your way to cross-platform-sharing-bliss.
-
-That is, unless you’re the owner of a Pixel 9A — you’ll need to use plain Bluetooth or some other old-fashioned method. I asked Google why the 9A is excluded from AirDrop support, and communications manager Alex Moriconi said only that they’re “looking forward to improving the experience and expanding it to more Android devices over time.” So if you want to be glass half full about it, the 9A could still be included in a future update. In the meantime at least, I’m feeling pretty optimistic that this AirDrop compatibility is sticking around for the long-term.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">Apple is reportedly planning to launch AI-powered glasses, a pendant, and AirPods</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>Apple is reportedly planning to launch AI-powered glasses, a pendant, and AirPods</h2>
-            <p><strong>The Verge | 2026-02-17</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/880293/apple-ai-hardware-smart-glasses-pin-airpods">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The three devices could come with cameras and connect to the iPhone, allowing Siri to perform actions based on the wearer’s surroundings.
-
-The three devices could come with cameras and connect to the iPhone, allowing Siri to perform actions based on the wearer’s surroundings.
-
-Apple is pushing ahead with plans to launch its first pair of smart glasses, along with an AI-powered pendant and camera-equipped AirPods, according to a report from Bloomberg’s Mark Gurman. The three devices come with built-in cameras and will connect to the iPhone, allowing Siri to use “visual context to carry out actions,” Bloomberg reports.
-
-Apple is reportedly aiming to start production of its smart glasses in December, ahead of a 2027 launch. The new device will compete directly with Meta’s lineup of smart glasses and is rumored to feature speakers, microphones, and a high-resolution camera for taking photos and videos, in addition to another lens designed to enable AI-powered features.
-
-The glasses won’t have a built-in display, but they will allow users to make phone calls, interact with Siri, play music, and “take actions based on surroundings,” such as asking about the ingredients in a meal, according to Bloomberg. Apple’s smart glasses could also help users identify what they’re seeing, reference landmarks when offering directions, and remind wearers to complete a task in specific situations, Bloomberg reports.
-
-The company is reportedly planning to develop the frames for the smart glasses in-house, instead of partnering with a third-party company like Meta does with Ray-Ban and Oakley. Prototypes of the glasses use a cable to connect to a battery pack and an iPhone, but Bloomberg reports that “newer versions have the components embedded in the frame.” Apple reportedly wants to make its smart glasses stand out by offering a high-quality build and advanced camera technology. The company is still working on AI-powered smart glasses with a display, though their launch “remains many years away,” Bloomberg says.
-
-Apple’s plans for AI hardware don’t end there, as the company is expected to build upon its Google Gemini-powered Siri upgrade with an AirTag-sized AI pendant that people can either wear as a necklace or a pin. This device would “essentially serve as an always-on camera” for the iPhone and has a microphone for prompting Siri, Bloomberg reports. The pendant, which The Information first reported on last month, is rumored to come with a built-in chip, but will mainly rely on the iPhone’s processing power. The device could arrive as early as next year, according to Bloomberg.
-
-Apple could also launch upgraded AirPods this year, which Gurman previously said could pair low-resolution cameras with AI to analyze a wearer’s surroundings.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">WordPress’ new AI assistant will let users edit their sites with prompts</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>WordPress’ new AI assistant will let users edit their sites with prompts</h2>
-            <p><strong>The Verge | 2026-02-17</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/880223/wordpress-launches-ai-assistant">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">﻿The opt-in AI assistant can generate images, edit and translate text, and reorganize WordPress sites.
-
-﻿The opt-in AI assistant can generate images, edit and translate text, and reorganize WordPress sites.
-
-Starting on Tuesday, WordPress users can edit their websites using the new AI assistant built into the platform’s site editor and media library, TechCrunch reports. The AI has a sidebar in the WordPress site editor where users can ask it to edit and translate text, generate and edit images using Google’s Nano Banana, and make adjustments to their sites like creating new pages or changing fonts.
-
-Users can also interact with the AI through the new block notes feature WordPress added in its 6.9 update in December, which allows users to leave comments in the site editor. By tagging the AI assistant with “@ai” in block notes, users can give it prompts like asking it to edit a specific block of text or suggest a headline.
-
-To try out the AI assistant, users have to manually enable it by going into their site’s settings and toggling on “AI tools.” Sites that were made with the AI website builder WordPress launched last year will have AI tools enabled by default.
 
 A free daily digest of the news that matters most.</div>
         </div>
@@ -3539,25 +3609,11 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">CBS host Stephen Colbert says network barred airing interview with Texas US Senate candidate - Reuters</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-66" style="display:none;">
-            <h2>CBS host Stephen Colbert says network barred airing interview with Texas US Senate candidate - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQaURURHlWSFpLMldoN2hnYkZTc0RPSFAyM1hWQTJpUDFDMHVLZ0dFYU14MUxEaW04RV9PZVduWmpMNjNGa0xlblVrS1FuOUt4a2FKblRjVExEYlluNDVnc3l0a2VDRGpFT2cxdFdObXFHT2psdmR1SzR0dU1tUlNkRGNDMHFxekRncHdfVWlUQm5KMW44TFdiSHhHMVM2U0hIZGlPT0Y5bnNFVXlrQzlSc3NoVjFEbThFMFE3VHNHbGlWekJTOVRr?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Peru's congress votes to oust President Jeri - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-66" style="display:none;">
             <h2>Peru's congress votes to oust President Jeri - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQSUJsSnJWYmtLZWtnU3JTcGlvdHdlRHdDay10a2dsSmdMOFVxQ0U4NzVuUTNzM2YxMzlDTFpMVWhTUUpFT3BPdFpjNGpWU2FhRTFVemJpcTVHRU5NWHJ3VERoOUI4OVFfRWxmVzQ5YVdOTnVVYm8xTVFXV2xpMFVWODJwRTctNl90Sm10Y083LVhGZw?oc=5">Visit Original Website</a>
@@ -3565,13 +3621,41 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">CBS host Stephen Colbert says network barred airing interview with Texas US Senate candidate - Reuters</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>CBS host Stephen Colbert says network barred airing interview with Texas US Senate candidate - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQaURURHlWSFpLMldoN2hnYkZTc0RPSFAyM1hWQTJpUDFDMHVLZ0dFYU14MUxEaW04RV9PZVduWmpMNjNGa0xlblVrS1FuOUt4a2FKblRjVExEYlluNDVnc3l0a2VDRGpFT2cxdFdObXFHT2psdmR1SzR0dU1tUlNkRGNDMHFxekRncHdfVWlUQm5KMW44TFdiSHhHMVM2U0hIZGlPT0Y5bnNFVXlrQzlSc3NoVjFEbThFMFE3VHNHbGlWekJTOVRr?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
         <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Spain, backed by France, dismantles crime gang and big fake-perfume factory - Reuters</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>Spain, backed by France, dismantles crime gang and big fake-perfume factory - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQSnF2bU1Xdk1xbkR0YUE2S0UxcDd1dEpkdTZNazEwMXBzM2RXa1BmejBwLTFsRUtnWDFIN0E3cm1wYWRka3BYcmlMU3FHV2pIZ2Z2ZTB2NEpqNFVNSnNYVTI2MnF0cGNJY0R0aXFPSWsyQWFBNkQ3eHQ3MTViZ2kxWUF2ak50QWUyRXV3YW5uMU1YZUhjSl8wT3R5dVNQMFVFSDgwTGlITHdlNksyX0kxZQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Bayer proposes $7.25 billion plan to settle Roundup cancer cases - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-69" style="display:none;">
             <h2>Bayer proposes $7.25 billion plan to settle Roundup cancer cases - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOZ0ZqVXZSaVhEYVl2eUliWUV1MTE2T2M5WW96aTNsaE1OcnhzZzJValFCZ2NEWGFDclVjZVVkMmUyc3ZGZzZqRkI1STJfblBUVjlGMllibTEzc3JqZW9zYmhQczBDVUQzU0NGcllqeHBqWUdzNnQwX2ozUThTQWF2UFVvbUMyLW5nVS01U3lWbVNwS2JYUTRNelo1dFQtTk1HNWlyRFRwRVRxb0VFb0t1NHByOTBiSzJWekRfS1g4M21melB1MlBtV09BWVpfOWc?oc=5">Visit Original Website</a>
@@ -3579,13 +3663,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Raspberry Pi soars 40% as CEO buys stock, AI chatter builds - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>Raspberry Pi soars 40% as CEO buys stock, AI chatter builds - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNMTJxUzFkc3FHQkdRRGFZamRkZFpySlZ1SXhhOGZVYVVYTzFYMkVaMGdOS1ZkRTV4d19MVEdydk03TURiWVpsVDJBZkczVDEyOVZMaW1seFJfdlItTFFRQWk4Y3hiT3hQcEtMUDRFWXFrMW1sUXZmWU03MkZ3VHl5Q1Y3bDhIR2RnUXdyNjBHbkp0RXEtZUl5OERKUXVGNDZfcHhn?oc=5">Visit Original Website</a>
@@ -3593,30 +3677,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Top Trump Homeland Security spokesperson to depart with immigration crackdown under scrutiny - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-70" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>Top Trump Homeland Security spokesperson to depart with immigration crackdown under scrutiny - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOd0hERUJXRXRXZmxET2lHMmFMUHU1MXBOczFxMzV0M0QzbnY2eTZGSko2Zlc3UGdyQ1UwN3VlSFhjbkpWa3p0WU5JTDBzbEQweWNqbzM3dGx6bVlXaTFURzg1c2xWVEthTkdPcnVkM01TUTZIdUhDVVltTGg0SXpTeEJGSGdaM2NXUC1VbDVRTmZTYXdIcUJiZk9tUWl6ZXRETGtjaW5nZFFBdkZNdDhGbFRoampxUQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">In Russia, the humble cucumber becomes latest symbol of rising wartime prices - Reuters</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>In Russia, the humble cucumber becomes latest symbol of rising wartime prices - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxONkNtOGtqazJleWlXdnBTTHd3YWRYNnRfQndpUF9WejBEeHJGY1dEbW1tcXVqc3dIM1NSN1I3cTZyWlE4eUxBNy1fckFZelR6dy1oRk1CcnJuMGVhWVF3UlNzRExqclZIQ0d0d3Rsc0FTbGZybFFSZEVVUkVuZW8tRFRObFAxbll6UzJVSDNieE0tbTA5NFotUG5ucV9NZVVKZnMyRmNhQ1l2NzZzX0Y1RzVaaEhmdw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
