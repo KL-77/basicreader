@@ -154,11 +154,136 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</div>
+            <div class="title">Password managers' promise that they can't see your vaults isn't always true</div>
             <div class="meta">2026-02-17</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Password managers' promise that they can't see your vaults isn't always true</h2>
+            <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Over the past 15 years, password managers have grown from a niche security tool used by the technology savvy into an indispensable security tool for the masses, with an estimated 94 million US adults—or roughly 36 percent of them—having adopted them. They store not only passwords for pension, financial, and email accounts, but often cryptocurrency credentials, payment card numbers, and other sensitive data.
+
+All eight of the top password managers have adopted the term “zero knowledge” to describe the complex encryption system they use to protect the data vaults that users store on their servers. The definitions vary slightly from vendor to vendor, but they generally boil down to one bold assurance: that there is no way for malicious insiders or hackers who manage to compromise the cloud infrastructure to steal vaults or data stored in them. These promises make sense, given previous breaches of LastPass and the reasonable expectation that state-level hackers have both the motive and capability to obtain password vaults belonging to high-value targets.
+
+Typical of these claims are those made by Bitwarden, Dashlane, and LastPass, which together are used by roughly 60 million people. Bitwarden, for example, says that “not even the team at Bitwarden can read your data (even if we wanted to).” Dashlane, meanwhile, says that without a user’s master password, “malicious actors can’t steal the information, even if Dashlane’s servers are compromised.” LastPass says that no one can access the “data stored in your LastPass vault, except you (not even LastPass).”
+
+New research shows that these claims aren’t true in all cases, particularly when account recovery is in place or password managers are set to share vaults or organize users into groups. The researchers reverse-engineered or closely analyzed Bitwarden, Dashlane, and LastPass and identified ways that someone with control over the server—either administrative or the result of a compromise—can, in fact, steal data and, in some cases, entire vaults. The researchers also devised other attacks that can weaken the encryption to the point that ciphertext can be converted to plaintext.
+
+“The vulnerabilities that we describe are numerous but mostly not deep in a technical sense,” the researchers from ETH Zurich and USI Lugano wrote. “Yet they were apparently not found before, despite more than a decade of academic research on password managers and the existence of multiple audits of the three products we studied. This motivates further work, both in theory and in practice.”
+
+The researchers said in interviews that multiple other password managers they didn’t analyze as closely likely suffer from the same flaws. The only one they were at liberty to name was 1Password. Almost all the password managers, they added, are vulnerable to the attacks only when certain features are enabled.
+
+The most severe of the attacks—targeting Bitwarden and LastPass—allow an insider or attacker to read or write to the contents of entire vaults. In some cases, they exploit weaknesses in the key escrow mechanisms that allow users to regain access to their accounts when they lose their master password. Others exploit weaknesses in support for legacy versions of the password manager. A vault-theft attack against Dashlane allowed reading but not modification of vault items when they were shared with other users.
+
+One of the attacks targeting Bitwarden key escrow is performed during the enrollment of a new member of a family or organization. After a Bitwarden group admin invites the new member, the invitee’s client accesses a server and obtains a group symmetric key and the group’s public key. The client then encrypts the symmetric key with the group public key and sends it to the server. The resulting ciphertext is what’s used to recover the new user’s account. This data is never integrity-checked when it’s sent from the server to the client during an account enrollment session.
+
+The adversary can exploit this weakness by replacing the group public key with one from a keypair created by the adversary. Since the adversary knows the corresponding private key, it can use it to decrypt the ciphertext and go on to perform an account recovery on behalf of the targeted user. The result is that the adversary can read and modify the entire contents of the member vault as soon as an invitee accepts an invitation from a family or organization.
+
+Normally, this attack would work only when a group admin has enabled autorecovery mode, which, unlike a manual option, doesn’t require interaction from the member. But since the group policy the client downloads during the enrollment policy isn’t integrity-checked, adversaries can set recovery to auto, even if an admin had chosen a manual mode that requires user interaction.
+
+Compounding the severity, the adversary in this attack also obtains a group symmetric key for all other groups the member belongs to since such keys are known to all group members. If any of the additional groups use account recovery, the adversary can obtain the member’s vaults for them, too. “This process can be repeated in a worm-like fashion, infecting all organizations that have key recovery enabled and have overlapping members,” the research paper explained.
+
+A second attack targeting Bitwarden account recovery can be performed when a user rotates vault keys, an option Bitwarden recommends if a user believes their master password has been compromised. When account recovery is on (either manually or automatically) the user client regenerates the recovery ciphertext, which as described earlier involves obtaining a new public key that’s encrypted with the organization public key. The researchers denoted the group public key as pkorg. They denote the public key supplied by the adversary as pkadvorg, the recovery ciphertext as crec, and the user symmetric key as k′.
+
+The key point here is that pkorg is not retrieved from the user’s vault; rather the client performs a sync operation with the server to obtain it. Crucially, the organization data provided by this sync operation is not authenticated in any way. This thus provides the adversary with another opportunity to obtain a victim’s user key, by supplying a new public key pkadvorg, for which they know the skadvorg and setting the account recovery enrollment to true. The client will then send an account recovery ciphertext crec containing the new user key, which the adversary can decrypt to obtain k′.
+
+The third attack on the Bitwarden account recovery allows an adversary to recover a user’s master key. It abuses key connector, a feature primarily used by enterprise customers.
+
+The attack allowing theft of LastPass vaults also targets key escrow, specifically in the Teams and Teams 5 versions, when a member’s master key is reset by a privileged user known as a superadmin. The next time the member logs in through the LastPass browser extension, their client will retrieve an RSA keypair assigned to each superadmin in the organization, encrypt their new key with each one, and send the resulting ciphertext to each superadmin.
+
+Because LastPass also fails to authenticate the superadmin keys, an adversary can once again replace the superadmin public key (pkadm) with their own public key (pkadvadm).
+
+“In theory, only users in teams where password reset is enabled and who are selected for reset should be affected by this vulnerability,” the researchers wrote. “In practice, however, LastPass clients query the server at each login and fetch a list of admin keys. They then send the account recovery ciphertexts independently of enrollment status.” The attack, however, requires the user to log in to LastPass with the browser extension, not the standalone client app.
+
+Several attacks allow reading and modification of shared vaults, which allow a user to share selected items with one or more other users. When Dashlane users share an item, their client apps sample a fresh symmetric key, which either directly encrypts the shared item or, when sharing with a group, encrypts group keys, which in turn encrypt the shared item. In either case, the newly created RSA keypair(s)—belonging to either the shared user or group—isn’t authenticated. The item is then encrypted with the private key(s).
+
+An adversary can supply their own keypair and use the public key to encrypt the ciphertext sent to the recipients. The adversary then decrypts that ciphertext with their corresponding secret key to recover the shared symmetric key. With that, the adversary can read and modify all shared items. When sharing is used in either Bitwarden or LastPass, similar attacks are possible and lead to the same consequence.
+
+Another avenue for attackers or adversaries with control of a server is to target the backward compatibility that all three password managers provide to support older, less-secure versions. Despite incremental changes designed to harden the apps against the very attacks described in the paper, all three password managers continue to support the versions without these improvements. This backward compatibility is a deliberate decision intended to prevent users who haven’t upgraded from losing access to their vaults.
+
+The severity of these attacks is lower than that of the previous ones described, with the exception of one, which is possible against Bitwarden. Older versions of the password manager used a single symmetric key to encrypt and decrypt the user key from the server and items inside vaults. This design allowed for the possibility that an adversary could tamper with the contents. To add integrity checks, newer versions provide authenticated encryption by augmenting the symmetric key with an HMAC hash function.
+
+To protect customers using older app versions, Bitwarden ciphertext has an attribute of either 0 or 1. A 0 designates authenticated encryption, while a 1 supports the older unauthenticated scheme. Older versions also use a key hierarchy that Bitwarden deprecated to harden the app. To support the old hierarchy, newer client versions generate a new RSA keypair for the user if the server doesn’t provide one. The newer version will proceed to encrypt the secret key portion with the master key if no user ciphertext is provided by the server.
+
+This design opens Bitwarden to several attacks. The most severe, allowing reading (but not modification) of all items created after the attack is performed. At a simplified level, it works because the adversary can forge the ciphertext sent by the server and cause the client to use it to derive a user key known to the adversary.
+
+The modification causes the use of CBC (cipher block chaining), a form of encryption that’s vulnerable to several attacks. An adversary can exploit this weaker form using a padding oracle attack and go on to retrieve the plaintext of the vault. Because HMAC protection remains intact, modification isn’t possible.
+
+Surprisingly, Dashlane was vulnerable to a similar padding oracle attack. The researchers devised a complicated attack chain that would allow a malicious server to downgrade a Dashlane user’s vault to CBC and exfiltrate the contents. The researchers estimate that the attack would require about 125 to decrypt the ciphertext.
+
+Still other attacks against all three password managers allow adversaries to greatly reduce the selected number of hashing iterations—in the case of Bitwarden and LastPass, from a default of 600,000 to 2. Repeated hashing of master passwords makes them significantly harder to crack in the event of a server breach that allows theft of the hash. For all three password managers, the server sends the specified iteration count to the client, with no mechanism to ensure it meets the default number. The result is that the adversary receives a 200,000-fold increase in the time and resources required to crack the hash and obtain the user’s master password.
+
+Three of the attacks—one against Bitwarden and two against LastPass—target what the researchers call “item-level encryption” or “vault malleability.” Instead of encrypting a vault in a single, monolithic blob, password managers often encrypt individual items, and sometimes individual fields within an item. These items and fields are all encrypted with the same key. The attacks exploit this design to steal passwords from select vault items.
+
+An adversary mounts an attack by replacing the ciphertext in the URL field, which stores the link where a login occurs, with the ciphertext for the password. To enhance usability, password managers provide an icon that helps visually recognize the site. To do this, the client decrypts the URL field and sends it to the server. The server then fetches the corresponding icon. Because there’s no mechanism to prevent the swapping of item fields, the client decrypts the password instead of the URL and sends it to the server.
+
+“That wouldn’t happen if you had different keys for different fields or if you encrypted the entire collection in one pass,” Kenny Paterson, one of the paper co-authors, said. “A crypto audit should spot it, but only if you’re thinking about malicious servers. The server is deviating from expected behavior.
+
+The following table summarizes the causes and consequences of the 25 attacks they devised:
+
+Credit:
+                                      Scarlata et al.
+                                  
+
+
+
+
+
+
+
+
+
+          Credit:
+
+          
+          Scarlata et al.
+
+The researchers acknowledge that the full compromise of a password manager server is a high bar. But they defend the threat model.
+
+“Attacks on the provider server infrastructure can be prevented by carefully designed operational security measures, but it is well within the bounds of reason to assume that these services are targeted by sophisticated nation-state-level adversaries, for example via software supply-chain attacks or spearphishing,” they wrote. “Moreover, some of the service providers have a history of being breached—for example LassPass suffered branches in 2015 and 2022, and another serious security incident in 2021.
+
+They went on to write: “While none of the breaches we are aware of involved reprogramming the server to make it undertake malicious actions, this goes just one step beyond attacks on password manager service providers that have been documented. Active attacks more broadly have been documented in the wild.”
+
+Part of the challenge of designing password managers or any end-to-end encryption service is the tendency for a false sense of security of the client.
+
+“It’s a psychological problem when you’re writing both client and server software,” Paterson explained. “You should write the client super defensively, but if you’re also writing the server, well of course your server isn’t going to send malformed packets or bad info. Why would you do that?”
+
+In many of the cases, engineers have already fixed the weaknesses described after receiving private reports from the researchers. Engineers are still patching other vulnerabilities. In statements, Bitwarden, Lastpass, and Dashlane representatives noted the high bar of the threat model, despite statements on their websites that assure customers their wares will withstand it. Along with 1Password representatives, they also noted that their products regularly receive stringent security audits and undergo red-team exercises.
+
+Bitwarden continually evaluates and improves its software through internal review, third-party assessments, and external research. The ETH Zurich paper analyzes a threat model in which the server itself behaves maliciously and intentionally attempts to manipulate key material and configuration values. That model assumes full server compromise and adversarial behavior beyond standard operating assumptions for cloud services.
+
+LastPass said, “We take a multi‑layered, ongoing approach to security assurance that combines independent oversight, continuous monitoring, and collaboration with the research community. Our cloud security testing is inclusive of the scenarios referenced in the malicious-server threat model outlined in the research.”
+
+A statement from Dashlane read, “Dashlane conducts rigorous internal and external testing to ensure the security of our product. When issues arise, we work quickly to mitigate any possible risk and ensure customers have clarity on the problem, our solution, and any required actions.”
+
+1Password released a statement that read in part:
+
+Our security team reviewed the paper in depth and found no new attack vectors beyond those already documented in our publicly available Security Design White Paper.
+
+We are committed to continually strengthening our security architecture and evaluating it against advanced threat models, including malicious-server scenarios like those described in the research, and evolving it over time to maintain the protections our users rely on.
+
+1Password also says that the zero-knowledge encryption it provides “means that no one but you—not even the company that’s storing the data—can access and decrypt your data. This protects your information even if the server where it’s held is ever breached.” In the company’s white paper linked above, 1Password seems to allow for this possibility when it says:
+
+At present there’s no practical method for a user to verify the public key they’re encrypting data to belongs to their intended recipient. As a consequence it would be possible for a malicious or compromised 1Password server to provide dishonest public keys to the user, and run a successful attack. Under such an attack, it would be possible for the 1Password server to acquire vault encryption keys with little ability for users to detect or prevent it.
+
+1Password’s statement also includes assurances that the service routinely undergoes rigorous security testing.
+
+All four companies defended their use of the term “zero knowledge.” As used in this context, the term can be confused with zero-knowledge proofs, a completely unrelated cryptographic method that allows one party to prove to another party that they know a piece of information without revealing anything about the information itself. An example is a proof that shows a system can determine if someone is over 18 without having any knowledge of the precise birthdate.
+
+The adulterated zero-knowledge term used by password managers appears to have come into being in 2007, when a company called Spider Oak used it to describe its cloud infrastructure for securely sharing sensitive data. Interestingly, Spider Oak formally retired the term a decade later after receiving user pushback.
+
+“Sadly, it is just marketing hype, much like ‘military-grade encryption,’” Matteo Scarlata, lead author of the paper said. “Zero-knowledge seems to mean different things to different people (e.g., LastPass told us that they won’t adopt a malicious server threat model internally). Much unlike ‘end-to-end encryption,’ ‘zero-knowledge encryption’ is an elusive goal, so it’s impossible to tell if a company is doing it right.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
             <h2>Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/">Visit Original Website</a>
@@ -204,13 +329,13 @@ FIRE Chief Counsel Robert Corn-Revere said that by “putting pressure on late n
 This article was updated with a statement from CBS.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Most VMware users still "actively reducing their VMware footprint," survey finds</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>Most VMware users still "actively reducing their VMware footprint," survey finds</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/">Visit Original Website</a>
@@ -244,13 +369,13 @@ While companies determine the best ways to limit their dependence on VMware, Bro
 “Their strategy was never to keep every customer,” CloudBolt’s report says. “It was to maximize value from those still on the platform while the market slowly diversifies. The model assumes churn and it’s built to make the economics work anyway. Broadcom has done the math—and they’re fine with it.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">What happens to a car when the company behind its software goes under?</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>What happens to a car when the company behind its software goes under?</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/">Visit Original Website</a>
@@ -294,13 +419,13 @@ The industry also shares responsibility in defining minimum operational lifespan
 The lesson is clear: In today’s cars, the engine or electric motor isn’t always what keeps you moving—the software does. When that software vanishes with a bankrupt company, your car can go from daily driver to expensive paperweight overnight. And in the age of software-defined vehicles, owning a car increasingly means betting on the survival of its code. When that code dies, the driveway or highway—not the repair shop—becomes the final stop.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/">Visit Original Website</a>
@@ -318,13 +443,13 @@ Shortages of RAM and flash memory chips—caused mostly by the AI industry’s s
 If you want a handheld that runs SteamOS, Lenovo’s Legion Go S is the one third-party handheld that ships with the operating system these days. But adventurous buyers can try SteamOS on any AMD-based handheld. Valve offers beta support for the Legion Go (without an S), the Asus ROG Ally, and the Asus ROG Ally X, and we’ve had success installing the operating system on a wide range of AMD-based laptop and desktop PCs. People who don’t want to wait for the Steam Machine can also try building their own—I’ve done it with good results so far. But you’ll want an AMD Ryzen CPU and Radeon GPU for the best results, and recent Ars testing has found that GPUs with just 8GB of video memory may struggle to run games as well as they run in Windows.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Warner Bros. rejects Paramount again but asks for "best and final offer"</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>Warner Bros. rejects Paramount again but asks for "best and final offer"</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/">Visit Original Website</a>
@@ -352,80 +477,6 @@ Warner Bros. has also repeatedly pointed to Netflix’s superior finances as a r
 The Netflix/Warner Bros. deal is facing scrutiny over how it would affect streaming consumers. Netflix co-CEO Ted Sarandos told a Senate committee that the Netflix and HBO Max streaming services are “complementary” and claimed that the combined company will give users more content for less money.
 
 “We are a one-click cancel, so if the consumer says, ‘That’s too much for what I’m getting,’ they can cancel with one click,” Sarandos said.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">There's a lot of big talk about sovereign launch—who is doing something about it?</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>There's a lot of big talk about sovereign launch—who is doing something about it?</h2>
-            <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
-            <a class="original-link" href="https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">No one will supplant American and Chinese dominance in the space launch arena anytime soon, but several longtime US allies now see sovereign access to space as a national security imperative.
-
-Taking advantage of private launch initiatives already underway within their own borders, several middle and regional powers have approved substantial government funding for commercial startups to help them reach the launch pad. Australia, Canada, Germany, and Spain are among the nations that currently lack the ability to independently put their own satellites into orbit but which are now spending money to establish a domestic launch industry. Others talk a big game but haven’t committed the cash to back up their ambitions.
-
-The moves are part of a wider trend among US allies to increase defense spending amid strained relations with the Trump administration. Tariffs, trade wars, and threats to invade the territory of a NATO ally have changed the tune of many foreign leaders. In Europe, there’s even talk of fielding a nuclear deterrent independent of the nuclear umbrella provided by the US military.
-
-Trump’s relationship with Elon Musk, the head of the world’s leading space launch company, has further soured foreign appetite for using the United States for launch services. Today, that usually means choosing to pay Musk’s SpaceX.
-
-Commercial satellite companies will still choose the cheapest, most reliable path to space, of course. This means SpaceX will win the overwhelming majority of commercial launch contracts put up for global competition. But there’s a captive market for many satellite projects, especially those with government backing. US government satellites typically launch on US rockets, just as Chinese satellites fly on Chinese rockets.
-
-The picture is more opaque in Europe. The European Space Agency and the European Union prefer to launch their satellites on European rockets, but that’s not always possible. ESA and the EU launched several key satellite missions on SpaceX rockets while waiting on the debut of Europe’s long-delayed Ariane 6 rocket. The Ariane 6 is now launching reliably, ending Europe’s reliance on SpaceX.
-
-Many European nations have their own satellite projects. Historically, their preference for launching on European rockets has not been as strong as it is for pan-European programs managed by ESA and the EU. So it has never been unusual to see a British, German, Spanish, or Italian satellite launching on a foreign rocket.
-
-This posture is starting to change. All four of these nations have invested in homegrown rockets in recent years. Germany made the biggest splash last year when the government announced $41 billion (35 billion euros) in space spending over the next five years. “Satellite networks today are an Achilles’ heel of modern societies. Whoever attacks them paralyzes entire nations,” said Boris Pistorius, Germany’s defense minister, during the announcement.
-
-Every satellite network needs a launch pad and a rocket. In late 2024, the German federal government made more than $110 million (95 million euros) available to three German launch startups: Isar Aerospace, Rocket Factory Augsburg, and HyImpulse. All three are also backed by private funding, with Isar leading the pack with approximately $650 million (550 million euros) from investors. None have reached orbit yet. For comparison, Rocket Lab, the world’s most successful launch startup not founded by a billionaire, raised $148 million (approximately $200 million adjusted for inflation) before reaching orbit in 2018. Nearly all of it came from private sources.
-
-In 2023, the Italian government committed more than $300 million in support of Avio, the company that already builds and operates the Vega satellite launcher. Avio is based in Italy and is using the funds to develop methane propulsion, among other things.
-
-With help from other ESA member states, Italy is one of the countries that already has a rocket made largely of domestic or European components. The United States, Russia, China, France, Japan, the United Kingdom, India, Israel, Iran, North Korea, South Korea, and New Zealand have also successfully launched satellites using their own rockets.
-
-The UK no longer possesses such a capability, and France’s access to space is currently tied to the Ariane rocket, a pan-European program. France, like Italy, is pouring money into domestic launch startups to buttress the Ariane program.
-
-Let’s look at the countries not among the list of active launching states that have committed substantial public funds to join (or rejoin) the club. To the best of our ability, we list these nations in the order of how much they are currently investing in sovereign launch programs.
-
-Germany is probably closest to bringing a new commercial rocket into service. Isar Aerospace, Europe’s most well-funded launch startup, made its first orbital launch attempt last year from a spaceport in Norway. The company’s Spectrum rocket failed moments after liftoff, but Isar is readying a second rocket for another test flight as soon as next month. Rocket Factory Augsburg and HyImpulse, Germany’s other two launch startups with significant funding, currently trail Isar in the race to orbit.
-
-In a space safety and security strategy released last year, Germany’s defense ministry included access to space among its lines of effort. The ministry said it aims to develop “sufficient responsive launch transport capacity to ensure national and European strategic independence in all payload classes and transport scenarios.”
-
-In addition to the German government’s $110 million commitment to Isar, RFA, and HyImpulse, Germany is the leading contributor to ESA’s European Launcher Challenge program, which is designed to funnel money into multiple European rocket startups. Germany is the only European country with two companies—Isar and RFA—participating in the challenge. ESA member states approved nearly $1.1 billion (902 million euros) for the challenge last year. Germany is providing about 40 percent of the money and directing most of it to Isar and RFA.
-
-The government of Spain is the second-largest contributor to ESA’s European Launcher Challenge, with $200 million (169 million euros) unlocked to support PLD Space, the country’s leading launch startup. PLD Space is developing a small satellite launcher named Miura 5, which the company says will begin demonstration flights later this year. PLD Space’s most recent private fundraising round was in 2024, when the company reported raising more than $140 million (120 million euros) in total investment. ESA’s European Launcher Challenge will more than double this figure. Apart from the ESA challenge, Spain’s government provided more than $47 million (40.5 million euros) to PLD Space in 2024 through the PERTE Aerospace initiative, established to support independent Spanish access to space.
-
-The Spanish government called access to space “one of Spain’s key areas of focus.” In a statement from November, Spain’s science ministry wrote, “PLD Space has been supported by the Spanish government from the beginning with Miura 1, the first suborbital rocket.”
-
-“We have supported PLD Space at the national level until now,” said Diana Morant, Spain’s science minister. “We will now also do so through ESA so that our launcher, a European and Spanish brand, is part of that family of launchers planned for the future.”
-
-The UK’s position on this list should carry an asterisk following the collapse of the Scottish launch company Orbex. More than a decade into its run, Orbex entered insolvency proceedings last week after “fundraising, merger and acquisition opportunities had all concluded unsuccessfully.” Orbex never made it far on the road to space, despite raising $175 million (£129 million) from private and public investors. Despite its failure, Orbex was by far the most well-capitalized UK launch company. Skyrora, another Scottish launch startup, has expressed interest in buying Orbex’s assets, including land for a privately developed spaceport.
-
-Early last year, the UK government announced a direct investment of more than $27 million (£20 million) to support the development of Orbex’s small satellite launcher. That was followed in November with the UK government’s $170 million (144 million euro) contribution to ESA’s European Launcher Challenge program. UK officials likely saw Orbex’s pending collapse and left nearly 80 percent of the challenge funding unallocated. It remains to be seen how the UK will divide its remaining budget for the launcher challenge.
-
-In November, Canada’s government announced an investment of approximately $130 million (182.6 million Canadian dollars) for sovereign launch capability. The initiative “seeks to accelerate the advancement of Canadian-designed space launch vehicles and supporting technologies,” the government said in the announcement. The goal is to develop the capability to launch Canadian payloads from Canadian soil with “light lift” rockets by 2028. More than half the funding will support a launch challenge in which the government will offer grants over three years to selected participants who must meet predetermined milestones to win prizes.
-
-Several Canadian startups, such as Maritime Launch Services, Reaction Dynamics, and NordSpace, are working on commercial satellite launchers, but none appear close to making an orbital launch attempt. The Canadian government’s announcement last year came days after MDA Space, the largest established space company in Canada, announced its own multimillion-dollar investment in Maritime Launch Services. Eventually, Canada plans to launch a second challenge to foster the development of a larger medium-lift rocket.
-
-There’s just one launch startup in Australia with any chance of putting a satellite into orbit anytime soon. This company, named Gilmour Space, launched its first test flight last July, but the rocket stalled moments after clearing the launch pad. Gilmour raised approximately $90 million, primarily from venture capital firms, before the first flight of its Eris rocket. The firm more than tripled this figure with a bountiful fundraising round amounting to more than $300 million last month, led by the National Reconstruction Fund Corporation, a public financing firm established by the Australian government.
-
-The NRFC said it is investing more than $50 million (75 million Australian dollars) into Gilmour to further develop the company’s Eris rocket, scale its satellite and rocket manufacturing, and expand its spaceport in Queensland. “By building sovereign space capability that underpins our everyday life—from Earth observation and communications to national security—Gilmour’s efforts will secure Australia’s access to essential space services, strengthen the country’s advanced manufacturing base, and create highly-skilled jobs and opportunities in the region,” said David Gall, NRFC’s CEO.
-
-The most populous nation in Latin America has tried longer than any other to cultivate an independent space launch capability. The efforts date back to the 1980s, but they have repeatedly misfired, and in one case, the results were fatal. The country’s VLS-1 rocket exploded on the ground in 2003, killing 21 Brazilian technicians working at a launch pad on the country’s northern Atlantic coast. The tragedy led the Brazilian government to eventually cancel the VLS satellite launcher and set a new course with a less powerful rocket sized for launching microsatellites.
-
-The new rocket, named VLM, is under development by the Brazilian Space Agency and the Brazilian Air Force in partnership with Germany, but there have been few signs of tangible progress since a test-firing of a solid-fueled rocket motor in 2021. The Brazilian aerospace company working with the government on the VLM rocket filed for bankruptcy in 2022, and its future remains uncertain amid court-ordered restructuring. At that time, Brazil’s government had reportedly committed between $30 million and $40 million to the VLM rocket project.
-
-Given that situation, Brazil’s best bet to field a new orbital-class rocket appears to be through a public-private partnership. Through a public financing agency, the Brazilian government also agreed to provide $30 million to $40 million to a domestic industrial consortium for an indigenous microlauncher known as MLBR, according to the Brazilian financial newspaper Valor Econômico. The team leading the MLBR project has released regular updates on LinkedIn, unlike the VLM project, but progress on early-stage ground tests remains slow.
-
-Taiwan’s government is increasing funding for the country’s space program, but the Taiwan Space Agency’s annual budget remains modest at approximately $200 million per year. The nation’s efforts in the space sector have primarily focused on building satellites and instruments for Earth observation, weather monitoring, and scientific research. Last year, the Taiwan Space Agency announced a goal of launching a homegrown rocket into orbit by 2034, with more than $25 million in the agency’s 2026 budget to kick-start the program. The space agency says flight testing of the new rocket, designed to haul up to 440 pounds (200 kilograms) to low-Earth orbit, could begin by 2029.
-
-Argentina also has a long-running project aiming to onshore access to space. The centerpiece of this project is the Tronador II rocket, a two-stage, liquid-fueled vehicle designed to deliver small payloads to low-Earth orbit. Argentina’s economic woes have blocked any serious progress on the Tronador II. In a pair of announcements in late 2021 and late 2022, the government of Argentina pledged more than 14 billion pesos to develop a new orbital-class launch vehicle. At the time, this was equivalent to more than $100 million, but the subsequent devaluation of Argentine currency means the investment would be worth just $10 million today. The government of Argentine President Javier Milei has cut spending on research and technology programs, so Tronador is going nowhere fast.
-
-The United Arab Emirates is another up-and-coming space power with the resources to support the development of a commercial launch provider, though the government hasn’t yet revealed a budget to support such an effort. Several other countries, such as Indonesia, South Africa, and Turkey, have said they aspire to develop an indigenous orbital launch capability, but with little in the way of firm, significant financial commitments or substantive progress.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -717,6 +768,8 @@ How the jury will interpret the findings of studies like Project MYST and others
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
+How Ricursive Intelligence raised $335M at a $4B valuation in 4 months
+
 After all the hype, some AI experts don’t think OpenClaw is all that exciting
 
 OpenClaw creator Peter Steinberger joins OpenAI
@@ -727,9 +780,7 @@ The great computer science exodus (and where students are going instead)
 
 A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup
 
-Spotify says its best developers haven’t written a line of code since December, thanks to AI
-
-With co-founders leaving and an IPO looming, Elon Musk turns talk to the moon</div>
+Spotify says its best developers haven’t written a line of code since December, thanks to AI</div>
         </div>
         
         <div class="card" onclick="openModal('content-13')">
@@ -743,7 +794,7 @@ With co-founders leaving and an IPO looming, Elon Musk turns talk to the moon</d
             <p><strong>TechCrunch | 2026-02-17</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Late last month, The Information reported that Apple was developing an AI wearable—an AirTag-sized pendant with cameras that could be pinned to a user’s shirt. Now, Bloomberg writes that the development of such a device—along with two other AI-powered items—is accelerating, as Apple looks to stay competitive with other tech giants who are racing to release similar products.
+            <div id="article-text">Late last month, The Information reported that Apple was developing an AI wearable—an AirTag-sized pendant with cameras that could be pinned to a user’s shirt. Now, Bloomberg writes that the development of such a device—along with two other AI-powered items—is accelerating as Apple looks to stay competitive with other tech giants that are racing to release similar products.
 
 In addition to the AI pin, Apple is also speeding up the development of its upcoming AI-powered smart glasses, which have been code-named N50, the report claims. Apple obviously has competition in this space, as other companies—including Meta (which is arguably the most successful player when it comes to smart glasses) and Snap (which plans to release its “Specs” later this year)—are working on similar products.
 
@@ -751,7 +802,7 @@ Apple’s new smart glasses, which will supposedly include a high-resolution cam
 
 Additionally, Bloomberg reports that Apple is working on AirPods with new AI capabilities.
 
-All of these items will be designed to connect to the iPhone, and will include Siri, the company’s virtual assistant, as a critical component of the user experience, the outlet notes. The glasses are being described as “more upscale and feature-rich” than the AirPods and the AI pendant, however. TechCrunch reached out to Apple for more information.
+All of these items will be designed to connect to the iPhone and will include Siri, the company’s virtual assistant, as a critical component of the user experience, the outlet notes. The glasses are being described as “more upscale and feature-rich” than the AirPods and the AI pendant, however. TechCrunch reached out to Apple for more information.
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
@@ -859,6 +910,8 @@ You can contact or verify outreach from Tim by emailing tim.dechant@techcrunch.c
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
+How Ricursive Intelligence raised $335M at a $4B valuation in 4 months
+
 After all the hype, some AI experts don’t think OpenClaw is all that exciting
 
 OpenClaw creator Peter Steinberger joins OpenAI
@@ -869,9 +922,7 @@ The great computer science exodus (and where students are going instead)
 
 A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup
 
-Spotify says its best developers haven’t written a line of code since December, thanks to AI
-
-With co-founders leaving and an IPO looming, Elon Musk turns talk to the moon</div>
+Spotify says its best developers haven’t written a line of code since December, thanks to AI</div>
         </div>
         
         <div class="card" onclick="openModal('content-16')">
@@ -953,6 +1004,8 @@ A former LATAM & Media Editor at The Next Web, startup founder and Sciences Po P
 
 Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
+How Ricursive Intelligence raised $335M at a $4B valuation in 4 months
+
 After all the hype, some AI experts don’t think OpenClaw is all that exciting
 
 OpenClaw creator Peter Steinberger joins OpenAI
@@ -963,18 +1016,54 @@ The great computer science exodus (and where students are going instead)
 
 A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup
 
-Spotify says its best developers haven’t written a line of code since December, thanks to AI
-
-With co-founders leaving and an IPO looming, Elon Musk turns talk to the moon</div>
+Spotify says its best developers haven’t written a line of code since December, thanks to AI</div>
         </div>
         
         <div class="card" onclick="openModal('content-18')">
+            <div class="source">The Atlantic</div>
+            <div class="title">The Post-Chatbot Era Has Begun</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-18" style="display:none;">
+            <h2>The Post-Chatbot Era Has Begun</h2>
+            <p><strong>The Atlantic | 2026-02-17</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/technology/2026/02/post-chatbot-claude-code-ai-agents/686029/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Americans are living in parallel AI universes. For much of the country, AI has come to mean ChatGPT, Google’s AI overviews, and the slop that now clogs social-media feeds. Meanwhile, tech hobbyists are becoming radicalized by bots that can work for hours on end, collapsing months of work into weeks, or weeks into an afternoon.
+
+Recently, more people have started to play around with tools such as Claude Code. The product, made by the start-up Anthropic, is “agentic,” meaning it can do all sorts of work a human might do on a computer. Some academics are testing Claude Code’s ability to autonomously generate papers; others are using agents for biology research. Journalists have been experimenting with Claude Code to write data-driven articles from scratch, and earlier this month, a pair used the bot to create a mock competitor to Monday.com, a public software company worth billions. In under an hour, they had a working prototype. Although the actual quality of all of these AI-generated papers and analyses remains unclear, the progress is both stunning and alarming. “Once a computer can use computers, you’re off to the races,” Dean Ball, a senior fellow at the Foundation for American Innovation, told me.
+
+Even as AI has advanced, the most sophisticated bots have yet to go fully mainstream. Unlike ChatGPT, which has a free tier, agentic tools such as Claude Code or OpenAI’s Codex typically cost money, and can be intimidating to set up. I run Claude Code out of my computer’s terminal, an app traditionally reserved for programmers, and which looks like something a hacker uses in movies. It’s also not always obvious how best to prompt agentic bots: A sophisticated user might set up teams of agents that message one another as they work, whereas a newbie might not realize such capabilities even exist.
+
+The tech industry is now rushing to develop more accessible versions of these products for the masses. Last month, Anthropic released a new paid version of Claude Code designed for nontechnical users; today the start-up debuted a new model to all users, which offers, among other things, “human-level capability in tasks like navigating a complex spreadsheet.” Meanwhile, OpenAI recently announced a new version of Codex, which the company claims can do nearly anything “professionals can do on a computer.” As these products have gained visibility, people seem to be realizing all at once that AI does a lot more than draft marketing copy and offer friendly conversation. The post-chatbot era is here.
+
+Tools such as ChatGPT and Gemini may already feel powerful enough in their own right. Indeed, chatbots have assumed all kinds of fancy new features over the past few years. They now have memory, which lets them reference previous conversations, and use a technique called reasoning to produce more sophisticated responses. Whereas older chatbots could ingest a few thousand words at a time, today they can analyze book-length files, as well as process and produce images, video, and audio.
+
+But all of this pales in comparison to the rise of agentic tools. Consider software engineering, where they have proven to be particularly transformative. It’s now common for engineers to essentially hand over instructions to a bot such as Claude Code or Codex, and let them do the rest. Because bots aren’t constrained in the way humans are, a programmer might have several sessions running simultaneously, all working on different aspects of a project. “In general, it is now clear that for most projects, writing the code yourself is no longer sensible,” the computer programmer Salvatore Sanfilippo wrote in a recent viral essay. In just a few hours, Sanfilippo noted, he had completed several tasks that previously would have taken weeks. Microsoft’s CEO has said that as much as 30 percent of code is now written by AI, and the company’s chief technical officer expects that figure to hit 95 percent industry-wide by the end of the decade. Anthropic already reports that up to 90 percent of the company’s code is AI generated.
+
+Some programmers have started to warn that similar advances could cannibalize all kinds of knowledge work. Last week, Matt Shumer, the CEO of an AI company, compared the current moment in AI to the early days of COVID, when most Americans were still oblivious to the imminent pandemic. “Making AI great at coding was the strategy that unlocks everything else,” wrote Shumer. “The experience that tech workers have had over the past year, of watching AI go from ‘helpful tool’ to ‘does my job better than I do’, is the experience everyone else is about to have.” (His essay, which has upwards of 80 million views, was partially AI generated.)
+
+Tech executives have a strong incentive to suggest that similar advances will soon come for other forms of work. Last week, Microsoft’s AI chief predicted that AI will automate “most, if not all” white-collar work tasks within 18 months. (This led to a series of social-media posts like the following: “CEO of Hot Pockets ™ says that ‘most, if not all’ meals will be fully replaced with Hot Pockets ™ within the next 12 to 18 months.”)
+
+It’s not yet clear how easily the progress in agentic tools will translate to other fields. Programming is well suited to automation: Software programs either work or they don’t. Determining what counts as a good essay, for example, is a far messier task, and one that requires much more human discernment. Though agentic tools often excel at complicated work, such as synthesizing unfathomable reams of text, they struggle to do something as simple as copy and paste text from Google Docs into Substack. And because they are so powerful, they can also be dangerous: When one venture capitalist recently asked Claude Cowork—Anthropic’s new, more accessible agentic tool—for help organizing his wife’s desktop, the bot subsequently deleted 15 years of family photos. “I need to stop and be honest with you about something important,” the bot told him. “I made a mistake.”
+
+Even if AI isn’t yet a world-class financial analyst or architect, coding bots have progressed to the point where they are already able to assist with all kinds of knowledge work. Since Claude Code took off, I’ve watched people I know start using the bot for all sorts of tasks, realizing just how much more capable agentic tools are than traditional chatbots. In my own job, I’ve found agents particularly adept at research. When I recently asked Claude Code for a report on trends in Gen Z political views, I fired off a brief query and my team of bots got to work: One scoured the web for information, while another performed data analysis, and a third wrote up the findings in a briefing for me to review. (Like other kinds of AI, Claude Code can hallucinate: When using the tool for research, I still carefully verify information against original sources before referencing it in my own writing, which—to be clear—I do myself.)
+
+The industry is hopeful that agentic tools will continue to improve. The AI-coding boom is boosting tech companies’ abilities to improve their own products, as engineers use agentic tools to write software. But Silicon Valley has long dreamed of building AI models that can improve themselves, each new generation of AI models able to spawn its successor. On a recent call with reporters, I asked Sam Altman, OpenAI’s CEO, what it would take to get there: Such progress would require models capable of both producing “new scientific insight and writing a lot of complex code,” he told me. “The models are starting to be able to do both of those things.” Still, he cautioned, we’re not yet at a moment of runaway AI progress. (The Atlantic has a corporate partnership with OpenAI.) Last month, Boris Cherny, the Anthropic employee who created Claude Code, told me that “Claude is starting to come up with its own ideas and it’s proposing what to build.”
+
+Without inside access to these companies, it’s difficult to know what to make of these claims. And as impressive as agentic tools already are, it could still take quite a long time for them to become safe and reliable enough for widespread use. Even if technology capabilities continue to progress rapidly, the real world is messy and complicated. Silicon Valley sometimes mistakes “clear vision with short distance,” the Stanford computer scientist Fei-Fei Li said earlier this month. “But the journey is going to be long.”
+
+Tech companies have done a tremendous job of persuading investors to pour cash into their businesses, but the industry has done a much worse job at selling the public on its vision. Instead of focusing on tangible benefits of AI agents, Silicon Valley has spent years hype-washing the technology with business briefs that read like science fiction. In one influential essay, Dario Amodei, Anthropic’s CEO, writes that powerful AI could soon eliminate most cancer and nearly all infectious diseases. In another, a team of researchers warns that within the decade, rogue AI might release biological weapons, wiping out nearly all of humanity. Bots that can handle spreadsheet work and automate coding might not amount to superintelligence, but they are still immensely powerful. To the extent that normies remain confused about AI’s true capabilities, Silicon Valley has only itself to blame.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
             <div class="source">The Atlantic</div>
             <div class="title">Winter Olympics Photo of the Day: In Pursuit</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-18" style="display:none;">
+        <div id="content-19" style="display:none;">
             <h2>Winter Olympics Photo of the Day: In Pursuit</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/photography/2026/02/winter-olympics-photo-day-in-pursuit/686027/?utm_source=feed">Visit Original Website</a>
@@ -984,13 +1073,13 @@ With co-founders leaving and an IPO looming, Elon Musk turns talk to the moon</d
 February 12: Disqualified for a ‘Helmet of Remembrance’</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-20')">
             <div class="source">The Atlantic</div>
             <div class="title">An Olympic Trend That Defies Tradition</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-20" style="display:none;">
             <h2>An Olympic Trend That Defies Tradition</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/health/2026/02/olympics-mixed-gender-ski-mountaineering/686026/?utm_source=feed">Visit Original Website</a>
@@ -1014,13 +1103,13 @@ And mixed-gender formats can still be subject to unequal dynamics. Biathlon, a W
 Even as mixed-gender events become more common, skimo’s inclusion in future Olympics is not assured. It’s in the 2026 Olympics because the organizers of this year’s Games proposed it; to continue competing, skimo athletes will need organizers at the next venues to propose its inclusion too. Skimo enthusiasts expect this to happen and hope future Olympics will include events that are longer and more representative of the sport’s origins. “Nobody got into skimo to do the sprint relay,” Smith said. But as he began training for the event, he enjoyed it more than he expected. “It’s really fun because we are accountable to each other,” he said. “I’m racing all out because I know that she’s doing the same for me.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">Winners of the 2026 Sony World Photography Awards Open Competition</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>Winners of the 2026 Sony World Photography Awards Open Competition</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/photography/2026/02/winners-2026-sony-world-photography-awards-open-competition/686022/?utm_source=feed">Visit Original Website</a>
@@ -1028,13 +1117,13 @@ Even as mixed-gender events become more common, skimo’s inclusion in future Ol
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">The Republicans Made Peace With Science</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>The Republicans Made Peace With Science</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/02/republicans-democrats-science-funding-trump/685996/?utm_source=feed">Visit Original Website</a>
@@ -1074,13 +1163,13 @@ Staffing losses are real, leadership vacancies create drift, and political inter
 Science came under attack, and a Republican Congress pushed back. That’s not an aberration.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">Europe Has Received the Message</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>Europe Has Received the Message</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/international/2026/02/european-union-defense-spending/685983/?utm_source=feed">Visit Original Website</a>
@@ -1112,107 +1201,107 @@ Or not: EU approval is at 74 percent, a record high. Young far-right politicians
 This may be the outcome that leaders in Washington, Moscow, and Beijing prefer. But in their effort to fragment Europe into pliable nation-states, they are instead galvanizing its slow-motion march toward self-determination.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">American Kids Used to Eat Everything</div>
+        <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">Most VMware Users Still 'Actively Reducing Their VMware Footprint,' Survey Finds</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-23" style="display:none;">
-            <h2>American Kids Used to Eat Everything</h2>
-            <p><strong>The Atlantic | 2026-02-17</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/family/2026/02/picky-american-kids-food/685956/?utm_source=feed">Visit Original Website</a>
+        <div id="content-24" style="display:none;">
+            <h2>Most VMware Users Still 'Actively Reducing Their VMware Footprint,' Survey Finds</h2>
+            <p><strong>Slashdot | 2026-02-17</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/26/02/17/2143231/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The most striking passages in Picky, a forthcoming book by the historian Helen Zoe Veit, describe the way famous 19th-century American figures ate as children. I found myself gripped with envy as I read—not because the foods were particularly appetizing, but because I would kill for my kid to eat like that.
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
-To wit: As a girl, Edith Wharton adored oyster sauce, turtle, stewed celery, cooked tomatoes, and lima beans in cream. Mark Twain fondly remembered eating succotash, string beans, squirrels, and rabbits on his uncle’s farm. And during her childhood, Veit writes, Elizabeth Cady Stanton “happily ate vegetables, hickory nuts, and cold jellied brain.”
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-If these don’t sound like typical “kid foods,” that’s because they aren’t, and weren’t. “Kid food,” as a category, is a recent invention. According to Veit, American kids weren’t picky until the early 20th century. (Indeed, the word picky came into widespread usage around then.) Before that, Veit writes, children in the United States ate “spicy relishes, vinegary pickles, wild plants, and a huge variety of animal species and organ meats. They slurped up raw oysters and looked forward to their daily coffee.” Fennel seeds and tomatoes were considered treats.
-
-According to Veit, the idea that kids are naturally neophobic, or wary of new tastes, is a myth. Eating like a child, Veit explains, was once understood to mean being overly excited and undiscriminating about food, not being picky. In the 1860s, a doctor wrote that children generally ate “anything and everything.”
-
-Read: How baby-led weaning almost ruined my life
-
-Veit’s book recounts how kids went from eating jellied brain to consuming, like my toddler, little but macaroni and cheese. A big part of the story, as she tells it, is that American kids used to be hungrier at mealtimes—which meant that they were more eager to eat anything. Before the 20th century, many children did hours of chores both before and after school, so they worked up a good appetite. (Maybe Twain was hungry for those string beans because he spent so much time hunting wild turkeys and clubbing pigeons to death.) Few kids snacked between meals, because processed foods weren’t widely available. In addition, parents tended to be confident that children could learn to like most adult foods. If a child didn’t like a given meal, they generally wouldn’t be offered an alternative, because, due to a lack of refrigeration, no other food was on hand. But after a series of societal changes in the 20th century, Veit writes, “the children were less hungry. The food was less delicious.” And pickiness was born.
-
-First, children’s appetites waned because they became less active. As more Americans moved into cities and more families bought cars, fewer kids walked miles to school or performed farm chores. This coincided with a major shift in the American diet. Thanks to pasteurization and stepped-up government regulations, milk became much safer to drink in the 20th century, and food experts began to see it as essential. The standard recommendation for children in the 1930s and ’40s was a quart of milk a day—or roughly 600 calories of it. All that milk made kids less hungry for solid foods. Doctors eventually lowered their recommendation to two to three servings of dairy a day, but by then, snacking had emerged as another hunger dampener: Food companies began manufacturing snack cakes, cereals, and cookies, and suggesting that parents buy special foods for their kids.
-
-Meanwhile, a misguided, Progressive-era public-health campaign encouraged parents to serve their children “easily digested” food such as eggs, broths, and gruel. Because child-nutrition experts at the time had little knowledge of germ theory, they claimed that rich and flavorful foods were the culprits for children constantly getting sick, and thus advised that kids should be given only bland foods with few condiments. Children’s foods, they said, should be seasoned with just salt, onion juice, or a “splash of milk”—even butter was considered too rich by some. Nutritionists no longer recommend giving kids bland food, but the idea that children should eat different foods than adults nevertheless stuck.
-
-Advice to parents on how to address pickiness in their children also shifted over time. Prior to the ’40s and ’50s, Veit writes, the standard guidance was to just let food-refusing children go hungry until the next meal. But mid-century experts such as Clara Davis and Benjamin Spock suggested that children instinctively choose a healthy diet on their own, without their parents’ prodding. In fact, they argued without evidence, parents who urge children to try a bite of fish, say, might make them hate fish and turn them into picky eaters. All of this gave the impression that a good mother is one who presents a plate of food and sits silently by as her child pokes at it half-heartedly; if he refuses the meal, she offers something else.
-
-Read: How Sweetgreen became Millennial cringe
-
-This is still a common way of thinking—at least on social media. In my feeds, parenting influencers warn against putting “pressure” on kids to eat things they’re reluctant to try. They say that you shouldn’t let a child who has rejected a food go hungry until the next meal or use dessert as a reward for eating dinner. Instead, as one influencer puts it, you should enthusiastically comment on the food yourself—this is crunchy; this is green—a performance that, when observed by your child, might “invite them to their plate and their food.” Laura Ingalls’s Ma would never.
-
-These changes in food options and advice have created a country in which the majority of kids’ daily calories come from ultra-processed foods. American kids today eat so poorly, Veit writes, that they are actually getting shorter. At the same time, she notes, “parents are exhausted by the struggle” of getting picky eaters to eat. (And some parents, of course, can’t afford to buy their kids food that they won’t eat.) She reassures parents that pickiness is not their fault. But it often feels like it is.
-
-My son, Evan, became picky the way people go bankrupt: gradually, then suddenly. I distinctly remember him eating peas and coleslaw as a baby, but over time he grew less and less adventurous. Now, at nearly 2, pretty much all he eats is pasta.
-
-My husband and I tried many of the tricks suggested to me by friends and by the internet. We’ve tried telling him that beans are pasta. (He begs to differ.) We’ve tried blending vegetables into his pasta sauce. (Tolerated up to a point.) We’ve tried giving him a small amount of his “safe food” (pasta) along with some new foods to try. (He eats only the pasta and then screams “more papa!” until we relent.)
-
-Veit’s recommendations to reduce pickiness differ from these solutions, and some of them seem, well, more hard-core. She suggests restoring that appropriate feeling of hunger at mealtime by limiting the amount of snacks and milk that children have between meals. She recommends “affectionately and persistently” encouraging the child to try a rejected food at the same meal, including, perhaps, by “popping a small amount of food into her mouth when she’s distracted.” Crucially, she argues, parents should not offer alternative foods if a child won’t eat a meal.
-
-Even reading that last one felt shocking. Forcing Evan to eat what I make, or else to go hungry, seems so wrong. I was a kid once, after all, and I hated it when adults pressured me to eat things I didn’t like. Sure, every day I slather him in sunscreen as he screams, and I shove a toothbrush between his locked little jaws, but I can’t bring myself to have a standoff over spinach.
-
-When I called Nancy Zucker, a Duke psychiatrist who works with extremely picky kids, she told me that she agreed with some of Veit’s techniques but not others. She endorsed having set snack times that don’t interfere with meals—kids thrive on knowing, “This is when we eat, this is when we don’t eat,” she said. And she acknowledged that children probably have more sophisticated palates than adults may think; many of her patients, she said, are actually craving flavor.
-
-Read: The drink that Americans won’t give up without a fight
-
-But she cautioned against Veit’s other recommendations. Goading a child to eat more of something they don’t like may make them feel frustrated and recalcitrant, not excited to eat, she said—as can popping something into their mouth unexpectedly. And some kids can’t be starved into eating a rejected meal just because there’s no alternative. For some kids, “the hungrier they get, the more irritable they get, the more anxious they get, and the more rigid they get,” Zucker said. She’s known parents whose kids refused to eat for so long that they wound up in the emergency room for dehydration.
-
-Zucker’s guidance to her patients depends on the specifics of the family she’s working with. But for many of them, her first step is to encourage families to restore positive associations with food and eating: having fun grocery shopping or cooking together, without expecting that the kid will become an instant cauliflower convert. She also thinks parents should reconsider how they engage with their kids at the dinner table. For many families, she said, mealtime is “like a sports commentary, where parents are constantly, ‘Take a bite of this!’” She asked, “Would you be having fun if you were the kid?” Instead, she suggests “letting the kid just kind of eat and experiment with the food.”
-
-Since reading Veit’s book, I’ve tried some of her strategies and have been pleasantly surprised. One day, I withheld a snack after day care even as Evan hopped around the kitchen yelling “Mama, cookie!” He ate a bit of salmon that night and sampled some broccoli before spitting it out. Another night, pushing dinner a half hour later made him proclaim that a homemade soup—with visible chicken pieces—was “tasty.” But when he completely rejects an entire dinner, I still heat up something I know he’ll like. Eventually, I want him to eat oysters, but for now, I just want him to be full.
-
-​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
+Love may laugh at locksmiths, but he has a profound respect for money bags.
+		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-24')">
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">US Lawyers Fire Up Privacy Class Action Accusing Lenovo of Bulk Data Transfers To China</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
+            <h2>US Lawyers Fire Up Privacy Class Action Accusing Lenovo of Bulk Data Transfers To China</h2>
+            <p><strong>Slashdot | 2026-02-17</strong></p>
+            <a class="original-link" href="https://yro.slashdot.org/story/26/02/17/1955224/us-lawyers-fire-up-privacy-class-action-accusing-lenovo-of-bulk-data-transfers-to-china?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+That abomination, DOGE, siphoned SS info to Peter Thiel and his merry band of Nazis. I don&#39;t recall the lawyers getting their panties in a twist over that.
+
+Or la Presidenta sending in the FBI to steal voter data in Georgia all because they managed to convince ONE dimbulb magistrate judge that their already debunked election fraud theories were not bunk. Or the spy devices and info system the Gestapo is fielding to keep tabs on every Enemy of the State (read: whatever our putty brained alleged chief executive
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Love may laugh at locksmiths, but he has a profound respect for money bags.
+		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">The Small English Town Swept Up in the Global AI Arms Race</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>The Small English Town Swept Up in the Global AI Arms Race</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/17/1937251/the-small-english-town-swept-up-in-the-global-ai-arms-race?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
 
 &quot;... being built on 85 acres of rolling farmland...&quot;
 
 Land that&#39;s rolling around will probably create too much vibration for data center components.
 
-The UK government&#39;s decision to classify data centers as &quot;critical national infrastructure&quot; and a new &quot;gray belt&quot; land designation that loosens building restrictions on underperforming greenbelt parcels helped clear the path for approval -- even though objections from locals outweighed signatures of support by nearly two-to-one during the public consultation.   There&#39;s yet one more thing that our (USA) government will be stealing soon. Because there has been a lot of public protest about datacenter buildouts being pushed. I&#39;m assuming in America they&#39;ll also attach some national security concern to it so that any form of protest is seen as treason.I&#39;m just vaguely curious how governments around the world continue to push the narrative that they are servants of the people. It seems to be they&#39;re servants of the money. People and their needs / desires don&#39;t even see
+The UK government&#39;s decision to classify data centers as &quot;critical national infrastructure&quot; and a new &quot;gray belt&quot; land designation that loosens building restrictions on underperforming greenbelt parcels helped clear the path for approval -- even though objections from locals outweighed signatures of support by nearly two-to-one during the public consultation.  There&#39;s yet one more thing that our (USA) government will be stealing soon. Because there has been a lot of public protest about datacenter buildouts being pushed. I&#39;m assuming in America they&#39;ll also attach some national security concern to it so that any form of protest is seen as treason.I&#39;m just vaguely curious how governments around the world continue to push the narrative that they are servants of the people. It seems to be they&#39;re servants of the money. People and their needs / desires don&#39;t even seem to register unless they have the ability to write really big checks. Even setting aside whether these AI datacenters are actually going to be useful by the time they&#39;re completed, if a large enough percentage of people in a given area are against them, shouldn&#39;t it at least be a consideration? Or have we reached such a peak of stupidity when it comes to AI that society just needs to steamroll people and call them luddites if they dare say anything negative about building out giant datacenters to suck up land, water, electricity and whatever other resources they may need in the area?
 
 The UK government&#39;s decision to classify data centers as &quot;critical national infrastructure&quot; and a new &quot;gray belt&quot; land designation that loosens building restrictions on underperforming greenbelt parcels helped clear the path for approval -- even though objections from locals outweighed signatures of support by nearly two-to-one during the public consultation.
 
 There&#39;s yet one more thing that our (USA) government will be stealing soon. Because there has been a lot of public protest about datacenter buildouts being pushed. I&#39;m assuming in America they&#39;ll also attach some national security concern to it so that any form of protest is seen as treason.
 
-I&#39;m just vaguely curious how governments around the world continue to push the narrative that they are servants of the people. It seems to be they&#39;re servants of the money. People and their needs / desires don&#39;t even see
+I&#39;m just vaguely curious how governments around the world continue to push the narrative that they are servants of the people. It seems to be they&#39;re servants of the money. People and their needs / desires don&#39;t even seem to register unless they have the ability to write really big checks. Even setting aside whether these AI datacenters are actually going to be useful by the time they&#39;re completed, if a large enough percentage of people in a given area are against them, shouldn&#39;t it at least be a consideration? Or have we reached such a peak of stupidity when it comes to AI that society just needs to steamroll people and call them luddites if they dare say anything negative about building out giant datacenters to suck up land, water, electricity and whatever other resources they may need in the area?
+
+how governments around the world continue to push the narrative that they are servants of the people
+
+When they bother to push this false narrative at all, they usually go with utilitarianism.  They maintain that a lot of people benefit a lot from the presence of the data centers, and that outweighs the few people who suffer a little from increased utility costs.
+
+They could also go with &quot;rich people are people too, and they are obviously more important than poor people, so serving the interests of rich people
+
+You have 15 Moderator Points! Use &#39;em or lose &#39;em!
+
+That&#39;s why they classify them as &quot;critical national infrastructure,&quot; so they can surround them with their own drones, shock/lethal fences, armed guards, dogs with bees in their mouths that when they bark they shoot bees at you, etc.  Can&#39;t just have Cletus out there taking potshots at the rooftop chillers, or whatever the British equivalent of Cletus uses without guns everywhere.
+
+That&#39;s how everyone else combats project plans.
+
+The UK government&#39;s decision to classify data centers as &quot;critical national infrastructure&quot; and a new &quot;gray belt&quot; land designationSounds a lot like Trump&#39;s EOs.
+
+The UK government&#39;s decision to classify data centers as &quot;critical national infrastructure&quot; and a new &quot;gray belt&quot; land designation
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-%
-A bank is a place where they lend you an umbrella in fair weather and
-ask for it back the when it begins to rain.
-		-- Robert Frost</div>
+Love may laugh at locksmiths, but he has a profound respect for money bags.
+		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Microsoft's AI Chief Says All White-Collar Desk Work Will Be Automated Within 18 Months</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Microsoft's AI Chief Says All White-Collar Desk Work Will Be Automated Within 18 Months</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/02/17/1932249/microsofts-ai-chief-says-all-white-collar-desk-work-will-be-automated-within-18-months?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
 
 how will we afford to rent our compute terminal
 
@@ -1223,6 +1312,14 @@ And this dude thinks they are going to replace ALL white collar jobs?
 It&#39;s going to be like in the Simpsons where Homer set up a drinking bird to hit return when various prompts came up so he wouldn&#39;t have to actually be at his computer to &quot;work&quot;.
 
 But this is Microsoft. Could AI really do any worse?
+
+Who vets and creates this &quot;discrete information&quot; dataset? Don&#39;t say AI, because it doesn&#39;t yet have vetted discrete information.
+
+plenty of AI&#39;s can already replace professionals from insurance assessors to accounting roles. Do not judge AI performance based on AI the general public uses. AI that is grounded in vetted discreet information is extremely accurate, fast and efficient.Up until the point where it hallucinates absolute nonsense.  And now you have multi-million-dollar legal or tax liability or whatever.
+
+plenty of AI&#39;s can already replace professionals from insurance assessors to accounting roles. Do not judge AI performance based on AI the general public uses. AI that is grounded in vetted discreet information is extremely accurate, fast and efficient.
+
+Up until the point where it hallucinates absolute nonsense.  And now you have multi-million-dollar legal or tax liability or whatever.
 
 CEOs seem like the absolute ripest jobs for AI replacement.
 
@@ -1250,6 +1347,12 @@ I am sure there&#39;s nuance..A representative from a global leader in corporate
 
 A representative from a global leader in corporate desktop operating systems, made a statement that AI could effectively replace all white collar jobs within 18 months.  That&#39;s about as nuanced as North Korean poetry on personal freedom read aloud before the firing squad marches in.  Remember when AOC said the world would end within 12 years if we didn&#39;t heed every warning being shamed upon the peasants by ignorant 15-year old environmental activists pretending to understand how the world works?  Well, take
 
+It’s so stupid. Do you honestly believe this will happen, where real money is on the table?Eliminating jobs that can be done automatically IS &quot;real money on the table&quot; to company shareholders. Will AI replace these jobs? You bet your ass they will. The West is not prepared for the impact AI is having on employment, and will continue to have for decades to come. Some people are burying their heads, but it won&#39;t save them. Entire fields that used to be good paying professional work are quickly becoming something a glorified script can handle with minimal input.
+
+It’s so stupid. Do you honestly believe this will happen, where real money is on the table?
+
+Eliminating jobs that can be done automatically IS &quot;real money on the table&quot; to company shareholders. Will AI replace these jobs? You bet your ass they will. The West is not prepared for the impact AI is having on employment, and will continue to have for decades to come. Some people are burying their heads, but it won&#39;t save them. Entire fields that used to be good paying professional work are quickly becoming something a glorified script can handle with minimal input.
+
 Even if all this capability were available today (AI doing most white collar jobs with no need for input or babysitting), most companies can&#39;t even do things like a simple ERP upgrade in 12-18 months. The idea that we could actually implement all of that AI capability in that amount of time is patently absurd.
 
 But then you need AI to make sure the AI is doing what AI is supposed to do. And then AI to mind the AI minder that minds the AI. I guess it&#39;s AI all the way down!
@@ -1267,6 +1370,10 @@ Personally, I see prototypes and serious trial runs being done in the 1-5 year t
 Regulated scenarios&#39; time-frames will be at the mercy of the regulato
 
 The very nature of his position basically requires him to. Most of us don&#39;t believe that if it ever will happen it would be that fast. In 18 months he can say the same thing again and still keep is salary and get a bonus.
+
+He has continvoucly morged his rel, branch back to add a new featue over Timn.
+
+No, I&#39;m not having a stroke. That&#39;s just the best that their best AI can do, and nobody gave a shit to even check that the giant diagram that explained everything in a simple graphical form... you know... didn&#39;t look like an AI image generator tried to generate text.
 
 This is just a suggestion - AI jobs are very well paid and done at the computer.
 
@@ -1294,28 +1401,40 @@ How hard can it be to make an app that talks to the media while apparently on dr
 
 I say, let&#39;s use machine learning to take over the decision making process in corporations, as these jobs are very high paying and the requirements are very low, even only 50% correct is considered a high performing executive.
 
-This is about making attention-grabbing claims that get them press (as it&#39;s done here). These predictions don&#39;t have to come true because no one is ever going to hold him to it. It doesn&#39;t impact their stock price if that date comes and goes without happening. But it does get people to pay attention (as everyone in this thread is) and talk about Microsoft and AI, which is the entire intention. If he said it&#39;d be in 10-15 years, no one will pay attention. That&#39;s too far away to care. But by saying it&#39;s reall
+This is about making attention-grabbing claims that get them press (as it&#39;s done here). These predictions don&#39;t have to come true because no one is ever going to hold him to it. It doesn&#39;t impact their stock price if that date comes and goes without happening. But it does get people to pay attention (as everyone in this thread is) and talk about Microsoft and AI, which is the entire intention. If he said it&#39;d be in 10-15 years, no one will pay attention. That&#39;s too far away to care. But by saying it&#39;s really soon, he&#39;s gotten the media and our attention, putting Microsoft right there in the conversation.
+
+Look, when someone from Anthropic, or OpenAI, or even Google makes some outrageous claim like this, I take at it with a giant heaping of salt ... but I at least consider that the person speaking might know more than I do, and might actually be telling the truth.  Probably not, but it&#39;s possible.
+
+But Microsoft?  Come on, those people can&#39;t even get their &quot;copilot&quot; to do even half of the things real AI companies can do, despite having more money than God to throw at the problem ... and I&#39;m supposed to trust th
+
+And 35 months ago and 34 months and 33 months ago...
+
+AI is not intelligent. It&#39;s just generating boilerplate language based on past patterns of communication that sounds like a manager&#39;s self-help book. It will be the death of critical thinking and process improvement.
+
+You need gatekeepers, planers and people talking to other people in businesses. Not _all_ of those will be replaced by AI. However, it is really not that unlikely that seasoned senior developers - like, f.i. me - actually _will_ be out of a job in 18 months. I&#39;ve been mentally and emotionally preparing for this possiblity since early last year.
+
+What I find very interesting to experience and hadn&#39;t consciously anticipated was the speed of transition. In hindsight it&#39;s perfectly logical, but I wasn&#39;t ready for
+
+Yeah, let CoPilot do all their work.  It&#39;ll probably do a better job than they did when they decided to remove Wordpad from Windows 11 and add features to Notepad that nobody wanted.  Oh, and cripple Paint, aside from adding AI to it
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-%
-A bank is a place where they lend you an umbrella in fair weather and
-ask for it back the when it begins to rain.
-		-- Robert Frost</div>
+Love may laugh at locksmiths, but he has a profound respect for money bags.
+		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Britain Lost 14,000 Pubs, a Quarter, in 13 Years</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Britain Lost 14,000 Pubs, a Quarter, in 13 Years</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/17/1836238/britain-lost-14000-pubs-a-quarter-in-13-years?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
 
 Last I checked, weed is still very much illegal in the UK (where all the pubs have gone bust) so &quot;legal weed&quot; is not the reason for the pubs closing.
 
@@ -1343,6 +1462,13 @@ Seriously, it very much depends on the area. Rugby, a town-borderline-city, has 
 
 Oh...  this may get some angry responses, but is it because Muslims don&#39;t drink?  Obviously a large part of this is Covid, but the Brits are well known for their love of booze.
 
+You&#39;d think that the pubs most likely to close would be the ones close to other pubs if demand is falling.  
+Is this about population density? Maybe because &quot;pub-crawling&quot; - visiting multiple establishments over the course of an evening - is (was?) a thing.  Clusters have an additional appeal that isolated locations don&#39;t.
+
+You&#39;d think that the pubs most likely to close would be the ones close to other pubs if demand is falling.
+
+Maybe because &quot;pub-crawling&quot; - visiting multiple establishments over the course of an evening - is (was?) a thing.  Clusters have an additional appeal that isolated locations don&#39;t.
+
 Said nobody with evidence.The evidence contradicts your racist hypothesis - the higher fractions of Muslims correlates with fewer closed pubs. Muslims in UK:
 
 England: 3,801,186 (6.7% of the population). London: Has the highest concentration, with 14.3% of Londoners identifying as Muslim. North-West: 6.6% of the population. Yorkshire and the Humber: 4.8% of the population. West Midlands: 4.2% of the population. Scotland & Wales: Both have a 2.2% Muslim population. Northern Ireland: 0.6%. 
@@ -1364,6 +1490,10 @@ Ahhh yes a country of 70 million people is suddenly having pubs close because *c
 Have the immigrants caused you indigestion or something? Based on everything I&#39;ve seen they seem to make you depressed and want to drown your sorrows. So wouldn&#39;t those scary brown people cause you to drink more and keep your pubs more open?
 
 You got some serious non-sequitur racism there.
+
+While there&#39;s some truth in what you say, wealth redistribution trends in all Western countries show that billionaire elites remove way more wealth from working class families than immigrants ever did. All you&#39;re doing is creating a convenient strawman to shelter the real social parasites.
+
+Who said anything about smoking? Edibles are nice too.
 
 found spatial isolation -- how far a pub stood from its nearest neighbour -- was the single strongest predictor of closure.I&#39;d be curious to know the cause of all these closures. But, I&#39;m quite confident that isolation from other pubs -- isolation from competition -- is not  it.Whether it&#39;s a change in demographics, the byzantine regulations and requirements, economics... I don&#39;t know. But, it&#39;s not isolation.
 
@@ -1403,32 +1533,38 @@ Where I live now there have been no pub closures for as long as I have lived the
 
 Some areas of London kill pubs, others keep them alive. Without serious study it is not easy to say why the difference.
 
+They buy up a type of business and then it become&#39;s middle management&#39;s job to justify their section or local by meeting or failing quarterly numbers. Upper management then demonstrates their employability by cutting locations and &#39;improving the bottom line&#39;.
+
+The same thing has been happening in the US, with chains of restaurants and retail stores going under.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-%
-A bank is a place where they lend you an umbrella in fair weather and
-ask for it back the when it begins to rain.
-		-- Robert Frost</div>
+Love may laugh at locksmiths, but he has a profound respect for money bags.
+		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">A YouTuber's $3M Movie Nearly Beat Disney's $40M Thriller at the Box Office</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>A YouTuber's $3M Movie Nearly Beat Disney's $40M Thriller at the Box Office</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://entertainment.slashdot.org/story/26/02/17/1825211/a-youtubers-3m-movie-nearly-beat-disneys-40m-thriller-at-the-box-office?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 Just don&#39;t play their game by their rules.
 
 Make something, sell it yourself; no middlemen.
 
 Hate to break it to you, but you can&#39;t change the system in a democracy using voting.  You can only pull the levers and push the buttons. You can&#39;t change the machine&#39;s inner workings.
+
+You can&#39;t change a democracy by just voting: you absolutely need good elected representatives also, and much of what determines who represents you is the work of political machination, not votes.
+
+That being said, throughout history the only way people have ever &quot;changed the machine&#39;s inner workings&quot; is through revolution.  There&#39;s been two types: violent revolution, and democratic revolution (ie. a combination of elected representatives and voters working to fundamentally change &quot;the machine&quot;).
 
 This isn&#39;t a &quot;Youtube&quot; thing gramp&#39;s (or is it grandma now?) it&#39;s a *in-theater* movie and has nothing to do with Youtube other than he told his subs to go watch it.
 
@@ -1474,238 +1610,8 @@ DIY amateur does not mean it&#39;s bad. In video games, we&#39;ve seen that stor
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-%
-A bank is a place where they lend you an umbrella in fair weather and
-ask for it back the when it begins to rain.
-		-- Robert Frost</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-28')">
-            <div class="source">Slashdot</div>
-            <div class="title">Blind Listening Test Finds Audiophiles Unable To Distinguish Copper Cable From a Banana or Wet Mud</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-28" style="display:none;">
-            <h2>Blind Listening Test Finds Audiophiles Unable To Distinguish Copper Cable From a Banana or Wet Mud</h2>
-            <p><strong>Slashdot | 2026-02-17</strong></p>
-            <a class="original-link" href="https://entertainment.slashdot.org/story/26/02/17/181203/blind-listening-test-finds-audiophiles-unable-to-distinguish-copper-cable-from-a-banana-or-wet-mud?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
-
-The solution of course is to just raise the prices of mud, pennies and bananas so the rubes that bought magic copper wires don&#39;t feel so stupid.
-
-Just picking nits.... but is there any other type of mud than &#39;wet&#39;?  Otherwise it&#39;s just dirt, no?
-
-oh man, I didn&#39;t consider why bananas were chosen for this test until your comment. Brilliant.
-
-Specially bred, genetically modified bananas create for the purpose. With directional arrows.
-
-The only people more gullible than audiophiles are wine snobs.
-
-I feel like dirt is finer, separated particles, and dried mud is a bit more solid. The latter opens up the soundstage and gives you smoother treble, at the cost of slightly recessed Otamatone vocals.
-
-We&#39;re now charging PREMIUM for our new ProAudiophile(tm) MUD interface. Guaranteed or your money back!
-
-Some brands of (very expensive) audio cables can reasonably described as wet turds.
-
-It&#39;s about shooting farther in the pissing contest when two audiophiles talk about their system, and then it turns into a price contest because if you can&#39;t actually get better quality, at least you can say you paid for it.
-
-Yeah, I want everyone (especially chicks) to know that I used a gold-plated banana, not just a prole&#39;s regular $10 banana.
-
-So long as the conductor conducts and only adds minimal inductance / capacitance - anything is fine.  You will just be power limited with poor conductors.  That being said, conductors with higher resistance can pick up more external noise.  This is because the low impedance signal is no longer low impedance.  But in a clean environment this will not be an issue.
-
-The article explains it poorly, but from the image it appears that the signal being referred to is the signal between audio source and amplifier.
-
-As soon as you send significant power through a banana, you&#39;ll start to split the water with electrolysis and generate gasses.
-
-At that point, you&#39;re wasting all of the money you shelled out for those specially grown low-oxygen bananas.
-
-At that point, you&#39;re wasting all of the money you shelled out for those specially grown low-oxygen bananas.That&#39;s &quot;Linear Sugar Oxygen Free Bananas&quot;, I&#39;ll have you know!
-
-At that point, you&#39;re wasting all of the money you shelled out for those specially grown low-oxygen bananas.
-
-That&#39;s &quot;Linear Sugar Oxygen Free Bananas&quot;, I&#39;ll have you know!
-
-It would be interesting if the same results were observed when using an older amplifier where the inputs do actually draw some power.I&#39;m not thinking as much of power as I am of voltage thresholds. I wouldn&#39;t be surprised if the interface between metal and fruit caused a little bit of rectification as the metal started to corrode - perhaps modeled as a rectifier in parallel with a resistor.If that happened, there might be some distortion visible on a spec an, though maybe not enough to be audible.
-
-It would be interesting if the same results were observed when using an older amplifier where the inputs do actually draw some power.
-
-I&#39;m not thinking as much of power as I am of voltage thresholds. I wouldn&#39;t be surprised if the interface between metal and fruit caused a little bit of rectification as the metal started to corrode - perhaps modeled as a rectifier in parallel with a resistor.
-
-If that happened, there might be some distortion visible on a spec an, though maybe not enough to be audible.
-
-Before my time in computers I was in auiio recording engineer and similar work.   So many times rookie engineers and musicians come in wanting to use our vintage microphone on cranked guitar amp and drums and we&#39;d say no.    They&#39;d whine so we would say okay we&#39;ll do a blindfold test you can tell the different you can use the vintage mic&#39;s.  They never won.  Same with musicians on overpriced speaker and guitar cords, they could never tell the difference.   We did tests on cables the super high priced and th
-
-So, next time I need an extra guitar patch cable, if I have a spare banana laying around, I don&#39;t need to run to Guitar Center.
-
-Or, just pee in some dirt.There actually used to be an old electrician&#39;s practice to pee in the dirt before or after driving an earth ground rod. The idea was it increased the conductivity.So maybe you&#39;re onto something . . . ;-)
-
-There actually used to be an old electrician&#39;s practice to pee in the dirt before or after driving an earth ground rod. The idea was it increased the conductivity.
-
-So, next time I need an extra guitar patch cable, if I have a spare banana laying around, I don&#39;t need to run to Guitar Center.Only if the banana displays the well-known &quot;extra-long dual-stem quarter inch male mono&quot; mutation. Otherwise, it might as well be an apple.
-
-So, next time I need an extra guitar patch cable, if I have a spare banana laying around, I don&#39;t need to run to Guitar Center.
-
-Only if the banana displays the well-known &quot;extra-long dual-stem quarter inch male mono&quot; mutation. Otherwise, it might as well be an apple.
-
-Nobody will be able to deny the quality difference then. Especially if they see how much more expensive the flaked gold version is.
-
-Typically in sound quality tests, you tell subjects which file is the original, then have them rate how close to the original the other samples are. In this he just gave them four samples, and had them guess which was which, turning it into a more subjective test of guessing what they think the track should like. In addition, based on the table he got a total of 1-4 responses per track, which is far too low to have any statistical significance.
-
-This was a funny joke, but not the gotcha the article played it up to be.
-
-It isn&#39;t necessary to have a wide scale double blind study to show that a paranormal claim is bunk. Either they can tell the difference between how it sounds even when electronic test equipment can&#39;t, or they&#39;re full of it.
-
-You are putting WAY to much thought into this. Yes, it was not a fancy double blind study, but there are 4 separate files and 4 things they could be assigned to. Anyone with 2 brain cells would listen and assign what they though was the best quality to the original. Then to the one run through the audio cable. Then the banana followed by mud. They fact that at minimum the mud and banana didn&#39;t stand out says what you need to know about the quality.
-
-There doesn&#39;t need to be a gotchya in this case. The gotchya is in the meta analysis. The examinations of all tests which show that audiophiles can&#39;t tell a difference, providing they are testing sight unseen they fall back to statistical guessing, no matter how tests get setup, what sample sizes there are, and I think I&#39;m forgetting something but it probably wasn&#39;t important.
-
-Add to that that poor tests usually confirm something with preset biases (i.e. in this case make it more likely that there was a winn
-
-It&#39;s easy, fooling audiophiles.  I am one, but the guerilla kind that builds his own stuff from time to time, not one of the &quot;believers&quot; in shaatki stones, magic bricks and such.
-
-I do have a friend who is such a believer.  He&#39;s also quite deaf in the upper ranges, he&#39;s 20 years older than me and has a lifetime of abusing his hearing.
-
-If you&#39;d take 14ga lamp zipcord, put a fancy jacket on it, fancy connectors, ship it in a velvet-lined wooden box, price it at $2000 / meter, and you&#39;ll sell tons.
-
-One of the early internet scams (I mean ads) I saw was for audifile dynamic/brilliant pebbles that would [wave hands in mystic circles] improve sound. Somehow.
-
-I had a friend like this and sadly he won. I mocked him for his $1000 Audeze LCD-2 headphones and after enough of it he said bring your best headphones over and lets see.
-
-I had spent $100+ on some studio monitor headphones from guitar center years prior and figured they were the bomb. I took them over and was expecting to be all smug and holy cow were his headphones like way waaaaaay better.
-
-My jaw hit the floor. I went back and forth on the same song between mine and his, each time it was like going under wa
-
-It&#39;s been fairly well established over the years that anything electromechanical (phono cartridge, speaker, headphone) is by far the biggest variable in a high end setup.
-
-Moderate and high-end preamps and amplifiers are all pretty similar at similar power levels.  You&#39;re trying for a flat amplitude and low phase shift over a 3 decade low-frequency range - that&#39;s not rocket science.  Moderate cost pre-amps/amps will tend to have a higher noise floor (more background hiss), but otherwise they&#39;ll be remarkably
-
-Nice, but not what was being discussed.  The discussion is wires.  Cables.
-
-Will planar cans beat dynamic?  I&#39;m sure they do.
-
-Do horn speakers beat cones?  Yes, yes they do (two sets of Klipsch at this house.)
-
-Will a Sumiko hand-made cart beat a mass-produced Audio-Technica?  Probably.  But by what margin?
-
-Does $10,000 dollar speaker cables beat  14ga. zipcord?  Doubt it.
-
-Monster sure had a great run convincing everyone otherwise.  It became something of a joke in the early 2000s.   They definitely took from P.T. Barnum&#39;s playbook.   A sucker born every minute.
-
-Agree with another commenter, overall system noise becomes more critical at the amplification stage.   Most cheap stereos in the 90s had a modicum of white noise in the silence when you turned it way up.  But one day a roomate got an -amazing- setup and it was so clean, and had so much dynamic range, it blew my mind.
-
-Monster Cable would have been a good deal and reasonably proposition if the damn connectors didn&#39;t break or fall off them. The quality was so low that it was barely worth a tenth of what they charged. It really would have benefited from spendibg less on marketing and sales kickbacks, and more on a good product with word of mouth.
-
-This sort of thing has been going on for years.
-
-I recall one where they replaced the multi-conductor mega-cables with coat hangers while the audio experts weren&#39;t looking. The experts then went on and on explaining how much better it all sounded.
-
-Only in hi-fi do they question whether or not science really works.
-
-Only in hi-fi do they question whether or not science really works.Really? Have you checked out the US administration lately? Or even your local fundamentalist church?
-
-Only in hi-fi do they question whether or not science really works.
-
-Really? Have you checked out the US administration lately? Or even your local fundamentalist church?
-
-Only in hi-fi do they question whether or not science really works.The Trump administration has entered the chat...
-
-Only in hi-fi do they question whether or not science really works.
-
-The Trump administration has entered the chat...
-
-Unless something is very, very wrong, your cable is not a filter, so it&#39;s not going to have any impract on sound. The same can be said for guitarists. They go on and on about shit that makes absolutely no difference to the tone of an electric guitar.
-
-There have also been more than one guitarist with their own legendary distinct sound preferring to play the cheaper version of their signature guitars versus the higher end versions, typically because the cheaper ones are lighter and sound the same.
-
-Physics is a lot more powerful than the irrational hallucinations of &quot;audiophiles&quot;.
-
-One time I did notice a cable made a difference to sound, but it made it sound worse. Like there was a capacitor in it or something, presumably some failing insulator causing capacitative coupling. As long as you get a good connection to the banana, you should be fine.
-
-I&#39;ll shell out a couple extra dollars for a balanced Neutrik ended cable. Not because they sound better, but because the ends are soldered and clamped onto the wire. If you&#39;re systems supports balanced interconnects there&#39;s a technical reason to use them over RCA, far more so than sound quality or connector quality. Balanced connections definitely have benefits, not the least of which is proper electrical management of return currents.
-
-I&#39;ll shell out a couple extra dollars for a balanced Neutrik ended cable. Not because they sound better, but because the ends are soldered and clamped onto the wire.
-
-If you&#39;re systems supports balanced interconnects there&#39;s a technical reason to use them over RCA, far more so than sound quality or connector quality. Balanced connections definitely have benefits, not the least of which is proper electrical management of return currents.
-
-I once saw a guy say his system sounded better after the new  cables he bought “rested a few days.”  I.e: stretched out on the floor, routed from his amp to his speakers.  I’m no EE, but that sounds a bit daft.
-
-They&#39;re passing an electric current through those mediums, not sound waves.  So of course they all sound the same once they&#39;re converted back to sound.  I&#39;ll bet volume would be the only difference.
-
-My go to for speaker cable for the last 30 years is lamp wire. Obviously use wire that is rated well beyond what you need, but it&#39;s cheap and appropriate for a casual setup that might only have 200W of speakers. Nice heavy wire gives you less of a voltage drop. Relatively low frequency (audio) means I don&#39;t care too much about such a tiny parallel wire capacitance for such a large space and big diameter wire.Disadvantage of lamp wire is if you need high current for a large multi element speaker, then it sto
-
-I recall reading of a test where they ran the signal through a chain of 10 or so 741 op amp chips. The cheapest, crappiest OP amps one can buy in modern times. No body could tell.
-
-The old bipolar op amps aren&#39;t bad for audio when used with balanced 12V supplies (so nicely in about the middle of the common mode input range), and - this being very important - having a resistive load on the output to +ve rail so that the output stage operates in Class A single-ended mode, with the top output transistor always off.
-
-If it was done over the internet, then the various codecs, compression and decompression, etc. that all digitized sound, and especially network streaming are subject to, could easily mask the audible differences.The article doesn&#39;t specify, but it would be interesting to know.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-%
-A bank is a place where they lend you an umbrella in fair weather and
-ask for it back the when it begins to rain.
-		-- Robert Frost</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Micron's PCIe 6.0 SSD Hits Mass Production at 28 GB/s</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Micron's PCIe 6.0 SSD Hits Mass Production at 28 GB/s</h2>
-            <p><strong>Slashdot | 2026-02-17</strong></p>
-            <a class="original-link" href="https://hardware.slashdot.org/story/26/02/17/1710225/microns-pcie-60-ssd-hits-mass-production-at-28-gbs?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-Can it store my ENTIRE porn collection?Yesterday&#39;s. :-)
-
-Which AI company is getting these drives? The one that tells people to walk to the car wash to get your car cleaned, or the one that makes blatant ripoffs of Marvel movies?
-
-However, the complexity of PCIe 6.0 implementation has slowed down its adoption by both enterprise and client applications.
- 
-Costs and the lack of interoperability tests by PCI-SIG (for now) are among the significant reasons behind not adopting the PCIe 6.0 interface for the client PC market.. https://www.tomshardware.com/p...  [tomshardware.com]
-
-However, the complexity of PCIe 6.0 implementation has slowed down its adoption by both enterprise and client applications.
- 
-Costs and the lack of interoperability tests by PCI-SIG (for now) are among the significant reasons behind not adopting the PCIe 6.0 interface for the client PC market.
-
-. https://www.tomshardware.com/p...  [tomshardware.com]
-
-28GB/s under conditions that will never be met for more than a few seconds at a time given most enterprise workloads isn&#39;t nearly as interesting as getting 200k IOPS+ sustained random reads for arbitrary lengths of time, and that&#39;s something that&#39;s theoretically possible even on PCIe gen 3, albeit not on any drives that currently exist.
-
-given most enterprise workloadsThis isn&#39;t &quot;for most enterprise workloads&quot;.
-
-This isn&#39;t &quot;for most enterprise workloads&quot;.
-
-> 28GB/s under conditions that will never be met for more than a few seconds at a time given most enterprise workloads
-
-The Jevons Paradox, proposed by economist William Stanley Jevons in 1865, states that technological improvements increasing resource efficiency often raise total consumption rather than lowering it.
-
-In 1999, when I was looking for an apartment, a large complex had a big banner on their office, advertising a T-1 line (~ 1.5Mbps), shared between all tena
-
-That&#39;s three watts more than a 3.5 inch Maxtor hard drive from 2005 sitting in my junk box. I have a terabyte seagate that draws half that.  I thought SSDs were supposed to save power. I&#39;ll blame it on the need for speed.
-
-How much will a 30TB PCIe 6 NVMe drive cost me?
-
-When will I be able to get one? Especially considering all the chatter about memory chip shortages and spiraling storage prices.
-
-It&#39;ll cost me about $7k for 30TB of PCIe 4 storage, today.
-
-Check back in five or six years. I&#39;m kind of serious. I just pulled my oldest 7.6TB u.2s at the end of a three year service term, drives I thought were unimaginably huge when I deployed them. When I checked them, I found that they had around 70% estimated wear life remaining, which seems pretty good for drives that were in use constantly for so long.  The replacement drives were 15TB each, and I expect that in another three years, I&#39;ll be ready to fork over for the 30TB ones.
-
-until AI bubble pops, you will not be able to buy one unless your name is John Hyperscaler and ask for at least a thousand at the same time and even then a single one will cost you, my guess, at least 10k USD.The worst of it all is that this is a run just to guarantee supply in case the manufacturers cannot meet demand, the &quot;quote 10, to order 5 to receive 2&quot; that we saw during the pandemic, and because the manufacturers know this is the case, they are making zero effort to expand the production capacity be
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-%
-A bank is a place where they lend you an umbrella in fair weather and
-ask for it back the when it begins to rain.
-		-- Robert Frost</div>
+Love may laugh at locksmiths, but he has a profound respect for money bags.
+		-- Sidney Paternoster, &quot;The Folly of the Wise&quot;</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2029,11 +1935,53 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Can AI build a machine that draws a heart? What automated mechanism design could mean for mechanical engineering</div>
+            <div class="title">New electrolyzer turns plastic-waste syngas into ethylene with less energy</div>
             <div class="meta">2026-02-17</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>New electrolyzer turns plastic-waste syngas into ethylene with less energy</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-02-electrolyzer-plastic-syngas-ethylene-energy.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Demonstration of mass connectivity for the 6G era</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
+            <h2>Demonstration of mass connectivity for the 6G era</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-02-mass-6g-era.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-38')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">THz band testbed successfully transmits under 1,000 km/h high-mobility emulation</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-38" style="display:none;">
+            <h2>THz band testbed successfully transmits under 1,000 km/h high-mobility emulation</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-02-thz-band-testbed-successfully-transmits.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-39')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Can AI build a machine that draws a heart? What automated mechanism design could mean for mechanical engineering</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-39" style="display:none;">
             <h2>Can AI build a machine that draws a heart? What automated mechanism design could mean for mechanical engineering</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-ai-machine-heart-automated-mechanism.html">Visit Original Website</a>
@@ -2041,13 +1989,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Advanced security technology is rarely used—research offers a solution</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Advanced security technology is rarely used—research offers a solution</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-advanced-technology-rarely-solution.html">Visit Original Website</a>
@@ -2055,13 +2003,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Magnetic gear reconfigures the Yagi-Uda antenna for future 6G developments</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Magnetic gear reconfigures the Yagi-Uda antenna for future 6G developments</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-magnetic-gear-reconfigures-yagi-uda.html">Visit Original Website</a>
@@ -2069,55 +2017,117 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Compressorless hydrogen turbine runs 303 seconds, beating NASA's 250-second record</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-39" style="display:none;">
-            <h2>Compressorless hydrogen turbine runs 303 seconds, beating NASA's 250-second record</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-02-compressorless-hydrogen-turbine-seconds-nasa.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-40')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Robot hand approaches human-like dexterity with new visual-tactile training</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-40" style="display:none;">
-            <h2>Robot hand approaches human-like dexterity with new visual-tactile training</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-02-robot-approaches-human-dexterity-visual.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">NASA advances high-altitude traffic management</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>NASA advances high-altitude traffic management</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-02-nasa-advances-high-altitude-traffic.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-42')">
+            <div class="source">The Register</div>
+            <div class="title">Infosys bows to its master, signs deal with Anthropic</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-42" style="display:none;">
+            <h2>Infosys bows to its master, signs deal with Anthropic</h2>
+            <p><strong>The Register | 2026-02-17</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/anthropic_infosys_partnership/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Indian IT professionals worried about 72-hour workweeks might soon face the opposite concern, as Bengaluru-based outsourcing giant Infosys has partnered with Anthropic to bring agentic AI to telecommunications companies and other regulated industries.
+
+Anthropic and Infosys announced their collaboration plans on Tuesday, describing agentic AI as a core focus of their partnership. According to Infosys CEO Salil Parekh, the pair wants to combine their respective domain expertise to give businesses around the world a shot at actually getting some returns on their AI investments.
+
+&quot;Our collaboration with Anthropic marks a strategic leap toward advancing enterprise AI, enabling organizations to unlock value and become more intelligent, resilient, and responsible,&quot; Parekh said in a canned statement.
+
+The deal will primarily involve integrating Anthropic&#39;s various Claude models and Claude Code with Infosys&#39; Topaz AI-powered business automation platform. According to Anthropic CEO Dario Amodei, Infosys engineers are already using Claude Code for some work, and the partnership between the pair will enable the outsourcing giant to extend its footprint into regulated industries.
+
+&quot;There&#39;s a big gap between an AI model that works in a demo and one that works in a regulated industry—and if you want to close that gap, you need domain expertise,&quot; Amodei said. &quot;Infosys has exactly that kind of expertise.&quot;
+
+The particular domains that Anthropic and Infosys intend to enter via their partnership, and the tasks they intend their new AI agents to perform, hint that a headcount bloodbath is on the horizon.
+
+In the telecommunications space, the pair wants to use AI agents to modernize network operations, manage customers across their lifecycle with a provider, and &quot;improve service delivery,&quot; whatever that might mean. In the financial services space, Anthropic and Infosys want AI to detect and assess risk, take care of compliance reports, and &quot;deliver more personalized customer interactions,&quot; including through tailoring financial advice to a client&#39;s full account history and current market conditions.
+
+The pair also wants Claude AI to help Infosys customers in the manufacturing and engineering spaces to speed up product design and simulation, and handle more code in software development. They also want AI to take on an increased enterprise operations role by automating routine work, &quot;like document summarization, status reporting, and review cycles.&quot; Sounds like shorthand for letting AI do a lot of what humans used to.
+
+News that Infosys is leaning further into AI won&#39;t come as a surprise to El Reg readers – we reported last month that India&#39;s four largest outsourcing firms, including Infosys, had effectively slammed the brakes on hiring, even as they talked up productivity gains from increased use of AI in their operations.
+
+Infosys, which does business in 59 countries around the world, has been leaning into AI just like its competitors, slashing roles across the company while simultaneously opening up more roles for AI experts to further their application of the technology.
+
+Infosys shares have plunged to their lowest level in years recently as investors have soured on IT consultancy firms in the face of competition from AI firms like Anthropic. That said, the announcement did bump shares up more than 4 percent on Tuesday, so perhaps a little bubble-blowing magic can reverse the tide. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">The Register</div>
+            <div class="title">China remains embedded in US energy networks 'for the purpose of taking it down'</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
+            <h2>China remains embedded in US energy networks 'for the purpose of taking it down'</h2>
+            <p><strong>The Register | 2026-02-17</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/volt_typhoon_dragos/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Three new threat groups began targeting critical infrastructure last year, while a well-known Beijing-backed crew - Volt Typhoon - continued to compromise cellular gateways and routers, and then break into US electric, oil, and gas companies in 2025, according to Dragos&#39; annual threat report published on Tuesday.
+
+Dragos specializes in operational technology (OT) security, and as such, its customers include energy, water, manufacturing, transportation, and other critical industries. Unsurprisingly, these are key sectors for Chinese, Russian, and other government-linked cyber operatives to hack for espionage and warfare purposes.
+
+In its yearly cybersecurity report, Dragos said state-sponsored crews haven&#39;t let up on their attempts to compromise America&#39;s critical infrastructure, with three new OT-focused threat groups joining the fray. This brings the total number worldwide to 26, and of these, 11 were active in 2025.
+
+Additionally, an existing group that Dragos tracks as Voltzite and is &quot;highly correlated&quot; with Volt Typhoon, according to Dragos CEO Robert M. Lee, kept up its intrusion activities last year. This is the Beijing goon squad that the US government has accused of burrowing into critical American networks for years and readying destructive cyberattacks against those targets.
+
+In 2025, Voltzite continued embedding its malware inside strategic American utilities &quot;to maintain long-term persistence,&quot; Lee said.
+
+&quot;They [Voltzite] weren&#39;t just getting in and getting access - they were getting inside the control loop&quot; system that manages utilities&#39; industrial processes, Lee said in a briefing with reporters, adding that the PRC-backed crew&#39;s primary focus is causing future disruption.
+
+Voltzite was embedded in that infrastructure for the purpose of taking it down
+
+&quot;Nothing that they were taking was useful for intellectual property,&quot; Lee said. &quot;Everything they were doing and learning was only useful for disrupting or causing destruction at those sites. Voltzite was embedded in that infrastructure for the purpose of taking it down.&quot;
+
+In one of these campaigns, the intruders compromised Sierra Wireless AirLink devices and used these to access US pipeline operations&#39; OT networks. Dragos observed Voltzite exfiltrating operational and sensor data, and said the level of access the intruders had to the OT networks allowed them to potentially manipulate control systems. They also accessed engineering workstations and stole configuration files and alarm data, which included information about how to force stop operations.
+
+In another Voltzite-linked campaign, Dragos spotted the crew using the JDY botnet to scan for public-facing Internet Protocol (IP) address ranges and VPN appliances across energy, oil, gas, and defense sectors.
+
+&quot;While no exploitation was confirmed during this phase, Dragos assesses with moderate confidence that the intent appeared to be pre-staging for future intrusions and exfiltration of operational data,&quot; according to the report.
+
+One of the three new groups that Dragos began tracking last year - Sylvanite - serves as Voltzite&#39;s initial access broker, responsible for weaponizing vulnerabilities and then handing off this access to Voltzite for deeper OT intrusions.
+
+&quot;Usually that indicates a government team and their national lab, or a government team and a contractor, or two different government agencies,&quot; Lee said.
+
+Sylvanite exploits known vulnerabilities in internet-facing products from F5, Ivanti, and SAP to provide Voltzite access into electric power generation, transmission and distribution, water, sewage, and oil and gas organizations across North America, the UK, Europe, Asia and the Middle East.
+
+&quot;They&#39;re finding edge-device vulnerabilities - the things that a contractor or remote worker would use to get into operations networks,&quot; Lee said. &quot;And within 48 hours of disclosure, they&#39;re reverse engineering [vulnerabilities] and hitting those devices.&quot;
+
+A second group that emerged during 2025, Azurite, overlaps with China&#39;s Flax Typhoon and focuses on gaining long-term access to OT engineering workstations and exfiltrating operational files including network diagrams, alarm data, and process information for downstream capability development.
+
+This group targets manufacturing, defense, automotive, electric power, oil and gas, and government organizations across the US, Europe, and the Asia-Pacific region.
+
+Finally, the third new group, Pyroxene, overlaps with activity attributed to Imperial Kitten (aka APT35) - the cyber arm of the Islamic Revolutionary Guard Corps (IRGC).
+
+Dragos spotted Pyroxene conducting &quot;supply chain-leveraged attacks targeting defense, critical infrastructure, and industrial sectors, with operations expanding from the Middle East into North America and Western Europe,&quot; according to the report.
+
+One such intrusion involved collaboration between Pyroxene and a group Dragos tracks as Parisite, which functions as an initial access provider into critical infrastructure orgs.
+
+Pyroxene typically uses recruitment-themed social engineering against targeted individuals, interacting with victims via fake social media profiles before delivering backdoors and other malware. In June 2025, Dragos said the group deployed data-wiping malware against &quot;multiple undisclosed organizations&quot; in Israel around the time of the military conflict between Iran, Israel, and the US.
+
+Of course, China and Iran aren&#39;t the only nations targeting critical infrastructure in America and around the globe. Russia also poses a threat to Western water and utilities - along with any nations helping Ukraine in its ongoing war against the Kremlin&#39;s occupation.
+
+Dragos does not attribute cyberattacks to any nations. However, earlier this year, it blamed the December 2025 cyberattacks against Poland&#39;s power grid on a group it tracks as Electrum. This group overlaps with Russia&#39;s GRU-run Sandworm offensive cyber unit - the crew behind the 2022 attack on a Ukrainian power facility and earlier wiper attacks that coincided with Russia&#39;s ground invasion of Ukraine in 2022.
+
+In its new report, Dragos said that Kamacite serves as the initial access provider for Electrum, and it detailed a reconnaissance campaign that Kamacite carried out against vulnerable internet-exposed industrial devices in US water, energy, and manufacturing sectors between March and July 2025.
+
+&quot;While Dragos found no evidence of successful exploitation during this period, the scope and precision of the scanning reveal a meaningful evolution in Kamacite&#39;s operational posture,&quot; the report said. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">GPU who? Meta to deploy Nvidia CPUs at large scale</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>GPU who? Meta to deploy Nvidia CPUs at large scale</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/meta_nvidia_cpu/">Visit Original Website</a>
@@ -2155,13 +2165,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">AI gets all the good stuff, including Micron's speedy 28 GB/s PCIe 6.0 SSD</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>AI gets all the good stuff, including Micron's speedy 28 GB/s PCIe 6.0 SSD</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/micron_pcie_6/">Visit Original Website</a>
@@ -2189,13 +2199,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">AI bit barns grow climate emergency by turning up the gas</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>AI bit barns grow climate emergency by turning up the gas</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/ai_datacenters_driving_up_emissions/">Visit Original Website</a>
@@ -2229,13 +2239,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">Scientists show it's possible to solve problems in your dreams by playing the right sounds</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Scientists show it's possible to solve problems in your dreams by playing the right sounds</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/night_time_soundscapes_solve_problems/">Visit Original Website</a>
@@ -2277,91 +2287,41 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
-            <div class="source">The Register</div>
-            <div class="title">React survey shows TanStack gains, doubts over server components</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-46" style="display:none;">
-            <h2>React survey shows TanStack gains, doubts over server components</h2>
-            <p><strong>The Register | 2026-02-17</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/react_survey_shows_tanstack_gains/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Devographics has published its State of React survey, with over 3,700 developers speaking out about what they love and hate in the fractured React ecosystem.
-
-React, originally sponsored by Meta, is a JavaScript library but not a complete framework, the result being that developers using React have a lot of choices when it comes to React-based frameworks and tools. The complexity of the ecosystem is a problem. &quot;Getting a build and testing harness and CI system and IDE tools to all play nicely together is reliably a nightmare,&quot; complained one respondent.
-
-Despite such concerns, React usage remains high and may grow further thanks to AI. &quot;With generative AI&#39;s reliance on existing codebases in order to spew out new code, could React become even more entrenched?&quot; asks Devographics writer Sacha Greif, introducing the survey, which is sponsored by companies including Google, JetBrains, and Algolia.
-
-React API top pain points according to the 2025 State of React survey. Note that forwardRef was deprecated in React 19
-
-Next.js, which once looked set to become the standard choice for full-stack React, is widely used but not particularly beloved. Eighty percent of respondents have used it, but 17 percent have a negative sentiment, with most complaints focused on excessive complexity and too-tight integration with its main sponsor, hosting company Vercel. &quot;Vendor lock in, complex APIs, and too much noise in the Next.js ecosystem make it a no-go for me,&quot; said one comment. Still, 27 percent ticked the box for positive sentiment, so opinion is divided.
-
-If Next.js declines, the winner may be TanStack. TanStack Query, used for data fetching, has 68 percent usage, 42 percent positive sentiment, and just 1 percent negative. TanStack Start, a full-stack framework using React, Solid.js and the Vite build tool currently in release candidate phase, is used by only 15 percent, probably because it is in preview, but liked by nearly half of those who use it or have heard of it.
-
-TanStack is an open source project created by Tanner Lindsey, co-founder of SEO (search engine optimization) rank tracking company Nozzle. In March 20025 it was sponsored by hosting company Netlify as an alternative to &quot;bloated, over-abstracted frameworks,&quot; perhaps with Next.js in mind. TanStack is focused on type-safety using TypeScript and file-based routing.
-
-There are several TanStack sub-projects, in varying states of readiness. Alongside Query and Start, others include the TanStack DB data store (beta), TanStack AI (alpha) and TanStack CLI (command line interface), including an MCP (model context protocol) server for use by AI agents.
-
-Both Next.js and TanStack Start implement React Server Components, but respondents to the survey are not all convinced that React belongs on the server as well as in the browser. &quot;Completely not interested in this feature,&quot; said one. The cool response to both server component and server functions is described by the survey authors as &quot;troubling for a set of new APIs that was supposed to pave the way towards React&#39;s next big evolution.&quot;
-
-Another newish feature, the React Compiler, fares better, with 62 percent of respondents stating their enthusiasm for it. &quot;We can stop littering our code with useMemo and useCallback,&quot; said Aurora Scharff, certification lead and React educator, in her conclusion to the survey.
-
-Respondents are also positive about the planned React Foundation, introduced in October 2025 to maintain React&#39;s infrastructure and organize its main event, ReactConf.
-
-Like Greif, Scharff notes that for AI-assisted coding, &quot;React has ... become the default output when you prompt for UI.&quot;
-
-Despite its pain points, the future popularity of React seems assured. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">European Parliament bars lawmakers from using AI tools</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>European Parliament bars lawmakers from using AI tools</h2>
-            <p><strong>The Register | 2026-02-17</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/european_parliament_bars_lawmakers_from/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The European Parliament has reportedly turned off AI features on lawmakers&#39; devices amid concerns about content going where it shouldn&#39;t.
-
-According to Politico, staff were notified that AI features on corporate devices (including tablets) were disabled because the IT department could not guarantee data security.
-
-The bone of contention is that some AI assistants require the use of cloud services to perform tasks including email summarization, and so send the data off the device – a challenge for data protection.
-
-It&#39;s a unfortunate for device vendors that promote on-device processing, but the European Parliament&#39;s tech support desk reportedly stated: &quot;As these features continue to evolve and become available on more devices, the full extent of data shared with service providers is still being assessed. Until this is fully clarified, it is considered safer to keep such features disabled.&quot;
-
-The Register contacted the European Parliament for comment.
-
-Data privacy and AI services have not been the greatest of bedfellows. Studies have shown that employees regularly leak company secrets via assistants, and on-device AI services are a focus of vendors amid concerns about exactly what is being sent to the cloud.
-
-The thought of confidential data being sent to an unknown location in the cloud to generate a helpful summary has clearly worried lawmakers, which is why there is a blanket ban. However, the issue has less relevance if the process occurs on the device itself.
-
-The Politico report noted that day-to-day tools, such as calendar applications, are not affected by the edict. The ban is temporary until the tech boffins can clarify what is being shared and where it is going.
-
-The European Parliament has scrutinized AI over recent years and has enacted the world&#39;s first legislation specifically designed to address perceived risks from the technology. The ban, alongside guidance to steer lawmakers away from using the services for Parliament business, is more about fears about where the data could end up than anything specific about AI.
-
-The guidance also advised against granting third-party AI apps broad access to data, which seems a sensible instruction regardless of where a user works. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">Piggyback’s fantastic Metroid Prime art book is nearly 20 percent off</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-48" style="display:none;">
+            <h2>Piggyback’s fantastic Metroid Prime art book is nearly 20 percent off</h2>
+            <p><strong>The Verge | 2026-02-17</strong></p>
+            <a class="original-link" href="https://www.theverge.com/gadgets/821108/metroid-prime-1-3-a-visual-retrospective-art-book-deal-sale">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Finally, a tome worthy of Samus and her otherworldly escapades.
+
+Finally, a tome worthy of Samus and her otherworldly escapades.
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+Metroid Prime 4: Beyond launched on the Nintendo Switch and Switch 2 in December, but if you’re itching for some more lore, Metroid Prime 1–3: A Visual Retrospective is a nice way to dig in, especially now that it’s on sale. Normally $49.99, you can currently buy the hardcover version for $41.08 (about $9 off) at Amazon and Walmart, which is one of the first discounts we’ve seen on the tabletop book.
+
+Developed in collaboration with Nintendo and Retro Studios, Piggyback’s 210-page retrospective is an excellent homage to the last 20 years of Metroid. The book itself resembles a piece of art, stitched-bound in a canvas-like cloth hardcover, with a red embossed outline of the series’ iconic protagonist, Samus Aran. Inside, you’ll find a trove of concept drawings and sketches spanning the entire trilogy — as well as Metroid Prime Remastered — including detailed illustrations of environments, common enemies, and bosses. It even features concept art that never made it into the final games.
+
+What really makes the book stand out are the behind-the-scenes stories, however. It touches on everything from Retro Studios’ burnout upon shipping Metroid Prime 2: Echoes to insights surrounding Nintendo’s secretive development process. The margin notes from series producer Kensuke Tanabe are especially entertaining, as they reveal design debates from over two decades ago.
+
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.
+
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
             <div class="source">The Verge</div>
             <div class="title">Google announces dates for I/O 2026</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-49" style="display:none;">
             <h2>Google announces dates for I/O 2026</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/880401/google-io-2026-dates-ai">Visit Original Website</a>
@@ -2381,13 +2341,13 @@ Developers can register for Google I/O 2026 starting today.
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">Here are the best Apple Watch deals available right now</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>Here are the best Apple Watch deals available right now</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/21289209/best-apple-watch-deals">Visit Original Website</a>
@@ -2433,13 +2393,13 @@ Sign up for Verge Deals to get deals on products we’ve tested sent to your inb
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Now Pixel 9 phones can transfer files with AirDrop, too</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Now Pixel 9 phones can transfer files with AirDrop, too</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/880210/google-pixel-9-airdrop-quick-share">Visit Original Website</a>
@@ -2453,13 +2413,13 @@ That is, unless you’re the owner of a Pixel 9A — you’ll need to use plain 
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Apple is reportedly planning to launch AI-powered glasses, a pendant, and AirPods</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Apple is reportedly planning to launch AI-powered glasses, a pendant, and AirPods</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/880293/apple-ai-hardware-smart-glasses-pin-airpods">Visit Original Website</a>
@@ -2483,13 +2443,13 @@ Apple could also launch upgraded AirPods this year, which Gurman previously said
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">WordPress’ new AI assistant will let users edit their sites with prompts</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>WordPress’ new AI assistant will let users edit their sites with prompts</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/880223/wordpress-launches-ai-assistant">Visit Original Website</a>
@@ -2505,78 +2465,6 @@ Users can also interact with the AI through the new block notes feature WordPres
 To try out the AI assistant, users have to manually enable it by going into their site’s settings and toggling on “AI tools.” Sites that were made with the AI website builder WordPress launched last year will have AI tools enabled by default.
 
 A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">The best Presidents Day deals you can still grab</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>The best Presidents Day deals you can still grab</h2>
-            <p><strong>The Verge | 2026-02-17</strong></p>
-            <a class="original-link" href="https://www.theverge.com/gadgets/875949/best-presidents-day-sales-deals-2026">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">We’re rounding up a host of lingering discounts on earbuds, speakers, TVs, smart home tech, and other great gadgets.
-
-We’re rounding up a host of lingering discounts on earbuds, speakers, TVs, smart home tech, and other great gadgets.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-Deals have been pretty scarce since the holidays, but now that February is in full swing, we’ve seen strong discounts return across a range of categories. Both Valentine’s Day and Presidents Day brought a deluge of discounts, and although both have passed, a number of notable deals remain. In fact, you can still save on everything from Sonos speakers and OLED TVs to earbuds, fitness trackers, and other gadgets.
-
-Below, we’ve rounded up the best Presidents Day deals still available, the bulk of which we anticipate expiring by the end of the week.
-
-Significantly smaller and lighter than their predecessors, the Pixel Buds Pro 2 also offer stronger noise cancellation, a crystal clear transparency mode, and lengthy battery life. Read our review.
-
-Nothing’s first pair of over-ear headphones feature a retro transparent design and high-end features like active noise cancellation, spatial audio with head tracking, and plush ear pads. They also feature a paddle button that allows you to control music playback. Read our review.
-
-Sonos’ Era 100 smart speaker is a replacement for the older Sonos One, utilizing two tweeters (left and right) and one larger woofer. In addition to Wi-Fi, the Era 100 also supports Bluetooth audio and line-in playback via an optional 3.5mm to USB-C adapter.
-
-The JBL Authentics 200 is one of the first smart speakers with simultaneous Google Assistant and Alexa support. The small, ‘70s-style speaker produces great sound for its size, and you don’t need to toggle a setting to use your preferred virtual assistant.
-
-The latest version of Amazon’s zippy Fire TV Stick 4K streams in 4K resolution, as its name suggests, and features support for Wi-Fi 6, Dolby Atmos / Vision, and HDR10 Plus.
-
-LG’s budget B5 is a great way to get OLED picture quality for less. It features support for both Dolby Vision and Dolby Atmos, along with a 120Hz panel and four HDMI 2.1 ports for hooking up the latest gaming consoles. It also runs LG’s webOS platform, supports Amazon Alexa, and provides easy access to a wide range of popular streaming apps.
-
-LG’s midrange C5 TV is an excellent way to get OLED performance without paying top dollar. It has a good amount of brightness, excellent color accuracy out of the box, and great gaming features, including a max 144Hz refresh rate.
-
-The Bravia 8 II was chosen as the “king of TV” by a panel of judges (including The Verge’s own Nilay Patel) in Value Electronics’ 2025 shootout. The OLED TV has excellent color accuracy, a bright panel, and a 120Hz refresh rate.
-
-Although the Apple Watch Series 11 is the same size as its predecessor, it features a 5G cellular modem, a display that Apple claims is twice as durable, and slightly improved battery life. Read our review.
-
-The Amazfit Active 2 delivers outsized value for the price. It looks spiffy and has a wide array of health tracking features, plus built-in GPS and AI chatbots to provide extra context to your data. Read our review.
-
-The Ace LTE sports some of the same hardware found on the Google Pixel Watch 2 and a variety of step-activated games, which can help motivate your child to keep moving. It also offers calling, messaging, and location sharing when you sign up for a monthly or annual data plan.
-
-The rugged Apple Watch Ultra 2 comes in one size: 49mm. It offers a large, bright display along with long battery life and excellent performance. It sports Apple’s last-gen S9 SiP, too, allowing you to take advantage of Apple’s newer double tap feature. Read our review.
-
-The Echo Dot Max features a flat design and a redesigned sound system, which delivers nearly three times the bass as its predecessor. It also offers improved conversation detection and better noise filtering, thanks to Amazon’s new AZ3 chip. Read our review.
-
-The Aura Aspen digital frame lets you upload photos from anywhere using an accompanying companion app, various cloud services, or email. Its 12-inch LCD display features slim bezels, a 4:3 aspect ratio, and an anti-glare screen designed to mimic the look of real photos.
-
-The Echo Show 15 is a large wall-mounted device that acts as a shared hub for families to view upcoming calendar appointments, virtual notes, and more. The 15.6-inch device also features the same Alexa functionality as other Echo displays and smart speakers. Read our review.
-
-Battlefield 6 is the best-selling title in the franchise’s history. The military first-person shooter puts a bigger focus on environmental destruction than previous entries, adding a level of chaos that helps make its large-scale, multiplayer battles feel more engaging.
-
-Star Wars Outlaws is an original open-world adventure set in the vast universe of the iconic film series. It stars Kay Vess, a protagonist looking to steal from criminal overlords to gain her freedom. Read our review.
-
-The Legend of Zelda: Link’s Awakening brings back the classic adventure from the original GameBoy to experience on the Nintendo Switch with an extremely cute art style. Read our review.
-
-Borderlands 4 is an amusing looter-shooter that supports solo play or up to four-player co-op. Players take on the role of one of four Vault Hunters searching for mythical vaults while trying to take on the planet’s immoral dictator. It’s full of great characters and has the mindlessly fun vibe of a dumb action movie. Read our review.
-
-Anker’s latest single-port USB-C charger offers up to 45W of power, foldable prongs, and a front-facing “smart display” that lets you see the charge level, power flow, and other useful information at a glance.
-
-Apple’s first-gen AirTags can help you find your lost items with their UWB technology. You’ll get the best compatibility with an iPhone, though Apple released an Android app to detect an AirTag’s location if one seems to be following you. Read our original review.
-
-Coway’s surprisingly efficient Airmega AP-1512HH Mighty is compact enough to fit in any corner of your home and offers a three-stage filtration system, including a true HEPA filter.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.
-
-Update, February 17th: Updated to reflect current pricing / availability and remove several expired deals.
-
-Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
         <div class="card" onclick="openModal('content-54')">
@@ -3665,11 +3553,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Bayer proposes $7.25 billion plan to settle Roundup cancer cases - Reuters</div>
+            <div class="title">Peru's congress votes to oust President Jeri - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
         <div id="content-67" style="display:none;">
+            <h2>Peru's congress votes to oust President Jeri - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQSUJsSnJWYmtLZWtnU3JTcGlvdHdlRHdDay10a2dsSmdMOFVxQ0U4NzVuUTNzM2YxMzlDTFpMVWhTUUpFT3BPdFpjNGpWU2FhRTFVemJpcTVHRU5NWHJ3VERoOUI4OVFfRWxmVzQ5YVdOTnVVYm8xTVFXV2xpMFVWODJwRTctNl90Sm10Y083LVhGZw?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Bayer proposes $7.25 billion plan to settle Roundup cancer cases - Reuters</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
             <h2>Bayer proposes $7.25 billion plan to settle Roundup cancer cases - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOZ0ZqVXZSaVhEYVl2eUliWUV1MTE2T2M5WW96aTNsaE1OcnhzZzJValFCZ2NEWGFDclVjZVVkMmUyc3ZGZzZqRkI1STJfblBUVjlGMllibTEzc3JqZW9zYmhQczBDVUQzU0NGcllqeHBqWUdzNnQwX2ozUThTQWF2UFVvbUMyLW5nVS01U3lWbVNwS2JYUTRNelo1dFQtTk1HNWlyRFRwRVRxb0VFb0t1NHByOTBiSzJWekRfS1g4M21melB1MlBtV09BWVpfOWc?oc=5">Visit Original Website</a>
@@ -3677,13 +3579,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Raspberry Pi soars 40% as CEO buys stock, AI chatter builds - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-69" style="display:none;">
             <h2>Raspberry Pi soars 40% as CEO buys stock, AI chatter builds - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNMTJxUzFkc3FHQkdRRGFZamRkZFpySlZ1SXhhOGZVYVVYTzFYMkVaMGdOS1ZkRTV4d19MVEdydk03TURiWVpsVDJBZkczVDEyOVZMaW1seFJfdlItTFFRQWk4Y3hiT3hQcEtMUDRFWXFrMW1sUXZmWU03MkZ3VHl5Q1Y3bDhIR2RnUXdyNjBHbkp0RXEtZUl5OERKUXVGNDZfcHhn?oc=5">Visit Original Website</a>
@@ -3691,13 +3593,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Top Trump Homeland Security spokesperson to depart with immigration crackdown under scrutiny - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>Top Trump Homeland Security spokesperson to depart with immigration crackdown under scrutiny - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOd0hERUJXRXRXZmxET2lHMmFMUHU1MXBOczFxMzV0M0QzbnY2eTZGSko2Zlc3UGdyQ1UwN3VlSFhjbkpWa3p0WU5JTDBzbEQweWNqbzM3dGx6bVlXaTFURzg1c2xWVEthTkdPcnVkM01TUTZIdUhDVVltTGg0SXpTeEJGSGdaM2NXUC1VbDVRTmZTYXdIcUJiZk9tUWl6ZXRETGtjaW5nZFFBdkZNdDhGbFRoampxUQ?oc=5">Visit Original Website</a>
@@ -3705,30 +3607,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">In Russia, the humble cucumber becomes latest symbol of rising wartime prices - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-70" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>In Russia, the humble cucumber becomes latest symbol of rising wartime prices - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxONkNtOGtqazJleWlXdnBTTHd3YWRYNnRfQndpUF9WejBEeHJGY1dEbW1tcXVqc3dIM1NSN1I3cTZyWlE4eUxBNy1fckFZelR6dy1oRk1CcnJuMGVhWVF3UlNzRExqclZIQ0d0d3Rsc0FTbGZybFFSZEVVUkVuZW8tRFRObFAxbll6UzJVSDNieE0tbTA5NFotUG5ucV9NZVVKZnMyRmNhQ1l2NzZzX0Y1RzVaaEhmdw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Warner Bros rejects revised Paramount bid, but remains open to a final offer - Reuters</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>Warner Bros rejects revised Paramount bid, but remains open to a final offer - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi8gFBVV95cUxNN1lTLVVmSnJwU3lld0pWTVVmMHNvOWxITTFFekVPWnFydFVHVExqdVhGNTZ1ODFWemk1WThVT2paWHZLSDFtWXpTMnlfeDRZQU85UG4yM0x4YW5qNExRZHMxYkZydHZ3VWlhMWZCWG44LTRUejdzZ0E2d3pFVTVIVmVSVzZGM2RPZU9nTU93VmRvdkhNa2hqeERKSGd6T0p1bjNESFFnRk0tV3BwckFEXzNtS1lvUHBFUkFuWW03Y0xJU1lkNzFLaVB4N3lUTWFnNktYam4wellfMVdMR1BLV2Q1ZzNHNXlxZHp0SjQzV1NDdw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
