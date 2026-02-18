@@ -154,11 +154,39 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Password managers' promise that they can't see your vaults isn't always true</div>
+            <div class="title">GameHub will give Mac owners another imperfect way to play Windows games</div>
             <div class="meta">2026-02-17</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>GameHub will give Mac owners another imperfect way to play Windows games</h2>
+            <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
+            <a class="original-link" href="https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">For a while now, Mac owners have been able to use tools like CrossOver and Game Porting Toolkit to get many Windows games running on their operating system of choice. Now, GameSir plans to add its own potential solution to the mix, announcing that a version of its existing Windows emulation tool for Android will be coming to macOS.
+
+Hong Kong-based GameSir has primarily made a name for itself as a manufacturer of gaming peripherals—the company’s social media profile includes a self-description as “the Anti-Stick Drift Experts.” Early last year, though, GameSir rolled out the Android GameHub app, which includes a GameFusion emulator that the company claims “provides complete support for Windows games to run on Android through high-precision compatibility design.”
+
+In practice, GameHub and GameFusion for Android haven’t quite lived up to that promise. Testers on Reddit and sites like EmuReady report hit-or-miss compatibility for popular Steam titles on various Android-based handhelds. At least one Reddit user suggests that “any Unity, Godot, or Game Maker game tends to just work” through the app, while another reports “terrible compatibility” across a wide range of games.
+
+With Sunday’s announcement, GameSir promises a similar opportunity to “unlock your entire Steam library” and “run Win games/Steam natively” on Mac will be “coming soon.” GameSir is also promising “proprietary AI frame interpolation” for the Mac, following the recent rollout of a “native rendering mode” that improved frame rates on the Android version.
+
+In a recent interview with The Memory Core newsletter, GameSir admitted that its primary motivation for releasing a Windows emulation tool was to sell more of its controllers. But GameSir’s controllers aren’t required to use the Android version, which it says was sideloaded on 5 million (primarily Chinese) Android devices even before its official Google Play release in November.
+
+GameHub on Android has also faced controversy for including a number of invasive trackers (which are removed in a community-built Lite version). A GameSir representative told The Memory Core that this was just standard practice in the Chinese market, where there is less sensitivity to such user tracking, and that it has since been removed.
+
+The representative also addressed concerns about reusing open source compatibility code in that interview, saying that its Windows emulator was “developed in-house by GameSir’s core engineering team” with its “own in-house compatibility layer (such as syscall hooks, GameScopeVK, and other technologies), rather than modifications to Wine’s core code.” That said, the representative admitted GameFusion “reference[s] and use UI components from Winlator [an open source Windows emulation tool for Android]… to maintain ecosystem compatibility and familiarity.”
+
+The compatibility issues and controversial corporate entity involved here probably mean that GameHub for Mac won’t be the Valve SteamOS/Proton moment that Apple gamers have been waiting for. Still, it’ll be nice for MacBook owners to have yet another option to play Windows games without needing to run a Windows install.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Password managers' promise that they can't see your vaults isn't always true</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
             <h2>Password managers' promise that they can't see your vaults isn't always true</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/">Visit Original Website</a>
@@ -199,7 +227,7 @@ Because LastPass also fails to authenticate the superadmin keys, an adversary ca
 
 Several attacks allow reading and modification of shared vaults, which allow a user to share selected items with one or more other users. When Dashlane users share an item, their client apps sample a fresh symmetric key, which either directly encrypts the shared item or, when sharing with a group, encrypts group keys, which in turn encrypt the shared item. In either case, the newly created RSA keypair(s)—belonging to either the shared user or group—isn’t authenticated. The item is then encrypted with the private key(s).
 
-An adversary can supply their own keypair and use the public key to encrypt the ciphertext sent to the recipients. The adversary then decrypts that ciphertext with their corresponding secret key to recover the shared symmetric key. With that, the adversary can read and modify all shared items. When sharing is used in either Bitwarden or LastPass, similar attacks are possible and lead to the same consequence.
+An adversary can supply their own key pair and use the public key to encrypt the ciphertext sent to the recipients. The adversary then decrypts that ciphertext with their corresponding secret key to recover the shared symmetric key. With that, the adversary can read and modify all shared items. When sharing is used in either Bitwarden or LastPass, similar attacks are possible and lead to the same consequence.
 
 Another avenue for attackers or adversaries with control of a server is to target the backward compatibility that all three password managers provide to support older, less-secure versions. Despite incremental changes designed to harden the apps against the very attacks described in the paper, all three password managers continue to support the versions without these improvements. This backward compatibility is a deliberate decision intended to prevent users who haven’t upgraded from losing access to their vaults.
 
@@ -213,7 +241,7 @@ The modification causes the use of CBC (cipher block chaining), a form of encryp
 
 Surprisingly, Dashlane was vulnerable to a similar padding oracle attack. The researchers devised a complicated attack chain that would allow a malicious server to downgrade a Dashlane user’s vault to CBC and exfiltrate the contents. The researchers estimate that the attack would require about 125 days to decrypt the ciphertext.
 
-Still other attacks against all three password managers allow adversaries to greatly reduce the selected number of hashing iterations—in the case of Bitwarden and LastPass, from a default of 600,000 to 2. Repeated hashing of master passwords makes them significantly harder to crack in the event of a server breach that allows theft of the hash. For all three password managers, the server sends the specified iteration count to the client, with no mechanism to ensure it meets the default number. The result is that the adversary receives a 200,000-fold increase in the time and resources required to crack the hash and obtain the user’s master password.
+Still other attacks against all three password managers allow adversaries to greatly reduce the selected number of hashing iterations—in the case of Bitwarden and LastPass, from a default of 600,000 to 2. Repeated hashing of master passwords makes them significantly harder to crack in the event of a server breach that allows theft of the hash. For all three password managers, the server sends the specified iteration count to the client, with no mechanism to ensure it meets the default number. The result is that the adversary receives a 300,000-fold decrease in the time and resources required to crack the hash and obtain the user’s master password.
 
 Three of the attacks—one against Bitwarden and two against LastPass—target what the researchers call “item-level encryption” or “vault malleability.” Instead of encrypting a vault in a single, monolithic blob, password managers often encrypt individual items, and sometimes individual fields within an item. These items and fields are all encrypted with the same key. The attacks exploit this design to steal passwords from select vault items.
 
@@ -242,7 +270,7 @@ Credit:
 
 The researchers acknowledge that the full compromise of a password manager server is a high bar. But they defend the threat model.
 
-“Attacks on the provider server infrastructure can be prevented by carefully designed operational security measures, but it is well within the bounds of reason to assume that these services are targeted by sophisticated nation-state-level adversaries, for example via software supply-chain attacks or spearphishing,” they wrote. “Moreover, some of the service providers have a history of being breached—for example LassPass suffered branches in 2015 and 2022, and another serious security incident in 2021.
+“Attacks on the provider server infrastructure can be prevented by carefully designed operational security measures, but it is well within the bounds of reason to assume that these services are targeted by sophisticated nation-state-level adversaries, for example via software supply-chain attacks or spearphishing,” they wrote. “Moreover, some of the service providers have a history of being breached—for example, LassPass suffered breaches in 2015 and 2022, and another serious security incident in 2021.
 
 They went on to write: “While none of the breaches we are aware of involved reprogramming the server to make it undertake malicious actions, this goes just one step beyond attacks on password manager service providers that have been documented. Active attacks more broadly have been documented in the wild.”
 
@@ -272,18 +300,18 @@ At present there’s no practical method for a user to verify the public key the
 
 All four companies defended their use of the term “zero knowledge.” As used in this context, the term can be confused with zero-knowledge proofs, a completely unrelated cryptographic method that allows one party to prove to another party that they know a piece of information without revealing anything about the information itself. An example is a proof that shows a system can determine if someone is over 18 without having any knowledge of the precise birthdate.
 
-The adulterated zero-knowledge term used by password managers appears to have come into being in 2007, when a company called Spider Oak used it to describe its cloud infrastructure for securely sharing sensitive data. Interestingly, Spider Oak formally retired the term a decade later after receiving user pushback.
+The adulterated zero-knowledge term used by password managers appears to have come into being in 2007, when a company called SpiderOak used it to describe its cloud infrastructure for securely sharing sensitive data. Interestingly, SpiderOak formally retired the term a decade later after receiving user pushback.
 
-“Sadly, it is just marketing hype, much like ‘military-grade encryption,’” Matteo Scarlata, lead author of the paper said. “Zero-knowledge seems to mean different things to different people (e.g., LastPass told us that they won’t adopt a malicious server threat model internally). Much unlike ‘end-to-end encryption,’ ‘zero-knowledge encryption’ is an elusive goal, so it’s impossible to tell if a company is doing it right.”</div>
+“Sadly, it is just marketing hype, much like ‘military-grade encryption,’” Matteo Scarlata, lead author of the paper, said. “Zero-knowledge seems to mean different things to different people (e.g., LastPass told us that they won’t adopt a malicious server threat model internally). Much unlike ‘end-to-end encryption,’ ‘zero-knowledge encryption’ is an elusive goal, so it’s impossible to tell if a company is doing it right.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/">Visit Original Website</a>
@@ -329,13 +357,13 @@ FIRE Chief Counsel Robert Corn-Revere said that by “putting pressure on late n
 This article was updated with a statement from CBS.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Most VMware users still "actively reducing their VMware footprint," survey finds</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Most VMware users still "actively reducing their VMware footprint," survey finds</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/">Visit Original Website</a>
@@ -369,13 +397,13 @@ While companies determine the best ways to limit their dependence on VMware, Bro
 “Their strategy was never to keep every customer,” CloudBolt’s report says. “It was to maximize value from those still on the platform while the market slowly diversifies. The model assumes churn and it’s built to make the economics work anyway. Broadcom has done the math—and they’re fine with it.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">What happens to a car when the company behind its software goes under?</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>What happens to a car when the company behind its software goes under?</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/">Visit Original Website</a>
@@ -419,13 +447,13 @@ The industry also shares responsibility in defining minimum operational lifespan
 The lesson is clear: In today’s cars, the engine or electric motor isn’t always what keeps you moving—the software does. When that software vanishes with a bankrupt company, your car can go from daily driver to expensive paperweight overnight. And in the age of software-defined vehicles, owning a car increasingly means betting on the survival of its code. When that code dies, the driveway or highway—not the repair shop—becomes the final stop.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</h2>
             <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/">Visit Original Website</a>
@@ -441,42 +469,6 @@ The Steam Deck’s hardware is four years old this month, and faster hardware wi
 Shortages of RAM and flash memory chips—caused mostly by the AI industry’s staggering demand for those components and widely expected to last through 2026 and beyond—have come at an especially bad time for Valve. The Steam Deck has helped make a small dent in Windows’ dominance on gaming PCs thanks to the Proton translation technology that allows unmodified Windows games to run on the Linux-based SteamOS. The company’s efforts to build on that success with the Steam Machine and the Steam Frame were paused by memory and storage shortages, and now people who want to buy a Steam Deck may end up turning to an alternative Windows-based handheld instead.
 
 If you want a handheld that runs SteamOS, Lenovo’s Legion Go S is the one third-party handheld that ships with the operating system these days. But adventurous buyers can try SteamOS on any AMD-based handheld. Valve offers beta support for the Legion Go (without an S), the Asus ROG Ally, and the Asus ROG Ally X, and we’ve had success installing the operating system on a wide range of AMD-based laptop and desktop PCs. People who don’t want to wait for the Steam Machine can also try building their own—I’ve done it with good results so far. But you’ll want an AMD Ryzen CPU and Radeon GPU for the best results, and recent Ars testing has found that GPUs with just 8GB of video memory may struggle to run games as well as they run in Windows.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Warner Bros. rejects Paramount again but asks for "best and final offer"</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Warner Bros. rejects Paramount again but asks for "best and final offer"</h2>
-            <p><strong>Ars Technica - All content | 2026-02-17</strong></p>
-            <a class="original-link" href="https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Warner Bros. Discovery is giving Paramount one more week to make its best and final offer, leaving the door open for a deal that could upend its merger agreement with Netflix.
-
-Officially, Warner Bros. is still committed to Netflix. The company today scheduled a special meeting date of March 20 and recommended that shareholders vote for the Netflix merger. But Warner Bros. is simultaneously opening negotiations with Paramount despite calling all of its previous offers deficient.
-
-“Netflix has provided WBD a limited waiver under the terms of WBD’s merger agreement with Netflix, permitting WBD to engage in discussions with Paramount Skydance for a seven-day period ending on February 23, 2026 to seek clarity for WBD stockholders and provide PSKY the ability to make its best and final offer,” Warner Bros. said today.
-
-The Netflix/Warner Bros. merger agreement gives Netflix the right to match Paramount’s offer, Warner Bros. said. Warner Bros. Discovery board Chairman Samuel Di Piazza Jr. and CEO David Zaslav asked for Paramount’s best and final offer in a letter to Paramount’s board today.
-
-“To be clear, our Board has not determined that your proposal is reasonably likely to result in a transaction that is superior to the Netflix merger,” the letter said. But it added that Warner Bros. “welcome[s] the opportunity to engage with you and expeditiously determine whether PSKY can deliver an actionable, binding proposal that provides superior value, transaction certainty and interim protection for WBD’s businesses to Warner Bros. Discovery shareholders.”
-
-Netflix recently amended its $72 billion deal with Warner Bros., agreeing to pay all cash in an attempt to defeat Paramount’s hostile takeover bid. Netflix is set to pay $27.75 per share for an acquisition that includes HBO Max, WB Studios, and other assets. If the Netflix deal succeeds, Warner Bros. would separately spin off its cable TV division into a new entity that would be called Discovery Global.
-
-Paramount is offering $31 per share, but it wants to buy the entire Warner Bros. Discovery company, while Netflix’s deal is for just the streaming and movie studios divisions. The Warner Bros. letter to Paramount said, “On February 11th, a senior representative of your financial advisor communicated orally to a member of our Board that PSKY would agree to pay $31 per WBD share if we engage with you, and that $31 is not PSKY’s best and final proposal.”
-
-The letter asked Paramount to increase its offer. “We are writing to inform you that Netflix has agreed to provide WBD a waiver of certain terms of the Netflix merger agreement to permit us, through February 23, to engage with PSKY to clarify your proposal, which we understand will include a WBD per share price higher than $31,” Warner Bros. wrote.
-
-Warner Bros. also asked Paramount to accept the same terms that Netflix agreed to. Warner Bros. said terms proposed by Paramount give Paramount the right to terminate or amend the deal, whereas “the Netflix Merger Agreement is binding on Netflix, provides WBD stockholders the opportunity to vote on a specific and binding transaction, and cannot be amended without WBD’s consent.” Warner Bros. also said Paramount’s proposed terms restrict Warner Bros.’ ability to manage its business while the transaction is pending.
-
-Warner Bros. has also repeatedly pointed to Netflix’s superior finances as a reason for preferring its offer. The Warner Bros. board previously called the Paramount bid “illusory” because it requires an “extraordinary amount of debt financing, and described Paramount as “a $14B market cap company with a ‘junk’ credit rating, negative free cash flows, significant fixed financial obligations, and a high degree of dependency on its linear business.”
-
-The Netflix/Warner Bros. deal is facing scrutiny over how it would affect streaming consumers. Netflix co-CEO Ted Sarandos told a Senate committee that the Netflix and HBO Max streaming services are “complementary” and claimed that the combined company will give users more content for less money.
-
-“We are a one-click cancel, so if the consumer says, ‘That’s too much for what I’m getting,’ they can cancel with one click,” Sarandos said.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -723,11 +715,182 @@ More on Meta: Meta Adding Facial Recognition to Its Smart Glasses That Identifie
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
+            <div class="title">Intellexa’s Predator spyware used to hack iPhone of journalist in Angola, research says</div>
+            <div class="meta">2026-02-18</div>
+        </div>
+        
+        <div id="content-12" style="display:none;">
+            <h2>Intellexa’s Predator spyware used to hack iPhone of journalist in Angola, research says</h2>
+            <p><strong>TechCrunch | 2026-02-18</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/02/17/intellexas-predator-spyware-used-to-hack-iphone-of-journalist-in-angola-research-says/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">A government customer of sanctioned spyware maker Intellexa hacked the phone of a prominent journalist in Angola, according to Amnesty International, the latest case of targeting someone in civil society with powerful phone-hacking software.
+
+The human rights organization published a new report Tuesday analyzing several hacking attempts against local journalist and press freedom activist Teixeira Cândido, in which he was sent a series of malicious links via WhatsApp during 2024.
+
+Cândido eventually clicked on one and his iPhone was hacked with Intellexa’s spyware, dubbed Predator, Amnesty found.
+
+The new research shows again that government customers of commercial surveillance vendors are increasingly using spyware to target journalists, politicians, and other ordinary citizens, including critics. Researchers have previously found evidence of Predator abuse in Egypt, Greece, and Vietnam, where the government reportedly targeted U.S. officials by sending the spyware via links on X.
+
+Contact Us
+			Do you have more information about Intellexa? Or other spyware makers? From a non-work device, you can contact Lorenzo Franceschi-Bicchierai securely on Signal at +1 917 257 1382, or via Telegram and Keybase @lorenzofb, or email.
+
+Intellexa is one of the most controversial spyware makers of the last few years, operating from different jurisdictions to skirt export laws and using an “opaque web of corporate entities” — as a U.S government official put it at the time — to hide its activities.
+
+In 2024, around the same time one of Intellexa’s customers was targeting Cândido with its spyware, the outgoing Biden administration sanctioned the company, as well as its founder Tal Dilian and his business partner Sara Aleksandra Fayssal Hamou.
+
+Earlier this year, the Treasury lifted sanctions against three other executives tied to Intellexa, a decision that left Senate Democrats demanding answers from the Trump administration.
+
+Dilian did not respond to a request for comment.
+
+Amnesty researchers wrote in the report that they linked the intrusions to Intellexa by examining forensic traces found on Cândido’s phone. Amnesty said that Intellexa used infection servers that had been previously linked to the company’s spyware infrastructure.
+
+Several hours after clicking on the link that led to his phone hack, Cândido rebooted his phone, which wiped the spyware from his device. Amnesty said it wasn’t clear how the spyware was capable of hacking Cândido’s phone, as his phone was running an outdated version of iOS at the time.
+
+The researchers found that Predator stayed hidden by impersonating legitimate iOS system processes to avoid detection.
+
+Amnesty believes Cândido may be just one of many targets in the country, based on their findings that they were able to find multiple domains linked to the spyware maker used in Angola.
+
+“The first domains linked to Angola were deployed as early as March 2023, indicating the start of Predator testing or deployment in the country,” wrote the Amnesty researchers, who added that they had no evidence to determine exactly who hacked Cândido.
+
+“It is not currently possible to conclusively identify the customer of the Predator spyware in the country,” read the report.
+
+Last year, based on leaks of internal documents, Amnesty and media organizations revealed that Intellexa employees had the ability to access customers’ systems remotely, potentially giving the spyware maker visibility into government surveillance operations.
+
+Those leaks, like this report, shows that despite its controversies and sanctions, Intellexa has remained active in recent years.
+
+“We’ve now seen confirmed abuses in Angola, Egypt, Pakistan, Greece, and beyond — and for every case we uncover, many more abuses surely remain hidden,” said Donncha Ó Cearbhaill, the head of the security lab at Amnesty International.
+
+Lorenzo Franceschi-Bicchierai is a Senior Writer at TechCrunch, where he covers hacking, cybersecurity, surveillance, and privacy.
+
+You can contact or verify outreach from Lorenzo by emailing lorenzo@techcrunch.com, via encrypted message at +1 917 257 1382 on Signal, and @lorenzofb on Keybase/Telegram.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+How Ricursive Intelligence raised $335M at a $4B valuation in 4 months
+
+After all the hype, some AI experts don’t think OpenClaw is all that exciting
+
+OpenClaw creator Peter Steinberger joins OpenAI
+
+Hollywood isn’t happy about the new Seedance 2.0 video generator
+
+The great computer science exodus (and where students are going instead)
+
+A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup
+
+Spotify says its best developers haven’t written a line of code since December, thanks to AI</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Jack Altman joins Benchmark as GP</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
+            <h2>Jack Altman joins Benchmark as GP</h2>
+            <p><strong>TechCrunch | 2026-02-17</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/02/17/jack-altman-joins-benchmark-as-gp/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Jack Altman and Benchmark announced today that he would be joining the firm as a general partner.
+
+This news is a big deal, especially since Altman has been running his own VC firm, Alt Capital, since at least 2024. The fund raised a $150 million Fund I in early 2024 and then, just last September, announced a $274 million Fund II, raised in just a week. On LinkedIn, Altman called the past two years running Alt Capital as an investor “the most rewarding” of his life, adding that he loved “new ideas and being part of a team with a mission.”
+
+Alt Capital invested in at least 52 companies, according to PitchBook, including Rippling, Antares Nuclear, and CompLabs. It’s unclear what happens to Alt Capital or whether Benchmark has acquired its portfolio, as Altman also announced that his teammates from the fund will be following him to Benchmark. (That’s also unusual, given Benchmark has historically been structured as a flat firm with primarily GPs only, versus layers of investors.)
+
+Altman also said he will retain the board seats at the companies he backed while at Alt Capital.
+
+Altman did not respond to requests for comment earlier today; Benchmark declined to comment.
+
+Altman, a younger brother of OpenAI co-founder Sam, is also the founder of the HR platform Lattice, which he still chairs, per his LinkedIn profile.
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+Subscribe for the industry’s biggest tech news
+
+Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
+
+TechCrunch Mobility is your destination for transportation news and insight.
+
+Startups are the core of TechCrunch, so get our best coverage delivered weekly.
+
+Provides movers and shakers with the info they need to start their day.
+
+By submitting your email, you agree to our Terms and Privacy Notice.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-14')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Ford turns to F1 and bounties to build a $30,000 electric truck</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-14" style="display:none;">
+            <h2>Ford turns to F1 and bounties to build a $30,000 electric truck</h2>
+            <p><strong>TechCrunch | 2026-02-17</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/02/17/ford-turns-to-f1-and-bounties-to-build-a-30000-electric-truck/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Ford is promising to deliver an EV truck next year that starts at $30,000 and can compete with Chinese automakers without undermining profit margins. A combination of 3D-printed Lego-like parts, Formula 1 thinking, and a bounty program will help the company hit that target, Ford said Tuesday.
+
+It will have to. Ford took a $19.5 billion hit in December and ended production of its battery-electric F-150 Lightning. It can’t afford for this new EV business strategy to fall flat.
+
+Ford’s bet on a line of affordable EVs began several years ago with a skunkworks team led by Alan Clarke, a 12-year Tesla veteran. Pieces of its plan were revealed last August, when Ford said it would ditch its traditional moving assembly line and invest $2 billion in its Louisville factory to adopt a new production system that promises to speed up manufacturing by 15%.
+
+The company said at the time that its line of EVs would be built on a universal platform with single-piece aluminum unicastings — large components cast as one piece to eliminate parts and allow for faster assembly — and lithium iron phosphate batteries with tech licensed from China’s CATL.
+
+Now Ford is sharing more specifics in a flurry of blog and social media posts on how it will fulfill its promise of a desirable EV truck that will be $20,000 cheaper than the average new vehicle while still generating profits. Ford didn’t share specs like the range, features, or charging times of this future EV. But it did reveal how it plans to build lighter, cheaper, more efficient EVs made with fewer parts.
+
+It all starts with the universal EV platform, or UEV. The platform will underpin a midsized truck first, then could support a sedan, crossover, three-row SUV, and even small commercial vans, according to Clarke. The UEV is Ford’s first “clean sheet” EV built from the ground up — a strategic shift for the company, which built its Mustang Mach-E and the Lightning EVs using existing infrastructure and manufacturing practices.
+
+“It’s a platform that is built around efficiency,” Clarke said in a briefing with the media. “It’s built around affordability to be able to make long-range electric vehicle travel affordable to more people.”
+
+To achieve that, Clarke set out to create a new culture seeded by talent from Formula 1 and companies like Apple, Lucid Motors, Rivian, and Tesla, as well as Auto Motive Power, a startup acquired by Ford in 2023. The team, which includes about 450 people at its base in Long Beach, California, and 200 people in an office in Palo Alto, also adopted a bounty program to help engineers understand how their day-to-day decisions impact the customer and the end product, Clarke said in an interview with reporters.
+
+The focus of the bounty program was efficiency. Numerical metrics were assigned to every aspect of the UEV, including vehicle mass, aerodynamic drag, and even specific vehicle parts. In practice, this meant Ford might decide to use a more expensive part if it helped decrease the weight of the EV, thereby making it more efficient and cost-effective.
+
+“We’ve been very focused on making sure that the cost that we’re moving from the product doesn’t remove value,” Clarke said. One example is that even the base trim of the EV truck will have a power-folding mirror, a premium feature on most vehicles, because it decreases aerodynamic drag, according to Clarke. The company saved money by using one motor, instead of two, to handle the mirror adjustment and the folding.
+
+That obsession with efficiency included a team of ex-Formula 1 engineers who worked closely with Ford’s design team. The result, according to Ford, is a midsized EV truck that is 15% more aerodynamically efficient than any other pickup truck on the market today.
+
+This team of former F1 engineers used 3D-printed and machined parts to create a Lego-like build for its test vehicle. Thousands of 3D-printed components, which are accurate within fractions of a millimeter of Ford’s simulations and could be swapped out in minutes, were used to measure aerodynamics. These Lego-like prototypes were used in wind tunnel testing early on — and often — to measure aerodynamics, a process that Ford traditionally used only when the design of a vehicle was nearly complete.
+
+A natural place to focus was on the battery, which can account for about 40% of a vehicle’s total expense. A lighter, more efficient vehicle allows Ford to use a smaller battery, which reduces cost. The end result, according to Clarke, will be an EV truck with about 15% more range, or 50 miles, than an equivalent pickup powered by gas.
+
+The efficiency push also led the team to adopt manufacturing tactics adopted and popularized by Tesla, including the use of aluminum unicastings and moving from a 12-volt system to a 48-volt power system that will be used for some vehicle functions.
+
+Ford also upended the electric vehicle architecture of the UEV, taking a zonal approach similar to Tesla and Rivian. Instead of scattering dozens of electronic control units (ECUs), or computers, throughout the vehicle, Ford has integrated multiple vehicle functions into five main modules. This reduces complexity, cost, and copper usage and helped make the EV truck’s wire harness 4,000 feet shorter and 22 pounds lighter than one of its first-generation electric vehicles, according to Luccas Di Tullio, a software engineer at Ford who previously worked at Auto Motive Power.
+
+Di Tullio said the company carried the same philosophy to the power electronic components, finding ways to share components and reduce parts with a single module that manages power distribution and battery management and provides AC power back to a customer’s home during an outage.
+
+Ford also developed its own software for those five main ECUs, down to the application layer, according to Clarke. Because Ford owns the software — to the lowest level — it becomes very portable, Clarke said.
+
+“Other than being able to control the infotainment, what shows up on the screens, [and] how you interact with the vehicle, all of the body controls then are directly coupled,” he said. “So you can imagine that many of the experiences that can only be created by coupling all the different sensors around the vehicle are now at our fingertips and under our own control.”
+
+Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+How Ricursive Intelligence raised $335M at a $4B valuation in 4 months
+
+After all the hype, some AI experts don’t think OpenClaw is all that exciting
+
+OpenClaw creator Peter Steinberger joins OpenAI
+
+Hollywood isn’t happy about the new Seedance 2.0 video generator
+
+The great computer science exodus (and where students are going instead)
+
+A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup
+
+Spotify says its best developers haven’t written a line of code since December, thanks to AI</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-15')">
+            <div class="source">TechCrunch</div>
             <div class="title">Meta’s own research found parental supervision doesn’t really help curb teens’ compulsive social media use</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Meta’s own research found parental supervision doesn’t really help curb teens’ compulsive social media use</h2>
             <p><strong>TechCrunch | 2026-02-17</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/17/metas-own-research-found-parental-supervision-doesnt-really-help-curb-teens-compulsive-social-media-use/">Visit Original Website</a>
@@ -740,7 +903,7 @@ The case is now one of several landmark trials that will take place this year, w
 
 In this case, the plaintiff sued Meta, YouTube, ByteDance (TikTok), and Snap, but the latter two companies had settled their claims before the trial’s start.
 
-In the jury trial now underway in L.A., Kaley’s lawyer, Mark Lanier, brought up an internal study at Meta, which he said found evidence that Meta knew of, yet didn’t publicize, these specific harms.
+In the jury trial now underway in LA, Kaley’s lawyer, Mark Lanier, brought up an internal study at Meta, which he said found evidence that Meta knew of, yet didn’t publicize, these specific harms.
 
 In Project MYST, which stands for the Meta and Youth Social Emotional Trends survey, Meta’s research concluded that “parental and household factors have little association with teens’ reported levels of attentiveness to their social media use.”
 
@@ -783,20 +946,20 @@ A Stanford grad student created an algorithm to help his classmates find love; n
 Spotify says its best developers haven’t written a line of code since December, thanks to AI</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Apple is reportedly cooking up a trio of AI wearables</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Apple is reportedly cooking up a trio of AI wearables</h2>
             <p><strong>TechCrunch | 2026-02-17</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Late last month, The Information reported that Apple was developing an AI wearable—an AirTag-sized pendant with cameras that could be pinned to a user’s shirt. Now, Bloomberg writes that the development of such a device—along with two other AI-powered items—is accelerating as Apple looks to stay competitive with other tech giants that are racing to release similar products.
+            <div id="article-text">Late last month, The Information reported that Apple was developing an AI wearable — an AirTag-sized pendant with cameras that could be pinned to a user’s shirt. Now, Bloomberg writes that the development of such a device — along with two other AI-powered items — is accelerating as Apple looks to stay competitive with other tech giants that are racing to release similar products.
 
-In addition to the AI pin, Apple is also speeding up the development of its upcoming AI-powered smart glasses, which have been code-named N50, the report claims. Apple obviously has competition in this space, as other companies—including Meta (which is arguably the most successful player when it comes to smart glasses) and Snap (which plans to release its “Specs” later this year)—are working on similar products.
+In addition to the AI pin, Apple is also speeding up the development of its upcoming AI-powered smart glasses, which have been code-named N50, the report claims. Apple obviously has competition in this space, as other companies — including Meta (which is arguably the most successful player when it comes to smart glasses) and Snap (which plans to release its “Specs” later this year) — are working on similar products.
 
 Apple’s new smart glasses, which will supposedly include a high-resolution camera, may see a public release sooner rather than later, with Bloomberg reporting that the company is “targeting the start of production as early as December, ahead of a public release in 2027.”
 
@@ -819,18 +982,18 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Thrive raises $10B for new fund, its largest yet</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Thrive raises $10B for new fund, its largest yet</h2>
             <p><strong>TechCrunch | 2026-02-17</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/17/thrive-raises-10b-for-new-fund-its-largest-yet/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Thrive Capital just raised $10 billion for a new fund— the largest fund it has ever raised and nearly double the size of its last fund. Of this, $1 billion is dedicated to early-stage investments, while the rest is for growth-stage investments, according to an announcement from the firm.
+            <div id="article-text">Thrive Capital just raised $10 billion for a new fund — the largest fund it has ever raised and nearly double the size of its last fund. Of this, $1 billion is dedicated to early-stage investments, while the rest is for growth-stage investments, according to an announcement from the firm.
 
 Thrive told Bloomberg that this latest fundraise was oversubscribed. This is the firm’s 10th fund — called Thrive X — and comes as some of the firm’s biggest investments, including OpenAI, Stripe, and SpaceX, continue to soar in value. Some of the firm’s other notable investments include Databricks, Anduril, and Cursor. The firm also incubates companies, having spun up 12 so far, with at least six now having reached unicorn status.
 
@@ -855,168 +1018,6 @@ Startups are the core of TechCrunch, so get our best coverage delivered weekly.
 Provides movers and shakers with the info they need to start their day.
 
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-15')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Climactic launches hybrid fund to get startups through the ‘valley of death’</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-15" style="display:none;">
-            <h2>Climactic launches hybrid fund to get startups through the ‘valley of death’</h2>
-            <p><strong>TechCrunch | 2026-02-17</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/02/17/climactic-launches-hybrid-fund-to-get-startups-through-the-valley-of-death/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">It’s a challenge every startup faces: they’ve made a prototype and proven the thing works, but now have to sell the product and produce enough to get past the “valley of death” that kills so many companies.
-
-“They are chicken and egg stuck,” Josh Felser, co-founder and managing partner of early-stage venture firm Climactic, told TechCrunch.
-
-The hurdle is particularly high for companies making physical goods. Felser noticed it was a common occurrence among startups producing novel materials. Fesler, who previously founded and invested in software startups, said the problem they faced seemed a bit unfair.
-
-“Software companies sell at a negative margin all the time in the beginning, you know, Uber, Lyft, you can look at lots of different examples,” he said. “But for materials companies, they they’re not allowed to do that. One of the questions I had is, ‘why is that?’”
-
-Felser found that unlike software companies, which can quickly add more capacity from cloud service providers, materials startups face a market skeptical of their ability to scale up production without a guaranteed customer.
-
-Felser doesn’t run a company with a big budget for clever materials, but he knows a few. And as a climate tech investor, he knows more than a few startups that could benefit from a well-known customer.
-
-Felser has been quietly working on a new project, called Material Scale, that brings the two sides together using a hybrid debt-equity investment vehicle to give materials startups a boost, TechCrunch has learned. Material Scale will initially focus on climate tech startups in the apparel industry.
-
-Material Scale is betting on startups with commercial-ready products that are ready to scale if a customer can purchase in bulk. Buyers will commit enough funds to cover the cost of the material at market price. Material Scale will fund the difference through a combination of loans and warrants in the startup.
-
-“It’s really minimally dilutive,” Felser said.
-
-Ralph Lauren is joining the platform as a buyer for the initial launch of Material Scale. Investor Structure Climate is joining Climactic as a general partner.
-
-Money from purchase orders flows from the buyer through Material Scale to the startup. “In effect, we buy it and then simultaneously sell it,” Felser said.
-
-The deals between Material Scale and the buyer and between Material Scale and the startup will be inked essentially at the same time.
-
-“Once they sign the deals, this’ll be interesting because the value of the company has significantly changed because they’ve now got a buyer and they’ve got funding to achieve scale,” he said.
-
-Material Scale hasn’t executed any deals yet; Felser said he has large apparel manufacturers interested in participating and a long roster of startups that could use the funding. “The startups all want it,” he said. “We have a big list of companies that are candidates that we’re talking with.”
-
-The first investments will come out of a special purpose vehicle totaling about $11 million. Felser hopes to eventually branch out into other, similar markets like alternative fuels, eventually growing the Material Scale concept to nine figures.
-
-He hopes other investors will steal his idea.
-
-“We need more novel instruments like this to attack climate change,” he said. “We want to be nimble and be able to take advantage of opportunities when we we see them and not just be doing the same old thing.”
-
-Tim De Chant is a senior climate reporter at TechCrunch. He has written for a wide range of publications, including Wired magazine, the Chicago Tribune, Ars Technica, The Wire China, and NOVA Next, where he was founding editor.
-
-De Chant is also a lecturer in MIT’s Graduate Program in Science Writing, and he was awarded a Knight Science Journalism Fellowship at MIT in 2018, during which time he studied climate technologies and explored new business models for journalism. He received his PhD in environmental science, policy, and management from the University of California, Berkeley, and his BA degree in environmental studies, English, and biology from St. Olaf College.
-
-You can contact or verify outreach from Tim by emailing tim.dechant@techcrunch.com.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-How Ricursive Intelligence raised $335M at a $4B valuation in 4 months
-
-After all the hype, some AI experts don’t think OpenClaw is all that exciting
-
-OpenClaw creator Peter Steinberger joins OpenAI
-
-Hollywood isn’t happy about the new Seedance 2.0 video generator
-
-The great computer science exodus (and where students are going instead)
-
-A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup
-
-Spotify says its best developers haven’t written a line of code since December, thanks to AI</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-16')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Anthropic releases Sonnet 4.6</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-16" style="display:none;">
-            <h2>Anthropic releases Sonnet 4.6</h2>
-            <p><strong>TechCrunch | 2026-02-17</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Anthropic has released a new version of its mid-size Sonnet model, keeping pace with the company’s four-month update cycle. In a post announcing the new model, Anthropic emphasized improvements in coding, instruction-following, and computer use.
-
-Sonnet 4.6 will be the default model for Free and Pro plan users.
-
-The beta release of Sonnet 4.6 will include a context window of 1 million tokens, twice the size of the largest window previously available for Sonnet. Anthropic described the new context window as “enough to hold entire codebases, lengthy contracts, or dozens of research papers in a single request.”
-
-The release comes just two weeks after the launch of Opus 4.6, with an updated Haiku model likely to follow in the coming weeks.
-
-The launch comes with a new set of record benchmark scores, including OS World for computer use and SWE-Bench for software engineering. But perhaps the most impressive is its 60.4% score on ARC-AGI-2, meant to measure skills specific to human intelligence. The score puts Sonnet 4.6 above most comparable models, although it still trails models like Opus 4.6, Gemini 3 Deep Think, and one refined version of GPT 5.2.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-Subscribe for the industry’s biggest tech news
-
-Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
-
-TechCrunch Mobility is your destination for transportation news and insight.
-
-Startups are the core of TechCrunch, so get our best coverage delivered weekly.
-
-Provides movers and shakers with the info they need to start their day.
-
-By submitting your email, you agree to our Terms and Privacy Notice.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Mistral AI buys Koyeb in first acquisition to back its cloud ambitions</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>Mistral AI buys Koyeb in first acquisition to back its cloud ambitions</h2>
-            <p><strong>TechCrunch | 2026-02-17</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Mistral AI, the French company last valued at $13.8 billion, has made its first acquisition. The OpenAI competitor has agreed to buy Koyeb, a Paris-based startup that simplifies AI app deployment at scale and manages the infrastructure behind it.
-
-Mistral has been primarily known for developing large language models (LLMs), but this deal confirms its ambitions to position itself as a full-stack player. In June 2025, it had announced Mistral Compute, an AI cloud infrastructure offering which it now hopes Koyeb will accelerate.
-
-Founded in 2020 by three former employees of French cloud provider Scaleway, Koyeb aimed to help developers process data without worrying about server infrastructure — a concept known as serverless. This approach gained relevance as AI grew more demanding, also inspiring the recent launch of Koyeb Sandboxes, which provide isolated environments to deploy AI agents.
-
-Before the acquisition, Koyeb’s platform already helped users deploy models from Mistral and others. In a blog post, Koyeb said its platform will continue operating. But its team and technology will now also help Mistral deploy models directly on clients’ own hardware (on premises), optimize its use of GPUs, and help scale AI inference — the process of running a trained AI model to generate responses — according to a press release from Mistral.
-
-As part of the deal, Koyeb’s 13 employees and its three co-founders, Yann Léger, Edouard Bonlieu, and Bastien Chatelard (pictured in 2020), are set to join the engineering team of Mistral, overseen by CTO and co-founder Timothée Lacroix. Under his leadership, Koyeb expects its platform to transition into a “core component” of Mistral Compute over the coming months.
-
-“Koyeb’s product and expertise will accelerate our development on the Compute front, and contribute to building a true AI cloud,” Lacroix wrote in a statement. Mistral has been ramping up its cloud ambitions. Just a few days ago, the company announced a $1.4 billion investment in data centers in Sweden amid growing demand for alternatives to U.S. infrastructure.
-
-Koyeb had raised $8.6 million to date, including a $1.6 million pre-seed round in 2020, followed in 2023 by a $7 million seed round led by Paris-based VC firm Serena, whose principal Floriane de Maupeou celebrated the acquisition. For the firm, this combination will play a key role “in building the foundations of sovereign AI infrastructure in Europe,” she told TechCrunch.
-
-In part thanks to these geopolitical tailwinds, but also due to its focus on helping enterprises unlock value from AI, Mistral recently passed the milestone of $400 million in annual recurring revenue. Koyeb, too, will be focused on enterprise clients going forward, and new users will no longer be able to sign up for its Starter tier.
-
-Mistral didn’t disclose financial terms of the deal, and it is unknown whether other acquisitions are in the works. But speaking at Stockholm’s Techarena conference last week, CEO Arthur Mensch said Mistral is hiring for infrastructure and other roles, pitching the company to prospective employees as an organization that is “headquartered in Europe, that is doing frontier research in Europe.”
-
-Anna Heim is a writer and editorial consultant.
-
-You can contact or verify outreach from Anna by emailing annatechcrunch [at] gmail.com.
-
-As a freelance reporter at TechCrunch since 2021, she has covered a large range of startup-related topics including AI, fintech & insurtech, SaaS & pricing, and global venture capital trends.
-
-As of May 2025, her reporting for TechCrunch focuses on Europe’s most interesting startup stories.
-
-Anna has moderated panels and conducted onstage interviews at industry events of all sizes, including major tech conferences such as TechCrunch Disrupt, 4YFN, South Summit, TNW Conference, VivaTech, and many more.
-
-A former LATAM & Media Editor at The Next Web, startup founder and Sciences Po Paris alum, she’s fluent in multiple languages, including French, English, Spanish and Brazilian Portuguese.
-
-Tickets are live at the lowest rates of the year. Save up to $680 on your pass now.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-How Ricursive Intelligence raised $335M at a $4B valuation in 4 months
-
-After all the hype, some AI experts don’t think OpenClaw is all that exciting
-
-OpenClaw creator Peter Steinberger joins OpenAI
-
-Hollywood isn’t happy about the new Seedance 2.0 video generator
-
-The great computer science exodus (and where students are going instead)
-
-A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup
-
-Spotify says its best developers haven’t written a line of code since December, thanks to AI</div>
         </div>
         
         <div class="card" onclick="openModal('content-18')">
@@ -1071,11 +1072,69 @@ The epithet of “race hustler” or “race pimp” can be more accurately appl
         
         <div class="card" onclick="openModal('content-19')">
             <div class="source">The Atlantic</div>
-            <div class="title">AI Agents Are Taking America by Storm</div>
+            <div class="title">Censorship Comes for Stephen Colbert</div>
             <div class="meta">2026-02-17</div>
         </div>
         
         <div id="content-19" style="display:none;">
+            <h2>Censorship Comes for Stephen Colbert</h2>
+            <p><strong>The Atlantic | 2026-02-17</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/02/censorship-free-speech-trump-tv-senators-citizens/686034/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">This is an edition of The Atlantic Daily, a newsletter that guides you through the biggest stories of the day, helps you discover new ideas, and recommends the best in culture. Sign up for it here.
+
+Stephen Colbert’s Late Show ends in May, and he’s in almost open warfare with his soon-to-be ex-bosses at CBS. Last night, he had planned to broadcast an interview with James Talarico, a member of the Texas state House who is running in a heated Democratic primary for United States Senate. But it was not to be.
+
+At the start of his show, Colbert told viewers that CBS had barred him from airing the interview, citing threats from Brendan Carr, the chair of the Federal Communications Commission. (You may remember Carr as the guy who sounded like a cartoon mobster while trying to get Jimmy Kimmel fired—“We can do this the easy way or the hard way”—drawing a rebuke from Senator Ted Cruz.)
+
+Colbert savaged CBS. He said that the network had told him not to talk about it, which he defied in dramatic fashion. “I want to assure you, ladies and gentlemen—please—I want to assure you, this decision is for purely financial reasons,” he joked, a sly reference to the rationale that CBS gave for ending his show. Colbert posted the interview on his show’s YouTube channel. CBS said in a statement that The Late Show “was not prohibited by CBS from broadcasting the interview with Rep. James Talarico. The show was provided legal guidance that the broadcast could trigger the FCC equal-time rule for two other candidates, including Rep. Jasmine Crockett, and presented options for how the equal time for other candidates could be fulfilled.”
+
+I wrote in July that CBS’s leadership had lost the benefit of the doubt, and the network’s actions since its parent company’s merger with Skydance and the appointment of Bari Weiss as editor in chief of CBS News have reinforced that. CBS deserves plenty of criticism for cowardice. But that doesn’t mean it’s incorrect to fear FCC action.
+
+Last month, the FCC issued a notice about the equal-time rule, a century-old regulation that says that a broadcast station that provides time to one candidate must provide an equal forum to a rival. The rule has an exemption for “bona fide news”—basically, producers can decide what to cover in their programming, because anything else would constitute government interference in the free press. In 2006, the FCC determined that interviews on The Tonight Show With Jay Leno fit under the exemption even if they are not strictly news programming, a precedent that shows have relied on since.
+
+But the new notice states that “the FCC has not been presented with any evidence that the interview portion of any late night or daytime television talk show program on air presently would qualify for the bona fide news exemption.” (Carr has not extended this reasoning to talk radio, which conservatives dominate.) This is not just bluster. Earlier this month, Fox News reported that the FCC was investigating ABC’s daytime talk show The View, which has become an important stop for politicians seeking to reach the show’s heavily female audience, for violating the equal-time rule. The reported object of Carr’s ire? An interview with one James Talarico.
+
+The Talarico dustups are among several incidents in the past few days that show the Trump administration’s enthusiasm for censoring speech by both the press and ordinary citizens. One year ago, I wrote that Donald Trump and his allies were free-speech phonies who, having campaigned against censorship, were eager to impose it. The threat to First Amendment rights has gotten worse since then.
+
+Earlier this month, The Washington Post’s John Woodrow Cox reported on a retiree who used a publicly available email address to encourage an attorney at the Department of Homeland Security to have mercy on an asylum seeker. In response, DHS sent federal agents to the man’s door and demanded access to his Google accounts, using a tool called an administrative subpoena that doesn’t require a judge or grand jury to approve. On Friday, The New York Times reported that Google, Reddit, Discord, and Meta in recent months have received “hundreds” of administrative subpoenas from DHS seeking access to information about the accounts of people who have criticized the government. (DHS told both papers that it was acting within its authority but didn’t give any detailed response.)
+
+The goals of both DHS and the FCC in these cases are to intimidate critics and stifle dissent. This is staggering hypocrisy. During the presidential campaign, Trump accused the Biden administration of undermining free speech by asking—though not demanding—that social-media companies remove misinformation about COVID. On day one of his administration, Trump issued an executive order that charged, “Over the last 4 years, the previous administration trampled free speech rights by censoring Americans’ speech on online platforms, often by exerting substantial coercive pressure on third parties, such as social media companies, to moderate, deplatform, or otherwise suppress speech that the Federal Government did not approve.” This is a good description of what Trump’s administration is doing now.
+
+Some repression efforts fail. Last week, the federal district-court judge Richard Leon, a President George W. Bush appointee, temporarily blocked Defense Secretary Pete Hegseth from punishing Senator Mark Kelly, a Navy veteran, for a video in which he and other members of Congress remind current service members that they can and should refuse illegal orders. “This Court has all it needs to conclude that Defendants have trampled on Senator Kelly’s First Amendment freedoms and threatened the constitutional liberties of millions of military retirees,” Leon wrote.
+
+The ruling is a welcome defense of Americans’ freedoms, but it can’t reverse all of the damage. Kelly is unusually well positioned to fight back and take the administration to court. Not every would-be critic is. And censorship, once established by a president, has ways of spreading its tendrils to other institutions. At one state university in Texas, for example, a philosophy professor was forced to remove passages of Plato from his syllabus because of new policies passed by governor-appointed regents, and an art exhibition critical of ICE was abruptly canceled at another Texas university.
+
+These attacks are clearly partisan: They all target speech by critics of the president, his party, or his policies. But they should be scary even if you feel that Colbert doesn’t deserve a news exemption, The View is too liberal, or Kelly was out of line. Crackdowns on speech by prominent figures pave a way for the government to regulate speech more broadly, which should be concerning for people of any political leaning because the party and people in power can change.
+
+During a Senate hearing last week, Senator Ron Johnson, a Wisconsin Republican, accused Minnesota Attorney General Keith Ellison, a Democrat, of being responsible for the deaths of Alex Pretti and Renee Good because he supported protests. Johnson began, “Did you ever encourage people to go out there and exercise the First—”
+
+“I freely admit being in favor of the First Amendment,” Ellison shot back. This position is apparently not as common among elected officials as you might hope.
+
+Here are three new stories from The Atlantic:
+
+The most striking passages in Picky, a forthcoming book by the historian Helen Zoe Veit, describe the way famous 19th-century American figures ate as children. I found myself gripped with envy as I read—not because the foods were particularly appetizing, but because I would kill for my kid to eat like that.
+
+To wit: As a girl, Edith Wharton adored oyster sauce, turtle, stewed celery, cooked tomatoes, and lima beans in cream. Mark Twain fondly remembered eating succotash, string beans, squirrels, and rabbits on his uncle’s farm. And during her childhood, Veit writes, Elizabeth Cady Stanton “happily ate vegetables, hickory nuts, and cold jellied brain.”
+
+If these don’t sound like typical “kid foods,” that’s because they aren’t, and weren’t. “Kid food,” as a category, is a recent invention.
+
+Read. In Toni Morrison’s novels, she located the missing stories of Black America, Judith Shulevitz writes.
+
+Reminisce. David Sims explores how Robert Duvall could carry a film thunderously, yet also stand out in the subtlest of roles.
+
+Rafaela Jinich contributed to this newsletter.
+
+When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-20')">
+            <div class="source">The Atlantic</div>
+            <div class="title">AI Agents Are Taking America by Storm</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-20" style="display:none;">
             <h2>AI Agents Are Taking America by Storm</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/technology/2026/02/post-chatbot-claude-code-ai-agents/686029/?utm_source=feed">Visit Original Website</a>
@@ -1107,13 +1166,13 @@ Without inside access to these companies, it’s difficult to know what to make 
 Tech companies have done a tremendous job of persuading investors to pour cash into their businesses, but the industry has done a much worse job at selling the public on its vision. Instead of focusing on tangible benefits of AI agents, Silicon Valley has spent years hype-washing the technology with business briefs that read like science fiction. In one influential essay, Dario Amodei, Anthropic’s CEO, writes that powerful AI could soon eliminate most cancer and nearly all infectious diseases. In another, a team of researchers warns that within the decade, rogue AI might release biological weapons, wiping out nearly all of humanity. Bots that can handle spreadsheet work and automate coding might not amount to superintelligence, but they are still immensely powerful. To the extent that normies remain confused about AI’s true capabilities, Silicon Valley has only itself to blame.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">Winter Olympics Photo of the Day: In Pursuit</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>Winter Olympics Photo of the Day: In Pursuit</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/photography/2026/02/winter-olympics-photo-day-in-pursuit/686027/?utm_source=feed">Visit Original Website</a>
@@ -1123,13 +1182,13 @@ Tech companies have done a tremendous job of persuading investors to pour cash i
 February 12: Disqualified for a ‘Helmet of Remembrance’</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">An Olympic Trend That Defies Tradition</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>An Olympic Trend That Defies Tradition</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/health/2026/02/olympics-mixed-gender-ski-mountaineering/686026/?utm_source=feed">Visit Original Website</a>
@@ -1153,13 +1212,13 @@ And mixed-gender formats can still be subject to unequal dynamics. Biathlon, a W
 Even as mixed-gender events become more common, skimo’s inclusion in future Olympics is not assured. It’s in the 2026 Olympics because the organizers of this year’s Games proposed it; to continue competing, skimo athletes will need organizers at the next venues to propose its inclusion too. Skimo enthusiasts expect this to happen and hope future Olympics will include events that are longer and more representative of the sport’s origins. “Nobody got into skimo to do the sprint relay,” Smith said. But as he began training for the event, he enjoyed it more than he expected. “It’s really fun because we are accountable to each other,” he said. “I’m racing all out because I know that she’s doing the same for me.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">Winners of the 2026 Sony World Photography Awards Open Competition</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>Winners of the 2026 Sony World Photography Awards Open Competition</h2>
             <p><strong>The Atlantic | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/photography/2026/02/winners-2026-sony-world-photography-awards-open-competition/686022/?utm_source=feed">Visit Original Website</a>
@@ -1167,79 +1226,145 @@ Even as mixed-gender events become more common, skimo’s inclusion in future Ol
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">The Republicans Made Peace With Science</div>
+        <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">Discord Rival Maxes Out Hosting Capacity As Players Flee Age-Verification Crackdown</div>
+            <div class="meta">2026-02-18</div>
+        </div>
+        
+        <div id="content-24" style="display:none;">
+            <h2>Discord Rival Maxes Out Hosting Capacity As Players Flee Age-Verification Crackdown</h2>
+            <p><strong>Slashdot | 2026-02-18</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/26/02/17/2233250/discord-rival-maxes-out-hosting-capacity-as-players-flee-age-verification-crackdown?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Wherever you go...There you are.
+- Buckaroo Banzai</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">NPR's Radio Host David Greene Says Google's NotebookLM Tool Stole His Voice</div>
+            <div class="meta">2026-02-18</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
+            <h2>NPR's Radio Host David Greene Says Google's NotebookLM Tool Stole His Voice</h2>
+            <p><strong>Slashdot | 2026-02-18</strong></p>
+            <a class="original-link" href="https://yro.slashdot.org/story/26/02/17/227207/nprs-radio-host-david-greene-says-googles-notebooklm-tool-stole-his-voice?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+NPR is like BBC radio.  Government funded radio programming without government control.  Some good stuff, some bad.  Underpaid staff making do with old equipment because they believe that doing the work is more important than fame and wealth.
+
+This is the dystopian AI future we&#39;re walking into. Endless generated versions of everything- copies of copies of copies and the original creators just buried under mountains of bullshit. And that&#39;s what they&#39;re aiming for.
+
+The money is injecting hundreds of billions of dollars into this tech so that in a couple of years they can have skinjobs walking around with ripped off liknesses and bootlegged voices doing the things we used to do ourselves without paying us for it.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Wherever you go...There you are.
+- Buckaroo Banzai</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-26')">
+            <div class="source">Slashdot</div>
+            <div class="title">Idea Raised For Nicer DRM Panic Screen Integration On Fedora Linux</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-23" style="display:none;">
-            <h2>The Republicans Made Peace With Science</h2>
-            <p><strong>The Atlantic | 2026-02-17</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/02/republicans-democrats-science-funding-trump/685996/?utm_source=feed">Visit Original Website</a>
+        <div id="content-26" style="display:none;">
+            <h2>Idea Raised For Nicer DRM Panic Screen Integration On Fedora Linux</h2>
+            <p><strong>Slashdot | 2026-02-17</strong></p>
+            <a class="original-link" href="https://linux.slashdot.org/story/26/02/17/2157254/idea-raised-for-nicer-drm-panic-screen-integration-on-fedora-linux?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Which political party provides more federal funding for science? Given climate-denial rhetoric, attacks on expertise, the size of government, and culture-war battles over research, many Americans may believe that Democrats support science and that Republicans don’t.
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
 
-But this is not what we have found. In research published last fall in Science with our colleagues Nic Fishman and Leah Rosenstiel, we analyzed a comprehensive database of federal science appropriations, collected from presidents’ budget requests, from House and Senate committee bills, and from final, enacted annual appropriations from 1980 to 2020. The data include 171 budget accounts across 27 agencies, such as National Institutes of Health, NASA, National Science Foundation, and CDC, as well as Pentagon R&D programs.
+A proposal within the Fedora Linux community suggests improving the kernel&#39;s DRM Panic screen to a more user-friendly, BSOD-style experience..Ah, those BSOD experiences hanging on lounge room walls like perverted tributes to Blue Man Group....as if they could ever be &quot;friendly&quot; enough for the end user crippled with data center parking lot paranoia at 2AM eating a cigarette and smoking a pizza trying to figure out what the fuck they&#39;re going to do after the server shit out its third BSOD, and management was way too cheap to buy after hours support.In the immortal words of Douglas Adams, I suggest you add Don&#39;t to that DRM Panic screen.  Problem so
 
-When Republicans controlled the House or the presidency, science funding was substantially higher—on average, about $150 million more per budget account under a Republican House than a Democratic one, and $100 million more under a Republican president than a Democratic one. These differences held up across dozens of statistical tests and weren’t explained by the overall size of the budget or economic conditions. We found significantly higher appropriations for NIH under Republican control, higher funding for CDC under Republican presidents, and marginally higher support for NASA and NSF.
+A proposal within the Fedora Linux community suggests improving the kernel&#39;s DRM Panic screen to a more user-friendly, BSOD-style experience..
 
-For the past year, we have wondered if our paper had documented something purely historical—a pattern from a Republican Party that no longer exists. The Trump administration proposed slashing NIH by about 40 percent. It attempted to cap indirect-cost recovery—the portion of federal grants that reimburses universities for expenses such as facilities, compliance, security, and equipment—at 15 percent, threatening billions in research infrastructure. It stalled grants; cleared out agency leadership; imposed political approval requirements on funding decisions, such as requiring senior political appointees to sign off on grants before they could be awarded and terminating programs addressing racial health gaps; and implemented targeted funding freezes at particular universities. The postwar compact between government and science appeared to be collapsing.
+Ah, those BSOD experiences hanging on lounge room walls like perverted tributes to Blue Man Group..
 
-Listen: Defund science, distort culture, mock education
+..as if they could ever be &quot;friendly&quot; enough for the end user crippled with data center parking lot paranoia at 2AM eating a cigarette and smoking a pizza trying to figure out what the fuck they&#39;re going to do after the server shit out its third BSOD, and management was way too cheap to buy after hours support.
 
-But Congress—under Republican control in both chambers—has systematically rejected the administration’s most extreme proposals.
+In the immortal words of Douglas Adams, I suggest you add Don&#39;t to that DRM Panic screen.  Problem so
 
-In the funding bill that President Trump signed into law this month, lawmakers not only declined to cut NIH’s budget by 40 percent; they instead increased it by roughly $415 million. They added targeted funding for cancer research, Alzheimer’s disease, and the BRAIN Initiative for the development of neurotechnologies. The final number: $48.7 billion—virtually unchanged from the prior year.
+DRM, digital rights management greatly predates DRM in the display manager context. It also carries a massively bad connotation to it. DRM in the display manager context just needs to concede that to the clusterF that is digital rights management.
 
-Just as important, Congress included detailed language constraining executive overreach. It reiterated that NIH cannot unilaterally change how indirect-cost rates work. It limited the agency’s ability to shift funds toward multiyear awards that crowd out new grants. It required monthly briefings to Congress on grant awards and terminations to ensure the allocated money is actually being distributed. And it directed NIH to continue to professionalize the hiring of institute directors, with external scientific input and congressional oversight.
+Seriously. Find a better name for KVM while they&#39;re at it.
 
-Similar patterns hold elsewhere. NASA faces a 1.6 percent cut rather than the 24 percent the administration sought. The NSF budget dropped 3.4 percent instead of 57 percent.
+But I don&#39;t want any DRM.  Can&#39;t we get a panic screen without DRM?
 
-The budget accounts in the database we analyzed track the recurring operating expenses allocated across all parts of the federal government for science and research, including science done through grant-making and contracting with corporations. They don’t follow outgoing grants to researchers directly, so the numbers do not capture the kinds of funding freezes the Trump administration imposed on universities including Harvard, Columbia, and Penn.
+Well you could always get DRM, DRM, Panic, Sausage, and DRM.  That&#39;s only got a little bit of DRM in it.
 
-Even so, the Republican-led Congress behaved much more like our data predicted than like what Trump requested. The appropriators funded science, protected research infrastructure, and asserted control over how agencies operate. In this regard, they did what Republicans in Congress have done for decades.
+I always wondered why microsoft didn&#39;t do this or something like it over the decades.
 
-The Trump administration’s hostility to science is real and deeply concerning. But it has not—so far—reset the Republican Party’s position on science funding in the way that Trump reshaped GOP stances on trade, immigration, or foreign alliances.
+Nowadays (and for a long while) the chances that you have a truly unique problem is low...   (although it looks like we&#39;re heading for a new dark age where  googling relevant error identifiers will yield nothing since nobody actually posted about it on a searchable forum or stack overflow etc.  )
 
-Read: So much for the ‘best health-care system in the world’
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Science funding in the United States has been sustained not just by partisan enthusiasm but also by institutional structure. In our data, funding tracked with control of the House and the presidency, but not the Senate. That’s because the House majority controls the appropriations process. And Republican appropriators seem to have once again funded science not despite their priorities but because of them. Economic competitiveness, technological leadership, and national security all rest on a foundation of scientific advancement.
-
-This outcome appeared improbable six months ago—to many, including us, it looked nearly impossible. This wasn’t a normal policy disagreement. It was a stress test. And the institution is holding. The 2026 funding package highlights the commitment of the Republicans in Congress to consistently fund science.
-
-Staffing losses are real, leadership vacancies create drift, and political interference in grant decisions remains a serious threat. Budgets alone don’t guarantee a functioning research system. But treating the GOP as monolithically anti-science risks alienating a coalition that has historically sustained federal research. Scientists who want to protect funding should spend less time lamenting Republican hostility and more time engaging Republican appropriators—particularly in the House, where the funding decisions get made.
-
-Science came under attack, and a Republican Congress pushed back. That’s not an aberration.</div>
+Wherever you go...There you are.
+- Buckaroo Banzai</div>
         </div>
         
-        <div class="card" onclick="openModal('content-24')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">KDE Plasma 6.6 Released</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>KDE Plasma 6.6 Released</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/02/17/2147242/kde-plasma-66-released?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Please create an account to participate in the Slashdot moderation system
 
+Very true.  Although I hope KDE continues to work equally well on X11 and Wayland.  And on other Unix OSes.  Perhaps even on Windows.  There was a time when I ran KDE on Windows, mostly for kicks.  Alternate shells for Windows have disappeared and been banished by MS, sadly.
+
+Regarding Wayland, it is worth noting that one of the features in the summary---not showing certain windows when screen sharing---is a wayland-only feature.  X11 simply does not have a way to easily do it.
+
+I used to be a supporter of lightweight desktops but now there is really no good reason left to avoid KDE Plasma.
+
+now there is really no good reason left to avoid KDE Plasma.An amazind desktop.oh, there is. the most important thing of a desktop metaphor is that i don&#39;t realize it&#39;s there. i want to launch programs, and that&#39;s it. the more functionality you add to it the more it gets in my way. that&#39;s (imo) a very good reason to avoid plasma from what i see in this release.don&#39;t get me wrong, i surely could go with plasma. i&#39;ve used them all, i have fiddled around a lot, but now i care so little about desktop environments that i usually go with the default of the distro i install, which currently
+
+now there is really no good reason left to avoid KDE Plasma.
+
+oh, there is. the most important thing of a desktop metaphor is that i don&#39;t realize it&#39;s there. i want to launch programs, and that&#39;s it. the more functionality you add to it the more it gets in my way. that&#39;s (imo) a very good reason to avoid plasma from what i see in this release.
+
+don&#39;t get me wrong, i surely could go with plasma. i&#39;ve used them all, i have fiddled around a lot, but now i care so little about desktop environments that i usually go with the default of the distro i install, which currently
+
+KDE was really the first real DE for Linux, long before Gnome was a thing.  Had it not been for the Qt license issue back then, GTK and Gnome would never have been created. Imagine a world without Gnome and where the GIMP was made from Qt.  Some would like it and others probably shiver.
+
+Back in 1998 I was struggling to learn Red Hat 5.1 with fvwm2, coming from an MS/DOS and Windows 95 background.  KDE 1.0 came out and I downloaded a bunch of RPMs at the uni lab on a zip disk.  I installed it and that changed
+
+Gnome is still the default on the biggest distros, but KDE really should be. KDE is something a non-Linux user can immediately find usable. It does not take much to make Gnome usable, but the biggest Linux distros should not have a broken by default DE that takes several extensions to turn into a DE that has the functionality users expect.
+
+Did they finally institute sensible drag and drop behavior for files or does it still prompt me every time even though Apple had this figured out in the eighties?
+
+It still did as of 6.5.5.  But the nice thing about KDE is you can use whatever parts of it you want.  I&#39;m currently using Caja as the file manager inside of KDE. No particular reason, but it works fine and I think it looks a lot better than Dolphin.
+
+I&#39;ve read there is a config option to make &quot;move&quot; the default like it is on other OS&#39;s, but I can&#39;t find it.  Using shift and ctrl does work like other OS&#39;s and avoids the popup menu.  But yeah it&#39;s awkward, so I&#39;m glad I just use Caja and avoid dolphin altogether.
+
+See the screenshot near the end of this PR https://invent.kde.org/plasma/... [kde.org]
+
+If drag the file it does (dolphin 25.12.2), but if you use the a modifier key (Shift, Control, Ctrl-Shift) then it executes Move/Copy/Link without asking. I personally enjoy the menu, I often use those 3 actions and I like it to ask me. Though I understand this should have been made configurable. I even find a pity it does not offer hardlink in addition to symbolic link.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Bond reflected that good Americans were fine people and that most of them
-seemed to come from Texas.&quot;
-- Ian Fleming, &quot;Casino Royale&quot;</div>
+Wherever you go...There you are.
+- Buckaroo Banzai</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Most VMware Users Still 'Actively Reducing Their VMware Footprint,' Survey Finds</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Most VMware Users Still 'Actively Reducing Their VMware Footprint,' Survey Finds</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/02/17/2143231/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1266,6 +1391,12 @@ A lot of companies are certainly kicking them to the curb.  There are other opti
 
 But that only lasts until people can move. Long enough to earn Tan a really nice chunk of change, and probably also long enough to make VMWare a tiny niche player.
 
+Quick question - are there any Type 1 hypervisors based on any of the BSDs, as opposed to Linux?The BSD&#39;s use something called Bhyve.  I was pretty stable on TrueNAS Core when I used it, but not very feature rich.  I only ran Linux VM&#39;s, so don&#39;t consider this an endorsement.https://bhyve.org/ [bhyve.org]T
+
+Quick question - are there any Type 1 hypervisors based on any of the BSDs, as opposed to Linux?
+
+The BSD&#39;s use something called Bhyve.  I was pretty stable on TrueNAS Core when I used it, but not very feature rich.  I only ran Linux VM&#39;s, so don&#39;t consider this an endorsement.
+
 surveyed 302 IT decision-makers (director-level or higher) at North American companies with at least 1,000 employeesThis is why they aren&#39;t getting as extreme of an answer on the nature of price increase. Broadcom was very explicit in the acquisition that the large orgs are the target customers that they are trying to keep. They are already they are the most locked in with the highest return on investment. So as long those frogs slowly boil, they can make back their investment plus some. The smaller orgs are the ones hitting the higher price increases as replacing a lower entitlement with a full suite subscription hurts
 
 surveyed 302 IT decision-makers (director-level or higher) at North American companies with at least 1,000 employees
@@ -1278,364 +1409,39 @@ Do yourself a favor and look at XCP-NG/Xen Orchestra and ProxMox.  If your needs
 
 https://xcp-ng.org/ [xcp-ng.org]  https://xen-orchestra.com/ [xen-orchestra.com]
 
+I&#39;ve found proxmox quite nice.  Almost everyone else doing linux virtualization leans on libvirt, and proxmox decided to simplify and prioritize less awkward abstraction and so I find it more straightforward of an architecture than the usual &quot;something over libvirt over qemu&quot; approach.
+
+>&quot;Almost everyone else doing linux virtualization leans on libvirt, and proxmox decided to simplify and prioritize less awkward abstraction and so I find it more straightforward of an architecture than the usual &quot;something over libvirt over qemu&quot; approach.&quot;
+
+Indeed.  Both XCP-NG/Xen Orchestra and Proxmox are much better at supporting larger needs.  XCP-NG has a long history of solid virtualization and Xen Orchestra makes managing it a dream.  Proxmox takes a different approach, but is very powerful as well
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Bond reflected that good Americans were fine people and that most of them
-seemed to come from Texas.&quot;
-- Ian Fleming, &quot;Casino Royale&quot;</div>
+Wherever you go...There you are.
+- Buckaroo Banzai</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">US Lawyers Fire Up Privacy Class Action Accusing Lenovo of Bulk Data Transfers To China</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>US Lawyers Fire Up Privacy Class Action Accusing Lenovo of Bulk Data Transfers To China</h2>
             <p><strong>Slashdot | 2026-02-17</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/17/1955224/us-lawyers-fire-up-privacy-class-action-accusing-lenovo-of-bulk-data-transfers-to-china?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 That abomination, DOGE, siphoned SS info to Peter Thiel and his merry band of Nazis. I don&#39;t recall the lawyers getting their panties in a twist over that.
 
-Or la Presidenta sending in the FBI to steal voter data in Georgia all because they managed to convince ONE dimbulb magistrate judge that their already debunked election fraud theories were not bunk. Or the spy devices and info system the Gestapo is fielding to keep tabs on every Enemy of the State (read: whatever our putty brained alleged chief executive
+Or la Presidenta sending in the FBI to steal voter data in Georgia all because they managed to convince ONE dimbulb magistrate judge that their already debunked election fraud theories were not bunk. Or the spy devices and info system the Gestapo is fielding to keep tabs on every Enemy of the State (read: whatever our putty brained alleged chief executive doesn&#39;t like).
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Bond reflected that good Americans were fine people and that most of them
-seemed to come from Texas.&quot;
-- Ian Fleming, &quot;Casino Royale&quot;</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-27')">
-            <div class="source">Slashdot</div>
-            <div class="title">The Small English Town Swept Up in the Global AI Arms Race</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-27" style="display:none;">
-            <h2>The Small English Town Swept Up in the Global AI Arms Race</h2>
-            <p><strong>Slashdot | 2026-02-17</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/26/02/17/1937251/the-small-english-town-swept-up-in-the-global-ai-arms-race?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
-
-&quot;... being built on 85 acres of rolling farmland...&quot;
-
-Land that&#39;s rolling around will probably create too much vibration for data center components.
-
-The UK government&#39;s decision to classify data centers as &quot;critical national infrastructure&quot; and a new &quot;gray belt&quot; land designation that loosens building restrictions on underperforming greenbelt parcels helped clear the path for approval -- even though objections from locals outweighed signatures of support by nearly two-to-one during the public consultation.  There&#39;s yet one more thing that our (USA) government will be stealing soon. Because there has been a lot of public protest about datacenter buildouts being pushed. I&#39;m assuming in America they&#39;ll also attach some national security concern to it so that any form of protest is seen as treason.I&#39;m just vaguely curious how governments around the world continue to push the narrative that they are servants of the people. It seems to be they&#39;re servants of the money. People and their needs / desires don&#39;t even seem to register unless they have the ability to write really big checks. Even setting aside whether these AI datacenters are actually going to be useful by the time they&#39;re completed, if a large enough percentage of people in a given area are against them, shouldn&#39;t it at least be a consideration? Or have we reached such a peak of stupidity when it comes to AI that society just needs to steamroll people and call them luddites if they dare say anything negative about building out giant datacenters to suck up land, water, electricity and whatever other resources they may need in the area?
-
-The UK government&#39;s decision to classify data centers as &quot;critical national infrastructure&quot; and a new &quot;gray belt&quot; land designation that loosens building restrictions on underperforming greenbelt parcels helped clear the path for approval -- even though objections from locals outweighed signatures of support by nearly two-to-one during the public consultation.
-
-There&#39;s yet one more thing that our (USA) government will be stealing soon. Because there has been a lot of public protest about datacenter buildouts being pushed. I&#39;m assuming in America they&#39;ll also attach some national security concern to it so that any form of protest is seen as treason.
-
-I&#39;m just vaguely curious how governments around the world continue to push the narrative that they are servants of the people. It seems to be they&#39;re servants of the money. People and their needs / desires don&#39;t even seem to register unless they have the ability to write really big checks. Even setting aside whether these AI datacenters are actually going to be useful by the time they&#39;re completed, if a large enough percentage of people in a given area are against them, shouldn&#39;t it at least be a consideration? Or have we reached such a peak of stupidity when it comes to AI that society just needs to steamroll people and call them luddites if they dare say anything negative about building out giant datacenters to suck up land, water, electricity and whatever other resources they may need in the area?
-
-how governments around the world continue to push the narrative that they are servants of the people
-
-When they bother to push this false narrative at all, they usually go with utilitarianism.  They maintain that a lot of people benefit a lot from the presence of the data centers, and that outweighs the few people who suffer a little from increased utility costs.
-
-They could also go with &quot;rich people are people too, and they are obviously more important than poor people, so serving the interests of rich people
-
-You have 15 Moderator Points! Use &#39;em or lose &#39;em!
-
-That&#39;s why they classify them as &quot;critical national infrastructure,&quot; so they can surround them with their own drones, shock/lethal fences, armed guards, dogs with bees in their mouths that when they bark they shoot bees at you, etc.  Can&#39;t just have Cletus out there taking potshots at the rooftop chillers, or whatever the British equivalent of Cletus uses without guns everywhere.
-
-That&#39;s how everyone else combats project plans.
-
-The UK government&#39;s decision to classify data centers as &quot;critical national infrastructure&quot; and a new &quot;gray belt&quot; land designationSounds a lot like Trump&#39;s EOs.
-
-The UK government&#39;s decision to classify data centers as &quot;critical national infrastructure&quot; and a new &quot;gray belt&quot; land designation
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-&quot;Bond reflected that good Americans were fine people and that most of them
-seemed to come from Texas.&quot;
-- Ian Fleming, &quot;Casino Royale&quot;</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-28')">
-            <div class="source">Slashdot</div>
-            <div class="title">Microsoft's AI Chief Says All White-Collar Desk Work Will Be Automated Within 18 Months</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-28" style="display:none;">
-            <h2>Microsoft's AI Chief Says All White-Collar Desk Work Will Be Automated Within 18 Months</h2>
-            <p><strong>Slashdot | 2026-02-17</strong></p>
-            <a class="original-link" href="https://slashdot.org/story/26/02/17/1932249/microsofts-ai-chief-says-all-white-collar-desk-work-will-be-automated-within-18-months?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">how will we afford to rent our compute terminal
-
-I have not seen a single instance where current AIs is reliable enough that it can effectively replace a single real world white collar profession.
-
-And this dude thinks they are going to replace ALL white collar jobs?
-
-It&#39;s going to be like in the Simpsons where Homer set up a drinking bird to hit return when various prompts came up so he wouldn&#39;t have to actually be at his computer to &quot;work&quot;.
-
-But this is Microsoft. Could AI really do any worse?
-
-Who vets and creates this &quot;discrete information&quot; dataset? Don&#39;t say AI, because it doesn&#39;t yet have vetted discrete information.
-
-plenty of AI&#39;s can already replace professionals from insurance assessors to accounting roles. Do not judge AI performance based on AI the general public uses. AI that is grounded in vetted discreet information is extremely accurate, fast and efficient.Up until the point where it hallucinates absolute nonsense.  And now you have multi-million-dollar legal or tax liability or whatever.
-
-plenty of AI&#39;s can already replace professionals from insurance assessors to accounting roles. Do not judge AI performance based on AI the general public uses. AI that is grounded in vetted discreet information is extremely accurate, fast and efficient.
-
-Up until the point where it hallucinates absolute nonsense.  And now you have multi-million-dollar legal or tax liability or whatever.
-
-CEOs seem like the absolute ripest jobs for AI replacement.
-
-Why won&#39;t he consider replacing himself first?
-
-It’s so stupid. Do you honestly believe this will happen, where real money is on the table?
-
-I am sure there’s nuance: he’s saying it *could* happen, I suppose, and only if companies endorse his view. If they don’t, and stay in the dark ages, then that’s on them.
-
-Sounds like the same drivel we get from Muskie.
-
-He’s probably been told by someone he’s not visionary enough. So he gets out there with some projection, because everyone is doing it, and no one seems to pay a price for getting it wrong.
-
-Muskie really changed the way Americans talk about buisiness.His success is mostly through massively overhyping and overpromising things, most of which haven&#39;t just missed their deadlines but have never been made.But that didn&#39;t stop him from becoming the richest due in the world, so why shouldn&#39;t everyone else act the same way? Clearly it works.
-
-One of the few nice things about being in our current post-prosperity dystopian hellscape is that we now have prediction markets for everything.
-
-If you disagree that AI will be taking over all white collar jobs within 18 months (and you probably should), you can make a wager against it.
-
-Likewise, if you think that the AI bubble will be bursting in 18 months and the market will suddenly be flush with surplus AI data center storage, you can place a wager on that as well.
-
-You can&#39;t make sensible predictions in a world run by clowns.
-
-I am sure there&#39;s nuance..A representative from a global leader in corporate desktop operating systems, made a statement that AI could effectively replace all white collar jobs within 18 months.  That&#39;s about as nuanced as North Korean poetry on personal freedom read aloud before the firing squad marches in.  Remember when AOC said the world would end within 12 years if we didn&#39;t heed every warning being shamed upon the peasants by ignorant 15-year old environmental activists pretending to understand how the world works?  Well, take
-
-A representative from a global leader in corporate desktop operating systems, made a statement that AI could effectively replace all white collar jobs within 18 months.  That&#39;s about as nuanced as North Korean poetry on personal freedom read aloud before the firing squad marches in.  Remember when AOC said the world would end within 12 years if we didn&#39;t heed every warning being shamed upon the peasants by ignorant 15-year old environmental activists pretending to understand how the world works?  Well, take
-
-It’s so stupid. Do you honestly believe this will happen, where real money is on the table?Eliminating jobs that can be done automatically IS &quot;real money on the table&quot; to company shareholders. Will AI replace these jobs? You bet your ass they will. The West is not prepared for the impact AI is having on employment, and will continue to have for decades to come. Some people are burying their heads, but it won&#39;t save them. Entire fields that used to be good paying professional work are quickly becoming something a glorified script can handle with minimal input.
-
-It’s so stupid. Do you honestly believe this will happen, where real money is on the table?
-
-Eliminating jobs that can be done automatically IS &quot;real money on the table&quot; to company shareholders. Will AI replace these jobs? You bet your ass they will. The West is not prepared for the impact AI is having on employment, and will continue to have for decades to come. Some people are burying their heads, but it won&#39;t save them. Entire fields that used to be good paying professional work are quickly becoming something a glorified script can handle with minimal input.
-
-It isn&#39;t THAT it will fail to match your PhD in Physics, it is that enough yokels will BELIEVE it can match your PhD in Physics. I think that is where the real danger lies.
-
-Even if all this capability were available today (AI doing most white collar jobs with no need for input or babysitting), most companies can&#39;t even do things like a simple ERP upgrade in 12-18 months. The idea that we could actually implement all of that AI capability in that amount of time is patently absurd.
-
-But then you need AI to make sure the AI is doing what AI is supposed to do. And then AI to mind the AI minder that minds the AI. I guess it&#39;s AI all the way down!
-
-What&#39;s the difference between a used car salesman and a computer salesman?
-
-The used car salesman knows when he&#39;s lying.
-
-Everyone at Microsoft has gone bat shit crazy! Woohoo!
-
-Companies don&#39;t move on a dime, many customers won&#39;t trust companies that replace all their people with computers before the tech has proven itself, and in regulated industries like banking regulators will prevent the AI-takeover until the tech is very mature.
-
-Personally, I see prototypes and serious trial runs being done in the 1-5 year time frame and a gradual replacement in non- or lightly-regulated scenarios in the 2-20 year time frame.
-
-Regulated scenarios&#39; time-frames will be at the mercy of the regulato
-
-The very nature of his position basically requires him to. Most of us don&#39;t believe that if it ever will happen it would be that fast. In 18 months he can say the same thing again and still keep is salary and get a bonus.
-
-He has continvoucly morged his rel, branch back to add a new featue over Timn.
-
-No, I&#39;m not having a stroke. That&#39;s just the best that their best AI can do, and nobody gave a shit to even check that the giant diagram that explained everything in a simple graphical form... you know... didn&#39;t look like an AI image generator tried to generate text.
-
-This is just a suggestion - AI jobs are very well paid and done at the computer.
-
-Automating them first will bring huge savings...
-
-Especially AI Chief jobs should be easy to automate
-
-Their shrieks are getting louder and more desperate.
-
-This.Where I work, everyone was going gaga over AI a year or so ago and almost every discussion involved a comment such as &quot;have you tried AI for it yet?&quot; or &quot;I used AI and look what it did&quot;.Now I very rarely hear AI mentioned in discussions.  I see a few people using it here or there to help write a report or tidy up a presentation but apart from that, most employees here seem to have gotten over it and moved on.I suspect that they are getting worried that they are committing $billions to data centers and
-
-He pointed to exponential growth in computational power and predicted that creating a new AI model will soon be as easy as &quot;creating a podcast or writing a blog.&quot;Most blogs and podcasts suck.
-
-He pointed to exponential growth in computational power and predicted that creating a new AI model will soon be as easy as &quot;creating a podcast or writing a blog.&quot;
-
-He pointed to exponential growth in computational power and predicted that creating a new AI model will soon be as easy as &quot;creating a podcast or writing a blog.&quot;Most blogs and podcasts suck.So does most Microsoft software! So perhaps their AI chief has a point, at least for his own company...
-
-He pointed to exponential growth in computational power and predicted that creating a new AI model will soon be as easy as &quot;creating a podcast or writing a blog.&quot;Most blogs and podcasts suck.
-
-He pointed to exponential growth in computational power and predicted that creating a new AI model will soon be as easy as &quot;creating a podcast or writing a blog.&quot;
-
-So does most Microsoft software! So perhaps their AI chief has a point, at least for his own company...
-
-All execs are just white-collar desk jobs. He just announced he is retiring in 18 months.
-
-How hard can it be to make an app that talks to the media while apparently on drugs? Makes impossible predictions with zero irony. And still has the balls to demand a raise when they lay off big portions of the revenue generating business?
-
-I say, let&#39;s use machine learning to take over the decision making process in corporations, as these jobs are very high paying and the requirements are very low, even only 50% correct is considered a high performing executive.
-
-This is about making attention-grabbing claims that get them press (as it&#39;s done here). These predictions don&#39;t have to come true because no one is ever going to hold him to it. It doesn&#39;t impact their stock price if that date comes and goes without happening. But it does get people to pay attention (as everyone in this thread is) and talk about Microsoft and AI, which is the entire intention. If he said it&#39;d be in 10-15 years, no one will pay attention. That&#39;s too far away to care. But by saying it&#39;s really soon, he&#39;s gotten the media and our attention, putting Microsoft right there in the conversation.
-
-Look, when someone from Anthropic, or OpenAI, or even Google makes some outrageous claim like this, I take at it with a giant heaping of salt ... but I at least consider that the person speaking might know more than I do, and might actually be telling the truth.  Probably not, but it&#39;s possible.
-
-But Microsoft?  Come on, those people can&#39;t even get their &quot;copilot&quot; to do even half of the things real AI companies can do, despite having more money than God to throw at the problem ... and I&#39;m supposed to trust th
-
-And 35 months ago and 34 months and 33 months ago...
-
-AI is not intelligent. It&#39;s just generating boilerplate language based on past patterns of communication that sounds like a manager&#39;s self-help book. It will be the death of critical thinking and process improvement.
-
-You need gatekeepers, planers and people talking to other people in businesses. Not _all_ of those will be replaced by AI. However, it is really not that unlikely that seasoned senior developers - like, f.i. me - actually _will_ be out of a job in 18 months. I&#39;ve been mentally and emotionally preparing for this possiblity since early last year.
-
-What I find very interesting to experience and hadn&#39;t consciously anticipated was the speed of transition. In hindsight it&#39;s perfectly logical, but I wasn&#39;t ready for
-
-Note the prediction is given for all office jobs, not just tech workers. That would be over half of the work force.
-
-If things get to the point that is displaces senior developers, then it can displace the vast majority of those workers too.
-
-However, regardless of how AI works or doesn&#39;t, I do think either way the software industry is in for a reckoning.  The industry broadly just isn&#39;t innovating in most areas and many of the areas where there is innovation doesn&#39;t have a lot of interest. Much of what people
-
-Yeah, let CoPilot do all their work.  It&#39;ll probably do a better job than they did when they decided to remove Wordpad from Windows 11 and add features to Notepad that nobody wanted.  Oh, and cripple Paint, aside from adding AI to it
-
-Exponential compute resource does not mean exponentially more capable.
-
-In fact, capability is more logarithmic, just obscene investments in resource produce marginally better results.  The biggest gain is how long the models can keep up generating tokens in a coherent looking way, but the quality of the product represented by those tokens remains flawed in now familiar ways.  Most painfully the flaw are non obvious.
-
-Gave claude opus 4.6 a cakewalk of a task today, maybe 100 lines of code to generate.  The out
-
-The thing I don&#39;t hear a lot of talk about is the reality I&#39;ve seen with all the different flavors of ChatGPT and other AI tools out there. The system performance just doesn&#39;t seem to be there in a way that&#39;s as reliable as human labor on given tasks?
-
-I admit I never worked with one of the commercial packages -- so maybe I&#39;m just a victim of the kind of throttling they&#39;re doing on free tiers?  But for example, just last night? I played with Microsoft co-pilot, instructing it to create a Windows background/wa
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-&quot;Bond reflected that good Americans were fine people and that most of them
-seemed to come from Texas.&quot;
-- Ian Fleming, &quot;Casino Royale&quot;</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Britain Lost 14,000 Pubs, a Quarter, in 13 Years</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Britain Lost 14,000 Pubs, a Quarter, in 13 Years</h2>
-            <p><strong>Slashdot | 2026-02-17</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/26/02/17/1836238/britain-lost-14000-pubs-a-quarter-in-13-years?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
-
-Last I checked, weed is still very much illegal in the UK (where all the pubs have gone bust) so &quot;legal weed&quot; is not the reason for the pubs closing.
-
-Pubs are very expensive now, and even with the smoking ban tend not to be great places to go. Loud, not very comfortable or clean, not much atmosphere. Younger people tend not to drink much anyway.
-
-I doubt you&#39;ve visited many pubs franky. Some are old style boozers but most have upgraded to serving food and coffee and welcome families.
-
-Yes, crap and overpriced coffee, and increasingly crap and overpriced food as well.
-
-Weatherspoons is apparently still good, but I avoid it because, excuse the King&#39;s English, the owner is a brexity cunt.
-
-Yeah so many pubs you go with a few friends, and there are a few groups of people scattered round trying to talk and the staff put on loud, obnoxious music and completely ruin it for the people who are actually in there. No one&#39;s trying to party it up on a Tuesday night in a businessy area.
-
-Youâ(TM)re a miserable fucker, arenâ(TM)t you?  There are plenty of really nice pubs where I go with my family, or just to catch up with friends.
-
-Even small amounts of weed stinks like a cross between boiled cabbage and body odour so if that&#39;s your idea of fun knock yourself out. Most people however like a nice beer or glass of wine which doesnt make others give you a 10 foot wide  berth.
-
-It turns out if everyone hates each other and is poor, they don&#39;t hang out in bars much.
-
-Oh well. Maybe if they turn the island into an even poorer, meaner place, the good times will come back.
-
-Best place to be drunk is at home, either with or without friends. Paying retail price for drinks is insane.
-
-It wouldn&#39;t be so bad, but there are hardly any lumberjacks in the UK.
-
-*runs away and hides from an irate mob of Monty Python fans
-
-Seriously, it very much depends on the area. Rugby, a town-borderline-city, has fewer pubs than the Marple/Mellor collection of villages up in t&#39; norf. This is mostly because Rugby is a run-down dump with a dying town centre and hardly anything left in it, whereas Marple (although it lost its engineering back in the 60s) is a major commuter/retirement town with just enough rationa
-
-I always thought that Rugby was a game with an oval ball, and 15 players on each side.
-
-Oh...  this may get some angry responses, but is it because Muslims don&#39;t drink?  Obviously a large part of this is Covid, but the Brits are well known for their love of booze.
-
-You&#39;d think that the pubs most likely to close would be the ones close to other pubs if demand is falling.  
-Is this about population density? Maybe because &quot;pub-crawling&quot; - visiting multiple establishments over the course of an evening - is (was?) a thing.  Clusters have an additional appeal that isolated locations don&#39;t.
-
-You&#39;d think that the pubs most likely to close would be the ones close to other pubs if demand is falling.
-
-Maybe because &quot;pub-crawling&quot; - visiting multiple establishments over the course of an evening - is (was?) a thing.  Clusters have an additional appeal that isolated locations don&#39;t.
-
-Said nobody with evidence.The evidence contradicts your racist hypothesis - the higher fractions of Muslims correlates with fewer closed pubs. Muslims in UK:
-
-England: 3,801,186 (6.7% of the population). London: Has the highest concentration, with 14.3% of Londoners identifying as Muslim. North-West: 6.6% of the population. Yorkshire and the Humber: 4.8% of the population. West Midlands: 4.2% of the population. Scotland & Wales: Both have a 2.2% Muslim population. Northern Ireland: 0.6%. 
-
-Kindly go back to your echo chamber for emotional support.
-
-The evidence contradicts your racist hypothesis - the higher fractions of Muslims correlates with fewer closed pubs. Muslims in UK:
-
-Kindly go back to your echo chamber for emotional support.
-
-The thousands of indians and muslims you have flooding your country don&#39;t drink in pubs. Good luck maintaining your culture with the flood of 3rd worlders.Ahhh yes a country of 70 million people is suddenly having pubs close because *checks notes* a few additional people coming don&#39;t drink?Have the immigrants caused you indigestion or something? Based on everything I&#39;ve seen they seem to make you depressed and want to drown your sorrows. So wouldn&#39;t those scary brown people cause you to drink more and keep your pubs more open?You got some serious non-sequitur racism there.
-
-The thousands of indians and muslims you have flooding your country don&#39;t drink in pubs. Good luck maintaining your culture with the flood of 3rd worlders.
-
-Ahhh yes a country of 70 million people is suddenly having pubs close because *checks notes* a few additional people coming don&#39;t drink?
-
-Have the immigrants caused you indigestion or something? Based on everything I&#39;ve seen they seem to make you depressed and want to drown your sorrows. So wouldn&#39;t those scary brown people cause you to drink more and keep your pubs more open?
-
-You got some serious non-sequitur racism there.
-
-While there&#39;s some truth in what you say, wealth redistribution trends in all Western countries show that billionaire elites remove way more wealth from working class families than immigrants ever did. All you&#39;re doing is creating a convenient strawman to shelter the real social parasites.
-
-Who said anything about smoking? Edibles are nice too.
-
-found spatial isolation -- how far a pub stood from its nearest neighbour -- was the single strongest predictor of closure.I&#39;d be curious to know the cause of all these closures. But, I&#39;m quite confident that isolation from other pubs -- isolation from competition -- is not  it.Whether it&#39;s a change in demographics, the byzantine regulations and requirements, economics... I don&#39;t know. But, it&#39;s not isolation.
-
-found spatial isolation -- how far a pub stood from its nearest neighbour -- was the single strongest predictor of closure.
-
-I&#39;d be curious to know the cause of all these closures. But, I&#39;m quite confident that isolation from other pubs -- isolation from competition -- is not  it.
-
-Whether it&#39;s a change in demographics, the byzantine regulations and requirements, economics... I don&#39;t know. But, it&#39;s not isolation.
-
-A large number of immigrants that are violently anti-alcohol may also be a factor.
-
-Rapes outside of pubs may also be a thing.  I can&#39;t find numbers on that, but I see a bunch of headlines, and scary headlines make people stay home.
-
-Ohh! Did you hear about poor Mrs. McTavish. Some drunken Irishman ate her dog, outside the pub. Eee did. Irish, no less.Such a shame. Eee were a good dog.. Tsk tsk.
-
-$4 billion in debtLeverage buyouts are evil
-
-I&#39;ll vote for it.  They&#39;re structured like old-school trusts, and we broke those up.  Time for round #2.
-
-Identified several issues:1) Bad business models. Many pubs are owned by large companies.   One company (Stonegate) owns about 1/11 pubs in the UK and they got that big by taking out massive debt to buy other pubs.  But apparently, they (like many leveraged buyout firms) are good at purchasing pubs but are not good enough at running them to service the debt, so they are now selling dead pubs.
-
-2)  Pubs in London thrived.  Apparently if you can walk to lots of pubs and take the Tube (subway) home, you get lots
-
-2) Pubs in London thrived. Apparently if you can walk to lots of pubs and take the Tube (subway) home, you get lots of people drinking at all the pubs.I wouldn&#39;t call the smallest decline thriving, but alright.
-
-2) Pubs in London thrived. Apparently if you can walk to lots of pubs and take the Tube (subway) home, you get lots of people drinking at all the pubs.
-
-I wouldn&#39;t call the smallest decline thriving, but alright.
-
-But maybe it is that Private Equity does a really, really, bad job of running a pub.  I wouldn&#39;t be surprised if it was a spec
-
-Younger generations don&#39;t drink alcohol like the older ones did.  They consume other drugs, or no drugs.Younger generations don&#39;t go out as much as the older ones did.  They stay at home and socialize via their phones.etc.
-
-Well part of that is it&#39;s so fucking expensive to do that compared to how it used to be.
-
-Alcohol consumption per person has been declining in the UK over the last three decades.  Meanwhile, itâ(TM)s been increasing in the US.  Itâ(TM)s possible that Americans now drink more than Britons.  Itâ(TM)s people over 50 that drink the most in the UK; younger generations arenâ(TM)t so interested.
-
-A few months back I visited the part of London where I grew up. The 3 pubs nearest to my childhood home are all dead.
-
-Where I live now there have been no pub closures for as long as I have lived there, about 8 years.
-
-Some areas of London kill pubs, others keep them alive. Without serious study it is not easy to say why the difference.
-
-They buy up a type of business and then it become&#39;s middle management&#39;s job to justify their section or local by meeting or failing quarterly numbers. Upper management then demonstrates their employability by cutting locations and &#39;improving the bottom line&#39;.
-
-The same thing has been happening in the US, with chains of restaurants and retail stores going under.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-&quot;Bond reflected that good Americans were fine people and that most of them
-seemed to come from Texas.&quot;
-- Ian Fleming, &quot;Casino Royale&quot;</div>
+Wherever you go...There you are.
+- Buckaroo Banzai</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1969,11 +1775,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Amazon's Ring wanted to track your pets. It revealed the future of surveillance</div>
+            <div class="title">Operando X-rays reveal key aging process in sodium-zinc molten salt batteries</div>
             <div class="meta">2026-02-17</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>Operando X-rays reveal key aging process in sodium-zinc molten salt batteries</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-02-operando-rays-reveal-key-aging.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Amazon's Ring wanted to track your pets. It revealed the future of surveillance</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>Amazon's Ring wanted to track your pets. It revealed the future of surveillance</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-amazon-track-pets-revealed-future.html">Visit Original Website</a>
@@ -1981,13 +1801,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">New electrolyzer turns plastic-waste syngas into ethylene with less energy</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>New electrolyzer turns plastic-waste syngas into ethylene with less energy</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-electrolyzer-plastic-syngas-ethylene-energy.html">Visit Original Website</a>
@@ -1995,13 +1815,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Demonstration of mass connectivity for the 6G era</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Demonstration of mass connectivity for the 6G era</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-mass-6g-era.html">Visit Original Website</a>
@@ -2009,13 +1829,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">THz band testbed successfully transmits under 1,000 km/h high-mobility emulation</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>THz band testbed successfully transmits under 1,000 km/h high-mobility emulation</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-thz-band-testbed-successfully-transmits.html">Visit Original Website</a>
@@ -2023,13 +1843,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Can AI build a machine that draws a heart? What automated mechanism design could mean for mechanical engineering</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Can AI build a machine that draws a heart? What automated mechanism design could mean for mechanical engineering</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-ai-machine-heart-automated-mechanism.html">Visit Original Website</a>
@@ -2037,27 +1857,71 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Advanced security technology is rarely used—research offers a solution</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Advanced security technology is rarely used—research offers a solution</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-17</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-02-advanced-technology-rarely-solution.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-42')">
+            <div class="source">The Register</div>
+            <div class="title">China-linked snoops have been exploiting Dell 0-day since mid-2024, using 'ghost NICs' to avoid detection</div>
+            <div class="meta">2026-02-18</div>
+        </div>
+        
+        <div id="content-42" style="display:none;">
+            <h2>China-linked snoops have been exploiting Dell 0-day since mid-2024, using 'ghost NICs' to avoid detection</h2>
+            <p><strong>The Register | 2026-02-18</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/18/dell_0day_brickstorm_campaign/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">China-linked attackers exploited a maximum-severity hardcoded-credential bug in Dell RecoverPoint for Virtual Machines as a zero-day since at least mid-2024. It&#39;s all part of a long-running effort to backdoor infected machines for long-term access, according to Google&#39;s Mandiant incident response team.
+
+The US government and Google first warned about this campaign last year after detecting Brickstorm backdoors in dozens of critical US networks.
+
+Dell disclosed and patched the critical flaw (CVE-2026-22769) on Tuesday – but noted that miscreants had found and exploited the bug before it issued a fix.
+
+&quot;We have received a report of limited active exploitation of this vulnerability,&quot; a Dell spokesperson told The Register. &quot;Customers are urged to immediately implement one of the remediations detailed&quot; in the advisory.
+
+According to Mandiant and the Google Threat Intelligence Group, which also published a security alert on Tuesday about the Dell zero-day, the suspected PRC-linked intruders exploited CVE-2026-22769 to deploy malware including Brickstorm and a separate backdoor tracked as Grimbolt, and in some cases replaced older Brickstorm binaries with Grimbolt, while also creating “Ghost NICs” on virtual machines to enable stealthy network pivoting.
+
+&quot;Analysis of incident response engagements revealed that UNC6201, a suspected PRC-nexus threat cluster, has exploited this flaw since at least mid-2024 to move laterally, maintain persistent access, and deploy malware including Slaystyle, Brickstorm, and a novel backdoor tracked as Grimbolt,&quot; said Google threat hunters Peter Ukhanov, Daniel Sislo, Nick Harbour, John Scarbrough, Fernando Tomlinson, Jr, and Rich Reece.
+
+Because the full scale of this campaign is unknown, we recommend that organizations previously targeted by Brickstorm look out for Grimbolt in their environments
+
+When asked about the scope of exploitation, Mandiant Consulting manager Reece, who co-authored the report, said Mandiant knows of &quot;less than a dozen&quot; organizations affected by CVE-2026-22769. &quot;But because the full scale of this campaign is unknown, we recommend that organizations previously targeted by Brickstorm look out for Grimbolt in their environments,&quot; he told The Register.
+
+While the earlier versions of the Brickstorm backdoor were written in Go, and later Rust, it appears the attacker replaced these binaries with Grimbolt in September 2025, according to Mandiant.
+
+Grimbolt, written in C#, uses native ahead-of-time (AOT) compilation to translate programming language code into native machine code before the application runs. It&#39;s also packed with UPX, an executable packer that compresses the native binary files produced by AOT.
+
+These features make the malware less likely to raise any flags via static analysis, and enhance performance on resource-constrained appliances.
+
+Grimbolt also provides the same remote shell capability and uses the same command and control infrastructure as the earlier Brickstorm malware.
+
+&quot;UNC6201 established Brickstorm and Grimbolt persistence on the Dell RecoverPoint for Virtual Machines by modifying a legitimate shell script named convert_hosts.sh to include the path to the backdoor,&quot; the Googlers reported. &quot;This shell script is executed by the appliance at boot time via rc.local.&quot;
+
+Plus, they note, the IR team discovered the Dell zero-day while investigating a victim&#39;s environment that had been backdoored by Brickstorm and Grimbolt.
+
+Security analysts spotted &quot;multiple web requests&quot; to vulnerable appliances using the username &quot;admin&quot; and directed to the installed Apache Tomcat Manager.
+
+Dell RecoverPoint for Virtual Machines uses Apache Tomcat as its web server, and the security sleuths soon discovered that the attackers had been exploiting a hardcoded password in Apache Tomcat to then deploy a malicious WAR file containing a Slaystyle web shell.
+
+&quot;This is considered critical as an unauthenticated remote attacker with knowledge of the hardcoded credential could potentially exploit this vulnerability leading to unauthorized access to the underlying operating system and root-level persistence.&quot;
+
+Additionally, after abusing the bug to exploit the Dell appliances, UNC6201 then created &quot;ghost NICs&quot; – hidden, temporary network ports on existing virtual machines running on an ESXi server – to burrow deeper into victims&#39; VMware virtual infrastructure.
+
+VMware did not immediately respond to The Register&#39;s inquiries.
+
+The US Cybersecurity and Infrastructure Security Agency and CrowdStrike both previously warned that Chinese attackers were targeting organizations&#39; VMware environments and using Brickstorm for persistent access.
+
+&quot;State-sponsored actors are not just infiltrating networks,&quot; CISA&#39;s Nick Andersen, executive assistant director for cybersecurity, said in December. &quot;They&#39;re embedding themselves to enable long term access, disruption, and potential sabotage.&quot; ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
             <div class="source">The Register</div>
             <div class="title">Gemini lies to user about health info, says it wanted to make him feel better</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>Gemini lies to user about health info, says it wanted to make him feel better</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/google_gemini_lie_placate_user/">Visit Original Website</a>
@@ -2109,13 +1973,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">Amazon's $200 billion capex plan: How I learned to stop worrying and love negative free cash flow</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Amazon's $200 billion capex plan: How I learned to stop worrying and love negative free cash flow</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/amazons_200_billion_capex_plan/">Visit Original Website</a>
@@ -2163,13 +2027,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">Infosys bows to its master, signs deal with Anthropic</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Infosys bows to its master, signs deal with Anthropic</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/anthropic_infosys_partnership/">Visit Original Website</a>
@@ -2201,13 +2065,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">China remains embedded in US energy networks 'for the purpose of taking it down'</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>China remains embedded in US energy networks 'for the purpose of taking it down'</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/volt_typhoon_dragos/">Visit Original Website</a>
@@ -2267,13 +2131,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">GPU who? Meta to deploy Nvidia CPUs at large scale</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>GPU who? Meta to deploy Nvidia CPUs at large scale</h2>
             <p><strong>The Register | 2026-02-17</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/meta_nvidia_cpu/">Visit Original Website</a>
@@ -2311,47 +2175,37 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">AI gets all the good stuff, including Micron's speedy 28 GB/s PCIe 6.0 SSD</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>AI gets all the good stuff, including Micron's speedy 28 GB/s PCIe 6.0 SSD</h2>
-            <p><strong>The Register | 2026-02-17</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/17/micron_pcie_6/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">It&#39;s time for a new generation of faster flash storage, but not on your laptop or desktop. Micron&#39;s first PCIe 6.0 SSDs have entered mass production and promise eye-watering transfer rates of up to 28 GB/s. However, unless you&#39;re building flash storage arrays for AI, you won&#39;t have a use for them.
-
-At 18 watts, Micron&#39;s 9650 is designed squarely with datacenter duty in mind with both air and liquid-cooled E1.S and E3.S form factors and capacities ranging from 7.68 to 30.72 TB in the works (most end-user drives are in the 1 to 4 TB range). High-speed storage has become a key bottleneck in AI datacenters where it&#39;s used to offload things like key-value caches — essentially the model&#39;s short-term memory — for better interactivity over extended sessions.
-
-The SSDs arrive ahead of the first PCIe 6.0 compatible CPUs from Intel, AMD, and Nvidia, which are expected to arrive later this year. Even if you could get your hands on Micron&#39;s fastest flash today, there&#39;s nothing to plug them into.
-
-As SSDs go, the 9650 is certainly fast, achieving sequential read rates roughly double those of last gen. This isn&#39;t too surprising as PCIe 6.0 doubles the effective bandwidth per lane over 5.0. For sequential writes, performance doesn&#39;t scale quite as neatly with Micron claiming a still-respectable 14 GB/s. Meanwhile, for random writes and reads, Micron says its latest storage offering is between 22 and 67 percent faster at 900,000 to 5.5 million IOPS, respectively.
-
-Having said that, it&#39;s worth remembering that these drives are rarely deployed on their own and are usually configured in arrays designed to maximize streaming or random access data patterns, while also maintaining redundancy.
-
-Compared to PCIe 5.0 NVMe, Micron says that the 9650&#39;s higher bandwidth doesn&#39;t come with the same power and thermal constraints. The company boasts that its new drive delivers twice the performance for the same power envelope. However, this is only true for streaming reads. Write efficiency, measured in bits per watt, is only up between 20 and 40 percent.
-
-As nice as an SSD capable of hitting 28 GB/s appears — that&#39;s a decent fraction of memory bandwidth on consumer platforms (100 GB/s) — it&#39;s going to be a while before PCIe 6.0 drives make their way into consumer desktops and notebooks.
-
-Part of the problem is there aren&#39;t really any PCIe 6.0-compatible CPUs on the market. Sure, they&#39;re coming to the datacenter later this year, but aren&#39;t expected to arrive on Intel&#39;s consumer-focused Nova Lake generation and there&#39;s no word yet on PCIe 6.0 for AMD&#39;s next Ryzen refresh. Even if AMD did ship PCIe 6.0 support on its next desktop processors, at current memory pricing, the drive could end up costing more than the CPU.
-
-Beyond storage, the benefits of PCIe 6.0 aren&#39;t there just yet for consumer platforms. A single PCIe 4.0 x1 lane is sufficient for 10 GbE networking, while many consumer GPUs are now shedding lanes. Many new GPUs are now wired up for x4 or x8 PCIe 4.0 or PCIe 5.0 connectivity since they don&#39;t really benefit from the additional bandwidth a full x16 slot would deliver. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">Meta&#8217;s new deal with Nvidia buys up millions of AI chips</div>
+            <div class="meta">2026-02-18</div>
+        </div>
+        
+        <div id="content-48" style="display:none;">
+            <h2>Meta&#8217;s new deal with Nvidia buys up millions of AI chips</h2>
+            <p><strong>The Verge | 2026-02-18</strong></p>
+            <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/880513/nvidia-meta-ai-grace-vera-chips">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">﻿Nvidia’s starting to sell AI CPUs for use by themselves for the first time.
+
+﻿Nvidia’s starting to sell AI CPUs for use by themselves for the first time.
+
+Meta has struck a multiyear deal to expand its data centers with millions of Nvidia’s Grace and Vera CPUs and Blackwell and Rubin GPUs. While Meta has long been using Nvidia’s hardware for its AI products, this deal “represents the first large-scale Nvidia Grace-only deployment,” which Nvidia says will deliver “significant performance-per-watt improvements in [Meta’s] data centers.” The deal also includes plans to add Nvidia’s next-generation Vera CPUs to Meta’s data centers in 2027.
+
+Meta is also working on its own in-house chips for running AI models, but according to the Financial Times, it has run into “technical challenges and rollout delays” with its chip strategy. Nvidia is also dealing with concerns about depreciation and chip-back loans used to finance AI buildouts, as well as the pressure of competition. CNBC notes that Nvidia’s stock dropped four percent after a November report about Meta considering using Google’s Tensor chips for AI, and late last year, AMD announced chip arrangements with both OpenAI and Oracle.
+
+Nvidia and Meta did not disclose how much the deal cost, but this year’s AI spending from Meta, Microsoft, Google, and Amazon is estimated to cost more than the entire Apollo space program.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
             <div class="source">The Verge</div>
             <div class="title">Stephen Colbert says CBS banned him from airing this James Talarico interview</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-49" style="display:none;">
             <h2>Stephen Colbert says CBS banned him from airing this James Talarico interview</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/880009/stephen-colbert-cbs-fcc-brendan-carr-talarico-interview">Visit Original Website</a>
@@ -2377,13 +2231,13 @@ Update, February 17th: Added details regarding the statement from CBS.
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">The best deals on MacBooks right now</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>The best deals on MacBooks right now</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/22399419/apple-macbook-air-pro-mac-mini-imac-deals">Visit Original Website</a>
@@ -2429,13 +2283,13 @@ Update, February 17th: Updated to reflect current pricing and availability.
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Google’s AI search results will make links more obvious</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Google’s AI search results will make links more obvious</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/880475/google-ai-overviews-ai-mode-links-update">Visit Original Website</a>
@@ -2455,13 +2309,13 @@ Last year, the European Commission also began investigating the company’s AI s
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Sony’s WH-1000XM6 are nearly $100 off for just a few more hours</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Sony’s WH-1000XM6 are nearly $100 off for just a few more hours</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/880476/sony-wh-1000-xm6-deal-sale">Visit Original Website</a>
@@ -2483,13 +2337,13 @@ Sign up for Verge Deals to get deals on products we’ve tested sent to your inb
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Piggyback’s fantastic Metroid Prime art book is nearly 20 percent off</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Piggyback’s fantastic Metroid Prime art book is nearly 20 percent off</h2>
             <p><strong>The Verge | 2026-02-17</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/821108/metroid-prime-1-3-a-visual-retrospective-art-book-deal-sale">Visit Original Website</a>
@@ -2509,32 +2363,6 @@ What really makes the book stand out are the behind-the-scenes stories, however.
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.
 
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">Google announces dates for I/O 2026</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>Google announces dates for I/O 2026</h2>
-            <p><strong>The Verge | 2026-02-17</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/880401/google-io-2026-dates-ai">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">This year’s event will feature Google’s ‘latest AI breakthroughs’ and updates across its products.
-
-This year’s event will feature Google’s ‘latest AI breakthroughs’ and updates across its products.
-
-It’s official: Google I/O 2026 will take place from May 19th to 20th. In an announcement on Tuesday, Google says it will share the “latest AI breakthroughs and updates in products across the company, from Gemini to Android and more” during the event, which will take place in-person in Mountain View, California’s Shoreline Amphitheatre, and online.
-
-Similar to previous years, Google I/O 2026 will feature keynotes from company leaders, fireside chats, product demos, and more. Google still hasn’t shared the full schedule for its sessions, but the company plans to kick off the event with a keynote on the morning of May 19th. You can also interact with a “save the date experience” on Google’s website, which contains a series of minigames built by the company’s Gemini AI model.
-
-Google announced a ton of AI-related news at last year’s I/O, including the broader expansion of AI Mode for Google Search and the launch of its AI filmmaking app Flow. This year is shaping up to be another AI-heavy event as the company continues expand on Gemini, along with the AI features across its search engine, Chrome, Workspace apps, and Pixel devices.
-
-Developers can register for Google I/O 2026 starting today.
-
-A free daily digest of the news that matters most.</div>
         </div>
         
         <div class="card" onclick="openModal('content-54')">
@@ -3609,11 +3437,53 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Peru's congress votes to oust President Jeri - Reuters</div>
+            <div class="title">Allegations in Epstein files may amount to 'crimes against humanity,' UN experts say - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
         <div id="content-66" style="display:none;">
+            <h2>Allegations in Epstein files may amount to 'crimes against humanity,' UN experts say - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxPWjlpQk9tM0NFSFZIY2xiZGt3bnV2T09UV0dzUVRzZzdoUWw2SmtVRkpjaU84T09HT3p1NnZjZlR0eVJiaHNQRU4zVkR4Wno5eG55cHZidTZ1QkFDNUNwQ3ZXdk4xN08xUHRnY0g3c1ZCaERlT3d3cUZHMHZoZ0xOTGJua3BrVVgtQXhrZzFUT2lyNzkzR2NDeGRmcnI2d2tDLTV6ZjlEazA4RExHVnF0Njh6U2hEVVJS?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Trump's immigration approval hits new low, according to Reuters/Ipsos poll - Reuters</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>Trump's immigration approval hits new low, according to Reuters/Ipsos poll - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOY3Y0RjZQMEdTSzZxSWJfbWdhRHhZekdUbHY0cEhCWDFEUGRpbnBNcVZEa0dZVVJkQXJELVFUN0RrLXk4VloxblNpZ0hFMTZqX0haaVZGVjQ0azl3c3ItMWl5aFhEcXFEdF8wbTVPUFJqZDNMMDQxazVtUERHY3VteDdVZzNYZmk2dHZIQ1JGVUNnSHhIM1Z1dVp1MUtWLU1YZDVWX0VCU3U0eFY5WllpMXhtbw?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Nvidia to sell Meta millions of chips in multiyear deal - Reuters</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>Nvidia to sell Meta millions of chips in multiyear deal - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQbjRneWhXR1JiM1NQMXd1ZU5KMC1sVnpKUC11VktoZEpFMm5UenFTWllsUFhobUloOW5IOFJ1WFg4QnhROG9kZnFLNUFKM2pEV0FjUFdCSXFZVnJqaXpZOE5Rek44aFlFRDZabGJVX0NOVU1zSGJjQ1luNzNuYXJTbFBaTXMwMkp1aGw3UXhTdTZvczZmcXc?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Peru's congress votes to oust President Jeri - Reuters</div>
+            <div class="meta">2026-02-17</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
             <h2>Peru's congress votes to oust President Jeri - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQSUJsSnJWYmtLZWtnU3JTcGlvdHdlRHdDay10a2dsSmdMOFVxQ0U4NzVuUTNzM2YxMzlDTFpMVWhTUUpFT3BPdFpjNGpWU2FhRTFVemJpcTVHRU5NWHJ3VERoOUI4OVFfRWxmVzQ5YVdOTnVVYm8xTVFXV2xpMFVWODJwRTctNl90Sm10Y083LVhGZw?oc=5">Visit Original Website</a>
@@ -3621,13 +3491,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">CBS host Stephen Colbert says network barred airing interview with Texas US Senate candidate - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>CBS host Stephen Colbert says network barred airing interview with Texas US Senate candidate - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQaURURHlWSFpLMldoN2hnYkZTc0RPSFAyM1hWQTJpUDFDMHVLZ0dFYU14MUxEaW04RV9PZVduWmpMNjNGa0xlblVrS1FuOUt4a2FKblRjVExEYlluNDVnc3l0a2VDRGpFT2cxdFdObXFHT2psdmR1SzR0dU1tUlNkRGNDMHFxekRncHdfVWlUQm5KMW44TFdiSHhHMVM2U0hIZGlPT0Y5bnNFVXlrQzlSc3NoVjFEbThFMFE3VHNHbGlWekJTOVRr?oc=5">Visit Original Website</a>
@@ -3635,58 +3505,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Spain, backed by France, dismantles crime gang and big fake-perfume factory - Reuters</div>
             <div class="meta">2026-02-17</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>Spain, backed by France, dismantles crime gang and big fake-perfume factory - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQSnF2bU1Xdk1xbkR0YUE2S0UxcDd1dEpkdTZNazEwMXBzM2RXa1BmejBwLTFsRUtnWDFIN0E3cm1wYWRka3BYcmlMU3FHV2pIZ2Z2ZTB2NEpqNFVNSnNYVTI2MnF0cGNJY0R0aXFPSWsyQWFBNkQ3eHQ3MTViZ2kxWUF2ak50QWUyRXV3YW5uMU1YZUhjSl8wT3R5dVNQMFVFSDgwTGlITHdlNksyX0kxZQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Bayer proposes $7.25 billion plan to settle Roundup cancer cases - Reuters</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>Bayer proposes $7.25 billion plan to settle Roundup cancer cases - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOZ0ZqVXZSaVhEYVl2eUliWUV1MTE2T2M5WW96aTNsaE1OcnhzZzJValFCZ2NEWGFDclVjZVVkMmUyc3ZGZzZqRkI1STJfblBUVjlGMllibTEzc3JqZW9zYmhQczBDVUQzU0NGcllqeHBqWUdzNnQwX2ozUThTQWF2UFVvbUMyLW5nVS01U3lWbVNwS2JYUTRNelo1dFQtTk1HNWlyRFRwRVRxb0VFb0t1NHByOTBiSzJWekRfS1g4M21melB1MlBtV09BWVpfOWc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Raspberry Pi soars 40% as CEO buys stock, AI chatter builds - Reuters</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>Raspberry Pi soars 40% as CEO buys stock, AI chatter builds - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNMTJxUzFkc3FHQkdRRGFZamRkZFpySlZ1SXhhOGZVYVVYTzFYMkVaMGdOS1ZkRTV4d19MVEdydk03TURiWVpsVDJBZkczVDEyOVZMaW1seFJfdlItTFFRQWk4Y3hiT3hQcEtMUDRFWXFrMW1sUXZmWU03MkZ3VHl5Q1Y3bDhIR2RnUXdyNjBHbkp0RXEtZUl5OERKUXVGNDZfcHhn?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Top Trump Homeland Security spokesperson to depart with immigration crackdown under scrutiny - Reuters</div>
-            <div class="meta">2026-02-17</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>Top Trump Homeland Security spokesperson to depart with immigration crackdown under scrutiny - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-17</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOd0hERUJXRXRXZmxET2lHMmFMUHU1MXBOczFxMzV0M0QzbnY2eTZGSko2Zlc3UGdyQ1UwN3VlSFhjbkpWa3p0WU5JTDBzbEQweWNqbzM3dGx6bVlXaTFURzg1c2xWVEthTkdPcnVkM01TUTZIdUhDVVltTGg0SXpTeEJGSGdaM2NXUC1VbDVRTmZTYXdIcUJiZk9tUWl6ZXRETGtjaW5nZFFBdkZNdDhGbFRoampxUQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
