@@ -1185,7 +1185,7 @@ I’ll continue to feature your responses in the coming weeks.</div>
             <p><strong>Slashdot | 2026-02-22</strong></p>
             <a class="original-link" href="https://ask.slashdot.org/story/26/02/22/0111249/ask-slashdot-whats-your-boot-time?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
 
 My boot time is as long as my system needs it to be.  I would guess it takes between 15 and 30 seconds, depending on memory retraining, verification, and my attention to it.  Honestly I don&#39;t even notice as I&#39;m still getting my desk ready, setting my coffee or water on the corner of my desk, and planning my work.
 
@@ -1211,15 +1211,31 @@ This. Followed by me wondering why we’re even asking this question. Are attent
 
 You default to accusing someone of having attention problems rather than the far more likely outcome: there&#39;s a problem in the boot process that is causing it to take longer than normal. E.g. if you have RAM issues it very much can be the the UEFI process itself takes 10-20 seconds to successfully get the system up.
 
+Modern PCs, generally around 2010-2015 and newer, boot times stopped being a thing. Windows and Linux boot up to a state where you can login in basically seconds.
+
+In the 90s and 2000s, it was a lot more painful because often times the slightest changes required a reboot. On Windows especially - change the IP address? Reboot. Plug in a new mouse? Reboot, etc. So you could be forced to reboot quite often and it took several minutes which was usually at the most inconvenient time. It was just an interruption in
+
 I remember noticing a huge speedup at some point, seemed like only 5-10 seconds to get the login prompt.  This was 20(?) years ago when I was still building my own towers.  Then something happened, I&#39;ll guess 10-15 years ago ... my next laptop took that long just to ask for the full disk decryption key.  My latest laptop sometimes takes 30 seconds just to ask for the decryption key.  No messages, nothing.  After that, it&#39;s still only 5-10 seconds to get the login prompt.
 
 My fedora workstation boots today in about the same time as it did 10 or even 20 years ago of in honest.  UEFI is definitely not fast to get to the grub screen.  But after that takes about 30 seconds to get to the login screen which isn&#39;t impressive IMO.  Done of that is zfs importing and getting the root filesystem up.
 
 Windows 11 boots in about half the time.  Although I just worked on a laptop that windows 10 took about 5 minutes to boot and 10 minutes to get usable.
 
+Almost all of the userspace time is spent mounting a NFS share and NetworkManager-Wait-online.unless you need the nfs mount to boot, there are boot flags to make it come up after boot and not during boot waiting on the network.
+_netdev  and  x-systemd.automount (for sysd systems) come to mind.
+
+Almost all of the userspace time is spent mounting a NFS share and NetworkManager-Wait-online.
+
+unless you need the nfs mount to boot, there are boot flags to make it come up after boot and not during boot waiting on the network.
+_netdev  and  x-systemd.automount (for sysd systems) come to mind.
+
 I don&#39;t fundamentally understand the question.
 
 POST/EUFI has fundamentally taken the same amount of time, and has gotten a lot shorter since the days of 640K being enough for everyone. The difference between one board and another is largely negligible at a couple of seconds difference. I&#39;d say it&#39;s probably less than 5 seconds on average, maybe 2-3 seconds to the beep, for anything I&#39;ve owned in the past 20 years. That&#39;s perhaps faster than it used to be, due to the advent of SSDs.
+
+Youâ(TM)re actually thinking about the question.  Everybody else has given answers about total boot time to get to the point of using the system.  This isnâ(TM)t what was being asked.  TFA is about a dual boot system and how long it takes until they can choose which OS to boot.  Itâ(TM)s asking about how long it takes to start booting the OS, not finish booting it.
+
+Iâ(TM)ve got Macs, all of them dual boot.  Thereâ(TM)s definitely a delay before the OS boots, but not normally annoying
 
 So, I believe that the majority of the pre-boot UEFI time is spent doing DDR training and PCIe training.
 
@@ -1249,7 +1265,11 @@ It&#39;s not about how fast code runs, it&#39;s about how long it takes the (inc
 
 I don&#39;t know, because all my machines have always been Linux only.  My home Acer MB desktop with Ryzen takes about 6 seconds before it hits grub, then I am looking at a GUI login screen in about 5 more seconds.  Of course, that machi
 
-Memory Characterization is a process that is done once and stored. On successful boot UEFI should save all it needs to get the system booting up within a second or two.  It sounds very much like this complaint is a symptom of something gone wrong. Possible things to look at:1. Check to see if your UEFI has a setting like &quot;full boot&quot; or &quot;fast boot&quot; or anything similar that is set incorrectly. On my Gigabyte motherboard it&#39;s called UEFI FastBoot and if this is disabled the UEFI process takes about 10 before t
+Memory Characterization is a process that is done once and stored. On successful boot UEFI should save all it needs to get the system booting up within a second or two.  It sounds very much like this complaint is a symptom of something gone wrong. Possible things to look at:1. Check to see if your UEFI has a setting like &quot;full boot&quot; or &quot;fast boot&quot; or anything similar that is set incorrectly. On my Gigabyte motherboard it&#39;s called UEFI FastBoot and if this is disabled the UEFI process takes about 10 before the system even has a chance to get to the OS.2. Check your RAM speed. Is your RAM speed the same you set in the UEFI config screen? If not you&#39;re failing RAM characterisation.3a. Possibly not doable: Do you have an 8 seg display on your motherboard showing the boot step? Seeing the same numbers flash repeatedly is an indication that the boot process is failing and that is often due to a RAM or or video card problem.3b. Try setting your RAM speed to it&#39;s base level, disable all XMP/DOCP/EXPO settings. Does the boot process speed up? If so it&#39;s a symptom that the boot process is failing.
+
+My Windows machine is at the login screen in under 10 seconds from pressing the power button.My Linux machine doesn&#39;t feel appreciably slower to the point that I&#39;ve cared about it so probably sub 20 seconds to the login screen.
+
+I haven&#39;t dual booted in a while, but it&#39;s possible that fastboot may not work on a motherboard if need to select a different boot drive. The problem isn&#39;t that modern systems are slow, it&#39;s that they are so fast that the user isn&#39;t given time to interact with them (I find it very difficult to get into the UEFI screen as the time between keyboard being active and process being handed over to the bootloader is insanely short).
 
 You don&#39;t know how good y&#39;all have it. Back in my day you&#39;d have to go outside in the snow and have to crank the power supply which if you did it wrong would take your arm clean off. Then you go in the house and feed dozens of paper punched cards into the computer which took 3 hours to boot and that&#39;s if you did it right .. God forbid you dropped the punch cards or put one in the wrong order. The whole thing would explode or blow a valve and then you&#39;d have to go into the city hardware store to get replacem
 
@@ -1259,10 +1279,14 @@ Times were probably the worst on the Mac Classics, booting off their 2.5&quot; d
 
 Most of the boot time on my machine(s) is spent turning on the MB hardware and getting it configured. Generally that takes between 5 and 10 seconds, with the Z790 machines being on the high end and the older Z470 being on the low end. Once Linux gets control most of the time is spent on USB devices. Not sure on the Windows boxen because they don&#39;t show that info.
 
+Both my Linux desktops from 10+ years ago and my Mac desktops these days rarely ever boot. Why would they?
+
+I mean yes, it&#39;s an interesting question. But its relevance is minimal, isn&#39;t it? If you run both Win and Linux, you are probably running one of them in a VM on top of the other, because just the hassle - why would you do that to yourself?
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Unix is a Registered Bell of AT&T Trademark Laboratories.
-		-- Donn Seeley</div>
+A debugged program is one for which you have not yet found the conditions
+that make it fail.		-- Jerry Ogdin</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1276,7 +1300,7 @@ Unix is a Registered Bell of AT&T Trademark Laboratories.
             <p><strong>Slashdot | 2026-02-22</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/22/004205/dna-technology-convicts-a-64-year-old-for-murdering-a-teenager-in-1982?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 Epstein involves the rich and powerful and also has ties with Israel. And we can&#39;t say anything bad about Israel because that&#39;s become twisted to mean anti semitic.
 
@@ -1318,15 +1342,13 @@ Just like the guy in front of the tank, you could become famous, scoring a major
 
 These cold cases make me wonder, are there really a lot of &quot;one and done&quot; murderers out there? Did he commit other crimes and just keep getting away? I always thought these killers in unsolved cases would continue their behavior. Would be interesting to see if this guy felt any remorse or why he stopped. Makes me also wonder if many regular people can just snap given a certain set of circumstances.
 
-These cold cases make me wonder, are there really a lot of &quot;one and done&quot; murderers out there? Did he commit other crimes and just keep getting away? I always thought these killers in unsolved cases would continue their behavior. Would be interesting to see if this guy felt any remorse or why he stopped. Makes me also wonder if many regular people can just snap given a certain set of circumstances.As you wonder about what “regular” people would do, here’s a brief reminder of context; you’re talking about a citizen living in a country that was forcibly drafting 18-year old men to fight and kill the Vietnamese enemy weeks after graduating high school, not even a decade prior to that crime happening.Ever wonder how many “regular” high school kids we forced to be killers rather early in life?   Let’s also not forget all those “baby killer” warm welcome home vibes we gave in the 70s too.  Should we have expected some non-regular behavior in society?  Well, you sure as hell can argue  there were factors.We don’t need war-driven PTSD to make citizens snap today.  We have SSRIs now.
+These cold cases make me wonder, are there really a lot of &quot;one and done&quot; murderers out there? Did he commit other crimes and just keep getting away? I always thought these killers in unsolved cases would continue their behavior. Would be interesting to see if this guy felt any remorse or why he stopped. Makes me also wonder if many regular people can just snap given a certain set of circumstances.As you wonder about what “regular” people would do, here’s a brief reminder of context; you’re talking about a citizen living in a country that was forcibly drafting 18-year old men to fight and kill the Vietnamese enemy weeks after graduating high school, not even a decade prior to that crime happening.Ever wonder how many “regular” high school kids we forced to be killers rather early in life?   Let’s also not forget all those “baby killer” warm welcom
 
 These cold cases make me wonder, are there really a lot of &quot;one and done&quot; murderers out there? Did he commit other crimes and just keep getting away? I always thought these killers in unsolved cases would continue their behavior. Would be interesting to see if this guy felt any remorse or why he stopped. Makes me also wonder if many regular people can just snap given a certain set of circumstances.
 
 As you wonder about what “regular” people would do, here’s a brief reminder of context; you’re talking about a citizen living in a country that was forcibly drafting 18-year old men to fight and kill the Vietnamese enemy weeks after graduating high school, not even a decade prior to that crime happening.
 
-Ever wonder how many “regular” high school kids we forced to be killers rather early in life?   Let’s also not forget all those “baby killer” warm welcome home vibes we gave in the 70s too.  Should we have expected some non-regular behavior in society?  Well, you sure as hell can argue  there were factors.
-
-We don’t need war-driven PTSD to make citizens snap today.  We have SSRIs now.
+Ever wonder how many “regular” high school kids we forced to be killers rather early in life?   Let’s also not forget all those “baby killer” warm welcom
 
 This guy was way too young for Vietnam or even the draft.He was likely raised by the ones that were, and certainly grew up in a society full of war vets.  Korea wasn’t far behind Vietnam, and we drafted during both.And quite honestly, a 13-year old killer isn’t anywhere near the definition of normal or regular.  Age alone makes the argument a bit moot.  No one would argue that was a troubled mind that thankfully didn’t develop a taste for more at that young age.
 
@@ -1372,6 +1394,10 @@ I merely confirmed it was a different world to grow up in back then.  As anyone 
 
 In reality, ALL influence matters when talking about a  thirteen-year old child taking a human life.  But I kinda doubt it w
 
+In reality, ALL influence matters when talking about a thirteen-year old child taking a human life. But I kinda doubt it was the potential vegan inside that drove that.
+
+The victim was 13.  The perpetrator is 64 now, so he was 20 or 21 at the time.  This was an adult who had sex with and murdered a 13-year-old child.  Why do you keep repeating that the murderer was 13 when even the summary gives you enough information to know this isn&#39;t true?
+
 > We donâ(TM)t need war-driven PTSD to make citizens snap today. We have SSRIs now.
 
 There is no evidence SSRI&#39;s increase violence if prescribed right.
@@ -1394,10 +1420,16 @@ I may be cynical, but I think most people want people jailed just for revenge or
 
 I think this person should be jailed because it will provide some healing and restoration to the family. Anything to block generational trauma that could result in other bad incidents is worth it. Plus, there&#39;s also the societal protection factor. However minor the chance of a senior committing murder is, it does happen.
 
+The FBI, with its access to familial genealogical databasesWait, what?Why?I&#39;m beginning to understand why Americans are worried about drifting into a police state.
+
+The FBI, with its access to familial genealogical databases
+
+I&#39;m beginning to understand why Americans are worried about drifting into a police state.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Unix is a Registered Bell of AT&T Trademark Laboratories.
-		-- Donn Seeley</div>
+A debugged program is one for which you have not yet found the conditions
+that make it fail.		-- Jerry Ogdin</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1411,7 +1443,9 @@ Unix is a Registered Bell of AT&T Trademark Laboratories.
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/21/2316255/pro-gamer-consumer-movement-stop-killing-games-will-launch-ngos-in-america-and-the-eu?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">I was 85% through TFS before I realized this wasn&#39;t about banning games in which players kill things in-game.
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+
+I was 85% through TFS before I realized this wasn&#39;t about banning games in which players kill things in-game.
 
 &quot;Stop killing games&quot; is meant to prevent companies from taking actions that render games unplayable ever again. Like a game has always online DRM and then they pull the verification servers even if it&#39;s a single-player game.
 
@@ -1441,8 +1475,8 @@ NGOs exist precisely for this reason, the reason being that you as an individual
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Unix is a Registered Bell of AT&T Trademark Laboratories.
-		-- Donn Seeley</div>
+A debugged program is one for which you have not yet found the conditions
+that make it fail.		-- Jerry Ogdin</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1456,7 +1490,7 @@ Unix is a Registered Bell of AT&T Trademark Laboratories.
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://developers.slashdot.org/story/26/02/21/2220205/hit-piece-writing-ai-deleted-but-is-this-a-warning-about-ai-generated-harassment?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
 
 and removing the evidence it was being instructed every step of the way.
 
@@ -1502,8 +1536,8 @@ I&#39;m sure you can see how that could go wrong in the given situation.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Unix is a Registered Bell of AT&T Trademark Laboratories.
-		-- Donn Seeley</div>
+A debugged program is one for which you have not yet found the conditions
+that make it fail.		-- Jerry Ogdin</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1517,7 +1551,7 @@ Unix is a Registered Bell of AT&T Trademark Laboratories.
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/21/2140216/americas-peace-corps-announces-tech-corps-volunteers-to-help-bring-ai-to-foreign-countries?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 My jaded self doesn&#39;t believe this is altruistic in the slightest
 
@@ -1589,8 +1623,8 @@ Peace Corp don&#39;t impose subscriptions on people in dire straits.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Unix is a Registered Bell of AT&T Trademark Laboratories.
-		-- Donn Seeley</div>
+A debugged program is one for which you have not yet found the conditions
+that make it fail.		-- Jerry Ogdin</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1604,9 +1638,7 @@ Unix is a Registered Bell of AT&T Trademark Laboratories.
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/21/1932253/codeorg-president-steps-down-citing-upending-of-cs-by-ai?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
-
-It&#39;s almost like Code.org is and always was just a shill for industry messaging.
+            <div id="article-text">It&#39;s almost like Code.org is and always was just a shill for industry messaging.
 
 I worked in K-12 education for a long time. And one of the things that genuinely shocked me is how much curriculum is in fact just sponsored by giant corporations.
 
@@ -1638,8 +1670,8 @@ Anybody who doesn&#39;t have children or grandchildren in school should have no 
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Unix is a Registered Bell of AT&T Trademark Laboratories.
-		-- Donn Seeley</div>
+A debugged program is one for which you have not yet found the conditions
+that make it fail.		-- Jerry Ogdin</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -3395,11 +3427,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US airlines warn over pause in two key travel programs amid DHS shutdown - Reuters</div>
+            <div class="title">Russia hits Ukraine energy infrastructure with major missile, drone strikes, Kyiv says - Reuters</div>
             <div class="meta">2026-02-22</div>
         </div>
         
         <div id="content-66" style="display:none;">
+            <h2>Russia hits Ukraine energy infrastructure with major missile, drone strikes, Kyiv says - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-22</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOSWNiMmdKX3hrVklxLTUwek5DaWV2SnBmczlZWjF5bDZLRVFxdXdyckI3YUF2aWl4RTlyd3lNaWhOaVd0cDlCQ29FVHdWemV0c2VVNmE0MGlYekFZQV9GUnhSaFV0WURxckg1Y2NseURjb3RRcTJLZjR4RUJ3b2o5ZE45XzFrV0hrbEM0OEJPak9weTdqZ1ZTWkpmYnRBU3FzQ1YwbGctT3JKUlVBZ0s0SnloTXhrdDk0SnpwYm1qemVRNV9LUjhHZGNpYw?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">US airlines warn over pause in two key travel programs amid DHS shutdown - Reuters</div>
+            <div class="meta">2026-02-22</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
             <h2>US airlines warn over pause in two key travel programs amid DHS shutdown - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxOQ1dfS2xBYUt6d1ItMTZzQXppSkpSVVN2a3J4cHEyUFkwb1E2YmxIdks5ZnFQRDVwZ29sOE8tNzI3dG1nOFBRWlM2aE9haWZ6ZF9VaDlPSWJ4NXBHOHJyZDlMdGlxV1VVaVI1a0R0VWRYd3JYMkEwcjdMdW1LOHBCcnp6eS0tOUNjcjlzV3JzUDVSU0JPS2pQeU1OWWN5MHVqWGE2TWxSTGpDUkJSRGVvSzNrSnd1WXBpenc?oc=5">Visit Original Website</a>
@@ -3407,30 +3453,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump says he is sending a hospital ship to Greenland - Reuters</div>
-            <div class="meta">2026-02-22</div>
-        </div>
-        
-        <div id="content-67" style="display:none;">
-            <h2>Trump says he is sending a hospital ship to Greenland - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-22</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQZDlPdU53RGRPanpCQVJPeEtGVFpBSEJZNUo5Wkd3TkpDLWFDekxTendycUZYZURaUHcxTzh6cEI0Y0NYeFFyZHAxRkhvLXpCWFIwS0xvM3dpb3NqemVRX2VyZU9zam1OSXpvYVN6YUY2VDNCVTdhcm9ySXdPc3JwN0NWZVgyNlc4NGVrZUhQdk9vS1lZ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Russian missile strikes Oreo factory in Ukraine, foreign minister says - Reuters</div>
+            <div class="title">South Korea protests Japanese event over disputed islands - Reuters</div>
             <div class="meta">2026-02-22</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>Russian missile strikes Oreo factory in Ukraine, foreign minister says - Reuters</h2>
+            <h2>South Korea protests Japanese event over disputed islands - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-22</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOZXJFRklnR21hSlJiZTgyal80SHZHUGxkdWt5b2JZWlpWTkdEd0J2TFp6VEJsN3FSQnlQRllwNGdza0p3VmVfVlZLelE2WVM4VGdDVzN5Wnd5WkZvUlRHZjdrNjZCR0hxM2VHTXNMMEduZEpEZXpINFdyMkx4U0o3cjZDU05YSklHSDNjMGJObGpKbElkSXpHYTA4V2hKNVVZV2pnYVJGZndXNlBB?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNc081SFlCd2RxbGZmS3NlVEVqNENuRXVtUXdnaHJrWHUzTVc3UGotRzJwc21MY0M4UUx5YVB3MWNidjJGLTBVWGp4aWEtRUR4aG83SngybERZSFJLbGdnVERuUGtXMGh3VTNGSlZiMnYyM1ZKM1FxMllPaVhzdGdfd2FNNEIyUHMtcy16aTdDME9rcVV0YUllU1JsOWVNb3k3MlNSLVJURFNCU3E2UFRQcld3?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3451,28 +3483,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Australian warship transits Taiwan Strait, tracked by China's navy - Reuters</div>
+            <div class="title">Russian missile strikes Oreo factory in Ukraine, foreign minister says - Reuters</div>
             <div class="meta">2026-02-22</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>Australian warship transits Taiwan Strait, tracked by China's navy - Reuters</h2>
+            <h2>Russian missile strikes Oreo factory in Ukraine, foreign minister says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-22</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNbmhacHc1UDVKM1NXQ2ZiRGVqRlhmbmp0VzdJaG9xSlpvOGItYU9yVmV5YmV3bGNvVXEyVU9Jdm5ycnU5YmczM3hjQjF4aHkxb2JQRjRiMFlMWXNSVXpGN3FNWTgzRzFuU0U3WGtmS0l3ZUhpdkRvNWlsQWVRcDNNS1phOGFkMy1ObWhDRTJUc1BBek84SHNnMVdmYzR5TF9XYUlpY1MxWWExZXhOV2p2SFBn?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOZXJFRklnR21hSlJiZTgyal80SHZHUGxkdWt5b2JZWlpWTkdEd0J2TFp6VEJsN3FSQnlQRllwNGdza0p3VmVfVlZLelE2WVM4VGdDVzN5Wnd5WkZvUlRHZjdrNjZCR0hxM2VHTXNMMEduZEpEZXpINFdyMkx4U0o3cjZDU05YSklHSDNjMGJObGpKbElkSXpHYTA4V2hKNVVZV2pnYVJGZndXNlBB?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">JPMorgan says it closed Trump's bank accounts a month after Jan. 6 attack - Reuters</div>
-            <div class="meta">2026-02-21</div>
+            <div class="title">Australian warship transits Taiwan Strait, tracked by China's navy - Reuters</div>
+            <div class="meta">2026-02-22</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>JPMorgan says it closed Trump's bank accounts a month after Jan. 6 attack - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-21</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNYUNXOFdFYUF0NUhtd1JXVi1tTThmaXNoRS00SFpRMFlzVWN3aTBVbjhlWTBlTkVwaXVTTDRjbmNnMjdRUUtScDczTUV4VEJUM1A3cUJGM2MyWXcxOGF3YUY3TkdBWUZjcmt6YW1mdWJDRWtqNGJzZENTcktvSzR0MDFkOHplbm1SdXNvMEJkZGpPS0ttZHFzN0VnNms2WEdiNkNKa2pTTko1cE9nNzFQNms4UTVEX0dYQmJVTXdpUQ?oc=5">Visit Original Website</a>
+            <h2>Australian warship transits Taiwan Strait, tracked by China's navy - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-22</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNbmhacHc1UDVKM1NXQ2ZiRGVqRlhmbmp0VzdJaG9xSlpvOGItYU9yVmV5YmV3bGNvVXEyVU9Jdm5ycnU5YmczM3hjQjF4aHkxb2JQRjRiMFlMWXNSVXpGN3FNWTgzRzFuU0U3WGtmS0l3ZUhpdkRvNWlsQWVRcDNNS1phOGFkMy1ObWhDRTJUc1BBek84SHNnMVdmYzR5TF9XYUlpY1MxWWExZXhOV2p2SFBn?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
