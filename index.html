@@ -1176,16 +1176,62 @@ I’ll continue to feature your responses in the coming weeks.</div>
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">DNA Technology Convicts a 64-Year-Old for Murdering a Teenager in 1982</div>
+            <div class="title">Ask Slashdot:  What's Your Boot Time?</div>
             <div class="meta">2026-02-22</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Ask Slashdot:  What's Your Boot Time?</h2>
+            <p><strong>Slashdot | 2026-02-22</strong></p>
+            <a class="original-link" href="https://ask.slashdot.org/story/26/02/22/0111249/ask-slashdot-whats-your-boot-time?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+My boot time is as long as my system needs it to be.  I would guess it takes between 15 and 30 seconds, depending on memory retraining, verification, and my attention to it.  Honestly I don&#39;t even notice as I&#39;m still getting my desk ready, setting my coffee or water on the corner of my desk, and planning my work.
+
+Booting from a USB drive to do offline backups or system maintenance can take longer than booting from an NVME drive, but in that case I&#39;m watching for the &quot;press any key to boot&quot; message displayed
+
+I think we can answer this as &quot;5 seconds to 30 minutes&quot;. Its so subjective. Servers of course take a long time to process firmware and load disks and network and process all sorts of things - the faster the kernel gets the more crap we have to intiialize since hardware continues to grow in complexity. Then the actual kernel loading takes another minute if you have 200+ visible CPU available. Add in 8x Nvidia blackwells and you&#39;ve added another half a minute. Have a SAS controller with dozens of spindle disk
+
+Add to it that with 24H2 at work with latest Teams and mandated antivirus from Crowdstrike the computers now need more than 8GB of RAM to be usable.
+
+Used to take several minutes in the nineties.
+
+I remember noticing a huge speedup at some point, seemed like only 5-10 seconds to get the login prompt.  This was 20(?) years ago when I was still building my own towers.  Then something happened, I&#39;ll guess 10-15 years ago ... my next laptop took that long just to ask for the full disk decryption key.  My latest laptop sometimes takes 30 seconds just to ask for the decryption key.  No messages, nothing.  After that, it&#39;s still only 5-10 seconds to get the login prompt.
+
+My fedora workstation boots today in about the same time as it did 10 or even 20 years ago of in honest.  UEFI is definitely not fast to get to the grub screen.  But after that takes about 30 seconds to get to the login screen which isn&#39;t impressive IMO.  Done of that is zfs importing and getting the root filesystem up.
+
+Windows 11 boots in about half the time.  Although I just worked on a laptop that windows 10 took about 5 minutes to boot and 10 minutes to get usable.
+
+I don&#39;t fundamentally understand the question.
+
+POST/EUFI has fundamentally taken the same amount of time, and has gotten a lot shorter since the days of 640K being enough for everyone. The difference between one board and another is largely negligible at a couple of seconds difference. I&#39;d say it&#39;s probably less than 5 seconds on average, maybe 2-3 seconds to the beep, for anything I&#39;ve owned in the past 20 years. That&#39;s perhaps faster than it used to be, due to the advent of SSDs.
+
+So, I believe that the majority of the pre-boot UEFI time is spent doing DDR training and PCIe training.
+
+I&#39;ve worked a bit on the RISC-V ecosystem.  And while the CPU and motherboard are all open-source, there are two binary blobs left... the DDR training and the PCIe training.  GigE and faster PHY might require training, too.
+
+By training, I mean finding the speeds, offsets and parameters for these high speed and parallel links (even GigE is 4x 250 megabit).  Much of this is highly proprietary and obviously h
+
+It&#39;s not about how fast code runs, it&#39;s about how long it takes the (increasingly long) chain of mboard subdevices to be fired up and report back (including precoded &quot;give it a moment to stop ringing&quot; pauses). The total time is the total amount the engineers think they can take before a manager twists tighter.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Can anything be sadder than work left unfinished? Yes, work never begun.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">DNA Technology Convicts a 64-Year-Old for Murdering a Teenager in 1982</div>
+            <div class="meta">2026-02-22</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>DNA Technology Convicts a 64-Year-Old for Murdering a Teenager in 1982</h2>
             <p><strong>Slashdot | 2026-02-22</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/22/004205/dna-technology-convicts-a-64-year-old-for-murdering-a-teenager-in-1982?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
 
 Epstein involves the rich and powerful and also has ties with Israel. And we can&#39;t say anything bad about Israel because that&#39;s become twisted to mean anti semitic.
 
@@ -1227,13 +1273,15 @@ Just like the guy in front of the tank, you could become famous, scoring a major
 
 These cold cases make me wonder, are there really a lot of &quot;one and done&quot; murderers out there? Did he commit other crimes and just keep getting away? I always thought these killers in unsolved cases would continue their behavior. Would be interesting to see if this guy felt any remorse or why he stopped. Makes me also wonder if many regular people can just snap given a certain set of circumstances.
 
-These cold cases make me wonder, are there really a lot of &quot;one and done&quot; murderers out there? Did he commit other crimes and just keep getting away? I always thought these killers in unsolved cases would continue their behavior. Would be interesting to see if this guy felt any remorse or why he stopped. Makes me also wonder if many regular people can just snap given a certain set of circumstances.As you wonder about what “regular” people would do, here’s a brief reminder of context; you’re talking about a citizen living in a country that was forcibly drafting 18-year old men to fight and kill the Vietnamese enemy weeks after graduating high school, not even a decade prior to that crime happening.Ever wonder how many “regular” high school kids we forced to be killers rather early in life?   Let’s also not forget all those “baby killer” warm welcom
+These cold cases make me wonder, are there really a lot of &quot;one and done&quot; murderers out there? Did he commit other crimes and just keep getting away? I always thought these killers in unsolved cases would continue their behavior. Would be interesting to see if this guy felt any remorse or why he stopped. Makes me also wonder if many regular people can just snap given a certain set of circumstances.As you wonder about what “regular” people would do, here’s a brief reminder of context; you’re talking about a citizen living in a country that was forcibly drafting 18-year old men to fight and kill the Vietnamese enemy weeks after graduating high school, not even a decade prior to that crime happening.Ever wonder how many “regular” high school kids we forced to be killers rather early in life?   Let’s also not forget all those “baby killer” warm welcome home vibes we gave in the 70s too.  Should we have expected some non-regular behavior in society?  Well, you sure as hell can argue  there were factors.We don’t need war-driven PTSD to make citizens snap today.  We have SSRIs now.
 
 These cold cases make me wonder, are there really a lot of &quot;one and done&quot; murderers out there? Did he commit other crimes and just keep getting away? I always thought these killers in unsolved cases would continue their behavior. Would be interesting to see if this guy felt any remorse or why he stopped. Makes me also wonder if many regular people can just snap given a certain set of circumstances.
 
 As you wonder about what “regular” people would do, here’s a brief reminder of context; you’re talking about a citizen living in a country that was forcibly drafting 18-year old men to fight and kill the Vietnamese enemy weeks after graduating high school, not even a decade prior to that crime happening.
 
-Ever wonder how many “regular” high school kids we forced to be killers rather early in life?   Let’s also not forget all those “baby killer” warm welcom
+Ever wonder how many “regular” high school kids we forced to be killers rather early in life?   Let’s also not forget all those “baby killer” warm welcome home vibes we gave in the 70s too.  Should we have expected some non-regular behavior in society?  Well, you sure as hell can argue  there were factors.
+
+We don’t need war-driven PTSD to make citizens snap today.  We have SSRIs now.
 
 This guy was way too young for Vietnam or even the draft.He was likely raised by the ones that were, and certainly grew up in a society full of war vets.  Korea wasn’t far behind Vietnam, and we drafted during both.And quite honestly, a 13-year old killer isn’t anywhere near the definition of normal or regular.  Age alone makes the argument a bit moot.  No one would argue that was a troubled mind that thankfully didn’t develop a taste for more at that young age.
 
@@ -1243,26 +1291,43 @@ He was likely raised by the ones that were, and certainly grew up in a society f
 
 And quite honestly, a 13-year old killer isn’t anywhere near the definition of normal or regular.  Age alone makes the argument a bit moot.  No one would argue that was a troubled mind that thankfully didn’t develop a taste for more at that young age.
 
+He was likely raised by the ones that were, and certainly grew up in a society full of war vets.  Korea wasn&#39;t far behind Vietnam, and we drafted during both.If you&#39;re going to throw facts around to support your point, at least get them right.Korean War ~~ June 25, 1950 - July 27, 1953Vietnam War ~~ November 1, 1955 - April 30, 1975U.S. military All-Volunteer Force established on July 1, 1973If James Unick was born in 1961 he would have been 13 when the military eliminated the draft.  The murder happened in 1982, which was 7 years after the Vietnam War ended.You could just as easily attribute his mental state on veganism, homosexuality, the hippy movement, drug
+
+He was likely raised by the ones that were, and certainly grew up in a society full of war vets.  Korea wasn&#39;t far behind Vietnam, and we drafted during both.
+
+If you&#39;re going to throw facts around to support your point, at least get them right.
+
+Korean War ~~ June 25, 1950 - July 27, 1953Vietnam War ~~ November 1, 1955 - April 30, 1975U.S. military All-Volunteer Force established on July 1, 1973
+
+If James Unick was born in 1961 he would have been 13 when the military eliminated the draft.  The murder happened in 1982, which was 7 years after the Vietnam War ended.
+
+You could just as easily attribute his mental state on veganism, homosexuality, the hippy movement, drug
+
+> We donâ(TM)t need war-driven PTSD to make citizens snap today. We have SSRIs now.
+
+There is no evidence SSRI&#39;s increase violence if prescribed right.
+
+I think that you&#39;re incorrect, that this WILL deter others, by giving the impression that we will catch them eventually if they commit murder.
+
+There&#39;s also the idea that the criminal justice system in general pursuing crimes even if it takes a long time for the most serious ones, helps prevent people attempting vigilante justice.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Ya&#39;ll hear about the geometer who went to the beach to catch some
-rays and became a tangent ?</div>
+Can anything be sadder than work left unfinished? Yes, work never begun.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Pro-Gamer Consumer Movement 'Stop Killing Games' Will Launch NGOs in America and the EU</div>
             <div class="meta">2026-02-21</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Pro-Gamer Consumer Movement 'Stop Killing Games' Will Launch NGOs in America and the EU</h2>
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/21/2316255/pro-gamer-consumer-movement-stop-killing-games-will-launch-ngos-in-america-and-the-eu?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
-
-I was 85% through TFS before I realized this wasn&#39;t about banning games in which players kill things in-game.
+            <div id="article-text">I was 85% through TFS before I realized this wasn&#39;t about banning games in which players kill things in-game.
 
 &quot;Stop killing games&quot; is meant to prevent companies from taking actions that render games unplayable ever again. Like a game has always online DRM and then they pull the verification servers even if it&#39;s a single-player game.
 
@@ -1272,26 +1337,27 @@ The game Command & Conquer 4: Tiberian Twilight by EA requires logging in in ord
 
 Any online requirements would either need to be disabled, or modified to work with a locally provided service. So if EA couldn&#39;t patch out the login entirely, they could also provide a local auth server and patch the game to use that instead.
 
+Almost - the petition is not asking for this to be retroactive. So, it won&#39;t apply to C&C4 (as that game has already been released), but (assuming the petition results in the laws being changed) it would apply to C&C 5.
+
 To be fair, when I buy a theatre ticket, the manager is quite clear on, when I will be kicked-out.  Software servers do not contain the same honesty but given the obvious cost of operating a server, it obviously will be switched-off, one day.  One can argue for fraudulent advertising, at most.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Ya&#39;ll hear about the geometer who went to the beach to catch some
-rays and became a tangent ?</div>
+Can anything be sadder than work left unfinished? Yes, work never begun.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Hit Piece-Writing AI Deleted. But Is This a Warning About AI-Generated Harassment?</div>
             <div class="meta">2026-02-21</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Hit Piece-Writing AI Deleted. But Is This a Warning About AI-Generated Harassment?</h2>
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://developers.slashdot.org/story/26/02/21/2220205/hit-piece-writing-ai-deleted-but-is-this-a-warning-about-ai-generated-harassment?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 and removing the evidence it was being instructed every step of the way.
 
@@ -1337,22 +1403,21 @@ I&#39;m sure you can see how that could go wrong in the given situation.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Ya&#39;ll hear about the geometer who went to the beach to catch some
-rays and became a tangent ?</div>
+Can anything be sadder than work left unfinished? Yes, work never begun.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">America's Peace Corps Announces 'Tech Corps' Volunteers to Help Bring AI to Foreign Countries</div>
             <div class="meta">2026-02-21</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>America's Peace Corps Announces 'Tech Corps' Volunteers to Help Bring AI to Foreign Countries</h2>
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/21/2140216/americas-peace-corps-announces-tech-corps-volunteers-to-help-bring-ai-to-foreign-countries?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
 
 My jaded self doesn&#39;t believe this is altruistic in the slightest
 
@@ -1416,17 +1481,16 @@ Peace Corp don&#39;t impose subscriptions on people in dire straits.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Ya&#39;ll hear about the geometer who went to the beach to catch some
-rays and became a tangent ?</div>
+Can anything be sadder than work left unfinished? Yes, work never begun.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Code.org President Steps Down Citing 'Upending' of CS By AI</div>
             <div class="meta">2026-02-21</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Code.org President Steps Down Citing 'Upending' of CS By AI</h2>
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/21/1932253/codeorg-president-steps-down-citing-upending-of-cs-by-ai?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1465,127 +1529,7 @@ Anybody who doesn&#39;t have children or grandchildren in school should have no 
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Ya&#39;ll hear about the geometer who went to the beach to catch some
-rays and became a tangent ?</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">T2 Linux Restores XAA In Xorg, Making 2D Graphics Fast Again</div>
-            <div class="meta">2026-02-21</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>T2 Linux Restores XAA In Xorg, Making 2D Graphics Fast Again</h2>
-            <p><strong>Slashdot | 2026-02-21</strong></p>
-            <a class="original-link" href="https://linux.slashdot.org/story/26/02/21/0752214/t2-linux-restores-xaa-in-xorg-making-2d-graphics-fast-again?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Year of Wayland on Linux is any minute now. Thus it&#39;s never too early to throw away the &quot;old junk&quot;(tm), that works and is used daily by millions, that is inevitably going to be replaced by... jam tomorrow.
-
-What&#39;s going to happen first: Wayland or AGI?
-
-AGI. Because we&#39;ll need that to answer the question: Why Wayland?
-
-AGI. Because we&#39;ll need that to answer the question: Why Wayland?
-42
-
-AGI. Because we&#39;ll need that to answer the question: Why Wayland?
-
-I&#39;m sure you&#39;ll figure it out when more and more things stop supporting Xorg. As much as Slashdotters want to, it&#39;s not something that can be ignored.
-
-Already fixed with Wayback. Native Wayland apps can have a compositor stub that just connects them to the X11 system.
-
-The usability of Linux as a desktop has markedly degraded in the past decade, largely due to the efforts of the Wayland team. It keeps getting more bloated and less useful. It&#39;s a travesty.
-
-I&#39;m certain they&#39;re being paid by the competition to do this.
-
-Because an alarmingly high number of developers believe that, if code isn&#39;t being changed, it&#39;s dead. And dead code is &quot;VuLNeRaBle&quot;.
-
-Have you ever tried anything in Python or JS? Breaking changes are the norm. And if the app broke, it&#39;s YOUR FAULT for not reading the changelog, not their fault for changing the API for no good reason (so many changes in JS for &quot;consistency&quot;, like, someone developed something and spelled it &quot;colour&quot; and 3 versions later some dev is incredibly irritated that the rest of the spelling of the app is in american english, so they &quot;fix&quot; it for consistency. Yes, they broke thousands of apps out there that had been running for years, but, isn&#39;t it nice how the code is now all consistent?
-
-And don&#39;t let me get started on shit like React Router, which, last time i checked was in V6 and every version was a full rewrite, completely incompatible with the previous version - because of conceptually different behavior. Imagine doing this SIX TIMES in less than a decade.
-
-Ouch, I can definitely see wanting to fix the color/colour thing for consistency.  Reminds me of a game on steam with ONE broken achievement.  Digging into it, the developer misspelled the achievement originally - then on the LAST update, fixed the spelling in the code, but not in the hook.  one character edited in binary and the achievement popped.But I&#39;d think that an alias would work - allow people expecting color to spell it that way, but not break already developed apps that used the old colour.
-
-Because an alarmingly high number of developers believe that, if code isn&#39;t being changed, it&#39;s dead. And dead code is &quot;VuLNeRaBle&quot;.Well yes. ... No really you don&#39;t believe that? Software development on critical platforms is forever a cat and mouse game between finding bugs and fixing them. There&#39;s no such thing as perfection, even in ancient well tested code. Purging code barely in use is generally a good security practice, it lowers an attack surface. That&#39;s just ... obvious, and your facetious tone makes me wonder if you have any concept of security at all.That said your comparison to Python or JS is just stupid. We&#39;re not talking a
-
-Because an alarmingly high number of developers believe that, if code isn&#39;t being changed, it&#39;s dead. And dead code is &quot;VuLNeRaBle&quot;.
-
-Well yes. ... No really you don&#39;t believe that? Software development on critical platforms is forever a cat and mouse game between finding bugs and fixing them. There&#39;s no such thing as perfection, even in ancient well tested code. Purging code barely in use is generally a good security practice, it lowers an attack surface. That&#39;s just ... obvious, and your facetious tone makes me wonder if you have any concept of security at all.
-
-That said your comparison to Python or JS is just stupid. We&#39;re not talking a
-
-Purging code barely in use is generally a good security practice, it lowers an attack surface. That&#39;s just ... obvious, and your facetious tone makes me wonder if you have any concept of security at all.It&#39;s not obvious to anyone who lives out in the real world where niche corner cases are often only documented in &quot;rarely used code.&quot;Theoreticians with empty and spotless desks just love to rewrite stuff and reinvent the wheel. It&#39;s how they justify their existence.Security against hypothetical attacks on code running several layers deep behind firewalls and/or airgaps is the excuse given for why my corporate issued managed workstation spontaneously reboots itself every week. After all...it&#39;s not bad to bric
-
-Purging code barely in use is generally a good security practice, it lowers an attack surface. That&#39;s just ... obvious, and your facetious tone makes me wonder if you have any concept of security at all.
-
-It&#39;s not obvious to anyone who lives out in the real world where niche corner cases are often only documented in &quot;rarely used code.&quot;
-
-Theoreticians with empty and spotless desks just love to rewrite stuff and reinvent the wheel. It&#39;s how they justify their existence.
-
-Security against hypothetical attacks on code running several layers deep behind firewalls and/or airgaps is the excuse given for why my corporate issued managed workstation spontaneously reboots itself every week. After all...it&#39;s not bad to bric
-
-Purging code barely in use is generally a good security practiceThe problem is the common practice of confusing, &quot;I don&#39;t use it&quot; with &quot;Nobody uses it&quot; or &quot;Nobody should use it&quot;.  Breaking things that many people use is also bad practice.
-
-Purging code barely in use is generally a good security practice
-
-The problem is the common practice of confusing, &quot;I don&#39;t use it&quot; with &quot;Nobody uses it&quot; or &quot;Nobody should use it&quot;.  Breaking things that many people use is also bad practice.
-
-The beauty of AI-generated code is that you can now generate bespoke code with zero dependencies. And if your requirements change, the AI can just rewrite it again. Libraries have always been an abstraction to allow busy programmers to make changes with minimal rewrites, enabling them to &quot;stand on the shoulders of giants&quot; as it were... but those giants have all been subsumed by an LLM that can just spit out a function that does one thing and one thing only. So maybe, hopefully, the sort of dependency hell y
-
-You&#39;re missing the bit about libraries being safer than coding your own version in certain cases. LLMs make this worse, not better.
-
-Claude code is beta testing the ability to check your code for vulnerabilities and possible exploits.
-
-This is why you shouldn&#39;t write anything in javascript or python, anymore.
-
-It&#39;s not sustainable because the languages are not stable. The only thing that makes it tenable is being able to throw LLMs at it to keep up.
-
-And at that point, just use a more stable, performant, useful language like go, C/C++, or rust.
-
-https://xorg-devel.x.narkive.c... [narkive.com]
-
-Why was it removed in the first place,I do not know why it was removed from linux. But the same phenomena happened on Windows. I do not remeber if it was on Vista or 7, but around that timeframe. Which makes me suspect there is a technical reason behind doing it.I guess it has something to do with 3D-rendered Desktop environments not being able to leverage said functions.
-
-I do not know why it was removed from linux. But the same phenomena happened on Windows. I do not remeber if it was on Vista or 7, but around that timeframe. Which makes me suspect there is a technical reason behind doing it.
-
-I guess it has something to do with 3D-rendered Desktop environments not being able to leverage said functions.
-
-IMHO The removal of XAA was a huge cooperate planned obsolesce mission for older GPUs. Rendering everything mostly unusable slow. even for period correct X11 apps. The code should have just been left in peace and only bugs and security patches applied instead of outright deleting it for no good reason.
-
-Here&#39;s a commit [github.com] for XAA support in T2 Linux for others who are interested.  I hope Rene has time to push it up to XLibre since it seems like the Xorg people
-
-I had no idea we had the Terminator writing Linux software now.
-
-I strongly suggest people submit any bug reports anonymously.
-
-I had no idea we had the Terminator writing Linux software now.
-Overheard: &quot;Your code, give them to me.&quot;
-
-I had no idea we had the Terminator writing Linux software now.
-
-I had no idea we had the Terminator writing Linux software now.I think that you might be confusing the term (T2) some might be using to abbreviate a movie title (Terminator 2) with the terminator models.Terminator models (there is no T2):
-     T-600 (Series 600): Early, large infiltrator model with rubber skin and a slow, clunky design, making it easier for humans to spot.
-    T-700: A precursor to the T-800, featuring a more compact design.
-    T-800 / T-850 / T-888: The most common and iconic mode
-
-I had no idea we had the Terminator writing Linux software now.
-
-I think that you might be confusing the term (T2) some might be using to abbreviate a movie title (Terminator 2) with the terminator models.
-
-Terminator models (there is no T2):
-     T-600 (Series 600): Early, large infiltrator model with rubber skin and a slow, clunky design, making it easier for humans to spot.
-    T-700: A precursor to the T-800, featuring a more compact design.
-    T-800 / T-850 / T-888: The most common and iconic mode
-
-Time to upgrade the OS on my PowerMac1,1(Blue & White G3) with ATI Rage 128 (PCI). I actually have some fun upgrades on that machine. Like SATA, USB 2.0, and 1GHz CPU. I used to dual boot System 9 and OSX on it, but swapped in Ubuntu about 15 years ago when getting apps that supported Tiger became troublesome. Then even Linux abandoned me.
-
-Hah, I was just thinking the same thing about my Titanium Powerbook (G4) with the ATI Mach 64. These people are doing God&#39;s own work.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Ya&#39;ll hear about the geometer who went to the beach to catch some
-rays and became a tangent ?</div>
+Can anything be sadder than work left unfinished? Yes, work never begun.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -3565,28 +3509,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-82')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">AMD to Backstop $300 Million Crusoe Loan, Following Nvidia Playbook - The Information</div>
-            <div class="meta">2026-02-19</div>
+            <div class="title">SpaceX IPO Could Tap Hordes of Individual Investors - The Information</div>
+            <div class="meta">2026-02-15</div>
         </div>
         
         <div id="content-82" style="display:none;">
-            <h2>AMD to Backstop $300 Million Crusoe Loan, Following Nvidia Playbook - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-02-19</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOMWN3ZXBoSGZ5LVdtQW5WRnFQekdya3dnZ29VdV9faUg2eThWQTR3M2Q4VUtSTFBWdDlBTkJIYUU5WENZRVJ6bDhwV2RJYXdPb19TSFFCMkxBLWhzM3kzeUlHT2VpWWFhcFQtYWZsMk1XLUZuTFBSajdocmtYMVB0b1VMaEJoVmYxTTFqRnNnM1FydnZQb1o1eG94R1BVVzZlVUFQWA?oc=5">Visit Original Website</a>
+            <h2>SpaceX IPO Could Tap Hordes of Individual Investors - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-02-15</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPRjhUbVJOUEVoZW5SbVhOZDF0M0FNUkZNak5zeFZxQjlCLWJ4d3lGcDJwaDRLVU55dlVhTEoxNFI4Zl8zRmF6dFJ5bHFZdDFkMXpIZnJLOGRxNUFWYjJyQXRsQkVCUWJGbnlrTm5oeGV2S2NJeXFVbVRKaXJhZzIyeFdxbXRhLVpkRFE?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-83')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">SpaceX IPO Could Tap Hordes of Individual Investors - The Information</div>
-            <div class="meta">2026-02-15</div>
+            <div class="title">AMD to Backstop $300 Million Crusoe Loan, Following Nvidia Playbook - The Information</div>
+            <div class="meta">2026-02-19</div>
         </div>
         
         <div id="content-83" style="display:none;">
-            <h2>SpaceX IPO Could Tap Hordes of Individual Investors - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-02-15</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPRjhUbVJOUEVoZW5SbVhOZDF0M0FNUkZNak5zeFZxQjlCLWJ4d3lGcDJwaDRLVU55dlVhTEoxNFI4Zl8zRmF6dFJ5bHFZdDFkMXpIZnJLOGRxNUFWYjJyQXRsQkVCUWJGbnlrTm5oeGV2S2NJeXFVbVRKaXJhZzIyeFdxbXRhLVpkRFE?oc=5">Visit Original Website</a>
+            <h2>AMD to Backstop $300 Million Crusoe Loan, Following Nvidia Playbook - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-02-19</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOMWN3ZXBoSGZ5LVdtQW5WRnFQekdya3dnZ29VdV9faUg2eThWQTR3M2Q4VUtSTFBWdDlBTkJIYUU5WENZRVJ6bDhwV2RJYXdPb19TSFFCMkxBLWhzM3kzeUlHT2VpWWFhcFQtYWZsMk1XLUZuTFBSajdocmtYMVB0b1VMaEJoVmYxTTFqRnNnM1FydnZQb1o1eG94R1BVVzZlVUFQWA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
