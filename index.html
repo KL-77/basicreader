@@ -1185,7 +1185,7 @@ I’ll continue to feature your responses in the coming weeks.</div>
             <p><strong>Slashdot | 2026-02-22</strong></p>
             <a class="original-link" href="https://ask.slashdot.org/story/26/02/22/0111249/ask-slashdot-whats-your-boot-time?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
 
 My boot time is as long as my system needs it to be.  I would guess it takes between 15 and 30 seconds, depending on memory retraining, verification, and my attention to it.  Honestly I don&#39;t even notice as I&#39;m still getting my desk ready, setting my coffee or water on the corner of my desk, and planning my work.
 
@@ -1196,6 +1196,20 @@ I think we can answer this as &quot;5 seconds to 30 minutes&quot;. Its so subjec
 Add to it that with 24H2 at work with latest Teams and mandated antivirus from Crowdstrike the computers now need more than 8GB of RAM to be usable.
 
 Used to take several minutes in the nineties.
+
+Used to take several minutes in the nineties.This.  Followed by me wondering why we’re even asking this question.  Are attention spans THAT spoiled?2012 Mac Mini upgrades (SSD and memory) done over a decade ago took boot times down to ~13 seconds.  Big fat hairy deal if you’re waiting another 5 seconds or shaved 5 seconds off.  No one cares when you’re wasting the first hour of work on coffee and email.
+
+Used to take several minutes in the nineties.
+
+This.  Followed by me wondering why we’re even asking this question.  Are attention spans THAT spoiled?
+
+2012 Mac Mini upgrades (SSD and memory) done over a decade ago took boot times down to ~13 seconds.  Big fat hairy deal if you’re waiting another 5 seconds or shaved 5 seconds off.  No one cares when you’re wasting the first hour of work on coffee and email.
+
+This. Followed by me wondering why we’re even asking this question. Are attention spans THAT spoiled?You default to accusing someone of having attention problems rather than the far more likely outcome: there&#39;s a problem in the boot process that is causing it to take longer than normal. E.g. if you have RAM issues it very much can be the the UEFI process itself takes 10-20 seconds to successfully get the system up.
+
+This. Followed by me wondering why we’re even asking this question. Are attention spans THAT spoiled?
+
+You default to accusing someone of having attention problems rather than the far more likely outcome: there&#39;s a problem in the boot process that is causing it to take longer than normal. E.g. if you have RAM issues it very much can be the the UEFI process itself takes 10-20 seconds to successfully get the system up.
 
 I remember noticing a huge speedup at some point, seemed like only 5-10 seconds to get the login prompt.  This was 20(?) years ago when I was still building my own towers.  Then something happened, I&#39;ll guess 10-15 years ago ... my next laptop took that long just to ask for the full disk decryption key.  My latest laptop sometimes takes 30 seconds just to ask for the decryption key.  No messages, nothing.  After that, it&#39;s still only 5-10 seconds to get the login prompt.
 
@@ -1213,11 +1227,42 @@ I&#39;ve worked a bit on the RISC-V ecosystem.  And while the CPU and motherboar
 
 By training, I mean finding the speeds, offsets and parameters for these high speed and parallel links (even GigE is 4x 250 megabit).  Much of this is highly proprietary and obviously h
 
+So, I believe that the majority of the pre-boot UEFI time is spent doing DDR training and PCIe training.This is a process that is done once unless there is a hardware change. If it is happening every boot then something is wrong, typically either your PC never is actually booting with the memory settings you&#39;ve setup (first boot failed and so it goes through training), or you&#39;ve got some setting turned on that forces it to retrain on every boot.
+
+So, I believe that the majority of the pre-boot UEFI time is spent doing DDR training and PCIe training.
+
+This is a process that is done once unless there is a hardware change. If it is happening every boot then something is wrong, typically either your PC never is actually booting with the memory settings you&#39;ve setup (first boot failed and so it goes through training), or you&#39;ve got some setting turned on that forces it to retrain on every boot.
+
+But heck ... I&#39;ve had servers that take over 5 minutes.I imagine most of that was in the POST etc. - stuff that happens before the OS even starts to load.I&#39;ve got some rather old servers like that, they take for-bloody-ever.
+
+But heck ... I&#39;ve had servers that take over 5 minutes.
+
+I imagine most of that was in the POST etc. - stuff that happens before the OS even starts to load.
+
+I&#39;ve got some rather old servers like that, they take for-bloody-ever.
+
+Looks like you&#39;re using the systemd spell check.
+
 It&#39;s not about how fast code runs, it&#39;s about how long it takes the (increasingly long) chain of mboard subdevices to be fired up and report back (including precoded &quot;give it a moment to stop ringing&quot; pauses). The total time is the total amount the engineers think they can take before a manager twists tighter.
+
+>&quot;How much time does it take to even begin booting, asks long-time Slashdot reader BrendaEM. Say you want separate Windows and Linux boot processes, and &quot;You have Windows on one SSD/NVMe, and Linux on another. How long do you have to wait for a chance to choose a boot drive?&quot;
+
+I don&#39;t know, because all my machines have always been Linux only.  My home Acer MB desktop with Ryzen takes about 6 seconds before it hits grub, then I am looking at a GUI login screen in about 5 more seconds.  Of course, that machi
+
+Memory Characterization is a process that is done once and stored. On successful boot UEFI should save all it needs to get the system booting up within a second or two.  It sounds very much like this complaint is a symptom of something gone wrong. Possible things to look at:1. Check to see if your UEFI has a setting like &quot;full boot&quot; or &quot;fast boot&quot; or anything similar that is set incorrectly. On my Gigabyte motherboard it&#39;s called UEFI FastBoot and if this is disabled the UEFI process takes about 10 before t
+
+You don&#39;t know how good y&#39;all have it. Back in my day you&#39;d have to go outside in the snow and have to crank the power supply which if you did it wrong would take your arm clean off. Then you go in the house and feed dozens of paper punched cards into the computer which took 3 hours to boot and that&#39;s if you did it right .. God forbid you dropped the punch cards or put one in the wrong order. The whole thing would explode or blow a valve and then you&#39;d have to go into the city hardware store to get replacem
+
+I remember my Apple //c booting up in about five seconds, off a 5.25&quot; floppy.  I&#39;ll never forget the distinctive sound Apple DOS made when booting.B-R-R-R-R-R-R-R..   chk-chk, chk, chhhhhhhhhk(I used FaskDisk, which helped quite a bit with disk access speed by optimizing sector interleave)
+
+Times were probably the worst on the Mac Classics, booting off their 2.5&quot; discs could take 20-30 seconds before the desktop appeared, and another 20 seconds of really sluggish user interface while the rest of the bits load
+
+Most of the boot time on my machine(s) is spent turning on the MB hardware and getting it configured. Generally that takes between 5 and 10 seconds, with the Z790 machines being on the high end and the older Z470 being on the low end. Once Linux gets control most of the time is spent on USB devices. Not sure on the Windows boxen because they don&#39;t show that info.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Can anything be sadder than work left unfinished? Yes, work never begun.</div>
+Unix is a Registered Bell of AT&T Trademark Laboratories.
+		-- Donn Seeley</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1303,17 +1348,56 @@ If James Unick was born in 1961 he would have been 13 when the military eliminat
 
 You could just as easily attribute his mental state on veganism, homosexuality, the hippy movement, drug
 
+He was likely raised by the ones that were, and certainly grew up in a society full of war vets.  Korea wasn&#39;t far behind Vietnam, and we drafted during both.If you&#39;re going to throw facts around to support your point, at least get them right.Korean War ~~ June 25, 1950 - July 27, 1953
+Vietnam War ~~ November 1, 1955 - April 30, 1975
+U.S. military All-Volunteer Force established on July 1, 1973If James Unick was born in 1961 he would have been 13 when the military eliminated the draft.  The murder happened in 1982, which was 7 years after the Vietnam War ended.You could just as easily attribute his mental state on veganism, homosexuality, the hippy movement, drug usage, or lead in school drinking fountains.  There is no evidence of any of those things.  Trying to blame his mental state on disapproval of the Vietnam War is just you projecting your opinions.I merely confirmed it was a different world to grow up in back then.  As anyone who did knows.  I (GenX) grew up under the influence of drafted Veterans from World War II through the Gulf War, as Fathers and Grandfathers directly served in all of them.  Before PTSD it was called “shell shock”, so the phenomenon and influence on children growing up in that era is hardly new.In reality, ALL influence matters when talking about a  thirteen-year old child taking a human life.  But I kinda doubt it w
+
+He was likely raised by the ones that were, and certainly grew up in a society full of war vets.  Korea wasn&#39;t far behind Vietnam, and we drafted during both.If you&#39;re going to throw facts around to support your point, at least get them right.Korean War ~~ June 25, 1950 - July 27, 1953
+Vietnam War ~~ November 1, 1955 - April 30, 1975
+U.S. military All-Volunteer Force established on July 1, 1973If James Unick was born in 1961 he would have been 13 when the military eliminated the draft.  The murder happened in 1982, which was 7 years after the Vietnam War ended.You could just as easily attribute his mental state on veganism, homosexuality, the hippy movement, drug usage, or lead in school drinking fountains.  There is no evidence of any of those things.  Trying to blame his mental state on disapproval of the Vietnam War is just you projecting your opinions.
+
+He was likely raised by the ones that were, and certainly grew up in a society full of war vets.  Korea wasn&#39;t far behind Vietnam, and we drafted during both.
+
+If you&#39;re going to throw facts around to support your point, at least get them right.
+
+Korean War ~~ June 25, 1950 - July 27, 1953
+Vietnam War ~~ November 1, 1955 - April 30, 1975
+U.S. military All-Volunteer Force established on July 1, 1973
+
+If James Unick was born in 1961 he would have been 13 when the military eliminated the draft.  The murder happened in 1982, which was 7 years after the Vietnam War ended.
+
+You could just as easily attribute his mental state on veganism, homosexuality, the hippy movement, drug usage, or lead in school drinking fountains.  There is no evidence of any of those things.  Trying to blame his mental state on disapproval of the Vietnam War is just you projecting your opinions.
+
+I merely confirmed it was a different world to grow up in back then.  As anyone who did knows.  I (GenX) grew up under the influence of drafted Veterans from World War II through the Gulf War, as Fathers and Grandfathers directly served in all of them.  Before PTSD it was called “shell shock”, so the phenomenon and influence on children growing up in that era is hardly new.
+
+In reality, ALL influence matters when talking about a  thirteen-year old child taking a human life.  But I kinda doubt it w
+
 > We donâ(TM)t need war-driven PTSD to make citizens snap today. We have SSRIs now.
 
 There is no evidence SSRI&#39;s increase violence if prescribed right.
+
+> We donâ(TM)t need war-driven PTSD to make citizens snap today. We have SSRIs now.There is no evidence SSRI&#39;s increase violence if prescribed right.That last part of your statement was written by a lawyer standing in a pool of mass shooter blood pretending it’s whine.Just remember that as a society ignorantly continues to blame the inanimate gun and not the drugged human pulling the trigger.
+
+> We donâ(TM)t need war-driven PTSD to make citizens snap today. We have SSRIs now.
+
+There is no evidence SSRI&#39;s increase violence if prescribed right.
+
+That last part of your statement was written by a lawyer standing in a pool of mass shooter blood pretending it’s whine.
+
+Just remember that as a society ignorantly continues to blame the inanimate gun and not the drugged human pulling the trigger.
 
 I think that you&#39;re incorrect, that this WILL deter others, by giving the impression that we will catch them eventually if they commit murder.
 
 There&#39;s also the idea that the criminal justice system in general pursuing crimes even if it takes a long time for the most serious ones, helps prevent people attempting vigilante justice.
 
+I may be cynical, but I think most people want people jailed just for revenge or in some cases jealousy.
+
+I think this person should be jailed because it will provide some healing and restoration to the family. Anything to block generational trauma that could result in other bad incidents is worth it. Plus, there&#39;s also the societal protection factor. However minor the chance of a senior committing murder is, it does happen.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Can anything be sadder than work left unfinished? Yes, work never begun.</div>
+Unix is a Registered Bell of AT&T Trademark Laboratories.
+		-- Donn Seeley</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1339,11 +1423,26 @@ Any online requirements would either need to be disabled, or modified to work wi
 
 Almost - the petition is not asking for this to be retroactive. So, it won&#39;t apply to C&C4 (as that game has already been released), but (assuming the petition results in the laws being changed) it would apply to C&C 5.
 
+The game Command & Conquer 4: Tiberian Twilight by EA requires logging in in order to play the single player (campaign and skirmish). Would this &quot;stop killing games&quot; mean that if EA ever shuts down the login servers, they would have to patch the game to remove the login requirement?Yes. That is the whole point here. There should not be a login requirement for a single player campaign. Even for multiplayer the movement is promoting the world we lived in in the early 2000, i.e. the ability to either host a server locally, or download and run a dedicated server.
+
+The game Command & Conquer 4: Tiberian Twilight by EA requires logging in in order to play the single player (campaign and skirmish). Would this &quot;stop killing games&quot; mean that if EA ever shuts down the login servers, they would have to patch the game to remove the login requirement?
+
+Yes. That is the whole point here. There should not be a login requirement for a single player campaign. Even for multiplayer the movement is promoting the world we lived in in the early 2000, i.e. the ability to either host a server locally, or download and run a dedicated server.
+
 To be fair, when I buy a theatre ticket, the manager is quite clear on, when I will be kicked-out.  Software servers do not contain the same honesty but given the obvious cost of operating a server, it obviously will be switched-off, one day.  One can argue for fraudulent advertising, at most.
+
+If one doesn&#39;t like purchased software disappearing, don&#39;t buy a game that requires an online account to play: It&#39;s called, &#39;voting with your wallet&#39; and that is your responsibility.So you&#39;re suggesting to not see the movie you want to see because you don&#39;t like the terms? The concept of voting with your wallet doesn&#39;t work. We live in a world of short attention spans and not owning anything, as such there&#39;s no one left for you to vote for, and these days it&#39;s akin to giving up your hobby.NGOs exist precisely for this reason, the reason being that you as an individual are completely fucking irrelevant in a world of corporate greed. Not accepting the terms of service and leaving is defi
+
+If one doesn&#39;t like purchased software disappearing, don&#39;t buy a game that requires an online account to play: It&#39;s called, &#39;voting with your wallet&#39; and that is your responsibility.
+
+So you&#39;re suggesting to not see the movie you want to see because you don&#39;t like the terms? The concept of voting with your wallet doesn&#39;t work. We live in a world of short attention spans and not owning anything, as such there&#39;s no one left for you to vote for, and these days it&#39;s akin to giving up your hobby.
+
+NGOs exist precisely for this reason, the reason being that you as an individual are completely fucking irrelevant in a world of corporate greed. Not accepting the terms of service and leaving is defi
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Can anything be sadder than work left unfinished? Yes, work never begun.</div>
+Unix is a Registered Bell of AT&T Trademark Laboratories.
+		-- Donn Seeley</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1357,7 +1456,7 @@ Can anything be sadder than work left unfinished? Yes, work never begun.</div>
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://developers.slashdot.org/story/26/02/21/2220205/hit-piece-writing-ai-deleted-but-is-this-a-warning-about-ai-generated-harassment?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
 
 and removing the evidence it was being instructed every step of the way.
 
@@ -1403,7 +1502,8 @@ I&#39;m sure you can see how that could go wrong in the given situation.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Can anything be sadder than work left unfinished? Yes, work never begun.</div>
+Unix is a Registered Bell of AT&T Trademark Laboratories.
+		-- Donn Seeley</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1417,7 +1517,7 @@ Can anything be sadder than work left unfinished? Yes, work never begun.</div>
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/21/2140216/americas-peace-corps-announces-tech-corps-volunteers-to-help-bring-ai-to-foreign-countries?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 My jaded self doesn&#39;t believe this is altruistic in the slightest
 
@@ -1432,6 +1532,14 @@ The &quot;Peace Core&quot; is a trumpistsni government agency, and the trumpista
 At least this time around it will be pure, unadulterated corruption and no &quot;dei&quot; of any kind....
 
 Helping prepare the Third World for Chinese AI.
+
+The Trump administration&#39;s cuts to USAID had an immediate and deadly impact in war-ravaged Sudan  https://www.washingtonpost.com... [washingtonpost.com]
+
+The Shutdown of U.S.A.I.D. Has Already Killed Hundreds of Thousands https://www.newyorker.com/cult... [newyorker.com]
+
+Internal Memos: Senior USAID Leaders Warned Trump Appointees of Hundreds of Thousands of Deaths From Closing Agency https://www.propublica.org/art... [propublica.org]
+
+The Trump Administration Is About to Incinerate 500 Tons of Emergency Food https://www.theatlantic. [theatlantic.com]
 
 Right they took away life saving medicine, birth control, educational materials and food. but they&#39;re replacing it with some handy tools really useful for government oppression.
 
@@ -1481,7 +1589,8 @@ Peace Corp don&#39;t impose subscriptions on people in dire straits.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Can anything be sadder than work left unfinished? Yes, work never begun.</div>
+Unix is a Registered Bell of AT&T Trademark Laboratories.
+		-- Donn Seeley</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1495,7 +1604,7 @@ Can anything be sadder than work left unfinished? Yes, work never begun.</div>
             <p><strong>Slashdot | 2026-02-21</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/21/1932253/codeorg-president-steps-down-citing-upending-of-cs-by-ai?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
 
 It&#39;s almost like Code.org is and always was just a shill for industry messaging.
 
@@ -1529,7 +1638,8 @@ Anybody who doesn&#39;t have children or grandchildren in school should have no 
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Can anything be sadder than work left unfinished? Yes, work never begun.</div>
+Unix is a Registered Bell of AT&T Trademark Laboratories.
+		-- Donn Seeley</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -3285,12 +3395,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US DHS to pause TSA PreCheck and Global Entry as shutdown continues, Washington Post reports - Reuters</div>
+            <div class="title">US airlines warn over pause in two key travel programs amid DHS shutdown - Reuters</div>
             <div class="meta">2026-02-22</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>US DHS to pause TSA PreCheck and Global Entry as shutdown continues, Washington Post reports - Reuters</h2>
+            <h2>US airlines warn over pause in two key travel programs amid DHS shutdown - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxOQ1dfS2xBYUt6d1ItMTZzQXppSkpSVVN2a3J4cHEyUFkwb1E2YmxIdks5ZnFQRDVwZ29sOE8tNzI3dG1nOFBRWlM2aE9haWZ6ZF9VaDlPSWJ4NXBHOHJyZDlMdGlxV1VVaVI1a0R0VWRYd3JYMkEwcjdMdW1LOHBCcnp6eS0tOUNjcjlzV3JzUDVSU0JPS2pQeU1OWWN5MHVqWGE2TWxSTGpDUkJSRGVvSzNrSnd1WXBpenc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -3327,12 +3437,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Pakistan says it carried out cross-border strikes in Afghanistan - Reuters</div>
+            <div class="title">Afghanistan's ruling Taliban say Pakistan strikes kill, injure dozens - Reuters</div>
             <div class="meta">2026-02-22</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>Pakistan says it carried out cross-border strikes in Afghanistan - Reuters</h2>
+            <h2>Afghanistan's ruling Taliban say Pakistan strikes kill, injure dozens - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQZ0tocEVIbUZxbTh6SG1rdFBfRTM5OWdnU0YtS1kwV01vX2JRdzFlWXFneWdpNFBqcmlPem8yYzFYeU1Ta2xybjdRdEdYemo3aTFHZDA3clFRcTYyLXpXWHB6SVlvWndsSXJMRTlVUGJ4REM1bHpqWXM3bnhKTTRNZm9qRThSZXprT3NhZl9KRkVsYkxuMTZ5dmpPNFkwbjNORXBkRFdnMDFrTEVUdkhNcFpmQUFRNTQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -3341,28 +3451,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">JPMorgan says it closed Trump's bank accounts a month after Jan. 6 attack - Reuters</div>
-            <div class="meta">2026-02-21</div>
+            <div class="title">Australian warship transits Taiwan Strait, tracked by China's navy - Reuters</div>
+            <div class="meta">2026-02-22</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>JPMorgan says it closed Trump's bank accounts a month after Jan. 6 attack - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-21</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNYUNXOFdFYUF0NUhtd1JXVi1tTThmaXNoRS00SFpRMFlzVWN3aTBVbjhlWTBlTkVwaXVTTDRjbmNnMjdRUUtScDczTUV4VEJUM1A3cUJGM2MyWXcxOGF3YUY3TkdBWUZjcmt6YW1mdWJDRWtqNGJzZENTcktvSzR0MDFkOHplbm1SdXNvMEJkZGpPS0ttZHFzN0VnNms2WEdiNkNKa2pTTko1cE9nNzFQNms4UTVEX0dYQmJVTXdpUQ?oc=5">Visit Original Website</a>
+            <h2>Australian warship transits Taiwan Strait, tracked by China's navy - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-22</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNbmhacHc1UDVKM1NXQ2ZiRGVqRlhmbmp0VzdJaG9xSlpvOGItYU9yVmV5YmV3bGNvVXEyVU9Jdm5ycnU5YmczM3hjQjF4aHkxb2JQRjRiMFlMWXNSVXpGN3FNWTgzRzFuU0U3WGtmS0l3ZUhpdkRvNWlsQWVRcDNNS1phOGFkMy1ObWhDRTJUc1BBek84SHNnMVdmYzR5TF9XYUlpY1MxWWExZXhOV2p2SFBn?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Islamic State claims two attacks on Syrian army, announces ‘new phase’ of operations - Reuters</div>
+            <div class="title">JPMorgan says it closed Trump's bank accounts a month after Jan. 6 attack - Reuters</div>
             <div class="meta">2026-02-21</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Islamic State claims two attacks on Syrian army, announces ‘new phase’ of operations - Reuters</h2>
+            <h2>JPMorgan says it closed Trump's bank accounts a month after Jan. 6 attack - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-21</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxPTTRvazJHMFNQWDF4UkNnLTJ0VGw1VVNEVndaZ3NtX0M0b25ZM0dfSUtUREhWaUY0X1M0V0Y2eFpNZ0JuSlhfRDhIeE4xTUxCVjFpTDhkWDBqWnZUQkRGMG5MX2J6X0hSdXpkU0tXUlZzLW1pYk5OWnFnWEhrZ2p2VTlLQ2RnU0JabFZLdC1lUUNnRWdYY2pUS0lQQ2tEZWwyTy1nNEI2eFlFQ29PMFFzZE8tRFpFOTAxODdRN1dqTHVjYXJNb29ndg?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNYUNXOFdFYUF0NUhtd1JXVi1tTThmaXNoRS00SFpRMFlzVWN3aTBVbjhlWTBlTkVwaXVTTDRjbmNnMjdRUUtScDczTUV4VEJUM1A3cUJGM2MyWXcxOGF3YUY3TkdBWUZjcmt6YW1mdWJDRWtqNGJzZENTcktvSzR0MDFkOHplbm1SdXNvMEJkZGpPS0ttZHFzN0VnNms2WEdiNkNKa2pTTko1cE9nNzFQNms4UTVEX0dYQmJVTXdpUQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
