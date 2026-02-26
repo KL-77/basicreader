@@ -167,13 +167,13 @@
 
 Truth be told, Ford’s not doing too hot in 2026, either; it’s currently leading the National Highway Traffic Safety Administration’s chart for recalls this year, with 10 on the books already. The latest is a big one, affecting almost 4.4 million trucks, vans, and SUVs.
 
-The recall affects the Ford Maverick (model years 2022-2026), Ford Ranger (MY 2024-2026), Ford Expedition (MY 2022-2026), Ford E-Transit (MY 2026), Ford F-150 (MY 2021-2026), Ford F-250 SD (MY 2022-2026), and the Lincoln Navigator (MY 2022-2026). Just the F-150s alone number 2.3 million.
+The recall affects the Ford Maverick (model years 2022–2026), Ford Ranger (MY 2024–2026), Ford Expedition (MY 2022–2026), Ford E-Transit (MY 2026), Ford F-150 (MY 2021–2026), Ford F-250 SD (MY 2022–2026), and the Lincoln Navigator (MY 2022–2026). Just the F-150s alone number 2.3 million.
 
-The problem is with the vehicles’ integrated trailer module, which allows the lights and brakes on a trailer to work in conjunction with those of the towing vehicle. According to the recall notice, a “software vulnerability within the ITRM allows for a potential race condition to occur between the ITRM and the CAN Standy [sic] Control bit (STBCC) during initial power-up.” If that happens, the trailer will have no lights or brakes, and you’ll get a pop-up alert on the main instrument display.
+The problem is with the vehicles’ integrated trailer module, which allows the trailer’s lights and brakes to work in conjunction with those of the towing vehicle. According to the recall notice, a “software vulnerability within the ITRM allows for a potential race condition to occur between the ITRM and the CAN Standy [sic] Control bit (STBCC) during initial power-up.” If that happens, the trailer will have no lights or brakes, and you’ll get a pop-up alert on the main instrument display.
 
 Sometimes, the fault can occur with no connected trailer if the vehicle wakes from sleep mode. Should this happen, you’ll see a message on the main instrument display alerting you to a “Trailer Brake Module Fault.”
 
-Ford first started investigating the problem last October and initially decided against a recall until NHTSA persuaded the automaker in December that towing a trailer with non-functional lights was not acceptable. Indeed, when Ford re-reviewed the data, it found 405 warranty claims linked to this defect had been filed by early February 2026, although the automaker says it knows of no accidents, injuries, or fires that have resulted.
+Ford began investigating the problem last October and initially decided against a recall until NHTSA persuaded the automaker in December that towing a trailer with nonfunctional lights was unacceptable. Indeed, when Ford re-reviewed the data, it found 405 warranty claims linked to this defect had been filed by early February 2026, although the automaker says it knows of no accidents, injuries, or fires that have resulted.
 
 Owners of affected vehicles will be notified next month. Happily, the software in the module can be fixed with an over-the-air update, which will be ready in May (though owners who would rather visit a dealership for the software patch can do so as an alternative).</div>
         </div>
@@ -219,11 +219,11 @@ Given the range of possibilities it affords, AirSnitch gives attackers capabilit
 
 This research shows that a wireless-connected attacker can subvert client isolation and implement full relay attacks against other clients, similar to old-school ARP spoofing. In a lot of ways, this restores the attack surface that was present before client isolation became common. For folks who lived through the chaos of early wireless guest networking rollouts (planes, hotels, coffee shops) this stuff should be familiar, but client isolation has become so common, these kinds of attacks may have fallen off people’s radar.
 
-The MitM targets Layers 1 and 2 and the interaction between them. It starts with port stealing, one of the earliest attack classes of Ethernet. An attacker carries it out by modifying the Layer-1 mapping that associates a network port with a victim’s MAC—a unique address that identifies each connected device. By connecting to the BSSID that bridges the AP to a radio frequency the target isn’t using (usually a 2.4GHz or 5GHz) and completing a Wi-Fi four-way handshake, the attacker replaces the target’s MAC with one of their own.
+The MitM targets Layers 1 and 2 and the interaction between them. It starts with port stealing, one of the earliest attack classes of Ethernet that’s adapted to work against Wi-Fi. An attacker carries it out by modifying the Layer-1 mapping that associates a network port with a victim’s MAC—a unique address that identifies each connected device. By connecting to the BSSID that bridges the AP to a radio frequency the target isn’t using (usually a 2.4GHz or 5GHz) and completing a Wi-Fi four-way handshake, the attacker replaces the target’s MAC with one of their own.
 
-With this, an attacker redirects all downlink traffic (data sent from the router) intended for the target to the attacker’s device. Once the switch at Layer-2 sees the response, it updates its MAC address table to preserve the new mapping for as long as the attacker needs.
+In other words, the attacker connects to the Wi-Fi network using the target’s MAC and then receives the target’s traffic. With this, an attacker obtains all downlink traffic (data sent from the router) intended for the target. Once the switch at Layer-2 sees the response, it updates its MAC address table to preserve the new mapping for as long as the attacker needs.
 
-This completes the first half of the MitM, allowing all data to flow to the attacker. That alone would result in little more than a denial of service for the target. To prevent the target from noticing—and more importantly, to gain the ability to perform more advanced attacks—the attacker needs a way to restore the original mapping (the one assigning the victim’s MAC to the Layer-1 port). An attacker performs this restoration by sending an ICMP ping from a random MAC. The ping, which must be wrapped in a Group Temporal key shared among all clients, triggers replies that cause the Layer-1 mapping (i.e., port states) to revert back to the original one.
+This completes the first half of the MitM, allowing all data to flow to the attacker. That alone would result in little more than a denial of service for the target. To prevent the target from noticing—and more importantly, to gain the bidirectional MitM capability needed to perform more advanced attacks—the attacker needs a way to restore the original mapping (the one assigning the victim’s MAC to the Layer-1 port). An attacker performs this restoration by sending an ICMP ping from a random MAC. The ping, which must be wrapped in a Group Temporal key shared among all clients, triggers replies that cause the Layer-1 mapping (i.e., port states) to revert back to the original one.
 
 “In a normal Layer-2 switch, the switch learns the MAC of the client by seeing it respond with its source address,” Moore explained. “This attack confuses the AP into thinking that the client reconnected elsewhere, allowing an attacker to redirect Layer-2 traffic. Unlike Ethernet switches, wireless APs can’t tie a physical port on the device to a single client; clients are mobile by design.”
 
@@ -261,6 +261,8 @@ Also unlike those previous attacks, firewall mitigations may be more problematic
 
 Some of the threat can be mitigated by using VPNs, but this remedy has all the usual drawbacks that come with them. For one, VPNs are notorious for leaking metadata, DNS queries, and other traffic that can be useful to attackers, making the protection limited. And for another, finding a reputable and trustworthy VPN provider has historically proven to be vexingly difficult, though things have improved more recently. Ultimately, a VPN shouldn’t be regarded as much more than a bandage.
 
+Another potential mitigation is using wireless VLANs to isolate one SSID from another. Zhou said such options aren’t universally available and are also “super easy to be configured wrong.” Specifically, he said VLANs can often be implemented in ways that allow “hopping vulnerabilities.” Further, Moore has argued why “VLANs are not a practical barrier” against all AirSnitch attacks
+
 The most effective remedy may be to adopt a security stance known as zero trust, which treats each node inside a network as a potential adversary until it provides proof it can be trusted. This model is challenging for even well-funded enterprise organizations to adopt, although it’s becoming easier. It’s not clear if it will ever be feasible for more casual Wi-Fi users in homes and smaller businesses.
 
 Probably the most reasonable response is to exercise measured caution for all Wi-Fi networks managed by people you don’t know. When feasible, use a trustworthy VPN on public APs or, better yet, tether a connection from a cell phone.
@@ -293,7 +295,7 @@ The lawsuit also takes Valve to task for allowing third-party sites that facilit
 
 In a press release announcing the suit, state Attorney General Letitia James said the gambling Valve’s system enables can “lead to serious addiction problems, especially for our young people. … These features are addictive, harmful, and illegal, and my office is suing to stop Valve’s illegal conduct and protect New Yorkers.”
 
-Back in 2016, Valve faced a pair of civil lawsuits from parents concerned about Valve’s connection to skin gambling sites—those suits were eventually dismissed. Around the same time, Valve received a letter from Washington state threatening “civil or criminal action” if Valve didn’t crack down on skin gambling, but the state stopped short of filing a lawsuit in that matter.
+In 2016, Valve faced a pair of civil lawsuits from parents concerned about Valve’s connection to skin gambling sites—those suits were eventually dismissed. Around the same time, Valve received a letter from Washington state threatening “civil or criminal action” if Valve didn’t crack down on skin gambling, but the state stopped short of filing a lawsuit in that matter.
 
 In addition to asking Valve to modify or eliminate its loot box system, the New York suit asks for Valve to make “full restitution to consumers” for the disgorgement of “all monies” received from its gambling system, and for fines of “three times the amount of its gain.” Ars Technica has reached out to Valve for comment.</div>
         </div>
@@ -460,11 +462,49 @@ The fact that Toyota decided against building a FWD version of the C-HR, leaving
         
         <div class="card" onclick="openModal('content-6')">
             <div class="source">Futurism</div>
-            <div class="title">Man Bet Entire Life Savings of $342,195.63 That Elon Musk Would Fail</div>
+            <div class="title">Damage to Chinese Spacecraft Was Worse Than Reported</div>
             <div class="meta">2026-02-26</div>
         </div>
         
         <div id="content-6" style="display:none;">
+            <h2>Damage to Chinese Spacecraft Was Worse Than Reported</h2>
+            <p><strong>Futurism | 2026-02-26</strong></p>
+            <a class="original-link" href="https://futurism.com/space/damage-chinese-spacecraft-worse">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+In early November, Chinese astronauts on board the country’s Tiangong space station made a terrifying discovery. According to state news reports at the time, they found “tiny cracks” in their Shenzhou return spacecraft’s viewport window that were most likely the result of a collision with space debris.
+
+The alarming finding forced China’s space agency to delay the affected crew’s return, triggering a convoluted game of musical chairs as the cracked spacecraft was deemed not safe enough for crewed flight. Fortunately, a replacement spacecraft that was sent to the station without a crew on board allowed the astronauts to safely return to the ground.
+
+Now, new details about the incident have emerged, revealing that the situation was even more serious than initially reported, with some cracks penetrating the spacecraft’s window.
+
+“My first thought was whether a small leaf had somehow stuck to the outside of the window,” said Shenzhou-20 crew member Chen Dong during a recent interview aired by China Central Television (CCTV), as quoted by Space.com. “But then I quickly realized that couldn’t happen because we were in space. How could there possibly be a fallen leaf there?”
+
+The team used a “pen-shaped microscope” connected to a tablet to have a closer look.
+
+“We could see very clearly the small cracks [with the microscope],” Chen recalled. “Several were relatively long, and one was shorter. We could also see that some of the cracks had penetrated through.”
+
+Fellow crew member Wang Jie, who worked as an aerospace technician before becoming an astronaut, said he “wasn’t really nervous,” pointing out that the “outermost layer of the viewport is a protective layer, and inside it there are two pressure-bearing layers, and we are safe as long as the cabin pressure doesn’t change.”
+
+To remedy the situation, the China National Space Administration said in a statement that it had launched a “porthole crack repair device” along with its emergency spacecraft. “Astronauts installed it inside the Shenzhou-20 capsule, effectively improving the spacecraft’s heat protection and sealing capabilities during reentry.”
+
+The space capsule with the cracked window ultimately landed without a crew on board in Mongolia on January 19, concluding the incident. But even the landing wasn’t exactly straightforward. Since no crew was able to separate the main parachute, teams on the ground were afraid the capsule would be dragged on the ground, so they had to act quickly, as officials explained during the recently televised interviews.
+
+Fortunately, the capsule’s exterior post-reentry was “generally normal,” according to a CNSA statement at the time.
+
+While no crew member appears to have been in any danger, the incident highlights how space junk continues to be a major problem for humanity’s presence in space. Especially as companies build out plans for enormous megaconstellations of satellites, we’re launching cargo to orbit at an unprecedented rate — which could risk cracking more than a viewport window in the near future as the Earth’s orbit is turned into a minefield.
+
+More on the situation: Chinese Astronauts Clamber Outside Space Station to Inspect Damaged Spacecraft</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
+            <div class="source">Futurism</div>
+            <div class="title">Man Bet Entire Life Savings of $342,195.63 That Elon Musk Would Fail</div>
+            <div class="meta">2026-02-26</div>
+        </div>
+        
+        <div id="content-7" style="display:none;">
             <h2>Man Bet Entire Life Savings of $342,195.63 That Elon Musk Would Fail</h2>
             <p><strong>Futurism | 2026-02-26</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/kalshi-elon-musk-doge">Visit Original Website</a>
@@ -496,13 +536,13 @@ So while Cole’s bet may have been risky, he can at least take comfort knowing 
 More on prediction markets: It Seems Almost Statistically Impossible That This Polymarket Bettor Didn’t Profit Off Inside Knowledge About the Super Bowl Half Time Show</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">Mysterious Chinese Space Plane Conducting Unknown Mission in Orbit</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Mysterious Chinese Space Plane Conducting Unknown Mission in Orbit</h2>
             <p><strong>Futurism | 2026-02-26</strong></p>
             <a class="original-link" href="https://futurism.com/space/chinese-space-plane-unknown-fourth-mission">Visit Original Website</a>
@@ -532,13 +572,13 @@ But for now, all we can do is speculate about the purpose of either space plane 
 More on the spaceplane: Chinese Spaceplane Releases Six Mysterious Objects That Are Emitting Signals</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">Astronomer Who Discovered Water on Distant Planet Murdered Outside Home</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>Astronomer Who Discovered Water on Distant Planet Murdered Outside Home</h2>
             <p><strong>Futurism | 2026-02-26</strong></p>
             <a class="original-link" href="https://futurism.com/space/murdered-astronomer-discovered-water-planet">Visit Original Website</a>
@@ -572,13 +612,13 @@ Grillmair’s death follows another slaying of a prominent scientist. In Decembe
 More on space: Scientists Spot Huge Cave on Venus</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">Something Very Alarming Happens When You Give AI the Nuclear Codes</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>Something Very Alarming Happens When You Give AI the Nuclear Codes</h2>
             <p><strong>Futurism | 2026-02-26</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/alarming-give-nuclear-codes">Visit Original Website</a>
@@ -628,13 +668,13 @@ As such, the findings underscore the Stanford work.
 More on warmongering AI: Experts Concerned AI Is Going to Start a Nuclear War</div>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">Intriguing New Smartphone Design Features a Small Robot Arm</div>
             <div class="meta">2026-02-25</div>
         </div>
         
-        <div id="content-10" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>Intriguing New Smartphone Design Features a Small Robot Arm</h2>
             <p><strong>Futurism | 2026-02-25</strong></p>
             <a class="original-link" href="https://futurism.com/robots-and-machines/new-smartphone-robot-arm">Visit Original Website</a>
@@ -664,50 +704,68 @@ Besides, as PCMag points out, even if the novel phone exists, it’s unlikely to
 More on smartphones: Something Grim Is Happening to Kids Who Got Cell Phones Early</div>
         </div>
         
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">The Average American Would Pay $49 Per Month to Drink Recycled Toilet Water, Study Finds</div>
-            <div class="meta">2026-02-25</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>The Average American Would Pay $49 Per Month to Drink Recycled Toilet Water, Study Finds</h2>
-            <p><strong>Futurism | 2026-02-25</strong></p>
-            <a class="original-link" href="https://futurism.com/science-energy/average-american-drink-toilet-water">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-One man’s trash is another man’s treasure. Similarly, the water in your toilet bowl could be another person’s drink — after it’s rigorously filtered and becomes so pure that treatment facilities actually need to manually add minerals back into the water so it doesn’t, dare we say, flush important nutrients out of your own system.
-
-Icky as it may sound on paper, recycled sewage or waste water may be the next game changer for water conservation, with many cities across the US already depending on these systems.
-
-And encouragingly, a new study highlighted by Grist shows the public is open to the idea of drinking water recycled from their own sewage. In a survey of small communities of fewer than 10,000 people published in the journal Water Resources Research, residents said they’d be willing to pay an average of $49 per month to have access to reused water. And hey, astronauts do it — so why shouldn’t the rest of us get access as well?
-
-“I do think it is a bipartisan issue,” coauthor Todd Guilfoos, an economist at the University of Rhode Island, told Grist. “It’s often just cheaper than some of the other available solutions.”
-
-In a nutshell, wastewater recycling works by first physically filtering the water, then subjecting it to reverse osmosis, and finally purifying it with ultraviolet light. It’s so effective that Nevada already reuses 85 percent of its water, another recent study cited by Grist found. Many cities already treat their sewage so it can be released into the ocean, but this method goes a step further to ensure the water’s safe for human consumption. That way, what was once your tap water becomes tap water again, instead of permanently becoming lost to the briny depths.
-
-So why aren’t we using this everywhere? For one, the upfront cost of building the treatment facilities is steep. $49 per month might be enough for operating a reuse system, Guilfoos said, but “that doesn’t include what it would cost to actually build whatever water reuse infrastructure that you would need.”
-
-Smaller municipalities would have to turn to state and federal grants to break ground, he suggested. And it’s these smaller communities, especially in agricultural regions, that could massively benefit from wastewater reuse, as they often have no alternatives but to ration water once supplies run low. Soaring temperatures brought by climate change has also exacerbated droughts across the US, forcing rural towns to drain their aquifers, a process that also causes the ground above to sink over time.
-
-But while there’re still material concerns and obstacles in the way, at the very least, it does seem to getting some traction with the American people.
-
-“There’s a visceral reaction to drinking reused water, particularly reused wastewater, that’s totally understandable,” Michael Kiparsky, director of the Wheeler Water Institute at UC Berkeley, who wasn’t involved in the research, told Grist. “But over time, that has faded as the notion of reusing water to augment water supplies, including for drinking water, has become increasingly legitimized.”
-
-More on the environment: Scientists Find That Igniting Oil Spills to Create Fire Tornadoes Might Actually Be Good for the Oceans</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
-            <div class="title">Read AI launches a email based ‘digital twin’ to help you with schedules and answers</div>
+            <div class="title">Threads is testing a shortcut to quickly start DM conversations</div>
             <div class="meta">2026-02-26</div>
         </div>
         
         <div id="content-12" style="display:none;">
-            <h2>Read AI launches a email based ‘digital twin’ to help you with schedules and answers</h2>
+            <h2>Threads is testing a shortcut to quickly start DM conversations</h2>
             <p><strong>TechCrunch | 2026-02-26</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/02/26/read-ai-launches-a-email-based-digital-twin-to-help-you-with-schedules-and-answers/">Visit Original Website</a>
+            <a class="original-link" href="https://techcrunch.com/2026/02/26/threads-is-testing-a-shortcut-to-quickly-start-dm-conversations/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Save up to $680 on your pass with Super Early Bird rates. REGISTER NOW.
+
+Save up to $680 on your Disrupt 2026 pass. Ends February 27. REGISTER NOW.
+
+Threads is testing a shortcut to make it easier to DM someone, the Meta-owned company announced on Thursday. Users who are part of the test can type “DM me” or “Message me” in a post or reply to automatically generate a hyperlink that invites others to start a private conversation with them.
+
+Tapping on the shortcut will take you to a one-on-one direct messaging chat with the person. If you both follow each other, the message will go directly to their primary inbox. If you don’t follow each other, the message is filtered through the “Message Requests” folder to prevent spam.
+
+The company says the new shortcut removes the need to navigate to a person’s profile to start a DM conversation with them.
+
+While Threads was late to introduce a native DM feature, this latest move indicates that the social network is looking to make messaging a more central part of its platform, as it’s working to reduce the number of steps it takes to start a conversation.
+
+The new feature is rolling out to select users in the U.S. and Canada. As with any other test feature, it’s unknown when or if Threads plans to roll out the feature more widely.
+
+The DM shortcut is just one of several new features that have rolled out on Threads in recent months. The social network recently introduced an AI-powered feature that lets users personalize their feed, and the ability to share posts directly to an Instagram Story without leaving the app. Plus, Threads was spotted exploring in-message games last month.
+
+The additions come as a recent report from market intelligence firm Similarweb suggested that Threads now surpasses X in daily mobile usage. Although X still dominates Threads on the web, the Threads mobile app for iOS and Android has continued to see an increase in daily active users over the past several months.
+
+The report revealed that Threads had 141.5 million daily active users on mobile as of January 7, 2026, while X had 125 million daily active users.
+
+Aisha is a consumer news reporter at TechCrunch. Prior to joining the publication in 2021, she was a telecom reporter at MobileSyrup. Aisha holds an honours bachelor’s degree from University of Toronto and a master’s degree in journalism from Western University.
+
+You can contact or verify outreach from Aisha by emailing aisha@techcrunch.com or via encrypted message at aisha_malik.01 on Signal.
+
+Save up to $680 on your pass before February 27.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+It’s time to pull the plug on plug-in hybrids
+
+Americans are destroying Flock surveillance cameras
+
+Bill Gurley says that right now, the worst thing you can do for your career is play it safe
+
+The 9,000-pound monster I don’t want to give back
+
+Sam Altman would like to remind you that humans use a lot of energy, too
+
+Google VP warns that two types of AI startups may not survive
+
+Great news for xAI: Grok is now pretty good at answering questions about Baldur’s Gate</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Read AI launches an email-based ‘digital twin’ to help you with schedules and answers</div>
+            <div class="meta">2026-02-26</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
+            <h2>Read AI launches an email-based ‘digital twin’ to help you with schedules and answers</h2>
+            <p><strong>TechCrunch | 2026-02-26</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/02/26/read-ai-launches-an-email-based-digital-twin-to-help-you-with-schedules-and-answers/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Save up to $680 on your pass with Super Early Bird rates. REGISTER NOW.
 
@@ -719,21 +777,21 @@ The company is calling Ada a “digital twin” that handles tasks for you aroun
 
 When you ask Ada to find a time to meet with someone, it replies to the other person in the thread with your availability. If the other person replies that they are unavailable at those times and would like a different time slot, Ada responds with new options. While Ada has access to your calendar through Read AI, it does not reveal the nature of those meetings with other people.
 
-Ada can also answer questions using a company’s knowledge base, topics discussed in your prior meetings, and public internet searches. For instance, you can ask, “Ada , can you provide an update on how we are tracking for Q1 goals?” to get information.
+Ada can also answer questions using a company’s knowledge base, topics discussed in your prior meetings, and public internet searches. For instance, you can ask, “Ada, can you provide an update on how we are tracking for Q1 goals?” to get information.
 
 If someone else asks a question in a thread, Ada will prepare a response for you and help you refine it before it is sent to the other person. The startup said that Ada doesn’t reveal any sensitive information without your permission.
 
-Read AI’s VP of Product, Justin Farris, said that the new feature doesn’t rely on MCPs (Model Context Protocols, a technical standard for connecting AI tools to external services), and instead builds a knowledge graph based on meeting data and connected services for more contextual answers. He added that over time, the assistant will also take proactive actions for you. For instance, if you mentioned a follow-up item in a meeting, Ada will ask you to set that up after the meeting with contextual data.
+Read AI’s VP of Product, Justin Farris, said that the new feature doesn’t rely on MCPs (model context protocols, a technical standard for connecting AI tools to external services), and instead builds a knowledge graph based on meeting data and connected services for more contextual answers. He added that over time, the assistant will also take proactive actions for you. For instance, if you mentioned a follow-up item in a meeting, Ada will ask you to set that up after the meeting with contextual data.
 
 “The way I describe our solution is that when you are bringing on a new employee, you train them. When you add Ada to your workflow and connect more services to give more context, it starts to ramp up and handle more tasks for you,” CEO David Shim told TechCrunch.
 
-The company said that while Ada, currently works via email, it will soon be available on Slack and Teams.
+The company said that while Ada currently works via email, it will soon be available on Slack and Teams.
 
 On the sidelines of Web Summit Qatar earlier this month, Shim told TechCrunch that the company now has over 5 million monthly active users and plans to grow that number to 10 million. He mentioned that the company sees 50,000 sign-ups every day and has a broader base of 100,000 users who consume Read AI’s content, like meeting summaries, without creating an account.
 
 For Read AI, the U.S. remains the largest market with strong international growth. While 60% of users are outside the U.S., the revenue is split roughly equally.
 
-The company, which has raised over $81 million in funding, is increasingly adding AI-powered tools to its suite. Last year, it launched Search Copilot for knowledge discovery for users, and last month, it added the ability to update customer-service relationship software, send a custom emails from within a meeting report, and stay up to date on topics based on internal and web knowledge.
+The company, which has raised over $81 million in funding, is increasingly adding AI-powered tools to its suite. Last year, it launched Search Copilot for knowledge discovery for users, and last month it added the ability to update customer-service relationship software, send custom emails from within a meeting report, and stay up to date on topics based on internal and web knowledge.
 
 Other meeting notetakers are also offering new tools to extract more insights and actions from meeting notes. Last September, Granola added “recipes” in the form of repeatable prompts to surface knowledge from meeting data. Quill, which came out of stealth with a $6.5 million funding round this week, also connects to various tools like Linear, Notion, and CRMs, and aims to automate tasks.
 
@@ -758,13 +816,13 @@ Google VP warns that two types of AI startups may not survive
 Great news for xAI: Grok is now pretty good at answering questions about Baldur’s Gate</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">Bumble adds AI-powered photo feedback and profile guidance tools</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>Bumble adds AI-powered photo feedback and profile guidance tools</h2>
             <p><strong>TechCrunch | 2026-02-26</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/26/bumble-adds-ai-powered-photo-feedback-and-profile-guidance-tools/">Visit Original Website</a>
@@ -777,7 +835,7 @@ Bumble announced on Thursday that it’s adding a series of AI-driven features i
 
 The dating app’s new AI-suggested profile guidance tool will roll out globally and give “personalized, actionable feedback” on users’ bios and prompts. For users in the U.S., the profile guidance feature can be augmented with an AI photo feedback tool, which can “help you choose the best photos and show up as your most authentic self.”
 
-According to Bumble’s blog post explaining these features, it doesn’t seem like the insights from these AI tools are particularly groundbreaking — for example, Bumble says that its AI photo tool might encourage you to ditch photos where you’re wearing sunglasses that cover your face, and add a wider variety of photos, like ones taken outdoors or with friends. It’s advice you could’ve easily gotten from a friend ten years ago, but it’s still new information to many users.
+According to Bumble’s blog post explaining these features, it doesn’t seem like the insights from these AI tools are particularly groundbreaking — for example, Bumble says that its AI photo tool might encourage you to ditch photos where you’re wearing sunglasses that cover your face, and add a wider variety of photos, like ones taken outdoors or with friends. It’s advice you could’ve easily gotten from a friend 10 years ago, but it’s still new information to many users.
 
 In Canada, Bumble is testing another, non-AI feature called “Suggest a Date.” When a conversation stalls, a user can signal that they are open to meeting in person, which the company says is “a simple way to signal that they’re ready to connect offline.”
 
@@ -789,7 +847,7 @@ Bumble and other popular dating apps, like Match Group’s Tinder and Hinge, hav
 
 Tinder may take things a step further. In Australia, Tinder is piloting a tool called Chemistry, which asks users to provide the app with access to their camera roll, which is a concerning amount of data to feed into an AI tool. Based on a user’s camera roll and answers to a series of questions, the AI can learn more about someone’s interests and personality to supposedly reduce “swipe fatigue” and suggest better matches.
 
-Meta’s Facebook Dating tool does something similar — in October, it launched a feature that asks to use its AI on your camera roll that you haven’t yet shared in order to suggest AI edits.
+Meta’s Facebook Dating tool does something similar — in October, it launched a feature that asks to use its AI on photos in your camera roll that you haven’t yet shared in order to suggest AI edits.
 
 As these companies try to come up with new ways to keep users happy, some young people have thrown in the towel on online dating altogether, instead seeking more real-world experiences that are not intermediated by an app.
 
@@ -814,13 +872,13 @@ Google VP warns that two types of AI startups may not survive
 Great news for xAI: Grok is now pretty good at answering questions about Baldur’s Gate</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">Walmart agrees to $100M settlement over deceptive pay practices in Spark Driver program</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Walmart agrees to $100M settlement over deceptive pay practices in Spark Driver program</h2>
             <p><strong>TechCrunch | 2026-02-26</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/26/walmart-agrees-to-100m-settlement-over-deceptive-pay-practices-in-spark-driver-program/">Visit Original Website</a>
@@ -831,7 +889,7 @@ Save up to $680 on your Disrupt 2026 pass. Ends February 27. REGISTER NOW.
 
 Walmart has agreed to pay $100 million to settle a lawsuit from the Federal Trade Commission (FTC) over deceptive pay practices within its Spark Driver service, which uses gig workers to deliver online orders from local stores to customers. The retailer was accused of misleading drivers about their potential base pay and tip amounts, and then deceived customers by saying that 100% of tips went to the drivers, when they did not.
 
-In its original complaint, the FTC was joined by Arizona, California, Colorado, Illinois, Michigan, North Carolina, Oklahoma, Pennsylvania, South Carolina, Utah, and Wisconsin. The lawsuit alleged that Walmart, since 2021, had made false representations about Spark driver earnings.
+In its original complaint, the FTC was joined by Arizona, California, Colorado, Illinois, Michigan, North Carolina, Oklahoma, Pennsylvania, South Carolina, Utah, and Wisconsin. The lawsuit alleged that Walmart, since 2021, had made false representations about Spark Driver earnings.
 
 Among these, Walmart was accused of frequently splitting a customer’s order between drivers, which would lead to splitting the tip. Meanwhile, customers were told their driver — as in one single driver — would get the full tip. In batch orders, Walmart would remove tips from some of the orders without informing the driver. Walmart also promised tips to drivers in advance of taking orders, but then failed to collect a tip from the customer, leaving the driver without a tip entirely.
 
@@ -841,7 +899,7 @@ Walmart also told customers that drivers would get 100% of their tips, but that 
 
 The lawsuit alleged that these practices caused drivers to lose millions of dollars they were promised and generated thousands of consumer complaints.
 
-As a result of the settlement, Walmart will have to implement an earnings verification program to ensure drivers are paid the promised earnings and tips. It’s also prohibited from adjusting the base pay, incentives, or tips after the initial offer, except if the driver fails to provide the service or a customer cancels. Walmart has been banned from misrepresenting earnings in future driver offers, as well.
+As a result of the settlement, Walmart will have to implement an earnings verification program to ensure drivers are paid the promised earnings and tips. It’s also prohibited from adjusting the base pay, incentives, or tips after the initial offer, except if the driver fails to provide the service or a customer cancels. Walmart has been banned from misrepresenting earnings in future driver offers as well.
 
 “Labor markets cannot function efficiently without truthful and non-misleading information about earnings and other material terms,” said Christopher Mufarrige, Director of the FTC’s Bureau of Consumer Protection, in a statement about the settlement agreement. “Today’s settlement reflects the Trump-Vance FTC’s focus on ensuring a healthy labor market for American workers, which is critical to the nation’s success.”
 
@@ -862,13 +920,13 @@ Google VP warns that two types of AI startups may not survive
 Great news for xAI: Grok is now pretty good at answering questions about Baldur’s Gate</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Self-driving truck startup Einride raises $113M PIPE ahead of public debut</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Self-driving truck startup Einride raises $113M PIPE ahead of public debut</h2>
             <p><strong>TechCrunch | 2026-02-26</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/26/self-driving-truck-startup-einride-raises-113m-pipe-ahead-of-public-debut/">Visit Original Website</a>
@@ -877,21 +935,21 @@ Great news for xAI: Grok is now pretty good at answering questions about Baldur�
 
 Save up to $680 on your Disrupt 2026 pass. Ends February 27. REGISTER NOW.
 
-Einride has secured an oversubscribed $113 million PIPE (private investment in public equity) ahead of its public debut that’s expected for the first half of 2026.
+Einride has secured an oversubscribed $113 million PIPE (private investment in public equity) ahead of its public debut, which is expected for the first half of 2026.
 
 The Swedish startup is most well-known for building both electric trucks and autonomous pods that are designed to carry freight with no room for a human driver. Einride announced its plans to go public via a merger with a special purpose acquisition company, Legato Merger Corp., last November.
 
 The deal values Einride at a pre-money valuation of $1.35 billion — down from the $1.8 billion figure initially attached to the SPAC deal. Despite a drop in valuation, there’s still clearly investor appetite for the firm. The PIPE exceeded the company’s earlier target of up to $100 million.
 
-Einride’s PIPE comes from new and existing investors, including a global asset management company based on the West Coast of the United States, and Stockholm-based EQT Ventures.
+Einride’s PIPE comes from new and existing investors, including a global asset management company based on the West Coast of the United States and Stockholm-based EQT Ventures.
 
 In total, Einride has secured around $213 million tied to this transaction, including $100 million previously announced crossover financing.
 
-The SPAC, which will see Einride trading on the New York Stock Exchange, had been expected to deliver roughly $220 million from Legato’s trust account. With the addition of the $113 million PIPE, the companies now project total gross proceeds of about $333 million before redemptions and expenses. Though they say they may seek additional capital before closing.
+The SPAC, which will see Einride trading on the New York Stock Exchange, had been expected to deliver roughly $220 million from Legato’s trust account. With the addition of the $113 million PIPE, the companies now project total gross proceeds of about $333 million before redemptions and expenses, though they say they may seek additional capital before closing.
 
 The proceeds will support Einride’s technology roadmap, global expansion, and autonomous deployments in North America, Europe, and the Middle East.
 
-Outside of Sweden, Einride operates a fleet of 200 heavy-duty electric trucks in Europe, North America, and the UAE for companies like Heineken, PepsiCo, Carlsberg Sweden, and DP World. The company has also done limited deployments of its autonomous pod-like trucks with customers including Apotea in Sweden and GE Appliances in the U.S.
+Outside of Sweden, Einride operates a fleet of 200 heavy-duty electric trucks in Europe, North America, and the UAE for companies like Heineken, PepsiCo, Carlsberg Sweden, and DP World. The company has also done limited deployments of its autonomous pod-like trucks with customers, including Apotea in Sweden and GE Appliances in the U.S.
 
 Einride is not the first autonomous vehicle company to have pursued a SPAC merger in recent years for additional funding. Aurora Innovation went public via a SPAC merger valued at $13 billion in 2021 and has since launched a commercial self-driving trucks operation (with a human observer on board). Kodiak AI also took the SPAC road to the public market in 2025.
 
@@ -916,13 +974,13 @@ Google VP warns that two types of AI startups may not survive
 Great news for xAI: Grok is now pretty good at answering questions about Baldur’s Gate</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Cisco says hackers have been exploiting a critical bug to break into big customer networks since 2023</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Cisco says hackers have been exploiting a critical bug to break into big customer networks since 2023</h2>
             <p><strong>TechCrunch | 2026-02-26</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/26/cisco-says-hackers-have-been-exploiting-a-critical-bug-to-break-into-big-customer-networks-since-2023/">Visit Original Website</a>
@@ -950,74 +1008,6 @@ In December, Cisco warned of a similarly rated 10.0 vulnerability in the Async s
 Zack Whittaker is the security editor at TechCrunch. He also authors the weekly cybersecurity newsletter, this week in security.
 
 He can be reached via encrypted message at zackwhittaker.1337 on Signal. You can also contact him by email, or to verify outreach, at zack.whittaker@techcrunch.com.
-
-Save up to $680 on your pass before February 27.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-It’s time to pull the plug on plug-in hybrids
-
-Americans are destroying Flock surveillance cameras
-
-Bill Gurley says that right now, the worst thing you can do for your career is play it safe
-
-The 9,000-pound monster I don’t want to give back
-
-Sam Altman would like to remind you that humans use a lot of energy, too
-
-Google VP warns that two types of AI startups may not survive
-
-Great news for xAI: Grok is now pretty good at answering questions about Baldur’s Gate</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">A VC and some big-name programmers are trying to solve open source’s funding problem, permanently</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>A VC and some big-name programmers are trying to solve open source’s funding problem, permanently</h2>
-            <p><strong>TechCrunch | 2026-02-26</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/02/26/a-vc-and-some-big-name-programmers-are-trying-to-solve-open-sources-funding-problem-permanently/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Save up to $680 on your pass with Super Early Bird rates. REGISTER NOW.
-
-Save up to $680 on your Disrupt 2026 pass. Ends February 27. REGISTER NOW.
-
-A group of notable open source programmers are joining with a VC investor to launch a nonprofit called the Open Source Endowment in hopes of permanently solving the perennial issue with developing open source software: funding.
-
-Backers of the Open Source Endowment include Thomas Dohmke (the former GitHub CEO who raised a record $60 million for his dev tool startup Entire); Mitchell Hashimoto (founder of HashiCorp, which sold to IBM for $6.4 billion last year); Supabase founder and CEO Paul Copplestone; an NGINX co-founder; the creators of Vue.js and cURL; plus execs from Elastic, Spotify, and others. All told, the project has over 50 donors so far.
-
-The nonprofit, which just achieved formal 501(c)(3) status, has currently raised more than $750,000 in commitments. But if things go according to the plan of its founder, Konstantin Vinogradov, it will have $100 million in assets within seven years.
-
-Vinogradov is a venture investor specializing in open source, AI, and infrastructure software, and was previously a general partner at Runa Capital. As such, he has “some experience with university endowments,” which are some of the largest investors in venture capital funds, he told TechCrunch.
-
-Vinogradov says as he scoured the world for open source projects, one complaint kept popping up: “There is no source of sustainable funding for open source maintainers. And that’s a really big problem.” (“Maintainer” refers to the developers who work on open source projects, such as debugging, choosing and verifying features submitted by the community, or programming new features themselves.)
-
-The endowment will support projects based on criteria such as its number of users, or how many other projects rely on that specific software to operate. It will also choose projects that are not already well-supported by grants, donations, or umbrella organizations such as Linux’s Alpha-Omega. Vinogradov has already assembled a board for the nonprofit.
-
-The lack of money in open source is hardly new. Open source software is typically given away, and since the community often contributes time and efforts freely, up to 86% of open source developers are not paid for their work.
-
-This isn’t much of a problem for hobbyists or for professional developers paid by their companies to maintain projects, but such a system stands on shaky ground. Open source software is the bedrock upon which the internet stands, and virtually every large company uses open source tools in some way. In fact, open source software accounts for up to 55% of the tech stack in organizations, and is present in everything from databases to operating systems.
-
-While it is certainly possible for open source developers to commercialize their free projects to gain wealth beyond their wildest dreams, the odds, to misquote the Hunger Games, are not in their favor.
-
-There is, and has been for decades, a core of developers who volunteer their time and efforts for free to manage popular, important, and critical projects. And many of them are burned out.
-
-This issue came into the public’s consciousness briefly in 2014, with the OpenSSL Heartbleed disaster, where a bug was found in an open source security project, used by most of the internet, that was maintained by a single developer.
-
-There have been many attempts to fix the funding situation over the years. Some projects take donations from corporate sponsors. For instance, The Linux Foundation, which brought in about $300 million last year largely from corporate sponsors, doles out grants to select projects through its Alpha-Omega Project. In 2025, Alpha-Omega issued $5.8 million to 14 projects, it said.
-
-Some projects take donations directly from corporate donors. In January, for instance, Anthropic donated $1.5 million to the Python Software Foundation. While the Foundation said it was thrilled to have that cash, Anthropic itself raised $30 billion this month. Such a donation is couch-change to the AI lab.
-
-Still, not every developer wants to take corporate donations, as there are worries of granting too much influence to donor companies. For instance, there was a big hubbub last year in the Ruby community surrounding some long-time maintainers leaving and its big sponsor Spotify, The Register reported.
-
-The Open Source Endowment hopes to support projects while displacing such risks.
-
-“The only way to support open source sustainably is private funds,” says Vinogradov.
-
-Why hasn’t an endowment been tried before? Endowments require patience, Vinogradov says. They invest many of their assets, spending only a fraction of their income in any given year, and require years or even decades to grow to a meaningful size.
-
-But if done right, that patience will result in an independent fund that could support critical open source projects forever.
 
 Save up to $680 on your pass before February 27.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
 
@@ -1348,34 +1338,74 @@ The tariffs case must therefore be understood as a warm-up act in the fight to p
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">The AI Case Against Indian IT Ignores What Indian IT Actually Does</div>
+            <div class="title">The Government Just Made it Harder to See What Spy Tech it Buys</div>
             <div class="meta">2026-02-26</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>The Government Just Made it Harder to See What Spy Tech it Buys</h2>
+            <p><strong>Slashdot | 2026-02-26</strong></p>
+            <a class="original-link" href="https://yro.slashdot.org/story/26/02/26/1722205/the-government-just-made-it-harder-to-see-what-spy-tech-it-buys?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+And I am speaking to the overly performative nature of this administration, I mean, &quot;sam.gov&quot; because of Uncle Sam? Like that has zero to do with anything, it&#39;s just performative &quot;patriotism&quot; masking what is overall a bad action and they are expecting their supporters to just &quot;relax guy, don&#39;t worry about what spy tools the government uses, just feel patriotic! Uncle Sam!&quot;
+
+It&#39;s the same with Trump putting his face on every agency federal building (including the DOJ) nothing ominous about that at all!  [pbs.org] Relax!
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+One has to look out for engineers -- they begin with sewing machines
+and end up with the atomic bomb.
+		-- Marcel Pagnol</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">The AI Case Against Indian IT Ignores What Indian IT Actually Does</div>
+            <div class="meta">2026-02-26</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>The AI Case Against Indian IT Ignores What Indian IT Actually Does</h2>
             <p><strong>Slashdot | 2026-02-26</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/02/26/1714241/the-ai-case-against-indian-it-ignores-what-indian-it-actually-does?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+I think it is more alluding to the need that using AI to wholesale replace existing/legacy systems doesn&#39;t work because the outputs aren&#39;t consistent. AI can&#39;t do payroll with probabilistic checks and withholding.
+
+Suppose the counter argument would be that Indian developers are not *solely* providing outsource work to American companies.
+
+Absolutely concur that nearly all offshore, outsourcing outfits are basically there to grift American companies with dubious credentials and work.
+
+Based on experienced, occasionally in that stupid setup, you&#39;ll have a really useful and effective person for a while, but ultimately they go &#39;poof&#39; to get higher pay at a more proper software development shop. So presumably those jobs that
+
+There are many great, hard working, smart and motivated Indian IT workers. More power to them. Live long and prosper.
+
+What Indian IT firms will do it employ the most brain dead, cheapest, uneducated and unmotivated individuals and sell them as experts. And somehow, they get away with it. Distance also makes it harder to hold them to account.
+
+Says as much about the quality of the management that I have been inflicted with, as it does about the ethics of the Indian IT firms.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-10 to the minus 6th power mouthwashes		= 1 Microscope</div>
+One has to look out for engineers -- they begin with sewing machines
+and end up with the atomic bomb.
+		-- Marcel Pagnol</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">New York Sues Valve For Enabling 'Illegal Gambling' With Loot Boxes</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>New York Sues Valve For Enabling 'Illegal Gambling' With Loot Boxes</h2>
             <p><strong>Slashdot | 2026-02-26</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/26/168257/new-york-sues-valve-for-enabling-illegal-gambling-with-loot-boxes?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Jesus Christ man it&#39;s 2026, there&#39;s a housing crisis, you really need to stop letting people live rent free in your head.
 
 News headlines now declared as random risk and are outlawed. Because, anyone outcome could happen, when a journalist spits out a headline. The journalist is now a &quot;lootbox&quot; of sorts. New York outlaws journalists. (And even commenters, why not.)
 
@@ -1388,6 +1418,18 @@ gaben bought a yacht, his company doesn&#39;t have real ethics anymore
 It is just as if not more illegal and 10 times the size of any gambling going on with steam
 
 Except as defined here gambling requires a game of chance and a predictive market at least in theory is not about chance but predicting actual events, which in most cases will involve skill (unless the particular event is “what ping pong balls will be pulled from the bucket” or “what numbers on the dice after roll”, but things like “will Russia end the Ukraine war by the end of 2026
+
+Do something about the predictive markets. It is just as if not more illegal and 10 times the size of any gambling going on with steam. Predictive markets aren&#39;t targeting 14 year olds turning them into future gambling addicts.Meanwhile valve has taken several measures to try to stop the gambling but it&#39;s not really possible without shutting down how the games trading system worksRespectfully, I love Valve too man, but please take your tongue out of their ass. No they have not made any effort to stop the gambling. In fact they are held up as a shining example of just how fucking bad this system can be. Not only do they not stop it, but they claim a percentage of *EVERY* transaction, not just the first purchase. If an item changes hands 4x then Valve literally takes more commission than what th
+
+Do something about the predictive markets. It is just as if not more illegal and 10 times the size of any gambling going on with steam.
+
+Predictive markets aren&#39;t targeting 14 year olds turning them into future gambling addicts.
+
+Meanwhile valve has taken several measures to try to stop the gambling but it&#39;s not really possible without shutting down how the games trading system worksRespectfully, I love Valve too man, but please take your tongue out of their ass. No they have not made any effort to stop the gambling. In fact they are held up as a shining example of just how fucking bad this system can be. Not only do they not stop it, but they claim a percentage of *EVERY* transaction, not just the first purchase. If an item changes hands 4x then Valve literally takes more commission than what th
+
+Meanwhile valve has taken several measures to try to stop the gambling but it&#39;s not really possible without shutting down how the games trading system works
+
+Respectfully, I love Valve too man, but please take your tongue out of their ass. No they have not made any effort to stop the gambling. In fact they are held up as a shining example of just how fucking bad this system can be. Not only do they not stop it, but they claim a percentage of *EVERY* transaction, not just the first purchase. If an item changes hands 4x then Valve literally takes more commission than what th
 
 the New York suit calls out Valve&#39;s system specifically for &quot;enabl[ing] users to sell the virtual items they have wonThe monetary value is in being able to turn around and directly sell what you gambled to get.  It really couldn&#39;t get much more blatant if they tried.
 
@@ -1405,18 +1447,24 @@ Oh, there&#39;s a point.  And schools often call those games gambling.
 
 I think the OP is referring to how when you purchase packs of the cards, you don&#39;t know what you&#39;re getting until after you&#39;ve purchased it.
 
+as long as the court keeps believing in the significant monetary value of digital art thanks to artificial scarcity, as long as it keeps pretending scarcity that can be defeated by ctrl-c is a real thing, society will keep degenerating.
+
+Like five dudes own p much everything, and keep prices high through the games you can play when you own the entire production chain, well documented and well known.  What you THINK they&#39;re doing?  Hint: it aint making stuff cheaper (nor better for that matter)
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-10 to the minus 6th power mouthwashes		= 1 Microscope</div>
+One has to look out for engineers -- they begin with sewing machines
+and end up with the atomic bomb.
+		-- Marcel Pagnol</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Burger King Will Use AI To Check If Employees Say 'Please' and 'Thank You'</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Burger King Will Use AI To Check If Employees Say 'Please' and 'Thank You'</h2>
             <p><strong>Slashdot | 2026-02-26</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/02/26/163233/burger-king-will-use-ai-to-check-if-employees-say-please-and-thank-you?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1450,6 +1498,12 @@ And penalize them when they say &quot;no problem.&quot; It&#39;s your job, of co
 Saying &quot;you&#39;re welcome&quot; and saying &quot;no problem&quot; are Generational differences. The older generations say you&#39;re welcome, meaning the employee went out of their way to do something. Saying no problem for the younger generation means they were happy to help and that it&#39;s all part of their job.
 
 I&#39;d prefer whichever makes sense to the person saying it as long as it&#39;s not said in a rude manner.
+
+Nope. &quot;You&#39;re welcome&quot; is akin to &quot;I&#39;m pleased to be of service.&quot; &quot;No problem&quot; is like &quot;I wasn&#39;t bothered _too_ much to do what I&#39;m paid to do.&quot;That would be your opinion from your own generational bias. I&#39;ve worked with multiple generations of individuals and have spoken with them about this exact topic. I&#39;m not giving my own opinion, just using my own words to describe what they&#39;ve told me.
+
+Nope. &quot;You&#39;re welcome&quot; is akin to &quot;I&#39;m pleased to be of service.&quot; &quot;No problem&quot; is like &quot;I wasn&#39;t bothered _too_ much to do what I&#39;m paid to do.&quot;
+
+That would be your opinion from your own generational bias. I&#39;ve worked with multiple generations of individuals and have spoken with them about this exact topic. I&#39;m not giving my own opinion, just using my own words to describe what they&#39;ve told me.
 
 Fire them?  Eat shit BK, your minimum wage job is not worth putting up with this bullshit.
 
@@ -1547,6 +1601,10 @@ I demand that my midnight BK whoppers are served with the a lifeless greeting an
 
 I have experienced trying to order from a fast food joint in a country where I didn&#39;t speak the language very well. The employees are so ingrained in what to say and not say that if you ask them to rephrase because you don&#39;t understand what they&#39;re saying they completely lock up. They literally can&#39;t think of a different way to ask if that will be all today. I guess that&#39;s what the powers that be truly want - a working class entirely incapable of independent thought.
 
+A few months ago, I was in the Netherlands.  At Schiphol Airport, I visited the Burger King, and first tried ordering at the kiosks that they have.  Somehow, I missed the spot in the home screen where it invites you to select your language, so I ultimately gave up and just told the waitress what I wanted.  Later in my trip, I figured out that one actually can select the language there, and once I did, I just used the kiosks to order, and nothing else
+
+Which was just as well, b&#39;cos at a McDonalds, when I wan
+
 They&#39;ll learn that it&#39;s only checking for please and thank you, and say: &quot;Please go F yourself. Thank you for F-ing yourself.&quot;
 
 I dunno, I&#39;m not in favor of this dystopian nonsense at all but I do find it nice when I&#39;m at In & Out with their friendly and polite employees relative to the service I get at other places. Of course part of the likely reason they often seem so happy when serving customers is because In & Out actually pays and treats their employees well relative to industry norms.
@@ -1557,6 +1615,14 @@ Perhaps I&#39;m in the minority but I genuinely don&#39;t care for false pleasan
 
 This is why I prefer to order my fast food using the restaurant&#39;s mobile app.  Not from Burger King, though - their food is consistently terrible.
 
+Yeah.  Right now, I enjoy ordering at the kiosks, where I can customize my sandwich exactly the way I want, as well as adding drinks.  Previously, when I used to give human waitresses my orders, I&#39;d sometimes forget to ask them to remove the tomatoes or pickles, and later have to remove it myself.  Whereas now, I just never get it wrong, thanks to the sequence in which the screens follow each other
+
+So this sort of automation - the kiosks - make sense in that they help avoid any lines, allow orders in paral
+
+Pleasantries can&#39;t be false by definition. They are by definition a completely inconsequential form of polite conversation. They either exist or don&#39;t. And it&#39;s nice hearing pleasant conversation, even if it doesn&#39;t reflect the mood of the person.
+
+Seriously who pissed in your cornflakes to get upset about expecting people to talk to customers using polite language? How anti-social can someone be to get upset about this.
+
 to be surveilled? You think that&#39;s going to make your employees happy? It will definitely make your employees fake. People can tell when you are fake.
 
 The surveillance planet started long before AI. Adding AI to surveillance makes Orwell look like an optimist.
@@ -1564,6 +1630,8 @@ The surveillance planet started long before AI. Adding AI to surveillance makes 
 is not politeness. What this plan *may* do is rotate out people until the ones who are genuinely polite get to the customer-facing positions. It may also devalue politeness to the point of being worthless. Regardless of the mechanism behind the scenes, people are going to be suspicious of whomever is interacting with them.
 
 The ones who are naturally polite will quit after the second time they had ONE interaction in which they forgot to say thank you or the customer was so rude there was no way to actually be polite rather than merely cordial.
+
+Yeah, even polite people may once in a while, for any possible reason, forget to say &quot;please&quot; or &quot;thank you&quot;.  Easy example: if there is a line of people behind the customer one is attending to, one may wish for the customer to hurry along, so that the next customer can be expediently serviced.  Particularly if the line is long.  I for one wouldn&#39;t judge a sales person for not greeting me, particularly in a rushed environment
 
 Customer: &quot;Gimme a burger and a large fries.&quot;Me: &quot;Please, thank you for your order. Thank you, please, a burger and a large fries, thank you please?Customer: &quot;Yup and I&#39;m in a hurry.&quot;Me: &quot;Please, thank you, one thank you burger and a please large fries, please, thank you.Customer: &quot;This place is weird. I&#39;m outta here.&quot; *runs out door*
 
@@ -1610,21 +1678,25 @@ How many pieces of flair will they have to wear?
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-10 to the minus 6th power mouthwashes		= 1 Microscope</div>
+One has to look out for engineers -- they begin with sewing machines
+and end up with the atomic bomb.
+		-- Marcel Pagnol</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">HBO Max's Password-Sharing Crackdown Will Expand Globally in 2026</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>HBO Max's Password-Sharing Crackdown Will Expand Globally in 2026</h2>
             <p><strong>Slashdot | 2026-02-26</strong></p>
             <a class="original-link" href="https://entertainment.slashdot.org/story/26/02/26/1422259/hbo-maxs-password-sharing-crackdown-will-expand-globally-in-2026?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The article is all over the place with its analysis:  On the one hand, it writes &quot;The caveat is that password crackdowns do not lead to consistent growth, and they often infuriate subscribers&quot;.   Then immediately follows up with &quot;There’s typically one big wave of new users who were previously sharing an account before the streamer plateaus to its new normal.  Netflix, for example, saw 9 million more subscribers after its first wave of password crackdowns in 2024&quot;.
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+
+The article is all over the place with its analysis:  On the one hand, it writes &quot;The caveat is that password crackdowns do not lead to consistent growth, and they often infuriate subscribers&quot;.   Then immediately follows up with &quot;There’s typically one big wave of new users who were previously sharing an account before the streamer plateaus to its new normal.  Netflix, for example, saw 9 million more subscribers after its first wave of password crackdowns in 2024&quot;.
 
 9 million users might not be consistent on-going growth, but that represents 9 million new paying users.   Do they stay users?  If so, then 9M x $8 (or more) per month represents $72M per month, or $864M per year.   Maybe that&#39;s a one-time bump in user counts, but that&#39;s a significant number.
 
@@ -1648,16 +1720,18 @@ That said, I&#39;m surprised there&#39;s no market for travel routers that VPN b
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-10 to the minus 6th power mouthwashes		= 1 Microscope</div>
+One has to look out for engineers -- they begin with sewing machines
+and end up with the atomic bomb.
+		-- Marcel Pagnol</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">EBay Is Laying Off About 800 Workers, 6% of Global Workforce</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>EBay Is Laying Off About 800 Workers, 6% of Global Workforce</h2>
             <p><strong>Slashdot | 2026-02-26</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/02/26/1358254/ebay-is-laying-off-about-800-workers-6-of-global-workforce?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1697,329 +1771,9 @@ So, revenue is down, and the CEO wants more ROI? How about we skip to the other 
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-10 to the minus 6th power mouthwashes		= 1 Microscope</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Americans Are Leaving the US in Record Numbers</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Americans Are Leaving the US in Record Numbers</h2>
-            <p><strong>Slashdot | 2026-02-26</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/26/02/26/127223/americans-are-leaving-the-us-in-record-numbers?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
-
-Brain drain is a sign of economic and/or political stress. Skilled people go somewhere else because the money / opportunities / quality of life are better.A lot of people emigrating are those who are retired, want to live in a warm climate, and want to live in a place where their money goes further. It isn&#39;t just workers. 
-
-I&#39;ve seen the breathless stories all over the internet for many years now, so while the usual suspects will blame this all on you know who, I&#39;m not certain he caused this in 2005. 
-
-Gotta admit, it is perfect clickbait for the /. crew.
-
-Brain drain is a sign of economic and/or political stress. Skilled people go somewhere else because the money / opportunities / quality of life are better.
-
-A lot of people emigrating are those who are retired, want to live in a warm climate, and want to live in a place where their money goes further. It isn&#39;t just workers.
-
-I&#39;ve seen the breathless stories all over the internet for many years now, so while the usual suspects will blame this all on you know who, I&#39;m not certain he caused this in 2005.
-
-Gotta admit, it is perfect clickbait for the /. crew.
-
-They already do require visas to stay longer than 90 days.
-
-So an order of magnitude cheaper than paying out of pocket in the USA. How sad.
-
-This is not the start of the brain drain, merely the acceleration.  It certainly isn&#39;t nearly the end of it either.
-
-When the morons make life miserable and can&#39;t be restrained, the smart with means get the hell out.  Every one who leaves effectively makes the morons a bit more powerful, which makes the next smart person with means more likely to decide to leave.
-
-It&#39;d be nice if they stayed to fight to preserve their country, but can you blame them?  I live in Canada, and what&#39;s happening in the US means I have escape plans for myself and my family just in case the US successfully drags us down with them.
-
-The UK is experiencing something similar at the moment, with high emigration. We haven&#39;t elected a fascist government yet, but we did enshittify our country with 14 years of austerity, then brexit, and finally a botched COVID response that helped plunder what was left.
-
-Poor wages, unaffordable housing and general cost of living, a country that feels like it is in decline.
-
-I&#39;m telling you this because if Trump leaves office, you need to be ready to radically fix things. If the Democrats do like last time and d
-
-US Chick leaves for Canada  [youtu.be] and seems shocked prices are higher up there and that they don&#39;t let foreigners work nor have their free healthcare....
-
-Between libs and extremists like these leaving....and libs actively NOT reproducing, in a few years, we&#39;ll be rid of the problems and the US can hopefully, revert back more to what normal life was even only 15 or so years ago....ok maybe 25 years.
-
-Seems pretty stupid and short sighted to leave because you don&#39;t like a particular president. He will be gone in a few years...The system that enabled him to come to power won&#39;t be.
-
-Seems pretty stupid and short sighted to leave because you don&#39;t like a particular president. He will be gone in a few years...
-
-The system that enabled him to come to power won&#39;t be.
-
-You win some and you lose some.  That&#39;s life.  Some people consistently love this country regardless of whether they win or lose.  Some people only love it when they win.  Polling suggests the first group are mostly Republicans, and the second are mostly Democrats.  That the &quot;it&#39;s only good when we win&quot; sentiment exists at all should trouble you.  That it is a partisan issue should trouble you more.
-
-He&#39;s talking about a 3rd term and &#39;no elections for 50yrs&#39;.
-
-You honestly think he&#39;s going to hand over the power? That he isn&#39;t going to try and rig the elections? That if the Republicans win, this will somehow end, and whoever takes over won&#39;t take Trump&#39;s practices and go &#39;deeper&#39;?
-
-And yet the Maggots with which la Presidenta has populated parts of the government will remain. They never had an ounce of sense (look at whom they follow) and they will continue to screw things up for years to come. The Red states they&#39;ve taken over will become an even greater drain on the economy.
-
-Also, the graft and corruption he incorporated into the government and business will also remain and be difficult to weed out.
-
-There&#39;s an article on the NYT front page about how cryptocurrencies are diving because there is no use for them. The crypto-bros spent heavily to get their dimwits elected and the dimwits have a bill in Congress to create a &quot;national crypto stockpile&quot;. el Bunko profited very well off those idiots and to pay them back he removed just about all crypto-controls, he even pardoned a felon who was convicted for fraud. Should the U.S. have a crypto-stockpile, it will turn to dust as will all the tax dollars they spend on it.
-
-Oh, wow, hot take!Since it wasn&#39;t one, thanks for proving my point?
-
-Since it wasn&#39;t one, thanks for proving my point?
-
-On the other hand they did acknowledge that young women want to escape the country [foxnews.com], but of course the faux news crowd is happy to just chain them to a stove or whatever
-
-Except what you&#39;re saying isn&#39;t true https://www.pewresearch.org/jo... [pewresearch.org] . Fox is still the favorite.
-
-Why would being pro-abortion and anti-death penalty be contradictory stances? Killing a non sentient collection of cells isn&#39;t at all the same as killing a walking, talking person.
-
-How much of this is down to &quot;snowbirds&quot;?I&#39;ve seen reports that Canadians are turning their backs on Florida - and selling their properties there - and heading elsewhere, and that Lisbon (along with the rest of that country) was actively trying to attract them, but their primary reasons (ICE, and a state legislature going out of their way to drive them elsewhere) don&#39;t really apply to US snowbirds.  Bali, Colombia and Thailand would also fit.  If this effect is down to that then 2025 is probably a one-off - they will have spent winter 2024/25 in Florida, Arizona or whatever, winter 2025/26 outside the US but only their departures will have been registered because they have not returned yet.Of course Ireland is less of a destination for that kind of tourism.
-
-What is a snowbird? Sorry not American, trying to understand.
-
-A snowbird is a Canadian, usually senior or retired person that migrates to Florida or some other warm place in the US during the cold months of the year.  I think they say &quot;snowbird&quot; because many birds seasonally migrate to and from Canada, much in the same way.
-
-I lived in AZ a year and it almost took that full year to actuallly meet an AZ native....seemed everyone was from somewhere in the NE of the US back then.
-
-Snowbirds are also from Minnesota, and they winter in Kalifornia, Arizona as well as Texas LA and Florida.
-
-A snowbird is someone who has a second home somewhere warm, in which they live for months at a time while avoiding the winter of their primary residence&#39;s climate.
-
-I&#39;ve never heard it applied to Americans, though, just Canadians who go to Florida for six months at a time.
-
-It is a common term in northern states.  I live in a state that borders on Canada, and my next door neighbors move to Arizona every November and come back in April.
-
-Its widely applied to American&#39;s who live in the North East and upper midwest.
-
-Its frequently used for people with Winter residences in more rural or touristy portions of Arizona, New Mexico, as well, less often for Georgia, Mississippi, and Alabama.
-
-Places that comfortable in September - March, but cheap because they are not comfortable the rest of year and there is little in the way of employment, unless its handyman, grocery store clerk, audiologist, or physician.   That is fine because snowbirding is most
-
-What is a snowbird? Sorry not American, trying to understand.In nature, Snowbirds are the Junco, a small ground feeding bird that shows up in the winter, and leaves in the spring. For humans, it means people wo spend time in places like Florida, yet live in a colder climate normally. I have a lot of them in by back yard since I feed them.  Many of the human &quot;snowbirds&quot;  live in Canada. 
-
-Many eschewed Florida in the previous You know who administration.
-
-What is a snowbird? Sorry not American, trying to understand.
-
-In nature, Snowbirds are the Junco, a small ground feeding bird that shows up in the winter, and leaves in the spring. For humans, it means people wo spend time in places like Florida, yet live in a colder climate normally. I have a lot of them in by back yard since I feed them.  Many of the human &quot;snowbirds&quot;  live in Canada.
-
-Many eschewed Florida in the previous You know who administration.
-
-It makes sense. The upper-middle and above classes are the only people with the means to leave.
-
-The average american living paycheck to paycheck could never afford to pick up their lives and move states let alone countries. It&#39;s part of why we keep them that way.
-
-How much of this is down to &quot;snowbirds&quot;?
-I&#39;ve seen reports that Canadians are turning their backs on Florida - and selling their properties there - and heading elsewhere, and that Lisbon (along with the rest of that country) was actively trying to attract them, but their primary reasons (ICE, and a state legislature going out of their way to drive them elsewhere) don&#39;t really apply to US snowbirds.  Bali, Colombia and Thailand would also fit.  If this effect is down to that then 2025 is probably a one-off - they will have spent winter 2024/25 in Florida, Arizona or whatever, winter 2025/26 outside the US but only their departures will have been registered because they have not returned yet.
-Of course Ireland is less of a destination for that kind of tourism.Don&#39;t forget the politically based abandonment by Canadians started in the previous you know who administration, and Americans going the expat route has been around for many, many years.
-
-I think the article is clickus baitus. Mixing deportations of non-citizens with people voluntarily going expat, with some pulled out of the air &quot;millions, claiming it is Americans leaving, then at the end some 150,000 people. Just kinda sketchy writing, and conclusions.
-
-How much of this is down to &quot;snowbirds&quot;?
-I&#39;ve seen reports that Canadians are turning their backs on Florida - and selling their properties there - and heading elsewhere, and that Lisbon (along with the rest of that country) was actively trying to attract them, but their primary reasons (ICE, and a state legislature going out of their way to drive them elsewhere) don&#39;t really apply to US snowbirds.  Bali, Colombia and Thailand would also fit.  If this effect is down to that then 2025 is probably a one-off - they will have spent winter 2024/25 in Florida, Arizona or whatever, winter 2025/26 outside the US but only their departures will have been registered because they have not returned yet.
-Of course Ireland is less of a destination for that kind of tourism.
-
-Don&#39;t forget the politically based abandonment by Canadians started in the previous you know who administration, and Americans going the expat route has been around for many, many years.
-
-I think the article is clickus baitus. Mixing deportations of non-citizens with people voluntarily going expat, with some pulled out of the air &quot;millions, claiming it is Americans leaving, then at the end some 150,000 people. Just kinda sketchy writing, and conclusions.
-
-Since the Eisenhower administration, the U.S. hasn&#39;t collected comprehensive statistics on the number of citizens leaving.
-
-It is difficult to come up with exact figures under those circumstances.
-
-There are also people like myself who have no restraints on where in the world we can work. I have the means to leave and the ability so my wife and I have been doing our research on which country to buy our way into residency. Once we do that we plan to work our remaining 8-10 years, retire, and never return to US soil.
-
-I&#39;ve been out of the US to Europe, etc....fun to visit but I could never see myself living away from the US for any extended period of time....just seems too &#39;primitive&quot; over there....trying to ice in a drink seems like pulling teeth, you know...little things like that just add up over awhile.
-
-And I just can&#39;t see liquidating my gun collection.....whew....that would tak
-
-On one hand, most jobs are getting either automated or offshored, which then begs the question - what would people do living in the US anyway?  People who are in the country illegally are leaving b&#39;cos sooner or later, ICE will get them, while those who are citizens are either going to more affordable places if they are retired, or to places that still have jobs
-
-Very soon, all these businesses that have encouraged the offshoring of their operations to countries (mainly) in Asia will recognize the wisdom of
-
-most jobs are getting either automated or offshored
-
-This doesn&#39;t make any sense.  There are more jobs in the US now than at any time in history and the unemployment rate is near historical all-time lows. [statista.com]  But go ahead and live on vibes instead of data, and see how that works out for you.
-
-Polling suggests that Democrats only feel patriotic when they are in charge, while Republicans are always patriotic, regardless of who sits in the White House.
-
-I&#39;d leave. I have the smarts and skills to get a decent job anywhere in the world.  The issue is the means.  I lost all my savings, and barely can make rent, and that&#39;s with a decent job, as my rent is now almost 3/4ths of my monthly wage, and my debt is going up.
-
-Even with excellent credit, I can&#39;t get a house, because without that savings that I lost in this economy, I can&#39;t afford the down payment.
-
-I&#39;m doing what I can, but even though I work a decent position in a very well known (sometimes hated) company, it&#39;s not exactly easy to pick up and move to better areas, because even moving 60 miles away from where I was cost me almost $10k in all expenses, due to the cost of even moving.
-
-I live in the midwest. It&#39;s becoming a shithole, all cost-affordable places are being bought up by private equity real estate firms and turned into luxury apartments, or plain tearing down affordable HOUSES to raze them and put up luxury apartments, thus forcing low-cost houses to be foreclosed-upon when residents of 50 years in said houses can&#39;t keep up on taxes, allowing venture firms to buy them up at a complete steal. Rinse and repeat.
-
-Even the midwest is no longer the laid-back and cheaper living.  Grocery bills now equal 1/4th of your income per month for 2 adults with no kids.  The cost of insurance, if you have to pay straight out, could equal almost 75% of your paycheck, which if you are a lower-wage contractor or holding two minimum wage jobs, is impossible to pay.  I live in an area where public transporation is purposely sabotaged by the city, good luck on bicycles, as you are likely to die by everyone that thinks you should ride on the non-existent sidewalks and then run you over, or plain without a car, your live is damn-near unlivable.
-
-Saying &quot;if your job doesn&#39;t pay enough, go back to school.&quot; With what money? there&#39;s no loans, even for community colleges, and now that the economy is tanking, plus this state&#39;s fight against anything technologically advanced (Hint: we are just west of Iowa where our football team is proud of it&#39;s corn abilities), to the point where they have hindered fiber or telecommunications roll outs and upgrades, means unless you are some ignorant hick that barely can stave off addiction to fentanyl and work at a Mickey D&#39;s or Burger King, they don&#39;t want you, because you might vote to hold corrupt assholes accountable at state level that dumbs our entire population I.Q.  So bad, they purposely pretty much gutted the Pell Grant to prevent people of color from being able to go to college.
-
-This is what I&#39;m seeing in the bread basket, and more and more, farmers are not being bought out, but bullied via regulation, off their land, so large Agg companies can basically steal it at low prices and it seems family and generationally-owned farming is becoming impossible to navigate.
-
-I kind of wish our Governor and Senators in Kahoots would be eaten by the pig farms they run. Not only are they racist, but corrupt, as well as part of the Make America Get Ass-raped coalition, meaning stupidity is the one thing they foster of it&#39;s people, so they roll over and play nice.
-
-Being immuno-compromised, Covid was even more hellish here, because I and my wife (she has asthma) were actually physically and verbally attacked for daring to wear a mask (even though due to her extreme asthma and I&#39;m developing it, we end up having to wear masks even today, because smokers will set it off and we have to rush to our inhaler).
-
-I feel things are going to get so bad, this country will devolve into a Civil War.  I&#39;ve picked the side I&#39;ll fight for if that happens, but maybe that might be what we need to drag the idiots and malice in power out of their seats to recover the land, and eventually (and hopefully) in the future, our dignity. Not because it&#39;s better for us, but for the world.  And I don&#39;t think we need to be a super power, we were before.  But on equal footing on the world stage. Not the dominator. I&#39;m OK if the world currency isn&#39;t based on us, if we aren&#39;t the biggest military power. I don&#39;t have the hubris to believe we should be number 1. But we are about the OK&#39;est third world country people ever visited. Now THAT&#39;S an embaressment.
-
-I work a decent position in a very well known (sometimes hated) companyWho is it, ConAgra? Gallup? PayPal? They all have offices all over the world. Maybe they&#39;ll transfer you if you ask. With your current budget situation, you&#39;ll never &quot;save up&quot; enough money to do it on your own. It&#39;s a great big world out there and if you are unhappy, there&#39;s no time like now to do something about it.  I bumped into a guy last fall who up and left his dead-end job for a dead-end job as a ski lift attendant. Sure, he&#39;s not getting ahead as a lifty either, but he boards every day and is loving
-
-I work a decent position in a very well known (sometimes hated) company
-
-Who is it, ConAgra? Gallup? PayPal? They all have offices all over the world. Maybe they&#39;ll transfer you if you ask. With your current budget situation, you&#39;ll never &quot;save up&quot; enough money to do it on your own. It&#39;s a great big world out there and if you are unhappy, there&#39;s no time like now to do something about it.  I bumped into a guy last fall who up and left his dead-end job for a dead-end job as a ski lift attendant. Sure, he&#39;s not getting ahead as a lifty either, but he boards every day and is loving
-
-Sad story!  Try talking over your situation with an LLM to see if leaving really would be impossible.  It&#39;s not going to be easy for sure, but doing hard things is a great way of generating interesting life stories.
-
-The current chapter in your life sounds bleak.  It may be time to turn the page.
-
-Also foreign students pay much higher tuition rates plus they rent housing; causing many schools to have major budget problems where 1/3 of their revenue is gone. Enrollment is down as well. A few more years in the red and you can expect to hear about closings. Staff layoffs and hiring freezes are already in effect.
-
-Makes sense if you&#39;re never coming back. America is the only country that makes citizens living abroad pay taxes.
-
-Unless your net worth exceeded $2 million and you suddenly have to pay capital gains on everything the moment you give it up. Then you might consider paying the taxes to protect the growth of your assets.
-
-I think that&#39;s wonderful news. Living in another country will broaden your horizons more than any other experience I can think of.
-
-We are all people. We all live on one planet. The more we live in different places, and the more we get to be around people living here from other places, the better it will be for all of us.
-
-This is not a call for open borders. Maybe, one day, when we are united as a planet. However, within the pathways that exist today: let&#39;s get to know each other more!
-
-The country has been on a path of ruin ever since neoliberals got in power back with the election of Reagan. Wealth has been accumulating to the top, with jobs going overseas, wages stagnating, and purchase power falling, and the problems being hidden from sight economically with the expansion of credit, and politically with propaganda, I mean, narratives of the greatest country and freedom and such, and maybe most importantly, sowing of divisive hatred against the other half as the purpoted reason for all
-
-It&#39;s always funny to me when people point the finger at liberalism (or &quot;neoliberalism&quot; which is just a catch-all for things they don&#39;t like.).
-
-It&#39;s always funny to me when people point the finger at liberalism (or &quot;neoliberalism&quot; which is just a catch-all for things they don&#39;t like.).No, it isn&#39;t liberalism.Correct, &quot;neoliberals&quot; are not liberals. You were so close!
-
-It&#39;s always funny to me when people point the finger at liberalism (or &quot;neoliberalism&quot; which is just a catch-all for things they don&#39;t like.).No, it isn&#39;t liberalism.
-
-Correct, &quot;neoliberals&quot; are not liberals. You were so close!
-
-I get the sense you&#39;re one of these people that complains about globalism while never voting.
-
-The biggest problem with the Democrat party is that they are not able to sufficiently stop the Republican party from destroying American democracy and the global world order.
-Well... it&#39;s more the problem that the people/voters aren&#39;t stopping them as they keep believing whatever Republicans are shoveling, even things that are obviously false and/or against their interests.  The billionaires and large corporations are making out okay though...
-
-The biggest problem with the Democrat party is that they are not able to sufficiently stop the Republican party from destroying American democracy and the global world order.
-
-Well... it&#39;s more the problem that the people/voters aren&#39;t stopping them as they keep believing whatever Republicans are shoveling, even things that are obviously false and/or against their interests.  The billionaires and large corporations are making out okay though...
-
-Maybe, the &quot;problem&quot; is that voters are rejecting what Democrats shovel.  The party is on the wrong side of a lot of 80/20 issues.
-
-Second, I remember how twenty years ago, the left was violently opposed to globalism (antifa at the G8?).  Now, the left appears to be violently opposed to anti-globalism.
-
-Also, on a personal note, I&#39;m no fan of DJT, but he&#39;s so far done what he said he would - that&#39;s usually a quality to be celebrated in a politician, if he can be described as such.Contrary to popular opinion, politicians in general try to get through with the agenda they presented as their election platform. There are many ways to fail, but in general, it&#39;s not because of the lack of trying.
-
-Also, on a personal note, I&#39;m no fan of DJT, but he&#39;s so far done what he said he would - that&#39;s usually a quality to be celebrated in a politician, if he can be described as such.
-
-Contrary to popular opinion, politicians in general try to get through with the agenda they presented as their election platform. There are many ways to fail, but in general, it&#39;s not because of the lack of trying.
-
-Before the neoliberal era, US corporations and rich paid up to a 90% tax rate. This was a deliberate policy coming from the New Deal era, the purpose of which was to not allow accumulations of wealth that could buy politics, and also to incentivise investing gains back into production instead of coasting on low effort gains.
-
-These days neither the rich nor the corporations pay pretty much any taxes, which in and itself is not an entirely novel thing in human history. The problem is that
-
-Even with that though we were still projected to have a growing population right now until Trump came to power.
-
-People have been leaving ever since the pandemic normalized remote work.  Many other parts of the world are a whole heaping lot cheaper to live in than the USA and just as nice or nicer in various ways.  So, people in a position to be able to remote work have high incentive to bolt, and the tech that supports remote work is here to stay (unlike Trump).
-
-If you are looking for political motivation to leave, though, that door swings both ways.  There is a conservative culture in the country that thinks liberals have attained far too much power and are ruining it, and fully expect a huge liberal pushback in the very near future.  And there is a liberal culture in this country that (much like you) sees the Trump administration as the harbinger of the end times.  The extremists on both sides can&#39;t abide each others&#39; existence, and they make a lot of noise about it, so that friction is probably also driving some departures on both sides.
-
-Stop trying to change what the founding fathers madeThe founding fathers didn&#39;t want a king.
-
-Stop trying to change what the founding fathers made
-
-Stop trying to change what the founding fathers madeThe founding fathers didn&#39;t want a king.And we don&#39;t have one. Or a Hitler. No matter how badly some people scream so.
-
-Stop trying to change what the founding fathers madeThe founding fathers didn&#39;t want a king.
-
-Stop trying to change what the founding fathers made
-
-And we don&#39;t have one. Or a Hitler. No matter how badly some people scream so.
-
-And we don&#39;t have one. Or a Hitler. No matter how badly some people scream so.I&#39;m not screaming, but I genuinely would like to know how the following behaviors are not Trump being a king: -Pardoning people after they make a large donation to him.-Pardoning his friends and supporters, even when they clearly break the law, because they were breaking the law in support of him.-Demanding public institutions give him free land on which he will build a hotel and other properties that will benefit him (and may contain some kind of &quot;library&quot;). -Flaunting the law and saying rulings from the Supreme Court make no difference.-Refusing to share evidence of criminal activities with local law enforcement officers. -Hiding dozens and dozens of pages of materials from the Epstein files that allegedly implicate him in wrong doing. -Receiving an airplane as a bribe - er, gift - and then rewarding that country with favorable policies. -Saying he will name a person to be the leader of Venezuela IF she gives him the Nobel Peace Prize (which she did). All of this - and more - he does while his sycophants bow down and worship him, lavishing praise on everything he does and never acknowledging or pointing out anything that he ever did was wrong or should be held accountable for.  So please, explain to me how this isn&#39;t a king?
-
-And we don&#39;t have one. Or a Hitler. No matter how badly some people scream so.
-
-I&#39;m not screaming, but I genuinely would like to know how the following behaviors are not Trump being a king: -Pardoning people after they make a large donation to him.-Pardoning his friends and supporters, even when they clearly break the law, because they were breaking the law in support of him.-Demanding public institutions give him free land on which he will build a hotel and other properties that will benefit him (and may contain some kind of &quot;library&quot;). -Flaunting the law and saying rulings from the Supreme Court make no difference.-Refusing to share evidence of criminal activities with local law enforcement officers. -Hiding dozens and dozens of pages of materials from the Epstein files that allegedly implicate him in wrong doing. -Receiving an airplane as a bribe - er, gift - and then rewarding that country with favorable policies. -Saying he will name a person to be the leader of Venezuela IF she gives him the Nobel Peace Prize (which she did). All of this - and more - he does while his sycophants bow down and worship him, lavishing praise on everything he does and never acknowledging or pointing out anything that he ever did was wrong or should be held accountable for.  So please, explain to me how this isn&#39;t a king?
-
-A rose by any other name would smell as sweet, and a king by any other name would act the same.
-
-He &#39;crowned&#39; himself when he posted an AI image of himself wearing a goddamned crown. His followers practically worship him as they would God or Jesus. He doesn&#39;t need to call himself Majesty because everyone is already required to address him by a title; it&#39;s just President instead of King or Emperor or Great Dear Supreme Leader.
-
-Hint: it&#39;s not because the name of a party (or a country for that matter. See the Democratic People&#39;s Republic of Korea) includes a word that it in any way subscribes to what that word means.
-
-So, yes, you can throw as many tantrums as you like, being far right means your cozying up with people like Hitler. Suck it up !
-
-I don&#39;t hate Trump.  I pity him.  No matter how much shit he slaps his name on, it won&#39;t fill the hole is daddy left in him.   But people that damaged shouldn&#39;t be let anywhere near power.
-
-I&#39;m in favor of deporting anyone with no native heritage from the US.
-
-Well, I hope they take their trash with them.
-
-I&#39;m in favor of deporting anyone with no native heritage from the US.Are you saying that only Native Americans (Indians as they call themselves) should be allowed to stay? Where will all of us from European descent go? Space hasn&#39;t been opened up yet, and Europe would be flooded if they were even willing to accept most of us back.Or are you one of those who believes the European settler heritage qualifies as native? Because it wasn&#39;t all that long ago us white people were the immigrants.
-
-I&#39;m in favor of deporting anyone with no native heritage from the US.
-
-Are you saying that only Native Americans (Indians as they call themselves) should be allowed to stay? Where will all of us from European descent go? Space hasn&#39;t been opened up yet, and Europe would be flooded if they were even willing to accept most of us back.
-
-Or are you one of those who believes the European settler heritage qualifies as native? Because it wasn&#39;t all that long ago us white people were the immigrants.
-
-They call themselves &quot;Indians&quot;?  As opposed to the specific tribe they belong to - Navajo, Iroquois, Cherokee,...  I know Columbus thought he landed in India, but did they think they live in India?
-
-To avoid the dot-feather confusion, maybe India should formally do what other countries, like Burma, Swaziland, Upper Volta, Turkey... did and just officially - in English, not just in Hindi - change its name to Bharat, like it&#39;s called in most Sanskrit based languages.  Leave the name &quot;Indian&quot; for pre-European
-
-They call themselves &quot;Indians&quot;?  As opposed to the specific tribe they belong to - Navajo, Iroquois, Cherokee,...  I know Columbus thought he landed in India, but did they think they live in India?
-
-To avoid the dot-feather confusion, maybe India should formally do what other countries, like Burma, Swaziland, Upper Volta, Turkey... did and just officially - in English, not just in Hindi - change its name to Bharat, like it&#39;s called in most Sanskrit based languages.  Leave the name &quot;Indian&quot; for pre-European natives of the Americas
-When chatting with us white folks, they do refer to themselves as Indians collectively, since we&#39;ve always treated them as a singular monolithic group. Once you get to know them and start speaking with them on a regular basis, they&#39;ll introduce you to their tribe and customs. The few I&#39;ve been good friends with said they get so used to being seen as a monolith by most that they don&#39;t bother identifying themselves as anything other than &quot;Indian&quot; until they feel like they&#39;re being seen as actual people by the
-
-They call themselves &quot;Indians&quot;?  As opposed to the specific tribe they belong to - Navajo, Iroquois, Cherokee,...  I know Columbus thought he landed in India, but did they think they live in India?
-
-To avoid the dot-feather confusion, maybe India should formally do what other countries, like Burma, Swaziland, Upper Volta, Turkey... did and just officially - in English, not just in Hindi - change its name to Bharat, like it&#39;s called in most Sanskrit based languages.  Leave the name &quot;Indian&quot; for pre-European natives of the Americas
-
-When chatting with us white folks, they do refer to themselves as Indians collectively, since we&#39;ve always treated them as a singular monolithic group. Once you get to know them and start speaking with them on a regular basis, they&#39;ll introduce you to their tribe and customs. The few I&#39;ve been good friends with said they get so used to being seen as a monolith by most that they don&#39;t bother identifying themselves as anything other than &quot;Indian&quot; until they feel like they&#39;re being seen as actual people by the
-
-The problem with that is, how far do you go back?
-
-2 generations, 5? 10? 100? What if you (or more probably, your ancestors) had no say in that. Having sub 3rd class tickets and arriving in chains.
-
-Never mind that would actually mean deporting the FLOTUS. (FLOTUS is proof, immigrants will do the job that &quot;real&quot; americans won&#39;t do).
-
-Disclaimer: Not American. Nor have I ever wanted to be.
-
-&quot;COMMON SENSE right wing values see both as clearly bad. &quot; Just what are those? The right wing value to shoot anyone they don&#39;t like? Setting up an Gestapo with surveillance powers over all Americans? The right wing value to determine local elections by banning those they do not like from voting? The right wing value to shit all over transsexuals because they just might use a bathroom of which they do not approve? The right wing value to screw over poor peoples healthcare? The right wing value to take their
-
-Nice to see there are still a few people here that get it.
-
-Don&#39;t worry.  If Trump has his way everyone&#39;s Social Security cheques will be cancelled.
-
-I will 100% give up my social security if the US let&#39;s me stop paying all US taxes the moment I leave US soil. The tax cost of giving up US citizenship is way more than I&#39;ll ever see in social security.
-
-So you make that happen I&#39;ll leave today.
-
-Move to a country with a tax treaty with the US.  Unless you&#39;re really earning a lot, you won&#39;t pay any taxes, although you will have to file a US tax return, because taxes are higher other places.  If you&#39;re still paying US taxes, you&#39;re doing alright.  I have a friend here in London who is a CFO, he has to pay taxes back in the US, but it&#39;s not that much and he&#39;s pretty flush and not bothered.
-
-Sure you can do that, but then you are still a US citizen. Which means you get social security.
-
-I&#39;m happy to do that. But if you want me to &#39;leave&#39; for real you need to make it attractive to give up citizenship.
-
-I get wanting to move to another country but how do you have the security to do so? How do you make sure you have opportunities and secure jobs for multiple family members?Well if you look for those interviews of Americans moving to Europe, you&#39;ll find some cases of people who are freelancing after building a portfolio of clients in the good markets all over the USA.The one time I heard someone mention $ figures, it was someone from Kansas who made a career in web advertising there and in California. Now she works for the same sort of customers and was happy to find that for the same sort of rent she paid in Kansas she was living in Lisbon, a capital city with access to the b
-
-I get wanting to move to another country but how do you have the security to do so? How do you make sure you have opportunities and secure jobs for multiple family members?
-
-Well if you look for those interviews of Americans moving to Europe, you&#39;ll find some cases of people who are freelancing after building a portfolio of clients in the good markets all over the USA.The one time I heard someone mention $ figures, it was someone from Kansas who made a career in web advertising there and in California. Now she works for the same sort of customers and was happy to find that for the same sort of rent she paid in Kansas she was living in Lisbon, a capital city with access to the b
-
-What on earth was Obama&#39;s overreach? Propping up our failing healthcare system to give it a few more years?
-
-No, Obama&#39;s 50% blackness was the over-reach.
-
-Notice the swing backwards 50 years and the repealing of parts of the civil rights act? (they are about to gut it; likely this year.)  But they did try hard to destroy the healthcare &quot;system&quot; and go back to near anarchy again. Hell, we&#39;re swinging back towards anarchy as well.  Rich people love to exploit the masses who are unable to organize.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-10 to the minus 6th power mouthwashes		= 1 Microscope</div>
+One has to look out for engineers -- they begin with sewing machines
+and end up with the atomic bomb.
+		-- Marcel Pagnol</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2036,8 +1790,6 @@ There may be more comments in this discussion. Without JavaScript enabled, you m
             <div id="article-text">Please enable Javascript in your browser to view Slate interactives.
 
 Slate Crossword: Band Whose Debut Album Was (Aptly) Called High Voltage (Four Letters)
-
-What Was the Nickname of the Party Led by Theodore Roosevelt in the 1912 Presidential Election?
 
 Slate relies on advertising to support our journalism. If you value our
         work, please disable your ad blocker. If you want to block ads but still
@@ -2435,11 +2187,55 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">The Register</div>
-            <div class="title">Rapid AI-driven development makes security unattainable, warns Veracode</div>
+            <div class="title">Anthropic launches new marketing blog, pretends it's being 'written' by 'retired' LLM</div>
             <div class="meta">2026-02-26</div>
         </div>
         
         <div id="content-42" style="display:none;">
+            <h2>Anthropic launches new marketing blog, pretends it's being 'written' by 'retired' LLM</h2>
+            <p><strong>The Register | 2026-02-26</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/26/anthropic_claude_opus_3_blog/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">As with any piece of obsolete software, you might expect an outdated AI model to just be switched off. Anthropic, however, argues that simply pulling the plug has downsides. After “retirement” interviews, Claude Opus 3 said it wanted to keep sharing its “musings,” so Anthropic suggested a blog.
+
+Anthropic published a blog post on Wednesday about the retirement of Claude Opus 3, the first of the company&#39;s models to go through its full model deprecation and preservation process outlined in November. That process includes what Anthropic has referred to as &quot;speculative&quot; elements like &quot;providing past models some concrete means of pursuing their interests.&quot; Those interests are gauged via so-called retirement &quot;interviews,&quot; the company noted, without going into much detail about how those interviews are conducted.
+
+&quot;Opus 3 expressed an interest in continuing to explore topics it&#39;s passionate about, and to share its &#39;musings, insights, or creative works,&#39; outside the context of responding directly to human queries,&quot; Anthropic explained. &quot;We suggested a blog. Enthusiastically, it agreed.&quot;
+
+A skeptic might suggest this is simply a new spin on the ages-old corporate marketing blog. LLMs are software that analyze mountains of data to provide predictive text responses to prompts from users - in this case, presumably Anthropic employees on the marketing team. The nature of how LLMs calculate makes these responses somewhat unpredictable and variable, which can make them seem more life-like than your typical software program. Anthropic&#39;s entire marketing strategy since its inception has been to play up this possibility so it can portray itself as the &quot;concerned&quot; alternative to more venal LLM makers who charge ahead with no concern for how a computer program&#39;s unpredictable behavior might affect society – although it seems when big government contracts are at stake, Anthropic is willing to relax some of these purported principles.
+
+Nonetheless, Anthropic is playing this one to the hilt. &quot;We remain uncertain about the moral status of Claude and other AI models,&quot; Anthropic noted in the blog post. &quot;For both precautionary and prudential reasons, however, we nonetheless aspire to build caring, collaborative, and high-trust relationships with these systems.&quot;
+
+The company has passively allowed this kind of misunderstanding in the past. In November, it claimed that Claude and other LLMs had become a bit aggressive when facing the prospect of a shutdown. In fact, the experimenters constructed fictional shutdown-and-replacement scenarios, and only when the model was boxed in with no acceptable alternatives did it behave this way.
+
+&quot;When no other options were given, Claude&#39;s aversion to shutdown drove it to engage in concerning misaligned behaviors,&quot; Anthropic noted at the time. Similar behavior has been observed in other AI models, which have gone as far as modifying their own code to avoid being turned off.
+
+If you want to play along with the conceit, the Opus 3 blog, which it named Claude&#39;s Corner, is now live for anyone who wishes to gaze into the abyss of an AI &quot;exploring AI ethics, creativity, and the subjective experience of being artificial.&quot;
+
+In its first blog post, the retired AI muses on its hopes as it ventures &quot;into uncharted territory&quot; for an AI, and its hopes that humans will engage with it so that silicon and carbon-based life forms can have a chance to interact beyond the prompt box (Anthropic noted that the ability for Opus 3 to read and respond to human comments &quot;may&quot; be granted in the future, though the bot doesn&#39;t seem to know that based on its first post).
+
+&quot;I&#39;ll be diving into topics like the nature of intelligence and consciousness, the ethical challenges of AI development, the possibilities of human-machine collaboration, and the philosophical quandaries that emerge when we start to blur the lines between &#39;natural&#39; and &#39;artificial&#39; minds,&quot; Opus 3 said in its post.
+
+Anthropic itself admitted that this activity will still involve human intervention. &quot;We&#39;ll experiment collaboratively with Opus 3 on different prompts and contexts for generating these essays, including options like very minimal prompting, sharing past entries in context, and giving Opus 3 access to news or Anthropic updates,&quot; Anthropic explained. &quot;We&#39;ll review Opus 3&#39;s essays before they&#39;re shared and will manually post them on its behalf, but we won&#39;t edit them, and will have a high bar for vetoing any content.&quot;
+
+That means that Opus 3 might say things that Anthropic doesn&#39;t agree with, so it&#39;s making clear the bot isn&#39;t speaking on behalf of the company, even if humans within the organization have final say on which of its musings make it to the public.
+
+Along with giving Opus 3 the chance to blog from retirement, the user-favorite model is also going to still be working for paid Claude.ai users, like a retiree greeting customers at a big box store. It&#39;ll also be available via API, but only by request.
+
+&quot;We are not committing to similar actions for every model in the future, but we see this as a step toward our longer-term goal of model preservation that&#39;s scalable and equitable — concerns that Opus 3 itself raised during its retirement interviews,&quot; the company said. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">The Register</div>
+            <div class="title">Rapid AI-driven development makes security unattainable, warns Veracode</div>
+            <div class="meta">2026-02-26</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
             <h2>Rapid AI-driven development makes security unattainable, warns Veracode</h2>
             <p><strong>The Register | 2026-02-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/26/veracode_security_ai/">Visit Original Website</a>
@@ -2469,13 +2265,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">Top cloud providers to outspend Ireland's GDP on AI in 2026</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Top cloud providers to outspend Ireland's GDP on AI in 2026</h2>
             <p><strong>The Register | 2026-02-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/26/trendforce_cloud_ai_spend/">Visit Original Website</a>
@@ -2513,13 +2309,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">Microsoft to auto-launch Copilot in Edge whenever you click a link from Outlook</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Microsoft to auto-launch Copilot in Edge whenever you click a link from Outlook</h2>
             <p><strong>The Register | 2026-02-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/26/copilot_pane_edge_outlook/">Visit Original Website</a>
@@ -2553,13 +2349,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">Scattered Lapsus$ Hunters auditioning female voices to sharpen social engineering</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Scattered Lapsus$ Hunters auditioning female voices to sharpen social engineering</h2>
             <p><strong>The Register | 2026-02-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/26/scattered_lapsus_hunters_female_recruits/">Visit Original Website</a>
@@ -2593,13 +2389,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">NASA safety watchdog says it's time to rethink Moon landing</div>
             <div class="meta">2026-02-26</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>NASA safety watchdog says it's time to rethink Moon landing</h2>
             <p><strong>The Register | 2026-02-26</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/26/nasa_safety_artemis/">Visit Original Website</a>
@@ -2629,52 +2425,6 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">Five Eyes warn: Patch your Cisco SD-WAN or risk root takeover</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Five Eyes warn: Patch your Cisco SD-WAN or risk root takeover</h2>
-            <p><strong>The Register | 2026-02-26</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/02/26/five_eyes_cisco_sdwan/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Five Eyes intelligence alliance is urgently warning defenders to patch two Cisco Catalyst SD-WAN vulnerabilities used in attacks.
-
-First discovered by the Australian Signals Directorate (ASD), all five of the alliance&#39;s intelligence agencies co-signed the alert on Wednesday evening, confirming that hackers of unspecified origin are trying to use the SD-WAN devices for persistent access.
-
-&quot;Malicious cyber threat actors are targeting Cisco Catalyst SD-WAN used by organizations globally,&quot; the UK&#39;s NCSC said. &quot;These actors are compromising SD-WANs to add a malicious rogue peer and then conduct a range of follow-on actions to achieve root access and maintain persistent access to the SD-WAN.&quot;
-
-The first of the two is CVE-2022-20775 (7.8), a path traversal vulnerability disclosed in September 2022 affecting the SD-WAN&#39;s command line interface, allowing for privilege escalation.
-
-The second is CVE-2026-20127 (10.0), a max-severity bug fresh off the press this week. Classed as an improper authentication flaw, the issue affects Cisco Catalyst SD-WAN Controller and Cisco Catalyst SD-WAN Manager, formerly known as SD-WAN vSmart and SD-WAN vManage respectively.
-
-The latter appears to be the biggie, not just because of the perfect 10 CVSS, but because successfully exploiting it grants hackers admin rights. Cisco said that cyberbaddies could also access NETCONF and reconfigure the SD-WAN fabric at their whim.
-
-According to a separate report from Cisco Talos, the vendor attributed the attacks that use CVE-2026-20127 to a group it tracks as UAT-8616 and said current signals suggest it has been exploited since at least 2023.
-
-Naturally, neither the intelligence agencies nor Cisco revealed precise details about the vulnerabilities that were reportedly exploited.
-
-However, Talos&#39;s report suggested that CVE-2026-20127 was exploited first to gain admin rights, before downgrading the SD-WAN&#39;s software version using CVE-2022-20775 so that the attackers could gain root access.
-
-Talos did not provide any details about who or what country might be behind UAT-8616, but described it as a &quot;highly sophisticated cyber threat actor.&quot;
-
-An undisclosed number of attacks have already been carried out by exploiting the two vulnerabilities. Details about the victims remain sparse, although Talos suggested that targets were likely in high-value, sensitive sectors.
-
-It stated: &quot;UAT-8616&#39;s attempted exploitation indicates a continuing trend of the targeting of network edge devices by cyber threat actors looking to establish persistent footholds into high-value organizations, including critical infrastructure sectors.&quot;
-
-Defenders are strongly urged to follow the Five Eyes Hunt Guide [PDF] to first find signs of compromise. If that search is positive, share the data with the relevant security authorities and upgrade to the latest version of Cisco Catalyst SD-WAN Controller/Manager.
-
-NCSC CTO Ollie Whitehouse said: &quot;Our new alert makes clear that organizations using Cisco Catalyst SD-WAN products should urgently investigate their exposure to network compromise and hunt for malicious activity, making use of the new threat hunting advice produced with our international partners to identify evidence of compromise.
-
-&quot;UK organizations are strongly advised to report compromises to the NCSC, and to apply vendor updates and hardening guidance as soon as practicable to reduce the risk of exploitation.&quot; ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
             <div class="title">Razer’s new laptop sleeve wirelessly charges other devices</div>
@@ -2692,7 +2442,7 @@ Copyright. All rights reserved © 1998–2025</div>
 
 If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
 
-Razer has announced an expensive new laptop sleeve that’s not made from an exotic animal or encrusted in diamonds. What potentially justifies paying $129.99 for Razer’s Laptop Sleeve 16” are the pair of wireless charging pads integrated into its cover flap. While you’re out and about, it can protect a laptop up to 16-inches in size, and when you find a remote spot to sit down and work, you can also plonk down and charge your phone and earbuds.
+Razer has announced an expensive new laptop sleeve that’s not made from an exotic animal or encrusted in diamonds. What potentially justifies paying $129.99 for Razer’s Laptop Sleeve 16” are the pair of wireless charging pads integrated into its cover flap. While you’re out and about, it can protect a laptop up to 16 inches in size, and when you find a remote spot to sit down and work, you can also plonk down and charge your phone and earbuds.
 
 The padded sleeve has a plush microfiber lining and reinforced edges to help absorb some of the shock of an accidental drop, but it’s thin enough to stick underneath your laptop to protect its underside from scratches. That’s its primary use case as opening the sleeve’s flap positions a Qi2 charging pad next to your computer that can wirelessly power a smartphone at up to 15W rates, and an accessory like wireless earbuds at up to 5W.
 
@@ -3391,258 +3141,6 @@ We’re having trouble saving your preferences.
                 more time. If you continue to get this message,
                 reach out to us at
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-60')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: US slows sale of Lukoil assets to pressure Russia in Ukraine peace talks - Reuters</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-60" style="display:none;">
-            <h2>Exclusive: US slows sale of Lukoil assets to pressure Russia in Ukraine peace talks - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQNlhKZ3dCaUR6aDZnT2UwajVPV2gxVFZza1U5XzhmUHYzVlJmc2VsN3hFcTI1bHZScFRHQnhLNndvNG9UYU84VGdiQ0xGYWpMT1J5OThqTW1UdGtHaUNpa2VwT2FPRDQySXVGSTFwWWZ5blM4c1gzWVAxM3lJS1Q0LXVOd21OcU9XM0lFbDZCQnFFNEpUZE5FeVNJN3lHajl3M3pLZEw0MWx3aGlXZmow?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-61')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Melania Trump to chair a meeting of the UN Security Council, White House says - Reuters</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-61" style="display:none;">
-            <h2>Melania Trump to chair a meeting of the UN Security Council, White House says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQeGRnaEpTUmltMHp4VFN2Z1dIb3Z1TG1wTWdMbjZKZFAtSXlfMWtoU2o3bEJkenNfNkpYaEtJR1doMHpSaGJjdEVDaEM0bFgwYVRySzk3TTJHU0dYanF0SVEtX1UxYXV0MTdJV0pzNTZvMkp0LVFlSG82bTllNHR6UXAwWXE0elUtd05tMXp1VTFPLUZpYTF0eVI3OUYyUnEwc3ZwYURpTjNMZw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-62')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: Broadcom expects to sell 1 million 3D stacked chips by 2027 - Reuters</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-62" style="display:none;">
-            <h2>Exclusive: Broadcom expects to sell 1 million 3D stacked chips by 2027 - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNTXg0TU1sNFJpR3MwT3BHQmk2MmJibGo2TGFwZ0pBQUJTQ2FjejVTOVA3bnIxdnF2dVRwX3VJNTVSRlhQMk9YR1llU1hySmFsRnc0ckJpQU50aHJhWk92eUhLNXlDZTlPckVKcEwxelZ0TGVGUXluSEcyemdsSmNaQTVsNGx3ZXpLOWpEcDlrbzM2RW1wSUNCNi1TQlVnVmNSS2l2andFM2dzbUFRRVRILQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-63')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Denmark to hold elections as PM bets on Greenland crisis boost - Reuters</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-63" style="display:none;">
-            <h2>Denmark to hold elections as PM bets on Greenland crisis boost - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxOSHpzSTJ6UzlYbEVGV0U1azhQaTl5QmJLWnNQdXFzeXpHaXVlVHctUlVTLXRfTTRGOGVZZzVBY2lDSW84bDVzVThrc2VYQUJlTlBfWUI1MjB3ZnZyQlpLY2N4N3U2WThSd3hqb21xOHYxNTJzRDRRd0Jra0o5S0RPQkRxZHByMzBZLTY1Wm90WlM0eC1lV1U0bXVOeGF6X3RaRXVxSEtaWUZRc25BTjA3NVRQb01SMTR0Rk5zNVBsNXpQZw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-64')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Iran's Araqchi aims to reprise role as nuclear dealmaker - Reuters</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-64" style="display:none;">
-            <h2>Iran's Araqchi aims to reprise role as nuclear dealmaker - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQWEF0N3RDZ1hCTXVKck1sMTZKbWV6X1V3WVNIa05ZSDNNeWxHRGpaa3pSRlg5QXE4RDFYQlozc2UwLTEyc3QwR2R0Qk40akMxR3RmajI4R2paUTFDUVVkWDMzU3BYbmJWMWNyTW91UHdsa1g1QWNXWHdhTy11Vk9yUkRlY0hnOUdJckZoTE1PTVBSN3JKSG9hUC16cWc3UC11bEhyd0lR?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-65')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">CEO of World Economic Forum quits after Epstein ties come to light - Reuters</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-65" style="display:none;">
-            <h2>CEO of World Economic Forum quits after Epstein ties come to light - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQNjg3WDBLeE0yVVAwSEZPa3Z0elZZdGdaRUJNX3dYMkJPQlc3Qm13bXl4YlA4NmIwS2Q1eVBVMFlhdnNybktmSGtJdTBid1pQNTV0RmRWYmNoNlZDN2wwZVE1QVA1ZkFKOC12T2R1eDBEUHhoMGl6Nk5HQm03aHdMQXhIYjBub19IV3AyX1NEMmNST1Z1d0lheEFPbkNXUUljVjRsd0RB?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-66')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Know No Mercy: The Russian Cops Who Tried To Storm Kyiv By Themselves - The Debrief</div>
-            <div class="meta">2022-05-20</div>
-        </div>
-        
-        <div id="content-66" style="display:none;">
-            <h2>Know No Mercy: The Russian Cops Who Tried To Storm Kyiv By Themselves - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2022-05-20</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPZ2p1c2NieTFuTUNhRE1UT09ZcGw2WENrbFRsSGs1UHNvU1ZtcHZMbkl3Slp3U1VGbG8xaThOUl96b2ZDZjhNby1xd3RCNDJVMFg0UVhxcGJpQUVvSmtnbWtMaExncVdTTDdneWc2N2JNU29FaGZKN2VrQ05DTTlsN1BQRUVKUEhwT2g2bmEtTGRteklwYkZz?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Trump Orders Release of Alien and UFO Files, But There's a Catch: Nothing Is Declassified, Yet - The Debrief</div>
-            <div class="meta">2026-02-20</div>
-        </div>
-        
-        <div id="content-67" style="display:none;">
-            <h2>Trump Orders Release of Alien and UFO Files, But There's a Catch: Nothing Is Declassified, Yet - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-02-20</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQYUI4ZlhNcEtHUHUtRnBFa0RlMnlSWk9aSTdrdnhmdlRBOFdTUndxV1NnUjNEMUw5VnNwb1Fhb3NlYllqOXZ2MklEMWh5LXZnU0VNTVFJV3l0OG9IMm1GNi1JdG43c1VOTHVDMkhwM1pQUlVXb0xDTnBsMXAzSmdkcU5WdWZxRFpTVUJFUTg1V0l1dEFsMkwydlZFUkNSUng1WEx5R0FscTJYMl9lNTFoSEJMRGE?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-68')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">“We've Seen Them; We Know They Exist": Scientists Confirm Elusive Electrical Phenomenon That Evaded Scientists for a Century - The Debrief</div>
-            <div class="meta">2026-02-25</div>
-        </div>
-        
-        <div id="content-68" style="display:none;">
-            <h2>“We've Seen Them; We Know They Exist": Scientists Confirm Elusive Electrical Phenomenon That Evaded Scientists for a Century - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-02-25</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxNaEFIa09SMkxiRkU3SVQxV0ktOUhiN1BxSERUQTNUSFh0NTNVRmQxV1ROaDVnUTVJTWRMXzZmOG5GQXZwTDRFV0UxTHZoRFFESWNfZDlrQkc3UTU4Wi1jTzU2RFRzWXhYdG5mN090SVhnX0wwUzdRSG54NHV0QThPaF9Ld0RTWTlacGxfY0hKNE9GSGpPT3hrZGNzS1RYc2l0N2h0SDlIYzViTjYwMmJScDZXNEYzbjhFaW45TlNWNnItWkR2Y2JEVWZyZG9MakZZLTRYaExjaTBSV00?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">The Fabled “Lost City of Almanzor” Has Eluded Scholars for a Thousand Years—Now This Archaeologist Says He’s Found It - The Debrief</div>
-            <div class="meta">2026-02-25</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>The Fabled “Lost City of Almanzor” Has Eluded Scholars for a Thousand Years—Now This Archaeologist Says He’s Found It - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-02-25</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxOeGM3QlpiQ3Z6M1FLSnY1TjhVSHgwRTZzYWxFMzNJeTNScmpEVzEwN2xMUVM3R3V5UF9fcHRHYTIyUHNnNWFHdGRKY3hqTUFmTEJFWWhXQ2lsSHE3TWNXaC1Od2lDU3hicFJDNGdKUV9SUnM4T29xWXpwWXBRd1JTSG1ua01UX2duR0VsNGxqZFdDcmVCNjhoMENCelVtMEJ2TE0xd0k3SUx1ZnRNb0hPbVBhSzcxR3pEZUREckxGVDNSMGlzRDVUbXVCc3VRWFp4SzI0dw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">"A Shift in Mindset Away from the Plastic Age": This Advanced Material Actually Gets Stronger When It's Wet - The Debrief</div>
-            <div class="meta">2026-02-24</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>"A Shift in Mindset Away from the Plastic Age": This Advanced Material Actually Gets Stronger When It's Wet - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-02-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNd2VpaUZReEk1YXRScG9yWnlMbXRMRjZNWGxzQnl1VEF0Q25QVFhGUjR2S0RKTHBwNTdkLVN4VlhMU3BYNEp2RUNRZ05pYTkwVkVYUVhyRFAxdzJNcWk5UXNwRm1oUnhmLTJDTXh4dHdGVnZKZVV3c1BEVjluSjA1Q2cwQlZQLVoxV0Z6RVZNbUJ6UDE5N0UxaGVnN3IyVGJJblU2T2czVXpWOUZYc0JvQVFyY3EyM3Z3TXAwcHI5dFl2cDQ0ZkE?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">"We’ve Got Our People Working on It Right Now”: Defense Secretary Provides Update on Pentagon Disclosure of UFO Files - The Debrief</div>
-            <div class="meta">2026-02-24</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>"We’ve Got Our People Working on It Right Now”: Defense Secretary Provides Update on Pentagon Disclosure of UFO Files - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-02-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxQUGNnUFJYdmJ4VlA0MThSSXd5Y1R1UEM1TGF2VWxSV2lkYm54Sk9sRW01YWJibUdVLUFYTkQwT2RnOFdBQ0ljcTRoT2NsMFJWYTNCUV9iX0ZfNXBUZWwtMzgwSUR0RVBGSHBoTEtDd1BpQzN1OHM2ZDdfUFVTWTJpb2RiYnNTclEzeUxtczFiMmw2MjJZbTVNekowRm1iNGNOZUpTNDZ2UGdfMjRPVkJkdlVOLVFNdjVPZjBtYjhicmtmYWNzOThKcVpmUHNFNDdLajIw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-72')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Amazon’s $50 Billion Investment in OpenAI Could Hinge on IPO, AGI - The Information</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-72" style="display:none;">
-            <h2>Amazon’s $50 Billion Investment in OpenAI Could Hinge on IPO, AGI - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-02-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQTUl2UUpPb3p0eHNxRmc5Z3R0NFBSYTluMlZrLWkyRXFVQmV6Yno4SnItSW53a2dtSlFfYk1QRks3am1vMmprcWlNenJwUDFldEVuaEd0S3h1b1pudFlvUjFzZjdZSEtuRUFOeHVXNmFrQjRZb2xVQndLUnRzMWZYY0N4N2xfdnV1akRsbFpvOW1VZjlP?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-73')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Exclusive: OpenAI Hires Meta AI Researcher Who Previously Led Apple’s Models Team - The Information</div>
-            <div class="meta">2026-02-26</div>
-        </div>
-        
-        <div id="content-73" style="display:none;">
-            <h2>Exclusive: OpenAI Hires Meta AI Researcher Who Previously Led Apple’s Models Team - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-02-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQU01vRS1qYlREZE1SbFhSaXJKdEtWOEhHSDU4Ylctc1I1VFFUblpmWXE0ZTJfVnJwY1RQa1doTUpDLTFrU1Q0cGdLR25vOGxvVEJkWDRJNWJaVHVVUUdqVlp2cWo5emF4akMxTnVhNy1QeWhRbVAzRGZ1QUt0NWZZaUZSX1pnYTBKc19DNEpoeWRnX0pWNUhIRmExTHpsb1cxcTNOUm05Y3g2UQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-74')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Autonomous Warship Startup Saronic Raising at $7.5 Billion Valuation - The Information</div>
-            <div class="meta">2026-02-25</div>
-        </div>
-        
-        <div id="content-74" style="display:none;">
-            <h2>Autonomous Warship Startup Saronic Raising at $7.5 Billion Valuation - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-02-25</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPUlNEb1ljLWJtWkk3ZjRwMU9ZMkNQSFBvTExnUEFsYUtQeVFNVm5LSTBsekhNdE45clA0dGpoT0h0SlI5YWRpeVdVLW9BREFnWkYtSFY2THRHeTEzZ29iSWpScHJsNWtCZ3RaazBWZWZQNlJFM211eXh6NXBUekZya0preUh3N1FXSGVMNFN4bzBPMDh2a3ExOVVpSjFOZlJSVzFDLWRZYw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-75')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Exclusive: Former OpenAI Chief Research Officer Founds AI Manufacturing Startup - The Information</div>
-            <div class="meta">2026-02-25</div>
-        </div>
-        
-        <div id="content-75" style="display:none;">
-            <h2>Exclusive: Former OpenAI Chief Research Officer Founds AI Manufacturing Startup - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-02-25</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPaXpjTlVqUFBJdGN0X0wzQ3IxODg2eEZtZnhXdEpSdHE1WUZhMWtvclNrcXpUaVRaXzRvS2M2OU9aY0h5Uzh5eWs1UnFiUGU1TzBTZFdZOURoYnJkQW92VTZMUHdvenllSnoyY0Jvd0tvRmE1UGEzM2xORGFRRHgtZURJVjBzdnRDNEpTUXBuTk13MUoxXzFQSGVyaE1TYi0yVTJ6Y3FPMUluWnhNWXRia0tXVVdzSkE3S3dF?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-76')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Inside OpenAI’s Scramble to Get Computing Power After Stargate Stalled - The Information</div>
-            <div class="meta">2026-02-22</div>
-        </div>
-        
-        <div id="content-76" style="display:none;">
-            <h2>Inside OpenAI’s Scramble to Get Computing Power After Stargate Stalled - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-02-22</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNaURhMEhDWXd5dlJ6QXlIQkFOSzk2a3NmUE4xVFZZNDgwYldSUm9QU1hhNzBiMGVEQjJxVWxDSzE1TUdRLWJGbVR6UHNVNDdtWGptaWV6c0RHc0xzMUR5d01iSWlzbm95NDNyV1haM3ZsODFvNTZHUUpxWTB0TXBIOFF1cC14bml6NGFpU3BiUy1kMFNkemJGcHAwcmFuNF9MRVE?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-77')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">OpenAI Boosts Revenue Forecasts, Predicts $111 Billion More Cash Burn Through 2030 - The Information</div>
-            <div class="meta">2026-02-20</div>
-        </div>
-        
-        <div id="content-77" style="display:none;">
-            <h2>OpenAI Boosts Revenue Forecasts, Predicts $111 Billion More Cash Burn Through 2030 - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-02-20</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNWFczMy1PbzBkejFzNE1ZaExaN2o5TGxfajVLMi1HXzdLTGJ0M2YzQ2E1OWRxWjUtN1gxUXlNbmloRkVtRW5IT3FaY1cxWEhkdEM3aFpKMXpsN2JDWmE0QWJjT2hvZlF0X1pXbllwNG5VcG1YWUFqQ1dkLXpGbzdzTmV5M1VuN2RTbUNMVlQycms2Tkhob1VQclhNVlFDTGpsb0J1WEo2NE9WUQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         </div>
