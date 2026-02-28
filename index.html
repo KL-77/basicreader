@@ -154,11 +154,45 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">The Air Force's new ICBM is nearly ready to fly, but there’s nowhere to put it</div>
+            <div class="title">Google quantum-proofs HTTPS by squeezing 2.5kB of data into 64-byte space</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Google quantum-proofs HTTPS by squeezing 2.5kB of data into 64-byte space</h2>
+            <p><strong>Ars Technica - All content | 2026-02-28</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2026/02/google-is-using-clever-math-to-quantum-proof-https-certificates/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Google on Friday unveiled its plan for its Chrome browser to secure HTTPS certificates against quantum computer attacks without breaking the Internet.
+
+The objective is a tall order. The quantum-resistant cryptographic data needed to transparently publish TLS certificates is roughly 40 times bigger than the classical cryptographic material used today. Today’s X.509 certificates are about 64 bytes in size, and comprise six elliptic curve signatures and two EC public keys. This material can be cracked through the quantum-enabled Shor’s algorithm. Certificates containing the equivalent quantum-resistant cryptographic material are roughly 2.5 kilobytes. All this data must be transmitted when a browser connects to a site.
+
+“The bigger you make the certificate, the slower the handshake and the more people you leave behind,” said Bas Westerbaan, principal research engineer at Cloudflare, which is partnering with Google on the transition. “Our problem is we don’t want to leave people behind in this transition.” Speaking to Ars, he said that people will likely disable the new encryption if it slows their browsing. He added that the massive size increase can also degrade “middle boxes,” which sit between browsers and the final site.
+
+To bypass the bottleneck, companies are turning to Merkle Trees, a data structure that uses cryptographic hashes and other math to verify the contents of large amounts of information using a small fraction of material used in more traditional verification processes in public key infrastructure.
+
+Merkle Tree Certificates, “replace the heavy, serialized chain of signatures found in traditional PKI with compact Merkle Tree proofs,” members of Google’s Chrome Secure Web and Networking Team wrote Friday. “In this model, a Certification Authority (CA) signs a single ‘Tree Head’ representing potentially millions of certificates, and the ‘certificate’ sent to the browser is merely a lightweight proof of inclusion in that tree.”
+
+Google and other browser makers require that all TLS certificates be published in public transparency logs, which are append-only distributed ledgers. Website owners can then check the logs in real time to ensure that no rogue certificates have been issued for the domains they use. The transparency programs were implemented in response to the 2011 hack of Netherlands-based DigiNotar, which allowed the minting of 500 counterfeit certificates for Google and other websites, some of which were used to spy on web users in Iran.
+
+Once viable, Shor’s algorithm could be used to forge classical encryption signatures and break classical encryption public keys of the certificate logs. Ultimately, an attacker could forge signed certificate timestamps used to prove to a browser or operating system that a certificate has been registered when it hasn’t.
+
+To rule out this possibility, Google is adding cryptographic material from quantum-resistant algorithms such as ML-DSA. This addition would allow forgeries only if an attacker were to break both classical and post-quantum encryption. The new regime is part of what Google is calling the quantum-resistant root store, which will complement the Chrome Root Store the company formed in 2022.
+
+The MTCs use Merkle Trees to provide quantum-resistant assurances that a certificate has been published without having to add most of the lengthy keys and hashes. Using other techniques to reduce the data sizes, the MTCs will be roughly the same 64-byte length they are now, Westerbaan said.
+
+The new system has already been implemented in Chrome. For the time being, Cloudflare is enrolling roughly 1,000 TLS certificates to test how well the MTCs work. For now, Cloudflare is generating the distributed ledger. The plan is for CAs to eventually fill that role. The Internet Engineering Task Force standards body has recently formed a working group called the PKI, Logs, And Tree Signatures, which is coordinating with other key players to develop a long-term solution.
+
+“We view the adoption of MTCs and a quantum-resistant root store as a critical opportunity to ensure the robustness of the foundation of today’s ecosystem,” Google’s Friday blog post said. “By designing for the specific demands of a modern, agile internet, we can accelerate the adoption of post-quantum resilience for all web users.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">The Air Force's new ICBM is nearly ready to fly, but there’s nowhere to put it</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
             <h2>The Air Force's new ICBM is nearly ready to fly, but there’s nowhere to put it</h2>
             <p><strong>Ars Technica - All content | 2026-02-28</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/02/the-air-forces-new-icbm-is-nearly-ready-to-fly-but-theres-nowhere-to-put-them/">Visit Original Website</a>
@@ -220,13 +254,13 @@ Proponents of maintaining the triad say the ICBM missile fields serve an importa
 Policymakers in power do not agree. The ICBM program has powerful backers in Congress, and Sentinel has enjoyed support from the Obama, Biden, and both Trump administrations. The Pentagon is also developing the B-21 Raider strategic bomber and a new generation of “Columbia-class” nuclear-armed subs.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Under a Paramount-WBD merger, two struggling media giants would unite</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>Under a Paramount-WBD merger, two struggling media giants would unite</h2>
             <p><strong>Ars Technica - All content | 2026-02-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/under-a-paramount-wbd-merger-two-struggling-media-giants-would-unite/">Visit Original Website</a>
@@ -270,13 +304,13 @@ Should a Paramount-WBD merger ultimately be greenlit, two declining businesses w
 Although the bidding war may be settled, the fight for WBD is only beginning.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Photons that aren't actually there influence superconductivity</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Photons that aren't actually there influence superconductivity</h2>
             <p><strong>Ars Technica - All content | 2026-02-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/02/photons-that-arent-actually-there-influence-superconductivity/">Visit Original Website</a>
@@ -312,13 +346,13 @@ More generally, this validates the idea that you can manipulate superconductivit
 Nature, 2025. DOI: 10.1038/s41586-025-10062-6  (About DOIs).</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Whoops: US military laser strike takes down CBP drone near Mexican border</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Whoops: US military laser strike takes down CBP drone near Mexican border</h2>
             <p><strong>Ars Technica - All content | 2026-02-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/02/whoops-us-military-laser-strike-takes-down-cbp-drone-near-mexican-border/">Visit Original Website</a>
@@ -356,13 +390,13 @@ The agencies said they are working together at President Trump’s direction “
 The statement did not mention that the drone was a CBP drone, and the Pentagon declined to provide further details to Ars.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">The AI apocalypse is nigh in Good Luck, Have Fun, Don't Die</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>The AI apocalypse is nigh in Good Luck, Have Fun, Don't Die</h2>
             <p><strong>Ars Technica - All content | 2026-02-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/culture/2026/02/the-ai-apocalypse-is-nigh-in-good-luck-have-fun-dont-die/">Visit Original Website</a>
@@ -400,40 +434,6 @@ That ultimately translates into some big, boldly creative swings in the film’s
 “I think that it’s inherited our worst attributes,” said Verbinski of the film’s AI antagonist. “It’s much, much worse than wanting to kill humans. It wants us to like it. It demands that we like it. I think part of that has to do with being tasked in its formative years to keep us engaged. A lot of people talk about, what is AI doing to us? But there’s not a lot of conversations about what we’re doing to it. This entity being born, it’s being tied and bound and manipulated and told, ‘Let’s look at the humans and what do they want, what do they need? What do they respond to most? What do they hate?’ All those things are going to be hardwired into its source code. It’s going to have mommy issues, we’re going to have to put it on a couch.”
 
 Perhaps not surprisingly, given the film’s themes, Robinson has largely unplugged from most social media, although he still indulges his YouTube addiction, which he jokingly describes as “channel surfing on crack.” But ideally he would like to free himself—and the rest of humanity—from the seductions of Very Online culture entirely. “My goal would be to make teenagers think their phones aren’t cool,” he said. “I would love it if all 13-year-olds went, ‘Eww, I don’t want this, this is my parents’ thing that they track me with.’ I want them all to throw it in the trash. That would be the dream.”</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Hyperion author Dan Simmons dies from stroke at 77</div>
-            <div class="meta">2026-02-27</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Hyperion author Dan Simmons dies from stroke at 77</h2>
-            <p><strong>Ars Technica - All content | 2026-02-27</strong></p>
-            <a class="original-link" href="https://arstechnica.com/culture/2026/02/hyperion-author-dan-simmons-dies-from-stroke-at-77/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Dan Simmons, the author of more than three dozen books, including the famed Hyperion Cantos, has died from a stroke. He was 77.
-
-Simmons, who worked in elementary education before becoming an author in the 1980s, produced a broad portfolio of writing that spanned several genres, including horror fiction, historical fiction, and science fiction. Often, his books included elements of all of these. This obituary will focus on what is generally considered his greatest work, and what I believe is possibly the greatest science fiction novel of all time, Hyperion.
-
-Published in 1989, Hyperion is set in a far-flung future in which human settlement spans hundreds of planets. The novel feels both familiar, in that its structure follows Chaucer’s Canterbury Tales, and utterly unfamiliar in its strange, far-flung setting.
-
-At its heart are the background stories of seven characters on a pilgrimage to the Time Tombs, which move backward in time. There, they may possibly confront a legendary, mythical, terrifying, and time-bending creature known as the Shrike. Each of the stories told by the seven characters is done so in a different subgenre, from tragedy to political thriller to military science fiction, and so on.
-
-I went into Hyperion blind, decades ago, knowing almost nothing about it. I was never the same after finishing it. For a book that is, essentially, “hard” science fiction, Hyperion is also one of the most emotional books I have ever read.
-
-The first tale is that of a priest, Lenar Hoyt, and the dying religion of Catholicism. By the end of this story of cruciforms, isolated civilizations, tesla trees, and more, I was floored. And that was just the first story of seven! Most powerful, for me, was the Scholar’s Tale, the story of Sol Weintraub and his daughter, Rachel. The first of my two daughters had just been born when I read this book, and for the first time ever, when reading, I cried. Cried like a baby.
-
-Anyway, the characters are all on a pilgrimage and tell their stories along the way. It’s a remarkable journey with a satisfyingly climactic ending.
-
-I have read a lot of science fiction over the years and have really enjoyed everything from Isaac Asimov’s Foundation series to N.K. Jemisin’s Broken Earth trilogy. But I keep coming back to the powerful stories within Simmons’ Hyperion novel. It is the novel that has stuck with me the longest, which I keep coming back to, and has enduring ideas that have helped form my worldview.
-
-There are three sequels to the original book, making up the “Cantos” of novels. Opinions vary on the quality of the sequels, and some are better than others (the author is obsessed with John Keats). But they all feature strong storytelling set against an epic scale, and the series is brought to a recognizable and, in my opinion, gratifying conclusion. In an era when major science fiction and fantasy series start out strong, become a little weaker over time, but then are never finished—I’m talking to you, George and Patrick—Simmons does not let the reader down. He was nothing if not prolific.
-
-I have not read all of his other books, and those I have read have been hit or miss. In particular, I found The Terror (a fictional horror story about Franklin’s lost expedition) to be great fun.
-
-In any case, fans of epic fiction have lost a giant, a great writer and epic storyteller with a gift for dark twists and colorful characters. We can only hope he has found a tree ship to take him to a celestial paradise rather than become infected with a cruciform.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -678,11 +678,77 @@ More on Antarctica: Antarctica’s Gravity Hole Growing Stronger, Scientists Fin
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
+            <div class="title">India disrupts access to popular developer platform Supabase with blocking order</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-12" style="display:none;">
+            <h2>India disrupts access to popular developer platform Supabase with blocking order</h2>
+            <p><strong>TechCrunch | 2026-02-28</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/02/27/india-disrupts-access-to-popular-developer-platform-supabase-with-blocking-order/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Save up to $680 on your pass with Super Early Bird rates. REGISTER NOW.
+
+Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
+
+Supabase, a popular developer database platform, is facing disruptions in India — one of its key markets — has been blocked in India, TechCrunch has learned. New Delhi ordered internet providers to block its website, resulting in patchy access across networks.
+
+The blocking order was issued on February 24 under Section 69A of India’s Information Technology Act, according to a source familiar with the matter. The provision empowers the government to restrict public access to online content.
+
+The Indian government did not publicly cite a reason for the move, and it was not immediately clear whether the action was linked to a cybersecurity concern, copyright complaint, or another issue. It was also unclear how long the restrictions would remain in place.
+
+Access to Supabase has been inconsistent in India over the past several days, with the San Francisco-based company acknowledging the issue in posts on social media starting Wednesday. While the restrictions were first reported by Supabase on Reliance Industries’ JioFiber network, users have since flagged similar problems across multiple internet providers and telecom networks. In one post on Friday, Supabase tagged India’s IT minister Ashwini Vaishnaw, asking him to intervene and restore access, though the company later removed the message and said in a subsequent update that the site remained blocked for many users in the country.
+
+We understand many users in India continue to be blocked from accessing Supabase. We acknowledge the difficulties this is causing for our users there. Supabase continues to follow up through all available channels to resolve this issue.We continue to advise affected customers…
+
+An Indian founder, who asked not to be named to avoid potential repercussions, told TechCrunch they had stopped seeing new user sign-ups from India over the past two to three days. A technology consultant working with local startups, who spoke on condition of anonymity, said they were unable to reliably access Supabase for both development and production purposes.
+
+While Supabase suggested workarounds such as switching DNS settings or using a VPN (which reroute internet traffic to bypass local restrictions), the founder said such steps were not practical for most end users.
+
+At the time of publication, TechCrunch was able to verify that supabase.co remained inaccessible on ACT Fibernet, JioFiber and Airtel connections in New Delhi. However, two users on ACT Fibernet in Bengaluru said they were still able to access the service, suggesting the restrictions may be unevenly implemented.
+
+Notably, Supabase’s main website remained accessible in India — but its underlying developer infrastructure did not.
+
+India is Supabase’s fourth-largest source of traffic, accounting for about 9% of global visits, according to data from Similarweb, highlighting the potential fallout for the country’s developer ecosystem. The platform’s global traffic jumped more than 111% year over year to about 4.2 million visits in January. In India, visits rose roughly 179% to about 365,000, compared with a 168.5% increase in the U.S. to about 627,000.
+
+The incident highlights broader concerns about India’s website blocking regime, said Raman Jit Singh Chima, Asia Pacific policy director at Access Now.
+
+“This is a simple fact that has grave consequences for developers and others,” he told TechCrunch. “You don’t know where you can safely run projects without the danger that something might happen where it gets blocked, and suddenly you’re scrambling to find a way.”
+
+India has previously faced criticism over broad website blocking measures. In 2014, authorities briefly restricted access to developer platform GitHub, along with services such as Vimeo, Pastebin and Weebly, during a security probe. Users on some Indian networks in 2023 also reported that a key GitHub content domain had been blocked by certain ISPs, according to earlier reports.
+
+Founded in 2020 by CEO Paul Copplestone and CTO Ant Wilson, Supabase positions itself as an open-source alternative to Firebase built on PostgreSQL. The startup has gained traction amid rising interest in so-called “vibe coding” tools and AI-driven app development, and has raised about $380 million across three funding rounds since September 2024, lifting its valuation to $5 billion.
+
+India’s Ministry of Electronics and IT, as well as telecom providers including ACT Fibernet, Bharti Airtel, and Reliance Jio, did not respond to requests for comment. Copplestone and Wilson also did not respond.
+
+Jagmeet covers startups, tech policy-related updates, and all other major tech-centric developments from India for TechCrunch. He previously worked as a principal correspondent at NDTV.
+
+You can contact or verify outreach from Jagmeet by emailing mail@journalistjagmeet.com.
+
+Last Hours: Save up to $680 on your pass before 11:59 p.m. tonight.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
+
+Jack Dorsey just halved the size of Block’s employee base — and he says your company is next
+
+An accountant won a big jackpot on Kalshi by betting against DOGE
+
+It’s time to pull the plug on plug-in hybrids
+
+Americans are destroying Flock surveillance cameras
+
+Bill Gurley says that right now, the worst thing you can do for your career is play it safe
+
+The 9,000-pound monster I don’t want to give back
+
+Sam Altman would like to remind you that humans use a lot of energy, too</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
             <div class="title">OpenAI fires employee for using confidential info on prediction markets</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-13" style="display:none;">
             <h2>OpenAI fires employee for using confidential info on prediction markets</h2>
             <p><strong>TechCrunch | 2026-02-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/27/openai-fires-employee-for-using-confidential-info-on-prediction-markets/">Visit Original Website</a>
@@ -714,13 +780,13 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">Pentagon moves to designate Anthropic as a supply-chain risk</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>Pentagon moves to designate Anthropic as a supply-chain risk</h2>
             <p><strong>TechCrunch | 2026-02-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/27/pentagon-moves-to-designate-anthropic-as-a-supply-chain-risk/">Visit Original Website</a>
@@ -768,13 +834,13 @@ The 9,000-pound monster I don’t want to give back
 Sam Altman would like to remind you that humans use a lot of energy, too</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">Musk bashes OpenAI in deposition, saying ‘nobody committed suicide because of Grok’</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Musk bashes OpenAI in deposition, saying ‘nobody committed suicide because of Grok’</h2>
             <p><strong>TechCrunch | 2026-02-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/27/musk-bashes-openai-in-deposition-saying-nobody-committed-suicide-because-of-grok/">Visit Original Website</a>
@@ -820,13 +886,13 @@ The 9,000-pound monster I don’t want to give back
 Sam Altman would like to remind you that humans use a lot of energy, too</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Anthropic vs. the Pentagon: What’s actually at stake?</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Anthropic vs. the Pentagon: What’s actually at stake?</h2>
             <p><strong>TechCrunch | 2026-02-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/27/anthropic-vs-the-pentagon-whats-actually-at-stake/">Visit Original Website</a>
@@ -898,13 +964,13 @@ The 9,000-pound monster I don’t want to give back
 Sam Altman would like to remind you that humans use a lot of energy, too</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">ChatGPT reaches 900M weekly active users</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>ChatGPT reaches 900M weekly active users</h2>
             <p><strong>TechCrunch | 2026-02-27</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/">Visit Original Website</a>
@@ -936,54 +1002,14 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">AI music generator Suno hits 2M paid subscribers and $300M in annual recurring revenue</div>
-            <div class="meta">2026-02-27</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>AI music generator Suno hits 2M paid subscribers and $300M in annual recurring revenue</h2>
-            <p><strong>TechCrunch | 2026-02-27</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/02/27/ai-music-generator-suno-hits-2-million-paid-subscribers-and-300m-in-annual-recurring-revenue/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Save up to $680 on your pass with Super Early Bird rates. REGISTER NOW.
-
-Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
-
-Suno co-founder and CEO Mikey Shulman shared on LinkedIn that the AI music generator has amassed 2 million paid subscribers and $300 million in annual recurring revenue.
-
-Just three months ago, Suno announced a $250 million funding round that valued the company at $2.45 billion. At the time, Suno told The Wall Street Journal that annual revenue had hit $200 million — that would indicate that the company has had some major growth in a short time frame.
-
-Suno lets users create music using natural language prompts, making it possible for people with little experience to generate audio with little effort. This has sparked concern from musicians and record labels, who have sued Suno for copyright infringement, since its AI model was likely trained on existing recorded music. But Warner Music Group recently settled its lawsuit and instead reached a deal that allows Suno to launch models that use licensed music from its catalog.
-
-Suno has generated synthetic music that sounds real enough to top charts on Spotify and Billboard. Telisha Jones, a 31-year-old in Mississippi, used Suno to turn her poetry into the viral R&B song “How Was I Supposed to Know” and signed a record deal with Hallwood Media in a deal reportedly worth $3 million.
-
-Still, many musicians have spoken out against the use of AI in music, including Billie Eilish, Chappell Roan, Katy Perry, and more.
-
-Last Hours: Save up to $680 on your pass before 11:59 p.m. tonight.Meet investors. Discover your next portfolio company. Hear from 250+ tech leaders, dive into 200+ sessions, and explore 300+ startups building what’s next. Don’t miss these one-time savings.
-
-Subscribe for the industry’s biggest tech news
-
-Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
-
-TechCrunch Mobility is your destination for transportation news and insight.
-
-Startups are the core of TechCrunch, so get our best coverage delivered weekly.
-
-Provides movers and shakers with the info they need to start their day.
-
-By submitting your email, you agree to our Terms and Privacy Notice.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
-            <div class="title">Donald Trump Declares War on Anthropic</div>
+            <div class="title">What Happens to Anthropic Now?</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-18" style="display:none;">
-            <h2>Donald Trump Declares War on Anthropic</h2>
+            <h2>What Happens to Anthropic Now?</h2>
             <p><strong>The Atlantic | 2026-02-28</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/technology/2026/02/pentagon-anthropic-contract/686188/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -1232,79 +1258,110 @@ Nearly all of the prominent figures who mistreated Newsom here are people who on
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Human Brain Cells On a Chip Learned To Play Doom In a Week</div>
+            <div class="title">OpenAI Fires an Employee For Prediction Market Insider Trading</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>OpenAI Fires an Employee For Prediction Market Insider Trading</h2>
+            <p><strong>Slashdot | 2026-02-28</strong></p>
+            <a class="original-link" href="https://slashdot.org/story/26/02/27/2342226/openai-fires-an-employee-for-prediction-market-insider-trading?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+There are worse things in life than death.  Have you ever spent an evening
+with an insurance salesman?
+		-- Woody Allen</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Human Brain Cells On a Chip Learned To Play Doom In a Week</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Human Brain Cells On a Chip Learned To Play Doom In a Week</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://games.slashdot.org/story/26/02/27/2332219/human-brain-cells-on-a-chip-learned-to-play-doom-in-a-week?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
 
 Oh boy! Man made horrors beyond my comprehension!
 
-You can get any logic-gate system to &quot;play Doom&quot;. One of the ways I&#39;m familiar with to do this with neurons is use an effect called &quot;spike-timing-dependent plasticity&quot;. It&#39;s basically like creating a circuit with flip-flops and logic gates at that point and claiming &quot;yo, I got transistors to play doom bro&quot;. I don&#39;t know if that&#39;s what they did here .. if it is (someone find out?).. that&#39;s pretty damn lame. STDP produces a deterministic behavior. Either way, the cells have no idea they&#39;re playing Doom the sa
+You can get any logic-gate system to &quot;play Doom&quot;. One of the ways I&#39;m familiar with to do this with neurons is use an effect called &quot;spike-timing-dependent plasticity&quot;. It&#39;s basically like creating a circuit with flip-flops and logic gates at that point and claiming &quot;yo, I got transistors to play doom bro&quot;. I don&#39;t know if that&#39;s what they did here .. if it is (someone find out?).. that&#39;s pretty damn lame. STDP produces a deterministic behavior. Either way, the cells have no idea they&#39;re playing Doom the same as a clock has no idea what time it is.
+
+&quot;flesh robots made from the poor&quot; - that made my skin crawl when I read it. LOL Yikes.
+
+It&#39;s a lot easier to just grow em on a lab than going all the effort of cracking skulls and re-training and all that.Check the The Thought Emporium youtube channel, he&#39;s growing his neurons &quot;at home&quot;, and his goal is actually to make exactly what this study did.
+
+this device presumably needs temperature control, consumable chemicals, and strict biosecurity protocols in order to turn into a mass of goo*.
+
+This doesn&#39;t seem like better. It seems like gee whiz in the same way a cat piano [wikipedia.org] is gee whiz.
+
+*I&#39;d have said &quot;in order to not grow intelligent life&quot; but that would be one witticism too many in this context.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-When it is incorrect, it is, at least *authoritatively* incorrect.
--- Hitchiker&#39;s Guide To The Galaxy</div>
+There are worse things in life than death.  Have you ever spent an evening
+with an insurance salesman?
+		-- Woody Allen</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Hyperion Author Dan Simmons Dies From Stroke At 77</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Hyperion Author Dan Simmons Dies From Stroke At 77</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/27/2226234/hyperion-author-dan-simmons-dies-from-stroke-at-77?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
-
-Just took a step across the void that binds.
+            <div id="article-text">Just took a step across the void that binds.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-When it is incorrect, it is, at least *authoritatively* incorrect.
--- Hitchiker&#39;s Guide To The Galaxy</div>
+There are worse things in life than death.  Have you ever spent an evening
+with an insurance salesman?
+		-- Woody Allen</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">CISA Replaces Bumbling Acting Director After a Year</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>CISA Replaces Bumbling Acting Director After a Year</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/02/27/2215238/cisa-replaces-bumbling-acting-director-after-a-year?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 Bullshit or not have any of the previous CISA directors not been able to meet the requirements?  I don&#39;t think the polygraph requirement has changed and it&#39;s used all over, seems like a low bar, which is probably actually the point of it.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-When it is incorrect, it is, at least *authoritatively* incorrect.
--- Hitchiker&#39;s Guide To The Galaxy</div>
+There are worse things in life than death.  Have you ever spent an evening
+with an insurance salesman?
+		-- Woody Allen</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
-            <div class="title">Perplexity Announces 'Computer,' an AI Agent That Assigns Work To Other AI Agent</div>
+            <div class="title">Perplexity Announces 'Computer,' an AI Agent That Assigns Work To Other AI Agents</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-27" style="display:none;">
-            <h2>Perplexity Announces 'Computer,' an AI Agent That Assigns Work To Other AI Agent</h2>
+        <div id="content-28" style="display:none;">
+            <h2>Perplexity Announces 'Computer,' an AI Agent That Assigns Work To Other AI Agents</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
-            <a class="original-link" href="https://slashdot.org/story/26/02/27/2151236/perplexity-announces-computer-an-ai-agent-that-assigns-work-to-other-ai-agent?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <a class="original-link" href="https://slashdot.org/story/26/02/27/2151236/perplexity-announces-computer-an-ai-agent-that-assigns-work-to-other-ai-agents?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
@@ -1318,23 +1375,28 @@ They will have a hard time getting a trademark on that
 
 It&#39;s also a fantastic term to put into a search engine.
 
+It was originally called &quot;Overseer&quot;, but their US-native employees persuaded them to change it.
+
 The core reasoning engine currently runs Anthropic&#39;s Claude Opus 4.6, while Gemini is used for deep research, Nano Banana for image generation, Veo 3.1 for video production, Grok for lightweight tasks where speed is a consideration, and ChatGPT 5.2 for &quot;long-context recall and wide search.&quot;
 
 The core reasoning engine currently runs Anthropic&#39;s Claude Opus 4.6, while Gemini is used for deep research, Nano Banana for image generation, Veo 3.1 for video production, Grok for lightweight tasks where speed is a consideration, and ChatGPT 5.2 for &quot;long-context recall and wide search.&quot;
+
+And that goes for this system and the ones that want to use it both.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-When it is incorrect, it is, at least *authoritatively* incorrect.
--- Hitchiker&#39;s Guide To The Galaxy</div>
+There are worse things in life than death.  Have you ever spent an evening
+with an insurance salesman?
+		-- Woody Allen</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">South Korea Set To Get a Fully Functioning Google Maps</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>South Korea Set To Get a Fully Functioning Google Maps</h2>
             <p><strong>Slashdot | 2026-02-27</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/02/27/2144239/south-korea-set-to-get-a-fully-functioning-google-maps?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1357,244 +1419,9 @@ don&#39;t they have plural indefinite article in S.Korea ?
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-When it is incorrect, it is, at least *authoritatively* incorrect.
--- Hitchiker&#39;s Guide To The Galaxy</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Trump Orders Federal Agencies To Stop Using Anthropic AI Tech 'Immediately'</div>
-            <div class="meta">2026-02-27</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Trump Orders Federal Agencies To Stop Using Anthropic AI Tech 'Immediately'</h2>
-            <p><strong>Slashdot | 2026-02-27</strong></p>
-            <a class="original-link" href="https://tech.slashdot.org/story/26/02/27/2138211/trump-orders-federal-agencies-to-stop-using-anthropic-ai-tech-immediately?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
-
-We know you haven&#39;t read the thing, but seriously?
-
-&quot;The Leftwing nut jobs at Anthropic have made a DISASTROUS MISTAKE trying to STRONG-ARM the Department of War, and force them to obey their Terms of Service instead of our Constitution,&quot; Trump said in a post on Truth Social.
-
-Quote me the part in the US Constitution that Anthropic is violating.  Anyone?
-
-The part that says Trump is king.  I know you have not seen it.  It must be in the microprint somewhere.  At least he seems to think so.It&#39;s written in Sharpie at the bottom, you can&#39;t miss it.
-
-The part that says Trump is king.  I know you have not seen it.  It must be in the microprint somewhere.  At least he seems to think so.
-
-It&#39;s written in Sharpie at the bottom, you can&#39;t miss it.
-
-The Constitution is a restriction on the powers of the Federal Government, not on Anthropic.  The Federal Government does have the ability to &quot;regulate commerce&quot; under what is called the Commerce Clause in Article 1, Section 8, Clause 3.
-
-I&#39;m not sure what particular law(s) c/would apply here - if any - however I&#39;m certain various courts might have to render a judgement.
-
-You would think so, but as this Supreme Court has shown, the original intent of the Constitution was to give government power over the people. In fact, they recently said the U.S. Postal Service can withhold your mail for any reason for as long as they want [apnews.com], and there is nothing you can do about it [supremecourt.gov].
-
-So yeah, power over the people, not power to the people.
-
-Well you&#39;re not wrong. Most people forget the 9th & 10th amendments and what they actually say.
-
-9. The enumeration in the Constitution of certain rights shall not be construed to deny or disparage others retained by the people.
-     - Basically saying, &quot;just because we listed a few specific Rights here, that doesn&#39;t mean those are the only ones The People have.&quot;
-
-10. The powers not delegated to the United States by the Constitution, nor prohibited by it to the States, are reserved to
-
-These limits on government powers were the bait.  Prior, current, and future erosion of those limits are the switch.
-
-When humans attain power, they want more of it.  It&#39;s how humans are wired.  Every government in the world pushes for more power over its people whenever a motivating issue comes up, because humans run these governments.  They don&#39;t care if some dusty old piece of paper says they can&#39;t, no matter how revered that piece of paper might be, they only care if some actual group of humans will stop
-
-I don&#39;t disagree. Personally I think the Federal government got too powerful after the civil war & we really don&#39;t even have the same type of government that the founders envisioned.
-
-I&#39;d be somewhat in favor of an Article 5 convention so long as any changes had to be subject to a vote like the President is elected.  The Electoral Collage system is absolutely brilliant & gives the individual vote maximum power because a handful of voters can change the outcome of an entire election.  If people really
-
-The constitution, as a modern legal document, is crap.
-
-Of course, it&#39;s not a modern legal document. That&#39;s the problem.
-
-I&#39;m not talking about sensibilities here at all, I&#39;m talking about how weakly it is written. Practically everything about it is horribly vague, again, by modern standards. You can argue back and forth for eternity about what various parts of it mean because it doesn&#39;t have most of the things we expect from a legal document. Article I, Section 8, Clause 1 is sorely in need of a definitions se
-
-The Constitution was meant to be revised as needed.  That is why the provisions for amendments were written in to it.
-
-The framers did not want it to be constantly in flux... but it was intended to grow and change with the needs of the people.
-
-That&#39;s the claim I keep hearing, but when I look at how hard it is to get an amendment approved, I really doubt it.
-
-There are legitimate reasons for weasel-wording around the clear text of the constitution.  It isn&#39;t always with malign intent.  (OTOH, stupid amendments have happened.  We&#39;re still suffering from prohibition.  So should it REALLY be easier to amend?)
-
-&quot;I have an Article 2 where i have the right to do whatever i want as president....&quot;
-  from a very stable geniushttps://www.youtube.com/watch?... [youtube.com]
-
-tbh he doesn&#39;t say they violated the constitution, but literally that anthropic wants the war department to respect their tos, which is .... what anyone would expect? if their tos violates the constitution i don&#39;t know but that should have been known a while ago, and anyway that isn&#39;t what such social-media-royal-decrees aim to dilucidate, being just public gossip with no legal relevance whatsoever.
-
-yesterday i pondered if they wanted anthropic to comply and shut up or be gone, or just to be gone. it would s
-
-more like two shopping carts fighting around one looter. they&#39;re smart shopping carts!
-
-He wants Anthropic to produce products that he wants that they&#39;re capable of making that they refuse to do on moral AND practical grounds (apparently this started when someone asked if Anthropic could produce a system capable of shooting down an incoming nuclear weapon, but escalated when Anthropic&#39;s CEO made it clear he wanted humans in the chain making life and death decisions), not to &quot;respect a ToS&quot;. The right thing under the circumstances isn&#39;t to have a hissy fit and ban the supplier from everything,
-
-when Anthropic&#39;s CEO made it clear he wanted humans in the chain making life and death decisions), not to &quot;respect a ToS&quot;. The right thing under the circumstances isn&#39;t to have a hissy fit and ban the supplier from everything, but go to a different supplier for the products the DoD wants.maybe that was in the tos, i couldn&#39;t tell bc i haven&#39;t read it.anyway, maybe so, but what&#39;s the point of that hissy fit, then? what if the discussion has already been had, they already have a deal with openai (which ofc would keep  loudly vowing their &quot;moral&quot; concerns in public while complying anyway), and the reward is precisely destroying anthropic (which is a close competitor to openai)? the cherry on top, once anthropic is broke and busted, what about making a move on its ip, which is in some ways supe
-
-when Anthropic&#39;s CEO made it clear he wanted humans in the chain making life and death decisions), not to &quot;respect a ToS&quot;. The right thing under the circumstances isn&#39;t to have a hissy fit and ban the supplier from everything, but go to a different supplier for the products the DoD wants.
-
-maybe that was in the tos, i couldn&#39;t tell bc i haven&#39;t read it.
-
-anyway, maybe so, but what&#39;s the point of that hissy fit, then? what if the discussion has already been had, they already have a deal with openai (which ofc would keep  loudly vowing their &quot;moral&quot; concerns in public while complying anyway), and the reward is precisely destroying anthropic (which is a close competitor to openai)? the cherry on top, once anthropic is broke and busted, what about making a move on its ip, which is in some ways supe
-
-Don&#39;t be surprised if we discover the pentagon is planning to give anthropics contracts all to grok. And someones getting their pole greased for the contract...
-
-Trump is saying that the Anthropic is trying to make the DoD follow Anthropic&#39;s Terms of Service rather than the Constitution.
-
-Trump did not say that Anthropic is violating the Constitution.
-
-But even rephrasing your post to account for the correction: which part of the constitution would the DoD violate by following the ToS? (Real question on my side, my knowledge of the US constitution is limited.)
-
-There could theoretically be a conflict..  The military exists to protect the nation.  Every service member swears an oath to uphold the Constitution and to protect the nation from all enemies, foreign and domestic.  Nothing takes priority over that.  If the ToS says &quot;Don&#39;t do this&quot; but it is a military necessity... they are going to do it anyway.
-
-Anthropic already announced the are relaxing their ToS to better keep in parity with their competition.
-
-The government could just quietly and privately keep pressur
-
-Actually, ISTM that the pentagon is demanding that Anthropic be &quot;an accessory before the fact&quot; in violating the law.
-
-We know you haven&#39;t read the thing, but seriously?&quot;The Leftwing nut jobs at Anthropic have made a DISASTROUS MISTAKE trying to STRONG-ARM the Department of War, and force them to obey their Terms of Service instead of our Constitution,&quot; Trump said in a post on Truth Social.Quote me the part in the US Constitution that Anthropic is violating.  Anyone?
-This is the guy who wanted to prosecute (and, if I recall, execute) six democrat members of Congress, who are (I think) all former service members, for seditious conspiracy because they reminded service members about their obligation to *not* follow unlawful orders -- ignoring the facts that (a) it&#39;s literally the law and stated in the Uniform Code of Military Justice (UCMJ), (b) it&#39;s taught to all military personnel, (c) their speech is protected by the 1st Amendment and (d) they&#39;re *also* protected by the Speech and Debate clause of The Constitution.  [all assertions are to the best of my knowledge]
-
-We know you haven&#39;t read the thing, but seriously?
-
-&quot;The Leftwing nut jobs at Anthropic have made a DISASTROUS MISTAKE trying to STRONG-ARM the Department of War, and force them to obey their Terms of Service instead of our Constitution,&quot; Trump said in a post on Truth Social.
-
-Quote me the part in the US Constitution that Anthropic is violating.  Anyone?
-
-This is the guy who wanted to prosecute (and, if I recall, execute) six democrat members of Congress, who are (I think) all former service members, for seditious conspiracy because they reminded service members about their obligation to *not* follow unlawful orders -- ignoring the facts that (a) it&#39;s literally the law and stated in the Uniform Code of Military Justice (UCMJ), (b) it&#39;s taught to all military personnel, (c) their speech is protected by the 1st Amendment and (d) they&#39;re *also* protected by the Speech and Debate clause of The Constitution.  [all assertions are to the best of my knowledge]
-
-Just remember Donald and Pete let their ego get in the way per usual and this is the straw that will cause a massive market downturn. How many businesses are all in on Anyhropic&#39;s AI and will be non-functioning on Monday because of this ban. Get ready to see lots of red numbers.
-
-Those of us that know we are not taken seriously do not wonder why.
-
-I&#39;ll take Things Losers Say for $2,000, Ken.
-
-Something the common folks are paying for because the government lowered taxes on the rich and the balance has to come from somewhere.
-
-yes you do, yes you want it, otherwise why did you agree to use it?
-
-i have never used claude but i have a bit more respect for the company now
-
-...is that Anthropic was clear that their AI is not good enough to be trusted with kill / don&#39;t-kill decisions.
-
-Trump is looking for an AI company that is headed by someone who either has far too much confidence, or far too little regard for human life.
-
-Funny... I didn&#39;t have &quot;Elon Musk Building Skynet&quot; on my 2020&#39;s Bingo card. Maybe I should have?
-
-It&#39;s much easier to make an &quot;everything website&quot; if you drastically reduce the amount of &quot;everything&quot; you need to cover.
-
-The odd thing is that anyone would believe that any Trump lackey, or Trump himself, would give the slightest shit what the terms of use are.  Trump hasn&#39;t had the slightest concern over law or contract ever in his life.  He is a rapist and child molester, a 34-time convicted felon who has bankrupted countless businesses and stolen from charities.  But he cares about a TOS, LOL!  Trump is literally immune from law, SCOTUS said so.  But sure, a TOS is the problem.
-
-When the people that think they have the right to track everything you do on the internet think Trump is being too Orwellian, that&#39;s something.
-
-If Hannibal Lecter says he won&#39;t eat that, (not even with fava bean) maybe you should skip the meal.
-
-If Stalin says that prison is too harsh, maybe you should upgrade the quality of it.
-
-If Jeffrey Epstein says the girl is too young, maybe you should date someone closer to your own age.
-
-And if the tech companies say that is too much of a privacy invastion, then DO NOT DO IT.
-
-Because without paying there is no grift, are you stupid or something?
-
-Also the free shit is mostly Chinese, but trump thinks Indian tastes better.
-
-Was the Department of War blind that they didn&#39;t read the terms of service before signing the Anthropic contract?
-
-If they did read the ToS and now Anthropic is reneging on the terms, then the same courts you speak of can be used to compel Anthropic to deliver what the contract agreed to.
-
-This entire thing looks like bureaucrats like Hegseth are having a hissy fit that someone had  the gall to say &quot;no&quot; to NEW demands. Where are his war powers now? Will he go draft Dario?
-
-Was the Department of War blind that they didn&#39;t read the terms of service before signing the Anthropic contract?If they did read the ToS and now Anthropic is reneging on the terms, then the same courts you speak of can be used to compel Anthropic to deliver what the contract agreed to.This entire thing looks like bureaucrats like Hegseth are having a hissy fit that someone had  the gall to say &quot;no&quot; to NEW demands. Where are his war powers now? Will he go draft Dario?This isn&#39;t China.I doubt whether the US military are in the habit of introducing new weapons or technology hampered by restrictions on how they can use it. Nuclear weapons are a special case in that they can&#39;t just be used in battle without top approval, a rule which frustrated many in the military in the post-war period. In this light, I would expect some kind of standard contract template provided by the military to vendors which has all of these &quot;we can use it as we choose&quot; conditions laid out.So your question is a good
-
-Was the Department of War blind that they didn&#39;t read the terms of service before signing the Anthropic contract?
-
-If they did read the ToS and now Anthropic is reneging on the terms, then the same courts you speak of can be used to compel Anthropic to deliver what the contract agreed to.
-
-This entire thing looks like bureaucrats like Hegseth are having a hissy fit that someone had  the gall to say &quot;no&quot; to NEW demands. Where are his war powers now? Will he go draft Dario?
-
-I doubt whether the US military are in the habit of introducing new weapons or technology hampered by restrictions on how they can use it. Nuclear weapons are a special case in that they can&#39;t just be used in battle without top approval, a rule which frustrated many in the military in the post-war period. In this light, I would expect some kind of standard contract template provided by the military to vendors which has all of these &quot;we can use it as we choose&quot; conditions laid out.
-
-Thanks - it&#39;s interesting there is no talk about courts at all.
-
-As an outcome, I think DoD/DoW/the Feds may build their own, sovereign AI
-
-These guys are nothing but awful clowns cosplaying government.
-
-:) Haha...  For a second I thought you may be objecting to belittling a brave ex-soldier as a bureaucrat.
-
-Hegseth seems smart enough to , but this entirely emotive, quick to anger, way of working is very strange.
-
-The president is not a protected class. Anthropic is a business and they are free to refuse service within the confines of the law.
-
-We must have mass surveilance because CHINA!
-
-How easily the &quot;land of the free&quot; becomes what it claims to oppose. I guess it&#39;s not the first time.
-
-BTW, we have always been at war with EastAsia.
-
-...that AI is itself not a threat to humanity, it is what humans are willing to do with AI that is a threat to humanity.  It&#39;s not how competent or incompetent software is at making decisions, it&#39;s how that software gets wired into potentially costing human lives.  And it&#39;s no surprise that Trump will lead in the cost of human lives, he led the world in COVID deaths.  And plenty people here cheered and advocated for this outcome.  Don&#39;t forget who those people are despite how they now pretend otherwise. Doe
-
-Anthropic should just turn them off, cut them off, and leave them out in the cold.
-
-IIUC, Anthropic doesn&#39;t run the cloud it runs in.
-
-I agree and think he should follow through and ban all AI from government data and infrastructure.
-
-That is not his plan. You must do that yourselves.
-
-The AI civilians can use all get to take public stands like this and make everyone feel better about using it. Meanwhile, Omelas exists and will probably incorporate their tech somehow.
-
-&quot;... force them to obey their Terms of Service ...&quot; So, the DoD will stop obeying Lockheed, Grumman and Boeing, and practice right-to-repair on all the war machines it owns:  Or, is this black-listing just deciding who to rob?
-
-Anyone remember the plan for a continent-wide technocracy?  Musk&#39;s &quot;Grok&quot; AI wasn&#39;t able to provide a push-button bureaucracy but Musk is willing to provide a kill-everyone-except-white-Americans AI.  He needs to eliminate the competition first:  His buddies labeling competing AI as a &quot;supply-chain risk&quot; is making Musk&#39;s dreams come true.
-
-&quot;... force them to obey their Terms of Service ...&quot;
-
-So, the DoD will stop obeying Lockheed, Grumman and Boeing, and practice right-to-repair on all the war machines it owns:  Or, is this black-listing just deciding who to rob?
-
-Anyone remember the plan for a continent-wide technocracy?  Musk&#39;s &quot;Grok&quot; AI wasn&#39;t able to provide a push-button bureaucracy but Musk is willing to provide a kill-everyone-except-white-Americans AI.  He needs to eliminate the competition first:  His buddies labeling competing AI as a &quot;supply-chain risk&quot; is making Musk&#39;s dreams come true.
-
-May I suggest Europe. Might need to brush up on your Russian. Or China, where there will be no need to change the tone, tenor, or target of your political pronouncements.
-
-Why would anyone in Europe need to brush up their russian, when the best ruzzkie asset is running the trumpistani unterreich?
-
-1.  It is called the department of defense not the department of war.
-
-2.  If DOD didn&#39;t like the terms of its contract with Anthropic it should have never signed it in the first place.  Publicly whining about terms it agreed to after the fact is lame and pathetic.
-
-3. &quot;Their selfishness is putting AMERICAN LIVES at risk, our Troops in danger, and our National Security in JEOPARDY.&quot;
-
-Trumps lips are so loose he drools state secrets.
-
-https://www.cnn.com/2019/09/09... [cnn.com]  https://www.nytimes.com/2023/1... [nytimes.com]  https://en.wikip [wikipedia.org]
-
-... everyday with his hysterical ranting.
-
-From a country that produced heroes that won WW2.
-
-Impeach this corrupt geriatric pant shitting friend of a paedo already.
-
-Where has American pride in freedom gone? What would Lady Liberty say to this dick? Fcuk off you orange asshole!
-
-You lead the world once. Get back in the game ffs. China&#39;s going to eat your lunch.
-
-So the government&#39;s claim is that they can order you to design something that kills people, and if you refuse then your company will have all your government contracts to any branch cancelled.
-
-This is like going to the company that makes the plates for several large government building&#39;s cafeterias, including the Pentagon, demanding they make guns now, and removing their plates from everywhere including the Department of Education&#39;s cafeteria if they refuse.
-
-Sounds like a great environment for business deals.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-When it is incorrect, it is, at least *authoritatively* incorrect.
--- Hitchiker&#39;s Guide To The Galaxy</div>
+There are worse things in life than death.  Have you ever spent an evening
+with an insurance salesman?
+		-- Woody Allen</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2990,11 +2817,25 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">OpenAI reaches deal to deploy AI models on U.S. Department of War classified network - Reuters</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-60" style="display:none;">
+            <h2>OpenAI reaches deal to deploy AI models on U.S. Department of War classified network - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-02-28</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNaUhtRzBSWExraVJlSFF0UVJWbnB0ZFRjNzVJd2R4T2c4WXBmMlU3c194LUEzU001b1ZnWTlwZUxuTGhpaTRXTjVPVG5ZV2Q2RGZsSFBMZFl4bzdPakhndUdKNFUydlF4ZTJUaWtDeTN4ZVltRFd2TWFBTGlmSWR1RUxfejVvVElmbjVKTDJIOWJWOEFhb2hKN1BPTDktbWtWT2NfbW4zbnNvYjRPTFZMV2NYMmFsUzBHSEE?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Bolivian military plane crash kills 15, scatters cash cargo - Reuters</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-60" style="display:none;">
+        <div id="content-61" style="display:none;">
             <h2>Bolivian military plane crash kills 15, scatters cash cargo - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOMFNsTmNad2pnNE1iZGRVWWJROXo1bFYzUGIzbWhCTWFMYnE1WkJLclpSU2ZEdWdDQnV3VU8tay03ZDIydXlvRFFHX0pWTzZhVUktV0hTaEhRdkVTZnp6aVNpdGJpS2hjR2NhNVUxdi1wem1EM1g3cXpPUFlPamVNbnFTZjl6Nl9qTWVtdmxwcDYyTUFUUXh2MW8xa09GWDZVeVJ6SQ?oc=5">Visit Original Website</a>
@@ -3002,13 +2843,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-62')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Trump says he's thinking of putting Republican Senator Ted Cruz on Supreme Court - Reuters</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-62" style="display:none;">
             <h2>Trump says he's thinking of putting Republican Senator Ted Cruz on Supreme Court - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQeFlhdUVDTFNCRFN3MzFub29UQWVkZEhWRk9kMEgwTVRmbXpZMF9uUGNoYTU0YzJMWFA0eGhWN201UlhzOXZzalVhUU1ONk9Wb3FuZko5N3U5b0RjNzBtMEpaYVNfVFd4bG5JaEVCeWFPaHFGQmhyQnUwbnNGLWtjZjdXX1UtNi1FczlqSllOTHU3SlhTbGxsX3ZRZjJJLWNVYWhJY2ZlR3ltLXJXTEtTTXdjbWxSR21sNnc?oc=5">Visit Original Website</a>
@@ -3016,13 +2857,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Iran designated as a state sponsor of wrongful detention, Rubio says - Reuters</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>Iran designated as a state sponsor of wrongful detention, Rubio says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQRmp1b3pqXzVvbWF1dENjNzdSaTdmZkxCQlhFemdoZDVYcy1nWHMwdjhYcTlrT1prbEo5eHlEM1luSnlodFNVdWRZOEtyV1pSNHVPWGpEQ3ZFVDVCa3E5cHJFcUZwUmQwUWozZ1p0ckQxRXJoXy0taUZKQlRHRmtjSFhOdS03MjFDQW8zNnBtUWM5NlNWRm9IM2FxZ2NFNEZneXBUSUEyMU43aWFMdnpHeGhPMA?oc=5">Visit Original Website</a>
@@ -3030,13 +2871,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Trump directs US agencies to toss Anthropic's AI as Pentagon calls startup a supply risk - Reuters</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>Trump directs US agencies to toss Anthropic's AI as Pentagon calls startup a supply risk - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQeHZZSEowZUhXcXIyRE9RRUcwNkhaaWtWYjMyWFdzZ2t1cGRNeUVRd3ZsZ2xnRHRjYVJfVEdYN2RBbFRPZVplSGt0WVpTd3hrVVNlaGlldE1VMWxkUUpUYVRYUE9NelVFc09aUV9RRGE5NWZhRVNXNFNoTEpKWklUaE80ZlFFcjVYZF9pNS1Cb2poRXE1VExtd3hjRndjWGU4eHZZSk4zRkd4ZXdadHY0ai0yVEtBNUVGTUZv?oc=5">Visit Original Website</a>
@@ -3044,30 +2885,16 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">FAA plans to reduce flights at Chicago O'Hare, cites boost in schedules - Reuters</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-64" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>FAA plans to reduce flights at Chicago O'Hare, cites boost in schedules - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQQktZM1pORmRyQnotTDJaT1JzcVlMUDJ2U182OUZjYUEtWmVwRk9HeUNOVVduMzhHalF5djYyYzJLUzgtWVNGRFlMUThsRG9RNjFmNFNuZW92dWtoUmVvZ25SVHJYb3JZVWVxd0RHUEFkWDB0SldIekxhRFZXQmRmdzZydDRXTWhQNDNYV0VJVHZ2ajVHeEdmcG56X09vMXRmcG16b0FFRTEwdw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-65')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">FCC approves Charter Communications’ $34.5 billion deal to buy Cox - Reuters</div>
-            <div class="meta">2026-02-27</div>
-        </div>
-        
-        <div id="content-65" style="display:none;">
-            <h2>FCC approves Charter Communications’ $34.5 billion deal to buy Cox - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-02-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNWGdHSXYyYXhmZG95UmxOcGM4eE5wYkR5Y0I1RDBKQ2hkZU9RY1dJX1NRU09FQ0JFUVlqNmNMeTByYnZQeUs5cWU3eHlCVk0yYmhSUGoyQkJqLWdvWVhwQURvbkZidkV1NDdTOF93SjRFcEJjUzlENXJVXzRSMi1mRy1QaDk5cm51dDBGRmtaWFl5enR0X3RsMWpmNGJpUDRGUFpyRGRocHVKNnlG?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3144,14 +2971,14 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">"We’ve Got Our People Working on It Right Now”: Defense Secretary Provides Update on Pentagon Disclosure of UFO Files - The Debrief</div>
+            <div class="title">"A Shift in Mindset Away from the Plastic Age": This Advanced Material Actually Gets Stronger When It's Wet - The Debrief</div>
             <div class="meta">2026-02-24</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>"We’ve Got Our People Working on It Right Now”: Defense Secretary Provides Update on Pentagon Disclosure of UFO Files - The Debrief</h2>
+            <h2>"A Shift in Mindset Away from the Plastic Age": This Advanced Material Actually Gets Stronger When It's Wet - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-02-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxQUGNnUFJYdmJ4VlA0MThSSXd5Y1R1UEM1TGF2VWxSV2lkYm54Sk9sRW01YWJibUdVLUFYTkQwT2RnOFdBQ0ljcTRoT2NsMFJWYTNCUV9iX0ZfNXBUZWwtMzgwSUR0RVBGSHBoTEtDd1BpQzN1OHM2ZDdfUFVTWTJpb2RiYnNTclEzeUxtczFiMmw2MjJZbTVNekowRm1iNGNOZUpTNDZ2UGdfMjRPVkJkdlVOLVFNdjVPZjBtYjhicmtmYWNzOThKcVpmUHNFNDdLajIw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNd2VpaUZReEk1YXRScG9yWnlMbXRMRjZNWGxzQnl1VEF0Q25QVFhGUjR2S0RKTHBwNTdkLVN4VlhMU3BYNEp2RUNRZ05pYTkwVkVYUVhyRFAxdzJNcWk5UXNwRm1oUnhmLTJDTXh4dHdGVnZKZVV3c1BEVjluSjA1Q2cwQlZQLVoxV0Z6RVZNbUJ6UDE5N0UxaGVnN3IyVGJJblU2T2czVXpWOUZYc0JvQVFyY3EyM3Z3TXAwcHI5dFl2cDQ0ZkE?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
