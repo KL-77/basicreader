@@ -163,7 +163,29 @@
             <p><strong>Ars Technica - All content | 2026-02-28</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/02/did-chatgpt-help-health-officials-solve-a-weird-outbreak-maybe/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Health officials in Illinois turned to an AI chatbot to try to solve a puzzling outbreak linked to a county fair. But whether it was actually helpful or not remains unclear.
+
+According to a report this week in the Morbidity and Mortality Weekly Report, officials in Brown County got the first hint of an outbreak from the county sheriff, who noted on August 5, 2024 that a remarkable number of potential jurors for an upcoming trial said they had a stomach bug. Then, on August 12, the state health department notified the county of a case of Salmonella enterica serotype Agbeni.
+
+With those two tips, county health officials opened an investigation and were able to identify 13 cases—seven laboratory-confirmed cases of S. enterica Agbeni and six probable cases that were in close contact with confirmed cases. The cases spanned five counties, but they all had one thing in common: everyone had gone to the Brown County fair.
+
+The annual event takes place in a close-knit rural community of about 4,200 residents. But it’s popular, drawing an estimated 36,000 people from surrounding areas each year. The 2024 fair spanned July 30 to August 4, so it was packed up and gone by the time investigators figured out the connection to the illnesses. Still, they wanted to find the source and started with the hypothesis that it was a food vendor—Salmonella species are generally known for causing food poisoning. The bacteria dwell in the innards of wild and domestic animals, including poultry and cattle, and can contaminate food in a variety of ways, causing outbreaks of gastrointestinal illnesses (vomiting, diarrhea, stomach cramps).
+
+While nine of the 13 affected individuals said they ate food from at least one vendor at the fair, the remaining four had not eaten at all—which seemed to rule out food. The investigators noted that there were obvious hygiene concerns at the fair, which had portable bathrooms and a “limited” number of portable handwashing stations. Ten of the sickened people admitted to not washing their hands. But, the only thing they all had in common was that they all drank a cold, canned beer from the fair’s sole beer tent.
+
+According to the MMWR report, the fair’s beer supply in the single tent was kept cold in a large makeshift cooler, described as being made of “a 10-ft length of non-food-grade corrugated black plastic farm drainage tile with four internal compartments.” It was reportedly hosed off at the start of the fair, but then never fully drained or cleaned again. It was simply refilled daily with ice—made from municipal tap water—as melting occurred and it was partially drained. The people who worked the beer tent handled the beer and ice with their bare hands.
+
+The author of the MMWR report, county health official Katherine Houser, noted that the beer-tent workers were hesitant to give details because they didn’t want to get any of their community members in trouble. But one let slip that someone had put leftover food in the cooler overnight at the start of the fair.
+
+The county health officials hypothesized that the cooler had become contaminated with Salmonella that spread to beer cans from which people then drank, allowing for infection. But with the makeshift cooler gone, it would remain only a hypothesis. So, the health investigators then turned to ChatGPT for assurances.
+
+After providing the chatbot with details of the outbreak, health investigators asked it several questions, including: “Will S. Agbeni grow in an improperly drained cooler?”; “Are any other sources, other than ice, likely if only canned beverages and no foods were available at this location?’ ; and “What examples of similar outbreaks have been documented in scientific literature?”
+
+Some of the questions are easy enough to answer without a chatbot. A simple search on PubMed, a federal database of scientific literature, quickly pulls up examples of Salmonella being found in ice, for example. But, the chatbot assured the officials that the cooler was a “credible and likely” source of the outbreak and they stuck with the hypothesis.
+
+In the end, the officials required new cooler sanitation protocols—and concluded that the AI assistance was helpful. “AI was effective in this rural setting for rapid situational awareness,” Houser wrote. However, she also acknowledged the potential concerns of using AI for outbreak investigations: “Given the inherent limitations of generative AI tools, including potential inaccuracies and lack of source transparency, all AI-generated summaries were critically reviewed and validated against primary literature before incorporation,” she wrote.
+
+Overall, the case report has a murky ending. It’s unclear how helpful the chatbot actually was in this case. Critically reviewing AI-generated answers can easily take as much time as simply researching the answer on one’s own. And of course, we’ll never know for certain what was really going on in that makeshift beer cooler—though the new cooler sanitation protocols seem like a good idea, regardless.</div>
         </div>
         
         <div class="card" onclick="openModal('content-1')">
@@ -177,7 +199,29 @@
             <p><strong>Ars Technica - All content | 2026-02-28</strong></p>
             <a class="original-link" href="https://arstechnica.com/security/2026/02/google-is-using-clever-math-to-quantum-proof-https-certificates/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Google on Friday unveiled its plan for its Chrome browser to secure HTTPS certificates against quantum computer attacks without breaking the Internet.
+
+The objective is a tall order. The quantum-resistant cryptographic data needed to transparently publish TLS certificates is roughly 40 times bigger than the classical cryptographic material used today. A typical X.509 certificate chain used today comprises six elliptic curve signatures and two EC public keys,  each of them only 64 bytes. This material can be cracked through the quantum-enabled Shor’s algorithm. The full chain is roughly 4 kilobytes. All this data must be transmitted when a browser connects to a site.
+
+“The bigger you make the certificate, the slower the handshake and the more people you leave behind,” said Bas Westerbaan, principal research engineer at Cloudflare, which is partnering with Google on the transition. “Our problem is we don’t want to leave people behind in this transition.” Speaking to Ars, he said that people will likely disable the new encryption if it slows their browsing. He added that the massive size increase can also degrade “middle boxes,” which sit between browsers and the final site.
+
+To bypass the bottleneck, companies are turning to Merkle Trees, a data structure that uses cryptographic hashes and other math to verify the contents of large amounts of information using a small fraction of material used in more traditional verification processes in public key infrastructure. Cloudflare has a much deeper dive into Merkle Trees here.
+
+Merkle Tree Certificates, “replace the heavy, serialized chain of signatures found in traditional PKI with compact Merkle Tree proofs,” members of Google’s Chrome Secure Web and Networking Team wrote Friday. “In this model, a Certification Authority (CA) signs a single ‘Tree Head’ representing potentially millions of certificates, and the ‘certificate’ sent to the browser is merely a lightweight proof of inclusion in that tree.”
+
+Google and other browser makers require that all TLS certificates be published in public transparency logs, which are append-only distributed ledgers. Website owners can then check the logs in real time to ensure that no rogue certificates have been issued for the domains they use. The transparency programs were implemented in response to the 2011 hack of Netherlands-based DigiNotar, which allowed the minting of 500 counterfeit certificates for Google and other websites, some of which were used to spy on web users in Iran.
+
+Once viable, Shor’s algorithm could be used to forge classical encryption signatures and break classical encryption public keys of the certificate logs. Ultimately, an attacker could forge signed certificate timestamps used to prove to a browser or operating system that a certificate has been registered when it hasn’t.
+
+To rule out this possibility, Google is adding cryptographic material from quantum-resistant algorithms such as ML-DSA. This addition would allow forgeries only if an attacker were to break both classical and post-quantum encryption. The new regime is part of what Google is calling the quantum-resistant root store, which will complement the Chrome Root Store the company formed in 2022.
+
+The MTCs use Merkle Trees to provide quantum-resistant assurances that a certificate has been published without having to add most of the lengthy keys and hashes. Using other techniques to reduce the data sizes, the MTCs will be roughly the same 4kB length they are now, Westerbaan said.
+
+The new system has already been implemented in Chrome. For the time being, Cloudflare is enrolling roughly 1,000 TLS certificates to test how well the MTCs work. For now, Cloudflare is generating the distributed ledger. The plan is for CAs to eventually fill that role. The Internet Engineering Task Force standards body has recently formed a working group called the PKI, Logs, And Tree Signatures, which is coordinating with other key players to develop a long-term solution.
+
+“We view the adoption of MTCs and a quantum-resistant root store as a critical opportunity to ensure the robustness of the foundation of today’s ecosystem,” Google’s Friday blog post said. “By designing for the specific demands of a modern, agile internet, we can accelerate the adoption of post-quantum resilience for all web users.”
+
+Post updated to correct reported sizes of various items.</div>
         </div>
         
         <div class="card" onclick="openModal('content-2')">
@@ -191,7 +235,61 @@
             <p><strong>Ars Technica - All content | 2026-02-28</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/02/the-air-forces-new-icbm-is-nearly-ready-to-fly-but-theres-nowhere-to-put-them/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">DENVER—The US Air Force’s new Sentinel intercontinental ballistic missile is on track for its first test flight next year, military officials reaffirmed this week.
+
+But no one is ready to say when hundreds of new missile silos, dug from the windswept Great Plains, will be finished, how much they cost, or, for that matter, how many nuclear warheads each Sentinel missile could actually carry.
+
+The LGM-35A Sentinel will replace the Air Force’s Minuteman III fleet, in service since 1970, with the first of the new missiles due to become operational in the early 2030s. But it will take longer than that to build and activate the full complement of Sentinel missiles and the 450 hardened underground silos to house them.
+
+Amid the massive undertaking of developing a new ICBM, defense officials are keeping their options open for the missile’s payload unit. Until February 5, the Air Force was barred from fitting ballistic missiles with Multiple Independently targetable Reentry Vehicles (MIRVs) under the constraints of the New START nuclear arms control treaty cinched by the US and Russia in 2010. The treaty expired three weeks ago, opening up the possibility of packaging each Sentinel missile with multiple warheads, not just one.
+
+Senior US military officials briefed reporters on the Sentinel program this week at the Air and Space Forces Association’s annual Warfare Symposium near Denver. There was a lot to unpack.
+
+Two years ago, the Air Force announced the Sentinel program’s budget had grown from $77.7 billion to nearly $141 billion. This was after something known as a “Nunn-McCurdy breach,” referring to the names of two lawmakers behind legislation mandating reviews for woefully overbudget defense programs. In 2024, the Pentagon determined that the Sentinel program was too essential to national security to cancel.
+
+“We’ve gotten all the capability that we can out of the Minuteman,” said Gen. Stephen “S.L.” Davis, commander of Air Force Global Strike Command. Potential enemy threats to the Minuteman ICBM have “evolved significantly” since its initial deployment in the Cold War, Davis said.
+
+The $141 billion figure is already out of date, as the Air Force announced last year that it would need to construct new silos for the Sentinel missile. The original plan was to adapt existing Minuteman III silos for the new weapons, but engineers determined that it would take too long and cost too much to modify the aging Minuteman facilities.
+
+Instead, the Air Force, in partnership with contractors and the US Army Corps of Engineers, will dig hundreds of new holes across Colorado, Montana, Nebraska, North Dakota, and Wyoming. The new silos will include 24 new forward launch centers, three centralized wing command centers, and more than 5,000 miles of fiber connections to wire it all together, military and industry officials said.
+
+Sentinel, which had its official start in 2016, will be the largest US government civil works project since the completion of the interstate highway system, and is the most complex acquisition program the Air Force has ever undertaken, wrote Sen. Roger Wicker (R-Mississippi) and Sen. Deb Fischer (R-Nebraska) in a 2024 op-ed published in the Wall Street Journal.
+
+Gen. Dale White, the Pentagon’s director of critical major weapons systems, said Wednesday the Defense Department plans to complete a “restructuring” of the Sentinel program by the end of the year. Only then will an updated budget be made public.
+
+The military stopped constructing new missile silos in the late 1960s and hasn’t developed a new ICBM since the 1980s. It shows.
+
+“It’s been a very, very long time since we’ve done this,” White said. “At the very core, there were assumptions that were made in the strategy that obviously didn’t come to fruition.”
+
+Military planners also determined it would not be as easy as they hoped to maintain the existing Minuteman III missiles on alert while converting their silos for Sentinel. Building new silos will keep the Minuteman III online—perhaps until as late as 2050, according to a government watchdog—as the Air Force activates Sentinel emplacements. The Minuteman III was previously supposed to retire around 2036.
+
+“We’re not reusing the Minuteman III silos, but at the same time that obviously gives much greater operational flexibility to the combatant commander,” White said. “So, we had to take a step back and have a more enduring look at what we were trying to do, what capability is needed, making sure we do not have a gap in capability.”
+
+Decommissioning the Minuteman III silos will come with its own difficulties. An Air Force official said on background that commanders recently took one Minuteman silo off alert to better gauge how long it will take to decommission each location. Meanwhile, Northrop Grumman, Sentinel’s prime contractor, broke ground on the first “prototype” Sentinel silo in Promontory, Utah, earlier this month.
+
+The Air Force has ordered 659 Sentinel missiles from Northrop Grumman, including more than 400 to go on alert, plus spares and developmental missiles for flight testing. The first Sentinel test launch from a surface pad at Vandenberg Space Force Base, California, is scheduled for 2027.
+
+For the first time in more than 50 years, the world’s two largest nuclear forces have been unshackled from any arms control agreements. New START was the latest in a series of accords between the United States and Russia, and with it came the ban on MIRVs aboard land-based ICBMs. The Air Force removed the final MIRV units from Minuteman III missiles in 2014.
+
+The Trump administration wants a new agreement that includes Russia as well as China, which was not part of New START. US officials were expected to meet with Russian and Chinese diplomats this week to discuss the topic. There’s no guarantee of any agreement between the three powers, and even if there is one, it may take the form of an informal personal accord among leaders, rather than a ratified treaty.
+
+“The strategic environment hasn’t changed overnight, from before New START was in effect, until it has lapsed, and within our nation’s nuclear deterrent,” said Adm. Rich Correll, head of US Strategic Command. “We have the flexibility to address any adjustments to the security environment as a result of that treaty lapsing.”
+
+This flexibility includes the option to “reMIRV” missiles to accommodate more than one nuclear warhead, Correll said. “We have the ability to do that. That’s obviously a national-level decision that would go up to the president, and those policy levers, if needed, provide additional resiliency within the capabilities that we have.”
+
+MIRVs are more difficult for missile defense systems to counter, and allow offensive missile forces to package more ordnance in a single shot. With New START gone, there’s no longer any mechanism for international arms inspections. Russia may now also stack more nukes on its ICBMs. Gone, too, is the limitation for the United States and Russia to deploy no more than 1,550 nuclear warheads at one time.
+
+“The expiration of this treaty is going to lead us into a world for the first time since 1972 where there are no limits on the sizes of those arsenals,” said Ankit Panda of the Carnegie Endowment for International Peace.
+
+“I think this opens up the question of whether we’re going to be heading into a world that’s just going to be a lot more unpredictable and dangerous when you have countries like the United States and Russia that have a lot less transparency into each other’s nuclear arsenals, and fundamentally, as a result, a lot less predictability about the world that they’re operating in,” Panda continued.
+
+Some strategists have questioned the need for land-based ICBMs in the modern era. The locations of the Air Force’s missile fields are well known, making them juicy targets for an adversary seeking to take out a leg of the military’s nuclear triad. The stationary nature of the land-based missile component contrasts with the mobility and stealth of the nation’s bomber and submarine fleets. Also, bombers and subs can already deliver multiple nukes, something land-based missiles couldn’t do under New START.
+
+Proponents of maintaining the triad say the ICBM missile fields serve an important, if not macabre, function in the event of the unimaginable. They would soak up the brunt of any large-scale nuclear attack. Hundreds of miles of the Great Plains would be incinerated.
+
+“The main rationale for maintaining silo-based ICBMs is to complicate an adversary’s nuclear strategy by forcing them to target 400 missile silos dispersed throughout the United States to limit a retaliatory nuclear strike, which is why ICBMs are often referred to as the ‘nuclear sponge,’” the Center for Arms Control and Non-Proliferation wrote in 2021. “However, with the development of sea-based nuclear weapons, which are essentially undetectable, and air-based nuclear weapons, which provide greater flexibility, ground-based ICBMs have become increasingly technologically redundant.”
+
+Policymakers in power do not agree. The ICBM program has powerful backers in Congress, and Sentinel has enjoyed support from the Obama, Biden, and both Trump administrations. The Pentagon is also developing the B-21 Raider strategic bomber and a new generation of “Columbia-class” nuclear-armed subs.</div>
         </div>
         
         <div class="card" onclick="openModal('content-3')">
@@ -205,7 +303,43 @@
             <p><strong>Ars Technica - All content | 2026-02-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/02/under-a-paramount-wbd-merger-two-struggling-media-giants-would-unite/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Netflix has dropped out of the bidding war for Warner Bros. Discovery (WBD), making Paramount Skydance the expected owner of WBD. A Paramount-WBD merger remains subject to regulatory approval, but it’s likely that we will see a Paramount-Skydance-Warner-Bros.-Discovery media giant.
+
+Such a conglomerate would unite two legacy media companies that have struggled with profitability for years and have strongly invested in streaming and cable.
+
+With Paramount inching closer to WBD ownership, let’s look at what the union implies for streaming and cable.
+
+Over the past few years, both WBD and Paramount have seen declining revenue and struggled with profitability, as summarized in the table below, leading to WBD becoming eager for a sale and Paramount throwing mountains of money at media mergers.
+
+Paramount’s financial difficulties, combined with heavy reliance on the declining linear networks, are why analysts like Laura Martin, who covers entertainment and Internet at Needham & Company, say that Paramount “must have” WBD. Paramount is betting that the merger will lead to more consistent profitability by getting its streaming business out of the red and through content creation, theatrical releases, and licensing, as well as by deriving more value from its cable business.
+
+Paramount+ isn’t profitable. However, Paramount’s overall streaming business, including Pluto and BET+, has been narrowing losses. In Q4 2025, Paramount’s streaming business posted adjusted operating income before depreciation and amortization (OIBDA) of minus-$158 million (Paramount didn’t share full-year figures). Paramount+ grew revenue 17 percent year over year (YoY) and subscribers from 77.9 million in Q3 to 78.9 million.
+
+WBD’s streaming business, per the company’s full-year 2025 earnings report, made $393 million adjusted earnings before interest, taxes, depreciation, and amortization (EBITDA), down from $409 million for 2024. WBD ended the year with 131.6 million streaming subscribers across HBO and Discovery+. WBD doesn’t break out numbers based on streaming service, but most of its streaming business is tied to HBO Max.
+
+For comparison, Netflix, the largest subscription video-on-demand provider, reported net income of $11 billion for 2025. Netflix last reported its subscriber count at 301.6 million in January 2025.
+
+For subscribers, the most obvious potential outcome is for HBO Max to become part of the Paramount+ streaming service. In November, Bloomberg, citing unnamed people familiar with the plans of Paramount CEO David Ellison, said that the executive would merge HBO Max “into the existing Paramount+ platform” because he thinks “combining the offerings will allow more people to see the work of film and TV show creators” and would be more “compelling” to subscribers.
+
+A Paramount+ that encompasses titles from WBD would be larger and more valuable and, therefore, likely command higher subscription prices. Although Vikrant Mathur, co-founder of streaming technology provider Future Today, noted in an email to Ars Technica that “in the near term, it’s plausible that HBO Max and Paramount+ remain distinct brands but are offered in discounted bundles.”
+
+Paramount could also fold Discovery+ or the CNN streaming service into Paramount+, but it hasn’t provided specific plans. An app that unifies Paramount+ with other streaming libraries could make finding content easier if it’s executed well.
+
+A successful Paramount-WBD merger would be the largest streaming merger ever and would lead to further consolidation in the industry.
+
+“What started as a fragmented but flexible streaming ecosystem is increasingly trending toward rebundling—fewer, larger super-platforms offering broader catalogues at higher price points,” Mathur said.
+
+Paramount’s WBD bid is unique in its aggressive push for cable channels, which are struggling with viewership and advertising revenue. Under a WBD merger, Paramount would add networks like HGTV, Cartoon Network, TLC, and CNN to its linear TV lineup, which currently includes Comedy Central, Nickelodeon, and CBS.
+
+Although Paramount and WBD’s cable businesses are both in decline, they are both profitable. Paramount’s TV/media business, which includes its cable channels and production studios, reported $1.1 billion in adjusted OIBDA in Q4 2025. WBD’s cable business posted adjusted EBITDA of $1.41 billion that quarter.
+
+Ultimately, a Paramount-WBD merger would put diversity of viewpoints at risk. Under Ellison’s ownership, CBS News has adjusted its approach with new editor-in-chief Bari Weiss. There have also been concerns about censoring CBS under Ellison’s Paramount, including from Stephen Colbert, who said this month that CBS forbade him from interviewing Texas Democratic Senate candidate James Talarico; CBS denied Colbert’s claim. Further, Paramount could have a lasting impact on CNN, including costs, layoffs, and coverage.
+
+Regulatory scrutiny will be at the center of Paramount and WBD’s merger over the upcoming months. Federal approval is likely, but the merger also faces European regulation and potential state lawsuits. The theater industry is also lobbying against Paramount’s WBD merger.
+
+Should a Paramount-WBD merger ultimately be greenlit, two declining businesses will be challenged to form a profitable one. Even with regulatory approval, Paramount-Skydance-Warner-Bros.-Discovery faces an uphill climb.
+
+Although the bidding war may be settled, the fight for WBD is only beginning.</div>
         </div>
         
         <div class="card" onclick="openModal('content-4')">
@@ -219,7 +353,35 @@
             <p><strong>Ars Technica - All content | 2026-02-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/02/photons-that-arent-actually-there-influence-superconductivity/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Despite the headline, this isn’t really a story about superconductivity—at least not the superconductivity that people care about, the stuff that doesn’t require exotic refrigeration to work. Instead, it’s a story about how superconductivity can be used as a test of some of the weirder consequences of quantum mechanics, one that involves non-existent particles of light that still act as if they exist.
+
+Researchers have found a way to get these virtual photons to influence the behavior of a superconductor, ultimately making it worse. That may, in the end, tell us something useful about superconductivity, but it’ll probably take a little while.
+
+The story starts with quantum field theory, which is incredibly complex, but the simplified version is that even empty space is filled with fields that could govern the interactions of any quantum objects in or near that space. You can think of different particles as energetic excitements of these fields—so a photon is simply an energetic state of the quantum field.
+
+Some of these particles have real existences we can track, like a photon emitted by a laser and absorbed by a detector some distance away. But the quantum field also allows for virtual photons, which simply act to transmit the electromagnetic force between particles. We can’t really directly detect these, but we can definitely track their effects.
+
+One of the stranger consequences of this is that locations that have a strong electromagnetic field can be filled with virtual photons even when no real ones are present.
+
+Which brings us to one of the materials central to the new work: boron nitride. Like the more famous graphene, boron nitride forms a series of interlinked hexagonal rings, extending out into macroscopic sheets. The bulk material is made of sheets layered onto sheets layered onto yet more sheets. This has an effect on light transiting through the material. In one direction, the light will simply slam into the material, getting absorbed or scattered. But if it’s oriented along the plane of the sheets, it’s possible for the light to travel in the space between the boron and nitrogen atoms.
+
+But it’s not quite that simple. Because of the regular spacing of the atoms within individual sheets and the distance between those sheets, only certain wavelengths can transit smoothly.
+
+In essence, hexagonal boron nitride forms a very distinct electromagnetic field, one that’s highly selective for a limited number of wavelengths. And that means that there are a lot of virtual photons at those wavelengths present in the material, even when no photons are around. And the new research relied on their presence to test an idea about an unusual form of superconductivity.
+
+There’s an unusual superconductor called κ-(BEDT-TTF)2Cu[N(CN)2]Br (shortened to κ-ET) that’s a mix of copper and organic materials. It’s not a great superconductor—its critical temperature is just 12 Kelvin—but it doesn’t superconduct through the same mechanism that governs more conventional copper-based superconductors. There has been reason to expect that a carbon-carbon double bond is involved in the onset of superconductivity, but that has been difficult to test experimentally.
+
+The researchers involved in the new work saw that the frequency of the stretching of this carbon-carbon bond matched the infrared wavelengths that could transmit through the boron nitride. That raised the possibility that sticking a lot of virtual photons nearby could influence the carbon-carbon vibrations, and thus the superconductivity. So, they built a device that had a piece of κ-ET superconductor and layered some boron nitride on top of it.
+
+One feature of superconductors is that they expel magnetic fields. The research team found that the presence of boron nitride reduced the force needed to bring a magnet closer to the superconductor. Placing other materials on the surface showed no effect, suggesting that it’s something specific to the boron nitride. In a similar way, a related superconductor wasn’t affected by boron nitride. All of which suggests that there is something distinctive about the interaction between κ-ET and boron nitride. And, critically, this happens when there are no real photons transiting through the boron nitride.
+
+Just to emphasize something from that: The boron nitride is suppressing superconductivity, not enhancing it. The researchers aren’t sure how deep into the superconductor the suppression penetrates, so they’ve not been able to determine whether this might reduce the critical temperature as well.
+
+So, obviously, this particular interaction isn’t going to be a route to higher temperature superconductors. But it also may be a bit more than a clever demonstration of some weird physics. To begin with, boron nitride is helping us characterize what’s going on inside a superconductor in a way that can be difficult to accomplish via any other route. And there are plenty of other materials with the same sort of layered structure that might have resonances at different wavelengths, potentially allowing the development of a range of different probes.
+
+More generally, this validates the idea that you can manipulate superconductivity in ways beyond the two levers we usually pull for that purpose: temperature and pressure. Some of the better-performing superconductors require temperature and/or pressure that’s never going to be very economical for general use. But the idea was that learning about them might help us find ways to achieve the same thing under more approachable conditions. But it hasn’t always been clear that there was any way to do so beyond changing the material’s chemistry. This new work suggests a potential alternative.
+
+Nature, 2025. DOI: 10.1038/s41586-025-10062-6  (About DOIs).</div>
         </div>
         
         <div class="card" onclick="openModal('content-5')">
@@ -233,16 +395,116 @@
             <p><strong>Ars Technica - All content | 2026-02-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/02/whoops-us-military-laser-strike-takes-down-cbp-drone-near-mexican-border/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">The US military mistakenly shot down a Customs and Border Protection (CBP) drone near the Mexican border in a strike that reportedly used a laser-based anti-drone system. The CBP uses drones to track people crossing the border.
+
+“Congressional aides told Reuters the Pentagon used the high-energy laser system to shoot down a Customs and Border Protection drone near the Mexican border, in an area that often has incursions from Mexican drones used by drug cartels,” Reuters reported last night.
+
+The FAA closed some airspace along the border with Mexico in Fort Hancock, Texas, on Thursday with a notice announcing temporary flight restrictions for special security reasons. The restrictions are in place until June 24 but could be lifted earlier. There are conflicting reports on which day the strike happened, with The New York Times reporting that the strike occurred Thursday and Bloomberg writing that the Federal Aviation Administration (FAA) “was notified Wednesday after the event occurred.”
+
+“The Defense Department didn’t realize the drone was being flown by CBP when it shot it down,” and “had not first coordinated the use of the laser system with the US Federal Aviation Administration,” Bloomberg wrote, citing anonymous sources.
+
+The military hasn’t been coordinating counter-drone measures with the FAA, and “CBP drone operators didn’t inform the military’s laser unit that it was launching,” Bloomberg wrote, citing anonymous sources. Because the CBP didn’t notify the Defense Department, the military viewed the aircraft as “an unknown drone,” the Times wrote, citing an unnamed Pentagon official.
+
+The latest incident came about two weeks after the FAA abruptly closed airspace over El Paso for a few hours, leading to flight cancellations. In the early February incident, CBP was the one that fired the laser. The CBP was “using the same technology on loan from the military to combat drug-smuggling” and “fired a high-energy laser at what they thought was a drone,” but turned out to be a party balloon, the Times wrote.
+
+“In both cases, the lasers were used without the FAA’s approval, which many aviation safety experts maintain is a violation of the law,” the Times wrote.
+
+Democratic lawmakers criticized the Trump administration. “The Trump administration’s incompetence continues to cause chaos in our skies,” Sen. Tammy Duckworth (D-Ill.), ranking member of the Senate Aviation Subcommittee, said in a statement provided to Ars. Duckworth said, “The situation is alarming and demands a thorough, independent investigation.”
+
+A spokesperson for Duckworth told Ars they are “waiting for answers” regarding details of the incident. Duckworth’s office and the Senate Committee on Commerce, Science, and Transportation were not notified of the incident, the spokesperson said.
+
+“On the heels of the NTSB confirming that the failure of DoD and FAA to effectively communicate resulted in the tragic loss of life above DCA, we now see that—a full year later—dysfunction continues to endanger our aviation system, from DoD dismissing FAA safety warnings against allowing DHS to use its counter drone laser system, to now DoD reportedly using its high energy laser C-UAS to shoot down a DHS drone paid for by taxpayers,” Duckworth’s statement said.
+
+Another statement was issued by US Reps. Rick Larsen (D-Wash.), André Carson (D-Ind.), and Bennie Thompson (D-Miss.), who hold leadership roles on the House Transportation Committee and its subcommittees.
+
+“Our heads are exploding over the news that DoD reportedly shot down a Customs and Border Protection drone using a high risk counter-unmanned aircraft system,” the three lawmakers said. “We said MONTHS ago that the White House’s decision to sidestep a bipartisan, tri-committee bill to appropriately train C-UAS operators and address the lack of coordination between the Pentagon, DHS and the FAA was a short-sighted idea. Now, we’re seeing the result of its incompetence.”
+
+The Pentagon, CBP, and FAA confirmed some details of the incident in a joint statement provided to Ars by the Pentagon today. The statement said the “engagement occurred when the Department of War employed counter-unmanned aircraft system authorities to mitigate a seemingly threatening unmanned aerial system operating within military airspace. The engagement took place far away from populated areas and there were no commercial aircraft in the vicinity.”
+
+The agencies said they are working together at President Trump’s direction “to mitigate drone threats by Mexican cartels and foreign terrorist organizations at the US-Mexico Border.” Following the mistake, “agencies will continue to work on increased cooperation and communication to prevent such incidents in the future,” the statement said.
+
+“The bottom line is the Trump Administration is doing more to secure the border and crack down on cartels than any administration in history,” the agencies said.
+
+The statement did not mention that the drone was a CBP drone, and the Pentagon declined to provide further details to Ars.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
+            <div class="source">Futurism</div>
+            <div class="title">Uber Employees Have Created an AI Clone of Its CEO</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-6" style="display:none;">
+            <h2>Uber Employees Have Created an AI Clone of Its CEO</h2>
+            <p><strong>Futurism | 2026-02-28</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/uber-employees-ai-ceo">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+In need of a little confidence boost before a face-to-face with your boss? That urge seems to be driving employees at rideshare giant Uber to strange places.
+
+According to CEO Dara Khosrowshahi, some of his underlings have created an AI clone of him so they can prepare for meetings with him, ensuring everything is fine-tuned for his wants and needs.
+
+“One of my team members told me that some teams have built a ‘Dara AI,&#39;” Khosrowshahi said on a recent episode of the Diary of a CEO podcast, as highlighted by Business Insider. “They basically make the presentation to the Dara AI as a prep for making a presentation to me.”
+
+Khosrowshahi sounded equally amused and pleased with his employees’ next-level obsequiousness.
+
+“By the time something comes to me, there’s been a prep and a meeting and the slide deck has been beautifully honed,” he said.”They have Dara AI to tune their prep!”
+
+It may sound suspiciously apocryphal, but it’s actually kind of the perfect use case for AI. What else is AI good for if not imitation? We’ll tell you what: flattery. In theory, Khosrowshahi gets to have his ass kissed with his employees’ AI-refined flourishes. And employees get to have their egos boosted by a chatbot’s preponderance of “Absolutely”s and other glazing remarks. A win-win for everyone.
+
+Khosrowshahi, unsurprisingly, is bonkers for the tech. On the podcast, he boasted that 90 percent of Uber’s coders are using AI at work, with a third of them being “power users.” AI, he said, “is changing their productivity in a way that I’ve never, ever seen before.” He also predicted that AI will eventually make Uber’s software engineers 25 percent more efficient.
+
+Citations needed for those claims, but plenty of other CEOs and executives “absolutely” love AI with a similar breathlessness. Nvidia CEO Jensen Huang reportedly told his workers that they’d be “insane” not to use AI for every possible task. Many brag about using AI to slash their companies’ burdensome headcounts. Meanwhile, the rank and file workers who actually get stuff done seem to think AI is mostly useless.
+
+For now, though, Khosrowshahi says that his coders are safe from AI-spurred layoffs. Or maybe not. After suggesting that an AI boost to efficiency would inspire him to “hire more engineers” to “go faster,” he mused about taking the opposite path.
+
+“I may not decide to add engineering headcount,” Khosrowshahi said. “At that point, instead of adding an engineer, I should add agents and buy some more GPUs from Nvidia.”
+
+More on AI: If AI Causes an Office Job Wipeout, It’ll Cause Huge Problems for Blue Collar Work Too</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
+            <div class="source">Futurism</div>
+            <div class="title">Woman Annoyed When Delivery Robot Comes Into Her Yard, Tears Up Her Garden and Steals Her Fence</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-7" style="display:none;">
+            <h2>Woman Annoyed When Delivery Robot Comes Into Her Yard, Tears Up Her Garden and Steals Her Fence</h2>
+            <p><strong>Futurism | 2026-02-28</strong></p>
+            <a class="original-link" href="https://futurism.com/robots-and-machines/delivery-robot-yard-garden">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+These days, moles and gophers aren’t the only pests you have to worry about tearing up your yard. You also have to watch for Cocos — pink, four-wheeled delivery robots currently metastasizing across cities throughout the US.
+
+East Hollywood resident Kaiya Reel learned this the hard way. According to local news station KTLA, Reel was first alerted to the presence of something in her garden by a loud ruckus. When she came out to investigate, she was surprised to discover a Coco delivery robot struggling to free itself from her fence.
+
+“I came out here and I found the Coco in my garden,” she told KTLA. “It had got my fence caught up in its wheel. It uprooted a whole bunch of [plants] in my garden and then just drove away with the fence attached to it.”
+
+Despite becoming tangled in a mess of fencing and foliage from Reel’s yard, the little robot was determined to make its next delivery, scampering off down the road.
+
+“I chased after it and looked like a total crazy person, running after a robot in the middle of the street and yelling at it,” Reel said. “I was trying to block it and get in its way and it would try to go around me,” she continued, though the robot didn’t heed her calls to stop.
+
+Reel’s neighbor, Roman Henson, corroborated the story to KTLA.
+
+“The robot had driven through the little fence and was dragging it,” Henson said. “We’ve got the Cocos, the Waymos and they’re coming for us.”
+
+The delivery robots have caused a number of problems wherever they’ve been deployed. In Chicago, the little fellas irked residents so bad that they’ve been functionally banned from certain sections of the city. In East Hollywood, KTLA reports that a Coco robot was caught charging headlong into an ambulance, while delivery bots from other companies have blocked mobility scooters and knocked over motorcycles.
+
+“I think the part that worries me is that these companies can come in and dump their technology in our community and there’s no sense of accountability,” Reel told the station. “It just feels like an accident waiting to happen.”
+
+More on robots: Delivery Robot Gets Stuck on Train Tracks, Gets Obliterated by Locomotive</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">Bill Gates’ Daughter Says Her $185 Million AI Startup Will Succeed Entirely Due to Her Merits, Not Even a Little Bit Who Her Dad Is</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Bill Gates’ Daughter Says Her $185 Million AI Startup Will Succeed Entirely Due to Her Merits, Not Even a Little Bit Who Her Dad Is</h2>
             <p><strong>Futurism | 2026-02-28</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/phoebe-gates-ai-startup">Visit Original Website</a>
@@ -274,13 +536,13 @@ While it’s an admirable gesture to wave off mom and dad’s fortune in the ini
 More on Gates: Bill Gates Admits to Multiple Affairs in Epstein Fallout</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">This Is How Big a Telescope Aliens Would Need to See Dinosaurs on Earth</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>This Is How Big a Telescope Aliens Would Need to See Dinosaurs on Earth</h2>
             <p><strong>Futurism | 2026-02-28</strong></p>
             <a class="original-link" href="https://futurism.com/space/big-telescope-aliens-dinosaurs-earth">Visit Original Website</a>
@@ -320,13 +582,13 @@ Even to resolve clouds on exoplanets ten light-years away would require a “tel
 More on dinosaurs: A Dinosaur Appears to Have Died on the Exact Spot They Later Built a Dinosaur Museum, Burying Its Fossil Underneath It</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">Startup Generates Caring Letters to Your Friends Using AI, Handwrites Them Using Robot Pen</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>Startup Generates Caring Letters to Your Friends Using AI, Handwrites Them Using Robot Pen</h2>
             <p><strong>Futurism | 2026-02-28</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/startup-ai-handwritten-letters">Visit Original Website</a>
@@ -356,13 +618,13 @@ Thanks to these bold innovators, consumers can now enjoy all the authenticity of
 More on AI: Man Letting AI Rent Human Bodies Says Elon Musk Is His Hero</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">Lab-Grown Brains Growing More Powerful</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>Lab-Grown Brains Growing More Powerful</h2>
             <p><strong>Futurism | 2026-02-28</strong></p>
             <a class="original-link" href="https://futurism.com/health-medicine/lab-grown-brain-organoid">Visit Original Website</a>
@@ -390,80 +652,6 @@ In essence, their success proves that brain organoids are capable of goal-direct
 “These are incredibly minimal neural circuits. There’s no dopamine, no sensory experience, no body to sustain, no goals to pursue. And yet, when given targeted electrical feedback, this tissue is plastic enough and structured enough to be pushed toward solving a real control problem,” said Keith Hengen, an associate professor of biology at Washington University in St. Louis. “That tells us something important: the capacity for adaptive computation is intrinsic to cortical tissue itself, separate from all the scaffolding we usually assume is necessary.”
 
 More on neurology: Scientists Preparing to Simulate Human Brain on Supercomputer</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-10')">
-            <div class="source">Futurism</div>
-            <div class="title">Constant Space Launches Turning Earth’s Atmosphere Into a “Crematorium,” Scientists Say</div>
-            <div class="meta">2026-02-28</div>
-        </div>
-        
-        <div id="content-10" style="display:none;">
-            <h2>Constant Space Launches Turning Earth’s Atmosphere Into a “Crematorium,” Scientists Say</h2>
-            <p><strong>Futurism | 2026-02-28</strong></p>
-            <a class="original-link" href="https://futurism.com/space/space-launches-atmosphere-crematorium">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-Constant space launches are turning the atmosphere into a “crematorium” for satellites and other space debris.
-
-That was the warning from a trio of astronomers and atmospheric scientists in a new essay for The Conversation, which outlines the grim consequences of populating the Earth’s orbit with tens of thousands of expendable satellites.
-
-Satellites, they write, “have become part of throwaway culture.” Companies like Elon Musk’s SpaceX design their satellites to last no more than a few years, after which they’re supposed to push themselves out of orbit and burn up in the Earth’s atmosphere.
-
-It’s a tidy approach in theory, but one that could in reality be seeding the atmosphere with harmful particulates. The astronomers point to a study that found re-entering satellites were releasing metals into the atmosphere as they burned-up, including copper, lead, and aluminum particles called alumina. The rockets that bring the satellites to orbit are no less guilty, as a recent paper linked the re-entry of the upper stage of a SpaceX Falcon 9 to a plume of toxic lithium. A particularly alarming study speculated that the suffusion of metal particles could kickstart a chain reaction that devastates the ozone layer.
-
-“This is just a fraction of what is to come if planned megaconstellations go ahead — and SpaceX is far from the only player,” the astronomers warn.
-
-Of the some 15,000 active satellites in orbit, SpaceX alone has over 9,000 zipping around the Earth. And last month, the Musk-owned company applied with the US Federal Communications Commission to launch up to one million more to pursue Musk’s dream of building AI data centers in space. Other satellite operators have requested a combined allotment of one million, a report found.
-
-In all likelihood, those figures won’t be accomplished anytime soon, but they do illustrate the sky high ambitions of the space industry. And if SpaceX et al do get their way, it won’t be pretty. The astronomers estimate that a million satellites could mean one billion kilograms of alumina accumulating in the atmosphere. That’s “enough, alongside launch emissions, to significantly alter atmospheric chemistry and heating in dramatic ways we do not yet understand,” they warned.
-
-The junk that accumulates in low Earth orbit could also blowback on the space industry spreading it. Experts warn that collisions between space junk could cascade out of control and cause the entire region to collapse into a destructive vortex of swirling debris. This scenario, called Kessler syndrome, would turn the Earth’s orbit into a dangerous minefield that could set back spaceflight for decades.
-
-In the meantime, falling space junk could become a lethal threat for us on the ground, with increasing reports of large chunks of satellites and spacecraft surviving their fiery plunge instead of disintegrating as intended. The Federal Aviation Administration warned that by 2035, some 28,000 fragments from Starlink satellites alone could survive re-entry each year, raising the chance of someone getting struck and killed by space debris each year to 61 percent.
-
-A surge in satellite constellations, the astronomers warn, would also further obscure observations of deep space. “For scientists, observing the deaths of stars and searching for new planets would become much harder,” they wrote. “Stargazing, astrotourism and cultural astronomy would similarly be disrupted worldwide.”
-
-Global regulation is needed to rein in space launches, they said. This regulatory body or framework, with the help of astronomers, would need to define a “safe atmospheric carrying capacity for satellite launches and re-entries,” while facilitating research to understand the full atmospheric effects of spacecraft.
-
-More on space: Damage to Chinese Spacecraft Was Worse Than Reported</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">Creator of Claude Code Fears This Could Be the Last Year That Software Engineers Are Employable</div>
-            <div class="meta">2026-02-28</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>Creator of Claude Code Fears This Could Be the Last Year That Software Engineers Are Employable</h2>
-            <p><strong>Futurism | 2026-02-28</strong></p>
-            <a class="original-link" href="https://futurism.com/artificial-intelligence/claude-code-anthropic-labor">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-The warning signs are piling up for anyone still working as a software engineer in 2026.
-
-In a recent episode of former Airbnb guy Lenny Rachitsky’s tidily-named audio show, “Lenny’s Podcast,” the creator of one of the most acclaimed AI coding tools, Boris Cherny, reaffirmed his belief that there are dark days ahead for the world’s software developers.
-
-“I think by the end of the year, everyone is going to be a product manager, and everyone codes. The title software engineer is going to start to go away,” Cherny said on the podcast, first spotted by Fortune. “It’s just going to be replaced by ‘builder,’ and it’s going to be painful for a lot of people.”
-
-Cherny is the chief architect of Anthropic’s Claude Code, an agentic AI tool that’s said to autonomously execute software production tasks with little oversight from human beings. While it’s debated how effective Claude Code truly is — there’s been a lot of irritation with how fast the tool seems to drain user credits, for example — it’s taken the programming world by storm nonetheless.
-
-It’s a point Cherny’s keen to stress: “I have not edited a single line by hand since November,” he bragged on the podcast.
-
-Calculated PR-grab the interview may be, Cherny is careful to guard Anthropic’s reputation as the “adult in the room” — relative to other titans of the AI industry, at least.
-
-He admits, for example, that Claude Code has its limitations: “I don’t think we’re at the point where you can be totally hands-off, especially when there’s a lot of people running the program,” Cherny told Rachitsky. “You have to make sure that it’s correct. You have to make sure it’s safe.”
-
-Still, he’s not immune to indulging in a little future AI hype either. Though Cherny emphasizes that today’s software engineers still need to have a grasp of the fundamentals, he says that “in a year or two, it’s not going to matter.”
-
-At the same time, the creator of Claude Code insisted that Anthropic takes the coming labor-troubles — as if things aren’t bad enough already — “very, very seriously,” suggesting that society writ large needs to have a long conversation about how we’re going to proceed.
-
-That doesn’t mean the fellas at Anthropic are going to stop and wait for the world to catch up, however. “I do think in the meantime, it’s going to be very disruptive,” Cherny reiterated, “and it’s going to be painful for a lot of people.”
-
-More on Anthropic: Pentagon Issues Threat to Anthropic</div>
         </div>
         
         <div class="card" onclick="openModal('content-12')">
@@ -1008,35 +1196,58 @@ Although these programs require public investment, the returns can be high. For 
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">'World's Largest Battery' Soon At Google Data Center: 100-Hour Iron-Air Storage</div>
+            <div class="title">Antarctica's Massive Neutrino Observatory Gets an Upgrade</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Antarctica's Massive Neutrino Observatory Gets an Upgrade</h2>
+            <p><strong>Slashdot | 2026-02-28</strong></p>
+            <a class="original-link" href="https://science.slashdot.org/story/26/02/28/0632201/antarcticas-massive-neutrino-observatory-gets-an-upgrade?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+...though his invention worked superbly -- his theory was a crock of sewage from
+beginning to end. -- Vernor Vinge, &quot;The Peace War&quot;</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">'World's Largest Battery' Soon At Google Data Center: 100-Hour Iron-Air Storage</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>'World's Largest Battery' Soon At Google Data Center: 100-Hour Iron-Air Storage</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/02/28/0446211/worlds-largest-battery-soon-at-google-data-center-100-hour-iron-air-storage?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+Rusting is an exothermic process, so you get energy from rusting, but it takes energy to reverse it.  The summary is wrong, but the correct process is described in the body of the article.
+
+Battery grid storage is by now a fairly common product. You can buy integrated containers you only need to connect to the grid and your control system. If you want have a larger system you just order 1000 instead of 100 containers (and make sure the power lines are sufficient).
+
+It&#39;s easier than, for example, making a giant ball of yarn, as such things don&#39;t scale well, every new layer of yarn is harder to put on than the previous. With grid storage you just need to buy more boxes.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-It&#39;s currently a problem of access to gigabits through punybaud.
--- J. C. R. Licklider</div>
+...though his invention worked superbly -- his theory was a crock of sewage from
+beginning to end. -- Vernor Vinge, &quot;The Peace War&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">After US-Israel Attacks, 90 Million Iranians Lose Internet Connectivity</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>After US-Israel Attacks, 90 Million Iranians Lose Internet Connectivity</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/28/1733240/after-us-israel-attacks-90-million-iranians-lose-internet-connectivity?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
 
 When has a regime change by the USA ever improved a country? Iran is in their current state because of US meddling decades ago.
 
@@ -1050,7 +1261,21 @@ Take a look at the map and behold, most of the Empire is not in fact doing too g
 
 An Empire is a machine of violence with the sole purpose of transferring wealth created by other people back to the motherland. Rarely does anyone do good as a subject nation of the empire, and if that happens, it&#39;s only because the Empire was otherwise engaged with more important matters.
 
+Venezuela was changing, they were in no means perfect, but ever since Chavez kicked out the US they had been getting better, and the people know by experience that their own imperfect government is still better than a US one. Now they&#39;re back to square one again, with the puppet government having to run the country for the advancement of US interest again.
+
+As to the boots, I&#39;m not aware of no boots on the ground ever having worked. Japan still has US boots on the ground, so does South Korea. In fact, one mig
+
 >>Japan is another.so a war or atom bomb is needed to fix this?
+
+The historical record is admittedly thin, but seems like there&#39;s more examples of militaristic dictatorships folding under exogenous military force than there are examples of them voluntarily disolving themselves to form a democracy.
+
+German, Japan, Panama, Argentina are clear examples of the former.
+
+Brazil, Chile, and to some extent South Africa are examples of the latter.
+
+The Soviet Bloc is a mixed bag. The whole thing collapsed under its own weight as much as from external pressure, but it also is a split ve
+
+When you say &quot;Argentina&quot;, what do you mean precisely? It&#39;s had a lot of militaristic dictatorships followed by at least nominal democracy, but I assume you&#39;re referring to the most recent one. However, the Falklands war was more a symptom of the collapse than the cause, and didn&#39;t lead to an invasion of territory controlled by Argentina before the outbreak of war. I can&#39;t understand why you consider it a &quot;clear example&quot;. I&#39;d put it in a third category: militaristic dictatorships which collapse involuntarily
 
 Not too good a record since then, though. And none of the advantages of either apply to Iran.
 
@@ -1062,11 +1287,39 @@ In short, I don&#39;t have the same hope for a positive outcome as you might.
 
 Islamic countries are not like Germany or Japan or even China.  That was made very clear to me one time when I had to wait at the waiting lot at the airport in the middle of the day.  A number of Uber drivers put out little carpets pointed at a specific direction, knelt on them, put their heads to the ground and continued to do it for like 15 minutes.  If you can get people to do that 5 times a day when no one is watching, no one is going to change them.
 
+Iran is not an Islamic country.  Persians were Zorastrians. Mostly they are now something like agnostics. They don&#39;t believe in Islam, they don&#39;t want to wear the hijab, they are just held captive by a fanatical government that requires them put &quot;Muslim&quot; on their birth certificates.
+
+I know you left wingers are not allowed by your quasi-religion to say a single positive thing about the US as a whole and cheeto-man in particular, and you are all victims of your terrible schoolsystem..But!
+
+Not only is germany an example, the entire continent of Europe has just come out of an unprecedented era of peace and prosperity which has been started by the US and her allies after WW2; this era stopped when RuSSia attacked Ukraine, because especially a weak germany allowed it to happen.Never has Europ
+
+When has a regime change by the USA ever improved a country? Iran is in their current state because of US meddling decades ago.Now, what was all that talk of Hillary or Kamala starting a war? Will cheeto return his fake FIFA medal?When has US sponsored regime change ever before come at the direct request of the people living there?  (Maybe Vichy France.)Persians hate the Islamic regime. They have been in the streets by the millions protesting against Khomenei (who is hopefully now deceased).  In response he ordered his personal forces and secret police to open fire on them, killings tens of thousands of innocent people over just two days, another ten thousand put in prison and placed under sentence of death. They went to the hospital
+
+When has a regime change by the USA ever improved a country? Iran is in their current state because of US meddling decades ago.Now, what was all that talk of Hillary or Kamala starting a war? Will cheeto return his fake FIFA medal?
+
+When has US sponsored regime change ever before come at the direct request of the people living there?  (Maybe Vichy France.)
+
+Persians hate the Islamic regime. They have been in the streets by the millions protesting against Khomenei (who is hopefully now deceased).  In response he ordered his personal forces and secret police to open fire on them, killings tens of thousands of innocent people over just two days, another ten thousand put in prison and placed under sentence of death. They went to the hospital
+
+You seem to think that the current strikes against Iran by the USA and Israel are an attempt to get Iran to treat its people more humanely.
+
+No, they are a pressure tactic to bend Iran&#39;s resolve in nuclear negotiations -- which would not have been necessary if Trump hadn&#39;t torn up the JCPOA signed on July 14, 2015 between Iran and China, France, Germany, Russia, the UK, and the USA. But that agreement happened during Obama&#39;s administration, so in Trump&#39;s mind, it had to go.
+
 50 years ago Iran was still ruled by the US-installed shah, who got put there after Iran had decided to nationalize their oil, that is, Iranian oil should probably belong to Iran and not the British as the former colonists would want.
 
 It was the ousting of the widely unpopular puppet shah by the Islamic Revolution that put Iran to the US enemies list, where it remains to this day. Much like how Cuba got to be on the list when they ousted their own US regime.
 
+Nothing good is going to come out of this.this is undoubtedly very bad, but we shall see ...
+
+Nothing good is going to come out of this.
+
+this is undoubtedly very bad, but we shall see ...
+
+USA already put in a pro-Western puppet. It eventually failed, and lead to the Ayatollah.
+
 In my day it was a station wagon full of backup tapes. My how I have aged.
+
+I&#39;ll say. I shed a bit of a tear when my dad finally got rid of his early 90s stationwagon in the early 2010s.
 
 As TFS points out, Iran cutting off the internet is basically just Tuesday.
 
@@ -1076,21 +1329,22 @@ If you know any Iranian people living abroad who visit family back at home in Ir
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Badges?  We don&#39;t need no stinking badges.</div>
+...though his invention worked superbly -- his theory was a crock of sewage from
+beginning to end. -- Vernor Vinge, &quot;The Peace War&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">America's Teenagers Say AI Cheating Has Become a Regular Feature of Student Life</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>America's Teenagers Say AI Cheating Has Become a Regular Feature of Student Life</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/28/0541228/americas-teenagers-say-ai-cheating-has-become-a-regular-feature-of-student-life?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 Those are &#39;bigger&#39; tests and probably mostly out of scope in a story about teenagers dealing with high school assignments.
 
@@ -1098,7 +1352,7 @@ Broadly speaking, there are two kinds of students, those who love to learn and s
 
 Those who love to learn will use the new tools to help them learn faster and better. By using AI, they are practicing the skills that will be useful in the future.
 
-Education needs major reform that takes advantage of the new tools to better help those wh
+Education needs major reform that takes advantage of the new tools to better help those who want to learn. Sadly, the slackers will probably fall further behind
 
 open a i.when paired with web u i.will explain when asked a question.its patience to explain is useful.i think of it as like a pair of pliers.but a shinny pair of pliers
 
@@ -1113,6 +1367,12 @@ Though tossing high school assignment fodder at a prompt is hardly giving you us
 For one, the usage is so brain dead simple, there&#39;s no learning curve really for that scenario.
 
 For another, high school assignments are almost always super easy for LLMs.  Very well trodden material that is easy to grade for a high school teacher without going all adventurous or posing questions that *might* not have well defined answers.  The teachers already know the material, they know the outcome of every
+
+For another, high school assignments are almost always super easy for LLMs.As they were in college for people in fraternities who had access to their homework/test files. And for much the same reasons.
+
+For another, high school assignments are almost always super easy for LLMs.
+
+As they were in college for people in fraternities who had access to their homework/test files. And for much the same reasons.
 
 Flip the classroom/homework model, as some had done with on-line tools like Kahn Academy.  Kids learn with texts, computers, whatever outside of class.  In class they do exercises in either a controlled computer environment or with no computer props at all.
 
@@ -1138,20 +1398,18 @@ It&#39;s currently a problem of access to gigabits through punybaud.
 -- J. C. R. Licklider</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Startup Plans April Launch for a Satellite to Reflect Sunlight to Earth at Night</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Startup Plans April Launch for a Satellite to Reflect Sunlight to Earth at Night</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/02/28/076229/startup-plans-april-launch-for-a-satellite-to-reflect-sunlight-to-earth-at-night?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
-
-As if Starlink satellites ruining their observations weren&#39;t enough... yeah, more light pollution is exactly what we need.
+            <div id="article-text">As if Starlink satellites ruining their observations weren&#39;t enough... yeah, more light pollution is exactly what we need.
 
 Let&#39;s not add the fact that reflecting sunlight onto the earth at night increases warming.You&#39;re not wrong, but by how much? Even if this plan gets anywhere near a scale that yields useful energy, I think it needs to be weighed against the kinds of energy-generation methods we use already that unquestionably warm the planet -- and may also produce greenhouse gasses.And for the record, I&#39;m not exactly a fan of this new idea. I like night skies and I want to keep them.
 
@@ -1195,23 +1453,22 @@ Apparently, it has become way too cheap to put garbage into orbit.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Badges?  We don&#39;t need no stinking badges.</div>
+...though his invention worked superbly -- his theory was a crock of sewage from
+beginning to end. -- Vernor Vinge, &quot;The Peace War&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Google Quantum-Proofs HTTPS</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Google Quantum-Proofs HTTPS</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/02/28/027202/google-quantum-proofs-https?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
-
-I didn&#39;t think that we had quantum computers already.
+            <div id="article-text">I didn&#39;t think that we had quantum computers already.
 
 How is it that we have Shor&#39;s Algorithm(from 1994) and have Google working on this?
 
@@ -1287,57 +1544,75 @@ It&#39;s currently a problem of access to gigabits through punybaud.
 -- J. C. R. Licklider</div>
         </div>
         
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Rubin Observatory Has Started Paging Astronomers 800,000 Times a Night</div>
+        <div class="card" onclick="openModal('content-30')">
+            <div class="source">News and Politics - Slate Magazine</div>
+            <div class="title">Trump Just Crossed a Line He Promised He Would Never Cross</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-29" style="display:none;">
-            <h2>Rubin Observatory Has Started Paging Astronomers 800,000 Times a Night</h2>
-            <p><strong>Slashdot | 2026-02-28</strong></p>
-            <a class="original-link" href="https://science.slashdot.org/story/26/02/28/0155200/rubin-observatory-has-started-paging-astronomers-800000-times-a-night?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+        <div id="content-30" style="display:none;">
+            <h2>Trump Just Crossed a Line He Promised He Would Never Cross</h2>
+            <p><strong>News and Politics - Slate Magazine | 2026-02-28</strong></p>
+            <a class="original-link" href="https://slate.com/news-and-politics/2026/02/iran-trump-war-analysis-what-happens-next.html?via=rss">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Sign up for the Slatest to get the most insightful analysis, criticism, and advice out there, delivered to your inbox daily.
 
-Emergency communication operators still deploy such services, for example for volunteer firemen who can be called anywhere anytime.* Belgian company ASTRID operates the emergency communications and among other things has a pager service https://www.astrid.be/en/servi...  [astrid.be] * French company e*message operates an independent network of 435 antennas transmitting on 466 MHz, totalling 130,000 users of POCSAG pagers for emergency responders. https://www.emessage.fr/equipe... [emessage.fr] Equipment for firemen / industrial safety
+President Donald Trump and Israeli Prime Minister Benjamin Netanyahu have launched the first massive wave of a full-scale war on Iran—yet the reason for attacking now and the vision of what happens the day after are murky, to say the least.
 
-I recommended one to a family member recently to go with a flip phone.
+An eight-minute video that Trump posted on social media early Saturday morning, announcing that he had begun “major combat operations,” raised more questions than it answered. He made very clear that the intent of the attack—called “Operation Epic Fury”—was not only to wipe out Iran’s nuclear infrastructure (which Trump already claimed to have “obliterated” in last June’s attack) but also to raze its ballistic missile force and, above all, to topple the Islamic regime.
 
-There&#39;s just no way on most smartphones to have only extremely specific notifications wake you up or alert you to only emergencies.
+“To the great, proud people of Iran, I say tonight that the hour of your freedom is at hand,” Trump proclaimed. He warned the people to stay inside while bombs fall, but implored them, afterward, to “take over your government. It will be yours to take.”
 
-One could imagine various ad-hoc methods to do this (&quot;mom, text me with EMERGENCY if it is one, otherwise I&#39;ll read messages tonight&quot;) but the smartphones don&#39;t allow such deep integrations.
+This is a bit of fantasy. There is no civic or protest group with the arms or organization to grab the reins of power in Tehran, nor are U.S. or Israeli troops going to occupy Iranian territory to help them to do so. Even if they did, the results wouldn’t be certain. It is worth recalling that, in 2003, President George W. Bush sent 150,000 troops to depose Saddam Hussein’s regime in Iraq, yet even they were unable to impose order but instead incited an insurgency and a civil war that lasted nearly a decade and destabilized the entire region.
 
-It&#39;s a lot more effort to dial a pager and leave a callback number.  Back in the day we&#39;d do 10-digit and 999 at the end
+It is not clear how Trump’s stab at regime change without any ground support—in a country three times the size of Iraq—will be any smoother. Even if the air strikes succeed in ousting the regime, either by killing its leaders or forcing them to flee, it is doubtful the successors will be any friendlier to the West.
 
-This is a government of, by, and for tech bros. You expect them to keep their knowledgebase updated?
+The most likely faction to succeed the Supreme Leader and his mullahs are the officers of the Islamic Revolutionary Guard Corps (IRGC)—the country’s elite military unit, which holds about 190,000 members, well-armed, brutal, and thoroughly enmeshed with Iran’s social structure and in control of much of its economy. They would resist any attempt by civilians to undermine their control.
 
-dunno about meteors, but war crimes are reported aplenty.
+In his eight-minute address, Trump urged the IRGC, as well as Iran’s armed forces and police, to roll over. “Lay down your arms,” he said. “You will be treated fairly with total immunity.” If you don’t lay down your arms, “you will face certain death.”
 
-Meaning the ones &quot;paged&quot; will stop listening completely. Sounds like a resounding failure.
+This mix of promise and threat is a puzzler. Just who will reward surrendering officers with immunity, and who will kill those who don’t succumb? Who will have the power, authority, and armed strength themselves to enforce this ultimatum? If Trump were to send several armed divisions to Iran, they could try to do that—but it’s extremely doubtful, if just for domestic-political reasons, that he would do that.
 
-That is incorrect. 800,000 alerts did go out to each rrecipient. And it&#39;ll be in the millions soon. But the headline is clicking, they&#39;re not using pagers. There are alert brokers set up which receive alerts directly from Vera-Rubin, and astronomers, and the general public, subscribe to those. The alerts are generally filtered through scripts to identify light curves particular astronomers are interested in. They&#39;ll even have the telescopes automatically change their imaging schedule based on them. So there
+It’s possible, one might imagine, that the CIA or Mossad has secretly contacted key Iranian officers, promising support if they take the reins after the mullahs fall and steer their country to more peaceful policies. But if so, it is not at all certain that these collaborators would be able to sway or dominate their fellow officers—or whether rival factions will rise in opposition.
 
-than the reference image at the 5 sigma confidence level.
+In other words, assuming the war succeeds in its strategic aim of regime change, the likeliest outcome will be a new dictatorship, a civil war among various armed factions, or utter anarchy and chaos, reminiscent of Libya after the killing of Muammar Gaddafi.
 
-That guy I never liked...I have it on good authority he&#39;s an astronomy nerd and wants to be alerted whenever a source dims at the 1-sigma confidence level!
+Whatever happens, it seems that Trump has not thought through the political consequences of his war—a crucial failing in a war of choice; this certainly was not a war forced upon him.
 
-https://rubinobservatory.org/f... [rubinobservatory.org]
+Trump is right, and hardly alone in noting, that the Iranian regime is led by “terrible people.” They sponsor terrorism, murder domestic dissenters, and have a record of killing American troops in the region. Yet he did not muster even the pretense of evidence that they pose an “imminent threat.” They are not on the brink of building nuclear weapons. (Trump exaggerated when he claimed last summer that Midnight Hammer, his bombing raid on three enriched-uranium sites, “obliterated” their nuclear capability, but the attack probably did set the program back a few years.) And their network of armed militias in the region—Hamas, Hezbollah, and the Houthis—is as weak as it has been for decades, thanks to a series of Israeli attacks. In negotiations over the past few weeks, Iran had offered to reduce its nuclear potential to below even the levels agreed in the nuclear deal negotiated by President Barack Obama and six other leaders in 2014—a deal that Trump ripped up in his first term. But it seems Trump didn’t want a deal at all.
 
-I&#39;d just smash my device, or I might legitimately go insane.
+Meanwhile, the Iranians are doing what they said they would do if the U.S. or Israel unleashed an attack—they are firing their own missiles and drones at Israel and at Arab countries where the U.S. has military bases, including Bahrain, Jordan, Qatar, the UAE, and Saudi Arabia.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+Many of these missiles were shot down, but video footage shows some of the missiles flew through unscathed and exploded. It is not yet known how much damage these strikes did—or, for that matter, the full effects of the U.S. and Israeli strikes against Iran.
 
-Badges?  We don&#39;t need no stinking badges.</div>
+Still, this war is very different from Trump’s previous air strikes on Iran or Venezuela, which were one-off raids with limited goals. This is a war, aimed not just at destroying some military targets or abducting a single leader but bringing down a well-entrenched government. Even under optimistic assumptions, this is going to take a while. Trump himself admitted, in his video, that some Americans will die.
+
+In other words, Trump has crossed a red line that he has never crossed before, and that he once promised he never would. The consequences are as murky as everything else about this conflict—for Trump’s political party in this year’s elections, for his own image in history books, as well as the fate of Iran, the stability of the Middle East, and the course of war and peace, possibly worldwide, in our times.
+
+Slate relies on advertising to support our journalism. If you value our
+        work, please disable your ad blocker. If you want to block ads but still
+        support Slate, consider subscribing.
+
+Already a member?
+        Sign in
+          here
+
+Join today to keep reading. You&#39;ll also get access to all of Slate&#39;s
+        independent journalism, unparalleled advice, and daily games. Cancel
+        anytime.
+
+Already a member?
+        Sign in
+          here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-30')">
+        <div class="card" onclick="openModal('content-31')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">The Hidden Brilliance of Mamdani’s Response to New York’s Post-Blizzard Snowball Fight</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-30" style="display:none;">
+        <div id="content-31" style="display:none;">
             <h2>The Hidden Brilliance of Mamdani’s Response to New York’s Post-Blizzard Snowball Fight</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-28</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/02/mamdani-snowball-fight-cops-unions-response.html?via=rss">Visit Original Website</a>
@@ -1387,13 +1662,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-31')">
+        <div class="card" onclick="openModal('content-32')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">A New Ruling Forces the Supreme Court to Confront the Trump Administration’s Lies Under Oath</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-31" style="display:none;">
+        <div id="content-32" style="display:none;">
             <h2>A New Ruling Forces the Supreme Court to Confront the Trump Administration’s Lies Under Oath</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-28</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/02/supreme-court-trump-judge-brian-murphy.html?via=rss">Visit Original Website</a>
@@ -1443,13 +1718,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-32')">
+        <div class="card" onclick="openModal('content-33')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">How Badly Do You Have to Behave to Get Kicked Out of This GOP’s Congress?</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-32" style="display:none;">
+        <div id="content-33" style="display:none;">
             <h2>How Badly Do You Have to Behave to Get Kicked Out of This GOP’s Congress?</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-28</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/02/congress-republicans-thin-majority-primary-season.html?via=rss">Visit Original Website</a>
@@ -1507,13 +1782,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-33')">
+        <div class="card" onclick="openModal('content-34')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">There’s a Pitched Battle Over What Really Happened in SCOTUS’ Tariffs Ruling</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-33" style="display:none;">
+        <div id="content-34" style="display:none;">
             <h2>There’s a Pitched Battle Over What Really Happened in SCOTUS’ Tariffs Ruling</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-28</strong></p>
             <a class="original-link" href="https://slate.com/podcasts/amicus/2026/02/chief-justice-john-roberts-take-on-tariffs?via=rss">Visit Original Website</a>
@@ -1550,13 +1825,13 @@ A show about the law and the nine Supreme Court justices who interpret it for th
 Dahlia Lithwick writes about the courts and the law for Slate and hosts the podcast Amicus.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-34')">
+        <div class="card" onclick="openModal('content-35')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">Catholic Bishops Warn the Supreme Court That Trump Is Threatening the “Moral Foundations of American Society”</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-34" style="display:none;">
+        <div id="content-35" style="display:none;">
             <h2>Catholic Bishops Warn the Supreme Court That Trump Is Threatening the “Moral Foundations of American Society”</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-02-27</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/02/donald-trump-birthright-citizenship-immigration-catholic-bishops.html?via=rss">Visit Original Website</a>
@@ -1598,89 +1873,27 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-35')">
-            <div class="source">News and Politics - Slate Magazine</div>
-            <div class="title">The Iranians Offered a Good Deal. I Think I Know What Trump Is Really Afraid Of.</div>
-            <div class="meta">2026-02-27</div>
-        </div>
-        
-        <div id="content-35" style="display:none;">
-            <h2>The Iranians Offered a Good Deal. I Think I Know What Trump Is Really Afraid Of.</h2>
-            <p><strong>News and Politics - Slate Magazine | 2026-02-27</strong></p>
-            <a class="original-link" href="https://slate.com/news-and-politics/2026/02/trump-iran-nuclear-talks-war.html?via=rss">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Sign up for the Slatest to get the most insightful analysis, criticism, and advice out there, delivered to your inbox daily.
-
-If President Donald Trump rejects the deal that Iranians offered at their talks in Geneva, it can be for only one of two reasons: Either he doesn’t want a deal—or he doesn’t want a deal that resembles President Barack Obama’s 2014 accord, which Trump tore up in 2018 after calling it “the worst deal ever.”
-
-In Tuesday’s State of the Union address, Trump said he would prefer to settle the current crisis through diplomacy, but only if Tehran’s leaders said they “will never have a nuclear weapon”—words, Trump claimed, that “we haven’t heard.”
-
-Actually, they have spoken those words, many times, though of course it’s another matter whether we should trust them. Iran is also a signatory to the Nuclear Non-Proliferation Treaty, which makes the same pledge.
-
-What Iranians do refuse to say is that they will never enrich any uranium. This is one of the stumbling blocks in the negotiations, though it shouldn’t be.
-
-In the latest round of talks through an Omani intermediary, Iran now says it is willing to suspend enrichment for the next three years—that is, for as long as Trump is president. After then, it would limit enrichment to purity levels of 1.5 percent and allow international inspectors to verify the pledge.
-
-The thing is this: The NPT allows signatories to enrich uranium for “peaceful” purposes, such as electricity or medical research. In fact, Article IV of the treaty enshrines enrichment as an “inalienable right.” The nuclear deal that Iran signed with the United States and five other countries in 2014 limited this enrichment to purity levels of 3.5 percent. (It takes 90 percent enrichment for uranium to be “weapons-grade.”) By the time Trump tore up the deal, Iran was abiding by it, according to inspectors with the International Atomic Energy Agency. Iran had also dismantled much of its stockpile of “highly enriched” uranium.
-
-Now, after eight years of unconstrained activity, Iran has a large quantity of uranium enriched to 60 percent, meaning that, if its leaders wanted, they could have enough for an atom bomb in a matter of months.
-
-And yet, in the ongoing Geneva talks, Iran is offering to slash that down to the barest minimum—to an even lower level than Obama allowed. Will Trump take the deal, or will he stick to his requirement that enrichment be banned, even though 190 other countries are permitted to enrich a little bit? (The only countries that have not signed the NPT, or that once signed it but later pulled out, are India, Pakistan, Israel, South Sudan, and North Korea.)
-
-In the early stages of the talks that led to the 2014 deal, Obama and others pressed Iran for an enrichment ban, but then realized that it was impractical, given the NPT’s talk of an “inalienable right” to enrich—and unnecessary, as long as inspectors could verify that Iran’s enrichment levels stayed low.
-
-Trump’s negotiators in the current talks—his son-in-law Jared Kushner and his real-estate friend Steve Witkoff—have hit an impasse over three other issues. Trump wants Iran to dismantle its arsenal of ballistic missiles, which have the range to hit allied territory and U.S. military bases throughout the Middle East. He wants Iran to stop supplying the region’s terrorist groups, such as Hezbollah, Hamas, and the Houthis. Finally, he wants any deal struck to be permanent.
-
-Iran resists the first two demands as violations of its sovereignty. It is true that its missiles pose a threat; hundreds were fired in the Iran–Israel conflict last summer, inflicting considerable damage. However, Iran regards the missiles as a deterrent to an attack on its own land—and notes that no other country has been barred from building a conventional arsenal. They make the same argument in defending its right to supply allies.
-
-Obama too tried to limit or outlaw ballistic missiles and aid to terrorist groups as part of the deal a decade ago, but after Iran’s resistance seemed clearly implacable, he decided that, whatever else Iran did with its armaments, it would be more dangerous with nuclear weapons than without.
-
-The demand for a permanent deal is a rebuke to the Obama-era deal, which set “sunset clauses”—expiration dates ranging from 10 to 25 years after the deal’s signing—on some of its restrictions. Critics charged that, therefore, the deal only postponed the day when the Islamic Republic would get its hands on some A-bombs.
-
-There was some validity to this charge, but nearly all treaties have expiration dates or clauses allowing one country or another to withdraw from the deal. (President George W. Bush did that with the 1972 Anti–Ballistic Missile Treaty, and of course Trump did that with the Iran nuclear deal.)
-
-Also, it works both ways. In exchange for Iran’s dismantling its nuclear infrastructure, the 2014 deal required the United States and other nations to lift economic sanctions against Iran. So far, Trump has not offered Iran any rewards for giving up its nuclear potential in this round of talks—except the reward of avoiding the onslaught of U.S. and Israeli air strikes, and Trump hasn’t yet said that restraint would be permanent either.
-
-So these are some of the questions that Trump needs to address. How does he weigh the relative risks that Iran poses? Can he accept the persistent presence of its ballistic missiles and its continued supply to proxy militias (such as they are) in exchange for the decimation of its nuclear capabilities? And can he accept agreeing to a deal for many years, as opposed to forever (which treaties alone can’t guarantee in any case)?
-
-He also has not yet addressed, at least not publicly, a bigger question: What’s the rush? Why has he mobilized two aircraft carriers, their full fleet of escort warships, and dozens of fighter jets to Iran’s flanks now? Just last June, he said that he “obliterated” Iran’s nuclear materials in the bomber raid called Midnight Hammer. But in his State of the Union address, he said he might need to attack Iran in order to keep the world’s largest supporter of terrorism from going nuclear. Clearly, Trump’s claim that Midnight Hammer “obliterated” Iran’s enrichment sites was exaggerated (if his State of the Union address is to be believed, he was admitting as much), but intelligence analysts say the attack was devastating, perhaps setting the program back by years.
-
-So, again, what’s the rush? And if other issues justify U.S. military action, the question remains: Why now? Iran has deployed missiles and supported terrorists for many years, though no American president—including Trump—has ever cited those facts as causes for war. This should be especially true now, as Iran’s arsenal is smaller and its allies weaker than they have been for many years.
-
-Finally, how much is Trump willing to risk to achieve whatever aims he hopes this attack might accomplish?
-
-Vice President J.D. Vance said this week, in an interview with the Washington Post, that there is “no chance” the U.S. would get embroiled in a long, drawn-out war with Iran. Good to hear, except for two things. First, Vance doesn’t necessarily know what Trump is thinking. (It’s worth recalling that in the administration’s early days, Vance said “obviously” the most violent protesters in the Jan. 6 riots shouldn’t be pardoned—right before Trump did just that.)
-
-Second, as the old saying has it, the enemy gets a vote in shaping how a war unfolds. If Iran’s leaders think the attack could undermine their regime (and Trump has spoken in favor of regime change), they might unleash a massive attack against Israel and U.S. military bases, which could spur Trump to step up his attack, and onward and upward the violence spirals. Uncontrolled escalation is a particular danger when the leader starting a war hasn’t thought through what he wants to gain from it.
-
-The latest round of talks in Geneva ended on Thursday, with negotiators reporting “significant progress” and hoping they might resume next week, though they revealed few details and no suggestion that their differences had been resolved.
-
-Still, just as war is unpredictable once the first shots are fired, it’s not inevitable before that line is crossed. Trump still has a chance to set priorities and make choices. We have no way of knowing what they might be; it’s possible that he doesn’t know either. That’s the cause of worry and, perhaps just a little bit, hope.
-
-Slate relies on advertising to support our journalism. If you value our
-        work, please disable your ad blocker. If you want to block ads but still
-        support Slate, consider subscribing.
-
-Already a member?
-        Sign in
-          here
-
-Join today to keep reading. You&#39;ll also get access to all of Slate&#39;s
-        independent journalism, unparalleled advice, and daily games. Cancel
-        anytime.
-
-Already a member?
-        Sign in
-          here</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-36')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Interphase strategy tames Zn and Sn migration, boosting CZTSSe cells past 15% efficiency</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-36" style="display:none;">
+            <h2>Interphase strategy tames Zn and Sn migration, boosting CZTSSe cells past 15% efficiency</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-28</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-02-interphase-strategy-zn-sn-migration.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Don't panic: 'Humanity's last exam' has begun</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-36" style="display:none;">
+        <div id="content-37" style="display:none;">
             <h2>Don't panic: 'Humanity's last exam' has begun</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-28</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-dont-panic-humanity-exam-begun.html">Visit Original Website</a>
@@ -1688,13 +1901,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">A more durable direct air capture approach: Electrified mineral-based system resists oxygen and humidity</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>A more durable direct air capture approach: Electrified mineral-based system resists oxygen and humidity</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-28</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-durable-air-capture-approach-electrified.html">Visit Original Website</a>
@@ -1702,13 +1915,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Texas at heart of Amazon's AI push in United States</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Texas at heart of Amazon's AI push in United States</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-texas-heart-amazon-ai-states.html">Visit Original Website</a>
@@ -1716,13 +1929,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">New systems measures full magnetization hysteresis at MHz frequencies and high magnetic fields</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>New systems measures full magnetization hysteresis at MHz frequencies and high magnetic fields</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-full-magnetization-hysteresis-mhz-frequencies.html">Visit Original Website</a>
@@ -1730,30 +1943,16 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Rechargeable Mg-O₂ battery uses metal-free nanoporous graphene cathode</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Rechargeable Mg-O₂ battery uses metal-free nanoporous graphene cathode</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-rechargeable-mg-battery-metal-free.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">HFC electrolyte delivers energy-dense lithium battery that keeps running at −50 °C</div>
-            <div class="meta">2026-02-27</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>HFC electrolyte delivers energy-dense lithium battery that keeps running at −50 °C</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-27</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-02-hfc-electrolyte-energy-dense-lithium.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
@@ -2046,11 +2245,35 @@ Copyright. All rights reserved © 1998–2025</div>
         
         <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
-            <div class="title">You can still grab great deals on Bose headphones and Astro Bot this weekend</div>
+            <div class="title">The Rubin Observatory’s alert system sent 800,000 pings on its first night</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-48" style="display:none;">
+            <h2>The Rubin Observatory’s alert system sent 800,000 pings on its first night</h2>
+            <p><strong>The Verge | 2026-02-28</strong></p>
+            <a class="original-link" href="https://www.theverge.com/science/887037/vera-c-rubin-observatory-800000-alerts">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Astronomers will receive alerts about celestial events within minutes of detection.
+
+Astronomers will receive alerts about celestial events within minutes of detection.
+
+The Vera C. Rubin Observatory’s automated alert system is online and already bombarding astronomers with things to look at in the night sky. The system went live publicly on Tuesday, February 24th, and on the first night dropped some 800,000 alerts about asteroids, supernovas, and feasting black holes. And that number is only expected to climb to the multiple millions per night.
+
+The observatory released the first images taken with its car-sized Legacy Survey of Space and Time (LSST) camera in June of last year. But researchers and stargazers have been eagerly anticipating the launch of this system. Every night, the camera captures about 1,000 images and then compares those against a reference image taken when the telescope first went online. Differences are automatically flagged, and an algorithm can distinguish between potential supernovas and approaching asteroids to send alerts to interested parties, all in just a matter of minutes. This means scientists can quickly turn their attention to fleeting celestial events.
+
+Thankfully, the alerts aren’t all-or-nothing. They can be filtered by event type, brightness, or even the number of events within a given time period. That should help keep researchers from becoming overwhelmed by alerts as the Rubin Observatory ramps up the rate of discoveries.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">You can still grab great deals on Bose headphones and Astro Bot this weekend</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
             <h2>You can still grab great deals on Bose headphones and Astro Bot this weekend</h2>
             <p><strong>The Verge | 2026-02-28</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/886520/bose-quietcomfort-headphones-samsung-galaxy-s26-ultra-deal-sale">Visit Original Website</a>
@@ -2084,13 +2307,13 @@ Sign up for Verge Deals to get deals on products we’ve tested sent to your inb
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">Xiaomi’s tracker doesn’t need a case to clip to your keys</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>Xiaomi’s tracker doesn’t need a case to clip to your keys</h2>
             <p><strong>The Verge | 2026-02-28</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/884567/xiaomi-tag-tracker-apple-find-my-google-hub-bluetooth">Visit Original Website</a>
@@ -2110,13 +2333,13 @@ One big differentiator is that unlike Apple’s AirTags, the Xiaomi Tag lacks ul
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Xiaomi’s Leica Leitzphone mostly earns the name</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Xiaomi’s Leica Leitzphone mostly earns the name</h2>
             <p><strong>The Verge | 2026-02-28</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/886131/xiaomi-leica-leitzphone-17-ultra-review">Visit Original Website</a>
@@ -2178,13 +2401,13 @@ Final tally: six mandatory agreements and at least six optional agreements.
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Xiaomi 17 is a small(ish) phone with a big(ish) battery</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Xiaomi 17 is a small(ish) phone with a big(ish) battery</h2>
             <p><strong>The Verge | 2026-02-28</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/886322/xiaomi-17-release-specs-price-mwc-ultra-leica">Visit Original Website</a>
@@ -2214,13 +2437,13 @@ Photography by Dominic Preston / The Verge
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">The Witcher is a perfect fit for Reigns’ Tinder-like roleplaying</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>The Witcher is a perfect fit for Reigns’ Tinder-like roleplaying</h2>
             <p><strong>The Verge | 2026-02-28</strong></p>
             <a class="original-link" href="https://www.theverge.com/entertainment/885432/reigns-the-witcher-interview-steam-iphone-android">Visit Original Website</a>
@@ -2246,72 +2469,6 @@ The other notable addition in Reigns: The Witcher is a combat system. It wouldn�
 Despite those changes, Harrington-Shaw says that The Witcher universe is an almost ideal fit for Reigns thanks to its dark sense of humor and frequently bleak world full of opposing factions. More important, though, is the main witcher himself. “Geralt is always facing these tricky binary choices,” he says. “The world of The Witcher is full of murky, gray morality, and that seemed perfect to translate.”
 
 Reigns: The Witcher is out now on PC and mobile.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">A legendary weather app makes a comeback</div>
-            <div class="meta">2026-02-28</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>A legendary weather app makes a comeback</h2>
-            <p><strong>The Verge | 2026-02-28</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/886462/acme-weather-samsung-s26-installer">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Plus, in this week’s Installer: Samsung’s new phones, a beautiful take on RSS, the Red Bull story, and much more.
-
-Plus, in this week’s Installer: Samsung’s new phones, a beautiful take on RSS, the Red Bull story, and much more.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-Hi, friends! Welcome to Installer No. 117, your guide to the best and Verge-iest stuff in the world. (If you’re new here, welcome, please send Android tips, and also you can read all the old editions at the Installer homepage.)
-
-This week, I’ve been reading about Eileen Gu and Ozempic and fancy grocery stores, trying out the beautiful Shiori bookmarking app, trying to temper my expectations for the Scrubs reboot, continuing my test of the Pixel 10 Pro, building my dream to-do list app with Claude Code (it’s almost done!), enjoying the beginnings of The Fall and Rise of Reggie Dinkins, recording the next season of Version History, watching all of The Earliest Show again after it showed up on my YouTube, and eating altogether too many Garden Salsa Sun Chips.
-
-I also have for you the first big phone launch of the year, a new-old weather app, a way to maybe make your YouTube a little cheaper, a bunch of stuff to watch this weekend, and much more. Missed you last week! Let’s get back at it.
-
-(As always, the best part of Installer is your ideas and tips. What are you reading / watching / playing / listening to / turning up to 11 this week? Tell me everything: installer@theverge.com. And if you know someone else who might enjoy Installer, forward it to them and tell them to subscribe here.)
-
-Meredith Haggerty is one of those people you meet and you’re immediately like, Oh, you’re much cooler than I am. The more I get to know Meredith, a new(ish) editor here at The Verge, the more I realize how correct my first assumption was. Meredith has written about fashion and culture and brands and TV shows and also recently made a Pride and Prejudice joke that made me laugh so hard I spilled coffee all over my keyboard. Technically, Meredith owes me a keyboard.
-
-I asked Meredith to share her homescreen with us, both because I think it’s a fun way to get to know new people here and because I want her to tell me about cool things but I don’t want to just constantly badger her for TV recs. Here’s her homescreen, plus some info on the apps she uses and why:
-
-The phone: An iPhone 17. Until very recently, I was clinging to an iPhone 12 mini that I’d gotten as a hand-me-down corporate gift from a friend; it was so tiny and good and I had the perfect phone case. (Ben Affleck smoking a cigarette in a mask. A conversation starter!) But the battery became glacial, even after a couple of trips to the Genius Bar, and I had to give it up.
-
-The wallpaper: A screenshot of Roku City, fall edition. I find Roku City very calming, so I decided to keep it with me.
-
-The apps: Spotify, Messages, Mail, Chrome.
-
-I’m especially dependent on Notes, and here you can see my three main categories of Note: things I need to do, things I need to buy, thoughts I probably would have tweeted a few years ago. I love that the MTA app will tell me when I should leave for the train, but I almost never check it before I leave my house. For the weather, I actually rely on the New York Metro Weather Instagram account; my boyfriend hates it when I tell him what number the vibes are.
-
-To be clear, this attempt to simplify my homescreen hasn’t alleviated my time-wasting at all. Beyond this page, I have a loopy number of apps, mostly put into folders to keep me away from them, which doesn’t work. I’m still always scrolling to the last page, to the last folder, to the last page of that last folder, so I can play a mobile game I don’t enjoy called Drop the Cat. There’s maybe nothing worse in my life than the hold that mobile games I don’t enjoy have on me. I’m not even a cat person.
-
-I also asked Meredith to share a few things she’s into right now. Here’s what she sent back:
-
-Here’s what the Installer community is into this week. I want to know what you’re into right now as well! Email installer@theverge.com or message me on Signal — @davidpierce.11 — with your recommendations for anything and everything, and we’ll feature some of our favorites here every week. For even more great recommendations, check out the replies to this post on Threads and this post on Bluesky.
-
-“Marathon (a new extraction shooter game by Bungie) is having an open play-test / demo this weekend so that’s what I’ll be into for the next few days.” – Janego
-
-“Really enjoying Agnes Aubert’s Mystical Cat Shelter by Heather Fawcett (author of the delightful Emily Wilde series). Feels like a cross between Jonathan Strange & Mr Norrell and Howl’s Moving Castle.” — Spencer
-
-“Since 1Password have upped their price I’ve spent a few hours moving over to Apple Passwords and Uplock. Was mostly okay, but it’s a shame you can’t transfer over all your passkeys to Apple Passwords. Uplock having a lifetime purchase is a big plus.” — Matthew
-
-“Been watching Demon Slayer this past month, and FINALLY watched the Infinity Castle movie in a theater, and, it’s so clear how these anime movies are wildly different (and spectacular!) in tone, direction and characterization from our current crop of Hollywood blockbusters.” — Anshuman
-
-“I just yesterday switched my family from my grandfathered free Google Apps plan for our custom domain email to Fastmail. Fastmail is private but supports industry standard IMAP and CalDAV protocols, so we can use the built-in mail apps on our phones and computers.” — Mike
-
-“I’ve been listening to Comedy Bang Bang! Still super funny. Big Paul F. Tompkins fan.” — Mo
-
-“Star Trek Voyager: Across the Unknown. Despite the occasionally brutal RNG, it’s so fun to be able to dive into my favourite Trek stories and tweak the outcomes.” — Jono
-
-“Reading the first book in the On the Calculation of Volume series. It’s a time loop story, like Groundhog Day but way more realistic and sorta sad but it’s great so far!” — Colin
-
-“The news of the YouTube app coming to the Apple Vision Pro made me re-watch the only good use of 360 video I’ve seen: ‘How TV screens made watching movies worse,’ a fully 3D-animated, 20-minute video essay about how the home releases of movies differ from their theatrical cuts and why that matters, and how the physical size of TV screens makes an impact on content. If you have a Vision Pro it’s worth pulling out just for this video. After that, watch everything else that YouTuber (Noodle) has made.” — Nathan
-
-This winter has been a disaster, where I live and many other places. So much snow, so many snow days, so much chaos. First of all, I hope you’ve all stayed safe and warm and well! Second of all, there is one bit of good news in all this: Casey Neistat is out in New York City vlogging again. All these years later, nobody YouTubes quite like Casey YouTubes. Between this and the return of Paul Ford’s blog, it almost feels like the good internet is coming back. Here’s hoping.
 
 A free daily digest of the news that matters most.</div>
         </div>
