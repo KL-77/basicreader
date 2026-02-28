@@ -165,11 +165,11 @@
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Google on Friday unveiled its plan for its Chrome browser to secure HTTPS certificates against quantum computer attacks without breaking the Internet.
 
-The objective is a tall order. The quantum-resistant cryptographic data needed to transparently publish TLS certificates is roughly 40 times bigger than the classical cryptographic material used today. Today’s X.509 certificates are about 64 bytes in size, and comprise six elliptic curve signatures and two EC public keys. This material can be cracked through the quantum-enabled Shor’s algorithm. Certificates containing the equivalent quantum-resistant cryptographic material are roughly 2.5 kilobytes. All this data must be transmitted when a browser connects to a site.
+The objective is a tall order. The quantum-resistant cryptographic data needed to transparently publish TLS certificates is roughly 40 times bigger than the classical cryptographic material used today. A typical X.509 certificate chain used today comprises six elliptic curve signatures and two EC public keys,  each of them only 64 bytes. This material can be cracked through the quantum-enabled Shor’s algorithm. The full chain is roughly 4 kilobytes. All this data must be transmitted when a browser connects to a site.
 
 “The bigger you make the certificate, the slower the handshake and the more people you leave behind,” said Bas Westerbaan, principal research engineer at Cloudflare, which is partnering with Google on the transition. “Our problem is we don’t want to leave people behind in this transition.” Speaking to Ars, he said that people will likely disable the new encryption if it slows their browsing. He added that the massive size increase can also degrade “middle boxes,” which sit between browsers and the final site.
 
-To bypass the bottleneck, companies are turning to Merkle Trees, a data structure that uses cryptographic hashes and other math to verify the contents of large amounts of information using a small fraction of material used in more traditional verification processes in public key infrastructure.
+To bypass the bottleneck, companies are turning to Merkle Trees, a data structure that uses cryptographic hashes and other math to verify the contents of large amounts of information using a small fraction of material used in more traditional verification processes in public key infrastructure. Cloudflare has a much deeper dive into Merkle Trees here.
 
 Merkle Tree Certificates, “replace the heavy, serialized chain of signatures found in traditional PKI with compact Merkle Tree proofs,” members of Google’s Chrome Secure Web and Networking Team wrote Friday. “In this model, a Certification Authority (CA) signs a single ‘Tree Head’ representing potentially millions of certificates, and the ‘certificate’ sent to the browser is merely a lightweight proof of inclusion in that tree.”
 
@@ -179,11 +179,13 @@ Once viable, Shor’s algorithm could be used to forge classical encryption sign
 
 To rule out this possibility, Google is adding cryptographic material from quantum-resistant algorithms such as ML-DSA. This addition would allow forgeries only if an attacker were to break both classical and post-quantum encryption. The new regime is part of what Google is calling the quantum-resistant root store, which will complement the Chrome Root Store the company formed in 2022.
 
-The MTCs use Merkle Trees to provide quantum-resistant assurances that a certificate has been published without having to add most of the lengthy keys and hashes. Using other techniques to reduce the data sizes, the MTCs will be roughly the same 64-byte length they are now, Westerbaan said.
+The MTCs use Merkle Trees to provide quantum-resistant assurances that a certificate has been published without having to add most of the lengthy keys and hashes. Using other techniques to reduce the data sizes, the MTCs will be roughly the same 4kB length they are now, Westerbaan said.
 
 The new system has already been implemented in Chrome. For the time being, Cloudflare is enrolling roughly 1,000 TLS certificates to test how well the MTCs work. For now, Cloudflare is generating the distributed ledger. The plan is for CAs to eventually fill that role. The Internet Engineering Task Force standards body has recently formed a working group called the PKI, Logs, And Tree Signatures, which is coordinating with other key players to develop a long-term solution.
 
-“We view the adoption of MTCs and a quantum-resistant root store as a critical opportunity to ensure the robustness of the foundation of today’s ecosystem,” Google’s Friday blog post said. “By designing for the specific demands of a modern, agile internet, we can accelerate the adoption of post-quantum resilience for all web users.”</div>
+“We view the adoption of MTCs and a quantum-resistant root store as a critical opportunity to ensure the robustness of the foundation of today’s ecosystem,” Google’s Friday blog post said. “By designing for the specific demands of a modern, agile internet, we can accelerate the adoption of post-quantum resilience for all web users.”
+
+Post updated to correct reported sizes of various items.</div>
         </div>
         
         <div class="card" onclick="openModal('content-1')">
@@ -438,11 +440,57 @@ Perhaps not surprisingly, given the film’s themes, Robinson has largely unplug
         
         <div class="card" onclick="openModal('content-6')">
             <div class="source">Futurism</div>
-            <div class="title">Startup Generates Caring Letters to Your Friends Using AI, Handwrites Them Using Robot Pen</div>
+            <div class="title">This Is How Big a Telescope Aliens Would Need to See Dinosaurs on Earth</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-6" style="display:none;">
+            <h2>This Is How Big a Telescope Aliens Would Need to See Dinosaurs on Earth</h2>
+            <p><strong>Futurism | 2026-02-28</strong></p>
+            <a class="original-link" href="https://futurism.com/space/big-telescope-aliens-dinosaurs-earth">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+Roughly 66 million years ago, scientists believe an enormous meteor, dubbed Chicxulub, smashed into the Earth in an extinction-level event that wiped out 75 percent of life, including the vast majority of dinosaurs.
+
+That means if aliens were to exist, and they were located some 66 million light-years from Earth, they’d theoretically still be able to see dinosaurs roaming the surface of our planet, since that’s how long it would take for light to travel such a distance through space.
+
+But as astronomer and science communicator Phil Plait explored in a column for Scientific American, being able to spot the Earth, let alone any signs of life on our planet, would require an enormous telescope — to put it lightly.
+
+“I’ve thought of it myself but never worked out the math — except to think, ‘Probably pretty big,’ which turns out to dramatically underestimate the actual answer,” he wrote. “But what’s really lovely is that grappling with this admittedly bizarre thought experiment has some real-life implications for the future of the science.”
+
+According to Plait’s back-of-the-envelope calculations, which assumed a Tyrannosaurus rex measuring 33 feet long, the dinosaur would have an “apparent size of about 10-21 degrees.”
+
+Using Dawes’s limit, a formula defining the maximum theoretical resolving power of a telescope, Plait found that such a telescope would need a mirror 3.4 light-years across — which, as he admitted, “would make for, um, a mighty big telescope.”
+
+“That’s a mirror that would span three-quarters the distance to Alpha Centauri!” he added, referring to the closest star system to the solar system. At a thickness of just one millimeter, the mass of such a mirror would be “more than 100 million times the mass of Earth,” Plait calculated.
+
+Of course, a highly advanced extraterrestrial civilization millions of light-years away may resort to other techniques, like an array of much smaller telescopes known as an interferometer, to mimic a much larger single telescope — not unlike the Event Horizon Telescope, which was used to study the suspected supermassive black hole at the center of the Milky Way.
+
+Even then, “we’d still be talking about a billion trillion metric tons of mirror — a decent fraction of the mass of Earth,” Plait wrote.
+
+The aliens would also need to find a way to move it all, track the Earth over time, and account for the movement of our galaxy.
+
+“From 66 million light-years away, a T. rex is pretty faint; at that distance, even the Sun would be too faint to see using something like the Hubble Space Telescope,” Plait explained.
+
+Thanks to NASA’s James Webb, we’ve been able to peer into the farthest visible reaches of space, which date to just hundreds of millions of years after the Big Bang 13 billion years ago. While that’s much further than 66 million light-years, we’re not even close to achieving the resolution to make out anything beyond entire galaxy clusters appearing like faint dots in observations.
+
+Nonetheless, while Plait admitted the question of whether aliens at such a distance would be able to spot dinosaurs was “somewhat whimsical and fun to fiddle with,” the implications are certainly real.
+
+Even to resolve clouds on exoplanets ten light-years away would require a “telescope array that stretched a few hundred kilometers across.”
+
+“We aren’t ready to build that now, but in a few decades, perhaps,” Plait concluded. “How amazing would it be to see continents on a planet in another star system?”
+
+More on dinosaurs: A Dinosaur Appears to Have Died on the Exact Spot They Later Built a Dinosaur Museum, Burying Its Fossil Underneath It</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
+            <div class="source">Futurism</div>
+            <div class="title">Startup Generates Caring Letters to Your Friends Using AI, Handwrites Them Using Robot Pen</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-7" style="display:none;">
             <h2>Startup Generates Caring Letters to Your Friends Using AI, Handwrites Them Using Robot Pen</h2>
             <p><strong>Futurism | 2026-02-28</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/startup-ai-handwritten-letters">Visit Original Website</a>
@@ -472,13 +520,13 @@ Thanks to these bold innovators, consumers can now enjoy all the authenticity of
 More on AI: Man Letting AI Rent Human Bodies Says Elon Musk Is His Hero</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">Lab-Grown Brains Growing More Powerful</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Lab-Grown Brains Growing More Powerful</h2>
             <p><strong>Futurism | 2026-02-28</strong></p>
             <a class="original-link" href="https://futurism.com/health-medicine/lab-grown-brain-organoid">Visit Original Website</a>
@@ -508,13 +556,13 @@ In essence, their success proves that brain organoids are capable of goal-direct
 More on neurology: Scientists Preparing to Simulate Human Brain on Supercomputer</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">Constant Space Launches Turning Earth’s Atmosphere Into a “Crematorium,” Scientists Say</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>Constant Space Launches Turning Earth’s Atmosphere Into a “Crematorium,” Scientists Say</h2>
             <p><strong>Futurism | 2026-02-28</strong></p>
             <a class="original-link" href="https://futurism.com/space/space-launches-atmosphere-crematorium">Visit Original Website</a>
@@ -546,13 +594,13 @@ Global regulation is needed to rein in space launches, they said. This regulator
 More on space: Damage to Chinese Spacecraft Was Worse Than Reported</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">Creator of Claude Code Fears This Could Be the Last Year That Software Engineers Are Employable</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>Creator of Claude Code Fears This Could Be the Last Year That Software Engineers Are Employable</h2>
             <p><strong>Futurism | 2026-02-28</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/claude-code-anthropic-labor">Visit Original Website</a>
@@ -582,13 +630,13 @@ That doesn’t mean the fellas at Anthropic are going to stop and wait for the w
 More on Anthropic: Pentagon Issues Threat to Anthropic</div>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">Government Insiders Concerned by Musk’s Erratic and Sycophantic Grok Being Deployed for Incredibly Sensitive Purposes</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-10" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>Government Insiders Concerned by Musk’s Erratic and Sycophantic Grok Being Deployed for Incredibly Sensitive Purposes</h2>
             <p><strong>Futurism | 2026-02-28</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/grok-musk-pentagon-deployment">Visit Original Website</a>
@@ -618,46 +666,6 @@ So unless the Trump administration convinces Google or Microsoft to cross the li
 More on Musk: Man Bet Entire Life Savings of $342,195.63 That Elon Musk Would Fail</div>
         </div>
         
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">Anonymous Kalshi User Makes Huge Bet That the White House Is About to Confirm Alien Life or Technology</div>
-            <div class="meta">2026-02-28</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>Anonymous Kalshi User Makes Huge Bet That the White House Is About to Confirm Alien Life or Technology</h2>
-            <p><strong>Futurism | 2026-02-28</strong></p>
-            <a class="original-link" href="https://futurism.com/future-society/kalshi-bet-aliens-real">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-Is the US government about to confirm that aliens are real?
-
-That’s the claim floating around among those who believe in prediction markets as reliable soothsayers of the future, a promise that prediction markets would very much like you to buy into, so you overlook the obvious fact that they’re just another form of gambling.
-
-Let’s cut to the chase. After it reviewed Kalshi trading data, The Atlantic reports that a single trader just bet nearly $100,000 that the Trump administration will confirm the existence of alien life or technology by the end of this year.
-
-Actually, that was just the first big bet. Just 35 minutes later, another wager appeared, possibly by the same person, for nearly double that amount. What did the bettor(s) know? Could they possibly have inside knowledge on an impending ET revelation?
-
-It’s not quite the spectacular smoking gun that Agent Mulder might’ve stumbled onto in the original run of “The X-Files.” But the beloved show’s upcoming reboot might consider shining a light on prediction markets as avenues of conspiracies in their own right.
-
-Prediction markets allow users to bet on an unbelievable plethora of real-world outcomes beyond sports, ranging from geopolitical events to how many times Elon Musk tweets in a week. Because they’re less regulated than traditional gambling, critics fear that they’ll be a hotbed of insider trading.
-
-Several scandals exemplifying these fears have already emerged. An anonymous Polymarket bettor on a freshly created account correctly guessed nearly every song that Puerto Rican rapper Bad Bunny would perform during his Super Bowl show, a statistical improbability.
-
-Others implicate military and government insiders. Hours before the US launched an invasion into Venezuela and abducted its president Nicolás Maduro in January, an anonymous user placed a large bet that Maduro would be removed from power by the end of the month, netting them more than $400,000. In February, Israel arrested several citizens and IDF reservists for using classified information on upcoming strikes in Iran to place Polymarket bets.
-
-The big Kalshi bets come amid an alien-laden news cycle. In an interview earlier this month, former president Barack Obama remarked that aliens are “real,” kicking up a media frenzy. Obama merely meant that the vast scale of the cosmos meant that aliens almost certainly existed somewhere. But UFO truthers took it as a sign that Obama had seen actual hard evidence, and president Trump capitalized on this “tremendous interest” to announce that he would direct government agencies to release files “related to alien and extraterrestrial life, unidentified aerial phenomena (UAP), and unidentified flying objects (UFOs).”
-
-For whatever reason, the big bets on the confirmation of aliens weren’t placed until days after this media frenzy played out, with no new revelations coming to light since then, The Atlantic noted. It was also noteworthy that the bets were placed all in one go, instead of doled in slices to avoid spooking the market.
-
-But perhaps the most puzzling fact is that there’s no clear purpose to the bets. Ben Shindel, an expert on prediction markets, told The Atlantic that the bold wagers may have simply been made by an inexperienced trader.
-
-“The other possibility is that it’s an insider,” Shindel conceded.
-
-More on prediction markets: Prediction Markets Are Sucking Huge Numbers of Young People Into Gambling</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
             <div class="title">OpenAI’s Sam Altman announces Pentagon deal with ‘technical safeguards’</div>
@@ -675,7 +683,7 @@ Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER 
 
 OpenAI CEO Sam Altman announced late on Friday that his company has reached an agreement allowing the Department of Defense to use its AI models in the department’s classified network.
 
-This follows a high-profile standoff between the department — also known under the Trump administration as the Department of War — and OpenAI’s rival Anthropic. The Pentagon pushed AI companies, including Anthropic, to allow their models be used “all lawful purposes,” while Anthropic sought to draw a red line around mass domestic surveillance and fully autonomous weapons.
+This follows a high-profile standoff between the DoD — also known under the Trump administration as the Department of War — and OpenAI’s rival Anthropic. The Pentagon pushed AI companies, including Anthropic, to allow their models to be used for “all lawful purposes,” while Anthropic sought to draw a red line around mass domestic surveillance and fully autonomous weapons.
 
 In a lengthy statement released Thursday, Anthropic CEO Dario Amodei said the company “never raised objections to particular military operations nor attempted to limit use of our technology in an ad hoc manner,” but he argued that “in a narrow set of cases, we believe AI can undermine, rather than defend, democratic values.”
 
@@ -1211,11 +1219,11 @@ Novelists and filmmakers and their fictional creations never had to deal with co
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">More than an hour after missiles began targeting top Iranian officials across downtown Tehran, President Trump for the first time described his goal to the American public: for the most powerful armed factions in Iran to lay down their arms and for Iranians to rise up and risk death by seizing control of their government.
 
-In an eight-minute address on Truth Social that amounted to a declaration of war, Trump also acknowledged the possibility of American casualties. Within three hours of the initial strike, Iran’s Revolutionary Guard Corps said it launched ballistic missiles at four nearby U.S. bases, and the sound of air defenses shooting down missiles reverberated across the region. Iranian forces successfully struck inside Bahrain, home to the U.S. Fifth Fleet. Air defenses appeared to have shot down missiles aimed at Qatar (home to the largest U.S. military base in the region), the United Arab Emirates and Kuwait (which also host American forces), and Israel, which joined U.S. forces in the attack. Jordan, where American aircraft are parked, also said it shot down missiles.
+In an eight-minute address on Truth Social that amounted to a declaration of war, Trump also acknowledged the possibility of American casualties. Within three hours of the initial strike, Iran’s Islamic Revolutionary Guard Corps said it launched ballistic missiles at four nearby U.S. bases, and the sound of air defenses shooting down missiles reverberated across the region. Iranian forces successfully struck inside Bahrain, home to the U.S. Fifth Fleet. Air defenses appeared to have shot down missiles aimed at Qatar (home to the largest U.S. military base in the region), the United Arab Emirates and Kuwait (which also host American forces), and Israel, which joined U.S. forces in the attack. Jordan, where American aircraft are parked, also said it shot down missiles.
 
 The last U.S. strikes on Iran, in June, were aimed at curtailing Iran’s nuclear ambitions. This time, Trump went much further, making clear his desire for a change in Iran’s leadership for the first time in 47 years as well as for the elimination of its nuclear and ballistic-missile development programs. He is pursuing that war without congressional approval, with little appetite among his base for another U.S. regime-change operation in the Middle East, and with several allies in the region having discouraged new strikes, fearing a broader conflict. That leaves Trump in a position to claim personal credit for any successful parts of the mission—he said “no president was willing to do what I am doing tonight”—but also singularly associated with whatever happens next in Iran and across the Middle East. He will receive the accolades for whatever goes well, but will also be saddled with the many possible downsides, including U.S. and civilian casualties as well as the instability that could be unleashed if the Iranian regime falls in the face of the American and Israeli onslaught.
 
-The U.S. and Israel called the operation “preemptive.” Trump said Iran was developing missiles that could reach the U.S. even though intelligence assessments within his administration have not reached that same conclusion. He said Iran posed an imminent threat, but had also said last June that U.S. and Israeli forces crippled Iran’s nuclear-development program. Trump did not say when or what would lead the U.S. to stop its campaign.
+The United States and Israel called the operation “preemptive.” Trump said Iran was developing missiles that could reach the U.S. even though intelligence assessments within his administration have not reached that same conclusion. He said Iran posed an imminent threat, but had also said last June that U.S. and Israeli forces crippled Iran’s nuclear-development program. Trump did not say when or what would lead the U.S. to stop its campaign.
 
 Instead, he outlined how the regime has posed a threat for the past four decades, saying the Saturday attack was designed to ensure that Americans will never be “threatened by a nuclear-armed Iran.” Trump also referenced nationwide protests across Iran that began December 28, which he had previously promised to support.
 
@@ -1231,7 +1239,7 @@ Read: Trump’s enormous gamble on regime change in Iran
 
 By 10 a.m. local time, explosions erupted across downtown Tehran, near government buildings, including near Supreme Leader Ayatollah Ali Khamenei’s compound. According to local reports, explosions were heard near the cities of Isfahan, Qom, Karaj, and Kermanshah. U.S. military ordnance arrived by both air and sea, officials told us. They said the U.S. attack would be more extensive than the June strikes on three Iranian nuclear facilities.
 
-The strikes were welcomed by Iranians so fed up with the regime that they took to the streets in unprecedented numbers late last year and early this one. Many believed that their push for regime change could not happen with protests alone. The Iranian government crushed the movement with merciless force, leaving tens of thousands of people estimated dead. Despite the lethal risks protesters face, Trump—standing against a black backdrop at Mar-a-Lago while wearing a white USA hat and no tie in his early-morning address—urged the people to seize control. Left unclear was how that might happen. The regime, which has been entrenched since the 1979 revolution that overthrew the Shah, controls every lever of government and national security. Before the war, experts had said that if the regime fell, it could as easily be replaced by the Islamic Revolutionary Guard Corps or other government factions as by democracy-minded Iranian civilians.
+The strikes were welcomed by Iranians so fed up with the regime that they took to the streets in unprecedented numbers late last year and early this one. Many believed that their push for regime change could not happen with protests alone. The Iranian government crushed the movement with merciless force, leaving tens of thousands of people estimated dead. Despite the lethal risks protesters face, Trump—standing against a black backdrop at Mar-a-Lago while wearing a white USA hat and no tie in his early-morning address—urged the people to seize control. Left unclear was how that might happen. The regime, which has been entrenched since the 1979 revolution that overthrew the shah, controls every lever of government and national security. Before the war, experts had said that if the regime fell, it could as easily be replaced by the Islamic Revolutionary Guard Corps or other government factions as by democracy-minded Iranian civilians.
 
 Yet in the run-up to this morning’s strikes, Trump told aides that he believed toppling the regime in Tehran could be his crowning foreign-policy achievement, allowing him to realize a goal that eluded his predecessors.
 
@@ -1241,9 +1249,9 @@ In preparation for this morning’s attack, the U.S. sent more than 150 military
 
 Read: What Trump fails to grasp about Iran
 
-Over his two terms, Trump has developed a taste for flexing U.S. military muscle, with strikes over the past year in Iran, Venezuela, Syria, Somalia, Nigeria, and on alleged drug boats in the Caribbean. He appears to have concluded that as long as U.S. military intervention doesn’t involve thousands of ground troops or protracted strikes over years, it can be politically beneficial and send a message of military might to China and Russia.
+Over his two terms, Trump has developed a taste for flexing U.S. military muscle, with strikes over the past year in Iran, Venezuela, Syria, Somalia, and Nigeria, and on alleged drug boats in the Caribbean. He appears to have concluded that as long as U.S. military intervention doesn’t involve thousands of ground troops or protracted strikes over years, it can be politically beneficial and send a message of military might to China and Russia.
 
-The January 3 special-forces raid on Caracas that captured Venezuelan President Nicolás Maduro, which came after a similar military buildup off Venezuela’s coast, gave Trump further confidence that he could tackle America’s long-standing foreign-policy problems. Yet what he is proposing for Iran goes far beyond anything he has previously countenanced.
+The January 3 Special Forces raid on Caracas that captured Venezuelan President Nicolás Maduro, which came after a similar military buildup off Venezuela’s coast, gave Trump further confidence that he could tackle America’s long-standing foreign-policy problems. Yet what he is proposing for Iran goes far beyond anything he has previously countenanced.
 
 “Iran is ready for a generational event that is going to decide the future of the country,” Vali Nasr, a professor of international affairs and Middle East studies at the Johns Hopkins School of Advanced International Studies, told us. “The U.S. is not ready psychologically for anything that is more than a 24-hour news cycle.”
 
@@ -1260,16 +1268,50 @@ During his presidential campaigns, Trump reassured his supporters there would be
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">America's Teenagers Say AI Cheating Has Become a Regular Feature of Student Life</div>
+            <div class="title">After US-Israel Attacks, 90 Million Iranians Lose Internet Connectivity</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>After US-Israel Attacks, 90 Million Iranians Lose Internet Connectivity</h2>
+            <p><strong>Slashdot | 2026-02-28</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/02/28/1733240/after-us-israel-attacks-90-million-iranians-lose-internet-connectivity?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+
+When has a regime change by the USA ever improved a country? Iran is in their current state because of US meddling decades ago.
+
+Now, what was all that talk of Hillary or Kamala starting a war? Will cheeto return his fake FIFA medal?
+
+When has a regime change by the USA ever improved a country?Germany is one example.Japan is another.
+
+When has a regime change by the USA ever improved a country?
+
+50 years ago Iran was still ruled by the US-installed shah, who got put there after Iran had decided to nationalize their oil, that is, Iranian oil should probably belong to Iran and not the British as the former colonists would want.
+
+It was the ousting of the widely unpopular puppet shah by the Islamic Revolution that put Iran to the US enemies list, where it remains to this day. Much like how Cuba got to be on the list when they ousted their own US regime.
+
+In my day it was a station wagon full of backup tapes. My how I have aged.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Badges?  We don&#39;t need no stinking badges.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">America's Teenagers Say AI Cheating Has Become a Regular Feature of Student Life</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>America's Teenagers Say AI Cheating Has Become a Regular Feature of Student Life</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/02/28/0541228/americas-teenagers-say-ai-cheating-has-become-a-regular-feature-of-student-life?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+
+Those are &#39;bigger&#39; tests and probably mostly out of scope in a story about teenagers dealing with high school assignments.
 
 Broadly speaking, there are two kinds of students, those who love to learn and slackers who hate school. Slackers have been cheating for years and slouching through school, putting in minimum effort. The only difference now is that have better cheating tools.
 
@@ -1283,23 +1325,39 @@ Everyone&#39;s going to have to know how to use AI or they&#39;ll be left behind
 
 You are going to have to understand what it is. As well as its shortcomings. In the realm of &quot;generate and test&quot; tools, it is very good at the former. Not so good at the latter. Humans will have to verify its candidate solutions for the forseeable future. Which means they will have to understand the subject matter involved.
 
+Though tossing high school assignment fodder at a prompt is hardly giving you useful AI experience.
+
+For one, the usage is so brain dead simple, there&#39;s no learning curve really for that scenario.
+
+For another, high school assignments are almost always super easy for LLMs.  Very well trodden material that is easy to grade for a high school teacher without going all adventurous or posing questions that *might* not have well defined answers.  The teachers already know the material, they know the outcome of every
+
+This is just one of the many things that people talk about now like it&#39;s unique about “a.i.” and that it&#39;s more scary that it&#39;s “a.i.”. Homework could always be liberally cheated with because there&#39;s no oversight. One can ask someone else, look up the answer online, copy the homework of a classmate.  There is no controlled environment here where people can be supervised like in a classroom.
+
+Truth be told I think the concept of “homework” existing was always just a cost-saving measure. If students apparently should spend more time on school than school hours, then schools should simply be open for longer and school hours should be longer, but that costs more money I suppose
+
+[...] without the burden of understanding. Reality will provide feedback shortly.&quot; This phrase is on a sticker in my office. (Look it up, there&#39;s a cute sloth on the sticker too.)
+
+I&#39;m currently teaching proof-based math to college freshmen. In the honors track. My syllabus does not disallow the use of AI because I haven&#39;t been able to wrap my head around how to best do that yet. Students end up with homework scores with averages in the very high 90s. Standard deviations in the low single digits. This is, of
+
+Bart Gets Caught Using CheatGPT On His Homework [youtube.com]
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We were so poor that we thought new clothes meant someone had died.</div>
+Badges?  We don&#39;t need no stinking badges.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Startup Plans April Launch for a Satellite to Reflect Sunlight to Earth at Night</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Startup Plans April Launch for a Satellite to Reflect Sunlight to Earth at Night</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/02/28/076229/startup-plans-april-launch-for-a-satellite-to-reflect-sunlight-to-earth-at-night?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
 
 As if Starlink satellites ruining their observations weren&#39;t enough... yeah, more light pollution is exactly what we need.
 
@@ -1310,6 +1368,10 @@ Let&#39;s not add the fact that reflecting sunlight onto the earth at night incr
 You&#39;re not wrong, but by how much? Even if this plan gets anywhere near a scale that yields useful energy, I think it needs to be weighed against the kinds of energy-generation methods we use already that unquestionably warm the planet -- and may also produce greenhouse gasses.
 
 And for the record, I&#39;m not exactly a fan of this new idea. I like night skies and I want to keep them.
+
+These mirrors could be switched off instantly, unlike greenhouse gases which take centuries to dissipate.
+
+Still sounds like a bad idea though. Trying to abolish nighttime will always be a Quixotic endeavor, like Daylight Savings Time.
 
 Anyone will hate this, it is unnecessary light pollution on top of all other light pollutions that exist. I may go into the basement where the leftovers of the Ronnie&#39;s Star Wars era are kept and see if those large pieces of laser amplifier glass can be pumped with a diode laser bank.
 
@@ -1325,23 +1387,37 @@ This can&#39;t happen.  In space, dumping heat is a massive issue.   Getting pow
 
 Imagine the size of the solar and radiator arrays for the most modest conceivable datacenter, and if you know anything at all about the subject you&#39;ll shake your head in disbelief that anyone thinks it&#39;s a good idea.
 
+It&#39;s not that bad. A Starlink has enough power and radiator capacity to run a few GPUs. Launch half a million of those and you&#39;ve got a decent datacentre. Perfectly possible.
+
+You&#39;d get your lunch eaten by a guy with a standard sheet metal box on the ground though.
+
+That&#39;s why the tech types love it. It&#39;s something that&#39;s become technically possible only in the last few years, it&#39;s cool, impressive, and only suffers from the small drawback of being completely impractical.
+
+At 400mi altitude, these things will be useless in any time except summer because when it&#39;s night in winter, a satellite that low is eclipsed if it is visible overhead.
+
+Further, if he wants to light up a 5km circle on the ground from a single mirror, he&#39;s basically going to need to be 1000km away since the angular diameter of the reflected beam is going to be equal to twice the angular diameter of the sun (2 x 10 mrad). Any closer and the spot on the ground is commensurately smaller. Any farther and it&#39;s big
+
+Edit: duh. Factor of 500, not 1000. Still pointless.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We were so poor that we thought new clothes meant someone had died.</div>
+Badges?  We don&#39;t need no stinking badges.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Google Quantum-Proofs HTTPS</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Google Quantum-Proofs HTTPS</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/02/28/027202/google-quantum-proofs-https?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">I didn&#39;t think that we had quantum computers already.
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+I didn&#39;t think that we had quantum computers already.
 
 How is it that we have Shor&#39;s Algorithm(from 1994) and have Google working on this?
 
@@ -1383,6 +1459,10 @@ Yes, but it requires a quantum computer with lot of Qubits [postquantum.com], wh
 
 Or rather for which it is unknown whether it is even possible, giving the restrictions of this universe. Classical computers have scaled exponentially for a long time. Although scaling is basically over for CPUs, they still scale somewhat linearly for problems that can be subdivided into smaller pieces (quantum algorithms cannot be). Now, all evidence points to QCs scaling inverse exponential, i.e. for one bit more or one step longer computations, you need exponentially more efforts. That is not a computing
 
+You are *probably* right, but security likes to guard against the potentials and with forward secrecy as a design principle, you have to take even remote possibilities pretty seriously.
+
+Of course, this can justify a reasonable sense of urgency in implementing PQC key agreement, but it&#39;s not super critical that certificates be solved now, since you can have PQC key agreement with traditional certificates.  You would not be protected against an active quantum attack (which as far as anyone knows is still impos
+
 Some EC public keys might be, but certs contain other identity information, and the key was often not their largest component.
 
 Today&#39;s X.509 certificates are about 64 bytes in size, and comprise six elliptic curve signatures and two EC public keys.In today&#39;s X.509 certificates, 64 bytes is the size of one signature.  One certificate contains a public key (32 bytes) and a signature (64 byte), plus some additional stuff, so each cert is 500 bytes.  Also, I can&#39;t figure out what they mean by &quot;six signatures and two public keys&quot;.  Each certificate in a chain contains one pubkey and one signature.  A chain of six certificates would contain six pubkeys and six signatures.
@@ -1409,21 +1489,21 @@ Having a very space-efficient alternative would be really beneficial in that cas
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We were so poor that we thought new clothes meant someone had died.</div>
+Badges?  We don&#39;t need no stinking badges.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Rubin Observatory Has Started Paging Astronomers 800,000 Times a Night</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Rubin Observatory Has Started Paging Astronomers 800,000 Times a Night</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/02/28/0155200/rubin-observatory-has-started-paging-astronomers-800000-times-a-night?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
 
 Emergency communication operators still deploy such services, for example for volunteer firemen who can be called anywhere anytime.* Belgian company ASTRID operates the emergency communications and among other things has a pager service https://www.astrid.be/en/servi...  [astrid.be] * French company e*message operates an independent network of 435 antennas transmitting on 466 MHz, totalling 130,000 users of POCSAG pagers for emergency responders. https://www.emessage.fr/equipe... [emessage.fr] Equipment for firemen / industrial safety
 
@@ -1447,23 +1527,25 @@ than the reference image at the 5 sigma confidence level.
 
 That guy I never liked...I have it on good authority he&#39;s an astronomy nerd and wants to be alerted whenever a source dims at the 1-sigma confidence level!
 
+https://rubinobservatory.org/f... [rubinobservatory.org]
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We were so poor that we thought new clothes meant someone had died.</div>
+Badges?  We don&#39;t need no stinking badges.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Southern California Air Board Rejects Pollution Rules After AI-Generated Flood of Comments</div>
             <div class="meta">2026-02-28</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Southern California Air Board Rejects Pollution Rules After AI-Generated Flood of Comments</h2>
             <p><strong>Slashdot | 2026-02-28</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/02/27/2348254/southern-california-air-board-rejects-pollution-rules-after-ai-generated-flood-of-comments?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 Diesel != Gasoline. That doesn&#39;t mean that both of them don&#39;t contribute to health related issues and air quality problems. The problem with any gas burning inside the house, including gas fireplaces in your living space is that it creates fine particulates and NOx emissions due to imperfect combustion. This is universal. There&#39;s no stove nor is there a gas type that prevents this. In all cases the result is a level that is now known to be a cause of adverse health effects.
 
@@ -1519,49 +1601,15 @@ One big problem with all electric though is the need for a large boiler with hea
 
 And the irony is that the AI generated more emissions preventing the bill than the bill would have saved if it was enacted. Net result, the campAIgn generated twice the emissions. (Loosely speaking and not based on fact, but with at least one tongue in the cheek)
 
+I&#39;m waiting for Washington State to impose a CCA [wa.gov] fee per AI query.
+
+They are already trying to figure out how to charge cows for burping.
+
 Generates the same amount of particulates so trying to figure out gas isn&#39;t going to help anything none of the studies actually compare gas to normal cooking but you can go look it up for yourself.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We were so poor that we thought new clothes meant someone had died.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">OpenAI Fires an Employee For Prediction Market Insider Trading</div>
-            <div class="meta">2026-02-28</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>OpenAI Fires an Employee For Prediction Market Insider Trading</h2>
-            <p><strong>Slashdot | 2026-02-28</strong></p>
-            <a class="original-link" href="https://slashdot.org/story/26/02/27/2342226/openai-fires-an-employee-for-prediction-market-insider-trading?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Within hours of Altman telling Anthropic to stand strong against Trump and seeing claude get kicked out of their federal contracts, OpenAI announces it has a new Pentagon deal in the works.
-
-Lots of the slashdot usual suspects in the previous story fantasized about all the AI companies refusing to service the US government. How funny the opposite was happening (per usual).
-
-No way this guy doesn&#39;t have a job in the current U.S. Administration, maybe even the Cabinet, by next week. /s
-
-Maybe he should&#39;ve asked ChatGPT how to set up bets to not be so obvious.
-
-Seriously, opening 13 new wallets and immediately placing one massive winning bet on each is asking to be investigated.
-
-I guess he couldn&#39;t have predicted this happening.
-
-Bright, risk your 6-7 figure job with 5-6 figure bonus and 6-8 figure stock options for $16k.  Additionally to do so with zero thought regarding disguising the bet and accounts.  They probably also registered with an OpenAI.com email address!
-
-In an indirect kind of way, I guess he can blame AI for his job loss.
-
-> OpenAI has fired an employee following an investigation into their activity ..Since the employee was not identified, this looks like correct use of the English pronoun &quot;they&quot;, which is the grammatically correct usage when the identity of the person is unknown. &quot;Someone left their wallet at the checkout.&quot;
-
-> OpenAI has fired an employee following an investigation into their activity ..
-
-Since the employee was not identified, this looks like correct use of the English pronoun &quot;they&quot;, which is the grammatically correct usage when the identity of the person is unknown. &quot;Someone left their wallet at the checkout.&quot;
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-We were so poor that we thought new clothes meant someone had died.</div>
+Badges?  We don&#39;t need no stinking badges.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1909,11 +1957,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">A more durable direct air capture approach: Electrified mineral-based system resists oxygen and humidity</div>
+            <div class="title">Don't panic: 'Humanity's last exam' has begun</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>Don't panic: 'Humanity's last exam' has begun</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-28</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-02-dont-panic-humanity-exam-begun.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">A more durable direct air capture approach: Electrified mineral-based system resists oxygen and humidity</div>
+            <div class="meta">2026-02-28</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>A more durable direct air capture approach: Electrified mineral-based system resists oxygen and humidity</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-28</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-durable-air-capture-approach-electrified.html">Visit Original Website</a>
@@ -1921,13 +1983,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Texas at heart of Amazon's AI push in United States</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Texas at heart of Amazon's AI push in United States</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-texas-heart-amazon-ai-states.html">Visit Original Website</a>
@@ -1935,13 +1997,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">New systems measures full magnetization hysteresis at MHz frequencies and high magnetic fields</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>New systems measures full magnetization hysteresis at MHz frequencies and high magnetic fields</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-full-magnetization-hysteresis-mhz-frequencies.html">Visit Original Website</a>
@@ -1949,13 +2011,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Rechargeable Mg-O₂ battery uses metal-free nanoporous graphene cathode</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Rechargeable Mg-O₂ battery uses metal-free nanoporous graphene cathode</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-rechargeable-mg-battery-metal-free.html">Visit Original Website</a>
@@ -1963,30 +2025,16 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">HFC electrolyte delivers energy-dense lithium battery that keeps running at −50 °C</div>
             <div class="meta">2026-02-27</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>HFC electrolyte delivers energy-dense lithium battery that keeps running at −50 °C</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-27</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-02-hfc-electrolyte-energy-dense-lithium.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Carmaker BMW to trial humanoid robots at German factory</div>
-            <div class="meta">2026-02-27</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Carmaker BMW to trial humanoid robots at German factory</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-02-27</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-02-carmaker-bmw-trial-humanoid-robots.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
@@ -2923,84 +2971,84 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Iran's supreme leader Khamenei to give speech within minutes after U.S., Israeli strikes on Iran, Al-Alam TV says - Reuters</div>
+            <div class="title">Iran's revolutionary guards tell ships passage through Strait of Hormuz 'not allowed', EU naval mission official says - Reuters</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-60" style="display:none;">
-            <h2>Iran's supreme leader Khamenei to give speech within minutes after U.S., Israeli strikes on Iran, Al-Alam TV says - Reuters</h2>
+            <h2>Iran's revolutionary guards tell ships passage through Strait of Hormuz 'not allowed', EU naval mission official says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-28</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxOdHJ4YmJJWll6emNpR01uaURzWWVfRDEtZFpDckRZMFNnTjBncnlCRmRoVHVaTEpYdGxkM01LM2tZOEYzWmdiSVBNSDJYUVFjWC1valA0UzJ6NXYyYzhDblFPR0lyNlR4ZkJvckJLZW90NHpwYWhmVFMzWWNaYU0xeEp1QnBUcS0tU1dQSWlmb0hROXVoTzlZZWJtWE1jMVpaajIxQ0ctQ1E4enBFd1lfdWJLNHFkeTQyZlZPUXVldG02S1BuN1E?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxQb3BrRjBTQ2UtTVd5ZDNoYVdOYVAxeDZDZW5TN3lhbGc0NXdkdDNlRHFBSE5FbkNZRDB5WVl3ZzFqalhubV81X2RCNFNIWmNhQ1JNbl9paktPM3E1YW5tV25UbGFvNy1QVENJMGdPbEdzRERzVjlXNl9CTnNFMEg2cUNKYkd6YThrZXVvdnFpNHFFbmx4d1M5Z3JBb0lvTURkQkdGa1hqQUpwMUpyYW5KLWplSVNaS3JBRUlIN0pSeXBMcVMtQ2l1b2xrVWQxUQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-61')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Iran defence minister, Guards commander killed in Israeli attacks, three sources say - Reuters</div>
+            <div class="title">Exclusive: Prior to Iran attacks, CIA assessed Khamenei would be replaced by hardline IRGC elements if killed, sources say - Reuters</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-61" style="display:none;">
-            <h2>Iran defence minister, Guards commander killed in Israeli attacks, three sources say - Reuters</h2>
+            <h2>Exclusive: Prior to Iran attacks, CIA assessed Khamenei would be replaced by hardline IRGC elements if killed, sources say - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-28</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPQnExTzQ1Szh6VUF0ZGpYb3N3UV9QTE1BRl81TGlnRF9vbE9BUlo3M3dDbm9haEQyd0xIWEpXZS0tVmxBZi1kbW1GaGtjUVZVWHVMckRTT09Xc2JMQmFMMVVaMWdYLWQyUEVWVkI0TWlFS3ZBX3JZNEZtMW1ESll0eWpqLUh4Rm5UM3NkYTI3ZjRJeG1ES2hHYWdJakxUcUQ4R0FTaUVXZUdaV0t5WkVHaGJsazY1My1Qbkxycld2VnMyRmRNOTZOdHRsczBCdw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxPRGpqbjFVcHNGTHFmaXNJZl9WLWRBVGVNLXB0b2x5dGhyVzVhMm1VYjJFNFR1SzJ5Y0lvcmFPYzlPMDZnSFRBUXpma05TY0pMMWVydTVET3RQNjlXTHozY2l4VW5QOWc4Mk1mcXVTSFpROTNHdVVmMk13TlkyNHZ5Y3RyUGkxaUxCSXNIYWRwS3pIeFMtelMwZjNoM0tadDNHUGFDbHU3dXJWZE11elJDbmQ2Y3RCRW9SVm5XQnBFRnVOc0U1Z3dSNA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-62')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Market analysts react to US-Israel strikes on Iran - Reuters</div>
+            <div class="title">Iran war throws oil market into biggest crisis in decades - Reuters</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-62" style="display:none;">
-            <h2>Market analysts react to US-Israel strikes on Iran - Reuters</h2>
+            <h2>Iran war throws oil market into biggest crisis in decades - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-28</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOQXo4OXh1bC0xc2lwbjJRN1k3ZFF5TjlVNHNQd3dZek5KUTkyZzZ1cFJKTElmR2UybUxZZWdKdXhWbzhPbzhGZzVWWEZENk5LZWFsZldQYXNEVHdWLXdJTXM4c3JFbmNTLXRJTEVFNTc1LU9SczJaVEdfWjMyeWxFVnY0NTZCUEZsRFBPTGxpVGJvSE03Y2pPTTctVU0?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxPTmpqZ2x2Rk14ajFvNVQxZmNGZTc3RDVOSXJfZzNITXdUcFlJVkpjTDZ6N3huWEkxYWN3TFR5NGJKY0EwcC1lb2t1Q2lNcXhtUkdZV19zV3ZkOGZFSnJnQzJVb1dLbWZXWDZ3ZXQwUG9ldDk3cktMMlBTSVpXd19ZOUZIMnVQWE9JMXRPSlhtbEhWd05QNWswUTNWMVpKUWlwb2FuQjUwakRaZ0ZmSGdr?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-63')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">How US-Iran tensions could shape world markets - Reuters</div>
+            <div class="title">Trump's Iran strikes mark his biggest foreign policy gamble - Reuters</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-63" style="display:none;">
-            <h2>How US-Iran tensions could shape world markets - Reuters</h2>
+            <h2>Trump's Iran strikes mark his biggest foreign policy gamble - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-28</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQWFBBamo3NzdGOFFxZ3h5Z3NpcEtHY0lGS1UyUFpCNThFLUxsUi02TzBMVllKRmVKa3JwcTEtVnFOTVRUWDU4dWpzN0pZLTN6MzJMVWl4WmpEbVlTQWxWbWFSNkRkSkNtT3hTM0RLZzZ4T3ZuVG9vSmkzOFZjcGtjWmhwN1VINmI2QkdpRUg0eHI2aHA0SjFUdVpVTkJUSTQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOY1h4RlJNdllPM0ZEaEdNdXFYTGpJQWgtckcwMUcxZ2R5NW42VFVpUXFmcTU5UjBocXhtc3RON1JGWUh5R1JJVHE4SkR3cVRDZDB0WVgyTG16WnB1aVpIajlrS2FWekZGOEV5b09SN3o3Y0FoaXZGUzVaYjh1MkVrZzlwNlJsc0hFVWdsNE4zVVdNdEpuRmZGQUE1ZzV0NVFZOVpQbnBB?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-64')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Germany, France and UK tell Iran to stop attacks in region - Reuters</div>
+            <div class="title">UN Security Council to meet on Saturday on Iran conflict - Reuters</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-64" style="display:none;">
-            <h2>Germany, France and UK tell Iran to stop attacks in region - Reuters</h2>
+            <h2>UN Security Council to meet on Saturday on Iran conflict - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-28</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNb0U0QkU5aE15OGdwSmU4dE5vSmtESHY1Z2RuZEl3V0NmWjhqa3ZSVEdGQlJBR2xvM3pxUXlRWmcyYzloX3pFaC1CZmVJdFgyQTJaZ2R6UzgxT0tGNWF6UkNyY056TndzajAyOW8yS3o0YU9waVRfd2FrOXZoWFFDTG1CMDRTZnZQa1pVeGlTN1V2WXBBVjdzYkRZV2I?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQWkRlUlNWU3dPU1p1NWZQUUxBakhrWGhJMmN0dTdMNHROb2pBMjNSQ0w0ckVjdTdHdzlQdHdmS1E5SWR6djBidnpJbXNaVENVRWhDYTV4RDNOU1dqdm1haWRpLTE2a3k0dThEYzhPNXhYUWJ0VXVldVU3c0ZULW9HbVpISHBwZkRtVU5MYmNtZXhUVUdBTUJYckE5bw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-65')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Oil and gas majors and traders suspend shipments via Hormuz as US attacks Iran, sources say - Reuters</div>
+            <div class="title">Exclusive: Ahead of strikes, Trump was told Iran attack is high risk, high reward - Reuters</div>
             <div class="meta">2026-02-28</div>
         </div>
         
         <div id="content-65" style="display:none;">
-            <h2>Oil and gas majors and traders suspend shipments via Hormuz as US attacks Iran, sources say - Reuters</h2>
+            <h2>Exclusive: Ahead of strikes, Trump was told Iran attack is high risk, high reward - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-02-28</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxPckxmSTlySzFmdi1hRERSaFNta3Z0eElXcjlPbFpPVkhrZ25yTEFkX3dQVnlzSmpIbEFNelphSVBfRVRzQ3NYdEx6QVR5NTR2Z0FGWVdtUmhZRzFYcTI5dGNka3NQZG12M1RqY0VKZkpoQUlsdHZtS0g4ZnF0OUM2UGtPZmFDMDVlSHJ5OU1vQnlVa2RJVjFlMWt1dVF4bVlWdVVZbmxJdU53elNaMlNlUnc1Z3c3aHA3NzAyaElZYzVpY0l6SnZ5OWhIdw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxOTzZEY29tTHEwdWpicGxSS3BGMmRJdGFTWDJXd1Fqd04yWHNRQWFrSm9HRXJHLVBvSnFlSjZOLVZncU1BTkVGRjhUM2RBVU55OGU3dTM5dTJjMzdMS3ZWNVhTcmRGZVNlQUF0RGJhMGpBQmVpcUJ2OFd0SHc1YXd5dm9QY3AybDRMaERrR0RIN080dXFXLThuWTZucW9FWHJKREZRWEVvcmlqYmM?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
