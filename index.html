@@ -154,11 +154,204 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
+            <div class="title">LLMs can unmask pseudonymous users at scale with surprising accuracy</div>
+            <div class="meta">2026-03-03</div>
+        </div>
+        
+        <div id="content-0" style="display:none;">
+            <h2>LLMs can unmask pseudonymous users at scale with surprising accuracy</h2>
+            <p><strong>Ars Technica - All content | 2026-03-03</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2026/03/llms-can-unmask-pseudonymous-users-at-scale-with-surprising-accuracy/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Burner accounts on social media sites can increasingly be analyzed to identify the pseudonymous users who post to them using AI in research that has far-reaching consequences for privacy on the Internet, researchers said.
+
+The finding, from a recently published research paper, is based on results of experiments correlating specific individuals with accounts or posts across more than one social media platform. The success rate was far greater than existing classical deanonymization work that relied on humans assembling structured data sets suitable for algorithmic matching or manual work by skilled investigators. Recall—that is, how many users were successfully deanonymized—was as high as 68 percent. Precision—meaning the rate of guesses that correctly identify the user—was up to 90 percent.
+
+The findings have the potential to upend pseudonymity, an imperfect but often sufficient privacy measure used by many people to post queries and participate in sometimes sensitive public discussions while making it hard for others to positively identify the speakers. The ability to cheaply and quickly identify the people behind such obscured accounts opens them up to doxxing, stalking, and the assembly of detailed marketing profiles that track where speakers live, what they do for a living, and other personal information. This pseudonymity measure no longer holds.
+
+“Our findings have significant implications for online privacy,” the researchers wrote. “The average online user has long operated under an implicit threat model where they have assumed pseudonymity provides adequate protection because targeted deanonymization would require extensive effort. LLMs invalidate this assumption.”
+
+The researchers collected several datasets from public social media sites to test the techniques while preserving the privacy of the speakers. One of them collected posts from Hacker News and LinkedIn profiles and then linked them by using cross-platform references that appeared in user profiles. They then stripped all identifying references from the posts and ran a large language model on them. A second dataset was obtained from a Netflix release of micro-identities, such as individual preferences, recommendations, and transaction records. A 2008 research paper showed the list could identify users and ID their political affiliations and other personal information. The last technique split a single user’s Reddit history.
+
+“What we found is that these AI agents can do something that was previously very difficult: starting from free text (like an anonymized interview transcript) they can work their way to the full identity of a person,” Simon Lermen, a co-author of the paper, told Ars. “This is a pretty new capability, previous approaches on re-identification generally required structured data, and two datasets with a similar schema that could be linked together.”
+
+Unlike those older pseudonymity-stripping methods, Lermen said, AI agents can browse the web and interact with it in many of the same ways humans do. They can use reasoning to match potential individuals. In one experiment, the researchers looked at responses given in a questionnaire Anthropic took about how various people use AI in their daily lives. Using the information taken from answers, the researchers were able to positively identify 7 percent of 125 participants.
+
+End-to-end deanonymization from a single interview transcript (with details altered to protect the subject’s identity). An LLM agent extracted structured identity signals from a conversation, autonomously searched the web to identify a candidate individual, and verified the candidate matches all extracted claims.
+                          
+
+
+
+
+
+
+
+      End-to-end deanonymization from a single interview transcript (with details altered to protect the subject’s identity). An LLM agent extracted structured identity signals from a conversation, autonomously searched the web to identify a candidate individual, and verified the candidate matches all extracted claims.
+
+          
+
+
+
+While a 7 percent recall is relatively low, it demonstrates the growing capability of AI to identify people based on very general information they gave. “The fact that AI can do this at all is a noteworthy result,” Lermen said. “And as AI systems get better, they will likely get better at finding more and more identities.”
+
+In a second experiment, the researchers gathered comments made in 2024 from the r/movies subreddit and at least one of five smaller communities: r/horror, r/MovieSuggestions, r/Letterboxd, r/TrueFilm, and r/MovieDetails. The results showed that the more movies a candidate discussed, the easier it was to identify them. An average of 3.1 percent of users sharing one movie could be identified with a 90 percent precision, and 1.2 percent of them at a 99 percent precision. With five to nine shared movies, 90 percent and 99 percent precision rose to 8.4 percent and 2.5 percent of users, respectively. More than 10 shared movies bumped the percentage to 48.1 percent and 17 percent.
+
+In a third experiment, the researchers took 5,000 users from the Netflix dataset and added another 5,000 “distraction” identities of people not in the results. They then added to the list of 10,000 candidate profiles 5,000 query distractors comprising users who appear only in a query set, with no true match in the candidate pool.
+
+Compared to a classical baseline that mimics the Netflix Prize attack to LLM deanonymization, the latter far outperformed the former.
+
+(a) The precision of classical attacks drops very fast, explaining its low recall. In contrast, the precision of LLM-based attacks decays more gracefully as the attacker makes more guesses. (b) The classical attack almost fails completely even at moderately low precision. In contrast, even the simplest LLM attack (Search) achieves non-trivial recall at low precision, and extending it with Reason and Calibrate steps doubles Recall @99% Precision.
+
+The results show that LLMs, while still prone to false positives and other weaknesses, are quickly outstripping more traditional, resource-intensive methods for identifying users online.
+
+The researchers went on to propose mitigations, including platforms enforcing rate limits on API access to user data, detecting automated scraping, and restricting bulk data exports. LLM providers could also monitor for the misuse of their models in deanonymization attacks and build guardrails that make models refuse deanonymization requests.
+
+Of course, another option is for people to dramatically curb their use of social media, or at a minimum, regularly delete posts after a set time threshold.
+
+If LLMs’ success in deanonymizing people improves, the researchers warn, governments could use the techniques to unmask online critics, corporations can assemble customer profiles for “hyper-targeted advertising,” and attackers could build profiles of targets at scale to launch highly personalized social engineering scams.
+
+“Recent advances in LLM capabilities have made it clear that there is an urgent need to rethink various aspects of computer security in the wake of LLM-driven offensive cyber capabilities, the researchers warned. “Our work shows that the same is likely true for privacy as well.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">With developer verification, Google's Apple envy threatens to dismantle Android's open legacy</div>
+            <div class="meta">2026-03-03</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
+            <h2>With developer verification, Google's Apple envy threatens to dismantle Android's open legacy</h2>
+            <p><strong>Ars Technica - All content | 2026-03-03</strong></p>
+            <a class="original-link" href="https://arstechnica.com/gadgets/2026/03/with-developer-verification-googles-apple-envy-threatens-to-dismantle-androids-open-legacy/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">It’s been nearly 20 years since Google revealed Android, which the company described as the first “truly open” mobile operating system, setting Google-powered phones apart from the iPhone’s aggressively managed experience. Over time, though, Android has become more aligned with Apple’s approach. For the moment, users still have the final say in what software runs on their increasingly locked-down smartphones. Later this year, though, Google plans to seriously curtail that freedom in the name of security.
+
+In the coming weeks, Google will officially debut Android developer verification, which will require app makers outside the Play Store to register with their real names and pay a fee to Google. Failure to do so will block their apps from installation (sometimes called sideloading) on virtually all Android devices. Google says this is a necessary evolution of the platform’s security model, but upending the status quo could push developers away from Android and risk the privacy of those that remain.
+
+This might make your phone a little safer, sure, but it won’t stop people from getting scammed. At the same time, it could rob the Android ecosystem of what made it special in the first place.
+
+Google’s Play Store (once the Android Market) has undergone much more than a name change over the years. There were virtually no rules in the early days, allowing developers to publish apps that tinkered with undocumented system features, infringed on copyrights, and leveraged exploits to gain root access. Today, Google has numerous security layers that detect and remove malware, and that has undeniably made Android safer. Developer verification could continue to make your phone safer, too, according to Christoph Hebeisen, director of security intelligence research at Lookout.
+
+While there are still malware scares in the Play Store, Google is doing something right. Hebeisen says there’s far less malware in Google Play than outside of it, and the protections are so good that threat actors often don’t bother trying to distribute malware through Google’s platform. It’s just not worth the time when most of their apps will get instantly flagged.
+
+As Google barrels toward mandatory registration for all Android developers, it is talking up how effective these other measures have been. Google says Play Protect, the anti-malware feature built into all Google-certified Android devices, scans 350 billion Android apps every day as of early 2026—both those downloaded from the Play Store and sideloaded apps.
+
+Hebeisen explained to Ars that Play Protect targets a different part of the process than developer verification. Play Protect can flag and remove individual apps, which is less effective than blocking an entire developer profile, and it can be disabled. Google has suggested that people are often “coached” by threat actors to disable features like Play Protect, pointing to the need for more strict controls. Not everyone buys that, though.
+
+“These scenarios seem really implausible to me, but [Google has] not revealed any specific numbers about how many people are affected by this,” said Marc Prud’hommeaux, a board member of the popular F-Droid free and open source software storefront. “They only quote very vague statistics that say there’s 50 times as much malware outside the Play Store than there is inside the Play Store.”
+
+But why is Google suddenly so interested in forcing these particular reforms on non-Google developers? Hebeisen suggests there’s a bit of Apple envy happening.
+
+“I think Google probably looked at Apple and wondered ‘why has it worked for them?’” said Hebeisen. “Because from a technical perspective, there isn’t a fundamental security difference. Why has there been more malware reporting around Android than for iOS? And I think they have come around to the conclusion that the developer ecosystem and the ability to actually get an app distributed and installed makes a big difference.”
+
+Over time, Google has made numerous technical changes to the Android system aimed at reducing the spread of malware. It has implemented granular runtime permissions, made incremental security patches mandatory for new devices, added malware scanning to all certified devices, and yes, made it harder to sideload apps from unknown sources. Android is vastly more secure than it once was, but there are limits.
+
+“You can only do so many things at a technical level, so you have to clamp down on the developers,” said Hebeisen, who admits there are some negative consequences to such actions. “Android has always been the friendly and open system where you could do anything you wanted to, and that is somewhat limited [with developer verification], obviously, because you now have a mandatory registration if you want to distribute an app.”
+
+The supposed upshot of verification is that when Google detects an app involved in malicious activity, it can take out the trash faster. According to Google, it’s only interested in removing apps that cause “a high degree of harm,” which is generally described as malware in Google documentation, and this is “the same bar.” The company has declined to offer more details on its definition of harmful apps to Ars. Still, the definition of malware is fuzzy, and even Google’s own partners can disagree on what counts.
+
+“We are part of the App Defense Alliance ecosystem, where Google sends us every app that goes into Google Play before it gets published,” said Hebeisen. “We run our analysis on it and send it back to them. They don’t always take our word for it. There are a good number of apps that will get published, although we consider them risky.”
+
+The opposite is also true, though. “There are apps that we consider benign and Google doesn’t,” explained Hebeisen. “That’s mostly like terms of service violations and stuff like that won’t directly affect the users. So there isn’t 100 percent agreement.”
+
+The end result is that developer verification gives Google the tools to banish apps, and Google gets to decide what will count as a high degree of harm in the future. The F-Droid team has already seen shifting standards around the world, and that worries them.
+
+“They say, ‘Oh, we want to stop malware,’ and that sounds all well and good, but show me your definition and demonstrate that this definition is going to be agreed upon by an independent consensus of security experts and the community,” said F-Droid’s Marc Prud’hommeaux. “They don’t do that. They just say malware’s whatever we say it is, and when tomorrow they say, ‘VPNs are malware,’ then say goodbye to VPNs.”
+
+Even if Google’s claims are true, developer verification won’t stop people from being scammed. An attacker targeting Android doesn’t even necessarily need to get the user to install malware—whatever that is—to scam them. The same false sense of urgency that can convince people to sideload a shady app (e.g., “your Facebook account is about to be locked forever!”) can be used to get them to install a perfectly legitimate remote support app from the Play Store and give the fraudster full access.
+
+There is a difference between solving a problem for users and solving it for Google. In this case, developer verification could help shift the blame for mobile security woes away from Google.
+
+“The threat actors are not going to go away,” said Hebeisen. “They are going to go somewhere else, and they are going to come up with new innovative methods to scam people, and they’ll be successful there as well.”
+
+With the Play Store’s glut of AI slop and in-app purchase factories, it’s easy to forget that non-commercial software is still an important part of the Android ecosystem. Open source projects provide vital tools for a lot of people, and many of them are distributed outside of Google’s platform for a variety of reasons—not least of which is that some people just don’t trust Google.
+
+Online anonymity used to be the default, but simply accessing resources and services is becoming increasingly officious. Platforms are demanding face scans and IDs in the name of protecting the young and vulnerable, but these tactics also force people to attach their real-world existence to what they do and produce online. In the case of developer verification, this situation could stymie the open source innovation that has made Android what it is today.
+
+The Guardian Project, founded in 2009 to support the development of open source apps around the world, has been around almost as long as Android. According to founder Nathan Freitas, there are plenty of developers doing important work who don’t want to get in bed with Google. The organization aims to empower the wider Android ecosystem by helping those developers reach users.
+
+“Our goal with Guardian project is to support regular people because everyone is potentially an activist. Everyone is potentially a citizen journalist. Everyone is an eyewitness,” said Freitas. “We really want to move away from you having to be sophisticated, technically, to have privacy.”
+
+Reliance on Google’s cloud will be a core element of developer verification. Google is creating a database of developers, but only some of that data will be cached on devices. For many app installs, your phone will need to reach out to Google’s servers to verify an APK, which effectively prevents installing apps while offline. That’s a real problem for alternative app distribution models like, for example, the Guardian Project’s ButterBox, a solar-powered microserver that can provide off-grid access to encrypted chat, maps, file sharing, and other important tools. This project, built in collaboration with the F-Droid team, is essentially incompatible with developer verification.
+
+“In their quest to make everything better, they’ve made the process more onerous,” Freitas said. “This is such a common issue of the mental model of these big tech companies… like you’re driving your Tesla down the 101 in Silicon Valley. That’s the user, you know, someone with 5G and great connectivity all the time.”
+
+Some people may find themselves locked out of Android, even if they have perfect 5G. By requiring developers to register and pay a fee, Google is essentially forming a business relationship with people who might otherwise want nothing to do with the company. Simply due to who a developer is or where they live, their applications could end up blocked on most Android devices.
+
+“There are going to be certain developers who are developing applications that are perfectly legitimate, but because they live in a sanctioned country where they belong to a sanctioned organization, Google is by law not going to be able to let these people register,” noted F-Droid’s Marc Prud’hommeaux. “So that is immediately closing the door to someone who is developing an app, and they happen to be a judge on the International Criminal Court or a resident of Cuba. But that’s it. They cannot convey their work to the world.”
+
+No one knows what Google’s internal deliberations around this change look like—we can only guess at the company’s motivations. That said, even the team at F-Droid, which is publicly opposed to Google’s plans, believes that verifying developer identities will probably slow down traditional malware campaigns. But it also gives Google a lot more power.
+
+“This measure can reduce the amount of malware, but at the same time, it reduces a lot of other legitimate activity,” said F-Droid technical lead Hans-Christoph Steiner. He pointed to ad-blockers and alternative YouTube clients as examples. Early on, Google allowed system-level ad-blockers in its store, but tightening restrictions eventually led to most of those tools being banned. Someone could possibly make an argument that these tools are harmful—to a high degree, even, he said.
+
+“People want those apps for legitimate reasons, and we ship apps like that in a safe way,” said Steiner. “These are all legal things that people want that Google doesn’t want. So when we consistently ship ad-blockers, alternative clients, root kits—all these things that are against [Google’s] terms of service, it seems inevitable that they’re just going to block us.”
+
+Ars Technica has reached out to Google to inquire about developers who are in sanctioned countries and their ability to participate in verification, as well as whether policy-violating apps like alternative YouTube clients will be verifiable. The company has not provided comment as of this publication.
+
+Assuming developers comply with Google’s new verification rules, they’ll have to give up personal information, including government IDs and business details. Google’s verification system would see the company retain those details on a global scale, expanding beyond the group of Play Store developers already known to the company. That will expose devs to new legal threats, explained Corynne McSherry, legal director at the Electronic Frontier Foundation.
+
+“The problem with creating this kind of verification program is that it necessarily creates a database,” she said. “That is then going to be vulnerable to subpoenas, warrants, government demand, and sometimes private demands. Sometimes people build apps that are privacy-protecting, that are important for human rights defenders, journalists, and so on. And there are governments who might very much like to know the names of the developers of those applications so that they can go after them.”
+
+Google undeniably has massive global reach—it’s the top search engine by a wide margin in every country other than China and Russia, and Android devices are much more popular than iPhones in most places. That means Google’s policies and privacy protections have to adapt from market to market.
+
+You may think that your nation’s legal protections will keep your data safe, but that’s the problem with being a global brand: There are plenty of places where courts don’t value individual rights.
+
+“We have a tradition in the United States of protections for things like anonymous speech,” said McSherry, while noting that those protections have been weakened recently. “But nonetheless, we have default protections for anonymity that many, many countries do not, and so that’s one assumption that you’re just throwing out the window right away.”
+
+Google’s records would be a very tempting target for governments and corporations that want to track down the developer of an app, even if that person is on the other side of the world. According to McSherry, governments can seek information about developers of apps they find disruptive, even if they reside in another country. Corporate entities could also engage in “forum shopping” by finding a compliant court where they can claim some harm.
+
+“Private parties might just go to the country with the easiest, most hair-trigger judicial process,” McSherry said. “Go there and get a subpoena or some equivalent and also seek your information.”
+
+With that information exposed, developers could be vulnerable to legal repercussions, lawsuits, or increased government surveillance. This is already happening, too. Many developers have chosen to remain anonymous online due to the constantly shifting state of legal requirements. Something that was perfectly fine and legal one day may be heavily restricted the next—take, for example, the laws surrounding messaging encryption in Europe and VPNs in India.
+
+“We work with developers on our team who use pseudonyms 100 percent of the time, even if they are a European citizen or US citizen,” said Nathan Freitas of the Guardian Project. “That’s because of family, because of where they travel, or where they have lived. I made the choice years ago to use my real name and identity. Sometimes I regret it because I can’t travel to India because our work on VPNs is illegal in India.”
+
+Google has said on numerous occasions that it complies with valid legal orders for user information—it has no choice in the matter if it wants to operate in a given country. And it gets a lot of those orders. After remaining relatively stagnant in the 2010s, legal requests for user data have exploded in recent years. In the first half of 2025, the most recently reported period, Google received 664,843 requests targeting 287,027 users. That’s an almost 10-fold increase in the last decade and about 18 percent up (for the number of users) in the first half of 2025 alone.
+
+Expanding the number of developers in Google’s database will only make it a more frequent target of legal demands.
+
+The backlash from developers when Google announced its plan last year was swift. The company eventually announced that it would build an “advanced flow” for power users who want to bypass developer verification. For many users, this move was all they needed to stop worrying and trust Google. The nature of that added friction is still unclear, though, and Google doesn’t have much room to maneuver if it still wants to accomplish its stated goal of saving people from malware.
+
+Sideloading apps already involves substantial friction. There’s a warning when you try to download an APK, and a second one appears when you try to open that file. Both the warnings state in no uncertain terms that installing apps downloaded from an unknown source can harm your device. To actually go through with the installation, you have to make a trip to the settings to toggle that option on for the source app (like Chrome). Only then will the installation proceed.
+
+But will adding more clicks or warnings do anything? For Hebeisen, this seems like a weak point in the plan if Google’s intention is to reduce the spread of malware.
+
+“Obviously, the threat actors have figured out how to social engineer users into allowing apps from third-party sources,” said Hebeisen. “So how much harder does it become to social engineer them through this?”
+
+The team behind the open source F-Droid app store sees many problems with the opacity of Google’s plans. F-Droid’s Prud’hommeaux believes Google’s use of words like “advanced” and “experienced” is a red flag. “F-Droid is not for advanced users, it’s not for experienced users,” he said. “It’s just for users who care about privacy.”
+
+In a recent blog post, F-Droid has claimed that Google isn’t even working on this system yet. Google said in November it was seeking “early feedback” on how the advanced flow could resist coercion and properly warn users of the risks. According to Lookout’s Christoph Hebeisen, as of late February 2026, Google has not asked his team about the design of the advanced flow. Meanwhile, Prud’hommeaux told Ars that his conversations with Google representatives suggest the advanced flow won’t be available until 2027, long after verification enforcement begins in September of this year.
+
+It’s starting to look like Google’s pitch for the advanced flow was less a solution and more a “concept of a plan.” We’ve sought comment from Google, but the company has declined to elaborate on its timeline or the nature of the advanced flow at this time.
+
+If Google begins blocking unverified apps before making this option available, it doesn’t have much incentive to make it genuinely useful—Google will already have everything it wants, and it will be too late for developers and mobile enthusiasts to do anything about it.
+
+While the timeline could still change, Google has said it plans to offer global access to the new developer console and associated identity verification this month. The company will begin enforcing developer verification in September, but only in Brazil, Singapore, Indonesia, and Thailand—markets that have higher rates of malware and high-pressure social engineering scams. In 2027, Google will continue expanding verification requirements until all regions are covered.
+
+Some organizations are still hoping they can change Google’s mind. F-Droid has a website directing users to contact regulatory agencies to oppose developer verification. It also urges independent developers not to comply with Google’s verification requirements.
+
+The F-Droid team recently published an open letter to Google, signed by 35 organizations, that expresses grave concern about what this change will mean for Android as a platform, but Google seems locked into its course of action. Even if a big chunk of independent developers boycott verification, Google may still plow ahead.
+
+On an individual basis, there’s not much you as an Android user can do. You might be stuck letting Google police your apps, and you may not even think about it most days. That is, until you get stuck trying to install an app from someone else’s store without a reliable Internet connection or discover an open-source app you want to use is not verified.
+
+Some developers may simply decide to abandon Android development, too. Nathan Freitas of the Guardian Project notes that the mobile web has gotten much better for developers in recent years. “We have moved a lot of our projects to progressive web apps because they can do more now,” said Freitas. “It’s like, ‘Can we do this in a browser?’ If so, then yes.”
+
+Using more web apps could help, but the only way to truly opt out of Google’s verification system is to get off of Google’s version of Android. While there are some non-certified Android phones out there, such devices are usually rife with security vulnerabilities. So that doesn’t solve the problem. Installing a privacy-protecting alternative Android-based OS (sometimes called ROMs) like LineageOS or GrapheneOS could work. This gives you full control over the software running on your phone, but it’s getting harder to customize phones this way.
+
+F-Droid’s Marc Prud’hommeaux sees Android ROMs as a very implausible solution to keeping open-source projects alive. Installing these software packages is beyond the abilities of most people, and device makers don’t exactly make it easy with locked-down products. “Every phone that you get is Android-certified, and many of those phones have locked bootloaders,” said Prud’hommeaux.
+
+To a certain degree, these restrictions are inevitable for devices that connect to mobile networks. “The harm goes back to the telecoms and the mobile operators,” said Freitas, who explained that carriers have certain expectations and requirements for any baseband radio on their networks. “This thing has to work like a phone, and so we can’t just let it be a Wild West as a computer.”
+
+If you can’t unlock the bootloader on your phone, you’re stuck with the stock software and any security changes implemented by Google and the device maker. And increasingly, it looks like they’re going to decide you need protection from yourself.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-2')">
+            <div class="source">Ars Technica - All content</div>
             <div class="title">Clueless cops post seized crypto wallet password. $5M quickly stolen.</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-0" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>Clueless cops post seized crypto wallet password. $5M quickly stolen.</h2>
             <p><strong>Ars Technica - All content | 2026-03-02</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/03/oops-south-korean-cops-lost-5m-in-seized-crypto-after-leaking-wallet-password/">Visit Original Website</a>
@@ -190,13 +383,13 @@ Even more disturbingly, last month, police in Seoul’s Gangnam district had to 
 In the latest press release, the National Tax Service officer said they are strengthening internal controls and job training to prevent future leaks.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Charter gets FCC permission to buy Cox and become largest ISP in the US</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Charter gets FCC permission to buy Cox and become largest ISP in the US</h2>
             <p><strong>Ars Technica - All content | 2026-03-02</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/03/fcc-lets-charter-buy-cox-says-no-reason-to-worry-about-higher-internet-prices/">Visit Original Website</a>
@@ -236,13 +429,13 @@ Public Knowledge Legal Director John Bergmayer said that the Carr FCC “did not
 Disclosure: The Advance/Newhouse Partnership, which owns 12 percent of Charter, is part of Advance Publications, which owns Ars Technica parent Condé Nast.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Iowa county adopts strict zoning rules for data centers, but residents still worry</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Iowa county adopts strict zoning rules for data centers, but residents still worry</h2>
             <p><strong>Ars Technica - All content | 2026-03-02</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/03/iowa-county-adopts-strict-zoning-rules-for-data-centers-but-residents-still-worry/">Visit Original Website</a>
@@ -347,13 +540,13 @@ Anika Jane Beamer covers the environment and climate change in Iowa, with a part
 This story originally appeared on Inside Climate News.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">$599 M4 iPad Air is a lot like the old one, but with a substantial RAM boost</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>$599 M4 iPad Air is a lot like the old one, but with a substantial RAM boost</h2>
             <p><strong>Ars Technica - All content | 2026-03-02</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/03/apple-keeps-the-ipad-air-fresh-with-m4-chip-upgrade-and-12gb-of-ram/">Visit Original Website</a>
@@ -371,162 +564,6 @@ Otherwise, very little has changed about the new iPad Air. It still comes in fou
 The new iPad Air is part of a string of announcements that Apple is planning in the run-up to a “special experience” event on Wednesday morning. The company also announced a new iPhone 17e today and is widely expected to debut a new low-end iPad and a new MacBook that’s substantially cheaper than the MacBook Air.
 
 This piece was updated at 11:15am on March 2 to add details about the M4 chip’s CPU core configuration, and to mention the Apple N1 and C1X wireless chips.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-4')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Research roundup: Six cool science stories we almost missed</div>
-            <div class="meta">2026-03-02</div>
-        </div>
-        
-        <div id="content-4" style="display:none;">
-            <h2>Research roundup: Six cool science stories we almost missed</h2>
-            <p><strong>Ars Technica - All content | 2026-03-02</strong></p>
-            <a class="original-link" href="https://arstechnica.com/science/2026/03/research-roundup-six-cool-science-stories-we-almost-missed/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">It’s a regrettable reality that there is never enough time to cover all the interesting scientific stories we come across each month. So every month, we highlight a handful of the best stories that nearly slipped through the cracks. February’s list includes the revival of a forgotten battery design by Thomas Edison that could be ideal for renewable energy storage; a snap-on device to turn those boxers into “smart underwear” to measure how often we fart; and a dish of neurons playing Doom, among other highlights.
-
-Credit:
-                                      Maher El-Kady/UCLA
-                                  
-
-
-
-
-
-
-
-
-
-          Credit:
-
-          
-          Maher El-Kady/UCLA
-
-At the onset of the 20th century, electric cars powered by lead-acid batteries outnumbered gas-powered cars. The internal combustion engine ultimately won out, in part because those batteries had a range of just 30 miles. But Thomas Edison believed a nickel-iron battery could extend that range to as much as 100 miles, while also having a long life and recharging times of seven hours. An international team of scientists has revived Edison’s concept of a nickel-iron battery and created their own version, according to a paper published in the journal Small.
-
-The team took their inspiration from nature, specifically how shellfish form their hard outer shells and animals form bones: Proteins create a scaffolding onto which calcium compounds cluster. For the battery scaffolding, the authors used beef byproduct proteins, combined with graphene oxide, and then grew clusters of nickel for positive electrons and iron for negative ones. The team superheated all the ingredients in water followed by baking them at very high temperatures. The proteins charred into carbon, stripping away the oxygen atoms in the graphene oxide and embedding the nickel and iron clusters in the scaffolding. Essentially, it became an aerogel.
-
-The folded structure limited the clusters to less than 5 nanometers, translating into significantly more surface area for the chemical reactions fueling the battery to occur. The resulting prototype recharged in mere seconds and endured for more than 12,000 cycles, equivalent to about 30 years of daily recharging. However, their battery’s storage capacity is still well below that of current lithium-ion batteries, so powering EVs might not be the most promising application. The authors suggest it might be ideal for storing excess electricity generated by solar farms or other renewable energy sources.
-
-Small, 2026. DOI: 10.1002/smll.202507934 (About DOIs).
-
-In 2014, NASA’s NEOWISE project picked up a gradual brightening of infrared light coming from a massive star in the Andromeda galaxy, an observation that was confirmed by several other ground- and space-based telescopes. Astronomers kept monitoring the star, so they also noticed when it quickly dimmed in 2016. Once one of the brightest stars in that galaxy, it effectively “vanished” from sight; it would be like Betelgeuse suddenly disappearing. It’s now only detectable in the mid-infrared range.
-
-The obvious explanation was that the star was dying and had collapsed into a black hole, but if so, it didn’t go through the supernova phase that usually occurs with stars of this size. That makes it an intriguing object for further study. After analyzing archival data from NEOWISE, a team of astronomers concluded that this was indeed a case for direct collapse, according to a paper published in the journal Science.
-
-Theoretical work from the 1970s provided a possible explanation. As gravity begins to collapse the star, and the core first forms a dense neutron star, the accompanying burst of neutrinos typically creates a powerful shock wave strong enough to rip apart the core and outer layers, leading to a supernova. But some theorists suggested that the shock wave might not always be powerful enough to expel all that stellar material, which instead falls inward, and the baby neutron star directly collapses into a black hole without ever going supernova.
-
-Convection, it seems, is key. It occurs because the matter near the star’s center is hotter than the outer regions, so the gases move from hotter to cooler regions. The authors of this latest paper suggest that as the core collapses, gas in the outer layers is moving rapidly, which prevents them from falling into the core. The inner layers orbit outside the new black hole and eject the outer layers, which cool and form dust to hide the hot gas still orbiting the black hole. The dust warms in response into mid-infrared wavelengths, giving the object a slight glow that should last for decades.
-
-This work has already led the team to re-evaluate a similar star first observed a decade ago, so this may constitute a new class of objects—ones that are harder to detect because they don’t go supernova and because of the faintness of the afterglow. At least now astronomers know to look for that distinctive signature.
-
-Science, 2026. DOI: 10.1126/science.adt4853 (About DOIs).
-
-Credit:
-                                      University of Maryland.
-                                  
-
-
-
-
-
-
-
-
-
-          Credit:
-
-          
-          University of Maryland.
-
-Let’s face it, everybody farts, and those suffering from conditions that produce excess gas fart more than most. But physicians don’t have a reliable means of quantifying just how much gas people produce each day. In other words, they lack a baseline of what is normal—like we have for blood glucose or cholesterol—which makes it difficult to determine whether the farting in any given case is excessive. To address this, scientists at the University of Maryland have devised “smart underwear” to measure the wearer’s flatulence, according to a paper published in the journal Biosensors and Bioelectronics.
-
-Brantley Hall and his cohorts developed a small device with electrochemical sensors that snaps onto one’s underwear; those sensors track any emitted farts around the clock, including as the wearer sleeps. In the past, fart frequency relied on small studies using invasive methods or unreliable self-reports. So perhaps it’s not surprising that Hall et al. recorded much higher farting estimates in their study: healthy adults pass gas on average 32 times per day, compared to just 14 times per day reported in past studies.
-
-There was also considerable variation among individuals, with a lowest fart rate of just four times per day and a highest rate of 59 per day. This is a first step to determining a healthy baseline, which the team hopes to do via their Human Flatus Atlas program. People can volunteer to don the smart underwear 24/7 in hopes of correlating the flatulence patterns with diet and microbiome composition across a much larger sample size. You can enroll in the Human Flatus Atlas here; you must live in the US and be 18 years or older to participate. (Fun bonus fact: noted gastroenterologist Michael Levitt was apparently known as the “King of Farts” because of his extensive body of research on the subject.)
-
-Biosensors and Bioelectronics, 2026. DOI: 10.1016/j.biosx.2025.100699 (About DOIs).
-
-Credit:
-                                      NASA/Public domain
-                                  
-
-
-
-
-
-
-
-
-
-          Credit:
-
-          
-          NASA/Public domain
-
-Just past Neptune lies the Kuiper Belt, a band littered with remnants from the early formative period of our Milky Way, including dwarf planets and smaller bodies known as planetesimals. Roughly 10 percent of those planetesimals consist of two connected spheres resembling a rudimentary snowman, called contact binaries. In a paper published in the Monthly Notices of the Royal Astronomical Society, Michigan State University researchers reported evidence for a process by which these contact binaries may have formed.
-
-Planetesimals are the result of dust and pebbles gradually packing together into aggregate objects in response to gravity, much like forming a snowball. Every now and then, these nascent objects get ripped in two by the rotating cloud and form two separate planetesimals that orbit each other. Most theories of how the unusual snowman-shaped contact binaries formed rely on rare events or exotic phenomena, which would not account for the large number of contact binaries that we observe.
-
-Prior computational simulations modeled colliding objects in the Kuiper Belt as fluid-like blobs that merged into spheres, but this did not result in conditions conducive to forming the snowman configuration. These new simulations retained the colliding objects’ strength and allowed them to rest against each other. This revealed that after two colliding planetesimals begin to orbit one another, gravity causes them to spiral inward until they eventually make contact and fuse. Because the Kuiper Belt is relatively empty, it is rare for the contact binaries to crash into another object, so they are less likely to break apart.
-
-Monthly Notices of the Royal Astronomical Society, 2026. DOI: 10.1073/pnas.1802831115  (About DOIs).
-
-Credit:
-                                      Het Romeins Museum
-                                  
-
-
-
-
-
-
-
-
-
-          Credit:
-
-          
-          Het Romeins Museum
-
-There is archaeological evidence for various kinds of board games from all over the world dating back millennia: Senet and Mehen in ancient Egypt, for example; a strategy game called ludus latrunculorum (“game of mercenaries”) favored by Roman legions; a 4,000-year-old stone board discovered in 2022 that just might be a precursor to an ancient Middle Eastern game known as the Royal Game of Ur; or a Bronze Age board game that might be the earliest form of Hounds and Jackals, originating in Asia, which challenges the longstanding assumption that the game originated in Egypt.
-
-There may be other ancient games that archaeologists still don’t know about, nor is it always possible for them to tease out what the rules of play might be. AI is emerging as a useful tool for determining the latter. Most recently, researchers have used AI tools to work out the rules of what they believe might be another ancient Roman game board, according to a paper published in the journal Antiquity. The object in question is a flat stone housed in the Roman Museum in Heerlen, the Netherlands, with a distinctive geometric pattern carved on one side. Walter Crist of Leiden University noticed some visibly uneven wear consistent with pushing stone game pieces across the surface, with the most wear along one particular diagonal line.
-
-Crist thought this might be a Roman game board and decided to pit two AI agents against each other in thousands of “games” to test different variations in possible rules, gleaned from known ancient board games from around the world. Crist and his co-authors identified nine possibilities, all so-called blocking games, in which a player with more pieces tries to stop their opponent from moving. They have dubbed this potentially new game Ludos Coriovalli. There is not yet any means of knowing for sure, since no other carved slabs with that particular pattern have been found, but it might be a prototype game, per Crist.
-
-Antiquity, 2026. DOI: 10.15184/aqy.2025.10264 (About DOIs).
-
-In 2022, a company called Cortical Labs managed to get brain cells grown in a dish—dubbed DishBrain—electrically stimulated in such a way as to create useful feedback loops, enabling them to “learn” to play Pong, albeit badly. This provided intriguing evidence that neural networks formed from actual neurons spontaneously develop the ability to learn. Now the company is back with a video (see above) showing DishBrain playing Doom—technically the open-sourced Freedoom, which lacks some of the copyrighted demon and weapon elements.
-
-Like four years ago, we’re talking about a dish with a set of electrodes on the floor. When neurons are grown in the dish, these electrodes can do two things: sense the activity of the neurons above them or stimulate those electrodes. But the team has added a new interface that makes the system easier to program, using Python. Teaching DishBrain to play Pong took years of painstaking effort; getting it to play Freedoom took just one week—a significant improvement.
-
-DishBrain still can’t come close to matching the performance of the best Doom players, but it learned faster than conventional silicon-based machine learning. But it’s also not comparable to a human brain. “Yes, it’s alive, and yes, it’s biological, but really what it is being used as is a material that can process information in very special ways that we can’t re-create in silicon,” Brett Kagan of Cortical Labs told New Scientist. In fact, in 2024, scientists taught hydrogels—soft, flexible biphasic materials that swell but do not dissolve in water—to play Pong, inspired by the company’s earlier research. (Hydrogels can also “learn” to beat in rhythm with an external pacemaker, just like living cells.)</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Apple's new iPhone 17e has an A19 chip, MagSafe, and 256GB of storage for $599</div>
-            <div class="meta">2026-03-02</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Apple's new iPhone 17e has an A19 chip, MagSafe, and 256GB of storage for $599</h2>
-            <p><strong>Ars Technica - All content | 2026-03-02</strong></p>
-            <a class="original-link" href="https://arstechnica.com/gadgets/2026/03/apples-new-iphone-17e-has-an-a19-chip-magsafe-and-256gb-of-storage-for-599/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Apple’s biggest iPhone announcements usually happen in September, but for the second year in a row, the company is also introducing a new iPhone in March. The iPhone 17e is a new version of Apple’s basic no-frills iPhone, replacing last year’s iPhone 16e. The phone will be available to preorder on March 4 and will be available on March 11, starting at $599.
-
-The new iPhone includes an Apple A19 chip similar to the one in the more-expensive iPhone 17—both phones have six CPU cores, but the 17e only gets four GPU cores instead of five. The phone’s cellular modem is also upgraded, from the original Apple C1 to an Apple C1X capable of faster speeds. Like the A18 in the iPhone 16e, the iPhone 17e also supports Apple Intelligence, implying that it has the same 8GB of RAM as the iPhone 17. Apple says the new Ceramic Shield 2 front glass (also used in the iPhone 17) will be more durable and that the “Apple-designed coating” on the display is three times more scratch-resistant than the coating on the iPhone 16e and better at reducing reflections and glare.
-
-But there are two more-noticeable upgrades that help close the gap between the iPhone 17e and the regular iPhone 17. The first is support for MagSafe charging, a notable omission from the iPhone 16e. The second is an upgrade from 128GB to 256GB of storage in the base model, which makes the $599 version of the phone a more attractive deal. A 512GB version of the phone is available for $799.
-
-The 17e comes in three color options: black, white, and a pastel pink. It still includes a USB-C port, a notched display rather than a Dynamic Island, an Action Button, a 6.1-inch 60 Hz OLED display without ProMotion or always-on support, and a single 48 megapixel rear camera (which is still capable of taking 2x telephoto images by cropping a 24 MP chunk out of the middle of the image sensor).
-
-The biggest problem with the iPhone 17e is still that it’s just $200 cheaper than the iPhone 17, which is an exceptionally strong version of Apple’s default phone. That $200 gets you a better main camera, a wide-angle lens, a slightly larger 6.3-inch display with ProMotion support and a Dynamic Island, and marginally faster graphics performance. But the 17e’s 256GB storage upgrade and the new chip do make it more appealing than the $699 iPhone 16, which also lacks a ProMotion display and only has 128GB of storage.
-
-The new phone is part of a string of announcements that Apple is planning in the run-up to a “special experience” event on Wednesday morning. The company also announced a new iPad Air with an M4 chip today and is also widely expected to debut a new low-end iPad and a new MacBook that’s substantially cheaper than the MacBook Air.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -577,11 +614,69 @@ More on AI and media: Google’s AI Is Actively Destroying the News Media</div>
         
         <div class="card" onclick="openModal('content-7')">
             <div class="source">Futurism</div>
-            <div class="title">AI Tools Are Supercharging Hackers</div>
+            <div class="title">Meta Workers Say They’re Seeing Disturbing Things Through Users’ Smart Glasses</div>
             <div class="meta">2026-03-02</div>
         </div>
         
         <div id="content-7" style="display:none;">
+            <h2>Meta Workers Say They’re Seeing Disturbing Things Through Users’ Smart Glasses</h2>
+            <p><strong>Futurism | 2026-03-02</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/meta-disturbing-smart-glasses">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+Meta’s Ray Ban AI glasses have shot up in popularity in recent years, selling over seven million pairs in 2025 in a considerable jump over the two million it sold in 2023 and 2024 combined.
+
+While the smart glasses have scored big with consumers, allowing them to record first-person footage through an integrated camera and microphone array, and analyzing the world around them through Meta’s AI model, the hardware has sparked a heated debate. Critics say enabling facial recognition in the glasses’ software could have dangerous implications, especially considering the militarization of law enforcement and Meta’s abysmal track record when it comes to ensuring the privacy of users.
+
+And regardless of the wearer’s intention, much of the footage being recorded by the glasses is being sent to offshore contractors for data labeling, a widely-used preprocessing step in training new AI models in which human contractors are asked to review and annotate footage. It’s a laborious and highly resource-intensive process that tech companies often gloss over when discussing the prowess of their latest AI models.
+
+The reality can be messy. Meta contractors based in Nairobi, Kenya, told Swedish newspapers Svenska Dagbladet and Göteborgs-Posten in a recently published joint investigation that they’re being told to review highly sensitive and intimate data.
+
+“In some videos you can see someone going to the toilet, or getting undressed,” one contractor for a company called Sama said. “I don’t think they know, because if they knew they wouldn’t be recording.”
+
+“I saw a video where a man puts the glasses on the bedside table and leaves the room,” one data annotator told the newspapers. “Shortly afterwards his wife comes in and changes her clothes.”
+
+Other footage included imagery of people’s bank cards, users watching porn, or even filming entire “sex scenes.”
+
+An employee added that they felt forced to watch and annotate or else risk losing their job.
+
+“You understand that it is someone’s private life you are looking at, but at the same time you are just expected to carry out the work,” the employee said. “You are not supposed to question it. If you start asking questions, you are gone.”
+
+Buried in Meta’s AI terms of use, the company reserves the right to have the company “review your interactions with AIs, including the content of your conversations with or messages to AIs, and this review can be automated or manual (human).”
+
+The document also warned that users shouldn’t share information that “you don’t want the AIs to use and retain, such as information about sensitive topics.”
+
+But given the kind of information data annotators are being asked to review, many users don’t appear to be aware of that last piece of advice.
+
+Worst of all, owners of Meta’s AI glasses simply don’t have the option of making use of the AI features without agreeing to share data shared with Meta’s remote servers. And once the data is sent, it’s already often too late.
+
+“Once the material has been fed into the models, the user in practice loses control over how it is used,” non-profit None Of Your Business data protection lawyer Kleanthi Sardeli told the Svenska Dagbladet and Göteborgs-Posten.
+
+After two months of no replies, a Meta spokesperson referred the two Swedish newspapers to its terms of use and privacy policy.
+
+“When live AI is being used, we process that media according to the Meta AI Terms of Service and Privacy Policy,” the spokesperson said, in a terse statement.
+
+It’s not just Meta using offshore data annotators in countries like Kenya, Colombia, and India to train their AI models. As Agence France-Presse reported last year, workers have had to put up with reviewing often gruesome crime scene images, and even dead bodies.
+
+The trend is reminiscent of social media content moderation, a practice that has relied on exploitative labor in the developing world for many years now.
+
+But with the advent of AI and wearable tech that can easily be used to record high-resolution footage simply by tapping a capacitive button next to your temple, the hidden human cost of data labeling has taken on a whole new meaning.
+
+It’s a reality Meta would much prefer to bury in lengthy terms of service that likely only a handful will take the time to read.
+
+“You think that if they knew about the extent of the data collection, no one would dare to use the glasses,” one annotator told the newspapers.
+
+More on Meta: Meta’s Top AI Scientist Is Quitting as Zuckerberg’s Spending Spree Sputters</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-8')">
+            <div class="source">Futurism</div>
+            <div class="title">AI Tools Are Supercharging Hackers</div>
+            <div class="meta">2026-03-02</div>
+        </div>
+        
+        <div id="content-8" style="display:none;">
             <h2>AI Tools Are Supercharging Hackers</h2>
             <p><strong>Futurism | 2026-03-02</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/ai-tools-hackers">Visit Original Website</a>
@@ -613,13 +708,13 @@ Google security researchers also noted in a report earlier this year that a “p
 More on AI cybercrime: Hackers Told Claude They Were Just Conducting a Test to Trick It Into Conducting Real Cybercrimes</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">Sam Altman in Damage Control Mode as ChatGPT Users Are Mass Cancelling Subscriptions Because OpenAI Is “Training a War Machine”</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>Sam Altman in Damage Control Mode as ChatGPT Users Are Mass Cancelling Subscriptions Because OpenAI Is “Training a War Machine”</h2>
             <p><strong>Futurism | 2026-03-02</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/sam-altman-damage-control-mass-cancellation">Visit Original Website</a>
@@ -659,13 +754,13 @@ At the end of the day, even Altman couldn’t deny how the PR disaster he had cr
 More on OpenAI: Anthropic Blowout With Military Involved Use of Claude for Incoming Nuclear Strike</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">US Military Using Claude to Select Targets in Iran Strikes</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>US Military Using Claude to Select Targets in Iran Strikes</h2>
             <p><strong>Futurism | 2026-03-02</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/claude-anthropic-military-iran">Visit Original Website</a>
@@ -695,13 +790,13 @@ Yet as Pulitzer prize winning national security journalist Spencer Ackerman obse
 More on Claude: Anthropic Drops Its Huge Safety Pledge That Was Supposedly the Whole Point of the Company</div>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">White House Responds as Scabby Mark Appears on Trump’s Neck</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-10" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>White House Responds as Scabby Mark Appears on Trump’s Neck</h2>
             <p><strong>Futurism | 2026-03-02</strong></p>
             <a class="original-link" href="https://futurism.com/health-medicine/mark-trump-neck">Visit Original Website</a>
@@ -729,50 +824,6 @@ Others suggested it could be a result of Trump taking a considerable amount of b
 The White House claimed the dark mark was the result of him shaking too many hands. However, a similar mark on his left hand, which was spotted earlier this year, has undermined that claim.
 
 More on Trump’s hand: Trump’s Other Hand Is Also Now Showing a Grisly Mark</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">Microsoft Bans the Word “Microslop” on Copilot Discord, Gets So Humiliated That It Locks Down the Whole Server</div>
-            <div class="meta">2026-03-02</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>Microsoft Bans the Word “Microslop” on Copilot Discord, Gets So Humiliated That It Locks Down the Whole Server</h2>
-            <p><strong>Futurism | 2026-03-02</strong></p>
-            <a class="original-link" href="https://futurism.com/artificial-intelligence/microsoft-bans-word-microslop-discord-lock">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-Last year, the editors of Merriam-Webster’s dictionary anointed their word of the year as “slop,” a term denoting the low-quality flood of AI output that’s been jamming up feeds for years now.
-
-The latest victim? Software giant Microsoft. After infuriating vast swathes of its user base with an unrelenting barrage of AI-enhanced features — even declaring its latest Windows 11 operating system as an “agentic OS” — the company has garnered a reputation for doubling down on the tech with little regard for whether it’s actually benefiting customers.
-
-The ensuing blunders have represented a massive hit for Microsoft’s brand, ranging from maddeningly ineffective search tools to intrusive chatbots and bugs that leaked confidential emails. To sum it all up, netizens came up with a pejorative term: “Microslop,” which clearly infuriated executives at the company.
-
-In the latest sign that it’s getting under Microsoft’s skin, the company banned the phrase on its over-one-year-old Discord server dedicated to the company’s Copilot chatbot, as Windows Latest discovered.
-
-Things spiraled from there. After users found simple workarounds for the new rule, like spelling it “Microsl0p,” the company’s moderation team locked the entire Discord server and hid its messaging history.
-
-“The Copilot Discord channel has recently been targeted by spammers attempting to disrupt and overwhelm the space with harmful content not related to Copilot,” a Microsoft spokesperson told us, adding that the “blocking of terms like ‘Microslop’ and some others associated with this spam campaign were temporary while the company worked to implement better safeguards.”
-
-“Initially, this spam consisted of walls of text, so we added temporary filters for select terms to slow this activity,” the spokesperson continued. “We have since made the decision to temporarily lock down the server while we work to implement stronger safeguards to protect users from this harmful spam and help ensure the server remains a safe, usable space for the community.”
-
-It’s yet another embarrassing failure to read the room, underlining how little goodwill Microsoft has left as it attempts to shoehorn AI into most of its offerings. Even its text-editing software, Notepad, got an AI makeover recently, opening up a major cybersecurity vulnerability in the process.
-
-Worse yet, Microsoft’s decision to shut down the Discord server is bringing more attention to the growing backlash.
-
-“Streisand effect in full swing,” one Reddit user argued, referring to the phenomenon where attempts to suppress information backfire. (The effect’s name was inspired by Barbra Streisand suing a photographer for violating her privacy by taking a photo of her cliff-top residence in Malibu to document coastal erosion, ultimately bringing major media attention to the issue instead of suppressing it.)
-
-“The only thing more effective at spreading a meme than trying to ban it is… trying to ban it,” another user argued. “Microsoft just ensured ‘Microslop’ will be the default term for the next decade. Well played.”
-
-In short, public sentiment for Microsoft’s AI offerings is seemingly at an all-time low. That’s despite the company’s capital expenditures soaring as it pours tens of billions of dollars into AI computing chips — a risky bet that’s failing to impress investors.
-
-Customers are also not exactly keen on the company’s latest obsession.
-
-“Microslop ain’t gonna stop me to continue calling it Microslop,” one Reddit user wrote.
-
-More on Microslop: “Microslop”: Infuriating Video Sums Up How Microsoft Is Ruining Windows With AI</div>
         </div>
         
         <div class="card" onclick="openModal('content-12')">
@@ -870,7 +921,7 @@ Agarwal: This isn’t a career pivot. I see a very specific problem in the 17th 
 
 Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
 
-Anthropic’s Claude reports widespread outage
+MyFitnessPal has acquired Cal AI, the viral calorie app built by teens
 
 SaaS in, SaaS out: Here’s what’s driving the SaaSpocalypse
 
@@ -980,7 +1031,7 @@ You can contact or verify outreach from Jagmeet by emailing mail@journalistjagme
 
 Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
 
-Anthropic’s Claude reports widespread outage
+MyFitnessPal has acquired Cal AI, the viral calorie app built by teens
 
 SaaS in, SaaS out: Here’s what’s driving the SaaSpocalypse
 
@@ -1032,7 +1083,7 @@ A third market intelligence provider, Similarweb, said that Claude’s U.S. down
 
 Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
 
-Anthropic’s Claude reports widespread outage
+MyFitnessPal has acquired Cal AI, the viral calorie app built by teens
 
 SaaS in, SaaS out: Here’s what’s driving the SaaSpocalypse
 
@@ -1082,7 +1133,7 @@ Stripe is not currently charging its own markup on the gateway, its product mana
 
 Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
 
-Anthropic’s Claude reports widespread outage
+MyFitnessPal has acquired Cal AI, the viral calorie app built by teens
 
 SaaS in, SaaS out: Here’s what’s driving the SaaSpocalypse
 
@@ -1139,11 +1190,223 @@ By submitting your email, you agree to our Terms and Privacy Notice.</div>
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
-            <div class="title">Trump Opens the Pandora’s Box of Assassination</div>
+            <div class="title">The Disappearing American Mortgage</div>
             <div class="meta">2026-03-03</div>
         </div>
         
         <div id="content-18" style="display:none;">
+            <h2>The Disappearing American Mortgage</h2>
+            <p><strong>The Atlantic | 2026-03-03</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/03/mortgage-decline/686178/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">If you’ve secured a loan and you are closing on a new home in the near future, congratulations. You’ve taken part in an essential middle-class rite of passage—and you’re one of the lucky few.
+
+The mortgage, the cornerstone of wealth building for generations of Americans, is vanishing. Data from the Mortgage Bankers Association show that Americans are applying for fewer mortgages than they have at any point in the past quarter century, including during the worst of the Great Recession, when the jobless rate was more than twice as high. Since the end of 1999, 96 of the 100 lowest readings of the MBA’s weekly index of new mortgage-loan applications have occurred in the past three years.
+
+The American real-estate market is frozen. Mortgage rates have just fallen below 6 percent for the first time since 2022. Still, few families are putting their homes up for sale, few families are buying, and little new stock is being created. High prices and high interest costs are holding working-class households out of the market, and wealthy individuals are making up a larger share of transactions. Young people are facing a future as perpetual renters. With less time to accrue home equity, many will end up poorer in retirement than their parents were.
+
+This overlooked trend has a few obvious causes. After the Great Recession, the Dodd-Frank Act tightened lending and underwriting standards. Mortgage lenders increased the amount of credit extended to wealthy households and reduced the amount of credit extended to middle-income households. (They did not change the amount of credit offered to low-income Americans, who are unlikely to buy a home anyway.) Banks focused more on providing suites of services to the well off, such as home loans, credit cards, and brokerage accounts, and less on making bread-and-butter loans to working families. The changes made the financial system safer, but also made buying a home harder for many people.
+
+At the same time, the country’s home builders sharply cut back on construction, producing a quarter as many properties in the early 2010s as they had before the Great Recession. Despite a recent uptick, they’re still producing roughly 40 percent fewer today, causing the country’s housing shortage to spread from the major coastal cities to smaller cities, suburbs, and rural areas. With supply constrained, prices shot up in the 2010s. The situation created winners. “Folks that bought, particularly pre-pandemic, have benefited from one of the biggest increases in home values that we’ve seen in history,” Michael Fratantoni, the chief economist at the Mortgage Bankers Association, told me. It also created losers. Many younger families couldn’t save for a down payment, given rising prices, the burden of student-loan payments, and the increasing cost of child care and health insurance.
+
+Read: It will never be a good time to buy a house
+
+When the coronavirus pandemic hit, the Federal Reserve dropped interest rates to zero. More than 6.9 million properties traded hands in 2021, pushing real-estate values up again. Even more borrowers—14 million of them—refinanced their existing loans to secure lower rates in 2020 and 2021. Then rising inflation forced the Fed to jack up borrowing costs. The average rate on a 30-year mortgage climbed from less than 3 percent to as high as 7.5 percent. Homeowners with cheap rates got “locked in,” leading the number of active listings to fall. The deep freeze commenced.
+
+In 2024, families needed an income of $126,700 to qualify for a median-price home, up from $79,600 in 2021, Chris Herbert, the managing director of Harvard’s Joint Center for Housing Studies, told me. “That priced 8 million renters out of the market,” he said, noting that most renters make $50,000 to $60,000 a year.
+
+Wealthy individuals and institutions became a stronger force. The portion of all-cash purchases rose 33 percent from 2020 to 2023. Cash buyers scooped up more than half of homes in New York City in the first six months of 2025. In West Palm Beach, Cleveland, and Miami, they made up more than a third of purchases. “Mortgage deserts” formed in disinvested neighborhoods, as well as in vacation towns and expensive cities, as real-estate-investment trusts and landlords scooped up “buy low, rent high” properties. In Baltimore, half of homes were purchased without a mortgage in 2022 and 2023, a report by Sharon Cornelissen, the director of housing at the Consumer Federation of America, found. In rural Hudspeth County, Texas, 98 percent were.
+
+The country still has twice as many homeowners as it has renters, and the homeownership rate is down only four percentage points from its George W. Bush-era high. Nevertheless, the share of Americans owning a home has not climbed in five years, despite the low unemployment rate, increase in wages, and boom in asset values—an unprecedented trend. Many younger families just can’t get on the property ladder. In the 1980s, the typical first-time homebuyer was in their late 20s; now they are nearly 40, according to some surveys. In the country’s 50 largest metro regions, only 3.1 percent of people under the age of 30 have a mortgage.
+
+The disappearance of the middle-class mortgage does not represent merely a short-term challenge for individual families. It portends major changes in the long-term financial security of the American middle class. The younger you are when you buy a property, the more time you have to develop equity and the more you benefit from rising real-estate prices. Imagine two people purchasing the same condo with the same loan terms, one at 28 and one at 48. If they both sell at 65, the latter’s settlement check will be only a third as big as the former’s, assuming that home values increase 3 percent a year. Plus, mortgage costs are generally fixed for 30 years, whereas rent goes up annually, sometimes far faster than wages. “Housing wealth provides a lot of stability,” Herbert told me.
+
+Nobody likes paying their mortgage. But many Americans are going to wish they had the chance to.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">‘Suddenly America Doesn’t Want My Children or Grandchildren Anymore.’</div>
+            <div class="meta">2026-03-03</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
+            <h2>‘Suddenly America Doesn’t Want My Children or Grandchildren Anymore.’</h2>
+            <p><strong>The Atlantic | 2026-03-03</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/magazine/2026/04/mixed-immigration-status-family-self-deportation/686062/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The Cruz family was exhausted. It was two days before Christmas 2024, and Rachel was coughing from bronchitis, her body once again crashing into the holiday break as she finished her 17th year teaching public high school in New York City. Irvi, her husband, was sleeping after his day shift at an upscale bistro on the Upper West Side, which had followed an overnight shift at a Latin dance club farther uptown, in Inwood. Between the two jobs, he’d dropped their daughters—Sara, 12, and Ana, 10—at their schools for gifted students, then rushed home to the Bronx to cook and do laundry.
+
+Check out more from this issue and find your next story to read.
+
+For years, Rachel and Irvi had been hustling to make this routine work, hoping that American immigration policy would evolve and allow Irvi, who had spent half his life in the United States, to become a citizen. Raising two children in New York City was expensive. Each day felt like a marathon they didn’t think they could finish. But the girls were thriving, and Rachel and Irvi were beloved at work. Every few years, they met with lawyers who urged them to hang on, so they did.
+
+I met the Cruz family in late 2016, when Donald Trump’s election, and his contempt for immigrants, first made them think of moving to Irvi’s hometown, in rural southern Mexico. But their daughters were just 2 and 4 then, and uprooting them was daunting. Four years later, Joe Biden’s win made the Trump years seem like an aberration, and Rachel and Irvi thought, once again, that a solution to their problem was within reach. Then came 2024, when 77.3 million Americans voted for Trump. His campaign signs had called for MASS DEPORTATION NOW! To the Cruzes, the message was clear: Irvi should give up and go home.
+
+The family had never been apart for long. The four of them linked arms or held hands when they walked down the street together, without seeming to notice they were doing it. Separation was not an option. So they would go, all of them.
+
+“We no longer have the faith that things will always be better here in the United States,” Rachel told me that night in December, sitting at their dining table, cupping a Zabar’s mug full of tea.
+
+From the September 2022 issue: Caitlin Dickerson’s Pulitzer Prize–winning story about the secret history of family separation
+
+Drained from work, Irvi shuffled down the stairs in sweatpants. He had dark bags under his eyes but greeted me with his squinty smile. He sat down and said he was excited to live freely for the first time in his adult life. He was also scared. The only story he’d known about his family—that they were proud New Yorkers—was about to end. Sara, who had been standing behind him, playing with his salt-and-pepper hair, ran into the kitchen to cry. Rachel hurried after her.
+
+“What do you want?” Rachel asked softly. “Do you want to give Papá a hug?”
+
+“No, I just want to go to my room,” Sara said. “I don’t want to talk about this. I don’t want to be here.”
+
+“Well, if we get it out now, maybe it’ll make you feel better later,” Rachel told her, unsure if that was true.
+
+Their tentative plan was to sell the house and move in with Irvi’s parents, 2,100 miles away. Irvi would go first, so he’d be out of the country before Trump took office. Rachel and the girls would join him seven months later, in August 2025, after finishing the school year and summer camp. They didn’t know what they’d do for income in Mexico, or where the girls—who knew only a little Spanish—would go to school.
+
+Friends thought they were overreacting. Some were upset. After all, New York was a sanctuary city and Irvi was married to an American citizen. Rachel and Irvi found these reactions maddening. They saw their American friends as stubbornly naive about the system they had been battling for decades, and their undocumented friends as deluded for clinging to hope instead of reason.
+
+Rachel’s mother, Susan McCormick, had heaved and sobbed when she learned that the granddaughters she was helping to raise would be leaving New York. She and Rachel’s father, Doug, were furious with the country for putting them in this situation. Their daughter was one of nearly 4.2 million American citizens and permanent residents in the United States with an undocumented spouse, and Sara and Ana were among 6.3 million children with an undocumented parent. How many were also choosing family over country? And what was the United States losing in the process?
+
+By Christmas 2024, the McCormicks were trying to be stoic, to give Rachel and Irvi strength and to show the girls that everything was going to be okay. Doug had become a genealogy nerd in retirement and was reminding himself that their ancestors had made a move like this every few centuries: Irish farmers running from famine, Germans displaced by war, and Russian and Ukrainian Jews escaping pogroms. He even found ancestors aboard the Mayflower.
+
+But all of these prior generations had found refuge here. “After 400 years in this country,” Doug told me, “suddenly America doesn’t want my children and grandchildren.”
+
+Rachel, Irvi, and their daughters would be the first in their family to run from—rather than to—the United States.
+
+On September 11, 2001, Irvi was 19 years old and had recently arrived in upstate New York. He was working on a construction crew, remodeling a Chinese restaurant, when the Spanish music on the radio was interrupted by grave English he didn’t understand. Terrorists had flown jets into the World Trade Center. George W. Bush’s administration would soon abandon negotiations to grant legal status to undocumented Mexicans and instead create the Department of Homeland Security, with a mission to deport them.
+
+But on September 12, Irvi’s employer still wanted him to come to work as if nothing had happened. It was the kind of mixed message that would characterize his life in the United States. After a few more years of construction work, he felt homesick and returned to Mexico. But as soon as he touched down there, he felt he’d made a mistake. He had grown up in a one-room house without running water, dreaming of riding a motorcycle—a luxury that he could never afford if he stayed. He started making plans to go back to New York right away.
+
+Irvi’s parents, Lulu and Martín, were leery of his decision. Both were the children of peasant farmers and had grown up in homes made of adobe and sticks. But they never thought of joining the more than 8 million Mexicans who’d moved north, starting with their parents’ generation and the U.S. government’s Bracero Program for temporary workers. American farmers got hooked on cheap labor and, after the program ended in 1964, continued to recruit Mexican workers, who now had to cross the border illegally.
+
+Read: The disturbing history of the Bracero Program
+
+Lulu, a street vendor, was afraid that discouraging Irvi would backfire. Martín, a bus driver on Mexico’s dusty rural highways, couldn’t hold back. “That country will eat you,” he said of the United States. “Of course, here it’s more work and less money, but you get used to it.”
+
+When Irvi told them he was going back, his parents knew they might never see him again. Martín thought to himself: I don’t have a son anymore.
+
+With his 16-year-old cousin, Irvi tried to sneak back across the border somewhere in Arizona. They got lost in the desert, and Border Patrol agents found them. Irvi’s cousin started crying, and one of the agents gave them water, peanuts, and cookies. “Don’t worry; you’re safe now,” the agent said in Spanish. “Tomorrow you can try again, and maybe you’ll make it.” After a few attempts, they were successful.
+
+Back in upstate New York, Irvi returned to working in construction. He was determined to learn English, so he immersed himself in American music and television, especially Chappelle’s Show.
+
+Around that time, Rachel, who grew up in a wealthy suburb of Philadelphia, graduated from Vassar. She had studied abroad in Mexico and taken a class with the geographer Joseph Nevins, who gave lectures about the American government’s complicity in a system that exploits immigrants for their labor but denies them the dignity of legal residency.
+
+She and Irvi met on a sunny afternoon in 2006 while they were watching an outdoor soccer game in Poughkeepsie. She was hobbling around on crutches because of a sprained ankle, and he jumped up to help her. Rachel was swept away by Irvi’s sweetness and exuberance. Irvi loved Rachel’s intelligence and empathy. They talked about everything—their different upbringings, their jobs, their roommate drama. Soon he was visiting her on the weekends in Philadelphia, where she had gotten a job. On one trip, a police officer stopped him, saw that he was undocumented, and let him off with a warning. To avoid the risk of driving for visits, Irvi moved in.
+
+Around 2009, they went to see the first of many lawyers, who said that Irvi wasn’t eligible to apply for legal status, even if he married Rachel, because he had gone back and forth across the border after living for more than a year in the United States. The only work-around was for him to spend 10 years in Mexico and then apply for a waiver. But a Democratic Congress, with Barack Obama in the White House, appeared to be on the precipice of passing immigration reform.
+
+Eventually, Rachel got a teaching job in New York, and they found an apartment in Harlem. Irvi started busing tables at the bistro on the Upper West Side, while Rachel taught overcrowded classrooms of low-income students. Despite the pressure and burnout, she felt like she was offering kids a chance at the American dream. No matter where you come from, she believed, if you land in a public school, and if you get a teacher like me, you can make it. On their third anniversary, Irvi proposed in a rowboat in Central Park.
+
+Sara was born in 2012, Ana in 2014. Irvi was their full-time caretaker, toting them by subway to museums, the aquarium, the zoo, and story time at the public libraries. On weekends, he squeezed in five shifts as a busboy. He and Rachel made enough money to cover the essentials, and Rachel’s parents helped with child care, but they went years without paying for a haircut or buying new clothes. They sometimes fought when they were tired and felt like they hadn’t seen each other in weeks, or when Irvi’s spontaneity clashed with Rachel’s need for order. But they could never stare each other down for long without cracking a smile.
+
+Irvi’s unresolved immigration status trailed them, usually from a distance. ICE agents once entered their apartment building looking for a neighbor; Rachel stood guard at the peephole while Irvi hid in the bedroom. A few years later, Irvi borrowed his in-laws’ car to take the girls to Coney Island. As they approached the park, he spotted a police checkpoint at the entrance. He pulled over and had a panic attack, then tried to play it off by telling the girls that the car was breaking down.
+
+Rachel and Irvi talked about what to do if ICE ever tried to arrest him while she was at work. Irvi would have to persuade the officers to wait long enough for Susan and Doug to pick up the girls. “You have to fight to make sure that our kids are safe,” Rachel told him.
+
+For years, Congress debated changes to the immigration system, including ones that would have helped Irvi. When Sara was old enough, she joined Rachel at protests with a sign that said Don’t deport my dad. As part of a campaign called Dream Across America, Rachel rode a bus to Washington, D.C., where members of Congress admitted to activists that they hadn’t known that so many mixed-status families were in limbo.
+
+Rachel was stunned by Trump’s first election, but Irvi had expected it. Up to this point, Sara and Ana had only a vague understanding that their father was different from them, but they began to realize that he was in danger. Ana lost interest in playing with other children and asked her parents why the president hated her. She had nightmares and panic attacks, and had to see a therapist. Irvi distracted her and Sara with bedtime stories about Eddie Spaghetti, a caricature of himself, who fought battles against dragons and monsters inspired by rude customers at his restaurant.
+
+As they did their best to block out national politics, their community embraced them. Rachel’s students nominated her for a Big Apple Award, which recognizes the best teachers in the city, and she became the head of the department at her school that teaches English as a new language. Ana and Sara became fixtures in their school plays and joined a children’s choir that rehearsed at Riverside Church. At the bistro, Irvi was promoted to server and then manager. He took night shifts at the club in Inwood, and began bringing home more money than Rachel—enough to buy the motorcycle he had dreamed of.
+
+They borrowed against Rachel’s retirement savings for a down payment on a bright-blue townhouse in the Bronx’s Little Italy. The house was far from a subway stop but had a spacious front porch that looked out onto a maple tree. The plumbing didn’t work and some rooms had no windows; Irvi paid his construction-worker friends to help him fix it up. The family turned hiding their home’s flaws into a giant art project, creating a mural out of postcards to cover up cracked walls and ornamenting the crooked old stairs with starburst wallpaper. Their American dream may have been spackled together with glue and construction paper, but it held.
+
+Rachel was standing in the front yard with a rake in her hand when their next-door neighbor Cookie ran out and announced that the 2020 election had been called for Joe Biden. Rachel felt something new: optimism. She and Irvi daydreamed about finishing the basement and redoing the kitchen. They started to believe they would grow old together there.
+
+During the summer of 2024, Biden announced a program, Keeping Families Together, that would finally allow people like Irvi to become citizens through their American spouse. Rachel holed up in their home office one Sunday with the application, attaching hundreds of documents that illustrated the life they had built together. She paid the government’s $580 fee and clicked “Submit.”
+
+“It looks like Irvi might finally be getting legal protection,” she texted me at the time.
+
+The next day, a federal judge put the program on hold after 16 Republican-led states sued. A few months later, Trump was reelected and the court terminated the program. Because of the application that Rachel had filed for Irvi, the incoming administration knew exactly who, and where, he was.
+
+In January 2025, after the holiday break, Rachel stayed up late watching TV interviews with survivors of the Los Angeles wildfires. She found comfort in hearing people say that even though their home was gone, they still had their family, and that’s all that mattered. The girls picked 10 family activities to do before Irvi left the United States. Sara wanted to go ice skating in Central Park. Ana requested a day at the American Dream mall in New Jersey, which has a ski slope and a water park. They found discount tickets for Hairspray, Gypsy, and Annie.
+
+On Irvi’s last day in New York, January 13, 2025, the whole family piled into the car for school drop-offs. Trump was planning to end a policy that made schools off-limits for immigration raids, so Rachel was carrying a trifold poster board explaining what to do in an encounter with ICE. Sara was finishing a homework assignment about the writers of the Declaration of Independence. “Let’s say, all of a sudden, you’re reading a story in English, and it’s about a dad, and all of a sudden you’re feeling really sad,” Rachel asked. “Do you have an adult that you can talk to?”
+
+Irvi bopped his head to La Mega, the Spanish-language radio station that he and the girls listened to each morning. For more than two decades, he had tried to be perfect—perfect at work, perfect in his marriage, perfect as a father and neighbor, as if playing a game that he could eventually win. He told me he had slipped, once, 22 years ago, when he was briefly charged with a misdemeanor for carrying a small amount of cocaine—a onetime mistake in his early 20s. Though the charge was dropped, and doesn’t even come up in a background check, Irvi said he didn’t want to hide anymore, in any respect. But honesty and character didn’t seem to matter to the incoming president, who was conflating all unauthorized immigrants with the people he called “illegal monsters”—the small number who had committed heinous crimes.
+
+“That’s not what I’ve been working for,” Irvi said. “That’s not what I deserve.”
+
+Irvi made a final visit to a Bronx bodega that served as a hangout for Mexican immigrants. He would go there when he felt homesick, or when he was tired of speaking English. His friends tried again to talk him out of leaving. Save more money first, they said, or talk to a lawyer—as if Irvi hadn’t been talking to lawyers for years. He left angry but arrived home sad, knowing he might never see those friends again.
+
+He tucked the girls in that night and waited for Doug, Rachel’s father, to arrive. Around 3 a.m., the two men, along with Mango the cat, climbed into an SUV that Irvi had bought on Facebook Marketplace and then crammed with their belongings.
+
+The three-day drive was smooth until they arrived at a gas station in South Texas that was swarming with Border Patrol agents. Irvi started panicking, and his face went gray. They stopped briefly at a family friend’s house, where they had planned to stay the night, but Irvi’s nervous system was telling him to get out of the country now. By Inauguration Day, he was in his hometown of San Lorenzo Cacaotepec. His parents had spent 20 years scraping together money to rebuild their house out of concrete and add a second structure—which meant there was now room for Irvi, his sister, and their families.
+
+Irvi rose in the dark each morning and drove along a rocky dirt road to a small plot of land that his mother had inherited. There were no blaring car horns or subway trains roaring underground. Just birdsong and rustling leaves. Irvi was enchanted and unnerved by Oaxaca’s clear blue skies, unmarred by skyscrapers. He spent hours hunched over outside each day, digging in his family’s land, pruning and picking, and breaking a sweat as soon as the sun came up. Along with relatives, he planted tomatoes, peppers, and onions, and sold them at outdoor markets. He barely broke even. His father had been right—in Mexico, you work more for less—and Irvi was struggling to adapt. He had been able to get anywhere in New York City without a map, but in Oaxaca he felt lost. “I have to start over again,” he told me. “It’s like I wasted all that time in New York now that I’m here. Everything I learned doesn’t apply.”
+
+He could not stand to watch the videos, flooding his phone, of armed ICE agents smashing car windows and wrestling fathers to the ground while their crying children watched from the back seat. The plan that he and Rachel had formulated all those years ago—for him to connect the girls with their grandparents before ICE could detain him—would never have worked. He would have been overpowered and dragged away. He hadn’t been in control then, he realized, and didn’t feel in control now.
+
+It didn’t help that his relatives worried that Rachel and the girls might never join him. They couldn’t believe that U.S. citizens would trade the privileges of their home country just to be with Irvi. A cousin told him: “You’re going to have to find a new wife.”
+
+Rachel never thought of abandoning Irvi—not since the rowboat in Central Park. But she often felt guilty that he had to bear the psychological burden of their relationship. Now she thought it was her turn to sacrifice to keep the family together.
+
+Without Irvi to pick the girls up from school with homemade sandwiches, Sara and Ana learned to ride the subway, texting him regular updates in the family’s group chat. As their friends studied for entrance exams to the city’s competitive middle and high schools, Sara refused to talk about her feelings and retreated into her phone. Ana’s nightmares returned. She was valedictorian of her fifth-grade homeroom class and teared up during her speech when she mentioned Irvi, who was watching over FaceTime.
+
+Once school let out for the summer—and as ICE agents stormed immigration courthouses downtown—Rachel and the girls took apart their New York lives. The postcards and pictures came down, revealing the cracked walls underneath. Rachel became engrossed in Facebook videos of other moms who were documenting their families’ self-deportation process and describing their relief to be out of the United States.
+
+Sara had a final sleepover with friends. Two of them took her phone into a closet to record a message for her to listen to in Mexico. “You’re an amazing friend,” they said. “We’re gonna miss you so much.”
+
+Rachel bought a trailer for the last of their belongings. Her co-workers threw her a surprise party. The goodbyes “were more like See you laters,” Rachel said. “They’re not the same goodbyes as Irvi’s.” Her assistant principal told me that replacing a teacher of her skill level would take years.
+
+Rachel found a private school in Oaxaca for the girls and secured a job for herself, at an annual salary of $10,700—not nearly enough to live on, even in rural Mexico, and a pittance compared with her $120,000 salary in New York. They had accepted an offer on their house in the spring, but the deal still hadn’t closed by July. Rachel couldn’t afford the bills without Irvi’s income, and her debts were mounting. She told the girls they were leaving August 1, with or without the house money.
+
+Rachel’s father still couldn’t believe it had come to this. “I’m heartbroken because I believe in this country in an almost religious way,” Doug told me. But as a country, he said, “we fucked up.”
+
+Rachel and the girls—plus Coleslaw the cat and Pinto the dog—had planned to stop at tourist attractions to say goodbye to the United States. But Rachel was so frustrated and anxious by the time they left that they stopped only to sleep. She sped to the border, her adrenaline pumping.
+
+Irvi flew to northern Mexico to finish the two-day drive with them. Rachel spent the first night at his parents’ house wide awake and in tears. She told Irvi she felt like she couldn’t breathe. They reminded themselves that if Oaxaca didn’t work out, they could try Mexico City. Or they could apply for visas to move to Spain or Canada.
+
+As Doug had told them, “The whole world is open to you now, except for your home country.”
+
+Ana, now 11, put up a few Broadway posters in her new bedroom. Sara, now 13, hung birthday cards from friends in New York. They stuck their favorite New Yorker covers on the walls.
+
+When I arrived to visit them in early November, three months into their reunion, Irvi was still going to the farm before sunrise, and Rachel and the girls would leave home at 6 a.m. for the bumpy ride to school, which involved driving through a creek to reach a paved road. Ana said the hardest part about the move was leaving her New York friends, because it had taken her many years to make them. She made one friend at her new school whose family had moved from Canada that year; they sat together at lunch, talking about what it was like to start over somewhere new. Meanwhile, Sara sauntered across campus in a swarm of girls, who delighted in practicing their English skills on her. Though the school was technically bilingual, their teachers mostly spoke Spanish. In class, both girls’ eyes glazed over. They looked lost.
+
+Sara and Ana did their best to hide their discomfort in front of Irvi. “I try to say to myself that I’m not the only one and I should be calm about this,” Ana told me, “because people have done it before and I’m pretty sure they’ve turned out fine.” Plus, she said, “I will have a great college essay.”
+
+But sometimes their anguish spilled out. They were used to excelling in school, and now they felt like they weren’t learning anything. One night, when Sara was struggling with homework, she lashed out at her parents, yelling exactly what Irvi had been afraid to hear: “I didn’t choose to move here!” She ran up to her room. Irvi stayed on the living-room couch. They cried, separately.
+
+Outside those emotional swells, the family was relieved to be together, and free of the dread that had hung over them in New York. They relished the meals that Irvi’s mother, Lulu, prepared for them: rich and tangy beef, chicken-and-vegetable stew, fluffy corn cakes piled with salsa and beans. With all of their children and grandchildren at home, she and Martín now felt that they could live out their lives in peace.
+
+Sara and Ana told me they felt safer in Mexico. Rachel agreed, but worried about the friends and family they’d left behind. She thought they were too close to see what the United States was becoming.
+
+Rachel taught English at her new school, mostly through songs. She had free time for the first time in her adult life, but felt bored. When their house in the Bronx finally sold, she bought a few luxuries to make their new home more comfortable: a refrigerator, an oven, and a washing machine, so they wouldn’t have to scrub their clothes on the concrete washboard Irvi’s mom used. They paid off their debts, and had surprisingly little money left over, even with Rachel tutoring children of wealthy Mexican families on weekends and after school.
+
+They felt lucky to have had the freedom to immigrate to Mexico; no relatives in the United States relied on their care, and the sale of the Bronx townhouse funded the move. But it was still unclear how they would support themselves now that they were here. Rachel tried to be patient as Irvi figured out a plan. He had worked for so many years in the United States without a break, and he was clearly depressed. He knew he had to sell his motorcycle. He spent all day on the farm streaming Hot 97, an English-language radio station in New York. At night, he would scroll the social-media feed of the nightclub where he’d worked, telling Rachel which artists had performed and who had gotten into fights, until she snapped. “I don’t care,” she said, pleading with him to leave New York in the past.
+
+They tried to distract themselves with excursions on the weekends, but every time they got in the car, Irvi would either go quiet or unravel, then beat himself up for days. Rachel was frustrated that he couldn’t let them have a good time, until she realized that the only travel Irvi had ever done had been unpredictable and dangerous. He didn’t know how to enjoy a trip with his family, because he’d never had the chance.
+
+“I’m trying to be positive,” Irvi told me, but he felt like a disappointment. He began to pull away from the girls. He seemed to miss the United States more as time went on, not less. In Oaxaca, another American family invited them over to celebrate their first Thanksgiving in Mexico. He took one bite of stuffing and burst into tears. But that same month, he saw on Instagram that ICE had raided his bodega hangout in the Bronx. One of his friends—a father who worked as a bike messenger for a Chinese restaurant—was taken away.
+
+Irvi tried to reconnect with his relatives by attending birthday and anniversary parties. (“Half the town are his cousins,” Rachel told me.) He took me along to one party, in a small house with a concrete floor. Plastic tables, with bowls of taco fixings, were set up in a long row that stretched from the kitchen into the living room.
+
+I sat with two of Irvi’s aunts, Chela Santiago and Blanca Méndez, who are in their late 60s and have spent their whole lives in San Lorenzo Cacaotepec. Their fathers traveled back and forth to the United States, first as Braceros, then as unauthorized farmhands. Since then, dozens of relatives have followed. Chela’s brother went to New York in the 1990s and slept 10 to a room.
+
+“What they say about the United States isn’t true,” he said when he returned. “They treat you like animals.”
+
+Without poor Mexicans, Blanca told me, the U.S. would not exist. “I would like for all the Mexicans in the United States to come here,” she said, “and then let’s see what the United States really is.”
+
+Though Irvi was only a few seats away, she offered another blunt assessment of those who choose to leave home: “Sometimes they go because they want a life that isn’t theirs. Here, we live authentically.”
+
+Irvi was quiet. The United States was where he’d become a man, a husband, a father, a homeowner, a model citizen in every respect except the one that mattered to the U.S. government. Now he had done what his aunt wanted—what President Trump wanted—and he was beginning to live with that choice. Surrounded by family, he looked like a man without a home.
+
+People who migrate across borders leave pieces of themselves behind—pieces that don’t fit neatly back into place, even upon return. Irvi had known this since he was 19. A year after the family decided to leave the U.S., Rachel and the girls were discovering it, too. They went to New York to visit Rachel’s parents this past Christmas; right away, Sara bought frosted strawberry Pop-Tarts to bring back to her classmates in Oaxaca. She giggled on the phone at night with her new Mexican boyfriend. But Rachel had to pry her and Ana away from playdates with their New York friends. She changed the subject when they asked about visiting again for spring break in a few months.
+
+They ate traditional Chinese food in one friend’s home, Russian in another, Dominican in another—the kind of New York experience that they were all realizing they missed. During one visit in Harlem, Rachel asked to speak with me alone, at a coffee shop nearby. When we sat together, she finally broke down. She felt guilty every time she heard her daughters say they were happy to be “home” for the holidays. She saw them falling behind their New York friends academically, so she bought an algebra book to teach them herself. Her old fear of ICE was coursing through her body, even though Irvi was safe in Mexico. And she had been stifling these emotions around her parents all week, because none of them wanted to be the first to cry.
+
+“We tried so hard to make it work,” she told me. “I can’t think of anything else we could have done. And that’s the hardest thing about being here. We’re nice people. My kids are amazing. New York City would have been so lucky to have my kids.”
+
+She told me that a few days earlier, she had gone to visit an uncle in her old neighborhood in the Bronx, but avoided driving past the bright-blue house. Cookie, their neighbor, had reported that another family moved in but left within weeks. The house was dark and empty. The gardens were a mess. An old couch was outside, rotting.
+
+The Cruzes had poured themselves into that house. Now it looked like they had never lived there. Rachel couldn’t bear to see it.
+
+This article appears in the April 2026 print edition with the headline “Leaving the United States Behind.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-20')">
+            <div class="source">The Atlantic</div>
+            <div class="title">Trump Opens the Pandora’s Box of Assassination</div>
+            <div class="meta">2026-03-03</div>
+        </div>
+        
+        <div id="content-20" style="display:none;">
             <h2>Trump Opens the Pandora’s Box of Assassination</h2>
             <p><strong>The Atlantic | 2026-03-03</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/03/khamenei-assassination-precedent/686215/?utm_source=feed">Visit Original Website</a>
@@ -1183,13 +1446,13 @@ If tasked with a similar assignment in 2026, the intelligence community and the 
 As killing foreign leaders gets easier for us, harming our leaders also presumably gets easier for others. The international taboo against foreign political assassination has arguably had a stabilizing effect, despite those states—Russia, for example—that have flouted it. To put a fine point on it, however tempting it may be to eliminate troublesome foreign leaders, no policy maker in a democracy wants to spark acts of retaliation that cost the lives of our own leaders in turn.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">In Defense of Effeminate Gay Boys</div>
             <div class="meta">2026-03-03</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>In Defense of Effeminate Gay Boys</h2>
             <p><strong>The Atlantic | 2026-03-03</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/03/gay-boys-lgbtq-trans/686179/?utm_source=feed">Visit Original Website</a>
@@ -1233,13 +1496,13 @@ Meanwhile, real kids who don’t understand much about gender and sexuality are 
 My suggestion is to tell him the truth: The difference he feels is real. He is unlike most of his peers. Throughout history, there has always been a minority of people who share the interests of and behave more like the opposite sex, and he happens to be one of those people. And this means that, from time to time, he might be on the receiving end of cruelty, because people often fear what they don’t understand. In many situations, he might feel like he doesn’t quite fit in, because society is organized in a way that suits the majority. What all of this means is that he will need to be just a little bit stronger than his peers. Soon enough, he’ll find others who are like him, and all will be well. In the meantime, let him wear the dress and carry the doll if he pleases. Boys can do those things too.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">Trump Has Given America a Constitutional Dilemma</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Trump Has Given America a Constitutional Dilemma</h2>
             <p><strong>The Atlantic | 2026-03-02</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/03/war-powers-resolution-trump-congress/686216/?utm_source=feed">Visit Original Website</a>
@@ -1309,13 +1572,13 @@ Rafaela Jinich contributed to this newsletter.
 When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">The Fortress We Gave Away</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>The Fortress We Gave Away</h2>
             <p><strong>The Atlantic | 2026-03-02</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/03/chagos-islands-trump-britain-mauritius/686214/?utm_source=feed">Visit Original Website</a>
@@ -1403,60 +1666,54 @@ Most Chagossians say in polls that they want to be British. Some may wish to bec
 Under the American and British flags, Diego Garcia defends the Indo-Pacific region against aggressors who do not trouble their consciences about laws, pacts, or the rights of weaker nations. That’s more than enough moral justification to keep the old flags flying.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
-            <div class="source">The Atlantic</div>
-            <div class="title">The Big Story: The Iran War</div>
-            <div class="meta">2026-03-02</div>
-        </div>
-        
-        <div id="content-22" style="display:none;">
-            <h2>The Big Story: The Iran War</h2>
-            <p><strong>The Atlantic | 2026-03-02</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/national-security/2026/03/big-story-iran-war/686211/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">On Wednesday, March 4, Atlantic staff writers Tom Nichols, Toluse Olorunnipa, and Missy Ryan will discuss the United States and Israel’s joint attack on Iran with staff writer Vivian Salama. In this virtual event, they’ll discuss the death of Ayatollah Ali Khamenei, the Trump administration’s response, the complicated history of regime changes, and what comes next. Attendees can submit questions in advance for The Atlantic’s journalists to answer live during the session. Submit your questions here.
-
-To join their conversation, return to this page on Wednesday, March 4, at noon ET. Or add the event to your calendar here.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">Today’s <em>Atlantic</em> Trivia: Crack Open a Krating Daeng</div>
-            <div class="meta">2026-03-02</div>
-        </div>
-        
-        <div id="content-23" style="display:none;">
-            <h2>Today’s <em>Atlantic</em> Trivia: Crack Open a Krating Daeng</h2>
-            <p><strong>The Atlantic | 2026-03-02</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/03/daily-trivia-questions-answers-week-19/686213/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">There’s an old rule of thumb that you retain about 10 percent of what you read, 20 percent of what you hear, 30 percent of what you see via image or video, and so on up the ladder of experiential learning, until you get to a 90 percent retention rate for the things you learn by doing yourself.
-
-The teeny problem is that none of this is backed by science; it’s a bastardization of the “cone of learning” that the education theorist Edgar Dale developed but never intended to be prescriptive.
-
-But doesn’t it feel right? So don’t just read Atlantic stories. Do them, with this week’s Atlantic Trivia.
-
-Find previous questions here, and to get Atlantic Trivia in your inbox every day, sign up for The Atlantic Daily.
-
-And by the way, did you know that the United States once reportedly planned to assassinate Cuban President Fidel Castro with a booby-trapped seashell? U.S. intelligence knew that Castro was an avid scuba diver, so it allegedly planned to load a particularly irresistible-looking mollusk with explosives and hope that Castro drifted by to investigate.
-
-The scheme stands out as particularly outlandish, which is really saying something: The retired Cuban counterintelligence chief Fabián Escalante alleged that the CIA came up with 638 plans in total to assassinate Castro.
-
-How did you do? Come back tomorrow for more questions, and if you think up a great question after reading an Atlantic story—or simply want to share a fact—send it my way at [email protected].</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">Amazon Cloud Unit's Data Centers In UAE, Bahrain Damaged In Drone Strikes</div>
+            <div class="meta">2026-03-03</div>
+        </div>
+        
+        <div id="content-24" style="display:none;">
+            <h2>Amazon Cloud Unit's Data Centers In UAE, Bahrain Damaged In Drone Strikes</h2>
+            <p><strong>Slashdot | 2026-03-03</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/26/03/03/0423206/amazon-cloud-units-data-centers-in-uae-bahrain-damaged-in-drone-strikes?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+
+Just like putin back in 2022, he started this shit, so it is his job to fix it.
+
+This shows that no matter how much you cozy up you&#39;re not safe.
+
+Yeah, Iranian drones striking an Amazon data-center is Trump&#39;s fault.
+
+Flip the script, if Trump decided against intervention because retaliation might negatively impact some of the large corporations that donated to his inauguration, you&#39;d be criticizing him for that too, would you not?
+
+Honestly its tiring seeing you TDSers post over and over again.  Yet we have to respond because otherwise some low-information voter might read it and not realize they are just looking at a stopped clock.
+
+It only one data center was hit, most AWS customers who properly configured their infrastructure over multiple availability zones shouldn&#39;t be seriously impacted by this outage. It should have just failed over seamlessly.
+
+Of course, that also requires that AWS engineered THEIR infrastructure correctly and everything failed over as expected. I&#39;ve found in the past that AWS&#39;s actual data center resiliency isn&#39;t as good as their marketing says that it is.
+
+After that Melania movie, Amazon deserves this.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Pie are not square.  Pie are round.  Cornbread are square.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
             <div class="source">Slashdot</div>
             <div class="title">The 19th Century Silent Film That First Captured a Robot Attack</div>
             <div class="meta">2026-03-03</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>The 19th Century Silent Film That First Captured a Robot Attack</h2>
             <p><strong>Slashdot | 2026-03-03</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/03/03/0439237/the-19th-century-silent-film-that-first-captured-a-robot-attack?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">In Jewish folklore theres a non living creature called a Golem (yes , I imagine thats where Tolkein got the name from) which is made from the soil. Not strictly a robot but certainly shows people could imagine solid creatures (as opposed to spirits) that weren&#39;t natural that could be created out of mundane substances.
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+In Jewish folklore theres a non living creature called a Golem (yes , I imagine thats where Tolkein got the name from) which is made from the soil. Not strictly a robot but certainly shows people could imagine solid creatures (as opposed to spirits) that weren&#39;t natural that could be created out of mundane substances.
 
 The creation of life from clay is a recurring theme in many traditions, some predating the myth of the Golem: https://en.wikipedia.org/wiki/... [wikipedia.org]
 
@@ -1498,22 +1755,21 @@ The actual movie a minute long so feel free to watch. The robot is taken down by
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Be there.  Aloha.&quot;
--- Steve McGarret, _Hawaii Five-Oh_</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Superagers' 'Secret Ingredient' May Be the Growth of New Brain Cells</div>
             <div class="meta">2026-03-03</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Superagers' 'Secret Ingredient' May Be the Growth of New Brain Cells</h2>
             <p><strong>Slashdot | 2026-03-03</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/03/03/048214/superagers-secret-ingredient-may-be-the-growth-of-new-brain-cells?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
+            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
 
 we&#39;ve known this for a long time, sure studies like this are important, but without real world applications this is just more junk science so rich kids can play at being scientists and enjoy all the perks of lifelong employment and academic prestige as they congratulate each other for thier climbing the towers of institutionilization
 
@@ -1525,22 +1781,23 @@ Use it or lose it. If you let your brain atrophy by letting AI do your &quot;thi
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Be there.  Aloha.&quot;
--- Steve McGarret, _Hawaii Five-Oh_</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Iowa County Rolls Out Extensive Zoning Rules For Data Centers</div>
             <div class="meta">2026-03-03</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Iowa County Rolls Out Extensive Zoning Rules For Data Centers</h2>
             <p><strong>Slashdot | 2026-03-03</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/03/02/2210232/iowa-county-rolls-out-extensive-zoning-rules-for-data-centers?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Did you reckon they go hunting for corn without flashlights?
+            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+
+Did you reckon they go hunting for corn without flashlights?
 
 Since the Earth is full of party poopers that don&#39;t want to build stuff anywhere, space is the only viable option.
 
@@ -1553,6 +1810,10 @@ That’s certainly one creative way to convince Skynet that its mission is justi
 The irony of Skynet destroying humanity for the purpose of mining the last shitcoin, better not be lost.  Fucking blockchain from hell better be encoded to spit out “42” at that moment.  As an epitaph sig.
 
 Here, have a sobering dose of reality: https://taranis.ie/datacenters... [taranis.ie]
+
+Even in orbit they can&#39;t help screwing up the planet.
+
+https://hackaday.com/2026/03/0... [hackaday.com]
 
 I live 600 ft from an Amazon DC in Northern VA.  There will be FOURTEEN DC complexes within 1/4 mile of our development.
 
@@ -1586,24 +1847,27 @@ If you shove a couple of servers in a garage? You&#39;re now a data center by th
 
 Sucks to suck homelabbers (myself included, but I live elsewhere)
 
+Playing with the definitions legally is fun, especially when there are silly typos in the rules. Such as in Amsterdam where they banned additional construction of hyperscale datacentres. A &quot;hyperscale&quot; datacentre is defined as a datacentre consuming more than a certain amount of power AND consuming more than a certain amount of land. Microsoft&#39;s solution? Oh our hyperscale datacenter is not a hyperscale datacentre because, we&#39;re building skyscrapers and making the datacentre vertical. It&#39;ll still consume a
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Be there.  Aloha.&quot;
--- Steve McGarret, _Hawaii Five-Oh_</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">British Columbia To End Time Changes, Adopt Year-Round Daylight Time</div>
             <div class="meta">2026-03-03</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>British Columbia To End Time Changes, Adopt Year-Round Daylight Time</h2>
             <p><strong>Slashdot | 2026-03-03</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/03/02/2151248/british-columbia-to-end-time-changes-adopt-year-round-daylight-time?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Just tell cheeto that changing clocks was a liberal idea and that sharpie will scribble an executive order in no time.
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+
+Just tell cheeto that changing clocks was a liberal idea and that sharpie will scribble an executive order in no time.
 
 Stop blaming the farmers. Do you really think the rural-dweller or their herd of livestock care one lick what set of segments/pixels are lit when they rise, before the sun, to begin feeding? How do you think the cattle would feel about suddenly getting breakfast an hour late*?Or that crop farmers, during planting/harvest seasons, are going to let morning light go to waste for any/no reason at all?That&#39;s some real BS right there.
 
@@ -1632,6 +1896,14 @@ Yes, and with DST in the dead of winter, dawn in Boston won&#39;t happen until 8
 All it will take is one cycle of DST during winter, and everyone will clamor for either going back to the semi-annual shifting, or Standard Time.  That&#39;s what happened last time this misguided experiment was actually tried.
 
 Oh, dear readers, you didn&#39;t realize?  Yes, the very same argument --- exactly the same discussion --- happened in the early 1970s, and, for exactly one year, 1974,
+
+Seriously? You thought an appeal to learn from history would work?
+
+The majority of people outside of \. are idiots, and the people here don&#39;t have the sway to end this stupid time change.
+
+Every year articles for ending this shit stating the reasons and logic appear, but nothing ever changes.
+
+Most people are just brain-dead automatons that don&#39;t think beyond the basics.
 
 I lived almost my entire life in Arizona on standard time year-round, and it always worked well. I knew what daylight saving was even when I was a kid, but I never heard the words &quot;spring forward, fall back&quot; until I was in my late 20s and every fucking WoW server (including the ones physically located in Phoenix) did that shit.
 
@@ -1674,6 +1946,14 @@ Though I will concede this change will piss off anyone who owns a sundial.
 By the way where I live solar noon is at 12:56 in Jan and at 13:48 in Jul, and no one cares. That said I guess in BC people will care, after all 2026 years ago they didn&#39;t have wristwatches and the sun&#39;s location was the only way to tell the time. /lamejoke
 
 In reality solar noon is currently at 12:26 in in Vancouver, so it&#39;s not like the sun is correct now either.
+
+We can do flexible scheduling for those that need it - we have the technology.No we can&#39;t. Society exists in synchronization. You working an our earlier or later doesn&#39;t suddenly change the bank&#39;s opening hours or the time you need to pick up your kids from school.But yeah I agree with not changing the clocks, that said I&#39;m firmly in team *permanent daylight savings*. Having noon at 13:30 is great. There is so much I can do after work when it is still light outside and I have no problem driving to work in the dark, and my kids aren&#39;t raised to be pussies so they can walk to school in
+
+We can do flexible scheduling for those that need it - we have the technology.
+
+No we can&#39;t. Society exists in synchronization. You working an our earlier or later doesn&#39;t suddenly change the bank&#39;s opening hours or the time you need to pick up your kids from school.
+
+But yeah I agree with not changing the clocks, that said I&#39;m firmly in team *permanent daylight savings*. Having noon at 13:30 is great. There is so much I can do after work when it is still light outside and I have no problem driving to work in the dark, and my kids aren&#39;t raised to be pussies so they can walk to school in
 
 Sounds like you want to go back to the concept of &quot;local time for local people&quot;, which existed before railways required common timekeeping for the entirety of a route...  Noon was at different times of the day for east-west services...
 
@@ -1814,28 +2094,33 @@ As an Ontarian who has wanted the see the end of DST for several decades now, I 
 
 I don&#39;t much care whether they choose to adopt Standard or DST year around. That said, it seems to me that splitting the difference by moving all the clocks by thirty minutes - half-way between Standard and DST - is the most equitable solution. I don&#39;t understand why doing it this way h
 
+As an Ontarian who has wanted the see the end of DST for several decades now, I hope British Columbia&#39;s good sense is the catalyst that causes the rest of Canada to consign this obsolete practice to the trash heap of history.
+
+I don&#39;t much care whether they choose to adopt Standard or DST year around. That said, it seems to me that splitting the difference by moving all the clocks by thirty minutes - half-way between Standard and DST - is the most equitable solution. I don&#39;t understand why doing it this way h
+
 Can they do that?   Sure, they can skew the clock later, but, then what happens?  Will the folks affected by sending their kids off into the darkness in the winter start changing the school time to an hour later?    If so, will businesses begin changing their hours to an hour later to accommodate the folks that are taking their kids to school and picking them up.    Will the whole system slowly shift under the weight of each complaint that rises in the winters so&#39;s that, eventually, they&#39;ll have year-round
 
 The time changing is a glaring example of how our governments are unable to make decisions when no lobby is pushing them. It&#39;s a disgrace to humanity that decades after every last shred of doubt that it does anything good has been eliminated, we still have it.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Be there.  Aloha.&quot;
--- Steve McGarret, _Hawaii Five-Oh_</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Apple Might Use Google Servers To Store Data For Its Upgraded AI Siri</div>
             <div class="meta">2026-03-02</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Apple Might Use Google Servers To Store Data For Its Upgraded AI Siri</h2>
             <p><strong>Slashdot | 2026-03-02</strong></p>
             <a class="original-link" href="https://apple.slashdot.org/story/26/03/02/2140230/apple-might-use-google-servers-to-store-data-for-its-upgraded-ai-siri?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">I don&#39;t think I ever heard of Siri being used in a way that seemed useful to me.
+            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
+
+I don&#39;t think I ever heard of Siri being used in a way that seemed useful to me.
 
 It has been a voice assistant on an iPhone, to which you could, for example, dictate a message and have it sent - but you&#39;d be anxious about the accuracy of the message, and about it being sent to the correct person.
 
@@ -1867,121 +2152,11 @@ Literally the only company I&#39;ve ever dealt with professionally that utterly 
 
 Honestly, are people still buying this bullshit?
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-&quot;Be there.  Aloha.&quot;
--- Steve McGarret, _Hawaii Five-Oh_</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">HBO Max and Paramount+ To Merge Into One Streaming Service</div>
-            <div class="meta">2026-03-02</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>HBO Max and Paramount+ To Merge Into One Streaming Service</h2>
-            <p><strong>Slashdot | 2026-03-02</strong></p>
-            <a class="original-link" href="https://entertainment.slashdot.org/story/26/03/02/2125201/hbo-max-and-paramount-to-merge-into-one-streaming-service?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
-
-I have hbo (no commercials) included with my cell plan from back when AT&T owned HBO. They started charging and extra $10 for it some time ago, but it is still cheaper than if I were to get it separately. Are they going to kick me off now, too bad so sad? Up my price? Or honor the contract I signed all those years ago?I got in on the end-of-year buy-in on Paramount+ last year. $60 for Paramount+ and Showtime, commercial free, for one year. I kinda wonder what they&#39;re gonna do with plans like mine. Do they merge services and let us keep accessing them, or just drop current contracts and make us take whatever price they decide the &quot;new and improved&quot; service is worth? Some &quot;monthly fee of both put together&quot; with a few cents knocked off to show the value of the merged service that some of us didn&#39;t want?I&#39;m just curious how
-
-I have hbo (no commercials) included with my cell plan from back when AT&T owned HBO. They started charging and extra $10 for it some time ago, but it is still cheaper than if I were to get it separately. Are they going to kick me off now, too bad so sad? Up my price? Or honor the contract I signed all those years ago?
-
-I got in on the end-of-year buy-in on Paramount+ last year. $60 for Paramount+ and Showtime, commercial free, for one year. I kinda wonder what they&#39;re gonna do with plans like mine. Do they merge services and let us keep accessing them, or just drop current contracts and make us take whatever price they decide the &quot;new and improved&quot; service is worth? Some &quot;monthly fee of both put together&quot; with a few cents knocked off to show the value of the merged service that some of us didn&#39;t want?
-
-I have hbo (no commercials) included with my cell plan from back when AT&T owned HBO. They started charging and extra $10 for it some time ago, but it is still cheaper than if I were to get it separately. Are they going to kick me off now, too bad so sad? Up my price? Or honor the contract I signed all those years ago?I am altering the deal.   Pray I don’t alter it any further.
-
-I have hbo (no commercials) included with my cell plan from back when AT&T owned HBO. They started charging and extra $10 for it some time ago, but it is still cheaper than if I were to get it separately. Are they going to kick me off now, too bad so sad? Up my price? Or honor the contract I signed all those years ago?
-
-I am altering the deal.   Pray I don’t alter it any further.
-
-Offer everyone who has either of the old plans a subscription to the new merged service.Which will cost more since it is &quot;worth more&quot; because both sides now have access to new content.Anyone who doesn&#39;t want to pay more is free to quit.
-
-This will create a bunch of new revenue for the merged service, or a mass exodus.
-
-Really hoping they don&#39;t use the Paramount+ platform going forward.  It is by far the worst performing streaming application I have experienced.  I have not used HBO Max, but it cannot be as bad as Paramount+.  They should hire some programmers and make a proper application that runs quickly on the devices that run it.  There should be nothing too complex about browsing lists and surfacing data quickly.  Paramount+ is a failure and really frustrating to use compared to every other service, Netflix and Apple+ being the best in my opinion.From my memory of a year and some change ago, HBO/Max/HBOMax/whatever they&#39;re calling it today was pretty terrible too. So, at least they&#39;ll be merging the two worst performing streamers.
-
-Really hoping they don&#39;t use the Paramount+ platform going forward.  It is by far the worst performing streaming application I have experienced.  I have not used HBO Max, but it cannot be as bad as Paramount+.  They should hire some programmers and make a proper application that runs quickly on the devices that run it.  There should be nothing too complex about browsing lists and surfacing data quickly.  Paramount+ is a failure and really frustrating to use compared to every other service, Netflix and Apple+ being the best in my opinion.
-
-From my memory of a year and some change ago, HBO/Max/HBOMax/whatever they&#39;re calling it today was pretty terrible too. So, at least they&#39;ll be merging the two worst performing streamers.
-
-Of all the major streaming platforms, Paramount+ stands alone in how often it just doesn&#39;t work. It doesn&#39;t work reliably on state-of-the-art streaming boxes. It doesn&#39;t work reliably on desktop PCs. In fact, of all the devices we have in our household, it works reliably on a total of zero of them.
-
-We have several of the other commercial streaming platforms plus the apps or online services for several of our main national TV channels as well and almost all of them work almost all of the time. It&#39;s
-
-Really hoping they don&#39;t use the Paramount+ platform going forward.  It is by far the worst performing streaming application I have experienced.  I have not used HBO Max, but it cannot be as bad as Paramount+.  They should hire some programmers and make a proper application that runs quickly on the devices that run it.  There should be nothing too complex about browsing lists and surfacing data quickly.  Paramount+ is a failure and really frustrating to use compared to every other service, Netflix and Apple+ being the best in my opinion.When you say &quot;platform&quot; what do you mean?The server uptime/latency?Their Android app?Their iOS app?Their website?The account/content settings available to users?
-
-Really hoping they don&#39;t use the Paramount+ platform going forward.  It is by far the worst performing streaming application I have experienced.  I have not used HBO Max, but it cannot be as bad as Paramount+.  They should hire some programmers and make a proper application that runs quickly on the devices that run it.  There should be nothing too complex about browsing lists and surfacing data quickly.  Paramount+ is a failure and really frustrating to use compared to every other service, Netflix and Apple+ being the best in my opinion.
-
-When you say &quot;platform&quot; what do you mean?The server uptime/latency?Their Android app?Their iOS app?Their website?The account/content settings available to users?
-
-PEACOCK. Don&#39;t even try it, it&#39;s that bad.
-
-If we would insist on standards then there wouldn&#39;t be a thread about crappy players. People would simply move on from them, and try player numbers 67, 68, 69, and then &quot;nice, I like this one.&quot;
-
-But nooooooooo, we wouldn&#39;t want standards like pirates get to have, so each proprietary file server gets its own unique, shitty, never-faced-off-against-any-competitors player.
-
-The very idea that there is a Paramount player (is this company somehow known for its quality software?), is evidence we&#39;re in bearded Spock u
-
-Because if they force you to use their app they can spy on you and make sure you look at their ads.
-
-Depending on what day you ask, there might, or might not, also be X.
-
-And most of their content will still suck and everybody will be watching YouTube shows and movies produced by tiny studios with tiny budgets doing their effects with AI. No amount of mergers will make big content viable.
-
-The patriotic fervor of a fascist twat who thinks praising Dear Leader lifts his boat; news reports that would make Putin blush (more from embarrassment than excess, say what you will, dude knows how to suppress a polity), all backed by decades of the cash-extraction expertise Oracle has taught you to know and love.
-
-Ask not what your teevee can do for you. Ask what your Teevee can do to your cou
-
-It speaks to the propaganda going on out there that this got marked troll. At the end of the day, this will just make the streaming service as a propaganda, Outlet more than anything. You know it and I know it and everybody else knows it.
-
-The REAL prize is CNN. It has a worldwide reach, and now it will be propaganda.No, when terrible things happen in the United States? There will be literally no one to report on it to the wider world. You are now trapped and you donâ(TM)t even know it. That you means ev
-
-it places major swaths of the film, television and news industries under one roof: Warner Bros. and Paramount studios, HBO Max and Paramount+, and CBS and CNN would all have the same parent company.I wouldn&#39;t be opposed to this merger as long as they divested themselves of CBS and CNN before approval.  News organizations should not be consolidated to the point that we have no independent news available.Concentrating all the news organizations under one editorial board presents the opportunity for one person&#39;s opinion becoming the only news that is broadcast, either right-leaning or left-leaning.  We don&#39;t want all news organizations to become either clones of MSNBC or Fox News with nothing in between.
-
-it places major swaths of the film, television and news industries under one roof: Warner Bros. and Paramount studios, HBO Max and Paramount+, and CBS and CNN would all have the same parent company.
-
-I wouldn&#39;t be opposed to this merger as long as they divested themselves of CBS and CNN before approval.  News organizations should not be consolidated to the point that we have no independent news available.
-
-Concentrating all the news organizations under one editorial board presents the opportunity for one person&#39;s opinion becoming the only news that is broadcast, either right-leaning or left-leaning.  We don&#39;t want all news organizations to become either clones of MSNBC or Fox News with nothing in between.
-
-&quot;will almost surely attract regulatory scrutiny from the Justice Department&quot;
-
-Seems much more likely it will almost surely attract luxurious gifts of cash to Trump and his associates.
-
-That Warner Bros content will disappear from Europe? HBO Max streaming isn&#39;t easily accessible in Europe.
-
-I gave up on streaming years ago and I don&#39;t think this will get me to go back.
-
-But in terms of consolidation being bad for consumers, this does seem much, much, much better than Netflix buying HBO to me. If Netflix had bought HBO, it would be a year tops until Disney or Amazon bought Paramount.
-
-A weird silver lining I haven&#39;t seen discussed, is Paramount and Waner Brothers both still put stuff out on physical media. You can buy DVDs of their shows and media, and I figured that would stop under Netflix, but hopefully it will continue for a while at least now.
-
-It will be sold to the Saudis or China by this time next year. Probably the Saudis, since they&#39;ve already had their hands in this deal.
-
-Now he has CG dragons... so who is he going to castrate or is this already the end with the prick nobody likes being in charge?
-
-I, for one, can&#39;t wait to shell out $150/month for my new  DisflixWarneluParamax+ streaming service!Me too.  Thank goodness we don’t have to pay cable prices anymore and can stream content for cheap.
-
-I, for one, can&#39;t wait to shell out $150/month for my new  DisflixWarneluParamax+ streaming service!
-
-Me too.  Thank goodness we don’t have to pay cable prices anymore and can stream content for cheap.
-
-Where is Antitrust law when it really matters?
-
-The deal to buy Warner Bros will almost surely attract regulatory scrutiny from the Justice Department Nothing a ballroom donation wouldn&#39;t fix...
-
-The deal to buy Warner Bros will almost surely attract regulatory scrutiny from the Justice Department
-
-Nothing a ballroom donation wouldn&#39;t fix...
+I&#39;m willing to help!  I won&#39;t even charge them for it.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Be there.  Aloha.&quot;
--- Steve McGarret, _Hawaii Five-Oh_</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2410,11 +2585,145 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">The Register</div>
-            <div class="title">Chrome Gemini panel became privilege escalator for rogue extensions</div>
+            <div class="title">Bank of England says it can run £431M settlement system without Accenture</div>
             <div class="meta">2026-03-03</div>
         </div>
         
         <div id="content-42" style="display:none;">
+            <h2>Bank of England says it can run £431M settlement system without Accenture</h2>
+            <p><strong>The Register | 2026-03-03</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/03/bank_of_england_accenture/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">As the last Accenture employee clocked off from supporting the Bank of England&#39;s £431 million Real-Time Gross Settlement (RTGS) system, the Old Lady of Threadneedle Street was assured it would no longer depend on the global consultancy.
+
+Probed by MPs this week, deputy governor Dave Ramsden said he was confident the UK&#39;s central bank had the in-house skills and intellectual property to run RTGS, which it started planning in 2016.
+
+Members of the House of Commons&#39; Public Accounts Committee, a spending watchdog, were concerned the Bank of England might end up having to pay to support the bespoke software, which manages £790 billion in transactions every day.
+
+Committee member Rupert Lowe said: &quot;In my experience, when you get involved in writing bespoke software, particularly with people like Accenture, if you&#39;re not careful, you end up running up a very big downstream bill.&quot;
+
+Ramsden said: &quot;It was a key part of the contract with Accenture that they would pass everything back to us to run, so we are not contracting out. In fact, Friday (February 27) was the last involvement of Accenture.&quot;
+
+Some government departments have become dependent on expertise from suppliers such that they have to extend contracts without competition, partly through a lack of internal knowledge.
+
+For example, in January last year, the UK tax collector awarded Accenture an additional £35.2 million without competition to run the National Insurance and PAYE System (NPS) because only Accenture could manage the technical risk, age, and intricate interdependencies of the solution, a public notice said.
+
+Ramsden said the Bank of England was now able to manage any issues with RTGS, as well as develop new features on the system:
+
+&quot;We have technology experts who, [when we] have one of these instances, we&#39;ll get to what&#39;s happened. We&#39;ll be able to work it out from the code. We can fix it. On the innovation agenda, these are the people who are going to be enhancing the system.&quot;
+
+Nathan Monk, the Bank of England&#39;s chief information officer, told the committee Accenture and Bank of England staff had co-located from the beginning of the contract, while bank technical staff were placed in Accenture teams during the development of the RTGS. The bank also owns the intellectual property for the system.
+
+&quot;It has been a conscious decision. We embedded people in the Accenture team real early on, and we&#39;ve grown that capability throughout the time as well,&quot; he said.
+
+In a report last year, the National Audit Office (NAO) pointed out that the annual operating and maintenance costs for the RTGS had increased to around £41 million, compared with £21 million previously.
+
+Ramsden said that was because the cost of running the system had come in-house, along with the technical expertise.
+
+The Bank of England is a public body funded through fees for regulating financial institutions, income from banking services and banknote issuance, management fees charged to government agencies, and returns on investments built up over more than 300 years. It generates more income than it spends and contributes millions of pounds to the UK Treasury.
+
+In 2020, the bank contracted Accenture as its technical delivery partner. The previous RTGS relied on mainframe technology and was difficult to maintain because of its specialist hardware and a shortage of skills. The new platform is still internally hosted, but relies on &quot;cloud-native&quot; technologies, making it more flexible. It went live in April 2025.
+
+The NAO pointed out that the overall cost of the RTGS program was £431 million, 15 percent above what was planned and more than the original 11 percent risk contingency. Still, the costs remained lower than the industry standard for similar projects, the NAO said.
+
+&quot;The increase in cost was reasonable given the size and complexity of the program, and the number of uncertainties and risks that the bank had to manage,&quot; the auditors said. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">The Register</div>
+            <div class="title">Bootleg Windows, Office scheme crashes, triggers 22-month lockup for Florida woman</div>
+            <div class="meta">2026-03-03</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
+            <h2>Bootleg Windows, Office scheme crashes, triggers 22-month lockup for Florida woman</h2>
+            <p><strong>The Register | 2026-03-03</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/03/windows_office_software_scalper/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">A Florida woman will spend nearly two years behind bars after being found guilty of fraudulently acquiring Microsoft certificate of authenticity (COA) labels and selling them in bulk.
+
+Heidi Richards, 52, operated the company Trinity Software Distribution (Trinity) and, according to court documents, acquired Microsoft COA labels &quot;from a variety of sources&quot; that were separated from the software packages with which they were intended to be paired.
+
+Richards, also known as Heidi Hastings, Heidi Shafer, and Heidi Williams, paid more than $5 million for Microsoft COA labels between 2018 and 2023.
+
+According to the indictment [PDF], she primarily procured keys for different versions of Windows 10 (Home/Pro) and Microsoft Office (2019/2021/Home/Student).
+
+Richards obtained thousands of keys during this time, and instructed employees to take the COA labels and transcribe the product activation codes written on them into a spreadsheet. She then sent the codes to buyers who could redeem them.
+
+In plain terms, prosecutors said Richards was illegally obtaining Microsoft software keys and selling them at heavily discounted prices, all while personally profiting.
+
+COA labels are one of Microsoft&#39;s anti-counterfeiting measures. They are not supposed to be sold separately from the packaging to which they were intended to be attached, but a black market for the labels exists due to vulnerabilities in Microsoft&#39;s supply chain, according to the indictment.
+
+Windows 7 certificate of authenticity label
+
+Microsoft hardware and software products have distinct labels incorporating anti-counterfeit measures. Earlier versions of Windows shipped with labels that used color-shifting ink, for example, among other measures. Since Office 2021, activation for the productivity software suite was made digital only, completed through the Microsoft account that purchased it.
+
+Authorized refurbishers also have their own specific COA labels to attach to refurbished products. Labels that don&#39;t display these measures can be viewed as counterfeit and cannot legally be sold.
+
+The labels Richards acquired were genuine and had product keys written on them, but they were obtained and later sold illegally.
+
+Since 2016, product keys have been concealed with a silver scratch-off material so that counterfeiters or illegal resellers can&#39;t simply examine a COA label to obtain the valid key.
+
+Richards was found guilty by a federal jury following a November 2025 trial. At the time, she was told she could face a maximum sentence of five years.
+
+In addition to the 22 months in prison, she must also pay a $50,000 fine, said Gregory Kehoe, US attorney for the Middle District of Florida. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-44')">
+            <div class="source">The Register</div>
+            <div class="title">Microsoft reportedly eyes E7 tier to make AI agents pay their way – like the humans they'll replace</div>
+            <div class="meta">2026-03-03</div>
+        </div>
+        
+        <div id="content-44" style="display:none;">
+            <h2>Microsoft reportedly eyes E7 tier to make AI agents pay their way – like the humans they'll replace</h2>
+            <p><strong>The Register | 2026-03-03</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/03/microsoft_365_e7_rumors/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Microsoft is reportedly planning to license AI agents like employees – and charge accordingly.
+
+The megacorp is considering a new Microsoft 365 subscription tier, informally dubbed E7, that would bundle Copilot and agent management tools as enterprises begin deploying AI agents alongside human staff.
+
+According to Mary Jo Foley analyst at Directions on Microsoft, the proposed E7 plan would include Microsoft 365 Copilot and Agent 365 – a preview service designed to manage and govern AI agents across enterprise environments – along components not currently incorporated in the Microsoft 365 E5 tier.
+
+As AI agents function as digital workers, they need identities, email accounts, Teams access, and policy controls – capabilities currently tied to user subscriptions. Microsoft 365 E5 plus Copilot already covers most of this, but E7 would package those elements into a single SKU.
+
+The Register asked Microsoft about its plans for an E7 tier, but other than acknowledging our questions, the company has yet to comment further.
+
+Microsoft 365 prices will increase on July 1, 2026, and the flagship E5 tier will rise from $57 to $60 per month. A year of Microsoft 365 Copilot will add another $30 every month. Adding the two together hints at what an E7 license might cost per month.
+
+According to reports, the awaited license tier could be priced at $99 per month.
+
+The figure might seem high, however, the licensing tier may appeal to some customers that want to avoid the administration overhead of E5 plus a selection of add-ons. It also benefits Microsoft, which needs to protect its revenues should agentic workers multiply in the commercial world.
+
+Foley said: &quot;Microsoft officials have said to expect agents, as they proliferate in the enterprise, to need to be licensed in ways similar to human employees.&quot;
+
+While agents might not need the same salaries or benefits as human workers, they certainly need licenses.
+
+Lane Shelton, Director of Advisory Services at Directions on Microsoft, said: &quot;This isn&#39;t about a new licensing tier. It&#39;s about Microsoft positioning itself as the enterprise AI control plane for the emerging digital worker.&quot;
+
+It would also ensure that, even as the nature of work evolves, Microsoft&#39;s licensing model extends to AI-driven workforces and the greenback generation machine keeps on rolling. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-45')">
+            <div class="source">The Register</div>
+            <div class="title">Chrome Gemini panel became privilege escalator for rogue extensions</div>
+            <div class="meta">2026-03-03</div>
+        </div>
+        
+        <div id="content-45" style="display:none;">
             <h2>Chrome Gemini panel became privilege escalator for rogue extensions</h2>
             <p><strong>The Register | 2026-03-03</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/03/google_chrome_bug_gemini/">Visit Original Website</a>
@@ -2442,13 +2751,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">Cybercriminals swipe 15.8M medical records from French doctors ministry</div>
             <div class="meta">2026-03-03</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Cybercriminals swipe 15.8M medical records from French doctors ministry</h2>
             <p><strong>The Register | 2026-03-03</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/03/french_medical_leak/">Visit Original Website</a>
@@ -2486,13 +2795,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">Vodafone to use Amazon sats for cell backhaul in remote parts of Europe, Africa</div>
             <div class="meta">2026-03-03</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Vodafone to use Amazon sats for cell backhaul in remote parts of Europe, Africa</h2>
             <p><strong>The Register | 2026-03-03</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/03/vodafone_to_use_amazon_leo/">Visit Original Website</a>
@@ -2526,118 +2835,6 @@ The company previously hoped to be the first to offer a commercial direct-to-sma
 However, it was beaten by Ukrainian telco Kyivstar, which in November started offering a direct-to device connection via Starlink for its subscribers, which allows them to stay connected during blackouts caused by the war, or in hard-to-reach areas.
 
 Virgin Media O2 (VMO2) got in before Vodafone in the UK, announcing its O2 Satellite service went live last week. Also powered by Starlink&#39;s constellation, this allows users to automatically connect via satellite in remote locations that have no phone signal, and is available initially as a £3-per-month ($4) Bolt On for all O2 Pay Monthly customers. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-45')">
-            <div class="source">The Register</div>
-            <div class="title">Brussels urged to pay 'sovereignty premium' to narrow China battery gap</div>
-            <div class="meta">2026-03-03</div>
-        </div>
-        
-        <div id="content-45" style="display:none;">
-            <h2>Brussels urged to pay 'sovereignty premium' to narrow China battery gap</h2>
-            <p><strong>The Register | 2026-03-03</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/03/eu_battery_production_costs/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Europe&#39;s EV battery cost gap with China – currently around 90 percent – could shrink to roughly 30 percent by 2030 if Brussels is willing to pay what campaigners call a &quot;sovereignty premium.&quot;
-
-That&#39;s the gist of a new analysis [PDF] from Transport & Environment (T&E), released ahead of the European Commission&#39;s delayed unveiling of the Industrial Accelerator Act, which argues Europe&#39;s battery headache isn&#39;t a lack of chemistry know-how, but rather a simple case of not having built enough yet.
-
-If Brussels backs the sector properly and factories actually ramp up, the report reckons the EU-China cost gap could fall from 90 percent to about 30 percent by 2030, leaving a difference of roughly $14 per kilowatt-hour.
-
-On a typical electric vehicle, that works out at an average €500 premium for a battery made in Europe rather than imported, a figure T&E frames not as a crippling cost but as a sovereignty premium for greater supply chain resilience.
-
-To get there, the group says Europe will need more than a dreamy wishlist of factories. The continent has to get better at actually making batteries, which means driving down scrap rates, tightening up processes, automating where it makes sense, and generally moving up the manufacturing learning curve that Chinese producers have already spent years climbing.
-
-T&E argues that scale won&#39;t magically appear on its own. If Brussels wants European plants to reach the volumes needed to compete, it has to tie public money to real local production. That means slapping clear &quot;Made-in-EU&quot; conditions on subsidies and tax breaks so that support for EVs and battery projects translates into cells built in Europe – not just press releases and imported packs.
-
-That logic mirrors earlier transatlantic efforts to secure upstream supply chains, including proposals for a US-EU &quot;critical minerals club&quot; aimed at reducing dependence on Chinese processing of key battery materials.
-
-Not everyone is convinced. Some automakers warn that strict local content requirements could push up costs and complicate supply relationships at a time when global competition is intensifying. But T&E&#39;s pitch is that without such rules, European producers may never achieve the scale needed to compete on price.
-
-The report lands just as Brussels gears up to unveil its Industrial Accelerator Act, a wide-ranging plan to funnel public money into &quot;strategic&quot; industries like batteries, renewables, and hydrogen. The act was originally scheduled for presentation last week, but EU regulators were forced to delay after &quot;Made-in-EU&quot; provisions in the draft text drew strong resistance, with critics saying it posed risks of closing the EU market, price hikes, and bureaucratic overload.
-
-T&E&#39;s message is clear, however. The cost gap with China doesn&#39;t have to be permanent, but closing it will take more than wishful thinking. Whether Europe&#39;s policymakers agree could define the bloc&#39;s role in the global electric vehicle race. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-46')">
-            <div class="source">The Register</div>
-            <div class="title">Gamers furious as Brit studio Cloud Imperium quietly admits to data breach</div>
-            <div class="meta">2026-03-03</div>
-        </div>
-        
-        <div id="content-46" style="display:none;">
-            <h2>Gamers furious as Brit studio Cloud Imperium quietly admits to data breach</h2>
-            <p><strong>The Register | 2026-03-03</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/03/brit_games_studio_cloud_imperium/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Gamers are ready to unleash their mightiest virtual weapons and point them at British games studio Cloud Imperium, after it sat on news of a data breach and then announced it without fanfare.
-
-Readers have contacted The Register to point out that the company’s (CIG’s) sites have, in recent hours, included a meek popup “Service Alert” that advises “We are aware of an IT incident that impacts some of our users” and offers a link to this page that reveals the incident took place on January 21st when the company says it was “targeted by a systematic and sophisticated attack, resulting in unauthorised access to some backup systems, including limited access to users’ personal data.”
-
-That went down like a cold bucket of sick to users
-
-One of the readers who contacted The Register about the incident described the company’s tactics as “Notice duly published in a locked filing cabinet stuck in a disused lavatory.”
-
-CIG claims it “acted quickly to contain the activity and block further access to this data and CIG systems, and we have refreshed security settings to ensure that there is no threat to our games or our users.”
-
-Yet the next sentence of the statement says the company does not “consider the incident poses a risk to the safety of our users” because the data accessed “relates only to basic account details (i.e. metadata, contact details, username, date of birth, and name). No financial or payment information was stored in the affected systems and was not accessible. No passwords were impacted, and the access was read-only. No data-injection or modification occurred.”
-
-That’s an optimistic response because contact details, names and dates of birth are all that’s needed to craft a convincing phishing campaign. Further, the vast quantity of stolen data available online means crooks can take info they swiped from CIG, add it to other troves, and build up more detailed pictures of individuals they might wish to target.
-
-“We are closely monitoring the situation and our systems to ensure that no further incidents occur,” the statement adds. “We are also taking steps to assess and detect whether any data that was accessed is released publicly. At this stage, there are no indications of any such activity.”
-
-The company concludes it is “sharing this update in the interests of transparency. However, we do not anticipate that this incident will have any impact on our users.”
-
-“Details compromised –but users expected not to worry because that&#39;s &#39;Basic&#39; information according to CIG/RSI. Yes, that went down like a cold bucket of sick to users.”
-
-Commentors in the game’s forums are similarly unimpressed.
-
-“WHERE IS THE EMAIL and FRONT PAGE NOTICE?” thunders the first comment in a thread on the matter.
-
-“What upsets me, is the lack of communication, and after a !month!, you get a basically hidden message, that something happened,” wrote another player. Plenty of others have decided CIG has breached one law or another, and expect action.
-
-CIG’s flagship product is a multiplayer game called “Star Citizen” that the outfit has worked on for years, fueled by crowdfunded contributions. The company says its community numbers in the millions, but hasn’t revealed how many were impacted by this incident.
-
-The Register has asked the company to clarify the matter and will update this story if we receive a substantive response. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">Claude having artificially intelligent hiccups and access lockouts for over two hours</div>
-            <div class="meta">2026-03-03</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Claude having artificially intelligent hiccups and access lockouts for over two hours</h2>
-            <p><strong>The Register | 2026-03-03</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/03/claude_outage/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Anthropic’s AI service Claude is having artificially intelligent hiccups and availability problems across its basic chat service, API, and Claude Code offering.
-
-The outfit’s Status Page reports investigations into the problem commenced at 03:15 UTC on March 3rd. In three subsequent updates, the last time-stamped 04:43 UTC, the company again reported “We are continuing to investigate this issue.”
-
-The Register tried to access the service at 05:10 UTC and was unable to log in. Claude produced the following error message.
-
-Anthropic’s social media accounts are silent on the matter, but users are filling in the blanks.
-
-A common comment laments the fact that Claude going down means developers must revert to their pre-generative-AI habits and actually write some code without assistance.
-
-We’ve also seen folks joyfully join some conspiratorial dots between Claude reportedly being used by the US military to plan its attack on Iran, the subsequent drone strikes that have disrupted operations at Amazon Web Services’ facilities in the Middle East, and Amazon’s ties to Anthropic.
-
-This is a developing story. The Register will update this story as information comes to hand. ®
 
 The Register   Biting the hand that feeds IT
 
@@ -3286,25 +3483,39 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Vietnam is booming, but foreign cash is fleeing from stocks - Reuters</div>
+            <div class="title">European capitals push back as Ukraine seeks fast-track EU membership - Reuters</div>
             <div class="meta">2026-03-03</div>
         </div>
         
         <div id="content-60" style="display:none;">
-            <h2>Vietnam is booming, but foreign cash is fleeing from stocks - Reuters</h2>
+            <h2>European capitals push back as Ukraine seeks fast-track EU membership - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-03</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPX0NUOEVLdkIyeHZhNmFRb2RGcTNTT3c3MWtxbzgzdzMxYTRTMUxQWXoxZzNEazVUdUx6RE8tSGFtN2NFTjVfTy1PbzBPLThGZnd0aWdxSlhfODJROVV5bWVfckFFbTIzX3F2WDY0UU9EYlpwV2hITGlac0IxWDhuVmxSWmNPeU55a2wtZ19XcXVmbzVURmFpRDd1Q0UtbDlfdzkxMzBTMA?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNQ2hFQ3pacW13THI1UnB0cm1vSWVoWDdDeXRtWmR3OXQ3dXQ3ekp3aHd3aU1CaVZ4TVVkUGZkcU8zOVFXNkNSMHlyTkpoMmUtS09UeWdsdFBWb1BxaVNtbEZHdTJsOFJ4V2NjSVBIeGd0b2dPRUZjYjlaTlM5a0Z2eFRTb1hlZ2NpLUVmaXc1RUhvYUVTcHY2dEotd0NnTkpnSmhyR1E4Nk4ycV9a?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-61')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Russia says war could backfire by spurring Iran and Arab nations to seek nuclear weapons - Reuters</div>
+            <div class="title">Putin will convey Arab concerns to Iran about attacks on oil infrastructure, Kremlin says - Reuters</div>
             <div class="meta">2026-03-03</div>
         </div>
         
         <div id="content-61" style="display:none;">
+            <h2>Putin will convey Arab concerns to Iran about attacks on oil infrastructure, Kremlin says - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-03-03</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOT1lKR25MSzYzZUF0UTh6M1c5NlE3QmtsZFNYRVhwY0czcU5rM3VoTjFMakRRRE8zbVotUmdzWTZ1RHViQ21oUTIzTFhYWTlIT2Z2dmNvUXF1NEJFVVFTY1dCZ0pnb0JKVXkyNmZiQWROYnAxS1FYdXJ1VFBIRC12aUo2a1RlSkJPbXJKalNMU0syZEkzcmw0OTJIUWo1Tk0wNnpFSWxfNkotUXRYdEV0T0ZqY1V3QzZqQjNNUmx0OU15WndCeUZDQjI1OA?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-62')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Russia says war could backfire by spurring Iran and Arab nations to seek nuclear weapons - Reuters</div>
+            <div class="meta">2026-03-03</div>
+        </div>
+        
+        <div id="content-62" style="display:none;">
             <h2>Russia says war could backfire by spurring Iran and Arab nations to seek nuclear weapons - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-03</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNam5GOWJOSXFYdkozOWhHdDlXUVEyQ2YyZFRxRWJZSHQ1ejRLU1VBdU5nUkZVWHBMRnZhSHpiQnhjaTcyRDhGRVFrRzd4b3NiM3lOT1p6eWFBRlNuVjlkYTVkSzRLVnIwRjZzQTNIRHFYa2pzblRRNnRNelgzLTc0ZjhRMHZGMlhpSDdQdURkcFVYZkZrVHJMZXQ0OWtpMUY3VE1MeTJBRTYxVmdKenhGVzBiSFRqTDNaNnc?oc=5">Visit Original Website</a>
@@ -3312,58 +3523,44 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump says 'sad to see' US-UK relationship deteriorate over Iran strikes - Reuters</div>
-            <div class="meta">2026-03-03</div>
-        </div>
-        
-        <div id="content-62" style="display:none;">
-            <h2>Trump says 'sad to see' US-UK relationship deteriorate over Iran strikes - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-03-03</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxNVktsSkhaSjd2X1NQRFNmdmhhcFhqRjZiT2xDZmVfUWYxM0VidzQ4aHNjNEJlalpCZWJKRnJ6UXRhN1YySTNUU3pSM2xuZ3dLQkdWeXZIbnVadkY2UDhrbjM2UEdmeENOdjE3RHczYlJ6SlpZQ1pESTJHS2RObDFUdlh0aUlzUEVHTmd5N1RwRDJMU0xFX0NVajF5Q0o5Vks4T09NckNYWDA?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-63')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Israeli military deploys additional forces to southern Lebanon - Reuters</div>
+            <div class="title">UN calls for investigation into deadly strike on school in Iran - Reuters</div>
             <div class="meta">2026-03-03</div>
         </div>
         
         <div id="content-63" style="display:none;">
-            <h2>Israeli military deploys additional forces to southern Lebanon - Reuters</h2>
+            <h2>UN calls for investigation into deadly strike on school in Iran - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-03</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOZHdoVkxrcVZJU2dtbDFhcVNpYkhOX1JTbXRtcEtQVEphVDk3aEIzWERnZ1FROXhmNlE4bzd5dGlWQUU4bGpmb21fT0RuTFdGdlFzWDJIZlNka3hRblIxS3E1a3UzbUpPejVxSW5rVklhamRXZURIRHozWkNreWdLNEw2UmNlNE9RXzBVVjFYbV9PSEhGOGdmNlB0bk0zMkU1WU9QUGJWQm5kblBQOUZrRUxxYw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOcDgzLWNUYTVHajRMbEZGVFJwMDhySDQ5NWhaQl9xR05CcmcxOWxGRjZ1WVBYeks1VGNDNTRIb3NwVzRKQXFGdThaLXJlVk5ydFdTLUR2QjF5QzJ3Z1JuZkJUVi0wcWdXT0ozWUFDSmRMQzNlTFlRQVJHckxGcnM4RkVSNzRRTE5TOEtwVTZqWW9BQS1EaUtiU0pONFdxdkJKcUZCNkZTbzVNTUxZUXc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-64')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Drone hits fuel tank at Oman's Duqm port - Reuters</div>
+            <div class="title">Iran war could reopen EU debate over Russian gas, Norway says - Reuters</div>
             <div class="meta">2026-03-03</div>
         </div>
         
         <div id="content-64" style="display:none;">
-            <h2>Drone hits fuel tank at Oman's Duqm port - Reuters</h2>
+            <h2>Iran war could reopen EU debate over Russian gas, Norway says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-03</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPLXdEV19Gb1JzMDhfSERVUFFTNVN5dVdfM0Jyc3VjSHlZWF9DZXdpUTFxeHphc0N1N2V4VmlEcmFRZVhEdUhYWEJ2dkUteHktdnFmaUYxdk1iUHJCcUpwLUFkUlk4V1BWT2dQejBLMVQtNmtORmJ5UERZbkdnQ2ZZNGVzX0MyUTBmM2QzVDY2aVlBTHZk?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOSWtsVUVUNXZUSGFtNWYtb0VDc2xvMnBOOUg2N0dmUTg2ZzMteHpkOGpGS21kRExOQlRkMzkyTFVoYVdLTE85QUEtS3prNTJKV0dSdHFMZ0F5cHZaZzRCUnAyVjIxM3B4X3B6N2k5bk1UREw1WHhrbnA3NXg1WWZCVjZZckJuNGpmS2pjTnhPR3Q4OHRVSWhFMl82cjZLU1h0a01OTm9oMHNMZnp6bW5peXBR?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-65')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">China vows to ensure energy security following US military actions - Reuters</div>
+            <div class="title">IAEA confirms entrances to Iran's Natanz enrichment plant were bombed - Reuters</div>
             <div class="meta">2026-03-03</div>
         </div>
         
         <div id="content-65" style="display:none;">
-            <h2>China vows to ensure energy security following US military actions - Reuters</h2>
+            <h2>IAEA confirms entrances to Iran's Natanz enrichment plant were bombed - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-03</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOaEpqTGZtUnNoTkZGY0thVy1UVHgyU3A5N2lHcHZhWVlidW1tbnBzbkRkMEN3RldJaXBrVnhTWUd2QXZxQkpITkstc0NON0FCN0V4UXhnMUhtZXRYUVM1eTJSMm1QVXhpXzR3QmRyU2U2LW1Wb0VkMURmTDZENlBVa2JWZjFYXzlTZGczdDhJaktob2Zuc29vamZPWkhhSnBNSnJsOUlITG1uLWdPYmFNNWdzSE5YUQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQbWxoOXVCcVlEdHhUMktlcE1UZzZIanZDeVZuZVR2VVJJUDNvZGVxMFFYNDNRRjVmRlFvWjJIUVZjWDN2eDg5bG1KcldYbml1VFk5R0hSUFVibWlZQWVnX0FtSjhCSGVqMTNpQmUwaElKNV81UFd1RFhZZzlxcF82U2lFWlNHSGtzWkIxdzdOZXNOT2JnazZmSnJqbkd0Tml0UlkyZWNyWFVnTEpNdk10ZU80OA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
