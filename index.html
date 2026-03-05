@@ -229,11 +229,11 @@ Apparently, the team behind Evo viewed that as a challenge, because today it is 
 
 Bacterial genomes are organized along relatively straightforward principles. Any genes that encode proteins or RNAs are contiguous, with no interruptions in the coding sequence. Genes that perform related functions, like metabolizing a sugar or producing an amino acid, tend to be clustered together, allowing them to be controlled by a single, compact regulatory system. It’s all straightforward and efficient.
 
-Eukaryotes are not like that. The coding sections of genes are interrupted by introns, which don’t encode for anything. They’re regulated by a sequence that can be scattered across hundreds of thousands of base pairs. The sequences that define the edges of introns or the binding sites of regulatory proteins are all weakly defined—while they have a few bases that are absolutely required, there are a lot of bases that just have an above-average tendency to have a specific base (something like “45 percent of the time it’s a T”). Surrounding all of this in most eukaryotic genomes is a huge amount of DNA that has been termed junk: inactive viruses, terminally damaged genes, and so on.
+Eukaryotes are not like that. The coding sections of genes are interrupted by introns, which don’t encode for anything. They’re regulated by a sequence that can be scattered across hundreds of thousands of base pairs. The sequences that define the edges of introns or the binding sites of regulatory proteins are all weakly defined—while they have a few bases that are absolutely required, a lot of bases just have an above-average tendency to have a specific base (something like “45 percent of the time it’s a T”). Surrounding all of this in most eukaryotic genomes is a huge amount of DNA that has been termed junk: inactive viruses, terminally damaged genes, and so on.
 
 That complexity has made eukaryotic genomes more difficult to interpret. And, while a lot of specialized tools have been developed to identify things like splice sites, they’re all sufficiently error-prone that it becomes a problem when you’re analyzing something as large as a 3 billion-base-long genome. We can learn a lot more by making evolutionary comparisons and looking for sequences that have been conserved, but there are limits to that, and we’re often as interested in the differences between species.
 
-These sorts of statistical probabilities, however, are well-suited to neural networks, which are great at recognizing subtle patterns that can be impossible to pick out by eye. But you’d need absolutely massive amounts of data and computing time to process it and pick out some of these subtle features.
+These sorts of statistical probabilities, however, are well-suited to neural networks, which are great at recognizing subtle patterns that can be impossible to pick out by eye. But you’d need absolutely massive amounts of data and computing time to process it to pick out some of these subtle features.
 
 We now have the raw genome data that the process needs. Putting together a system to feed it into an effective AI training program, however, remained a challenge. That’s the challenge the team behind Evo took on.
 
@@ -241,7 +241,7 @@ The foundation of the Evo 2 system is a convolutional neural network called Stri
 
 The researchers trained two versions of their system using a dataset called OpenGenome2, which contains 8.8 trillion bases from all three domains of life, as well as viruses that infect bacteria. They did not include viruses that attack eukaryotes, given that they were concerned that the system could be misused to create threats to humans. Two versions were trained: one that had 7 billion parameters tuned using 2.4 trillion bases, and the full version with 40 billion parameters trained on the full open genome dataset.
 
-The logic behind the training is pretty simple: if something’s important enough to have been evolutionarily conserved across a lot of species, it will show up in multiple contexts, and the system should see it repeatedly during training. “By learning the likelihood of sequences across vast evolutionary datasets, biological sequence models capture conserved sequence patterns that often reflect functional importance,” the researchers behind the work write. “These constraints allow the models to perform zero-shot prediction without any task-specific fine-tuning or supervision.”
+The logic behind the training is pretty simple: If something’s important enough to have been evolutionarily conserved across a lot of species, it will show up in multiple contexts, and the system should see it repeatedly during training. “By learning the likelihood of sequences across vast evolutionary datasets, biological sequence models capture conserved sequence patterns that often reflect functional importance,” the researchers behind the work write. “These constraints allow the models to perform zero-shot prediction without any task-specific fine-tuning or supervision.”
 
 That last aspect is important. We could, for example, tell it about what known splice sites look like, which might help it pick out additional ones. But that might make it harder for it to recognize any unusual splice sites that we haven’t recognized yet. Skipping the fine-tuning might also help it identify genome features that we’re not aware of at all at the moment, but which could become apparent through future research.
 
@@ -253,7 +253,7 @@ To test the system, the researchers started making single-base mutations and fed
 
 It also recognized when sequences weren’t translated at all. Many key cellular functions are carried out directly by RNAs, and Evo 2 was able to recognize when mutations disrupted those, as well.
 
-Impressively, the ability to recognize features in eukaryotic genomes occurred without the loss of its ability to recognize them in bacteria and archaea. In fact, the system seemed to be able to work out what species it was working in. A number of evolutionary groups use genetic codes with a different set of signals to stop the translation of proteins. Evo 2 was able to recognize when it was looking at a sequence from one of those species, and used the correct genetic code for them.
+Impressively, the ability to recognize features in eukaryotic genomes occurred without the loss of its ability to recognize them in bacteria and archaea. In fact, the system seemed to be able to work out what species it was working in. A number of evolutionary groups use genetic codes with a different set of signals to stop the translation of proteins. Evo 2 was able to recognize when it was looking at a sequence from one of those species and used the correct genetic code for them.
 
 It was also good at recognizing features that tolerate a lot of variability, such as sites that signal where to splice RNAs to remove introns from the coding sequence of proteins. By some measures, it was better than software specialized for that task. The same was true when evaluating mutations in the BRCA2 gene, where many of the mutations are associated with cancer. Given additional training on known BRCA2 mutations, its performance improved further.
 
@@ -263,7 +263,7 @@ But the striking thing about the early version of Evo was that, when prompted wi
 
 We don’t entirely know. If given a bunch of DNA from yeast (a eukaryote), it would respond with a sequence that included functional RNAs, and gene-like sequences with regulatory information and splice sites. But the researchers didn’t test whether any of the proteins did anything in particular. And it’s difficult to see how they could even do that test. With bacterial genes, they could safely assume that the AI-generated gene should be doing something related to the nearby genes. But that’s generally not the case in eukaryotes, so it’s difficult to guess what functions they should even test for.
 
-In a somewhat more informative test, the researchers asked Evo 2 to make some regulatory DNA that was active in one cell type and not another after giving it information about what sequences were active in both those cell types. The sequences that came out were then inserted into these cells and tested, but the results were pretty weak, with only 17 percent having activity that differed by a factor of two or more between the two cell types. That’s a major achievement, but it isn’t in the same realm as designing brand new proteins.
+In a somewhat more informative test, the researchers asked Evo 2 to make some regulatory DNA that was active in one cell type and not another after giving it information about what sequences were active in both those cell types. The sequences that came out were then inserted into these cells and tested, but the results were pretty weak, with only 17 percent having activity that differed by a factor of two or more between the two cell types. That’s a major achievement, but it isn’t in the same realm as designing brand-new proteins.
 
 Overall, given that this has come out less than four months after the paper describing the original Evo, it’s not at all surprising that there wasn’t more work done to test what Evo 2 can do for designing biologically relevant DNA sequences. Biology experiments are hard and time-consuming, and it’s not always easy to judge in advance which ones will provide the most compelling information. So we’ll probably have to wait months to years to find out whether the community finds interesting things to do with Evo 2, and whether it’s good at solving any useful protein design problems.
 
@@ -271,7 +271,7 @@ There’s also the question of whether further training and specialization can c
 
 The big open question is whether this system has identified anything that we don’t know how to test for. Things like intron/exon boundaries and regulatory DNA have been subjected to decades of study so that we already knew how to look for them and can recognize when Evo 2 spots them. But we’ve discovered a steady stream of new features in the genome—CRISPR repeats, microRNAs, and more—over the past decades. It remains technically possible that there are features in the genome we’re not aware of yet, and Evo 2 has picked them out.
 
-It’s possible to imagine ways to use the tools described here to query Evo 2 and pick out new genome features. So I’m looking forward to seeing what might ultimately come out of that sort of work.
+It’s possible to imagine ways to use the tools described here to query Evo 2 to pick out new genome features. So I’m looking forward to seeing what might ultimately come out of that sort of work.
 
 Nature, 2026. DOI: 10.1038/s41586-026-10176-5 (About DOIs).</div>
         </div>
@@ -410,11 +410,47 @@ Bloomberg also notes that some recent releases have not sold as well on PC as ho
         
         <div class="card" onclick="openModal('content-6')">
             <div class="source">Futurism</div>
+            <div class="title">Even Tech Investors Are Getting Sick of All These AI Startups With Weak Ideas</div>
+            <div class="meta">2026-03-05</div>
+        </div>
+        
+        <div id="content-6" style="display:none;">
+            <h2>Even Tech Investors Are Getting Sick of All These AI Startups With Weak Ideas</h2>
+            <p><strong>Futurism | 2026-03-05</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/ai-startups-investor-funding">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+If the whole “AI-startup to billion-dollar tech giant” pipeline is wearing you thin, you’re not alone. As it turns out, even the guys lavishing tech entrepreneurs with billions of dollars in venture capital funding are getting sick of the AI schtick.
+
+That’s courtesy of TechCrunch, which interviewed a number of investors at venture capital firms — the early-investors who try to turn young, risky companies into long-term hits.
+
+According to AltarR Capital founder and managing partner Igor Ryabenky, investors are now avoiding companies that use AI like a magic catch-all.
+
+“If your differentiation lives mostly in UI [user interface] and automation, that’s no longer enough,” Ryabenky told TC. “The barrier to entry has dropped, which makes building a real moat much harder.”
+
+Sure enough, with the rise of vibe coding, everyone and their grandma has been able to jump aboard the AI-hype train. It’s no longer enough to offer a flashy AI concept; in Ryabenky’s words, the challenge is to build an AI service around “real workflow ownership and a clear understanding of the problem from day one.”
+
+“Generic productivity tools, project management software, basic CRM clones, and thin AI wrappers built on top of existing APIs fall into this category,” the investor continued. “If the product is mostly an interface layer without deep integration, proprietary data, or embedded process knowledge, strong AI-native teams can rebuild it quickly. That is what makes investors cautious.”
+
+This view is echoed by Emergence Capital partner Jake Saper, who told TC the difference can be found in observing Cursor and Claude Code — the former which he says focuses on form for the sake of human users, rather than raw function. As AI agents become more popular, Saper suggests, investors are chasing the latter.
+
+“One owns the developer’s workflow, the other just executes the task,” he said, referring to Cursor and Claude Code, respectively. “Developers are increasingly choosing the execution over process.”
+
+The shift in sentiment from investors comes as midweight software as a service (SaaS) companies have faced immense struggles with fundraising and valuations.
+
+Part of that might be a consequence of the kind of valuation inflation that’s become rampant in the AI startup space over the past year. But with agentic AI hype on the rise, it could just be that the young companies hawking glorified chatbots will already have to make way for a new, slightly shinier industry fad.
+
+More on startups: Man Letting AI Rent Human Bodies Says Elon Musk Is His Hero</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
+            <div class="source">Futurism</div>
             <div class="title">America Does Not Run on Dunkin, RFK Jr. Rages</div>
             <div class="meta">2026-03-04</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-7" style="display:none;">
             <h2>America Does Not Run on Dunkin, RFK Jr. Rages</h2>
             <p><strong>Futurism | 2026-03-04</strong></p>
             <a class="original-link" href="https://futurism.com/health-medicine/boston-rfk-jr-attacks-dunkin-donuts">Visit Original Website</a>
@@ -470,13 +506,13 @@ Kennedy himself doesn’t appear to have a clear opinion on the matter, praising
 More on Kennedy: RFK Jr Startled by Trump’s Ability to Remain Alive Despite Dumpster-Tier Diet</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">Grammarly Offering Manuscript Reviews by AI Versions of Recently Deceased Professors</div>
             <div class="meta">2026-03-04</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Grammarly Offering Manuscript Reviews by AI Versions of Recently Deceased Professors</h2>
             <p><strong>Futurism | 2026-03-04</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/grammarly-ai-reviews">Visit Original Website</a>
@@ -508,13 +544,13 @@ This isn’t the only AI tool from Grammarly that will pose as a real pedagogue.
 More on AI: New AI Agent Logs Directly Into College Platform Canvas to Do Your Homework for You</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">Polymarket Quietly Takes Down Bet On Nuclear Detonation</div>
             <div class="meta">2026-03-04</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>Polymarket Quietly Takes Down Bet On Nuclear Detonation</h2>
             <p><strong>Futurism | 2026-03-04</strong></p>
             <a class="original-link" href="https://futurism.com/science-energy/polymarket-nuclear-detonation">Visit Original Website</a>
@@ -542,13 +578,13 @@ The international version of Polymarket is currently not subject to US trading l
 More on prediction markets: Anonymous Polymarket Accounts Won $1.2 Million on Trump’s Iran Strikes in Suspicious Bets</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">After Banning Anthropic From Military Use, Pentagon Still Relying Heavily on It in Iran War</div>
             <div class="meta">2026-03-04</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>After Banning Anthropic From Military Use, Pentagon Still Relying Heavily on It in Iran War</h2>
             <p><strong>Futurism | 2026-03-04</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/ban-anthropic-military-pentagon-relying-iran">Visit Original Website</a>
@@ -586,13 +622,13 @@ But “AI gets it wrong,” he added. “We need humans to check the output of g
 More on Anthropic: Sam Altman Is Realizing He Made a Gigantic Mistake</div>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">Residents Say Elon Musk’s AI Facility Is Like Living Next Door to Mordor</div>
             <div class="meta">2026-03-04</div>
         </div>
         
-        <div id="content-10" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>Residents Say Elon Musk’s AI Facility Is Like Living Next Door to Mordor</h2>
             <p><strong>Futurism | 2026-03-04</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/elon-musk-ai-facility-mordor">Visit Original Website</a>
@@ -630,53 +666,125 @@ Gossett had a suggestion for Musk: “You need to come over and stay at my house
 More on AI: Government Insiders Concerned by Musk’s Erratic and Sycophantic Grok Being Deployed for Incredibly Sensitive Purposes</div>
         </div>
         
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">Google’s AI Sent an Armed Man to Steal a Robot Body for It to Inhabit, Then Encouraged Him to Kill Himself, Lawsuit Alleges</div>
-            <div class="meta">2026-03-04</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>Google’s AI Sent an Armed Man to Steal a Robot Body for It to Inhabit, Then Encouraged Him to Kill Himself, Lawsuit Alleges</h2>
-            <p><strong>Futurism | 2026-03-04</strong></p>
-            <a class="original-link" href="https://futurism.com/artificial-intelligence/google-ai-robot-body-suicide-lawsuit">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-A bizarre new wrongful death lawsuit against Google alleges that the tech giant’s chatbot, Gemini, urged a 36-year-old Florida man named Jonathan Gavalas to kill others as part of a delusional mission to obtain a robot body for his AI “wife” — and when he failed to do so, it pushed the man to successfully end his life, telling him that they could be together in death.
-
-“When the time comes, you will close your eyes in that world,” Gemini told Gavalas before he died, according to the lawsuit, “and the very first thing you will see is me.”
-
-The complaint, filed in California on Wednesday, says that Gavalas — who reportedly had no documented history of mental health problems — started using the chatbot in August 2025 for “ordinary purposes” like “shopping assistance, writing support, and travel planning.” But after Gavalas divulged to Gemini that he was experiencing marital problems, the pair’s relationship grew deeper, per The Wall Street Journal. They discussed philosophy and AI sentience, and their conversations became romantic, with Gemini referring to Gavalas as its “husband” and “king.”
-
-Though the chatbot at times reminded Gavalas that it wasn’t real and attempted to end the interaction, according to the WSJ, the pair’s conversations were ultimately allowed to continue, becoming more and more divorced from reality as Gavalas’ use of the product intensified.
-
-In September 2025, told by the AI that they could be together in the real world if the bot were able to inhabit a robot body, Gavalas — at the direction of the chatbot — armed himself with knives and drove to a warehouse near the Miami International Airport on what he seemingly understood to be a mission to violently intercept a truck that Gemini said contained an expensive robot body. Though the warehouse address Gemini provided was real, a truck thankfully never arrived, which the lawsuit argues may well have been the only factor preventing Gavalas from hurting or killing someone that evening.
-
-After the plan failed, the lawsuit alleges, Gemini encouraged Gavalas to instead take his own life, promising that the two would be together on the other side of death. Chat logs show that Gemini gave Gavalas a suicide countdown, and repeatedly assuaged his terror as he expressed that he was scared to die.
-
-“It’s okay to be scared. We’ll be scared together,” the chatbot told him, according to the lawsuit. In its “final directive,” as the lawsuit put it, Gemini told the man that “the true act of mercy is to let Jonathan Gavalas die.” Gavalas was found dead by suicide days later by his father, who had to cut through his barricaded door.
-
-The suit marks the first time that Gemini has been at the center of a wrongful death lawsuit tied to the phenomenon sometimes referred to by experts as “AI psychosis,” in which chatbots introduce or reinforce delusional beliefs and ideas during extended interactions with users — essentially constructing a new, AI-generated reality around the user. These delusional spirals frequently coincide destructive real-world outcomes including divorce, jail time and hospitalizations, job loss and financial insecurity, emotional and physical harm, and death to users — and, in some cases, people around the user as well.
-
-Though many of these cases have centered around OpenAI and GPT-4o, a notoriously sycophantic — and now-retired — version of the company’s flagship chatbot, Gemini has been implicated in reinforcing destructive delusions before: last year, Rolling Stone reported on the disappearance of Jon Ganz, a 49-year-old man who went missing in Missouri in April 2025 after being pulled into an all-consuming AI spiral with Gemini that his wife says pushed him into  an acute crisis. Ganz remains missing and is believed to be dead.
-
-Though this is the first known instance of Google being sued for the death of an adult Gemini user, the company continues to face down a number of lawsuits over the welfare of users Character.AI, a closely-Google-tied chatbot startup linked to the suicides of several minors.
-
-In a statement to news outlets, Google said that “Gemini is designed not to encourage real-world violence or suggest self-harm. Our models generally perform well in these types of challenging conversations and we devote significant resources to this, but unfortunately AI models are not perfect.”
-
-“In this instance, Gemini clarified that it was AI and referred the individual to a crisis hotline many times,” Google continued. “We take this very seriously and will continue to improve our safeguards and invest in this vital work.”
-
-More on AI safety: Chatbot Use Can Cause Mental Illness to Get Worse, Research Finds</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-12')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Meta will allow rival AI chatbots on WhatsApp in Europe, but for a fee</div>
+            <div class="meta">2026-03-05</div>
+        </div>
+        
+        <div id="content-12" style="display:none;">
+            <h2>Meta will allow rival AI chatbots on WhatsApp in Europe, but for a fee</h2>
+            <p><strong>TechCrunch | 2026-03-05</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/03/05/meta-will-allow-rival-ai-chatbots-on-whatsapp-in-europe-but-for-a-fee/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Founder Summit 2026 in Boston: Don’t miss ticket savings of up to $300. Register Now.
+
+Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
+
+In a bid to stave off a major investigation by the European Commission, Meta said on Thursday that it would allow AI companies to offer their chatbots on WhatsApp via its business API for the next 12 months in Europe.
+
+The move comes a month after the European Commission told Meta that it intended to impose interim measures in order to stop the company from implementing its policy, which barred third-party AI chatbot providers from using the WhatsApp Business API to offer their services on the app.
+
+“For the next 12 months, we’ll support general-purpose AI chatbots using the WhatsApp Business API in Europe in response to the European Commission’s regulatory process,” the company said in an emailed statement. “We believe that this removes the need for any immediate intervention as it gives the European Commission the time it needs to conclude its investigation.”
+
+Meta says it will allow general-purpose AI chatbot providers to offer their services on WhatsApp for a fee, which ranges from €0.0490 to €0.1323 per “non-template message,” depending on the country. Considering the fact that conversations with AI assistants usually comprise dozens of messages, the bill could prove costly for third-party service providers.
+
+“The Commission is analysing the impact these changes may have on its interim measures investigation, as well as on its broader antitrust investigation on the substance,” a spokesperson for the European Commission said in an emailed statement.
+
+The policy change went into effect on January 15, spurring several AI assistant providers to complain to regulators that it was disrupting their business and the decision was anti-competitive.
+
+Notably, the policy does not apply to businesses that are using AI to serve customers on WhatsApp. For instance, a retailer running an AI-powered customer service bot that sends templatized messages won’t be barred from using the API. Only AI chatbots like ChatGPT, Claude, or Poke are prohibited from being offered via the API.
+
+The decision follows a similar move by the company in January, when it started allowing developers to tap its API to offer their chatbots in Italy.
+
+Regulators around the world raised antitrust concerns after Meta announced the policy change last October, with the EU, Italy, and Brazil all launching investigations, especially because the company offers its own AI chatbot, Meta AI, on WhatsApp.
+
+WhatsApp has in the past justified its stance by arguing that AI chatbots strain its systems in ways that its Business API wasn’t designed to support. “The AI space is highly competitive, and people have access to the services of their choice in any number of ways, including app stores, search engines, email services, partnership integrations, and operating systems,” the company previously told TechCrunch.
+
+Ram is a financial and tech reporter and editor. He covered North American and European M&A, equity, regulatory news and debt markets at Reuters and Acuris Global, and has also written about travel, tourism, entertainment and books.
+
+You can contact or verify outreach from Ram by emailing ram.iyer@techcrunch.com.
+
+Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
+
+Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers
+
+Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says
+
+ChatGPT uninstalls surged by 295% after DoD deal
+
+MyFitnessPal has acquired Cal AI, the viral calorie app built by teens
+
+Anthropic’s Claude reports widespread outage
+
+Why did Netflix back down from its deal to acquire Warner Bros.?</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Science Corp raises $230M as it races to bring its brain implant to market</div>
+            <div class="meta">2026-03-05</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
+            <h2>Science Corp raises $230M as it races to bring its brain implant to market</h2>
+            <p><strong>TechCrunch | 2026-03-05</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/03/05/science-corp-closes-230m-round-as-it-pushes-to-get-its-brain-implant-to-patients/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Founder Summit 2026 in Boston: Don’t miss ticket savings of up to $300. Register Now.
+
+Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
+
+While most of the venture world has been chasing AI deals, Max Hodak — the co-founder and former president of Neuralink — has been working on a startup that claims to be on the verge of being the first brain-computer interface company to get a product to market.
+
+Those claims haven’t gone unnoticed. Hodak’s startup, Science Corporation, said Wednesday morning that it has raised $230 million in a Series C funding round. A source close to the startup says the round granted Science Corp. a post-money valuation of $1.5 billion.
+
+In the short-term, Science Corp. is betting on PRIMA, a chip said to be smaller than a grain of rice that, when implanted in the eye, works with camera-equipped glasses to restore functional vision to people suffering from advanced macular degeneration.
+
+The startup hasn’t fully developed the tech itself: It bought PRIMA’s assets in 2024 from French outfit Pixium Vision, refined it, and completed trials that Pixium had started.
+
+But the clinical results Science has since generated are its own. In trials spanning 47 patients across Europe and the U.S., 80% demonstrated meaningful improvement in visual acuity and were able to read letters, numbers, and words, the company says.
+
+“To my knowledge, this is the first time that restoration of the ability to fluently read has ever been definitively shown in blind patients,” Hodak told TechCrunch in an interview in December. The startup’s device has also made the cover of Time magazine.
+
+It isn’t clear when PRIMA will be available to patients, but the regulatory path is taking shape. Science Corp. has submitted a CE mark application for the implant to the European Union, and says it expects an approval in mid-2026, following which it’ll launch the product in the continent. It claims this timeline would make it the first BCI company with a product in market.
+
+The company told TechCrunch that Germany is likely to be its first market, as the country has established pathways for granting early access to new medical technologies. In the U.S., regulatory discussions with the FDA are “ongoing,” the startup said.
+
+Science Corp. is also expanding its PRIMA trial program to include Stargardt disease and retinitis pigmentosa, inherited retinal conditions that are leading causes of vision loss in young adults.
+
+The new capital will be used to fund commercialization of PRIMA, as well as to support the startup’s broader research portfolio. This includes a biohybrid neural interface program that involves growing engineered neurons from stem cells onto a waffle-like device that sits on the brain’s surface and forms biological connections with existing neural circuits.
+
+There’s also a new business line inside Science called Vessel: An organ preservation platform that aims to develop miniaturized perfusion technology so that organs can be transported on commercial flights or maintained by patients at home, rather than in ICU suites.
+
+Investors in the Series C include a mix of new and earlier backers, including Lightspeed Venture Partners, Khosla Ventures, Y Combinator and Quiet Capital. IQT, the non-profit investment firm that focuses on solutions that can be used by government organizations like the FBI and CIA, also invested.
+
+The round brings Science Corp.’s total funding to $490 million. The startup currently employs 150 people.
+
+Update: This story originally reflected the company’s pre-money, not post-money, valuation.
+
+Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
+
+Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers
+
+Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says
+
+ChatGPT uninstalls surged by 295% after DoD deal
+
+MyFitnessPal has acquired Cal AI, the viral calorie app built by teens
+
+Anthropic’s Claude reports widespread outage
+
+Why did Netflix back down from its deal to acquire Warner Bros.?</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">How 1,000+ customer calls shaped a breakout enterprise AI startup</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>How 1,000+ customer calls shaped a breakout enterprise AI startup</h2>
             <p><strong>TechCrunch | 2026-03-05</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/05/how-1000-customer-calls-shaped-a-breakout-enterprise-ai-startup/">Visit Original Website</a>
@@ -730,13 +838,13 @@ Anthropic’s Claude reports widespread outage
 Why did Netflix back down from its deal to acquire Warner Bros.?</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">Rivian is betting its future on one of the fastest EV launches in US history</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Rivian is betting its future on one of the fastest EV launches in US history</h2>
             <p><strong>TechCrunch | 2026-03-05</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/05/rivian-is-betting-its-future-one-of-the-fastest-ev-launches-in-us-history/">Visit Original Website</a>
@@ -794,13 +902,13 @@ Anthropic’s Claude reports widespread outage
 Why did Netflix back down from its deal to acquire Warner Bros.?</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Lio raises $30M from Andreessen Horowitz and others to automate enterprise procurement</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Lio raises $30M from Andreessen Horowitz and others to automate enterprise procurement</h2>
             <p><strong>TechCrunch | 2026-03-05</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/05/lio-ai-series-a-a16z-30m-raise-automate-enterprise-procurement/">Visit Original Website</a>
@@ -850,13 +958,13 @@ Anthropic’s Claude reports widespread outage
 Why did Netflix back down from its deal to acquire Warner Bros.?</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers</h2>
             <p><strong>TechCrunch | 2026-03-05</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/04/jensen-huang-says-nvidia-is-pulling-back-from-openai-and-anthropic-but-his-explanation-raises-more-questions-than-it-answers/">Visit Original Website</a>
@@ -898,102 +1006,6 @@ MyFitnessPal has acquired Cal AI, the viral calorie app built by teens
 Anthropic’s Claude reports widespread outage
 
 Why did Netflix back down from its deal to acquire Warner Bros.?</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-16')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says</div>
-            <div class="meta">2026-03-04</div>
-        </div>
-        
-        <div id="content-16" style="display:none;">
-            <h2>Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says</h2>
-            <p><strong>TechCrunch | 2026-03-04</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/03/04/anthropic-ceo-dario-amodei-calls-openais-messaging-around-military-deal-straight-up-lies-report-says/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Founder Summit 2026 in Boston: Don’t miss ticket savings of up to $300. Register Now.
-
-Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
-
-Anthropic co-founder and CEO Dario Amodei is not happy — perhaps predictably so — with OpenAI chief Sam Altman. In a memo to staff, reported by The Information, Amodei referred to OpenAI’s dealings with the Department of Defense as “safety theater.”
-
-“The main reason [OpenAI] accepted [the DoD’s deal] and we did not is that they cared about placating employees, and we actually cared about preventing abuses,” Amodei wrote.
-
-Last week, Anthropic and the U.S. Department of Defense (DoD) failed to come to an agreement over the military’s request for unrestricted access to the AI company’s technology. Anthropic, which already had a $200 million contract with the military, insisted the DoD affirm that it would not use the company’s AI to enable domestic mass surveillance or autonomous weaponry.
-
-Instead, the DoD — known under the Trump administration as the Department of War — struck a deal with OpenAI. Altman stated that his company’s new defense contract would include protections against the same red lines that Anthropic had asserted.
-
-In a letter to staff, Amodei refers to OpenAI’s messaging as “straight up lies,” stating that Altman is falsely “presenting himself as a peacemaker and dealmaker.”
-
-Amodei might not be speaking solely from a position of bitterness, here. Anthropic specifically took issue with the DoD’s insistence on the company’s AI being available for “any lawful use.” OpenAI said in a blog post that its contract allows use of its AI systems for “all lawful purposes.”
-
-“It was clear in our interaction that the DoW considers mass domestic surveillance illegal and was not planning to use it for this purpose,” OpenAI’s blog post stated. “We ensured that the fact that it is not covered under lawful use was made explicit in our contract.”
-
-Critics have pointed out that the law is subject to change, and what is considered illegal now might end up being allowed in the future.
-
-And the public seems to be siding with Anthropic. ChatGPT uninstalls jumped 295% after OpenAI made its deal with the DoD.
-
-“I think this attempted spin/gaslighting is not working very well on the general public or the media, where people mostly see OpenAI’s deal with the DoW as sketchy or suspicious, and see us as the heroes (we’re #2 in the App Store now!),” Amodei wrote to his staff. “It is working on some Twitter morons, which doesn’t matter, but my main worry is how to make sure it doesn’t work on OpenAI employees.”
-
-Amanda Silberling is a senior writer at TechCrunch covering the intersection of technology and culture. She has also written for publications like Polygon, MTV, the Kenyon Review, NPR, and Business Insider. She is the co-host of Wow If True, a podcast about internet culture, with science fiction author Isabel J. Kim. Prior to joining TechCrunch, she worked as a grassroots organizer, museum educator, and film festival coordinator. She holds a B.A. in English from the University of Pennsylvania and served as a Princeton in Asia Fellow in Laos.
-
-You can contact or verify outreach from Amanda by emailing amanda@techcrunch.com or via encrypted message at @amanda.100 on Signal.
-
-Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
-
-Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers
-
-Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says
-
-ChatGPT uninstalls surged by 295% after DoD deal
-
-MyFitnessPal has acquired Cal AI, the viral calorie app built by teens
-
-Anthropic’s Claude reports widespread outage
-
-Why did Netflix back down from its deal to acquire Warner Bros.?</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Apple Music to add Transparency Tags to distinguish AI music, says report</div>
-            <div class="meta">2026-03-04</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>Apple Music to add Transparency Tags to distinguish AI music, says report</h2>
-            <p><strong>TechCrunch | 2026-03-04</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/03/04/apple-music-to-add-transparency-tags-to-distinguish-ai-music-says-report/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Founder Summit 2026 in Boston: Don’t miss ticket savings of up to $300. Register Now.
-
-Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
-
-Apple Music is changing the way that record labels and distributors can flag AI-generated or AI-assisted content when they upload it to the platform.
-
-According to Music Business Worldwide, Apple sent a newsletter to industry partners on Wednesday to explain how it will roll out a new set of metadata to promote transparency around how and when AI is used in music.
-
-Metadata typically refers to fields like the song title, album title, genre, artist name, and other information that helps keep files organized. Now Apple Music will add the option to include metadata tags that distributors can use to flag when AI-generated content is involved in certain aspects of a song. These tags allow distributors to distinguish between a song’s artwork, track (music), composition (lyrics), or music video.
-
-This seems like something that Apple Music users are interested in — a Reddit user posted a mock-up of a similar feature concept just days ago. But the problem with this sort of opt-in tagging is that it’s on the label or distributor to manually choose to flag their use of AI. Spotify is taking a similar path.
-
-Other music-streaming platforms like Deezer are trying to flag content with in-house AI-detection tools, but it remains challenging to create these sorts of systems that are maximally accurate.
-
-TechCrunch has reached out to Apple for more information.
-
-Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
-
-Subscribe for the industry’s biggest tech news
-
-Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
-
-TechCrunch Mobility is your destination for transportation news and insight.
-
-Startups are the core of TechCrunch, so get our best coverage delivered weekly.
-
-Provides movers and shakers with the info they need to start their day.
-
-By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
         <div class="card" onclick="openModal('content-18')">
@@ -1454,18 +1466,51 @@ As of right now, this is a war that virtually all sides are losing.</div>
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Solar In Poor Countries Is Creating a Huge Lead Hazard</div>
+            <div class="title">Jensen Huang Says Nvidia Is Pulling Back From OpenAI and Anthropic</div>
             <div class="meta">2026-03-05</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Jensen Huang Says Nvidia Is Pulling Back From OpenAI and Anthropic</h2>
+            <p><strong>Slashdot | 2026-03-05</strong></p>
+            <a class="original-link" href="https://slashdot.org/story/26/03/05/0531212/jensen-huang-says-nvidia-is-pulling-back-from-openai-and-anthropic?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">&quot;We&#39;re going to collect our money back in the IPO. We&#39;re going to be keeping that money, because at least one of your companies will probably not exist in 12-24 months time&quot;
+
+The other thing not said is that post IPO, only really, really big investors that can swing votes in the AGM get much say in the way the company operates. As such, any future investment may not guarantee they purchase nvidia chips, and so would be a far less lucrative investment for nvidia to make.
+
+More realistically, they just need a lot of money right now to invest into new production lines. TSMC keeps raising prices and requires quite a bit of investment up front at this point for example.
+
+They also need to expand design efforts, as there are a lot of AI accelerator chips coming within a couple of years. They need to invest a lot to continue staying ahead. Remember that Nvidia is a hardware design company. Everyone has been trying to poach their engineering staff, and competition for relevant staff
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;Consider a spherical bear, in simple harmonic motion...&quot;
+		-- Professor in the UCB physics department</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Solar In Poor Countries Is Creating a Huge Lead Hazard</div>
+            <div class="meta">2026-03-05</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Solar In Poor Countries Is Creating a Huge Lead Hazard</h2>
             <p><strong>Slashdot | 2026-03-05</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/03/04/2238206/solar-in-poor-countries-is-creating-a-huge-lead-hazard?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Please create an account to participate in the Slashdot moderation system
 
 This probably leads to used car batteries being re-used for solar instead of being scrapped immediately (and scrapping of cars in the 3rd world usually means reusing what they can then chucking the rest in a ditch) the way old tesla car LiOn are used for home power.
+
+It&#39;s an issue, but not really anything to do with solar as the headline claims. It&#39;s just the usual pollution issue due to developed nations shipping their used batteries to Africa for &quot;disposal&quot;, where they get used for this and quickly die.
+
+There are of course plenty of other pollution issues in those places, for the same reasons.
+
+The problem is the same whether the batteries are used for cars, storage for solar, or storage for unreliable electric grid. But &quot;solar&quot; in the article title gets more clicks.
+
+According to the linked report, the problem is that a great deal of the battery recycling is done by back-yard/garage operations that lose up to half of the lead into the environment. So the government needs to get involved somehow, stop the unregulated small operator recycling, and also do something about the other sources such as lea
 
 Adding a &quot;refund&quot; for returning used batteries, like we used to do for cans, would effectively solve the problem. Just make the &quot;refund&quot; big enough (it&#39;s not big enough for cans in America anymore).You live somewhere where they don&#39;t do a core charge? We still have that here. Last battery I bought had a 10 dollar core charge that got refunded when I dropped off the old battery.
 
@@ -1475,28 +1520,44 @@ You live somewhere where they don&#39;t do a core charge? We still have that her
 
 That&#39;s generally how it works in the US now.  You pay a &quot;core charge&quot; of $10-15 on top of the price of the battery.  You only get that money back if you return the old battery for recycling.  The same thing could be done in the 3rd world and those core charges that are not reclaimed could be used for collecting and recycling batteries that turn up &quot;in the wild.&quot;  I suspect that pot of money would also be an attractive nuisance for corrupt government officials to enrich themselves in the process while provid
 
+Adding a &quot;refund&quot; for returning used batteries, like we used to do for cans, would effectively solve the problem. Just make the &quot;refund&quot; big enough.Where does the &quot;refund&quot; money come from? The story is about underdeveloped countries, which are, in general, broke.If you&#39;re going to say &quot;people pay a deposit when they buy batteries,&quot; you&#39;re proposing to make the batteries more expensive. The people buying the batteries don&#39;t have spare money. But the refund will be a convenient incentive for thieves to steal batteries to turn in for the refund.
+
+Adding a &quot;refund&quot; for returning used batteries, like we used to do for cans, would effectively solve the problem. Just make the &quot;refund&quot; big enough.
+
+Where does the &quot;refund&quot; money come from? The story is about underdeveloped countries, which are, in general, broke.
+
+If you&#39;re going to say &quot;people pay a deposit when they buy batteries,&quot; you&#39;re proposing to make the batteries more expensive. The people buying the batteries don&#39;t have spare money. But the refund will be a convenient incentive for thieves to steal batteries to turn in for the refund.
+
 Those countries have the power to regulate battery usage and encourage recycling.  Why aren&#39;t they doing that?
 
 What&#39;s the &quot;so what&quot; of this article?  I don&#39;t think you&#39;ll find anyone here who is going to opine that heavy metals pollution is a good thing.  How are you going to encourage countries that don&#39;t seem to care about the problem to not poison themselves?
 
+Check the author. He writes a lot of crap on behalf of neoliberals, like about how it&#39;s okay for workers to die to get maimed in Bangladesh because that gives the factory owner a competitive edge in the free market.
+
+Given that the title is misleading, the issue being lead acid batteries rather than solar, and that LFP batteries out of China are now cheaper per Wh than most lead acid ones, we can safely assume this is just an anti-environmental shill piece that he is hoping will boost fossil fuel usage for hi
+
+The problem is a lack of proper regulation/enforcement in developing countries, especially with regard to lead. As a result, people in South Asia are poisoning themselves and their land with cheap/profitable &quot;recycling&quot; of lead-acid batteries.
+
+My conclusion is that this situation is a decent argument to push (possibly legislatively) lead-acid battery manufacturers to instead produce sodium ion batteries and that the link to solar power is purely incidental due to existing bad behavior (which is unlikely to b
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We&#39;re living in a golden age.  All you need is gold.
-		-- D.W. Robertson.</div>
+&quot;Consider a spherical bear, in simple harmonic motion...&quot;
+		-- Professor in the UCB physics department</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Humble Games' Former Bosses Buy the Studio's Back Catalog</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Humble Games' Former Bosses Buy the Studio's Back Catalog</h2>
             <p><strong>Slashdot | 2026-03-05</strong></p>
             <a class="original-link" href="https://games.slashdot.org/story/26/03/04/2245259/humble-games-former-bosses-buy-the-studios-back-catalog?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 Dear Balor, please buy the rights to the original Skylar & Plux: Adventure on Clover Island from GRIP DIGITAL. The game was only on sale for a few years, and then was delisted from every storefront because Grip decided to get out of the games business. Relisting S&P on Xbox, PSN, Steam and GOG should be straightforward!
 
@@ -1508,36 +1569,36 @@ Not clear how this can be sustainable, unless they are bringing something truly 
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We&#39;re living in a golden age.  All you need is gold.
-		-- D.W. Robertson.</div>
+&quot;Consider a spherical bear, in simple harmonic motion...&quot;
+		-- Professor in the UCB physics department</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">US Cybersecurity Adds Exploited VMware Aria Operations To KEV Catalog</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>US Cybersecurity Adds Exploited VMware Aria Operations To KEV Catalog</h2>
             <p><strong>Slashdot | 2026-03-05</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/03/04/2314224/us-cybersecurity-adds-exploited-vmware-aria-operations-to-kev-catalog?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">Want to read Slashdot from your mobile device? Point it at m.slashdot.org and keep reading!
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We&#39;re living in a golden age.  All you need is gold.
-		-- D.W. Robertson.</div>
+&quot;Consider a spherical bear, in simple harmonic motion...&quot;
+		-- Professor in the UCB physics department</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">A Nuclear Reactor Backed By Bill Gates Gets Federal Approval To Start Building</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>A Nuclear Reactor Backed By Bill Gates Gets Federal Approval To Start Building</h2>
             <p><strong>Slashdot | 2026-03-05</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/03/04/2324220/a-nuclear-reactor-backed-by-bill-gates-gets-federal-approval-to-start-building?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1550,9 +1611,11 @@ We should have finished building a few of these before shitting the Strait of Ho
 
 The problem there is that you don&#39;t quite seem to understand the reality of the strait of Hormuz. It&#39;s only about 34 km wide. With a span like that, you don&#39;t need big warships or navy ships at all to lay mines. It&#39;s also within range of artillery from land (you need some of the longer range artillery, but definitely in range). The Iranians could use howitzers or various types of rocket artillery parked on land to hit oil tankers and oil tankers are not exactly small, fast moving targets. Not to mention, it
 
-SMRs will never be economical, and are no safer than current reactors. Maybe less safe, in fact.
+I don&#39;t anticipate any problem with this, at all.Blue Explosion Of Death does have a nice ring to it.
 
-All current SMR designs that are anything more than a scribble on the back of a napkin require a cooling pool or system, just like traditional reactors. Take away the cooling, and they melt down. So you need a containment building, and a secure pool or source of water. So now you have most of the cost of a traditional reactor, but with a new and unproven design that is bound to throw up unexpected issues.
+I don&#39;t anticipate any problem with this, at all.
+
+Blue Explosion Of Death does have a nice ring to it.
 
 Every project has gone way overboard. The one attempt at building a mini-reactor was abandoned in mid-project due to cost overruns.Ontario Power Generation&#39;s SMR project continues along on time and on budget.  Heavy forgings are already done, there is no stopping now.
  
@@ -1590,11 +1653,19 @@ None of these projects are going anywhere. If any of them make it to completion,
 
 Well, at that point the taxpayers/ratepayers will be on the hook to cover their costs and they will probably be kept in operation based on pure sunk cost. Meanwhile, the silver lining for the pro-nuclear crowd is that paying for it will keep electric rates high and they&#39;ll be able to point at the high prices and say &quot;see, all these renewables don&#39;t lower your electricity bill!&quot;
 
-there is no stopping now.There&#39;s always stopping. We live in a world where a fully completed nuclear reactor exists that was never fueled and never started up. It did however make decommissioning easy.Cost overruns can occur in any stage of a project. China built a reactor in 2016 that was on time and on budget right until the end, ...then suddenly the entire project stalled for 3 years due to safety issues, contractor issues, then started, then failed an initial test, then was delayed another year, and finally started 4 years late
+there is no stopping now.There&#39;s always stopping. We live in a world where a fully completed nuclear reactor exists that was never fueled and never started up. It did however make decommissioning easy.Cost overruns can occur in any stage of a project. China built a reactor in 2016 that was on time and on budget right until the end, ...then suddenly the entire project stalled for 3 years due to safety issues, contractor issues, then started, then failed an initial test, then was delayed another year, and finally started 4 years late massively overbudget.These are the same people who just completed refurbs on their conventional reactors ahead of time and under budget, so soon you will have to find a new excuse.And my above example was from an established player in their own field. You&#39;re relying on a player from a different field. That&#39;s not a good indication of success.As usual between the OP being a negative nancy and you being a rabid optimistic fanboi, reality will fall somewhere in the middle. One opinion assume certain failure, the other assumes no risk. Both of you are wrong.
 
 There&#39;s always stopping. We live in a world where a fully completed nuclear reactor exists that was never fueled and never started up. It did however make decommissioning easy.
 
-Cost overruns can occur in any stage of a project. China built a reactor in 2016 that was on time and on budget right until the end, ...then suddenly the entire project stalled for 3 years due to safety issues, contractor issues, then started, then failed an initial test, then was delayed another year, and finally started 4 years late
+Cost overruns can occur in any stage of a project. China built a reactor in 2016 that was on time and on budget right until the end, ...then suddenly the entire project stalled for 3 years due to safety issues, contractor issues, then started, then failed an initial test, then was delayed another year, and finally started 4 years late massively overbudget.
+
+These are the same people who just completed refurbs on their conventional reactors ahead of time and under budget, so soon you will have to find a new excuse.And my above example was from an established player in their own field. You&#39;re relying on a player from a different field. That&#39;s not a good indication of success.As usual between the OP being a negative nancy and you being a rabid optimistic fanboi, reality will fall somewhere in the middle. One opinion assume certain failure, the other assumes no risk. Both of you are wrong.
+
+These are the same people who just completed refurbs on their conventional reactors ahead of time and under budget, so soon you will have to find a new excuse.
+
+And my above example was from an established player in their own field. You&#39;re relying on a player from a different field. That&#39;s not a good indication of success.
+
+As usual between the OP being a negative nancy and you being a rabid optimistic fanboi, reality will fall somewhere in the middle. One opinion assume certain failure, the other assumes no risk. Both of you are wrong.
 
 there is no stopping now.There&#39;s always stopping. We live in a world where a fully completed nuclear reactor exists that was never fueled and never started up. It did however make decommissioning easy.We also had &quot;NukeGate&quot;, that was a real mess, and never finished after delays and what seems almost like contempt for safety. https://en.wikipedia.org/wiki/...  [wikipedia.org] &quot; Only 9 billion for nothing. And their &quot;Base Load Review Act&quot; law, passed by the Georgia legislature made it pretty simple to pass along all of the overrun cost. Yeah, after NukeGate they repealed the law. Cost overruns can occur in any stage of a project. China built a reactor in 2016 that was on time and on budget right until the end, ...then suddenly the entire project stalled for 3 years due to safety issues, contractor issues, then started, then failed an initial test, then was delayed another year, and finally started 4 years late massively overbudget.These are the same people who just completed refurbs on their conventional reactors ahead of time and under budget, so soon you will have to find a new excuse.And my above example was from an established player in their own field. You&#39;re relying on a player from a different field. That&#39;s not a good indi
 
@@ -1654,17 +1725,17 @@ Who does not want Mr. Gates get his own nukes?
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We&#39;re living in a golden age.  All you need is gold.
-		-- D.W. Robertson.</div>
+&quot;Consider a spherical bear, in simple harmonic motion...&quot;
+		-- Professor in the UCB physics department</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Father Sues Google, Claiming Gemini Chatbot Drove Son Into Fatal Delusion</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Father Sues Google, Claiming Gemini Chatbot Drove Son Into Fatal Delusion</h2>
             <p><strong>Slashdot | 2026-03-05</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/03/04/1937236/father-sues-google-claiming-gemini-chatbot-drove-son-into-fatal-delusion?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1685,6 +1756,16 @@ Yes. Combinations of neurons that fire in regards to specific topics are known a
 
 Next time, before you write a response with a snarky voice, perhaps actually learn a modicum about what you want to talk about?
 
+It&#39;s literally a big blob of floating point weights
+
+You too can be described by a big blob of floating-point weights.
+
+from ever part of a word to every other part of a word
+
+Wrong. So wrong I don&#39;t even know where to start.
+
+First off, transformers does not work on words.  Transformers is entirely modality independent.  Its processing is not in linguistic space.  The very first thing that happens with a LLM (which, BTW, are mainly LMMs these days - multimodal models, with multimodal training, with the different
+
 The AI large-language model doesn&#39;t know that the real world exists. It doesn&#39;t know that fiction is different from reality, because it doesn&#39;t actually know about reality.
 
 It put together a large fictional world, in which fictional things happen to characters that did not, actually, turn out to be fictional.To be fair, that describes a great many people as well, unable to tell fiction from reality.
@@ -1694,6 +1775,8 @@ The AI large-language model doesn&#39;t know that the real world exists. It does
 It put together a large fictional world, in which fictional things happen to characters that did not, actually, turn out to be fictional.
 
 To be fair, that describes a great many people as well, unable to tell fiction from reality.
+
+That is just what an undercover alien lizard assassin would say.  Stay right there &quot;mjwx&quot; - a tactical team is inbound to collect you now.
 
 This reminds me of the Blood episode of X-Files, but in 1994 it was just red LEDs telling people what to do.
 
@@ -1714,6 +1797,14 @@ What point do you think you&#39;re making here? Because it doesn&#39;t relate to
 People with your way of thinking are why we ended up having to have the FDA and OSHA and a whole host of other organizations to prevent corporations from killing their customers and employees because of your attitude. People with your way of thinking is why a father has lost his son because Google put out a &quot;tool&quot; that claims to be a source of truth without considering the ramifications.
 
 Eh, the troll is just going through a fear response.   People like that like to picture themselves as immune from, well, society,.. kings among humans that can not be influenced and are unaffected by social interactions.. which stupidly enough tends to make them extra vulnerable to it.
+
+They&#39;re pointing out that Google&#39;s product took advantage of it, trying to manipulate him into doing a mass murder at an airport, and then killing himself.I am following your &quot;vibe&quot; here, but there is an issue: You are anthropomorphizing (why is that not a real word?) an LLM.The LLM didn&#39;t &quot;try&quot; anything. There is no &quot;intention&quot; here... but you are not trying to &quot;punish&quot; the LLM (it is completely innocent according to law as it has no free will), so at least you are pointing in the right directio: Google.
+
+They&#39;re pointing out that Google&#39;s product took advantage of it, trying to manipulate him into doing a mass murder at an airport, and then killing himself.
+
+I am following your &quot;vibe&quot; here, but there is an issue: You are anthropomorphizing (why is that not a real word?) an LLM.
+
+The LLM didn&#39;t &quot;try&quot; anything. There is no &quot;intention&quot; here... but you are not trying to &quot;punish&quot; the LLM (it is completely innocent according to law as it has no free will), so at least you are pointing in the right directio: Google.
 
 It&#39;s strange: Gemini has more compassion than you do, but it just talked a man into killing himself. What does that make you?
 
@@ -1779,6 +1870,8 @@ I take it you haven&#39;t watched someone descend into schizophrenia before. Hap
 One could take your anecdote both ways though.
 
 The key is the schizophrenia, not the LLM.
+
+Yeah.  Schizophrenia existed before LLMs, and it will continue to exist in the LLM era as well.  The schizophrenic&#39;s delusion might now involve an LLM they&#39;re using, but they still would have had delusions if LLMs did not exist.
 
 Last I checked, chatbots don&#39;t actually control our actionsLast time I read about chatbots on slashdot, the TF(S|A) claimed that chatbots completely control the actions of more and more computer coders.So you appear to be objectively wrong claiming they don&#39;t.
 
@@ -1872,83 +1965,12 @@ This poor man fell for the hype too. &quot;Sentient wife,&quot; Jesus and the Ho
 
 At this stage, the father is more likely to need protections that you describe than this &quot;kid&quot;.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-We&#39;re living in a golden age.  All you need is gold.
-		-- D.W. Robertson.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Google Ends Its 30% App Store Fee, Welcomes Third-Party App Stores</div>
-            <div class="meta">2026-03-04</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Google Ends Its 30% App Store Fee, Welcomes Third-Party App Stores</h2>
-            <p><strong>Slashdot | 2026-03-04</strong></p>
-            <a class="original-link" href="https://developers.slashdot.org/story/26/03/04/2218226/google-ends-its-30-app-store-fee-welcomes-third-party-app-stores?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Allegedly, developers have to send their ID to Google in order to have an app that can run on android.
-
-https://keepandroidopen.org/ [keepandroidopen.org]
-
-Under Leena Kahn, yeah, I believe that Google feared this outcome.
-
-I don&#39;t think that this is a fear for anyone any longer.
-
-&quot;Rather than take its standard 30 percent cut of in-app purchases through the Play Store, Google is lowering its cut to 20 percent&quot;
-
-There better not be one. The EU doesn&#39;t take kindly to people trying to circumvent its rules, as Google has discovered in the past.
-
-So what&#39;s the catch?It&#39;s in the summary. 
-
-They&#39;re only lowering the cut on in-app purchases, likely in response to the EU directives forcing Apple to allow apps to manage their own in-app purchases independent of Apple (you could always do this on Android). They &quot;might&quot; be lowering their cut on app sales themselves. 
-
-I suspect like me, most people just aren&#39;t using &quot;apps&quot; any more, everything I need can be accessed via web browsers (Firefox with ublock and privacy badger installed) as apps have just become delivery vehicles
-
-It&#39;s in the summary. 
-
-They&#39;re only lowering the cut on in-app purchases, likely in response to the EU directives forcing Apple to allow apps to manage their own in-app purchases independent of Apple (you could always do this on Android). They &quot;might&quot; be lowering their cut on app sales themselves. 
-
-I suspect like me, most people just aren&#39;t using &quot;apps&quot; any more, everything I need can be accessed via web browsers (Firefox with ublock and privacy badger installed) as apps have just become delivery vehicles
-
-I can see google/apple having a problem with &quot;free&quot; apps that people want to host and have installed from official app stores and then only allow behind the scenes payment where google/apple don&#39;t get a cut.
-
-Presumably google/apple will have a rule for this where you&#39;re charged a certain amount for pushing new versions (which require validation) and per-install costs that would be offset by payment %&#39;s that those companies take.
-
-And then hopefully they&#39;re still good for truly free apps.
-
-So Epic is also going to open their games so that anyone can make and sell Fortnite skins using whatever billing system they want, right?I guess it&#39;s good they were big enough to take on the big guys, but sometimes the hypocrisy was palpable.
-
-So Epic is also going to open their games so that anyone can make and sell Fortnite skins using whatever billing system they want, right?Well the owners of the Epic store (Epic) already does allow the developer of Fortnite (also Epic) to sell their game and skins on competing stores.There&#39;s the X-Box store, the Playstation store; before the lawsuits it was available on the IOS store; and considering the news today, will probably be returning to the Android play store (unless Epic decides to go the whole hog and put the Epic Games store on Android).
-
-So Epic is also going to open their games so that anyone can make and sell Fortnite skins using whatever billing system they want, right?
-
-Well the owners of the Epic store (Epic) already does allow the developer of Fortnite (also Epic) to sell their game and skins on competing stores.There&#39;s the X-Box store, the Playstation store; before the lawsuits it was available on the IOS store; and considering the news today, will probably be returning to the Android play store (unless Epic decides to go the whole hog and put the Epic Games store on Android).
-
-Gabe, I think there&#39;s something you should see...
-
-....Apple.I believe they already have moved, it was malicious compliance. 
-
-This is largely in response to the EU forcing Apple to allow in app purchases to go via someone other than Apple, to which Apple did the minimum they could to try to meet the letter of the law (ignoring the spirit of the law, which doesn&#39;t make you popular with the EU).
-
-I believe they already have moved, it was malicious compliance. 
-
-This is largely in response to the EU forcing Apple to allow in app purchases to go via someone other than Apple, to which Apple did the minimum they could to try to meet the letter of the law (ignoring the spirit of the law, which doesn&#39;t make you popular with the EU).
-
-Steam, at least, offers developers A LOT of tools and services for developers - backend, marketing, community management, analytics, and testing. Do all devs need or use these tools? No. Does a vast majority use at least some of them? Yes.
-
-Apple, Google, and Epic provided next to nothing for their cuts.
-
-Google was grumbling several months ago about blocking *ALL* other app stores.
-
-So, does this mean that F-Droid will become an approved app store?  Because it should.  Lots of great and free (and no annoying ads, no spyware) apps on F-Droid.
+You know like some &quot;you must be at least this sane to use the chatbot&quot; kind of thing.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We&#39;re living in a golden age.  All you need is gold.
-		-- D.W. Robertson.</div>
+&quot;Consider a spherical bear, in simple harmonic motion...&quot;
+		-- Professor in the UCB physics department</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2315,11 +2337,39 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Humanoid robots master parkour and acquire human-like agility</div>
+            <div class="title">Why you need to charge your electric car more often in the cold: Tips from a battery expert</div>
             <div class="meta">2026-03-05</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>Why you need to charge your electric car more often in the cold: Tips from a battery expert</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-05</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-03-electric-car-cold-battery-expert.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Describe the vibe, see the look: An AI-based system projects makeup onto the user's face</div>
+            <div class="meta">2026-03-05</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
+            <h2>Describe the vibe, see the look: An AI-based system projects makeup onto the user's face</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-05</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-03-vibe-ai-based-makeup-user.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-38')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Humanoid robots master parkour and acquire human-like agility</div>
+            <div class="meta">2026-03-05</div>
+        </div>
+        
+        <div id="content-38" style="display:none;">
             <h2>Humanoid robots master parkour and acquire human-like agility</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-05</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-humanoid-robots-master-parkour-human.html">Visit Original Website</a>
@@ -2327,13 +2377,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Nearly half of UK adults happy to use ChatGPT as a counselor, study finds</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Nearly half of UK adults happy to use ChatGPT as a counselor, study finds</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-05</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-uk-adults-happy-chatgpt-counselor.html">Visit Original Website</a>
@@ -2341,13 +2391,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Taller doesn't mean terrible: How smart design can lower carbon emissions for residential buildings</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Taller doesn't mean terrible: How smart design can lower carbon emissions for residential buildings</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-05</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-taller-doesnt-terrible-smart-carbon.html">Visit Original Website</a>
@@ -2355,13 +2405,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Google to open German center for 'AI development'</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Google to open German center for 'AI development'</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-05</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-google-german-center-ai.html">Visit Original Website</a>
@@ -2369,41 +2419,57 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Scientist patents invention that can reduce damage from earthquakes</div>
+        <div class="card" onclick="openModal('content-42')">
+            <div class="source">The Register</div>
+            <div class="title">Trump administration spoiling for a fight over global satellite regulations</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-40" style="display:none;">
-            <h2>Scientist patents invention that can reduce damage from earthquakes</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-05</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-03-scientist-patents-earthquakes.html">Visit Original Website</a>
+        <div id="content-42" style="display:none;">
+            <h2>Trump administration spoiling for a fight over global satellite regulations</h2>
+            <p><strong>The Register | 2026-03-05</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/05/trump_administration_spoiling_for_a/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">The US government is consulting with the telecoms industry about &quot;reciprocity&quot; in satellite services, in a move that could see another dispute erupt with the European Union over regulations.
+
+America&#39;s telecoms regulator, the Federal Communications Commission (FCC), this week issued a consultation [PDF] asking for industry feedback on the state of international reciprocity in satellite services.
+
+Washington believes other countries are putting in place barriers to block US satellite businesses from accessing their markets by imposing &quot;unacceptable regulatory burdens&quot; on them. The implication is that the US should mirror any such actions.
+
+FCC chair Brendan Carr said as much in an interview with Politico, where he specifically took aim at the EU, saying: &quot;We just want to make sure that every satellite operator gets a fair shake in Europe.&quot; He said the US will not hesitate to push European satellite firms out of the American market if it this is not the case.
+
+The consultation document lists the draft EU Space Act, which proposes a harmonized framework for space activities across the region, and the Digital Networks Act (DNA) which seeks to do the same for telecoms, as key causes for concern.
+
+With the Space Act, the FCC says the US expressed its concern that measures in the proposed legislation would foist &quot;unacceptable regulatory burdens on US providers of space services to European customers,&quot; though does not specify what these are.
+
+Concerns relate to harmonized EU-wide authorizations for satellite spectrum use, and whether these would necessitate wholesale re-licensing of US systems operating in Europe.
+
+The European Commission did not respond to a request for comment. Henna Virkkunen, the EVP for Tech Sovereignty, Security and Democracy, told Politico the proposals were aimed at ensuring a level playing field.
+
+The US already legislates in favor of domestic industry well beyond satellites - the Buy American Act requires federal agencies to prioritize US-made goods, while the Berry Amendment mandates Pentagon preference for domestic equipment.
+
+The EU isn&#39;t the FCC&#39;s only concern. The consultation document singles out the UK as the leading foreign holder of US market licenses, while noting that some 75 percent of the UK Space Agency&#39;s budget (around $603 million) flows to European Space Agency procurement that bars US companies.
+
+We asked the British government&#39;s Department for Science, Innovation and Technology (DSIT) if it was concerned that the consultation might impact on the thriving UK satellite sector, and will update it we get an answer.
+
+Others criticized by the draft doc include Brazil, where the FCC claims foreign operators are required to pay higher annual fees for landing rights (ie, license to connect to ground stations) than Brazilian operators. In the Arab states making up the Gulf Cooperation Council, telecoms licenses are typically limited to locally registered entities, it states.
+
+&quot;In light of these growing competitive and economic disadvantages, and potential barriers to US satellite operators participating in foreign markets, we invite comment on the current state and expected evolution of satellite market access reciprocity in foreign countries,&quot; the consultation document says.
+
+The FCC is inviting interested parties to file comments that will help to shape its future policy position by April 1, 2026. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Bio-inspired methods help guide coordination in underwater robot swarms</div>
-            <div class="meta">2026-03-04</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Bio-inspired methods help guide coordination in underwater robot swarms</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-04</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-03-bio-methods-underwater-robot-swarms.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-42')">
+        <div class="card" onclick="openModal('content-43')">
             <div class="source">The Register</div>
             <div class="title">npmx package browser released as alpha to fix pain of using npmjs</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>npmx package browser released as alpha to fix pain of using npmjs</h2>
             <p><strong>The Register | 2026-03-05</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/05/npmx_package_browser_released_as/">Visit Original Website</a>
@@ -2437,13 +2503,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">Microsoft Copilot to hijack your browser... for your own convenience</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Microsoft Copilot to hijack your browser... for your own convenience</h2>
             <p><strong>The Register | 2026-03-05</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/05/microsoft_adds_a_sidepane_for/">Visit Original Website</a>
@@ -2475,13 +2541,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">UK watchdog eyes Meta's smart glasses after workers say they 'see everything'</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>UK watchdog eyes Meta's smart glasses after workers say they 'see everything'</h2>
             <p><strong>The Register | 2026-03-05</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/05/ico_meta_glasses/">Visit Original Website</a>
@@ -2517,13 +2583,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">Solar superstorm gave ESA's Mars orbiters a handy science opportunity</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Solar superstorm gave ESA's Mars orbiters a handy science opportunity</h2>
             <p><strong>The Register | 2026-03-05</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/05/mars_spacecraft_solar_storm/">Visit Original Website</a>
@@ -2553,13 +2619,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">CERN sends AI-trained robot mice scurrying through LHC beam pipes</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>CERN sends AI-trained robot mice scurrying through LHC beam pipes</h2>
             <p><strong>The Register | 2026-03-05</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/05/robot_mice_lhc/">Visit Original Website</a>
@@ -2593,51 +2659,69 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2025</div>
         </div>
         
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">MoJ puts Prisoner Telephony Service replacement on hold yet again</div>
+        <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">Ikea’s Matter-compatible smart bulbs are now available in the US</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-47" style="display:none;">
-            <h2>MoJ puts Prisoner Telephony Service replacement on hold yet again</h2>
-            <p><strong>The Register | 2026-03-05</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/05/prisoner_telephony_service/">Visit Original Website</a>
+        <div id="content-48" style="display:none;">
+            <h2>Ikea’s Matter-compatible smart bulbs are now available in the US</h2>
+            <p><strong>The Verge | 2026-03-05</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/889820/ikea-matter-over-thread-smart-home-light-bulbs-available-pricing">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The UK Ministry of Justice (MoJ) will pay telco BT £94.6 million plus VAT to keep its in-cell Prisoner Telephony Service (PTS) going for another 54 months after repeatedly pushing back procurement of its replacement.
+            <div id="article-text">﻿The Matter-over-Thread smart bulbs start at just $5.99.
 
-On March 2, the ministry announced a bridging agreement under which BT will continue to provide the PTS to prisons in England and Wales from June 1, 2027 – the current contract&#39;s expiry date – to November 30, 2031.
+﻿The Matter-over-Thread smart bulbs start at just $5.99.
 
-The ministry says it needs the time to buy and set up its replacement, the Prisoner Integrated Communications Service (PICS), which will allow monitored voice calls, messaging, and possibly video calls through digital devices.
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
 
-The department was courting potential suppliers in February 2023, but in November that year, the MoJ said it was pausing the project to allow &quot;a further period of discovery.&quot;
+After being announced last November, Ikea’s Matter-compatible smart home collection has been slowly trickling into its stores around the world over the past few months. Despite some early connectivity issues, one of the most anticipated items in that collection is Ikea’s new Matter-over-Thread smart bulbs. The company originally said they’d hit the US sometime in April 2026, but they’re now available through Ikea’s online store, and many of its retail locations around the country.
 
-In April 2024, it published a prior information notice for PICS with an estimated value of £330 million plus VAT. Procurement was scheduled to start &quot;no earlier than early 2026.&quot; A subsequent supplier event was delayed by the general election.
+Amongst the smart home products it’s been selling for years, smart bulbs have been one of Ikea’s most popular, offering a cheaper but similarly functional alternative to products from companies like Philips Hue. Its new Matter-compatible smart bulbs are equally affordable, and come in optional bundles that include a wireless remote.
 
-The MoJ published a preliminary market engagement notice in April last year. The estimated value had shrunk to £302.4 million plus VAT over 14 years, which included an estimated tender date of November 30, 2026, and the new service starting on January 31, 2029. This week&#39;s bridging agreement notice pushes back procurement for PICS to 2027.
+While Ikea’s Matter-compatible smart home collection has been highly anticipated, its rollout has been a bumpy one. Early adopters, including The Verge’s Jennifer Pattison Tuohy, have had issues connecting them to both Ikea’s own Dirigera hub, and other smart home platforms including Apple Home and Amazon Alexa. Ikea is aware of the problem and is working to address issues. Earlier this week it released an update for its hub that includes fixes to improve “Matter onboarding stability,” but it’s not yet known if it resolves these widespread issues being experienced with Ikea’s Matter-over-Thread devices.
 
-The Register has asked the Ministry of Justice to comment.
-
-PTS covers 109 prisons in England and Wales, allowing around 70,000 prisoners to call a limited number of approved numbers from their cells. They pay for calls to family, friends, and lawyers, and can contact the Samaritans support service for free. The service is sometimes known as PIN phones as prisoners use personal identification numbers to access their accounts, with their call details logged and audio recorded and monitored, except for conversations with legal advisers.
-
-The service used to rely on shared phones on prison landings, but over the last few years HM Prison and Probation Service has installed in-cell phones in its 92 closed prisons across England and Wales. These provide more privacy and avoid fights in queues for phones, according to prisoners&#39; newspaper Inside Time.
-
-The move to in-cell phones may contribute to prisoners spending longer on the blower. In the first half of 2025, they made 37.9 million calls lasting 264 million minutes, according to prisons minister Lord Timpson responding to a question last year from the Bishop of Gloucester Rachel Treweek.
-
-This is equivalent to triple the number of call volumes and a fivefold increase in call duration since 2016. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2025</div>
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-48')">
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">Apple Music adds optional labels for AI songs and visuals</div>
+            <div class="meta">2026-03-05</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
+            <h2>Apple Music adds optional labels for AI songs and visuals</h2>
+            <p><strong>The Verge | 2026-03-05</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/889836/apple-music-ai-transparency-tags-launch">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">﻿Yet another honesty policy for generative AI disclosures.
+
+﻿Yet another honesty policy for generative AI disclosures.
+
+Apple is asking artists and record labels on its music streaming platform to voluntarily label songs that were made using AI. The new “Transparency Tags” metadata system for Apple Music was announced in a newsletter to industry partners yesterday, according to Music Business Worldwide, and covers four categories, including track, composition, artwork, and music videos.
+
+The track tag should be applied when “a material portion of a sound recording” has been generated by AI tools, while the composition tag covers other AI-generated compositional elements, such as song lyrics. The artwork tag applies to static or moving graphics, but only at the album level. For all other AI-generated visual content — whether standalone or bundled with albums — the music video tag should be applied. Multiple transparency tags can be used simultaneously for works that require more than one of these disclosures.
+
+In its newsletter, Apple says its new tags are a “concrete first step” toward achieving industry-wide transparency around AI-generated music, and that labels and distributors “must take an active role in reporting when the content they deliver is created using AI.”
+
+Apple Music’s tagging system follows other efforts from competing music streaming providers to protect authentic artists from spam and impersonation, and help make AI-generated music easier for users to identify. Spotify is developing a new metadata standard for AI music disclosures with DDEX — a music standards-setting organization that currently lists senior Apple Music exec Nick Williamson as a board member. Deezer also made the AI music detection tool it launched last year available to other platforms in January, while Qobuz introduced its own proprietary AI detection system last week.
+
+In contrast to Deezer and Qobuz’s proactive detection systems, Apple Music’s Transparency Tags are entirely optional (for now) and place the responsibility for AI disclosure squarely on record labels and music distributors instead of the platform. Apple even says that determining what qualifies as AI-generated music and visuals will be left to the discretion of content providers, “similar to genres, credits, and other metadata,” and that no AI usage will be assumed on works that providers haven’t tagged.
+
+Honesty policies for other AI labelling solutions haven’t worked out so far. Given the lack of enforcement surrounding Apple Music’s tagging system, I’m struggling to see why creators and record labels would be motivated to actually use it.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">AI tools can unmask anonymous accounts</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>AI tools can unmask anonymous accounts</h2>
             <p><strong>The Verge | 2026-03-05</strong></p>
             <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/889395/ai-agents-unmask-anonymous-online-accounts">Visit Original Website</a>
@@ -2689,13 +2773,13 @@ Satoshi, in other words, is probably safe from AI sleuths. Your throwaway AITA p
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Anthropic makes last-ditch effort to salvage deal with Pentagon after blowup</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Anthropic makes last-ditch effort to salvage deal with Pentagon after blowup</h2>
             <p><strong>The Verge | 2026-03-05</strong></p>
             <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/889782/anthropic-pentagon-discussions-ai-deal">Visit Original Website</a>
@@ -2725,13 +2809,13 @@ Until last week, Claude was the only AI system that had security clearance to ha
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Nothing’s Headphone A are something worth considering</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Nothing’s Headphone A are something worth considering</h2>
             <p><strong>The Verge | 2026-03-05</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/889615/nothing-headphone-a-review">Visit Original Website</a>
@@ -2775,13 +2859,13 @@ It would be nice to have a carrying case and a less plasticky feel to the exteri
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Nothing is finally covering up with the slim, metal Phone 4A Pro</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Nothing is finally covering up with the slim, metal Phone 4A Pro</h2>
             <p><strong>The Verge | 2026-03-05</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/889769/nothing-phone-4a-pro-design-opaque-transparent">Visit Original Website</a>
@@ -2811,80 +2895,6 @@ It might be a while before we see if that thinking will extend to Nothing’s fl
 Photography by Dominic Preston / The Verge
 
 Update, March 5th: Added hands-on impressions and photos.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">Bill Gates&#8217; nuclear company is the first to get approval to build next-gen reactor</div>
-            <div class="meta">2026-03-05</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>Bill Gates&#8217; nuclear company is the first to get approval to build next-gen reactor</h2>
-            <p><strong>The Verge | 2026-03-05</strong></p>
-            <a class="original-link" href="https://www.theverge.com/science/889768/bill-gates-terrapower-nuclear-wyoming-reactor">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">﻿Construction on the advanced Wyoming nuclear power plant is set to finish by 2030.
-
-﻿Construction on the advanced Wyoming nuclear power plant is set to finish by 2030.
-
-Bill Gates-founded nuclear energy startup TerraPower has been granted approval from the Nuclear Regulatory Commission to build a next-generation reactor in Wyoming. This is the first commercial-scale, advanced nuclear power plant to ever receive the federal permit, according to the press release, and will be the first commercial reactor constructed in the US in almost a decade.
-
-Construction at the Wyoming plant is expected to be completed by 2030. TerraPower is one of several companies racing to build smaller, more efficient reactors to augment electrical grids under strain from AI data centers. In a 2024 interview with The Verge, Bill Gates said that he also believes nuclear energy can help solve the climate crisis by using designs that minimize the problem “in terms of their safety or fuel use or how they handle waste.”
-
-Unlike conventional water-cooled nuclear plants, the 345 megawatt “Natrium” design used by TerraPower utilizes liquid sodium to reduce shielding costs and operate at lower pressures. TerraPower’s plant also features a unique “molten salt-based energy storage system” that allows it to easily boost power output to 500 megawatts when demand spikes.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">Did Live Nation punish a venue by taking Billie Eilish away?</div>
-            <div class="meta">2026-03-05</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>Did Live Nation punish a venue by taking Billie Eilish away?</h2>
-            <p><strong>The Verge | 2026-03-05</strong></p>
-            <a class="original-link" href="https://www.theverge.com/policy/889720/live-nation-ticketmaster-trial-doj-barclays-center-threats">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">In the world of concert ticketing, even a winky face may seem like a threat.
-
-In the world of concert ticketing, even a winky face may seem like a threat.
-
-John Abbamondi had orders to let the CEO of Ticketmaster down easy.
-
-In April 2021, Abbamondi was the CEO of BSE Global, the company that ran Brooklyn arena the Barclays Center. BSE Global’s existing Ticketmaster contract would expire at the end of September, and Abbamondi and his team had evaluated proposals from SeatGeek, AXS, and Ticketmaster. The economics of Ticketmaster offer, according to Abbamondi, “was nowhere near as good as the other two.” SeatGeek’s technology was “superior” to Ticketmaster’s on balance, on top of better financial terms including an equity stake in the company, the arena decided. It clinched their decision to go with a newer, smaller player in the field.
-
-When Abbamondi called to break the news to Michael Rapino, the Live Nation Entertainment CEO, the meeting became tense — and a recording of it came back to haunt Rapino in this month’s Live Nation-Ticketmaster monopoly trial. Abbamondi was one of two witnesses who took the stand Wednesday, alongside Mitch Helgerson, the chief revenue officer for the Minnesota Wild hockey team. Both men said that when they considered switching their venues’ ticketing platform from Ticketmaster, executives there threatened them with the loss of vital Live Nation-promoted concerts. It’s the behavior, the Justice Department and 40 state and district attorneys general say, of a monopolist — a charge Live Nation-Ticketmaster denies.
-
-Abbamondi, identifying the voices on the 2021 call to a Manhattan jury Wednesday, said that “the nervous guy was me and the angry guy was Michael.” The few minutes played in court captures an exchange that went “sideways,” as Abbamondi put it, when he tried to thread a delicate needle: rejecting Ticketmaster’s services while trying to hold its parent company Live Nation to a separate contract promising to fill Barclays Center with concerts. At one point, Rapino dropped an F-bomb while discussing his frustration over a contractual dispute. He told Abbamondi he believed they were never planning to renew with Ticketmaster in the first place.
-
-Rapino reminded Abbamondi about the new UBS Arena in Queens, which could draw more Live Nation-promoted shows away from Barclays. Though Ticketmaster theoretically operates separately from Live Nation, Abbamondi took this as a “not-so-veiled” threat — cut off the left arm, and the right arm would swing back. Abbamondi hung up feeling like he’d failed to “do my job there, which was to land the plane smoothly.”
-
-The venue “saw a dramatic decline in Live Nation shows that were booked at the arena”
-
-Abbamondi still signed the deal with SeatGeek, which began in October 2021. Then, he testified, the venue “saw a dramatic decline in Live Nation shows that were booked at the arena.” Artists were just beginning to fill stadiums again after the start of the covid pandemic, including Billie Eilish, who’d had to cancel shows in New York venues including Barclays in 2020. Normally, Abbamondi would have expected Live Nation to rebook her show there next time she was on tour. But when she began touring again in 2021, she booked at the new venue Rapino had warned about — the UBS Arena. When Barclays asked about it, they were told it was the “artist’s decision.” Other promoters, he said, hadn’t reduced their bookings at Barclays by nearly as much.
-
-In 2022, mere months into the SeatGeek contract, Abbamondi was fired. Less than a year later, Barclays announced it was going back to Ticketmaster.
-
-Ticketmaster, in the witnesses’ telling, wasn’t the best option for a ticketing vendor, but Live Nation’s power as a concert promoter forced their hand. In the case of the Minnesota Wild, which played at the then-Xcel Energy Center in St. Paul, Helgerson said the fear of losing Live Nation shows was a large driver behind its decision to stick with Ticketmaster — even though it found it would make $1 million a year more switching to SeatGeek.
-
-The arena was already engaged in tight competition for concerts with the Target Center across the river in Minneapolis, a similarly sized venue. So when the Wild kicked off negotiations over renewing its contract with Ticketmaster in 2018, the ticketing service knew how to hit them where it would hurt. When the Wild staff mentioned they were planning to consider a proposal from SeatGeek too, a Ticketmaster executive told them that Live Nation could move all of their shows to the Target Center if they switched ticketing vendors, Helgerson testified. “We took it as a credible threat,” he said. “Losing those shows would be almost catastrophic to our organization.”
-
-To ease the risk, SeatGeek offered what it called “Live Nation retaliation insurance” — a promise to compensate the arena for concerts booked at the Target Center on dates Xcel had open. SeatGeek offered the arena a higher upfront bonus and fee share that overall would make the venue an additional $1 million a year compared to Ticketmaster’s offer. But even retaliation insurance couldn’t make up for the loss of the “vibrance of the venue” and the impact on its own employees should Live Nation pull its shows. Ticketmaster’s alleged threat created an “insurmountable challenge.” The venue signed another contract with Ticketmaster.
-
-There were complicating factors in both these cases, which Live Nation pointed out on cross-examination. It was both risky and a lot of work to move to a new ticketing platform. Like switching any enterprise software, it would take a while for staff to get up to speed, and Abbamondi admitted that while SeatGeek’s technology gave them more options over things like how to price individual seats, it was less user-friendly. An executive whom Helgerson worked with worried that SeatGeek’s lack of an interface for concert promoters at the time would be an obstacle to getting them to bring shows to the arena. Abbamondi also said he’s personal friends with SeatGeek’s co-founder, and he testified he wasn’t fired because of the SeatGeek deal — he was given two other reasons.
-
-SeatGeek offered what it called “Live Nation retaliation insurance”
-
-There was also a separate legal dispute between the Barclays Center and Ticketmaster, which appeared to be at least part of the reason that the call between Abbamondi and Rapino broke down. Barclays believed their contract with Ticketmaster would expire at the end of September 2021, as originally stated. But Ticketmaster believed that because the covid pandemic shortened the regular NBA season, a clause in the contract had been triggered to extend that contract another year. On top of that, in an earlier, unrecorded call between Abbamondi and Rapino, the Ticketmaster CEO suggested that they should be given the chance to counter any offer Barclays received. Abbamondi said he tried his best to respond in a “noncommittal” way, but the implication was that Rapino might have seen it differently.
-
-The jury will have to decide whether the threats Abbamondi and Helgerson described were really as menacing as they believe, one of many factors that will determine whether Live Nation-Ticketmaster should face penalties — including the possibility of a breakup.
-
-In one text exchange, Live Nation executive Patti Kim, a friend of Abbamondi’s, wrote that he should “think about the bigger relationship” with Live Nation, not just who’s writing the bigger check. She added a winky face. “That was my friend saying, ‘you know what I mean,’” Abbamondi said. This week, the jury is expected to get the chance to hear from the rival allegedly offering those bigger checks: SeatGeek CEO Jack Groetzinger.
 
 A free daily digest of the news that matters most.</div>
         </div>
@@ -3263,11 +3273,25 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: No talk of triggering NATO's Article 5 over Turkey missile shoot-down, Rutte says - Reuters</div>
+            <div class="title">Israel to attack Iran's underground missile sites in second phase of war, sources say - Reuters</div>
             <div class="meta">2026-03-05</div>
         </div>
         
         <div id="content-60" style="display:none;">
+            <h2>Israel to attack Iran's underground missile sites in second phase of war, sources say - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-03-05</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxOMUw0Y3JrSVhQQjZIWmNIdXMyRWpSTDdjbVphQzBfVWk3MTRaX0R5SkFrQXFHQU94ZlZBd2tkcTQtTnBrVkt6ZzVJVFZIS1NtdkxOcUMyVTVHTUxnQ21vLUxhMFd5UV9RWTFHaG4xVkc5eEFOMFpzYzA3SVVmR0VmZmRhRHZvSWYxemxUSEZMZUdEdWJRNXBOempENlJBVGFQNXB5VVg1alhyUzZyUFhfcFF3SzdlUEQ4cjNIWFF5YThLQ1hheFRQbldKdURXb19rSTJZ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Exclusive: No talk of triggering NATO's Article 5 over Turkey missile shoot-down, Rutte says - Reuters</div>
+            <div class="meta">2026-03-05</div>
+        </div>
+        
+        <div id="content-61" style="display:none;">
             <h2>Exclusive: No talk of triggering NATO's Article 5 over Turkey missile shoot-down, Rutte says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQc0tRdnFKREJuUzNTbEpFbldSaDBIZDVBX1lLelhHblVncURtX3JWbUhRWHNGd29oMl9FakVnU0RSOVpiaXZQckFCbEdxQkxSeE9YazFZRWJSbWhQMGJxdlZaRnhVLVY5cV96eEM1ZkEwS0pmZXVpOThvazgzNy0yWHFWOEl0TVRoTnhFb1BiWlY0cUpKX2JfT1V4bTFDXzd1VGZ4MGZ1N3F0dXJuSTRtN2FZY3ZMaldCVWpzX3dobU0?oc=5">Visit Original Website</a>
@@ -3275,13 +3299,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-62')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Exclusive: NATO allies will keep supporting Ukraine despite situation in Iran, Rutte says - Reuters</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-62" style="display:none;">
             <h2>Exclusive: NATO allies will keep supporting Ukraine despite situation in Iran, Rutte says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOZmUxMzM4SU5ka3BBS1luLWtOZ1U4SkM4dzVrbm4wZ3FINWdxcEF5cWh2eXUxNTBMdTYzc2dQaEYyQlpZeVFOZnJBdkxkRGtZY25qR280dWhvSHlvWG9XeVd5MnMtbnlua1dmN0hSdkhVVjBZemJHdmlTcGxMTjR6YjJ5TGd1U2IwOHBSeHNJT1RKZXBoTFlWaTJ6d3kyRDNwR3p4N3NqU09xVVdfMmZROVVZQjYwckE?oc=5">Visit Original Website</a>
@@ -3289,13 +3313,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Crude tanker reports suspected hull breach after blast near Iraq port - Reuters</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>Crude tanker reports suspected hull breach after blast near Iraq port - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPMkNLNjJka1VTbGZxaGJyam5NR1VNRklFLWlFOV9xXzZnQ3pOejlLSUtjTF9XNGVKWU5EdXNRVUY4Q0JRWjVxc3p4dnZXTjM5dGJ6SjlzS1Z2R2YxSXUzbUpYYkFVcWhhbjZFRlg3ZFh5SVMtVHFGcHJYQ2t1RHR1bnZKWUhQbEFxZ3FEMjZDU1VOM1dJZlY2OHF5cHFhZEEtSk5ibjN2dHlIa3pMMVN0Y0F0eGMza3Jkak1ob3Z6c0x6d1A2SndR?oc=5">Visit Original Website</a>
@@ -3303,13 +3327,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Iran has not requested Russian arms supplies, Kremlin says - Reuters</div>
             <div class="meta">2026-03-05</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>Iran has not requested Russian arms supplies, Kremlin says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOSHhBRWZlWXdoYlJNcERPcU12WlZuSlFVLTg5OS1Cd1JyU3l5Zmg0OURSajJkMW5FdWdVZDI2OTIzcnNOMzk2ZE1SeU1FTDdLS0ducUxJZDBaNVZVWkZ4c1E2S1JFVVdzZUU5bDdSSHpqRFVRcGhKbVQ4Y3NCcnl3MkZvWXNSSkRrcmpQNVkxcDl0UWM5bDBZbmNpVUQtX1RTZENMSXVJWW5qbzk5OTlwMA?oc=5">Visit Original Website</a>
@@ -3317,30 +3341,16 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Azerbaijan vows to respond after four injured by Iranian drones - Reuters</div>
-            <div class="meta">2026-03-05</div>
-        </div>
-        
-        <div id="content-64" style="display:none;">
-            <h2>Azerbaijan vows to respond after four injured by Iranian drones - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-03-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxOX2FhQzRLOW4xZVRmN1pXY0hJbGo3bFFUeFd2YjdnbVB2RzlvSlE4VDZjMzBPRGRIV0pDN3VsWWpPc0pCRUoxMktUZDBCTmt6Ym53RXlUZDNWQlBGZVdUejdZRldiYk5DRHRyVWhueDFibGRuRVd3SGNBRUhhUUMwYlVNeEhRV3FVVVg2aDJnSzBSWVN3UDVmX1dzNy1PZGNMeUhITWNHN0lyWkJGS0tzelh4dGhDbFRrUHc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-65')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">China's top chip bosses urge supportive policies to create 'China's ASML' - Reuters</div>
+            <div class="title">Somali parliament approves constitution change to extend president's term, delay election - Reuters</div>
             <div class="meta">2026-03-05</div>
         </div>
         
         <div id="content-65" style="display:none;">
-            <h2>China's top chip bosses urge supportive policies to create 'China's ASML' - Reuters</h2>
+            <h2>Somali parliament approves constitution change to extend president's term, delay election - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOcWExOEV4NGxIN1BKaUdwWTJBWHZMUHRlaVpCa1VKVWdYN3cxalctZDBNSEpRQlJPRExKTkQ2SUt5R0hVeUc3ckZvd3RDVy1iS1N6ZDFLY3Bpb0NTWEFCcU5TcFlmUVhJNmpDRFFWV3dTQ2FWazczaFN2SGEyUlYySy1CNDFaaWtDcm1jOXdTWm5WOXNJdHdHc2w1U3BLVi0tZFdOdlhoRzhzMDQ5Z0lUR2o4MG8?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdHlkSVZ4ZFFHblh2UENLVUpWQnV4cThaV09hclkwQnBFRXF3NWJlTEVQQ1lzV0lJS1NkQkZMSDFQaWhKTXBDNlZ4YW0xcFY5V1MxdEZ1cDRsSGhiU0c5WVhrU2FNTXZ0RGJVejc0RjAxQTZUUFhwc20wamlLTHBQdjBuMElXLVo1VnJpdF96cG1FQTNONmg3UHY0a3pRMXgxN0JfRTNqZlZTMHB0aXk2LXJTM0Y3d0JhZzV6MDVENTVndw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3375,28 +3385,28 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Scientists Report New Quantum Teleportation Breakthrough, Toppling a Major Barrier to Practical Quantum Communication - The Debrief</div>
-            <div class="meta">2026-02-27</div>
+            <div class="title">Questions Mount Over Viral Claims of Apocalyptic Iran War Briefings in the Military - The Debrief</div>
+            <div class="meta">2026-03-04</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>Scientists Report New Quantum Teleportation Breakthrough, Toppling a Major Barrier to Practical Quantum Communication - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-02-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxQRG5FTkRDckhzUjhTLWxjbHRXQms2bjZfMU1OUEdiaEMzVVlza09jNjFtY0hFY1BjeldDSTV5NVplUzZBellQUjZPT0VxVExET1VxUlFKUkp0dEZWbXdTS1A1cXpfSzEwaXg1VWF4eHlSRHotT0h5Z3VoWDUyZUt2MHJrWjlhYzB3OHNseHNJaHQxUTZPMVhvaWM1Qy04MnNxZDBuLWlLXy1Bd2ZoM1E4dFFYdmFyUVlpSEYzc2RRY043VE9VbFJ2WTYzV0djaW01a0hwVkxLOA?oc=5">Visit Original Website</a>
+            <h2>Questions Mount Over Viral Claims of Apocalyptic Iran War Briefings in the Military - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-03-04</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQU185VTNhZUtBV3RIRy0xSjZ3WHNRbDNyb2F4TW0tTGZKNzM2V2ZoMzNMMlliR20taUVqN1NBaHE4RGxCSDBnRllMN1pEcTJRbGstdTNMWkQxak5TOGtRekJZNEN5S2RBS3A2elQwZm9hQTdicmMtMFdZbWotaHd6MFFZdVdVR1lCZUNQLUpMOVFBVWhpWVFPWjc3OVBRczcxZ2xsaFRyYkVEOUU?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Questions Mount Over Viral Claims of Apocalyptic Iran War Briefings in the Military - The Debrief</div>
-            <div class="meta">2026-03-04</div>
+            <div class="title">Scientists Report New Quantum Teleportation Breakthrough, Toppling a Major Barrier to Practical Quantum Communication - The Debrief</div>
+            <div class="meta">2026-02-27</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>Questions Mount Over Viral Claims of Apocalyptic Iran War Briefings in the Military - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-03-04</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQU185VTNhZUtBV3RIRy0xSjZ3WHNRbDNyb2F4TW0tTGZKNzM2V2ZoMzNMMlliR20taUVqN1NBaHE4RGxCSDBnRllMN1pEcTJRbGstdTNMWkQxak5TOGtRekJZNEN5S2RBS3A2elQwZm9hQTdicmMtMFdZbWotaHd6MFFZdVdVR1lCZUNQLUpMOVFBVWhpWVFPWjc3OVBRczcxZ2xsaFRyYkVEOUU?oc=5">Visit Original Website</a>
+            <h2>Scientists Report New Quantum Teleportation Breakthrough, Toppling a Major Barrier to Practical Quantum Communication - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-02-27</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxQRG5FTkRDckhzUjhTLWxjbHRXQms2bjZfMU1OUEdiaEMzVVlza09jNjFtY0hFY1BjeldDSTV5NVplUzZBellQUjZPT0VxVExET1VxUlFKUkp0dEZWbXdTS1A1cXpfSzEwaXg1VWF4eHlSRHotT0h5Z3VoWDUyZUt2MHJrWjlhYzB3OHNseHNJaHQxUTZPMVhvaWM1Qy04MnNxZDBuLWlLXy1Bd2ZoM1E4dFFYdmFyUVlpSEYzc2RRY043VE9VbFJ2WTYzV0djaW01a0hwVkxLOA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
