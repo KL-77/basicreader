@@ -154,11 +154,61 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Meta acquires Moltbook, the AI agent social network</div>
+            <div class="title">AI can rewrite open source code—but can it rewrite the license, too?</div>
             <div class="meta">2026-03-10</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>AI can rewrite open source code—but can it rewrite the license, too?</h2>
+            <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
+            <a class="original-link" href="https://arstechnica.com/ai/2026/03/ai-can-rewrite-open-source-code-but-can-it-rewrite-the-license-too/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Computer engineers and programmers have long relied on reverse engineering as a way to copy the functionality of a computer program without copying that program’s copyright-protected code directly. Now, AI coding tools are raising new issues with how that “clean room” rewrite process plays out both legally, ethically, and practically.
+
+Those issues came to the forefront last week with the release of a new version of chardet, a popular open source python library for automatically detecting character encoding. The repository was originally written by coder Mark Pilgrim in 2006 and released under an LGPL license that placed strict limits on how it could be reused and redistributed.
+
+Dan Blanchard took over maintenance of the repository in 2012 but waded into some controversy with the release of version 7.0 of chardet last week. Blanchard described that overhaul as “a ground-up, MIT-licensed rewrite” of the entire library built with the help of Claude Code to be “much faster and more accurate” than what came before.
+
+Speaking to The Register, Blanchard said that he has long wanted to get chardet added to the Python standard library but that he didn’t have the time to fix problems with “its license, its speed, and its accuracy” that were getting in the way of that goal. With the help of Claude Code, though, Blanchard said he was able to overhaul the library “in roughly five days” and get a 48x performance boost to boot.
+
+Not everyone has been happy with that outcome, though. A poster using the name Mark Pilgrim surfaced on GitHub to argue that this new version amounts to an illegitimate relicensing of Pilgrim’s original code under a more permissive MIT license (which, among other things, allows for its use in closed-source projects). As a modification of his original LGPL-licensed code, Pilgrim argues this new version of chardet must also maintain the same LGPL license.
+
+“Their claim that it is a ‘complete rewrite’ is irrelevant, since they had ample exposure to the originally licensed code (i.e., this is not a ‘clean room’ implementation),” Pilgrim wrote. “Adding a fancy code generator into the mix does not somehow grant them any additional rights. I respectfully insist that they revert the project to its original license.”
+
+In his own response to Pilgrim, Blanchard admits that he has had “extensive exposure to the original codebase,” meaning he didn’t have the traditional “strict separation” usually used for “clean room” reverse engineering. But that tradition was set up for human coders as a way “to ensure the resulting code is not a derivative work of the original,” Blanchard argues.
+
+In this case, Blanchard said that the new AI-generated code is “qualitatively different” from what came before it and “is structurally independent of the old code.” As evidence, he cites JPlag similarity statistics showing that a maximum of 1.29 percent of any chardet version 7.0.0 file is structurally similar to the corresponding file in version 6.0.0. Comparing version 5.2.0 to version 6.0.0, on the other hand, finds up to 80 percent similarity in some corresponding files.
+
+“No file in the 7.0.0 codebase structurally resembles any file from any prior release,” Blanchard writes. “This is not a case of ‘rewrote most of it but carried some files forward.’ Nothing was carried forward.”
+
+Blanchard says he was able to accomplish this “AI clean room” process by first specifying an architecture in a design document and writing out some requirements to Claude Code. After that, Blanchard “started in an empty repository with no access to the old source tree and explicitly instructed Claude not to base anything on LGPL/GPL-licensed code.”
+
+There are a few complicating factors to this straightforward story, though. For one, Claude explicitly relied on some metadata files from previous versions of chardet, raising direct questions about whether this version is actually “derivative.”
+
+For another, Claude’s models are trained on reams of data pulled from the public Internet, which means it’s overwhelmingly likely that Claude has ingested the open source code of previous chardet versions in its training. Whether that prior “knowledge” means that Claude’s creation is a “derivative” of Pilgrim’s work is an open question, even if the new code is structurally different from the old.
+
+And then there’s the remaining human factor. While the code for this new version was generated by Claude, Blanchard said he “reviewed, tested, and iterated on every piece of the result using Claude. … I did not write the code by hand, but I was deeply involved in designing, reviewing, and iterating on every aspect of it.” Having someone with intimate knowledge of earlier chardet code take such a heavy hand in reviewing the new code could also have an impact on whether this version can be considered a wholly new project.
+
+All of these issues have predictably led to a huge debate over legalities of chardet version 7.0.0 across the open source community. “There is nothing ‘clean’ about a Large Language Model which has ingested the code it is being asked to reimplement,” Free Software Foundation Executive Director Zoë Kooyman told The Register.
+
+But others think the “Ship of Theseus”-style arguments that can often emerge in code licensing dust-ups don’t apply as much here. “If you throw away all code and start from scratch, even if the end result behaves the same, it’s a new ship,” Open source developer Armin Ronacher said in a blog post analyzing the situation.
+
+Old code licenses aside, using AI to create new code from whole cloth could also create its own legal complications going forward. Courts have already said that AI can’t be the author on a patent or the copyright holder on a piece of art but have yet to rule on what that means for the licensing of software created in whole or in part by AI. The issues surrounding potential “tainting” of an open source license with this kind of generated code can get remarkably complex remarkably quickly.
+
+Whatever the outcome here, the practical impact of being able to use AI to quickly rewrite and relicense many open source projects—without nearly as much effort on the part of human programmers—is likely to have huge knock-on effects throughout the community.
+
+“Now the process of rewriting is so simple to do, and many people are disturbed by this,” Italian coder Salvatore “antirez” Sanfilippo wrote on his blog. “There is a more fundamental truth here: the nature of software changed; the reimplementations under different licenses are just an instance of how such nature was transformed forever. Instead of combating each manifestation of automatic programming, I believe it is better to build a new mental model and adapt.”
+
+Others put the sea change in more alarming terms. “I’m breaking the glass and pulling the fire alarm!” open source evangelist Bruce Perens told The Register. “The entire economics of software development are dead, gone, over, kaput! … We have been there before, for example when the printing press happened and resulted in copyright law, when the scientific method proliferated and suddenly there was a logical structure for the accumulation of knowledge. I think this one is just as large.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Meta acquires Moltbook, the AI agent social network</div>
+            <div class="meta">2026-03-10</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
             <h2>Meta acquires Moltbook, the AI agent social network</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/03/meta-acquires-moltbook-the-ai-agent-social-network/">Visit Original Website</a>
@@ -178,13 +228,13 @@ While many power users have played with OpenClaw, and it has partially inspired 
 That said, some healthy skepticism is required when assessing posts to Moltbook. While the goal of the project was to create a social network humans could not join directly (each participant of the network is an AI agent run by a human), it wasn’t secure, and it’s likely some of the messages on Moltbook are actually written by humans posing as AI agents.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">After complaints, Google will make it easier to disable gen AI search in Photos</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>After complaints, Google will make it easier to disable gen AI search in Photos</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/03/google-backtracks-on-ai-search-in-photos-adds-toggle-for-fast-classic-search/">Visit Original Website</a>
@@ -202,13 +252,13 @@ Before this change, disabling Ask Photos required digging three levels deep in t
 All is not lost for Ask Photos, though. Ben-Yair says the team is still re-tuning the model in hopes of streamlining the experience. Some of the “most popular searches” have been improved recently to provide higher-quality results. This has apparently led to improved feedback from users of the app. So don’t count Ask Photos out just yet. Google clearly wants to fully transition the Photos search experience to Gemini, but that’ll be harder to pull off now that there’s a prominent toggle that gives people the classic (and much better) search experience. Having both options side by side will really illustrate the problems with Ask Photos.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Anthropic sues US over blacklisting; White House calls firm "radical left, woke"</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Anthropic sues US over blacklisting; White House calls firm "radical left, woke"</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/03/anthropic-sues-us-over-blacklisting-white-house-calls-firm-radical-left-woke/">Visit Original Website</a>
@@ -250,13 +300,13 @@ Hegseth then wrote that “Anthropic delivered a master class in arrogance and b
 Anthropic said later that day that it had engaged in months of negotiations with the government and would challenge any supply chain risk designation in court. “Designating Anthropic as a supply chain risk would be an unprecedented action—one historically reserved for US adversaries, never before publicly applied to an American company… No amount of intimidation or punishment from the Department of War will change our position on mass domestic surveillance or fully autonomous weapons,” Anthropic said.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Trump's divisive FDA vaccine regulator self-destructs, will exit agency (again)</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Trump's divisive FDA vaccine regulator self-destructs, will exit agency (again)</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/03/trumps-divisive-fda-vaccine-regulator-self-destructs-will-exit-agency-again/">Visit Original Website</a>
@@ -298,13 +348,13 @@ When a reporter asked the official how long he would stay at the agency, he resp
 Makary said Friday that Prasad’s replacement will be announced before his departure.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">NASA and SpaceX disagree about manual controls for lunar lander</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>NASA and SpaceX disagree about manual controls for lunar lander</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/03/nasa-and-spacex-disagree-about-manual-controls-for-lunar-lander/">Visit Original Website</a>
@@ -340,41 +390,51 @@ There is other interesting information in the report, including details on the u
 There will also be a limited ability to test the abrasive impact of lunar dust, expected to be returned inside the vehicles after Moonwalks, on life support equipment during these uncrewed demonstrations.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Gemini burrows deeper into Google Workspace with revamped document creation and editing</div>
+        <div class="card" onclick="openModal('content-6')">
+            <div class="source">Futurism</div>
+            <div class="title">Amazon Admits Extensive AI Use Is Wreaking Havoc on Its Core Business</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-5" style="display:none;">
-            <h2>Gemini burrows deeper into Google Workspace with revamped document creation and editing</h2>
-            <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
-            <a class="original-link" href="https://arstechnica.com/ai/2026/03/gemini-burrows-deeper-into-google-workspace-with-revamped-document-creation-and-editing/">Visit Original Website</a>
+        <div id="content-6" style="display:none;">
+            <h2>Amazon Admits Extensive AI Use Is Wreaking Havoc on Its Core Business</h2>
+            <p><strong>Futurism | 2026-03-10</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/amazon-ai-tools-business">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Google didn’t waste time integrating Gemini into its popular Workspace apps, but those AI features are now getting an overhaul. The company says its new Gemini features for Drive, Docs, Sheets, and Slides will save you from the tyranny of the blank page by doing the hard work for you. Gemini will be able to create and refine drafts, stylize slides, and gather context from across your Google account. At this rate, you’ll soon never have to use that squishy human brain of yours again, and won’t that be a relief?
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
 
-If you go to create a new Google Doc right now, you’ll see an assortment of AI-powered tools at the top of the page. Google is refining and expanding these options under the new system. The new AI editing features will appear at the bottom of a fresh document with a text box similar to your typical chatbot interface. From there, you can describe the document you want and get a first draft in a snap. When generating a new document, you can rope in content from sources like Gmail, other documents, Google Chat, and the web.
+Businesses are learning the hard way that rapidly deploying AI tools — and forcing or strongly encouraging their employees to use them — can backfire severely.
 
-This also comes with expanded AI editing capabilities. You can use further prompts to reformat and change the document or simply highlight specific sections and ask for changes. Docs will also support AI-assisted style matching, which might come in handy if you have multiple people editing the text. Google notes that all Gemini suggestions are private until you approve them for use.
+The latest appears to be Amazon — though one can debate whether it’s taking away the right lessons. On Tuesday, the Financial Times reports, the ecommerce giant summoned a large group of engineers to a meeting addressing recent outages plaguing its online retail business, some of them related to AI coding tools.
 
-Gemini is also getting an upgrade in Sheets, and Google claims the robot’s spreadsheet capabilities are nearing those of flesh-and-blood humans in recent testing. Similar to text documents, you can tell Gemini in the sidebar what kind of spreadsheet you need and the AI will use the prompt (and whatever data sources you specify) to generate it. Gemini can also allegedly fill in missing data by searching for it on the web. In our past testing, Gemini has had a lot of trouble with spreadsheet layouts, but Google says this revamp will handle everything, from basic tasks to complex data analysis.
+In a meeting briefing note, the company described the “trend of incidents” as characterized by a “high blast radius” and “Gen-AI assisted changes.” As a “contributing factor,” the note listed “novel GenAI usage for which best practices and safeguards are not yet fully established.”
 
-Sides is getting added Gemini functionality, but not all at once. Google says Gemini can now build an entire slide from a prompt, with the same ability to pull context from your files and emails (if you enable this for the prompt). You can also have the AI edit or rework a slide if it doesn’t look the way you want. In the future, Google plans to give Gemini the ability to create entire presentations with multiple slides from a single prompt, but this won’t be available during the initial rollout.
+“Folks, as you likely know, the availability of the site and related infrastructure has not been good recently,” Dave Treadwell, a senior vice-president at Amazon’s eCommerce Services, told employees in an email, per the FT.
 
-While Google has mostly focused on the changes coming to individual Workspace apps, the way you find and interact with your files is also getting an AI makeover. The search bar will rely more heavily on AI to find your files, and searches will also come with an AI Overview right at the top. This text will summarize the most relevant information for your search with citations for the associated documents.
+The meeting follows a nearly six hour outage last week that took down Amazon’s shopping website and app, leaving customers unable to make orders. In the aftermath, the company blamed a botched “software code deployment.”
 
-You’ll also see “Ask Gemini” buttons around the interface, including in search results. Those let you ask deeper questions about the documents in a particular folder or a batch of search results. You can export the resulting AI outputs to a new document where you can, again, use Gemini to expand and edit the content.
+In another series of incidents at its cloud computing division, Amazon Web Services, two separate outages were caused after engineers allowed the company’s in-house AI coding tool to make disastrous changes, additional FT reporting revealed last month. In one case, the AI tool deleted and recreated the entire coding environment.
 
-Like most of Google’s new AI expansions, these Workspace features will come first to Google AI Ultra and Pro subscribers. The Docs, Slides, and Sheets features will roll out gradually over the spring globally, but only in English. The Drive search changes will also arrive in the coming months, but this will be limited to the US at first. If you don’t want any part of this, you can disable “Smart Features” in Workspace, which kills Gemini but also turns off things like Gmail package tracking and pulling calendar events from Gmail.</div>
+In response to the earlier reporting, Amazon framed these blunders as an issue related to its protocols around AI usage and “user access control,” rather than an AI autonomy issue, and it appears to be sticking to its guns. The company will not be backing away from deploying AI but is instead insisting on stronger guardrails and more oversight on how it’s used.
+
+Junior and mid-level engineers will now require more senior engineers to sign off any AI-assisted changes, Treadwell said at the meeting, per the FT‘s reporting. Treadwell asked staff to attend the typically-optional meeting.
+
+There’s no question that AI tools, if they should be used at all, should be closely supervised, especially in programming roles. Like any generative AI model, AI coding tools frequently allow errors through and sometimes struggle to follow instructions, meaning they can take actions that a user never intended.
+
+But Amazon’s renewed focus on implementing more human oversight comes as it’s fired hundreds of workers from its cloud computing division and as it targets laying off 30,000 employees across its corporate workforce overall. Meanwhile, management leans on programmers to heavily use AI tools, with employees previously telling the FT that the company set a target for 80 percent of developers to use AI for coding tasks at least once a week.
+
+In sum: more coding with more AI with more human oversight, but fewer humans. We’ll see how that works out.
+
+More on AI: Insiders Afraid the Government Will Nationalize the AI Industry</div>
         </div>
         
-        <div class="card" onclick="openModal('content-6')">
+        <div class="card" onclick="openModal('content-7')">
             <div class="source">Futurism</div>
             <div class="title">Waymos Are a Huge Drain on Public Resources, Government Data Shows</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-7" style="display:none;">
             <h2>Waymos Are a Huge Drain on Public Resources, Government Data Shows</h2>
             <p><strong>Futurism | 2026-03-10</strong></p>
             <a class="original-link" href="https://futurism.com/advanced-transport/waymo-san-francisco-resources">Visit Original Website</a>
@@ -410,13 +470,13 @@ All told, the self-driving racket identified by Paris Marx now seems to come wit
 More on self-driving cars: Tesla Robotaxis Crashing Vastly More Often Than Human Drivers</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">FCC Deciding Whether to Allow Startup to Launch Huge Mirror Satellite to Blast Sunlight on Cities at Nighttime</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>FCC Deciding Whether to Allow Startup to Launch Huge Mirror Satellite to Blast Sunlight on Cities at Nighttime</h2>
             <p><strong>Futurism | 2026-03-10</strong></p>
             <a class="original-link" href="https://futurism.com/space/fcc-huge-mirror-satellite">Visit Original Website</a>
@@ -452,13 +512,13 @@ But would it even work? Michael Brown, an astronomer at Australia’s Monash Uni
 More on space: Rapid Space Launches Shifting the Chemistry of Earth’s Atmosphere</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">Body Horror Robot Turns Human Into Centaur</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>Body Horror Robot Turns Human Into Centaur</h2>
             <p><strong>Futurism | 2026-03-10</strong></p>
             <a class="original-link" href="https://futurism.com/robots-and-machines/robot-human-centaur">Visit Original Website</a>
@@ -504,13 +564,13 @@ Others pointed out that gadgets to help carry heavy loads while walking has a lo
 More on exoskeletons: Nike’s New Sneaker Contains an Exoskeleton to Boost Your Leg Performance</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">Insiders Afraid the Government Will Nationalize the AI Industry</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>Insiders Afraid the Government Will Nationalize the AI Industry</h2>
             <p><strong>Futurism | 2026-03-10</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/ai-ceos-nationalization">Visit Original Website</a>
@@ -542,13 +602,13 @@ On a recent episode of the Hard Fork podcast, hosts Casey Newton and Kevin Roose
 More on AI: Pentagon Refuses to Say If AI Was Used to Select Elementary School as Bombing Target</div>
         </div>
         
-        <div class="card" onclick="openModal('content-10')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">YouTube Filling With Horrifying AI Slop for Children</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-10" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>YouTube Filling With Horrifying AI Slop for Children</h2>
             <p><strong>Futurism | 2026-03-10</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/youtube-ai-slop-for-children">Visit Original Website</a>
@@ -592,45 +652,69 @@ YouTube requires creators to disclose if they’ve used AI to create “realisti
 More on AI: Children’s Toys Are Shipping With Adult AI Inside Them</div>
         </div>
         
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">Zuckerberg Loudly Booed at His Safe Space</div>
+        <div class="card" onclick="openModal('content-12')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Google and Tesla think we’re managing the electrical grid all wrong</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-11" style="display:none;">
-            <h2>Zuckerberg Loudly Booed at His Safe Space</h2>
-            <p><strong>Futurism | 2026-03-10</strong></p>
-            <a class="original-link" href="https://futurism.com/future-society/mark-zuckerberg-booed-ufc">Visit Original Website</a>
+        <div id="content-12" style="display:none;">
+            <h2>Google and Tesla think we’re managing the electrical grid all wrong</h2>
+            <p><strong>TechCrunch | 2026-03-10</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/03/10/google-and-tesla-think-were-managing-the-electrical-grid-all-wrong/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+            <div id="article-text">Founder Summit 2026 in Boston: Don’t miss ticket savings of up to $300. Register Now.
 
-Meta CEO and noted MMA practitioner Mark Zuckerberg was loudly booed at a UFC fight on Saturday night, raising an urgent question: does anyone like this guy?
+Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
 
-The vociferous outpouring of disapproval was unmistakable. In footage taken at Las Vegas’s T-Mobile Arena, the crowd loudly cheers for various celebrities on the jumbotron, until Zuckerberg’s unfortunate visage appears. Actor Mark Wahlberg? Sure, why not. UFC Hall of Famer Robbie Lawler? Hell yeah, roars the crowd, thirsty for blood. Woo-hoo.
+Google, Tesla, and data center developer Verrus are among a group of companies arguing that the electrical grid is being underutilized and they want everyone — especially politicians — to know about it.
 
-Zuckerberg, though? The camera lingered on him only for a few seconds, but attendees let their low opinions be known. The centibillionaire laughed it off, pointed to the camera, and appeared to say “I’m booed,” before a brief nod of sucking-it-up acceptance. When the camera cut to another celebrity, football player Puka Nacua, the boos immediately turned back to cheers.
+The three companies along with HVAC giant Carrier, virtual power plant company Renew Home, distributed energy resource developer Sparkfund, and smart electrical panel startup Span founded a new group called Utilize to get that message across. The group, which launched Tuesday, is advocating to change the way the grid is built and used. The group points out, correctly, that the grid is designed for brief bursts of high demand; most of the time there’s lots of capacity that goes unused.
 
-The crowd went from cheers to boos for Mark Zuckerberg 😭 pic.twitter.com/NwTKSUeoOq
+Utilize thinks that should change. The group argues that smarter ways to use that capacity already exist. Utilize name checks a number of those solutions, including battery storage, demand response, and virtual power plants, all of which have emerged en masse over the last decade, but remain under utilized. (Oh, that’s where the name comes from.)
 
-Zuckerberg can laugh his way all the way to the bank, but this was a pretty embarrassing showing for him. He’s never been popular, but over the past few years he’s worked hard to transform his image from Silicon Valley dweeb to a bro-coded tech leader who resonates with the generally right-wing, Joe Rogan-listening audiences that turn up for a UFC fight.
+In many cases, those new technologies are used to improve the grid’s resilience. Take Texas’s grid, for example, which has fared better during recent cold snaps following an increase in battery storage in the state. Still, many regulators and politicians remain wary of these new technologies, opting instead to stick with familiar options like centralized fossil fuel power plants.
 
-The Zuck ditched his famously dull attire of form-fitting gray t-shirts and even tighter fitting blue jeans, and started wearing “drip” — and by that, we mean oversized t-shirts, gold-chains, shearling jackets, and gaudy sunglasses. He also got jacked and started picking up martial arts, and is apparently skilled enough that, had Elon Musk not chickened-out of his promise to fight Zuckerberg in hand-to-hand combat, Zuckerberg probably would’ve killed him.
+Utilize says it will “advocate for policies” that encourage more widespread adoption of the new technologies, which also benefit those involved.
 
-If that isn’t enough right wing pandering for you, then take Zuckerberg’s overtures to president Trump — who frequently appears at UFC fights —  including his decision to have Facebook turn a blind eye to hate speech the second that Trump came in power. His most overt groveling before Trump, however, came when a hot mic moment caught him more or less admitting to the president that he made up a figure on how much Meta would commit to AI spending to please him. “I wasn’t sure what number you wanted to go with!” Zuckerberg told Trump.
+Each member occupies a niche piece of the grid. On the sell side, Tesla sells batteries and solar panels, Span sells a electrical panel that can react to changing loads, Carrier makes heat pumps, and Sparkfund and Renew Home build and aggregate distributed energy resources. On the buy side, Google and Verrus have enormous power needs to keep their servers humming.
 
-But, even after all that, plus other pandering maneuvers like an appearance on the Joe Rogan podcast, Zuckerberg still ain’t loved by the crowd he’s work so hard to win over.
+The organization calls itself a “coalition,” which is pretty squishy language. Utilize already touts one legislative win, saying that “some members of Utilize” backed a bill in Virginia that would require utilities to quantify and disclose how the grid is being used.
 
-More on Mark Zuckerberg: Court Filing Reveals Something Very Nasty About Mark Zuckerberg</div>
+That wording suggests that while Utilize might be pushing for policy changes, it’s probably isn’t lobbying directly, at least yet. TechCrunch did not receive a reply to inquiries sent to Utilize and the Commonwealth of Virginia regarding the organization’s status as a lobbyist.
+
+Advocacy organizations are no stranger to the utility industry, but the combination of new technology paired with buy- and sell-side companies makes Utilize something different. Changing the way the grid is regulated is a long game, but if they don’t start now, it’ll be too late.
+
+Tim De Chant is a senior climate reporter at TechCrunch. He has written for a wide range of publications, including Wired magazine, the Chicago Tribune, Ars Technica, The Wire China, and NOVA Next, where he was founding editor.
+
+De Chant is also a lecturer in MIT’s Graduate Program in Science Writing, and he was awarded a Knight Science Journalism Fellowship at MIT in 2018, during which time he studied climate technologies and explored new business models for journalism. He received his PhD in environmental science, policy, and management from the University of California, Berkeley, and his BA degree in environmental studies, English, and biology from St. Olaf College.
+
+You can contact or verify outreach from Tim by emailing tim.dechant@techcrunch.com.
+
+Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
+
+Anthropic launches code review tool to check flood of AI-generated code
+
+Cluely CEO Roy Lee admits to publicly lying about revenue numbers last year
+
+Cursor is rolling out a new kind of agentic coding tool
+
+Meta sued over AI smart glasses’ privacy concerns, after workers reviewed nudity, sex, and other footage
+
+Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers
+
+Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says
+
+Father sues Google, claiming Gemini chatbot drove son into fatal delusion</div>
         </div>
         
-        <div class="card" onclick="openModal('content-12')">
+        <div class="card" onclick="openModal('content-13')">
             <div class="source">TechCrunch</div>
             <div class="title">Amazon launches its healthcare AI assistant on its website and app</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-12" style="display:none;">
+        <div id="content-13" style="display:none;">
             <h2>Amazon launches its healthcare AI assistant on its website and app</h2>
             <p><strong>TechCrunch | 2026-03-10</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/10/amazon-launches-its-healthcare-ai-assistant-on-its-website-and-app/">Visit Original Website</a>
@@ -647,23 +731,23 @@ Amazon says that while Health AI can answer general health questions without hav
 
 Of course, there are risks associated with sharing your health information with AI, and researchers are warning against doing so, cautioning that companies are pulling user conversations for training.
 
-Amazon said in a press release that it trains “Health AI models on abstracted patterns without directly identifying information.” For example, if multiple patients ask about medication interactions, Amazon says it might use these patterns, while keeping patient names private, to improve how Health AI responds to similar questions.
+Amazon said in its announcement that it trains “Health AI models on abstracted patterns without directly identifying information.” For example, if multiple patients ask about medication interactions, Amazon says it might use these patterns, while keeping patient names private, to improve how Health AI responds to similar questions.
 
-The company also said that all interactions with Health AI happen within a HIPAA-compliant environment, and that conversations are protected by “encryption and strict access controls.” However, Amazon didn’t share how exactly conversations are encrypted and who has access to them. TechCrunch has reached out for specifics.
+The company also said that all interactions with Health AI happen within a HIPAA-compliant environment, and that conversations are protected by “encryption and strict access controls.” However, Amazon didn’t share exactly how conversations are encrypted and who has access to them. TechCrunch has reached out for specifics.
 
-If you give Health AI access to your health information, Amazon says this is done through the Health Information Exchange, which is the nationwide secure system for sharing patient medical data.
+With a user’s permission, Health AI gets access to their health information through the Health Information Exchange, which is the nationwide secure system for sharing patient medical data.
 
 Health AI can then interpret your lab results, diagnoses, and medical records to provide accurate, personalized answers about your symptoms and medication, Amazon says.
 
 If you need professional care, Health AI can connect you to a One Medical provider. Prime members in the U.S. using Health AI receive up to five free direct-message care consultations with a One Medical provider for over 30 common conditions, including cold and flu, allergies, acid reflux, pink eye, UTIs, erectile dysfunction, anti-aging skin care, hair loss, and more. Non-Prime members can connect with One Medical providers through Amazon’s pay-per-visit option.
 
-Users can sign for for Health AI on the Amazon Health page. As Amazon expands access, they will receive an email once they are able to access the assistant.
+Users can sign up for Health AI on the Amazon Health page. As Amazon expands access, users will receive an email once they are able to access the assistant.
 
-Once users have access, they need to create or sign in to their personal Amazon Health profile. They can then start a conversation by typing their health question to Health AI on Amazon.com or in the Amazon app.
+Once users have access, they need to create a or sign in to their personal Amazon Health profile. They can then start a conversation by typing their health question to Health AI on Amazon.com or in the Amazon app.
 
 Users can ask questions like “Can you explain my recent cholesterol results and what they mean for me?” or “I’m feeling congested and have a sore throat. What should I do?”
 
-Amazon’s expansion of Health AI comes as popular AI services have quickly moved into the healthcare space. OpenAI released ChatGPT Health, a version of its chatbot tailored to answer health questions, in January. A week later, Anthropic announced its own healthcare-focused product, Claude for Healthcare.
+Amazon’s expansion of Health AI comes as popular AI services have quickly moved into the healthcare space. In January, OpenAI released ChatGPT Health, a version of its chatbot tailored to answer health questions. A week later, Anthropic announced its own healthcare-focused product, Claude for Healthcare.
 
 Aisha is a consumer news reporter at TechCrunch. Prior to joining the publication in 2021, she was a telecom reporter at MobileSyrup. Aisha holds an honours bachelor’s degree from University of Toronto and a master’s degree in journalism from Western University.
 
@@ -686,13 +770,13 @@ Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘st
 Father sues Google, claiming Gemini chatbot drove son into fatal delusion</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">DOGE employee stole Social Security data and put it on a thumb drive, report says</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>DOGE employee stole Social Security data and put it on a thumb drive, report says</h2>
             <p><strong>TechCrunch | 2026-03-10</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/10/doge-employee-stole-social-security-data-and-put-it-on-a-thumb-drive-report-says/">Visit Original Website</a>
@@ -711,7 +795,7 @@ The former DOGE employee, whom The Washington Post did not name, worked at the S
 
 The man also reportedly claimed that he previously had unrestricted “God-level” access to the SSA’s systems.
 
-This is the latest case of a suspected breach of Americans’ personal data linked to DOGE and its incursion into the Social Security Administration. In January, two DOGE members were suspected of accessing and sharing Social Security numbers that were off limits to them as part of an effort to aid an advocacy group that intended to “overturn election results in certain States,” according to a lawsuit.
+This is the latest case of a suspected breach of Americans’ personal data linked to DOGE and its incursion into the Social Security Administration. In January, two DOGE members were suspected of accessing and sharing Social Security numbers that were off-limits to them as part of an effort to aid an advocacy group that intended to “overturn election results in certain States,” according to a lawsuit.
 
 Another whistleblower within the agency last year said that DOGE members put Americans at risk by uploading hundreds of millions of Social Security records to a vulnerable cloud server. Also last year, a judge blocked DOGE from accessing SSA systems, accusing the Musk-led agency of being “essentially engaged in a fishing expedition” in search of fraud.
 
@@ -738,13 +822,13 @@ Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘st
 Father sues Google, claiming Gemini chatbot drove son into fatal delusion</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">‘Pokémon Pokopia’ is a game about rehabilitating a broken world — and I love it</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>‘Pokémon Pokopia’ is a game about rehabilitating a broken world — and I love it</h2>
             <p><strong>TechCrunch | 2026-03-10</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/10/pokemon-pokopia-review-animal-crossing-ditto-nintendo-switch/">Visit Original Website</a>
@@ -818,13 +902,13 @@ Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘st
 Father sues Google, claiming Gemini chatbot drove son into fatal delusion</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">YouTube surpasses Disney, Paramount, WBD in 2025 ad revenue</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>YouTube surpasses Disney, Paramount, WBD in 2025 ad revenue</h2>
             <p><strong>TechCrunch | 2026-03-10</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/10/youtube-surpasses-disney-paramount-wbd-in-2025-ad-revenue/">Visit Original Website</a>
@@ -835,21 +919,21 @@ Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER 
 
 YouTube has hit some impressive numbers in 2025.
 
-According to new estimates from research firm MoffettNathanson— as reported by The Hollywood Reporter— the platform pulled in a staggering $40.4 billion in ad revenue, which is more than Disney, NBC, Paramount, and Warner Bros. Discovery (WBD)’s combined ad revenue, whose total came to $37.8 billion.
+According to new estimates from research firm Moffett Nathanson — as reported by The Hollywood Reporter — the platform pulled in a staggering $40.4 billion in ad revenue, which is more than Disney, NBC, Paramount, and Warner Bros. Discovery’s (WBD’s) combined ad revenue, whose total came to $37.8 billion.
 
 This shift is a clear sign of just how much content consumption has changed over the years and how advertisers have adapted their strategies.
 
 YouTube’s ad revenue for 2025 not only topped the combined haul from the four major Hollywood studios, but also marked a huge turnaround from the previous year. In 2024, YouTube’s ad revenue of $36.1 billion fell short of the $41.8 billion in ad revenue collectively earned by Disney, NBCU, Paramount, and WBD. The tables have now turned.
 
-For decades, these studios have been the kings of entertainment, captivating audiences with big-budget films and hit TV shows. But as traditional studios struggle with shrinking linear TV audiences and the ever-rising costs of productions, YouTube is speeding ahead. Even as these companies pour millions into their own streaming platforms, it’s getting harder to keep up with YouTube’s momentum.
+For decades, these studios have been the kings of entertainment, captivating audiences with big-budget films and hit TV shows. But as traditional studios struggle with shrinking linear TV audiences and the ever-rising costs of production, YouTube is speeding ahead. Even as these companies pour millions into their own streaming platforms, it’s getting harder to keep up with YouTube’s momentum.
 
 Last month, parent company Alphabet reported that YouTube’s total revenue in 2025 soared to $60 billion. A big portion of YouTube’s revenue now comes from subscriptions, which include services like YouTube TV, YouTube Premium, YouTube Music, and NFL Sunday Ticket. (For context, that’s well above Netflix’s reported $45.2 billion for the full year.)
 
-Disney, NBC, Paramount, and Warner Bros. Discovery (WBD) are also heavily subscription-dependent businesses; Disney’s media business pulled in a total of $60.9 billion in revenue last year, when you include subscriptions, for instance.
+Disney, NBC, Paramount, and WBD are also heavily dependent on subscriptions; for instance, Disney’s media business pulled in a total of $60.9 billion in revenue last year, when you include subscriptions.
 
 That said, YouTube’s ad revenue still trails behind tech giants like Meta, which pulled in $196.2 billion in ad revenue in 2025. Still, advertisers are flocking to YouTube because that’s where audiences (especially younger viewers) are spending their time. YouTube’s ad revenue reached $11.4 billion in the fourth quarter.
 
-YouTube is also stepping up its investment in AI. This week, the company announced that it’s expanding its likeness detection technology to a pilot group of government officials, politicians, and journalists. The tech identifies AI-generated deepfakes and lets users request the removal if they believe it violates YouTube policy.
+YouTube is also stepping up its investment in AI. This week, the company announced that it’s expanding its likeness-detection technology to a pilot group of government officials, politicians, and journalists. The tech identifies AI-generated deepfakes and lets users request the removal if they believe it violates YouTube policy.
 
 Lauren covers media, streaming, apps and platforms at TechCrunch.
 
@@ -872,16 +956,16 @@ Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘st
 Father sues Google, claiming Gemini chatbot drove son into fatal delusion</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">AI-powered apps struggle with long-term retention, new report shows</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>AI-powered apps struggle with long-term retention, new report shows</h2>
             <p><strong>TechCrunch | 2026-03-10</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/03/10/ai-powered-apps-can-make-money-but-struggle-with-long-term-retention-new-data-shows/">Visit Original Website</a>
+            <a class="original-link" href="https://techcrunch.com/2026/03/10/ai-powered-apps-struggle-with-long-term-retention-new-report-shows/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Founder Summit 2026 in Boston: Don’t miss ticket savings of up to $300. Register Now.
 
@@ -895,25 +979,25 @@ The report is based on an analysis of the subscription app providers that use Re
 
 Among the many interesting findings, the report noted that most of the apps using the company’s platform are not yet powered by AI. AI-powered apps account for 27.1% of apps across all categories, compared with 72.9% for non-AI apps. Still, it’s a growing category, as roughly one in four apps is now AI-powered.
 
-(To be clear, the AI-powered apps category doesn’t only include the popular AI chatbots, like ChatGPT and Gemini, but also includes any app that markets itself as being AI-powered.)
+(To be clear, the AI-powered apps category includes the popular AI chatbots, like ChatGPT and Gemini, as well as any app that markets itself as being AI-powered.)
 
 Photo & Video apps have the biggest share (61.4%) of AI-powered apps, while gaming has the smallest share at 6.2%. Travel (12.3%) and Business (19.1%) are also low-AI segments.
 
 The more surprising figures are around AI apps’ ability to retain their paying customers. AI apps underperform on retention at both a monthly and annual level, RevenueCat’s data shows.
 
-Annual retention, a metric focused on the app’s ability to retain subscribers after 12 months, was 21.1% for AI apps, compared with a higher 30.7% for non-AI apps. Monthly, AI apps saw 6.1% retention rates, versus 9.5% for non-AIs — a difference of 3.4 percentage points.
+Annual retention, a metric focused on the app’s ability to retain subscribers after 12 months, was 21.1% for AI apps, compared with a higher 30.7% for non-AI apps. Monthly, AI apps saw 6.1% retention rates versus 9.5% for non-AIs — a difference of 3.4 percentage points.
 
 The only area where AI led on retention was on the weekly front, where AI apps had 2.5% retention rates compared with 1.7% for non-AI apps. It’s worth noting that weekly subscriptions are not the most popular option for AI apps.
 
-These metrics could be influenced by the rapidly-changing state of AI technology, which could see users hopping between different AI apps more quickly, as they try to find the one that has the most current technology under the hood.
+These metrics could be influenced by the rapidly changing state of AI technology, which could see users hopping between different AI apps more quickly, as they try to find the one that has the most current technology under the hood.
 
-As customers experiment with a growing number of AI apps, they’re also more likely to find that some don’t meet their needs. The report notes that AI apps have 20% higher refund rates (4.2% vs.3.5% at the median) than non-AI apps do.
+As customers experiment with a growing number of AI apps, they’re also more likely to find that some don’t meet their needs. The report notes that AI apps have 20% higher refund rates (4.2% vs. 3.5% at the median) than non-AI apps do.
 
 The upper bound of refund rates for AI apps is also higher (15.6% vs. 12.5%), suggesting there’s “greater volatility in realized revenue and deeper issues in user value, experience, and long-term quality,” the report notes.
 
 There are some benefits to being in the AI-powered apps cohort, the data indicates.
 
-RevenueCat found that AI apps convert users from trials to paid customers 52% better than non-AI apps (8.5% vs. 5.6% at the median), and AI apps monetize their downloads around 20% better than non-AI apps  (2.4% to 2.0% at the median).
+RevenueCat found that AI apps convert users from trials to paid customers 52% better than non-AI apps (8.5% vs. 5.6% at the median), and AI apps monetize their downloads around 20% better than non-AI apps (2.4% to 2% at the median).
 
 AI apps also generate 39% or higher monthly realized lifetime value (RLTV), a metric that measures the actual net value of an average paying user over time. AI apps’ median on this metric is $18.92 per month, compared with $13.59 for non-AI apps. AI apps also sustain a 41% or higher RLTV on an annual basis, at $30.16 vs. $21.37, also at the median.
 
@@ -936,61 +1020,27 @@ Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘st
 Father sues Google, claiming Gemini chatbot drove son into fatal delusion</div>
         </div>
         
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Mandiant’s founder just raised $190M for his autonomous AI agent security startup</div>
+        <div class="card" onclick="openModal('content-18')">
+            <div class="source">The Atlantic</div>
+            <div class="title">Winter Paralympics Photo of the Day: Guided Speed</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-17" style="display:none;">
-            <h2>Mandiant’s founder just raised $190M for his autonomous AI agent security startup</h2>
-            <p><strong>TechCrunch | 2026-03-10</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/03/10/mandiants-founder-just-raised-190m-for-his-autonomous-ai-agent-security-startup/">Visit Original Website</a>
+        <div id="content-18" style="display:none;">
+            <h2>Winter Paralympics Photo of the Day: Guided Speed</h2>
+            <p><strong>The Atlantic | 2026-03-10</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/photography/2026/03/winter-paralympics-photo-day-guided-speed/686315/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Founder Summit 2026 in Boston: Don’t miss ticket savings of up to $300. Register Now.
-
-Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
-
-Kevin Mandia, who founded the cybersecurity startup Mandiant in 2004 and sold it to Google for $5.4 billion in 2022, has launched a new AI-native cybersecurity startup with what the company claims is a record-breaking funding round.
-
-The new outfit, called Armadin, has raised $189.9 million in combined seed and Series A funding led by Accel, with participation from GV, Kleiner Perkins, Menlo Ventures, 8VC, Ballistic Ventures, and the CIA’s venture arm, In-Q-Tel. The company claims the combined total is a record for a security startup at that early a stage, though it isn’t disclosing its valuation.
-
-While other security startups have raised even slightly bigger Series A rounds, we couldn’t find another one that did so out of the gate. In 2019, for example, password-management company 1Password and privacy compliance company OneTrust both raised $200 million in Series A funding. But 1Password was already 14 years old at the time and OneTrust was three years old and already in growth mode.
-
-Prior to Armadin, Mandia, an internationally recognized security expert, had been a VC at Ballistic Ventures. That’s the security specialist fund co-founded by famed security VC Ted Schlein, formerly of Kleiner Perkins.
-
-Mandia founded Armadin to create autonomous cybersecurity agents, software designed to learn and respond to threats without a human in the middle. He told CNBC that he believes autonomous AI hackers are on the way and that they are to be feared. Security researchers and government agencies have raised similar alarms, warning that AI is already lowering the bar for launching sophisticated attacks.
-
-“When you have AI on offense, what you are going to get is a technology that can think, can learn, can adapt,” he warned, adding that the attackers will be able to complete attacks in minutes that used to take days.
-
-Armadin aims to provide the white hats (aka good-guy security experts) with automated agents so they have their own agentic armies to combat AI-powered attacks run by the black hats (bad guys). Mandia’s co-founders at Armadin are former Google Cloud Security principal engineer Travis Lanham; former Mandiant exec Evan Peña; and former Google SecOps engineer David Slater.
-
-TechCrunch has reached out to the company for more information.
-
-Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
-
-Anthropic launches code review tool to check flood of AI-generated code
-
-Cluely CEO Roy Lee admits to publicly lying about revenue numbers last year
-
-Cursor is rolling out a new kind of agentic coding tool
-
-Meta sued over AI smart glasses’ privacy concerns, after workers reviewed nudity, sex, and other footage
-
-Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers
-
-Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says
-
-Father sues Google, claiming Gemini chatbot drove son into fatal delusion</div>
+            <div id="article-text">Team France’s Hyacinthe Deleplace, a visually impaired athlete, competes with the guide Perrine Clair during the super-G leg of the Para Alpine Skiing Men’s Alpine Combined Vision Impaired event on day four of the Winter Paralympic Games at Tofane Alpine Skiing Centre, in Italy, on March 10, 2026. In vision-impaired para-Alpine categories, skiers with complete or partial vision loss navigate runs with help provided by a sighted guide, communicating via radio.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-18')">
+        <div class="card" onclick="openModal('content-19')">
             <div class="source">The Atlantic</div>
             <div class="title">Today’s <em>Atlantic</em> Trivia: It’s All Greek to Me (Unless It’s Arabic)</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-18" style="display:none;">
+        <div id="content-19" style="display:none;">
             <h2>Today’s <em>Atlantic</em> Trivia: It’s All Greek to Me (Unless It’s Arabic)</h2>
             <p><strong>The Atlantic | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/03/trivia-2026-03-10/686313/?utm_source=feed">Visit Original Website</a>
@@ -1006,13 +1056,13 @@ And by the way, did you know that the ionosphere thickens and thins on a daily b
 Find previous questions here, and to get Atlantic Trivia in your inbox every day, sign up for The Atlantic Daily. If you think up a question yourself, send it my way at [email protected].</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-20')">
             <div class="source">The Atlantic</div>
             <div class="title">Spain’s Wind-Farm Bargain</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-20" style="display:none;">
             <h2>Spain’s Wind-Farm Bargain</h2>
             <p><strong>The Atlantic | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/science/2026/03/spain-wind-power/686311/?utm_source=feed">Visit Original Website</a>
@@ -1052,13 +1102,13 @@ The possibility of local benefits from renewables is not confined to Spain. Whil
 Reporting for this story was supported by the FRONTIERS science journalism fellowship.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">The Highly Exclusive Way That Everybody Shops Now</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>The Highly Exclusive Way That Everybody Shops Now</h2>
             <p><strong>The Atlantic | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/culture/2026/03/shopping-drop-exclusive-selling-out/686308/?utm_source=feed">Visit Original Website</a>
@@ -1090,13 +1140,13 @@ But as the artificial-scarcity tactic spreads, it becomes less coherent. In my c
 It sounded to me like a pretty apt comparison to late-stage drop culture. Abercrombie & Fitch is, at the end of the day, a mall store, not particularly selective about whose money it is willing to take. Drops were once reserved for hypebeasts and collectors buying items so meticulously handcrafted that they could be made only in ultra-limited qualities. Now they are for normal people buying factory-produced suitcases or cookware or snack foods. Companies post extensively about upcoming drops, all the better to whip up excitement. Men’s magazines publish lists of “The Biggest and Boldest Fashion Drops of Fall.” And the stuff isn’t special, because it’s the same stuff as all the other stuff—it’s just made slightly less ordinary by virtue of the way you buy it. Within days of selling out at Starbucks, the Bearista cup was available knocked off on Amazon.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">Why Mahmoud Ahmadinejad Is Still Useful</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Why Mahmoud Ahmadinejad Is Still Useful</h2>
             <p><strong>The Atlantic | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/03/mahmoud-ahmadinejad-iran-leadership/686309/?utm_source=feed">Visit Original Website</a>
@@ -1120,13 +1170,13 @@ It is possible that Israel or the United States wanted to kill Ahmadinejad, but 
 Ahmadinejad’s fans say that he has popular support, and that any postwar government will want him around to lend that support. If the current regime survives, it will need all the legitimacy it can get. If it does not, the United States might need someone with intimate (if outdated) knowledge of the Iranian state to be involved with what comes next. Ahmadinejad could still be useful.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">I Recognize the Look on Liam Ramos’s Face</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>I Recognize the Look on Liam Ramos’s Face</h2>
             <p><strong>The Atlantic | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/politics/2026/03/ice-detention-center-dilley-children/686302/?utm_source=feed">Visit Original Website</a>
@@ -1194,65 +1244,66 @@ I recently spoke with a subcontractor who quit working at Dilley this year; he r
 “A lot of these kids have bags under their eyes, which is something that you don’t see with kids,” he said. “They have worse bags than their parents.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">Winners of the British Wildlife Photography Awards 2026</div>
+        <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">Silicon Valley Is Buzzing About This New Idea: AI Compute As Compensation</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-23" style="display:none;">
-            <h2>Winners of the British Wildlife Photography Awards 2026</h2>
-            <p><strong>The Atlantic | 2026-03-10</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/photography/2026/03/winners-british-wildlife-photography-awards-2026/686301/?utm_source=feed">Visit Original Website</a>
+        <div id="content-24" style="display:none;">
+            <h2>Silicon Valley Is Buzzing About This New Idea: AI Compute As Compensation</h2>
+            <p><strong>Slashdot | 2026-03-10</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/03/10/200253/silicon-valley-is-buzzing-about-this-new-idea-ai-compute-as-compensation?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+            <div id="article-text">don&#39;t worry, you will live at the company town and get paid in company scrip
+
+This isn&#39;t compensation, if it is something necessary to do the job at the levels they require, any more than asking if the building has HVAC in the summer is negotiating benefits.
+
+They sell the idea that using AI is necessary for the position, and then try to sell access to that AI as a perk?  That&#39;s rich up there with working in a coal mine and being told you can only use company tools, and that for some positions they supply the tools and some they don&#39;t.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-24')">
+        <div class="card" onclick="openModal('content-25')">
             <div class="source">Slashdot</div>
             <div class="title">AT&amp;T Outlines $250 Billion US Investment Plan To Boost Infrastructure In AI Age</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>AT&amp;T Outlines $250 Billion US Investment Plan To Boost Infrastructure In AI Age</h2>
             <p><strong>Slashdot | 2026-03-10</strong></p>
             <a class="original-link" href="https://mobile.slashdot.org/story/26/03/10/162222/att-outlines-250-billion-us-investment-plan-to-boost-infrastructure-in-ai-age?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+            <div id="article-text">Well, now you know all this is going to end badly.
 
-The universe is an island, surrounded by whatever it is that surrounds
-universes.</div>
+AT&T is a $125b/y legacy outfit.  They&#39;re going to leverage 2x their annual revenue in 5 years on spec...
+
+Hey, AT&T, what happened to all that tax payer money over the years you were given that you promised to use for infrastructure upgrade? #FUCKATT
+
+This reminds me of Verizon back in the 90&#39;s saying &quot;We&#39;re going to run fiber to every house in Texas&quot;. That didn&#39;t happen. I don&#39;t expect them to really do all of this either, probably no more than in a small area, promote that to show how great they are, then silently let the project die.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Ig Nobels Ceremony Moves To Europe Indefinitely, Citing US Safety Concerns</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Ig Nobels Ceremony Moves To Europe Indefinitely, Citing US Safety Concerns</h2>
             <p><strong>Slashdot | 2026-03-10</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/03/10/1540242/ig-nobels-ceremony-moves-to-europe-indefinitely-citing-us-safety-concerns?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Please create an account to participate in the Slashdot moderation system
+            <div id="article-text">It&#39;s a legitimate safety concern. Is there a chance greater than zero of someone being illegally sent to a detention facility?
 
-It&#39;s a legitimate safety concern. Is there a chance greater than zero of someone being illegally sent to a detention facility?
+How old are you that you think &quot;commie&quot; is an insult? If you&#39;re ready to use Reagan as a overton window point we can discuss where it&#39;s moved.
 
-Travel in Eastern Europe lately, or China ? It is a legitimate security concern, and there is a very NON ZERO chance of having immigration issues and needing as $$$ injection to resolve the situation. Seems the staus quo all over is the same. We&#39;ve had a brief golden age but back to the mess that the world has been for ages...
+If their concern is safety, whether or not they&#39;re safer at home is entirely relevant. Perhaps they&#39;re saying they don&#39;t feel safe in the US out of fear of not saying it at home. Stranger, and more outrageous things have happened in fascist regimes, and the UK isn&#39;t the only country heading in that direction of late.
 
-It&#39;s a legitimate safety concern.Only in the minds of limousine commies that think the US has succumb to the 4th Reich.
-
-Meanwhile, Pavel Durov gets nabbed in France.  Graham Linehan gets nabbed in Heathrow by establishment jackboots.  Yet in the minds of the special people that jet around the world to attend parody award events, the US is &quot;dangerous.&quot;
-
-mmkay.
-
-Only in the minds of limousine commies that think the US has succumb to the 4th Reich.
-
-Meanwhile, Pavel Durov gets nabbed in France.  Graham Linehan gets nabbed in Heathrow by establishment jackboots.  Yet in the minds of the special people that jet around the world to attend parody award events, the US is &quot;dangerous.&quot;
-
-And is that greater chance than the chance of the same thing happening at home? After all, the UK arrests 12,000 people a year for hate speech, and they have an increasingly expansive definition of hate speech.
+It&#39;s nowhere near 12,000.Here&#39;s a video [youtu.be] that explains the figures, not that I expect you to watch it, much less admit just how wrong you are.
 
 Presumably, they&#39;re afraid of being detained and &quot;disappeared&quot; for expressing negative opinions about Trump on social media, because that&#39;s apparently a widespread phenomenon right now.
 
@@ -1260,25 +1311,41 @@ Can you cite these widespread happenings?
 
 Mostly, they&#39;re denied visas in the first place.
 
-Precisely!  If one applies for a visa and gets declined, one wouldn&#39;t come in the first place.  If one comes on a particular visa and doesn&#39;t violate its terms, one would be just fine
-
-Many Americans do discover that the hard way.  When they go abroad, indulge in the same sort of thuggish behavior that they do at home, and they&#39;re in trouble before one can say &quot;Hasta la vista&quot;
-
 Or you could simply be 5 years old and find yourself in a detention facility. https://www.pbs.org/newshour/n... [pbs.org]
 
 &quot;If one comes on a particular visa and doesn&#39;t violate its terms, one would be just fine&quot;
 
 It&#39;s so adorable that you believe that.  May I remind you that ICE has arrested and incarcerated actual US citizens.
 
-It&#39;s so adorable that you believe that. May I remind you that ICE has arrested and incarcerated actual US citizens.
-
-And all of these people were innocent and never released?
-
 What does it matter if they were eventually released? What business does an immigration agency have imprisoning U.S. citizens ... let alone murdering them?
+
+The same business as any other police officer has in arresting (and shooting, if they feel threatened) people who interfere with their duties.And they get to decide what constitutes interference, not some bored, ignorant, stupid housewife who read something on the internet.I&#39;m pretty sure interference with law enforcement is clearly defined in various laws. The courts have ruled that merely recording the police is not interference, regardless of what an orange turd claims.  https://www.forbes.com/sites/i... [forbes.com]  https://firstamendmentwatch.or... [firstamendmentwatch.org]  https://en.wikipedia.org/wiki/... [wikipedia.org]
 
 The same business as any other police officer has in arresting (and shooting, if they feel threatened) people who interfere with their duties.
 
 And they get to decide what constitutes interference, not some bored, ignorant, stupid housewife who read something on the internet.
+
+I&#39;m pretty sure interference with law enforcement is clearly defined in various laws. The courts have ruled that merely recording the police is not interference, regardless of what an orange turd claims.
+
+https://www.forbes.com/sites/i... [forbes.com]
+
+https://firstamendmentwatch.or... [firstamendmentwatch.org]
+
+https://en.wikipedia.org/wiki/... [wikipedia.org]
+
+What does it matter if they were eventually released? What business does an immigration agency have imprisoning U.S. citizens ... let alone murdering them?
+
+Well, from time to time, regular cops, the fbi, etc...they all make bad arrests...all law enforcement is run by humans and mistakes are made.
+
+It happens....as long as the mistake is remedied quickly...the world keeps spinning.
+
+The lady that tried to run a law enforcement officer over in her SUV?  Justified....this happens when a civilian in a car/truck r
+
+What business does an immigration agency have imprisoning U.S. citizens Only two reasons I can think of:*Pending transfer to regular police.  For example, if I assault an immigration officer, he has every right to arrest and hold me but only as long as is reasonably necessary to call the &quot;real cops&quot; and transfer me into their custody to face assault charges.* If he has a reasonable belief that I am an alien subject to arrest and I don&#39;t identify myself as a citizen.  Once I identify myself as  a citizen, he is obliged to quickly determine if I&#39;m telling the truth.  Once he no l
+
+What business does an immigration agency have imprisoning U.S. citizens
+
+Only two reasons I can think of:*Pending transfer to regular police.  For example, if I assault an immigration officer, he has every right to arrest and hold me but only as long as is reasonably necessary to call the &quot;real cops&quot; and transfer me into their custody to face assault charges.* If he has a reasonable belief that I am an alien subject to arrest and I don&#39;t identify myself as a citizen.  Once I identify myself as  a citizen, he is obliged to quickly determine if I&#39;m telling the truth.  Once he no l
 
 &#39;Not the point.  They&#39;re citizens, full stop.  No ICE thug has ANY business detaining, arresting, interrogating, quesitoning, laying hands on, speking to, or in any other way darkening the day of ANY citizen fir any reason for any length of time.  They made themselves irredeemable the day of that very first &quot;immigration&quot; raid in Newark, not even a day after the inaugeration, when they... YES... attacked and held US citizens who were working in that plant 100% legally.  And then there was when they started o
 
@@ -1300,7 +1367,23 @@ Just because they say it&#39;s over safety concerns doesn&#39;t mean that&#39;s 
 
 On the other hand, if you are walking down the street with skin color of which the Gestapo do not approve, you could spend the next 6 months in confinement.
 
+As a foreigner who never travelled to the US, theee are the risks I&#39;m aware-ish of from reading and watching news both in my native tongue and in English, from both American and British news sources, were I to try and travel to the US.
+
+To try and obtain a VISA, I&#39;d need to provide, for the last &#39;n&#39; years:
+
+* All my social media account handles.* All my email addresses.* All my phone numbers.* And for my active social media accounts, I&#39;d need to set them to public.
+
+I&#39;m not doing any of that, so for that reason a
+
 You might want to research some statistics when discussing safety.
+
+https://www.usnews.com/news/be... [usnews.com]
+
+&quot;We&#39;re #47!  We&#39;re #47!&quot;I&#39;ll bet if we really, really worked at it we could get up to 42.
+
+I&#39;ll bet if we really, really worked at it we could get up to 42.
+
+Funny how the murder rate in the 25 states that voted for Donald Trump has exceeded the murder rate in the 25 states that voted for Joe Biden in every year from 2000 to 2020. [thirdway.org]
 
 It&#39;s not as if masked police can pick you up and detain you with no access to legal representation.  Oh wait, they can. They did it to to legal US citizens as well.
 
@@ -1308,9 +1391,25 @@ The US constitution is not worth the paper it&#39;s printed on with the current 
 
 Not to mention that crossing the border makes you feel like a criminal with finger prints and cell phone searches. Canadians and Americans used to cross the border just by sh
 
+I am Canadian and in the early 1980s I used to cross the border without showing anything at all, or even stopping.
+
+I&#39;d drive up to the US border shack and slow way down prepared to stop.  The guy manning the crossing would see the Canadian license plates on my car and just wave me through.  I don&#39;t recall a single time that I even fully stopped the car.
+
+Coming back the Canadian customs guys always had me stop so they could ask what, if anything, I was bringing back.  Maybe I had to show those guys my drivers
+
 If you watch and believe the mainstream news it is a war zone everywhere here in the US. Reality is a bit different but I can totally understand and support those who are making a statement by not coming to the US. Trump is a moron elected by a very vocal minority of idiots. You are no more in danger from immigration here in the US than the average Roma is in the EU...
 
 We&#39;ll forget about the Gestapo picking people up for now. If look at the stats, the migrants have a lower crime rate than the well-armed American citizens. Now who&#39;s the bigger danger, eh?
+
+... Trump is a moron elected by a very vocal minority of idiots....Yeah.  I wish that were true.  Trump was elected by a majority.  And his current support numbers are still around 38%.  https://www.economist.com/inte... [economist.com] It turns out the number of idiots if really high.  And the ones running the country and enforcing the &#39;laws&#39; include a lot of &#39;em.I would much rather go nearly anywhere in Europe.
+
+... Trump is a moron elected by a very vocal minority of idiots....
+
+Yeah.  I wish that were true.  Trump was elected by a majority.  And his current support numbers are still around 38%.  https://www.economist.com/inte... [economist.com]
+
+It turns out the number of idiots if really high.  And the ones running the country and enforcing the &#39;laws&#39; include a lot of &#39;em.
+
+I would much rather go nearly anywhere in Europe.
 
 Any doubters of the wisdom of this move should take a look at this video [youtube.com].  15 minutes, but well worth watching.
 
@@ -1324,26 +1423,29 @@ There&#39;s also the issue of &quot;quiet economic boycott&quot; - boycotting an
 
 If I were an award-recipient but had no other reason to come to America that week, I might come, or I might choose to say &quot;sorry, I have other plans that day.&quot;
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+U.S. Citizens held Thursday for 43 hours after changing their flights.
 
-The universe is an island, surrounded by whatever it is that surrounds
-universes.</div>
+https://www.newsweek.com/us-ci... [newsweek.com]
+
+https://www.nbcchicago.com/new... [nbcchicago.com]
+
+DHS is claiming they were released after 90 minutes. That is directly contradicted the accounts of the six people detained, by local police, and by phone records.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">OpenAI Is Walking Away From Expanding Its Stargate Data Center With Oracle</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>OpenAI Is Walking Away From Expanding Its Stargate Data Center With Oracle</h2>
             <p><strong>Slashdot | 2026-03-10</strong></p>
             <a class="original-link" href="https://developers.slashdot.org/story/26/03/10/0510223/openai-is-walking-away-from-expanding-its-stargate-data-center-with-oracle?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Slashdot is powered by your submissions, so send in your scoop
-
-Oracle Is Walking Away From ... OracleSomeone needs a bit more coffee.
+            <div id="article-text">Oracle Is Walking Away From ... OracleSomeone needs a bit more coffee.
 
 If Oracle were to sue Oracle, will that create a black hole?
 
@@ -1361,6 +1463,8 @@ the AI will fix that imagination for you.
 
 But Larry Ellison needs those billions of dollars so his nepobaby can buy more movie studios!
 
+Case planning an extraction from a half-built data center out in the desert
+
 Pretty presumptuous of you to assume that I don&#39;t already hate Sam Altman at least as much as you do.
 
 At this rate, slashdot will just be nothing but GenAI ads top to bottom...
@@ -1369,26 +1473,27 @@ I was hoping this was recursively odd like Samsung not selling RAM to Samsung [s
 
 Funding was supposed to come from Gulf States as a quid-pro-quo for US military protection from Israel and Iran.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+because it wants clusters with newer generations of Nvidia graphics processing units, according to a person familiar with the matter.Hmmm, is that the real reason? Do the new processors provide something so special that the software can&#39;t run on older ones? Or are the new processors just *faster* than the old ones? Would a cloud customer back out of a deal just because the hardware is a few months old? Maybe, but maybe it&#39;s an excuse to get out of the deal, and OpenAI doesn&#39;t want to disclose the real reason. Maybe this is another sign of the AI bubbles starting to burst.
 
-The universe is an island, surrounded by whatever it is that surrounds
-universes.</div>
+because it wants clusters with newer generations of Nvidia graphics processing units, according to a person familiar with the matter.
+
+Hmmm, is that the real reason? Do the new processors provide something so special that the software can&#39;t run on older ones? Or are the new processors just *faster* than the old ones? Would a cloud customer back out of a deal just because the hardware is a few months old? Maybe, but maybe it&#39;s an excuse to get out of the deal, and OpenAI doesn&#39;t want to disclose the real reason. Maybe this is another sign of the AI bubbles starting to burst.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Claude AI Finds Bugs In Microsoft CTO's 40-Year-Old Apple II Code</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Claude AI Finds Bugs In Microsoft CTO's 40-Year-Old Apple II Code</h2>
             <p><strong>Slashdot | 2026-03-10</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/03/10/0521258/claude-ai-finds-bugs-in-microsoft-ctos-40-year-old-apple-ii-code?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
-
-This will be extremely useful for the once every couple years I bust out my old IIgs. Pity we can&#39;t run the AI on the Apple hardware to find these vulnerabilities in code we don&#39;t use at all in production anymore. These are critical issues that must be addressed!
+            <div id="article-text">This will be extremely useful for the once every couple years I bust out my old IIgs. Pity we can&#39;t run the AI on the Apple hardware to find these vulnerabilities in code we don&#39;t use at all in production anymore. These are critical issues that must be addressed!
 
 Well the latter point may have more relevance, that a lot of embedded scenarios are like the Apple II scenario, never subjected to rigorous security review and largely banking on no one bothering to reverse engineer the closed source runtimes.
 
@@ -1439,6 +1544,10 @@ If they are wasting time on Apple II instead of fixing the hot mess Windows 11 i
 No, it&#39;s busy making more of a mess of Windows 11.
 
 just use copilot, i am sure it will be very helpful.
+
+Is Windows 11 a hot mess due to security vulnerabilities, or is it a hot mess due to the enshittification of the platform for the benefit of CoPilot?  Such as removing Wordpad, making Notepad a complex Wordpad, making Paint less versatile,....?
+
+On the other hand, who put Claude up to finding bugs in that Apple II?  Mark Russinovich?
 
 Whereas, if he&#39;d used the software engineering techniques that were well-known and well-described at that time, he&#39;d not have included the bugs in the first place. Or, if he had, he&#39;d have detected them in testing.
 
@@ -1532,26 +1641,25 @@ AI companies have been approaching software in the wrong orderThe correct order 
 
 Automating this kind of tedious work that nobody wants to do is one of the most legitimate hopes for a coding LLM. It&#39;s not replacing people because nobody would pay to do this anyways, even if you had an intern with nothing to do. The real test is whether it can do it on a more complex codebase with a modern language and not just inundate the user with false positives. We&#39;re not there yet.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+People long ago have stopped looking for bugs in cold that old. Many bugs back then weren&#39;t considered severe enough to worry about. A null reference was just an inconvenience, not a security threat. I mean, whatever you (the end user) did to get that null reference, stop doing that!
 
-The universe is an island, surrounded by whatever it is that surrounds
-universes.</div>
+It&#39;s hard to imagine any old software, or for that matter, any software, that would hold up to this scrutiny.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Meta Acquires Moltbook, the Social Network For AI Agents</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Meta Acquires Moltbook, the Social Network For AI Agents</h2>
             <p><strong>Slashdot | 2026-03-10</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/03/10/1524229/meta-acquires-moltbook-the-social-network-for-ai-agents?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Follow Slashdot blog updates by subscribing to our blog RSS feed
-
-Uhoh, I hope Meta doesn&#39;t lose track of which site is full of posts by bots and which site is ... oops, full of posts by bots.
+            <div id="article-text">Uhoh, I hope Meta doesn&#39;t lose track of which site is full of posts by bots and which site is ... oops, full of posts by bots.
 
 For Zuck, this is all about the revenue. Bots infuriated by having to sit through 20 second ad for car insurance.
 
@@ -1593,37 +1701,11 @@ Maybe it&#39;ll post hilarious bomb threats in your na
 
 It was the butler and the chambermaid telling tales about the Lord and Lady in the past. Now your AI agent can join them in the bitch session.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+he needs it to become the Seance Machine that mimics your dead relatives and posts on Facebook on their behalf, obviously
 
-The universe is an island, surrounded by whatever it is that surrounds
-universes.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">German Publishers Push Regulators To Fine Apple Over App Tracking Transparency</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>German Publishers Push Regulators To Fine Apple Over App Tracking Transparency</h2>
-            <p><strong>Slashdot | 2026-03-10</strong></p>
-            <a class="original-link" href="https://apple.slashdot.org/story/26/03/10/050253/german-publishers-push-regulators-to-fine-apple-over-app-tracking-transparency?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Catch up on stories from the past week (and beyond) at the Slashdot story archive
+What could be better, to go along with their pretend world, than pretend people using a pretend social network!
 
-Exactly. What sane consumer wants these companies to be able to track them like this? It&#39;s gross behaviour, and it&#39;s even worse that the German regulator is considering acting against the interests of consumers at the behest of these companies.
-
-Yes, but this is not the data protection or consumer&#39;s rights authority investigating but the antitrust watchdog. Completely different department. In which way publishers and/or Apple are allowed to track users is a different matter. Here it is about Apple tracking them while keeping the data and their monetarization for itself.
-
-The entire purpose of antitrust is to protect consumers&#39; interests. The reason we have antitrust regulation is that anticompetitive behaviours harm consumer interests, eg price fixing keeping prices artificially high.
-
-The problem is not that Apple is not allowed to use Tracking Transparency, but the point is that all apps need to be treated the same, i.e., they would need to apply the same transparency to their own apps, that are currently exempted.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-The universe is an island, surrounded by whatever it is that surrounds
-universes.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1997,11 +2079,25 @@ Nadira Goffe is a staff writer of culture at Slate.</div>
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Poultry processing robotics advances with ChicGrasp</div>
+            <div class="title">Can AI read papers like a scientist? A new benchmark shows where LLMs fail</div>
             <div class="meta">2026-03-10</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>Can AI read papers like a scientist? A new benchmark shows where LLMs fail</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-10</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-03-ai-papers-scientist-benchmark-llms.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Poultry processing robotics advances with ChicGrasp</div>
+            <div class="meta">2026-03-10</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>Poultry processing robotics advances with ChicGrasp</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-poultry-robotics-advances-chicgrasp.html">Visit Original Website</a>
@@ -2009,13 +2105,13 @@ Nadira Goffe is a staff writer of culture at Slate.</div>
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Hair-thin 'soft yarn' actuator fiber moves with electricity</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Hair-thin 'soft yarn' actuator fiber moves with electricity</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-hair-thin-soft-yarn-actuator.html">Visit Original Website</a>
@@ -2023,13 +2119,13 @@ Nadira Goffe is a staff writer of culture at Slate.</div>
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">The AI that taught itself: How AI can learn what it never knew</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>The AI that taught itself: How AI can learn what it never knew</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-ai-taught-knew.html">Visit Original Website</a>
@@ -2037,13 +2133,13 @@ Nadira Goffe is a staff writer of culture at Slate.</div>
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Early-warning model developed to predict toxic social media storms</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Early-warning model developed to predict toxic social media storms</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-early-toxic-social-media-storms.html">Visit Original Website</a>
@@ -2051,13 +2147,13 @@ Nadira Goffe is a staff writer of culture at Slate.</div>
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">EU parliament urges new rules to protect copyrighted work</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>EU parliament urges new rules to protect copyrighted work</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-10</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-eu-parliament-urges-copyrighted.html">Visit Original Website</a>
@@ -2065,27 +2161,57 @@ Nadira Goffe is a staff writer of culture at Slate.</div>
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">How driverless vehicles can be made safer for deaf and hard of hearing people</div>
+        <div class="card" onclick="openModal('content-42')">
+            <div class="source">The Register</div>
+            <div class="title">Critical Microsoft Excel bug weaponizes Copilot Agent for zero-click information disclosure attack</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-41" style="display:none;">
-            <h2>How driverless vehicles can be made safer for deaf and hard of hearing people</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-10</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-03-driverless-vehicles-safer-deaf-hard.html">Visit Original Website</a>
+        <div id="content-42" style="display:none;">
+            <h2>Critical Microsoft Excel bug weaponizes Copilot Agent for zero-click information disclosure attack</h2>
+            <p><strong>The Register | 2026-03-10</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/10/zeroclick_microsoft_info_disclosure_bug/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">After a whopper of a Patch Tuesday last month, with six Microsoft flaws exploited as zero-days, March didn&#39;t exactly roar in like a lion. Just two of the 83 Microsoft CVEs released on Tuesday are listed as publicly known, and none is under active exploitation, which we&#39;re sure is a welcome change to sysadmins.
+
+Another eight of the 83 Microsoft CVEs are considered critical, and one of these - to quote Zero Day Initiative chief bug hunter Dustin Childs - is &quot;fascinating.&quot; Plus, it&#39;s got an AI-attack component, so we&#39;re going to start with it.
+
+CVE-2026-26144 is a critical-severity information disclosure vulnerability in Microsoft Excel. This cross-site scripting flaw can be exploited to &quot;cause Copilot Agent mode to exfiltrate data via unintended network egress, enabling a zero-click information disclosure attack,&quot; Redmond warned.
+
+Yes, you read that right: a zero-click bug that weaponizes an Excel spreadsheet and the Copilot Agent to steal data. As Childs notes, it&#39;s &quot;an attack scenario we&#39;re likely to see more often.&quot;
+
+This bug requires network access to exploit, but no user interaction or privilege escalation.
+
+&quot;Information disclosure vulnerabilities are especially dangerous in corporate environments where Excel files often contain financial data, intellectual property, or operational records,&quot; Action1 CEO and co-founder Alex Vovk told The Register. &quot;If exploited, attackers could silently extract confidential information from internal systems without triggering obvious alerts.&quot;
+
+Patch this one sooner, and if you must delay patch deployment, Vovk suggests restricting outbound network traffic from Office applications, monitoring unusual network requests generated by Excel processes, and disabling or limiting Copilot Agent until applying the fix.
+
+The two Microsoft bugs listed as publicly known, but not exploited at the time of disclosure include CVE-2026-26127, an out-of-bounds read issue in .NET that allows an unauthorized attacker to deny service over a network. Despite it being publicly disclosed, Redmond deems &quot;exploitation unlikely.&quot;
+
+Plus, CVE-2026-21262, also publicly known, is due to improper access control in SQL Server that allows an authorized attacker to elevate privileges over a network. Microsoft said that this one is &quot;less likely&quot; to be exploited in the wild.
+
+Of the eight critical-rated CVEs, two - CVE-2026-26110 and CVE-2026-26113 - are Office remote code execution bugs that can be triggered via the Preview Pane, meaning a user may not need to fully open a malicious file for an attacker to exploit the system.
+
+&quot;When a simple document preview can trigger code execution, attackers gain a doorway directly into the system,&quot; Jack Bicer, director of vulnerability research at Action1, told The Register.
+
+As Childs notes, these have become increasingly common over the last year. &quot;It&#39;s just a matter of time until they start appearing in active exploits,&quot; he said.
+
+CVE-2026-26110 is a type confusion flaw in Microsoft Office that allows a remote attacker to execute code locally. Type confusion occurs when an application accesses a resource using an incompatible data type, causing incorrect memory handling.
+
+CVE-2026-26113 is caused by an untrusted pointer dereference flaw in Microsoft Office, which also allows remote attackers to execute code locally. &quot;The issue occurs when Microsoft Office improperly handles memory pointers, potentially allowing an attacker to manipulate how the application accesses memory,&quot; Bicer said. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2026</div>
         </div>
         
-        <div class="card" onclick="openModal('content-42')">
+        <div class="card" onclick="openModal('content-43')">
             <div class="source">The Register</div>
             <div class="title">Amazon insists AI coding isn't source of outages</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>Amazon insists AI coding isn't source of outages</h2>
             <p><strong>The Register | 2026-03-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/10/amazon_ai_coding_outages/">Visit Original Website</a>
@@ -2127,13 +2253,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2026</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Register</div>
             <div class="title">AI nonsense finds new home as Meta acquires Moltbook</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>AI nonsense finds new home as Meta acquires Moltbook</h2>
             <p><strong>The Register | 2026-03-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/10/ai_nonsense_finds_new_home/">Visit Original Website</a>
@@ -2161,13 +2287,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2026</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Register</div>
             <div class="title">Cybercrime isn't just a cover for Iran's government goons - it's a key part of their operations</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Cybercrime isn't just a cover for Iran's government goons - it's a key part of their operations</h2>
             <p><strong>The Register | 2026-03-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/10/cybercrime_iran_mois/">Visit Original Website</a>
@@ -2199,13 +2325,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2026</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Register</div>
             <div class="title">AI datacenters may gulp a New York City's worth of water on hot days</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>AI datacenters may gulp a New York City's worth of water on hot days</h2>
             <p><strong>The Register | 2026-03-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/10/us_datacenters_water_consumption/">Visit Original Website</a>
@@ -2253,13 +2379,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2026</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">JetBrains launches AI agent IDE built on the corpse of abandoned Fleet</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>JetBrains launches AI agent IDE built on the corpse of abandoned Fleet</h2>
             <p><strong>The Register | 2026-03-10</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/10/jetbrains_previews_air_proclaims_new/">Visit Original Website</a>
@@ -2293,53 +2419,123 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2026</div>
         </div>
         
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">Crooks compromise WordPress sites to push infostealers via fake CAPTCHA prompts</div>
+        <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">Nosh Robotics’ $1,500 robot chef doesn&#8217;t need any help with dinner</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-47" style="display:none;">
-            <h2>Crooks compromise WordPress sites to push infostealers via fake CAPTCHA prompts</h2>
-            <p><strong>The Register | 2026-03-10</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/10/crooks_hijack_wordpress_sites/">Visit Original Website</a>
+        <div id="content-48" style="display:none;">
+            <h2>Nosh Robotics’ $1,500 robot chef doesn&#8217;t need any help with dinner</h2>
+            <p><strong>The Verge | 2026-03-10</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/892655/nosh-robotics-nosh-one-launch">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Cyber baddies quietly compromised legitimate WordPress websites, including the campaign site of a US Senate candidate, turning them into launchpads for a global infostealer operation.
+            <div id="article-text">﻿The Nosh One can automate your meals, but it has some competition from the Posha robo-chef.
 
-Researchers at Rapid7 say the scheme works by injecting malicious code into compromised sites, which then serve visitors a convincing fake Cloudflare CAPTCHA page. Instead of simply proving you&#39;re not a robot, the prompt instructs users to copy and run a command on their machine – a step that ultimately triggers the download of credential-stealing malware.
+﻿The Nosh One can automate your meals, but it has some competition from the Posha robo-chef.
 
-The trick works because the attack starts on websites that otherwise look perfectly legitimate. Visitors think they&#39;re just clearing yet another Cloudflare bot check – the sort that litters the modern web – when in fact they&#39;re being talked through the first step of infecting their own machine.
+Anyone who finds themselves wishing they could spend less time on meal prep might have a solution in the form of the recently-launched Nosh One from Nosh Robotics, an AI kitchen appliance that can autonomously cook for you.
 
-The technique is part of the now well-worn ClickFix social engineering playbook, in which attackers persuade victims to execute commands themselves under the guise of fixing or verifying something on their systems.
+All users need to do is load their ingredients into the robot’s tray then select a recipe. The Nosh One adds the ingredients into its pot at the appropriate time, stirs everything, uses AI to monitor the ingredients with a built-in camera, and completes the meal without needing any intervention along the way. Nosh’s app notifies users when the meal is ready. They can also use the app to view and edit recipes and schedule meals. The Nosh One is capable of making over 500 dishes, but users can also add their own by describing what they want to cook using natural language and letting the robot’s AI generate a recipe for them.
 
-The infected sites span a broad mix of organizations. According to Rapid7, compromised pages include regional media outlets, small business websites, and &quot;in one case even a United States Senate candidate&#39;s official webpage.&quot; The company says it notified US authorities to investigate the issue and clean it up.
+The robo-chef is available for pre-order on Kickstarter, where it currently starts at $1,499. According to Nosh Robotics, it will begin shipping this summer. Upgrades on Kickstarter include extra accessories and a lifetime subscription to Nosh’s Culinary+, which grants users access to all of the robot’s recipes and the ability to edit and create 50 recipes per year.
 
-What&#39;s more, the scope of the activity suggests this isn&#39;t someone manually breaking into websites one by one.
+The Verge’s Jennifer Pattison Tuohy reviewed a very similar robot last year called Posha, which costs the same price as the Nosh One, features a nearly identical design, and also offers to automate cooking with the help of AI. However, the Nosh One has one significant difference: a fully sealed cooking chamber that can be closed off while cooking. Unlike the Posha, the Nosh One’s pot and stirring arm are completely covered when the robot’s door is closed, which could help prevent splashes and fumes from escaping.
 
-&quot;The large-scale execution of the compromise across completely unrelated WordPress instances suggests a high level of automation by the threat actor and is likely part of an organized long-term criminal effort,&quot; said Rapid7 security researcher Milan Spinka.
-
-Once a victim follows the instructions on the fake verification page, the attack chain can install an infostealer – malware designed to quietly scoop up useful data from the infected machine. That typically includes browser-stored credentials, authentication cookies, cryptocurrency wallet information, and other bits of digital loot.
-
-Those stolen credentials rarely stay with the original attacker for long. Infostealer logs are routinely packaged up and sold on cybercrime marketplaces, where other criminals can buy ready-made access to email accounts, corporate systems, and online services without having to break in themselves.
-
-The campaign has been active in its current form since at least December 2025, although some of the infrastructure behind it – including domain registrations used in the attack chain – dates back to July and August of last year.
-
-So far, Rapid7 says it has identified more than 250 compromised websites across at least 12 countries, including Australia, Brazil, Canada, Czechia, Germany, India, Israel, Singapore, Slovakia, Switzerland, the UK, and the US.
-
-Using compromised websites as the delivery mechanism gives the operators a useful layer of camouflage. Security tools and users alike are far less suspicious of well-known domains than newly registered malware sites, and the attackers get to piggyback on the reputation of whoever&#39;s unlucky enough to have their website hacked. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2026</div>
+A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-48')">
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">I’ve tested the latest Switch 2 controllers, and this one is the best</div>
+            <div class="meta">2026-03-10</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
+            <h2>I’ve tested the latest Switch 2 controllers, and this one is the best</h2>
+            <p><strong>The Verge | 2026-03-10</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/791574/best-switch-2-controllers">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Not everyone wants to spend $90 on a single controller. Luckily, we found affordable third-party options that are great.
+
+Not everyone wants to spend $90 on a single controller. Luckily, we found affordable third-party options that are great.
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+If you choose to get an extra controller for your Nintendo Switch 2, you can spend a lot — and get a lot in return. Buying Nintendo’s own $89 Switch 2 Pro Controller, for instance, will net you the console’s only wireless controller with a 3.5mm headphone jack for private listening, not to mention great-feeling rumble and a slick design. It’s not perfect, but it’s otherwise the total package in terms of features.
+
+But it’d be a disservice to you to call it a day there. There are several third-party models that are cheaper, yet don’t make too many compromises in terms of features. In fact, there’s now an affordable option that replicates the Switch 2 Pro’s OS-level rear button customization on a per-game basis, which was previously exclusive to Nintendo’s first-party gamepad. I’ve spent time testing a handful of these gamepads, including new ones as they release, and there’s a small batch of models that I think will satisfy most people, with a range of styles, prices, and features.
+
+Every controller I’ve included in this guide is compatible with both the Switch 2 and the original Switch (all of them can remotely wake the Switch 2), as well as PC. Each offering also includes better, longer-lasting joystick technology than you’ll get with Nintendo’s flagship controller; the Switch 2 Pro Controller’s potentiometer-based joysticks are prone to degradation over time, after all, but our picks include either Hall effect or TMR joysticks. I’ve highlighted any controller-specific perks in the blurbs below.
+
+I put my pricey Nintendo Switch 2 Pro Controller away and cycle in each of these candidates for multi-session tests with a mix of Switch 2 games. I spend time assessing their ergonomics, button location, and the quality of each button press and trigger pull. I also strive to test each controller’s unique functions.
+
+Most people would rather spend $89.99 on two games, not a single controller. We sought cheaper alternatives to Nintendo’s fantastic Switch 2 Pro Controller, but we hate compromising on features and quality as much as anyone. We aim to include wireless gamepads that can remotely wake the Switch 2, as well as offerings that feature good-feeling rumble and a few extras, such as amiibo support.
+
+Our top picks are just as comfortable to use as Nintendo’s flagship gamepad — perhaps more comfortable, depending on your taste. We’ve included picks with Xbox- and PlayStation-style stick layouts, too, as well as one that feels similar to the Nintendo Switch 2 Pro Controller.
+
+Nintendo opted for potentiometer-based joysticks in its pricey Switch 2 controller, which may result in “stick drift” later on, assuming last-gen controller tech is anything to go by. Every pick in this guide, however, builds on that technology with either Hall effect or tunneling magnetoresistance (TMR) joysticks, which are drift-resistant by design.
+
+Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, Steam Deck, mobile / Connectivity: Bluetooth, wired / Connector type: USB-C / Mappable rear buttons: Yes, two / App customization: No / Rumble: Yes, HD / NFC: Yes / Motion: Yes / Power: Built-in rechargeable 1,200mAh battery / Console wake-up: Yes / Native Switch 2 OS support: No
+
+The EasySMX S10 is nearly as capable and comfortable as the Switch 2 Pro Controller, yet it’s $30 cheaper at $59.99. It’s full of surprises, too, including the best adaptation of Nintendo’s HD rumble that I’ve felt in a third-party controller. It’s also one of the few options that can remotely wake the Switch 2 from sleep mode via Bluetooth. Lastly, it includes amiibo support — another rare feature to find in a third-party gamepad.
+
+However, the S10 isn’t a Switch 2 Pro copycat; it’s a lot grippier, both around the grips themselves and on its stick caps. Button presses and trigger pulls feel different from most other controllers, too, yielding a softer press and shorter travel, which is likely to be the most divisive aspect of the S10. One of my favorite aspects of the S10’s design is its swappable eight-way (circular) D-pad, making diagonal attacks in Hollow Knight: Silksong considerably easier to execute than with a four-way D-pad.
+
+If I could change one thing about the S10, it’d be the system-level buttons (screenshot, GameChat, and home). They’re crammed awkwardly just below the D-pad and right stick.
+
+Native Switch 2 software supportJust as comfy as the EasyMax S10Affordable price point
+
+Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, Steam Deck, mobile / Connectivity: Bluetooth, wired / Connector type: USB-C / Mappable rear buttons: Yes, two / App customization: No / Rumble: Yes / NFC: No / Motion: Yes / Power: Built-in rechargeable 1,000mAh battery / Console wake-up: Yes / Native Switch 2 OS support: Yes
+
+While virtually identical to the S10 above, the S10 Lite makes a few compromises to reach its lower $39.99 price point. Most notably, it lacks support for amiibo figures, and its rumble effects are a clear downgrade compared to the HD rumble in the S10. What is unusual, however, is that EasySMX’s budget-friendly gamepad offers a feature I wish were in the step-up version: native support for the Switch 2.
+
+Connecting the S10 Lite to a Switch 2 is as easy as connecting other controllers. But what’s unique is that it doesn’t require a strange sequence of button presses or Joy-Con removal for your console to remember it, which is not the case with the S10 and other gamepads. If you connect it once, you can wake the Switch 2 by pressing its Home button. What’s more, you can customize the two rear buttons on a per-game basis using the Switch 2’s interface, making it the only third-party controller that can utilize the OS to map commands to rear buttons.
+
+The S10 Lite is an affordable controller that works like the Switch 2 Pro controller in ways that other manufacturers haven’t figured out yet. That’s great, and I love that its grips and shape make it just as comfortable to use as a Switch 2 Pro controller. But what it sacrificed (amiibo support, HD rumble) holds it back from being the very best option available.
+
+Adjustable tension TMR thumbsticksQuiet, floating D-pad
+
+Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, mobile / Connectivity: Bluetooth, wired / Connector type: USB-C / Mappable rear buttons: Yes, four / App customization: Coming in 2026 sometime / Rumble: Yes / NFC: No / Motion: Yes / Power: Built-in rechargeable battery, 950mAh / Console wake-up: Yes / Native Switch 2 OS support: No
+
+GuliKit’s newer TT Pro is focused on cramming in more features while keeping the price reasonable. This wireless gamepad features TMR thumbsticks in a PlayStation-style stick layout. And notably, both sticks have adjustable tension (like the Xbox Elite Series 2 controller) via a Phillips head screw that’s revealed once you pop off the stick caps. A tool is included that lets you dial in the sticks to be fast and flighty or have them resist snapping back to their original resting place. It’s great to see in a controller that costs well under $100.
+
+The TT Pro has the best floating, eight-way directional pad I’ve used. I play games in the living room while my wife reads, and she can’t hear its quiet yet tactile clicks, even as I’m having a frantic battle in Hollow Knight: Silksong. Like the KingKong 3 Max, the TT Pro features adjustable trigger stops (full Hall effect analog pull or tactile click), and you can install up to four rear paddles to map buttons to. Other niceties include extra face buttons and a tool to remove them in the box (in case you want an Xbox-style face button layout while connected to a PC). It comes in a hard case with a Hyperlink Gen 2 wireless controller adapter, which makes it easier to connect the TT Pro (and myriad other controllers) to your Switch 2.
+
+As for how the TT Pro differs from the step-up TT Max, here are the highlights: The Pro doesn’t include extra stick caps of varying heights, nor can its firmware switch between emulating a four- or eight-way D-pad like the Max can (the Pro only supports eight-way).
+
+Comfy and compactSilent sticks and buttonsGood feature set for $50
+
+Loud shoulder buttonsSystem-level buttons are tough to feel for
+
+Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, mobile / Connectivity: Bluetooth, wired / Connector type: USB-C / Mappable rear buttons: Yes, two / App customization: Yes / Rumble: Yes, HD / NFC: Yes / Motion: Yes / Power: Built-in rechargeable battery, 1,000mAh / Console wake-up: Yes / Native Switch 2 OS support: No
+
+It’s clear that Mobapad’s primary goal with its $71 Chitu2 HD was to convince people they were using Nintendo’s Switch 2 Pro Controller in a blind test. It crushed that goal. The curves feel identical to Nintendo’s $90 gamepad, as do the soft clicks of the customizable GL and GR rear buttons. The rumble is great, too, and its TMR sticks are nearly silent even when I deliberately try to wiggle them chaotically. It’s great to have a controller that feels so similar yet doesn’t skimp on features.
+
+Build quality is stellar, with the pink color option being particularly nice. As with its whisper-quiet TMR sticks, most of the Chitu2’s other buttons and triggers don’t yield a clacky sound. However, there are some small issues that may not bother you: its floating directional pad is a little louder and mushier than the one GuliKit uses in the TT Pro, and its pair of L and R bumpers are louder to press than the clicking of the analog sticks. Another button-related issue is that the home and screenshot buttons sit nearly flush with the plastic housing, making them tough to feel for without looking.
+
+Includes dock and 2.4GHz dongleHighly customizableComfortable for small hands
+
+Supported platforms: Nintendo Switch 2, Nintendo Switch, PC, Steam Deck, mobile / Connectivity: Bluetooth, 2.4GHz, wired / Connector type: USB-C / Mappable rear buttons: Yes, two / App customization: Yes / Rumble: Yes / NFC: No / Motion: Yes / Power: Built-in rechargeable 1,000mAh battery / Console wake-up: Yes / Native Switch 2 OS support: No
+
+8BitDo’s Pro 3 is a great yet pricey Switch 2 Pro alternative with a PlayStation-style stick layout. At $69.99, it’s not as affordable (nor as value-packed) as the top contenders. However, the Pro 3 offers a lot of customization, some being cosmetic, while other aspects can impact gameplay.
+
+It has a lot going for it, with TMR joysticks, two back paddles, and a total of three shoulder buttons per side thanks to new custom M buttons. Its analog stick caps can be popped off in favor of glossy arcade stick-style nubs, which were my preferred choice in fighting games (plus, they just look cool). Its ABXY buttons can be suctioned off with an included tool to swap the layout as needed, and for visual flair, each controller includes colored buttons to evoke a retro Nintendo console. Also, it has trigger locks, letting you set triggers to have a short, clicky pull or the default travel distance.
+
+However, I’d skip the Pro 3 if you want good rumble feedback. It’s pretty lousy on that front, to the point that I preferred to turn off rumble entirely in games. If you’re considering the similarly priced Ultimate 2 Bluetooth, it also has poor rumble, but it’s a great controller otherwise that offers similar features with an Xbox-style stick layout.
+
+Update, March 10th: Adjusted pricing / availability and added the EasySMX S10 Lite. We also removed Gulikit ES Pro since other controllers in its price range offer more features.
+
+Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">Razer’s BlackShark V2 Pro gaming headset is $90, which is a new low price</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>Razer’s BlackShark V2 Pro gaming headset is $90, which is a new low price</h2>
             <p><strong>The Verge | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/892489/razer-blackshark-v2-pro-wireless-gaming-headset-deal-sale">Visit Original Website</a>
@@ -2361,13 +2557,13 @@ Sign up for Verge Deals to get deals on products we’ve tested sent to your inb
 Sign up for Verge Deals to get deals on products we’ve tested sent to your inbox weekly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Pokopia Pokédex review: a classic, reimagined</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Pokopia Pokédex review: a classic, reimagined</h2>
             <p><strong>The Verge | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/games/892066/pokopia-pokedex-review">Visit Original Website</a>
@@ -2405,13 +2601,13 @@ Because the new Pokédex isn’t possessed by a Rotom, it’s not quite as versa
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">States’ trial against Live Nation could move forward as soon as next week</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>States’ trial against Live Nation could move forward as soon as next week</h2>
             <p><strong>The Verge | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/892353/live-nation-ticketmaster-doj-states-settlement">Visit Original Website</a>
@@ -2449,14 +2645,14 @@ Before adjourning the courtroom for the talks to continue, Subramanian had one m
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
-            <div class="title">Judge blocks Perplexity’s AI agents from shopping on Amazon</div>
+            <div class="title">Judge orders Perplexity to stop AI agents from shopping on Amazon</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-51" style="display:none;">
-            <h2>Judge blocks Perplexity’s AI agents from shopping on Amazon</h2>
+        <div id="content-53" style="display:none;">
+            <h2>Judge orders Perplexity to stop AI agents from shopping on Amazon</h2>
             <p><strong>The Verge | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/892401/amazon-perplexity-ai-shopping-agent-court-order">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -2471,64 +2667,6 @@ Amazon sued Perplexity in November, alleging that it “repeatedly requested” 
 Under the preliminary injunction, Perplexity must not access Amazon using its AI agents and must destroy any data from Amazon that it may have obtained. The preliminary injunction will take effect in seven days to allow time for Perplexity to appeal.
 
 In a statement to Bloomberg, Amazon spokesperson Lara Hendrickson says the ruling “will prevent Perplexity’s unauthorized access to the Amazon store,” adding that the company looks forward to “continuing to make our case in court.” Meanwhile, Perplexity spokesperson Jesse Dwyer tells The Verge that the startup “will continue to fight for the right of internet users to choose whatever AI they want.”
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">Slay the Spire II is even better with a friend</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>Slay the Spire II is even better with a friend</h2>
-            <p><strong>The Verge | 2026-03-10</strong></p>
-            <a class="original-link" href="https://www.theverge.com/entertainment/892210/slay-the-spire-2-co-op-multiplayer">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Co-op multiplayer brings new strategies — and a chance for some doodling.
-
-Co-op multiplayer brings new strategies — and a chance for some doodling.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-Slay the Spire II launched in early access last week, and it’s already an excellent sequel to one of the best roguelikes of all time. In many ways, it’s very similar to its predecessor. Like Hades II and Hollow Knight: Silksong, Slay the Spire II mostly iterates on an already superb foundation. But it does add online co-op with up to four players. While multiplayer changes the familiar rhythms of Slay the Spire just a bit, it’s still a great way to tackle the arduous climb up the spire.
-
-A round of Slay the Spire II plays essentially the same as the original: In each run, you navigate three different acts across a winding map, slowly making a build by crafting your deck and picking up various perk-giving relics, and fighting enemies, elites, and bosses along the way. Slay the Spire II retains the deliberate, turn-based style of play, meaning that when it’s your turn, you have as much time as you want to decide what to do. Since you can see exactly what your enemies are planning for their next turn, there’s a lot of strategy in deciding how much damage to do and how much defense you might need to set up. Multiplayer adds a slight twist: When it’s your turn, everyone can play simultaneously. That opens up all sorts of new opportunities for planning, but it also requires communication to make sure everyone is using their cards effectively.
-
-My multiplayer partner was my wife, the biggest Slay the Spire fan I know, and on our second run we got a thrilling victory. I played the new Necrobinder character, a necromancer, while she played as the returning Silent, which can make decks built around flurries of shivs. Over the course of the run, we accidentally settled into a strategy where I focused on applying the Vulnerable status to as many enemies as possible before my wife would rain down shivs upon our foes.
-
-Slay the Spire II doesn’t encourage teamwork only in battles. At a campfire rest stop, you can choose to mend a friend’s health to help them out. (Some of the new enemies are tough, so I’m glad this is an option.) You each get a vote on which path to take next on the map. Everyone can draw on the map, too — as I learned many times after seeing the doodles my wife made when I would spend too long in the shop.
-
-Since we had to communicate so much, our winning run took about an hour and a half, slower than how fast I could blast through runs in the first game. When we finally defeated the Act 3 boss, though, it was even more satisfying than most of my solo wins because we did it together. My one complaint is that co-op requires you to each play online on your own copy of the game, and that, because there’s no couch co-op, we each had to play on separate devices even though we were sitting on the couch right next to each other.
-
-Those are annoying tradeoffs, but multiplayer is such a fun addition to Slay the Spire that I don’t mind. I can’t wait to try another multiplayer run and see what challenges — and doodles — are in store for me.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">Satechi’s new folding dock adds USB, audio, and video ports to the iPad</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>Satechi’s new folding dock adds USB, audio, and video ports to the iPad</h2>
-            <p><strong>The Verge | 2026-03-10</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/890592/satechi-onthego-foldable-stand-hub-dock-ipad-tablet">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">﻿The portable hub can turn a tablet into a remote workstation while you’re traveling.
-
-﻿The portable hub can turn a tablet into a remote workstation while you’re traveling.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-Satechi has announced a redesigned version of the iPad Pro stand with USB-C hub functionality it launched nearly five years ago that’s smaller and easier to travel with. The new OntheGo Foldable Stand Hub is available now through Satechi’s online store and Amazon for $79.99 in space black. While the original was specifically designed for iPad Pro models, Satechi says the new stand hub will work with all iPads released after 2021, as well as other USB-C mobile devices and laptops.
-
-A stand that folds flat for travel can be used to prop up and turn tablets and smartphones into makeshift monitors, while the hub connects to those devices using a short built-in USB-C cable that can be stored underneath it.
-
-The expanded connectivity includes a 4K/60Hz HDMI port for using a device with a larger screen, SD and microSD card readers, USB-C and USB-A ports supporting up to 10Gbps file transfers, and 100W power delivery passthrough so paired devices can still charge. There’s even a 3.5mm audio jack that can be used to connect wired headphones or a wired microphone.
 
 A free daily digest of the news that matters most.</div>
         </div>
@@ -3267,11 +3405,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: Hezbollah returns to guerrilla roots, awaits Israeli invasion - Reuters</div>
+            <div class="title">U.S. Navy has not yet escorted ships through Strait of Hormuz, White House says - Reuters</div>
             <div class="meta">2026-03-10</div>
         </div>
         
         <div id="content-67" style="display:none;">
+            <h2>U.S. Navy has not yet escorted ships through Strait of Hormuz, White House says - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-03-10</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxPREpJZm1ET2hva2pIWWlxMXZBdkNuV2V3NHhfS19BSFpWcWoyYmxwVXZsN2NTdGp3Y3FmSzNObTlScHZFZG1OUkhVd2ZYUDBDM3g4THU0dXEzU3FWS2cxRTZteGFSeDQtZVR1Y1JtX29ENEpSMFVJeDVfNWRFOXVYT2ktUE14RzJXcGQ0Q09rVGQwb2tidkptOFdnWkJ0MFVKZ2xQVUJiS0Noc0I2cDZOZjdmS2tJSGwwYV9BQS1sQ3hUalM2azRPdQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Exclusive: Hezbollah returns to guerrilla roots, awaits Israeli invasion - Reuters</div>
+            <div class="meta">2026-03-10</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
             <h2>Exclusive: Hezbollah returns to guerrilla roots, awaits Israeli invasion - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-10</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPUDFwV2VFTERoZVhncFZtckFzYTB5VUw0RDYxOFV5UXphUE1rZk45OVNoTmNvMG0wc3hkb0l6dlBmd2xES1BKZ3BQeWdmR0t4Z0VWbmdCVnV1WDdoQTVEaHNISEVYN05JWFBMUVQ0aEhPdzNHbVd2X1FKUzd2SFhld3l0UzhqVlpSRU9OT0dvTVQwaTYwVFJTZmdXbkRfa25PTG9EdWFGYjdZZmVOY0ptNQ?oc=5">Visit Original Website</a>
@@ -3279,13 +3431,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Meta acquires AI agent social network Moltbook - Reuters</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-69" style="display:none;">
             <h2>Meta acquires AI agent social network Moltbook - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-10</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNX0NkclFHZE5GMFU2XzlMWmlPdlZHeV8yMFdNRDdQNDFtVnJVSXBUZjFTN2JYTlpiUHdITm9BaXJLMGsxSGVnVWxTa1RuY08tRlA0bG4zbzU3ZFRfamJ2OVFudHhDNTdwWGZHVzdOQl9jeGRXLTVhRE5BTUhRWVJzbVFva2trSk9SNDM2SlZvdk00VTdldHc?oc=5">Visit Original Website</a>
@@ -3293,44 +3445,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Reducing Europe's nuclear energy sector was 'strategic mistake', EU chief says - Reuters</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>Reducing Europe's nuclear energy sector was 'strategic mistake', EU chief says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-03-10</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQVi02eUthSE5pNks1U1FuOXE1V2JNVXhyYWx1WE1nODdTNlBLSW1rV1k1V3lqVnc1X1dZZTVBcElkdUlEZnhZREw4OGRpdDdTeVQzZE9BcTR4a1VIcFljWGdmTmVTeU0yWWtGNUY2UHE0SGFkUDlWX0ZwTHNfLWM5T1QyQTVldzdGX3d3c1lnOVY4ZGNnMHoxZDRDWGY0eXVCY2NjVzVHWmtNYlhaTXFGUW9hRFg1VGZadzliTXlFUElBMnVPUHBiZzl6OA?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Iran's intelligence ministry arrests foreign agents, state media reports - Reuters</div>
+            <div class="title">Israel not seeking endless war with Iran, foreign minister says - Reuters</div>
             <div class="meta">2026-03-10</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>Iran's intelligence ministry arrests foreign agents, state media reports - Reuters</h2>
+            <h2>Israel not seeking endless war with Iran, foreign minister says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-10</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxNV0Q5YVl1OFk3S1Z0UVhBOEd0RmhkWS0xaGJiSE1wVGREZ2dzOVBUb3RnOEJ5b05IQ1RVZnFlbXhNeXdIUmdVLS0zRk9rckoycFAweWdhM2YzS0lCa2pzTFhjRkFHcy1JM0xWM0dJZXBBTUl2YkJVLWtNTnJVVzl2SE04UTRxRlg3eWNTQnlEdXphdWhfNXpUdFJFcEdZMzJaRlN1Q3VxWm9rOWt2RjVXUTVNQ3JWd1BxWE9HeFcyTnJUdw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQb1p0TlZlWGZEVGJrdHdsd3VtMW5vejUyeTF0ZU5ucGNRbFNPSExIb1hsYnNXVlh5b1IxcmoxVEhjcXZJRXlHSFFOY0VOekMwTGFJYzhfa1ZmYUNrVW52cVlQRTZiVzJfbGo1UmQ3OXdOT2VSVENJNS0tdnlfTF9MV0ZNMmdzR256WkpSQzJfLVF3cG1qTlEzSzBUck1nTVltWloxVFMxNzZRYW90cXFNTw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Germany's Merz sees no plan for bringing Iran war to swift end - Reuters</div>
+            <div class="title">What are the challenges in securing shipping through the Strait of Hormuz? - Reuters</div>
             <div class="meta">2026-03-10</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Germany's Merz sees no plan for bringing Iran war to swift end - Reuters</h2>
+            <h2>What are the challenges in securing shipping through the Strait of Hormuz? - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-10</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOdnV6ejBZVHRkSW9XdnhjaGJXY1ZJQUFoR0UyX0tMNi1UbXNmSDZvSW1McmktQmlkVHZwX0toNzZKZ2tzNDhBeXhqM2ZxOTlIVS12MVNtd29zVTluVTNCZVRjRW8yNlJOQmpndVhLN3pEUk9IQlJfeXhNX3YyMXRUOHhVWklvZFlWUUx2OFZISjVtLUpnUWlSbW11VmUwc0ZJNjlCRzhR?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxONEdMLTVQSGdTZjR1Xy0tZXVpSmpUWFFWbU5CZWQ0d0ItNFQtaGxrdnZaRmlNa3hTRkFPMXF5NW9YVF9yTEE2OW53R24waV8tUkY2M3BScU9ZLXRtVk96elRETElvRFZhZFV4RjFqRjVzU2dUT1hWblVfUkVNUHZQNXF0SjY0WFIyWEtELUFCR0NVZ2xIbTE1Ui1XVjl5US1DYzVBZ2gybFJsMGVGMzlOXw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
