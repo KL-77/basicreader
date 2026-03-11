@@ -154,11 +154,65 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
+            <div class="title">Quantum computing meets the Möbius molecule</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-0" style="display:none;">
+            <h2>Quantum computing meets the Möbius molecule</h2>
+            <p><strong>Ars Technica - All content | 2026-03-11</strong></p>
+            <a class="original-link" href="https://arstechnica.com/science/2026/03/quantum-computing-meets-the-mobius-molecule/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Last week, IBM trumpeted its contributions to a rather unusual paper: the production of a molecule with a half-Möbius topology, assisted by an algorithm run in part on a quantum computer. There was, to put it mildly, a lot going on in this paper, and it took a little while to digest. But it’s interesting in what it says about the sorts of chemistry that we can construct with tools developed over the past several decades, as well as how quantum computation is inching toward utility.
+
+But getting the full picture requires about three different stories, so we’ll go through each of them separately before bringing the big picture together.
+
+Those of you who can still dredge up your high school chemistry lessons probably remember benzene, a six-carbon ring with alternating single and double bonds that kept all the carbons locked into a single plane, creating a flat molecule. What you are a bit less likely to remember is that the double bonding is mediated by orbitals that extend vertically above and below the nucleus of the carbon atoms. Thanks to the alternating single-double nature of the bonds, electrons in these orbitals end up delocalized; the differences between the bonds become a bit irrelevant, and the molecule is best viewed as having some of its electrons floating around in a cloud. The same would hold true for even larger molecules with the same sort of bonding arrangement.
+
+The way the orbitals are arranged in benzene, any electrons that circulate around the molecule will end up back where they started. By linking other atoms to the carbon ring, it’s possible to place orbitals at different angles from the vertical. With the right combination of additional orbitals, it’s possible to twist things so that an electron starts out on top of the molecule (assuming the ring is laid flat on a surface) but ends up at the bottom by the time it completes a full circuit around the ring. It would have to do a second loop around the ring to end up back where it started.
+
+This has a direct analog in tracing a path along the surface of a Möbius strip, where you also need to perform two circuits to end up back where you started. In fact, some simple Möbius molecules have been synthesized in the past.
+
+What sets the new research apart is its use of the fact that there are far more options for orbitals and bonds than we see in simple benzene derivatives. The large, international team (which includes both academics and IBM researchers) found a way to create a half-Möbius arrangement, in which the orbitals of a ring-shaped molecule are arranged such that, after a single loop around the molecule, an electron would be neither on the top nor bottom of the molecule, but somewhere around the periphery.
+
+It would need to perform two loops just to end up on the bottom. And then two more loops to end up back where it started.
+
+This isn’t a stable configuration; left on its own, the molecule would collapse into a far more mundane configuration in short order. And there’s no obvious use to it, even assuming we could keep it stable for long enough to test for applications. But it’s an interesting exploration of our ability to manipulate orbital configurations on the molecular level, and there’s no telling how that ability might ultimately pay off.
+
+If you wanted to make something this odd, it’s not necessarily obvious how you would go about it. If tweaking orbital configurations were easy, someone probably would have done it already. And, as the authors of the paper that describes this work note, there are a lot of potential orbital shapes that are allowed by quantum mechanics, but the exact configuration that gets used in a molecule can depend on which of those orbitals are occupied and by how many electrons.
+
+But as you deal with larger molecules—the team here worked with a 13-carbon ring studded with two chlorine atoms—the number of electrons involved gets complicated, and calculating what they would end up doing to the orbitals becomes increasingly intractable. In this situation, you’re looking at a series of orbitals that would be occupied by 24 electrons from the carbon atoms, plus another eight from the two chlorine atoms. This is beyond our ability to perform exact classical simulations of what the orbitals should look like.
+
+But the orbitals are a quantum system, and it’s possible to map their nature to the sort of quantum system we can manipulate: a quantum computer. While an exact solution is likely beyond the capabilities of existing quantum computers, they proved useful for the execution of a mixed classical-quantum algorithm called Sample-based quantum diagonalization.
+
+A sampling algorithm means just what it says: you gather a lot of samples of the behavior of a system, and use those to extract general rules about its behavior. In this case, the classical part of the algorithm helps set up multiple operations on the quantum hardware, each of them providing an individual sample. Each of these samples can be executed faster than it would take classical hardware, and is short enough that it doesn’t typically run up against the quantum hardware’s error limits. Because of the speed of the quantum hardware, lots of samples could be run, so any individual errors should get swamped by regular results.
+
+The end result is that the team validated that certain manipulations could help them create the half-Möbius molecule with the right starting chemical.
+
+The molecule they chose to make is, to put it mildly, an odd one. It’s a 13-carbon ring with chlorines linked to opposite sides of the ring. Because there is an odd number of carbons, this means that chlorines flank five carbons on one side of the ring and six on the other (see the structures below). Left on its own, the molecule would form alternating single and triple bonds. But the presence of the chlorines and an odd number of atoms means that this alternation gets disrupted, leading to a double bond and some unpaired electrons floating around.
+
+One consequence of all of this is that the molecule isn’t really stable. The researchers made it in isolation, and it was kept at an extremely low temperature and isolated, sitting on the surface of a salt crystal. The second is that it’s probably impossible to design a series of chemical reactions that could synthesize it. Instead, the researchers started with a three-ring molecule with lots of chlorines attached, and used a scanning tunneling microscope to apply precise voltages to specific atoms, breaking a few carbon-carbon bonds and popping off most of the chlorine atoms.
+
+Once the correct molecule was formed, the same microscope was used to apply voltages to specific positions relative to the molecule, guided by earlier simulations. This shifted the configuration of the molecule, popping the two chlorines out of the flat plane defined by the carbon ring. Electrons shifted so that the side of the molecule with five carbons between the chlorines formed a series of double bonds; on the other side, single and triple bonds predominated.
+
+This, in turn, altered the configuration of the orbitals to achieve the half-Möbius configuration that the researchers were aiming for. This was confirmed by atomic force microscopy, which registered the orbital configurations and showed that they largely matched the predictions derived from the computational sampling.
+
+For starters, it’s worth stepping back to appreciate what was done here, since there are multiple aspects of this that could be considered science fiction just a couple of decades ago. Faced with a molecule that would be impossible to synthesize through chemical reactions, we applied precise voltages to individual atoms to tailor a single molecule to our precise needs. And then we manipulated its precise bonding configuration by additionally carefully applied voltages.
+
+All of that was made possible by our remarkable understanding of the quantum mechanical behavior of molecular orbitals.
+
+In contrast, the use of quantum computing may seem relatively mundane. It involved a mixed quantum/classical algorithm, which was specifically tuned to work around the limits in error rates and qubit counts (it used over half of the 150 or so qubits on IBM’s Heron processor). But this is likely to be what quantum computing looks like for the next few years, as our gradually expanding capabilities start to bring a handful of slightly more sophisticated algorithms into reach with each bit of progress. And that’s pretty exciting in its own way.
+
+Science, 2026. DOI: 10.1126/science.aea3321 (About DOIs).</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
             <div class="title">Reentry of NASA satellite will exceed the agency's own risk guidelines</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-0" style="display:none;">
+        <div id="content-1" style="display:none;">
             <h2>Reentry of NASA satellite will exceed the agency's own risk guidelines</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/03/nasa-approved-a-safety-waiver-for-this-weeks-reentry-of-van-allen-probe/">Visit Original Website</a>
@@ -188,13 +242,13 @@ Several NASA satellites have reentered the atmosphere without complying with the
 While NASA has exceeded its standards before, the US government is not a top offender when it comes to unmitigated reentry risks. China launched four heavy-lift Long March 5B rockets between 2020 and 2022, and left its massive core stages in orbit to fall back to Earth. The four abandoned rocket cores, each nearly 24 tons in mass, reentered the atmosphere uncontrolled. Two of them dropped wreckage on land—in the Ivory Coast and Borneo—but no injuries were reported.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">FDA contradicts Trump admin, declines to approve generic drug for autism</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>FDA contradicts Trump admin, declines to approve generic drug for autism</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/03/fda-contradicts-trump-admin-declines-to-approve-generic-drug-for-autism/">Visit Original Website</a>
@@ -218,13 +272,13 @@ CFD is a neurological condition marked by abnormally low amounts of folate metab
 While some small, preliminary studies have suggested leucovorin could help ease autism symptoms in some patients, the findings are far from conclusive. Some researchers have hypothesized that some patients with autism may have low cerebral folate levels due to antibodies that block the vitamin from the brain. But, as the Autism Science Foundation noted in September, non-autistic family members of autistic individuals can also have these antibodies, suggesting they are not a cause of the condition.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">AI can rewrite open source code—but can it rewrite the license, too?</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>AI can rewrite open source code—but can it rewrite the license, too?</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/03/ai-can-rewrite-open-source-code-but-can-it-rewrite-the-license-too/">Visit Original Website</a>
@@ -268,13 +322,13 @@ Whatever the outcome here, the practical impact of being able to use AI to quick
 Others put the sea change in more alarming terms. “I’m breaking the glass and pulling the fire alarm!” open source evangelist Bruce Perens told The Register. “The entire economics of software development are dead, gone, over, kaput! … We have been there before, for example when the printing press happened and resulted in copyright law, when the scientific method proliferated and suddenly there was a logical structure for the accumulation of knowledge. I think this one is just as large.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Meta acquires Moltbook, the AI agent social network</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Meta acquires Moltbook, the AI agent social network</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/03/meta-acquires-moltbook-the-ai-agent-social-network/">Visit Original Website</a>
@@ -294,13 +348,13 @@ While many power users have played with OpenClaw, and it has partially inspired 
 That said, some healthy skepticism is required when assessing posts to Moltbook. While the goal of the project was to create a social network humans could not join directly (each participant of the network is an AI agent run by a human), it wasn’t secure, and it’s likely some of the messages on Moltbook are actually written by humans posing as AI agents.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">After complaints, Google will make it easier to disable gen AI search in Photos</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>After complaints, Google will make it easier to disable gen AI search in Photos</h2>
             <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/03/google-backtracks-on-ai-search-in-photos-adds-toggle-for-fast-classic-search/">Visit Original Website</a>
@@ -316,54 +370,6 @@ Google launched the beta Ask Photos experience in 2024, rolling it out slowly in
 Before this change, disabling Ask Photos required digging three levels deep in the settings. Now, Google will add an AI toggle to the top of the search tab. When flipped to the on position, you get the Gemini-powered Ask Photos search, complete with summaries and questionable grouping. Turn that off, and you’ll get the “fast classic search,” according to Ben-Yair.
 
 All is not lost for Ask Photos, though. Ben-Yair says the team is still re-tuning the model in hopes of streamlining the experience. Some of the “most popular searches” have been improved recently to provide higher-quality results. This has apparently led to improved feedback from users of the app. So don’t count Ask Photos out just yet. Google clearly wants to fully transition the Photos search experience to Gemini, but that’ll be harder to pull off now that there’s a prominent toggle that gives people the classic (and much better) search experience. Having both options side by side will really illustrate the problems with Ask Photos.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Anthropic sues US over blacklisting; White House calls firm "radical left, woke"</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Anthropic sues US over blacklisting; White House calls firm "radical left, woke"</h2>
-            <p><strong>Ars Technica - All content | 2026-03-10</strong></p>
-            <a class="original-link" href="https://arstechnica.com/tech-policy/2026/03/anthropic-sues-us-over-blacklisting-white-house-calls-firm-radical-left-woke/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Anthropic sued the Trump administration yesterday in an attempt to reverse the government’s decision to blacklist its technology. Anthropic argues that it exercised its First Amendment rights by refusing to let its Claude AI models be used for autonomous warfare and mass surveillance of Americans and that the government blacklisted it in retaliation.
-
-“When Anthropic held fast to its judgment that Claude cannot safely or reliably be used for autonomous lethal warfare and mass surveillance of Americans, the President directed every federal agency to ‘IMMEDIATELY CEASE all use of Anthropic’s technology’—even though the Department of War had previously agreed to those same conditions,” Anthropic said in a lawsuit in US District Court for the Northern District of California. “Hours later, the Secretary of War [Pete Hegseth] directed his Department to designate Anthropic a ‘Supply-Chain Risk to National Security,’ and further directed that ‘effective immediately, no contractor, supplier, or partner that does business with the United States military may conduct any commercial activity with Anthropic.’”
-
-Anthropic said the First Amendment gives it “the right to express its views—both publicly and to the government—about the limitations of its own AI services and important issues of AI safety.” Anthropic further argued that the process for designating it a supply chain risk did not comply with the procedures mandated by Congress. The supply chain risk designation is supposed to be used only to protect against risks that an adversary may sabotage systems used for national security, the lawsuit said.
-
-Trump’s directive “requiring every federal agency to immediately cease all use of Anthropic’s technology, and actions taken by other defendants in response to that directive, are outside any authority that Congress has granted the Executive,” and violate the Fifth Amendment’s due process clause, Anthropic said.
-
-Anthropic’s lawsuit was filed against Hegseth, the Department of War (previously called the Department of Defense), and numerous other federal agencies. Anthropic also filed a motion for preliminary injunction and a second lawsuit asking for review in the US Court of Appeals for the District of Columbia Circuit.
-
-The Pentagon declined to comment. The White House responded by calling Anthropic a “radical left” and “woke” firm.
-
-“President Trump will never allow a radical left, woke company to jeopardize our national security by dictating how the greatest and most powerful military in the world operates,” a White House spokesperson said in a statement provided to Ars. “The President and Secretary of War are ensuring America’s courageous warfighters have the appropriate tools they need to be successful and will guarantee that they are never held hostage by the ideological whims of any Big Tech leaders. Under the Trump Administration, our military will obey the United States Constitution—not any woke AI company’s terms of service.”
-
-A brief supporting Anthropic was filed in the California federal court by the Foundation for Individual Rights and Expression, the Electronic Frontier Foundation, the Cato Institute, the Chamber of Progress, and the First Amendment Lawyers Association. The groups said that Pentagon retaliation against Anthropic will “silence future speech from those who fear the government attempting to harm their business or extinguish it entirely.”
-
-Calling the government’s actions “transparently retaliatory and coercive,” the advocacy groups wrote that the court “need not guess at the government’s retaliatory motives because the Pentagon has already announced them… Until recently, it was rare for government leaders to so openly and proudly boast about retaliating against someone for their protected speech. Now it is commonplace. Evidently only those who agree to be complicit in this administration’s assertion of unfettered power are safe.”
-
-Another brief supporting Anthropic was filed by various technical, engineering, and research employees of Google and OpenAI. Google is an investor in Anthropic. The Google and OpenAI employees wrote that “mass domestic surveillance powered by AI poses profound risks to democratic governance—even in responsible hands.” On the topic of autonomous weapon systems, they wrote that “current AI models are not reliable enough to bear the responsibility of making lethal targeting decisions entirely alone, and the risks of their deployment for that purpose require some kind of response and guardrails.”
-
-The Google and OpenAI employees said that in using the supply chain risk designation “in response to Anthropic’s contract negotiations, [the Pentagon] introduces an unpredictability in our industry that undermines American innovation and competitiveness. It chills professional debate on the benefits and risks of frontier AI systems and various ways that risks can be addressed to optimize the technology’s deployment.”
-
-Anthropic CEO Dario Amodei explained the company’s objections to certain AI uses in a February 26 post. “We support the use of AI for lawful foreign intelligence and counterintelligence missions. But using these systems for mass domestic surveillance is incompatible with democratic values,” he wrote.
-
-Current law allows the government to “purchase detailed records of Americans’ movements, web browsing, and associations from public sources without obtaining a warrant,” and “AI makes it possible to assemble this scattered, individually innocuous data into a comprehensive picture of any person’s life—automatically and at massive scale,” Amodei wrote.
-
-Amodei expressed support for partially autonomous weapons like those used in Ukraine, but not for fully autonomous weapon systems “that take humans out of the loop entirely and automate selecting and engaging targets.” He said that fully autonomous weapons “may prove critical for our national defense” eventually but that AI is not yet reliable enough to power them.
-
-“We will not knowingly provide a product that puts America’s warfighters and civilians at risk,” he wrote. “We have offered to work directly with the Department of War on R&D to improve the reliability of these systems, but they have not accepted this offer. In addition, without proper oversight, fully autonomous weapons cannot be relied upon to exercise the critical judgment that our highly trained, professional troops exhibit every day. They need to be deployed with proper guardrails, which don’t exist today.”
-
-Trump responded with a Truth Social post on February 27. “The Leftwing nut jobs at Anthropic have made a DISASTROUS MISTAKE trying to STRONG-ARM the Department of War, and force them to obey their Terms of Service instead of our Constitution,” Trump wrote. “Their selfishness is putting AMERICAN LIVES at risk, our Troops in danger, and our National Security in JEOPARDY.”
-
-Hegseth then wrote that “Anthropic delivered a master class in arrogance and betrayal as well as a textbook case of how not to do business with the United States Government or the Pentagon.” Hegseth said the military “must have full, unrestricted access to Anthropic’s models for every LAWFUL purpose in defense of the Republic.”
-
-Anthropic said later that day that it had engaged in months of negotiations with the government and would challenge any supply chain risk designation in court. “Designating Anthropic as a supply chain risk would be an unprecedented action—one historically reserved for US adversaries, never before publicly applied to an American company… No amount of intimidation or punishment from the Department of War will change our position on mass domestic surveillance or fully autonomous weapons,” Anthropic said.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -630,11 +636,65 @@ More on AI: Children’s Toys Are Shipping With Adult AI Inside Them</div>
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
-            <div class="title">Health insurance startup Alan reaches €5B valuation</div>
+            <div class="title">Zoox plans to put its robotaxis on the Uber app in Vegas this year</div>
             <div class="meta">2026-03-11</div>
         </div>
         
         <div id="content-12" style="display:none;">
+            <h2>Zoox plans to put its robotaxis on the Uber app in Vegas this year</h2>
+            <p><strong>TechCrunch | 2026-03-11</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/03/11/zoox-plans-to-put-its-robotaxis-on-the-uber-app-in-vegas-this-year/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Founder Summit 2026 in Boston: Don’t miss ticket savings of up to $300. Register Now.
+
+Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
+
+Amazon-owned Zoox plans to make its robotaxis available to hail on the Uber app in Las Vegas later this year, the two companies announced Wednesday.
+
+Before that happens, though, Zoox still needs approval from the federal government to commercially deploy its robotaxis, which don’t have a steering wheel or pedals. That requires exemptions from the Federal Motor Vehicle Safety Standards (FMVSS). On Wednesday, the National Highway Traffic Safety Administration (NHTSA) began taking public comment on Zoox’s application for those exemptions. (Zoox currently has an exemption that allows the custom-built robotaxis to operate as a demonstration, and not commercially.)
+
+If and when Zoox gets approval, the company plans to launch its own commercial robotaxi service first, and before making the vehicles available on Uber in Las Vegas, it told TechCrunch. Zoox currently offers free rides in Las Vegas and in San Francisco. It’s also mapping and building up a presence in eight other U.S. cities, including Dallas and Phoenix, which were announced earlier this week.
+
+Zoox and Uber described this as a “multi-year strategic partnership,” that includes plans to launch in Los Angeles in 2027.
+
+This is Zoox’s first third-party partnership with a platform like Uber. But it’s certainly not Uber’s first partnership with an autonomous vehicle company. Uber has partnerships with more than 25 different autonomous vehicle companies around the world. Its most notable deal is with Waymo, which makes its robotaxis available on the Uber platform in Austin and Atlanta. Uber has also partnered with China’s Baidu and announced it would start testing those self-driving cars in London this year. The ride-hail giant has AV partnerships with Volkswagen, May Mobility, and Pony AI, too.
+
+Uber has also been building out new offerings for these robotaxi partners. In January, TechCrunch revealed the company started up an “AV Labs” division dedicated to collecting real-world driving data to reinforce its partners’ autonomous systems. Last month, Uber announced it had created a division called Uber Autonomous Solutions that can provide operational, software, and support services.
+
+Zoox is seeking exemptions from eight of the FMVSS, including the standards that require a vehicle to have windshield defrosting systems and windshield wipers. NHTSA will take public comments for 30 days, but it’s not clear when the federal safety agency will make a ruling.
+
+At an autonomous vehicle safety hearing held on Tuesday, NHTSA chief Jonathan Morrison sounded eager to move forward with a more explicit regulatory scheme for self-driving cars.
+
+“We think it’s past time to get past the hand-waving and hype, and are finally doing the necessary, hard policy work to provide appropriate and robust oversight over this sector while removing unnecessary and unintended barriers to innovation that currently exists,” he said. “This will not be easy, but I firmly believe that it is within our grasp, and we at NHTSA are moving with a great sense of urgency to get it done.”
+
+Sean O’Kane is a reporter who has spent a decade covering the rapidly-evolving business and technology of the transportation industry, including Tesla and the many startups chasing Elon Musk. Most recently, he was a reporter at Bloomberg News where he helped break stories about some of the most notorious EV SPAC flops. He previously worked at The Verge, where he also covered consumer technology, hosted many short- and long-form videos, performed product and editorial photography, and once nearly passed out in a Red Bull Air Race plane.
+
+You can contact or verify outreach from Sean by emailing sean.okane@techcrunch.com or via encrypted message at okane.01 on Signal.
+
+Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
+
+DOGE employee stole Social Security data and put it on a thumb drive, report says
+
+Anthropic launches code review tool to check flood of AI-generated code
+
+Cluely CEO Roy Lee admits to publicly lying about revenue numbers last year
+
+Cursor is rolling out a new kind of agentic coding tool
+
+Meta sued over AI smart glasses’ privacy concerns, after workers reviewed nudity, sex, and other footage
+
+Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers
+
+Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Health insurance startup Alan reaches €5B valuation</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
             <h2>Health insurance startup Alan reaches €5B valuation</h2>
             <p><strong>TechCrunch | 2026-03-11</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/11/health-insurance-startup-alan-reaches-e5b-valuation/">Visit Original Website</a>
@@ -682,13 +742,13 @@ Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his expl
 Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">Anduril snaps up space surveillance firm ExoAnalytic Solutions</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>Anduril snaps up space surveillance firm ExoAnalytic Solutions</h2>
             <p><strong>TechCrunch | 2026-03-11</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/11/anduril-snaps-up-space-surveillance-firm-exoanalytic-solutions/">Visit Original Website</a>
@@ -736,13 +796,13 @@ Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his expl
 Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">Google brings Gemini in Chrome to India</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Google brings Gemini in Chrome to India</h2>
             <p><strong>TechCrunch | 2026-03-11</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/10/google-gemini-chrome-expands-to-india-canada-new-zealand/">Visit Original Website</a>
@@ -788,13 +848,13 @@ Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his expl
 Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">In a vote of confidence for Meta’s Threads, Kalshi adds sharing feature</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>In a vote of confidence for Meta’s Threads, Kalshi adds sharing feature</h2>
             <p><strong>TechCrunch | 2026-03-10</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/10/in-a-vote-of-confidence-for-metas-threads-kalshi-adds-sharing-feature/">Visit Original Website</a>
@@ -828,13 +888,13 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Google and Tesla think we’re managing the electrical grid all wrong</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Google and Tesla think we’re managing the electrical grid all wrong</h2>
             <p><strong>TechCrunch | 2026-03-10</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/10/google-and-tesla-think-were-managing-the-electrical-grid-all-wrong/">Visit Original Website</a>
@@ -884,75 +944,107 @@ Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his expl
 Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says</div>
         </div>
         
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Amazon launches its healthcare AI assistant on its website and app</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>Amazon launches its healthcare AI assistant on its website and app</h2>
-            <p><strong>TechCrunch | 2026-03-10</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/03/10/amazon-launches-its-healthcare-ai-assistant-on-its-website-and-app/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Founder Summit 2026 in Boston: Don’t miss ticket savings of up to $300. Register Now.
-
-Save up to $680 on your Disrupt 2026 pass. Ends 11:59 p.m. PT tonight. REGISTER NOW.
-
-Amazon announced on Tuesday that it’s expanding access to its healthcare AI assistant to its website and app. The assistant, called Health AI, was previously only available on the app for One Medical, the healthcare company Amazon acquired for $3.9 billion in 2023.
-
-Health AI can answer questions, explain health records, manage prescription renewals, book appointments, and more. Users don’t need to be Prime subscribers or One Medical members to use the assistant, Amazon says.
-
-Amazon says that while Health AI can answer general health questions without having access to an individual’s medical information, it’s designed to serve as a personalized health assistant that can offer more tailored guidance and take actions, such as connecting you with healthcare professionals and treatments.
-
-Of course, there are risks associated with sharing your health information with AI, and researchers are warning against doing so, cautioning that companies are pulling user conversations for training.
-
-Amazon said in its announcement that it trains “Health AI models on abstracted patterns without directly identifying information.” For example, if multiple patients ask about medication interactions, Amazon says it might use these patterns, while keeping patient names private, to improve how Health AI responds to similar questions.
-
-The company also said that all interactions with Health AI happen within a HIPAA-compliant environment, and that conversations are protected by “encryption and strict access controls.” However, Amazon didn’t share exactly how conversations are encrypted and who has access to them. TechCrunch has reached out for specifics.
-
-With a user’s permission, Health AI gets access to their health information through the Health Information Exchange, which is the nationwide secure system for sharing patient medical data.
-
-Health AI can then interpret your lab results, diagnoses, and medical records to provide accurate, personalized answers about your symptoms and medication, Amazon says.
-
-If you need professional care, Health AI can connect you to a One Medical provider. Prime members in the U.S. using Health AI receive up to five free direct-message care consultations with a One Medical provider for over 30 common conditions, including cold and flu, allergies, acid reflux, pink eye, UTIs, erectile dysfunction, anti-aging skin care, hair loss, and more. Non-Prime members can connect with One Medical providers through Amazon’s pay-per-visit option.
-
-Users can sign up for Health AI on the Amazon Health page. As Amazon expands access, users will receive an email once they are able to access the assistant.
-
-Once users have access, they need to create a or sign in to their personal Amazon Health profile. They can then start a conversation by typing their health question to Health AI on Amazon.com or in the Amazon app.
-
-Users can ask questions like “Can you explain my recent cholesterol results and what they mean for me?” or “I’m feeling congested and have a sore throat. What should I do?”
-
-Amazon’s expansion of Health AI comes as popular AI services have quickly moved into the healthcare space. In January, OpenAI released ChatGPT Health, a version of its chatbot tailored to answer health questions. A week later, Anthropic announced its own healthcare-focused product, Claude for Healthcare.
-
-Aisha is a consumer news reporter at TechCrunch. Prior to joining the publication in 2021, she was a telecom reporter at MobileSyrup. Aisha holds an honours bachelor’s degree from University of Toronto and a master’s degree in journalism from Western University.
-
-You can contact or verify outreach from Aisha by emailing aisha@techcrunch.com or via encrypted message at aisha_malik.01 on Signal.
-
-Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.Register by March 13 to save up to $300.
-
-DOGE employee stole Social Security data and put it on a thumb drive, report says
-
-Anthropic launches code review tool to check flood of AI-generated code
-
-Cluely CEO Roy Lee admits to publicly lying about revenue numbers last year
-
-Cursor is rolling out a new kind of agentic coding tool
-
-Meta sued over AI smart glasses’ privacy concerns, after workers reviewed nudity, sex, and other footage
-
-Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers
-
-Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘straight up lies,’ report says</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-18')">
+            <div class="source">The Atlantic</div>
+            <div class="title">Why I Can’t Stand the Hype</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-18" style="display:none;">
+            <h2>Why I Can’t Stand the Hype</h2>
+            <p><strong>The Atlantic | 2026-03-11</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/culture/2026/03/pop-culture-hype-aversion/686312/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">These days, everyone seems to be watching The Pitt—but not me. I hear it’s really good. I have to believe it’s good, in fact, because people in my social circle—and Emmy Award voters—won’t stop saying it’s really good. “I’m riveted,” one friend said. “It’s addictive,” another said. “I’m surprised you haven’t seen it,” yet another said. But honestly, the more people who recommend the show, the less likely I am to watch it.
+
+I’ve been this way for a while now. It was the same back in the early aughts, with The Wire, and in the later aughts, with Breaking Bad. Though eventually I succumbed and watched both shows—and loved them enough to rewatch them years later—my unwillingness to engage with literally popular culture in the moment that it’s popular seems only to have intensified in the ensuing years.
+
+“But have you seen Severance?” you might ask. No. Slow Horses? The Night Manager? No and no. I also haven’t seen Sinners—even though I love a period piece and a good fright, and everybody I know is obsessed with it.
+
+This tendency is something I’ve come to call “hype aversion”: an avoidance of the pop-culture products that seemingly everyone insists I would like. It’s not that I’m somehow above it all or too cool (I don’t consider myself cool at all). Some people are early adopters; others are late adopters. I’m simply a weirdly resistant one.
+
+Does this make me a jerk? I don’t like to think so. Contrarian doesn’t quite describe me; my rejection of The Pitt isn’t an attempt to appear provocative or argumentative. And nonconformist doesn’t work; it suggests a person allergic to the zeitgeist, which I’m not. (After all, I covet Clare V. bags. I own a pair of Stan Smith Adidas.) I’m also not a dissenter. Dissent suggests a protest against something that a person has previous experience with, or doesn’t believe in; but my pop-culture resistance is different from having seen something and deemed it wanting or boring. I’m not necessarily worried about encountering pop culture that turns out to be bad. I just don’t care to act on it if it’s supposed to be good.
+
+From the June 2025 issue: Is this the worst-ever era of American pop culture?
+
+I’m not alone in this. (As a matter of fact, the impetus for this inquiry was an unscheduled conversation between me and one of my Atlantic editors, with whom I bonded over a reluctance to watch The Pitt.) Roland Imhoff, a social psychologist at the Psychological Institute of Gutenberg University, in Germany, told me that he relates as well, and suggested that what I’m expressing is less a need for uniqueness than a form of “psychological reactance”—a defensive response that occurs when someone thinks their freedom of choice is being constrained. For a long time, Imhoff told me, he “furiously refused to even touch” the Harry Potter novels because of their popularity and ubiquity; he dug into the series only once his daughter expressed interest in it. The same happened with the music of Taylor Swift: He made an effort to avoid it, then was forced to listen. “And then,” he said, laughing, “I kind of liked it.”
+
+My aversion to hype might seem particularly strange, given that staying on top of popular culture used to be my full-time job. In the mid-’90s, I was an editorial assistant at Entertainment Weekly, a magazine where, among staffers, having an opinion about culture was a primary currency. It was how we came up with ideas, and ideas about how to express those ideas. Our cultural knowledge gave us sway and access. We were the influencers who covered the day’s influencers—actors, writers, directors—and back then, I loved it all.
+
+So what’s my damage now? A few days before my conversation with Imhoff, I reached out to Marilynn Brewer, a social psychologist who, in 1991, articulated what she called “optimal distinctiveness theory,” which proposes that human beings are driven by two (often opposing) psychological impulses: a need for belonging and a need for differentiation. These desires operate in tension, Brewer told me. People look to foster enough in-group behaviors that they feel a sense of social cohesion and belonging, but they also want to express a distinction from others, to avoid a loss of identity or anonymity.
+
+Of course, context matters. The need to belong or feel different fluctuates depending on any number of factors—your job, the town you live in, the friend groups surrounding you. Brewer explained that these needs operate less as fixed personality traits than as something more fluid, such as hunger, which has a threshold that changes over time. When I asked her about my disinterest in widely hyped cultural products, she speculated that these trends might activate my “pretty steep need for differentiation.” And what I have sometimes worried is a sign of immaturity or arbitrary contrariness could be, she suggested, resistance to immersion in a crowd. For some people, Brewer said, excessive hype triggers FOMO (a fear of missing out). Perhaps, I thought later, people like me suffer from LOMO: a love of missing out.
+
+Read: Your FOMO is trying to tell you something
+
+Occasionally, I worry that my LOMO might be annoying. For instance, I don’t so much announce my refusal to engage with The Pitt to interested parties as humor them and try to change the subject, which makes me bad at watercooler conversation. And adopting the mantle of cultural curmudgeon can get tiring. If I’ve made a big deal to friends about brushing off their pop-culture recommendations, I then feel a need to keep up an appearance of recalcitrance. Eventually this becomes an expected posture: an orientation and reputation that is difficult to extract myself from. “You’re the sort of person who doesn’t watch TV,” the guy I’m dating says. “Yes, I do!” I say. Then he points out that I don’t even know how to use my smart TV.
+
+In his book Invisible Influence, Jonah Berger, a marketing professor at the Wharton School of Business, distinguishes between cultural products such as movies, music, and television, which are commonly used as identity markers, and something like, say, dishwashers or toilet paper, which are what he calls more “functional” domains of life. “Imagine you met someone at a party,” he suggested when we spoke recently, and they asked you, “‘What TV shows do you like?’” You might think, “Well, wait a second, what shows I say may impact what this person thinks about me,” he said, and then you might become cautious about what you pick.
+
+According to Berger, a “magnet” model of social influence pushes some people toward conformity and others away from it. In our conversation, he made a distinction between what he called “bandwagon effects” (conformity) and “snob effects” (avoidance when something is too popular), or a need for uniqueness. These motivations aren’t divergent or mutually exclusive, he said; they can, and do, coexist. “It’s not that people only want to fit or only want to stand out,” he said. “Both are true.”
+
+Perhaps this means that resistance to hype is not snobbery but identity management—a need for differentiation that gets triggered when a person believes their autonomy is under threat. In other words, maybe my rejection of The Pitt has little to do with the cultural product and much more to do with an effort to retain independence. I’m not rejecting culture; I’m rejecting overidentification—which, in a highly individualistic society like the United States, may not be such an odd reaction.
+
+My chat with Brewer turned up something else I hadn’t thought of: that my attitude might be related to the sheer number of cultural products on offer, and to the speed with which these products are analyzed and memed. Perhaps shrugging off culture is a form of self-preservation to those of us who are easily overwhelmed by the way social-media algorithms accelerate consumption, and push individuals to engage in public conversation. When the culture pressures people to show that they’re in the know, some of us might be quicker to recoil from knowing in the first place.
+
+Or maybe my resistance to pop-culture evangelism has grown more intense because of our atomized way of consuming said culture, now that streaming has nearly obliterated the custom of synchronized, communal viewing (live sports, awards shows, and huge political events aside). I did watch the Super Bowl, after all, and I plan to watch the Oscars, both of which evoke a sense of participation in a shared cultural moment. When it comes to The Pitt—which I can click to play at any time, any day, in solitude—perhaps what I’m resisting, in choosing not to join the crowd, isn’t the hype, but aloneness.
+
+​​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">Robyn Is Still Dancing On Her Own</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
+            <h2>Robyn Is Still Dancing On Her Own</h2>
+            <p><strong>The Atlantic | 2026-03-11</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/magazine/2026/04/robyn-sexistential-album/686065/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Once upon the ’90s, a teenage girl named Robin Miriam Carlsson was crowned a pop princess. Her crystalline voice and secretive smile caught the attention of the Swedish record industry, whose producers and songwriters helped her create the swooning global hits “Show Me Love” and “Do You Know (What It Takes).” But Carlsson, first discovered at age 13, realized she didn’t want to be a singing automaton, a mere vessel for the pop machine. She turned down a deal from the U.S. branch of Jive Records, which then set out to find an American version of her—and landed on Britney Spears.
+
+Check out more from this issue and find your next story to read.
+
+By then, Robin Carlsson had become Robyn. A few years later, in 2005, she founded her own label to make her own kind of music. Her new sound combined firm dance beats, campy hip-hop flourishes, and synth riffs that spiraled and tessellated like the instruments in a Bach fugue. Her lyrics declared independence from clingy lovers and assorted social expectations, often through analogies inspired by technology. To simply quote her song titles from 2010’s Body Talk, a now-classic album, she was an “Indestructible” “Fembot” warning, “Don’t Fucking Tell Me What to Do.” Beneath the metallic veneer, though, her songs had the tenderness and precision of a homily. The effect was to make solitude sound sexy, sad, and hopeful at once.
+
+The timing had been right for her to liberate herself. The traditional music business was collapsing, as the internet cut into CD sales while letting listeners elevate their own niche idols. Mainstream pop was going maximalist by overloading its production with digital whizbangery; indie rock had risen as a rawer alternative. Robyn split the difference. She expressed a rebellious worldview in a sleek and organized way, like a manifesto in a well-formatted Word doc.
+
+That manifesto was one that 21st-century pop culture wanted to hear. Spears had become a cautionary tale: The girl who gave her youth to the record industry ended up losing her legal sovereignty (via the establishment of a conservatorship in 2008 that remained intact until 2021). Robyn did not become nearly as famous, but her emo bangers pointed the way for the likes of Lorde, Ariana Grande, and even Taylor Swift once she started playing with keyboards. Poptimism, the ascendant belief that a genre ruled by formulas and artifice can contain plenty of originality and humanity, made Robyn its mascot. And with time, her outlook on music came to seem like an insight into life itself.
+
+Or at least, that’s how many Millennials felt. Though Robyn is Gen X, she captivated my generation of idealists, who were out to upgrade the world that our parents had built and express ourselves in the process. Young adults in the early earbuds age used her songs as fuel for runs, laptop work, Tinder hookups, and the solitary, self-reflective mornings after. We also bopped along to her with our friends. HBO’s Girls cemented her status in a legendary scene: Hannah Horvath carefully drafts a killer tweet in her bedroom, then starts jumping around to Robyn’s defining single, “Dancing On My Own.” Her roommate, back from her yuppie adventuring, walks in and joins the party.
+
+The assurance of being yourself and being liked, fulfilling your purpose while climbing life’s rungs, has obvious appeal in youth, before compromises and obligations start to pile too high. But Robyn is now 46 and back with her first album in eight years. She is somehow singing the same song—even if the fable it spins seems more fantastical than ever.
+
+Many pop stars mellow into stately eminence in middle age, as Madonna (temporarily) did in her late 30s with 1998’s Ray of Light. Robyn appeared to be trending that way with her last album, 2018’s Honey—a dreamy beatscape that signaled appreciation for the mid-range of life after chasing many highs. Anthemic action was giving way to chill mantras, as if to regulate the ever noisier, ever more distracting world.
+
+But Sexistential, released in March, pushes in the opposite direction, toward starry-eyed excess and abandon. The cover art shows Robyn screaming and topless. The title track features her rapping the word boner. Echoes of earnest 2000s indie pop, including from Robyn’s own catalog, abound. When she humped the air during a performance on The Late Show With Stephen Colbert in January, much of the internet snickered: Had the coolest girl in pop finally become cringe?
+
+Read: Robyn’s Honey: The thrill is gone, and that’s okay
+
+Perhaps so—cringe appears to be the fate of anyone older than 25 in the TikTok age. And pop culture has rarely allowed its female stars to grow older without mockery. But Sexistential may discomfit listeners for reasons other than ageism. After Honey, Robyn broke up with her on-and-off partner of more than a decade and then had a son through IVF. To judge by the disorienting sound of this album, middle-aged motherhood for her has been less an experience of setting down roots than of ripping them up. The title song sets her pregnancy saga—scrolling through dating apps amid doctor visits and hormonal spikes—to fast-paced club music while filtering her voice for cartoonish effect. “Blow My Mind” is a cover of her own song from 24 years ago, but this version rewrites lyrics about romantic infatuation into ones about finding your baby to be ridiculously cute. On the final track, “Into the Sun,” distorted bass roars like a rocket engine—evoking her many previous sci-fi references—as Robyn propels herself into the unknown: “Look what I’ve done / So brave and dumb.”
+
+The music amplifies both her giddiness and her uncertainty. Sexistential ’s production judders and glitches in ways that call to mind ’80s synth experimentalists such as Art of Noise and the rowdy sample collaging of the Beastie Boys in the ’90s. Its messiness is also in step with 2020s hyperpop—scruffy, topsy-turvy electronic music that seeks to harness, not counteract, modern overstimulation. The wooziest moments sacrifice Robyn’s easy-listening appeal for the sake of surprise. On the album opener, “Really Real,” a shattered-glass sound effect rings out before she sings, “We’re splitting up reality / And I slip out through the crack in between it.”
+
+What makes this chaos delightful rather than annoying is Robyn’s unshakable sense of control, grounded in pop principles and thoughtful craft. Sexistential ’s many catchy melodies bounce atop bright, blocky synth lines. Its psychedelic interludes exist to snap back into satisfying rhythms. Its lyrics brim with depersonalized language (“This is where the shared experience ends”), self-help real talk (“Fuck a therapist, it’s not mental / I need philosophy, this shit is existential”), and biological determinism (as in the lead single, “Dopamine”). She’s mapping out the way that even life’s strangest chapters unfold logically.
+
+The album, Robyn has said, was partly inspired by hearing André 3000, of the hip-hop duo Outkast, explain that he’d pivoted to instrumental music because no one wants to hear a 48-year-old man rap about his colonoscopy. In Robyn’s view, the unglamorous milestones of middle age are plenty deserving of pop treatment. Two years ago, a 33-year-old Charli XCX dominated pop culture with a similarly unruly album called Brat. It dwelled on the question of whether Charli would ever give up her hard-partying ways and settle down with kids. Robyn is now arguing that the choice is a false one.
+
+That argument is certainly upbeat in its implications—but the sound of Sexistential suggests the limits of maturing hedonistically. As I’ve been playing the album on repeat, savoring its intricate details and humming its candied choruses, I’ve felt a little self-conscious: Sexistential ’s childlike glee raises the specter that Robyn and her listeners still have some growing up to do.
+
+But I’ve also felt grateful for how playfully she’s engaging with midlife vertigo. The generation that grew up listening to Robyn is full of people whose blend of careerism and individualism has made them delay or skip marriage and children. Have we compromised too much, or not enough? Is there time for a reset? These sorts of questions are timeless rites of passage at the end of youth. Barreling ahead, Robyn is yet again modeling how to find meaning in the conventional—by doing it our own way.
+
+This article appears in the April 2026 print edition with the headline “Robyn Is Still Dancing On Her Own.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-20')">
             <div class="source">The Atlantic</div>
             <div class="title">The Big Story: Signalgate, One Year Later</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-18" style="display:none;">
+        <div id="content-20" style="display:none;">
             <h2>The Big Story: Signalgate, One Year Later</h2>
             <p><strong>The Atlantic | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/national-security/2026/03/big-story-signalgate-one-year-later-jeffrey-goldberg/686072/?utm_source=feed">Visit Original Website</a>
@@ -960,13 +1052,13 @@ Anthropic CEO Dario Amodei calls OpenAI’s messaging around military deal ‘st
             <div id="article-text">On March 10, Atlantic editor in chief Jeffrey Goldberg and executive editor Adrienne LaFrance discussed the political fallout after publishing Goldberg’s Signalgate story last year. You can watch the full conversation here:</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">The Iranian Regime Doubles Down</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>The Iranian Regime Doubles Down</h2>
             <p><strong>The Atlantic | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/international/2026/03/mojtaba-khamenei-iran-regime/686317/?utm_source=feed">Visit Original Website</a>
@@ -1006,13 +1098,13 @@ Trump has little interest in this history. He wants a deal and an exit. But can 
 In Tehran, the only men who currently have the legitimacy to end the war are now doubly committed to the character of the Islamic Republic. Foremost among them is the new supreme leader, who in the best of times possessed neither the worldview nor the temperament to meet Trump’s public demand for unconditional surrender. “They’ve just killed his family,” the source in Tehran said. “He’s bloodthirsty now.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">Arizona Is Now at the Center of Election Investigations</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Arizona Is Now at the Center of Election Investigations</h2>
             <p><strong>The Atlantic | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/politics/2026/03/arizona-election-investigations/686310/?utm_source=feed">Visit Original Website</a>
@@ -1052,13 +1144,13 @@ Mark Finchem, a Republican state lawmaker and a Trump ally who has long spread m
 Arizona’s state- and local-election officials have consistently defended the integrity of their elections amid challenges from candidates of both parties, online conspiracy theorists, and even their own state government. One thing they haven’t had to contend with are investigations of a long-ago election by the federal government, working on behalf of the president. But that’s the world they’re in now—and it will make the task of pulling off a midterm election eight months from now that much trickier.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">Trump’s Assault on Higher Education Has Hit a Snag</div>
             <div class="meta">2026-03-10</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>Trump’s Assault on Higher Education Has Hit a Snag</h2>
             <p><strong>The Atlantic | 2026-03-10</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/03/trump-universities-lawsuits/686319/?utm_source=feed">Visit Original Website</a>
@@ -1092,90 +1184,6 @@ Still, at least for now, the damage is far less than university officials feared
 Moving forward, universities seem to be benefiting from Trump’s notoriously short attention span. When he addressed Congress last year, the president railed against transgender athletes in women’s sports and DEI in education. In the State of the Union last month, he didn’t mention higher ed at all, save for one proclamation that his administration had “ended DEI.” The days of Trump personally directing a vengeance campaign against the Ivy League seem to be over. Colleges have less reason to fear seemingly random and extralegal attacks. The possibility remains, however, that what comes next will be even worse. The Trump administration still has a Department of Education led by people full of contempt for elite universities. If they manage to get organized, they might yet figure out how to weaken higher education in a way that no judge can block.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
-            <div class="source">The Atlantic</div>
-            <div class="title">What to Make of the Gracie Mansion Incident</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-22" style="display:none;">
-            <h2>What to Make of the Gracie Mansion Incident</h2>
-            <p><strong>The Atlantic | 2026-03-10</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/03/isis-iran-mamdani-attacks/686316/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">On Saturday, a far-right group organized a sparsely attended anti-Muslim demonstration outside of Gracie Mansion, the home of New York City’s first Muslim mayor, Zohran Mamdani. A “Stand Against Hate” counterprotest attracted far more people, but perhaps the only reason Americans know about these events at all is because two men threw homemade bombs at the Islamophobic demonstrators. Authorities say the suspects told police officers they were inspired by the Islamic State, an Islamist terrorist group.
-
-“This was not random violence. This was a planned attack motivated by extremist ideology and inspired by a violent foreign terrorist organization,” New York Police Commissioner Jessica Tisch said at a press conference yesterday. With this, she promptly raised the profile of both the suspects, Emir Balat and Ibrahim Kayumi, and of ISIS itself. It hardly seemed to matter that no evidence has surfaced that directly ties these men to the larger movement.
-
-This case drives home some of the challenges of counterterrorism efforts today: The bold mission of international terrorist groups can motivate bad actors, even those who lack a clear link to the groups themselves. Fortunately, neither explosive device at Gracie Mansion actually detonated, and no one was hurt. But simply by claiming some relationship with ISIS, perpetrators can spin a largely unsuccessful act into something grander and more terrifying.
-
-Neither Balat, 18, nor Kayumi, 19, both from Pennsylvania, had a criminal record. In police custody, prosecutors say, one suspect confessed to watching ISIS propaganda videos, and the other said he wanted to carry out an attack bigger than the 2013 Boston Marathon bombing. According to federal prosecutors, Balat also pledged his allegiance to the Islamic State and wrote the phrase “Die in your rage yu [sic] kuffar!”—using an Arabic term for “nonbelievers” or “infidels”—in custody. Federal prosecutors have charged them with using a weapon of mass destruction and providing material support to a terrorist organization, among other accusations, despite the absence of evidence of a relationship between ISIS and these two young men.
-
-This ambiguity is in keeping with ISIS’s strategy, which is to maximize its reach without increasing its vulnerability to disclosure or disruption. Although calls for violence from ISIS, al-Qaeda, and Iranian terror groups have reportedly intensified since America’s war with Iran began, these appeals are typically vague and unspecific. They are still dangerous. Armed with incendiary YouTube videos and a few homemade bombs, attackers can easily become martyrs in a global jihadist movement. ISIS need not direct an attack to take credit for it.
-
-Oddly, the FBI has yet to issue a statement warning state and local agencies of what may be a growing terror threat from Islamist backers of Iran—itself a known state sponsor of terror. The White House reportedly halted a federal security bulletin warning of Iran-backed threats, owing to concerns over “accuracy.” This is an unprecedented move from the executive, but in keeping with President Trump’s assurances that the war he started would be simple and without consequence for the American public. Neither promise has proved true.
-
-The challenge of Islamic terrorism in America is that, just like the homegrown terrorism of white supremacists, the radicalism is often diffuse. The pernicious, radicalizing ideas involved are larger than any one source or one figure, and they can reach anyone with a Wi-Fi connection.
-
-The message of terrorism speaks to anyone who believes that violence is a natural response to political differences, and who presumes that they may not be seen or heard otherwise. Inspiring unspeakable dread across an entire country doesn’t require much planning—just some warped ideas and a cellphone. That’s how would-be terrorists like it.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">Trump Can’t Decide Whether the Iran War Is Still Going On</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-23" style="display:none;">
-            <h2>Trump Can’t Decide Whether the Iran War Is Still Going On</h2>
-            <p><strong>The Atlantic | 2026-03-10</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/03/trump-iran-war-confusion-mixed-messages/686320/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">This is an edition of The Atlantic Daily, a newsletter that guides you through the biggest stories of the day, helps you discover new ideas, and recommends the best in culture. Sign up for it here.
-
-The Trump administration can’t say why the United States went to war with Iran, and it can’t say what the goal of the war is. Now it can’t even decide whether the war is still going on.
-
-During an interview with CBS News yesterday afternoon, President Trump all but declared victory. “I think the war is very complete, pretty much,” he said.
-
-This statement is so self-contradictory and confusing that one might be tempted to write it off as just riffing, except that he reiterated it at a press conference later in the day. “We’re achieving major strides toward completing our military objective, and some people could say they’re pretty well complete,” he said, apparently referring to himself. All that was missing to complete the parallel to the Iraq War was a flight suit, an aircraft carrier, and a Mission Accomplished banner.
-
-Yet the same afternoon, the Department of Defense posted on X, “We have Only Just Begun to Fight,” mangling a famous quotation from John Paul Jones, the father of the U.S. Navy. Reporters at the press conference, perplexed, asked Trump about the gap. “You said the war is ‘very complete,’ but your defense secretary says this is just the beginning, so which is it?”
-
-“Well, I think you could say both,” Trump replied.
-
-You could—if you were a pundit making an argument about the future of the war. But people might hope for a bit more clarity from the man who launched the war without congressional authorization, popular support, or even much buy-in from his own advisers.
-
-Trump’s equivocation yesterday may be his attempt to steady an economy shaken by the war. The president’s approval has been battered recently by the high cost of living. Although inflation was a major factor in his victory over Kamala Harris in 2024, Trump has seldom focused on it since entering office and has insisted that affordability is somehow both a Democratic “hoax” and a problem that he has already solved.
-
-The war in Iran has exacerbated existing stressors: It has driven up gas prices, rocked stock markets, and suggested that Trump’s attention is not on the economy. The president appears rattled by this and even called on oil-tanker captains to “show some guts” and sail through the contested Strait of Hormuz, according to Fox News’s Brian Kilmeade, though he hasn’t volunteered to personally dodge Iranian missiles aboard a floating makeshift bomb.
-
-Trump’s comments yesterday seemed to work, at least in the immediate term: Oil futures dropped, and markets rebounded a bit. Over time, however, whatever succor Trump provides to the economy by saying that the war is nearly over is likely to be canceled out by his administration’s vacillation. Markets seek stability, and Trump can’t seem to decide on a talking point, much less a strategy or aim for the war itself. As my colleagues Marie-Rose Sheinerman and Isabel Ruehl reported last week, Trump offered 10 different rationales for the war in its first six days alone. Traders may be primed to look for examples of Trump chickening out, but yesterday’s remarks seem more like a feint at ending the war: Defense Secretary Pete Hegseth declared that today would “be yet again our most intense day of strikes.”
-
-Trump appears confused not only about the future of the war but also about some of its basic facts. The U.S. has faced international criticism over a missile strike on a girls’ school in Iran, which was next to a naval base that was also struck. Iranian authorities say that about 175 people were killed at the school, mostly children. Over the weekend, Trump said that the attack was friendly fire. “In my opinion, and based on what I’ve seen, that was done by Iran,” he said. “They have no accuracy whatsoever. It was done by Iran.”
-
-Since then, evidence has emerged that the missile that struck the base was a Tomahawk, an American-made weapon. Yesterday, Trump claimed that Iran possesses Tomahawks. “Whether it’s Iran or somebody else, the fact that a Tomahawk—a Tomahawk is very generic,” he said. “It’s sold to other countries.” This is nonsense: Only a few U.S. allies, including the United Kingdom and Australia, are known to have them. When a New York Times reporter confronted Trump, asking why no one else in the government was backing up his claims, the president folded. “Because I just don’t know enough about it,” he replied. “Whatever the report shows, I’m willing to live with that report.”
-
-This claim of ignorance is surprising, because Trump usually claims to know better than everyone around him. When asked a question to which he doesn’t know the answer, his default is to say that he’s considering it. But on occasion, when really backed into a corner, Trump will throw up his hands and claim that he doesn’t know anything about a topic.
-
-No president can or should be expected to know everything. This is why he’s provided with a Cabinet and a team of other advisers, an executive branch full of subject-matter experts, and a Congress and judiciary to serve as checks on him. The problem is that Trump wants to operate with complete freedom from any restrictions and without waiting for advisers’ input. Asked when the war would completely end, Trump told CBS, “Wrapping up is all in my mind, nobody else’s.” That’s not very reassuring, for stock markets or anyone else.
-
-Here are three new stories from The Atlantic:
-
-The Highly Exclusive Way That Everybody Shops Now
-
-Scarcity is humanity’s great motivator. This has been true forever, since back when we were basically apes: The most important resources—food, shelter, mates—were the ones that were most in demand. Shortage meant value, and being attuned to value meant staying alive. We learned to focus on the rare thing at the expense of what was around it—psychologists call this “tunneling”—and to prioritize avoiding loss over gaining rewards. It was typically smarter to fight for something everyone else wanted than to waste time looking for something else. That animal wisdom is a reason our species survived.
-
-It is also a reason that, in late 2025, you could find a grown adult—a person who lives in the kind of material plenitude our distant ancestors could never dream of—in a Starbucks parking lot before dawn, desperately seeking a coffee cup shaped like a teddy bear. You see, this coffee cup was available only as a drop.
-
-Explore. Hollywood’s star power is shifting, David Sims writes. Auteur filmmakers have become as much of a selling point as the actors they work with.
-
-Reflect. Are we all material—tissues and veins—or is there some nonmaterial substance, some essence, that transcends the corporeal form? The scientist Alan Lightman explores the “profound disconnect” between the mind and body.
-
-Rafaela Jinich contributed to this newsletter.
-
-When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
             <div class="title">Valve Faces Second, Class-Action Lawsuit Over Loot Boxes</div>
@@ -1187,10 +1195,23 @@ When you buy a book using a link in this newsletter, we receive a commission. Th
             <p><strong>Slashdot | 2026-03-11</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/03/11/0546238/valve-faces-second-class-action-lawsuit-over-loot-boxes?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+            <div id="article-text">Its ambulance chasing.  Just like all those &#39;news&#39; stories about firms seeking clients for class-actions against companies whose stock price drops.
 
-In any formula, constants (especially those obtained from handbooks)
-are to be treated as variables.</div>
+Steve Berman, is a certified retarded piss baby who does not understand the basic definition of gambling. In order to be gambling, Valve would need to &quot;buy&quot; the loot box item back off the player and give the player cash.
+
+Loot boxes are not gambling.Opening TCG booster packs (Pokemon, Magic: The Gathering, etc) is not gambling.Coin operated random candy/toy dispensers are not gambling.Games of chance do not equate to gambling. Slot machines, poker, are not inherently gambling if there is no possibility of the
+
+By the logic used by both the AG and this firm, every collectible card system is also gambling.
+
+That includes baseball cards that my &#39;46 Boomer dad grew up collecting.
+
+Valve should mock the crap out of this buy just buying a collection of MTG, Pokemon, baseball cards, Marvel trading cards and random blind bags from 5 and Below, toss them at the jury and say &quot;is this gambling too?&quot;
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+How often I found where I should be going only by setting out for somewhere
+else.
+		-- R. Buckminster Fuller</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1228,10 +1249,17 @@ So, I guess my risk is about 1/8,000,000,000 times that.
 
 https://www.nasa.gov/missions/... [nasa.gov]
 
+That does not -- repeat, does not make you a part of any radiation belt.
+
+That does not -- repeat, does not make you a part of any radiation belt.But...the galaxy is on Orion&#39;s belt...
+
+That does not -- repeat, does not make you a part of any radiation belt.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-In any formula, constants (especially those obtained from handbooks)
-are to be treated as variables.</div>
+How often I found where I should be going only by setting out for somewhere
+else.
+		-- R. Buckminster Fuller</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1293,8 +1321,9 @@ No quality problem is ever solved by adding more signature lines to the paperwor
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-In any formula, constants (especially those obtained from handbooks)
-are to be treated as variables.</div>
+How often I found where I should be going only by setting out for somewhere
+else.
+		-- R. Buckminster Fuller</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1345,8 +1374,9 @@ That&#39;s not how he tells it [blogspot.com]. He says he invented it after inde
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-In any formula, constants (especially those obtained from handbooks)
-are to be treated as variables.</div>
+How often I found where I should be going only by setting out for somewhere
+else.
+		-- R. Buckminster Fuller</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1405,8 +1435,9 @@ This seems like a solution looking for a problem!
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-In any formula, constants (especially those obtained from handbooks)
-are to be treated as variables.</div>
+How often I found where I should be going only by setting out for somewhere
+else.
+		-- R. Buckminster Fuller</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1472,8 +1503,9 @@ PS. For what it&#39;s worth, Amazon&#39;s point that Perplexity inadvertently me
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-In any formula, constants (especially those obtained from handbooks)
-are to be treated as variables.</div>
+How often I found where I should be going only by setting out for somewhere
+else.
+		-- R. Buckminster Fuller</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1863,11 +1895,197 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">The Register</div>
-            <div class="title">Your datacenter's power architecture called. It's not happy</div>
+            <div class="title">Dutch cops bust teen suspected of posing as bank staff to steal cards</div>
             <div class="meta">2026-03-11</div>
         </div>
         
         <div id="content-42" style="display:none;">
+            <h2>Dutch cops bust teen suspected of posing as bank staff to steal cards</h2>
+            <p><strong>The Register | 2026-03-11</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/dutch_teenager_fraud_arrest/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Dutch police have arrested a 17-year-old boy who detectives suspect was responsible for 16 bank card frauds across the Netherlands.
+
+The police department of the Dutch municipality of Woerden (Politie Woerden) confirmed the teenager was arrested on March 4 after an alleged bank card theft in September 2025, later linked to a string of similar offenses after detectives recognized techniques from recent cases.
+
+After &quot;collecting&quot; bank cards, the accused, who resides in Utrecht, used them to withdraw large sums of cash from ATMs.
+
+Politie Woerden said that across the 16 cases he is accused of orchestrating, the boy allegedly stole tens of thousands of euros from victims&#39; bank accounts.
+
+He allegedly impersonated bank employees and tricked victims into surrendering their bank cards after convincing them they were the victims of fraud.
+
+They were not victims at the time, but soon would be.
+
+Politie Woerden did not detail the specific means by which the unidentified teenager acquired the physical payment cards, nor how he was caught.
+
+The wording of the police&#39;s announcement was vague, but suggested that when withdrawing the cash using the illicitly acquired payment cards, he was caught on camera and identified by police who gained access to the footage.
+
+Politie Woerden said: &quot;Police colleagues from other units also recognized the boy from similar cases they had dealt with and shared their information with their Woerden colleagues.
+
+&quot;The Woerden detectives collected all the reports and took over investigations from the rest of the Netherlands. They ultimately identified 16 bank employee fraud cases from across the country in which this suspect was likely involved.&quot;
+
+Politie Woerden did not comment on how the boy will be treated by the legal system, or how prosecutors will proceed given his age.
+
+In 2019, the Netherlands supported the Hack_Right program. Established by the Public Prosecution Service initially as a pilot scheme, it was aimed at young cyber offenders aged 12 to 23 and sought to provide an alternative to legal punishments.
+
+Favoring re-education rather than prison time, the project ended in 2021 and received mixed reviews.
+
+While later evaluations of the scheme noted that young offenders were generally encouraged to pursue legitimate cybersecurity careers, some young people were disillusioned by the lack of technical knowledge held by program supervisors.
+
+The age of criminal responsibility in the Netherlands begins at 12, although offenders are tried as juveniles between then and the age of 17. It is an important distinction to make should prosecutors seek a harsher punishment than a re-education program.
+
+The case follows a similar one in Poland in recent days, where seven 12 to 16-year-olds were arrested for allegedly selling DDoS tools for profit.
+
+Poland&#39;s legal system also favors re-education over punishment for young cyber offenders, at least in the first instance. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2026</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">The Register</div>
+            <div class="title">Scottish broadband service looking a bit dreich, says UK outage study</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
+            <h2>Scottish broadband service looking a bit dreich, says UK outage study</h2>
+            <p><strong>The Register | 2026-03-11</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/uk_broadband_outage_data/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Broadband subscribers in Scotland suffer the most outages in the UK, according to Broadband Genie, with customers of BT typically experiencing the fewest.
+
+The internet comparison site says it analyzed 3,200 subscriber contracts around the country, and bases its league table on the number of outages lasting more than 48 hours that customers experience for every £100 ($134) of contract value.
+
+Users in Scotland encounter 0.67 service disruptions, the most for every &quot;ton&quot; of cash they spend, whereas billpayers in Yorkshire and the Humber have to deal with just 0.15 outages for every hundred in outlay.
+
+There is also a city league table on Broadband Genie&#39;s website, showing that people in Glasgow are the worst off of all, seeing 0.94 outages, followed by Belfast on 0.57 and London on 0.53.
+
+The city with the lowest level is Gloucester, where customers experience 0.02 outages for every £100 they spend, with Wolverhampton and Wrexham not far behind on 0.07 each.
+
+Broadband Genie has also compiled a service provider league table of shame based on its data, ranking operators by the number of outages for every £100 of customer cash.
+
+It places Cuckoo Broadband in the position of least reliable, with 1.48 outages, while customers of BT may well have to pick their jaw off the floor at the news that Britain&#39;s former state-owned telco monopoly has the fewest, at 0.17 outages per £100.
+
+It is followed by TalkTalk and Plusnet, which both use Openreach, BT&#39;s infrastructure arm, to deliver their services, while Virgin Media (yes, really) is next with a score of 0.29.
+
+The comparison site reminds customers that an Ofcom-governed automatic compensation scheme means that broadband and landline customers get money back from their provider in the event of a service disruption.
+
+However, this only kicks in once the service has been non-functioning for two full working days, and offers just £9.98 ($13.41) for each day it remains unrepaired afterwards.
+
+Broadband Genie&#39;s resident expert, Alex Tofts, says the number of outages customers are experiencing after spending hundreds of pounds on their broadband is unacceptable.
+
+&quot;We always recommend that consumers check independent reviews, especially in their area, as provider reliability can vary by location. At the very least, ensure their provider is signed up to Ofcom&#39;s automatic compensation scheme,&quot; he said. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2026</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-44')">
+            <div class="source">The Register</div>
+            <div class="title">Hotpatching goes default in Windows Autopatch whether you like it or not</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-44" style="display:none;">
+            <h2>Hotpatching goes default in Windows Autopatch whether you like it or not</h2>
+            <p><strong>The Register | 2026-03-11</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/microsoft_hotpatching/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">From the department of &quot;what could possibly go wrong?&quot; comes news that Windows Autopatch is enabling hotpatch security updates by default.
+
+The change starts with the May 2026 Windows security update, and controls to opt out will be available from April 1.
+
+According to Microsoft, the company has &quot;changed the game&quot; with the launch of hotpatch updates. The feature installs security updates without requiring a restart, meaning changes take effect immediately. The process does require one baseline update with a restart to kick things off. However, after that, hotpatch updates install silently, with no reboot needed. That said, every quarterly baseline update still demands a restart.
+
+Windows Autopatch manages the rollout of updates across an organization. It uses &quot;testing rings&quot; – sample device groups – to roll out updates progressively and halt or reverse them if problems emerge.
+
+Enabling hotpatch by default from May 2026 won&#39;t override existing policies. Microsoft states that &quot;Windows Autopatch respects your configuration of quality update policies,&quot; meaning update deferrals and ring settings still apply.
+
+However, on any device that meets the prerequisites (running Windows 11 24H2 or later, using an eligible license, and with the April 2026 security update installed), hotpatch updates will start rolling in automatically.
+
+Microsoft&#39;s recommendation is, unsurprisingly, to leave hotpatch updates enabled. It argues that &quot;hotpatch updates are the quickest way to get secure.&quot;
+
+Administrators who need more time before the change happens (less than two months isn&#39;t a lot of notice) or want to stick to the previous patching method can opt out at the tenant level or via a policy for a group of devices.
+
+Microsoft has had a rocky start to the year on the update front. Its ring-based deployment strategy does not limit the blast radius when something goes wrong, and making hotpatching the default adds another variable that could produce unexpected consequences.
+
+Administrators who prize tight control over their environments won&#39;t love this change, which makes the tenant-level and policy-level opt-outs genuinely welcome additions. The compressed timeline is harder to defend. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2026</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-45')">
+            <div class="source">The Register</div>
+            <div class="title">EU legal eagle says banks should refund cybercrime victims first, argue later</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-45" style="display:none;">
+            <h2>EU legal eagle says banks should refund cybercrime victims first, argue later</h2>
+            <p><strong>The Register | 2026-03-11</strong></p>
+            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/eu_psd2_compensation/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Analysis One of the European Union&#39;s top legal advisors is trying to change how banks treat cybercrime victims – meaning they could enjoy greater financial protections sooner than expected.
+
+In a recently published legal opinion, Advocate General Athanasios Rantos urged lawmakers to alter their interpretation of the Second Payment Services Directive (PSD2), which would require banks to reimburse victims of financial fraud before proving wrongdoing.
+
+Crucial to this is the treatment of gross negligence under PSD2. Should Rantos&#39;s opinion be adopted, victims of crimes such as bank impersonation scams would be reimbursed immediately, regardless of whether, under EU law, their money was lost through their own gross negligence.
+
+Under the current PSD2, banks hold the power. If a victim of online fraud reports the crime to their bank, the institution then undergoes a review of the case to decide whether they should be reimbursed.
+
+The current model can often leave victims in an uncertain and potentially perilous financial position until the bank determines whether or not to repay them.
+
+Banks often use the gross negligence defense to delay reimbursement. Rantos&#39;s opinion, which is not yet legally binding, looks to flip this on its head, forcing banks to pay victims immediately, regardless of whether gross negligence led to the fraud&#39;s success, and then reclaim the money after the case is reviewed.
+
+Under the EU&#39;s payment processing regulations, gross negligence can be argued in cases where victims are tricked into handing attackers a one-time passcode or their login details, which the criminal then uses to enrich themselves by making unauthorized payments.
+
+The Advocate General provided a fictional example [PDF] of a case in which the victim would benefit from a legislative tweak.
+
+For example, a customer of a bank in the EU is phished by a criminal who listed an item for sale on an online marketplace. They agree to purchase the item, and the criminal sends the victim a link that leads to a web page imitating the victim&#39;s bank.
+
+Convinced the web page is legitimate and not under the attacker&#39;s control, the unwitting victim enters their bank details to approve a transaction, but the attacker steals those credentials and uses them to make a payment from the victim&#39;s account.
+
+The victim reports the scam to their bank, but it claims gross negligence led to the fraudulent transaction (not spotting that the web page was a phishing site). The bank refuses to issue an immediate refund, forcing the victim to pursue a recovery through the courts, likely while in a position of limited resources due to the attacker&#39;s theft.
+
+Rantos&#39;s opinion would require the bank to cough up money to the victim immediately and allow it to reclaim the funds if gross negligence is proven later, providing the victim greater financial security in the short term.
+
+Jonathan Frost, director of global advisory for EMEA at cyber and fraud detection biz BioCatch, said: &quot;The Advocate General&#39;s opinion indicates a major shift in the liability for fraud in European payments. If the Court concurs, banks may have to promptly reimburse customers for unauthorized transactions and then pursue negligence claims. This shifts the initial financial risk to banks, heightening the need to detect account takeover and credential compromise before processing payments.&quot;
+
+&quot;This reflects a key principle of the Revised Payment Services Directive (PSD2): customers should be promptly refunded for unauthorized payments, unless the bank can clearly prove fraud or gross negligence. UK banks already reimburse about 98 percent of unauthorized fraud losses, whereas European banks have often refused to reimburse customers unless they pursue legal action.&quot;
+
+The overhaul to PSD2&#39;s interpretation, per Rantos&#39;s opinion, will almost certainly come soon in the form of the updated PSD3 and brand-new Payment Services Regulation (PSR).
+
+Unlike with PSD2, this specific scenario is explicitly codified in both the proposed new regulations, as they are currently worded.
+
+However, a protracted legislative process could mean the protections are not formally introduced and enforced for some time, despite first being proposed in 2024, which is why the Advocate General wants it fast-tracked as part of a reinterpretation of PSD2.
+
+PSD3/PSR will bring a bunch of changes to the EU&#39;s payments regulations. Aside from the more finance-related parts, payment services providers (PSPs) will need to implement more robust Strong Customer Authentication (SCA) – one of the more influential changes lawmakers hope will curb the rising number of financial fraud cases. If PSPs fail to implement SCA properly, regulators could prosecute them.
+
+Merchants also have a role to play. They will need to share more data with the PSPs, which can then make better-informed decisions about whether to approve or deny transactions. User locations, session data, device IP addresses, and more will work to provide PSPs with a clearer picture of who exactly authorized the payment: the genuine cardholder or a malicious third party.
+
+SCA is already a requirement under the existing PSD2, although PSD3 will bring improvements, with the PSR enforcing them. Given that the PSR is a regulation and not a directive - which requires member states to transpose requirements into domestic law, another lengthy process - the EU can immediately enforce it across all member states.
+
+The types of data that inform SCA will remain largely unchanged, but PSD3 will more clearly define liability in cases of failure.
+
+SCA under PSD2 is also usually enforced through means only accessible via smartphone, and PSD3/PSR will force PSPs to broaden these methods of authentication, offering greater protection to those without access to a smartphone, for example, or those with disabilities. ®
+
+The Register   Biting the hand that feeds IT
+
+Copyright. All rights reserved © 1998–2026</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-46')">
+            <div class="source">The Register</div>
+            <div class="title">Your datacenter's power architecture called. It's not happy</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-46" style="display:none;">
             <h2>Your datacenter's power architecture called. It's not happy</h2>
             <p><strong>The Register | 2026-03-11</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/your_datacenters_power_architecture_called/">Visit Original Website</a>
@@ -1933,13 +2151,13 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2026</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Register</div>
             <div class="title">Watchdog clears £142M Post Office subsidy for Horizon fallout and IR35 bill</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Watchdog clears £142M Post Office subsidy for Horizon fallout and IR35 bill</h2>
             <p><strong>The Register | 2026-03-11</strong></p>
             <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/post_office_tax_subsidies/">Visit Original Website</a>
@@ -1977,203 +2195,167 @@ The Register   Biting the hand that feeds IT
 Copyright. All rights reserved © 1998–2026</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
-            <div class="source">The Register</div>
-            <div class="title">Whitehall can't cost digital ID until it decides how to build it</div>
-            <div class="meta">2026-03-11</div>
-        </div>
-        
-        <div id="content-44" style="display:none;">
-            <h2>Whitehall can't cost digital ID until it decides how to build it</h2>
-            <p><strong>The Register | 2026-03-11</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/digital_id_cost/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The UK government has refused to estimate the cost of its digital identity system, saying this depends on what it decides after a consultation exercise launched yesterday.
-
-&quot;At this stage of development, it is not possible to definitively estimate the cost to government from developing and running the digital ID system,&quot; said the Cabinet Office on page 83 of the 91-page consultation document, adding that yet-to-be-taken policy decisions &quot;will materially impact the costs involved.&quot;
-
-In September last year, prime minister Keir Starmer announced his plans for a new digital identity system that people would have to use when taking a new job by the end of the current Parliament. After opposition, including three million people signing a parliamentary petition against the scheme, he scrapped this compulsory element in January. The consultation says that instead, employers will have to carry out digital right-to-work checks, but may use passports or eVisas as well as digital identities.
-
-The government plans that digital IDs will be available at no charge to anyone who wants one by the end of this Parliament, which must end no later than July 2029. Most people will store them as verifiable credentials on smartphones or tablets, although the government is looking at physical alternatives for those without devices including random number generators, QR codes, and smart ID cards. The system will build on the GOV.UK One Login system, which is already used to access more than 122 services.
-
-Organizations will check an ID digitally as well as viewing a photo of the holder. They will get the minimum information needed, with retailers told whether someone wanting to buy alcohol is over 18, rather than seeing everything on a physical document.
-
-Digital IDs will not include biological sex or gender, with the consultation saying these are not needed for access to most public services, and will probably not include addresses although the latter is up for discussion. They will hold full name, date of birth, nationality, a high-resolution facial image, a unique number, and in some cases other data such as whether the person has an authorized representative.
-
-&quot;Our baseline is to start with the fewest data points possible, enough to simply prove you are who you say you are and nothing more – but if more is needed to support the uses you and other members of the public want, like proving your address, that&#39;s something we&#39;ll explore,&quot; chief secretary to the prime minister Darren Jones writes in the document&#39;s foreword.
-
-Jones appears to have picked up responsibility for digital identity following the resignation of Josh Simons earlier this month after investigations into his actions running a think tank. This is despite James Frith last week taking Simons&#39; place as the junior minister working for both the Cabinet Office and the Department for Science, Innovation and Technology.
-
-The consultation says the government wants digital IDs to be useful, inclusive, and trusted, &quot;something people will want to get, rather than something they must have.&quot; The scheme is not compulsory, nor will it replace other government-issued documents, and the police will get no new powers to demand to see it.
-
-&quot;However, we expect it will, in time, reduce reliance on physical documents as people choose to apply for and use the digital ID,&quot; the consultation document adds.
-
-The consultation discusses uses including applying for benefits and pensions but not healthcare. Earlier this week, The Times reported that health secretary Wes Streeting refused to provide NHS data for the project with his department focusing on its existing app for the NHS in England.
-
-It also said that education secretary Bridget Phillipson resisted integrating data on children&#39;s special educational needs. This does not appear in the document, although the consultation does discuss whether the minimum age should be 16, 13, or even from birth.
-
-Following the written consultation, which closes on May 5, the government will set up a &quot;People&#39;s Panel on Digital ID&quot; by recruiting 100 to 120 people at random. The group will discuss the plans and develop recommendations, completing this work on June 21. The government will then respond to the consultation and publish legislation. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2026</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-45')">
-            <div class="source">The Register</div>
-            <div class="title">AI has made the Command Line Interface more important and powerful than ever before</div>
-            <div class="meta">2026-03-11</div>
-        </div>
-        
-        <div id="content-45" style="display:none;">
-            <h2>AI has made the Command Line Interface more important and powerful than ever before</h2>
-            <p><strong>The Register | 2026-03-11</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/ai_needs_command_line_interface/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Opinion The command line interface is making a comeback because graphical user interfaces are a poor fit for autonomous agents, which could spell trouble for a lot of software – and software makers.
-
-Forty years ago, all successful software boasted a well thought-out GUI and products without one had no chance. Good GUIs provided relief from the cognitive load associated with operating a piece of software, a burden that dropped precipitously as software converged on the same menu items and mouse gestures.
-
-As the WIMPS (Windows, Icons, Menus, Pointers) interface became ubiquitous, learning to use one piece of software meant you knew almost everything needed to use every other. That&#39;s now such a truism we don&#39;t even think about it anymore, but was quite revolutionary back in the day.
-
-It couldn&#39;t last. The clarity of the classical GUI descended into Rococo flourishes of &quot;ribbons&quot; and &quot;floating panels,&quot; a parade of eye candy that brings a sugar crash of confusion. Today we&#39;re likely to spend minutes hunting around for a menu option and asking ourselves &quot;It was here last time I looked, did an update take it away?&quot;
-
-Developers were revising their reliable UIs, replacing them with something less useful; consider the notorious case of Apple wrecking its industry-leading FinalCut Pro (FCP), thereby handing the market to Adobe.
-
-Change an interface too much, or too often, and all of that cognitive load returns. Software meant to be an invisible handmaiden to productivity becomes a burden: I quit FCP for Premiere and never looked back.
-
-Autonomous agents are now living the same nightmare – as much as a machine can – as we instruct them to use computers on our behalf and they must try to learn about bad GUIs so they can drive them.
-
-Agents must snapshot a screen, feed the image into a language model, analyze the results, change the approach they use to attempt executing our desires, and do that repeatedly until they finish whatever task a human set.
-
-Bad interfaces make this process slow and needlessly complex: a UI that began as a way to ease the burden on humans has ended up being a deadweight for both humans and our agents.
-
-Nowhere is this more visible than in the software that nearly everyone uses: Microsoft&#39;s Office365Copilot (did I get that right? they&#39;ve changed the name a lot). Three years ago Microsoft stuffed its Copilot AI software into every one of those apps, believing that after constantly adding apps to its suite without significant price rises it had finally delivered the next generation of office automation and found a way to meaningfully increase the cost of subscriptions.
-
-Microsoft got it wrong. The software giant managed to be too early and in the wrong place, having misunderstood how people use AI. Redmond put their assistants inside the apps. No one really has any use for them there, where they lack anything except for local context. Cut off from the world, those assistants couldn&#39;t do very much – and folks quickly learned to ignore them.
-
-Instead, we see people using agents – such as Openclaw, Nanoclaw, and much else besides – to operate the apps. The agent sits outside the app, using that app as one of the many tools it has access to as it orchestrates a solution to a problem.
-
-To do that, an agent needs a universal interface that&#39;s easier to operate than the GUI.
-
-So say hello – again – to the command line interface.
-
-*nix neckbeards and PowerShell power users will claim the CLI never really went away – and they&#39;re right, but they’re also a vanishingly small percentage of the computer-using population. For the rest of us, the CLI was something we might see only when things go very wrong with our computers.
-
-Suddenly, the CLI is the best way for us to get work done with our computers. No one wants to spend the day wrestling with Outlook. We just want to say &quot;schedule a meeting&quot; to our agent. A CLI makes that sort of task easy for both agents and humans. As the GUI loses relevance for the next generation of agent interfaces translating the ambiguities of human language into actions, CLIs become the interface. Everything else is interference.
-
-Google recognised this and leaned into it, last week releasing gws, a CLI for Google Workspace. The installation adds &#39;skills&#39; to teach your agent how to fully manipulate all your Google Docs, Drive, Calendar, GMail, Sheets – the works. The whole universe of “office” software – previously thoroughly dependent upon a human sitting behind a desktop or mobile GUI – has become just another tool that an agent can operate to help you achieve your goals.
-
-Microsoft might be in store for a penny-drop moment when company brass realise its flagship software has just taken a severe blow and been outclassed by a bit of interface glue.
-
-Redmond won&#39;t be the only victim. Nearly every major software provider will soon find itself scrambling to develop CLIs for their products, hoping to get to market before a competitor or hyperactive vibe coder provides exactly the same functionality through an agent-compatible interface. That&#39;s what a &#39;SaaSpocalypse&#39; looks like.
-
-Case in point: my Openclaw agent Clawdine retrieved our full chat history from logfiles, exporting it into something I could use, because I could not work out how to export it from Telegram. (I suspect it&#39;s a premium feature, sigh.) My agent enabled me to route around the damage from software grown baroque. It won&#39;t be long until we&#39;re all doing things like this, all the time. That will change software forever. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2026</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-46')">
-            <div class="source">The Register</div>
-            <div class="title">Atlassian built a tool to migrate Jira users to the cloud and it made the move slower</div>
-            <div class="meta">2026-03-11</div>
-        </div>
-        
-        <div id="content-46" style="display:none;">
-            <h2>Atlassian built a tool to migrate Jira users to the cloud and it made the move slower</h2>
-            <p><strong>The Register | 2026-03-11</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/atlassian_jira_migration_mess/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Atlassian has admitted that the tools it developed to move Jira users into the cloud were actually slower than older code that did the same job, and that its efforts to speed things up also had speed problems.
-
-The Australian collaborationware company last year decided to discontinue its datacenter products and shift users to cloudy equivalents. That decision came five years after Atlassian killed its server products.
-
-As explained in a Tuesday post by senior software engineer Priyansh Jain, Atlassian operates a migration platform team that built a migration pipeline on an API-driven architecture.
-
-“This architecture, however, proved to be blocking and less scalable, and the customers in our migration pipeline were too large to migrate using this approach,” Jain wrote.
-
-So Atlassian built a new migration architecture that Jain said operates “in a streamlined fashion, and gracefully avoids the bottlenecks and scalability issues that existed in the API-driven architecture.” The company released it to clients who needed to move Jira implementations of up to 20,000 seats.
-
-But when Atlassian tested it, the company found the new migration pipeline took about 34 percent longer than its previous tools, and overall work item throughput dropped by roughly 60 percent on synthetic tests.”
-
-“For customers with tens of thousands of users and massive project portfolios, fixing this became non-negotiable,” Jain wrote.
-
-“We benchmarked different worker node sizes and configurations. The original setup ran on small nodes; scaling them up yielded significantly better throughput, balancing cost vs performance,” Jain’s post states. He says Atlassian also tightened autoscaling rules so that worker nodes spun up quickly whenever CPU usage spiked, maintaining high throughput from the start.”
-
-Atlassian also “uncovered misconfigurations in the polling timeout. Our work item processing often took 60-120 seconds, but the consumer timeout was set to 40 seconds. That meant batches were being retried mid-flight, wasting work and slashing throughput by 30–40 percent. Setting a realistic timeout – 300 seconds – resolved the issue immediately.”
-
-Many bug fixes later, Atlassian had a tool that saw median throughput for large, multi-project migrations improve by roughly 6x.
-
-Jain’s post doesn’t say how long it took Atlassian to turn things around, but does say the company also started work on tools to migrate even larger Jira instances of up to 50,000 seats,
-
-“The bar was clear: Migrate thousands of projects (roughly 6,500) and up to ~7.5 million work items in under 36 hours, with the import phase fitting within ~24 hours,” Jain revealed, adding “We couldn’t just ‘turn the knobs to 11’ and hope for the best.”
-
-But we digress: Jain details efforts to create the new tool hit issues like migrations starting slowly and only gaining speed after 45–60 minutes, because Atlassian tied autoscaling logic to CPU load. The company fixed that with what Jain described as “a mechanism to proactively ensure a minimum number of worker nodes were running whenever a significant migration kicked off. Imports started at full strength, shaving 30–60 minutes off overall migration time.”
-
-That change paid off for Atlassian, too, because it allowed the company to maintain a smaller steady-state footprint and scale up only when needed – reducing monthly infrastructure costs by up to $65,000.
-
-Another issue saw large migrations cause API errors, “because the read replicas of our database cluster struggled to keep up with the heavy write load.”
-
-Atlassian fixed them all, and this time validated the tool’s readiness to serve 50,000-seat customers.
-
-“End-to-end, the system migrated 6k+ projects in a single day. We’re now ready to serve 50K-scale Jira customers,” Jain enthused. And this time, without degrading performance. ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2026</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">The Register</div>
-            <div class="title">Oracle says AI coding tools are helping it dodge the SaaSpocalypse</div>
-            <div class="meta">2026-03-11</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Oracle says AI coding tools are helping it dodge the SaaSpocalypse</h2>
-            <p><strong>The Register | 2026-03-11</strong></p>
-            <a class="original-link" href="https://go.theregister.com/feed/www.theregister.com/2026/03/11/oracle_says_ai_coding_tools/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Oracle says AI code generation tools have become so efficient, and it is so good at using them, that it will dodge the SaaSpocalypse and watch smaller rivals suffer.
-
-Big Red delivered that news in its Q3 results, after which co-CEO Mike Sicilia used the company’s earnings call to say “AI tools and their coding capabilities would be a threat if we weren&#39;t adopting them, but we are and very rapidly.”
-
-“The use of AI coding tools inside Oracle is enabling smaller engineering teams to deliver more complete solutions to our customers more quickly,” he said. “We are building brand-new SaaS products using AI and also embedding AI agents right into our existing application suites.”
-
-Sicilia said Oracle has just built three new customer experience (CX) applications, plus a new website generator it used to refresh its website.
-
-“We&#39;ve built these new CX products to help our customers sell, not simply to administer a forecast or generate e-mail opens,” Sicilia boasted, before listing other AI-infused additions to its products and declaring “these are not systems that can be replaced by a small collection of niche features cobbled together and bolted on in the name of AI.”
-
-“So yes, some smaller or single-focused SaaS players may well be disrupted, but Oracle will not be among them,” he concluded.
-
-In recent weeks, the rumor mill has suggested Oracle is set to make substantial layoffs to ensure it has the cash to finance its massive cloud builds.
-
-The wording Big Red used to describe its vibe coding adventures – smaller teams but building more products – left room for future job cuts.
-
-But co-CEO Clay Magouyrk was at pains to point out that Oracle has figured out how to pay for cloud builds without straining its finances, by using “A combination of bring your own hardware and upfront customer payments.”
-
-That sort of deal, he said, “enables us to continue expanding [our datacenter footprint] without any negative cash flow from Oracle.” Big Red inked $29 billion of contracts in a quarter using its new deals, and has $553 billion of remaining performance obligations (RPO) – services customers say they want but have not yet used or paid for – on its books, with most new orders covering AI infrastructure.
-
-Revenue for the quarter hit $17.2 billion, up 22 percent year-over-year. AI infrastructure accounted for $4.9 billion of that, up 84 percent. Revenue from IaaS and SaaS, which Oracle groups under “Cloud,” grew 44 percent to $8.9 billion.
-
-The company predicted full year revenue of $67 billion and increased its forecast for its next financial year to $90 billion.
-
-“We are overdelivering on FY &#39;26 revenue and earnings, and we are constantly raising our FY &#39;27 forecast,” Magouyrk said. “This is made possible by Oracle&#39;s transition from a predominantly seasonal license business into a highly predictable, recurring revenue cloud business.” ®
-
-The Register   Biting the hand that feeds IT
-
-Copyright. All rights reserved © 1998–2026</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">How Trump’s war on Iran stranded a million fliers — and plunged the Gulf’s favorite playground into chaos</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-48" style="display:none;">
+            <h2>How Trump’s war on Iran stranded a million fliers — and plunged the Gulf’s favorite playground into chaos</h2>
+            <p><strong>The Verge | 2026-03-11</strong></p>
+            <a class="original-link" href="https://www.theverge.com/transportation/892358/iran-war-dubai-airport-travel-flight-cancel">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The attacks have led to thousands of flight cancellations, stranding travelers in Dubai and elsewhere.
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+The attacks have led to thousands of flight cancellations, stranding travelers in Dubai and elsewhere.
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+It was a little after 1PM on Friday, February 28th, and Samantha Lujano was about to board her flight from Dubai to Colombo, Sri Lanka, when the drone attacks began.
+
+She had already received her boarding pass and gone through customs. Her flight was at the gate and her bags were loaded. She was simply waiting for the gate agents to open the flight for boarding. So she opened TikTok and started scrolling.
+
+But instead of relieving her boredom, the algorithm fed her anxiety. It showed her dozens of videos of explosions that purported to be from around the Persian Gulf — including a few in Dubai itself. She knew better than to believe everything she saw on social media, and had heard nothing from official sources yet. For now, she kept calm.
+
+Then her friends back home started texting her: “Did you see what happened? They just closed the airspace.”
+
+She told them not to worry. After all, she was on the ground in Dubai and nothing seemed to be wrong. Then, in an instant, every single flight status on the airport’s departures monitor changed to blinking red.
+
+“Canceled, canceled, canceled,” she recalled. “Everything was canceled.”
+
+Dubai and the whole region had become a war zone. In response to a joint US and Israeli strike that morning, Iran had launched missiles and drones at targets across the Middle East, including Dubai. Most were intercepted by local defense systems. Even so, debris from intercepted drones caused damage across Dubai and injured four people.
+
+By early afternoon, civilian airspace over the entire region was closed and more than 3,400 flights were canceled.
+
+Lujano and many of her fellow passengers were now stuck. They no longer had valid visas to return to the UAE. They had no accommodations lined up. They had no choice but to wait in the departures area until someone in authority came up with a solution. And all the while, missiles and drones rained down overhead.
+
+Few places rely on air travel as much as the countries of the Persian Gulf. The 700 miles of coastline between Kuwait and Dubai contain seven major international airports that together receive more than 220 million passengers a year. The vast majority are international travelers, carried here by state-owned airlines including Emirates, Etihad, and Qatar Airways.
+
+This was no accident, according to Kristian Coates Ulrichsen, a fellow for the Middle East at Rice University’s Baker Institute and codirector of the Middle East Energy Roundtable. Beginning in the early 2000s, Gulf Coast countries invested billions into expanding airport capacity and growing their airline networks.
+
+“They relied on infrastructure and technological advances to become these critical nodes on the 21st-century aviation map,” he told The Verge. “They saw that you could now connect any two points in the world with a stop in the Gulf, with the rise of these ultra-long-haul aircraft.”
+
+Few places rely on air travel as much as the countries of the Persian Gulf
+
+The Gulf had two more advantages as a central aviation hub. One was geographical: It was already located less than an eight-hour flight from 80 percent of the world’s population. The other was environmental: Gulf airport developers did not have to deal with environmental regulations like their American and European counterparts did. (London Heathrow, for example, has been attempting to add a third runway since 2009; it only got approval to expand in November 2025.)
+
+Since then, Gulf airports have steadily taken share away from the rest of the world’s airport hubs. The tipping point came in 2015, when Dubai overtook London Heathrow as the world’s busiest airport for international travelers. A coalition of American, Canadian, and European airlines all warned that they were rapidly losing ground to their Gulf Coast competitors.
+
+The rest of the world’s loss was the Gulf’s gain, especially in the UAE. Forty years ago, it was an oil-dependent petrostate. Today, its aviation industry contributes more to its GDP than oil. With more travel comes more economic diversification, including many of the flashier industries now associated with the country: real estate, diamonds, cryptocurrency, and, most of all, social media.
+
+Others in the region are attempting to follow the UAE’s lead. Saudi Arabia, Kuwait, Oman, and Iraq have committed more than $150 billion to build six new international airports that will rival Dubai’s airport in size. According to Airports Council International, the Middle East will become the world’s fastest-growing aviation region this year, surpassing Latin America and Africa.
+
+But growth depends on one thing: peaceful skies. That held for the past 20 years thanks in part to a significant American military presence in the region, and an unofficial agreement to spare civilian targets in case of an actual conflict.
+
+But that agreement ended on Friday, February 28th, when America and Israel attacked, and Iranian leaders instituted their “mosaic strategy” of retaliation. For the first time, Iran launched attacks at economic as well as military targets, including airports.
+
+To date, the attacks have disrupted almost 20,000 total flights that have stranded nearly a million people. Every strike that was captured on video and every expat who posted a reaction on social media caused a different kind of damage to Dubai and its neighbors. They permanently shattered the region’s image as the only place to go if you wanted to feel untouchable.
+
+Natalia Izak and Tomasz Brozio, both from Poland, had come to Qatar to experience that feeling. They were sunbathing on Doha’s West Bay Beach when the government broadcast its first emergency alert.
+
+“Every single phone at the beach started ringing,” Izak recalled. “Then we got a second alert and a third one.”
+
+“After the third one there was an explosion,” said Brozio.
+
+They took an Uber back to their hotel and exchanged contact information with their driver just in case.
+
+After three frustrating hours on hold with Qatar Airways and a trip to the customer service desk at the airport, they received a voucher to extend their hotel stay. But no one knew when they would be able to leave.
+
+“We didn’t want to stay in this situation,” said Izak. “We wanted to get out on our own.”
+
+After two days they called their Uber driver. He said that in the morning he could get them to Riyadh, Saudi Arabia, where at least some international flights were still operating. He would arrange their visas, drive them to the border, and have his cousin take them the rest of the way to Riyadh.
+
+They successfully crossed the border and arrived in Riyadh just before midnight, well in advance of their scheduled flight back to Poland at 6AM the next day. But another wave of attacks closed Riyadh’s airspace temporarily.
+
+After a 12-hour wait, they were able to leave — almost three days after their original departure date. Despite their ordeal, they’d consider traveling to the Middle East again. But they would prefer to wait until the threat of war recedes.
+
+“To be honest we would like to come back,” said Brozio. “We really enjoyed Qatar.”
+
+Not everyone has been so lucky. As of this writing, Samantha Lujano is still in Dubai after eight days. Still, she says she has little to complain about. Within hours of her flight’s cancellation, the government’s Tourism Office issued her an emergency visa and gave her a free hotel room for as long as she needed it.
+
+“I feel grateful to be in this situation in Dubai,” she said. “It’s the safest place to be.”
+
+Dubai’s airport is running at about half capacity now, although other airports remain functionally closed. The day before the conflict started, Qatar Airways operated 583 flights out of Doha. Today, it plans to operate just 16.
+
+The disruption is already eating into the Gulf’s image as an international playground. High-end sushi restaurants have stopped receiving shipments of Japanese fish. Formula 1 may postpone two upcoming races in Bahrain and Saudi Arabia, since teams cannot fly their equipment to the race sites. And hotels are largely empty, with average occupancy rates dropping as low as 20 percent.
+
+No one knows whether the war will conclude tomorrow or in a month. But it is clear that one of the busiest air corridors in the world will remain effectively closed until it does.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">Nvidia’s head of autonomous driving opens up about his plan to beat Waymo and Tesla</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
+            <h2>Nvidia’s head of autonomous driving opens up about his plan to beat Waymo and Tesla</h2>
+            <p><strong>The Verge | 2026-03-11</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/892395/nvidia-autonomous-vehicle-xinzhou-wu-interview">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Xinzhou Wu says you don’t need millions of miles of driving data to beat Tesla. All you need are the right sensors and an AI system that can actually reason.
+
+Xinzhou Wu says you don’t need millions of miles of driving data to beat Tesla. All you need are the right sensors and an AI system that can actually reason.
+
+Every six months or so, Nvidia’s head of automotive, Xinzhou Wu, invites CEO Jensen Huang to go for a ride in a vehicle equipped with the company’s hands-free autonomous driving system. But only when Wu has “good confidence” in the system’s driving capabilities.
+
+Recently, the two went for a drive from Woodside, California, to downtown San Francisco in a Mercedes CLA sedan with MB.Drive Assist Pro, a hands-free driver-assist system partly designed by Nvidia that’s similar to Tesla’s Full Self-Driving. The mood was light, even if the traffic was pretty heavy.
+
+“Let me know when you’re in autonomous mode,” Huang said to Wu, according to a video of the ride provided to The Verge, “then I can be less concerned about my safety.”
+
+Over the course of the 22-minute video, the Mercedes navigates Huang and Wu through a series of everyday obstacles, like construction sites, double-parked cars, and lanes narrowly channeled through rows of orange cones. Nvidia’s system seems quite capable, though the video is edited and not presented in real time. (Nvidia spokesperson Jessica Soares later said there were no disengagements during the ride.)
+
+Still, it seemed not dissimilar from my own experience last year riding shotgun with Nvidia executives in a Mercedes with the hands-free driving system activated. I was impressed by the system’s ability to handle traffic signals, four-way stops, double-parked cars, unprotected left turns, and all the pedestrians and cyclists and scooter-riders that San Francisco can throw at you. If Tesla can do it with a bit of silicon and a bunch of cameras, it stands to reason that the world’s most valuable company could figure it out too.
+
+After years of operating behind the scenes, Nvidia is attempting to stake out a more prominent leadership position on autonomous driving. Not only is it supplying the chips to companies like Tesla, but it’s also offering its own AI-powered driving features to partners like Mercedes, Jaguar Land Rover, and Lucid. At CES earlier this year, Huang unveiled Alpamayo, a portfolio of AI models, simulation blueprints, and datasets, that can give vehicles Level 4 autonomy, allowing them to fully drive themselves under specific conditions. Huang touted the announcement as “the ChatGPT moment for physical AI.”
+
+In the car with Wu, Huang is less bombastic and more introspective — but no less bullish on the technology’s future. “I think the challenge, of course, is Alpamayo, as incredibly smart as it is — and it can reason about the circumstance — we don’t know what it can’t do,” he said. “And so that’s the challenge, and that’s the reason why our classical stack is so incredibly important.”
+
+After years of operating behind the scenes, Nvidia is attempting to stake out a more prominent leadership position on autonomous driving
+
+Huang boasts that Nvidia’s approach to autonomous driving is “unique” because it combines an end-to-end AI model with a traditional, human-engineered “classical” stack. Pure end-to-end models are difficult to verify for safety, he theorizes. In contrast, the classical stack follows well-established engineering protocols and processes that make it easier to verify certain behaviors are safe enough. By combining both approaches, Nvidia’s system can benefit from a human-like driving style while still maintaining a safety framework grounded in traditional rules thofe road.
+
+Huang’s claim of a unique approach in the industry doesn’t completely hold up; other AV operators also utilize end-to-end neural networks in tandem with explicit safety rules governing how a vehicle should respond. But it is certainly true that end-to-end learning, which tends to be more humanlike in its driving and less robotic, is becoming more in vogue. Waymo relies on a hybrid system, while Tesla exclusively relies on end-to-end neural networks.
+
+In an interview, Wu said that end-to-end models are better able to respond to things like speed bumps or lane changes without feeling mechanical or overly robotic. “That’s why it’s really the ChatGPT moment,” he said. “It’s like only when your car really drives with confidence … then basically customers will feel more willing to use it.”
+
+I asked Wu how he thought Nvidia’s approach compared to Tesla’s Full Self-Driving, which has driven over 8.5 billion miles but has been implicated in a number of troubling safety incidents, including 23 injuries and at least two fatalities. Last December, a Nvidia executive told me that the company had tested the two systems against each other. The number of driver takeovers for Nvidia’s system was comparable, he said, sometimes favoring one system, sometimes the other.
+
+Wu declined to directly comment on Tesla’s safety record, but explained that Nvidia distinguishes itself through the use of multiple sensors, including cameras, radar, ultrasonic sensors, and — at higher configurations — lidar. Nvidia believes that redundancy and diversity in sensing technologies are critical for handling difficult edge cases and achieving higher levels of safety, Wu said.
+
+“It’s like only when your car really drives with confidence … then basically customers will feel more willing to use it.”
+
+Additional sensors means additional costs. The inclusion of lidar, in particular, suggests that Nvidia’s safest system would only be accessible to rich Mercedes owners. But Wu believes that Nvidia’s vertically integrated approach allows it to deliver the required safety performance at the lowest feasible cost.
+
+Nvidia’s DRIVE Hyperion platform is designed with multiple configurations in mind. The base version uses a simpler and more cost-effective sensor setup, primarily relying on cameras and radar. These sensors have become dramatically cheaper over the past decade due to mass production; ultrasonic sensors are already extremely inexpensive. For higher levels of autonomy, the platform can add lidar sensors, and given the declining cost of lidar, Wu said he believes that vehicles priced around $40,000 to $50,000 could realistically include the full sensor stack needed for advanced autonomy.
+
+I asked Wu about recent safety incidents involving Waymo vehicles, such as the company’s robotaxis blocking intersections during a blackout in San Francisco. He said that Nvidia was already running similar edge cases through its simulators. In fact, the company relies heavily on synthetic driving data to account for its disadvantages in real-world testing. Tesla has billions of real-world driving miles, thanks to its vast fleet of customer cars. Waymo has logged nearly 200 million fully autonomous miles on public roads. How can Nvidia ever hope to catch up?
+
+“The big infrastructure play is really simulation,” Wu said. Nvidia is taking two approaches to this. One is neural reconstruction, or NuRec, in which the company’s engineers re-create real-world driving scenarios using sensor data collected from vehicles in the field. The other is augmentation, which modifies elements within a reconstructed scene to explore different potential outcomes. This allows engineers to probe how the autonomous system behaves under slightly different circumstances and identify rare edge cases that might be in the original dataset.
+
+“We can make a pedestrian come out faster, slower, at different place,” he said. “This is what we call blurring of the dataset.”
+
+Nvidia has acquired dashcam footage from its partners to feed into the data it uses in simulation. It also re-creates the edge cases from these Waymo incidents, like the blackout, and trains its system to respond without blocking intersections.
+
+But the ultimate goal is building a system that uses reasoning to avoid these edge-case traps — thus obviating the need for the real-world driving data in the first place. Wu’s team is working on something it calls the Vision Language Action model, which will put this theory into practice. These models combine visual perception, language understanding, and physical action into a unified architecture, drawing on large foundation models already trained on internet-scale datasets. Wu likens it to driver’s ed.
+
+“When we teach a kid how to drive, they read a rule book and then get 20 hours of practice behind the wheel,” Wu said. “Usually, they aren’t bad drivers to start with — though, obviously, it takes experience to improve. Ultimately, we want the model to function the same way: In the future, with just a rule book and 20 hours of training data, it will learn how to drive.”
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">Samsung Galaxy S26 and S26 Plus review: This again</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>Samsung Galaxy S26 and S26 Plus review: This again</h2>
             <p><strong>The Verge | 2026-03-11</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/892311/samsung-galaxy-s26-plus-review-screen-battery-camera-software">Visit Original Website</a>
@@ -2206,7 +2388,7 @@ You might also notice that the S26 has grown. Its 6.3-inch display is fractional
 
 What you get for that extra size is a bigger battery: 4,300mAh, up 300mAh from the S25, and closer to the 4,900mAh cell in the S26 Plus. I took the S26 with me around Mobile World Congress, expecting the demanding use, long days, and intermittent Wi-Fi to tank the battery. Instead, I was surprised to find it held its own, lasting until bed every day but one, when my nerve broke and I reached for my power bank mid-evening. Neither phone is a powerhouse, and outside of the US Samsung risks falling behind its rivals, who are busy introducing capacious silicon-carbon batteries, but even the regular S26 should be an all-day device.
 
-It would have been an easy win for Samsung to introduce Qi2 magnetic wireless charging, as Google did in its Pixel 10 phones, but the company told us it prefers to keep its phones thinner, assuming buyers will pick up a case with magnets in anyway. Instead, Samsung gave the S26 Plus a modest boost to 20W Qi wireless charging, leaving the S26 at 15W. Along with the Plus’s faster wired charging — 45W compared to the S26’s 25W — this is the only real upgrade you get from the bigger phone (it also has a more recent Bluetooth version and support for mmWave 5G that’s lacking in the S26).
+It would have been an easy win for Samsung to introduce Qi2 magnetic wireless charging, as Google did in its Pixel 10 phones, but the company told us it prefers to keep its phones thinner, assuming buyers will pick up a case with magnets in it anyway. Instead, Samsung gave the S26 Plus a modest boost to 20W Qi wireless charging, leaving the S26 at 15W. Along with the Plus’s faster wired charging — 45W compared to the S26’s 25W — this is the only real upgrade you get from the bigger phone (it also has a more recent Bluetooth version and support for mmWave 5G that’s lacking in the S26).
 
 Size aside, the displays are the same as last year, and lack the privacy display found in the Ultra. The chipsets have been refreshed for 2026, but while the S26 Ultra uses Qualcomm Snapdragon chips worldwide, the S26 and S26 Plus use a Snapdragon 8 Elite Gen 5 in the US, but Samsung’s own Exynos 2600 in most other markets. I’m in the UK, and my Exynos-based phones have performed just fine, from frame rates to battery life, so buyers outside the US shouldn’t have much to worry about.
 
@@ -2235,13 +2417,13 @@ Final tally: seven mandatory agreements and more than seven optional agreements.
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Facebook, WhatsApp, and Messenger get new ways to protect users from scams</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Facebook, WhatsApp, and Messenger get new ways to protect users from scams</h2>
             <p><strong>The Verge | 2026-03-11</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/892939/meta-facebook-whatsapp-messenger-scam-detection">Visit Original Website</a>
@@ -2263,13 +2445,13 @@ Meta is also expanding advanced scam detection on Messenger to additional countr
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Anthropic is launching a new think tank amid Pentagon blacklist fight</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Anthropic is launching a new think tank amid Pentagon blacklist fight</h2>
             <p><strong>The Verge | 2026-03-11</strong></p>
             <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/892478/anthropic-institute-think-tank-claude-pentagon-jack-clark">Visit Original Website</a>
@@ -2309,13 +2491,13 @@ The Anthropic Institute also plans to study people’s emotional dependence on A
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Oppo’s new foldable isn’t quite creaseless, but it’s pretty damn close</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Oppo’s new foldable isn’t quite creaseless, but it’s pretty damn close</h2>
             <p><strong>The Verge | 2026-03-11</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/892547/oppo-find-n6-zero-feel-crease-impressions">Visit Original Website</a>
@@ -2339,94 +2521,6 @@ With the phone’s full launch not for another week, Oppo is keeping quiet about
 We’ll find out more details on March 17th, when the company claims the Find N6 will get a “global” launch — though since last year’s Find N5 only launched in China and a select few Asian markets, there’s no guarantee just how global the launch will really be.
 
 Photography by Dominic Preston / The Verge
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">How the spiraling Iran conflict could affect data centers and electricity costs</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>How the spiraling Iran conflict could affect data centers and electricity costs</h2>
-            <p><strong>The Verge | 2026-03-10</strong></p>
-            <a class="original-link" href="https://www.theverge.com/report/892661/iran-war-oil-gas-prices-data-center-electricity">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Energy prices could rise much higher than they already have, inflaming concerns around data centers.
-
-Energy prices could rise much higher than they already have, inflaming concerns around data centers.
-
-Soon after the Trump administration launched its war on Iran, I called up Reed Blakemore, director of research and programs at the Atlantic Council Global Energy Center, to talk about the consequences. While oil and gas prices were already on the rise, there was still more hope then that the impact of the conflict might be short-lived. At the end of our conversation, Blakemore said plainly: “Let’s have a call again [next week] … We’ll have a much clearer picture of what the conflict is going to look like and what the story really is going to be for energy moving forward.”
-
-Energy infrastructure has become a key leverage point in the unfolding war
-
-It’s a week later and the conflict has only escalated since the US and Israel launched strikes against Iran, killing Supreme Leader Ayatollah ​Ali Khamenei. Energy infrastructure has become a key leverage point in the unfolding war, with Israel hitting Iranian fuel depots and Iran targeting Gulf neighbors’ oil and gas infrastructure in its own strikes. Iran’s paramilitary Revolutionary Guard threatened on Tuesday not to “not allow the export of even a single liter of oil from the region to the hostile side and its partners until further notice.” Iran has reportedly also started to lay mines in the strategic Strait of Hormuz, through which one-fifth of global petroleum consumption and liquefied natural gas (LNG) trade used to move.
-
-I talked to Blakemore again today about what Iran’s continued chokehold on the Strait of Hormuz means for energy costs and US tech companies’ rush to build out energy-hungry AI data centers.
-
-This interview has been edited for length and clarity.
-
-What’s your outlook now on how the conflict is likely to affect oil and gasoline prices?
-
-Reed Blakemore: The fundamental issue right now, in terms of the energy implications of the conflict, is how the market is reacting to the uncertainty around safe passage through the Strait of Hormuz.
-
-At the outset of the conflict when we saw insurance premiums going up for these ships, we were largely talking about it in the context of, Hey, it’s just gotten much more expensive for a ship to traverse the Gulf and therefore they’re staying out.
-
-We’ve moved from that to actual concerns around the security of passing through the straits in the first place, so this is no longer an insurance cost issue as much as it is a safety and security issue.
-
-We have virtually no traffic passing through the Strait of Hormuz. A lot of countries are beginning to shut in production. So there’s already this ripple effect emerging purely because the market and basically tankers are fundamentally concerned about whether or not they will be able to safely pass through the strait.
-
-“There’s only so much that US energy dominance can do to shield US consumers”
-
-The other feature that I think we’ve seen the market react strongly to in the past several days is a sense of how long this conflict is going to last. And I think you can look to the comments from the president in the last 72 hours and the market’s reaction as a major piece of evidence to that end. Moving into the weekend where the campaign had clearly escalated, the uncertainty around how open the Strait of Hormuz would or wouldn’t be was beginning to reach a fever pitch. The response from markets when they opened in Asia on Sunday going past $100 a barrel to nearly $120 a barrel is really a function of the market not having a sense that this would be over anytime soon. That pullback that we saw over the course of yesterday was in response to the president saying fundamentally that Hey, we have an end in sight to this conflict.
-
-The United States is a major oil producer. I think the strategy of US energy dominance played a significant role in terms of shielding US consumers from the initial market consequences of the decision to go to war with Iran. The price increases we’ve seen thus far would have been much more responsive to the market volatility. That has bought the administration a little bit of time as it relates to how long until we see the gasoline prices really begin to pick up steam domestically. But as this conflict persists and the volatility in the market continues, we will begin to see upward pressure on gasoline prices, regrettably, over time.
-
-There’s only so much that US energy dominance can do to shield US consumers from what is a globally traded market in terms of oil. Because the United States is a major domestic oil producer, it has the ability to put some downward pressure on its own gasoline prices.
-
-But because via its oil exports it participates in a global market, it has that exposure to global oil market volatility.
-
-Can we expect electricity prices to go up also? Why?
-
-For the United States, the gas story is a little bit better, but not immune from the global market as well. Natural gas is largely regionally traded within the United States. The US is a major producer of natural gas for domestic consumption in a way that further insulates it. That makes the case of the United States much different than the gas price sensitivity we’re seeing in Europe or in Japan or other parts of East Asia.
-
-The problem is similar to the oil story because the United States is a major LNG exporter. As natural gas prices increase elsewhere, LNG exporters will be incentivized to export more gas because that’s where the arbitrage opportunity is, and that will create the upward price pressure domestically in the United States.
-
-What risks does that pose to tech companies and this push to build out more AI data centers and related energy infrastructure?
-
-In the United States, the majority of the data center buildout has begun to be powered by natural gas. We’re not going to see electricity prices reach a crisis point in the United States in the short term because of this conflict. The time horizon that we’re talking about with gas and therefore electricity prices is likely in the time horizon of months rather than weeks you’d expect with oil.
-
-However, the longer this conflict lasts and the more tightness we see in the global gas market — that will eventually permeate the United States and create that upward pressure on gas prices in a way which then affects electricity prices and then that brings the data center question into play.
-
-I think the unique thing is it doesn’t necessarily affect the ability of data centers to purchase energy. Electricity costs are a relatively marginal proportion of the cost of building and operating a data center. What it does do is it only further inflames the energy affordability challenges that are currently deteriorating social license in the country for data centers. So the impact on electricity prices likely won’t directly harm data center buildout. The ancillary affordability challenges it will create will further entrench popular discontent with data center buildout, because data centers are simply making consumer electricity bills much more expensive.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">A live-action Samurai Champloo is in the works</div>
-            <div class="meta">2026-03-10</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>A live-action Samurai Champloo is in the works</h2>
-            <p><strong>The Verge | 2026-03-10</strong></p>
-            <a class="original-link" href="https://www.theverge.com/entertainment/892675/a-live-action-samurai-champloo-is-in-the-works">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Shinichirō Watanabe is also attached to the in-development project.
-
-Shinichirō Watanabe is also attached to the in-development project.
-
-Though the live-action Cowboy Bebop was a big disappointment, Shinichirō Watanabe is ready to give it another go with one of his other iconic pieces of IP.
-
-Variety reports that Watanabe has given his blessing and agreed to work on a new live-action Samurai Champloo adaptation from Tomorrow Studios, the same production house behind Netflix’s Cowboy Bebop (which Watanabe wasn’t directly involved in) and the streamer’s surprisingly excellent take on One Piece. The project is in its earliest stages of development and is not attached to a distributor. After Cowboy Bebop, this all feels a little iffy, but Tomorrow Studios heads Marty Adelstein and Becky Clements seem confident that they can make it work with Watanabe’s help:
-
-The production company previously adapted Watanabe’s other signature work, “Cowboy Bebop,” for Netflix in 2021, though that series was canceled after one season. Clements acknowledged Watanabe was less involved creatively on that project.
-
-“We’ve learned,” said Adelstein. “Having the creator there to bless the creative is really important.”
 
 A free daily digest of the news that matters most.</div>
         </div>
@@ -2835,11 +2929,61 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">The Next Web</div>
-            <div class="title">NVIDIA makes &#8216;significant investment&#8217; in Mira Murati&#8217;s Thinking Machines Lab</div>
+            <div class="title">Paris startup Lemrock raises €6M to become the commerce layer inside AI agents</div>
             <div class="meta">2026-03-11</div>
         </div>
         
         <div id="content-60" style="display:none;">
+            <h2>Paris startup Lemrock raises €6M to become the commerce layer inside AI agents</h2>
+            <p><strong>The Next Web | 2026-03-11</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/lemrock-raises-6m-agentic-commerce-ai-agents">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Founded just months ago by two repeat Y Combinator founders and a retail veteran, Lemrock is betting that AI agents are becoming the new storefront,  and that brands are nowhere near ready for it.
+
+When you ask ChatGPT or Perplexity which running shoes to buy, someone has to make sure the right brands show up, the prices are correct, and the purchase can actually be completed.
+
+Lemrock, a Paris-based startup founded in 2025, is building that middleware,  and it has just raised €6 million ($7 million) to deploy it.
+
+The round was led by Galion.exe, the seed fund backed by a community of over 400 French tech founders. Joining the round is a roster of retail-smart angels: Michaël Benabou, a co-founder of Veepee (formerly Vente-Privée, one of France’s defining e-commerce success stories); Gary Anssens, founder of online cycling retailer Alltricks, which was acquired by Decathlon in 2019; Frédéric Halley, a retail tech investor; Emmanuelle Brizay, a tech and retail investor; and Antoine Lizée from Alan, the French health insurance scaleup.
+
+Critically, Jean-Baptiste Rudelle, the co-founder of Criteo, the Paris-born adtech giant that took programmatic advertising mainstream, not only invested via his role on Galion.exe’s investment committee, but joins Lemrock’s board of directors.
+
+TNW City Coworking space - Where your best work happens
+
+A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+
+Lemrock’s premise is straightforward: e-commerce is migrating from search engines and brand websites into conversational AI interfaces, and the infrastructure brands need to sell in that environment does not yet exist.
+
+The startup offers a single integration point connecting a retailer’s product catalogue to major AI platforms, including ChatGPT, Claude, and Perplexity,  handling real-time pricing and availability, transaction processing, and performance tracking in one stack. Brands maintain control over their data, pricing, and how their products are presented.
+
+The opportunity the founders are targeting is a structural one. According to Lemrock, some retailers are already experiencing traffic declines of up to 30% as consumers shift from Google searches to AI agent queries.
+
+The logic follows: if the customer is no longer coming to your website, you need to be present and transactable where the customer actually is.
+
+“Conversational commerce reverses the logic: it’s no longer the customer searching for the product; it’s the right product coming to the right customer,” said Roxane Laigle, Lemrock’s CEO.
+
+“Our technology allows brands to sell better, and consumers to buy better, faster, more fairly, and with less friction.”
+
+Lemrock was co-founded by three people with complementary CVs that map almost perfectly to the problem. Laigle brings over a decade of B2C growth and retail experience, with a background at Fnac Darty. CPO Sasha Collin and CTO Clément Nguyen are both veterans of Y Combinator’s S24 batch, where they co-founded Mindely, an AI-powered interviewing platform.
+
+Collin previously spent three years at QuantumBlack, McKinsey’s AI division; Nguyen has a background in adtech and retailtech, with experience at Rakuten Advertising. The company is legally registered as Lemrock AI SAS, incorporated in December 2025, and is based near Paris.
+
+Lemrock has also been selected for Agoranov, one of Europe’s leading deeptech incubators, adding institutional validation to the team’s credentials.
+
+The wider context is a crowded but nascent space. Perplexity has been building out commerce features of its own, and a number of early-stage startups,  including New Era of Shopping out of Budapest and San Francisco,are targeting similar ground.
+
+What Lemrock is pitching is a vendor-neutral middleware layer rather than a competing storefront: one integration, multiple AI platforms, brand-safe by design.
+
+Get the most important tech news in your inbox each week.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">The Next Web</div>
+            <div class="title">NVIDIA makes &#8216;significant investment&#8217; in Mira Murati&#8217;s Thinking Machines Lab</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-61" style="display:none;">
             <h2>NVIDIA makes &#8216;significant investment&#8217; in Mira Murati&#8217;s Thinking Machines Lab</h2>
             <p><strong>The Next Web | 2026-03-11</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/thinking-machines-lab-secures-nvidia-investment">Visit Original Website</a>
@@ -2875,13 +3019,13 @@ Murati, for her part, turned down an acquisition offer from Meta’s Mark Zucker
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-62')">
             <div class="source">The Next Web</div>
             <div class="title">EchoPrime &#8211; Cedars-Sinai&#8217;s AI system can read echocardiograms and write the report</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-62" style="display:none;">
             <h2>EchoPrime &#8211; Cedars-Sinai&#8217;s AI system can read echocardiograms and write the report</h2>
             <p><strong>The Next Web | 2026-03-11</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/echoprime-cedars-sinais-ai-system-can-read-echocardiograms-and-write-the-report">Visit Original Website</a>
@@ -2921,13 +3065,13 @@ But as a demonstration of what is now technically possible in cardiac AI, it set
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">The Next Web</div>
             <div class="title">French insurtech Alan hits €5B valuation</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>French insurtech Alan hits €5B valuation</h2>
             <p><strong>The Next Web | 2026-03-11</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/alan-health-insurance-5-billion-valuation">Visit Original Website</a>
@@ -2971,13 +3115,13 @@ Alan was founded in 2016 by Samuelian-Werve and CTO Charles Gorintin. The compan
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">The Next Web</div>
             <div class="title">Swiss VC Emerald Technology Ventures hits €100M milestone for its Global Water Fund II</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>Swiss VC Emerald Technology Ventures hits €100M milestone for its Global Water Fund II</h2>
             <p><strong>The Next Web | 2026-03-11</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/emerald-technology-ventures-raises-e100m-for-water-innovation-fund">Visit Original Website</a>
@@ -3015,13 +3159,13 @@ Whether that shift is happening quickly enough to match the pace of water stress
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">The Next Web</div>
             <div class="title">Amazon’s Health AI is now open to all US customers</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-64" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>Amazon’s Health AI is now open to all US customers</h2>
             <p><strong>The Next Web | 2026-03-11</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/amazon-health-ai-launches-website-app-one-medical-prime">Visit Original Website</a>
@@ -3071,57 +3215,27 @@ Amazon says it intends to expand availability to all US customers in the coming 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-65')">
-            <div class="source">The Next Web</div>
-            <div class="title">Finperks raises $4M to become the API layer for prepaid payments in Europe</div>
+        <div class="card" onclick="openModal('content-66')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Exclusive: Shell, TotalEnergies and others declare FM to their clients who take LNG from Qatar - sources say - Reuters</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-65" style="display:none;">
-            <h2>Finperks raises $4M to become the API layer for prepaid payments in Europe</h2>
-            <p><strong>The Next Web | 2026-03-11</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/finperks-raises-4m-to-become-the-api-layer-for-prepaid-payments-in-europe">Visit Original Website</a>
+        <div id="content-66" style="display:none;">
+            <h2>Exclusive: Shell, TotalEnergies and others declare FM to their clients who take LNG from Qatar - sources say - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-03-11</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOWDl1ZGdFdWJNZnMwRXktN1ZJUUxlSDlvNUJrQ0VfN0FsN3NGNHROYktZeFZmZUE2amViM0xnMzdYNXRabzdKRWw2Qks1akdrdExiVFRvanR1dDlMTzBlUXVUaFAxRHdROExhdy1vT1FWN3BfVV90bS1rZk5FUXc3RmVhRWtJeF9GWXBLOTBFRnItbTNqTEpENEpDcTZHN1pNYmIxRllnSWs1N3F3WWRBbmNIaVdNZkxTbFlDNTNsQ1JycXlZNEVRdkxn?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Berlin startup, founded by the team behind viafintech, is building a single integration that lets banks, fintechs, and HR platforms offer gift cards, cashback, and tax-free employee benefits, without touching the underlying infrastructure themselves.
-
-The founders of viafintech, the prepaid payments company acquired by Paysafe in 2021, have returned with a new venture, and this time they are building on the supply side of the market rather than within it.
-
-Finperks, the Berlin-based startup they have founded since leaving Paysafe, has raised $4 million in pre-seed funding. The round was led by Motive Partners, the fintech-specialist investment firm, and seed+speed Ventures, the Berlin-based B2B software fund that closed a €90 million third vehicle in January this year.
-
-The company is building API infrastructure that lets banks, fintech companies, and HR platforms offer prepaid products, gift cards, eCash, and cashback, through a single integration, rather than requiring each partner to stitch together a web of issuers, brand networks, settlement providers, and compliance layers on their own.
-
-The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
-
-The problem Finperks is solving is structural. The prepaid market is large and growing but operationally fragmented: a bank that wants to offer brand-funded cashback to retain customers, or an HR platform looking to distribute Germany’s €50-per-month tax-free employee benefit known as the Sachbezug, currently has to navigate multiple providers across multiple functions.
-
-Finperks collapses that into a single API giving partners access to more than 1,000 brands across Europe.
-
-“Banks need cashback to retain and engage users,” said Sebastian Seifert, co-founder and co-CEO. “HR platforms need benefits as a logical extension to upsell clients. None of them want to build prepaid infrastructure. They want to plug into it.”
-
-Seifert is not a newcomer to the space. He co-founded viafintech, the barcode-based eCash platform known in Germany and Austria as Barzahlen/viacash, at the age of 20. By the time Paysafe acquired it in November 2021 in a deal valued at over $100 million, viafintech had grown to more than 100 employees operating across 17 markets in Europe and the US.
-
-Seifert was named to the Forbes 30 Under 30 list in DACH in 2019 and Europe Finance in 2020. Finperks, founded in the summer of 2025 and based in Berlin-Charlottenburg, is his next act, and he is building it with the same core team.
-
-Six months in, the company says it has already onboarded more than 1,000 brands and signed its first customers. Payment app Flizpay uses Finperks to offer brand-funded cashback deposited directly into users’ bank accounts at the point of purchase a product Seifert was previously an angel investor in.
-
-HR platforms Recardy and Paylo use Finperks to distribute the Sachbezug without building any additional infrastructure. The new funding will be used to grow the engineering team, deepen brand partnerships, and expand into additional European markets.
-
-For Motive Partners, the bet is squarely on the infrastructure layer. The firm, which focuses exclusively on technology-enabled financial services businesses, has been steadily expanding its early-stage portfolio alongside its larger growth and buyout activity.
-
-seed+speed Ventures’ third fund, meanwhile, is explicitly oriented toward European B2B and enterprise software companies developing AI or providing tools to deploy it in corporate operations, Finperks fits neatly within its thesis on enterprise workflow infrastructure.
-
-Finperks is a team of eight people. The company’s job listings describe a founding team of serial entrepreneurs and fintech veterans with a “proven track record,” building outward from the viafintech playbook into a market the founders know intimately from both the product and distribution side.
-
-Get the most important tech news in your inbox each week.</div>
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-66')">
+        <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Exclusive: Foreign hacker in 2023 compromised Epstein files held by FBI, source and documents show - Reuters</div>
             <div class="meta">2026-03-11</div>
         </div>
         
-        <div id="content-66" style="display:none;">
+        <div id="content-67" style="display:none;">
             <h2>Exclusive: Foreign hacker in 2023 compromised Epstein files held by FBI, source and documents show - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-11</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxOMkdFSTgwMW04Ti1wMzBHRFRGdWFZcmcxWS1YcFVUTG5xNzBHYlUwNm1kVXdRNzlTamhSVHBodmdSOUR2cmVON1l4VzVfVk9kYWRDbnBON3Jpc1VaVlR2bEVHTWZFbEZOcVNja1YwUUJFNGpmYnNDUWZQZ29TMFh5LWMzaDZOajhvdjJhaHV3VDJTc1lfdFMzQ3A5QjZLZUJ4Z3l6RnBua0tDdFh1RDhoeUNyQ2ZyTzdqX3V4NHlWS3hsdw?oc=5">Visit Original Website</a>
@@ -3129,41 +3243,41 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Iran says it will target US-Israeli economic, banking interests in region - Reuters</div>
-            <div class="meta">2026-03-11</div>
-        </div>
-        
-        <div id="content-67" style="display:none;">
-            <h2>Iran says it will target US-Israeli economic, banking interests in region - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-03-11</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNZ1EzaGgxNEo4dEZMUDZGNnFicGd1YUZNMHNpQUthZ1BXUXk5bEdCS0l1N013M09lVFhpdWswMEFfUF90UnJpdjM5SEhhN3NVcHBlSkJzWFJOUE55VVBTRUpGUVZUaWp6RmRwQmdBSmpMVUFNQTJMSmJFWjBQazllSFlRbXNSQ05Xc1BKM01LX2t5eTRtTGlWVDZ4TllGUzVIZ0tMS0t2akt0YXNKdDlTUFo0enF0eVFXRkZta19YVHgwbVR2Smc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">UK ends centuries-old hereditary seats in parliament upper chamber - Reuters</div>
+            <div class="title">Kremlin says Britain was involved in Ukraine's missile strike on Russia - Reuters</div>
             <div class="meta">2026-03-11</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>UK ends centuries-old hereditary seats in parliament upper chamber - Reuters</h2>
+            <h2>Kremlin says Britain was involved in Ukraine's missile strike on Russia - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-11</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxORFdXY19XXzg2OVJiWkl3Y3BIdi1qTlJEeTEydzk2bmxIaW1felZaZDF4bVRkWFJBNVpPdi1WMUxudmhwQ1lzS0VCTWtyQ3FZVHhLY09LTGlHQ2QxaVRhY0pPYjNJekVaRUtSd0Z6M0FDVE1YcnFVWmxzTFg2U1dXNGNFTnBCaW0wdnZES0c1YU5JdkRLTWlpZG56MWl3X1NRLUxWNzNXSHNCTHJy?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPN3BTeVN0UmVXQ1hXTy1tQVdISmU0MkhoTjFoOEFCNE0yR1A3ZXgtcTYzNUlwam1uRlVTT2NGdlY0UGdSTUU1VDd5Y25JOUdpT3RrZzZmLW5VRE5QaTZuS3NYVFhJUUFkVi1yd0I3Ykd6cFIwZzRuY0FtQ0ptcnNTaW5EbWNseDBYSXJPUThwbkZLUmZ3THF4R0JZNFJHLUQ1RWlYRVg1T3Rhdjg5WjR2NjZFaw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Israel believes Iran's new leader was lightly wounded in attacks, senior official says - Reuters</div>
+            <div class="title">Thailand says 3 crew missing after ship hit by projectiles in Strait of Hormuz - Reuters</div>
             <div class="meta">2026-03-11</div>
         </div>
         
         <div id="content-69" style="display:none;">
+            <h2>Thailand says 3 crew missing after ship hit by projectiles in Strait of Hormuz - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-03-11</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQWEstak1NSkVjc1FVSS1FYy01Z3VkalRQRDdodDVnaWhBWVNIMEhBaExVaDJMU3FQUENWOWxMcnhZWEVYd19rX05XZFE1X0FidVZEZ3l0S2pxMHpBNEZzVjNNSUNRdUR4cTVERVVlNV9JeDlvTF9nVDZ2SHZnbldZUEVjOEVpVmhYZElxc21adi0yS3Q0cnExdHd5eFIyMlRWX1d1d0dlRmdMX0dpa1VCNE9jSlF5RFFYbnpWb0t2ZHNjNC1YUVE?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-70')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Israel believes Iran's new leader was lightly wounded in attacks, senior official says - Reuters</div>
+            <div class="meta">2026-03-11</div>
+        </div>
+        
+        <div id="content-70" style="display:none;">
             <h2>Israel believes Iran's new leader was lightly wounded in attacks, senior official says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-11</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxNM0k0b19kT19JZWVfb0UyVWZsTkhySTBid1FNYmRSV2lEUzNmU3ZhaHpxUTJ0dHJ4U3ZvVXVaY0w0c0ZFNXkweF9LY0xkSlp0LTdsS2FwSkJFNUpFVDE3Q0pZbUxSSDJialNHWXphcElWR01tZjdjYVY1MUtJekpST0s2eUd6OTVlai1HVERuZVZJNV9XVHo3UDh0OE0zRDNXSmNBOUE0MGJhZUFaMEU5V1VSRUdsNWF0SUgxVVF3bGIweDdUNUlCbUJ3?oc=5">Visit Original Website</a>
@@ -3171,30 +3285,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Australia expects Iran war to intensify, shuts some Middle East embassies - Reuters</div>
-            <div class="meta">2026-03-11</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>Australia expects Iran war to intensify, shuts some Middle East embassies - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-03-11</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPOWlfTUtaaTA1MG5Qc2VkWFFtN2tGZXZ1Nm4zN3I3dnJpeWpjUndoa0xnbzYwTDBZa1B1cnBGMzRPSEwxTmNHVGVEbXRsXzNRTGxPSHhBLWRnM2Z5REtyVnR4QjE0RGw5M24zOE1mbnYtRjZvbWN1bGV0VkNfeUFhb1BPQnJrTFpyaXIzdlFlTlN1R3RTM3J4dzJmSVUwTkJjNk42c2x0b3J1UmVxczl3bVN4dkV4RW80QURLVjl6TXFKdw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Canal+ taps Google's AI for video production, content recommendation - Reuters</div>
+            <div class="title">Iran says it will target US-Israeli economic, banking interests in region - Reuters</div>
             <div class="meta">2026-03-11</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Canal+ taps Google's AI for video production, content recommendation - Reuters</h2>
+            <h2>Iran says it will target US-Israeli economic, banking interests in region - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-11</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOdXlVLTFzZVdRT0pZZG9janBuc29GUENDZXZpSkg1UEcwWGRjNkg2dzZaT2FLaTI3OUtHV3FpckVxUVoxMkY1Mk5pRGpqY180N1dQODcwX1ZVa3I0ejdPanBSalhzak9DZDNQb1hsclZqMTU4OWpzazZCSTg2X25SdmJvbXdXdWNZMUNUQnR5Sk1GQkdWUVBJb1RpWmZEY2RURlhKYUlKTk5zbEVsaHBjSEF2alRwMUQxQmdORQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNZ1EzaGgxNEo4dEZMUDZGNnFicGd1YUZNMHNpQUthZ1BXUXk5bEdCS0l1N013M09lVFhpdWswMEFfUF90UnJpdjM5SEhhN3NVcHBlSkJzWFJOUE55VVBTRUpGUVZUaWp6RmRwQmdBSmpMVUFNQTJMSmJFWjBQazllSFlRbXNSQ05Xc1BKM01LX2t5eTRtTGlWVDZ4TllGUzVIZ0tMS0t2akt0YXNKdDlTUFo0enF0eVFXRkZta19YVHgwbVR2Smc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
