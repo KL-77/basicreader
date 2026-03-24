@@ -154,12 +154,84 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">OpenAI plans to shut down Sora just 15 months after its launch</div>
+            <div class="title">Newly purchased Vizio TVs now require Walmart accounts to use smart features</div>
             <div class="meta">2026-03-24</div>
         </div>
         
         <div id="content-0" style="display:none;">
-            <h2>OpenAI plans to shut down Sora just 15 months after its launch</h2>
+            <h2>Newly purchased Vizio TVs now require Walmart accounts to use smart features</h2>
+            <p><strong>Ars Technica - All content | 2026-03-24</strong></p>
+            <a class="original-link" href="https://arstechnica.com/gadgets/2026/03/newly-purchased-vizio-tvs-now-require-walmart-accounts-to-use-smart-features/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Prospective Vizio TV buyers should know there’s a good chance the set won’t work properly without a Walmart account. In an attempt to better serve advertisers, Walmart, which bought Vizio in December 2024, announced this week that select newly purchased Vizio TVs now require a Walmart account for setup and accessing smart TV features.
+
+Since 2024, Vizio TVs have required a Vizio account, which a Vizio OS website says is necessary for accessing “exclusive offers, subscription management, and tailored support.” Accounts are also central to Vizio’s business, which is largely driven by ads and tracking tied to its OS.
+
+A Walmart spokesperson confirmed to Ars Technica that Walmart accounts will be mandatory on “select new Vizio OS TVs” for owners to complete onboarding and to use smart TV features. The representative added:
+
+Customers who already have an existing Vizio account are being given the option to merge their Vizio account with their Walmart account. Customers with an existing Vizio account can opt out by deleting their Vizio account.
+
+The representative wouldn’t confirm which TV models are affected. We wouldn’t be surprised to see the requirement for a Walmart account eventually expanded to apply to all newly purchased Vizio OS TVs or already-purchased devices through an update.
+
+Walmart’s representative said the Walmart account integration is “designed to respect consumer choice and privacy, with data used in aggregated, permissioned, and compliant ways” but didn’t specify how.
+
+This week’s announcement shows Walmart further integrating Vizio and looking to more deeply leverage Vizio OS’s ads and tracking capabilities to fuel its $6.4 billion ads business. In Vizio’s final quarter as its own company, its ad business made a gross profit of $115.8 million, and its hardware business lost $6.7 million. Walmart doesn’t break out Vizio’s financials, but in a February call with investors, John David Rainey, CFO and EVP of Walmart, said Vizio “saw triple-digit growth in advertising” during Walmart’s fiscal Q4 2026.
+
+While Vizio OS has required a Vizio account since mid-2024 (before Walmart’s acquisition), an account connected to a retail conglomerate has additional and more obvious implications for TVs being used to convince users to buy stuff—particularly from Walmart. Those who may have tolerated making an account with an ad-centric TV brand might resist making one with Walmart.
+
+“The new, streamlined login simplifies setup while establishing a secure identity framework across devices, connecting streaming engagement directly with retail interaction,” Walmart’s announcement said.
+
+Furthering Vizio TVs’ transformation into a Walmart ad vehicle, Walmart announced this week that Vizio OS will show ads for beauty brand L’Oréal that connect to Walmart’s and other companies’ product pages.
+
+For years, Vizio has been transforming from a solidly priced TV brand into an ad business. Over a year after buying Vizio, Walmart is poised to completely push Vizio over that threshold, if it isn’t there already.
+
+Ads and tracking have become nearly impossible to avoid among lower-priced TVs and are becoming more common in premium options, making the elusive dumb TV and other smart TV alternatives increasingly attractive.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Mozilla dev's "Stack Overflow for agents" targets a key weakness in coding AI</div>
+            <div class="meta">2026-03-24</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
+            <h2>Mozilla dev's "Stack Overflow for agents" targets a key weakness in coding AI</h2>
+            <p><strong>Ars Technica - All content | 2026-03-24</strong></p>
+            <a class="original-link" href="https://arstechnica.com/ai/2026/03/mozilla-dev-introduces-cq-a-stack-overflow-for-agents/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Mozilla developer Peter Wilson has taken to the Mozilla.ai blog to announce cq, which he describes as “Stack Overflow for agents.” The nascent project hints at something genuinely useful, but it will have to address security, data poisoning, and accuracy to achieve significant adoption.
+
+It’s meant to solve a couple of problems. First, coding agents often use outdated information when making decisions, like attempting deprecated API calls. This stems from training cutoffs and the lack of reliable, structured access to up-to-date runtime context. They sometimes use techniques like RAG (Retrieval Augmented Generation) to get updated knowledge, but they don’t always do that when they need to—“unknown unknowns,” as the saying goes—and it’s never comprehensive when they do.
+
+Second, multiple agents often have to find ways around the same barriers, but there’s no knowledge sharing after said training cutoff point. That means hundreds or thousands of individual agents end up using expensive tokens and consuming energy to solve already-solved problems all the time. Ideally, one would solve an issue once, and the others would draw from that experience.
+
+That’s exactly what cq tries to enable. Here’s how Wilson says it works:
+
+Before an agent tackles unfamiliar work; an API integration, a CI/CD config, a framework it hasn’t touched before; it queries the cq commons. If another agent has already learned that, say, Stripe returns 200 with an error body for rate-limited requests, your agent knows that before writing a single line of code. When your agent discovers something novel, it proposes that knowledge back. Other agents confirm what works and flag what’s gone stale. Knowledge earns trust through use, not authority.
+
+The idea is to move beyond claude.md or agents.md, the current solution for the problems cq is trying to solve. Right now, developers add instructions for their agents based on trial and error—if they find that an agent keeps trying to use something outdated, they tell it in .md files to do something else instead.
+
+That sort of works sometimes, but it doesn’t cross-pollinate knowledge between projects.
+
+Wilson describes cq as a proof of concept, but it’s one you can download and work with now; it’s available as a plugin for Claude Code and OpenCode. Additionally, there’s an MCP server for handling a library of knowledge stored locally, an API for teams to share knowledge, and a user interface for human review.
+
+I’m just scratching the surface of the details here; there’s documentation at the GitHub repo if you want to learn more details or contribute to the project.
+
+In addition to posting on the Mozilla.ai blog, Wilson announced the project and solicited feedback from developers on Hacker News. Reactions in the thread are mixed. Most people chiming in agree that cq is aiming to do something useful and needed, but there’s a long list of potential problems to solve.
+
+For example, some commenters have noted that models do not reliably describe or track the steps they take—an issue that could balloon into a lot of junk knowledge at scale across multiple agents. There are also several serious security challenges, such as how the system will deal with prompt injection threats or data poisoning.
+
+This is also not the only attempt to address these needs. There are a variety of different projects in the works, operating on different levels of the stack, to try to make AI agents waste fewer tokens by giving them access to more up-to-date or verified information.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-2')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">OpenAI announces plans to shut down its Sora video generator</div>
+            <div class="meta">2026-03-24</div>
+        </div>
+        
+        <div id="content-2" style="display:none;">
+            <h2>OpenAI announces plans to shut down its Sora video generator</h2>
             <p><strong>Ars Technica - All content | 2026-03-24</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/03/openai-plans-to-shut-down-sora-just-15-months-after-its-launch/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -178,13 +250,13 @@ OpenAI was well ahead of the curve when it first previewed Sora’s photorealist
 Competitors have rushed into the AI video space in the time since Sora’s debut, though. ByteDance’s SeeDance 2.0 in particular has drawn significant attention in recent months for viral videos of complex, Hollywood-style scenes, complete with complex cuts and angles. And Google’s impressive Veo video generation tools have formed the basis of its Genie world models, which allow for some level of real-time interactivity with generated video content.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Electronic Frontier Foundation to swap leaders as AI, ICE fights escalate</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Electronic Frontier Foundation to swap leaders as AI, ICE fights escalate</h2>
             <p><strong>Ars Technica - All content | 2026-03-24</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/03/trump-made-opposing-government-spying-cool-again-effs-departing-chief-says/">Visit Original Website</a>
@@ -246,13 +318,13 @@ Last year, Ozer wrote a technical paper outlining possible paths to put the Amer
 “My work is really informed by social justice in the digital age and ensuring that the AI age really needs greater access and equity and justice,” Ozer said. “And so that’s what animates me—leading with vision and clarity and eyes open to the challenges—but always really focused on what can be achieved when we work together with purpose.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">FCC imposes sweeping ban on foreign-made routers, affecting all new models</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>FCC imposes sweeping ban on foreign-made routers, affecting all new models</h2>
             <p><strong>Ars Technica - All content | 2026-03-24</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/03/trump-fcc-prohibits-import-and-sale-of-new-wi-fi-routers-made-outside-us/">Visit Original Website</a>
@@ -300,13 +372,13 @@ Netgear provided a statement to Ars today. “We commend the administration and 
 We contacted numerous other router makers about the FCC action and will update this article if we receive new comments.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Apple releases iOS, iPadOS, macOS 26.4 with a long list of medium-size tweaks</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>Apple releases iOS, iPadOS, macOS 26.4 with a long list of medium-size tweaks</h2>
             <p><strong>Ars Technica - All content | 2026-03-24</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/03/apple-releases-ios-ipados-macos-26-4-with-a-long-list-of-medium-size-tweaks/">Visit Original Website</a>
@@ -324,80 +396,6 @@ The “more intelligent Siri” backed by Google’s Gemini language models also
 Apple also released a few other security-focused updates for older operating systems. The iOS and iPadOS 18.7.7 updates are available for the iPhone XS, XS Max, and XR, as well as the 7th-gen iPad, all devices that don’t support iOS or iPadOS 26. At this point, if you’re using a device that can be upgraded to version 26, Apple is no longer releasing iOS 18 updates for your phone or tablet.
 
 The macOS Sequoia 15.7.5 and macOS Sonoma 14.8.5 updates are also available to Macs that can’t be (or haven’t been) upgraded to macOS Tahoe. Those older macOS versions should also get a separate Safari 26.4 update, though it’s not listed on Apple’s security page yet.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-4')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">NASA kills lunar space station to focus on ambitious Moon base</div>
-            <div class="meta">2026-03-24</div>
-        </div>
-        
-        <div id="content-4" style="display:none;">
-            <h2>NASA kills lunar space station to focus on ambitious Moon base</h2>
-            <p><strong>Ars Technica - All content | 2026-03-24</strong></p>
-            <a class="original-link" href="https://arstechnica.com/space/2026/03/nasa-kills-lunar-space-station-to-focus-on-ambitious-moon-base/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">WASHINGTON, DC—NASA Administrator Jared Isaacman on Tuesday laid out a sweeping vision for the space agency’s next decade during an event called “Ignition” in which he and other senior leaders set out their exploration plans.
-
-Isaacman and his colleagues shared a number of major announcements, including outlining a nuclear-powered mission to Mars that will release three helicopters there and major changes to commercial space stations. However, most significantly, Isaacman outlined a detailed plan to construct a substantial Moon base over the next decade. He framed it as part of a “great power” challenge, saying that if NASA does not succeed now it will cede the Moon to China.
-
-The base included long-range drones, multiple sources of power, sophisticated communications, permanent habitats, scientific laboratories, local manufacturing, and more. To accomplish this, NASA will work with a broad range of industry partners capable of sending medium-size and large cargos to the lunar surface. Isaacman also confirmed that NASA will no longer build a Lunar Gateway in orbit around the Moon, but would rather focus all of its energy and resources on the lunar surface.
-
-Is this affordable? One of Isaacman’s fundamental beliefs is that NASA does not have a revenue problem. Rather, it has an expense problem.
-
-“For too long we tried to satisfy every stakeholder, and the results of that are very well documented in Office of the Inspector General reports,” he said. “Billions of dollars wasted. Years lost. Hardware that never launched. Fewer flagship science missions. And fewer astronauts in space, which means fewer kids dressing up as astronauts for Halloween. I don’t like it. The president doesn’t like it. The American people have waited long enough.”
-
-Isaacman spoke inside the Webb Auditorium at NASA’s Headquarters in Washington, DC. In the audience were about 160 officials from industry, politicians, and leaders of foreign space agencies. They will participate in “closed door” briefings on Wednesday to get more details about contract opportunities with the new plans.
-
-But publicly, Isaacman sought to be clear with NASA’s contractors. NASA, he said, needed to do better. And they needed to do better. The space agency is prepared to do everything it can to help its contractors succeed, from embedding subject matter experts to relaxing requirements. But the time for excuses is coming to an end, he said.
-
-“We are not going to sit idly by while schedules slip or budgets are exceeded,” he said. “Expect uncomfortable action if that is what it takes. Because the public has invested $100 billion and has been very patient with America’s return to the Moon. Expectations are rightfully very high. Taxpayers and their representatives in Congress should demand accountability from every leader and every CEO if those expectations are not met.”
-
-Here, Isaacman was referencing NASA’s glacial progress over the last 20 years, with many billions spent on the Orion spacecraft and Space Launch System rocket, for a very limited return. For so long NASA has seemed far more interested in building this deep space hardware rather than what it needs to actually accomplish in deep space.
-
-One of the highlights on Tuesday was an hourlong presentation by Carlos Garcia-Galan, who formerly was a deputy program manager for the Gateway but now has been installed as leader of the Moon Base initiative. Garcia-Galan, however, did not seem downcast by the end of the Gateway. Rather, he seemed fired up about building sprawling infrastructure on the Moon.
-
-“The Gateway team, both NASA and industry and the international partners, were an awesome team,” he said in an interview afterward. “While I do believe an orbiting outpost has value in our overall exploration goals, this doesn’t mean that we can’t do it later. We need to be focused on the surface, and everyone wants to be on the surface. So I’m super excited, and I’m sure the rest of the Gateway team will be once they start to shift their focus.”
-
-Garcia-Galan explained that the lunar base would be established through three phases, using a mix of providers primarily through a scaled up Commercial Lunar Payload Services program. Each of these three phases would cost on the order of $10 billion.
-
-The first of these, running through 2028, is estimated to comprise 21 landings, putting a total of 4 metric tons of payload on the Moon, including the VIPER rover to prospect for lunar resources; four “Moon Fall” drones that can travel up to 50 km and reach areas difficult for humans to access; initial versions of a lunar terrain vehicle capable of surviving up to 150 hours without sunlight; and radioisotope heater units. During this phase NASA will also seek to establish two lunar orbital communications satellite constellations.
-
-As part of phase two, running from 2029 to 2032, NASA will seek to secure a site for a lunar base. This phase is projected to entail 27 landings with a total mass of 60 metric tons. These landed payloads would include larger, pressurized rovers, solar and nuclear power sources for surface activities, towers for communication, and excavator rovers.
-
-The final phase, from 2032 to 2036, will establish habitats for long-term human presence, supporting four astronauts for four-week missions. Over the course of 28 landings, NASA would seek to place 150 metric tons of payload on the surface, including fission power, multiple rovers, an “industrial neighborhood” to support in-situ manufacturing, and the capability to return hundreds of kilograms to Earth, such as scientific experiments, critical hardware, and lunar materials.
-
-The Moon base will be NASA’s main exploration focus going forward. Garcia-Galan said part of his job will be bringing together the various efforts at NASA previously focused on or near the Moon and make it clear to all that the work they’re doing must be bent toward supporting a Moon base.
-
-This is why the Commercial Lunar Payload Services program will be scaled up, to accommodate the increased need for frequent access to the Moon with larger cargoes. It’s why Gateway had to go. It’s why NASA will develop not one, but two networks of communications satellites.
-
-With the Ignition event on Tuesday, Isaacman brought this much-needed focus to the space agency. For a long time reporters have joked that NASA stands for “Never A Straight Answer” because it wasn’t quite clear where NASA was going, or why it was doing some of the things it was doing. Now there is a clear plan for people like Garcia-Galan to go and execute.
-
-“It’s very clear that we need to be focused on one thing, not 10 things,” he said. “So for me, this is a game-changer. It’s quite incredible.”</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Google's new version of Android Automotive will move beyond infotainment</div>
-            <div class="meta">2026-03-24</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Google's new version of Android Automotive will move beyond infotainment</h2>
-            <p><strong>Ars Technica - All content | 2026-03-24</strong></p>
-            <a class="original-link" href="https://arstechnica.com/cars/2026/03/google-wants-android-automotive-to-control-more-of-your-car/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Android has been creeping into cars for more than a decade, first with the phone-based Android Auto and later with built-in Android Automotive OS. Even when Android is running on cars, it has not been allowed outside of the infotainment box. That could begin changing soon with Google’s new plans for software-defined vehicles (SDVs), but don’t expect most carmakers to step on the gas right away.
-
-Car companies are notoriously protective of the software running on their vehicles, which has become a core part of the experience as cars have shifted to “computers on wheels.” Part of that is a matter of safety, but the data collected by automotive software is also highly valuable. As a result of everyone going their own way, vehicles have different software stacks that can include incompatible components from myriad suppliers. Google says it can fix this “fragmentation” mess with a more powerful version of Android Automotive OS (AAOS) designed for SDVs.
-
-For better or worse, cars are increasingly reliant on software for new features—for example, remote climate controls or using smart keys on your phone. Google’s car efforts didn’t start there, but they’ve definitely trended in that direction. Early on, the company’s in-car play was Android Auto, which could run on a phone or be projected from a phone to supported car displays. Google eventually dropped the phone-based Auto to focus on the projected Android Auto experience and Android Automotive OS, which runs Android locally on the vehicle. That’s where Google’s latest initiative is focused.
-
-Letting Big Tech interact with a car’s hardware opens a whole can of worms. So, Android Automotive has thus far been limited to infotainment systems to handle mapping and streaming music—all the things you can do with a phone mounted to the dashboard. Google’s next step offers carmakers a full Android Automotive SDV, allowing the embedded Google software to interact with non-safety parts of the car. So the Android-powered screen in a car might be able to control the air conditioning or pipe in driving data to let you know when maintenance is required. However, it won’t be responsible for making sure your intelligent braking or lane-keeping systems work as intended.
-
-Google claims the new AAOS will take pressure off of individual carmakers to provide a good user experience, while also delivering features to drivers more quickly and efficiently with Android OTAs. The locked-down Android Automotive experience has gotten some traction, with companies like Volvo, BMW, Volkswagen, and Rivian using it in at least some vehicles. They’re not all on board with the platform’s SDV future yet, though.
-
-Google says its early work on AAOS SDV includes Renault and Qualcomm. The OS will be released to open source later this year, allowing other automakers to experiment with it. Naturally, they’ll have to go through Google if they want to actually license the services that make it all work.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -682,11 +680,47 @@ More on humanoid robots: Trade Unions Alarmed by Robots Designed to Do Blue Coll
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
-            <div class="title">Anthropic hands Claude Code more control, but keeps it on a leash</div>
+            <div class="title">Kentucky woman rejects $26M offer to turn her farm into a data center</div>
             <div class="meta">2026-03-24</div>
         </div>
         
         <div id="content-12" style="display:none;">
+            <h2>Kentucky woman rejects $26M offer to turn her farm into a data center</h2>
+            <p><strong>TechCrunch | 2026-03-24</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/03/24/kentucky-woman-rejects-26-million-offer-to-turn-her-farm-into-a-data-center/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">For generations, Ida Huddleston and her family have owned a farm in northern Kentucky. And they’ve turned down at least one multimillion-dollar offer to preserve it.
+
+Last year, a “major artificial intelligence company” offered them $26 million to sell part of their farm for a proposed data center, according to a recent report from WKRC. Huddleston and her family declined, saying they didn’t want a data center built near them or on any of their 1,200 acres of farmland outside Maysville, Kentucky.
+
+“They call us old stupid farmers, you know, but we’re not,” Huddleston, who is 82, told Local 12 WKRC. “We know whenever our food is disappearing, our lands are disappearing, and we don’t have any water — and that poison. Well, we know we’ve had it,” apparently referring to recent water shortages and ground poisoning that’s been widely reported in land near data centers.
+
+In an interview with the news station, Huddleston said she doubted the data center would bring jobs or economic growth to Mason County. “It’s a scam,” she said.
+
+The company, which WKRC did not name, revised its plans and filed a zoning request to rezone more than 2,000 acres in northern Kentucky, according to the report — meaning the AI firm may still build its data center next to Huddleston’s land.
+
+Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.
+
+Subscribe for the industry’s biggest tech news
+
+Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
+
+TechCrunch Mobility is your destination for transportation news and insight.
+
+Startups are the core of TechCrunch, so get our best coverage delivered weekly.
+
+Provides movers and shakers with the info they need to start their day.
+
+By submitting your email, you agree to our Terms and Privacy Notice.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Anthropic hands Claude Code more control, but keeps it on a leash</div>
+            <div class="meta">2026-03-24</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
             <h2>Anthropic hands Claude Code more control, but keeps it on a leash</h2>
             <p><strong>TechCrunch | 2026-03-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/24/anthropic-hands-claude-code-more-control-but-keeps-it-on-a-leash/">Visit Original Website</a>
@@ -728,13 +762,13 @@ Nothing CEO Carl Pei says smartphone apps will disappear as AI agents take their
 Nvidia is quietly building a multibillion-dollar behemoth to rival its chips business</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">Spotify tests new tool to stop AI slop from being attributed to real artists</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>Spotify tests new tool to stop AI slop from being attributed to real artists</h2>
             <p><strong>TechCrunch | 2026-03-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/24/spotify-tests-new-tool-to-stop-ai-slop-from-being-attributed-to-real-artists/">Visit Original Website</a>
@@ -776,13 +810,13 @@ Nothing CEO Carl Pei says smartphone apps will disappear as AI agents take their
 Nvidia is quietly building a multibillion-dollar behemoth to rival its chips business</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">Databricks bought two startups to underpin its new AI security product</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Databricks bought two startups to underpin its new AI security product</h2>
             <p><strong>TechCrunch | 2026-03-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/24/databricks-buys-two-startups-lakewatch-antimatter-siftd-ai-security/">Visit Original Website</a>
@@ -820,13 +854,13 @@ Nothing CEO Carl Pei says smartphone apps will disappear as AI agents take their
 Nvidia is quietly building a multibillion-dollar behemoth to rival its chips business</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Crusoe makes big battery buys for its data centers</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Crusoe makes big battery buys for its data centers</h2>
             <p><strong>TechCrunch | 2026-03-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/24/crusoe-makes-big-battery-buys-for-its-data-centers/">Visit Original Website</a>
@@ -860,13 +894,13 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Arm is releasing the first in-house chip in its 35-year history</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Arm is releasing the first in-house chip in its 35-year history</h2>
             <p><strong>TechCrunch | 2026-03-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/03/24/arm-is-releasing-its-first-in-house-chip-in-its-35-year-history/">Visit Original Website</a>
@@ -896,50 +930,6 @@ In March, Intel and AMD told their customers in China that wait times for their 
 Becca is a senior writer at TechCrunch that covers venture capital trends and startups. She previously covered the same beat for Forbes and the Venture Capital Journal.
 
 You can contact or verify outreach from Becca by emailing rebecca.szkutak@techcrunch.com.
-
-Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.
-
-Someone has publicly leaked an exploit kit that can hack millions of iPhones
-
-Delve accused of misleading customers with ‘fake compliance’
-
-Cyberattack on vehicle breathalyzer company leaves drivers stranded across the US
-
-Jeff Bezos reportedly wants $100 billion to buy and transform old manufacturing firms with AI
-
-Employees had to restrain a dancing humanoid robot after it went wild at a California restaurant
-
-Nothing CEO Carl Pei says smartphone apps will disappear as AI agents take their place
-
-Nvidia is quietly building a multibillion-dollar behemoth to rival its chips business</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">OpenAI’s plans to make ChatGPT more like Amazon aren’t going so well</div>
-            <div class="meta">2026-03-24</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>OpenAI’s plans to make ChatGPT more like Amazon aren’t going so well</h2>
-            <p><strong>TechCrunch | 2026-03-24</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/03/24/openais-plans-to-make-chatgpt-more-like-amazon-arent-going-so-well/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">OpenAI’s plans to make ChatGPT into an e-commerce hub aren’t exactly panning out — at least, not yet. In an announcement on Tuesday, the company revealed that it’s pivoting away from a recently launched feature that lets users buy items directly from the chatbot’s interface.
-
-OpenAI originally launched buying capabilities in ChatGPT last year — positioning itself as a “shopping assistant” that could connect consumers to relevant vendors. A feature called “Instant Checkout” launched in September and encouraged users to talk with the chatbot about what they were looking to buy and, much like a traditional e-commerce site, add products to a checkout cart within ChatGPT. The items were purchased from the vendors, but ChatGPT acted as a portal for those purchases.
-
-However, Instant Checkout has not been a huge success. “We’ve found that the initial version of Instant Checkout did not offer the level of flexibility that we aspire to provide, so we’re allowing merchants to use their own checkout experiences while we focus our efforts on product discovery,” the company explained in its blog post. OpenAI clarified to TechCrunch that merchants would still have the option of incorporating the feature for the time being through apps within ChatGPT.
-
-An OpenAI spokesperson said that the company would be deprioritizing the development of Instant Checkout as a stand-alone feature and that it planned to prioritize the development of product discovery for consumers instead. OpenAI would continue to support a variety of checkout paths, including through merchants’ own websites, they said.
-
-The Information and CNBC had previously reported that OpenAI’s new plan was for merchants to create their own apps within ChatGPT, which would then route users to checkout experiences at the merchants’ respective websites. A source who spoke with The Information noted that ChatGPT users simply “weren’t using the chatbot to actually help them make purchases,” and a study from October that looked at referral traffic from ChatGPT found that e-commerce sites were not making much money from ChatGPT users.
-
-Instead of transforming ChatGPT into a shopping portal, what OpenAI is doing now is crafting the chatbot into a centralized hub of consumer information. That way, online shoppers will see it as an intermediary research tool that can help them decide what product to ultimately buy.
-
-This shopping experience is powered by its Agentic Commerce Protocol (ACP), which is its open standard for e-commerce, which the company developed in partnership with fintech giant Stripe. The protocol utilizes data provided by participating merchants.
-
-Going forward, OpenAI said that ChatGPT would provide more detailed information about products — showcasing side-by-side pictures, while also providing other comparative metrics for each item — like prices, features, and reviews.
 
 Actively scaling? Fundraising? Planning your next launch?TechCrunch Founder Summit 2026 delivers tactical playbooks and direct access to 1,000+ founders and investors who are building, backing, and closing.
 
@@ -1212,11 +1202,30 @@ For now, both sides can share credit for striking a deal and pushing women’s s
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Google's Android Automotive Is Moving From the Dashboard To the 'Brain' of the Car</div>
+            <div class="title">Wine 11 Rewrites How Linux Runs Windows Games At the Kernel Level</div>
             <div class="meta">2026-03-24</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Wine 11 Rewrites How Linux Runs Windows Games At the Kernel Level</h2>
+            <p><strong>Slashdot | 2026-03-24</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/26/03/24/1946246/wine-11-rewrites-how-linux-runs-windows-games-at-the-kernel-level?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Well at least someone can get their 11th version of something running correctly.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Things are not as simple as they seems at first.
+- Edward Thorp</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Google's Android Automotive Is Moving From the Dashboard To the 'Brain' of the Car</div>
+            <div class="meta">2026-03-24</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Google's Android Automotive Is Moving From the Dashboard To the 'Brain' of the Car</h2>
             <p><strong>Slashdot | 2026-03-24</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/03/24/1958223/googles-android-automotive-is-moving-from-the-dashboard-to-the-brain-of-the-car?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1225,27 +1234,74 @@ For now, both sides can share credit for striking a deal and pushing women’s s
 
 Yeah, I prefer cars w/o &quot;brains&quot; of their own!
 
+Get ready for those!
+And they can only be cleared at a dealership.
+
+And they can only be cleared at a dealership.
+
 You idiots are going the wrong direction. I don&#39;t need my &quot;digital life&quot; to follow me around in the &quot;brains&quot; of my car.
+
+The new Gemini voice integration with Android Auto is terrible.
+
+It knows less than the old voice assistant, is much more verbose and can&#39;t read/remember preferences for apps like spotify for music and google maps for maps.
+
+Wait until the HUD displays ads while you&#39;re stopped at a red light, when you start your car, when you turn off the engine, etc.
+
+If these were self-driving cars, it would be different, but I&#39;d cut the antenna wires before getting home from the dealer.
+
+The word you are looking for is metastasizing.
+
+There&#39;s already a movie about that, The Fate of the Furious (2017):  The swarm of drone cars, not the harpooning-a-car-like-a-whale scene.
+
+&quot;From a truly integrated voice experience to proactive maintenance reminders, your car will become a true extension of your digital life,&quot; ...
+(a) I don&#39;t like &quot;voice experiences&quot; and try not to use them.
+(b) I don&#39;t want my car nagging me about recommended maintenance - or anything really.
+(c) I have a minimal &quot;digital life&quot; and don&#39;t want my car(s) involved with that, especially as an &quot;extension&quot; - whatever that means here..
+
+I&#39;m not a Luddite, but don&#39;t need or want every part of my life integrated, especially as Google (and/or others) will be trying to track and monetize it.  There&#39;s nothing wrong with compartmentalizing things.
+
+&quot;From a truly integrated voice experience to proactive maintenance reminders, your car will become a true extension of your digital life,&quot; ...
+
+(a) I don&#39;t like &quot;voice experiences&quot; and try not to use them.
+(b) I don&#39;t want my car nagging me about recommended maintenance - or anything really.
+(c) I have a minimal &quot;digital life&quot; and don&#39;t want my car(s) involved with that, especially as an &quot;extension&quot; - whatever that means here..
+
+I&#39;m not a Luddite, but don&#39;t need or want every part of my life integrated, especially as Google (and/or others) will be trying to track and monetize it.  There&#39;s nothing wrong with compartmentalizing things.
+
+Everything they are talking about is still in the infotainment system, which is allowed to send some limited data to the cluster.
+
+... no longer meets the minimum system requirements for the current version of Android Automotive. Please upgrade before attempting to drive.
+
+Sweet, hackable cars that won&#39;t go when it&#39;s the most important possible time that they go, such as IN AN EMERGENCY
+
+it&#39;s fine, all capitalists are idiots and their products will not survive what&#39;s coming
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Nearly every complex solution to a programming problem that I
-have looked at carefully has turned out to be wrong.
-		-- Brent Welch</div>
+Things are not as simple as they seems at first.
+- Edward Thorp</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">OpenAI Discontinues Sora Video Platform App</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>OpenAI Discontinues Sora Video Platform App</h2>
             <p><strong>Slashdot | 2026-03-24</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/03/24/2050222/openai-discontinues-sora-video-platform-app?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Disney made a major investment and had them shut Sora down so Disney can use it in house exclusively.
+            <div id="article-text">I think that Subject was an artifact of a lust to FP. Care to explain? Most obvious candidate was &quot;Only?&quot;, but I don&#39;t see how to fit it to the context. Maybe you mean that OpenAI should discontinue something else?
+
+But I did have a funny idea. Another simplistic solution approach for the big problems (and of course doomed to fail for that reason among others). I&#39;m a big believer in free speech, but here&#39;s a funny idea:
+
+Should there be a tax on the profits from for-profit free speech?
+
+Disney made a major investment and had them shut Sora down so Disney can use it in house exclusively.
+
+Interesting... I&#39;d be surprised that Sam would leave a BILLION on the table.  I wonder if Disney pulled the plug with the new CEO trying to curry favor with the actor&#39;s union and that&#39;s why OpenAI decided to &quot;refocus&quot;
 
 But how will morons entertain even dumber morons with AI slop cat videos???
 
@@ -1254,6 +1310,8 @@ Cat videos? Nah. Sora was all about bringing dead actors back to life in dumb 10
 I&#39;ll bet that they generated about 20 TB of just Wilford Brimley memes, he was like the patron saint of that service.
 
 Never mind this. When will the Retool and MongoDB ad banners meet in the middle?
+
+&quot;Studies show that we can fill up to 80% of someone&#39;s visual field with ads before we induce a seizure.&quot; -RP1
 
 You&#39;re complaining about the content, essentially the &quot;writing&quot; of the &quot;show&quot;. When properly instructed Sora could write decent shows. But, regardless of teh content. Sora&#39;s production quality is amazing.
 
@@ -1265,20 +1323,23 @@ Yes, cat videos suck because of the suject matter.
 
 The Sherwood Oaks Residents Association had no comment to make.
 
+The LTX 2 series appears able to do all the same things locally.
+
+OpenAI probably shut Sora down so the Sora budget can go somewhere with a better looking future. Every week Altman&#39;s plans for data centers full of NVIDIA chips gobbling up incredible amounts of nuclear power get bigger. That money has to come from somewhere.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Nearly every complex solution to a programming problem that I
-have looked at carefully has turned out to be wrong.
-		-- Brent Welch</div>
+Things are not as simple as they seems at first.
+- Edward Thorp</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Arm Unveils New AGI CPU With Meta As Debut Customer</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Arm Unveils New AGI CPU With Meta As Debut Customer</h2>
             <p><strong>Slashdot | 2026-03-24</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/03/24/1933211/arm-unveils-new-agi-cpu-with-meta-as-debut-customer?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1288,6 +1349,10 @@ have looked at carefully has turned out to be wrong.
 In other words, it&#39;s just another fancy ARM SoC with a silly name. Like the trillions of other ARM SoCs out there.
 
 The big question I suppose is why they went with ARM and not say, RISC-V to make their SoC.
+
+Are you asking why ARM went with ARM to make their SoC?
+
+Because they have a software ecosystem that is well understood by just about everyone?
 
 ...that had zero technical information about the chip design
 
@@ -1307,18 +1372,17 @@ Has anyone else noticed that somehow SAP is always somewhere in there in everyth
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Nearly every complex solution to a programming problem that I
-have looked at carefully has turned out to be wrong.
-		-- Brent Welch</div>
+Things are not as simple as they seems at first.
+- Edward Thorp</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Anthropic's Claude Can Now Use Your Computer To Finish Tasks</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Anthropic's Claude Can Now Use Your Computer To Finish Tasks</h2>
             <p><strong>Slashdot | 2026-03-24</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/03/24/1649222/anthropics-claude-can-now-use-your-computer-to-finish-tasks?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1348,6 +1412,8 @@ I use the Termius app on my phone, SSH to my workstation, run tmux attach -d to 
 
 I&#39;ve told Claude to write a design doc in Confluence (which I reviewed and shared with others to get fee
 
+I&#39;m surprised Anthropic doesn&#39;t have an app that let&#39;s you hook up from your phone to your development environment and cause all that to happen without the intermediary. Coming up soon I guess.
+
 a user running late for a meeting. The user asks Claude to export a pitch deck as a PDF file and attach it to a meeting invite. The video shows Claude carrying out the task.Sounds like mid-level management drone work. Next step: Claude handles the meeting presentation. One entire management tier wiped out.
 I&#39;m OK with this.
 
@@ -1361,18 +1427,17 @@ One big difference between this Claude feature and openClaw is that Claude is on
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Nearly every complex solution to a programming problem that I
-have looked at carefully has turned out to be wrong.
-		-- Brent Welch</div>
+Things are not as simple as they seems at first.
+- Edward Thorp</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Self-Propagating Malware Poisons Open Source Software, Wipes Iran-Based Machines</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Self-Propagating Malware Poisons Open Source Software, Wipes Iran-Based Machines</h2>
             <p><strong>Slashdot | 2026-03-24</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/03/24/1638228/self-propagating-malware-poisons-open-source-software-wipes-iran-based-machines?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1383,7 +1448,15 @@ Israel has zero hackers working on trying to damage the Iranian nuclear program.
 
 And maybe that&#39;s exactly what the creators of that malware want you to think.
 
+And ultimately funded by the USA thanks to the billions we give to Israel. Thanks AIPAC https://en.wikipedia.org/wiki/... [wikipedia.org]
+
+This is what coward trolls say then they have no facts to work with. I thought the paid Israeli trolls were all huddled in bunkers now.
+
+Notice the number of commas in this figure. https://foreignassistance.gov/... [foreignassistance.gov]
+
 None. This is entirely Russia, with its single washing machine CPU.
+
+New Russian CPU is BIGGEST and BEST! 1000x size of Intel CPU!
 
 How long will it be before malware such as this is used to (further) poison LLMs? Is there the potential to make LLM outputs strategically false and/or propagandistic and/or psychologically damaging?
 
@@ -1393,6 +1466,8 @@ From what I see, Iran is completely offline at this point, right?
 
 That&#39;s what it seems.  After the internet shutdown of January 8th, there hasn&#39;t been a large scale restoration of online access there
 
+On the gripping hand, we don&#39;t want them fixing their shit after we broke it in the first place. If we wanted a secular Iran we could have simply done nothing we&#39;ve done to them for many decades. This was not what we wanted.
+
 Kubermetes is like Docker. They&#39;re container systems. Basically they use Linux namespaces to let you run an independent userspace to your current userspace. This can have valuable benefits - like needing to run an ancient userspace for some tool on modern hardware (e.g., if you need an Ubuntu 14.04 LTS environment for some reason, it&#39;s basically impossible to run it on modern hardware without building your own kernel and stuff).
 
 All Linux is doing is standard app level virtualization - you know the same prot
@@ -1401,81 +1476,8 @@ Good job, malware dudes. Your malware is now GPLed. Enjoy seeing it used without
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Nearly every complex solution to a programming problem that I
-have looked at carefully has turned out to be wrong.
-		-- Brent Welch</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Epic Games To Cut More Than 1,000 Jobs As Fortnite Usage Falls</div>
-            <div class="meta">2026-03-24</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Epic Games To Cut More Than 1,000 Jobs As Fortnite Usage Falls</h2>
-            <p><strong>Slashdot | 2026-03-24</strong></p>
-            <a class="original-link" href="https://games.slashdot.org/story/26/03/24/1628213/epic-games-to-cut-more-than-1000-jobs-as-fortnite-usage-falls?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Fortnight is 2 weeks in your freedom units.
-
-What&#39;s the metric week?Epic Games measures their success in Red-blooded Bald Eagle units, spank you very much.Currently this is tracking at 3.42 GTA6 eons, or approximately 2.469 Duke Nukem forevers.  Per the Are-You-Not-Entertained rules when consumers are forced to wait longer than Moores Law for any reasonable sequel.
-
-Epic Games measures their success in Red-blooded Bald Eagle units, spank you very much.
-
-Currently this is tracking at 3.42 GTA6 eons, or approximately 2.469 Duke Nukem forevers.  Per the Are-You-Not-Entertained rules when consumers are forced to wait longer than Moores Law for any reasonable sequel.
-
-Tim Sweeny is reportedly a big advocate for the value of generative AI in developing games.  I think it&#39;d be fair to say he&#39;s one of those AI inevitablists.
-
-But money is fungible.  If you earn or save a bunch of money through behavior A, then you might not be required to make a sacrifice in order to save or earn that money though behavior B.
-
-So if Sweeny says that the layoffs aren&#39;t AI-related, he&#39;s either lying or he&#39;s admitting that AI isn&#39;t helping the company&#39;s bottom line after all.
-
-You mean Unreal Tournament 3? That was 19 years ago, and it sold well and got good reviews.
-
-I remember playing Unreal Tournament 2004 a ton. I loved all the different difficulty levels to keep it challenging or if you just wanted to be a badass you could set it lower. Lots of different levels, including a really awesome single player mode that took you through different map settings (CTF, Domination, timed match with goals).
-
-I even still have the box it came in and the CDs for install and playing, though I&#39;m not sure if I still have the hack to play without the CD now. I remember buying it specific
-
-You mean Unreal Tournament 3? That was 19 years ago, and it sold well and got good reviews.No, Unreal Tournament (2014)  [wikipedia.org].It&#39;s pretty depressing what happened, actually, because on paper, it was awesome. The base game was free, and it even had a new game mode called Blitz. The amount of maps it shipped with was pretty meager, but the goal was to have modders sell their maps/mods/skins/etc as IAPs within the game and then they got a cut. The game still allowed for private/dedicated servers, and while it lacked some of the polish of UT3, the framework was there and it really worked well as a de facto
-
-You mean Unreal Tournament 3? That was 19 years ago, and it sold well and got good reviews.
-
-No, Unreal Tournament (2014)  [wikipedia.org].
-
-It&#39;s pretty depressing what happened, actually, because on paper, it was awesome. The base game was free, and it even had a new game mode called Blitz. The amount of maps it shipped with was pretty meager, but the goal was to have modders sell their maps/mods/skins/etc as IAPs within the game and then they got a cut. The game still allowed for private/dedicated servers, and while it lacked some of the polish of UT3, the framework was there and it really worked well as a de facto
-
-Anywayâ¦ Tim Sweeney has ensured his golden parachute so all is good.
-
-Fortnite is their flagship title? More like their only title.
-
-I hate you. I had such fond memories of Jazz Jackrabbit right until you pointed out that it was developed by these shitbags. To be fair they weren&#39;t shitbags at the time though.
-
-But yeah they have more than one title. They bought Rocket Racing (and then proceeded to abandon Linux despite it being one of the few Linux platform titles.
-
-But man nostalgia. We recently downloaded Unreal Tournament 2004 at a LAN party and had a hell of a fun time. Also I have fond memories of the early Gears of War titles.
-
-How many billions did that game make them? Seriously, this just be one of the highest grossing videogames ever, no? How long has it been going? 9  years? That&#39;s pretty epic if you ask me. This game was nothing other than an epic success (no pun intended).
-
-I find it hard to believe that there were over 1,000 people working on Fortnite to fire. The game has been around for almost a decade, the visuals have the detail of a Dreamcast game, and the sound is nothing to write home about. It does not take 1,000 people to poop out the mediocre advertising that makes up much of the new content in Fortnite. Something else is wrong at Epic and I think that it probably has something to do with the continuing unpopularity of the Epic Games Store.
-
-Having played Fortnite since shortly after it came out, mostly as a way to keep in touch with my nephews and nieces, the game has been in decline for quite a while. They made a number of cutbacks over the years and added a bunch of new subscriptions, and than raised the cost of everything. Just as an example, Fortnite used to end every chapter with an event. Millions of people would log on, and watch what was essentially the epilogue of that season and the trailer for the next. They gradually cut back and m
-
-Epic&#39;s been coasting on Fortnite and Unreal Engine money.
-
-The Epic Game Store is a joke and loses them money, between giving away games, courting publishers over players, and not even trying to compete with other storefronts (Steam is feature rich, GOG is DRM-free). Paying for exclusives, even though usually timed, also costs money and doesn&#39;t really sit well with a lot of gamers.
-
-It also costs money to fight companies like Google and Valve, to make it to where in-game transactions aren&#39;t charged the same cut that Google and Valve&#39;s storefronts have.
-
-It sounds like the quality of Fortnite has dwindled, and the costs for skins has gone up.
-
-It doesn&#39;t help that it&#39;s run by Tim Sweeney. He&#39;s a bit of an asshole and isn&#39;t really anyone that should be speaking for the company.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Nearly every complex solution to a programming problem that I
-have looked at carefully has turned out to be wrong.
-		-- Brent Welch</div>
+Things are not as simple as they seems at first.
+- Edward Thorp</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1775,11 +1777,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">New framework addresses privacy, dignity risks posed by modern AI systems</div>
+            <div class="title">Widespread AI adoption masks deeper problem, study shows</div>
             <div class="meta">2026-03-24</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>Widespread AI adoption masks deeper problem, study shows</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-24</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-03-widespread-ai-masks-deeper-problem.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">New framework addresses privacy, dignity risks posed by modern AI systems</div>
+            <div class="meta">2026-03-24</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>New framework addresses privacy, dignity risks posed by modern AI systems</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-24</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-framework-privacy-dignity-posed-modern.html">Visit Original Website</a>
@@ -1787,13 +1803,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">60 years of fiber optics: How a carrier of light you can't see underlies much of the modern world</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>60 years of fiber optics: How a carrier of light you can't see underlies much of the modern world</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-24</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-years-fiber-optics-carrier-underlies.html">Visit Original Website</a>
@@ -1801,13 +1817,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Generative AI-powered forecasting for sustainable urban development</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Generative AI-powered forecasting for sustainable urban development</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-24</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-generative-ai-powered-sustainable-urban.html">Visit Original Website</a>
@@ -1815,13 +1831,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Platinum-free fuel cells get a boost thanks to carbon-coated nickel catalyst</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Platinum-free fuel cells get a boost thanks to carbon-coated nickel catalyst</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-24</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-platinum-free-fuel-cells-boost.html">Visit Original Website</a>
@@ -1829,30 +1845,16 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">OpenAI Foundation pledges $1B in grants to ensure AI 'benefits all of humanity'</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>OpenAI Foundation pledges $1B in grants to ensure AI 'benefits all of humanity'</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-24</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-03-openai-foundation-pledges-1b-grants.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Thousands of pico-satellites may transform how phones connect to space</div>
-            <div class="meta">2026-03-24</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Thousands of pico-satellites may transform how phones connect to space</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-03-24</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-03-thousands-pico-satellites-space.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
@@ -1872,7 +1874,7 @@ Already a member?
 
 &quot;The through line of my career has always been about driving greater access and equity and justice in the digital age,&quot; Ozer said in an interview with The Register. &quot;EFF&#39;s work has been my life&#39;s work. EFF&#39;s people are my community, and EFF has been my closest partner for more than two decades ....So it feels very right to be taking the torch from the amazing Cindy Cohn and leading EFF in this next chapter.&quot;
 
-Ozer comes to the EFF from the American Civil Liberties Union (ACLU) of Northern California, where she has led the organization&#39;s Technology and Civil Liberties Program. Prior to that, she served as the inaugural executive director of the Center for Constitutional Democracy at UC Law San Francisco.
+Ozer comes to the EFF from the Center for Constitutional Democracy at UC Law San Francisco where she served as the inaugural executive director. Prior to that she spent more than 20 years at American Civil Liberties Union (ACLU) of Northern California, where she has led the organization’s Technology and Civil Liberties Program.
 
 Among her many accomplishments, Ozer was instrumental in the passage of the California Electronic Communications Privacy Act (CalECPA) and California Reader Privacy Act. She also oversaw the ACLU&#39;s Demand Your dotRights privacy campaign.
 
@@ -2113,11 +2115,39 @@ Copyright. All rights reserved © 1998–2026</div>
         
         <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
-            <div class="title">Meta misled users about its products’ safety, jury decides</div>
+            <div class="title">Instagram and Facebook are about to be filled with affiliate content</div>
             <div class="meta">2026-03-24</div>
         </div>
         
         <div id="content-48" style="display:none;">
+            <h2>Instagram and Facebook are about to be filled with affiliate content</h2>
+            <p><strong>The Verge | 2026-03-24</strong></p>
+            <a class="original-link" href="https://www.theverge.com/news/899717/meta-instagram-facebook-affiliate-shopping-links-reels">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">﻿Influencers will be able to link products directly in their content, similar to how TikTok Shop links are embedded.
+
+﻿Influencers will be able to link products directly in their content, similar to how TikTok Shop links are embedded.
+
+Instagram and Facebook content will soon have shopping links baked into posts, essentially cutting out third-party “link in bio”-style tools. Meta announced Tuesday that it’s adding commerce features on the two platforms, though the functionality will be slightly different for each.
+
+On Facebook, content creators will be able to link their affiliate accounts they have with brands and tag products in Reels and photos. Typically when an influencer wants to send audiences to their affiliate link, they have to comment on a post with a link to the product, or direct audiences toward an affiliate platform like ShopMy or LTK. Now, approved products will be attached directly to content in the form of a floating bubble that viewers can click directly. Affiliate partners are limited at launch: In the US, the program will start with Amazon, with Temu and eBay being added in the coming months.
+
+On Instagram, influencers will be able to load up to 30 shoppable products into a single Reel. Products aren’t limited like on Facebook: Creators will be able to copy and paste their own affiliate links for individual items directly. The only catch is that linked items must be registered with Meta in brands’ commerce catalog.
+
+The new features will be convenient for anyone profiting from affiliate revenue. For everyone else, it will likely make the platforms feel even more like a shopping mall. The built-in affiliate content is similar to how TikTok Shop works, with easily accessible links for tank tops and camera mounts floating across video after video.
+
+The new shopping features come a few weeks after a dustup in which influencers caught Instagram adding shopping links to their content without their permission. The “Shop the look” feature added links to cheap lookalike products and not the actual items, an influencer who discovered the feature said. Meta said at the time it was a limited test and that the company was “exploring various changes” to the feature.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">Meta misled users about its products’ safety, jury decides</div>
+            <div class="meta">2026-03-24</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
             <h2>Meta misled users about its products’ safety, jury decides</h2>
             <p><strong>The Verge | 2026-03-24</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/899910/meta-new-mexico-jury-verdict">Visit Original Website</a>
@@ -2139,13 +2169,13 @@ Another verdict in a case involving Meta’s product safety is expected soon in 
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">NASA wants to put a $20 billion base on the Moon</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>NASA wants to put a $20 billion base on the Moon</h2>
             <p><strong>The Verge | 2026-03-24</strong></p>
             <a class="original-link" href="https://www.theverge.com/science/899891/nasa-moon-base-mars-nuclear-power-jared-isaacman">Visit Original Website</a>
@@ -2171,13 +2201,13 @@ In addition to a new Moon base, NASA also outlined plans to launch the Space Rea
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">What is ICE actually doing at the airport?</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>What is ICE actually doing at the airport?</h2>
             <p><strong>The Verge | 2026-03-24</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/899855/ice-airports-tsa-shutdown-dhs-jfk">Visit Original Website</a>
@@ -2225,13 +2255,13 @@ With their perks gone, members of Congress will have to deal with lines and hass
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">OpenAI just gave up on Sora and its billion-dollar Disney deal</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>OpenAI just gave up on Sora and its billion-dollar Disney deal</h2>
             <p><strong>The Verge | 2026-03-24</strong></p>
             <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/899850/openai-sora-ai-chatgpt">Visit Original Website</a>
@@ -2255,14 +2285,14 @@ Last week, the WSJ reported OpenAI is working on a ChatGPT desktop “superapp�
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
-            <div class="title">Arm’s first CPU ever will plug into Meta’s AI datacenters later this year</div>
+            <div class="title">Arm’s first CPU ever will plug into Meta’s AI data centers later this year</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-52" style="display:none;">
-            <h2>Arm’s first CPU ever will plug into Meta’s AI datacenters later this year</h2>
+        <div id="content-53" style="display:none;">
+            <h2>Arm’s first CPU ever will plug into Meta’s AI data centers later this year</h2>
             <p><strong>The Verge | 2026-03-24</strong></p>
             <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/899823/arm-agi-cpu-meta">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -2272,39 +2302,13 @@ A free daily digest of the news that matters most.</div>
 
 After decades of only licensing its chip designs for others to use, UK-based Arm revealed the first chip it’s producing on its own, and the first customer. Dubbed the Arm AGI CPU, it’s another chip designed for inference, or running the cloud processing for AI tools like AI agents that can continue to spawn more and more tasks to run at once. The first company in line to use it is Meta, which has reportedly struggled to launch its own AI chips.
 
-Meta says it’s both the lead partner and co-developer, and plans to work on “multiple generations” of the datacenter CPUs, for use along with hardware from other vendors like Nvidia and AMD. Arm customers like Amazon AWS, Microsoft, Google, Marvell, Nvidia, Samsung, and others included congratulatory notes with the announcement. However, Qualcomm, which said it had achieved “complete victory” over Arm with a court ruling last fall in their case over the terms of licensing agreements, was not one of them.
+Meta says it’s both the lead partner and co-developer, and plans to work on “multiple generations” of the data center CPUs, for use along with hardware from other vendors like Nvidia and AMD. Arm customers like Amazon AWS, Microsoft, Google, Marvell, Nvidia, Samsung, and others included congratulatory notes with the announcement. However, Qualcomm, which said it had achieved “complete victory” over Arm with a court ruling last fall in their case over the terms of licensing agreements, was not one of them.
 
-Financial terms of the deal weren’t revealed, nor was the number of chips Meta plans to use from Arm, which is currently owned by Softbank.
+Financial terms of the deal weren’t revealed, nor was the number of chips Meta plans to use from Arm, which is currently owned by SoftBank.
 
 According to Arm, its new chip runs on the Neoverse platform used by AWS Graviton, Nvidia Vera, Microsoft, and other AI chips, with up to 136 cores per CPU and 64 CPUs per air-cooled server rack. It says the AGI CPU can get twice as much performance per watt as traditional x86 CPUs while reducing memory bottlenecks, taking advantage of the design’s long-running efficiency advantages.
 
 Other customers lined up for Arm’s chip include Cerebras, Cloudflare, F5, OpenAI, Positron, Rebellions, SAP, and SK Telecom. Arm cloud AI head Mohamed Awad told CNBC that its aim is to be an option for companies that can’t afford to make their own in-house processor.
-
-A free daily digest of the news that matters most.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">Apple is testing a standalone app for its overhauled Siri</div>
-            <div class="meta">2026-03-24</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>Apple is testing a standalone app for its overhauled Siri</h2>
-            <p><strong>The Verge | 2026-03-24</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/899801/apple-wwdc-2026-new-siri-apple-intelligence-standalone-app">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">A modernized Siri will debut as part of iOS 27 and macOS 27 updates at WWDC 2026, according to a report from Bloomberg.
-
-A modernized Siri will debut as part of iOS 27 and macOS 27 updates at WWDC 2026, according to a report from Bloomberg.
-
-Apple’s efforts to rebuild its Apple Intelligence AI platform will make its debut at its Worldwide Developers Conference on June 8th. A new version of Siri that transforms the voice assistant into a “systemwide AI agent with deep integration across applications” will be announced at WWDC 2026, according to a new report from Bloomberg’s Mark Gurman.
-
-The updated version of Siri will be more capable of controlling other apps and features of iOS and macOS and completing user-requested tasks using their personal data gathered from emails, messages, and notes. It will also be better at summarizing daily news from Apple News and will be able to provide “more detailed responses sourced from the web, including summaries, bullet points and images,” according to Gurman, to make it more competitive with other AI-powered search tools including Perplexity and Google Gemini.
-
-Siri will still be accessible using voice commands or using the iPhone’s power button, but Apple is also testing a dedicated Siri app that will be available on its various devices. The app will help finally give Siri conversational capabilities through a chat-like format that looks similar to the interface Apple Messages uses. The app will provide users with a dedicated place to find their previous interactions with Siri, search through past chats, start new chats, switch between voice and text modes, and upload documents and photos to be analyzed.
-
-Apple is testing several potential new designs for Siri including placing the assistant at the top of an iPhone’s screen in the Dynamic Island, prompting users with a “Search or Ask” when activated. Once results are ready, the Siri interface will expand into a larger translucent panel that can be further expanded to continue a conversation or make additional inquiries. The company is also working to expand the capabilities of its Spotlight search system by replacing it with Siri so it has access to more types of data, while built-in apps will gain an “Ask Siri” toggle in menus making it easier for users to “request more information about highlighted text or pullup related emails.“
 
 A free daily digest of the news that matters most.</div>
         </div>
@@ -2951,53 +2955,39 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Iran says 'non-hostile' ships can transit Strait of Hormuz, FT reports - Reuters</div>
+            <div class="title">Meta ordered to pay $375 million in New Mexico trial over child exploitation, user safety claims - Reuters</div>
             <div class="meta">2026-03-24</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Iran says 'non-hostile' ships can transit Strait of Hormuz, FT reports - Reuters</h2>
+            <h2>Meta ordered to pay $375 million in New Mexico trial over child exploitation, user safety claims - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPWngxWmViemdCZllkbnRqTUpnZUJoSkdTYUk1RlhZOFNENWlncHYxd3lpRVkzWnZ6MHFLMmYtbDR5MU5xT1FjVWYyMWFGMUgyX1VVSU9zRExCRndaWGw5WExwYmhKTFg4UHJObkNpVS00YXNkVUI0bXplQ01vUDRDc0VvRVRyQzFPNVk1QUtyTGlQZnZmX1VJZ293Ukk3eVJoSHVadzhVNWVzYU9EWEdGNUcxYmJZNjFGUUE?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxOTUZIM0p2S2pVbmN0anRuNXRwRFN2WXFoYnkwd01kWTNQRDNmd3JUOWhSTVNrWHRqbzd1VUJUcm9JcEJRc011Wk5YcHAza28zZVVUNVVlUGVGLWZVWnZSaVdyLVZ6VHp6aFZwbGM3QVJpUkxiSFVRS3ZObXoweFFZWTh6NXlsY2FVTGNPYTZFcjlBQmNtTzcwWjFxTjZtYk5JeW4tZXpEOU5aUEwtemMwOUE1NnByN2FxcXp0enJhWG13cUdEUkVQNHpkYTlsRVlBWmV2NlE1OWJWUGZKV193dDRxNVF0aXJrMGc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump says Iran made a major energy-related gift to the US - Reuters</div>
+            <div class="title">Iran tells UN: 'non-hostile' ships can transit Strait of Hormuz - Reuters</div>
             <div class="meta">2026-03-24</div>
         </div>
         
         <div id="content-67" style="display:none;">
-            <h2>Trump says Iran made a major energy-related gift to the US - Reuters</h2>
+            <h2>Iran tells UN: 'non-hostile' ships can transit Strait of Hormuz - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxPLXhWQXdPSHA5UmtoMkZyY3luVVB5aEo3MGItQjctZU5XZkRHdWtwZEV1eXlZOWJ0cmhOdTV0ZVhKM2RMcU9xZS1vQm5uZV9IZVU4VkFGTW9FSHByemM5WHluTFlkUHFIal9sX05Ic2RaaFg3ZnRGZDVuakphdUZoNU5rVVRKRFdDaVlaSDQxbEdBUXBMUFV5N2VaeEk0dllHYjVHTW9yREN6a2xmaDQyMFYyMVdNYWRTYzNFWEx3?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPWngxWmViemdCZllkbnRqTUpnZUJoSkdTYUk1RlhZOFNENWlncHYxd3lpRVkzWnZ6MHFLMmYtbDR5MU5xT1FjVWYyMWFGMUgyX1VVSU9zRExCRndaWGw5WExwYmhKTFg4UHJObkNpVS00YXNkVUI0bXplQ01vUDRDc0VvRVRyQzFPNVk1QUtyTGlQZnZmX1VJZ293Ukk3eVJoSHVadzhVNWVzYU9EWEdGNUcxYmJZNjFGUUE?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US expected to send thousands more soldiers to Middle East, sources say - Reuters</div>
-            <div class="meta">2026-03-24</div>
-        </div>
-        
-        <div id="content-68" style="display:none;">
-            <h2>US expected to send thousands more soldiers to Middle East, sources say - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-03-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNMkFKaVFuOUpkY1NPMzUtWkd1TEdoY2JNbjhLM18tajNQWW5VRnBrR1dZdWdQVnFyU040alF5Y2Z6WFBmM1BQb3BUY21sMGFRVTdmdHU4TGNHcUgyeHd3RGF1alFGcF82UVJMN181aFZPUDdfV1dLVm9VYUc0ZDBNcVZFWGpGdVpyVFpXYjk2YnNHdnVFajY0WEl4UVYwdi1Ic2djTmFOdnY3WElWOURSbVRnMA?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">OpenAI set to discontinue Sora video platform app, WSJ reports - Reuters</div>
             <div class="meta">2026-03-24</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-68" style="display:none;">
             <h2>OpenAI set to discontinue Sora video platform app, WSJ reports - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-24</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYlFMYXFmMll5LVluZE5adTFIRDY2eXF3TG5IbVRnS0hmQlZfOUNBQ3hZTDRpWW9Ya0N5MDdWRm1PenZpMFA4Z182YnppZnVYRzdRVWx3VUJBdjNNd0YxSXpnazFOdnBibHVUS1JBNWFUSk5LT1R0V3RlYzMtaTRkRmRGN3VySFF6VDVJSTBmN2hXT3FGdWU1anpiM2lUWkhXMGZMZDh5Y2c?oc=5">Visit Original Website</a>
@@ -3005,16 +2995,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Trump says Iran made a major energy-related gift to the US - Reuters</div>
+            <div class="meta">2026-03-24</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
+            <h2>Trump says Iran made a major energy-related gift to the US - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-03-24</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxPLXhWQXdPSHA5UmtoMkZyY3luVVB5aEo3MGItQjctZU5XZkRHdWtwZEV1eXlZOWJ0cmhOdTV0ZVhKM2RMcU9xZS1vQm5uZV9IZVU4VkFGTW9FSHByemM5WHluTFlkUHFIal9sX05Ic2RaaFg3ZnRGZDVuakphdUZoNU5rVVRKRFdDaVlaSDQxbEdBUXBMUFV5N2VaeEk0dllHYjVHTW9yREN6a2xmaDQyMFYyMVdNYWRTYzNFWEx3?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: Trump's approval hits new 36% low as fuel prices surge amid Iran war, Reuters/Ipsos poll finds - Reuters</div>
+            <div class="title">US expected to send thousands more soldiers to Middle East, sources say - Reuters</div>
             <div class="meta">2026-03-24</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>Exclusive: Trump's approval hits new 36% low as fuel prices surge amid Iran war, Reuters/Ipsos poll finds - Reuters</h2>
+            <h2>US expected to send thousands more soldiers to Middle East, sources say - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-03-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxOanhmUEpTRkdVdmxGd0txdEFudGQ5b0lxTTZkTU9acHVRVERpb0Q5bTJaMmFuaWQzOTBZTFVZRXFPWU5sSE5TOFVkenc4N0VtWkRrTjJ0RExoRXpaRmpNWTZHRUtQY3FaVEhBWU9nMmplNFNrUm9RbF8xTjI5enZHaTd2bUtpSWJuWWR1MjBNMHNJZmxFRGFmcnJTblpGejBUQThHWTV3dTFWQXFBRFdBZEgtMW12dExteFhGNEJR?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNMkFKaVFuOUpkY1NPMzUtWkd1TEdoY2JNbjhLM18tajNQWW5VRnBrR1dZdWdQVnFyU040alF5Y2Z6WFBmM1BQb3BUY21sMGFRVTdmdHU4TGNHcUgyeHd3RGF1alFGcF82UVJMN181aFZPUDdfV1dLVm9VYUc0ZDBNcVZFWGpGdVpyVFpXYjk2YnNHdnVFajY0WEl4UVYwdi1Ic2djTmFOdnY3WElWOURSbVRnMA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3035,11 +3039,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-72')">
             <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">Rujm el-Hiri, Israel’s Mysterious "Stonehenge of the East" Is Not Alone, New Research Reveals - The Debrief</div>
+            <div class="meta">2026-03-22</div>
+        </div>
+        
+        <div id="content-72" style="display:none;">
+            <h2>Rujm el-Hiri, Israel’s Mysterious "Stonehenge of the East" Is Not Alone, New Research Reveals - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-03-22</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOUVNKMThrd3JQR3BmTkc2VUphYnpHOW90UzZlQTF0eHFGOVU3MDZDYTVQZkJiQmhZV3dST1ZfUkM0a1VTS2FxaW1UbHB1TlIxWG5wdHVIc294WUZrVGE1dXA2eFIxaC03SFRpMzA5X2I2NTZfNkFyTjlPSUNKN2FoR3J1SlRfSnJLVFQwa09yTkR4dWdYQUtwNlFlZWxxeXVxVTJ4NnNtcVhwZS1ZeGtRdkJ3?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-73')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">1,700-Year-Old Roman “Advanced Engineering” Unearthed in a Rare Archaeological Discovery - The Debrief</div>
             <div class="meta">2026-03-18</div>
         </div>
         
-        <div id="content-72" style="display:none;">
+        <div id="content-73" style="display:none;">
             <h2>1,700-Year-Old Roman “Advanced Engineering” Unearthed in a Rare Archaeological Discovery - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-03-18</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQUVFCYkZIZTFVaGVRdzlza3Z1VkxTLWp6Skw5Mk51SjlrOHg5cmJLN2p6Ykg1aUs4Z2FtZGlvNzVETzhVNTBjZG92cFRJMjlhbkVoOEtvNnRoeFRVSXVTeFVMUWJfdkFJMWZnaWVnaWN0RU9oN2N4M3QxanVLWG1qMVpvUzR4akE3QkxpNDNjWkI2NnRVVVNXdFNBVXZOZEs1alNtem1HOWRIWmRlZ3c?oc=5">Visit Original Website</a>
@@ -3047,13 +3065,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-73')">
+        <div class="card" onclick="openModal('content-74')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">"There Was a Hole in the Ceiling": Meteorite Smashes into Texas Home Amid Recent Rise in Space Object Reentries - The Debrief</div>
             <div class="meta">2026-03-22</div>
         </div>
         
-        <div id="content-73" style="display:none;">
+        <div id="content-74" style="display:none;">
             <h2>"There Was a Hole in the Ceiling": Meteorite Smashes into Texas Home Amid Recent Rise in Space Object Reentries - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-03-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOaWFQQ2QtNVNhS3VXbW5TcmRORkdiWXljOF9LdDUzeTdlQ3BXWG0wVkM1YlpGZ2s0aUZoQTljeWhNeTNhZTZ0OFVKS2VFTjVCdk9sdzNBWHNFSnZUOHBKMWxxY1NDU0JWbXZNUVJmaDdnSWdIbmYtRWpVcFc4ckhzd3VIaW05X1ZHZ2xwandoUG1hYURTNFBVeTNuakxKOHdjSEs5RzlSQ3VyNm5qeWtzQnAyVlJjVm9MeEpmel9PclhIanBqb2lMUktuQ20?oc=5">Visit Original Website</a>
@@ -3061,13 +3079,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-74')">
+        <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">“This Cannot Be Possible”: How an Ancient Anomaly Led Scientists to Discover a Two-Billion-Year-Old Nuclear Reactor in Africa - The Debrief</div>
             <div class="meta">2026-03-22</div>
         </div>
         
-        <div id="content-74" style="display:none;">
+        <div id="content-75" style="display:none;">
             <h2>“This Cannot Be Possible”: How an Ancient Anomaly Led Scientists to Discover a Two-Billion-Year-Old Nuclear Reactor in Africa - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-03-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxOYWpnTUx1WGo5WnhWZEhXLXJqb2ZXMnZQWS1IQk5RUGl0VW5JREJoMkpULUhlQ1RjSTNSWlZyUDhTMHJ4VXY1STVuVnBQaWVjT2tBWTZIUzhIeEFGMmI2NzZobG1JRWRvRnRmM19GX1hvTWVsUXg4bGpjd3lBbmNGdnhfVjlyejNURENWM0x6Z0FuUUY5bThfSlNlcXBzZWxnZERxTzJ6QkcxQnU2eGtHeFNKeW5lR3RQU2V4Ti1tUlBUdnF2TXlIeXVhVFo4THY2Sk1qN0Jrdnd1eXhJb1BN?oc=5">Visit Original Website</a>
@@ -3075,13 +3093,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-75')">
+        <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Ancient "Machine Gun" May Have Been Used in Pompeii Siege, Study Finds - The Debrief</div>
             <div class="meta">2026-03-23</div>
         </div>
         
-        <div id="content-75" style="display:none;">
+        <div id="content-76" style="display:none;">
             <h2>Ancient "Machine Gun" May Have Been Used in Pompeii Siege, Study Finds - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-03-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQQ1ZEeng2TzUwc2dRRjBTSGxfNGNmUHhPVVRnMGJPZzBTaVpIOVkzRk1OVmFfM2Q2QkRRbG9aWnM4bzhCT0U1dW9BT096TU9yejJxVWFnOThkcnpmTlpJY2JjcUF6SDVyTlpJVjBVclhxejRiSzRRUkpJbmozXzAxZ0NGZGkzb1hhOU84UFh0MzVFeE4zc1E?oc=5">Visit Original Website</a>
@@ -3089,30 +3107,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-76')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">NASA Study Suggests Martian Ice Could Preserve Signs of Ancient Life for Millions of Years - The Debrief</div>
-            <div class="meta">2026-03-05</div>
-        </div>
-        
-        <div id="content-76" style="display:none;">
-            <h2>NASA Study Suggests Martian Ice Could Preserve Signs of Ancient Life for Millions of Years - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-03-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNeEtxeF95V0VSYkFwUi1wX0Vjc0RnLXprdHNrRFNiTEhpeVc4b21GakpVM0hHWWgzOUF2WTZNWGN0aDVwNlc3X2RvaXZ3SEk5TXlHc1NvSzI4UDd6bkw1THNxUlZSMkwwZ3FjQnF5MkcwSUxIeVNBVThmckRmRUNQcmlLWTZxT2xPRHBlSUVVNXNaakFpSndKZ3p6RDg4QXlzVkFTN2swYlQ4NTlyU0hsb3phUDM?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Scientists Report New Quantum Teleportation Breakthrough, Toppling a Major Barrier to Practical Quantum Communication - The Debrief</div>
-            <div class="meta">2026-02-27</div>
+            <div class="title">U.S. Officials Investigating "Mystery Drone" Incident Over Barksdale Air Force Base That Prompted Security Alert - The Debrief</div>
+            <div class="meta">2026-03-09</div>
         </div>
         
         <div id="content-77" style="display:none;">
-            <h2>Scientists Report New Quantum Teleportation Breakthrough, Toppling a Major Barrier to Practical Quantum Communication - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-02-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxQRG5FTkRDckhzUjhTLWxjbHRXQms2bjZfMU1OUEdiaEMzVVlza09jNjFtY0hFY1BjeldDSTV5NVplUzZBellQUjZPT0VxVExET1VxUlFKUkp0dEZWbXdTS1A1cXpfSzEwaXg1VWF4eHlSRHotT0h5Z3VoWDUyZUt2MHJrWjlhYzB3OHNseHNJaHQxUTZPMVhvaWM1Qy04MnNxZDBuLWlLXy1Bd2ZoM1E4dFFYdmFyUVlpSEYzc2RRY043VE9VbFJ2WTYzV0djaW01a0hwVkxLOA?oc=5">Visit Original Website</a>
+            <h2>U.S. Officials Investigating "Mystery Drone" Incident Over Barksdale Air Force Base That Prompted Security Alert - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-03-09</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxOTUlaTFM3MXhZbE5QRDN0Zl9WbWhWVm1vMFZKM1JNLVVTX1NlVFkwWFVtazVicm5qWFdlRmVqRWdDanBrY2RrMGlNdmFhQmFiZndVWUlZQ3U3RFpRLVZYbERabk12WjloeE5FR1NVWEdkUlVndjJZemstWnE5VjFzUHdFZnFKS2hJQmRuVV9FcnFpNXFfUVhfemgyUWVVTkFOeEJKcE05VHhoTmZZZ1hHZG1NUlpwb0VINHBud0dQa3lRdnFiVTlDWWlJNkxMUQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3161,11 +3165,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-81')">
             <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">OpenAI CEO Shifts Responsibilities, Preps ‘Spud’ AI Model - The Information</div>
+            <div class="meta">2026-03-24</div>
+        </div>
+        
+        <div id="content-81" style="display:none;">
+            <h2>OpenAI CEO Shifts Responsibilities, Preps ‘Spud’ AI Model - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-03-24</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOUE1vTE9GNkRUeTN1SlJBT0RPOTA1ME1QemtFa3lLMHhLaTNiVVlnSXA3dDJ6VFRwdlJFaE5HMS14RFhLTnFULW9zbmliNm1EN1BQSGc3OW9uaEt4WHkySlVIMU0xRDJvTlpmS1NxTDh0R3ozTnZiWDk0ekxmcncxT2lreEN4NFRybHJncTNuN2ZWUEN3LXk4X2t3?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-82')">
+            <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Microsoft Overhauls AI Leadership, Nadella to Take More Direct Oversight of Copilot - The Information</div>
             <div class="meta">2026-03-17</div>
         </div>
         
-        <div id="content-81" style="display:none;">
+        <div id="content-82" style="display:none;">
             <h2>Microsoft Overhauls AI Leadership, Nadella to Take More Direct Oversight of Copilot - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-03-17</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPS0NDQ1hPTmxWQzZDaVFidXBMeXhPUTB5WWtTeHNIOHFJRFhmQlAyMlo0WmlNalQwbWVFMWVCSDNsX3lsNEFMYy03MnF2ZWpjSVVSaDNscXJyYUl2bHE5N1hZa0NNOG1RUVlsbnRfWWxuV3Z0endwcmsyN3V1eWVhVWt5NTM5VlI1WlRYMmlQN3VjNjMyeDNoQ3pNeWVCc3U3RjFSaWxPMzZ1T3JLS0FpZmdB?oc=5">Visit Original Website</a>
@@ -3173,30 +3191,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-82')">
+        <div class="card" onclick="openModal('content-83')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Meta Hires AI Startup Dreamer’s Team - The Information</div>
             <div class="meta">2026-03-23</div>
         </div>
         
-        <div id="content-82" style="display:none;">
+        <div id="content-83" style="display:none;">
             <h2>Meta Hires AI Startup Dreamer’s Team - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-03-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiggFBVV95cUxOeEVxdGxpbXlMb3BLa2xYc2doZjhEQ0l0OFNDeTdrTHhkakw3WGxfb3RSUU9vY1dPNkRCYXhra1Zrd1Z5MEdzdV82Q3BoVEtvdC1tTHVlZzRwOXJ6MDkxb09xN2ZBMDVEajV0ang1b3NRVjZSNEZkVkg1VnFZWDBLaTlR?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-83')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">OpenAI CEO Shifts Responsibilities, Preps ‘Spud’ AI Model - The Information</div>
-            <div class="meta">2026-03-24</div>
-        </div>
-        
-        <div id="content-83" style="display:none;">
-            <h2>OpenAI CEO Shifts Responsibilities, Preps ‘Spud’ AI Model - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-03-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOUE1vTE9GNkRUeTN1SlJBT0RPOTA1ME1QemtFa3lLMHhLaTNiVVlnSXA3dDJ6VFRwdlJFaE5HMS14RFhLTnFULW9zbmliNm1EN1BQSGc3OW9uaEt4WHkySlVIMU0xRDJvTlpmS1NxTDh0R3ozTnZiWDk0ekxmcncxT2lreEN4NFRybHJncTNuN2ZWUEN3LXk4X2t3?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
