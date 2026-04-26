@@ -154,11 +154,67 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
+            <div class="title">New robotic control software avoids jamming their joints</div>
+            <div class="meta">2026-04-26</div>
+        </div>
+        
+        <div id="content-0" style="display:none;">
+            <h2>New robotic control software avoids jamming their joints</h2>
+            <p><strong>Ars Technica - All content | 2026-04-26</strong></p>
+            <a class="original-link" href="https://arstechnica.com/science/2026/04/kinematic-intelligence-helps-robots-learn-their-limits/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Switching from one smartphone to another is mostly a smooth procedure. You log into your accounts and your apps, preferences, and contacts should sync to the new hardware. But in the world of robotics, swapping an old robotic arm for a newer model has meant setting everything up from scratch.
+
+To fix that, a team of researchers at the Swiss École Polytechnique Fédérale de Lausanne (EPFL) has developed what they call Kinematic Intelligence, a framework that makes switching robots work more like switching smartphones. They describe their system in a recent Science Robotics paper.
+
+For years, roboticists have been working on getting robots to learn from demonstration—teaching them new skills by showing them what to do, rather than writing lines of code. The idea is to remotely control or physically guide the robot’s arm to teach it a task like wiping a table, stacking boxes, or welding a car component. The problem is that most of these taught skills end up tied to the specific robot the training was done with.
+
+But robotics is advancing quickly. “The robots have different designs, and nowadays there are new designs being proposed—that brings its own set of challenges,” said Sthithpragya Gupta, a roboticist at EPFL and lead author of the study. If a new robot has slightly longer links, a different joint orientation, or a more complex configuration, that learned behavior instantly breaks and the new robot will likely flail, freeze, or crash if attempting it.
+
+“With new designs come different capabilities and constraints,” said Durgesh Haribhau Salunkhe, an EPFL roboticist and co-author of the study. “The problem is to adapt to these constraints and capabilities—to faithfully replicate the actions demonstrated by a human.” Today, making the leap from one robot body to another usually means starting from scratch and retraining the whole system.
+
+When a robot moves through space to complete a task, it must constantly calculate how to bend its joints to keep its end-effector (a robotic equivalent of a hand) on the right path. The robot has to avoid hitting a physical limit, or worse, a singularity, which in robotics is a mathematical danger zone: a physical configuration where the robot’s joints align in such a way that it temporarily loses a degree of freedom. “In such positions, the robot’s motion may become unstable or [you] may lose control of the robot,” Gupta said.
+
+In human terms, it works roughly like locking the elbows as they get fully straightened when pushing something heavy, which makes the arms unable to perform side-to-side movements for a moment.
+
+Transferring skills from one robot to another is hard because differently structured robots usually have a different topology of singularities. When a robot’s algorithm blindly follows a path and hits a singularity, the math controlling its joints will fail. The robot might try to spin a joint at infinite speed, for instance, resulting in a sudden, unsafe movement. Gupta’s team solved this by giving the robots a deep, innate mathematical awareness of their own physical limitations. This Kinematic Intelligence, as they call it, lets a user demonstrate a skill just once, and have it executed safely by an entirely different type of robot.
+
+And (surprisingly, these days) Kinematic Intelligence was built in an AI-free manner.
+
+Traditionally, engineers have dealt with singularities through software fixes. They built inverse models, complex mathematical formulas that work backward from the target position of the robot’s end-effector to map all the joint positions required to get it there. Then, they just slapped on safety filters or corrections to prevent the robot from getting itself into trouble.
+
+Some of the newer, data-driven AI approaches take less effort and expertise but require access to every robot that the control software will be used on during the training phase. “Also, there is this probabilistic or black box nature of AI wherein it can do something incoherent, which can be potentially catastrophic,” Gupta said. His team wanted certainty, not probabilities, so they took a different approach.
+
+Instead of trying to correct for a robot’s mechanical constraints after the training, they embedded these constraints directly into the control policy from the beginning. They focused on three-revolute robots—basically robotic arms with three joints—which act as the foundational building blocks for many of the commercial robots we see today. Through an algebraic analysis of the robots’ parameters, such as the lengths of their links and the offsets of their joints, the team mapped out exactly where the singularities lie within their joint space. These singularities, combined with the hard limits of the joints, slice the robot’s possible movement space into feasible regions the researchers call aspects.
+
+By looking at the topology of these aspects, the researchers classified three-revolute robots (those with three joints) into six categories. This way, once they knew which of these six categories a specific robot falls into, they instantly knew the exact structure of its physical limitations—a complete map of its danger zones.
+
+Armed with this map, the Kinematic Intelligence framework enables robots to go around their singularities using a strategy the team calls a track cycle. Based on its category classification, the robot knows its physical limits, which prevents it from crashing and dynamically redirects the movement to safely slide or traverse along the edge of the singularity boundary. The robot carefully follows this boundary until it finds a safe configuration where it can re-enter the nominal path to finish the task.
+
+When the team made sure the math behind their idea was correct, they put their framework to the test on various machines. And it worked.
+
+The experimental setup included a compact 6-DoF Duatic DynaArm with tight joint limits, a 7-DoF KUKA LWR IIWA 7 with moderate limits, and a 7-DoF Neura Robotics Maira M with much more relaxed boundaries. With these machines, the researchers built a mock multi-robot assembly line where three different robotic arms cooperated to complete a sequence of tasks. At the beginning, a human performed a single demonstration of three skills in sequence. “We demonstrated a task where you push something off a conveyor belt, pick it up and put it on a workbench, and then pick it up again and throw it into a basket,” Gupta said. All these actions were then distributed among the robots so that each robot performed one of them: the DynaArm did the pushing, the KUKA did the picking and placing, and the Neura did the picking and throwing.
+
+Even though the pushing and throwing motions forced the robots into excursions near the boundaries of their physical workspaces, and the pick-and-place maneuver demanded complex internal mathematical checks, all three machines were able to learn a functional policy via a single human demonstration. “And then we said, you know what, let’s shuffle these robots around,” Gupta said.
+
+Without any retraining, the team swapped the robots’ locations and tasks. It turned out their Kinematic Intelligence made it possible to complete the sequence when KUKA was responsible for pushing, the DynaArm for throwing, the Neura for picking and placing, and in all other possible configurations. “The key challenge for now is to take this technology to the industrial assembly floor,” Gupta said. He admitted, though, that there are several details the team still has to figure out.
+
+While the Kinematic Intelligence framework guarantees mechanically safe motion, it currently lacks the advanced sensing and context-sensitive decision-making required for unpredictable environments. While the researchers acknowledge that the system flawlessly handles a robot’s internal physical constraints like singularities and joint limits, it is not yet equipped to inherently understand the nuances of the objects it interacts with. For example, the system cannot currently distinguish between moving a full container, which requires slow, careful handling, and an empty one, which can be moved quickly. What’s more, it requires the integration of high-level cognitive safety checks to integrate human commands with common sense, such as knowing not to grab a knife when asked to prepare coffee.
+
+Another hurdle to overcome before Kinematic Intelligence can transition from controlled laboratory experiments to factory floors is the integration of advanced environmental sensing, which would enable robots to safely navigate dynamic spaces where humans are constantly and unpredictably moving around. Additionally, while the software framework has already been validated on current industrial robots, its deployment in more sensitive fields like medicine is currently bottlenecked by hardware limitations.
+
+“If we talk deploying this technology in medical scenarios, I believe in the next five years we will see mechanically safer robots that should make this possible,” Salunkhe said. “Our framework can be immediately translated to such new designs, so we’re waiting for these robots now.”
+
+Gupta’s and Salunkhe’s work on robots’ skill sharing is published in Science Robotics: http://dx.doi.org/10.1126/scirobotics.aea1995</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
             <div class="title">Artemis II broke Fred Haise's distance record, but he is happy to pass it on</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-0" style="display:none;">
+        <div id="content-1" style="display:none;">
             <h2>Artemis II broke Fred Haise's distance record, but he is happy to pass it on</h2>
             <p><strong>Ars Technica - All content | 2026-04-25</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/04/artemis-ii-broke-fred-haises-distance-record-but-he-is-happy-to-pass-it-on/">Visit Original Website</a>
@@ -248,13 +304,13 @@ Ars: This mission seems to have captured a lot of public interest. I’m sure yo
 Haise: Apollo 13, to young people, when they hear a little bit about the story in school, it’s like a folktale, a survival folktale, much like many you may read about, like Shackleton’s sailing ship that got trapped in the ice. Apollo 13 has gotten to be in the same class as that. That makes it interesting.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Palantir employees are talking about company's "descent into fascism"</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>Palantir employees are talking about company's "descent into fascism"</h2>
             <p><strong>Ars Technica - All content | 2026-04-25</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/04/palantir-employees-are-talking-about-companys-descent-into-fascism/">Visit Original Website</a>
@@ -326,13 +382,13 @@ But for employees, the culture shift feels intentional. “I don’t want to ass
 This story originally appeared on wired.com.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">This is who's developing Golden Dome's orbital interceptors—if they're ever built</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>This is who's developing Golden Dome's orbital interceptors—if they're ever built</h2>
             <p><strong>Ars Technica - All content | 2026-04-25</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/04/this-is-whos-developing-golden-domes-orbital-interceptors-if-theyre-ever-built/">Visit Original Website</a>
@@ -386,13 +442,13 @@ The Trump administration is requesting $17 billion for Golden Dome in fiscal yea
 Putting the Golden Dome funding request in a bill that may never reach the House or Senate floor is “not great signaling by this White House about the supposedly drastic need for Golden Dome,” a former defense official told Politico.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Google will invest as much as $40 billion in Anthropic</div>
             <div class="meta">2026-04-24</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Google will invest as much as $40 billion in Anthropic</h2>
             <p><strong>Ars Technica - All content | 2026-04-24</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/04/google-will-invest-as-much-as-40-billion-in-anthropic/">Visit Original Website</a>
@@ -414,13 +470,13 @@ This has become a common scheme for investment in AI companies like Anthropic; e
 This is not the first time Anthropic has received investment from Google, even though Google is ostensibly competing with Anthropic over AI models.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Europe—not US—first to authorize Moderna's combo mRNA flu-COVID vaccine</div>
             <div class="meta">2026-04-24</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>Europe—not US—first to authorize Moderna's combo mRNA flu-COVID vaccine</h2>
             <p><strong>Ars Technica - All content | 2026-04-24</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/04/europe-not-us-first-to-authorize-modernas-combo-mrna-flu-covid-vaccine/">Visit Original Website</a>
@@ -442,45 +498,87 @@ Moderna had previously submitted mCOMBRIAX for approval from the Food and Drug A
 Meanwhile, in February this year, the FDA shockingly refused to review Moderna’s application for mRNA-1010—a decision made by political appointee Vinay Prasad over objections by FDA staff.  A week later, it reversed the decision. The FDA is now expected to issue a decision on the flu vaccine by August 5. Prasad is set to exit the agency at the end of this month.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">FCC: Router ban includes portable hotspots, but not phones with hotspot features</div>
-            <div class="meta">2026-04-24</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>FCC: Router ban includes portable hotspots, but not phones with hotspot features</h2>
-            <p><strong>Ars Technica - All content | 2026-04-24</strong></p>
-            <a class="original-link" href="https://arstechnica.com/tech-policy/2026/04/fcc-says-ban-on-foreign-made-routers-includes-portable-wi-fi-hotspots/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Federal Communications Commission clarified this week that its sweeping ban on foreign-made consumer routers also affects portable hotspot devices.
-
-The FCC added a new section to an FAQ titled, “Is my device a consumer-grade router under the National Security Determination?” The new FAQ section says this category includes “consumer-grade portable or mobile MiFi Wi-Fi or hotspot devices for residential use.” The ban does not cover “mobile phones with hotspot features,” the FAQ says.
-
-This means that companies making consumer hotspots need an exemption from the government to import and sell any future hotspots that haven’t previously been approved by the FCC. As with routers, devices previously approved for sale in the US can continue to be imported and sold without obtaining a special exemption.
-
-The FCC defines routers broadly, giving the agency plenty of flexibility to include various types of consumer networking devices in the ban. When the FCC announced the ban last month, it defined routers as “consumer-grade networking devices that are primarily intended for residential use and can be installed by the customer,” and which “forward data packets, most commonly Internet Protocol (IP) packets, between networked systems.”
-
-But while an earlier version of the FAQ stated that cellphones with mobile hotspot features were exempt, it did not specifically say that portable hotspot devices were covered by the ban. In addition to hotspot devices, the new FAQ section says the router ban applies to “consumer or small and medium-sized business routers sold or rented through retail and self-installable by end users”; “LTE/5G CPE [customer premises equipment] devices for residential use”; “residential routers installed by a professional or ISP”; and “residential gateways that combine modem and router functions.”
-
-The device ban is only for consumer-grade equipment, even though network gear used by large businesses presents a natural target for foreign hackers. The new FAQ section notes that “industrial, enterprise, or military equipment” is not included.
-
-The FCC adds that other devices not covered by the ban include analog telephone adapters with Ethernet LAN and WAN ports, femtocells, and optical network terminals. The new FAQ section was pointed out yesterday in a PCMag article.
-
-The FCC router ban stems from a President Trump directive on reducing the use of foreign technology for national security reasons. The FCC said it will not approve new device models made at least partly outside the US unless the Department of Defense or Department of Homeland Security determines that the router does not pose national security risks.
-
-Whether headquartered in the US or abroad, virtually every router maker will have to obtain an exemption for future devices. The various components inside routers are made in countries such as Taiwan, South Korea, Japan, and China, noted a report by the Global Electronics Association trade group.
-
-Netgear became the first major vendor of consumer routers to obtain an exemption last week. The Amazon-owned Eero was granted an exemption this week.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-6')">
+            <div class="source">Futurism</div>
+            <div class="title">Experts Warn of AI Swarms Hijacking Democracy With Fake Citizens</div>
+            <div class="meta">2026-04-26</div>
+        </div>
+        
+        <div id="content-6" style="display:none;">
+            <h2>Experts Warn of AI Swarms Hijacking Democracy With Fake Citizens</h2>
+            <p><strong>Futurism | 2026-04-26</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/ai-swarm-democracy-security">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+AI isn’t all chatbots and meme generators. According to a new study published in the journal Science, it can also serve as a fountain of misinformation — and all it takes is for someone to turn open the spigot.
+
+The new research examines the scale at which AI, namely large language models (LLMs) and autonomous agents, can be used to manipulate opinions on a “population-wide level.” The researchers point to a specific threat in the form of AI swarms: massive assemblages of autonomous AI tools that can ape real humans en masse via the internet and social media.
+
+According to the researchers, available evidence indicates “organized social media manipulation has expanded from 28 countries in 2017 to 70 countries” today, in nations ranging from the Philippines to the United States, and plenty of places in between. Incidents of AI-driven misinformation in Brazilian and Irish elections, for example, make it clear that democratic institutions are already under fire from these kinds of threats, which researchers say are growing in sophistication.
+
+“Fusing LLM reasoning with multiagent architectures, these systems are capable of coordinating autonomously, infiltrating communities, and fabricating consensus efficiently,” the paper’s abstract warns.
+
+Legislating against that type of interference raises confounding issues, like whether propaganda botnets count as free speech. Indeed, some of these AI bot networks operate right out in the open as for-profit startups, courting millions from venture capitalists.
+
+Even before AI, the emergence of a few unaccountable social media platforms had created the conditions necessary for large-scale misinformation campaigns to flourish. Even before AI, these kinds of campaigns have had devastating consequences in the real world, like the Facebook-enabled Rohingya genocide in Myanmar.
+
+We’re already seeing previews of what AI-enabled misinformation campaigns look like in practice, often in the form of right wing actors stirring fury over welfare recipients or immigrants.
+
+Whatever comes as a result of AI misinformation, it’s clear the path was laid years ago — and there’s alarmingly little political will to turn back now.
+
+More on AI ethics: Tech Companies Are Using Insidious Tactics to Build Data Centers on Indigenous Lands, Activists Say</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
+            <div class="source">Futurism</div>
+            <div class="title">New AI-Powered Robot Can Destroy Human Champions at Ping Pong</div>
+            <div class="meta">2026-04-26</div>
+        </div>
+        
+        <div id="content-7" style="display:none;">
+            <h2>New AI-Powered Robot Can Destroy Human Champions at Ping Pong</h2>
+            <p><strong>Futurism | 2026-04-26</strong></p>
+            <a class="original-link" href="https://futurism.com/robots-and-machines/ai-powered-robot-destroy-table-tennis-pros">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+First, they learned how to play tennis on two feet. Then, they came for our half-marathon world record.
+
+Now, robots are set to overtake us in the sport of table tennis as well. In a recent paper, published this week in the journal Nature, researchers detailed how they’ve leveraging AI to teach a robot arm built by Sony, dubbed Ace, to repeatedly beat “elite and professional players under official competition rules.”
+
+Sony claims it’s the first robot to achieve expert-level performance in any competitive physical sport, following decades of table tennis robot development.
+
+A promotional video put together by Sony’s AI division shows the paddle-wielding robot bounding back and forth at staggering speeds to counter aggressive strikes. The human experts don’t appear to be holding back, either, smacking challenging shots at it with full strength.
+
+It’s an impressive technological feat and a major milestone for the application of AI in robotics, a confluence of two areas of research that has been at the core of the ongoing boom in humanoid robotics over the last few years.
+
+While teaching a robot arm to play ping pong may not sound like the kind of thing that will lead to the next industrial revolution, many of Ace’s achievements could eventually trickle down to other areas of research.
+
+“The success of Ace, with its perception system ​and learning-based control algorithm, suggests that similar techniques could be applied to other areas requiring fast, real-time control and human interaction,” lead author and project lead at Sony AI Peter Dürr told Reuters, “such as manufacturing and service robotics, as well as applications across sports, entertainment and ​safety-critical physical domains.”
+
+According to their paper, Ace won three out of five games against elite players with more than ten years of experience, but lost two games against top-level pros as of April 2025. However, Sony claims that Ace went on to beat more professional players in December, as well as last month.
+
+The level of complexity is staggering. The robot needs to have extremely fast reaction times, not only to track the ball, but to also determine its trajectory in real-time using nine cameras and three vision systems.
+
+The overall system can “track a ball at 200 Hz with millimeter accuracy and around ten millisecond latency while measuring the spin at up to 700 Hz,” explains an accompanying Sony AI blog post. “This is fast enough to capture motion that would be a blur to the human eye.”
+
+Deep reinforcement learning allows it to seamlessly predict ball behavior and choose how to counter its opponent.
+
+Meanwhile, many high-level players were baffled by the apparatus. It’s essentially “impossible to sense what kind of shots it dislikes or struggles with, and that makes it even more difficult to play against,” table tennis pro Mayuka Taira told Reuters.
+
+Nonetheless, Dürr noted that pro players will still have an edge — at least for now — since they remain “very good at adapting to their opponent and finding weaknesses, which is an area that we are working on.”
+
+More on table tennis: This Video of a Humanoid Robot Playing Tennis Is Extremely Impressive</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">Devious New AI Tool “Clones” Software So That the Original Creator Doesn’t Hold a Copyright Over the New Version</div>
             <div class="meta">2026-04-26</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Devious New AI Tool “Clones” Software So That the Original Creator Doesn’t Hold a Copyright Over the New Version</h2>
             <p><strong>Futurism | 2026-04-26</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/malus-clones-software-copyright">Visit Original Website</a>
@@ -516,13 +614,13 @@ To Blanchard, who eventually slapped an open-source community-approved “zero-c
 More on AI and copyright: Researchers Just Found Something That Could Shake the AI Industry to Its Core</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">Physicist Proposes Dark Matter Is Made of Black Holes That Survived Dead Universes</div>
             <div class="meta">2026-04-26</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>Physicist Proposes Dark Matter Is Made of Black Holes That Survived Dead Universes</h2>
             <p><strong>Futurism | 2026-04-26</strong></p>
             <a class="original-link" href="https://futurism.com/space/dark-matter-black-hole-dead-universes">Visit Original Website</a>
@@ -552,13 +650,13 @@ But “much work remains to be done,” cautions Gaztanaga, as the “ideas must
 More on astrophysics: Physicists Have a Major Problem With the Universe</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">Prestigious Wall Street Law Firm Humiliated When Its AI Use Is Discovered in Court</div>
             <div class="meta">2026-04-26</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>Prestigious Wall Street Law Firm Humiliated When Its AI Use Is Discovered in Court</h2>
             <p><strong>Futurism | 2026-04-26</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/prestigious-law-firm-humiliated-ai">Visit Original Website</a>
@@ -588,13 +686,13 @@ Judges have been happy to admonish lawyers that leave in AI garbled citations, i
 More on AI: Things You Told ChatGPT or Claude May Have Already Doomed You in Court</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">Climate Scientists Shake Their Heads as First US City Running Completely Out of Water</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>Climate Scientists Shake Their Heads as First US City Running Completely Out of Water</h2>
             <p><strong>Futurism | 2026-04-25</strong></p>
             <a class="original-link" href="https://futurism.com/science-energy/texas-water-crisis-climate">Visit Original Website</a>
@@ -618,78 +716,6 @@ Climate scientists have been warning about the consequences of poor water stewar
 “What we’re seeing in Corpus Christi is really not an isolated crisis,” Marquez said. “It’s very consistent with how things are going to unfold if we don’t start to plan.”
 
 More on climate change: Earth on Track to Become Uninhabitable, Scientists Say</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-10')">
-            <div class="source">Futurism</div>
-            <div class="title">Unions Attack AI for Menacing Human Jobs</div>
-            <div class="meta">2026-04-25</div>
-        </div>
-        
-        <div id="content-10" style="display:none;">
-            <h2>Unions Attack AI for Menacing Human Jobs</h2>
-            <p><strong>Futurism | 2026-04-25</strong></p>
-            <a class="original-link" href="https://futurism.com/artificial-intelligence/union-labor-ai-bernie">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-Workers across the US have had it with the prognostications of AI taking over the world. And their unions — or what’s left of them, anyway — are taking notice.
-
-Last week, the leaders of some of the largest trade unions in the US came together for a conference with Vermont Senator Bernie Sanders, Axios reports. Together, they presented a united opposition against tech companies pushing AI and robotics into labor, renewing Sanders’ call for a pause on AI development until there are ample safety nets in place to catch workers whom labor leaders fear will be displaced.
-
-“We are here to sound the alarms on AI,” president of stories AFL-CIO Liz Shuler said at the press conference. “This race that everybody seems to think we’re in to advance AI at all costs — with no guardrails or protections for people — is reckless and dangerous.”
-
-The horse race for AI dominance between tech companies in the US has had ripple effects for workers throughout the country. Though researchers haven’t reached consensus on whether AI is actually replacing jobs, workers are still feeling the squeeze as AI-happy executives institute layoffs and hiring freezes regardless, as if to declare that the AI revolution is right around the corner.
-
-“Human beings have to come first in this equation, not an afterthought,” United Auto Workers president Shawn Fain said. “A handful of billionaires want all the profits,” but the “working class has to get our fair share.”
-
-Randi Weingarten, president of the American Federation of Teachers — which, it should be noted, received $23 million in funding from AI companies Microsoft, OpenAI, and Anthropic — called for the federal government to put people ahead before tech. “We need the Congress, we need this administration to actually put people first, to make sure that the human being is in charge of society, not a robot and not a chatbot,” she said.
-
-Sanders, who recently proposed legislation to halt data center construction throughout the US, also unloaded some scathing comments.
-
-“The richest people on Earth — Mr. Musk, Mr. Zuckerberg, Mr. Bezos, Mr. Ellison and others — what they want to do is replace human workers,” Sanders told attendees. “Some of us are old-fashioned, and we believe in human beings.”
-
-More on AI: Gen Z Sabotaging AI at Work So It Won’t Take Their Job</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">NASA Planning to Set First-Ever Fire on the Surface of the Moon</div>
-            <div class="meta">2026-04-25</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>NASA Planning to Set First-Ever Fire on the Surface of the Moon</h2>
-            <p><strong>Futurism | 2026-04-25</strong></p>
-            <a class="original-link" href="https://futurism.com/future-society/nasa-starting-first-fire-moon">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-NASA scientists have long been fascinated by how fire behaves in the microgravity of space. They’ve even lit small controlled flames inside Northrop Grumman Cygnus spacecraft to study various flame retardant materials and how fire can spread in the absence of Earth’s gravity.
-
-Now, they’re looking to take the potentially lifesaving research a step further. In anticipation of the space agency’s eventual establishment of a permanent presence on the Moon, scientists at NASA revealed plans to test the flammability of materials on the lunar surface, as detailed in a document presented at a recent planetary science conference that was spotted by Universe Today.
-
-As part of an experiment appropriately dubbed Flammability of Materials on the Moon (FM2), the researchers are looking to challenge a standardized test, known as NASA-STD-6001B, which involves holding a six-inch flame to a material to evaluate its safety. If it burns more than six inches up or drips burning debris, it fails the test. The standard is required for the “evaluation, testing, and selection of materials that are intended for use in space vehicles and associated Ground Support Equipment,” according to NASA.
-
-But there’s one glaring problem, as the scientists point out in their latest mission outline: the test is “conducted in normal Earth gravity, with the assumption that if a material passes the 1G test, then it is considered safe for spaceflight.”
-
-However, the partial gravity on the lunar surface could throw our understanding of fire for a loop once again — a crucial question scientists are racing to understand, as an open fire inside a lunar habitat, let alone the tight confines of a spacecraft, could easily prove disastrous.
-
-The scientists suggest that a “material that is marginally non-flammable on Earth” may be “flammable at a lower gravity level.” That’s because a natural phenomenon called blowoff, which is caused by the circular reintroduction of fresh oxygen to sustain the flame sputtering out on Earth, may slow down in partial gravity. In other words, the chemical reactions of the flame may be able to “keep up” in a lunar environment, making a material more flammable there than it is on Earth.
-
-Previous research involving drop towers — essentially letting payloads go from a tower to simulate the effects of weightlessness — and sounding rockets, which are suborbital research vehicles that carry scientific instruments high into the atmosphere, have shown that some partial gravity environments are “expected to increase the flammability limits for some materials,” the researchers noted.
-
-That’s not to mention the oxygen-enriched environments future space explorers on the Moon or Mars may live in, a mix that may help astronauts to breathe, but could help feed fires as well.
-
-To study the phenomenon first-hand — and over a longer period than during a drop tower or sounding rocket test — the researcher propose burning four sold fuel samples inside small, habitable atmospheres on the Moon, with a “planned launch date of late 2026.” Cameras, radiometers, and an oxygen sensor will measure how the fire behaves.
-
-“The tests will provide benchmark data and are part of the larger effort to understand how lunar gravity will affect material flammability,” the researchers noted.
-
-Until we have the chance to establish an extensive presence on the Moon, the scientists argue that a “limited series of tests would enable a comparison between fires on the Moon and Earth.”
-
-The results of the experiment could prove critical for the safety of future space explorers, who may not have the option to evacuate their lunar habitat shelter Moon in case of a fire. Besides, it certainly wouldn’t bode well if it turned out their clothing were to be made out of a material that may not be flammable on Earth — but is on the Moon.
-
-More on space fires: NASA Experiment With Fire in Space Ends When Entire Spacecraft Burns Up</div>
         </div>
         
         <div class="card" onclick="openModal('content-12')">
@@ -1331,7 +1357,11 @@ Still, Massie isn’t projecting the same bring-it-on confidence that he did whe
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The best laid plans of mice and men are held up in the legal department.</div>
+EARTH          
+     smog  |   bricks  
+ AIR  --  mud  --  FIRE
+soda water |   tequila 
+         WATER</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1350,6 +1380,20 @@ The best laid plans of mice and men are held up in the legal department.</div>
 If we treated everything like that, lawn mowers would be banned because some guy back in the early &#39;90s thought it would be smart to pick up a running mower and use it to trim the hedge.
 
 If a single plane crash could eliminate life on earth.
+
+If people treated airplanes the same way, they&#39;d say: some planes have crashed before, so we must never fly again.
+
+That did happen. It&#39;s why the French took over for a bit (and any pilot will tell you, there&#39;s a LOT of French in aviation).
+
+Aviation is safe because every crash leads to major investigations that lead to safety improvements (most of the time). In the 50s you used to be able to go from the street to the plane without going through security. That changed in the 60s and 70s when hijackings and bomb
+
+The problem with nuclear energy so far is that we don&#39;t seem to be learning. Nuclear power is safe, the technology is great. The problem is, the management is the weak point. The human part. It seems every nuclear disaster was caused by a failure of management in some way - the need to get something done quickly or safety steps were bypassed in the name of efficiency.Indeed. And in the name of greed and &quot;let somebody else fix it&quot;.  There is massive evidence that the people in the nuclear industry cannot be trusted.The other problem is the excessive cost, the limited fuel, oh, and the constant lying about the cost when you take reactor decommissioning and spend fuels storage and actual risk-costs into account. Like the lie that &quot;Nuclear cannot be insured&quot;. It can be. It just makes the real risk-costs obvious. I happen to know that the back-insurers made (secret) offers w
+
+The problem with nuclear energy so far is that we don&#39;t seem to be learning. Nuclear power is safe, the technology is great. The problem is, the management is the weak point. The human part. It seems every nuclear disaster was caused by a failure of management in some way - the need to get something done quickly or safety steps were bypassed in the name of efficiency.
+
+Indeed. And in the name of greed and &quot;let somebody else fix it&quot;.  There is massive evidence that the people in the nuclear industry cannot be trusted.
+
+The other problem is the excessive cost, the limited fuel, oh, and the constant lying about the cost when you take reactor decommissioning and spend fuels storage and actual risk-costs into account. Like the lie that &quot;Nuclear cannot be insured&quot;. It can be. It just makes the real risk-costs obvious. I happen to know that the back-insurers made (secret) offers w
 
 And yet, old ones are not only still running but are even being restarted.  By your reasoning, all existing reactors should be decommissioned with urgency.
 
@@ -1379,11 +1423,23 @@ In much the same way that the anti- data center screeds are all stored in data c
 
 You only find that interesting because you don&#39;t consider what &quot;data center&quot; means in the context of those &quot;screeds&quot;.  Opposition to data centers is due to AI, the insatiable consumption of resources, threats to jobs / economy and the destruction of people&#39;s quality of life.  No one opposes cloud computing infrastructure generally.  Wor
 
+You are just pushing the usual FUD. In actual reality nuclear is _bad_ for grid stability.
+
 I&#39;m wondering if the state of the art is any better than 20 years ago, or whether today I&#39;ll read any new well-reasoned arguments for/against nuclear power generation.
+
+the article says nuclear is developping but at same time the data they show is mostly a installed base. And as ENR is now much cheaper than nuclear even with some storage, I dont see a huge nuclear power expansion come especially as finding locations suited for Nuclear has become quite complex.
+
+The only reason left for new nuclear is maintaining nuclear weapons. That is the reason that, for example, the UK is so keen on that one new reactor. Or that France plans only a tiny number of new construction.
+
+The only one not lying about this is Macron though: https://www.lemonde.fr/idees/a... [lemonde.fr]
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The best laid plans of mice and men are held up in the legal department.</div>
+EARTH          
+     smog  |   bricks  
+ AIR  --  mud  --  FIRE
+soda water |   tequila 
+         WATER</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1433,6 +1489,10 @@ So I suppose the real point they want to make is that human consideration with G
 
 The first sign is they are using Polymarket as a benchmark and distinct from &quot;human prediction&quot;, but Polymarket is just comprised of human prediction.  Polymarket is comprised of humans mostly, just a tendency to be humans that are more specifically informed about the topic they are betting on.
 
+So we see &quot;The human groups performed poorly, relying on instinct or whatever information had come across their feeds that morning&quot;, this suggests the humans were asked cold about random events they had not researched and further were not allowed to research, so all they had to go on was guessing on whatever they had happened to hear about beforehand.  If you asked me who was going to win the presidential election in a country I&#39;ve never heard of and demanded I don&#39;t look, well of course my answer is going to be garbage.  You could include a totally made up name as a choice and I might pick that one because I just have no way of knowing.
+
+I would have been much more interested if they were given a minute to do a quick internet search with AI results disabled to see how well they did versus GenAI results to see if the GenAI results improved their accuracy versus a quick internet search.
+
 &quot;If I have seen further, it is by standing on the shoulders of giants.&quot;
 
 &quot;the sycophancy that leads chatbots to tell you what you want to hear&quot;
@@ -1443,7 +1503,11 @@ In my experience if you tell it to stop being a sycophant, it apologizes, says i
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The best laid plans of mice and men are held up in the legal department.</div>
+EARTH          
+     smog  |   bricks  
+ AIR  --  mud  --  FIRE
+soda water |   tequila 
+         WATER</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1471,7 +1535,9 @@ We also had bowel movements.  The president still wears diapers.
 
 the members of the house and Senate aren&#39;t scared of trump, they&#39;re scared of &quot;January 6 rioters&quot;. they were going to kill Mike Pence.
 
-I don&#39;t think that&#39;s it. The Republicans in Congress are like crack dealers and the Maggots are the users. The dealers issue a constant supply of bigotry and cruelty and the Maggots lap it up even though there is some part of them that knows it is go not good for them or the country but they are addicted. Every time one of them gets an independent thought, the rest are there to cow them back into subservience. The Republicans in Congress know this, and know without their drug supply, they are toast. So they
+I don&#39;t think that&#39;s it. The Republicans in Congress are like crack dealers and the Maggots are the users. The dealers issue a constant supply of bigotry and cruelty and the Maggots lap it up even though there is some part of them that knows it is go not good for them or the country but they are addicted. Every time one of them gets an independent thought, the rest are there to cow them back into subservience. The Republicans in Congress know this, and know without their drug supply, they are toast. So they keep it up.
+
+He said exactly what he meant.  Your comment is rated Insightful. Must be because it&#39;s a shining example of what a half-wit with an abundance of time, anger will post if their mind is constantly focused on raging over politics.
 
 Your post is pure conjecture and opinion. What NSF funding do you find “iffy”?
 
@@ -1514,6 +1580,14 @@ I didn&#39;t see where they tried to &#39;overrule the President&quot;. They cri
 Actually its working against the agenda of the elected leader you work for, If the President wants to say that social science is not a proper domain for NSF funding, then his advisors should be working with that constraint. The President should be able to provide recommendations to Congress that match the President&#39;s priorities. Then Congress can enact their priorities. But the fact remains that the board works for the President. 
 
 Personally, I think that the social sciences that are medical in nature shou
+
+Actually its working against the agenda of the elected leader you work forYeah, bullshit.  Trump isn&#39;t the smartest cheeto in the room and he listens to advice from people that are hired to advise him, when it suits him.  He also has an ego big enough to fill the fantasy ballroom he wants built in his honor and refuses to listen to anyone that doesn&#39;t agree with his fantasies, like thinking windmills are evil and magnets don&#39;t work if they&#39;re wet.I predict a lawsuit and a injunction to stop the firings within...  two weeks.
+
+Actually its working against the agenda of the elected leader you work for
+
+Yeah, bullshit.  Trump isn&#39;t the smartest cheeto in the room and he listens to advice from people that are hired to advise him, when it suits him.  He also has an ego big enough to fill the fantasy ballroom he wants built in his honor and refuses to listen to anyone that doesn&#39;t agree with his fantasies, like thinking windmills are evil and magnets don&#39;t work if they&#39;re wet.
+
+I predict a lawsuit and a injunction to stop the firings within...  two weeks.
 
 Can you answer these simple questions for me?
 
@@ -1560,6 +1634,26 @@ Your stated experience and guess has to be weighed against Trump&#39;s usual mot
 
 Occam&#39;s razor would suggest it&#39;s like everything else he has done his entire life: it&#39;s about self enrichment and ego.
 
+You use Occam&#39;s Razor as the philosophical route taken to arrive at &quot;it&#39;s about self enrichment and ego&quot; being the motivation for the firings.Your explanation has the impossibly absolute parameters of &quot;entire&quot; and &quot;everything&quot;.  Your theory on the motivation is built on implausible data.Everything else he has done?His entire life?
+
+Oversight? From this alleged administration? What ARE you smoking?
+
+Aside from not being able to monetize grants given by NSF, they are not under Project 2025&#39;s thumb; it bothers them. Plus scientists say things they do not like and cannot counter, so their only recourse is to shut them down.
+
+Does anyone believe that el Bunko got up one day and decided the independent body had to go? Does anyone believe he even knows what NSF does? This is merely yet another example of Project 2025 doing their damnest to fuck
+
+Didn&#39;t you guys have a &#39;no kings&#39; movement? What is the point of a government if one man can rule 300 million people by executive decree?He fired 24 people that work in the branch of government that he is the chief executive of.While the National Science Foundation does some absolutely outstanding work, and helps fund some absolutely groundbreaking research, some of the stuff it funds is a bit sketchy. The firing probably has something to do with the latter, a lack of oversight. I&#39;ve been involved in NSF funded projects for well over a decade, observed a bunch of stuff at my university, and sometimes professors get a block of money and parts of it fund iffy stuff. It&#39;s probably a crackdown on that sort of thing, better oversight on what is getting funded, where the money is going. I&#39;ve seen some stuff that is a bit sketchy, funds used at the university level more as a slush fund to keep grad student employed that fulfill the goal of the funding.All that is irrelevant. This is driven by Project 2025&#39;s general antipathy to science.This specifc action wasn&#39;t called for, but it was a necessary step to eliminate &quot;wokeness&quot; in research such as climate change.A lot of the administration&#39;s weird dismantling of agencies can be found in here. Everyone should have read it because it drives a lot of what has happened.  https://static.heritage.org/pr... [heritage.org]
+
+Didn&#39;t you guys have a &#39;no kings&#39; movement? What is the point of a government if one man can rule 300 million people by executive decree?He fired 24 people that work in the branch of government that he is the chief executive of.While the National Science Foundation does some absolutely outstanding work, and helps fund some absolutely groundbreaking research, some of the stuff it funds is a bit sketchy. The firing probably has something to do with the latter, a lack of oversight. I&#39;ve been involved in NSF funded projects for well over a decade, observed a bunch of stuff at my university, and sometimes professors get a block of money and parts of it fund iffy stuff. It&#39;s probably a crackdown on that sort of thing, better oversight on what is getting funded, where the money is going. I&#39;ve seen some stuff that is a bit sketchy, funds used at the university level more as a slush fund to keep grad student employed that fulfill the goal of the funding.
+
+Didn&#39;t you guys have a &#39;no kings&#39; movement? What is the point of a government if one man can rule 300 million people by executive decree?
+
+He fired 24 people that work in the branch of government that he is the chief executive of.
+
+While the National Science Foundation does some absolutely outstanding work, and helps fund some absolutely groundbreaking research, some of the stuff it funds is a bit sketchy. The firing probably has something to do with the latter, a lack of oversight. I&#39;ve been involved in NSF funded projects for well over a decade, observed a bunch of stuff at my university, and sometimes professors get a block of money and parts of it fund iffy stuff. It&#39;s probably a crackdown on that sort of thing, better oversight on what is getting funded, where the money is going. I&#39;ve seen some stuff that is a bit sketchy, funds used at the university level more as a slush fund to keep grad student employed that fulfill the goal of the funding.
+
+All that is irrelevant. This is driven by Project 2025&#39;s general antipathy to science.This specifc action wasn&#39;t called for, but it was a necessary step to eliminate &quot;wokeness&quot; in research such as climate change.A lot of the administration&#39;s weird dismantling of agencies can be found in here. Everyone should have read it because it drives a lot of what has happened.  https://static.heritage.org/pr... [heritage.org]
+
 Didn&#39;t you guys have a &#39;no kings&#39; movement?The point of protesting is ostensibly to show everyone who voted for this clown show that they&#39;d be in good company if they decide to have second thoughts, come the next election.The reality, as evidenced by the other post mocking it as a &quot;street party&quot;, is that the right-wing media has done a spectacular job of spinning it as &quot;look at all those loony leftists protesting a nonexistent king!&quot; So, the protests probably won&#39;t do much to move the needle.
 
 Didn&#39;t you guys have a &#39;no kings&#39; movement?
@@ -1589,6 +1683,12 @@ newsom would be better, buttigieg would be better, pritzker would be better, bes
 your attitude is actually greatly a result of the conservative media machine itself.  they want you despondent and cynical.
 
 the idea that better things are possible is something republican want their opponents to have
+
+newsom would be better, buttigieg would be betterNewsom is just another arrogant self-righteous prick with a Rolex and a three hundred dollar haircut who can frankly go fuck himself then go back to making twitter memes... but yes, Buttigieg would be better. Much better. Just think, were it not for prejudice, the USA might be currently enjoying the second term of a president who speaks six languages, is a veteran and family man, one who appreciates the importance of basic infrastructure and doesn&#39;t feel the need to insult the USA&#39;s closest allies, or start
+
+newsom would be better, buttigieg would be better
+
+Newsom is just another arrogant self-righteous prick with a Rolex and a three hundred dollar haircut who can frankly go fuck himself then go back to making twitter memes... but yes, Buttigieg would be better. Much better. Just think, were it not for prejudice, the USA might be currently enjoying the second term of a president who speaks six languages, is a veteran and family man, one who appreciates the importance of basic infrastructure and doesn&#39;t feel the need to insult the USA&#39;s closest allies, or start
 
 your attitude is actually greatly a result of the conservative media machine itself.  they want you despondent and cynical.Welcome to the reality of the electoral college.  Most paths to victory require winning over a lot of places that wouldn&#39;t vote for Jesus Christ himself, if he ran as a Democrat.
 
@@ -1640,7 +1740,17 @@ Biden was better.Yes, but not for the reasons you might think.  Biden was even m
 
 Yes, but not for the reasons you might think.  Biden was even more into cognitive decline than Trump, but he had competent grown-ups around him to keep things functioning.  As did Trump in his first term, but not so many now.  And the rot runs deep. You can blame the senate for anointing the likes of Hegseth and RFK jr.
 
-Do tell. What mental gymnastics will you do to justify trump being elected a third time? And howâ(TM)s this different to Putin gaming the Russian system with Medvedev a while back so he could remain president for life?
+Biden is in better cognitive shape today than Trump is.  Sorry but those are facts.
+
+If Biden had been in good shape in 2024, a scumbag like Trump would never have had a chance.
+
+Facts? More like denial - the sort of denial that handed the presidency to a womanizing felon.
+
+Oh now it&#39;s &quot;in good shape&quot;, that&#39;s a wholly different claim. Biden is quite old and had too much on his plate running a campaign while being President.  He had one bad night and 60IQ numpties take that as &quot;cognitive decline&quot;.
+
+Meanwhile have they ever actually watched the debate and Trump&#39;s performance? It was also really bad, maybe even worse! But he always got a pass, because the press is actually kinda conservative and they like Trump.
+
+All I&#39;m saying is the &quot;Biden is senile/demented&quot; stuff is conservative
 
 You don&#39;t need to be a Nobel prize winning scientist to work out what is going to happen as a result.
 
@@ -1653,6 +1763,8 @@ The White House’s decision last month to ask Congress to give NSF $900 million
 The White House’s decision last month to ask Congress to give NSF $900 million next year for a new Antarctic research icebreaker is another example of how the Trump administration’s Office of Management and Budget (OMB) has prevented the board from meeting its obligations, says [dismissed board-member Keivan] Stassun, who until yesterday chaired the group’s committee on large research facilities.
 
 “OMB basically said very directly to NSF’s chief of research facilities that ‘you will build a new research vessel,’ and there was no involvement by the board, which is required to approve and authorize any major infrastructure investment by NSF,” Stassun notes. “And when the board asked, the response was, ‘Well, OMB was very clear in its directive.’”
+
+Climate change is real, but lack of climate science isn&#39;t going to change much about US prominence.
 
 The &quot;new eyes&quot; thing is why the membership rotates on a regular basis.
 
@@ -1690,13 +1802,13 @@ Don&#39;t fool yourself. They learned nothing and would vote for him again given
 
 I have a family member who is a Republican and cannot stand Trump. He just didn&#39;t vote for anyone for President, but voted for Republican candidates in other races. Perhaps Misagon&#39;s friends did the same.
 
-The people I know who identify as Republican all despise Trump though. From my perspective, the dissent and dissatisfaction is is only growing.They despise Trump. Most of them have always despised Trump. That&#39;s not the problem. The problem is they despise the left even more. Like most hate, that hatred is irrational, and this particular irrational hatred is founded on the baseless belief that everything wrong in their lives is the fault of immigrants, people of color, and everyone else who doesn&#39;t look like them...in other words, the left side of the political spectrum.Hatred is a powerful motivator and that&#39;s what has put this country in the posi
+The people I know who identify as Republican all despise Trump though. From my perspective, the dissent and dissatisfaction is is only growing.They despise Trump. Most of them have always despised Trump. That&#39;s not the problem. The problem is they despise the left even more. Like most hate, that hatred is irrational, and this particular irrational hatred is founded on the baseless belief that everything wrong in their lives is the fault of immigrants, people of color, and everyone else who doesn&#39;t look like them...in other words, the left side of the political spectrum.Hatred is a powerful motivator and that&#39;s what has put this country in the position it finds itself in.
 
 The people I know who identify as Republican all despise Trump though. From my perspective, the dissent and dissatisfaction is is only growing.
 
 They despise Trump. Most of them have always despised Trump. That&#39;s not the problem. The problem is they despise the left even more. Like most hate, that hatred is irrational, and this particular irrational hatred is founded on the baseless belief that everything wrong in their lives is the fault of immigrants, people of color, and everyone else who doesn&#39;t look like them...in other words, the left side of the political spectrum.
 
-Hatred is a powerful motivator and that&#39;s what has put this country in the posi
+Hatred is a powerful motivator and that&#39;s what has put this country in the position it finds itself in.
 
 Does anyone know if and how much board members get paid for serving on the board?
 
@@ -1720,9 +1832,15 @@ When I read things like this, I no longer go through the usual thoughts of empat
 
 Or possibly with some of the executives who paid him homage at the inauguration.
 
+Do tell. What mental gymnastics will you do to justify trump being elected a third time? And howâ(TM)s this different to Putin gaming the Russian system with Medvedev a while back so he could remain president for life?
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The best laid plans of mice and men are held up in the legal department.</div>
+EARTH          
+     smog  |   bricks  
+ AIR  --  mud  --  FIRE
+soda water |   tequila 
+         WATER</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1796,15 +1914,13 @@ I remember I used to bike or walk over to my friend&#39;s houses (and knew how t
 
 Now, kids are glued to the phones/tablets and games consoles all the time, and that&#39;s where they learn their social skills.The daughter g
 
+I was a &quot;weird kid&quot; in school, and was bullied for it. The kind of kid we now call &quot;aneurotypical&quot; and other kids actually stand up to people picking on them was, when I was in school, only a target for abuse. I didn&#39;t want to socialize with those psychopathic little fucks. I learned to be social... through the internet. Today part of my job is conducting interviews, and part of that is rapidly building rapport with people I&#39;ve never spoken with before and whose lives may be very different from my own. And
+
 After school programs, sports clubs -- are they pushing anything to to replace or *displace* social media to fill the void left by the social media ban?Schools usually do have programs for the more mainstream sorts of interests.  Kids tend to go online when their interests fall outside of those areas.
 
 After school programs, sports clubs -- are they pushing anything to to replace or *displace* social media to fill the void left by the social media ban?
 
 Schools usually do have programs for the more mainstream sorts of interests.  Kids tend to go online when their interests fall outside of those areas.
-
-That is a bit low, the youngens are really slacking off... or nobody really cares about socialmedia anymore anyway, it is nothing but a propaganda pipeline straight into your conscious and subconscious nowadays.
-
-It has never been this cheap and easy to flood an entire society with your erosive filth.
 
 I wonder if a contributing factor to it being that low is that social media has contributed to the lack of attention, focus and creativity in a reasonable chunk of said youngens.
 
@@ -1824,6 +1940,10 @@ In the dialup age it was just assumed if you figured that shit out, you were pro
 
 I tend to think the truth is somewhere in the middle - it&#39;s obvious that social media is messing up some of the younger generation, but we&#39;ve always had a percentage of kids who end up using
 
+One could say the same thing about adults. There&#39;s always a 10% that&#39;s crazier/stupider/generally more dysfunctional than the other 90%.
+
+I look back on the people I went to high school with. Look them up on occasion (as one does with complete strangers one casually crossed paths with decades ago) and even the delinquents are mostly solid citizens at this point: doctors, engineers, business owners, realtors, seemingly happy parents. There&#39;s a couple of notable exceptions of people who&#39;ve gone dark that it&#39;s c
+
 The law made social media the prize for winning the gameKids love games and are good at finding workarounds for silly rules
 
 Tenn bring an iPhone 8 from their parents&#39; old phones drawer to be locked in, while keeping their own in their underwear somewhere.
@@ -1838,7 +1958,11 @@ The most pernicious thing about social media for teens is that they feel like th
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The best laid plans of mice and men are held up in the legal department.</div>
+EARTH          
+     smog  |   bricks  
+ AIR  --  mud  --  FIRE
+soda water |   tequila 
+         WATER</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1878,13 +2002,25 @@ Anonymous shitposting is a human right.  I hold this truth to be self-evident.
 
 Trillian was never hard to find, and I&#39;m sure the modern-day equivalent (I&#39;d bet there is one) is just as easy to find if I searched for it (just look for a Facebook Messenger alternative).Of course, the kids know more... they were raised on this stuff, the parents only knew it back &quot;in the day&quot; when it became a thing.  The kids have coasted through the changes, the folk&#39;s are just dumped into the new stuff head-first.The &quot;locked down&quot; laptop or tablet they get from school is one search away from being unlo
 
+So, the kids can find FOSS alternatives to Tiktok and still post their booty videos and chat with perverts on Facebook or whatever.So, what changed?
+
+If you do it with the OS, the OS keeps the information away from Facebook and such.
+
+If you run F/OSS, then the website needs the personal information to do the age verification. Right now, this is the standard and everyone has to send in their drivers license and stuff for verification to third parties.
+
+Lawmakers wanted to push it to the OS - Google, Microsoft, Ap
+
 ... is that regardless of how you personally feel about AI and LLMs, one consequences of their arrival on the scene is that there is no longer any need to be afraid to try a new operating system.  Even the most arcane Linux command lines, utilities, and operating procedures have been mastered by agentic LLMs at this point.  Tell the LLM what you want your computer to do, and it will happen.
 
 In fact, the choice of operating system really doesn&#39;t matter anymore, as long as what little legacy software you still
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-The best laid plans of mice and men are held up in the legal department.</div>
+EARTH          
+     smog  |   bricks  
+ AIR  --  mud  --  FIRE
+soda water |   tequila 
+         WATER</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2175,11 +2311,25 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Water-based zinc batteries tackle a barrier that has long blocked cheap, stable renewable energy storage</div>
+            <div class="meta">2026-04-26</div>
+        </div>
+        
+        <div id="content-36" style="display:none;">
+            <h2>Water-based zinc batteries tackle a barrier that has long blocked cheap, stable renewable energy storage</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-04-26</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-04-based-zinc-batteries-tackle-barrier.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Meta and Microsoft have joined the tech layoff tsunami—but is AI really to blame?</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-36" style="display:none;">
+        <div id="content-37" style="display:none;">
             <h2>Meta and Microsoft have joined the tech layoff tsunami—but is AI really to blame?</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-04-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-04-meta-microsoft-tech-layoff-tsunami.html">Visit Original Website</a>
@@ -2187,13 +2337,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Battery-free textile turns clothing into a real-time blood pressure monitor</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Battery-free textile turns clothing into a real-time blood pressure monitor</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-04-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-04-battery-free-textile-real-blood.html">Visit Original Website</a>
@@ -2201,13 +2351,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">At Beijing auto show, Chinese carmakers flaunt new technologies as global competition heats up</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>At Beijing auto show, Chinese carmakers flaunt new technologies as global competition heats up</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-04-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-04-beijing-auto-chinese-carmakers-flaunt.html">Visit Original Website</a>
@@ -2215,13 +2365,13 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Google commits $10 billion, could add $30 billion more to Anthropic</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Google commits $10 billion, could add $30 billion more to Anthropic</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-04-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-04-google-commits-billion-anthropic.html">Visit Original Website</a>
@@ -2229,30 +2379,16 @@ Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily 
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Billionaire Elon Musk enters courtroom showdown with OpenAI</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Billionaire Elon Musk enters courtroom showdown with OpenAI</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-04-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-04-billionaire-elon-musk-courtroom-showdown.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">AI firms flex lobbying muscle on both side of Atlantic</div>
-            <div class="meta">2026-04-25</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>AI firms flex lobbying muscle on both side of Atlantic</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-04-25</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-04-ai-firms-flex-lobbying-muscle.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
@@ -2627,11 +2763,61 @@ As for the next release … the forthcoming and slightly Rustier Ubuntu 26.10 wi
         
         <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
-            <div class="title">The plan to quietly kill Coyote v. Acme blew up in David Zaslav&#8217;s face</div>
+            <div class="title">After three months on Linux, I don’t miss Windows at all</div>
             <div class="meta">2026-04-26</div>
         </div>
         
         <div id="content-48" style="display:none;">
+            <h2>After three months on Linux, I don’t miss Windows at all</h2>
+            <p><strong>The Verge | 2026-04-26</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/918797/switched-to-linux-dont-miss-windows">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+In January I finally made good on my threat/promise to install Linux on my desktop. I wanted to see how far I could get using a Linux PC as my main computer without doing a bunch of research beforehand or troubleshooting afterwards. Since then I have booted into Windows exactly twice: once to scan a multipage document that wasn’t scanning right in Linux, and once to print a photo for my kids’ school on extremely short notice. There’s a reason it’s taken me three months to write the next installment in my Linux diary: nothing has gone horribly wrong.
+
+It didn’t take long for my Linux install to stop feeling new and exciting and start feeling like, well, my computer. It’s not exactly like a less annoying version of Windows, though it is less annoying than Windows, but it’s been a much easier transition than I thought it would be. There are a few extra steps sometimes in finding and installing apps — usually it’s easier than in Windows, and occasionally it’s harder. And there are a few apps I still haven’t been able to replicate in Linux. I’ve also had a smattering of fun bugs, and a few genuinely frustrating moments, but the overall experience is a lot calmer and more robust than I expected. Even troubleshooting is (mostly) satisfying in a weird way.
+
+Fortunately, everything that’s gone wrong so far has only gone slightly wrong, like a gaming mouse that only works in games, and most of it has been pretty funny, like a gaming mouse that only works in games. Some of it has to do with specific hardware I’m using, or specific choices I made. (Keeping my nemesis, the HP OfficeJet 8720 printer, for one.) Some of it has to do with the fact that I deliberately chose a relatively new rolling distribution based on Arch Linux rather than a more mainstream distribution with a predictable release cycle, like Ubuntu.
+
+Here’s my favorite fix so far. CachyOS comes with Snapper, a built-in imaging service that stores snapshots of the OS before you install or update a program, so you can roll back if something goes wrong. It defaults to saving 50 snapshots, which are stored in the boot partition. When I installed CachyOS, I went with the recommended size for that partition, which was 2GB. That filled up pretty quickly, and after a few weeks Snapper started warning me that it had run out of space and wouldn’t be taking any more snapshots (It defaults to 50, but didn’t have room to store 50 snapshots). CachyOS has since changed its installer to default to a 4GB partition, but it was too late to help me. There was only one thing to do: boot back into the live image, shrink my rightmost partition by 2GB, and slide every volume on the disk to the right of the boot partition over by 2GB, one at a time, to make room to expand the boot partition. It’s silly that I had to do that but it was easy enough, and kinda satisfying in a tactile way.
+
+In January, I noticed I couldn’t get an IP address from my router on my ethernet connection after waking from sleep unless I first connected to Wi-Fi. This drove me up the goddamn wall. Fortunately, I could keep using the computer while troubleshooting because I do have both Wi-Fi and ethernet, but I prefer ethernet, so I had to fix it. I learned the default driver that the Linux kernel uses for my particular ethernet card doesn’t always work well, so I installed a new driver. I turned off ipv6, then turned it back on again. I made sure my wired and wireless connections identified themselves as different devices to the router, though that didn’t help. I set a static IP on both the router and computer side. I extended my DHCP lease timeout. Finally I found the actual culprit.
+
+Several years ago, in an effort to get my multigenerational Sonos speakers to play nicely with my Unifi router (it’s a whole thing), I followed some advice on a forum and enabled STP — an older port-scanning protocol — on my networking switch. This was fine for my Windows PC, but in Linux it made getting an IP address from the router take so long every time that the ethernet card gave up. Disabling it fixed the problem with my desktop and finally got the Era 100 in my kitchen showing up consistently in the Sonos app. Figuring out how to solve a problem on an OS I’d used for a few weeks fortuitously solved a problem I’d created trying to solve a different problem on a different OS a few years ago. We learn by doing!
+
+My current gremlin is that the mic on my Logitech Brio webcam doesn’t always transmit sound. Sometimes nobody can hear me from the get-go; other times it stops working in between one meeting and the next, and lately it’s been cutting out mid-sentence. This is probably because I installed EasyEffects, but I’m not sure yet. I have another microphone — and also other computers, if really necessary. If I didn’t, I would probably be more annoyed. Maybe annoyed enough to fix it.
+
+On the other hand, sometimes problems solve themselves if you wait. I wanted to find a way to add text extraction to the screenshot utility in KDE Plasma — a feature I missed from other operating systems. The solution was to wait a week until Cachy updated to Plasma 6.6, which added that feature. Score another point for laziness.
+
+When I last wrote about my experience with CachyOS, I bemoaned the absence of the Arc browser. Several readers pointed me to Zen, which is basically Arc but open-source and built on Firefox, and it is indeed good enough. Thank you, readers. I also grabbed a Spotify client from the Arch User Repository. I set up git and finally recompiled the ZMK firmware for my number pad. I even got ZMK Studio — a GUI keymap editor — working. In lieu of Photoshop, I’ve been using the Photopea web app. It’s probably not load-bearing if I have to edit a bunch of photos, but so far I haven’t had to.
+
+I didn’t end up installing howdy for webcam facial-recognition unlocking because it doesn’t seem to be as secure as Windows Hello. Windows Hello uses infrared 3D face mapping; by the developer’s own admission, howdy can apparently be fooled by a photo. I’m not worried about my kids printing photos of me so they can run sudo commands on my computer, but for now I’m typing my password every time. Microsoft and Apple have put a lot of money into nailing biometric authentication, and the Linux approach of “hoping someone volunteers to make this” really does put the ecosystem at a disadvantage. Fingerprint authentication seems to work fine, but my desktop doesn’t have a fingerprint reader.
+
+Cachy is working fine for gaming, with the caveat that I am still not playing competitive multiplayer games or anything requiring anti-cheat — or anything that’s really pushing my RTX 4070 Super, for that matter. I got Minecraft: Bedrock Edition working with MCPE Launcher; all I had to do was enable remote login and disable vibrant visuals. My kids kind of fell off of Minecraft but we had a few good weeks there. I’ve also played a bit of Hardspace: Shipbreaker, Esoteric Ebb (great game), Caves of Qud (live and drink), and Baldur’s Gate 3 (just a little). They’ve all run fine. I played Hardspace through the Heroic Games Launcher, and the rest through Steam.
+
+Last time, I mentioned a weird bug where my ancient gaming mouse only worked in games, and not outside of them. It is apparently fixable, but I replaced it anyway with a Keychron M5 vertical mouse, which has been great both in and out of game and has largely replaced my trackball, to my surprise.
+
+You might ask: why would I put up with a computer that I had to cajole into getting its wired ethernet working, that sometimes completely forgets about the mic on my webcam, that refuses to sleep for unknown reasons at unpredictable intervals? It’s because those are outliers. It mostly just works, and figuring out how to fix the things that don’t is fun.
+
+I was happy on Windows until I wasn’t. I liked Windows! I have been using it since I was a kid, and I’ve been building my own desktops for close to 20 years. I wasn’t the one who decided to ruin the Start menu by making it search Bing instead of my files; I didn’t break indexing; I didn’t rename the app that launches Office documents so many times the computer forgot how to open Word documents. I didn’t opt in to any of that. My choices didn’t make Windows worse. It’s not fun to fix Windows when it breaks because Microsoft is shipping its org chart.
+
+But if my browser in Linux can’t find my webcam mic because I installed EasyEffects without bothering to read the docs, brother, that’s on me. Similarly, if half my operating system is in French all of a sudden, c’est parce que j’ai l’ajouté. I opted in to this situation; it wasn’t foisted on me. It’s the difference between running because you want to go for a run and running because you’re late for the train.
+
+Linux is built on the Unix philosophy: it’s made up of lots of little pieces of modular software that each do one thing well, rather than huge monolithic programs that try to do everything for everyone. It’s like a box of Lego, rather than an action figure. I’m having a great time with metaphors today. The skills I build by figuring out how to install a spellchecker, or change drivers, or add a software repository, or configure git, are transferable to the rest of the OS and a lot of the software as well. I think that’s neat.
+
+I have not totally gone away from Windows. My laptop still runs on Windows for now, and I do have to hand it to Microsoft: the Surface Pro is a great tablet computer. Of course, it would be even better if Windows were less annoying, but Microsoft is aware. And I need to be current with Windows for my job. But it turns out I don’t need to run Windows on my desktop, and I’m having more fun with Linux, so I’m gonna keep at it.
+
+A free daily digest of the news that matters most.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">The plan to quietly kill Coyote v. Acme blew up in David Zaslav&#8217;s face</div>
+            <div class="meta">2026-04-26</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
             <h2>The plan to quietly kill Coyote v. Acme blew up in David Zaslav&#8217;s face</h2>
             <p><strong>The Verge | 2026-04-26</strong></p>
             <a class="original-link" href="https://www.theverge.com/column/918079/david-zaslav-warner-bros-discovery-coyote-v-acme-batgirl-tax-writeoffs">Visit Original Website</a>
@@ -2657,13 +2843,13 @@ If the movie does end up being a massive success, it will be a coup for Green an
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">Trump fires the entire National Science Board</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>Trump fires the entire National Science Board</h2>
             <p><strong>The Verge | 2026-04-25</strong></p>
             <a class="original-link" href="https://www.theverge.com/science/918769/trump-fires-the-entire-national-science-board">Visit Original Website</a>
@@ -2681,13 +2867,13 @@ In a statement, Zoe Lofgren, the ranking Democrat on the House Science, Space, a
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">An influx of used EVs could drive down prices</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>An influx of used EVs could drive down prices</h2>
             <p><strong>The Verge | 2026-04-25</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/918765/an-influx-of-used-evs-could-drive-down-prices">Visit Original Website</a>
@@ -2709,13 +2895,13 @@ While new electric cars tend to be more expensive than their gas-powered counter
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Researchers say we’re talking less than ever</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Researchers say we’re talking less than ever</h2>
             <p><strong>The Verge | 2026-04-25</strong></p>
             <a class="original-link" href="https://www.theverge.com/science/918753/researchers-talking-less">Visit Original Website</a>
@@ -2737,13 +2923,13 @@ Though alarming, Valerie Fridland, a linguistics professor at the University of 
 A free daily digest of the news that matters most.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Sharge’s fast Qi2.2 MagSafe battery is down to $70 with a free USB-C cable</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Sharge’s fast Qi2.2 MagSafe battery is down to $70 with a free USB-C cable</h2>
             <p><strong>The Verge | 2026-04-25</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/918410/sharge-icemag-3-qi2-usb-c-wireless-power-bank-battery-deal-sale">Visit Original Website</a>
@@ -2763,50 +2949,6 @@ I’ll save my detailed charging speed test results for a later date, but I’m 
 Sign up to get the best deals on products we’ve found and tested sent to your inbox.
 
 Sign up to get the best deals on products we’ve found and tested sent to your inbox.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">The Govee smart lamp brightened up my room, and then my life</div>
-            <div class="meta">2026-04-25</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>The Govee smart lamp brightened up my room, and then my life</h2>
-            <p><strong>The Verge | 2026-04-25</strong></p>
-            <a class="original-link" href="https://www.theverge.com/gadgets/913854/govee-uplighter-floor-lamps-caregiving-parkinsons-disease">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">It’s not perfect, but this smart lamp helped me reclaim a space that had quietly fallen apart.
-
-It’s not perfect, but this smart lamp helped me reclaim a space that had quietly fallen apart.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-I knew things were not quite right when I had to throw a towel over a broken Ikea lamp to block out its light. How did I get here? I cover fancy and capable tech for a living, and yet, it took me two years to get rid of a pair of old, broken Ikea lamps in my bedroom. Then I got some floor lamps from Govee that changed everything.
-
-Those Ikea lamps were around for two years after I moved from Orange County to Los Angeles. Soon after that move, my mom’s Parkinson’s disease — a neurodegenerative condition with no cure — progressed quickly, my mental health took a hit, and most of my own to-do list quietly slid to the back burner as she lost mobility and more urgent things took over. So the big, ugly lamps just… stayed. They became part of the background, like everything else I wasn’t taking care of.
-
-I didn’t even have them plugged into a smart plug — another small upgrade I kept meaning to add to my bedroom, despite having them all over the apartment — which meant I had to get up every time I wanted to turn one on.
-
-One blasted harsh, overpoweringly bright light through a cracked shade. The other was warmer — but not warm enough — so I solved that problem one exhausted night by just throwing a towel over it. Yes, a fire hazard. Yes, I meant it as a temporary fix for a few days. But scattered caregiving brain means temporary fixes can turn into long-term solutions. At some point, it stopped feeling temporary and just became my new normal, even if it clearly wasn’t.
-
-Then my brother bought my mom and me two separate Govee Uplighter Floor Lamps for Christmas, and my Ikea lamp troubles were over. I did not expect to develop an emotional attachment to a lamp. But I did, and now it’s one of my favorite gadgets.
-
-The Govee was quick and easy to assemble, and much slimmer, taking up way less space than the old lamps. As I got rid of the old and set up the new, I felt an odd sense of relief and a small sense of control I hadn’t felt since the move.
-
-Within a week, the old lamp was out of my room. That small shift gave me momentum. I started decluttering other corners that had quietly piled up, things I’d been stepping around for months without really seeing anymore.
-
-The bedroom stopped feeling like an unfinished project I was merely surviving, and started feeling steadier. Calmer. Like a place I could finally exhale in. My days often feel structured around what my mom needs and what has to get done next. I don’t really think about my own space at all, except as something else I haven’t gotten to yet. Having a room that felt calm, even a little bit, made it easier to wind down at the end of the day instead of carrying that feeling of being “on” all the time into the night. It brought me back to myself, even if only a little.
-
-I could relax in a way I hadn’t in a while, without feeling like I should be getting up to do something else. I could dim the lamp from my phone instead of standing up. I could shift from cool to warm without needing a towel and risking starting a fire. There’s a ripple effect that slowly moves across the wall and, for reasons I can’t fully explain, genuinely helps me fall asleep. Cycling through soft colors in the app and syncing it with ambient music is soothing. Sometimes, the changing colors feel a little bit like magic, and I find myself watching them the way I might have as a kid, reminded — briefly — that life can be more playful than it’s felt in a while. The warm, shifting light seems to have a similar effect on my mom, who lives with me, sometimes comforting and even dazzling her as she navigates some of the more difficult parts of the disease, like sundowning, along with her own quiet grief of losing pieces of herself.
-
-And I love that it does all that and more without demanding much. Setup took about 15 to 20 minutes and didn’t require that I try to wrap my head around tools. You control it through the Govee app on your phone, and because it supports Matter, you can also pair it with platforms like Amazon Alexa or Google Assistant for voice control. It offers a wide range of colors, along with 80 preset scenes and seven music modes. At $179.99, it’s pricey, but it’s versatile, basically acting as three lights in one: a top section that casts a soft ripple onto the ceiling, a colorful middle light, and a regular white light at the bottom.
-
-It’s an amazing gift, truly, and I am so grateful for it. Mine, however, had just one problem: It sometimes forgets to be a lamp. It doesn’t lose Wi-Fi. It doesn’t show as offline in the app. It just turns off randomly. The first time it happened, I was rewatching Stranger Things to prepare for the last season. The lights flickered on screen, and then my room went dark. The vibe went from relaxing to terrifying in a second, as I briefly wondered if reality and TV had merged (I might have also had too much wine). Once my brain rebooted, I opened the Govee app and turned it back on. No problem. I assumed it was a power or Wi-Fi issue. Govee sent me a new unit that worked perfectly.
-
-When it works — which is most of the time — it quietly makes my life better. And somehow, that’s been enough to make it one of my new favorite gadgets. It didn’t fix everything, but it helped me start taking care of my space — and myself — again.
-
-A free daily digest of the news that matters most.</div>
         </div>
         
         <div class="card" onclick="openModal('content-54')">
@@ -3193,11 +3335,83 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">The Next Web</div>
-            <div class="title">Brockman’s diary called it a lie. Now a jury will hear it.</div>
+            <div class="title">Sequoia is giving away the hardware for an AI project it cannot invest in. That is the point.</div>
             <div class="meta">2026-04-26</div>
         </div>
         
         <div id="content-60" style="display:none;">
+            <h2>Sequoia is giving away the hardware for an AI project it cannot invest in. That is the point.</h2>
+            <p><strong>The Next Web | 2026-04-26</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/sequoia-openclaw-mac-mini-ai-agents">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">TL;DRSequoia Capital co-steward Alfred Lin distributed 200 custom-engraved, numbered Mac Minis at the firm’s “AI at the Frontier” event, each loaded with easter eggs and designed by Sequoia’s design principal. The Mac Mini has become the unofficial hardware of OpenClaw, the open-source AI agent framework that surpassed React as GitHub’s most-starred project and caused Apple hardware shortages. Sequoia did not invest in OpenClaw — there is no company to invest in — but the giveaway positions the firm at the cultural centre of the agentic AI layer, the infrastructure connecting models to real-world actions where Lin believes the next wave of venture-backable companies will emerge.
+
+Sequoia Capital co-steward Alfred Lin distributed 200 custom-engraved, numbered Mac Minis at the firm’s “AI at the Frontier” event, each loaded with easter eggs and designed by Sequoia’s design principal. The Mac Mini has become the unofficial hardware of OpenClaw, the open-source AI agent framework that surpassed React as GitHub’s most-starred project and caused Apple hardware shortages. Sequoia did not invest in OpenClaw — there is no company to invest in — but the giveaway positions the firm at the cultural centre of the agentic AI layer, the infrastructure connecting models to real-world actions where Lin believes the next wave of venture-backable companies will emerge.
+
+Sequoia Capital co-steward Alfred Lin personally purchased 200 Mac Minis, had each one custom-engraved with a design mixing old cartography and machine learning contour plots, and distributed them to attendees at Sequoia’s “AI at the Frontier” event. Each machine contained two easter eggs: Sequoia’s ethos statement about creative spirits and underdogs, and a quote generated by an AI model. The engraving was designed by Andreas Weiland, Sequoia’s design principal. The Mac Minis were numbered. They are, by all accounts, beautiful objects. They are also $599 computers that have become the unofficial hardware of OpenClaw, the open-source AI agent framework that surpassed React as the most-starred project on GitHub in March, caused Apple to sell out of base Mac Minis in the United States, and established itself as the fastest-growing open-source project in the history of the platform. Sequoia did not invest in OpenClaw. There is no OpenClaw Inc. to invest in. The firm is distributing the hardware for a project it does not own, and that is the point.
+
+OpenClaw was built by Peter Steinberger, an Austrian developer who previously founded PSPDFKit, a PDF software kit used by applications serving roughly a billion people, which was acquired by Insight Partners for an estimated $100 million in 2024. Steinberger stepped away from coding after the sale. He returned in November 2025 when he started building what he initially called WhatsApp Relay, then Clawdbot, then OpenClaw. It is a free, open-source AI agent framework that runs locally on consumer hardware and integrates with external language models including Claude, GPT, and DeepSeek. Users interact through messaging services they already use: WhatsApp, Signal, Telegram, Discord, Slack. The agent orchestrates multi-step workflows: managing calendars, booking flights, sending emails, executing code, conducting research across multiple sources. By March 2026, it had approximately 247,000 GitHub stars and 47,700 forks. Jensen Huang called it “the next ChatGPT.”
+
+The reason Mac Minis became the preferred hardware is Apple’s unified memory architecture, which is well-suited for running local AI inference. The $599 base model with 16 gigabytes of RAM became the entry point. Higher-memory configurations sold out first. By April 22, the base Mac Mini had sold out from Apple’s US online store. eBay markups reached $795 to $979 for base models. Delivery times for high-memory units stretched from six days to six weeks. Mac Mini and Mac Studio stock shortages are driven by a combination of OpenClaw demand and a broader DRAM shortage, but OpenClaw established the Mac Mini as the reference hardware for running local AI agents in a way that no other project has managed. On April 4, Anthropic banned OpenClaw from Claude Pro and Max subscriptions, citing API abuse, which pushed even more users toward local inference and intensified the hardware demand.
+
+In February, Sam Altman announced that Steinberger was joining OpenAI to build “next-generation personal agents.” The hire was effectively an acqui-hire: OpenAI recruited Steinberger, not the software. OpenClaw transitioned to an independent open-source foundation, sponsored by OpenAI but not controlled by it. Steinberger had also received and rejected an offer from Meta. No acquisition price was publicly disclosed, though social media speculation ranged from the plausible to the satirical. The project’s commercial value lies not in the codebase itself but in the ecosystem that formed around it: 168 startups building hosting, deployment, and plugin services on top of OpenClaw, collectively generating approximately $400,000 per month in revenue. Tencent built its enterprise AI agent platform ClawPro on OpenClaw, adopting it for more than 200 organisations in beta. Nvidia built NemoClaw on top of OpenClaw to add enterprise-grade security and privacy guardrails, announced at GTC 2026. Cisco launched DefenseClaw in response to a security crisis that exposed 42,665 publicly accessible OpenClaw instances and a supply-chain attack on the ClawHub marketplace that identified over 800 malicious skills.
+
+The security problems are real and significant. A critical remote code execution vulnerability, CVE-2026-25253 with a CVSS score of 8.8, was discovered by researcher Mav Levin. The supply-chain attack on ClawHub, dubbed “ClawHavoc,” traced to a coordinated operation that seeded 341 malicious skills into the marketplace, growing to more than 800 before detection. These are the growing pains of an open-source project that went from a weekend hack to the most popular repository on GitHub in four months, without the security infrastructure that enterprise software demands. OpenAI’s sponsorship of the foundation and Nvidia’s NemoClaw are both attempts to add that infrastructure retroactively, which is cheaper than building it from scratch but harder than building it correctly from the start.
+
+Alfred Lin has publicly stated that “software code is no longer a moat.” This is the thesis that makes the engraved Mac Minis legible as strategy rather than swag. If the value in AI is shifting from models, which are commoditising rapidly, to the agentic infrastructure that connects models to real-world actions, then the open-source project that defines that infrastructure layer is the most important thing in venture capital that cannot be invested in. Sequoia’s $7 billion late-stage expansion fund, raised under Lin and co-steward Pat Grady after Roelof Botha stepped down in November 2025, is the largest fund in the firm’s history and is positioned squarely around AI. The fund includes stakes in OpenAI, Anthropic, and Physical Intelligence, a robotics company. The Mac Mini giveaway is Sequoia placing itself at the cultural centre of a movement it cannot own equity in, because the movement is open source and its creator was hired by a portfolio company before Sequoia could write a cheque.
+
+Sequoia’s willingness to lead a $1 billion seed round for David Silver’s Ineffable Intelligence, which would be the largest seed round ever in Europe, shows the firm’s appetite for making defining bets in AI at every stage. The OpenClaw giveaway operates on a different logic. It is not a bet on a company. It is a bet on a layer, the agentic infrastructure layer where AI models connect to messaging apps, calendars, email, and code execution environments, where the value is captured not by the model provider but by whoever builds the best orchestration, the best plugins, the best security, and the best developer experience. Sequoia cannot buy OpenClaw. But it can be the firm that gave 200 numbered, engraved Mac Minis to the people building the ecosystem around it, which in venture capital is another way of saying: we were here first, and when the companies that emerge from this layer need a Series A, they will remember who handed them the hardware.
+
+The engraved Mac Mini is the Patagonia vest of the AI era. The Patagonia vest signalled membership in a financial elite that valued the appearance of rugged practicality over the display of wealth. The numbered Sequoia Mac Mini signals membership in an AI elite that values local inference, open-source tools, and the ability to run an agent framework on a $599 computer rather than paying for cloud API access. Both are status symbols disguised as utility objects. Both are distributed by institutions that benefit from the culture they promote. Goldman Sachs gave out vests to signal that its bankers were unpretentious operators. Sequoia gives out Mac Minis to signal that its partners understand the technology well enough to know which $599 computer matters. The difference is that the Mac Mini actually does something. It runs OpenClaw. It connects to language models. It orchestrates the workflows that the next generation of AI-native companies will be built on. The vest just kept you warm on the trading floor. The Mac Mini is a piece of infrastructure that happens to also be a branding exercise, which is what makes it more interesting than the average venture capital stunt. Sequoia is not sponsoring a conference. It is distributing the means of production for the agentic AI layer, one numbered machine at a time, with its ethos engraved on the bottom.
+
+Get the most important tech news in your inbox each week.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">The Next Web</div>
+            <div class="title">A startup with a bankrupt fintech CEO and a president’s son wants to build America’s robot army</div>
+            <div class="meta">2026-04-26</div>
+        </div>
+        
+        <div id="content-61" style="display:none;">
+            <h2>A startup with a bankrupt fintech CEO and a president’s son wants to build America’s robot army</h2>
+            <p><strong>The Next Web | 2026-04-26</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/foundation-humanoid-robot-soldiers-pentagon">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">TL;DRFoundation Future Industries, a San Francisco startup whose CEO previously ran a bankrupt fintech, has secured $24 million in Pentagon research contracts to test humanoid robots for breaching enemy positions. Two Phantom MK-1 units were sent to Ukraine in February for logistics and reconnaissance testing. The company’s chief strategy adviser is Eric Trump, prompting Senator Warren to call the contracts “corruption in plain sight.” Foundation is seeking $500 million at a $3 billion+ valuation, but its production targets of 50,000 units by 2027 from a base of 40 require a 250x scale-up on roughly $21 million in total funding.
+
+Foundation Future Industries, a San Francisco startup whose CEO previously ran a bankrupt fintech, has secured $24 million in Pentagon research contracts to test humanoid robots for breaching enemy positions. Two Phantom MK-1 units were sent to Ukraine in February for logistics and reconnaissance testing. The company’s chief strategy adviser is Eric Trump, prompting Senator Warren to call the contracts “corruption in plain sight.” Foundation is seeking $500 million at a $3 billion+ valuation, but its production targets of 50,000 units by 2027 from a base of 40 require a 250x scale-up on roughly $21 million in total funding.
+
+Foundation Future Industries, a San Francisco startup founded in April 2024, has secured $24 million in research contracts with the US Army, Navy, and Air Force to test humanoid robots designed to breach enemy positions. The company’s Phantom MK-1 is a 5-foot-9, 176-pound humanoid with 19 upper-body degrees of freedom, five-fingered hands, a camera-first vision system, and an LLM-driven autonomy stack that blends independent operation with supervised teleoperation. Two units were sent to Ukraine in February for frontline testing in logistics and reconnaissance, described as the first deployment of humanoid robots to any theatre of combat. The company is seeking $500 million in new funding at a valuation exceeding $3 billion. Its chief strategy adviser is Eric Trump, the son of the sitting president, a detail that prompted Senator Elizabeth Warren to call the Pentagon contracts “corruption in plain sight.” The company’s CEO previously ran a fintech startup that went bankrupt with tens of millions in consumer deposits unaccounted for.
+
+The Phantom MK-1 walks at 1.7 metres per second, carries a 44-pound payload, runs on eight cameras with no bulky LiDAR, and uses proprietary cycloidal actuators delivering up to 160 newton-metres of torque. Its AI stack translates high-level task instructions into motion through an LLM pipeline, with operators retaining final authority over lethal decisions. The unit cost is approximately $150,000, with a lease model available at $100,000 per year. The MK-2, expected this month, consolidates electronics to reduce short-circuit risk, adds waterproofing and larger battery packs, increases payload capacity to 175 pounds, and uses cast-moulded bodywork to speed manufacturing and reduce costs. Foundation’s production targets are 40 units in 2025, 10,000 in 2026, and 50,000 by the end of 2027, with a steady-state target of 30,000 per year. Those numbers would require a manufacturing scale-up of 250 times in two years on a total funding base of roughly $21 million.
+
+The company was founded by Sankaet Pathak, previously the CEO of Synapse, a banking-as-a-service platform that filed for bankruptcy in 2024; Arjun Sethi, CEO of Tribe Capital, which led Foundation’s $11 million pre-seed round; and Mike LeBlanc, a 14-year Marine Corps veteran and co-founder of Cobalt Robotics. LeBlanc provides the military credibility and has said the company believes there is “a moral imperative to put these robots into war instead of soldiers.” In June 2024, CNBC reported that Foundation had been fundraising with exaggerated claims about ties to General Motors, including assertions that GM had committed to invest and placed a $300 million purchase order. GM flatly denied all of it. LeBlanc confirmed the denial and said he was “embarrassed” the marketing materials existed. For a company asking the Pentagon to trust its robots in combat, the credibility gap matters.
+
+The $24 million in Pentagon contracts includes an SBIR Phase 3 designation, which qualifies Foundation as an approved military vendor, and specific research agreements for testing humanoid robots in breaching scenarios. Some contracts were inherited through the acquisition of a company called Boardwalk, including a US Air Force SBIR award valued at approximately $1.8 million. Eric Trump appeared on Fox Business to tout the contracts. Warren’s response was immediate: “Is the Pentagon a cash machine for Trump’s kids?” The political dimension is unavoidable. A sitting president’s son serving as chief strategy adviser to a company receiving Defence Department contracts raises governance questions regardless of the company’s technical merits. The contracts are real, but they are small. Shield AI recently raised $2 billion to scale its autonomous combat pilot, an AI system called Hivemind that flies aircraft autonomously and has been tested in combat conditions. Anduril secured a landmark $20 billion, ten-year US Army contract in March for its AI-enabled Lattice platform. Foundation’s $24 million is a research agreement, not a production order. The gap between a research contract and a deployed weapons system is measured in billions of dollars and years of testing.
+
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
+
+The Ukraine deployment adds a different kind of credibility. Two Phantom MK-1 units sent for logistics runs and reconnaissance sweeps in February represent real-world testing in a live conflict zone, and Foundation is using battlefield feedback to refine the MK-2 design. But “tested in Ukraine” is not “deployed in combat.” No humanoid robot has fired a weapon in a conflict. The units performed support tasks. The distinction matters because the company’s marketing, its fundraising narrative, and its Pentagon contracts all converge on the idea of a humanoid soldier, and the technology is not there yet. NATO-backed ARX Robotics secured 31 million euros for its autonomous battlefield robots, ground vehicles that perform logistics and reconnaissance without the complexity of bipedal locomotion. ARX Robotics is already scaling production of autonomous land drones to 1,800 units a year at a new UK plant, a manufacturing reality that Foundation’s targets have not yet approached.
+
+The Campaign to Stop Killer Robots, a coalition of more than 250 NGOs, has been advocating for a new international legal instrument ensuring human control in the use of force since 2013. Approximately 90 states have called for such an instrument. A minority of militarised states, including the United States and Russia, have blocked its adoption. In November 2025, the UN General Assembly First Committee adopted a resolution with 156 states in favour and 5 against calling for negotiations on autonomous weapons. The Group of Governmental Experts on lethal autonomous weapons systems has sessions scheduled for 2026 and is expected to submit a final report to the Convention on Conventional Weapons in November. This is the last year of the GGE’s mandate, making 2026 a make-or-break year for international regulation of autonomous weapons.
+
+Foundation’s stated policy is that human operators retain final authority over lethal decisions, a “human-in-the-loop” commitment that the Pentagon’s own Directive 3000.09 on autonomy in weapon systems requires for autonomous and semi-autonomous platforms. But the company’s LLM-driven autonomy stack and its stated ambition to “reduce teleoperation needs over time” are in tension with that commitment. An LLM-driven task-to-motion pipeline that learns to operate more independently with each iteration is, by design, moving toward the autonomous capability that the international community is trying to regulate. The AI warfare push that made Helsing one of Europe’s most valuable tech firms, valued at 12 billion euros for military AI software that coordinates drone swarms, shows the scale of capital flowing into autonomous military systems. The ethical guardrails are voluntary. The funding incentives point in one direction.
+
+China demonstrated a motion-controlled humanoid robot for military tasks at an international military cadets event in Nanjing. WuBa Intelligent Tech secured approximately $69 million for its RoboWolf quadrupeds, backed by NORINCO, the state-owned defence conglomerate. The Pentagon added Unitree, a consumer robot-dog maker, to its Chinese Military Companies list in February 2026. War on the Rocks reported on a hidden system turning Chinese technology companies into military suppliers. Viral videos purporting to show a Chinese humanoid robot army were debunked by France 24 as AI-generated fakes, but the fakes themselves reflect the narrative arms race: the perception that a country is building robot soldiers may matter as much as the reality in shaping defence budgets and procurement decisions.
+
+Russia has established an Unmanned Systems Forces as a new military branch, is deploying the Kurier autonomous mortar system that loads and fires without human input, and is rapidly expanding its ground drone fleet in Ukraine. Neither country has deployed humanoid robots in combat. The military robotics that are actually in use, on both sides of the Ukraine war and in US border patrol and base security operations, are wheeled, tracked, or quadruped. They succeed because they are simple, cheap, and expendable. A bipedal humanoid that costs $150,000 and falls over on rough terrain is none of those things. Defence tech venture capital hit a record $49.1 billion in 2025, nearly double the prior year, and Goldman Sachs projects 50,000 to 100,000 humanoid robots shipped globally in 2026 across all sectors. Surging defence stocks that signal huge potential for military tech startups have created a funding environment where the pitch “humanoid robot soldiers” opens cheque books. Whether the technology justifies the pitch is a question the battlefield will answer, and the battlefield, so far, favours wheels over legs.
+
+Get the most important tech news in your inbox each week.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-62')">
+            <div class="source">The Next Web</div>
+            <div class="title">Brockman’s diary called it a lie. Now a jury will hear it.</div>
+            <div class="meta">2026-04-26</div>
+        </div>
+        
+        <div id="content-62" style="display:none;">
             <h2>Brockman’s diary called it a lie. Now a jury will hear it.</h2>
             <p><strong>The Next Web | 2026-04-26</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/musk-altman-openai-trial-credibility-nonprofit">Visit Original Website</a>
@@ -3233,13 +3447,13 @@ The trial is not only about OpenAI. It is about whether the nonprofit-to-profit 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">The Next Web</div>
             <div class="title">The EU sanctioned Chinese firms for arming Russia. China retaliated by threatening Europe’s ability to arm itself.</div>
             <div class="meta">2026-04-26</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>The EU sanctioned Chinese firms for arming Russia. China retaliated by threatening Europe’s ability to arm itself.</h2>
             <p><strong>The Next Web | 2026-04-26</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/beijing-warns-eu-china-russia-sanctions">Visit Original Website</a>
@@ -3271,13 +3485,13 @@ The EU’s broader decoupling from China in sensitive technology areas, includin
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">The Next Web</div>
             <div class="title">China orders its apps to stop sending orders to exhausted drivers. The algorithm is now subject to collective bargaining.</div>
             <div class="meta">2026-04-26</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>China orders its apps to stop sending orders to exhausted drivers. The algorithm is now subject to collective bargaining.</h2>
             <p><strong>The Next Web | 2026-04-26</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/china-gig-worker-platform-labour-rules">Visit Original Website</a>
@@ -3315,13 +3529,13 @@ The difference this time is the source. Ministry-level guidelines can be deprior
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">The Next Web</div>
             <div class="title">OpenAI knew. It chose not to call the police. Now Sam Altman is sorry.</div>
             <div class="meta">2026-04-25</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>OpenAI knew. It chose not to call the police. Now Sam Altman is sorry.</h2>
             <p><strong>The Next Web | 2026-04-25</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/sam-altman-openai-apology-tumbler-ridge-shooting">Visit Original Website</a>
@@ -3357,87 +3571,27 @@ This is the gap that Altman’s letter cannot close. An apology addresses a past
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
-            <div class="source">The Next Web</div>
-            <div class="title">The US wants to cut off China’s chip equipment. China says the supply chain will break for everyone.</div>
-            <div class="meta">2026-04-25</div>
-        </div>
-        
-        <div id="content-64" style="display:none;">
-            <h2>The US wants to cut off China’s chip equipment. China says the supply chain will break for everyone.</h2>
-            <p><strong>The Next Web | 2026-04-25</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/china-us-chip-export-controls-match-act">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">TL;DRChina’s Ministry of Commerce warned that US chip export legislation would “severely disrupt” global semiconductor supply chains, responding to the House Foreign Affairs Committee’s April 22 markup of 20+ export control bills, the largest in congressional history. The centrepiece is the MATCH Act, which would require the Netherlands and Japan to align DUV lithography export restrictions with US rules within 150 days or face unilateral enforcement, cutting off ASML’s remaining China sales and banning servicing of existing machines. China has already enacted comprehensive supply chain security regulations and rare earth restrictions, while the US simultaneously builds domestic capacity through CHIPS Act investments and the $25B Terafab project.
-
-China’s Ministry of Commerce warned that US chip export legislation would “severely disrupt” global semiconductor supply chains, responding to the House Foreign Affairs Committee’s April 22 markup of 20+ export control bills, the largest in congressional history. The centrepiece is the MATCH Act, which would require the Netherlands and Japan to align DUV lithography export restrictions with US rules within 150 days or face unilateral enforcement, cutting off ASML’s remaining China sales and banning servicing of existing machines. China has already enacted comprehensive supply chain security regulations and rare earth restrictions, while the US simultaneously builds domestic capacity through CHIPS Act investments and the $25B Terafab project.
-
-China’s Ministry of Commerce warned on Friday that US legislation advancing through Congress would “severely disrupt the international economic and trade order and seriously undermine the stability of the global semiconductor industry chain and supply chain.” The legislation in question is the MATCH Act, the Multilateral Alignment of Technology Controls on Hardware, which passed the House Foreign Affairs Committee on April 22 as part of what lawmakers described as the largest markup on semiconductor export controls in congressional history. The bill would require the Netherlands and Japan to align their chip equipment export restrictions with American rules within 150 days or face unilateral US enforcement, including an expanded Foreign Direct Product Rule that would give Washington jurisdiction over equipment containing any American technology, regardless of where it was manufactured. If enacted, the MATCH Act would cut off China’s access to the DUV immersion lithography machines that ASML still sells there and ban the servicing of machines already installed, a step that would affect every advanced and near-advanced fab in the country.
-
-The House Foreign Affairs Committee advanced more than 20 export control bills on April 22, chaired by Representative Brian Mast. The MATCH Act, introduced by Representative Michael Baumgartner on April 2, has bipartisan support in both chambers. Senators Jim Risch, Pete Ricketts, Andy Kim, and Chuck Schumer introduced the Senate companion on April 8. The bill names SMIC, Huawei, Hua Hong, CXMT, and YMTC as “covered facilities,” including all subsidiaries and affiliates, and would prohibit the export of DUV immersion lithography equipment to any of them. It would also ban allied firms from providing engineering services to maintain or upgrade machines already operating in Chinese fabs, a servicing restriction that would degrade existing capacity over time as machines require regular maintenance to sustain yield.
-
-The committee also advanced the Chip Security Act, which would require advanced chips to include location verification mechanisms before export so that exporters can flag the government if a chip reaches an unauthorised destination. The Semiconductor Industry Association opposes this provision, warning of “untested and potentially infeasible on-chip mechanisms” that could undermine global trust in American semiconductors. The ECRA Penalty Increase Act would quadruple civil penalties for export violations, raising the per-violation ceiling from $300,000 to $1.2 million. The ECRA Statute of Limitations Extension Act would double the window for prosecution from five to ten years. The Deterring American AI Model Theft Act would authorise sanctions on Chinese AI firms accused of misusing US-developed models. Smuggling $2.5 billion of Nvidia servers to China, as Super Micro Computer’s co-founder is alleged to have done through a diversion scheme routed via Southeast Asia, demonstrates both the scale of demand for restricted chips and the limits of an enforcement regime that relies on declared end-use and corporate compliance teams.
-
-The MATCH Act would be the most significant escalation in US semiconductor export controls since the initial restrictions imposed in October 2022. Those rules prohibited the export of advanced computing chips and chipmaking equipment to China. They were updated in October 2023 to close loopholes, expanded in December 2024 to cover high-bandwidth memory and additional equipment, and supplemented in January 2026 when the Trump administration imposed a 25% Section 232 tariff on advanced semiconductor imports and shifted the export review policy for Nvidia’s H200 and AMD’s MI325X from presumption of denial to case-by-case evaluation. Blackwell-class chips remain under presumption of denial. The January 2026 changes were partly a response to pressure from Nvidia, whose CEO Jensen Huang had dinner with Trump at Mar-a-Lago and argued that overly restrictive controls would push Chinese AI labs toward domestic alternatives. DeepSeek optimising AI models for Huawei chips instead of Nvidia hardware is, in Huang’s words, “a horrible outcome” for the United States, because it would break the software dependency on Nvidia’s CUDA ecosystem that currently gives American chips their lock-in advantage.
-
-The MATCH Act moves in the opposite direction from the January relaxation. Where the executive branch loosened restrictions on finished chips, Congress is tightening restrictions on the equipment used to make them. The logic is that controlling equipment is more effective than controlling chips because a lithography machine is a $200 million tool that requires years of servicing by the manufacturer, while a chip is a commodity that can be rerouted through intermediaries. ASML, the sole manufacturer of both EUV and the most advanced DUV immersion lithography systems, has seen its shares fall since the bill’s introduction. China accounted for 33% of ASML’s 2025 revenue. The company expects that share to drop to approximately 20% in 2026 even without the MATCH Act. If the bill passes, the decline would be far steeper. Applied Materials projects $600 million to $710 million in lost China revenue for fiscal 2026. Lam Research reported that China still accounted for 43% of its Q1 fiscal 2026 revenue, $2.28 billion, but expects that share to fall below 30% this year.
-
-China’s countermeasures are already extensive. Beijing imposed export bans on gallium, germanium, and antimony in December 2024, suspended them in November 2025 for one year but retained licensing requirements. It restricted exports of seven medium and heavy rare earths, including terbium, dysprosium, and yttrium, in April 2025, then partially suspended those restrictions in November 2025. It announced silver export controls on December 31, 2025. On April 7, 2026, the State Council published Order No. 834, the “Regulations on Industrial and Supply Chain Security,” which creates a unified legal framework monitored by more than 15 agencies, including MOFCOM and the Ministry of Industry and Information Technology, authorising legal action against companies deemed to be harming China’s supply chains. China has mandated that domestic chipmakers procure 50% of their equipment from Chinese suppliers, a requirement that threatens an estimated $18 billion in annual US equipment sales. The MOFCOM statement on Friday said China would “resolutely take necessary measures to firmly safeguard the legitimate and lawful rights and interests of Chinese enterprises.” No specific new retaliatory measures were announced, but the regulatory architecture for them is now in place.
-
-The supply chain consequences extend well beyond the two principal combatants. Japan, whose Tokyo Electron, Nikon, Canon, Screen Holdings, and Advantest all sell equipment to Chinese fabs, already implemented controls on 23 types of equipment in July 2023. The MATCH Act would require Japan to expand those restrictions within 150 days or lose access to American technology in its own supply chain. The Netherlands faces the same deadline. South Korea’s memory giants, SK Hynix and Samsung, operate fabs in China that depend on equipment servicing from the companies the MATCH Act would restrict. The EU’s 700 million euro investment in its NanoIC semiconductor pilot line at imec in Leuven, backed by ASML and national governments, reflects Europe’s assessment that the chip supply chain is fragmenting and that building domestic capacity is no longer optional.
-
-China’s semiconductor industry has made genuine progress under pressure. SMIC is producing 7-nanometre chips for Huawei’s Kirin processors and is working to double 7nm capacity in 2026. It has entered pilot runs at 5nm, targeting mass production for Huawei and Alibaba, though yield improvement remains the critical challenge. CXMT is mass-producing DDR5 and LPDDR5 memory and is targeting HBM3 production, though the timeline has slipped and mass production within 2026 now appears unlikely. YMTC is expanding NAND flash output and developing HBM packaging technologies. Huawei is reportedly preparing to send a 3nm chip design using carbon nanotubes and 2D materials to SMIC, an unconventional approach that has not been independently confirmed with technical detail. China’s semiconductor self-sufficiency rate was approximately 33% in 2024 and is estimated at roughly 50% in 2025. The new target, embedded in the 15th Five-Year Plan, is 80% by 2030, with priorities including a fully domestic 7nm equipment line and stable 14nm production. Tom’s Hardware assessed that China remains “still a decade behind, despite hundreds of billions spent and significant progress.”
-
-The United States is pursuing the inverse strategy: restricting China’s access to equipment while building domestic manufacturing capacity at unprecedented scale. The US government’s $36 billion stake in Intel under the CHIPS Act, converted from grants to equity, funds fab construction in Ohio and Arizona. Intel’s foundry partnership with Musk’s $25 billion Terafab chip megaproject adds another advanced manufacturing facility. TSMC is building fabs in Arizona. Samsung is expanding in Texas. The theory is that export controls buy time for domestic capacity to come online, at which point the United States can supply its own advanced chips and those of its allies without depending on a supply chain that runs through a geopolitical adversary. The problem is that the timeline for building fabs is measured in years, the timeline for Congressional legislation is measured in months, and the timeline for retaliatory export restrictions on rare earths and critical minerals is measured in days. China’s warning on Friday was not that the MATCH Act would fail to restrict its chip industry. It was that the disruption would not be confined to China. When both sides of a supply chain use restriction as a weapon, the chain does not hold. It fragments, and everyone pays the cost of rebuilding separate ones.
-
-Get the most important tech news in your inbox each week.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-65')">
-            <div class="source">The Next Web</div>
-            <div class="title">The AI rally looks like the dot-com bubble. The companies do not.</div>
-            <div class="meta">2026-04-25</div>
-        </div>
-        
-        <div id="content-65" style="display:none;">
-            <h2>The AI rally looks like the dot-com bubble. The companies do not.</h2>
-            <p><strong>The Next Web | 2026-04-25</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/ai-stocks-dot-com-bubble-comparison-market-outlook">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Shiller CAPE ratio stands at 38-40, the second-highest in 155 years behind only the dot-com peak of 44.19, and S&P 500 top-10 concentration exceeds dot-com levels by nearly 50%. But AI companies are massively profitable unlike their dot-com predecessors, with Nvidia alone earning $120 billion in net income and the tech sector trading at 30x forward earnings versus 50x at the 2000 peak. The resolution depends on whether $660-690 billion in annual hyperscaler capex generates returns that justify the investment, a question that cannot be answered until the infrastructure cycle produces results.
-
-The Shiller cyclically adjusted price-to-earnings ratio for the S&P 500 stands at approximately 38 to 40, depending on the day you check. In 155 years of recorded data, the CAPE has been higher exactly once: March 2000, when it reached 44.19, one month before the Nasdaq began a decline that would erase 78% of its value over the following two and a half years. The ten largest companies in the S&P 500 now account for 36% to 40% of the index’s total market capitalisation, nearly 50% above the dot-com peak concentration of roughly 27%. Deutsche Bank’s latest fund manager survey found that 57% of institutional investors now identify an AI valuation crash as the single greatest risk to markets. Jeremy Grantham, the co-founder of GMO who correctly called the dot-com and housing bubbles, has said there is “slim to none” chance the current AI rally does not end in a bust. These are the numbers that make the comparison to 2000 feel inevitable. They are also, by themselves, incomplete.
-
-The structural parallels between the current AI equity rally and the dot-com bubble are not superficial. They are mechanical. Market concentration has exceeded dot-com levels by a wide margin. The Nasdaq-100’s performance is dominated by a handful of companies whose valuations are predicated on AI revenue growth that has not yet fully materialised at the scale the market is pricing. Hyperscaler capital expenditure, the combined infrastructure spending of Microsoft, Google, Amazon, and Meta, is approaching $660 billion to $690 billion in 2026, a figure that represents the largest corporate investment programme in history outside of wartime mobilisation. That spending is being funded, in part, by converting human labour into AI infrastructure: Meta and Microsoft collectively cut up to 23,000 jobs while simultaneously committing to record capital expenditure, a direct transfer from payroll to data centre construction.
-
-Bank of America’s Savita Subramanian has set a year-end S&P 500 target of 7,100, with a bear case of 5,500, and expects multiple compression as earnings growth slows in the second half of 2026. The Motley Fool identified four factors it associates with bubble conditions: retail investor euphoria, speculative capital concentration, decoupling of valuations from fundamentals, and a narrative so compelling that scepticism feels intellectually disreputable. All four are present. OpenAI’s $852 billion valuation prices a company that has never earned a profit at roughly double the market capitalisation of Coca-Cola, a company that has earned profits continuously since the 1890s. Accel’s $5 billion AI-focused fund, the largest in venture capital history, exemplifies the capital flooding into AI at the private market level. The public and private markets are reinforcing each other: venture-backed AI companies raise at extraordinary valuations, public AI companies spend at extraordinary rates to stay ahead of them, and the cycle pushes both valuations and capital expenditure higher.
-
-TNW City Coworking space - Where your best work happens
-
-A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
-
-The most important difference between 2000 and 2026 is profitability. At the dot-com peak, the technology companies driving the market were, in aggregate, destroying capital. Cisco traded at 200 times earnings. Pets.com had no earnings. The entire thesis rested on future revenue from an internet economy that, while real, was years from generating the cash flows the market was discounting. In 2026, the companies driving the AI rally are among the most profitable in corporate history. Nvidia reported net income exceeding $120 billion for fiscal 2026. Its forward price-to-earnings ratio is approximately 41, elevated but not in the same postcode as Cisco at 200. The technology sector’s aggregate forward P/E is roughly 30, compared with 50 at the dot-com peak. Apple, Microsoft, Alphabet, Amazon, and Meta generated a combined $350 billion in free cash flow in their most recent fiscal years. These are not speculative enterprises burning venture capital. They are cash-generating machines that have chosen to reinvest at historically unusual rates.
-
-Capital Economics analyst John Higgins has made the most nuanced version of this argument. He distinguishes between a “stock bubble” and a “fundamental bubble.” The stock bubble, in his analysis, may already be deflating: the Nasdaq-100 corrected more than 10% from its February 2026 highs before recovering on trade deal optimism and strong earnings. But the fundamental bubble, the one built on actual earnings growth, is still expanding. Nasdaq-100 earnings grew 19% year over year in the most recent quarter. As long as AI-related revenue continues growing at that pace, the earnings justify elevated multiples. The bubble pops not when P/E ratios are high, but when the “E” stops growing. JPMorgan has suggested the S&P 500 could reach 8,000 if earnings momentum continues. Goldman Sachs sees a multi-year AI “supercycle.” The bull case is not that valuations are reasonable. It is that earnings growth will make today’s prices look reasonable in retrospect, the same argument that was wrong about Cisco in 2000 and right about Amazon.
-
-The variable that will determine which analogy holds is capital expenditure returns. Hyperscalers are spending $660 billion to $690 billion this year building AI infrastructure. Meta’s $27 billion deal with Nebius for AI cloud capacity is one transaction among dozens, each individually larger than most companies’ entire capital budgets. The question is not whether this infrastructure will be used. It almost certainly will. The question is whether it will generate returns that justify the investment at the price paid. The fibre-optic cables laid in 1999 carry today’s internet. The companies that laid them went bankrupt. The technology was correct. The financial model was not.
-
-There are structural reasons to believe the AI capex cycle is better supported than the fibre-optic buildout. Cloud computing operates on a consumption model where customers pay for usage, providing revenue visibility that speculative fibre networks lacked. The hyperscalers building the infrastructure are also the primary consumers of it, reducing the demand uncertainty that destroyed independent fibre companies. Oracle’s $553 billion in remaining performance obligations, Microsoft’s Azure backlog, and Amazon’s AWS contract pipeline all represent committed future revenue. But committed revenue is not collected revenue, and the concentration of AI demand in a small number of large model developers and enterprise customers creates fragility. If OpenAI, the anchor tenant of Oracle’s Stargate project, were to experience financial difficulty, the ripple effect through the infrastructure financing chain would be severe. If enterprise AI adoption plateaus at the “copilot” stage without progressing to the autonomous agent workflows that justify the next order of magnitude in compute spending, the return on $660 billion in annual capex would fall below the cost of capital.
-
-Both sides of the debate are correct, which is what makes the current moment so difficult to navigate. The bears are right that market concentration, CAPE ratios, and speculative euphoria have reached or exceeded dot-com levels. The bulls are right that the underlying companies are profitable in ways their dot-com predecessors were not. The resolution depends on a variable that neither side can observe directly: the long-term return on the hundreds of billions being invested in AI infrastructure this year. If those returns materialise, the current valuations will be seen as fair prices paid early for a genuine technological transformation. If they do not, the CAPE chart will add a second peak to match the one from March 2000, and the comparisons that feel alarmist today will feel prescient.
-
-The Federal Reserve’s benchmark rate sits at 3.50% to 3.75%, providing less of a cushion than the near-zero rates that inflated asset prices between 2020 and 2022 but not the restrictive rates that typically trigger corrections. Section 122 tariffs of 10% to 15% on a range of imports expire on July 24, 2026, and their renewal or escalation will affect corporate earnings forecasts and consumer spending. The trajectory that brought technology markets to this point, a year of accelerating AI investment, record venture funding, and corporate restructuring around artificial intelligence, has created conditions that resemble a late-stage expansion more than an early-stage bubble. Late-stage expansions can last longer than sceptics expect. They also end more abruptly than optimists imagine. The honest answer to whether AI stocks are in a bubble is that the question cannot be answered until the capex cycle produces results, and the capex cycle has barely begun. Grantham is betting it ends badly. Goldman is betting it does not. The market is pricing in both possibilities simultaneously, which is why it has been volatile in both directions, and will remain so until the revenue either arrives or does not.
-
-Get the most important tech news in your inbox each week.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-66')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Mali defence minister killed in al Qaeda‑linked attack near Bamako, RFI reports - Reuters</div>
+            <div class="meta">2026-04-26</div>
+        </div>
+        
+        <div id="content-66" style="display:none;">
+            <h2>Mali defence minister killed in al Qaeda‑linked attack near Bamako, RFI reports - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-04-26</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNTmwtUEl3cEx5NE16bURqWEhta1hEZjh6RGFtYWNtVnBwRjJwbE9IQURUR2d3THlJQjdrVkNDazdsR2ZJamp0UUlvUDlQTDRubjNOSkVweFJEdE52c0RpakNzczF2WU9GNUMxWER3T3pIQ2I1am5kSWlMV0NvU1VfMzNJNXB2SkNfbnZKTmxaTFd2Rm9hY1RkNU85azNIYndncFo1OWx4Ym5IWHI5dWtaVkJjc3VObDlMT01ydXllYjc?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Israel's president says he wants a deal reached in Netanyahu case before pardon decision - Reuters</div>
             <div class="meta">2026-04-26</div>
         </div>
         
-        <div id="content-66" style="display:none;">
+        <div id="content-67" style="display:none;">
             <h2>Israel's president says he wants a deal reached in Netanyahu case before pardon decision - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-04-26</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNb1lkYVFUdGxjZ3dHX1NmUXVnU1lYQ2cyc0dRcXhXcEJ4bkJjZUQwZ25xeUQ0OXM1VlNrT3R1a3ZlQjhjam5zbThzVVNldFhHVHJmRlhOUm5KVEV5eE1zb1ZkNWFaV0VqZW1WRzJXYjJZRzdxNkRNSnFvQlhYMHk4bEZlMEp0Yk1US3BSb19XQ1huZU55MS1TTy1qN1dWeXg2XzJLNWExdVFYUDRVMFpWR0I4dFFic3BpUzd4aHpVa2o3cW8wdkE?oc=5">Visit Original Website</a>
@@ -3445,100 +3599,86 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump's security again faces scrutiny after press dinner shooting - Reuters</div>
-            <div class="meta">2026-04-26</div>
-        </div>
-        
-        <div id="content-67" style="display:none;">
-            <h2>Trump's security again faces scrutiny after press dinner shooting - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-04-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOR0YzTktvMld6OVUzVnVENDlnOU1kTnYxUEdBS19KRnhocnJHQVdqa2pBallRLUdNa1A4ZVJLM0w3ZGR3VkxyV3hqbUlBU0ZTX3R5aDhmXzBLektJekV3eWo2UnJMWFdMWEhkNDlwaTd3TXd4RFg3emNfSXAxYm1YWVZHTnVUMDNQTllSSGpUT3BmeUFqdjhzWl9uT2l4dF9BRU9adGN1Ty00WmpLc3c?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">UK says cooperating closely with US on security ahead of King Charles' visit - Reuters</div>
+            <div class="title">Acting US attorney general says WHCD suspect was likely targeting Trump administration officials - Reuters</div>
             <div class="meta">2026-04-26</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>UK says cooperating closely with US on security ahead of King Charles' visit - Reuters</h2>
+            <h2>Acting US attorney general says WHCD suspect was likely targeting Trump administration officials - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-04-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOaU9qOWV6X1BOWXRlRnhtUnJZZ0NuZzI3Z0FoZExiRW4xME9yQkZKZFh0b19hTWdmVENDeTg5bEU1MXpSVDh2dnJzaDNJNnJCNnR3OFZkRWVPVjl1TEd5QzVuUHVxY3VURkZVME1POHprbmZfel83M1AwMEtJZ2dhNGR3NnRudDhvbFFlaWVHQUMydHdfc2ZYcHJjaXcwSl91RUZDWmNnVS01X2l3T2N0TlUyS3g?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOVnNDdEVrSEI0MkFMc25PaGFfZUphRG9hcjlSYU1NSTRIR0d4X1dZQ095TW5oY1BGNHNlZUVMaEQyWXZ0aDdpYXpnQk9zRDQ4MmRuZkI5aFcya1JzR0NkQUFxVG4zblNxQll6YXVoc1NNQVVpLXNsVi1Sa1dSMVVWRHNzZU5rTmtzbDluTVlkMXA5TDFLbFI3NmRTQ3Y4b05jdnFRcHlLVTcxWU9QdkNKSEYzWDRqcXM?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Russian defence minister visits North Korea - Reuters</div>
+            <div class="title">Kenya's Sabastian Sawe becomes first man to run marathon under two hours to win in London - Reuters</div>
             <div class="meta">2026-04-26</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>Russian defence minister visits North Korea - Reuters</h2>
+            <h2>Kenya's Sabastian Sawe becomes first man to run marathon under two hours to win in London - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-04-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPazMxVVJMZEgwVFh4YjcwOC1wQ2gyUTIyU3VzWTJ6ZlpqLWV6Q2ZNakpQUk16RDJMdnpVV3N5UTNOcGlNOEhqTlQyYmJ2V2ZGT3daV1pVV1hKSUg4TjZJT3A3V0FVY2tGd1NTeWQ1X280OUxwU0QxWlB1RDIzdUVWNEU4ZEpNLVhjeXdrZ0lHZXN6Y2hkZXRyWWtmNXRGNW5YT2I2WXhVcEdsdw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQU2czXzBQMHBaWHh5ODRrdGdWcFBSUi1ZS1RIM3RFdi1CSkFVVzBvVWh6UmVZR3dTQmZ1bkQ1aXVZb2RwVklweWhRWGFHVm44bGxNYUNiOE5vcnNPbmZ2LWxjVnkxTTl4SGdOcDZoM29lakxkeGlURUJSYk1hVEt3aVNtTFp3cU5PS0NjbV9qRGdzRjRyYkw0UDZ4U3JFWXlCUW9lNnpzWHZUcXVIREpzM3pEbV9adlMtRnc4cmln?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Who is Cole Tomas Allen, the suspect in the White House Correspondents' Dinner shooting? - Reuters</div>
+            <div class="title">Mali's defence minister reported dead in major weekend assault - Reuters</div>
             <div class="meta">2026-04-26</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>Who is Cole Tomas Allen, the suspect in the White House Correspondents' Dinner shooting? - Reuters</h2>
+            <h2>Mali's defence minister reported dead in major weekend assault - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-04-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPdFlwcld3Nkg0dy1QNS12cjlnOXVKeWp3a2tnakJLMzR0WDV0ZGhiZFJRVFNXNzJsWWM1ZUphdjhnU3plQ0RQamJQRDM5VDJDR0pLbWE1Z3lLLXZrVDVMdERjOG9pYjRnQWFaSkVCUnVJaGprWENNc0JGc28xd2pyMXNDR1JFczlfNE9hMHlJOHllYWdfazRKNzN3YTE5ZEFBQVpNcHVTVFhBVzNTcDQ2SkIxUQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQRVY5dWE0RDJDeUVwVWlOdk1iM0tBb3FVOTV5em1lSFFTOXRPZUFFVzd1c0gyXzBiWUZ4TkpKazNCU0dyTTExbTZhTFRwamJNeXM3M0YxOFRXQVZZWkVxTnQ0ZVNDVVpOR1VRZWZGamZFTWlVVVRwVW1SbjRLQk1HZ3Z2QUtvV1M2ZlhsdUZacEtHYkJQY2Rsb25faTRLaEkwVE8taFNiVk5kUmtqR0llVFZUZWd1Q0h2WUhjWUR3?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">How the shooting at the White House Correspondents' Dinner unfolded - Reuters</div>
+            <div class="title">Iran's Araqchi discusses efforts to end war and Hormuz security with Oman - Reuters</div>
             <div class="meta">2026-04-26</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>How the shooting at the White House Correspondents' Dinner unfolded - Reuters</h2>
+            <h2>Iran's Araqchi discusses efforts to end war and Hormuz security with Oman - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-04-26</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQZnB5X2hhcnpyWlJ3S1d2OXV6a3FvRnJhS2lpT1ZTWDhQTnVHakFOajFyZFNxN2g3elNPcUtuanp3TExIV3B1WjRsc3VDanJkMnZXMUEyNHJnRjBPYl9wWDFRZjNaTm9Pb0ZLdzNKN0FQc05xRGVrWU1RV0ZWZVI4TTJra0xxaWlMTGFSYjAxYUd2XzNMR2hYTkVyUl9CTzZMUVdsR3ZyeU1MMm9lRmo5Y3BfNzA?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQR0dPOXZSMDAzdFNTT2tRUW43eDlxMFhNa2NiX2daQlFGVUo3aFBUUDdZVDgyUzZWa01LM2lqN3ppc0tteDUxWWQ1MmZ6SkRtdHBObHYxUlpiRDZKOWU0dHpHNXQ0YWI3ZjRpS1NXWm11VUZMQ0hVME5UaW1IQWQ4YWR3WHNsZ3NPNnk1NHQ4M1hLV2VEamVvODRXX0Y5cDUzLVg2TlRjVXp2NlQ0d1JWNld0ZVVKNGdtV3N3?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-72')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">A Mysterious “Golden Orb” Was Spotted at the Bottom of the Gulf of Alaska—Now Scientists Finally Know What It Is - The Debrief</div>
+            <div class="title">Scientists Discover Path to ‘Extreme Light Intensities’ That Could Enable Ultra-Powerful Laser Weapons and Advanced Tech - The Debrief</div>
             <div class="meta">2026-04-23</div>
         </div>
         
         <div id="content-72" style="display:none;">
-            <h2>A Mysterious “Golden Orb” Was Spotted at the Bottom of the Gulf of Alaska—Now Scientists Finally Know What It Is - The Debrief</h2>
+            <h2>Scientists Discover Path to ‘Extreme Light Intensities’ That Could Enable Ultra-Powerful Laser Weapons and Advanced Tech - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-04-23</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxPblZSY2RBeFc0NGpJVWVmNEMzZEtNa0FjOXQ5T3p0ZmcteEpjQmxWTnZMLTFWRWxUckpsVjlaZjFUU2dXR0x4OXRaTjhXd2xYcjY2YkV3anBZdnA3eU9JTThyRUp1VEl2c0hPQTFnWFI3RGR2U192MklnTTA4M282eTUyc29CaHlzU3d3MEV0bWtaNVpzX054aFZaeC1NeklnREFwUkZqLVhaUlItRzFCNzRaeUNiR3lqNVJHdFp3bG5JQTgyUGFIamw5RjZIWGM?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxNWlJiWG11R1oxc1NRTmZpa0JDVUtGZFBzRVZKTXh1UWNxeFpGSEpYZnAyQXlOdTFGOWlGZDg2YW5VNC1sczR1T0ZMcHd4SWQwQnBkVjBRZkE2X0kyLWVVazZLSDI0NnJZM0o4Y0s0bDI1ZnIwWHo4Vmd6NUVGSlpYS0FzcDBtME9wQy0zbURRQlFHLTdfSW5XX2cwYkJUTWlEbE5ZejZQU2lZNjhVRnh2czlMc3ZaVTFKZTA4ZDhKaDZqV00wU0l1TVcxWXc2ZU55LUVWb2JLRk42dw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-73')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">U.S. Moves Marijuana to Schedule III, Reshaping Research and the Cannabis Economy - The Debrief</div>
-            <div class="meta">2026-04-24</div>
+            <div class="title">A Mysterious “Golden Orb” Was Spotted at the Bottom of the Gulf of Alaska—Now Scientists Finally Know What It Is - The Debrief</div>
+            <div class="meta">2026-04-23</div>
         </div>
         
         <div id="content-73" style="display:none;">
-            <h2>U.S. Moves Marijuana to Schedule III, Reshaping Research and the Cannabis Economy - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-04-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOYTdYcjA3Z25xSTd1UEVfTVU1Sk1wSlFlMUhjRGlKZHhmUTQ4OTVOTWJoeEdTZU40S1NJenNzV25UZ3g3Y19CM0dnRnNFN1VOOGlaYXZhLWdzbWtqbVdoM0JCYjNfc2xLbDlPSzIxdVAyV3IyRS1tbkozQWp2SzFsc2llZDQwaFhVY01UX25fZUZ5TmgtSlNUSWFHNFdyUy1TOHdfX2xn?oc=5">Visit Original Website</a>
+            <h2>A Mysterious “Golden Orb” Was Spotted at the Bottom of the Gulf of Alaska—Now Scientists Finally Know What It Is - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-04-23</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxPblZSY2RBeFc0NGpJVWVmNEMzZEtNa0FjOXQ5T3p0ZmcteEpjQmxWTnZMLTFWRWxUckpsVjlaZjFUU2dXR0x4OXRaTjhXd2xYcjY2YkV3anBZdnA3eU9JTThyRUp1VEl2c0hPQTFnWFI3RGR2U192MklnTTA4M282eTUyc29CaHlzU3d3MEV0bWtaNVpzX054aFZaeC1NeklnREFwUkZqLVhaUlItRzFCNzRaeUNiR3lqNVJHdFp3bG5JQTgyUGFIamw5RjZIWGM?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3559,11 +3699,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">U.S. Moves Marijuana to Schedule III, Reshaping Research and the Cannabis Economy - The Debrief</div>
+            <div class="meta">2026-04-24</div>
+        </div>
+        
+        <div id="content-75" style="display:none;">
+            <h2>U.S. Moves Marijuana to Schedule III, Reshaping Research and the Cannabis Economy - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-04-24</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOYTdYcjA3Z25xSTd1UEVfTVU1Sk1wSlFlMUhjRGlKZHhmUTQ4OTVOTWJoeEdTZU40S1NJenNzV25UZ3g3Y19CM0dnRnNFN1VOOGlaYXZhLWdzbWtqbVdoM0JCYjNfc2xLbDlPSzIxdVAyV3IyRS1tbkozQWp2SzFsc2llZDQwaFhVY01UX25fZUZ5TmgtSlNUSWFHNFdyUy1TOHdfX2xn?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-76')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Scientists Reveal Organic Matter "Preserved on Mars for 3.5 Billion Years" in First-of-Its-Kind Study - The Debrief</div>
             <div class="meta">2026-04-22</div>
         </div>
         
-        <div id="content-75" style="display:none;">
+        <div id="content-76" style="display:none;">
             <h2>Scientists Reveal Organic Matter "Preserved on Mars for 3.5 Billion Years" in First-of-Its-Kind Study - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-04-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZHhfOGpQX0pSa3NXdnA0Y25ob2R4V0g5T2V0UDRTb3pGMFh0aW00Q3dJVDdoTHpKdVBMb1htcWR5MTM5cHFBLUtNS0ZlVzVNcWZCUW8tNlR2NldaT3h6c25UY0szQno2QjhhbFBwR0liTkZPTEs0a09ENEViRzZMVWVuM2ZXdnZoenoxd0k3UmNZN3NYT1dfRGkwQnlkOVNZU0RFaHpQaGVYRW1xYVZYUTQ5bnBKWGwyQldyMHFYSlE?oc=5">Visit Original Website</a>
@@ -3571,30 +3725,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-76')">
+        <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Large Hadron Collider Experiments Hint at ‘Undiscovered Physics’ That Could Soon Overturn the Standard Model, Physicists Say - The Debrief</div>
             <div class="meta">2026-04-20</div>
         </div>
         
-        <div id="content-76" style="display:none;">
+        <div id="content-77" style="display:none;">
             <h2>Large Hadron Collider Experiments Hint at ‘Undiscovered Physics’ That Could Soon Overturn the Standard Model, Physicists Say - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-04-20</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxQT0xNMnk0RHUzbVJDV29sMDNzOFJBXzlJY3lEWFhYRHo2WGFfN3pGR3pDcXdnTDZFV1QzZFpTbkdRaGJXY3lPelZfdTU2X1JXV2xFaS1fTmRfOGhtSU9BSGRLWmUtdEdkS19DNWYzRmlJZjFLZnozdUZ4anJrUlVjLXZoV0lvOUlPQzRudTNoeEJiclRLZUlJT0dDODNLQjdpeFJiaG5ob0NNdTFsR2Q1WTI5LTZtcC1pbkJxZ0d3WW9DTG9taWdfUGFZWnhKNFZOcEp1akxNZHVpNGFOQkE?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-77')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Just Two Centuries From Now, This Newly Discovered Exoplanet System Will look Vastly Different—Here's Why - The Debrief</div>
-            <div class="meta">2026-04-20</div>
-        </div>
-        
-        <div id="content-77" style="display:none;">
-            <h2>Just Two Centuries From Now, This Newly Discovered Exoplanet System Will look Vastly Different—Here's Why - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-04-20</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxOWGFaUTFSUkY2by02UjhMLWNEdGktSWVNOV9Yd1NYbkZ0ZWhteG9mOVhwdWVyc2JmSmdtQ1I2RVpZWmg3SlZoTmM3cXZ6R2NwVkdWWmdLTmMwbmc4RWI3R3p6OW9DM3dqeHhSZ2RNcUxSXzFuMzRUV0FhcmQtenJaSy1BUjlmTEJIaVlEZmRybzc4b0NrUHVqWHl2dDVSVlpxWXJRT05yMFN5NzUxaW5DRF9hcWFxVXh0VHMwd2NJemZ6LW0yN0E?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
