@@ -154,11 +154,57 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Musk and Altman face off in trial that will determine OpenAI's future</div>
+            <div class="title">Open source package with 1 million monthly downloads stole user credentials</div>
             <div class="meta">2026-04-27</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Open source package with 1 million monthly downloads stole user credentials</h2>
+            <p><strong>Ars Technica - All content | 2026-04-27</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2026/04/open-source-package-with-1-million-monthly-downloads-stole-user-credentials/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Open source software with more than 1 million monthly downloads was compromised after a threat actor exploited a vulnerability in the developers’ account workflow that gave access to its signing keys and other sensitive information.
+
+On Friday, unknown attackers exploited the vulnerability to push a new version of element-data, a command-line interface that helps users monitor performance and anomalies in machine-learning systems. When run, the malicious package scoured systems for sensitive data, including user profiles, warehouse credentials, cloud provider keys, API tokens, and SSH keys, developers said. The malicious version was tagged as 0.23.3 and was published to the developers’ Python Package Index and Docker image accounts. It was removed about 12 hours later, on Saturday. Elementary Cloud, the Elementary dbt package, and all other CLI versions weren’t affected.
+
+“Users who installed 0.23.3, or who pulled and ran the affected Docker image, should assume that any credentials accessible to the environment where it ran may have been exposed,” the developers wrote.
+
+The threat actor gained access to the developers’ account by exploiting a vulnerability in a GitHub action they created. By posting malicious code to a pull request, the attackers were able to run a bash script that ran inside the developer’s account. The bash script retrieved the sensitive data. With the account tokens and signing keys, the attacker went on to publish a malicious element-data package that was nearly indistinguishable from a legitimate one.
+
+The developers learned of the compromise from a third-party issue report. Within three hours, the package was removed. Element developers said they also rotated all credentials that the malicious code had access to. They have further fixed the vulnerability and audited all their other GitHub actions to ensure none contain the same flaw.
+
+The developers are urging all developers who installed version 0.23.3 to take the following steps immediately:
+
+2. If the version is 0.23.3, uninstall it and replace it with the safe version:
+
+In your requirements and lockfiles, pin explicitly to elementary-data==0.23.4.
+
+3. Delete your cache files to avoid any artifacts.
+
+4. Check for the malware’s marker file on any machine where the CLI may have run: If this file is present, the payload executed on that machine.
+
+macOS / Linux: /tmp/.trinny-security-update
+
+5. Rotate any credentials that were accessible from the environment where 0.23.3 ran – dbt profiles, warehouse credentials, cloud provider keys, API tokens, SSH keys, and the contents of any .env files. CI/CD runners are especially exposed because they typically have broad sets of secrets mounted at runtime.
+
+6. Contact your security team to hunt for unauthorized usage of exposed credentials. The relevant IOCs are at the bottom of this post.
+
+Over the past decade, supply-chain attacks on open source repositories have become increasingly common. In some cases, they have achieved a chain of compromises as the malicious package leads to breaches of users and, from there, breaches resulting from the compromise of the users’ environments.
+
+HD Moore, a hacker with more than four decades of experience and the founder and CEO of runZero, said that user-developed repository workflows, such as GitHub actions, are notorious for hosting vulnerabilities.
+
+It’s a “a major problem for open source projects with open repos,” he said. “It’s really hard to not accidentally create dangerous workflows that can be exploited by an attacker’s pull request.”
+
+He said this package can be used to check for such vulnerabilities.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Musk and Altman face off in trial that will determine OpenAI's future</div>
+            <div class="meta">2026-04-27</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
             <h2>Musk and Altman face off in trial that will determine OpenAI's future</h2>
             <p><strong>Ars Technica - All content | 2026-04-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/04/musk-and-altman-face-off-in-trial-that-will-determine-openais-future/">Visit Original Website</a>
@@ -262,37 +308,37 @@ During Musk’s deposition, OpenAI’s lawyers revealed a likely tactic in fight
 “It has a risk,” Musk testified, as he seems unwilling to acknowledge any contradiction in his own decision to start a for-profit AI company.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">OpenAI ends its exclusive partnership with Microsoft</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>OpenAI ends its exclusive partnership with Microsoft</h2>
             <p><strong>Ars Technica - All content | 2026-04-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/04/no-longer-exclusive-microsoft-agrees-to-let-openai-see-other-cloud-providers/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Since Microsoft invested $1 billion in OpenAI back in 2019, the exclusive partnership between the two firms has been one of the strongest and most consequential in the AI industry. Today, though, OpenAI and Microsoft jointly announced an amended agreement that will allow the company to go beyond Microsoft’s Azure and “serve all its products to customers across any cloud provider.”
+            <div id="article-text">Since Microsoft invested $1 billion in OpenAI in 2019, the exclusive partnership between the two firms has been one of the strongest and most consequential in the AI industry. Today, though, OpenAI and Microsoft jointly announced an amended agreement that will allow the company to go beyond Microsoft’s Azure and “serve all its products to customers across any cloud provider.”
 
 The announcement clarifies that Microsoft will continue to have a license for OpenAI’s IP and models through 2032 and that Azure will remain the “primary cloud partner” for OpenAI during that time (should Microsoft continue to be able to honor that). But Microsoft’s license “will now be non-exclusive,” the announcement reads, letting OpenAI make its models available through other major cloud providers going forward.
 
 While OpenAI will continue to make the same 20 percent revenue share payments to Microsoft under the amended deal, that total payment will now be limited to an unspecified cap and is only guaranteed to run through 2030. Importantly, that revenue share is now “independent of OpenAI’s technology progress,” an apparent reference to the infamous “AGI clause” in the original partnership that would have scrapped the exclusivity deal if and when OpenAI achieved the hard-to-gauge benchmark of artificial general intelligence.
 
-Microsoft and OpenAI’s amended agreement comes two months after a $50 billion deal between Amazon and OpenAI that included plans for certain OpenAI models to run on AWS. The Financial Times reported that Microsoft threatened legal action over that deal, though today’s amendment should moot that as a legal issue.
+Microsoft and OpenAI’s amended agreement comes two months after a $50 billion deal between Amazon and OpenAI that included plans for certain OpenAI models to run on Amaon Web Services. The Financial Times reported that Microsoft threatened legal action over that deal, though today’s amendment should moot that as a legal issue.
 
-In a memo sent to staffers earlier this month (and obtained by CNBC), OpenAI Chief Revenue Officer Denise Dresser said the Microsoft partnership had “limited our ability to meet enterprises where they are — for many that’s [Amazon] Bedrock.” Interest in running OpenAI’s models through Amazon’s cloud have “been frankly staggering,” Dresser reportedly wrote.
+In a memo sent to staffers earlier this month (and obtained by CNBC), OpenAI Chief Revenue Officer Denise Dresser said the Microsoft partnership had “limited our ability to meet enterprises where they are — for many that’s [Amazon] Bedrock.” Interest in running OpenAI’s models through Amazon’s cloud has “been frankly staggering,” Dresser reportedly wrote.
 
 Amazon CEO Andy Jassy said on social media Monday afternoon that he was “excited to make OpenAI’s models available directly to customers on Bedrock in the coming weeks, alongside the upcoming Stateful Runtime Environment. With this, builders will have even more choice to pick the right model for the right job.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">EU tells Google to open up AI on Android; Google says that's "unwarranted intervention"</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>EU tells Google to open up AI on Android; Google says that's "unwarranted intervention"</h2>
             <p><strong>Ars Technica - All content | 2026-04-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/04/europe-could-force-google-to-open-android-to-other-ai-assistants/">Visit Original Website</a>
@@ -324,13 +370,13 @@ So far, this is just a framework for how AI on Android might change. The Europea
 Google probably won’t be required to fling the doors open right away, though. Creating avenues for third-party AI apps to access system tools and data would take time. Rushing the process could risk security or privacy issues. And naturally, there’s no guarantee any of these proposed changes would be seen outside of the EU.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">With new patch design, the Crew-13 astronauts clearly aren't superstitious</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>With new patch design, the Crew-13 astronauts clearly aren't superstitious</h2>
             <p><strong>Ars Technica - All content | 2026-04-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/04/nasas-spacex-crew-13-pays-homage-to-apollo-13-on-mission-patch/">Visit Original Website</a>
@@ -370,13 +416,13 @@ Despite the concern, Soyuz TMA-13 went forward as planned. As did Soyuz 13, Soyu
 Soyuz TMA-13M launched Reid Wiseman, and Soyuz MS-13 landed with Christina Koch. Both US astronauts went on to fly aboard NASA’s Artemis II mission earlier this month, a crewed fly-by of the Moon that broke the distance record set by the Apollo 13 astronauts.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">"Super ZSNES" is a stab at a modern SNES emulator from the original developers</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>"Super ZSNES" is a stab at a modern SNES emulator from the original developers</h2>
             <p><strong>Ars Technica - All content | 2026-04-27</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/04/super-zsnes-is-a-stab-at-a-modern-snes-emulator-from-the-original-developers/">Visit Original Website</a>
@@ -398,34 +444,6 @@ An overview video by Modern Vintage Gamer shows many of these new updates in act
 These enhancements need to be created on a per-game basis, and the initial Super ZSNES release only includes enhancements for seven “popular games”: F-Zero, Gradius 3, the first Mega Man X, Super Castlevania 4, Super Ghouls & Ghosts, Super Mario World, and Super Metroid. The creators plan to add support for more games in the future, and players will also be able to create their own enhancements for individual games using tools built into the emulator.
 
 The initial Super ZSNES release supports Windows, Intel and Apple Silicon Macs, Linux, and Android, with an iOS release “coming soon.” Future releases will include general bug fixes and performance optimizations, support for popular enhancement chips like the DSP-1 and SuperFX, “more types of enhancements,” online netplay, and more.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">China kills Meta’s acquisition of Manus as US-China AI rivalry deepens</div>
-            <div class="meta">2026-04-27</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>China kills Meta’s acquisition of Manus as US-China AI rivalry deepens</h2>
-            <p><strong>Ars Technica - All content | 2026-04-27</strong></p>
-            <a class="original-link" href="https://arstechnica.com/ai/2026/04/china-kills-metas-acquisition-of-manus-as-us-china-ai-rivalry-deepens/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">China has blocked US tech giant Meta’s acquisition of the AI company Manus that was founded by Chinese tech entrepreneurs. That development indicates how difficult it has become for US and Chinese tech companies to strike and sustain such deals as government authorities on both sides take an increasingly hard line amid the deepening US-China AI rivalry.
-
-The Chinese government formally asked Meta to unwind the acquisition on April 27 after deciding to ban foreign investment in Manus based on national security concerns. It had already spent months officially scrutinizing Meta’s $2 billion acquisition of Manus that took place in December 2025—Chinese regulators announced they were reviewing the deal in January 2026 and instructed the two Manus cofounders to not leave China while the investigation was ongoing, according to The Wall Street Journal.
-
-Manus burst onto the scene in March 2025 with its “general AI agent,” designed to help users with tasks such as searching real estate sites for a new home or booking airline tickets and hotels for an international trip. The Manus AI agent is an “agentic wrapper” or “agentic harness” that enables an underlying AI model—in this case, Anthropic’s Claude 3.7 Sonnet—to take actions to carry out user requests. But Manus actually incorporates multiple AI agents to perform and verify tasks, including a planner agent that assigns tasks and an executor agent that can browse and interact with websites, create spreadsheets, use various software tools, and even code new applications.
-
-That quickly drew the attention of Silicon Valley and Meta in particular, given CEO Mark Zuckerberg’s big business push in 2025 to develop “personal [AI] superintelligence for everyone.” When Meta acquired Manus, the US tech company began incorporating the Manus AI agent into its services, such as Meta’s Ads Manager, which is the main platform for advertisers to create and track ad campaigns on Meta’s social media platforms like Facebook, Instagram, Messenger, and WhatsApp.
-
-The Manus founders, Xiao Hong and Ji Yichao, have already relocated most of their team from China to Meta’s Singapore office and have taken pains to cut any lingering Chinese ties in the lead-up to the Meta acquisition late last year—even turning down Chinese authorities’ requests for meetings or investment, according to The Wire China. They paved the way for the move to Singapore by registering the firm Butterfly Effect Pte and setting up Butterfly Effect Holding as a parent company based in the Cayman Islands.
-
-Now, the Chinese government’s decision to quash the deal creates significant uncertainty for both Manus and Meta’s future AI ambitions. For example, Manus may not be able to continue deploying its AI agent service using Anthropic’s Claude models, given that Anthropic has restricted AI sales to entities in China. “If Manus had remained a Chinese company, its core product would have disappeared,” said Chris McGuire, a former national security official with the Biden administration who designed US restrictions on tech exports and investments relating to China, in an interview with The Wire China.
-
-The unwinding of the deal would also represent a setback to Meta’s pivot to AI, which comes after the US tech company spent $80 billion over half a decade in an attempt to make the metaverse catch on with consumers. Beyond incorporating the Manus AI agent into its own services, Meta has “deeply integrated” the Manus team with Meta’s own teams in the Singapore office, according to The New York Times.
-
-What is clearer is that Chinese tech founders face dim prospects when trying to pivot from being a homegrown Chinese company to the US tech scene. The apparent failure in this case of the “Singapore-washing” model, frequently used by Chinese tech founders attempting to reestablish their company outside of China, suggests that founders will need to think about setting up shop outside China from “day one,” said Wayne Shiong, managing partner of the Silicon Valley seed investment firm Argo Venture Partners, in a CNBC interview.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -1036,12 +1054,88 @@ SpaceX is working with Cursor and has an option to buy the startup for $60B</div
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
-            <div class="title">Can We Make Events Like the White House Correspondents’ Dinner Safer?</div>
+            <div class="title">The Shooting Is Not a Reason to Speedrun Trump’s Ballroom</div>
             <div class="meta">2026-04-27</div>
         </div>
         
         <div id="content-18" style="display:none;">
-            <h2>Can We Make Events Like the White House Correspondents’ Dinner Safer?</h2>
+            <h2>The Shooting Is Not a Reason to Speedrun Trump’s Ballroom</h2>
+            <p><strong>The Atlantic | 2026-04-27</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/04/whcd-shooting-trump-ballroom/686973/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">This is an edition of The Atlantic Daily, a newsletter that guides you through the biggest stories of the day, helps you discover new ideas, and recommends the best in culture. Sign up for it here.
+
+Within hours after an attempted shooting at the White House Correspondents’ Dinner on Saturday, President Trump declared that the incident showed the need to build a ballroom at the White House without delay. “We need the ballroom,” he told reporters in a press conference. Yesterday morning, he reiterated the argument on Truth Social, adding, “Nothing should be allowed to interfere with with [sic] its construction, which is on budget and substantially ahead of schedule!!!”
+
+Many allies leaped to agree. The commentator Meghan McCain wrote on X, “I don’t want to hear one more fucking criticism of Trump’s new ballroom at the White House.” Senator John Fetterman of Pennsylvania, a titular Democrat, cited “Trump Derangement Syndrome” to say, “After witnessing last night, drop the TDS and build the White House ballroom for events exactly like these.” And Acting Attorney General Todd Blanche fired off a letter to the attorney for the plaintiff in a federal lawsuit challenging the construction, saying that the Justice Department would move to dismiss the case if it wasn’t dropped by 9 a.m. this morning. (It was not.)
+
+None of this makes any sense. A ballroom at the White House is not a solution to violence at an outside event hosted by the press. Moreover, if the ballroom is worth building, it is worth building the right way—and the administration shouldn’t have any trouble doing so. If anything, the safe outcome of the chaotic events Saturday show why following process and procedure is so essential in government.
+
+Trump has long been interested in a White House ballroom—the Obama adviser David Axelrod has recounted gently rebuffing Trump’s offer to build one in 2010—but last fall, he abruptly demolished the existing East Wing of the White House, having promised not to “interfere with the current building.” He then began construction of an enormous ballroom, funded with private donations. The National Trust for Historic Preservation sued, arguing that Trump had failed to file correct plans and environmental assessments, and that he was usurping Congress’s authority over the White House grounds and federal property. (Indeed, a New York Times analysis found architectural flaws such as staircases that don’t lead anywhere.) So far, to Trump’s dismay, the plaintiff has won some victories; a federal judge repeatedly scolded government lawyers and halted work. Earlier this month, however, an appeals court allowed construction to proceed for now.
+
+The idea that a White House ballroom would have prevented the frightening event doesn’t really add up. Saturday’s dinner was organized by the White House Correspondents’ Association, an independent group that represents reporters who cover the presidency, not by the White House—and Trump was a guest, not the host. For the annual dinner to occur at the White House itself would be a huge—okay, an even huger—embarrassment and conflict of interest. And that would be true even during a typical presidency, to say nothing of one that has systematically attacked the freedom of the press, sought to disempower the WHCA, and banished some of its members. (As another example, Trump snapped at CBS News’s Norah O’Donnell yesterday for asking entirely predictable and normal questions about the shooting, showing that Saturday’s shared danger didn’t create any lasting comity between the president and the press.)
+
+The ballroom might not be the worst idea, but if so, building it shouldn’t require cutting any corners. “We have always acknowledged the utility of a larger meeting space at the White House,” Carol Quillen, the president and CEO of the National Trust, said in a statement today. “Building it lawfully requires the approval of Congress, which the Administration could seek at any time.” If the case is good, the administration should have a relatively easy time getting the requisite approvals and persuading Congress not only to sign off on the idea but to allocate funding for it—especially with Republicans in control of both chambers. It shouldn’t require secretive demolitions and minimal transparency. And if the federal lawsuit challenging the construction is as “frivolous” as Blanche claims, then the Justice Department should have a relatively easy time defeating it in court.
+
+Everyone loves to hate red tape, but the truth is that the process required in government can be very valuable. One reason that an assassination attempt against Trump in 2024 came within millimeters of success is that the Secret Service failed to follow its own best practices. By contrast, as my colleague Shane Harris reports, the response on Saturday was far more effective because law-enforcement agencies seem to have executed well on their procedures.
+
+At the same moment that Trump was holding up the shooting as a reason to build the ballroom, online influencers were spreading conspiracy theories about the incident being “staged.” I saw social-media posts likening it to the 1933 Reichstag fire, which the Nazi government used to justify consolidation of power and which some people believe to have been an inside job; they warned that Trump would use the shooting to repress political opponents and plow through guardrails. Much simpler and more likely explanations for Saturday’s shooting are available than a false flag: Trump is a deeply despised president; political polarization and tension are very high; and acquiring guns is extremely easy in the United States.
+
+If the only abuse of executive power to emerge from the moment is the administration demanding to be allowed to start construction, that will be good news for civil liberties and for the country as a whole, but that also doesn’t mean that Trump should get his way. If a ballroom is necessary, the nation deserves one that’s carefully planned and executed rather than a hastily designed colossus with stairs to nowhere.
+
+Here are four new stories from The Atlantic:
+
+What Happens If Trump Seizes AI Companies
+
+AI companies are beginning to entertain the possibility that they could cease to exist. This notion was, until recently, more theoretical: A couple of years ago, an ex-OpenAI employee named Leopold Aschenbrenner wrote a lengthy memo speculating that the U.S. government might soon take control of the industry. By 2026 or 2027, Aschenbrenner wrote, an “obvious question” will be circling through the Pentagon and Congress: Do we need a government-led program for artificial general intelligence—an AGI Manhattan Project? He predicted that Washington would decide to go all in on such an effort.
+
+Read. A new history of the Red Scare prompts the question: Does literature still have enough influence to bring down the powerful? Charlie Tyson explores.
+
+Slow down. Is hurry the great enemy of spiritual life? Pastor John Mark Comer has won a massive audience by encouraging his followers to free themselves from the gnawing sense that there is always more to do, Nancy Walecki writes.
+
+Rafaela Jinich contributed to this newsletter.
+
+When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">When is a Comedy No Longer a Comedy?</div>
+            <div class="meta">2026-04-27</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
+            <h2>When is a Comedy No Longer a Comedy?</h2>
+            <p><strong>The Atlantic | 2026-04-27</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/culture/2026/04/over-your-dead-body-movie-review-jorma-taccone/686970/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The best way to sneak a comedy into theaters these days, it seems, is to make it a crime drama. Over Your Dead Body is billed as the latest effort from the director Jorma Taccone—a surprising name to be attached, considering his filmography. His previous features are Popstar: Never Stop Never Stopping and MacGruber, two of the better comedies released in the 2010s (back when such things still regularly appeared in cinemas). But that résumé sits somewhat uncomfortably against a poster with five stone-faced actors wielding guns and knives—announcing a rather grim-looking thriller in which blood will be shed and tough life lessons learned. What a riot.
+
+Taccone’s film is certainly much more serious than the spoofy, anarchic projects he’s made in the past, including his work as a writer on Saturday Night Live. But it’s still, at its core, an attempt at a riotous black comedy, one indebted to obvious masters of the form such as the Coen brothers and the more horror-adjacent auteur Sam Raimi. Over Your Dead Body is a remake of the 2021 Norwegian film The Trip, and Taccone is doing his best to maintain its transgressive Nordic roots by mixing sex, gore, and deep marital discord with carefree aplomb. The movie is bleak, but it’s brazen enough to sometimes recall Taccone’s earlier, punchier work. With films of that ilk now a dying breed, even just bringing them to mind is perhaps the most that fans of his humor can hope for.
+
+Over Your Dead Body follows a married couple whose relationship is beyond shipwrecked. Dan (played by Jason Segel) is a once-promising filmmaker reaching the tail end of his career; Lisa (Samara Weaving), his wife, is an actor and his former collaborator. They can’t stand each other. They journey to a cabin for an ostensible getaway, but the script, by Nick Kocher and Brian McElhaney, makes clear almost immediately that the pair have designs beyond relaxation: They are both planning to murder the other, and have dueling elaborate schemes—chloroform, tasers, and staged hunting accidents are involved—to cover up the crime and embark on a new, liberated life after pocketing some insurance money.
+
+Read: SNL’s new kings of bizarro buddy comedy
+
+The pulpy setup befits a paperback crime thriller but is infused with some self-aware marital satire. Quickly, the plot leans into more cartoonish violence; as Dan and Lisa try to execute their deathly plans, a group of escaped convicts also coincidentally makes it to this lakeside home, led by a different, wildly horny couple, Pete (Timothy Olyphant) and Allegra (Juliette Lewis). This twist turns a portrait of a doomed marriage into a more madcap action comedy, including Mexican standoffs and bloody lawn-mower violence, letting Taccone show a real flair for creative camerawork. (The film is also sprinkled with more expected bits of pop-culture commentary—this is a story about a filmmaker and an actor, after all.)
+
+Although not entirely successful, Over Your Dead Body is often diverting and bold. And it has an interesting avatar in Segel for the kind of work it represents: He established himself as a reliable figure in delightful TV fare such as the great Freaks and Geeks and the long-running sitcom How I Met Your Mother; he’s now one of his generation’s rare comedic leading men, making beloved hits (Forgetting Sarah Marshall; I Love You, Man) alongside unmemorable moneymakers (The Five-Year Engagement, Sex Tape). But Hollywood has moved away from positioning silly comedies for grown-ups as major events, and Segel has thus drifted back to TV—this is his first movie in four years, and his first big theatrical release since before the pandemic. His role reads almost like a haunted take on what’s been lost on-screen along the way, as Dan mourns (and Lisa openly mocks) his once-promising trajectory in the industry.
+
+Taccone, similarly, clearly has the talent to make all kinds of interesting comedic movies, but seems in search of the best outlet. A member of the comedy-and-music troupe the Lonely Island, he was a creative force on Saturday Night Live for years, but hasn’t directed a film since making Popstar with his Lonely Island collaborators, Akiva Schaffer and Andy Samberg, 10 years ago. That movie was an instant cult classic, a terrific spoof of modern-day music celebrity that was well received by critics. But it was a surprising box-office bomb, perhaps an arbiter of Hollywood’s ongoing inability to get big comedies across to audiences in recent years.
+
+Read: Long live the delightfully dumb comedy
+
+But the goofier parts of Over Your Dead Body offer some hope for the future. The success of more straightforward spoofs such as Schaffer’s The Naked Gun last year is also reassuring; that film was a classic joke-a-minute throwback that largely worked (for both viewers and critics), more in line with the sort of fare that the Lonely Island made early on. The inherent nastiness of Over Your Dead Body will likely keep it from being anything but another cultish object in Taccone’s interesting career. But its highest highs come from slipping good old-fashioned physical farce into an action-heavy package—and wringing Looney Tunes–esque laughs along the way.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-20')">
+            <div class="source">The Atlantic</div>
+            <div class="title">What the Correspondents’ Dinner Shooting Means for the World Cup, America’s 250th, and Other Major Events</div>
+            <div class="meta">2026-04-27</div>
+        </div>
+        
+        <div id="content-20" style="display:none;">
+            <h2>What the Correspondents’ Dinner Shooting Means for the World Cup, America’s 250th, and Other Major Events</h2>
             <p><strong>The Atlantic | 2026-04-27</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/04/safety-security-whcd-prevention/686969/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -1074,13 +1168,13 @@ Perhaps in future years, the WHCD location should be moved to a convention cente
 The gathering is meant to celebrate an institution preserved in our Constitution as an essential component of our democracy: the free press. A future dinner at the Trump White House would mock the media’s very essence, even if—or because—it is more secure.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">What We Learn About Trump in His Rare Moments of Self-Reflection</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>What We Learn About Trump in His Rare Moments of Self-Reflection</h2>
             <p><strong>The Atlantic | 2026-04-27</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/politics/2026/04/trump-whcd-shooting/686965/?utm_source=feed">Visit Original Website</a>
@@ -1140,13 +1234,13 @@ Asked on Saturday if violence was simply the cost of modern-day politics, the pr
 Trump had wanted the dinner to resume Saturday night, and he suggested that he was planning to alter his jokes to capture the shifting mood of the room, and perhaps beyond. “I was going to get up and make an entirely different speech,” he said in an interview with Fox News’s Jacqui Heinrich yesterday morning. “I was going to really rip it last night. I was talking about everybody. And then they said, Well, my speech is going to be much different. It’ll be a speech of love. But I didn’t get a chance to do that. Probably I was better off if I didn’t. I don’t know.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">Winners of the GDT Nature Photographer of the Year 2026</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Winners of the GDT Nature Photographer of the Year 2026</h2>
             <p><strong>The Atlantic | 2026-04-27</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/photography/2026/04/winners-gdt-nature-photographer-year-2026/686967/?utm_source=feed">Visit Original Website</a>
@@ -1154,13 +1248,13 @@ Trump had wanted the dinner to resume Saturday night, and he suggested that he w
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">The Pentagon May Not Be Telling Trump the Full Picture About the War</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>The Pentagon May Not Be Telling Trump the Full Picture About the War</h2>
             <p><strong>The Atlantic | 2026-04-27</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/national-security/2026/04/iran-war-vance-hegseth-trump/686905/?utm_source=feed">Visit Original Website</a>
@@ -1208,149 +1302,65 @@ Far from Hegseth’s predictions of a quick, decisive win, the Iran war has now 
 Jonathan Lemire and Ashley Parker contributed reporting for this story.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
-            <div class="source">The Atlantic</div>
-            <div class="title">The American Pope vs. the American President</div>
-            <div class="meta">2026-04-27</div>
-        </div>
-        
-        <div id="content-22" style="display:none;">
-            <h2>The American Pope vs. the American President</h2>
-            <p><strong>The Atlantic | 2026-04-27</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/04/pope-leo-trump-iran/686964/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">American presidents and popes have clashed before, but the battle of words and wills between Donald Trump and Pope Leo XIV is unprecedented.
-
-The distinctiveness of their clash is not due mainly to the fact that Robert Francis Prevost is the first American-born pope, though that is significant. After all, Leo can’t be dismissed as a foreigner who is speaking about a country and culture he doesn’t understand. When he is critical of America, on matters ranging from war to mass deportation to those who “manipulate religions and the very name of God,” it comes from a place of love and devotion.
-
-Nor does it have to do solely with the nature of the disagreements, most specifically the war waged by Trump against Iran. Past popes have criticized past presidents for going to war.  What makes the Trump-Leo collision most unusual is the manner of the disagreement, not on the part of the pope—whose criticisms have been direct but restrained—but on the part of the president.
-
-Elizabeth Bruenig: A blasphemous president
-
-No president has ever attacked the spiritual leader of the Catholic Church so directly and so personally. Trump called Leo “WEAK on Crime” and “terrible for Foreign Policy.” He attacked the pontiff for opposing his Iran-war policy, labeling him a “very liberal person” who is “catering to the radical left.” He also said Leo owed his papacy to Trump. It’s unusual, to say the least, for a head of state—in this case, of the most powerful nation in the world—to treat the bishop of Rome as a bitter political rival.
-
-But beyond that, this conflict has a dramatic, even archetypal, quality to it, pitting polar opposites against each other. One is a religious man in the deepest sense; the whole of his life has been shaped by religious disciplines and a theological tradition. He is inseparable from his faith.
-
-The other is completely secular—thoroughly of this age, thoroughly of this world. He measures success by wealth, by power, by sexual conquest. He admitted that he’s never asked God for forgiveness. He has no ties to any church and is in many ways contemptuous of the core teachings of the Christian faith.
-
-Leo is disciplined, mild-mannered, calm, and deliberative. He is an Augustinian, part of an order founded in the 13th century. Augustinians are known as “active contemplatives” who combine a deep inner spiritual life with service to others. Members of the order commit to live together in harmony, “intent upon God in oneness of mind and heart.” Augustinians also take vows of poverty, chastity, and obedience.
-
-From Augustine, Leo learned to be deeply skeptical of worldly power. He speaks about the “delusion of omnipotence” and is alert to the dangers of pride and grandiosity. The Augustinian tradition emphasizes fraternity, humility, and reflection on our disordered desires. Shaped by the Latin American church’s social vision—he served two decades as a missionary and Augustinian priest in Peru—Leo believes “the preferential choice for the poor is a source of extraordinary renewal both for the Church and for society.”
-
-“Wanting to inaugurate a kingdom of justice, fraternity and solidarity,” Leo said in his first major papal document, “God has a special place in his heart for those who are discriminated against and oppressed, and he asks us, his Church, to make a decisive and radical choice in favor of the weakest.”
-
-“A Church that sets no limits to love, that knows no enemies to fight but only men and women to love,” Leo continued, “is the Church that the world needs today.”
-
-Leo’s commitments and life story are alien to Trump. Everything Leo cherishes, Trump holds in contempt.
-
-But what has made the confrontation most electrifying is the way in which the pontiff is not just standing up to the president but transcending him. Leo has said he has “no fear” of the Trump administration, and no one can doubt him. He speaks as a liberated, confident man whom the president cannot intimidate. The pope is setting the terms of debate by relying on moral language and moral reasoning; on Catholic social teaching, the Church fathers, and the scriptures.
-
-Leo has not lashed out, or gotten defensive, or allowed himself to be pulled down into the gutter. When the president goes low, the pope goes high. But going high doesn’t mean going silent. He said he will continue to speak out on matters of justice and against the war.
-
-Even if one is not entirely convinced by Leo’s arguments, one can appreciate that he is speaking uncynically and without ulterior motives. He’s not playing political games, or trying to improve his poll ratings, or running for office. He’s not looking for access to power or seeking self-enrichment. Nor is the bishop of Rome trying to humiliate or dehumanize his opponent.
-
-The things Leo appears to care about—faithfully serving God and the Church, caring for the vulnerable, speaking the truth as he understands it—are things Trump cannot touch, or even understand. There’s no target for Trump to hit, which is why his attack on the pope for being “WEAK on crime” was absurd even by Trump’s standards. Trump is quite skilled at knowing how to break politicians; he’s at a loss to know what to do with prophetic voices. He is punching at shadows.
-
-I should add that, as a non-Catholic Christian, I have found what Leo has done vivifying. That reaction has less to do with the specific arguments Leo is making related to the war—though we should all welcome into the debate a discussion of just-war theory—than with his having reinjected serious moral arguments into our political discourse. Leo has shown that the Christian Church can once again be, as Martin Luther King Jr. put it, not the master or the servant of the state but the conscience of the state, its guide and critic and never its tool.
-
-That so many people of the Christian faith, especially white evangelicals and prominent figures within that movement, have weaponized their faith to win the favor of an American president is among the most grievous things to have occurred during the Trump era. And they have sought the favor of not just any American president but one who is mendacious, lawless, cruel, and thoroughly corrupt. These courtiers have defamed Jesus while pretending they are acting in his name. The damage they have inflicted on the Christian faith is incalculable.
-
-Tom Nichols: Pope James David Vance the first
-
-In a different category are evangelical ministers and faith leaders who know better, who see exactly the harm Trump is doing to the Christian witness, and yet have, for a variety of reasons, chosen silence.
-
-Into all of this cometh the bishop of Rome. He is unwilling to subordinate his faith to politics, or to adjust his commitment to the Gospel in exchange for access to power. A man who served the poor in Peru during the Shining Path insurgency—he stayed when others left—is not particularly fearful of critical posts on Truth Social or of those within his church who might disapprove of his public stand in defense of justice and a Christian ethic. He’s a person with deep moral convictions but who holds them with grace and ease. He comes across as calm, centered, and unhurried. He believes he answers to a higher authority; this allows him to offer a true Christian witness. This is a gift to the whole Church, and to the whole world.
-
-“Even now, in sordid particulars,” T. S. Eliot wrote in Murder in the Cathedral, “the eternal design may appear.” What Eliot meant by this is that in the midst of a broken, chaotic world, where despair often abounds, there is an eternal design at play, even if we may not quite see it while we’re living through it. Nor is the divine set apart from human suffering. Christians believe that God entered into the suffering and violence of this world, redeeming even the “sordid particulars.” But that doesn’t happen on its own.
-
-“Love obligates us to stay in the world,” the political philosopher Glenn Tinder wrote in The Political Meaning of Christianity, “where most of our fellow human beings are compelled by circumstances to stay.” A “prophetic stance,” he said, “can show us how to live in temporal society as citizens of an eternal society.”
-
-Such a prophetic stance is rare in any time; for the past decade it has been almost entirely missing. Thankfully a native of the South Side of Chicago, who now resides in Vatican City, has shown us what a prophetic stance can look like.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">The Age of American Caesarism</div>
-            <div class="meta">2026-04-27</div>
-        </div>
-        
-        <div id="content-23" style="display:none;">
-            <h2>The Age of American Caesarism</h2>
-            <p><strong>The Atlantic | 2026-04-27</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/04/trump-caesar-executive-power/686846/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Julius Caesar styled himself as a servant of the republic, claiming to speak for the people even as he disregarded laws and norms to govern by caprice. The Roman republic did not survive him.
-
-The second Trump administration has revealed American Caesarism in nearly full bloom. Despite ambitions to fundamentally change the course of the country, this administration has no real legislative agenda. Instead, the president governs by executive orders, emergency decrees, and extortionate transactions, using his power to reward his friends and punish his enemies. He’s launched foreign military adventures and full-blown wars seemingly based on personal whim, and has made the military a political prop and a tool for domestic law enforcement. With Congress sidelined and the courts reluctant to check Donald Trump’s excesses, America has been left with what some legal scholars have described as an “executive unbound”—and with a president who threatens to supplant the republic in all but name.
-
-Trump’s most fervent supporters justify his approach in terms reminiscent of Caesar’s. The White House Deputy Chief of Staff Stephen Miller has remarked that “the whole will of democracy is imbued into the elected president.” Many Republicans argue that Trump’s policy preferences deserve support because he has a “mandate,” and they heap scorn on the “unelected” judges who have had the temerity to rule against him.
-
-Peter M. Shane: This is the presidency John Roberts has built
-
-This is not American democracy. The central premise of the Constitution is that liberty requires divided authority. The accumulation of power in one branch of government is, as James Madison warned, “the very definition of tyranny.” Americans are already feeling the consequences of this imbalance: Because executive orders, emergency declarations, and unilateral action lack the durability of legislation passed by Congress, policies swing wildly from one administration to the next. Families and businesses cannot plan ahead, which undermines investment, growth, and prosperity.
-
-American Caesarism did not emerge overnight with the election of Trump, but over the course of decades. And though conservatives alone did not create this state of affairs, many were key proponents of a vision of politics centered on one commanding figure—a vision that is now destabilizing our country. I have spent my career in the conservative legal movement, which has included advising Senate Republicans on judicial nominations. I have become convinced that if the Madisonian republic is to endure, conservatives must reckon with our role in bringing the nation to its current breaking point, and work to reestablish the checks and balances that we helped erode.
-
-For much of American history, conservatives were the nation’s fiercest skeptics of executive power, warning that a swelling presidency could threaten liberty by displacing the authority of Congress and the courts. By the 1970s, a rise in what conservatives saw as judicial activism had shifted their focus to overreach by the courts. To those on the right, the Supreme Court’s decision in Roe v. Wade was emblematic of a Court operating far beyond the bounds of the Constitution to usurp policy making. The courts of the era also reshaped criminal law, ordered busing to desegregate schools, redefined the relationship between church and state, and even waded into tax-and-spending issues. Convinced the judiciary had slipped its constitutional leash, the conservative legal movement dedicated itself to preventing what it called “legislating from the bench,” through scholarship, advocacy, and organizing.
-
-But this focus on reforming the judiciary, combined with the politics of the period, meant that comparatively little attention was paid to the other two branches of government—and, in particular, to the slide toward rule by presidential fiat. Many of the leaders of the modern conservative legal movement had served in Republican administrations and had lived their entire lives against a backdrop of seemingly unbreakable Democratic control of Congress. (The future judicial superstars William Rehnquist, Robert Bork, and Antonin Scalia all held senior legal roles in the Nixon and Ford administrations.) In the 1970s, they saw the presidency humbled by the Watergate scandal and subsequent reforms. To a conservative of this era, the presidency must have seemed the only viable instrument of policy making, and its relative weakness a cause for concern.
-
-Over time, sympathy for executive authority hardened into theory, and the legal movement once known for “strict construction” of the Constitution found a great deal of elasticity in it. Some began to advance the view that Article II, which vests “executive power” in the president, gave him any authority not expressly limited by the Constitution. The duty to “take Care that the Laws be faithfully executed” came to be seen not as a restriction on the president’s policy making but as a grant of leeway to reinterpret the law. Most important, many conservatives came to believe that the president’s role as “commander in chief” gave him sweeping, unilateral authority in matters of national security—a view that has significant implications in a nation perennially on a war footing, including against non-state actors.
-
-During the Reagan administration, conservative legal thinkers also embraced the “unitary executive theory,” which asserts the president’s sole control over the executive branch. In the past few years, this theory, reasonable at its core, has gained traction in the courts. The Supreme Court seems poised to allow Trump’s removal of a member of the Federal Trade Commission, which could set the stage for broader, more dubious rulings. The most extreme interpretations of this theory could allow the president to fire any federal employee at will, ignore civil-service protections, and eliminate the independence of the Federal Reserve.
-
-While legal conservatives were developing theories of enhanced executive power, their political compatriots gained a congressional majority for the first time in decades. The new Republican majority, distrustful of Congress after decades of liberal control, undertook “reforms” that undermined the power of the institution. They slashed congressional staff (particularly nonpartisan and expert staff), weakened committees, and imposed term limits on committee chairmen, eroding important points of leverage over the executive branch.
-
-By the 1990s, the courts were changing too. The new generation of conservative judges, intent on reining in the judiciary, empowered the executive. They embraced doctrines that instructed courts to defer to the administrative agencies’ interpretation of their own authority, and others that tended to insulate the executive from meaningful judicial review. (The “presumption of regularity,” for instance, assumes that the president and his agents act in good faith.) Courts also tended to uncritically accept presidential determinations in matters of foreign affairs and national security.
-
-The conservative bench’s focus on preventing a weak presidency arguably reached its zenith in 2024 with the Supreme Court’s decision in Trump v. United States, which concerned Trump’s potential criminal liability for his role in the January 6 attack on the Capitol. The majority, rather than being rattled by a president who had attempted a coup, labored to protect the country from the hypothetical danger of a presidency rendered impotent by specious criminal prosecutions. Never mind that if such a future materialized, Congress or the Court could resolve it. Instead, breaking with foundational conservative legal principles, the majority created sweeping presidential immunity out of whole cloth.
-
-In recent years, the Supreme Court has shown signs of being open to another path, ruling against the administrative state in several major cases. However, the judiciary remains less willing to confront executive overreach outside of the regulatory context, especially in matters of purported national security. Conservative judges, in particular, continue to indulge presidential power at the expense of Congress.
-
-Last year, an appellate court overturned the president’s invocation of wartime authorities to expedite the deportation of Venezuelans on the sensible grounds that Venezuela was not, in fact, invading the United States. A conservative judge dissented, writing that “the President’s declaration of an invasion, insurrection, or incursion is conclusive. Final. And completely beyond the second-guessing powers of unelected federal judges.” This type of deference to the executive, which relies on presidential good faith, now amounts to judicial abdication.
-
-Similarly, the recent decision striking down Trump’s tariffs relied solely on the determination that the emergency authority at issue does not authorize tariffs. The justices did not wrestle with the president’s invocation of a national emergency to impose his policy agenda, nor did they say that Congress could not hand such legislative powers over to the president in the first place. Even still, with this modest holding, three conservative justices dissented. Justice Clarence Thomas, a favorite of conservatives, wrote separately to argue that Congress could give any of its powers to the president, so long as they were not “core legislative powers.”
-
-If America is to preserve its liberty, conservative legal scholars and judges will need to adjust to a new reality and revisit doctrines that no longer serve to protect the constitutional structure. Some conservatives have already begun moving in this direction. In its recent rulings ending deference to the administrative state, the Court explicitly abandoned the stance of an earlier generation of conservatives. The lawsuit challenging Trump’s tariffs was brought by veterans of the conservative and right-of-center legal movements, who argued that the president had exceeded his authority. These are promising developments—but we need to go further.
-
-Courts should refuse to read broadly any executive power not firmly tethered to the language of the Constitution, and reject clearly pretextual claims of national emergencies. They might, as the conservative legal scholar Yuval Levin has suggested, adopt a doctrine that resolves ambiguous legal questions in favor of republican government, which would mean pushing policy disputes to the legislature rather than the executive.
-
-The Supreme Court should also look with more scrutiny at the White House’s use of the “emergency docket” (or “shadow docket”), whereby the Court issues interim rulings on urgent cases. The Trump administration has filed dozens of emergency requests to freeze adverse lower-court rulings while litigation continues. The Court’s tendency to side with the White House in such cases, if only temporarily, has allowed serious constitutional harm to continue, and has, in some cases, done irreparable damage. This seeming deference to executive interests is particularly difficult to justify in an administration willing to flout court orders.
-
-Courts cannot restrain the executive alone; they have too narrow a function and work too slowly. Congress must rediscover its role—and conservatives who wish to preserve our original constitutional structure can help make this a reality by supporting expanded funding for the legislative branch and championing rules reforms to make Congress more effective. Another step would be to establish a congressional version of the Justice Department’s Office of Legal Counsel. The OLC issues opinions that, though not law, guide executive-branch behavior and influence both the judiciary and the public’s understanding of contested legal questions. A well-funded congressional office of legal counsel could weigh in on such questions as well, so that executive-branch lawyers would not be the only ones assessing the bounds of executive power on behalf of the government.
-
-Legislation to rein in our “unbound” executive should be a priority. Obvious first steps would include strengthening the enforceability of congressional subpoenas, protecting against politicized law enforcement, and limiting the president’s emergency powers and ability to profit from his service. America could also recover its capacity to amend the Constitution and use that power to pare back the presidency. A prime target would be the presidential pardon, a vestige of monarchy that has become a source of scandal and corruption.
-
-The conservative legal movement once transformed the national conversation about the courts. It can do the same with executive power—but only if it is willing to redirect its intellectual and advocacy efforts in that direction. If conservatives truly believe in ordered liberty, constitutional limits, and the rule of law, then the task ahead is clear: We must help check Caesar. Not for the sake of any party, but for the sake of the republic.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">EU Tells Google To Open Up AI On Android; Google Says That's 'Unwarranted Intervention'</div>
+            <div class="meta">2026-04-27</div>
+        </div>
+        
+        <div id="content-24" style="display:none;">
+            <h2>EU Tells Google To Open Up AI On Android; Google Says That's 'Unwarranted Intervention'</h2>
+            <p><strong>Slashdot | 2026-04-27</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/26/04/27/2113232/eu-tells-google-to-open-up-ai-on-android-google-says-thats-unwarranted-intervention?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">I honestly wish US had anti-monopoly regulation that worked in a similar manner.
+
+But also, I wish EU stopped google from locking down android in a few months. For those not in the know, google plans to do an over the air update to play services which will prevent users from installing apps from sources other than play, unless that dev pays google for the pleasure and identifies him/herself and agrees to terms.
+
+Oh and if your app blocks ads or other &quot;terms violations&quot;? Google says fuck you, we own those phones
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Memory fault -- core...uh...um...core... Oh dammit, I forget!</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
             <div class="source">Slashdot</div>
             <div class="title">Notepad++ Finally Lands On macOS as a Native App</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>Notepad++ Finally Lands On macOS as a Native App</h2>
             <p><strong>Slashdot | 2026-04-27</strong></p>
             <a class="original-link" href="https://apple.slashdot.org/story/26/04/27/2055217/notepad-finally-lands-on-macos-as-a-native-app?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">I got tired of my mac not having freecell.  So I told claude to create it as a python app with a gui.  And it did.  But the graphics were a little kludgy.  So I told it to try again as a swift app.  Boom, I have freecell for mac now.  I&#39;ve never coded anything for mac, I haven&#39;t even looked at the (vulnerable) code it&#39;s created.
 
+Totally curious how your prompts went for this. Did you give it an existing code base? Just told it what the game looked like? Assumed it knew already?
+
+I don&#39;t see the appeal for macOS users, though. BBEdit is pretty incredible, and can be used for free (although I have been a paid user for many years).
+
+I remember BBEdit from ages ago. But these days, hell, I just use VS Code.
+
+I&#39;m all for stuff that makes transitioning from one OS (Windows) to another (MacOS in this case) less difficult.  Maybe they&#39;ll port it to linux next?
+
+I assume this is a joke but vim is (always has been) built-in as long as Macs have been on OS X. Kinda hard to believe that Macs have been UNIX longer than they were on the original MacOS.
+
+There&#39;s also a pretty reasonable gui port called MacVim, though I rarely use it.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Children begin by loving their parents.  After a time they judge them.  Rarely,
-if ever, do they forgive them.
-- Oscar Wilde</div>
+Memory fault -- core...uh...um...core... Oh dammit, I forget!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">China Blocks Meta's $2 Billion Takeover of AI Startup Manus</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>China Blocks Meta's $2 Billion Takeover of AI Startup Manus</h2>
             <p><strong>Slashdot | 2026-04-27</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/04/27/2046252/china-blocks-metas-2-billion-takeover-of-ai-startup-manus?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1359,18 +1369,16 @@ if ever, do they forgive them.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Children begin by loving their parents.  After a time they judge them.  Rarely,
-if ever, do they forgive them.
-- Oscar Wilde</div>
+Memory fault -- core...uh...um...core... Oh dammit, I forget!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Supreme Court Reviews Police Use of Cell Location Data To Find Criminals</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Supreme Court Reviews Police Use of Cell Location Data To Find Criminals</h2>
             <p><strong>Slashdot | 2026-04-27</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/04/27/1721238/supreme-court-reviews-police-use-of-cell-location-data-to-find-criminals?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1385,26 +1393,32 @@ It was not immediately clear what that outcome would mean for Mr. Chatrie’s ca
 
 But if it wasn&#39;t legal to obtain the cell phone data in the first place, then none of that is admissible as it&#39;s fruit of the poisonous tree [wikipedia.org].
 
+The fact that it would be easy for criminals to evade detection (it&#39;s extremely obvious that you wouldn&#39;t bring your phone to a bank robbery) is irrelevant, because the vast majority of criminals do stupid things. As in this case, for example.
+
+Either you&#39;re willing to not catch tons of catchable criminals to protect public privacy, or you&#39;re willing to give up privacy to catch them. A dream world where criminals make good decisions so that there&#39;s no issue isn&#39;t an option.
+
 The data gets collected by at least a dozen data aggregators, who go on to sell it to hundreds of other companies. Which means that my cell phone records are probably for sale to literally anyone on the planet who goes to the effort of calling up a data aggregator and writing a check.True, and I&#39;m opposed to this too, but it is irrelevant when it comes to the constitutionality of a search for a criminal case. For example, Lowe&#39;s may have records that I bought a shovel last year, and they may have even sold that info to a company that markets for fence installers. But that doesn&#39;t give the government the right to browse through those data to try to find suspects for a round of recent grave robberies, even if they purchase it from Lowe&#39;s.  And if they are allowed to search your cell phone
 
 The data gets collected by at least a dozen data aggregators, who go on to sell it to hundreds of other companies. Which means that my cell phone records are probably for sale to literally anyone on the planet who goes to the effort of calling up a data aggregator and writing a check.
 
 True, and I&#39;m opposed to this too, but it is irrelevant when it comes to the constitutionality of a search for a criminal case. For example, Lowe&#39;s may have records that I bought a shovel last year, and they may have even sold that info to a company that markets for fence installers. But that doesn&#39;t give the government the right to browse through those data to try to find suspects for a round of recent grave robberies, even if they purchase it from Lowe&#39;s.  And if they are allowed to search your cell phone
 
+If the police have a warrant to search through the cellphone data, then I&#39;m not seeing the problem here. Now if there was no warrant, that would be different, though not all that much. Your cellphone location isn&#39;t your data, it&#39;s the cellphone carriers. So if the carrier wants to provide the police with the data upon request, sounds fine to me.
+
+Maybe the fucking retard should have left his cellphone at home when he was going to go rob the bank. I don&#39;t know about you, but I WANT bank robbers to go to jail.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Children begin by loving their parents.  After a time they judge them.  Rarely,
-if ever, do they forgive them.
-- Oscar Wilde</div>
+Memory fault -- core...uh...um...core... Oh dammit, I forget!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">GitHub Copilot Is Moving To Usage-Based Billing</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>GitHub Copilot Is Moving To Usage-Based Billing</h2>
             <p><strong>Slashdot | 2026-04-27</strong></p>
             <a class="original-link" href="https://developers.slashdot.org/story/26/04/27/1717232/github-copilot-is-moving-to-usage-based-billing?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1458,6 +1472,8 @@ A lot of &quot;big software teams&quot; have already made offerings from these c
 The providers will erase the &#39;cheaper&#39; part, but it will remain faster.
 
 At this point even if a company has a human using VSCode as a boring old editor, they&#39;ll
+
+>The fact that I&#39;ve never even heard of copilot for githubSerious unc vibes pretending not to have heard of github copilot.&quot;who? Taylor Swift? I&#39;m sorry, I don&#39;t own a TV and I don&#39;t know who that is&quot;
 
 Expect AI to get a lot more expensive as people and companies become dependent on it. This is by design.Expect AI to get a lot more expensive as providers realise that sitting around making loss after loss every quarter is not a sustainable business model. Seriously is there a single company whose AI division is currently in the black?
 
@@ -1517,18 +1533,16 @@ there is now a significant market for locally-hosted AI in niche roles, AI that 
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Children begin by loving their parents.  After a time they judge them.  Rarely,
-if ever, do they forgive them.
-- Oscar Wilde</div>
+Memory fault -- core...uh...um...core... Oh dammit, I forget!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Microsoft To Stop Sharing Revenue With OpenAI</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Microsoft To Stop Sharing Revenue With OpenAI</h2>
             <p><strong>Slashdot | 2026-04-27</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/04/27/1657250/microsoft-to-stop-sharing-revenue-with-openai?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1557,339 +1571,7 @@ Microsoft could share profits on AI if it had any. OpenAI is still waiting for i
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Children begin by loving their parents.  After a time they judge them.  Rarely,
-if ever, do they forgive them.
-- Oscar Wilde</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">California's Billionaire Tax Has the Signatures to Make the Ballot</div>
-            <div class="meta">2026-04-27</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>California's Billionaire Tax Has the Signatures to Make the Ballot</h2>
-            <p><strong>Slashdot | 2026-04-27</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/26/04/27/0335242/californias-billionaire-tax-has-the-signatures-to-make-the-ballot?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">All the people pulling in $30k a year crying about this tax.
-
-Maybe it is that group that has the most common sense to realize that the tax code should not be spiteful in nature and used as a money grab by politicians who can&#39;t control their own spending?
-
-The $30K a year people? No, they do not have the most common sense about tax policy because if that&#39;s why they oppose this then its clear they are lacking the common sense.
-
-There are good reasons to oppose this but &quot;fairness&quot; and/or &quot;spitefulness&quot; are far from the right arguments.
-
-In fact anyone who wants to comment on tax policy has to demonstrate they understand how marginal rates work first.
-
-The problem here, is &quot;fairness&quot; is subjective, not objective.
-
-Use of that particular term is deliberate tug on the emotional center of brains. it works, which is why Progressives ALWAYS use it.
-
-No, they use it because they feel that living in a fair society is a good thing. Fucking scumbags.
-
-Yes that&#39;s why i said it wasn&#39;t a good argument?
-
-I don&#39;t have an issue with progressives talking about fairness in tax policy, politics is persuasion after all, it&#39;s jsut they usually have not great tax policies to carry that message so nothing gets done.
-
-That said it is still a far cry better than the conservative tax message which is just as much, if not more emotional  in it&#39;s nature and about 5x worse in it&#39;s outcomes (&quot;taxation is theft&quot; is a 100% emotional message tugging on the same strings).  I&#39;ll tak
-
-This specific sort of taxation is punitive, though.  I&#39;m all for taxing an individual&#39;s earnings in proportion to how well the whole capitalism thing is working out for them, but changing the rules after-the-fact on income they&#39;ve already been taxed on just feels too much like theft.
-
-Yes, the billionaire class should&#39;ve paid more taxes, but ideally you address that by updating the tax code going forward.
-
-If the tax code did not already benefit billionaires then we would  not be having this conversation.
-
-I think we should fix the tax code in the right way and make the system more fair to everyone. Until then, we have more stop-gap solutions like this one, which just makes the situation worse.
-
-Kansas tried exactly what you describe. It was a massive failure. https://en.wikipedia.org/wiki/... [wikipedia.org]
-
-We can talk about what fair looks like, but it I don&#39;t think you really want to.
-
-Is it fair that labor income is taxed differently than investment income? Even when working people always pay taxes on their income while the wealthy can avoid taxes on income? It should not matter how you make your money in order to apply a tax to it. Reaganomics just made the rich richer at the expense of everyone else, it is time for a more fair system.
-
-I fail to see how a direct vote by citizens is &quot;the mob&quot;. That&#39;s about the most fair piece of legislation you could ask for.
-
-It&#39;s not spite, it&#39;s recognition of the fact that hoarding wealth is bad for the economy and bad for citizens.
-
-If it gets too bad the plebs bring out the guillotines. Right now the billionaires are starting to look a lot like the new royalty.
-
-Maybe they&#39;re historically literate enough to know that&#39;s how the income tax was sold to the public too. It was only supposed to be on the top 1% or earners. How&#39;s that working out for you?
-
-Considering that people who earn my salary in a matter of seconds pay less taxes than me, poorly.
-
-This is how you know the US has lost the class war. Or won, depending on your point of view. Not only do the billionaires have free rein (and reign) to do whatever they want to the country and it&#39;s people, but the very same country and people, at their own peril, will stop at nothing to defend and advance that rein.
-
-This is just property confiscation, I understand that poorer people do not care about wealthier people paying anything, that&#39;s how taxes and subsidies are pushed through in the first place.  However call it what it is - it is confiscation of private property.   As a side note, the so called &#39;income tax&#39; also started as a wealthy people&#39;s tax.  It was 1% and it was only applicable to a small fraction of the population who were earning over 3000 dollars a year or so and 6% of additional tax on incomes above 5
-
-You can go ahead and figure out what happened to that idea of only taxing 1% of a tiny number of people over the last 113 years without my help.It seems to have stalled at around 60% of the taxpayers. Because politicians figured out that this is about the break-even point when collecting votes from people who will not have to pay for the consequences.
-This is about the optimal point for avoiding the Golden Goose [wikipedia.org] problem.
-
-You can go ahead and figure out what happened to that idea of only taxing 1% of a tiny number of people over the last 113 years without my help.
-
-It seems to have stalled at around 60% of the taxpayers. Because politicians figured out that this is about the break-even point when collecting votes from people who will not have to pay for the consequences.
-
-This is about the optimal point for avoiding the Golden Goose [wikipedia.org] problem.
-
-In the real world we did try ultra low taxation, and even no taxation. We tried flat taxes where everyone pays the same. We tried just not having a government. All of it is far worse than a progressive tax system.
-
-Look at the best places to live in the world, in terms of health, happiness, and quality of life. They are all high tax jurisdictions.
-
-The problem is that Americans see the government as the enemy, and were conned into believing that if the government just got out of their way everything would be great. In reality, if that happened they would quickly be enslaved by billionaires. Literally enslaved. As it is, the US is getting damn close to that, it just preserves enough of the illusion of freedom and agency to stop people building guillotines.
-
-I think the parent is referencing the World Happiness Report:
-
-https://www.worldhappiness.rep... [www.worldh...ess.report]
-
-Scandinavia (high tax) tends to consistently rank at the top, although Costa Rica always places well too. But I think it&#39;s difficult to disaggregate cultural effects. People in some cultures may be more likely to report they are happy simply because they are expected to (and vise versa). You didn&#39;t post any sources about religion or politics and happiness, but I could see response bias also applying to religious af
-
-Nobody with that income can even survive in this state. But don&#39;t worry, you can be confident that there&#39;s nothing wrong with this state. Nothing at all. It&#39;s not being poorly managed. Any possible problems are all caused by republicans, unnamed billionaires, Elon, maga, and fascism. Pay no attention to the local elected officials behind the curtain. This frog is not boiling.
-
-$30K people play the lottery and think they could win, so they worry that this would apply to them.
-
-You don&#39;t earn $30K a year being smart...
-
-Bet you’ve never been laid off by one, either
-
-One time? Right! Once the money is gone the desire to rinse and repeat will be irresistible.What gets me is the proponents want to use the one-time windfall to fund things like child healthcare. But won&#39;t we have to fund child healthcare next year too? What was the plan for that?It&#39;s a stupid idea every way you look at it.
-
-One time? Right! Once the money is gone the desire to rinse and repeat will be irresistible.
-
-What gets me is the proponents want to use the one-time windfall to fund things like child healthcare. But won&#39;t we have to fund child healthcare next year too? What was the plan for that?
-
-It&#39;s a stupid idea every way you look at it.
-
-The One Time is real in that it is not a yearly tax repeated.  It discourages billionaires from leaving because of the tax.
-
-Say you are tight and do not trust them not to repeat it.  That means:
-
-1) They would have a ton more data.  How much money raised and how many billionaires left the state after the first one, letting them calculate was it &#39;worth it&#39;, and tell them whether it it is worth it again - with the added knowledge that it would probably drive more billionaires out the 2nd time as this this would
-
-And here we go with another set of battling propositions. There&#39;s at least one other proposition being circulated which expressly forbids taxing assets. It&#39;s been a while since we&#39;ve had a Proposition Bar Fight. It would be entertaining if the weren&#39;t real consequences.
-
-The way this has played out in the past is whichever proposition gets the most votes wins. It gets complicated: propositions are written to be severable so it might be Prop A wins but parts of Prop B still remain in effect.
-
-What happens if someone has $1B in net worth but doesn&#39;t have the liquidity to pay the tax?  Will they be forced to sell assets - perhaps even at a loss - to pay the bill?  Will they have to sell part of the company they may have created?#firstworldproblems
-
-What happens if someone has $1B in net worth but doesn&#39;t have the liquidity to pay the tax?  Will they be forced to sell assets - perhaps even at a loss - to pay the bill?  Will they have to sell part of the company they may have created?
-
-The fact that they still meter out this punishment shows that it does not deter crime.
-
-And if something has a paper value $1B today and you get taxed on it, but there&#39;s a market correction and its value drops to $500M? Do you get part of your tax payment back?
-
-If a store places an item half off the day after I buy it should I be entitled to a refund on sales tax?
-
-Personally, I would agree with you entirely.
-
-Now, everyone has their own preference on what a &quot;simplified&quot; tax code would look like.
-
-For myself, I&#39;d use something similar to an S-curve. Maybe even use that family of curves directly. What you want is for those who earn very little to pay very little, for there to be a region where this increases substantially (because life ain&#39;t cheap, even when you can use scale efficiencies meaningfully), and for an asymptotic region for the mega-wealthy. You feed in the exp
-
-You definitely should pay more marginal tax as you make more money, up to some point.  The first $10 or $20k you make should be tax-free, and then the tax rate should become progressively higher after that, but should max out around 30% or so.  But that&#39;s only 30% of income, not 30% of net assets.  Taxing assets is theft.  Taxing income is progressive.
-
-However, the accumulation of wealth into the hands of people who make good investments (i.e. making good choices of what to spend it on so that they invest in
-
-Because people have been demanding the loopholes be closed and the tax code simplified for decades, and it hasn&#39;t worked. You can debate why it hasn&#39;t worked, but at some point calling for the same thing that has never worked despite many attempts at it... Well, it doesn&#39;t seem like a great strategy.
-
-You might want to look at who is leading the calls for closing loopholes and simplifying tax. It tends to be the ones who for some reason get even richer whenever it is tried.
-
-All too stupid to see that *their* taxes will go down. But I suppose all of you think you&#39;re billionaires with a temporary cash-flow problem.
-
-Oh, and no, people are not leaving California in droves.
-
-Billionaire&#39;s 5% asset tax(asset seizure) today. Middle class retirement account 5% asset tax(asset seizure) tomorrow!What middle class?
-
-Billionaire&#39;s 5% asset tax(asset seizure) today. Middle class retirement account 5% asset tax(asset seizure) tomorrow!
-
-In case anyone else finds this interesting.
-
-There a lot of technical problems associated with valuation in a tax like this. The website says:
-
-&quot;The initiative uses standard valuation methods already applied in federal estate and tax law. These are well-established and routinely enforced by the state of California.&quot;
-
-But that&#39;s a huge oversimplification. Yes, it&#39;s possible to value closely-held shares, but there are a variety of methods for different scenarios. Closely held shares can be very volatile - especially in California start up land.  You can easily have a startup worth $1 billion at the end of the year and next to nothing by the end.
-
-One of the most common ways you see start-ups valued is based on funding valuation. If a company buys 5% of the equity for $50 million, then you say the company is worth $1 billion. But that can produce absurd results. I could form a shell company today that does absolutely nothing, get my friend to pay $1,000 for a .0001% share, and have a company &quot;worth&quot; $1 billion. Other methods of valuing closely held shares such as discounted cash flow or book value of assets rarely work well for startups.
-
-For all those reasons, it&#39;s not always possible to borrow against the shares. It may not be possible to sell 5% either. So you could end up with &quot;billionaires&quot; who are being taxed on fictive value with no ability to pay. This problem is particularly acute in California due to startup culture. The state could drive away that whole industry with a tax like this. The biggest risk isn&#39;t driving away current billionaires- it&#39;s driving away the industry that mints them.
-
-I think the biggest technical problem is that I don&#39;t think people with that kind of &quot;net worth&quot; really personally own what gives them that worth. There&#39;s already a lot of incentives to not have assets in your name (protecting against lawsuits, divorce, etc.), so how many of these billionaires are actually penniless in a legal sense?
-
-Basically, you could have billions in a checking account owned by a trust, and just be an &quot;authorized user&quot; on a credit card that some lawyer trustee pays off from the trust. Co
-
-That&#39;s a solvable problem. The tax is based on beneficial ownership- not record ownership. So if you control the trust and have access to the funds, it&#39;s considered your worth. Same with second-tier shell companies and the like. You could try to hide your ownership, but that would be tax evasion (similar to hiding offshore wealth from the Feds). Most will probably think it&#39;s not worth risking going to jail over 5% of their billions.
-
-Nobody has a billion dollars cash in a checking account though. Most wealth
-
-Billionaires shouldn&#39;t exist, they&#39;re a runaway condition in our economic system that should be corrected.
-
-The tax should be ongoing, and slightly higher than inflation, scaling with distance from an agreed-upon &#39;reasonable wealth&#39;.
-
-Billionaires shouldn&#39;t exist, they&#39;re a runaway condition in our economic system that should be corrected.A million is more than enough. And a new car should only cost $260 [detroithistorical.org]. Fix that problem and then we&#39;ll talk*.
-*Enjoy your $5 per day wages. And don&#39;t complain. The average worker should earn 22 cents per hour.
-
-Billionaires shouldn&#39;t exist, they&#39;re a runaway condition in our economic system that should be corrected.
-
-A million is more than enough. And a new car should only cost $260 [detroithistorical.org]. Fix that problem and then we&#39;ll talk*.
-
-*Enjoy your $5 per day wages. And don&#39;t complain. The average worker should earn 22 cents per hour.
-
-I think it is reasonable to allow the accumulation of enough wealth to sustain your lifestyle throughout retirement.   Furthermore, I think at least a lower middle class existence is a reasonable goal - you&#39;re going to need a couple of million for that.
-
-Additionally, there&#39;s nothing wrong with letting the numbers creep up a bit higher to harness human greed.  I think maybe $20m is reasonable.   It&#39;s not the end of the world in terms of wealth concentration, and it&#39;s enough of a differential to keep the motiv
-
-Let them flee. The rich do not provide any benefits. The rich do not pay their fair share of anything. The rich do not help the economy. The rich do not earn money, they take money.
-
-A rich person leaves and takes their business with them? Sounds like a great opportunity for a small business to take over.
-
-Cutting budgets doesn&#39;t work. https://en.wikipedia.org/wiki/... [wikipedia.org]
-
-It&#39;s a common misconception that wealthy individuals earn a regular paycheck like most people.
-
-Instead, their wealth is often tied up in assets and investments, and they use sophisticated legal and financial strategies to manage and protect it.
-
-Trusts and Foundations: These legal entities can own assets like real estate, businesses, and art. The individual may benefit from these assets without owning them directly, which can have tax advantages.
-
-The issue is that billionaires rarely have big income relative to their wealth because they become billionaires through capital appreciation- not earnings. Unrealized capital gains aren&#39;t taxed. They can generally avoid recognizing gains by borrowing against their wealth rather than selling assets. When they die, the heirs inherit the assets with a &quot;stepped up&quot; tax basis, so the gain never gets taxed.
-
-The estate tax is a far more equitable method of addressing extreme wealth than a wealth tax. The wealth sti
-
-This wealth tax is precisely in order to seize assets.Seize assets from a minority that is not able to protest. If it were a true property tax, everyone would have to pay 5%.
-
-This wealth tax is precisely in order to seize assets.
-
-Seize assets from a minority that is not able to protest. If it were a true property tax, everyone would have to pay 5%.
-
-In other words, why should you have the right to vote to spend money when you aren&#39;t contributing anything to the pot?
-
-â¦ California should tax the billionaires who live in Texas.
-
-I&#39;m sick of the talk and sick of the arguments. I think that this is a great thing for California to do and settle the arguments.
-
-I don&#39;t live in California so I won&#39;t be taxed. Nor will I care if they crash and burn.
-
-We&#39;ll see what happens when such a tax is implemented. If it works then all the other states can follow suit. If they crash and burn, then everyone can shake their head and boast about how they knew that would happen and they told you so.
-
-And one way the plaintiffs may win will be based on the difficulty of calculating the wealth of an individual.  And, in calculating that value, you would need to look at their assets, a court may disfavor peeking into private parties&#39; private assets.
-
-Heck, Trump has resisted anyone adding up how much he is really worth.  It seems he inflates it for some purposes and minimizes it for others.  Isn&#39;t that what the NY case was at least partly regarding?
-
-Just one more tax, bro! One more tax will finally fix everything.
-
-What you&#39;re saying about &quot;just the rich&quot; doesn&#39;t align with the facts. In California, about a third of the people who file returns, mostly non-rich people, don&#39;t pay state income tax.
-
-That doesn&#39;t sound right. My AGI is less than national median and I owe CA a bit over 3%. Federal is a different story, though. I don&#39;t pay any federal taxes.
-
-Taxes are regressive. All of them.No...that&#39;s absolutely false.  Consumption taxes are regressive.  Wealth and income taxes are progressive taxes.  When done intelligently, they&#39;re very beneficial.  I don&#39;t think we do a good job here in the USA, though.  I don&#39;t like this California tax because it is pretty high and one-time.  It&#39;s easy to just move out of the state for a year and come back...Also, 5% is pretty high in my opinion.   
-However, take the estate tax.  How have you benefited?...if you don&#39;t come from money, you haven&#39;t.  But the wealthy did and now have more incentive to hoard their wealth rather than give to charity.  Now they have more incentive to bribe politicians to keep the taxes in their bracket low.   
-In particular, look at Musk.  Beside the fact that he&#39;s a drug addicted Nazi, piece of shit, he effectively bought the 2024 election.  Without the bush era tax cuts and rollback of campaign finance reforms, I don&#39;t think that would have happened.  Kamela fucked up the election regardless, but Trump would have had far less of an funding advantage and would have to rely on getting votes more than courting billionaires to win.  Without Musk, if Trump didn&#39;t lose outright, the margins would have been much closer.  He certainly couldn&#39;t have afforded as many attack ads as he ran. 
-Even if you like Trump and are his biggest fan, which if you make a comment that stupid, I am sure you are....just remember, this can work in reverse...George Soros, or whichever liberal boogeyman you want to obsess about can do the same and fun whichever candidate on whichever level....mostly because of all the vast wealth they&#39;ve gained from Republican tax credits...while you get little benefit.  Your taxes barely lowered, but theirs did...and you suffer the effects of reduced funding of the police and schools in your neighborhood...they barely do...they can afford private schools and security and private jets.
- 
-It&#39;s no coincidence that the USA&#39;s periods of highest prosperity were those with high taxes and a strong central government and our periods of the greatest poverty and despair had very low taxes and all-powerful oligarchs...from the guilded age to big tech celebrities today.   
-When done correctly, taxes are great....they&#39;re an investment in a country and it&#39;s future...when done poorly, they cause the problems you describe.  Again, I don&#39;t think the CA tax is a good idea, but we definitely need to rollback pretty much every Republican tax cut in the last 30 years as they pretty much only benefit the ultra-wealthy and screw over the rest of us.   
-We need more in the middle class and a stable economy, not more billionaires profiting off the decline of our country.
-
-No...that&#39;s absolutely false.  Consumption taxes are regressive.  Wealth and income taxes are progressive taxes.  When done intelligently, they&#39;re very beneficial.  I don&#39;t think we do a good job here in the USA, though.  I don&#39;t like this California tax because it is pretty high and one-time.  It&#39;s easy to just move out of the state for a year and come back...Also, 5% is pretty high in my opinion.   
-However, take the estate tax.  How have you benefited?...if you don&#39;t come from money, you haven&#39;t.  But the wealthy did and now have more incentive to hoard their wealth rather than give to charity.  Now they have more incentive to bribe politicians to keep the taxes in their bracket low.   
-In particular, look at Musk.  Beside the fact that he&#39;s a drug addicted Nazi, piece of shit, he effectively bought the 2024 election.  Without the bush era tax cuts and rollback of campaign finance reforms, I don&#39;t think that would have happened.  Kamela fucked up the election regardless, but Trump would have had far less of an funding advantage and would have to rely on getting votes more than courting billionaires to win.  Without Musk, if Trump didn&#39;t lose outright, the margins would have been much closer.  He certainly couldn&#39;t have afforded as many attack ads as he ran. 
-Even if you like Trump and are his biggest fan, which if you make a comment that stupid, I am sure you are....just remember, this can work in reverse...George Soros, or whichever liberal boogeyman you want to obsess about can do the same and fun whichever candidate on whichever level....mostly because of all the vast wealth they&#39;ve gained from Republican tax credits...while you get little benefit.  Your taxes barely lowered, but theirs did...and you suffer the effects of reduced funding of the police and schools in your neighborhood...they barely do...they can afford private schools and security and private jets.
- 
-It&#39;s no coincidence that the USA&#39;s periods of highest prosperity were those with high taxes and a strong central government and our periods of the greatest poverty and despair had very low taxes and all-powerful oligarchs...from the guilded age to big tech celebrities today.   
-When done correctly, taxes are great....they&#39;re an investment in a country and it&#39;s future...when done poorly, they cause the problems you describe.  Again, I don&#39;t think the CA tax is a good idea, but we definitely need to rollback pretty much every Republican tax cut in the last 30 years as they pretty much only benefit the ultra-wealthy and screw over the rest of us.   
-We need more in the middle class and a stable economy, not more billionaires profiting off the decline of our country.
-
-Is it still considered an investment if you&#39;re forced to do it?
-
-I&#39;d say Taxes are a compulsory contribution that might be used for public investment.  But they also might not.  Either way, calling them an investment is way to generous.
-
-Public fundraising reports are quite misleading post- Citizens United because most of a campaign&#39;s resources come from PACs and 501(c)(4) organizations that do not have to report their fundraising as candidate fundraising. At the end of the day, it doesn&#39;t really matter much if the campaign or an affiliated organization runs ads on the candidate&#39;s behalf.
-
-As for the estate tax, I earned it and saved it so I could take care of myself and my family.  If I die with something left it&#39;s for my kids.  It&#39;s not yours to take.  Estate taxes and wealth taxes incentivize spending instead of saving and investing.If your estate is less than 28 million dollars, you&#39;re not taxed.  Even in 2001, a home would have to be worth 2 million in today&#39;s dollars to be taxed.  Even then, ONLY THE AMOUNT OVER WOULD BE TAXED.  So if you have a $28,000,100 home, you&#39;d only pay the tax on the $100.01 over the limit. 
-You either didn&#39;t think this out or are a horrible person...I will wager you didn&#39;t understand the law.  It has only applied to the ultra-wealthy.  If you have 28 million dollars in property and think you actually earne
-
-As for the estate tax, I earned it and saved it so I could take care of myself and my family.  If I die with something left it&#39;s for my kids.  It&#39;s not yours to take.  Estate taxes and wealth taxes incentivize spending instead of saving and investing.
-
-If your estate is less than 28 million dollars, you&#39;re not taxed.  Even in 2001, a home would have to be worth 2 million in today&#39;s dollars to be taxed.  Even then, ONLY THE AMOUNT OVER WOULD BE TAXED.  So if you have a $28,000,100 home, you&#39;d only pay the tax on the $100.01 over the limit. 
-You either didn&#39;t think this out or are a horrible person...I will wager you didn&#39;t understand the law.  It has only applied to the ultra-wealthy.  If you have 28 million dollars in property and think you actually earne
-
-That may be your attitude, but if you refuse to pay taxes you owe under the law, they absolutely will have it (either the easy way or the hard way). But what you think is rather irrelevant for estate tax. You&#39;ll be dead when it comes time to pay. The executor of your estate is unlikely to refuse to take care of its tax obligations, especially if it&#39;s worth $28 million because they would be putting themselves on the line for something that would likely provide them no economic benefit.
-
-You aren&#39;t getting to $28 million just by being frugal. The estate tax is intended to reduce extraordinary capital accumulation that goes beyond personal skill or thrift.
-
-You can&#39;t take the money with you to the grave. You can spend it as freely as you wish in your lifetime (or give it to charity). The tax is really on your heirs who did nothing to earn the money.
-
-Which is exactly what they said a hundred years ago when they instituted the &quot;income tax&quot;.Rich people will move out. And take their wealth with them.Taxes are regressive. All of them.What tax free libertarian utopia are you currently residing in?
-
-Which is exactly what they said a hundred years ago when they instituted the &quot;income tax&quot;.
-
-Rich people will move out. And take their wealth with them.
-
-What tax free libertarian utopia are you currently residing in?
-
-And their property taxes are like 50% higher than they expected.
-
-Except, a hundred years ago, they didn&#39;t. And the government knows this. As do many in the public. The taxes in the 1960s and 70s were around 90% for the rich, not 5%, and yet billionaires stayed in America.
-
-You can hate taxes all you like, but even with posting, you&#39;re using services that were invented because those taxes existed and for no other reason. The commercial sector FAR preferred the X.25 technology they were using, because they could charge a fortune and get away with it. You have Internet today
-
-Those income tax rates never really applied to the wealthy, who have always received most of their wealth from capital gains. There were a couple years around WWI where income tax got to 70%, but that was quickly ended with the introduction of the capital gains tax rate.
-
-Rich people have never been heavily impacted by the income tax rates.
-
-The rates at that time were a bit misleading because the base was much narrower. It was a lot easier to avoid the very high post-WWII tax rates than today&#39;s tax rates. Things changed quite a bit after 1986 (the current tax code in use today is actually the amended 1986 code). The 1954 tax code had a lot of differences compared to today.
-
-Odd how we can stop the wealth from leaving the country, but not from leaving the state.
-
-Odd how we can stop the wealth from leaving the country, but not from leaving the state.It is much easier to move to another state than to another country.I&#39;ve lived in seven states, but only four countries.
-
-Odd how we can stop the wealth from leaving the country, but not from leaving the state.
-
-It is much easier to move to another state than to another country.
-
-I&#39;ve lived in seven states, but only four countries.
-
-Yep. America is dying because the red states will do anything but carry their own load. Blue states not only have to subsidize them, but also provide food and medical care to their residents who flee. Around 25% of our homeless population in California moved here after becoming homeless because they could not survive in their home states, even while those states spend our money. They cannot even meet their monetary needs on a year to year basis by selling out the future, but they still get an outsized say in what happens in our country because of the electoral college, which was created specifically to give slave states outsized voting power.
-
-The UK recently did this, and it worked really well. Raised Â£30 billion so far. Strangely, despite dire warnings and threats, all the ultra wealthy did not in fact move to Dubai or have their superhuman accountants avoid paying anything.
-
-Turns out we aren&#39;t just a convenient tax jurisdiction after all. There are other reasons for the mega rich to stay in the UK. To be fair I wouldn&#39;t, but some people seem to like it.
-
-The UK recently did this, and it worked really well. Raised Â£30 billion so far. Strangely, despite dire warnings and threats, all the ultra wealthy did not in fact move to Dubai or have their superhuman accountants avoid paying anything.Turns out we aren&#39;t just a convenient tax jurisdiction after all. There are other reasons for the mega rich to stay in the UK. To be fair I wouldn&#39;t, but some people seem to like it.No. Not even close.What actually occurred is that the UK increased tax rates on capital gains and inheritance. Neither of these is a wealth tax on current assets (unrealized gains) that’s in any way similar to the California proposal. Plus the UK government yield last year consequently increased by around 10 billion pounds - not your 30.Also, note that just the mere threat of the California wealth tax ending up on the ballot has ALREADY resulted in about half of the potentially affected billionaire we
-
-The UK recently did this, and it worked really well. Raised Â£30 billion so far. Strangely, despite dire warnings and threats, all the ultra wealthy did not in fact move to Dubai or have their superhuman accountants avoid paying anything.
-
-Turns out we aren&#39;t just a convenient tax jurisdiction after all. There are other reasons for the mega rich to stay in the UK. To be fair I wouldn&#39;t, but some people seem to like it.
-
-What actually occurred is that the UK increased tax rates on capital gains and inheritance. Neither of these is a wealth tax on current assets (unrealized gains) that’s in any way similar to the California proposal. Plus the UK government yield last year consequently increased by around 10 billion pounds - not your 30.
-
-Also, note that just the mere threat of the California wealth tax ending up on the ballot has ALREADY resulted in about half of the potentially affected billionaire we
-
-I think you&#39;ve got it mixed up. When tax rates go down, tax revenues goes down.  It&#39;s pretty obvious and we&#39;ve seen the extremes in places like Kansas where they reduced taxes dramatically and had massive budget shortfalls.
-
-Likewise, states and municipalities frequently raise money via raising taxes.
-
-You lumped politicians into one category, but it should really be two: Those that run functional governments, and Republicans/libertarians who think lowering taxes will result in greater income
-
-Wait, hold on, are you saying that you&#39;re aware that when taxes go up, tax revenues goes down, every single time it&#39;s ever been tried in all of US history at a regional level?Turns out that this has not proven to be the case.I think you misunderstand the Laffer curve.  [economicshelp.org] Laffer suggested that when tax rates are increased, the amount of revenue generated due to the tax would increase to some point, then at higher tax rates start level off and then to decrease, since there would be a point at which people would stop earning money if the government took too much of it away. There has always been fierce contention as to where that peak of the Laffer curve is.The difficulty is that ther
-
-Wait, hold on, are you saying that you&#39;re aware that when taxes go up, tax revenues goes down, every single time it&#39;s ever been tried in all of US history at a regional level?
-
-Turns out that this has not proven to be the case.
-
-I think you misunderstand the Laffer curve.  [economicshelp.org] Laffer suggested that when tax rates are increased, the amount of revenue generated due to the tax would increase to some point, then at higher tax rates start level off and then to decrease, since there would be a point at which people would stop earning money if the government took too much of it away. There has always been fierce contention as to where that peak of the Laffer curve is.
-
-These are a couple ways a wealth tax could go very wrong, but there are so many more.The obvious failure here is not taking enough. 5%? That&#39;s nowhere near the percentage of their wealth they got by fucking everyone else over.
-
-These are a couple ways a wealth tax could go very wrong, but there are so many more.
-
-The obvious failure here is not taking enough. 5%? That&#39;s nowhere near the percentage of their wealth they got by fucking everyone else over.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Children begin by loving their parents.  After a time they judge them.  Rarely,
-if ever, do they forgive them.
-- Oscar Wilde</div>
+Memory fault -- core...uh...um...core... Oh dammit, I forget!</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -3634,25 +3316,39 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Venezuela central bank says it and US hired firms to audit assets abroad - Reuters</div>
+            <div class="title">Top Jalisco cartel leader 'El Jardinero' arrested in Mexico, minister says - Reuters</div>
             <div class="meta">2026-04-27</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Venezuela central bank says it and US hired firms to audit assets abroad - Reuters</h2>
+            <h2>Top Jalisco cartel leader 'El Jardinero' arrested in Mexico, minister says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-04-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMixAFBVV95cUxNRk15QVJHVnBub1NtbUlWRjZYOHRGSGJ6SDZhV2pQOXlLYzdzR3pyVnpUOWxiZ3Q3ckFHNkdEU3E5OVZ6NGpObXBpT0h3Mkp0LXFtaTVLejJ0d1BneGR5SF9ydXF1MnJ2RVJDdF9xZ3g4YjlWeTBlY0xONnkwRzVsRE04OGJoRV84c1l0X0kzU21YTDRxWXVESDBQN19TN0hROGFYa2FCQmFCX3RYWTFRSEZwNXhuVmxFWmg1TzVsTXNQY0wx?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNd2xncS1WWTRRMDdsOXZkeDlVN3FFLXVvR0p4akEzbDVYVEk4TW1keDJ0bUhHb0VnYk02bWNiWENON2Y5YmtSMEtQU0dRSzRhOG1RMUFrSVkxdy1qTHhUTDR1RmVjM1Rjb3JScEFWRDVsWFBTamwzcS1HcVlsYmVjbnZpREhPaDB1RUNiUDNKMzN4Yi1QSUhZdjkzbF9KNmVfMjdGU1VwUmRsLUtDclJjQUk2SGI1alE5YnFF?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Accenture to roll out Copilot to all 743,000 employees in boost for Microsoft - Reuters</div>
+            <div class="title">Meta pokes holes in China's great AI firewall - Reuters</div>
             <div class="meta">2026-04-27</div>
         </div>
         
         <div id="content-67" style="display:none;">
+            <h2>Meta pokes holes in China's great AI firewall - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-04-27</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQX2FXV2x4Z0VGdlg5MWdNVV96ajQ4OGZmcVhRaXVxYThmVklhczF3OTE5clBlSnJWZWxxTGRtWllaaVVTUXdPa0t1TFZIQUMzWnVwRVBpYmUyajdEd0tjcjhwUmZfa3J2cnE2VWlmYVhPWlc0QkV0M2N4Rm5wbTdWYV85anU4bDBQcWFmZ2ZUa0Fid01RN1Utekdn?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Accenture to roll out Copilot to all 743,000 employees in boost for Microsoft - Reuters</div>
+            <div class="meta">2026-04-27</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
             <h2>Accenture to roll out Copilot to all 743,000 employees in boost for Microsoft - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-04-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOdXhOWHJ5Q2VwS1kzLVViU2JaMFB3NjloZkFpRUpXV3NQQlpIdDgtOURKRHZYdDUtMG1vT3pPbVNoWmNzUmNQOUFTcFJ4R1UxQi1lQW43Y3pFM3BSWURqeWZHYmJvWGJPeGlmaHRnOEtJTnNpLUlvOVZrWkZpdERwb3Bvbnd3b2tnd0pnWlZxck85NFR1ZHJRb1lLRTctZm1aUEZXRGFoRUZVVDJW?oc=5">Visit Original Website</a>
@@ -3660,13 +3356,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Venezuela central bank says it and US hired firms to audit assets abroad - Reuters</div>
+            <div class="meta">2026-04-27</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
+            <h2>Venezuela central bank says it and US hired firms to audit assets abroad - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-04-27</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixAFBVV95cUxNRk15QVJHVnBub1NtbUlWRjZYOHRGSGJ6SDZhV2pQOXlLYzdzR3pyVnpUOWxiZ3Q3ckFHNkdEU3E5OVZ6NGpObXBpT0h3Mkp0LXFtaTVLejJ0d1BneGR5SF9ydXF1MnJ2RVJDdF9xZ3g4YjlWeTBlY0xONnkwRzVsRE04OGJoRV84c1l0X0kzU21YTDRxWXVESDBQN19TN0hROGFYa2FCQmFCX3RYWTFRSEZwNXhuVmxFWmg1TzVsTXNQY0wx?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Rogers Communications offering buyouts to half its workforce, Globe and Mail reports - Reuters</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>Rogers Communications offering buyouts to half its workforce, Globe and Mail reports - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-04-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxNdnRMY3ZvaGxkVExVWmxfSWR3V3ByTHUzazYxeW1aeTI4dGc0MFhZWUdveHV4QzJaTzEtRllFNFNHVWx3NFdkSTJQRzlzaTBneXRfdXk0S29RS0s1Z1A5ZmZxd2tDcnZvRXRmcHdkQ2szejZtM0RLbVZENVZiQlFHaW80S0c5R1l6cS1UQzRlNUtxMlFDOVRELUtTeVRUeS15dXdReWpmcTlCOC1LVzJPUVY2S0wzT1AyYlZubDlOeFNkRE5OUnZUbA?oc=5">Visit Original Website</a>
@@ -3674,44 +3384,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">NATO alliance, bruised by Trump, considers end to annual summits - Reuters</div>
             <div class="meta">2026-04-27</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>NATO alliance, bruised by Trump, considers end to annual summits - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-04-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPX2dJWEk5TVlnTFhEUFNEeTh3VXgtaVRIaWh5ZFRZNVRtVl8zLUFJVWRlN3RLZ2lxb3ppT2VwaUVLeHNOZ09oY2ZySlBaZHgwS3R1TVBmRHBEYVkweFYyd0tvZEdScVdoTUUzOHRFSDlON0pkRjluamluUllwVVktVHNBTXhQYTEtWWRDRTBlUktpb3JLbExSdW1XV3BmdU9QOFdr?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">White House says press dinner shooting was third major assassination attempt against Trump - Reuters</div>
-            <div class="meta">2026-04-27</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>White House says press dinner shooting was third major assassination attempt against Trump - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-04-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxNeXFKSmZQME9FR2NIZkh1cDR0bVczSzFSZzJOckJDcldoLWc4dEtZTnRDMFpleEk0dFhiRTdxdGpyXzZ5VlhvakJFWTN0TWQxR25BeUI2RUM3QjZrQVpZSVdSaktad1lKcDdXU0RYMm5QczlVcS1kODBWd1RSa3Y1VUFaU3J0RG9FV3N2YU5HRHh6cXI0RG1mVlcwN3dKbzl1d1psZF9nYl9zMUVHaE94NldsSFh2NWVpSmdBYW5pWVBKZGtybUx1aWZ1OUQ5ZnRG?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Meta pokes holes in China's great AI firewall - Reuters</div>
-            <div class="meta">2026-04-27</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>Meta pokes holes in China's great AI firewall - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-04-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQX2FXV2x4Z0VGdlg5MWdNVV96ajQ4OGZmcVhRaXVxYThmVklhczF3OTE5clBlSnJWZWxxTGRtWllaaVVTUXdPa0t1TFZIQUMzWnVwRVBpYmUyajdEd0tjcjhwUmZfa3J2cnE2VWlmYVhPWlc0QkV0M2N4Rm5wbTdWYV85anU4bDBQcWFmZ2ZUa0Fid01RN1Utekdn?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
