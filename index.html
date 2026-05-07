@@ -970,12 +970,12 @@ Elon Musk testifies that xAI trained Grok on OpenAI models</div>
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
-            <div class="title">Trump Gets His Way in Indiana</div>
+            <div class="title">Trump Shows He’s Still Got Juice</div>
             <div class="meta">2026-05-07</div>
         </div>
         
         <div id="content-18" style="display:none;">
-            <h2>Trump Gets His Way in Indiana</h2>
+            <h2>Trump Shows He’s Still Got Juice</h2>
             <p><strong>The Atlantic | 2026-05-07</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/05/indiana-republicans-primary-midterm/687084/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -1442,11 +1442,27 @@ The lack of any apparent or even alleged wrongdoing, as well as Patel’s precar
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
+            <div class="title">Sam Altman's Management Style Comes Under the Microscope At OpenAI Trial</div>
+            <div class="meta">2026-05-07</div>
+        </div>
+        
+        <div id="content-24" style="display:none;">
+            <h2>Sam Altman's Management Style Comes Under the Microscope At OpenAI Trial</h2>
+            <p><strong>Slashdot | 2026-05-07</strong></p>
+            <a class="original-link" href="https://yro.slashdot.org/story/26/05/07/035251/sam-altmans-management-style-comes-under-the-microscope-at-openai-trial?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+If you can&#39;t learn to do it well, learn to enjoy doing it badly.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
             <div class="title">Microsoft Edge Stores Passwords In Plaintext In RAM</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>Microsoft Edge Stores Passwords In Plaintext In RAM</h2>
             <p><strong>Slashdot | 2026-05-06</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/05/06/2014204/microsoft-edge-stores-passwords-in-plaintext-in-ram?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1454,6 +1470,14 @@ The lack of any apparent or even alleged wrongdoing, as well as Patel’s precar
             <div id="article-text">good thing that ActiveX plugin are not an thing any more
 
 I&#39;m guessing not a state actor. They already have enough other backdoors that Microsoft already put in for them, and plaintext is just too obvious even for them.My bet is that this is just one more example in the already giant collection demonstrating Microsoft&#39;s utter incompetence around good engineering, robust security, and properly testing products before releasing them.
+
+was going to ask this same question... edge is chromium based.. would have assumed it was baked into the security architecture...
+
+Only thing that makes some sense to me is they disabled the memory protection because widows is supposed to randomize memory addresses... (ASLR).... so a layer of security through obscurity for marginal performance gain. :/ grasping at straws here...
+
+But after all is said and done... there are multiple ways to dump a readable password list from chrome and edge, and most browsers...
+
+Edge has been storing passwords long enough that I assume the password manager code predates AI coding.
 
 ... designing my workflow to avoid using this browser.
 
@@ -1466,6 +1490,16 @@ For that matter, an attacker with that much control over your system can even ge
 Still, if it were me writing the code, I&#39;d do it Chrome&#39;s way, just because leaving secrets sitting around in plaintext in RAM makes me uncomfortable.
 
 It&#39;d be a lot harder to find a (probably hashed) master password sitting in RAM, since it would look just like random bytes, than plaintext passwords.  And you could surround the hashed master password with lots of other random bytes to make it even harder to find.
+
+It&#39;d be a lot harder to find a (probably hashed) master password sitting in RAM, since it would look just like random bytes, than plaintext passwords.  And you could surround the hashed master password with lots of other random bytes to make it even harder to find.Nah.  You just try all the bytes.  It&#39;s not that many.
+
+It&#39;d be a lot harder to find a (probably hashed) master password sitting in RAM, since it would look just like random bytes, than plaintext passwords.  And you could surround the hashed master password with lots of other random bytes to make it even harder to find.
+
+Nah.  You just try all the bytes.  It&#39;s not that many.
+
+If you have a process that provides a service that hands out passwords, it&#39;s irrelevant whether the passwords are plaintext or ciphertext.  An attacker who compromises a rendering process can only query -- but can probably query a lot.  An attacker to breaches the process separation, well...
+
+Note that this is separate from whether the on-disk database needs to be encrypted.  There are additional threat vectors there.
 
 Not deleting the password from memory is where Edge ultimately exposes itself excessively compared to competition. This is what happens when you have programmers that only think in terms of a Turing machine abstraction, versus doing practical threat modeling.
 
@@ -1493,6 +1527,22 @@ It does require auth for passkeys, I think every time, but not for regular saved
 
 But I have regular saved passwords for almost every other website I use routinely and am not prompted to auth via Hello for that. My understanding is that for these, the auth/unlock is done once at user login and then the ses
 
+Chrome has a setting to require Windows Hello when filling in passwords. You can turn this option on or off.
+
+Ah interesting, never seen that before! I&#39;ve just turned it on to see how annoying it is.
+
+It shows that for Microsoft, security is an afterthought rather than a priority, with the obvious result that Microsoft software is not secure.
+
+
+RAM plaintext passwords mean that any programmer mistake could expose them to the world. If they don&#39;t exist in RAM (Chrome&#39;s way), they&#39;re impossible to expose.If Chrome has access to them without user authentication, then so does any attacker who can dump Chrome&#39;s RAM.
+
+It shows that for Microsoft, security is an afterthought rather than a priority, with the obvious result that Microsoft software is not secure.
+
+
+RAM plaintext passwords mean that any programmer mistake could expose them to the world. If they don&#39;t exist in RAM (Chrome&#39;s way), they&#39;re impossible to expose.
+
+If Chrome has access to them without user authentication, then so does any attacker who can dump Chrome&#39;s RAM.
+
 I&#39;d love to trash Edge, but it&#39;s hard to argue against Microsoft&#39;s analysis herei think you don&#39;t get the irony. this is the company that campaigned furiously for the necessity of tpm for consumer devices ...you couldn&#39;t make this shit up, brought to you by &quot;closed proprietary sofware&quot;.then again, decrypting an entire password list and leaving it around in memory for no reason is totally unacceptable practice. it&#39;s flabbergasting. you access sensible information only when needed and dispose of it after use, and even zeroing the memory should be par for the course. this is basic hygiene in any context.both the pretext of &quot;efficiency&quot; and completely disregarding &quot;defense in depth&quot; are just laughable, even moreso if the information is as sensible as passwords no less, and agument &quot;incompetency&quot; to &quot;pathetic clown level incompetency&quot;.
 
 I&#39;d love to trash Edge, but it&#39;s hard to argue against Microsoft&#39;s analysis here
@@ -1504,6 +1554,22 @@ you couldn&#39;t make this shit up, brought to you by &quot;closed proprietary s
 then again, decrypting an entire password list and leaving it around in memory for no reason is totally unacceptable practice. it&#39;s flabbergasting. you access sensible information only when needed and dispose of it after use, and even zeroing the memory should be par for the course. this is basic hygiene in any context.
 
 both the pretext of &quot;efficiency&quot; and completely disregarding &quot;defense in depth&quot; are just laughable, even moreso if the information is as sensible as passwords no less, and agument &quot;incompetency&quot; to &quot;pathetic clown level incompetency&quot;.
+
+I&#39;d love to trash Edge, but it&#39;s hard to argue against Microsoft&#39;s analysis herei think you don&#39;t get the irony. this is the company that campaigned furiously for the necessity of tpm for consumer devices ...There&#39;s really no irony here.  TPMs serve a different purpose, that of ensuring that the software you&#39;re running isn&#39;t maliciously modified.decrypting an entire password list and leaving it around in memory for no reason is totally unacceptable practiceIt&#39;s really no different from keeping the password database encryption key in RAM, or the capability which grants access to the database encryption key (however many layers of that you want to go down) which is what you have to do if you want to be able to use the passwords on-demand without an authentication step.
+
+I&#39;d love to trash Edge, but it&#39;s hard to argue against Microsoft&#39;s analysis herei think you don&#39;t get the irony. this is the company that campaigned furiously for the necessity of tpm for consumer devices ...
+
+I&#39;d love to trash Edge, but it&#39;s hard to argue against Microsoft&#39;s analysis here
+
+i think you don&#39;t get the irony. this is the company that campaigned furiously for the necessity of tpm for consumer devices ...
+
+There&#39;s really no irony here.  TPMs serve a different purpose, that of ensuring that the software you&#39;re running isn&#39;t maliciously modified.
+
+decrypting an entire password list and leaving it around in memory for no reason is totally unacceptable practiceIt&#39;s really no different from keeping the password database encryption key in RAM, or the capability which grants access to the database encryption key (however many layers of that you want to go down) which is what you have to do if you want to be able to use the passwords on-demand without an authentication step.
+
+decrypting an entire password list and leaving it around in memory for no reason is totally unacceptable practice
+
+It&#39;s really no different from keeping the password database encryption key in RAM, or the capability which grants access to the database encryption key (however many layers of that you want to go down) which is what you have to do if you want to be able to use the passwords on-demand without an authentication step.
 
 Been trying to figure out how Chrome does this because my recollection was that Chrome had the exact same problem - I remember making a similar point to you in forum threads a couple years back with people complaining about it then.
 
@@ -1517,6 +1583,48 @@ Because the App-Bound service is running with system privileges, attackers need 
 
 It&#39;s not clear from my quick read if this defends against this class of &quot;attack&quot; in all cases but it reads like it migh
 
+unless the browser required authentication for every password retrieval.It would be much safer if the browser requires authentication for each site. Generally most users are not opening new sites every second. A possible threat is the one in the summary. If an attacker has enough control of your machine to dump the password database, they have enough control to get it to retrieve the plaintext passwords unless every retrieval requires user authentication in the loop -- which would be pretty annoying, which is why they don&#39;t do that.The whole point is an attacker dumping the encrypted password database does little as it is encrypted. Chrome and other password manages only decrypts one password at a time. Even if an attacker exposes that password, all the other passwords are safe.Still, if it were me writing the code, I&#39;d do it Chrome&#39;s way, just because leaving secrets sitting around in plaintext in RAM makes me uncomfortable.To me, the Edge way is just laziness. It is also less efficient by storing eve
+
+unless the browser required authentication for every password retrieval.
+
+It would be much safer if the browser requires authentication for each site. Generally most users are not opening new sites every second. A possible threat is the one in the summary.
+
+If an attacker has enough control of your machine to dump the password database, they have enough control to get it to retrieve the plaintext passwords unless every retrieval requires user authentication in the loop -- which would be pretty annoying, which is why they don&#39;t do that.The whole point is an attacker dumping the encrypted password database does little as it is encrypted. Chrome and other password manages only decrypts one password at a time. Even if an attacker exposes that password, all the other passwords are safe.Still, if it were me writing the code, I&#39;d do it Chrome&#39;s way, just because leaving secrets sitting around in plaintext in RAM makes me uncomfortable.To me, the Edge way is just laziness. It is also less efficient by storing eve
+
+If an attacker has enough control of your machine to dump the password database, they have enough control to get it to retrieve the plaintext passwords unless every retrieval requires user authentication in the loop -- which would be pretty annoying, which is why they don&#39;t do that.
+
+The whole point is an attacker dumping the encrypted password database does little as it is encrypted. Chrome and other password manages only decrypts one password at a time. Even if an attacker exposes that password, all the other passwords are safe.
+
+Still, if it were me writing the code, I&#39;d do it Chrome&#39;s way, just because leaving secrets sitting around in plaintext in RAM makes me uncomfortable.To me, the Edge way is just laziness. It is also less efficient by storing eve
+
+Still, if it were me writing the code, I&#39;d do it Chrome&#39;s way, just because leaving secrets sitting around in plaintext in RAM makes me uncomfortable.
+
+To me, the Edge way is just laziness. It is also less efficient by storing eve
+
+hey can dump your password database,The password database is encrypted. At least it should be.
+
+The password database is encrypted. At least it should be.
+
+hey can dump your password database,The password database is encrypted. At least it should be.If the browser can decrypt it without you entering a password or doing a biometric authentication to a secure enclave, then so can an attacker who controls the browser.  Encrypting the database achieves something useful against an attacker who can read the browser&#39;s files, but not against an attacker who can dump the browser&#39;s RAM.
+
+hey can dump your password database,The password database is encrypted. At least it should be.
+
+The password database is encrypted. At least it should be.
+
+If the browser can decrypt it without you entering a password or doing a biometric authentication to a secure enclave, then so can an attacker who controls the browser.  Encrypting the database achieves something useful against an attacker who can read the browser&#39;s files, but not against an attacker who can dump the browser&#39;s RAM.
+
+> If an attacker has enough control of your machine...
+
+Not a plot-twist. Microsoft is the attacker or aiding and abetting someone that is. You are evaluating the world as if rules of conduct still exist anywhere among the ruling class.
+
+> If an attacker has enough control of your machine...Not a plot-twist. Microsoft is the attacker or aiding and abetting someone that is. You are evaluating the world as if rules of conduct still exist anywhere among the ruling class.Put the tinfoil hat down and step away...
+
+> If an attacker has enough control of your machine...
+
+Not a plot-twist. Microsoft is the attacker or aiding and abetting someone that is. You are evaluating the world as if rules of conduct still exist anywhere among the ruling class.
+
+Put the tinfoil hat down and step away...
+
 Yes you&#39;d need malware to dump contents of the RAM in order to extract the passwords, but this is a vector none the less. Microsoft made a lot of noise in the past about secure credential management, using Windows Hello for authentication and password managers meaning you are immune from any key loggers attempting to get at your data. Also there&#39;s a difference between exploiting one password and exploiting ALL passwords. Logging into Slashdot shouldn&#39;t expose someone&#39;s banking password for example.
 
 That said this attack does still require privileged access to a machine, so they are technically correct in the level of permissions required here would be equal to those which would render virtually all traditional password managers useless (since passwords by necessity need to be in plain text at some point in order to fill into a site).
@@ -1527,7 +1635,7 @@ Sure.  One machine is compromised, in the MS engineers&#39; heads.
 
 The trouble is now there is a standardized, repeatable location and methodology that can be used to now get ALL the passwords ever typed into edge. Suddenly the text file sitting on my desktop named nextcomputerbuild.txt is a significantly less likely to be directly targeted by bad actors.
 
-They need to think through - yup machine is hosed.  Oh well...should have had better antivirus.... and eventually get to the point of realizing ermagerd now my
+They need to think through - yup machine is hosed.  Oh well...should have had better antivirus.... and eventually get to the point of realizing ermagerd now my bank accounts and investment accounts are emptied out and being used to fund terrorism.
 
 I&#39;m pretty sure that whoever at Microsoft wrote that response won&#39;t have a job too much longer.
 
@@ -1543,19 +1651,22 @@ We already assumed it was running MS software.
 
 Those CPU extensions for creating a separate area that is secure.  The ones Intel removed from consumer CPU&#39;s which broke playback of 4K bluerays on desktop PC&#39;s from that point forward.
 
+MS Public Memo: &quot;Not a real problem, don&#39;t worry.&quot;
+
+MS Internal Memo: &quot;Fix that fucker yesterday or we&#39;ll fire you and key your car!&quot;
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Here at the Phone Company, we serve all kinds of people; from
-Presidents and Kings to the scum of the earth ...&quot;</div>
+If you can&#39;t learn to do it well, learn to enjoy doing it badly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Google's AI Search Results Will Now Turn To Reddit For 'Expert Advice'</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Google's AI Search Results Will Now Turn To Reddit For 'Expert Advice'</h2>
             <p><strong>Slashdot | 2026-05-06</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/05/06/2050205/googles-ai-search-results-will-now-turn-to-reddit-for-expert-advice?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1580,19 +1691,22 @@ So you&#39;ll search for stuff and Google will return web sites that are relevan
 
 AI&#39;s aren&#39;t getting smarter, humans are progressively getting dumber at this pace.
 
+Step 1 : Aggressively push AI content, reducing traffic to many websites, to the point that they go out of business.  (Many being replaced by AI slop)Step 2 : ????Step 3 : Say that you are now going to link to those websites in your AI summaries.  (profit)
+
+Reddit is basically retarded people with too much confidence.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Here at the Phone Company, we serve all kinds of people; from
-Presidents and Kings to the scum of the earth ...&quot;</div>
+If you can&#39;t learn to do it well, learn to enjoy doing it badly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Valve Releases Steam Controller CAD Files Under Creative Commons License</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Valve Releases Steam Controller CAD Files Under Creative Commons License</h2>
             <p><strong>Slashdot | 2026-05-06</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/05/06/208231/valve-releases-steam-controller-cad-files-under-creative-commons-license?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1621,17 +1735,16 @@ I think you meant piracy?  Of course, I like a certain level of privacy when I c
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Here at the Phone Company, we serve all kinds of people; from
-Presidents and Kings to the scum of the earth ...&quot;</div>
+If you can&#39;t learn to do it well, learn to enjoy doing it badly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Morgan Stanley Undercuts Rivals On Pricing In Crypto Trading Debut</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Morgan Stanley Undercuts Rivals On Pricing In Crypto Trading Debut</h2>
             <p><strong>Slashdot | 2026-05-06</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/05/06/1726231/morgan-stanley-undercuts-rivals-on-pricing-in-crypto-trading-debut?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1660,17 +1773,16 @@ Regular trades went the same route. You used to call your broker on an actual te
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Here at the Phone Company, we serve all kinds of people; from
-Presidents and Kings to the scum of the earth ...&quot;</div>
+If you can&#39;t learn to do it well, learn to enjoy doing it badly.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Claude Managed Agents Can Engage In a 'Dreaming' Process To Preserve Memories</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Claude Managed Agents Can Engage In a 'Dreaming' Process To Preserve Memories</h2>
             <p><strong>Slashdot | 2026-05-06</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/05/06/1714217/claude-managed-agents-can-engage-in-a-dreaming-process-to-preserve-memories?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1694,6 +1806,8 @@ So to do this our brain has to make us &quot;see&quot; walking chocolate bars he
 I wonder what kind of odd dreams cockroaches have? Maybe that&#39;s how they plan to take over once we nuke ourselves away, triggered by a mad dictator who dreamt of walking
 
 My working theory of dreams (which as far as I know has not been rejected by experiment), is that the images and such experienced while dreaming is essentially a form of static being produced by the deeper processes in place to lock-in memories. Because consciousness has turned off, my guess is little electro-chemical pulses are fired off by the memory processes to surrounding regions, which - when they hit your various sections for aural and visual processing - are made sense of as dreaming. This may even
+
+Your mistake is to assume most of it matches some past reality.
 
 It&#39;s fun that they only do it when its a positive spin for the marketing.When talking about LLM making mistakes and being mistake prone, they will immediately rename it as &quot;hallucinations&quot;, because it implies it is a mistake of the system that can be fixed somehow.It&#39;s the whole &quot;having the cake and eating it too&quot;
 
@@ -1737,33 +1851,7 @@ Come to the all night token fire. Bring your company credit card.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;Here at the Phone Company, we serve all kinds of people; from
-Presidents and Kings to the scum of the earth ...&quot;</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">ReactOS Unifies Installation Media, Introduces GUI Installer and New ATA Driver</div>
-            <div class="meta">2026-05-06</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>ReactOS Unifies Installation Media, Introduces GUI Installer and New ATA Driver</h2>
-            <p><strong>Slashdot | 2026-05-06</strong></p>
-            <a class="original-link" href="https://tech.slashdot.org/story/26/05/06/171220/reactos-unifies-installation-media-introduces-gui-installer-and-new-ata-driver?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">I had this windows program which did not run in wine. It ran fine in reactos. But reactos could not print or even print into pdf, and so it was useless for me. I was hoping that reactos would add print support, and so i could ditch windows.Well too late. Two years ago a new web based  version of the program was released. And the only reason to run reactos vanished.
-
-The idea of this OS is that it will support Windows drivers, so it&#39;s potentially a way to use hardware which only works with windows. Any other use case you might imagine is better handled in some other way. And even that one is probably better handled with old windows on old hardware...
-
-Dang, I wish I could run ReactOS on a Raspberry...
-
-Nope. I lack the skills to port it to ARM64
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-&quot;Here at the Phone Company, we serve all kinds of people; from
-Presidents and Kings to the scum of the earth ...&quot;</div>
+If you can&#39;t learn to do it well, learn to enjoy doing it badly.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2195,11 +2283,95 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Datacenter to become Arm’s biggest business ‘soon’</div>
+            <div class="meta">2026-05-07</div>
+        </div>
+        
+        <div id="content-42" style="display:none;">
+            <h2>Datacenter to become Arm’s biggest business ‘soon’</h2>
+            <p><strong>www.theregister.com - Articles | 2026-05-07</strong></p>
+            <a class="original-link" href="https://www.theregister.com/systems/2026/05/07/datacenter-to-become-arms-biggest-business-soon/5231612">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Someone other than Meta is buying $1bn of its new AGI chips
+
+Chip design company Arm says the datacenter will soon be its biggest source of revenue.
+
+Arm rose to prominence as a purveyor of chip designs for low-powered devices and then became the de facto standard for smartphone processors. In recent years, the company created more powerful chips, and datacenter players took note: Amazon and Microsoft built their own datacenter silicon on Arm designs.
+
+In March, Arm announced a new CPU design called “AGI” aimed at powering agentic AI applications. During its Q4 FY 2025/26 earnings call on Wednesday, CEO Rene Haas said “Customer response to the Arm AGI CPU has been very strong. We now have more than $2 billion of customer demand across fiscal 2027 and fiscal 2028. This is more than double what we stated at launch.”
+
+The CEO also admitted that Arm is yet to assemble the supply chain to deliver $2 billion worth of AGI silicon – but is working to get that right.
+
+Haas theorized one reason for customer interest is that they see AI agents running on dedicated processor cores and Arm’s AGI chips have 136 of them. He thinks datacenter operators will therefore run racks full of Arm CPUs alongside racks full of GPUs.
+
+“I think one thing we know for sure is that we probably have under-called the CPU demand in terms of the transition here,” Haas said.
+
+He then said Arm is “on track towards our forecast of $15 billion” annual revenue for AI infrastructure , and added: “Soon, the datacenter will be Arm’s largest business. The direction is clear. Customers want Arm at the center of the AI datacenter.”
+
+CFO Jason Child chimed in with a prediction Arm is also on track to double annual revenue from selling its IP to $10 billion by 2031, with most of that coming from datacenter products.
+
+Revenue for the company’s most recent quarter landed at $1.49 billion, up 20 percent year-over-year. Full-year revenue of $4.9 billion represented a 22.8 percent increase.
+
+The company forecast $1.25 billion revenue for its current quarter, and said cash from AGI chip sales will start to arrive in volume starting FY 27/28.
+
+Investors weren’t quite sure what to make of this, first sending the company’s share price up ten percent above its $237 close, before pushing it down to $222. ®
+
+Someone other than Meta is buying $1bn of its new AGI chips
+
+Award-winning EasyOn 5G-A-RobotNet integrates connectivity and edge computing to accelerate scalable humanoid robotics
+
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+
+If you can&#39;t bother to keep GitHub running, why should we bother with you?
+
+Compute from Colossus leads to relaxed limits
+
+Join us to learn how to architect a development environment where your builders and their agents can move fast and securely.
+
+When a developer installs an AI agent skill – granting it access to secured IT resources and data – they make a significant trust decision.
+
+Infrastructure teams are facing a perfect storm: extended hardware lead times, rising costs driven by AI demand, and accelerated platform timelines.
+
+Join Druva experts for a compelling deep dive into what it takes to build an identity-first recovery strategy in this new threat landscape.
+
+Join Druva experts for a compelling deep dive into what it takes to build an identity-first recovery strategy in this new threat landscape.
+
+They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
+
+Someone other than Meta is buying $1bn of its new AGI chips
+
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+
+Compute from Colossus leads to relaxed limits
+
+Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+
+Someone other than Meta is buying $1bn of its new AGI chips
+
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+
+Compute from Colossus leads to relaxed limits
+
+Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+
+Someone other than Meta is buying $1bn of its new AGI chips
+
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+
+Compute from Colossus leads to relaxed limits
+
+Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+
+Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">www.theregister.com - Articles</div>
             <div class="title">Using AI to click around on a website burns 45x as many tokens as just using APIs</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>Using AI to click around on a website burns 45x as many tokens as just using APIs</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/05/07/ai-vision-agents-use-45x-more-tokens-than-apis-in-benchmark/5231346">Visit Original Website</a>
@@ -2234,15 +2406,15 @@ The vision agent expended around 500,000 input tokens and around 38,000 output t
 
 For Awasthi, the lesson is that while vision agents may be necessary for interacting with apps you don&#39;t control, inwardly focused agents should target APIs. ®
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Award-winning EasyOn 5G-A-RobotNet integrates connectivity and edge computing to accelerate scalable humanoid robotics
 
-Compute from Colossus leads to relaxed limits
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
 If you can&#39;t bother to keep GitHub running, why should we bother with you?
 
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+Compute from Colossus leads to relaxed limits
 
 Join us to learn how to architect a development environment where your builders and their agents can move fast and securely.
 
@@ -2256,13 +2428,7 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
-
-Compute from Colossus leads to relaxed limits
-
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
-
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2270,7 +2436,7 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2278,18 +2444,24 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
-13% say they’ve sold logins or know someone who has, survey suggests</div>
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+
+Compute from Colossus leads to relaxed limits
+
+Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+
+Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Young evil genius forces hamster to run on wheel to power his gadgets</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Young evil genius forces hamster to run on wheel to power his gadgets</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/offbeat/2026/05/06/youtuber-turns-hamster-wheel-into-phone-charger/5231293">Visit Original Website</a>
@@ -2324,15 +2496,15 @@ Regardless, the young inventor told us that he is still using the device, and th
 
 A useful invention, then, if not a bit of an on-the-nose realization of a science-fiction dystopia trope. Hey, at least the hamster is happy and putting all that necessary calorie burning to work for a good cause - if we all used our pets&#39; episodes of the zoomies to charge our devices, think of the load on the grid we could save. ®
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Award-winning EasyOn 5G-A-RobotNet integrates connectivity and edge computing to accelerate scalable humanoid robotics
 
-Compute from Colossus leads to relaxed limits
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
 If you can&#39;t bother to keep GitHub running, why should we bother with you?
 
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+Compute from Colossus leads to relaxed limits
 
 Join us to learn how to architect a development environment where your builders and their agents can move fast and securely.
 
@@ -2346,13 +2518,7 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
-
-Compute from Colossus leads to relaxed limits
-
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
-
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2360,7 +2526,7 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2368,18 +2534,24 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
-13% say they’ve sold logins or know someone who has, survey suggests</div>
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+
+Compute from Colossus leads to relaxed limits
+
+Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+
+Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Claude hitches ride on SpaceX's datacenter capacity</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Claude hitches ride on SpaceX's datacenter capacity</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/05/06/claude-hitches-a-ride-on-spacexs-datacenter-capacity/5231252">Visit Original Website</a>
@@ -2430,15 +2602,15 @@ Cherny said, &quot;for me personally, a lot of my code nowadays is written by ro
 
 Who wouldn&#39;t want to &quot;ride the exponential&quot; when one&#39;s company is paying the API bill? ®
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Award-winning EasyOn 5G-A-RobotNet integrates connectivity and edge computing to accelerate scalable humanoid robotics
 
-Compute from Colossus leads to relaxed limits
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
 If you can&#39;t bother to keep GitHub running, why should we bother with you?
 
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+Compute from Colossus leads to relaxed limits
 
 Join us to learn how to architect a development environment where your builders and their agents can move fast and securely.
 
@@ -2452,13 +2624,7 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
-
-Compute from Colossus leads to relaxed limits
-
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
-
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2466,7 +2632,7 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2474,18 +2640,24 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
-13% say they’ve sold logins or know someone who has, survey suggests</div>
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+
+Compute from Colossus leads to relaxed limits
+
+Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+
+Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Musk has never built a wafer fab, but he wants to burn $119B on one anyway</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Musk has never built a wafer fab, but he wants to burn $119B on one anyway</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/systems/2026/05/06/spacex-plots-119b-wafer-fab-to-make-elons-orbital-ai-dream-come-true/5231202">Visit Original Website</a>
@@ -2526,15 +2698,15 @@ Musk has a history of making big promises and then not delivering on them. You m
 
 In the meantime, the Grimes County Court of Commissioners will consider whether to grant Musk’s Terafab project a property tax abatement during a meeting at 9 am on June 3. ®
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Award-winning EasyOn 5G-A-RobotNet integrates connectivity and edge computing to accelerate scalable humanoid robotics
 
-Compute from Colossus leads to relaxed limits
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
 If you can&#39;t bother to keep GitHub running, why should we bother with you?
 
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+Compute from Colossus leads to relaxed limits
 
 Join us to learn how to architect a development environment where your builders and their agents can move fast and securely.
 
@@ -2548,13 +2720,7 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
-
-Compute from Colossus leads to relaxed limits
-
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
-
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2562,7 +2728,7 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2570,18 +2736,24 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
-13% say they’ve sold logins or know someone who has, survey suggests</div>
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+
+Compute from Colossus leads to relaxed limits
+
+Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+
+Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Arctic Wolf kicks 250 employees out of the pack to save money for AI</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Arctic Wolf kicks 250 employees out of the pack to save money for AI</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/05/06/arctic-wolf-cuts-250-jobs-in-ai-push/5231213">Visit Original Website</a>
@@ -2608,15 +2780,15 @@ Arctic Wolf operates in crowded endpoint detection and response (EDR) and manage
 
 The company has bet on its Aurora Superintelligence Platform that combines security data, a “Swarm of Experts” AI agents and humans in the loop to protect customers&#39; systems. ®
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Award-winning EasyOn 5G-A-RobotNet integrates connectivity and edge computing to accelerate scalable humanoid robotics
 
-Compute from Colossus leads to relaxed limits
+Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
 If you can&#39;t bother to keep GitHub running, why should we bother with you?
 
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
+Compute from Colossus leads to relaxed limits
 
 Join us to learn how to architect a development environment where your builders and their agents can move fast and securely.
 
@@ -2630,13 +2802,7 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
-
-Compute from Colossus leads to relaxed limits
-
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
-
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2644,7 +2810,7 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2652,67 +2818,7 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
-
-13% say they’ve sold logins or know someone who has, survey suggests</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">1 in 8 employees totally cool with selling work credentials</div>
-            <div class="meta">2026-05-06</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>1 in 8 employees totally cool with selling work credentials</h2>
-            <p><strong>www.theregister.com - Articles | 2026-05-06</strong></p>
-            <a class="original-link" href="https://www.theregister.com/security/2026/05/06/1-in-8-workers-say-selling-company-logins-is-justifiable/5231104">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">13% say they’ve sold logins or know someone who has, survey suggests
-
-You can&#39;t trust anyone these days! Get together with seven of your colleagues, and there’s a decent chance one of the eight will say they’ve either sold company login details in the past year or know someone who has, says UK fraud prevention outfit Cifas.
-
-That 13 percent figure is shocking. Just as strikingly, Cifas found a similar 13 percent of employees overall believed selling access to company systems was justifiable, though the org’s Workplace Fraud Trends report did not spell out those justifications. Regardless, Cifas says it suggests that there’s a worrying shift happening among attitudes toward insider-enabled fraud that should trouble leadership.
-
-Then again, leadership might not be too worried based on the data.
-
-Cifas doesn’t give a precise number for the share of rank-and-file employees who feel selling credentials is justified, but it does call attention to how leadership feels, and the more power they have, the more they seem to think it’s okay to sell their access. Thirty-two percent of managers, 36 percent of directors, and 43 percent of C-suite executives said it was justifiable to sell their login details. Even more shockingly, a full 81 percent of business owners felt the exact same way.
-
-As for why, that’s not entirely clear, though Cifas told us it’s heard various excuses in the past. Financial challenges, the belief it would be a harmless one-off, confidence they wouldn’t get caught, and disgruntlement were among the reasons cited for selling credentials.
-
-If you’re wondering who to keep an eye on, Cifas suggests looking at IT and telecoms professionals, who showed the highest tolerance for fraud-related behavior across multiple scenarios covered in the study. Those scenarios included the aforementioned selling of login details, as well as secretly moonlighting for a competitor, using fraudulent references on job applications, expense fraud, and the like.
-
-Selling access to company systems was one of the less common types of fraud covered in the survey, but the 13 percent figure reflects respondents who said they had done it or knew someone who had - meaning that, in a company of 1,000 people, around 130 might report direct or indirect exposure to the behavior. The fact that leadership respondents and IT and telecoms professionals showed higher tolerance for such activity makes the findings more concerning, even if the survey focused specifically on selling login details, in some cases to a former colleague.
-
-This data is specific to the UK, mind you, but there’s no reason to assume a relaxed attitude toward such a critical cybersecurity weakness is confined to the Isles - that’s just as likely as the person buying those credentials keeping it to themselves.
-
-When asked if Cifas had comparable data from prior years to compare this to, the organization described its findings as revealing “a worrying shift in attitudes toward insider-enabled fraud.” However, the firm said that this is the first year it compiled this report, so it doesn’t have comparable data.
-
-Nonetheless, Cifas Director of Learning Rachael Tiffen said in a press release that the point is that organizations need to be aware of how many employees might be willing to sell access to company systems.
-
-“These findings show how vital it is for organisations to build fraud‑aware cultures, where employees at all levels understand their responsibilities and the consequences of their actions,” Tiffen said.
-
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
-
-Award-winning EasyOn 5G-A-RobotNet integrates connectivity and edge computing to accelerate scalable humanoid robotics
-
-Compute from Colossus leads to relaxed limits
-
-If you can&#39;t bother to keep GitHub running, why should we bother with you?
-
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
-
-Join us to learn how to architect a development environment where your builders and their agents can move fast and securely.
-
-When a developer installs an AI agent skill – granting it access to secured IT resources and data – they make a significant trust decision.
-
-Infrastructure teams are facing a perfect storm: extended hardware lead times, rising costs driven by AI demand, and accelerated platform timelines.
-
-Join Druva experts for a compelling deep dive into what it takes to build an identity-first recovery strategy in this new threat landscape.
-
-Join Druva experts for a compelling deep dive into what it takes to build an identity-first recovery strategy in this new threat landscape.
-
-They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
+Someone other than Meta is buying $1bn of its new AGI chips
 
 Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
 
@@ -2720,25 +2826,7 @@ Compute from Colossus leads to relaxed limits
 
 Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
 
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
-
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
-
-Compute from Colossus leads to relaxed limits
-
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
-
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
-
-Okay, the rodent was a willing participant - after all, who turns down treats for a spin that charges a phone?
-
-Compute from Colossus leads to relaxed limits
-
-Initial phases of SpaceX&#39;s Terafab project in rural Texas are expected to cost about 1.25 Twitters
-
-Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff
-
-13% say they’ve sold logins or know someone who has, survey suggests</div>
+Cuts appear to hit sales, product, and marketing, accounting for under 10% of staff</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
@@ -3403,11 +3491,59 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">The Next Web</div>
+            <div class="title">OpsMill raises $14m Series A to make IT infrastructure data trustworthy enough for AI agents</div>
+            <div class="meta">2026-05-07</div>
+        </div>
+        
+        <div id="content-60" style="display:none;">
+            <h2>OpsMill raises $14m Series A to make IT infrastructure data trustworthy enough for AI agents</h2>
+            <p><strong>The Next Web | 2026-05-07</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/opsmill-14m-series-a-infrahub-infrastructure-data">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">IRIS led the Paris- and London-based startup’s round, with BGV joining alongside existing investors Serena and Partech. The company’s Infrahub platform is in production at TikTok and at one European cloud provider that says it has cut deployment times from five days to fifteen minutes.
+
+OpsMill, the Paris-headquartered infrastructure data management company, has raised $14m in a Series A round led by IRIS, with participation from BGV and existing investors Serena and Partech.
+
+The company says the funding will go to growing its engineering and product teams and continuing to develop its Infrahub platform, which is designed to give AI agents and engineering teams a single trusted view of an enterprise’s IT infrastructure.
+
+The pitch addresses a problem most enterprises have lived with quietly for years. While automation has spread through applications and workflows, the data describing the underlying infrastructure, physical hardware, virtual machines, cloud resources, and the connections between them, has remained scattered across spreadsheets, configuration management databases, and ad-hoc scripts.
+
+None of those sources was designed to feed AI agents reliable information. When agents act on incomplete or inaccurate infrastructure data, the company says, the result is errors that can cascade through production systems quickly.
+
+OpsMill cites two figures to size the problem. Gartner forecasts that 30 per cent of enterprises will automate more than half of their network activities by 2026, up from under 10 per cent in mid-2023. Per the ITIC 2024 Hourly Cost of Downtime Report, the average enterprise loses around $300,000 for every hour of downtime, before reputational costs are counted.
+
+Infrahub, OpsMill’s flagship product, takes a different approach to representing infrastructure data than the table-based asset registers most enterprises use. The platform is built on a graph database that maps the connections between hundreds of thousands of infrastructure elements, including the metadata describing how each element should be configured.
+
+Every proposed change is validated and approved through a DevOps-style review process before deployment. Co-founder and CEO Damien Garros, who built and scaled Infrahub alongside co-founder and COO Karen Gallantry, spent two decades on the operator side of the same problem at Juniper, Roblox, and Network to Code before starting OpsMill.
+
+Garros put the case for the company in his own framing. “Automation is ultimately a data problem and if you only have a partial view of your network, you’re flying blind,” he said in the announcement.
+
+“Writing the code for automating infrastructure was never the problem; the challenge has always been maintaining it and being able to trust it in production. We built Infrahub so that infrastructure teams, and the AI agents working alongside them, always have a complete, trusted record of what exists, what’s supposed to exist, and a way to safely change and evolve at scale.”
+
+Infrahub is available in two editions, free open-source Community and licensed Enterprise. OpsMill compares the model to GitLab’s, with users able to develop on the open-source version and graduate to the Enterprise edition when they need governance and compliance features at scale.
+
+The open-source community already includes hyperscalers including TikTok, alongside global retailers, fintechs, insurers, and manufacturers using the Enterprise edition in Europe and North America.
+
+Eurofiber, a European cloud-services provider named in the announcement as an Enterprise customer, has cut its service deployment times from five days to fifteen minutes since deploying Infrahub. That figure is the most concrete customer-side data point in the company’s release.
+
+Julien-David Nitlech, managing partner at IRIS, framed his fund’s investment in similar terms in the announcement.
+
+“The race to adopt AI in enterprise infrastructure is real, but most organisations are trying to build on foundations that were never designed for it,” he said.
+
+“OpsMill is solving the problem that everyone else is working around: without clean, structured, trustworthy infrastructure data, AI-driven operations simply cannot function at scale.”
+
+OpsMill, headquartered in Paris with a London office, says the Series A will fund engineering and product expansion alongside continued development of data-centric AIOps capabilities.
+
+Get the most important tech news in your inbox each week.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">The Next Web</div>
             <div class="title">Google’s AI Overviews killed 58 per cent of publisher clicks. Now it is adding a ‘Further Exploration’ section to bring some back.</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-60" style="display:none;">
+        <div id="content-61" style="display:none;">
             <h2>Google’s AI Overviews killed 58 per cent of publisher clicks. Now it is adding a ‘Further Exploration’ section to bring some back.</h2>
             <p><strong>The Next Web | 2026-05-06</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/google-ai-overviews-publisher-links-search-traffic">Visit Original Website</a>
@@ -3439,13 +3575,13 @@ Google’s five updates attempt to rebuild some of the click incentive that AI O
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-62')">
             <div class="source">The Next Web</div>
             <div class="title">Snap lost a 400 million dollar AI deal, 20 million dollars a month to the Iran war, and 24 per cent of its stock price. The AR glasses had better work.</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-62" style="display:none;">
             <h2>Snap lost a 400 million dollar AI deal, 20 million dollars a month to the Iran war, and 24 per cent of its stock price. The AR glasses had better work.</h2>
             <p><strong>The Next Web | 2026-05-06</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/snap-q1-2026-iran-war-advertising-perplexity-specs">Visit Original Website</a>
@@ -3479,13 +3615,13 @@ The ethical questions surrounding smart glasses and AI surveillance have not sl
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">The Next Web</div>
             <div class="title">Nyobolt’s batteries charge in seconds and last 20,000 cycles. The customer that made it a unicorn is a warehouse robot.</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>Nyobolt’s batteries charge in seconds and last 20,000 cycles. The customer that made it a unicorn is a warehouse robot.</h2>
             <p><strong>The Next Web | 2026-05-06</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/nyobolt-series-c-unicorn-ultrafast-battery-symbotic-robots">Visit Original Website</a>
@@ -3517,13 +3653,13 @@ The risk is execution at scale. Nyobolt’s niobium tungsten oxide chemistry has
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">The Next Web</div>
             <div class="title">Ukraine says robots seized enemy territory for the first time. The company behind them is now worth a billion dollars.</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>Ukraine says robots seized enemy territory for the first time. The company behind them is now worth a billion dollars.</h2>
             <p><strong>The Next Web | 2026-05-06</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/ukraine-says-robots-seized-enemy-territory-for-the-first-time-the-company-behind-them-is-now-worth-a-billion-dollars">Visit Original Website</a>
@@ -3557,13 +3693,13 @@ Ukraine’s emergence as a global defence technology leader has been driven by 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">The Next Web</div>
             <div class="title">Uber missed its revenue target. The stock jumped 10 per cent. Wall Street is pricing a different company.</div>
             <div class="meta">2026-05-06</div>
         </div>
         
-        <div id="content-64" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>Uber missed its revenue target. The stock jumped 10 per cent. Wall Street is pricing a different company.</h2>
             <p><strong>The Next Web | 2026-05-06</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/uber-q1-2026-earnings-autonomous-demand-acceleration">Visit Original Website</a>
@@ -3597,124 +3733,86 @@ Uber’s relaunch of Motional robotaxis in Las Vegas after a pause demonstrated
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-65')">
-            <div class="source">The Next Web</div>
-            <div class="title">The UAE’s AI champion just leased a converted Minneapolis office. The irony writes itself.</div>
-            <div class="meta">2026-05-06</div>
-        </div>
-        
-        <div id="content-65" style="display:none;">
-            <h2>The UAE’s AI champion just leased a converted Minneapolis office. The irony writes itself.</h2>
-            <p><strong>The Next Web | 2026-05-06</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/core42-g42-minneapolis-data-center-office-conversion-uae">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">TL;DRCore42, the cloud subsidiary of Abu Dhabi’s G42 Group, has leased 20 megawatts in a converted office building in downtown Minneapolis. The company building the Stargate UAE campus is now filling American offices-turned-data-centres, part of a broader pattern in which the same AI systems emptying offices are generating the demand to fill them with servers.
-
-Core42, the cloud subsidiary of Abu Dhabi’s G42 Group, has leased 20 megawatts in a converted office building in downtown Minneapolis. The company building the Stargate UAE campus is now filling American offices-turned-data-centres, part of a broader pattern in which the same AI systems emptying offices are generating the demand to fill them with servers.
-
-The building at 1001 Third Avenue South in downtown Minneapolis used to be an office. Now it is a data centre, and its anchor tenant is not a Silicon Valley hyperscaler but Core42, the cloud and AI infrastructure subsidiary of Abu Dhabi’s G42 Group. The lease, reported by Bloomberg on Wednesday, covers 20 megawatts of capacity in a facility converted from commercial office space by Legacy Investing, a Virginia-based developer that has spent more than 70 million dollars transforming the property. The deal is a small piece of a much larger pattern: the UAE’s most ambitious AI company is building a network of American data centres while simultaneously constructing the largest AI compute facility outside the United States, and the buildings it is filling were, until recently, home to the kind of white-collar workers whose jobs AI is designed to replace.
-
-G42, led by CEO Peng Xiao and backed by Abu Dhabi’s national security adviser Sheikh Tahnoon bin Zayed Al Nahyan, has become the UAE’s principal vehicle for AI infrastructure investment. The company is building the Stargate UAE campus, the international flagship of the 500 billion dollar Stargate joint venture between OpenAI, SoftBank, Oracle, and Abu Dhabi sovereign investment vehicle MGX, across approximately 19 square kilometres of desert south of Abu Dhabi. The first phase, a 200 megawatt compute cluster powered by Nvidia Grace Blackwell GB300 systems, is scheduled to come online by the end of 2026, with full build-out designed to reach one gigawatt of capacity at a projected cost exceeding 30 billion dollars. The project has already attracted geopolitical threats, with Iran warning of retaliatory strikes against Gulf infrastructure including commercial data centres.
-
-Core42’s US expansion extends well beyond Minneapolis. The company signed a ten-year lease with TeraWulf for more than 70 megawatts of data centre infrastructure at the Lake Mariner facility in upstate New York, with an option for an additional 135 megawatts. G42 has also announced a one billion dollar data centre investment in Vietnam and established Core42’s European headquarters in Dublin. The Minneapolis lease adds a relatively modest 20 megawatts to a portfolio that is scaling globally, but its significance lies less in the capacity than in the location: a converted office building in the centre of an American city whose downtown vacancy rate, like those of most mid-sized US cities, has climbed steadily since the pandemic.
-
-The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
-
-Legacy Investing acquired 1001 Third Avenue South in 2019 and has since invested heavily in converting the six-storey property from office to data centre use. The company spent more than 70 million dollars on improvements in 2025 alone, expanding the building’s capacity from approximately two megawatts to 21 megawatts. In January 2026, Cloud Capital and Bahrain-based asset manager Arcapita acquired the property for 235 million dollars through a joint venture, reflecting the premium that data centre conversions now command over traditional office valuations.
-
-The economics of office-to-data-centre conversion have become compelling enough to reshape urban real estate markets. US utilities plan to spend 1.4 trillion dollars by 2030 to power the AI boom, and the demand for data centre capacity has outstripped the supply of purpose-built facilities. Converting existing office buildings offers developers a faster path to market than ground-up construction, provided the building’s structural load capacity, power infrastructure, and cooling systems can be upgraded to support the density of modern compute hardware. Not every office qualifies. The buildings that do, typically those with reinforced concrete construction, proximity to fibre networks, and access to sufficient electrical capacity, have become some of the most sought-after properties in commercial real estate.
-
-G42’s American data centre strategy reflects a broader shift in how sovereign AI ambitions are materialising in the United States. The company is not simply building compute capacity abroad. It is establishing a physical presence inside the American power grid, the American fibre network, and American commercial real estate markets. The Minneapolis lease, the TeraWulf deal in New York, and facilities in California and Texas create a distributed infrastructure footprint that positions Core42 as a provider of what the company calls sovereign cloud and AI infrastructure: compute capacity that can serve both G42’s own AI workloads and those of its customers, including the US-based companies that require data residency within American borders.
-
-The race to secure data centre capacity has drawn startups, sovereign wealth funds, and hyperscalers into direct competition for the same constrained resources: power, land, cooling, and fibre connectivity. In Minneapolis, Legacy Investing’s conversion of an office building into a 21 megawatt facility illustrates how developers are working around those constraints by repurposing existing urban infrastructure rather than competing for greenfield sites in the exurban corridors where most large-scale data centres are built. The approach has limits. Twenty megawatts is a fraction of the capacity that a purpose-built hyperscale facility delivers, and the structural constraints of an existing building make future expansion difficult. But for a tenant like Core42, which needs distributed US presence rather than concentrated scale, the urban conversion model offers something that a greenfield campus in rural Virginia does not: proximity to enterprise customers and the network interconnection density of a major metropolitan area.
-
-The geopolitics of UAE-linked AI infrastructure in the United States remain sensitive. G42 severed its ties with Chinese technology companies in 2024 under pressure from the US government, a prerequisite for receiving access to advanced American AI chips. Microsoft invested 1.5 billion dollars in G42 as part of that realignment, and the company has since positioned itself as a bridge between American AI technology and Gulf capital. OpenAI’s decision to pause its Stargate UK project over energy costs and regulatory concerns has made the UAE’s willingness to build at scale and speed more strategically valuable, and G42’s ability to secure chip imports for the Stargate UAE campus has been treated by the US government as a test case for whether AI infrastructure can be deployed in allied nations without compromising national security.
-
-The financial dynamics of AI infrastructure investment have produced valuations and capital commitments that would have been inconceivable five years ago. Oracle’s stock fell 50 per cent despite a Wall Street buy consensus as concentration risk from its OpenAI dependency spooked investors. Alphabet raised its full-year 2026 capex estimate to between 180 and 190 billion dollars. The International Energy Agency predicts that energy use from data centres will double by the end of 2026. Into this environment, a 20 megawatt lease in a converted Minneapolis office building registers as a footnote. But the tenant signing the lease is the company building the largest AI compute facility outside the United States, and the building it is moving into is one of hundreds of American offices being repurposed to house the infrastructure that is making the offices themselves obsolete. The conversion is not just architectural. It is economic. The same AI systems that emptied the office are now filling it with servers.
-
-Get the most important tech news in your inbox each week.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Brazil's billionaire Batista helped broker Lula–Trump meeting, source says - Reuters</div>
-            <div class="meta">2026-05-06</div>
+            <div class="title">Two drones from Russia crash in Latvia, army says - Reuters</div>
+            <div class="meta">2026-05-07</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Brazil's billionaire Batista helped broker Lula–Trump meeting, source says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQQ2Zka2JJSFVzTTRPTjVrWTI4ZE1zUUlFS2ppQnp5NGhNdG9lSzlIVjJFaXpaN2xpNlo3RU5QLUlzcXZyUDZnMzdrbHBSalBRRURiY1Voeng0Sko1NGkxeHFYdW9WNDdyTGh1SjFqdER4NUt5WWsteG12R2FMekpDSDRjRnZXNWItN3BXV2JtRXB3T2dIVUxFLTRIaHRySV9FQXYxalBhOUk3QTRYb2xvTGFTUkljSUIybW5lMFBoQQ?oc=5">Visit Original Website</a>
+            <h2>Two drones from Russia crash in Latvia, army says - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNXzlmbENPOElwbnNCMEtfcVdmbVBiUkxxX2xjUlJRUXZ4OEU1Y2hoQ2RvbzFkelV6Qjl0dWdaaHJUeWtFamhic05ieGxjWmhkZlNYZExVTVJlTHc1eEt0R3U3aHJVZzNjcThDQzdqR3ltRFkzSVFadk1xVVI1Z0w0SFk2Qm43UnVYYkE?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Arm forecasts higher-than-expected revenue on surging AI data center demand - Reuters</div>
-            <div class="meta">2026-05-06</div>
+            <div class="title">New York judge releases purported Epstein suicide note - Reuters</div>
+            <div class="meta">2026-05-07</div>
         </div>
         
         <div id="content-67" style="display:none;">
-            <h2>Arm forecasts higher-than-expected revenue on surging AI data center demand - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOd0tDZ29EaFZuSG9NN0FFTG45WElneHlEOVhITU9XbjgxVURoaGdlaGJucG9mVFVvdWZibVNYR3hZemIxTzhNNURWNHY2OXA1ZjRrSm1Nc2ZvcE1UYXdVUEhwVUdXZ3g0ZU01UEhlXzdjLVBzVTc4WVZ5QWVJSXhwWXpka2lpc2FSOWVxNXhqRkZ3SHNBVFJkRmY2eHd0TGJNY2poSm53?oc=5">Visit Original Website</a>
+            <h2>New York judge releases purported Epstein suicide note - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQSmU5RjJuZUljLWNJbS1lZ0JicXR5NVFZWGhKUXpkNnB0YlhsMEtmS3BTQ1VmR0dnZl9ETGR3emI1T1J5NFpVV2doeW5vX0pieGxQUldfOFdtZTVkUkhfSmotY1hnVS1OcWxQc2xydGNsOElFX1k1Z01FckZteVAtQ1RURllyMVZGWm90Y1QxUUVKN2ZtcnRRMUE1enpIcFZC?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: US aims for Fourth of July to deploy Qatar-gifted jet as Air Force One - Reuters</div>
-            <div class="meta">2026-05-06</div>
+            <div class="title">CDC says monitoring US travelers on cruise ship after hantavirus outbreak - Reuters</div>
+            <div class="meta">2026-05-07</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>Exclusive: US aims for Fourth of July to deploy Qatar-gifted jet as Air Force One - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNY0tfQmdDblJLNEdmZVVhYWxoZ3pkQ1hSSU1uQUN2X2lFcXpJSlJLODF5THh6OE1nRnlBanItRUVVdFVZUjJpOFdmajgtWXM2UnRZc1JNYTZXZ21PWkJ0VE85V0hkTjlzUkk4QUp1Z3BkM0hrZ0RvVHBmUTlNN2NKTjhzRXB2ZTF2RG4wLUdvZnBnVVpXODBDcU5CaWxWTGJicVEtZUM5YVB4c2RqQVo5YUs1RnNZNkNoX1RfLQ?oc=5">Visit Original Website</a>
+            <h2>CDC says monitoring US travelers on cruise ship after hantavirus outbreak - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxNeHk4MFlsQ2cweUtsdldMVXpkakl0eE9JVGwtTG1DUW1NbmxGUFhCZXdhcmhiYXpiU3g3Ny1PbTBabXFoTEt4Mm5BZTVWMVlWUDhNTXRmYXpOellicVlQSmFPbWUyU3UxZ3hFTHd1MVl2SXBjZGVIR2Z3N3JpMFZrb0VIRU1XX1Z5UkxfcmwwWkoyOFU1Q3BRcWR3aHJJN0tvU3lMU0hIWW5tbkxSbWhWbUpkeGxTY2lraFdIUEdQLWt1WVRQLVBUSU9RQ1MxZURfZXJfM2tmaGNoNkhPWnVhSnBaNWtHUQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Russia warns diplomatic missions to evacuate Kyiv staff if Moscow launches mass strike - Reuters</div>
-            <div class="meta">2026-05-06</div>
+            <div class="title">Trump sees swift end to war as Iran reviews US peace proposal - Reuters</div>
+            <div class="meta">2026-05-07</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>Russia warns diplomatic missions to evacuate Kyiv staff if Moscow launches mass strike - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMm10Si1mT0l5emR2cTZqQlcyWVB2X0NSdU9QSmZVa3Axd3ljaUxPRzVSazE4VjM5cHdKZ2tHa2NWT00yNk5oTkZKY05FQnZRdUdnZHVmVjYzV3hwcDhtTC13a3MyQ0FKT1NqSVFoS2Q2M1Z2SGZ4dGRPMlNJN0lTMTRjbEhjbE5VWGJXcDZFNkJEc09UT1BrZWZhSHJsalphR1I5cnVjVHdZV2FlYlhER0xDREdlT1FjV0hZa1RIam9OdzA?oc=5">Visit Original Website</a>
+            <h2>Trump sees swift end to war as Iran reviews US peace proposal - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQVW03RmZ6aF9hQjdpSlhWdVZwVl90c0UzLTBpSXlGVFFHVi1MaXJQU21yQXgwZ1BmeEplUlFWSE1mdS0wMTdzQm9uaEFmSmNzcGo0V2hxdFpSUzVJWEdkdFIyLUlTeTduT2FKV2xwOG94V1FCYjNjWnFGUGo0V2pHLWQ0dUFQTzVsS3ExaVlDSVhrNXN1V09LZjFFVzc3UTg3M05RTjN3?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">In OpenAI trial, former technology chief says Altman sowed 'chaos,' distrust among top executives - Reuters</div>
-            <div class="meta">2026-05-06</div>
+            <div class="title">South Korea appeals court cuts jail term for ex-PM Han to 15 years in martial law case - Reuters</div>
+            <div class="meta">2026-05-07</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>In OpenAI trial, former technology chief says Altman sowed 'chaos,' distrust among top executives - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOcDBWMjRUdGd0bmo4ajdVc244Ul9PbFdhME5zb25uUWMxVlJualFIZktMMHFzbkowWXF0RnhoMllGenlGWFR6Q253aF9mOG9yRWVWTWUtUmNscEFEaFJ5M0xNOXJJVXBRMVVRMXRWZmhuN3hmeUxNakNBX0JncmV4NmsxR2J2R3Rhclc5SHdwUkpaQmhwcFljSGVSU1g5V18xYWFRdGZza1FHem5HS1ptX2pWTjlia01Kalo5aUNLd1BLT2hySXNyb29Ocm0?oc=5">Visit Original Website</a>
+            <h2>South Korea appeals court cuts jail term for ex-PM Han to 15 years in martial law case - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxPYjdfOWNlbVJKaHVEUTBoUzRTcWtuc045M29RUnpQOWtxY1A3TE01LVZnR1FBcXREWE1WLXJPeFhPSG40dDdLLTRxdTZPTUF1bkZubTZ3WHFCTVdVOHhfWUtoZkw5T2lrTENwVjFOTFBxNVlNb20yVTRHdFZaOW40SkZNQm1XS043T3U4cXNHbV9tR0N4S2szTjlDVTU3Qm1mQnQ2Z1FvNW11U0JWWkNjOTBRWXpidzFTcXJiYmFtTHY0LWJRRGc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump met with Chevron and ExxonMobil on Tuesday to discuss Venezuela - Reuters</div>
+            <div class="title">Trump administration can keep 2020 election ballots seized from Georgia, judge rules - Reuters</div>
             <div class="meta">2026-05-06</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Trump met with Chevron and ExxonMobil on Tuesday to discuss Venezuela - Reuters</h2>
+            <h2>Trump administration can keep 2020 election ballots seized from Georgia, judge rules - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPbzhxMWtoLVd4OUdBUG5tLXpsbGJCMURXQVJjdDREbUF1akdWZFlsZG5YdWY2aUhpWlhuTS1KRTI2QzlBSjgxbE5LcVhaNXNLZHNTT0Rfdm82NkdtdnlYUHZlLUdWR2g0eWJObTQybjJsZmVJajNBZ3pPQzBTVnFuc2J2aVFFTGVBLVd0Qk9zaHN1TFBRNkk1MTIzTkNBeEN5d3pVaUtIQTdzSkIyNWZfNQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNS2txOTJqUG9jOTZFYTh6Z2ZWQXFGZFAyUHpPbGc0SHRxMFRUa2tXQnFpTFJoVWdhdUNzNzdWcU4yTnVjSncxUmFYNjBNWnRwQ0xrSmhfZ0Y4NGdnWnI3UWdYc0h4WF95YlVLeWVtcmN6bW5vM1ozcTc2eGJsUy1PR0hJaHFWQXlodE9VMlJnb3lVZVBlXzdhTFhVcHpIeXhOc0U4czVCaUduYWhmbnJaUk1TdUFsRkVx?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3735,25 +3833,11 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-73')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">A Mysterious 4000-Year-Old "Lost" Writing System Has Finally Been Decoded, in a Modern “Rosetta Stone” Breakthrough - The Debrief</div>
-            <div class="meta">2026-04-29</div>
-        </div>
-        
-        <div id="content-73" style="display:none;">
-            <h2>A Mysterious 4000-Year-Old "Lost" Writing System Has Finally Been Decoded, in a Modern “Rosetta Stone” Breakthrough - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-04-29</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOMVNJUkdRTjQxc2gxcEVvYU1iSWFqWmdBZmIzZW00VzdKQS0zb1laVDFkUlZVc1pSVE9ybERJOWx6LTdRcUNHSjcwc1pybERKSmFmVUlpV1NmTERhVmd1Ul9lZUJya29RekJLUHVZbjBZa2xCbmdnT0NyemI4YkpwdWhUMU9nX1lSMjdEU3hjVE5Ed1RkRENvNlRFNGJfNkxzUnNnYkhRQWxGMkxNb05vSENpX2dlWHV6XzUwYmZHMUVZUkQxb2pxaW9DbjFLZ1E?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-74')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">12,000-Year-Old Discovery at Karahan Tepe, “the World’s First Village,” Reveals an Ancient Key to Human Survival - The Debrief</div>
             <div class="meta">2026-04-28</div>
         </div>
         
-        <div id="content-74" style="display:none;">
+        <div id="content-73" style="display:none;">
             <h2>12,000-Year-Old Discovery at Karahan Tepe, “the World’s First Village,” Reveals an Ancient Key to Human Survival - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-04-28</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOMTJwWGpRUEtTc2JaWlUtWjNJdUFWVTlwT05aX1JmdzdCTG9NRjJpNU0zUDlmcGNNX2J3NE9HSDhHc1E2V1o5dDlkaG9idWkxR1hvVjdBUTdUT0t1dVdCVUpIZGhFRzA5NFl1V1NGcW9FVklSVW5oTTVXd3FmTmRoNF9IUkZKaFJ5SGtNVVQ2QVo1UHY2NGpCX3V0RWtlRzVoc3ZRWmFoVmdrb0JPeUpUOGY4RnJSWTdYdm55b05DNDF2QmQ0NFd6el9B?oc=5">Visit Original Website</a>
@@ -3761,13 +3845,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-75')">
+        <div class="card" onclick="openModal('content-74')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">A “Transdimensional" Anomalous Hall Effect Has Been Observed for the First Time—Here’s What That Could Mean - The Debrief</div>
             <div class="meta">2026-05-02</div>
         </div>
         
-        <div id="content-75" style="display:none;">
+        <div id="content-74" style="display:none;">
             <h2>A “Transdimensional" Anomalous Hall Effect Has Been Observed for the First Time—Here’s What That Could Mean - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-05-02</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPMktZb3dhUm9IUklWSlgtT2d5dVRWTXpxdlROR3pmY0RxT3lmdi1TUTE0eWVJdm41Uzc4aFhUNGVIVzhmcWltV3cySWJjNHJ1SzFjUHdwM1pueXI5eXc2QWwwSFBic0E4WC0tR0Mzcm84THRJM1ZXdXo4blVaTHZIOVV5OC02eEUyT3NlZzhWQXBkMHJEZlFoUXFHV3ZXZ2REckZKXzhwRzFFS1ltcnlfa1V0SnFGWGRzZzFhYUtfdldYRkpvZl9v?oc=5">Visit Original Website</a>
@@ -3775,13 +3859,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-76')">
+        <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Great Pyramid Construction Theory Reveals New Link to Mysterious “Void” Within Egypt’s Largest Ancient Megastructure - The Debrief</div>
             <div class="meta">2026-04-29</div>
         </div>
         
-        <div id="content-76" style="display:none;">
+        <div id="content-75" style="display:none;">
             <h2>Great Pyramid Construction Theory Reveals New Link to Mysterious “Void” Within Egypt’s Largest Ancient Megastructure - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-04-29</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxQSW9kNGxOejN1WTFIMTZSZS1HUVlJTWVzMnd5V01OOVRTRnd5S2F2d0xrdzBaTjZ5R2gtMlZnQVRMcG5PLXdiM0tQUW9LM1BfOEF0VnJVcFlGRG9vYV9ZZ3JnQUloLWxqM2lSa295cWExaFQ5dHV4MVdjNGRLWU5jRGh3bUYwWEVORFN1eUpneHY3bXd6QlliR3FHVWI1aUhOQnYxUkpONzA0RjhMU3pYNndWcTJuN3pjUzBwTWlySDJkaFpqekxhOEoyWGRfMnlydENZ?oc=5">Visit Original Website</a>
@@ -3789,16 +3873,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-77')">
+        <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Something Deep in the Ocean is Causing Global Sea Levels to Rise—Now Scientists Reveal What’s Driving the Anomaly - The Debrief</div>
             <div class="meta">2026-05-02</div>
         </div>
         
-        <div id="content-77" style="display:none;">
+        <div id="content-76" style="display:none;">
             <h2>Something Deep in the Ocean is Causing Global Sea Levels to Rise—Now Scientists Reveal What’s Driving the Anomaly - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-05-02</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOOHdJaURKd2cySm1yRHZMWHJQMWNXZHptYktvNjg2Vm13X2g1RW1VbWV5dFN0WHJtXzJnenpZTlpMcVRSa1g4Tlk0ZzlQZ0F6SlFLdzBiUnpwRXYzMEFrTVZheHNDeUpHQ0JuWWlOOUhkanhVRmRoV1VJdlQxRjB4cXpuMkx1YlB0UGdKN2w4d0praEp3eGNqYXNNUmNrSTlmOWdPTHNxR1hMWmRRVWg4VlM2eDFxdVRXaVltQTZ6ZzBMbG9Pc0x2dWtNVTF4dGtvMHc?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-77')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">Fusion Breakthrough? Magnetizing Plasmas with High-Powered Lasers Paves the Way Toward "Direct Drive" Fusion - The Debrief</div>
+            <div class="meta">2026-05-06</div>
+        </div>
+        
+        <div id="content-77" style="display:none;">
+            <h2>Fusion Breakthrough? Magnetizing Plasmas with High-Powered Lasers Paves the Way Toward "Direct Drive" Fusion - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-05-06</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTWRGWVgwZDV3TW1kcWZnVWh0bENFSjUySzBmQzVpckQ4QWI5TjlIZWtpaE43cTFHRnM2T1N2RUl1Q3c4cnpTU3l3eXZPWDlYYzYwTjJHN3RoTGszQk1oZzVtTGR5bWJORVVUYjhaRFdDM0tTeUNEV254elFrRzFUbFpRNS1KYld1MmpzREhDRUhGTUpRNXMtbDBHdVJjdkc0azlKRmMzVVJabkgxaXdfY1dyaFpKRnZjN2ExWC1KNHVwelpRNzdsaw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3833,28 +3931,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-80')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">xAI’s Fast, Cheap Data Center Build-Out Has Hidden Costs - The Information</div>
+            <div class="title">Anthropic Commits to Spending $200 Billion on Google’s Cloud and Chips - The Information</div>
             <div class="meta">2026-05-05</div>
         </div>
         
         <div id="content-80" style="display:none;">
-            <h2>xAI’s Fast, Cheap Data Center Build-Out Has Hidden Costs - The Information</h2>
+            <h2>Anthropic Commits to Spending $200 Billion on Google’s Cloud and Chips - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-05-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPTXoyRE9CMUN6dEN3a1gzejJpQmd6R09IX1FDb2ZGMDh6dmo2eGlyTjhLX292YkUzX2hmTEJjbENoVWFsWUhBRWtaT3F0Zm5xWEhKaHZIc0k4UlRJMm9YNXp6cVM2Uk1GWWNUaXA2VkNDVTViZkx5SXJkNWltNGltbGdCVlpRcWpBX1lkM1BGdw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNZHY1UzNic21qMnl6d1d3a0lOQjhlMmxSR0RzWnpRM05LRmE1YzNzSWxhaXBzNlFvd0d2VDVEN0lyZGljX3FyblJIa29XdWVDRE9fdVpmcDVkbGt0WW5Za0lRcFpfZm80Sjk0UlhWNE1UeFNTeWcyVW1MMm5yc1h6X21GeDNLaEtJSkdIbnc5VUV5TU9CYXR4WWFva3lyRkk?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-81')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Anthropic Commits to Spending $200 Billion on Google’s Cloud and Chips - The Information</div>
+            <div class="title">xAI’s Fast, Cheap Data Center Build-Out Has Hidden Costs - The Information</div>
             <div class="meta">2026-05-05</div>
         </div>
         
         <div id="content-81" style="display:none;">
-            <h2>Anthropic Commits to Spending $200 Billion on Google’s Cloud and Chips - The Information</h2>
+            <h2>xAI’s Fast, Cheap Data Center Build-Out Has Hidden Costs - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-05-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNZHY1UzNic21qMnl6d1d3a0lOQjhlMmxSR0RzWnpRM05LRmE1YzNzSWxhaXBzNlFvd0d2VDVEN0lyZGljX3FyblJIa29XdWVDRE9fdVpmcDVkbGt0WW5Za0lRcFpfZm80Sjk0UlhWNE1UeFNTeWcyVW1MMm5yc1h6X21GeDNLaEtJSkdIbnc5VUV5TU9CYXR4WWFva3lyRkk?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPTXoyRE9CMUN6dEN3a1gzejJpQmd6R09IX1FDb2ZGMDh6dmo2eGlyTjhLX292YkUzX2hmTEJjbENoVWFsWUhBRWtaT3F0Zm5xWEhKaHZIc0k4UlRJMm9YNXp6cVM2Uk1GWWNUaXA2VkNDVTViZkx5SXJkNWltNGltbGdCVlpRcWpBX1lkM1BGdw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
