@@ -1432,11 +1432,20 @@ I wonder what their mission will be and if they&#39;ll accept it.
 
 [I&#39;m guessing it will involve very clever prompting, wearing a mask - and lots of running.]
 
++1 FunnyI never have mod points when I need them
+
 poses a serious threat to global financial stability.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+Particularly as that stability has to do with central banks&#39; manipulation of money supplies and interest rates. AI will allow for financial hedging so as to protect investors from the effects.
 
-The best things in life go on sale sooner or later.</div>
+It will be interesting to see who gets rich after the bubble pops. Biggest Game of Financial Chicken Ever, Believe Me!
+
+Probably, in the grand scheme of things,
+One of the less
+devastating things
+Artificial Intelligence will do to this race of puny humans.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1472,11 +1481,33 @@ What keeps them for doing that with a traditional system? Even a traditional log
 
 A traditional login system throttles based on the endpoint (ie, the IP address or a specific browser cookie.)  I read your setup as a global throttle.  If that&#39;s not what you meant, then fine; I&#39;ll explain why throttling doesn&#39;t work: Attackers have armies of machines at their disposal as part of a botnet, and they can distribute their cracking attempts so it doesn&#39;t look like any one particular machine is trying too often.
 
-And if you lock an account after a certain number of incorrect guesses... we&#39;re bac
+And if you lock an account after a certain number of incorrect guesses... we&#39;re back to the DoS situation, where anyone who knows or can guess your login name (often your email address) can lock you out of your account.
+
+Yes, a password keeper is a vector for hacking.  But if your password keeper is locally stored on your computer, it&#39;s a very distributed target compared to getting a juicy list of encrypted passwords from a big web site.  Hackers are going to spend mountains more effort trying to hack LinkedIn than they are trying to sniff around my PC to try to find my encrypted passwords.
+
+Password keepers are also good for ensuring you don&#39;t use the same password on multiple web sites.  Because if you do, then someone figuring out your Pintrest password might also get hold of your online banking password, since they are the same.
 
 I&#39;m not understanding why the traditional approach doesn&#39;t need throttling. Keep in mind a DOS attack is usually considered a smaller &quot;sin&quot; than a breach(es). If you allow too many retries, then the second sin is more likely. I see no third option*, it&#39;s either a DOS freeze or lots of retries.
 
 If hackers find a design weakness in your company&#39;s preferred/required password-keeper, they can potentially hack them all. A company can allow multiple keeper brands, but then they either have to vet them all, or acce
+
+What I&#39;m saying is this: Throttling is ineffective if you base it on IP address (because attackers have nearly unlimited numbers of those) and is a DoS if you don&#39;t consider the IP address.
+
+While password keepers can be subject to attacks, because they let you use long and random passwords, an attacker obtaining the encrypted vault is probably not going to be able to decrypt many passwords, as opposed to not using a password keeper and using passwords you can memorize.  I think you are not really understan
+
+And if you lock an account after a certain number of incorrect guesses... we&#39;re back to the DoS situation, where anyone who knows or can guess your login name (often your email address) can lock you out of your account. No, because (in good setups) you lock out per IP address. The botnet machines locked themselves out, but they didn&#39;t lock me out.
+
+And if you lock an account after a certain number of incorrect guesses... we&#39;re back to the DoS situation, where anyone who knows or can guess your login name (often your email address) can lock you out of your account.
+
+No, because (in good setups) you lock out per IP address. The botnet machines locked themselves out, but they didn&#39;t lock me out.
+
+No, if you base it on IP address, then it&#39;s pointless to lock out attackers because they have more IP addresses than you can ever hope to lock out.  And consider your authentication system design, potentially having to keep track of tens of millions of locked IP addresses per user account...
+
+I have never encountered a system that took IP addresses or even networks into account when deciding whether or not to lock an account.  If an organization is aware that someone is trying to crack your account and they
+
+I read your setup as a global throttle.I didn&#39;t get that impression at all.  Personally, I think you jumped all over this guy for no reason.
+
+I didn&#39;t get that impression at all.  Personally, I think you jumped all over this guy for no reason.
 
 I get DOS&#39;d often.  I have an email address that is very a common name, and people when drunk THINK it&#39;s their email address and attempt to &quot;recover password&quot; too many times until my account is locked.  It happens about once a month, and is very annoying.
 
@@ -1497,6 +1528,30 @@ My rationale was that if we got hacked and the passwords were leaked, at least t
 
 The random ones are too hard to remember, most will copy and paste. Either that, the help-desk is swamped with resets.
 
+The password server should be in a special box that throttles requests.There is no passive defense that can save you without creating new problems. A slow server is a DDoS-able server. We already do things like rate limiting, but it can also be a problem. Therefore we use active threat detection and selective blocking.That way no hacker can run gajillion retries on a password without swiping the actual box.It&#39;s not wrong to want to put your authorization server on a link that&#39;s too dumb to hack it through, but what about local logins? We have good reasons to protect our password databases.Anyhoo the best kinds of passwords are phrases with subtle errors or small ra
+
+The password server should be in a special box that throttles requests.
+
+There is no passive defense that can save you without creating new problems. A slow server is a DDoS-able server. We already do things like rate limiting, but it can also be a problem. Therefore we use active threat detection and selective blocking.
+
+That way no hacker can run gajillion retries on a password without swiping the actual box.It&#39;s not wrong to want to put your authorization server on a link that&#39;s too dumb to hack it through, but what about local logins? We have good reasons to protect our password databases.Anyhoo the best kinds of passwords are phrases with subtle errors or small ra
+
+That way no hacker can run gajillion retries on a password without swiping the actual box.
+
+It&#39;s not wrong to want to put your authorization server on a link that&#39;s too dumb to hack it through, but what about local logins? We have good reasons to protect our password databases.
+
+Anyhoo the best kinds of passwords are phrases with subtle errors or small ra
+
+Anyhoo the best kinds of passwords are phrases with subtle errors or small random changes
+
+No, that is not true.  The best kinds of passwords are long sequences of characters derived from /dev/random.  Using a cryptographically-secure random number generator to make a password with as much entropy as possible, is provably better than anything else.
+
+I guarantee that nobody will crack something like  k$18aWIpbQuo(s!opM2eKCiotu,W?jvr  There are plenty of password-cracking tools that introduce &quot;subtle errors&quot;
+
+Actually, the opposite. High &quot;password quality&quot; requirements are reliably known to be counter-productive. The only way to reliably get better security is with 2FA or MFA.
+
+You should check new passwords against the &quot;Have I been Pawned&quot; hashes and the Kali password lists, but that is it. If it passes that, it is as good as it gets.
+
 Here&#39;s the real backing article from Kaspersky [kaspersky.com]. Shame that there is no mention that individual salts before hashing have been best practices for many, many years. They of course have a vested interest in scare tactics to sell their password manager product.
 
 That said multi factor auth, long pass phrases, and passkeys are definitely more secure and good advice. But something like Bitwarden might be a better choice.
@@ -1512,6 +1567,16 @@ The results in the table are calculated for the RTX 4090 GPU and the MD5 hashing
 Individual being the keyword on the salting. If there&#39;s no salt then there&#39;s no reason to hash with the card because all the passwords can just be looked up in a plain rainbow table. Using the same salt across all the passwords, then leads to the scenario the article is talking about where you can try salts with known passwords until you get a collision in the db then build a table by hashing every outcome.
 
 That would be the case of storing something like hashed value of globalsalt-thisisbobspassword and glo
+
+Ah, thanks.  Pretty sure the PHP 4 docs in 2004 recommended individual salting.  Save each salt alongside the hash.  A global salt is just a really odd combination of doing a little more but still being lazy.  They probably did it to make their study achievable.
+
+My friend in high school made a website and rolled his own hash function.  I was able to brute force every password in a reasonable amount of time with interpreted PHP code on a 667MHz Celeron.  It didn&#39;t help that he failed to sanitize inputs; the A
+
+Shame that there is no mention that individual salts before hashing have been best practices for many, many years. Salts by their nature are required to be used along side MD5 hashes. The salts exist only to prevent MD5 attacks from being pre-computed. In any kind of proper data breach where an entire database of password hashes are exposed, universally the salts are stolen as well. It doesn&#39;t do much against this kind of attack.
+
+Shame that there is no mention that individual salts before hashing have been best practices for many, many years.
+
+Salts by their nature are required to be used along side MD5 hashes. The salts exist only to prevent MD5 attacks from being pre-computed. In any kind of proper data breach where an entire database of password hashes are exposed, universally the salts are stolen as well. It doesn&#39;t do much against this kind of attack.
 
 Facial Recognition is a problem because one&#39;s face is always there and can be photographed for later break-ins to any secured device.  It stops opportunistic thieves, not a planned robbery.  Similarly, PassKeys are really passwords the user never touches:  This makes the phone the point of weakness, as there&#39;s no access when the phone is missing, and whoever has the phone has cont
 
@@ -1542,11 +1607,77 @@ Every corporation is demanding online customers use PassKeys or Facial Recogniti
 
 Every? Demanding?  While I don&#39;t necessarily disagree with the rest of your post, those two claims are wildly hyperbolic.  I haven&#39;t encountered any demands to use passkeys for any of my logins anywhere.  Yes, many sites offer them as on option, but that&#39;s it.  Just sayin&#39; ... settle down, no more coffee for you. :-)
 
+That is false. Both facial recognition and resulting passkeys are very much losable as they are tied to any given device. Just because your face is the same doesn&#39;t mean the resulting auth token is the same on another device (in fact it&#39;s not). Passkeys very much can be regenerated.
+
+Passkeys tied to devices are in fact safer than passwords as they prevent your account password credentials from being transmitted over the internet. Your device certifies you, the service you connect to certifies your device. If
+
+With MFA, it should not be a catastrophe if someone obtains your password. That&#39;s the point of it.MFA is - to a certain degree - compromised. 
+
+There are real-world exploits for - for instance M365 - that work like this: 
+A user gets a malicious, disposable link via e-mail.
+The user clicks the link.
+The link takes them to a carefully crafted web site, and asks for their username & password.
+The user has been partially phished.
+The web site initiates an logon call back to M365 in the background and harvests the two-digit code that the end-user needs.
+The web site displays the two-digit code.
+The user
+
+With MFA, it should not be a catastrophe if someone obtains your password. That&#39;s the point of it.
+
+MFA is - to a certain degree - compromised. 
+
+There are real-world exploits for - for instance M365 - that work like this: 
+A user gets a malicious, disposable link via e-mail.
+The user clicks the link.
+The link takes them to a carefully crafted web site, and asks for their username & password.
+The user has been partially phished.
+The web site initiates an logon call back to M365 in the background and harvests the two-digit code that the end-user needs.
+The web site displays the two-digit code.
+The user
+
+If the desktop/laptop/phone isn&#39;t registered in the client&#39;s MDMWe gotta have your cell phone number. Because security, you know.
+My favorite coffee shop has had a reward system for years based on entering your phone number. Any number would do. And it&#39;s only for cents off on your next order, so who really cares?
+Then they switched POS providers. Now, the phone number entry screen pukes if it&#39;s not a mobile number. I had been using my land line number for years. But nope. We can&#39;t pester you to download our app on a POTS line.
+
+If the desktop/laptop/phone isn&#39;t registered in the client&#39;s MDM
+
+We gotta have your cell phone number. Because security, you know.
+
+My favorite coffee shop has had a reward system for years based on entering your phone number. Any number would do. And it&#39;s only for cents off on your next order, so who really cares?
+
+Then they switched POS providers. Now, the phone number entry screen pukes if it&#39;s not a mobile number. I had been using my land line number for years. But nope. We can&#39;t pester you to download our app on a POTS line.
+
+If the desktop/laptop/phone isn&#39;t registered in the client&#39;s MDMWe gotta have your cell phone number. Because security, you know.As it happens, MDM doesn&#39;t (necessarily) need that.  AFAIK you can use a tablet or a phone with Wifi only.  And I mentioned MDM-managed desktops and laptops. 
+While yes, situations like your anecdote exist, MDM isn&#39;t some excuse for capturing employee data.
+
+If the desktop/laptop/phone isn&#39;t registered in the client&#39;s MDMWe gotta have your cell phone number. Because security, you know.
+
+If the desktop/laptop/phone isn&#39;t registered in the client&#39;s MDM
+
+We gotta have your cell phone number. Because security, you know.
+
+As it happens, MDM doesn&#39;t (necessarily) need that.  AFAIK you can use a tablet or a phone with Wifi only.  And I mentioned MDM-managed desktops and laptops. 
+While yes, situations like your anecdote exist, MDM isn&#39;t some excuse for capturing employee data.
+
 That seminal paper was published in 2004. Yes here we are, 22 years laterSome people were asleep at the wheel.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+There are a ton of people that stop learning when they are young and a ton of people that never learn why you do something and how to spot when that reason becomes invalid. Many &quot;coders&quot; have that problem.
 
-The best things in life go on sale sooner or later.</div>
+That&#39;s certainly stronger then the combination to my luggage.
+
+Using a proper password hashing algorithm mostly addresses this concern... and standard cryptographic hashes like MD-5, SHA-1, SHA-256, etc. are not appropriate.  They&#39;re designed to be as time and space-efficient as possible while still achieving their security goals.  Password hashing functions (more precisely, password-based key derivation functions) are designed specifically to be time and space-hungry, efficient enough that you can execute them in half-second or so for user authentication, but slow eno
+
+MFA on top of user/password is still helpful though. Obviously, if someone gets phished, that&#39;s difference. But phishing is social engineering and not actually defeating the encryption.
+
+I doubt we&#39;ll ever solve phishing unless we get rid of the human element but without the human element, what&#39;s the point?
+
+It&#39;s like saying my server that&#39;s turned off, buried in cement and guarded by dogs that shoot bees when they bark is some how a &quot;good&quot; system. It&#39;s secure, but it&#39;s really rather useless.
+
+Not &quot;helpful&quot;, but &quot;critical&quot;. Bad passwords can still be guessed with Argon2, it just takes a lot longer. For high security, 2FA is the only realistic option.
+
+These people are basically medieval by computer standards. The standard is Argon2. Use that or you are simply one thing: incompetent. Also, if you need high security, 2FA is the only thing that works, unless you have very atypical users with the really uncommon skill of being able to select and use secure passwords.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1588,6 +1719,24 @@ Family-owned businessesThese aren&#39;t privately owned businesses. They are cor
 
 These aren&#39;t privately owned businesses. They are corporations who officers have a responsibility to their shareholders. And I am not their shareholder nor an executive acting on their behalf. Nor am I naive enough to think that their shareholders will see it in their best interests to return a paycheck that they don&#39;t have to.
 
+They are corporations who officers have a responsibility to their shareholders.There is no legal duty of responsibility to your shareholders beyond a) not lying to them, and that&#39;s actually it. I was about to say: b) accepting shareholder voted decisions on the makeup of the board, but a quick google shows that is entirely advisory and it is very much possible to ignore your shareholders when they vote to fire the board of directors as well.There&#39;s literally countless examples in the world of companies simply ignoring shareholders. There&#39;s literally countless examples in the world of
+
+They are corporations who officers have a responsibility to their shareholders.
+
+There is no legal duty of responsibility to your shareholders beyond a) not lying to them, and that&#39;s actually it. I was about to say: b) accepting shareholder voted decisions on the makeup of the board, but a quick google shows that is entirely advisory and it is very much possible to ignore your shareholders when they vote to fire the board of directors as well.
+
+There&#39;s literally countless examples in the world of companies simply ignoring shareholders. There&#39;s literally countless examples in the world of
+
+There is no legal duty of responsibility to your shareholders beyond a) not lying to them, and that&#39;s actually it. I was about to say: b) accepting shareholder voted decisions on the makeup of the board, but a quick google shows that is entirely advisory and it is very much possible to ignore your shareholders when they vote to fire the board of directors as well.The duties, outside of the fraud and voting related, come from case law and not statute. That means the companies aren&#39;t strictly required to follow. However, companies usually prefer not to leave themselves open to a lawsuit, unless they feel the risk is worth it.
+
+There is no legal duty of responsibility to your shareholders beyond a) not lying to them, and that&#39;s actually it. I was about to say: b) accepting shareholder voted decisions on the makeup of the board, but a quick google shows that is entirely advisory and it is very much possible to ignore your shareholders when they vote to fire the board of directors as well.
+
+The duties, outside of the fraud and voting related, come from case law and not statute. That means the companies aren&#39;t strictly required to follow. However, companies usually prefer not to leave themselves open to a lawsuit, unless they feel the risk is worth it.
+
+Family-owned businesses traditionally don&#39;t prioritize &quot;extracting maximum value&quot;.
+
+You might have also heard the names like Carnegie, Rockefeller and Vanderbilt. They weren&#39;t called &quot;robber barons&quot; for nothing.
+
 Anyone expecting corporations to not try to make a profit and extract maximum value for their shareholders ignore that that&#39;s their fiduciary duty.&quot;this belief is utterly false. To quote the U.S. Supreme Court opinion in the recent Hobby Lobby case: &#39;Modern corporate law does not require for-profit corporations to pursue profit at the expense of everything else, and many do not.&#39;&quot;  https://www.nytimes.com/roomfo... [nytimes.com] &quot;We ... show that [the Shareholder Primacy Norm] is not a legal requirement, at least under the guise of shareholder value maximization. This is in contrast to the common assertion that managers are legally constrained from addressing corporat
 
 Anyone expecting corporations to not try to make a profit and extract maximum value for their shareholders ignore that that&#39;s their fiduciary duty.
@@ -1598,9 +1747,35 @@ https://www.nytimes.com/roomfo... [nytimes.com]
 
 &quot;We ... show that [the Shareholder Primacy Norm] is not a legal requirement, at least under the guise of shareholder value maximization. This is in contrast to the common assertion that managers are legally constrained from addressing corporat
 
+How was that a lie in any world other than your insanely poor reading comprehension?
+
+That must be why Europe has always had tariffs and trade barriers with the US.Yeah, tariffs and trade barriers codified in trading agreements and stable over the course of many years. Not at all the same as a knee jerk tariff applied by the Poop-tweeter in chief who picks a number based on the colour of his mood ring.The USA has also always had tariffs on Europe. If you don&#39;t understand why the situation before was different to the situation now, then I highly recommend getting your nurse to check if
+
+That must be why Europe has always had tariffs and trade barriers with the US.
+
+Yeah, tariffs and trade barriers codified in trading agreements and stable over the course of many years. Not at all the same as a knee jerk tariff applied by the Poop-tweeter in chief who picks a number based on the colour of his mood ring.
+
+The USA has also always had tariffs on Europe. If you don&#39;t understand why the situation before was different to the situation now, then I highly recommend getting your nurse to check if
+
 These were illegally applied tariffs. They have no grounds in sanity. There should be zero need to explain why itâ(TM)s s needed.
 
 Trump pushed these out to anyone out anywhere that dared challenge the omniscience of the current president and his current whims. Itâ(TM)s was never based in genuine unfairness
+
+Oh there was a formula, it was ChatGPT. The original plan had tariffs placed on an uninhabited island.
+
+https://www.bbc.com/news/artic... [bbc.com]
+
+https://www.theverge.com/news/... [theverge.com]
+
+I&#39;ve heard what&#39;s going on now compared to the free-for-all during all the covid cash giveaways. Everyone from street-level scammers to big business to churches scrambling to get a cut.
+
+All the detectives who work these cases were just fired from the FBI, by the way.
+
+That&#39;s ridiculous. Tariffs come with records (copious amounts) on both sides. The government knows exactly who paid them, and those people have a nice receipt from the relevant authority.
+
+There might be some squabbling over exactly which payments fall under the specific tariff regimes that were ruled illegal, and getting your current government to actually follow the law is dicey, but there&#39;s nothing that needs to be investigated.
+
+Everyone... Every, Single, Person... who played any part in ordering, planning, setting, implementing, or collecting them needs to be prosecuted and imprisoned.  Theft, fraud, official misconduct, services fraud, the Hobbs Act, wire fraud, malfeasance in office... whatever it takes to make those fuckers BURN!
 
 I guess they&#39;ll be ignoring this: Trump says he will &#39;remember&#39; companies that don&#39;t seek tariff refunds [reuters.com]
 
@@ -1682,6 +1857,8 @@ Trump convinced his MAGA followers that China and other Countries would be payin
 
 If only Trump had imported his wall from Mexico. :-)
 
+I wouldn&#39;t trust he could remember anything but the name of his daughter by now. He definitely doesn&#39;t reward anything other than crossing his palm. Though there is some merit to what you&#39;re saying, because he clearly considers all of our money to be his money now — therefore, asking for tariff refunds is asking him for some of his money.
+
 The process is such that the IEEPA refunds will proceed with the liquidation of the imports.
 
 Customs basically finally closes a file (liquidates) about 315d after the entry.  So if something was imported on July 1 2025, then May 12 2026 it would liquidate.Importers having filed their CAPE data (which was super easy, took me about 15 mins for more than 1200 entries), those entries will be flagged for the return of the IEEPA duties plus interest, which is a usual customs thing.
@@ -1690,9 +1867,23 @@ I mean, most everyone&#39;s mad at Trump over implementing these tariffs (and ri
 
 Knowing these companies have no plans to cut prices, it makes it sort of accurate f
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+I like your ideas on this matter but I&#39;m afraid that ship has sailed. Something incredible would have to happen to get the rich to some how want to grow the middle class again.
 
-The best things in life go on sale sooner or later.</div>
+Only thing I can come up with is something that ultimately destroys global trade and then we would have the arduous task of rebuilding our manufacturing industry to source things local. We use to do that before the globalist figured out they could export all those jobs to dirt poor countries and import the stuff back, thereby reducing
+
+Nobody was against the feds spending the money.
+
+It&#39;s already spent, so any &quot;refunds&quot; are going to come from the taxpayers. (Or from everybody, via &quot;printing&quot; money and the resultant inflation.)
+
+But okay, Dems will cheerlead transferring money from taxpayers to CEO&#39;s. Sounds good ...
+
+The people of the United States, represented by their duly elected representatives, illegally collected this money, and then spent it. Mostly on the military, to judge by the latest funding requests. So yeah, the perpetrators of the crime have to pay the restitution. It doesn&#39;t matter that you hired someone else to do the crime on your behalf.
+
+So we&#39;re back to blaming voters for everything. As if we really had a say in how things were going to run. It&#39;s not the monyed elite buying public perception with ads or the news media/entertainment industry&#39;s fault for manipulating us. No, it&#39;s the voters fault for being manipulated.
+
+The whole point of democracy is so we can blame the voters while the rich continue to control the government. Much as it&#39;s always been.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1757,6 +1948,10 @@ Not for ages.  Less than a week.  For many, that&#39;s not time enough to get th
 
 OTOH, it&#39;s a local vulnerability, so many systems aren&#39;t affected.  I&#39;ve got one that hasn&#39;t been hooked up to the internet in well over a month, and it won&#39;t be affected until the next time it&#39;s hooked up.  (I may do a reinstall before then.)
 
+OTOH, it&#39;s a local vulnerability, so many systems aren&#39;t affected.
+
+We keep acting like we&#39;re still in the world of bare metal and VM based servers. But so much of the world is running on containerized (kubernetes, docker, etc) and lambda compute nowdays, and thats where these sorts of bugs get dangerous. It takes one docker container running a shitty unpatched version of wordpress or some nodejs slop and you have your platform for bypassing the containers CG Group and pwning the kernel, granting access to po
+
 Also, why the fuck is it news that Microsoft is posting about it? TFS or TFA give absolutely no indication as to why.
 
 Also, why the fuck is it news that Microsoft is posting about it? TFS or TFA give absolutely no indication as to why.This is just a dupe, nothing more.Because M$ is THE EXPERT on vulnerabilities.
@@ -1779,11 +1974,19 @@ The article doesn&#39;t even link to the Microsoft article [microsoft.com], whic
 
 So the sub-text of this being Microsoft pointing out Linux vulns is pretty silly since Microsoft makes a lot of money off of people running Linux on their cloud and on their competitors&#39; kit. Outside of that, the rest of this has already been covered.
 
+So the sub-text of this being Microsoft pointing out Linux vulns is pretty silly since Microsoft makes a lot of money off of people running Linux on their cloud and on their competitors&#39; kit.It&#39;s not silly at all precisely FOR this reason. Microsoft not only ships Linux, but WSL distros are also affected (as of right now if you install Ubuntu from the Microsoft store you will be vulnerable). Also read the Microsoft article you linked. Microsoft is pointing this out because Defender has been updated to help scan for CopyFail exploitation toolkits as well as identify vulnerable systems in your enterprise environemnt.Why is it silly for Microsoft&#39;s Defender team to literally do the job you pay the
+
+So the sub-text of this being Microsoft pointing out Linux vulns is pretty silly since Microsoft makes a lot of money off of people running Linux on their cloud and on their competitors&#39; kit.
+
+It&#39;s not silly at all precisely FOR this reason. Microsoft not only ships Linux, but WSL distros are also affected (as of right now if you install Ubuntu from the Microsoft store you will be vulnerable). Also read the Microsoft article you linked. Microsoft is pointing this out because Defender has been updated to help scan for CopyFail exploitation toolkits as well as identify vulnerable systems in your enterprise environemnt.
+
+Why is it silly for Microsoft&#39;s Defender team to literally do the job you pay the
+
 https://dirtyfrag.io. Nearly the same vulnerability, different access vector.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+Anybody competent has already patched it or at least done the temporary fix.
 
-The best things in life go on sale sooner or later.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1809,9 +2012,7 @@ A couple years ago I was chatting with a guy that used to work at Fitbit - he wo
 
 So glad I switched from Fitbit to Garmin. Google has done everything possible to lose me as a customer.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-The best things in life go on sale sooner or later.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1828,6 +2029,10 @@ The best things in life go on sale sooner or later.</div>
             <div id="article-text">I guess that lawyer analysis of the GDPR is that linkedIn cannot both withhold the information behind a paywall and claim privacy issues for releasing it for free at the same time. I would agree with that.
 
 I remember interviewing at LinkedIn years ago, before GDPR, and they gave me a printout of my connections tree. That was kinda cool and I still have it somewhere in my home office. AFAIK they do not do this anymore as it could be legally challenged under GDPR and possibly the similar California laws.
+
+Honestly the only thing I find LinkedIn interesting , is watching people posting horrifically racist rants and then seeing their employment status flip to unemployed the next day. (Life tip: If you have an opinion you&#39;d be nervous about sharing in a crowded bar, dont go blasting it out on a social media environment your boss uses to speak to investors)
+
+Only reason I have LI is because I got access prior to public release back in 2003.  I got laid off and my manager recommended it.
 
 Who visited your profile on a web site is not YOUR data, but data of the operator of the web site.
 
@@ -1859,9 +2064,7 @@ Do the landlord record my Personally Identifiable Information? If so, I have the
 
 I can understand that LinkedIn wants to protect their business by not making the information directly available through a single click, but that does not invalidate my rights, nor does my rights invalidate LinkedIn&#39;s &quot;reasonable need&quot; to process my dat
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-The best things in life go on sale sooner or later.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2285,11 +2488,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Digital twin innovation cuts energy costs in water purification</div>
+            <div class="meta">2026-05-08</div>
+        </div>
+        
+        <div id="content-36" style="display:none;">
+            <h2>Digital twin innovation cuts energy costs in water purification</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-08</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-05-digital-twin-energy-purification.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Why digital devices and online accounts need spring cleaning</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-36" style="display:none;">
+        <div id="content-37" style="display:none;">
             <h2>Why digital devices and online accounts need spring cleaning</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-07</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-digital-devices-online-accounts.html">Visit Original Website</a>
@@ -2297,13 +2514,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Adaptive battery reduces energy costs and peak power demand in greenhouses</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Adaptive battery reduces energy costs and peak power demand in greenhouses</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-07</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-battery-energy-peak-power-demand.html">Visit Original Website</a>
@@ -2311,13 +2528,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">University students turn a classroom project into a published paper on strengthening aerospace composites</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>University students turn a classroom project into a published paper on strengthening aerospace composites</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-07</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-university-students-classroom-published-paper.html">Visit Original Website</a>
@@ -2325,13 +2542,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Sugarcane waste concrete cuts CO₂ by up to 30% while boosting strength</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Sugarcane waste concrete cuts CO₂ by up to 30% while boosting strength</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-07</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-sugarcane-concrete-boosting-strength.html">Visit Original Website</a>
@@ -2339,13 +2556,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Inspired by the brain, researchers build smarter and more efficient computer hardware</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Inspired by the brain, researchers build smarter and more efficient computer hardware</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-07</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-brain-smarter-efficient-hardware.html">Visit Original Website</a>
@@ -2353,27 +2570,125 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Focused helium ions create ferroelectric regions in aluminum nitride for lower-power chips</div>
+        <div class="card" onclick="openModal('content-42')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Mozilla boasts Mythos boosted Firefox bug cull</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-41" style="display:none;">
-            <h2>Focused helium ions create ferroelectric regions in aluminum nitride for lower-power chips</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-07</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-05-focused-helium-ions-ferroelectric-regions.html">Visit Original Website</a>
+        <div id="content-42" style="display:none;">
+            <h2>Mozilla boasts Mythos boosted Firefox bug cull</h2>
+            <p><strong>www.theregister.com - Articles | 2026-05-07</strong></p>
+            <a class="original-link" href="https://www.theregister.com/security/2026/05/08/mozilla-says-ai-helped-squash-423-firefox-security-bugs/5235438">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+Mozilla fixed 423 Firefox security bugs in April, a repair rate more than five times higher than the 76 fixes issued in March and almost 20 times higher than its 21.5 monthly average last year.
+
+The browser maker previously said Anthropic&#39;s ballyhooed Mythos Preview model found 271 of these in Firefox 150.
+
+Now, a trio of technical types has come forward to provide a bit more detail about what Mythos (and its less storied sibling Opus 4.6) actually found. But they also highlight something that may matter more than the model: the agentic harness – the middleware mediating between AI and the end user.
+
+Brian Grinstead, Firefox distinguished engineer, Christian Holler, Firefox tech lead, and Frederik Braun, head of the Firefox security team, observe that over the past few months, AI-generated security reports have gone from slop to rather more tasty.
+
+They attribute the transformation to better models and development of better ways of harnessing those models – steering them in a way that increases the ratio of signal to noise.
+
+But they also appear to be aware that there&#39;s some skepticism in the security community about Mythos. So they&#39;ve decided to publicize selected wins in an effort to encourage others to jump aboard the AI bug remediation train.
+
+&quot;Ordinarily we keep detailed bug reports private for several months after shipping fixes and issuing security advisories, largely as a precaution to protect any users who, for whatever reason, were slow to update to the latest version of Firefox,&quot; they said.
+
+&quot;Given the extraordinary level of interest in this topic and the urgency of action needed throughout the software ecosystem, we’ve made the calculated decision to unhide a small sample of the reports behind the fixes we recently shipped.&quot;
+
+The post links to a dozen Firefox bugs with varying degrees of severity. The list includes, for example, a 20-year-old heap use-after-free bug (high severity) that a web page could trigger using the XSLTProcessor DOM API without any user interaction.
+
+Many of these bugs are sandbox escapes, they note, which are difficult to find using techniques like fuzzing. AI analysis, they say, helps provide broader security coverage. And they add that it has helped validate prior browser hardening work designed to prevent prototype pollution attacks – audit logs showed AI models making unsuccessful exploitation attempts using this technique.
+
+Following Anthropic&#39;s announcement of Project Glasswing – a program for companies to gain early access to Mythos because it&#39;s touted as too dangerous for public release – security experts expressed skepticism.
+
+For example, Davi Ottenheimer, president of security consultancy flyingpenguin, wrote in an April 13 blog post, &quot;The supposedly huge Anthropic &#39;step change&#39; appears to be little more than a rounding error. The threat narrative so far appears to be ALL marketing and no real results. The Glasswing consortium is regulatory capture dressed up poorly as restraint.&quot;
+
+He subsequently ran a test in which he strapped Anthropic&#39;s lesser models Sonnet 4.6 and Haiku 4.5 into a harness called Wirken with an auditing skill called Lyrik. The result was eight findings in two minutes at a cost of about $0.75, Ottenheimer claims, noting that two of the eight matched bugs Mythos had identified.
+
+Other security folk have also reported that bug hunting and exploit development can be quite productive with off-the-shelf models like Opus 4.6, which among other virtues costs about 5x less than Mythos.
+
+In an email to The Register, Ottenheimer said, &quot;There&#39;s a fundamental philosophical failure in the Mozilla post. A reading and a measurement are not the same thing. I don&#39;t see a measurement, but they seem to want us to believe we&#39;re looking at one.
+
+&quot;When they give us the &#39;behind the scenes math&#39; it&#39;s circular, a trick. &#39;Mythos found 271 bugs&#39; is what Mythos found, not what other tools could not find against the same code. Why leave it as an assumption if it can be proven?&quot;
+
+Ottenheimer said Mozilla advocates that every project adopt a similar approach without proving the merits of that approach.
+
+&quot;It&#39;s like saying if you don&#39;t drink Coca-Cola, you can&#39;t run a mile under six minutes, because that&#39;s what a guy sponsored by Coca-Cola just did,&quot; he said. &quot;The bar moves on rhetoric, marketing, not proper evidence. That is the capture crew again.&quot;
+
+He notes that the merits of Mythos might be more convincing if Mozilla had reported they couldn&#39;t do this work without Mythos. And since they&#39;re not saying that, he suggests, it&#39;s worth asking why there&#39;s no transparent comparison of Mythos to other models.
+
+He points to Mozilla&#39;s admission that Opus 4.6 was already identifying &quot;an impressive amount of previously unknown vulnerabilities.&quot;
+
+&quot;Mozilla never quantifies what Opus 4.6 [did] before saying what Mythos added,&quot; he said. &quot;So 271 attributed to Mythos doesn&#39;t fit the analysis. And there&#39;s a deeper reveal when they say &#39;we dramatically improved our techniques for harnessing these models.&#39; The improvement may be entirely in the harness, not as much in the model. This maps to my own experience. A nail gun has advantages over the hammer, yet without being in the right hands the outputs are as bad or worse.&quot; ®
+
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Why no cloud storage architecture was designed for what agentic AI is about to demand
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+If you can&#39;t bother to keep GitHub running, why should we bother with you?
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Join us to learn how to architect a development environment where your builders and their agents can move fast and securely.
+
+When a developer installs an AI agent skill – granting it access to secured IT resources and data – they make a significant trust decision.
+
+Infrastructure teams are facing a perfect storm: extended hardware lead times, rising costs driven by AI demand, and accelerated platform timelines.
+
+Join Druva experts for a compelling deep dive into what it takes to build an identity-first recovery strategy in this new threat landscape.
+
+Join Druva experts for a compelling deep dive into what it takes to build an identity-first recovery strategy in this new threat landscape.
+
+They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
+
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
+Customers say services were down for at least 4 hours, while status page showed no issues
+
+The then-teen was told to break in and steal what the keyboard warriors couldn’t</div>
         </div>
         
-        <div class="card" onclick="openModal('content-42')">
+        <div class="card" onclick="openModal('content-43')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Dyna Software's AI assistant promises to massage your toughest ServiceNow configs</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>Dyna Software's AI assistant promises to massage your toughest ServiceNow configs</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-07</strong></p>
             <a class="original-link" href="https://www.theregister.com/devops/2026/05/07/dyna-softwares-ai-assistant-promises-to-massage-your-toughest-servicenow-configs/5235392">Visit Original Website</a>
@@ -2436,6 +2751,26 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
 The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
 
 Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
@@ -2446,36 +2781,16 @@ Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in fa
 
 Customers say services were down for at least 4 hours, while status page showed no issues
 
-The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-The then-teen was told to break in and steal what the keyboard warriors couldn’t
-
-Users report disappearing favorites, blank route planners, and cloud sync failures amid outage</div>
+The then-teen was told to break in and steal what the keyboard warriors couldn’t</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Fake IT workers rented laptops to Nork scammers, got prison time</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Fake IT workers rented laptops to Nork scammers, got prison time</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-07</strong></p>
             <a class="original-link" href="https://www.theregister.com/cyber-crime/2026/05/07/fake-it-workers-rented-laptops-to-nork-scammers-got-prison-time/5235342">Visit Original Website</a>
@@ -2526,6 +2841,26 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
 The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
 
 Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
@@ -2536,36 +2871,16 @@ Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in fa
 
 Customers say services were down for at least 4 hours, while status page showed no issues
 
-The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-The then-teen was told to break in and steal what the keyboard warriors couldn’t
-
-Users report disappearing favorites, blank route planners, and cloud sync failures amid outage</div>
+The then-teen was told to break in and steal what the keyboard warriors couldn’t</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Anthropic response to 1-click pwn: Shouldn't have clicked 'ok'</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Anthropic response to 1-click pwn: Shouldn't have clicked 'ok'</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-07</strong></p>
             <a class="original-link" href="https://www.theregister.com/security/2026/05/07/claude-code-trust-prompt-can-trigger-one-click-rce/5235319">Visit Original Website</a>
@@ -2628,6 +2943,26 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
 The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
 
 Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
@@ -2638,36 +2973,16 @@ Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in fa
 
 Customers say services were down for at least 4 hours, while status page showed no issues
 
-The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-The then-teen was told to break in and steal what the keyboard warriors couldn’t
-
-Users report disappearing favorites, blank route planners, and cloud sync failures amid outage</div>
+The then-teen was told to break in and steal what the keyboard warriors couldn’t</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">60% of MD5 password hashes are crackable in under an hour</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>60% of MD5 password hashes are crackable in under an hour</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-07</strong></p>
             <a class="original-link" href="https://www.theregister.com/security/2026/05/07/60-of-md5-password-hashes-are-crackable-in-under-an-hour/5234954">Visit Original Website</a>
@@ -2734,6 +3049,26 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
+
+The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
+
+Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
+
+Security biz Adversa AI argues users of AI tools need clearer warnings
+
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
+
 The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
 
 Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
@@ -2744,36 +3079,16 @@ Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in fa
 
 Customers say services were down for at least 4 hours, while status page showed no issues
 
-The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-The then-teen was told to break in and steal what the keyboard warriors couldn’t
-
-Users report disappearing favorites, blank route planners, and cloud sync failures amid outage</div>
+The then-teen was told to break in and steal what the keyboard warriors couldn’t</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">IBM Cloud evaporates as datacenter loses power</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>IBM Cloud evaporates as datacenter loses power</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-07</strong></p>
             <a class="original-link" href="https://www.theregister.com/off-prem/2026/05/07/ibm-cloud-evaporates-as-datacenter-loses-power/5234835">Visit Original Website</a>
@@ -2845,15 +3160,7 @@ Join Druva experts for a compelling deep dive into what it takes to build an ide
 
 They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
 
-The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
+Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
 
 The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
 
@@ -2862,100 +3169,16 @@ Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hostin
 Security biz Adversa AI argues users of AI tools need clearer warnings
 
 Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-The then-teen was told to break in and steal what the keyboard warriors couldn’t
-
-Users report disappearing favorites, blank route planners, and cloud sync failures amid outage</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">$250M crypto-robbing gang’s dirty work guy sentenced to 6.5 years behind bars</div>
-            <div class="meta">2026-05-07</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>$250M crypto-robbing gang’s dirty work guy sentenced to 6.5 years behind bars</h2>
-            <p><strong>www.theregister.com - Articles | 2026-05-07</strong></p>
-            <a class="original-link" href="https://www.theregister.com/cyber-crime/2026/05/07/250m-crypto-robbing-gangs-dirty-work-guy-sentenced-to-65-years-behind-bars/5234787">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The then-teen was told to break in and steal what the keyboard warriors couldn’t
-
-A 20-year-old described as a cybercriminal organization’s &quot;last resort&quot; for cryptocurrency thefts will now serve a 78-month sentence for his role in a $250 million scheme.
-
-Marlon Ferro, of Santa Ana, California, was a member of what prosecutors called a social engineering enterprise (SEE) consisting of at least 12 other individuals, and was tasked with traveling across the US and physically stealing what other members couldn’t through online fraud.
-
-The gang all shared different responsibilities, but Ferro was the only one who carried out physical burglaries across the US when the methods of the crew’s remote cybercriminals failed to result in a financial reward.
-
-“Marlon Ferro served as the criminal enterprise’s instrument of last resort,” said US Attorney Jeanine Ferris Pirro. “When his co-conspirators couldn’t deceive victims into handing over access to their cryptocurrency or hack their way into digital accounts, they turned to Ferro to break into homes and steal hardware wallets outright.
-
-“This scheme blended sophisticated online fraud with old-fashioned burglary to drain victims of millions of dollars in digital assets. Today’s sentence sends a clear message: cryptocurrency fraud is not a victimless, consequence-free crime carried out safely behind a screen – it is serious criminal conduct that will lead to federal prison.”
-
-The FBI pinned Ferro to numerous specific thefts across the US between 2023-2025 when the SEE was operating. In total, the SEE was responsible for more than $250 million worth of cryptocurrency thefts during this period.
-
-The earliest tale of Ferro’s work came in February 2024, when he traveled to Winnsboro, Texas, and stole a hardware cryptocurrency wallet containing roughly 100 bitcoins, then valued at more than $5 million, before laundering it through online exchanges.
-
-He relocated to California later that year, the Justice Department stated. The move allowed him to connect with and integrate himself into the SEE’s inner circle, since some members were located in California, as well as others in Connecticut, New York, Florida, and overseas territories.
-
-Ferro began doing the SEE’s dirty, physical work. After another member identified a potential target, Ferro traveled to New Mexico and surveilled a residence for several days, and situated an iPhone in front of the property so members of the group could also watch remotely and alert Ferro if the owner returned.
-
-Despite several days’ worth of surveillance, Ferro seemingly failed to spot the home security system, which captured him breaking into the premises by throwing a brick through a window.
-
-Also on the 20-year-old’s rap sheet were details of his money laundering activities. Ferro used fraudulent ID documents belonging to a foreign national via “his KYC guy” to create a digital payment card account at what prosecutors described as “a geo-blocked platform.” Court documents named it as RedotPay, which secured some licenses to process transactions in the US and elsewhere earlier this year but it is still not allowed to offer products or services to US citizens.
-
-This payment card account allowed SEE members to spend their stolen cryptocurrency at retail stores and nightclubs, the DoJ said.
-
-Ferro alone spent more than $255,000 on designer clothing on behalf of SEE members, including multiple Hermès Birkin bags for one member’s girlfriend.
-
-He also gathered stolen cryptocurrency from group members after the SEE’s leader, Malone Lam, was arrested in September 2024, and used those funds to pay the leader’s lawyer.
-
-Ferro also regularly passed along messages from Lam to other group members while Lam was jailed.
-
-He was sentenced to 78 months in prison, with three years of supervised release, and ordered to repay $2.5 million in restitution.
-
-Each member, who according to court documents [PDF] found and built relationships with each other through online gaming platforms, brought a different specialty to the crew.
-
-Some took responsibility for voice phishing and “database hacking,” while others looked after money laundering, among varied tasks. At least two members were involved in more than one of these operations.
-
-The superseding indictment alleged that the SEE comprised three hackers who compromised websites and servers to gather cryptocurrency-related databases, as well as two “organizers” who also helped identify potential targets.
-
-Six members worked as “callers,” the individuals carrying out voice phishing attacks, attempting to convince targets they were helping to secure their accounts against cyberattack. Money launderers, of which the SEE had at least eight, including Ferro, worked to exchange stolen cryptocurrency and other goods into fiat currency through bulk cash or wire transfer.
-
-The launderers also helped procure luxury services for group members, such as exotic car purchases, private jet rentals, international vacations, or shipping the bulk cash across the US, the Justice Department alleged. ®
 
 Yet it remains unclear if Anthropic&#39;s uber model was effective, or if better model middleware is what makes the difference
 
 The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
 
-Why no cloud storage architecture was designed for what agentic AI is about to demand
-
 Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-If you can&#39;t bother to keep GitHub running, why should we bother with you?
 
 Security biz Adversa AI argues users of AI tools need clearer warnings
 
-Join us to learn how to architect a development environment where your builders and their agents can move fast and securely.
-
-When a developer installs an AI agent skill – granting it access to secured IT resources and data – they make a significant trust decision.
-
-Infrastructure teams are facing a perfect storm: extended hardware lead times, rising costs driven by AI demand, and accelerated platform timelines.
-
-Join Druva experts for a compelling deep dive into what it takes to build an identity-first recovery strategy in this new threat landscape.
-
-Join Druva experts for a compelling deep dive into what it takes to build an identity-first recovery strategy in this new threat landscape.
-
-They’ll reveal how attackers use your profile as intel and show you how to make yourself harder to target
+Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
 
 The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
 
@@ -2967,27 +3190,7 @@ Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in fa
 
 Customers say services were down for at least 4 hours, while status page showed no issues
 
-The tool is meant to take the place of 80% of the work that requires ServiceNow dev teams
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-Matthew Isaac Knoot and Erick Ntekereze Prince will each do 18 months for hosting laptops used by North Korean IT workers to remotely infiltrate US companies
-
-Security biz Adversa AI argues users of AI tools need clearer warnings
-
-Happy World Password Day! Maybe it&#39;s finally time to kill this holiday in favor of World No-More-Passwords Day?
-
-Customers say services were down for at least 4 hours, while status page showed no issues
-
-The then-teen was told to break in and steal what the keyboard warriors couldn’t
-
-Users report disappearing favorites, blank route planners, and cloud sync failures amid outage</div>
+The then-teen was told to break in and steal what the keyboard warriors couldn’t</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
@@ -3009,9 +3212,13 @@ The Instructure-owned learning management platform, Canvas, is down after recent
 
 ShinyHunters has breached Instructure (again). Instead of contacting us to resolve it they ignored us and did some “security patches.” If any of the schools in the affected list are interested in preventing the release of their data, please consult with a cyber advisory firm and contact us privately at TOX to negotiate a settlement. You have till the end of the day by 12 May 2026 before everything is leaked.
 
-The message included a link to a list of schools ShinyHunter claims to have breached through Canvas. The platform’s status page says Canvas, Canvas Beta, and Canvas Test are currently unavailable and that it is investigating the outage.
+The message included a link to a list of schools ShinyHunter claims to have breached through Canvas.
+
+“Instructure has placed Canvas, Canvas Beta and Canvas Test in maintenance mode,” according to Infrastructure’s status page. “We anticipate being up soon, and will provide updates as soon as possible.”
 
 Instructure said last week that it “deployed patches to enhance system security” following the breach. ShinyHunters — which has claimed responsibility for attacks on Ticketmaster, AT&T, Rockstar Games, ADT, and Vercel — said its data leak site contains 9,000 schools, including data belonging to 275 million students, teachers, and other staff, according to Bleeping Computer.
+
+Update, May 7th: Added Infrastructure’s maintenance mode message.
 
 A free daily digest of the news that matters most.</div>
         </div>
@@ -4000,11 +4207,53 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Iran accuses US of violating ceasefire with new attacks - Reuters</div>
+            <div class="title">Nvidia funds construction of Corning plants, in addition to equity investment - Reuters</div>
             <div class="meta">2026-05-07</div>
         </div>
         
         <div id="content-66" style="display:none;">
+            <h2>Nvidia funds construction of Corning plants, in addition to equity investment - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPTDhqbFp0ZEdzWENjN0NNZTdvY2N1ZUtodlJMTl95UzExcElSaG1qdWNXdy1mMFNZakl4ZEl1dzg4LTFfQnBPT2o4YWlFcG54Qk1QbVZuYS1CV2xZQWVIcDFUa0g5ZjgxYmVvRUU3Z3JCa0syTjZsb0hfVnFnUVdQN1hEalB1aHhsQkNPS3Roa1FLNklhX1lhNHJqRzZBT0dRVFZvUVptUDNjNklvTG5ZdjA3TXkyQQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Exclusive: SK Hynix flooded with unprecedented offers from big tech firms to secure chip supplies - Reuters</div>
+            <div class="meta">2026-05-07</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>Exclusive: SK Hynix flooded with unprecedented offers from big tech firms to secure chip supplies - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxONEgxRDBIV3dpV1BPcmFJUWQzNnlpYWROY0tWelp1UV9pR2p3eHRLR0Z2QnJlcEJsSTlXYTkxSXpfZDdCRklTOHhmbFBQeHBzUHI0WldaSjZyN2xJYmktMV9Da1htXzZzN292QTVVdWlGSEQ5TWgzRjJ5THp5a2toUFRFMEtSSERXRnI0SDVMTEdLNlkwdnJiZ0laMldtOEhwOFVzR1EwQXhKb0tQZnR3Zkl3M3g5SHZ3S0xCVFhMRFhlVTdCdUJaRkVHQ0RyZw?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">US military says it carries out retaliatory strikes against Iran - Reuters</div>
+            <div class="meta">2026-05-07</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>US military says it carries out retaliatory strikes against Iran - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPOE1uOURBaC03bzROOEdzRzdQOGFvc1hOanMxM2w2NS0wOFc2ei1Ga1JDMHBTd0QtVzh4ZGdXSE16TFhkM1lXTWRZXzZ3bDM1SFo3Y1JfXzRoV09fQmJZSUZmOHNpWVptcjBKanJxM21GUS1Ncjc2Qm1rOTFkTk9yck9XWWRfZVk2QWNrdHZNWGIxUEkwX29aMDZ5em5ZaHZfcWlTQ2tncGh5WXFRT2Q0NnhyOXJZU3dYOWc?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Iran accuses US of violating ceasefire with new attacks - Reuters</div>
+            <div class="meta">2026-05-07</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
             <h2>Iran accuses US of violating ceasefire with new attacks - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPRFFjYzMybXlET01QRW9uRjY5Z0tyQndJNXdvVHFoUWRmMHNJelJXdUZVV3pKRzlZd0RnRmhGdlFPb1dZZmtvQTkxYWpNMHRfTi1hcXdsSDB3b2Q3dTkxQmVrNVd1TUVYTjVkajdnNTk5QlN5WFdESkdMUEJXNjNwY21aWEw1eG51aW5nenhsUFk2UGRSdVZwYTF2QWVVcnE1RGxlcks1c0dJQQ?oc=5">Visit Original Website</a>
@@ -4012,72 +4261,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US trade court rules against Trump's 10% global tariffs - Reuters</div>
+            <div class="title">US trade court rules Trump tariffs illegal, but issues narrow block - Reuters</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-67" style="display:none;">
-            <h2>US trade court rules against Trump's 10% global tariffs - Reuters</h2>
+        <div id="content-70" style="display:none;">
+            <h2>US trade court rules Trump tariffs illegal, but issues narrow block - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNWVVLLXRwc2ZYclkxUkZLVFJwVERMaF96WGpsOUdndDcyNXhXaEhvaU5WME9LT2xiWnJIbkRDX3hWSGpmbllUX2txRjRLWG8wWVg2Z090R2R6dk1PVUUtWmRoaGk2c3NLX0JxLUJNWDV2a2hVZUtqQUlaOUNybmFYMXl3RDhNX0VZcm1OVGhJZ0tSdEpVU3FoTk13?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Explosion hits Netherlands' largest political party's headquarters, police say - Reuters</div>
             <div class="meta">2026-05-07</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>Explosion hits Netherlands' largest political party's headquarters, police say - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxOVFlTWE1OVE1UOHhYWjhqT0M0NGJQQ3l4ZUp4MzBzdkVIRVRmYzByOTVKbWg4MEFCb21hUFNJSzczcmhnWWF5angwYU5LZXRvZDdNSXlJU3c5U1ozelp5Y3NzSVNSLU81M1RIY3F6TjhfYVFuZ09Ga3NFbVpkLTJLYXFXN2tBdnIzMTlacEhxQjB2TG1zRk9SZ0RBZkFpaUVrdEZDSVZrMWExcVAyM1BRbk1LYUFnMm9T?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Cloudflare to cut 20% jobs, quarterly revenue forecast falls short - Reuters</div>
-            <div class="meta">2026-05-07</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>Cloudflare to cut 20% jobs, quarterly revenue forecast falls short - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNM1MtTV9MTElvcDhPQmQwdk5LVGM3emVQTVl2SVhNYmlOODZPdmpfSzJIQWQ3S2IwY3BzLXd6VXE3bTZ3aFltMTJMajRjR1NkWXQ1bUFvaVJIS2o1bmIwTEN0dFFYbUJkWlpIOVEzTDJTUW1URFpZZGw4SUlUeG9FUWlTQ0kwbHhhcy1UMnJ4dThwUQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US navy came under missile fire after US attack on Iranian oil tanker, Iran state media says - Reuters</div>
-            <div class="meta">2026-05-07</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>US navy came under missile fire after US attack on Iranian oil tanker, Iran state media says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxOcnplWTR4X2ZCYk1JNWVNTEkzbXM3WWlEX1BVWW1oREU4UjRCQXp0bU0zSzNZUF91SkZzeWFnQ2RTR0xVck1xTGlwX2JpX0JpVm9QOXVOWTRZdzRUMVZLTTlRUGFCaHBYaHZidUFNWVowc2VacjF6eUwwWTFBeF9tRXJidVQzQ1N3RFdqR2RIejhOcVpxXzNlQ0JOeGdoVkhEZERBMUN1aTRmWkdaN09sSkVKR1M5MGNXZUM0X0Y4TQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US military says it carries out retaliatory strikes against Iran - Reuters</div>
-            <div class="meta">2026-05-07</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>US military says it carries out retaliatory strikes against Iran - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-07</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPOE1uOURBaC03bzROOEdzRzdQOGFvc1hOanMxM2w2NS0wOFc2ei1Ga1JDMHBTd0QtVzh4ZGdXSE16TFhkM1lXTWRZXzZ3bDM1SFo3Y1JfXzRoV09fQmJZSUZmOHNpWVptcjBKanJxM21GUS1Ncjc2Qm1rOTFkTk9yck9XWWRfZVk2QWNrdHZNWGIxUEkwX29aMDZ5em5ZaHZfcWlTQ2tncGh5WXFRT2Q0NnhyOXJZU3dYOWc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
