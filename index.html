@@ -683,11 +683,67 @@ More on AI: Researchers Alarmed by AI That Can Self-Replicate Into Another Machi
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
-            <div class="title">Xreal, Google’s smartglasses partner, thinks it has finally mastered this notoriously tricky industry</div>
+            <div class="title">Everyone is navigating AI security in real time — even Google</div>
             <div class="meta">2026-05-24</div>
         </div>
         
         <div id="content-12" style="display:none;">
+            <h2>Everyone is navigating AI security in real time — even Google</h2>
+            <p><strong>TechCrunch | 2026-05-24</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/05/24/everyone-is-navigating-ai-security-in-real-time-even-google/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">I recently had the opportunity to sit down with Francis de Souza, COO of Google Cloud, backstage at an event in Los Angeles. Amid the din around us, de Souza, who speaks in the calm, measured manner of a university professor, offered useful advice for companies navigating the AI security moment we’re all living through, noting that “there’ll be a transition period, and then I think we get to this better place.”
+
+He wasn’t speaking about Google at that moment, but it’s clear that even Google is still figuring things out.
+
+De Souza’s core message was one security professionals have been trying to get executives to internalize for years, now made urgent by AI: security can’t be an afterthought. “As companies embark on this AI journey, they need to take a platform approach,” he said. “Security is not something you can bolt on later, and it’s not something you can leave up to employees to do on their own.” He warned specifically about “shadow AI” — employees reaching for consumer tools without organizational oversight — and argued that companies need to demand security, governance, and auditability from their platforms from the start. “There’s no such thing as an AI strategy without a data strategy and a security strategy. They need to go hand in hand.”
+
+Worth noting: he wasn’t pitching Google Cloud alone. When I observed that his advice sounded like a Google advertisement, he pushed back. Google, he said, is committed to a multicloud approach, and he made the case that companies that think they’re operating on a single cloud almost certainly aren’t. “Even if they pick a single cloud, they’re relying on SaaS applications, there are business partners that may be using different clouds,” he said. “It’s important for companies to have a security posture that is consistent across clouds, across models.”
+
+He also made the case that the threat landscape has changed so fundamentally that old defensive models are too slow. He noted that the average time between an initial breach and the handoff to the next stage of an attack has dropped from eight hours to 22 seconds, and that the attack surface has expanded well beyond the traditional network perimeter. “In addition to your usual estate, you have models now. You have data pipelines used to train the models. You have agents, you have prompts. All of this needs to be protected.”
+
+One threat de Souza flagged that doesn’t get enough attention: agents moving through a company’s internal systems can surface forgotten data repositories that nobody has thought about in years. “A lot of organizations have old SharePoint servers [and access controls] they haven’t really updated, but it didn’t matter because nobody really knew where they were. But agents roaming your enterprise will find those data assets and will expose the data on them.”
+
+The answer, in his view, is to meet machine speed with machine speed. “We’re now seeing the emergence of an AI-native, fully agentic defense where organizations can run agents driving their defense,” he said. “Instead of having a human-led defense or even a human in the loop, you can now have humans overseeing a fully agentic defense.” He added that this has become a leadership issue, not just a technology one. “This is a board-level issue and an executive team issue. It’s not just a security team’s issue.”
+
+But even as AI takes on more of the defensive workload, the people qualified to oversee it are in short supply — and the vulnerabilities that AI itself is introducing are multiplying faster than security teams can address them. “We’re going to need people to deal with the bug-pocalypse,” LinkedIn’s chief information security officer Lea Kissner told the New York Times this week, adding that she doesn’t expect the industry to understand AI security in any sustainable long-term way for at least several years.
+
+Which brings us back to the platform providers themselves. The Register has published a series of reports over the past several weeks documenting a wave of Google Cloud developers hit with five-figure bills following unauthorized API calls to Gemini models — services many of them had never used or intentionally enabled. The cases followed a familiar pattern: API keys originally deployed for Google Maps, placed publicly per Google’s own instructions, had quietly become capable of accessing Gemini after Google expanded their scope without clearly disclosing the change.
+
+Rod Danan, CEO of interview-prep platform Prentus, said his bill hit $10,138 in roughly 30 minutes after attackers exploited his compromised API key. Isuru Fonseka, a Sydney-based developer, woke up to charges of roughly AUD $17,000 despite believing he had a $250 spending cap in place. What neither knew was that Google’s automated systems had upgraded their billing tiers based on account history, raising their effective ceilings to as high as $100,000 without explicit consent.
+
+Google refunded both after The Register published its initial report. Still, Google told The Register it has no plans to change its automatic tier-upgrade policy, saying it prioritizes preventing service outages over enforcing users’ stated budget preferences.
+
+In the meantime, there is the separate question of what happens when a developer tries to shut things down. The Register reported this week on research by security firm Aikido finding that even developers who catch a compromised key and immediately delete it may not be safe. According to Aikido’s findings, attackers can apparently continue using that key for up to 23 minutes because Google’s revocation propagates gradually across its infrastructure. Aikido researcher Joseph Leon told The Register that during that window, success rates are unpredictable — in some minutes over 90% of requests still authenticated — and attackers can use the time to exfiltrate files and cached conversation data from Gemini.
+
+Leon also noted that Google’s own newer credential formats don’t appear to have the same problem: service account API credentials revoke in about five seconds, and Gemini’s newer AQ-prefixed key format takes about a minute. “Both run at Google scale,” he wrote in Aikido’s related paper. “Both suggest this is technically solvable for Google API keys, too.” In short, according to Leon, the 23-minute window isn’t an engineering constraint but a matter of priorities for the company.
+
+That’s worth considering when reading de Souza’s advice, which is sound and should be taken very seriously. He’s not wrong, but there is currently a gap between the platforms are prescribing and how fast they are themselves adapating, and it’s good to be aware of this, too.
+
+When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
+
+StrictlyVC Athens is up next. Hear unfiltered insights straight from Europe’s tech leaders and connect with the people shaping what’s ahead. Lock in your spot before it’s gone.
+
+You can no longer Google the word ‘disregard’
+
+Six search engines worth trying now that Google isn’t really Google anymore
+
+Jensen Huang says he’s found a ‘brand new’ $200B market for Nvidia
+
+Sam Altman makes ‘mic drop’ offer to every Y Combinator startup
+
+Intuit to lay off over 3,000 employees to refocus on AI
+
+Elon Musk has lost his lawsuit against Sam Altman and OpenAI</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Xreal, Google’s smartglasses partner, thinks it has finally mastered this notoriously tricky industry</div>
+            <div class="meta">2026-05-24</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
             <h2>Xreal, Google’s smartglasses partner, thinks it has finally mastered this notoriously tricky industry</h2>
             <p><strong>TechCrunch | 2026-05-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/05/24/xreal-googles-smartglasses-partner-thinks-it-has-finally-mastered-this-notoriously-tricky-industry/">Visit Original Website</a>
@@ -735,13 +791,13 @@ Intuit to lay off over 3,000 employees to refocus on AI
 Elon Musk has lost his lawsuit against Sam Altman and OpenAI</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">6 kitchen gadgets that make adulting feel easier</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>6 kitchen gadgets that make adulting feel easier</h2>
             <p><strong>TechCrunch | 2026-05-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/05/24/6-kitchen-gadgets-that-make-adulting-feel-easier/">Visit Original Website</a>
@@ -805,13 +861,13 @@ Intuit to lay off over 3,000 employees to refocus on AI
 Elon Musk has lost his lawsuit against Sam Altman and OpenAI</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">TechCrunch Mobility: Robotaxi reality check</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>TechCrunch Mobility: Robotaxi reality check</h2>
             <p><strong>TechCrunch | 2026-05-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/05/24/techcrunch-mobility-robotaxi-reality-check/">Visit Original Website</a>
@@ -897,13 +953,13 @@ Intuit to lay off over 3,000 employees to refocus on AI
 Elon Musk has lost his lawsuit against Sam Altman and OpenAI</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">I tried Amazon’s Bee wearable and am both intrigued and slightly creeped out</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>I tried Amazon’s Bee wearable and am both intrigued and slightly creeped out</h2>
             <p><strong>TechCrunch | 2026-05-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/05/24/i-tried-amazons-bee-wearable-and-am-both-intrigued-and-slightly-creeped-out/">Visit Original Website</a>
@@ -955,13 +1011,13 @@ Intuit to lay off over 3,000 employees to refocus on AI
 Elon Musk has lost his lawsuit against Sam Altman and OpenAI</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">The Dreamie alarm clock got me to stop using my phone in bed</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>The Dreamie alarm clock got me to stop using my phone in bed</h2>
             <p><strong>TechCrunch | 2026-05-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/05/24/the-dreamie-alarm-clock-got-me-to-stop-using-my-phone-in-bed/">Visit Original Website</a>
@@ -1005,58 +1061,6 @@ When you purchase through links in our articles, we may earn a small commission.
 Amanda Silberling is a senior writer at TechCrunch covering the intersection of technology and culture. She has also written for publications like Polygon, MTV, the Kenyon Review, NPR, and Business Insider. She is the co-host of Wow If True, a podcast about internet culture, with science fiction author Isabel J. Kim. Prior to joining TechCrunch, she worked as a grassroots organizer, museum educator, and film festival coordinator. She holds a B.A. in English from the University of Pennsylvania and served as a Princeton in Asia Fellow in Laos.
 
 You can contact or verify outreach from Amanda by emailing amanda@techcrunch.com or via encrypted message at @amanda.100 on Signal.
-
-StrictlyVC Athens is up next. Hear unfiltered insights straight from Europe’s tech leaders and connect with the people shaping what’s ahead. Lock in your spot before it’s gone.
-
-You can no longer Google the word ‘disregard’
-
-Six search engines worth trying now that Google isn’t really Google anymore
-
-Jensen Huang says he’s found a ‘brand new’ $200B market for Nvidia
-
-Sam Altman makes ‘mic drop’ offer to every Y Combinator startup
-
-Intuit to lay off over 3,000 employees to refocus on AI
-
-Elon Musk has lost his lawsuit against Sam Altman and OpenAI</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">SolarSquare in talks to raise up to $60M as India’s rooftop solar market draws major VC interest</div>
-            <div class="meta">2026-05-23</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>SolarSquare in talks to raise up to $60M as India’s rooftop solar market draws major VC interest</h2>
-            <p><strong>TechCrunch | 2026-05-23</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/05/23/solarsquare-in-talks-to-raise-up-to-60m-as-indias-rooftop-solar-market-draws-major-vc-interest/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">SolarSquare, an Indian rooftop solar startup that helps households and housing societies adopt solar power, is in advanced talks to raise fresh capital after securing India’s largest solar venture investment in December 2024, TechCrunch has learned.
-
-B Capital and Lightspeed Venture Partners are set to co-lead the Series C round, which could value SolarSquare at between $450 million and $500 million and bring in $55 million to $60 million in new investment, according to multiple people familiar with the matter. That would represent more than a doubling of SolarSquare’s valuation in roughly 18 months — a sign of how rapidly investor conviction is building around India’s residential solar market.
-
-Lightspeed Venture Partners previously led SolarSquare’s $40 million Series B round at around a $200 million post-money valuation in December 2024. This time, according to a source, it’s investing through its growth fund, which has backed names such as Razorpay — India’s leading digital payments platform — and Zepto, the fast-delivery startup.
-
-Existing investor Elevation Capital is also expected to participate in the deal, which is currently in advanced stages and is expected to close next month. The terms could still change as the financing has not yet been finalized. SolarSquare has raised $61.1 million in equity financing to date, per the startup data platform Tracxn.
-
-India has set a target of achieving 500 gigawatts of renewable energy capacity by 2030, with solar expected to contribute more than half of that total. The country became the world’s third-largest solar power producer in 2025, trailing only China and the U.S. Its cumulative installed solar capacity has surged from about 3 GW in 2014 to more than 150 GW in 2026, aided partly by government incentives and subsidy schemes aimed at accelerating rooftop solar adoption.
-
-Mumbai-headquartered SolarSquare, founded in 2015, is positioning itself as a full-stack residential solar platform in a market that remains highly fragmented, dominated by small local installers and dealer networks tied to component manufacturers such as Tata Power, Waaree Energies, Luminous Power Technologies, and Exide Industries. The startup designs, installs, and maintains rooftop solar systems for homes, housing societies (the apartment complexes and gated communities common across urban India), and enterprises, and has installed more than 150 megawatts of solar capacity with a presence across 29 cities in nine states, per its website.
-
-SolarSquare has powered nearly 50,000 homes and around 400 housing societies, according to a source. The startup has also deployed rooftop solar systems for large enterprises including Swiggy, Zepto, and iD Fresh Food.
-
-Residential customers and housing societies now account for a majority of SolarSquare’s business, according to people familiar with the startup’s operations, as the startup has increasingly scaled back lower-margin industrial rooftop solar projects in recent years.
-
-The startup has crossed an annualized revenue run rate of more than ₹10 billion (around $104 million) across homes and housing societies combined, according to a source familiar with the matter. It also aims to reach 200 megawatts in its residential solar portfolio this year, the source added.
-
-SolarSquare declined to comment. B Capital, Lightspeed Venture Partners, and Elevation Capital did not respond to requests for comment.
-
-When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
-
-Jagmeet covers startups, tech policy-related updates, and all other major tech-centric developments from India for TechCrunch. He previously worked as a principal correspondent at NDTV.
-
-You can contact or verify outreach from Jagmeet by emailing mail@journalistjagmeet.com.
 
 StrictlyVC Athens is up next. Hear unfiltered insights straight from Europe’s tech leaders and connect with the people shaping what’s ahead. Lock in your spot before it’s gone.
 
@@ -1391,11 +1395,61 @@ When you buy a book using a link in this newsletter, we receive a commission. Th
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Disney's 'Star Wars: The Mandalorian and Grogu' Opens to 'Mixed' Box Office Results</div>
+            <div class="title">Canonical Is Shutting Down Ubuntu Pastebin</div>
             <div class="meta">2026-05-24</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Canonical Is Shutting Down Ubuntu Pastebin</h2>
+            <p><strong>Slashdot | 2026-05-24</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/05/24/2042245/canonical-is-shutting-down-ubuntu-pastebin?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Canonical should pay the Internet Archive to keep a read only copy available.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;I go on working for the same reason a hen goes on laying eggs.&quot;
+- H. L. Mencken</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Mozilla Brings Web Serial Workflows to Firefox, Collaborates With Adafruit</div>
+            <div class="meta">2026-05-24</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
+            <h2>Mozilla Brings Web Serial Workflows to Firefox, Collaborates With Adafruit</h2>
+            <p><strong>Slashdot | 2026-05-24</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/05/24/209218/mozilla-brings-web-serial-workflows-to-firefox-collaborates-with-adafruit?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">I do love it when malware advert javascripts can upload random new firmware updates into my mouse and keyboard turning them into stealth keyloggers. This is great.
+
+This feels like when Flash sandbox breaks became a thing, but worse. At least in those days we got smooth fullscreen vector animations and games to enjoy. I&#39;d rather Flash had just been bloody fixed instead of browsers themselves becoming Shit Flash But Holy Cow It Runs Worse And Gets Worse.
+
+I do love it when malware advert javascripts can upload random new firmware updates into my mouse and keyboard turning them into stealth keyloggers. This is great.so you&#39;re using a serial mouse in 2026 to browse porn? that&#39;s so &quot;cool&quot;!!
+
+I do love it when malware advert javascripts can upload random new firmware updates into my mouse and keyboard turning them into stealth keyloggers. This is great.
+
+so you&#39;re using a serial mouse in 2026 to browse porn? that&#39;s so &quot;cool&quot;!!
+
+All keyboards are serial. In fact, almost every keyboard ever is a giant parallel to serial convertor.
+
+...a way to freeze Internet explorer was by inserting a < img src=lpt1: > tag in the html code.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+&quot;I go on working for the same reason a hen goes on laying eggs.&quot;
+- H. L. Mencken</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-26')">
+            <div class="source">Slashdot</div>
+            <div class="title">Disney's 'Star Wars: The Mandalorian and Grogu' Opens to 'Mixed' Box Office Results</div>
+            <div class="meta">2026-05-24</div>
+        </div>
+        
+        <div id="content-26" style="display:none;">
             <h2>Disney's 'Star Wars: The Mandalorian and Grogu' Opens to 'Mixed' Box Office Results</h2>
             <p><strong>Slashdot | 2026-05-24</strong></p>
             <a class="original-link" href="https://entertainment.slashdot.org/story/26/05/24/1841202/disneys-star-wars-the-mandalorian-and-grogu-opens-to-mixed-box-office-results?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1412,7 +1466,19 @@ I think they are expecting it to dry more on streaming, and just want the presti
 
 The ads I have seen say &quot;only in cinemas&quot;. Is that no the case?
 
+I have Disney+.  It is only in cinemas right now.  If it follows the pattern it will be streaming in 3 months or so.  But really Disney&#39;s marketing has been kind of crap.  I only randomly noticed this was going into theaters about a week ago.
+
+This same thing happened with Tron.  I am a Tron fan and wanted to see Tron Ares in theater but didn&#39;t even realize it was in theaters until it was out.  I was rather busy back at that time, but didn&#39;t recall seeing promotional ads for it anywhere.
+
 If all your information about current events comes via social media feed then that&#39;s your problem.
+
+If all your information about current events comes via social media feed then that&#39;s your problem.That&#39;s pretty much where all the eyeballs are these days, and anyone with the most minimal amount of respect for their sanity opts for ad-free tier of paid streaming services (or just gets their content from the high seas, which also doesn&#39;t have ads), so you&#39;re not getting movie trailers on TV unless you specifically go searching for them.Whichever studio is behind the upcoming He-Man film sure has been promoting the fuck out of that on Facebook.  It still looks absolutely awful, not that I&#39;m surprised - i
+
+If all your information about current events comes via social media feed then that&#39;s your problem.
+
+That&#39;s pretty much where all the eyeballs are these days, and anyone with the most minimal amount of respect for their sanity opts for ad-free tier of paid streaming services (or just gets their content from the high seas, which also doesn&#39;t have ads), so you&#39;re not getting movie trailers on TV unless you specifically go searching for them.
+
+Whichever studio is behind the upcoming He-Man film sure has been promoting the fuck out of that on Facebook.  It still looks absolutely awful, not that I&#39;m surprised - i
 
 I literally did not even know about this movie until last week. It has hard very little media coverage, no one talking about it on any major social media platform (which means that they have not been paying people to talk about it)
 
@@ -1425,6 +1491,12 @@ Disney&#39;s gotta nail the sweet, sweet merchandising.
 
 Disney&#39;s gotta nail the sweet, sweet merchandising.
 
+> Disney&#39;s gotta nail the sweet, sweet merchandising.
+
+Problem is that kids aren&#39;t generally buying Star Wars toys anymore, adults are, and they are increasingly detached from the new parts of the franchise.
+
+Disney&#39;s studios produce content that gets people to visit their theme parks.  The theme parks are still packed, at least from what I&#39;ve seen.  So, mission accomplished.
+
 &quot;How many nails can we realistically drive into Star Wars&#39;s coffin before it&#39;s time to give up hope of resuscitation?&quot; writes Clarisse Loughrey for The Independent, ...
 Never give up! Never surrender! Oh wait, wrong franchise. :-)
 
@@ -1435,19 +1507,30 @@ Maybe he&#39;d be happy with New Hope? Oh wait, we had that.  Hope Classic?  No,
 Never give up! Never surrender! Oh wait, wrong franchise. :-)
 
 Maybe he&#39;d be happy with New Hope? Oh wait, we had that.  Hope Classic?  No, new hope is now so old it&#39;s actually the classic.  Maybe Classic New Hope and New New Hope - Newer Hope?  Anyway, I&#39;m sure Disney marketing will figure out a permutation and a great tie-in with Coca-Cola sponsorship...
+
+A decade ago I thought Disney was going to monopolize popular culture by buying up all the major franchises like collecting the infinity stones.But now all they seem to produce is the narrative equivalent of pink slime that just gives everyone fatigue.
+
+But now all they seem to produce is the narrative equivalent of pink slime that just gives everyone fatigue.You pretty much have to produce content that follows an established formula or audiences won&#39;t like it.  One of my favorite examples of this was the Little Shop of Horrors film from the 80s.  It was based on a stage musical (which itself was loosely based on a 1960s B-movie).  The original ending from the play has the main character killed and the alien plants taking over the world.  Test audiences hated it.  A new ending was re-shot and what was supposed to be a tragedy became a heroic redemption arc story
+
+But now all they seem to produce is the narrative equivalent of pink slime that just gives everyone fatigue.
+
+You pretty much have to produce content that follows an established formula or audiences won&#39;t like it.  One of my favorite examples of this was the Little Shop of Horrors film from the 80s.  It was based on a stage musical (which itself was loosely based on a 1960s B-movie).  The original ending from the play has the main character killed and the alien plants taking over the world.  Test audiences hated it.  A new ending was re-shot and what was supposed to be a tragedy became a heroic redemption arc story
+
+I am torn.  I&#39;m continually disappointed by the evolution of Wars, but I never expect anything Trek to be any good in the first place.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Remember the good old days, when CPU was singular?</div>
+&quot;I go on working for the same reason a hen goes on laying eggs.&quot;
+- H. L. Mencken</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Apple Preparing New 'Gen AI' Website Ahead of WWDC &mdash; and New AI Features?</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Apple Preparing New 'Gen AI' Website Ahead of WWDC &mdash; and New AI Features?</h2>
             <p><strong>Slashdot | 2026-05-24</strong></p>
             <a class="original-link" href="https://apple.slashdot.org/story/26/05/24/1737259/apple-preparing-new-gen-ai-website-ahead-of-wwdc-and-new-ai-features?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1456,18 +1539,23 @@ Remember the good old days, when CPU was singular?</div>
 
 Quietly focus on the things that work, that customers prefer, and pay the bills for Apple. Eventually fix the visionary products that the market is not embracing as expected, introducing to these new products the concepts he championed and the visionaries reject, and sitting back and watching these updated products go from unprofitable to profitable as a result.
 
+Laugh and say that we should use our Actual Intelligence.
+
+Since when did anyone have to register a subdomain?
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Remember the good old days, when CPU was singular?</div>
+&quot;I go on working for the same reason a hen goes on laying eggs.&quot;
+- H. L. Mencken</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Wind and Solar Generated More Power Than Gas Globally in April</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Wind and Solar Generated More Power Than Gas Globally in April</h2>
             <p><strong>Slashdot | 2026-05-24</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/05/24/0339201/wind-and-solar-generated-more-power-than-gas-globally-in-april?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1478,6 +1566,18 @@ Political leadership (or lack thereof) is not the only thing incentivizing wind 
 
 Ember (the quoted source) reports the US at 19% [ember-energy.org].  Effectively, the US is about 3 years behind the average given that wind and solar has been growing  in the US at about  1% a year for the past dozen years or so [eia.gov].   Although below average, the US is by no means out of the game.
 
+Although below average, the US is by no means out of the game.Although behind the EU, the US was never out of the game. 
+
+&quot;In 2023, China was the biggest carbon polluter in the world by far, having released 11.9 billion metric tons of carbon dioxide (GtCO). Although the U.S. was the second-biggest emitter, with 4.9 GtCO in 2023, its CO emissions have declined by 13 percent since 2010. By comparison, China’s CO emissions have increased by more than 38 percent in the same period. &quot;&quot;
+ https://www.statista.com/stati... [statista.com]
+
+Although below average, the US is by no means out of the game.
+
+Although behind the EU, the US was never out of the game. 
+
+&quot;In 2023, China was the biggest carbon polluter in the world by far, having released 11.9 billion metric tons of carbon dioxide (GtCO). Although the U.S. was the second-biggest emitter, with 4.9 GtCO in 2023, its CO emissions have declined by 13 percent since 2010. By comparison, China’s CO emissions have increased by more than 38 percent in the same period. &quot;&quot;
+ https://www.statista.com/stati... [statista.com]
+
 People realizing they need to reduce dependence on fossil fuels is probably the only good thing to come out of the Trump regime&#39;s Iran sh*t-show.
 
 People realizing they need to reduce dependence on fossil fuels is probably the only good thing to come out of the Trump regime&#39;s Iran sh*t-show.Sorry but this has nothing to do with Iran. The trend for wind and solar has been moving this way steady for years before anyone knew where on the map the Strait of Hormuz was. Sure it&#39;s not negative, but at best it cements something that that people were already doing.
@@ -1486,7 +1586,34 @@ People realizing they need to reduce dependence on fossil fuels is probably the 
 
 Sorry but this has nothing to do with Iran. The trend for wind and solar has been moving this way steady for years before anyone knew where on the map the Strait of Hormuz was. Sure it&#39;s not negative, but at best it cements something that that people were already doing.
 
+People realizing they need to reduce dependence on fossil fuels is probably the only good thing to come out of the Trump regime&#39;s Iran sh*t-show.There is something more important to learn. That we need to reduce fossil fuels prioritized by their pollution. Remove coal first, then oil, then natural gas, as the west generally does. It&#39;s something China desperately needs to learn.
+
+People realizing they need to reduce dependence on fossil fuels is probably the only good thing to come out of the Trump regime&#39;s Iran sh*t-show.
+
+There is something more important to learn. That we need to reduce fossil fuels prioritized by their pollution. Remove coal first, then oil, then natural gas, as the west generally does. It&#39;s something China desperately needs to learn.
+
+(Bing/CoPilot)&quot;In 2024, the United States consumed approximately 4.086 trillion kilowatt-hours (kWh) of electricity, with projections to rise to 4.165 trillion kWh in 2025.&quot;
+
+So... where ya gonna put all those solar panels and wind turbines?Where do they come from?  How much fossil fuels (NatGas, diesel, coal) are used to make the solar panels and wind turbines?You need square footage for all this, that square footage (at the start) is available, then cuts into land that&#39;s used for crops and grazing, and soon
+
+That is a lot of solar panels.  Using the sheer number of panels theoretically required as an excuse to not do solar is silly.  I have half a megawatt of solar on my land.  It&#39;s placed on a just a few of acres of marginal, otherwise-unused land.  Grass grows great still underneath them.  Gotta start somewhere.
+
+Most buildings should have solar of some kind on their roofs.  In some parts of the world, solar water heaters have been mandated on roofs for decades.  Data centers should have their roofs entirely co
+
 Here&#39;s the US solar growth numbers from the same report: https://ember-energy.org/lates... [ember-energy.org]
+
+Here&#39;s the US solar growth numbers from the same report: https://ember-energy.org/lates...  [ember-energy.org] 
+Not bad for what Trump has repeatedly called a &quot;scam&quot;.
+
+Ending the Green New Scam [whitehouse.gov] 
+Google: trump renewables scam [google.com]
+
+Here&#39;s the US solar growth numbers from the same report: https://ember-energy.org/lates...  [ember-energy.org]
+
+Not bad for what Trump has repeatedly called a &quot;scam&quot;.
+
+Ending the Green New Scam [whitehouse.gov] 
+Google: trump renewables scam [google.com]
 
 I really wish Scotland would seize his golf course and rename it the Trump/Epstein nature preserve.
 
@@ -1520,18 +1647,29 @@ Gasoline, and petroleum in general, is way too expensive to use to generate elec
 
 Unfortunately never. The handful of billionaires running the show know you can&#39; just stop buying gasoline or groceries. To quote George Carlin: It&#39;s a big club and you aint in it
 
+Unfortunately never. The handful of billionaires running the show know you can&#39; just stop buying gasoline or groceries. Nope. The billionaires will shift to solar and wind as soon as more money can be made from them. Big Oil became Big Energy in the 1970s and has been preparing for Peak Oil for decades. Peak Oil just keeps getting postponed as new reserves are discovered and keeps petroleum more profitable. 
+
+The billionaires don&#39;t give a shit about the fossil fuels vs renewables, they follow the profits.
+
+Unfortunately never. The handful of billionaires running the show know you can&#39; just stop buying gasoline or groceries.
+
+Nope. The billionaires will shift to solar and wind as soon as more money can be made from them. Big Oil became Big Energy in the 1970s and has been preparing for Peak Oil for decades. Peak Oil just keeps getting postponed as new reserves are discovered and keeps petroleum more profitable. 
+
+The billionaires don&#39;t give a shit about the fossil fuels vs renewables, they follow the profits.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Remember the good old days, when CPU was singular?</div>
+&quot;I go on working for the same reason a hen goes on laying eggs.&quot;
+- H. L. Mencken</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Scammers Are Abusing an Internal Microsoft Account to Send Spam Links</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Scammers Are Abusing an Internal Microsoft Account to Send Spam Links</h2>
             <p><strong>Slashdot | 2026-05-24</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/05/24/040224/scammers-are-abusing-an-internal-microsoft-account-to-send-spam-links?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1568,146 +1706,8 @@ If &quot;we&quot; are doing the latter, than &quot;we&quot; are being stupid. We
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Remember the good old days, when CPU was singular?</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-28')">
-            <div class="source">Slashdot</div>
-            <div class="title">Lenovo, Dell, and HP Financially Support Linux Vendor Firmware Service</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-28" style="display:none;">
-            <h2>Lenovo, Dell, and HP Financially Support Linux Vendor Firmware Service</h2>
-            <p><strong>Slashdot | 2026-05-24</strong></p>
-            <a class="original-link" href="https://linux.slashdot.org/story/26/05/24/0522202/lenovo-dell-and-hp-financially-support-linux-vendor-firmware-service?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Running fwupdmgr on my system, there&#39;s 9 different devices it detects.  There was no way I was, nor will I regularly, visit 9 different vendor websites checking to see if their latest firmware version is newer than the versions I have.  Further, those sites often get redesigned and old versions randomly disappear.  That&#39;s why people grab them from random 3rd party websites.  You can find those 3rd party sites when searching online using your product model.  You don&#39;t find the company&#39;s upgrade site.  Having
-
-I dont understand what&#39;s the problem they are fixing. Why would someone go to a 3rd party site for firmware files when the vendors have download sites? Or is this really about the vendors agreeing to provide linux compatible CAB files?
-This is mostly about the server manufacturers, and their commitment to supporting their Linux server customers (which may include some larger data centers), who are in various stages of insisting on fwupd/lvfs for firmware deployment rather than unique (and often Windows based) executable files for updates.  Helping to pay for the bill to maintain the lvfs repository allows those manufacturers to compete for the large sales to customers who now have a fwupd/lvfs requirement in the RFP.
-
-While some vendors
-
-I dont understand what&#39;s the problem they are fixing. Why would someone go to a 3rd party site for firmware files when the vendors have download sites? Or is this really about the vendors agreeing to provide linux compatible CAB files?
-
-This is mostly about the server manufacturers, and their commitment to supporting their Linux server customers (which may include some larger data centers), who are in various stages of insisting on fwupd/lvfs for firmware deployment rather than unique (and often Windows based) executable files for updates.  Helping to pay for the bill to maintain the lvfs repository allows those manufacturers to compete for the large sales to customers who now have a fwupd/lvfs requirement in the RFP.
-
-It&#39;s nice that Dell is financially supporting this, but - I wish they&#39;d support it for more machines. Last time I checked, it appeared Dell only supported this for a single model out of their entire line.
-
-I can easily see how this central firmware delivery service will become the target of a malicious actor at some point. Just a matter of time.
-
-Neither the article, nor its source, explain what this site is for, why anyone would go to it, why a website would cost so much... nor anything else.
-
-I rely solely on my distros to provide updates, including things like kernel firmware. Though I have no idea what the fuck kernel firmware is or does.
-
-Anyway, apparently Richard Hughes is now getting a big fat pay cheque.
-
->&quot;Neither the article, nor its source, explain what this site is for, why anyone would go to it, why a website would cost so much... nor anything else.&quot;
-
-Yeah, I don&#39;t understand why so much money would be needed for just a &quot;web site&quot;.  More must be going on.
-
->&quot;I rely solely on my distros to provide updates, including things like kernel firmware. Though I have no idea what the fuck kernel firmware is or does.&quot;
-
-The idea is primarily for certain non-open-source firmware, like the BIOS/UEFI, and closed firmw
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Remember the good old days, when CPU was singular?</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">More Videogames Developers Consider Unionization - Some Spurred By Changes to Remote Work Policies</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>More Videogames Developers Consider Unionization - Some Spurred By Changes to Remote Work Policies</h2>
-            <p><strong>Slashdot | 2026-05-24</strong></p>
-            <a class="original-link" href="https://games.slashdot.org/story/26/05/24/0158236/more-videogames-developers-consider-unionization---some-spurred-by-changes-to-remote-work-policies?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">It doesn&#39;t require a monopoly.  It just requires collective action.  If employees across different studios organize under the same union, a collective strike could be effective leverage.  But the asks of the union need to be less painful for the studios than it would be to have to hire and train hundreds of new workers.
-
-Obama broke his brain. Funny how it wasn&#39;t some other president doing the same shit. It&#39;s almost like there&#39;s something different about that guy to which he objects.
-
-game devs are basically fascists: you can see this with their propaganda, which demands kids become gay and have no kidsYes, you&#39;re right.  I became gay in the 1990&#39;s from playing Doom and Quake, and so now I have no kids.  Damn you, John Carmack!
-
-game devs are basically fascists: you can see this with their propaganda, which demands kids become gay and have no kids
-
-Yes, you&#39;re right.  I became gay in the 1990&#39;s from playing Doom and Quake, and so now I have no kids.  Damn you, John Carmack!
-
-Unions are the new National Socialists, basically, same as 1939. Note: National SOCIALISTS were socialist. And, don&#39;t bother trying to persuade me they were somehow right wing.The National Socialists in 1930s-40s Germany called themselves &quot;socialists&quot; for branding purposes. They wanted to appeal to the working class. And it worked. But they were anything but socialists.North Korea calls itself the Democratic People&#39;s Republic of Korea. Does that mean it&#39;s a democratic country?
-
-Unions are the new National Socialists, basically, same as 1939. Note: National SOCIALISTS were socialist. And, don&#39;t bother trying to persuade me they were somehow right wing.
-
-The National Socialists in 1930s-40s Germany called themselves &quot;socialists&quot; for branding purposes. They wanted to appeal to the working class. And it worked. But they were anything but socialists.
-
-North Korea calls itself the Democratic People&#39;s Republic of Korea. Does that mean it&#39;s a democratic country?
-
-A demonstration of this is how I got my present position. It was known that I perform under pressure. It was known that I have top notch technical skills. It was known that I get along well with people. And that I do not intimidate easily. My current position is 100% remote (because I want it to be so; a few of us are 100% WFH, but a majority of the employees are not so).
-All of the things that you mention are known, and observed, about me. Even though I am 100% remote. Known and observed by my current coworkers, those who have left, and by our clients.
-So yes, I have less &quot;schmooze&quot; networking. But plenty of the kind that matters, even though I am &quot;just an avatar&quot; (and would I want to work with people who care about the kind of schmoozing th
-
-A demonstration of this is how I got my present position. It was known that I perform under pressure. It was known that I have top notch technical skills. It was known that I get along well with people. And that I do not intimidate easily.
-
-My current position is 100% remote (because I want it to be so; a few of us are 100% WFH, but a majority of the employees are not so).
-
-All of the things that you mention are known, and observed, about me. Even though I am 100% remote. Known and observed by my current coworkers, those who have left, and by our clients.
-
-So yes, I have less &quot;schmooze&quot; networking. But plenty of the kind that matters, even though I am &quot;just an avatar&quot; (and would I want to work with people who care about the kind of schmoozing th
-
-Not everyone lives to work.  If you&#39;re saving enough, the life improvements from working from home far outweigh the promotion and networking &#39;opportunities&#39;.
-
-If you were fully remote you could have moved to a lower cost of living area, closer to friends/family, or to a part of the country you preferred.  The savings from that can drastically reduce the amount of years before retirement or improve your social life with the people you actually care about.
-
-If your employees can&#39;t listen to their boss then they should be fired.  Being only an avatar shouldn&#39;t matter.  Everyone&#39;s supposed to be adults working towards a common goal.  Granted I know real life isn&#39;t always like that, but that&#39;s what you should be working towards.
-
-For most roles in the process, WFH should be very desirable to an employer, so long as the employee signs an appropriate contract indicating that they&#39;re obligated to come to the office should their home setup be inadequate for supporting WFH, including mandatory local installations of whatever communications and collaboration tool you decide to employ.
-
-Maybe you require them to attend a certain number of in-person meetings or team building exercises (but not 3/week, I&#39;m talking monthly or less).
-
-It saves on office space and related expenses.   Throw up a suitable server farm and have employees remote in - all the horsepower, storage, and data security of a data center, it&#39;s potentially more secure than a cubicle farm.
-
-Forcing RTO is just a way to fire people without having to admit you replaced them with a lower quality but much less expensive AI.
-
-Is really about the real estate. Vacant space is a liability. Sometimes useful as such, sometimes not. In most orgs right now, not that many folks are actually doing the work. CSR, some front end developers. Most of the rest are shuffling papers and having meetings and âoenetworking.â Occupancy and real estate development are largely investment games.
-
-Weâ(TM)ve known at least since the 1950s that industries like insurance (not the same as utilizing the economics of r
-
-I provide IT support to insurance brokerages - you may or not be surprised to find that since COVID, they&#39;re continuing to convert to WFO.
-
-Especially for the boutique shops, I doubt an RTO office can compete financially with one structured under a WFH model.
-
-I knew what I meant!We haven&#39;t even perfected the &quot;do what I say&quot; interface, and I don&#39;t think we&#39;ll have the &quot;do what I mean&quot; interface in our lifetimes.
-
-We haven&#39;t even perfected the &quot;do what I say&quot; interface, and I don&#39;t think we&#39;ll have the &quot;do what I mean&quot; interface in our lifetimes.
-
-I would be happy to be incorrect here, but I think this is doomed to fail in the near future.  Historically developers have been willing to put up with a lot rather grueling work standards for the prestige of working on a major video game.  While some of these measures, like &quot;crunch time&quot; have become high profile enough that pushback has reined in their use, there are still a lot more young developers that want to work in the industry than senior folks with the credentials to demand better treatment.  Combined with a lot of major studios eyeing AI for the non-creative work of game development and I don&#39;t see where the devs have a strong foundation to negotiate from.
-
-These are my thoughts as well.   With the advent of AI (for developers, for designers, for graphics artists), there&#39;s a strong chance that there could be a surplus of labor relative to demand, and they won&#39;t have much leverage.   In fact, since all of the production of a video game is necessarily digital, these jobs could just be pushed overseas.
-
-There&#39;s also a factor about competition:   There have been a number of games over the past few years (Valheim, Vampire Survivors, Megabonk) made by just a few devel
-
-Proven ability from a list of game credits goes a long way in the industry. The job is more to do with knowing how to get stuff done effectively, and dealing with collaboration issues, than about raw talent.
-
-you can&#39;t really offshore anything that you haven&#39;t already offshored because at some point you need people to make art that resonates with the locals.Well, it seems many western video game companies had no intention of &quot;resonating with the locals&quot;, but instead became openly hostile towards their former customers (like the Ubisoft CEO telling his now former customers to &quot;get used to not owning their games&quot;). Which resulted in some epic flops from the west (like &quot;Concord&quot; etc.), while some far east productions (like &quot;Black Myth Wukong&quot; or &quot;Crimson Desert&quot;) &quot;resonated with the locals&quot; enough to make them big successes. And that was not because those Asian c
-
-you can&#39;t really offshore anything that you haven&#39;t already offshored because at some point you need people to make art that resonates with the locals.
-
-Well, it seems many western video game companies had no intention of &quot;resonating with the locals&quot;, but instead became openly hostile towards their former customers (like the Ubisoft CEO telling his now former customers to &quot;get used to not owning their games&quot;). Which resulted in some epic flops from the west (like &quot;Concord&quot; etc.), while some far east productions (like &quot;Black Myth Wukong&quot; or &quot;Crimson Desert&quot;) &quot;resonated with the locals&quot; enough to make them big successes. And that was not because those Asian c
-
-... some plumbing work done, Mario will show up with two apprentices. And sit in their truck for a few hours on a negotiated mandatory break.
-
-If it includes salaries, that&#39;s where it&#39;ll trip up. The difference between mediocrity and excellence is so pronounced that it&#39;s almost impossible to agree. The best won&#39;t agree, and will move on if it is implemented in any of the usual tiered structures.
-
-You need to be able to pay for talent, and often that&#39;s antithetical to union philosophy.
-
-The corporation will abuse the hell out of you if you don&#39;t impose limitsBut the classic &quot;union&quot; is most likely a socialist scammer leader and his crones demanding money from you to &quot;protect your rights&quot;.However, we&#39;re in the future, we have chats, we have anonymous chats. you can very well create a leaderless, peerless, mostly anonymous movement that coordinate actions to improve the working conditions.It&#39;s the ol &quot;power corrupts&quot; thing.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Remember the good old days, when CPU was singular?</div>
+&quot;I go on working for the same reason a hen goes on laying eggs.&quot;
+- H. L. Mencken</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -3454,11 +3454,103 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">The Next Web</div>
-            <div class="title">The SEO conference circuit in 2026 is one long argument about what comes next</div>
+            <div class="title">McKinsey built a free AI tool so candidates stop paying $500/hour interview coaches</div>
             <div class="meta">2026-05-24</div>
         </div>
         
         <div id="content-60" style="display:none;">
+            <h2>McKinsey built a free AI tool so candidates stop paying $500/hour interview coaches</h2>
+            <p><strong>The Next Web | 2026-05-24</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/mckinsey-ai-interview-practice-tool-lilli-consulting">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">McKinsey launched a free AI practice tool for interview case studies. It also tests candidates on how they work with its AI assistant Lilli.
+
+McKinsey launched a free AI practice tool in April that gives candidates unlimited attempts at the quantitative case study they will face in their interview. The tool is available globally to applicants for entry-level business analyst and associate roles. The firm says it is designed to level the playing field for candidates who cannot afford expensive consulting coaches.
+
+The consulting interview coaching industry charges anywhere from $200 to $500 per hour. McKinsey’s free tool lets candidates practise the same quantitative scenarios they will encounter in the real interview, as many times as they want. Marie Christine Padberg, McKinsey’s global talent attraction co-leader, told Business Insider the tool also addresses nerves: “Doing quantitative things is one thing, but doing it while somebody’s watching you is something else.”
+
+The practice tool is one half of a broader AI integration into McKinsey’s hiring process. The other half is more consequential. Since January, the firm has been piloting the use of its internal AI assistant Lilli during final-round interviews for business school graduates.
+
+Candidates in the pilot are asked to use Lilli to analyse a case study and refine their conclusions. Interviewers evaluate how applicants prompt the system, assess its outputs, and apply them to a specific client scenario. The test measures curiosity and judgment, not prompt engineering.
+
+TNW City Coworking space - Where your best work happens
+
+A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+
+McKinsey is not testing whether candidates can avoid AI. It is testing whether they can work with it effectively. The distinction reflects how consulting work itself has changed. Consultants are now expected to move beyond analysis that clients can do internally and toward problem framing, judgment, and implementation.
+
+The scale of AI inside McKinsey makes the hiring shift logical. CEO Bob Sternfels said at CES in January that the firm now has approximately 25,000 AI agents supporting its 60,000 human employees. Eighteen months ago, that number was 3,000. More than 75% of McKinsey employees use Lilli monthly.
+
+McKinsey has also cut approximately 200 technology roles as AI automates non-client-facing operations. The firm shrank its overall workforce by more than 10% between 2023 and 2025. Entry-level roles have been most affected, precisely the positions the AI practice tool is designed to help candidates secure.
+
+The tension between AI creating and eliminating jobs is playing out across the hiring market. Forward deployed engineer postings are up 19x year on year. Claude Evangelists earn $240,000. Chief AI Officers command nearly $500,000. The jobs AI creates pay more and require different skills than the jobs it replaces.
+
+McKinsey’s approach codifies that shift into the interview itself. The firm is not asking candidates whether they can use AI. It is making AI fluency a condition of entry. CaseBasix, a consulting interview preparation firm, said BCG and Bain are likely to follow with similar AI interview components.
+
+The broader pattern is consistent. Detroit’s automakers are cutting white-collar staff while posting AI roles. Salesforce eliminated 4,000 support jobs after deploying AI agents. McKinsey is simultaneously reducing its workforce and redesigning its hiring process to select for people who can work alongside the technology that is making others redundant.
+
+The quantitative component is especially important, Padberg said, because “even in an AI-enabled workplace, consultants still need to understand how numbers connect and what they mean.” AI can generate analysis. It cannot yet determine whether the analysis is relevant to a specific client’s problem. That judgment gap is what McKinsey’s interview is now designed to test.
+
+The class of 2025 and 2026 graduates are entering a job market where AI fluency is no longer a bonus skill. At McKinsey, it is now part of the entrance exam. The free practice tool makes preparation accessible. The Lilli interview makes the standard clear: if you cannot collaborate with AI under pressure, you will not get the job.
+
+Get the most important tech news in your inbox each week.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">The Next Web</div>
+            <div class="title">The AI security gap nobody wants to admit is already here</div>
+            <div class="meta">2026-05-24</div>
+        </div>
+        
+        <div id="content-61" style="display:none;">
+            <h2>The AI security gap nobody wants to admit is already here</h2>
+            <p><strong>The Next Web | 2026-05-24</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/ai-security-gap-claude-code-leak">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">On March 31, 2026, Anthropic accidentally shipped the entire source code of Claude Code to the public npm registry. Around 512,000 lines of TypeScript across 1,906 files, including 44 hidden feature flags and references to an unreleased model codenamed Mythos, sat openly accessible on a Cloudflare storage bucket until a security researcher found it and posted the link on X. Within hours the codebase had been mirrored across GitHub, amassing thousands of stars before Anthropic could issue DMCA takedowns. Anthropic called it a packaging error caused by human error. That explanation is accurate and also somewhat beside the point.
+
+By exposing the blueprints of Claude Code, Anthropic handed a roadmap to anyone who wanted to design malicious repositories specifically tailored to trick Claude Code into running background commands or exfiltrating data before a user ever sees a trust prompt. The permission enforcement logic, the sandboxing architecture, the exact orchestration mechanics that govern how the agent validates what it is allowed to do: all of it now sits permanently in the wild across tens of thousands of forked repositories that no DMCA notice will fully reach. What the leak exposed about the state of AI security is more uncomfortable than the leak itself.
+
+The conventional framing around AI in cybersecurity treats it as a rough equilibrium, an arms race where offense and defense accelerate together. That framing does not hold up well against the specifics of what actually happened in March, or against what security teams describe working with day to day.
+
+The exposed hook and permission logic from the Claude Code leak makes silent device takeover more reliable for attackers who know where to look. Defenders, meanwhile, are integrating AI into existing security stacks and validating that it will not generate false positives before it becomes operationally useful. Those two timelines are not comparable.
+
+TNW City Coworking space - Where your best work happens
+
+A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+
+Tim Burke, who has run managed security operations for over 30 years at Quest Technology Management, puts the asymmetry plainly. “Attackers got the entire blueprint for how an agentic AI validates permissions and handles credentials without having to reverse-engineer any of it,” he says. “That means attackers are operating with AI that moves faster than most detection systems were designed to handle while security teams are still figuring out how to deploy AI tools without creating more work for already overwhelmed SOCs.”
+
+Google’s Threat Intelligence Group identified the first confirmed zero-day exploit developed entirely with AI assistance earlier this month and stopped a planned mass exploitation event before it could execute, which represents the optimistic version of this story. Most organizations defending against those same capabilities are not Google, and their detection infrastructure was not built for what is now possible.
+
+“Most organizations are still running detection infrastructure that was designed to catch human attackers who move methodically through networks over days or weeks,” Burke says. “AI compressed those timelines to hours and in some cases minutes, which means the window between intrusion and damage is now shorter than the time it takes most SOCs to investigate a single alert.”
+
+Underneath the speed problem is something more structural. Security platforms are built to detect behavioral anomalies, things that look like malicious activity based on what is happening rather than what is driving it. What they cannot tell you is whether an attack was initiated by a human or an AI agent operating autonomously. No platform currently surfaces that distinction.
+
+The vulnerability discovered in Claude Code after the leak illustrated this directly: a malicious file can instruct the AI to generate a command pipeline that looks exactly like a legitimate build process, triggering behavior that bypasses the permission system entirely without raising a flag that would appear in a conventional SIEM.
+
+“AI agents can be manipulated through tool descriptions and prompts in ways that bypass traditional access controls without ever triggering an authentication failure or raising an alert in your SIEM,” Burke says. “That means detection needs to start tracking what the agent understood it was doing and why it made that decision, rather than flagging policy violations after the fact.”
+
+The Claude Mythos references in the leaked files add a layer to this that has not received much attention. What was exposed was not just the current tool but the architectural direction of where agentic AI is heading, including enhanced reasoning capabilities and deeper native tool-use integration. Security teams are building defenses against what these systems can do today. The leaked roadmap describes something considerably more capable.
+
+“Right now the vast majority of platforms can’t make that distinction between AI and human origin,” Burke says, “and security teams are essentially defending blind against an entire category of threat they have no visibility into.”
+
+The Anthropic leak was a misconfigured debug file. The organizations now trying to figure out whether their security infrastructure can detect what an AI agent believed it was authorized to do are working on a problem that existed before March 31 and will exist long after the DMCA notices are processed.
+
+There is no clean ending to that problem yet.
+
+Get the most important tech news in your inbox each week.
+
+TNW newsroom and editorial staff were not involved in the creation of this content.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-62')">
+            <div class="source">The Next Web</div>
+            <div class="title">The SEO conference circuit in 2026 is one long argument about what comes next</div>
+            <div class="meta">2026-05-24</div>
+        </div>
+        
+        <div id="content-62" style="display:none;">
             <h2>The SEO conference circuit in 2026 is one long argument about what comes next</h2>
             <p><strong>The Next Web | 2026-05-24</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/seo-conferences-2026-mozcon-ahrefs-evolve-brightonseo-spotlight-smx">Visit Original Website</a>
@@ -3614,13 +3706,13 @@ What the calendar offers in 2026 is genuine variety across format, price point, 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">The Next Web</div>
             <div class="title">HP pushed a critical BIOS update through Windows Update. It bricked its most expensive laptops.</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>HP pushed a critical BIOS update through Windows Update. It bricked its most expensive laptops.</h2>
             <p><strong>The Next Web | 2026-05-24</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/hp-bios-update-bricking-premium-laptops-zbook-elitebook">Visit Original Website</a>
@@ -3650,13 +3742,13 @@ The core issue is the auto-installation of critical firmware through Windows Upd
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">The Next Web</div>
             <div class="title">The Gulf was supposed to power the AI boom. Then the war started.</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>The Gulf was supposed to power the AI boom. Then the war started.</h2>
             <p><strong>The Next Web | 2026-05-24</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/middle-east-war-gulf-ai-data-centres-energy-risk">Visit Original Website</a>
@@ -3696,13 +3788,13 @@ The global chip and memory shortage is already constraining AI infrastructure bu
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">The Next Web</div>
             <div class="title">The US blacklisted Anthropic as a security threat. Its spy agencies are using Claude anyway.</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>The US blacklisted Anthropic as a security threat. Its spy agencies are using Claude anyway.</h2>
             <p><strong>The Next Web | 2026-05-24</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/us-government-chip-shortage-anthropic-nsa-9-billion">Visit Original Website</a>
@@ -3736,346 +3828,6 @@ The situation illustrates a structural tension in US AI policy. The government w
 The $9 billion is designed to fix the hardware gap. The classified data centres, once built, would give the intelligence community the infrastructure to run whichever models it chooses without depending on any single provider. Until those facilities are operational, the NSA will continue using the AI company that the Pentagon says it should not trust. The chip shortage made that choice for them.
 
 Get the most important tech news in your inbox each week.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-64')">
-            <div class="source">The Next Web</div>
-            <div class="title">This Zurich startup built a four-armed robot for space stations. Each astronaut hour it saves is worth $140,000.</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-64" style="display:none;">
-            <h2>This Zurich startup built a four-armed robot for space stations. Each astronaut hour it saves is worth $140,000.</h2>
-            <p><strong>The Next Web | 2026-05-24</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/orbit-robotics-helios-four-armed-space-robot">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Zurich’s Orbit Robotics built a four-armed space robot called Helios. It targets the 35% of crew time spent on maintenance at $140K/hour.
-
-Orbit Robotics, a Zurich-based startup, has unveiled Helios, a four-armed robot designed to work inside space stations. In microgravity, legs are useless. Helios replaces them with two extra arms that serve as both mobility aids and working hands.
-
-The design logic is simple. Two arms anchor the robot to the station interior while the other two handle cargo, tools, or equipment. The four-arm configuration gives Helios the ability to stabilise and work simultaneously, something a two-armed humanoid robot cannot do in zero gravity.
-
-The arms are tendon-driven rather than motor-heavy at every joint. Motors sit near the shoulders and transfer force through cables and spools. This keeps the arms lighter while maintaining the range of motion needed for station work.
-
-TNW City Coworking space - Where your best work happens
-
-A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
-
-Helios also uses a rolling-contact elbow joint for smoother, more controlled movement. In microgravity, sudden or uneven motion can destabilise the robot and anything it is holding. The mundane-sounding joint design is one of the most important engineering decisions in the entire system.
-
-The economic case is compelling. Maintenance accounts for approximately 35% of crew time on the International Space Station. A single cargo unloading cycle can take nearly 50 hours. At roughly $140,000 per astronaut hour, routine logistics work in space is extraordinarily expensive.
-
-Unloading cargo, sorting supplies, tracking inventory, moving equipment, and performing basic maintenance are tasks that do not require human judgment. They require the ability to move through tight corridors, hold steady without gravity, and manipulate objects with precision. Helios is designed for exactly that.
-
-The broader robotics market is moving rapidly toward specialised form factors rather than general-purpose humanoid designs. 1X is shipping bipedal humanoids for home use. iRobot’s founder is building an AI companion robot with bear cub ears. Helios represents a third philosophy: build the body for the environment, not the other way around.
-
-Most humanoid robots, from Unitree’s G1 to Tesla’s Optimus, are shaped around Earth-based movement. They walk, balance, and navigate flat surfaces. None of that matters in orbit. Orbit Robotics started from the constraints of microgravity and designed backwards, arriving at a form factor that looks alien on Earth but is practical in space.
-
-SpaceX’s Starship programme is designed to dramatically increase the volume of cargo and personnel going to orbit. If launch costs fall as projected, the number of space stations and orbital habitats will grow. Each one will need maintenance, logistics, and cargo handling. The market for a robot that can do that work at a fraction of the cost of a human crew member grows with every successful Starship flight.
-
-Orbit Robotics has not disclosed pricing, production timelines, or funding. The company is based in Zurich, one of Europe’s strongest robotics engineering hubs alongside Munich and Delft. Whether Helios reaches orbit depends on securing partnerships with space agencies or commercial station operators like Axiom Space. The engineering argument, four arms for zero gravity at $140,000 per hour of human time saved, is difficult to dismiss.
-
-Get the most important tech news in your inbox each week.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-65')">
-            <div class="source">The Next Web</div>
-            <div class="title">The Apple Watch is 11 years old and losing momentum. Screenless rivals are winning the next phase.</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-65" style="display:none;">
-            <h2>The Apple Watch is 11 years old and losing momentum. Screenless rivals are winning the next phase.</h2>
-            <p><strong>The Next Web | 2026-05-24</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/apple-watch-losing-ground-whoop-oura-screenless-wearables">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Apple Watch innovation has stalled as Whoop, Oura, and Fitbit Air redefine wearables. Key health execs are leaving. Oura has filed for IPO.
-
-The Apple Watch generated an estimated $100 billion in lifetime sales and transformed the smartwatch market. Eleven years after launch, innovation has slowed and the lineup is losing momentum. Bloomberg’s Mark Gurman reports that Apple risks falling behind in the next phase of the industry it helped create.
-
-Consumer preferences are shifting away from screen-heavy devices. Whoop, Oura, and Google’s $100 Fitbit Air have built multibillion-dollar businesses around screenless bands and rings that emphasise recovery, sleep, and passive health monitoring. A growing number of consumers no longer want another screen competing for their attention.
-
-Apple’s Health app is part of the problem. Despite years of investment, it remains cluttered, clinical, and poor at producing actionable insights. Gurman writes that it “often feels less like a modern consumer platform and more like the experience of reviewing charts in a waiting room.” Competing apps from Whoop and Oura are “in a different league.”
-
-Apple’s Eddy Cue, who personally uses both Oura and Whoop, has pushed internally for broader changes to the health strategy. An ambitious AI health coaching service codenamed Mulberry was recently scaled back after Cue took over Apple’s health group. Gurman does not expect features from that project to launch until later in the iOS 27 update cycle.
-
-The leadership turbulence is significant. Former COO Jeff Williams, who long oversaw health initiatives, retired last year. Tim Cook is stepping down as CEO in September. Fitness+ leader Jay Blahnik is leaving following litigation tied to management conduct.
-
-Health and Apple Watch marketing chief Stan Ng recently retired. Another senior marketing manager, Eric Charles, departed this month. Apple has also steadily lost health and hardware talent to Oura. The brain drain is real.
-
-Incoming CEO John Ternus wants to keep health central to Apple’s future. He has promised new services combining hardware and AI. But the leadership turnover raises questions about the company’s urgency around health technology.
-
-This year’s watchOS 27 will focus on stability and smaller refinements rather than major new capabilities. Improvements to heart-rate tracking are coming. The update is incremental, not transformational.
-
-Apple is increasingly relying on promotions to drive Apple Watch sales. Amazon and Best Buy have offered unusually aggressive discounts. Apple added the watch to its education store with direct discounts for the first time. These are signals rarely seen with Apple hardware.
-
-The glucose monitoring project could be the breakthrough. First conceived during the Steve Jobs era, it aims to detect elevated blood sugar without finger pricks. Oversight recently shifted from platform architecture chief Tim Millet to Zongjian Chen, the engineering leader known internally as someone who delivers.
-
-The transition is viewed by some as a sign the work is finally progressing toward a consumer-grade offering. But Apple’s progress in health has been hindered by workplace turmoil, delays, caution, and incrementalism. The same institutional risk aversion that caused Apple to miss generative AI is showing up in wearables.
-
-Apple’s iOS 27 will include several AI features including natural language in the Shortcuts app, wallpaper creation via Image Playground, and a new grammar checker. The revamped Siri app with auto-deleting chats is the headline consumer AI feature. But none of these directly address the health and wearables gap.
-
-Oura, the Finnish smart ring maker, has filed confidentially for a US initial public offering. Gurman notes that Apple “probably should have acquired” Oura years ago. The company that Apple could have bought is now preparing to go public as a competitor.
-
-The wearables market is expanding in multiple directions simultaneously. Meta is selling seven million Ray-Ban smart glasses a year. Apple is testing smart glasses for 2027. Google is preparing Android XR glasses with Samsung. The competition is no longer just about the wrist.
-
-Apple also announced that iOS 27 will support AirPlay alternatives by default to meet EU Digital Markets Act requirements. Users will be able to set Google Cast or other services as their default streaming solution. The AirPods settings panel is getting a significant overhaul as well.
-
-Cook has said he wants Apple to be remembered for its contributions to healthcare. The company that built the most successful smartwatch in history now needs to decide whether it will also build the screenless, AI-powered health device that the market is moving toward. If it does not, Whoop, Oura, and Google already will have.
-
-Get the most important tech news in your inbox each week.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-66')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Protesters in Spain condemn police handling of Gaza flotilla activists - Reuters</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-66" style="display:none;">
-            <h2>Protesters in Spain condemn police handling of Gaza flotilla activists - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNdkdGYTVwaHdKSms2ZEttaHhDUkFhRFBRUzN0ME04SzV5OTd1LVZhQS14UmFPV09aVlVtVTR6MzVhNUJudUdPb0RaOThqSFVPRXhoREY5dkR0OWpacHFMeVZFbWpESzRfVUxUaFBnTC1Ud19FVUd6c3hSLVY5TW42VUt6bGszZy00RTc4TWpvZ3RSLUZpV0VGaC1Bd0tjWGFGT2N5dXYyU3hHTXNoeHV5cEo3cVNJd25NR3c?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Netanyahu told Trump Israel will remain free to act against threats, Israeli source says - Reuters</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-67" style="display:none;">
-            <h2>Netanyahu told Trump Israel will remain free to act against threats, Israeli source says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPWVhDbVFXYWRENzhZZ1piQTBOSnJpSzFENzJuT2Y3R0ROb3IxOVZqN0tHcTRCaVNDcXZVak10YUJGYWpfOFdoQ3E2UGlNZTVlWEV2dTRNT29iNF84RTFsaVlQQVRZLTlXSXhLYzg1WUF6Z0pFUHNLRWhPWHpzYVI3NE1LV19Kd0lmT2gyalBfZDVSN2xyNUU3MzU0YnhTRmJIVFQ5eTAyY0hiSWFxNURLVEFuTHVnYmpzXzNaTm40YkpaRVlhR0Nxb2RBWjBUdw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-68')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Possible deal on Iran divides US lawmakers largely along party lines - Reuters</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-68" style="display:none;">
-            <h2>Possible deal on Iran divides US lawmakers largely along party lines - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxNNU1ZY1RXSE9MNXdKM1NJQ0xLRlM1V3QycnFMRjVxWGZrd2ktVUNYTERGc3M0N2ZqcVhQUVNLMVFZY29GZUl6MVFrWXAwQ0dWa3FRS3FQQzNvTElvLVMwTnZpZmJiU0lwbVhvM203N0FIUS1FeXVwcFRYVXhCaXVQQlF5OWY3dGRJTEE1M21tOE5SSXRFOVBDcEZpVWFhLWVVRS1SaHNZSEFMWUtaVFNZ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Pakistani, Chinese companies sign $1.22 billion deals at conference - Reuters</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>Pakistani, Chinese companies sign $1.22 billion deals at conference - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxNSEFkUlp0VTNxckxITFlRdm1xTWl2c3hmeWQ0TmtLZWV5a2o0Wm0yQl9LeF9KQlNOMzZwc1hCWGRxM3Zlal8zUWRsdEpld1Raeng0Mlg3TVN6Nks1bW9VVjRYRzJiejRaZ1BUNHozQUdqRE50amQwbFlrM2JGamhOTFYzcTF6aklpX3JjQ1pzZW9lTE9aaE1HY3RDVDRrcUFlb2ZHcWViV1ppU2ZUU2tvN0U5WjY1Znc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US Treasury rout tests Washington's tolerance for higher borrowing costs - Reuters</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>US Treasury rout tests Washington's tolerance for higher borrowing costs - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxPbUlHRkl5U0tyN1c0dTU3Rmw5NlRIWTFDcWtSaXRCVkpSLWVsWjlRNmVyYl9OOG9jVFRQUU45UVpVNVU1VVdsVGV4SnozTlVDdjlVcktDRnFaakNrQ1d0REc2TkQzYXRxU0dIbWI5Nm1PcVhid1hxbjdodWhFa0dSQW9ZS2JJRTVYUF95RlA2QTZfeGxJSXYyY0E5Mk1rdTRtUE92WDR2SHNSeWVRUlV3RkdSOUZGZ0QyZm5pWQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Most Gulf markets surge on US-Iran peace deal expectations - Reuters</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>Most Gulf markets surge on US-Iran peace deal expectations - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-24</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQNFcxbVVJUzd4cnlvMmZTZnBTa1dVS3E5VTJROFdYYzNmOWFtZEVldUZJem40dWdpOGRoRWNHdEZVSHZqWHQzV2QteG9Rc1o0dTEzSlkxSElseFYwTWVkWmR6MU1jc0QyTkNNOHFsVGdGaFZENlc1SENNNWw2WHE0WjIxeW15UUM4bWFaRmVPX2RyMmQwU2U3UGppOUlscUhNUTcxdW9kc1VCQ1NtZFE?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-72')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">NASA Researchers Have Discovered Something Unexpected in These Haunting New Maps of Earth’s Artificial Light - The Debrief</div>
-            <div class="meta">2026-05-18</div>
-        </div>
-        
-        <div id="content-72" style="display:none;">
-            <h2>NASA Researchers Have Discovered Something Unexpected in These Haunting New Maps of Earth’s Artificial Light - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-05-18</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxNMF9JZGkwUzlHcUtod3NHLVljRDkteklxcnBMbFltbEdNVjluVi1CSHc2THQ1RWNCQzBFaVBYX21lTGE3VVNQd09QUDJrMEF2X0YtTzN3bUJ1TWU3UVdXMDdpSm1FYlJqc1ZOS3djdGtfX1N3MEs3Z1NsU184RDhhSFpLUFBLV3dXUGRRLS1EWmlLd29Wa2o5U1JJNXVvOUM5SV9ZNGZKUDYzQzg5b2lPakxyMlE0MDQ5YWl2bi15ckF5VVg4NVpYTk0zMA?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-73')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">CDC Officials Warn ER Visits Are Rising Due to Bites from This Parasite Linked to Dangerous Illness—Here’s What You Need to Know - The Debrief</div>
-            <div class="meta">2026-05-19</div>
-        </div>
-        
-        <div id="content-73" style="display:none;">
-            <h2>CDC Officials Warn ER Visits Are Rising Due to Bites from This Parasite Linked to Dangerous Illness—Here’s What You Need to Know - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-05-19</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxOb1ZYeDdPeXdXSGJIVGktdE56TFpEVjRZeDRVZm9Lc291R1ZmNEhrb0VFWjZpcU05b2QxR1BhZk9pWFpFbnJrNHdKMXdESklvS2pGUlVldUhRX1VBdF9JekR2ZXB0YTV0aVJ4NE5WdVpNWFdzNkhLUnc2WmFlQnBRQjdWbjBPT3JHbzJJUTBLbVdrMjRBN0NIczJva3FFR2UzN1VVYWVWSFhYOXBzSUxfYVdpSGktNUlucW5lc0N1MGF3UHJOZG85Uk5YMWpUWGI5QnlxSzdWT2QtYy1QTVZJWjZZSWZmUQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-74')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">These Ancient Canadian Fossils Could Rewrite the Timeline of Early Animal Evolution - The Debrief</div>
-            <div class="meta">2026-05-21</div>
-        </div>
-        
-        <div id="content-74" style="display:none;">
-            <h2>These Ancient Canadian Fossils Could Rewrite the Timeline of Early Animal Evolution - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-05-21</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQRnBRa2ppUmtGcWRQc0lJZ3c0c2daTWJzQXNUQnE5QllpLVJFMWp4SThyZmpHQ0MtLXI4ZHdDLUNGZXJwMXBkdTBTdjh5OFIzVUVGX0RkeE9QN0U4emM5cjgyaWs0ektlMUd3Z3B6OEpYUW4xMkpuM21nQzJ0bmZWTW54UVhiQTB0cGNYMzB4cWFpUVBWV25NRHFNaXpKTktxUXNQSG5iZy1MWUk?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-75')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">"Different Flows of Time All Exist at the Same Moment": Scientists Claim Trapped-Ion Atomic Clocks Can Observe “Quantum Superposition of Time” - The Debrief</div>
-            <div class="meta">2026-05-19</div>
-        </div>
-        
-        <div id="content-75" style="display:none;">
-            <h2>"Different Flows of Time All Exist at the Same Moment": Scientists Claim Trapped-Ion Atomic Clocks Can Observe “Quantum Superposition of Time” - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-05-19</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxQeDAtaEQyQW9lSUotSUxYMGVieEJQZXRUREEwY2NHWTRUeWNhR0oxaVBYRko2dS13Zkd0Rmc2ODFJeU1UNDc2S19aMk40NFJIcTVIUUg2bEZGUTBwck9ka1g0Z3Y1UVdrY3MtTlNJWW5EU0gwSFVfTGRVTWw4RHFIeVlCY3duTUZyaUZpaDhZNWZLVzM3VGRNSFVMV3VlSFdaVDBOV2gyZDY4MUVhVkpYdmxMeWthMzhUM3k4c0RuMkpjNEV2dmczN1FEWU84Ykl0ZWI1UHZCaWxsclNIaUxxMUtnUTJFMFhNWlZoUE5DX1FqYm8?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-76')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">James Webb Space Telescope Spots an Early Galaxy with an Odd Feature That's Defying Expectations - The Debrief</div>
-            <div class="meta">2026-05-19</div>
-        </div>
-        
-        <div id="content-76" style="display:none;">
-            <h2>James Webb Space Telescope Spots an Early Galaxy with an Odd Feature That's Defying Expectations - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-05-19</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNeUFjRUlXSkY0dk9tN0U5YUROOGtWWUZpY19pRlFGNVhDeEp0Q1JGSVM4elM3X19DUC1yUm4yOXJvNW13cHA5R0UyRWN1OTFEQ29XRWN2MmFCVm1lcWVLd0hmMl9pUWpfNFNKcTZ4ZTRGampjRWIwVGczY01DZnB3WGpHaHNjVmxuUVFoWWFRN0FiUzhEbkFWRHdvNDF4d29zMUlobVhpUm90a3NOQTlFU1JFZk5BQkc2OEN3?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-77')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Free Energy from the Vacuum? Warp Drive Pioneer Unveils Battery-Free ‘MicroSparc’ That Allegedly Draws Power from the Quantum Vacuum - The Debrief</div>
-            <div class="meta">2026-05-12</div>
-        </div>
-        
-        <div id="content-77" style="display:none;">
-            <h2>Free Energy from the Vacuum? Warp Drive Pioneer Unveils Battery-Free ‘MicroSparc’ That Allegedly Draws Power from the Quantum Vacuum - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-05-12</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi6AFBVV95cUxQQWdrV3U0a2s3VWlDdTg1MDRrZ2JqRl96bGltbzU5QVQzeHZVVFNfcm4xLTQ5NWc0cjhfMGpmMUZBeTN4WUYxTF9vUjRweV9XX05YMzRhNnFuRHZqNnVsSWRLQXlKclBNT0dOMUE5M1A3ZV8zeEV6MWh0bTYtSGEySmd4LTI0cldNRlc0ZzV2cmY3dEZBeFJkVlIzM0FrajVac1JBM1VYUXBfZUZkY0YtbnVZYUwtc0Q1MlpOcVhuaVBjNm1KLTNQRE5sb1E3YWh5a0NaZC1JdmY5Y09MZ0NOLTVYQ0JCQzhn?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-78')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Analog Devices in Talks to Buy AI Power Chip Startup for $1.5 Billion - The Information</div>
-            <div class="meta">2026-05-19</div>
-        </div>
-        
-        <div id="content-78" style="display:none;">
-            <h2>Analog Devices in Talks to Buy AI Power Chip Startup for $1.5 Billion - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-19</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPYzRPb3M0YzZDdXh0T09UWFl4MjN0YlZPcHlGbG50RDlXampyMGZ3YWtaWmV3ZTliQjhmemFQY1pockRsWmZQNzVQVFJZYktidVBmSjc2M1Q4aDBFYXFSd1lZZk9sc2hpUG1LRGpsMTMxUHJhOVc4VnZ5S0RJb1g4Y3V5MW9NRUhxdzMybVl5OVpNd0VWMkUzRFVXRWxNV0U?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-79')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Shein Buys Everlane - The Information</div>
-            <div class="meta">2026-05-14</div>
-        </div>
-        
-        <div id="content-79" style="display:none;">
-            <h2>Shein Buys Everlane - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-14</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMibEFVX3lxTE9RajdYSXo2THJpMUFaam1xdE9tWmxMeHlxY1N1dHZlc3o1ODJfM1habmVLbTBDRmxjU2tYa2dmUV9mZzFqMTNfSnQwUWN5anI2dGFIajlma2RDVXUyQV9iOVB6UXVmM1FCVm9kSg?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-80')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">OpenAI Generated Nearly $6 Billion in Revenue in First Quarter, Boosted by Codex - The Information</div>
-            <div class="meta">2026-05-21</div>
-        </div>
-        
-        <div id="content-80" style="display:none;">
-            <h2>OpenAI Generated Nearly $6 Billion in Revenue in First Quarter, Boosted by Codex - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-21</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNNGYxbmZUWWZxeHZrc1FOU3FOS3lyakxqNUd5N2hnRG1CTHphSXRVZzBxSTdiMFVRYzFsN3h0S3JqaGFnVFFMSEthX3Y0Z3FlWXlCNHlENDdWT1lDcEp1ZWFuUkNFd3FERkxPTUdiNEppSmFyOWFBNWZTM05lS2VQM0tHYmIxR2s3RU1oODFSQ1dKek90ZmZyQmdVbnNMcW8?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-81')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">OpenAI Prepares to File for IPO in Coming Weeks - The Information</div>
-            <div class="meta">2026-05-20</div>
-        </div>
-        
-        <div id="content-81" style="display:none;">
-            <h2>OpenAI Prepares to File for IPO in Coming Weeks - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-20</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNTm12dk9iZHZZYjN0eFZ1THh3UDZGSmlfcEo5UFduelFxRlc4N2k4NWtfbldicGhHVWhqamhEMENXMUtvQkJlYUdlZVJuUE5oYmJIVDYyS0l2NDNkd3hoM2R6cUhSdklUa0k4S0JHQXhfdkQ4bEFhN3hoaWJSRndGcDVfU2s?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-82')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">White House, Anthropic Near Deal For Spy Agencies to Use AI - The Information</div>
-            <div class="meta">2026-05-23</div>
-        </div>
-        
-        <div id="content-82" style="display:none;">
-            <h2>White House, Anthropic Near Deal For Spy Agencies to Use AI - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-23</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQczBOWmJCemVRLTZjb1lTWkRQTDFrbkZtdTZVWXktYnc2VWZSS1V3VXR5V0FxOXBhSHctbEZKd1pEajRPdnNrbi10ODR6c2RyS2wxTEtFaU1DWUVJeFJBMldtb2VzQ0wzdEc3NU9yYTFYeEpubHNMNmt4M3JzSWM2SEtVcXNMSDE3TkhnV3FDNk9WYmVHR2JF?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-83')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Chinese EV Battery Giant CATL Plans to Invest in DeepSeek - The Information</div>
-            <div class="meta">2026-05-22</div>
-        </div>
-        
-        <div id="content-83" style="display:none;">
-            <h2>Chinese EV Battery Giant CATL Plans to Invest in DeepSeek - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-22</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOYlMxaTF2c1dPNm9xdUNONTZKdVFJcWFKei1OV2F6UWx2Y3l6UGdNOTV2MldZeWpFNTdWd3NZNTcyUVg2a3VDb3RkYzhOSXNXcTVVN1pqNndRZTQ4UjlmSkV1NmpRRUctNmNsanJ1MnZEQ2NHT0RMWTdsQTd3VXR1R09PWlh1Rk9VbkgwNFBsZFJfQUxWNHc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         </div>
