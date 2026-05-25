@@ -193,7 +193,7 @@ We’re likely still several years away from useful error-corrected quantum comp
 
 At the same time, the deal all but guarantees we’ll be investing in companies that are certain to fail. In the past, that has often devolved into cheap political point-scoring.
 
-Longer term, it’s not entirely obvious how large Anderon’s target market will be. With a large number of startups, there will likely be a strong demand for these sorts of tips as companies test design variants and configurations. But even assuming the market settles on transmons, it’s not clear how large the annual need for these chips will be.
+Longer term, it’s not entirely obvious how large Anderon’s target market will be. With a large number of startups, there will likely be a strong demand for these sorts of chips as companies test design variants and configurations. But even assuming the market settles on transmons, it’s not clear how large the annual need for these chips will be.
 
 Transmons must be operated at milliKelvin temperatures, and large-scale, error-corrected quantum computers will likely require chaining together chips housed in multiple refrigerated containers. That will likely mean most of the hardware in use will sit in just a few data centers and be accessed online (as it is currently). Consequently, there’s a real potential for a boom-and-bust pattern in the market for these chips.</div>
         </div>
@@ -1118,15 +1118,19 @@ Google launches Antigravity 2.0 with an updated desktop app and CLI tool at IO 2
             <p><strong>TechCrunch | 2026-05-24</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/05/24/everyone-is-navigating-ai-security-in-real-time-even-google/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">I recently had the opportunity to sit down with Francis de Souza, COO of Google Cloud, backstage at an event in Los Angeles. Amid the din around us, de Souza, who speaks in the calm, measured manner of a university professor, offered useful advice for companies navigating the AI security moment we’re all living through, noting that “there’ll be a transition period, and then I think we get to this better place.”
+            <div id="article-text">Backstage at a recent event in Los Angeles, amid the din around us, Francis de Souza, the COO of Google Cloud, took a few minutes to talk about where enterprises stand on AI security, and what they need to do. Speaking in the calm, measured manner of a university professor, he said, “There’ll be a transition period, and then I think we get to this better place.”
 
-He wasn’t speaking about Google at that moment, but it’s clear that even Google is still figuring things out.
+As it turns out, Google is still working through that transition, too.
 
-De Souza’s core message was one security professionals have been trying to get executives to internalize for years, now made urgent by AI: security can’t be an afterthought. “As companies embark on this AI journey, they need to take a platform approach,” he said. “Security is not something you can bolt on later, and it’s not something you can leave up to employees to do on their own.” He warned specifically about “shadow AI” — employees reaching for consumer tools without organizational oversight — and argued that companies need to demand security, governance, and auditability from their platforms from the start. “There’s no such thing as an AI strategy without a data strategy and a security strategy. They need to go hand in hand.”
+De Souza’s core message was one security professionals have been trying to get executives to internalize for years, now made urgent by AI: security can’t be an afterthought. “As companies embark on this AI journey, they need to take a platform approach,” he said. “Security is not something you can bolt on later, and it’s not something you can leave up to employees to do on their own.”
+
+He warned specifically about “shadow AI” — employees reaching for consumer tools without organizational oversight — and argued that companies need to demand security, governance, and auditability from their platforms from the start. “There’s no such thing as an AI strategy without a data strategy and a security strategy. They need to go hand in hand.”
 
 Worth noting: he wasn’t pitching Google Cloud alone. When I observed that his advice sounded like a Google advertisement, he pushed back. Google, he said, is committed to a multicloud approach, and he made the case that companies that think they’re operating on a single cloud almost certainly aren’t. “Even if they pick a single cloud, they’re relying on SaaS applications, there are business partners that may be using different clouds,” he said. “It’s important for companies to have a security posture that is consistent across clouds, across models.”
 
-He also made the case that the threat landscape has changed so fundamentally that old defensive models are too slow. He noted that the average time between an initial breach and the handoff to the next stage of an attack has dropped from eight hours to 22 seconds, and that the attack surface has expanded well beyond the traditional network perimeter. “In addition to your usual estate, you have models now. You have data pipelines used to train the models. You have agents, you have prompts. All of this needs to be protected.”
+He also made the case that the threat landscape has changed so fundamentally that old defensive models are too slow.
+
+He noted that the average time between an initial breach and the handoff to the next stage of an attack has dropped from eight hours to 22 seconds, and that the attack surface has expanded well beyond the traditional network perimeter. “In addition to your usual estate, you have models now. You have data pipelines used to train the models. You have agents, you have prompts. All of this needs to be protected.”
 
 One threat de Souza flagged that doesn’t get enough attention: agents moving through a company’s internal systems can surface forgotten data repositories that nobody has thought about in years. “A lot of organizations have old SharePoint servers [and access controls] they haven’t really updated, but it didn’t matter because nobody really knew where they were. But agents roaming your enterprise will find those data assets and will expose the data on them.”
 
@@ -1136,11 +1140,13 @@ But even as AI takes on more of the defensive workload, the people qualified to 
 
 Which brings us back to the platform providers themselves. The Register has published a series of reports over the past several weeks documenting a wave of Google Cloud developers hit with five-figure bills following unauthorized API calls to Gemini models — services many of them had never used or intentionally enabled. The cases followed a familiar pattern: API keys originally deployed for Google Maps, placed publicly per Google’s own instructions, had quietly become capable of accessing Gemini after Google expanded their scope without clearly disclosing the change.
 
-Rod Danan, CEO of interview-prep platform Prentus, said his bill hit $10,138 in roughly 30 minutes after attackers exploited his compromised API key. Isuru Fonseka, a Sydney-based developer whose account was similarly compromised, woke up to charges of roughly AUD $17,000 despite believing he had a $250 spending cap in place. What neither knew was that Google’s automated systems had upgraded their billing tiers based on account history, raising their effective ceilings to as high as $100,000 without explicit consent.
+Rod Danan, CEO of interview-prep platform Prentus, said his bill hit $10,138 in roughly 30 minutes after attackers exploited his compromised API key. Isuru Fonseka, a Sydney-based developer whose account was similarly compromised, woke up to charges of roughly AUD $17,000 despite believing he had a $250 spending cap in place.
+
+What neither knew was that Google’s automated systems had upgraded their billing tiers based on account history, raising their effective ceilings to as high as $100,000 without explicit consent.
 
 Google refunded both after The Register published its initial report. Still, Google told The Register it has no plans to change its automatic tier-upgrade policy, saying it prioritizes preventing service outages over enforcing users’ stated budget preferences.
 
-In the meantime, there is the separate question of what happens when a developer tries to shut things down. The Register reported this week on research by security firm Aikido finding that even developers who catch a compromised key and immediately delete it may not be safe. According to Aikido’s findings, attackers can apparently continue using that key for up to 23 minutes because Google’s revocation propagates gradually across its infrastructure. Aikido researcher Joseph Leon told The Register that during that window, success rates are unpredictable — in some minutes over 90% of requests still authenticated — and attackers can use the time to exfiltrate files and cached conversation data from Gemini.
+There is the separate question of what happens when a developer tries to shut things down. The Register reported this week on research by security firm Aikido finding that even developers who catch a compromised key and immediately delete it may not be safe. According to Aikido’s findings, attackers can apparently continue using that key for up to 23 minutes because Google’s revocation propagates gradually across its infrastructure. Aikido researcher Joseph Leon told The Register that during that window, success rates are unpredictable — in some minutes over 90% of requests still authenticated — and attackers can use the time to exfiltrate files and cached conversation data from Gemini.
 
 Leon also noted that Google’s own newer credential formats don’t appear to have the same problem: service account API credentials revoke in about five seconds, and Gemini’s newer AQ-prefixed key format takes about a minute. “Both run at Google scale,” he wrote in Aikido’s related paper. “Both suggest this is technically solvable for Google API keys, too.” In short, according to Leon, the 23-minute window isn’t an engineering constraint but a matter of priorities for the company.
 
@@ -1220,35 +1226,7 @@ Ultimately, the pope lays out the choice that humanity faces in stark terms: “
             <p><strong>The Atlantic | 2026-05-25</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/books/2026/05/poem-william-mcraven-the-burden-they-carry/687224/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Wheeling the old warriors off the Honor Flight plane with flags and banners, people calling their names.
-
-From Chosen to Kabul, from Baghdad to Hue, after all these years today was their day.
-
-Oh, the burden they carry, I heard one woman say. I wonder if our children would serve today?
-
-But not far off another plane left, with soldiers and sailors, their solemn duty kept.
-
-Nearby, a young wife, two children at her side. It’s the burden she carries as the plane took flight.
-
-And across the sea in an ancient land, a lowered steel ramp, a song from a band.
-
-A flag-draped coffin. A fallen hero inside. It’s the burden they carried, and they carried it with pride.
-
-Emptiness and sorrow, pain and loss. It’s the burden they carry. The unbearable cost.
-
-They swore an oath to support and defend. It’s the burden they carried to the very end.
-
-Wheeling the old warriors off the Honor Flight plane with flags and banners, people calling their names.
-
-From Fallujah to Khe Sanh, from V-E to V-J, after all these years today was their day.
-
-A young child waved as the old men passed. Home to a hero’s welcome. Home at last.
-
-It’s a burden they carry for a day like today. It’s a hallowed price that they gladly pay.
-
-But to those who carry the greatest burden of all, for their loved ones who never came home—
-
-May God be with you and let you know, you’ll never carry that burden alone.</div>
+            <div id="article-text">Wheeling the old warriors off the Honor Flight plane with flags and banners, people calling their names.  From Chosen to Kabul, from Baghdad to Hue, after all these years today was their day.  Oh, the burden they carry, I heard one woman say. I wonder if our children would serve today?  But not far off another plane left, with soldiers and sailors, their solemn duty kept.  Nearby, a young wife, two children at her side. It’s the burden she carries as the plane took flight.  And across the sea in an ancient land, a lowered steel ramp, a song from a band.  A flag-draped coffin. A fallen hero inside. It’s the burden they carried, and they carried it with pride.  Emptiness and sorrow, pain and loss. It’s the burden they carry. The unbearable cost.  They swore an oath to support and defend. It’s the burden they carried to the very end.  Wheeling the old warriors off the Honor Flight plane with flags and banners, people calling their names.  From Fallujah to Khe Sanh, from V-E to V-J, after all these years today was their day.  A young child waved as the old men passed. Home to a hero’s welcome. Home at last.  It’s a burden they carry for a day like today. It’s a hallowed price that they gladly pay.  But to those who carry the greatest burden of all, for their loved ones who never came home—  May God be with you and let you know, you’ll never carry that burden alone.</div>
         </div>
         
         <div class="card" onclick="openModal('content-20')">
@@ -1459,11 +1437,37 @@ Trump’s vision of the presidency is authoritarian and kleptocratic: Issue orde
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Will Big Tech Layoffs Bring a Culture Shift to Anxiety and Job Insecurity?</div>
+            <div class="title">SpaceX Launches 29 Starlink Satellites on Memorial Day</div>
             <div class="meta">2026-05-25</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>SpaceX Launches 29 Starlink Satellites on Memorial Day</h2>
+            <p><strong>Slashdot | 2026-05-25</strong></p>
+            <a class="original-link" href="https://science.slashdot.org/story/26/05/25/177229/spacex-launches-29-starlink-satellites-on-memorial-day?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">And the rockets&#39; red glare, the bombs bursting in air,So, another failed Starship launch?
+
+And the rockets&#39; red glare, the bombs bursting in air,
+
+but one of the big reasons the US has a world-leading space launch and satellite services industry is that it is just flat out illegal to outsource or off-shore it.
+
+ITAR is an absolute pain in the ass, but it seems to be worth it on the whole and in the context of the hollowing out of everything else industrial in the country.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+(1) Never draw what you can copy.
+(2) Never copy what you can trace.
+(3) Never trace what you can cut out and paste down.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Will Big Tech Layoffs Bring a Culture Shift to Anxiety and Job Insecurity?</div>
+            <div class="meta">2026-05-25</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Will Big Tech Layoffs Bring a Culture Shift to Anxiety and Job Insecurity?</h2>
             <p><strong>Slashdot | 2026-05-25</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/05/25/0042201/will-big-tech-layoffs-bring-a-culture-shift-to-anxiety-and-job-insecurity?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1491,6 +1495,14 @@ A &quot;tool&quot; that lets one programmer do the work of 20 means that 19 will
 
 Such is the nature of tools all throughout history.  This may be new to you, but it not new at all.
 
+AI is being used as a convenient scapegoat. If a few big tech companies do layoffs, more do because it&#39;s a case of monkey see, monkey do [linkedin.com].
+
+The tool doesn&#39;t exist in a vacuum.  Your scenario is eliminating too many relevant variables.
+
+For example, most software development companies are in competition against each other AND have more features they want to develop than they have time to develop.  They must constantly choose which features/bugfixes to skip in order to make room for the most important ones, and they must choose wisely in order to maintain their competitive position.
+
+So when the tool suddenly increases the productivity of their emplo
+
 The answer is no, because anxiety and job insecurity is not a Culture Shift, it&#39;s already our culture.
 
 Correct. The rest of the economy has been in this state for decades.
@@ -1517,6 +1529,20 @@ Yes, AI can be scary. But like all other past automations, it isn&#39;t going to
 
 Sure, it&#39;s possible that a fraction of the jobs lost are replaced by &quot;AI managers&quot; or something similar. But massive knowledge worker unemployment will absolutely devastate the economy, and become a destabilizing factor.
 
+&quot;Ending civilization&quot; is hyperbole, meant to make the point that it&#39;s not as awful as the alarmists make it out to be.
+
+You are overestimating the speed and extent to which the unemployment will occur, and underestimating the ability of humans to come up with new things to do. Those new jobs won&#39;t just be &quot;AI Manager.&quot; Think about the millions of farm jobs lost in the US over the last 100 years. Back then, 70% of people were farmers, today, just 3%. Did all those people get jobs as &quot;combine drivers&quot;? No. They
+
+While I completely agree with your take on AI slop, I&#39;m not so sure past revolutions didn&#39;t suffer from the same kind of slop. Even the humble farm windmill (which automated pumping water from the ground) went through many innovations before they became the boring, predictable machines they are today. For example, early models tore themselves up in a strong windstorm. Later models handled this edge case by automatically turning the blades sideways in a strong wind.
+
+And yes, absolutely right to your last stat
+
+If money becomes &quot;free&quot; it will become worthless. And there isn&#39;t enough wealth of all the billionaires in the world, to fund UBI.This betrays some really entry-level thinking about money, where you&#39;re believing what it says on the back of the software box. (Remember those?) The idea of trickle down economics was that the wealthy were supposed to spend and/or invest their money so that it went back into circulation. That&#39;s what happens when normal people get it. It gets spent about five times before it winds up in some rich person&#39;s pocket. When rich people get money, it only gets spent twice or so before they put it someplace where i
+
+If money becomes &quot;free&quot; it will become worthless. And there isn&#39;t enough wealth of all the billionaires in the world, to fund UBI.
+
+This betrays some really entry-level thinking about money, where you&#39;re believing what it says on the back of the software box. (Remember those?) The idea of trickle down economics was that the wealthy were supposed to spend and/or invest their money so that it went back into circulation. That&#39;s what happens when normal people get it. It gets spent about five times before it winds up in some rich person&#39;s pocket. When rich people get money, it only gets spent twice or so before they put it someplace where i
+
 This same shit has been going on all along and some people are just now discovering it. Even the scale isn&#39;t really different. We&#39;re in a very specific tech bubble, so very specific sectors are hiring, and the others are firing as the air is sucked out of the room. When the bubble collapses, the sector which has done the crazy hiring will have mass layoffs, and the other sectors will hire again.
 
 The truth is that no one in tech should ever feel secure, because some new development which can just be highly marketable bullshit can come along and fuck up all of the markets because nobody has to come up with a sustainable good idea to get rich any more because of the nature of the stock market. It&#39;s a game for rich people played with our money as the counters and they give zero fucks about the impact to anyone but themselves. That was always true, but as the stock market has become ever more divorced from reality, it does more damage to people who still have to live there, i.e. those of us who work for a living.
@@ -1537,26 +1563,52 @@ One more thing this administration has corrupted: economic statistics.
 
 So now the narrative is blame immigrants for taking your jobs, while the AI takes it.
 
+I think that it&#39;s more like blaming AI for taking your tech job, and then giving it to outsourced foreign labor if/when that doesn&#39;t work out.
+
+You can partly blame COVID for this, as we showed that 90% of IT can be done fully remote. Frankly, I&#39;m surprised that it took the IT managers so long to realize that work being done from a living room in Omaha or Boise can done cheaper in Odessa or Bangalore.
+
 It&#39;s not easy right now for tech workers trying to find work.
 
 I&#39;m fine.  I plan to switch to self-employment and provide artisinal technical support, perhaps via OnlyFans.
 
 Sure, maybe I&#39;ll have to prominently display my bare feet or hawk used headsets to my clients, but it&#39;s a small inconvenience.
 
+... quite well: It&#39;s going to be chaos but in the end it&#39;s going to turn out good for everyone. We&#39;re just going to work less if the cheap bots do most of the work.
+
+Sounds interesting. A series of social media boards, oriented around each companies culture. Either private, for inside discussions. Or open to the public. So they can learn a bit about the organization.
+
+I used to work for an outfit that had an internal Usenet server. With some private discussion groups (restricted to employees) in addition to the worldwide Usenet (somewhat filtered of the NSFW stuff). It was like a giant rumor network around a virtual company water cooler. Some managers hated it. But many
+
+&quot;Cooperation and collegiality are on the wane; chumminess between employees and managers has cooled as mutual suspicion pervades their relationships..&quot;That was not caused by unemployment or economic instability.  That, was caused by social media infecting every part of our mental society at every age.  Trust.  Honor.  Integrity.  Honesty.  These concepts are not born.  They are taught.  Embedded in us since childbirth.  And clearly are defined delineators in criminal statistics between those who carried those values into adulthood, and those who did not.Today, social media doesn&#39;t just sell the concept of normalizing narcissism, filtermaxxing everything,
+
+&quot;Cooperation and collegiality are on the wane; chumminess between employees and managers has cooled as mutual suspicion pervades their relationships..&quot;
+
+That was not caused by unemployment or economic instability.  That, was caused by social media infecting every part of our mental society at every age.  Trust.  Honor.  Integrity.  Honesty.  These concepts are not born.  They are taught.  Embedded in us since childbirth.  And clearly are defined delineators in criminal statistics between those who carried those values into adulthood, and those who did not.
+
+Today, social media doesn&#39;t just sell the concept of normalizing narcissism, filtermaxxing everything,
+
+Blind is capitalizing on the increased interest with new products. It plans to unveil a service called Blind AI, which will allow employers to simulate their workers&#39; reactions to certain changes, like a stricter in-office mandate. And it is close to releasing a feature to alert users that layoffs are imminent.So, workers don&#39;t know what management is doing.  Management doesn&#39;t know what workers are thinking.  And a company named Blind of all things is going to help with that?  Please tell me they have internal (or heck, external) marketing presentations titled &quot;Blind Is Leading The Blind Leading The Blind&quot;...(Or is their internal leadership oblivious to this opportunity for marketing excellence?  In that case, maybe the blind are leading Blind leading the blind leading the blind...  It&#39;s turtles all the way down...)
+
+Blind is capitalizing on the increased interest with new products. It plans to unveil a service called Blind AI, which will allow employers to simulate their workers&#39; reactions to certain changes, like a stricter in-office mandate. And it is close to releasing a feature to alert users that layoffs are imminent.
+
+So, workers don&#39;t know what management is doing.  Management doesn&#39;t know what workers are thinking.  And a company named Blind of all things is going to help with that?  Please tell me they have internal (or heck, external) marketing presentations titled &quot;Blind Is Leading The Blind Leading The Blind&quot;...
+
+(Or is their internal leadership oblivious to this opportunity for marketing excellence?  In that case, maybe the blind are leading Blind leading the blind leading the blind...  It&#39;s turtles all the way down...)
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-How many Bavarian Illuminati does it take to screw in a lightbulb?
-
-Three: one to screw it in, and one to confuse the issue.</div>
+(1) Never draw what you can copy.
+(2) Never copy what you can trace.
+(3) Never trace what you can cut out and paste down.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">It's Like the Olympics - But Steroids Are Allowed</div>
             <div class="meta">2026-05-25</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>It's Like the Olympics - But Steroids Are Allowed</h2>
             <p><strong>Slashdot | 2026-05-25</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/05/25/023251/its-like-the-olympics---but-steroids-are-allowed?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1624,6 +1676,15 @@ Unless we are expected to pay for the rehabilitation and ongoing care for those 
 
 Surely, Slashdot is allowed to take spell checkers?
 
+Surely, Slashdot is allowed to take spell checkers?
+Under strict supervision, yes.  Unfortunately there is no supervision left as there are only two people working for slashdot and they both have real jobs in the outside world that pay the bills (Taco of course left years ago).   
+And don&#39;t ask about the unicode support they were working on 20 years ago...
+
+Surely, Slashdot is allowed to take spell checkers?
+
+Under strict supervision, yes.  Unfortunately there is no supervision left as there are only two people working for slashdot and they both have real jobs in the outside world that pay the bills (Taco of course left years ago).   
+And don&#39;t ask about the unicode support they were working on 20 years ago...
+
 The opening ceremonies to be hosted by Lance Armtrong, Barry Bonds, Mark McGuire, and Sammy Sosa. Entertainment provided by the East German Women&#39;s Shotput team.
 
 The venues will be protected by guards wielding those large electric cattle prods used in Jurassic Park to attempt to calm &#39;roid rage occurances.
@@ -1642,20 +1703,26 @@ What makes you sure that these billionaires don&#39;t take vaccines themselves?
 
 The anti-vaxxing movement was created to keep the pleb population from over-spilling. /s
 
+&quot;Think Olympics on steroids. Literally,&quot; ... the Olympics on meth. Literally.
+
+the Olympics on meth.Yeah, nothing like losing all of your teeth except for the two blue ones left so you can bite the gold metal.
+
+Yeah, nothing like losing all of your teeth except for the two blue ones left so you can bite the gold metal.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-How many Bavarian Illuminati does it take to screw in a lightbulb?
-
-Three: one to screw it in, and one to confuse the issue.</div>
+(1) Never draw what you can copy.
+(2) Never copy what you can trace.
+(3) Never trace what you can cut out and paste down.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">California Executive Order Directs Businesses and State Agencies to Prepare for AI-Driven Workforce Disruption</div>
             <div class="meta">2026-05-25</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>California Executive Order Directs Businesses and State Agencies to Prepare for AI-Driven Workforce Disruption</h2>
             <p><strong>Slashdot | 2026-05-25</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/05/25/0128243/california-executive-order-directs-businesses-and-state-agencies-to-prepare-for-ai-driven-workforce-disruption?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1669,6 +1736,8 @@ Absolutely, much better for everyone if they just got rid of the peasants [exist
 Did you post this also when Musk said THE EXACT SAME THING?????
 
 More seriously, both this and Musk sound like the government seizing company assets and distributing it evenly to everybody. This is basically UBI, and it is a huge tax no matter how it is collected. It may work however, needs to be investigated with some seriousness and by people without preconceived notions of what will happen.
+
+Because, not having an income tends to mean not being able to afford stuff (AKA: poor).  Because, not many people live like you do.Lots of people live paycheck-to-paycheck, and don&#39;t have tens of thousands saved up... and that $3k severance package the person got when they lost their job to AI isn&#39;t going to do much.And, as AI replaces meat-sacks in the job market, more and more will be unemployed, and SNAP and those programs are going to be stretched beyond what they can possibly do to help.  Retraining 15
 
 Check your beliefs, it is the right wingnuts that are grabbing everyone else stuff and giving it away to themselves. What do you think the Big Stupid Bill was all about? Girl Scout cookies? Look at what el Bunko is going with his Monuments to his Ego. Or his stealing $1.76 Billion to pay off his thugs. Or his turning bits and bobs of the Fed. Government over to his rich friends for tidy little kickback under the table. Or protecting the Oil and Gas industry to keep a lock on U.S. energy markets and those big fat contributions to Republicans flowing, minus bit off the top for his own bank account.
 
@@ -1710,23 +1779,25 @@ You can begin by stopping treating &quot;resources&quot; as infinite; when one t
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-How many Bavarian Illuminati does it take to screw in a lightbulb?
-
-Three: one to screw it in, and one to confuse the issue.</div>
+(1) Never draw what you can copy.
+(2) Never copy what you can trace.
+(3) Never trace what you can cut out and paste down.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">AI 'Crashes the Party' at This Year's Cannes Film Festival - Including Multi-Year Meta Partnership</div>
             <div class="meta">2026-05-25</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>AI 'Crashes the Party' at This Year's Cannes Film Festival - Including Multi-Year Meta Partnership</h2>
             <p><strong>Slashdot | 2026-05-25</strong></p>
             <a class="original-link" href="https://entertainment.slashdot.org/story/26/05/24/173224/ai-crashes-the-party-at-this-years-cannes-film-festival---including-multi-year-meta-partnership?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">It may eventually occur to people that art which no one ever cared about is as valuable as a random screenshot of World of Warcraft.
+
+You should give more credit to how far these guys have advanced the state of the art. The quality today, with these tools, is lower than they&#39;ve ever been able to make it.
 
 you clearly haven&#39;t seen the video AI can already do.If you are referring to photorealism that changes nothing. The film remains animated. 
 
@@ -1752,20 +1823,22 @@ Talking about AI movies is like talking about blender movies. Yeah, there are mo
 
 I, for one, can&#39;t wait to be able to lie back and have a movie generated for me on demand. I don&#39;t think I&#39;d even need to give a very specific prompt: they should have enough tracking data about me to know what I like. Maybe they can even insert uncannily specific product placements for me to enjoy, so as not to break immersion. Afterwards, I can discuss the movie with my AI chatbots and fulfill my socialization needs.
 
+The fear is that you might start talking to your neighbor about dangerous things like &quot;How come everything sucks now?&quot;
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-How many Bavarian Illuminati does it take to screw in a lightbulb?
-
-Three: one to screw it in, and one to confuse the issue.</div>
+(1) Never draw what you can copy.
+(2) Never copy what you can trace.
+(3) Never trace what you can cut out and paste down.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">FreeBSD Foundation Executive Director Tries Daily Driving FreeBSD On Laptop</div>
             <div class="meta">2026-05-24</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>FreeBSD Foundation Executive Director Tries Daily Driving FreeBSD On Laptop</h2>
             <p><strong>Slashdot | 2026-05-24</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/05/24/213229/freebsd-foundation-executive-director-tries-daily-driving-freebsd-on-laptop?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1773,6 +1846,10 @@ Three: one to screw it in, and one to confuse the issue.</div>
             <div id="article-text">No, systemd doesn&#39;t exist on the BSDs after all these years, and they don&#39;t plan to either, given the number of Linux-specific dependencies they have.  It&#39;s a tad different from Wayland, which although it also had Linux specific dependencies, has also developed somethings to work w/ the BSDs
 
 Anyway, all the BSDs have endorsed XLibre, which is the only option left for platforms not going Wayland.  Similarly, the BSDs are still on InitV or the other alternatives out there
+
+No, systemd doesn&#39;t exist on the BSDs after all these years, and they don&#39;t plan to either
+
+Nobody plans to get an STD, but after enough fucking around it becomes inevitable.  FreeBSD and certain Linux distros are capable of running Desktop Environments without systemd due to extensive implementations of shims, which are essentially duct tape to provide the functionality that gets shifted to systemd over time.  As systemd continues to extend its tentacles further into the Linux ecosystem, it requires far mor
 
 No systemd.There are several ways to get linux without systemd, though, and you still wind up with better software compatibility than BSD, which has all the no-systemd problems plus all the not-Linux problems.
 
@@ -1873,61 +1950,9 @@ I&#39;ve always had a Unix desktop.  I&#39;ve had SunOS, Ultrix, OSF/1, Irix, So
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-How many Bavarian Illuminati does it take to screw in a lightbulb?
-
-Three: one to screw it in, and one to confuse the issue.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Canonical Is Shutting Down Ubuntu Pastebin</div>
-            <div class="meta">2026-05-24</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Canonical Is Shutting Down Ubuntu Pastebin</h2>
-            <p><strong>Slashdot | 2026-05-24</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/26/05/24/2042245/canonical-is-shutting-down-ubuntu-pastebin?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Canonical should pay the Internet Archive to keep a read only copy available.
-
-A solution so obvious, one wonders why Canonical aren&#39;t adopting it.  Even if they did that though, a week (and one which includes a Federal holiday) is totally insufficient.I suppose it is better than what the current US Administration does, &quot;we shuttered this service yesterday&quot;.
-
-I mean, aren&#39;t there plenty [pastes.io] of [privatebin.info] sites [github.com] which [jsfiddle.net] offer [ideone.com] pretty [pastebin.com] much [justpaste.app] the [tailscale.com] same [hastebin.com] thing [rentry.co]?
-
-The new admins don&#39;t know how to maintain a simple file server anymore.
-
-They can vibe code something else to use the power though.
-
-Yeah sorry but that&#39;s a scenario that only happens in your head, especially given how a simple file server could actually be admin&#39;d by a simple LLM manual. Look for another article to rage at the young generation rather than making up scenarios irrelevant to this one.
-
-It was a mistake to depend on the generosity and goodwill of companies for the long term.
-
-Don&#39;t get me wrong. Ubuntu used to be awesome. They had a mission, and they believed in it. They even were distributing free Linux CD-ROMs when I was in college. They had it all together.
-
-But now they are just another corporate entity, and &quot;pastebin&quot; is a service with no revenue potential. I&#39;m surprised it survived so long.
-
-The replacement? Github Gists? A peer to peer system?
-
-There are of course &quot;alternatives&quot;, but I&#39;m no
-
-And funny that this coincides with my starting to move my servers from Ubuntu Server to Debian. I don&#39;t want to trust a company that, on May 22, announces the shutdown of a service on May 31 that was supposed to store data for up to one year (guaranteed or not)...
-
-This is probably costing Canonical $42B/year to keep operating.  Better to put their resources on other options, such as putting more packages into snaps.
-
-Microsoft shuts down Windows all the time.  I wouldn&#39;t get too excited if Canonical starts doing it to Ubuntu too.
-
-It can&#39;t hardly cost anything to at least just render it down to static pages and leave it there.
-
-Frankly, it shouldn&#39;t cost much to keep it running, either. What it does is very simple. They should be able to migrate that functionality to whatever new site paradigm they are using now trivially, because it is trivial.
-
-What Ubuntu is really saying here is that they&#39;re incompetent, because even a hobbyist with a vanity site could do what they can&#39;t. Is some company that shit at the web one you want to trust wit
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-How many Bavarian Illuminati does it take to screw in a lightbulb?
-
-Three: one to screw it in, and one to confuse the issue.</div>
+(1) Never draw what you can copy.
+(2) Never copy what you can trace.
+(3) Never trace what you can cut out and paste down.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2195,11 +2220,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Motion tracking system shows robots the path most traveled by, keeping them on task</div>
+            <div class="title">AI speeds up discovery of next-gen computer chips and electronic materials</div>
             <div class="meta">2026-05-25</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>AI speeds up discovery of next-gen computer chips and electronic materials</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-25</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-05-ai-discovery-gen-chips-electronic.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Motion tracking system shows robots the path most traveled by, keeping them on task</div>
+            <div class="meta">2026-05-25</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>Motion tracking system shows robots the path most traveled by, keeping them on task</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-motion-tracking-robots-path-task.html">Visit Original Website</a>
@@ -2207,13 +2246,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">GitHub workflows unlock what really speeds software innovation</div>
             <div class="meta">2026-05-25</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>GitHub workflows unlock what really speeds software innovation</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-github-workflows-software.html">Visit Original Website</a>
@@ -2221,13 +2260,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Could sodium replace lithium as the dominant ingredient in batteries?</div>
             <div class="meta">2026-05-25</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Could sodium replace lithium as the dominant ingredient in batteries?</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-sodium-lithium-dominant-ingredient-batteries.html">Visit Original Website</a>
@@ -2235,13 +2274,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Online age checks create a pointless privacy risk</div>
             <div class="meta">2026-05-25</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Online age checks create a pointless privacy risk</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-online-age-pointless-privacy.html">Visit Original Website</a>
@@ -2249,30 +2288,16 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Research finds hotel booking chatbots can 'creep out' customers</div>
             <div class="meta">2026-05-25</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Research finds hotel booking chatbots can 'creep out' customers</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-25</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-hotel-chatbots-customers.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Huawei touts new chipmaking technology to sidestep US restrictions</div>
-            <div class="meta">2026-05-25</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Huawei touts new chipmaking technology to sidestep US restrictions</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-25</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-05-huawei-touts-chipmaking-technology-sidestep.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
@@ -2670,6 +2695,8 @@ Sixtieth release adds more cores, delayed hibernation, and basic Wi-Fi 6 without
 
 AI flaw-finder still under lock and key for now while company figures out guardrails, but extends access to more users including governments
 
+Google Search used to direct users to web sites; AI Mode will keep them in Google&#39;s garden
+
 A French engineer has declared war on AWS, Google and Microsoft using AI-generated sea shanties, satirical poetry, and a multilingual protest campaign
 
 After making a medical clinic&#39;s network rather ill, she &#39;kept working until I somewhat knew what I was doing&#39;
@@ -2678,9 +2705,7 @@ Sixtieth release adds more cores, delayed hibernation, and basic Wi-Fi 6 without
 
 AI flaw-finder still under lock and key for now while company figures out guardrails, but extends access to more users including governments
 
-PLUS: Huawei says it’s replaced Moore’s Law; Chinese mobile plans add token allowances; Singtel slinging Optus; And more!
-
-Warns large release candidates ‘are *not* conducive to long-term stability’</div>
+PLUS: Huawei says it’s replaced Moore’s Law; Chinese mobile plans add token allowances; Singtel slinging Optus; And more!</div>
         </div>
         
         <div class="card" onclick="openModal('content-45')">
@@ -3020,25 +3045,7 @@ Step into the chaos of a live ransomware breach, test your response skills, and 
 
 Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit event, Escape Ransomware, is now fully virtual.
 
-After making a medical clinic&#39;s network rather ill, she &#39;kept working until I somewhat knew what I was doing&#39;
-
-Sixtieth release adds more cores, delayed hibernation, and basic Wi-Fi 6 without losing its ascetic streak
-
-AI flaw-finder still under lock and key for now while company figures out guardrails, but extends access to more users including governments
-
-PLUS: Huawei says it’s replaced Moore’s Law; Chinese mobile plans add token allowances; Singtel slinging Optus; And more!
-
-Warns large release candidates ‘are *not* conducive to long-term stability’
-
-After making a medical clinic&#39;s network rather ill, she &#39;kept working until I somewhat knew what I was doing&#39;
-
-Sixtieth release adds more cores, delayed hibernation, and basic Wi-Fi 6 without losing its ascetic streak
-
-AI flaw-finder still under lock and key for now while company figures out guardrails, but extends access to more users including governments
-
-PLUS: Huawei says it’s replaced Moore’s Law; Chinese mobile plans add token allowances; Singtel slinging Optus; And more!
-
-Warns large release candidates ‘are *not* conducive to long-term stability’
+Google Search used to direct users to web sites; AI Mode will keep them in Google&#39;s garden
 
 A French engineer has declared war on AWS, Google and Microsoft using AI-generated sea shanties, satirical poetry, and a multilingual protest campaign
 
@@ -3048,9 +3055,27 @@ Sixtieth release adds more cores, delayed hibernation, and basic Wi-Fi 6 without
 
 AI flaw-finder still under lock and key for now while company figures out guardrails, but extends access to more users including governments
 
-PLUS: Huawei says it’s replaced Moore’s Law; Chinese mobile plans add token allowances; Singtel slinging Optus; And more!
+Google Search used to direct users to web sites; AI Mode will keep them in Google&#39;s garden
 
-Warns large release candidates ‘are *not* conducive to long-term stability’</div>
+A French engineer has declared war on AWS, Google and Microsoft using AI-generated sea shanties, satirical poetry, and a multilingual protest campaign
+
+After making a medical clinic&#39;s network rather ill, she &#39;kept working until I somewhat knew what I was doing&#39;
+
+Sixtieth release adds more cores, delayed hibernation, and basic Wi-Fi 6 without losing its ascetic streak
+
+AI flaw-finder still under lock and key for now while company figures out guardrails, but extends access to more users including governments
+
+Google Search used to direct users to web sites; AI Mode will keep them in Google&#39;s garden
+
+A French engineer has declared war on AWS, Google and Microsoft using AI-generated sea shanties, satirical poetry, and a multilingual protest campaign
+
+After making a medical clinic&#39;s network rather ill, she &#39;kept working until I somewhat knew what I was doing&#39;
+
+Sixtieth release adds more cores, delayed hibernation, and basic Wi-Fi 6 without losing its ascetic streak
+
+AI flaw-finder still under lock and key for now while company figures out guardrails, but extends access to more users including governments
+
+PLUS: Huawei says it’s replaced Moore’s Law; Chinese mobile plans add token allowances; Singtel slinging Optus; And more!</div>
         </div>
         
         <div class="card" onclick="openModal('content-47')">
@@ -4311,14 +4336,14 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US Justice Department seeks to lift injunction on ballroom project after shooting - Reuters</div>
+            <div class="title">Brazil's Lula starts radiation after early-stage skin cancer diagnosis - Reuters</div>
             <div class="meta">2026-05-25</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>US Justice Department seeks to lift injunction on ballroom project after shooting - Reuters</h2>
+            <h2>Brazil's Lula starts radiation after early-stage skin cancer diagnosis - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-25</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxNVnZsRFE0Vl8weGFnVnZocEJrWkRUX2N3aDBPc3dZT0RXX3NULTdDZnlyMVZUU2JDUEpIVlVNYkwzangtQWdZZm8wREppc3lvc0M2cFhGeHJYb1M3U1NTRkFNZTFFU0JrS04yVEt0SlFxS1JFY1hDejl2cnFIanlBdUxQWWlLcTkzNUwzZkdVZUlZOEMtR2w3amhiUXczVjJwUndkTWNReEk3NUlZeDlZZm8zRXpEczYwajVqSmlzeldCeG5DNlhz?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxPSmE1dENRS1ZJRW9lU2I5OGhzWE1ncXBFZTM3RGVqRzVteTdYT29QTVhHSW5LVHMwQ18zYmNwTHkwTHlBa0ktUEQ5OHMwdDE4aFFLVWJWUDRUX0JpcVZZR3Z5NHdZSGxUamNYaC01ZTQ3SGxMU2g4RnAyd1o2OWlPQVpnM0ZQYk5UbWliOER6bFVVcENLT2ZFODR2bjFOdWNSMWxDU0t1Q0Y2NnJDMm1KQjZMaGc3R2Zzb2V0bw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -4339,28 +4364,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Brazil's Lula starts radiation after early-stage skin cancer diagnosis - Reuters</div>
+            <div class="title">US Justice Department seeks to lift injunction on ballroom project after shooting - Reuters</div>
             <div class="meta">2026-05-25</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>Brazil's Lula starts radiation after early-stage skin cancer diagnosis - Reuters</h2>
+            <h2>US Justice Department seeks to lift injunction on ballroom project after shooting - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-25</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxPSmE1dENRS1ZJRW9lU2I5OGhzWE1ncXBFZTM3RGVqRzVteTdYT29QTVhHSW5LVHMwQ18zYmNwTHkwTHlBa0ktUEQ5OHMwdDE4aFFLVWJWUDRUX0JpcVZZR3Z5NHdZSGxUamNYaC01ZTQ3SGxMU2g4RnAyd1o2OWlPQVpnM0ZQYk5UbWliOER6bFVVcENLT2ZFODR2bjFOdWNSMWxDU0t1Q0Y2NnJDMm1KQjZMaGc3R2Zzb2V0bw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxNVnZsRFE0Vl8weGFnVnZocEJrWkRUX2N3aDBPc3dZT0RXX3NULTdDZnlyMVZUU2JDUEpIVlVNYkwzangtQWdZZm8wREppc3lvc0M2cFhGeHJYb1M3U1NTRkFNZTFFU0JrS04yVEt0SlFxS1JFY1hDejl2cnFIanlBdUxQWWlLcTkzNUwzZkdVZUlZOEMtR2w3amhiUXczVjJwUndkTWNReEk3NUlZeDlZZm8zRXpEczYwajVqSmlzeldCeG5DNlhz?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">WHO chief says fast-moving Ebola epidemic is outpacing response efforts - Reuters</div>
+            <div class="title">Overheating chemical tank in California no longer at risk of exploding, fire officials say - Reuters</div>
             <div class="meta">2026-05-25</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>WHO chief says fast-moving Ebola epidemic is outpacing response efforts - Reuters</h2>
+            <h2>Overheating chemical tank in California no longer at risk of exploding, fire officials say - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-25</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxNZUo0UFRjdUx1VTZmV2hrMnNkeE9GUEJTSFlhZ3NpUlBTNUxidVhaWTByWXd2R0NiaExsVXh3MFpJMUQyemRmVC0zR0tYT3RFX1BGNVhFOGQzbzBXS2NLcU55cmEyM1l6dHRiZkpIVXMtbTBoTE1xeUFwS1kxQXNkUDhtb1NWdUhLU3BjZHpuekVsY0ZFYUtqSEZob214QVJGR1NyVXNyOGhraDNNWlpvYnVBZFQ3RUs2b3N6S1RYVjlDaWVZVDc3Si0xMzdDNlY5RmoyZ29URTVkdUZiY2c?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxOZ1dOWS1vUHdWSDcwWGhLNHRLSmNTMWNFckszUWxhTVhUNXRScVVvSGJCRU1NMkI5UDExTDV4ZjJhSWR3aUhPRTR1MkpDR1FvdW9BNVh6bVZCVkNiZmtjeGZYSUtpZlU2dEptUGZvb0Q2ZmFQVFY5RGxjU01zZXl0ZDd5c0JjVXJDN3Q2SHp4Si1OMkVzd1BkU01jenBYVUxXRTBIZXRCdV9XbWUwMWNRWUdPeUx5Vnpid3FUYVJpR1REU3h0X0NvTDQ1OEpVR0NkVGdmQ05JVQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
