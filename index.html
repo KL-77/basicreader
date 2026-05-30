@@ -1223,11 +1223,7 @@ Pangram, to be clear, is not useless. But this is exactly the problem: It’s to
             <p><strong>Slashdot | 2026-05-30</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/05/30/2125244/journalist-spots-fugitive-terrorist-using-facial-recognition-software?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-You can fool all the people all of the time if the advertising is right
-and the budget is big enough.
-		-- Joseph E. Levine</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1243,22 +1239,58 @@ and the budget is big enough.
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Well, the use case is clearly to produce binaries with smaller memory footprint.  But *I* didn&#39;t even notice that Debian had disabled it.
 
+Producing smaller memory footprint binaries is not the use case. The use case would be the reason why you need them in the first place. I can conjure up a theoretical embedded x86_64 system that is severely memory limited, but I&#39;m not sure such a thing exists in the wild. And even then the use case would have to require not only the smaller memory footprint, which you can achieve with good ol&#39; regular 32-bit x86 binaries, but also that you need the extended x86_64 instruction set, which makes the whole orde
+
 There&#39;s 27 Microchannel token rings cards in the kernel.  Let that sink in for a minute.
 Which one rules them all?  Oh, wait, you said &quot;token&quot; rings. :-)
 
 There&#39;s 27 Microchannel token rings cards in the kernel.  Let that sink in for a minute.
 
 Which one rules them all?  Oh, wait, you said &quot;token&quot; rings. :-)
+
+Can we keep the Rust team busy with porting them?
+
+We can&#39;t allow this to stand having MCA token ring drivers in C.
+
+If you want to use this, or 386 builds or whatnot, you can use an old distro.  Download them (they&#39;re free), and you can keep them forever.Sure, if you want to run a system with hundreds of known vulnerabilities.  Better keep it airgapped.
+
+If you want to use this, or 386 builds or whatnot, you can use an old distro.  Download them (they&#39;re free), and you can keep them forever.
+
+Sure, if you want to run a system with hundreds of known vulnerabilities.  Better keep it airgapped.
 
 Without a real ABI-32 Wine will have to use an emulation layer if the processor can&#39;t run natively as a 32 bit process.
 
 Now that Linux is getting a growing game player quota, there are gonna destroy a functionality that make that works?
 
+i386 arch will be around in some form approximately forever.  This was a weird hybrid model for lowmem amd64 devices.
+
+Without a real ABI-32 Wine will have to use an emulation layer if the processor can&#39;t run natively as a 32 bit process.Now that Linux is getting a growing game player quota, there are gonna destroy a functionality that make that works?Since Windows never supported this unusual 32/64-bit hybrid, it will have no impact on WINE.
+
+It&#39;s actually kind of a cool idea, though.  To someone like me who grew up on 8-bit and 16-bit architectures and is regularly taken aback at the size of data structures on 64-bit platforms -- 16 bytes just for a pointer and a length? -- being able to cut those down while still being able to run at full speed [*] on modern hardware sounds really useful.
+
+[*] Assuming it&#39;s really full speed.  I suspect there&#39;s some o
+
+Without a real ABI-32 Wine will have to use an emulation layer if the processor can&#39;t run natively as a 32 bit process.
+
+Now that Linux is getting a growing game player quota, there are gonna destroy a functionality that make that works?
+
+Since Windows never supported this unusual 32/64-bit hybrid, it will have no impact on WINE.
+
+It&#39;s actually kind of a cool idea, though.  To someone like me who grew up on 8-bit and 16-bit architectures and is regularly taken aback at the size of data structures on 64-bit platforms -- 16 bytes just for a pointer and a length? -- being able to cut those down while still being able to run at full speed [*] on modern hardware sounds really useful.
+
+[*] Assuming it&#39;s really full speed.  I suspect there&#39;s some o
+
+This may be a stupid question, but I&#39;m sure all of us here have asked one or two.
+
+Will the removal of x32 support affect any older peripheral devices? I ask because I have an old HP printer that no longer works in Windows 10 or 11 because there is no driver, but still works just fine in Linux.
+
+To anyone wondering what this ABI is about, let&#39;s use 3 examples: the system call behind the time function, the one behind lseek64, and the one behind mmap.
+
+On a pure 32-bit system, it&#39;s simple: time_t is 32-bit, so you can only get time from -2147483648 to 2147483647, which is from 1901-12-13 20:45:52 UTC to 2038-01-19 03:14:07 UTC (that&#39;s the 32-bit timepocalypse that&#39;s coming up); lseek64 is on the stack as two 32-bit halves; and mmap returns 32-bit addresses from 0000_0000 to 7FFF_FFFF or BFFF_FFFF, givi
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-You can fool all the people all of the time if the advertising is right
-and the budget is big enough.
-		-- Joseph E. Levine</div>
+My idea of roughing it turning the air conditioner too low.</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1274,9 +1306,7 @@ and the budget is big enough.
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-You can fool all the people all of the time if the advertising is right
-and the budget is big enough.
-		-- Joseph E. Levine</div>
+My idea of roughing it turning the air conditioner too low.</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1305,6 +1335,8 @@ The other option is that MSRC engaged as described and drove Eclipse to be unhin
 My life experience is probably that the former is the scenario, that he was smart, but communicated poorly and took offense easily when faced with a boringly incompetent corp team and mistook their nature for malice initially.  Things might have gotten heated on Microsoft&#39;s side, but I would guess Eclipse went off the rails first, based on his communication style on display in his blog...
 
 &quot;Life experience&quot; doesn&#39;t necessarily need to mean &quot;experiencing the exact same situation&quot;, you know...
+
+For a while the software industry had a way of suing and pressing charges against security researchers (see the arrest of Dmitry Sklyarov in 2001), and then we ended up at a kind of detente of &quot;responsible disclosure&quot; along with bug bounties which were a kind of compensation for the impact on the security researchers. (Imagine if biologists had to postpone publication of their research for the benefit of some private companies, which got to be the ones to write the research paper.)
 
 Since &#39;90&#39; is some arbitrary number some tech elites pulled out of their arses, this researcher should decide on a 90-minute window for &quot;responsible disclosure&quot; so they’re covered. I mean, Microslop are the ones that released a defective product in the wild, they’re the ones to really blame for it being found/exploited in the first place.
 
@@ -1335,7 +1367,11 @@ Closing their account on your service is fair game though. No obligation to host
 
 Dealing with aggrieved customers is just a part of doing business with the public. No matter how well you behave some people just have issues, and some will have legitimate complaints. Microsoft is a multitrillion dollar multinational corporation. That comes with the turf.
 
-This has been typical behavior for large companies when dealing with vulnerability reports for decades. Report one, they treat you as the problem. They&#39;ll try to ignore it, consider it &quot;not exploitable&quot;,  delay and deflect as long as they can get away with it, anything but address the vulnerability. And they&#39;ll never tell anyone the vulnerability exists. This only changes when they have no choice but to admit to the problem and fix it, usually when the vulnerability is being publicly exploited. They push &quot;r
+This has been typical behavior for large companies when dealing with vulnerability reports for decades. Report one, they treat you as the problem. They&#39;ll try to ignore it, consider it &quot;not exploitable&quot;,  delay and deflect as long as they can get away with it, anything but address the vulnerability. And they&#39;ll never tell anyone the vulnerability exists. This only changes when they have no choice but to admit to the problem and fix it, usually when the vulnerability is being publicly exploited. They push &quot;responsible disclosure&quot; because it includes the reporter not making the vulnerability public until the company has a fix, which allows them to stall disclosure as long as they want.
+
+It used to be enough to just include a reasonable deadline when reporting it, after which the reporter would make it public if the company hadn&#39;t taken some action on it. Then companies started threatening and then taking legal action against the reporter as soon as they reported the problem, playing the deadline up as &quot;blackmail&quot;.
+
+So, what do you do when faced with this? The only reasonable response is to skip the company entirely and make the details public immediately. You&#39;re going to be facing retaliation from the company either way, this way the public isn&#39;t vulnerable for an extended time. And yes you include details on how to exploit the vulnerability, ideally via working code, so researchers other than the company can confirm it&#39;s a real vulnerability that&#39;s actually exploitable without having to take your word for it. No, that doesn&#39;t give the bad guys anything because remember the working assumption for vulnerabilities: if a good guy has found it, the bad guys already know about it and are using it. Remember that when the company whines.
 
 [MS&#39; response:] &quot;Threatening to take legal action and call the cops on them.&quot;So I guess we can now call them MicroSLAPP.
 
@@ -1343,11 +1379,13 @@ This has been typical behavior for large companies when dealing with vulnerabili
 
 So I guess we can now call them MicroSLAPP.
 
+Your theory fits all of the strange behavior data we have.
+
+I tried to report a bug to Microsoft back in the day too but they ignored me and released Windows anyway. Assholes.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-You can fool all the people all of the time if the advertising is right
-and the budget is big enough.
-		-- Joseph E. Levine</div>
+My idea of roughing it turning the air conditioner too low.</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1379,6 +1417,10 @@ It&#39;s more about the chemistry than what we observe on earth. It&#39;s that o
 
 Also, life on earth was not always aerobic. Anaerobic still exist, from deep sea therma
 
+There&#39;s a lot of speculation about life as we don&#39;t know it. And that&#39;s what it is: speculation. While there are microbes that don&#39;t rely on oxygen, and one animal, they are utterly dependent on environments that do require oxygen. So no abiotic life origins here.
+
+Without knowing for sure what to look for in a chlorine based life form even with it live in front of us, performing the forensic search with the body cold billions of years is all but impossible. We will get there some day but people are looking f
+
 What are you gonna do for a magnetosphere?
 
 What are you gonna do for a magnetosphere?Spin iron. :-)
@@ -1393,11 +1435,23 @@ Supposed you have an atmosphere like on earth, by magic, over night: on Mars.It 
 
 Regarding magnetosphere: you put a satellite into L1 Langrange point between Mars and Sun, that provides an artificial magnetic field.
 
+This was the first thing that came to my mind, as well. What&#39;s the point of creating oxygen if there isn&#39;t a planetary system that keeps it from escaping into the void?Shouldn&#39;t that really be the first thing they do to terraform Mars?Yes, and it an ability we have now. Should be step one.
+
+This was the first thing that came to my mind, as well. What&#39;s the point of creating oxygen if there isn&#39;t a planetary system that keeps it from escaping into the void?
+
+Shouldn&#39;t that really be the first thing they do to terraform Mars?
+
+Yes, and it an ability we have now. Should be step one.
+
+What are you gonna do for a magnetosphere?That&#39;s not too difficult, place a couple Tesla magnets at Lagrange points and there ya go. Yes, without a viable magnetosphere, any atmosphere we generate will be stripped away by the solar wind.
+
+What are you gonna do for a magnetosphere?
+
+That&#39;s not too difficult, place a couple Tesla magnets at Lagrange points and there ya go. Yes, without a viable magnetosphere, any atmosphere we generate will be stripped away by the solar wind.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-You can fool all the people all of the time if the advertising is right
-and the budget is big enough.
-		-- Joseph E. Levine</div>
+My idea of roughing it turning the air conditioner too low.</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1418,6 +1472,12 @@ For some things it works decently, but it tends to fail in specific scenarios. L
 Interestingly, this is also the exact scenario where AI search faceplants. Technical specifications, or more broadly anything with numbers.
 
 DDG is a good start, but often one needs to continue at Google. And for some queries I already know before &quot;DDG will not get it, I need Google&quot;. I blame them getting data from bing, which has similar problems with not getting what you mean and inventing other search terms you could have meant. And when it comes to AI, I think both DDG and Google sometimes produce helpful AI hints. Google for some shell command or how to do something (rather simple) in Latex and you already get the answer. At least google gi
+
+Can&#39;t say I agree. I&#39;ve used DDG for years and noaiDDG since they released it and it&#39;s always gotten me results on the first page (and usually in the top 3 results anyhow.)This! I switched to DDG , and the underlying theme of the new Google search paradigm s that  you have to accept hallucinating search results.
+
+Can&#39;t say I agree. I&#39;ve used DDG for years and noaiDDG since they released it and it&#39;s always gotten me results on the first page (and usually in the top 3 results anyhow.)
+
+This! I switched to DDG , and the underlying theme of the new Google search paradigm s that  you have to accept hallucinating search results.
 
 Where avoiding it isn&#39;t possible, ignoring it would be the next best thing. That&#39;s the only logical course of action after seeing so many AI results that I know are false.
 
@@ -1450,9 +1510,7 @@ Kagi also has the advantage of letting you filter out crap websites. I think tha
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-You can fool all the people all of the time if the advertising is right
-and the budget is big enough.
-		-- Joseph E. Levine</div>
+My idea of roughing it turning the air conditioner too low.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -3268,28 +3326,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">SoftBank to build up AI data centres in France with major investment - Reuters</div>
+            <div class="title">Rights groups sue over conditions at largest US immigration detention center - Reuters</div>
             <div class="meta">2026-05-30</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>SoftBank to build up AI data centres in France with major investment - Reuters</h2>
+            <h2>Rights groups sue over conditions at largest US immigration detention center - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxNSGpvaWFPVFk5eDM4Y1RPY29QVXVhYXN4UHQyVlJ5NzJzUWMxRk90S2EwNVRjeE82MlJWeWhCMjNHN1NPSVQ2UjY5UlBBWHdQSmdKRURxZFF1YkRYVEFFbW03V3pFZ1dKSGxQdEsxVUdkNkxZalIybVhYRjlkSmlfTkZDd1RfaWFLdXFVMTF2VXZBOHlxcTVwQkRQbVNqbXRLYzN1Z1NEZVhhaUZWeXdraUZMVG1wVFVIeDZMRzB3?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixAFBVV95cUxObkJKTXF1em5kX3dxWHVRLTBOYTVPZVcxeFItek1NX1JOWnlmdFEzeXVFOHRkRUJRRUwzQlJyWmZkNmdNV1V3QTNXd21YWjV4cXUtWi0wS0FISE9HM0xSbXpLaDR3blZRcXZuTFVNZzY5WThYV1h3ekFQQ2pPYm1uTlFlRzR5bXhQQWotRFdxd090NFlYMkNnTHE2SmxHLVBZZWRyMDg2UldVN2dXZWdMN2pSemllSGVLVkpXb0x3TzRIWjlz?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US planning faster troop withdrawal from Europe, newspaper says - Reuters</div>
+            <div class="title">SoftBank to build up AI data centres in France with major investment - Reuters</div>
             <div class="meta">2026-05-30</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>US planning faster troop withdrawal from Europe, newspaper says - Reuters</h2>
+            <h2>SoftBank to build up AI data centres in France with major investment - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNYnEybF9EeDRqOGwxZnNCTzljb1lXM0RaT08yS3R1UUQ1N1o2bS1VbFFUcGVhbnJUaExpdXpiTmdfa21OQ2x2MHpXX1JUVVFkNnlEM0VwU3pIdV9JT1lhMEhYZjhQYmowN1ZDZnZzcjVDMkltS3liNmtDM0k2cnVmYjVIY3ZHazE1Rk9RV0pNeHVRVFQ2NUkwMTVhdEdXcG5i?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxNSGpvaWFPVFk5eDM4Y1RPY29QVXVhYXN4UHQyVlJ5NzJzUWMxRk90S2EwNVRjeE82MlJWeWhCMjNHN1NPSVQ2UjY5UlBBWHdQSmdKRURxZFF1YkRYVEFFbW03V3pFZ1dKSGxQdEsxVUdkNkxZalIybVhYRjlkSmlfTkZDd1RfaWFLdXFVMTF2VXZBOHlxcTVwQkRQbVNqbXRLYzN1Z1NEZVhhaUZWeXdraUZMVG1wVFVIeDZMRzB3?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
