@@ -1411,27 +1411,64 @@ When you buy a book using a link in this newsletter, we receive a commission. Th
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Maybe AI can help with the archaeology that has to happen whenever new hands discover a code base.
 
+Of course, if the AI has a gigantic context window (it may not yet, but I&#39;m sure it will), it could have the entire code base &quot;in mind&quot; at once (as though every page of a novel is fresh in yours).
+
+With such a window, it could see where such (mal?)adaptations are used everywhere in the code.
+
+That can&#39;t work every time, but it might be a useful talent.
+
+I&#39;m hard-skeptical about AI as a do-it-all coder, but as a tool, I&#39;m certain it&#39;s profoundly useful in the right hands, right situation.
+
 It usually goes to the lowest-ranking person on the team or the one everyone&#39;s trying to keep away from actual coding.
 
-It remains worth the effort to write a novel around your code - not just what you did and why you did certain things a certain way, but the meta-reasons.   The more those who come after you understand, the easier it is for them to figure out and maintain your code.  It also tends to focus you more on writing good code, because you don&#39;t want to document, &quot;Well, it looked good enough and didn
+It remains worth the effort to write a novel around your code - not just what you did and why you did certain things a certain way, but the meta-reasons.   The more those who come after you understand, the easier it is for them to figure out and maintain your code.  It also tends to focus you more on writing good code, because you don&#39;t want to document, &quot;Well, it looked good enough and didn&#39;t immediately produce errors and I&#39;m tired of this and want to move on&quot;.
+
+AI code?  Well, AI should be very good at generating plain-language documentation of &#39;what&#39;, but it is absolutely going to fail at &#39;why&#39;.
+
+It remains worth the effort to write a novel around your code - not just what you did and why you did certain things a certain way, but the meta-reasons
+I don&#39;t know if I&#39;d go full novel, but I try to write my code so intention and implementation is clear with commentary to fill in the gaps.  The farther things stray from that and/or the weirder the code gets, the more documentation I leave, especially if, for some reason, it needs to be like that.
+
+While I enjoy the old saying, &quot;Real programmers don&#39;t document &#39;cause if it was hard to write, it should be hard to understand.&quot;, I don&#39;t follow the practice; the harder it is to write the more documentation it needs.  I also try very hard to be consistent in my implementations, style and commentary and have had several co-workers say they can tell it&#39;s my code just by looking at it.  I learned that over time, mainly because I looked at my own earlier code at some point to reuse it and had trouble figuring out what I had done and why.  I thought &quot;Not cool, me.&quot;
+
+So, I don&#39;t mind documentation, but will say that management is often loathe to allocate enough time for it to be done/maintained well.
+
+It remains worth the effort to write a novel around your code - not just what you did and why you did certain things a certain way, but the meta-reasons
+
+I don&#39;t know if I&#39;d go full novel, but I try to write my code so intention and implementation is clear with commentary to fill in the gaps.  The farther things stray from that and/or the weirder the code gets, the more documentation I leave, especially if, for some reason, it needs to be like that.
+
+While I enjoy the old saying, &quot;Real programmers don&#39;t document &#39;cause if it was hard to write, it should be hard to understand.&quot;, I don&#39;t follow the practice; the harder it is to write the more documentation it needs.  I also try very hard to be consistent in my implementations, style and commentary and have had several co-workers say they can tell it&#39;s my code just by looking at it.  I learned that over time, mainly because I looked at my own earlier code at some point to reuse it and had trouble figuring out what I had done and why.  I thought &quot;Not cool, me.&quot;
+
+So, I don&#39;t mind documentation, but will say that management is often loathe to allocate enough time for it to be done/maintained well.
+
+AI code? Well, AI should be very good at generating plain-language documentation of &#39;what&#39;, but it is absolutely going to fail at &#39;why&#39;.It could just say that it&#39;s some bullshit that someone in management wanted to try and it would be right enough for the &quot;why&quot; at least 90% of the time. This also partially explains why no one wants to document. If what they&#39;re making has a good chance at getting thrown out why spend time documenting any of it?
+
+AI code? Well, AI should be very good at generating plain-language documentation of &#39;what&#39;, but it is absolutely going to fail at &#39;why&#39;.
+
+It could just say that it&#39;s some bullshit that someone in management wanted to try and it would be right enough for the &quot;why&quot; at least 90% of the time. This also partially explains why no one wants to document. If what they&#39;re making has a good chance at getting thrown out why spend time documenting any of it?
 
 Something critical to note: intent is the most important thing to document when it comes to software. You can see what it does by reading the code, that&#39;s straightforward. What I need to know most, both when writing software and maintaining it later, is why it&#39;s doing that. What&#39;s it supposed to be doing? Why is it doing it in that way? What were the alternatives and why weren&#39;t they chosen? How is it supposed to be used by code that calls it? An LLM can&#39;t generate any of that just from the code.
 
 This is why traditionally software libraries have had two separate pieces of documentation: an API reference that details every call and it&#39;s arguments and results, and a user&#39;s guide that lays out how and why to use the library.
 
-What a funny thing to say about something that is literally all text.  Match up the code itself with the commit message and the ticket that caused it to happen - we work in the most documented business there is.
+Yes!  Particularly in languages with rich semantics and a tradition of meaningful identifiers, the primary focus on documentation where I&#39;ve worked has been on &#39;why&#39; rather than &#39;what.&#39;  In Ada, which separates specification/API from implementation, the comments in the spec explained what the package did (including errors/exceptions), and the comments in the body concentrated on capturing what was not obvious -to a maintainer- in the code.  Ada culture strongly emphasized maintainability, and that was empha
 
-If you don&#39;t force/write good commit messages then you get what you deserve.
+If you can&#39;t read code, you shouldn&#39;t be programming!
 
-If you don&#39;t force/use good issue tracking then you get what you deserve.
+Everyone agrees documentation matters in theory, but in practice it&#39;s inconsistent, outdated, or missing entirely. There&#39;s a lot of this in &quot;regular&quot; history too. A whole lot of what happens is never written down, or is subject to revised memories, or is slanted by ideological points of view.On the other hand, is it *really* necessary to have detailed records of all code that is written, no matter how insignificant? If it were, businesses would demand it. Ask anyone who writes code for a company that must comply with SOC II.
 
-In general, AI now composes my commit messages.  Then I delete 2/3 of it.  Sometimes I&#39;ll touch it up a bit.  So it is helping our process...
+Everyone agrees documentation matters in theory, but in practice it&#39;s inconsistent, outdated, or missing entirely.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+There&#39;s a lot of this in &quot;regular&quot; history too. A whole lot of what happens is never written down, or is subject to revised memories, or is slanted by ideological points of view.
 
-Consider the postage stamp: its usefulness consists in the ability to
-stick to one thing till it gets there.
-		-- Josh Billings</div>
+On the other hand, is it *really* necessary to have detailed records of all code that is written, no matter how insignificant? If it were, businesses would demand it. Ask anyone who writes code for a company that must comply with SOC II.
+
+Who on earth reads the documentation for Google.com, or GMail, or Word, or Excel, or any widely-used software? If you are using one of these, and you can&#39;t figure it out from the UI, I&#39;d argue that the UI is messed up and should be revised.
+
+Something I&#39;ve been toying with lately, LLMs can not only analyze the codebase, but also the git commit history and log messages. The developer intent IS there, it IS documented, but not in traditional documents that are easy for humans. These are instead in a form that is easy for LLMs to consume which then can summarize them back out into human readable documents. I&#39;ve been using this for the exact reason described, I inherited several codebases after employee turnover with no chain of custody to bring fo
+
+Well written code is self-documenting, specifically because once you start putting documentation somewhere else, you start getting a divergence in truth.  And I&#39;m not talking about leaving comments in the code - that&#39;s also documentation, as anyone who has had to reconcile business processes with code can attest upon discovering that the comments and the code also don&#39;t agree with each other.   (This is where I try and sell people on having detailed commit messages, and then realize that they&#39;re all going t
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1451,13 +1488,33 @@ This comments looks like it was written by an AI.  It is one long line with a si
 
 I guess my writing style has been tapped by LLM training models more than I thought. Hush now you filthy NPC.
 
+I can only assume MongoDB is kicking a bit to /. to keep the lights on.
+
+Sorry to tell you, LLMs/AI (their stuff) anything is (as far as they are concerned, are), in fact, cancer.You&#39;re not going to get away from it, it&#39;s going to work it&#39;s way into your life... you toaster and fridge will need replacing someday, what do you think you&#39;ll find?
+
 That big tech will send the lobbying hounds after this one, how else will the indoctrinate kids at an early age? This is billions in revenue we are talking about.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+But 1st and 2nd grades???Sorry, but that sounds like a REALLY bad idea.  More than half of what those grades should be about is learning to operate well in groups.
 
-Consider the postage stamp: its usefulness consists in the ability to
-stick to one thing till it gets there.
-		-- Josh Billings</div>
+Teachers can&#39;t teach real first principle thinking, only rote learning and memorization.  1 + 1 = 2, 2 + 2 = 4, etc.  Our education system was built in the 1950&#39;s to produce factory workers.  It was already obsolete, now it&#39;s really showing how useless it is.
+
+Teachers as they are today obsolete.  Let them say whatever they want it is sound and fury, signifying nothing.
+
+I am really not certain what we do with people who are incapable of first principles thinking.  They are going to be a huge burden on society.
+
+When you grow up, you don&#39;t remember the specific questions and answers that were on your final exams. But you DO remember and appreciate the teachers who were people of character, who poured their lives into the students they taught. This should tell us something about what part of a teacher&#39;s job is actually important. AI can&#39;t replace that.
+
+AI might have a place too. But just as with programming, AI augments, but doesn&#39;t replace excellent professionals.
+
+... first-principle thinking ... Thinking starts with foundational knowledge taught in schools, expands to the generic principles (Eg. base-n counting) and comparative knowledge (Eg. Judaism/Christianity/Islam vs. Roman/Greek/Egyptian polytheism) that are usually taught in university.  Schools are doing the job they were designed to do, 200 years ago.  As machines got more complex, that changed a little but the basic knowledge of science and humanities didn&#39;t.  The task of making self-centred children concentrate on boring facts, didn&#39;t.
+
+Thinking starts with foundational knowledge taught in schools, expands to the generic principles (Eg. base-n counting) and comparative knowledge (Eg. Judaism/Christianity/Islam vs. Roman/Greek/Egyptian polytheism) that are usually taught in university.  Schools are doing the job they were designed to do, 200 years ago.  As machines got more complex, that changed a little but the basic knowledge of science and humanities didn&#39;t.  The task of making self-centred children concentrate on boring facts, didn&#39;t.
+
+The unions don&#39;t want AI, not because AI is useless, but because they fear AI will replace teacher jobs. Is our goal the best possible education for children? Or is it preserving teacher jobs?
+
+With that said, I don&#39;t see AI replacing teachers. As with programming, I think AI can augment what teachers do. For example, a properly trained AI could help students study at home, focusing on the areas where the student is weak. AI could act as a personalized tutor, for students who can&#39;t afford a human tutor. AI co
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1484,6 +1541,18 @@ I like the sound of these horror films, though. They&#39;re going to tell a comp
 The original star wars movies had many elements that drew in audiences at the time, including a plot about a mystical force that was guiding a new hero on a path to save the galaxy from overwhelmingly oppressive tyranny.  The events were significant and the family-tie shockers injected some drama and so they were good.
 
 But &quot;Star Wars: The Last Flop&quot; lost the thread.  Instead of a plot that was even more epic and had even more galactic significance, it just doubled-down on the family drama and kind of lumbere
+
+They lost me at the lava battle.I do hear I&#39;m missing out on Andor.Yup, you summed up the problem. The movies Disney put out in recent years were not good movies, and the fan base became alienated. They wrote off the movies and didn&#39;t watch or pay attention
+
+So Disney can put out a decent Star Wars movie or show, and many just won&#39;t watch it.
+
+In this case, my analysis is that trying to have a mute puppet who seems to mostly reach for things carry the movie couldn&#39;t get enough traction. So people willing to take a look on the first weekend saw it, went &quot;Okay&quot;, and that was
+
+Yup, you summed up the problem. The movies Disney put out in recent years were not good movies, and the fan base became alienated. They wrote off the movies and didn&#39;t watch or pay attention
+
+So Disney can put out a decent Star Wars movie or show, and many just won&#39;t watch it.
+
+In this case, my analysis is that trying to have a mute puppet who seems to mostly reach for things carry the movie couldn&#39;t get enough traction. So people willing to take a look on the first weekend saw it, went &quot;Okay&quot;, and that was
 
 The movie makers built a 30,000 sq ft labyrinth of apparently random corridors and chambers, all carpeted, fluorescent lit and decorated in the same sickly yellow wallpaper on soundstages in Vancouver.
 
@@ -1525,6 +1594,59 @@ Well, if you&#39;re not a Star Wars fan (I know Star Trek fans are Trekkies, wha
 
 Ahh... and now, you&#39;re comparing a movie character to someone on here... do you have the swingin&#39; pair to email the admins about them?Didn&#39;t think so.So, you&#39;re not reporting them, not emailing admins... but, you&#39;re trying to call them out as being equals as far as Jar Jar&#39;s stupidity... drinkypoo is much more intelligent than that.Or, are you _yet_ another rsilvergun
 
+So, you&#39;re not reporting them, not emailing admins... but, you&#39;re trying to call them out as being equals as far as Jar Jar&#39;s stupidity... drinkypoo is much more intelligent than that.Why exactly would someone &quot;report&quot; Drinkypoo?
+
+He annoys some people. So do I. So does Armored Dragon, and ahem, you post ain&#39;t sunshine and puppy dogs.  No one is doing anything that would get them kicked or even a stern talking to.
+
+Relax a little, maybe enjoy an adult beverage or herb of your liking. Thoughts and prayers!
+
+So, you&#39;re not reporting them, not emailing admins... but, you&#39;re trying to call them out as being equals as far as Jar Jar&#39;s stupidity... drinkypoo is much more intelligent than that.
+
+Why exactly would someone &quot;report&quot; Drinkypoo?
+
+He annoys some people. So do I. So does Armored Dragon, and ahem, you post ain&#39;t sunshine and puppy dogs.  No one is doing anything that would get them kicked or even a stern talking to.
+
+Relax a little, maybe enjoy an adult beverage or herb of your liking. Thoughts and prayers!
+
+George Lucas said he was supposed to be the comic relief character. Outside of that, the character is pointless. The problem is he wasn&#39;t funny, he was just an annoying CG version of drinkypoo.Sonavabeotch, you owe me a new keyboard, man! My soda went all over it when I read that.
+
++5 for making me snort! 8^)
+
+George Lucas said he was supposed to be the comic relief character. Outside of that, the character is pointless. The problem is he wasn&#39;t funny, he was just an annoying CG version of drinkypoo.
+
+Sonavabeotch, you owe me a new keyboard, man! My soda went all over it when I read that.
+
+Disney isn&#39;t going to let anyone do stuff with Star Wars or any of their properties.
+Same thing with Bond, now that Amazon owns it all.Star Wars should&#39;ve ended with the McGregor/Jackson ones (and, most definitely not had JarJar, or rewrote &#39;who shot first&#39;).I think that the core problem is that Disney is a terrible fit for Star Wars in any form. 
+
+Star Wars was Space Cowboy Epic, 
+Disney excels at making Disney Princesses. 
+
+Both are legitimate, but it is really difficult to make a space cowboy movie when your talent is princesses.
+
+Disney isn&#39;t going to let anyone do stuff with Star Wars or any of their properties.
+Same thing with Bond, now that Amazon owns it all.
+
+Star Wars should&#39;ve ended with the McGregor/Jackson ones (and, most definitely not had JarJar, or rewrote &#39;who shot first&#39;).
+
+I think that the core problem is that Disney is a terrible fit for Star Wars in any form.
+
+Disney excels at making Disney Princesses.
+
+Both are legitimate, but it is really difficult to make a space cowboy movie when your talent is princesses.
+
+Now that Hollywood has calcified into old-guard money and thinking, YouTube has become a great laboratory for filmmakers to hone their craft. Perhaps Disney will let a YouTube director have a crack at the next Star Wars movie?You are correct, Youtube doesn&#39;t have teh present day constraints Disney does. 
+
+As for allowing a Youtuber get involved, maybe. After all they put Harvey Weinstein&#39;s secretary with no experience direct &quot;The Acolyte&quot; flop, so if a Youtuber with the proper political beliefs who is willing to take on the fans surfaces, they might just hire them.
+
+Now that Hollywood has calcified into old-guard money and thinking, YouTube has become a great laboratory for filmmakers to hone their craft. Perhaps Disney will let a YouTube director have a crack at the next Star Wars movie?
+
+You are correct, Youtube doesn&#39;t have teh present day constraints Disney does.
+
+As for allowing a Youtuber get involved, maybe. After all they put Harvey Weinstein&#39;s secretary with no experience direct &quot;The Acolyte&quot; flop, so if a Youtuber with the proper political beliefs who is willing to take on the fans surfaces, they might just hire them.
+
+Long-forgotten prequel to the Iron Sky, the magnificent Star Wreck: In the Pirkinning was way much more fun than the sw sequels.
+
 It wasn&#39;t a big theatre-experience movie, it was more like a handful of really good television episodes strung together.
 
 In that sense, it was both a good movie and deserved the bad reviews it got.
@@ -1557,11 +1679,15 @@ When I saw a clip of a baby Yoda slinging the force around willy nilly I realize
 
 Besides, the whole story line blowing Boba Fett up into an anti-hero and then building a whole race around the concept was just another case of th
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+&quot;...the movie isn&#39;t finding audiences &quot;beyond an aging group of core fans.&quot;&quot;
 
-Consider the postage stamp: its usefulness consists in the ability to
-stick to one thing till it gets there.
-		-- Josh Billings</div>
+Aren&#39;t these the core fans they basically told to go fuck themselves?
+
+They rebranded the entire Expanded Universe as &#39;non canonical&#39; so they could re-write and sell their new shit.  Churn out committee-designed scripts set up to &quot;maximize marketing opportunities&quot; and expect nobody to notice.
+
+Trivializing genuine criticism as racists, homophobes, alt-right, or some easily-dismissed &#39;engineered&#39; ingenuous complaints.  Even something as
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1683,6 +1809,12 @@ But where is the angle to go for the funny?
 
 I&#39;d say AI generated images of large wild life trying to use slow moving wind turbine blades as back scratchers. :-)
 
+The key to &#39;surfing the 2nd generation techs&#39; is that you - defacto - can&#39;t be at the cutting edge.  In fact you have to be a backward society *vastly* behind the curve to avoid having to have that legacy sunk-cost infrastructure.
+
+Nobody &quot;skipped over&quot; early tech, that implies agency.  These are LEFT BEHIND economies.  I don&#39;t think anyone chooses that as a strategy.
+
+So it&#39;s externally-developed tech that someone is selling them.
+
 2) Does not require much that humans don&#39;t already need - sun and air.  (Variability will affect your power storage needs)
 
 3) It can be deployed almost anywhere, and even be portable.
@@ -1747,9 +1879,17 @@ Maybe your problem is that you were biased by your 1st world privilege, but righ
 
 But I guess you think your mobile phone is powered by hopes and dreams and energy storage is some woke vaccinated nonsense right?
 
+What&#39;s the highest voltage you&#39;re held in your hand?Mine was 200KV at 100 Amps... yeah, 2 megawatts... fun times making fulgurites (2x 100KVA pole pigs, 100Amp breaker)... on the end of an 8-foot chicken-stick!(we also set our fire-proof high-voltage lab on fire... overachievers, much)
+
+I&#39;m biased because of my first world privilege?  In what way?I know my US dollar isn&#39;t worth much more than the atoms it&#39;s printed on (same as the rest around the world)
+
+No, I know my computers (which my office laptop charges m
+
 African nations are exceptionally capital poor. Basically all projects are funded by foreign investment banks.
 
 Last decade and a half was significant reduction on any power plant infrastructure loans that were for anything other than solar and wind, of which time after 2015 (Paris Agreement) was almost a total ban. This hit even the one exception in Africa: SA, and is one of the reasons for their constant blackouts. Though as is the cas
+
+None of this is relevant to the subject at hand.
 
 Investor Tilleard says &quot;Renewable energy is now unequivocally the fastest, cheapest, and most bankable way to connect people, companies and economies to the megawatts they need to grow.&quot; 
 It&#39;s a scam - the U.S. Dear Leader has said so many, many times, so it must be that. /s
@@ -1766,13 +1906,9 @@ When your power plants are non-existent or unreliable, a power source you can pu
 
 Similarly, people living in a homestead situation do the same thing.  Alaska cabins almost all have solar and often have wind or a water turbine.
 
-The estimate is that about 300m people in Africa now have access to more (and more reliable) electricity thanks to the adoption of solar home systems (typically a panel, integrated battery, LED, phone charge, and outlet for a small appliance). Community power systems are providing transport as well. It’s going to be transformative. As I’ve mentioned here before, it means kids can do their homework at night, food stays fresh for longer thanks to being able to run a fridge, and respiratory health
+The estimate is that about 300m people in Africa now have access to more (and more reliable) electricity thanks to the adoption of solar home systems (typically a panel, integrated battery, LED, phone charge, and outlet for a small appliance). Community power systems are providing transport as well. It’s going to be transformative. As I’ve mentioned here before, it means kids can do their homework at night, food stays fresh for longer thanks to being able to run a fridge, and respiratory health improves without kerosene and generators running. People pay with microloans and the costs of paying off the loans is a heckuva lot lower than paying for fuel, and doesn’t have volatility either.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Consider the postage stamp: its usefulness consists in the ability to
-stick to one thing till it gets there.
-		-- Josh Billings</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1817,7 +1953,9 @@ There is a mention of &quot;agent sprawl&quot;, but other than a claim of &quot;
 
 First, it should be understood that there is nothing special about an &quot;agent&quot;, it&#39;s just a term used to refer to an AI application that is autonomous.  Well, all sorts of software are similarly autonomous, it&#39;s only the use of AI that makes them &quot;agents&quot;.
 
-Funny, though, that there has never been a need to extend DNS to support autonomous applications deployed to the internet, yet now with AI we ne
+Funny, though, that there has never been a need to extend DNS to support autonomous applications deployed to the internet, yet now with AI we need it?  And to be clear, an AI &quot;agent&quot; doesn&#39;t say what it does, only that it is autonomous and uses AI.  And why do these agents need to identify one another?  So they can more easily collude?  So they can avoid breaking one another as they destroy conventional software services?  So they know what software to steal from while avoiding AI mad cow disease?
+
+We will find out that this is yet another move by AI billionaires to burden shared infrastructure to their benefit.  If it&#39;s your cloud service then it&#39;s your problem, but if it&#39;s THEIR cloud service then it&#39;s your problem.
 
 Who says only AI is using agents? You&#39;re using a web user-agent right now. You probably already used a mail-user-agent, which delivered a mail using a mail-transfer-agent to a mail-delivery-agent. Don&#39;t be too impressed when someone uses a technical word that some people may associate with secret agents or whatever.
 
@@ -1831,11 +1969,9 @@ I can&#39;t wait to use this to sabotage the fucking AI bots that scrap my serve
 
 Expensive mistakes stop all stupid schemes.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+UDDI tried to solve the same problem 25+ years ago and failed because you can&#39;t trust a random service somewhere. But put the label AI on it and at least some people will think it&#39;s good.
 
-Consider the postage stamp: its usefulness consists in the ability to
-stick to one thing till it gets there.
-		-- Josh Billings</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1893,11 +2029,7 @@ This is a very cool and worthy project but damn if they didn&#39;t build this th
 
 I have no doubt there is a better way to accomplish this task because this is obscene.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Consider the postage stamp: its usefulness consists in the ability to
-stick to one thing till it gets there.
-		-- Josh Billings</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2265,11 +2397,223 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">www.theregister.com - Articles</div>
-            <div class="title">Netflix wiz creates app to slash AI bills, then open sources it</div>
+            <div class="title">Exploding rockets and exploding hardware prices make for a lousy new normal</div>
             <div class="meta">2026-05-31</div>
         </div>
         
         <div id="content-42" style="display:none;">
+            <h2>Exploding rockets and exploding hardware prices make for a lousy new normal</h2>
+            <p><strong>www.theregister.com - Articles | 2026-05-31</strong></p>
+            <a class="original-link" href="https://www.theregister.com/personal-tech/2026/06/01/exploding-rockets-and-exploding-hardware-prices-make-for-a-lousy-new-normal/5248601">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
+It was explosive news week – if you&#39;re the price of a popular-but-aging piece of consumer gaming hardware or a Jeff Bezos rocket.
+
+This week on The Kettle, Brandon Vigliarolo is joined by Reg reporters Richard Speed and Dan Robinson to talk about the Steam Deck&#39;s 40+ percent price hike and what it means for the ongoing memory and storage shortage. Sure, it&#39;s just consumer hardware, but it&#39;s the latest in a line of price hikes justified in the name of AI and geopolitics – and it could spell the beginning of a new normal for hardware prices.
+
+We couldn&#39;t ignore the standout story of late last week, though, as a Blue Origin rocket blew up spectacularly in what may be the largest space industry explosion in more than 50 years. The Blue Origin blowup is likely to delay the Artemis mission for months, if not a year or more.
+
+You can listen to The Kettle here, as well as on Spotify and Apple Music, or read the transcript of the latest episode below. It&#39;s been lightly edited for clarity.
+
+Welcome back to another episode of the Registers Kettle podcast. And boy, do we have an explosive bit of news to talk about this week, both figuratively and literally. Not only has one particular vendor&#39;s price boom brought the AI-driven memory shortage into focus for a wider audience, but there&#39;s also a decidedly more physical detonation in Florida this week that looks like it might have imperiled NASA&#39;s moon plans. With me to discuss these stories are Reg reporters Richard Speed and Dan Robinson. Welcome to you both.
+
+Yeah, Dan, welcome. It&#39;s your first time on. We&#39;re glad to have you ⁓ here on the kettle. So let&#39;s jump right into it. So if you&#39;re not aware, game vendor and Linux gaming hardware kingpin Valve bumped the price of its flagship handheld, the Steam Deck, by more than forty percent this week. And there&#39;s no need to guess why. AI is eating up all the memory and storage that the rest of the industry uses, and global geopolitics aren&#39;t really helping either. Richard, you covered this, so walk us through what exactly Valve announced.
+
+Yeah, so this is the Valve Steam Deck handheld is a popular gaming device.
+
+it&#39;s a great device. Although it is getting a bit long in a tooth now, but it is a great device…or not so great at this price. Basically the price of it, there&#39;s two types. There&#39;s a 512 gigabyte version and the one terabyte version. Both have got OLED screens.
+
+Right. The LCD version I believe is discontinued at this point, they&#39;re not manufacturing it. So these are the Steam Decks.
+
+Yeah, that&#39;s correct. Yes. So it says two Steam Decks. the 512 gigabyte version, that retailed for $549 and it&#39;s now gone up to $789. The one terabyte version has now gone up to $949. And that&#39;s a lot of money for a games console. I mean, we&#39;ve seen companies like Sony increase the price of the PlayStation 5. We saw the Raspberry Pi, for example, that went up. I mean, it was a hundred dollar hike, I think, for the 16 gigabyte Raspberry Pi 5. We&#39;ve seen price increases from Microsoft. There&#39;s been a lot of increases.
+
+Valve didn&#39;t actually mention AI, they actually said, Steam Deck itself hasn&#39;t changed. These new prices reflect the current state of component costs and other global logistical challenges across the industry as a whole. That&#39;s what they exactly said. You&#39;d have to think that there is a factor at play that is consuming all the memory and storage in the industry and that&#39;s AI and that&#39;s causing prices to rise.
+
+What was also interesting was in the Raspberry Pi price rise announcement, the boss there, Eben Upton, said that the company would be reversing the increases as soon as the prices settle down again. He actually said that. Whereas Valve, a little bit more coy, they just said, we&#39;ll keep you updated if anything changes. So this might be the new normal.
+
+It&#39;s interesting because if anyone would have asked me two weeks ago if they should buy a Steam Deck, I would have told them absolutely. I have a 512 gigabyte OLED. I love it. I&#39;ve had it for a couple of years now. You know, there&#39;s some brand new triple A games that it won&#39;t run well, or you&#39;ve gotta scale down the graphics or install some tweaks that Steam Deck users have suggested to make things run better. So it&#39;s not plug and play necessarily. Honestly, you&#39;ve gotta know your way around Linux a little bit to get the most out of it, but it&#39;s phenomenal. I love it. $789? No, absolutely not. I would not recommend someone buy this. It&#39;s an old device, there&#39;s new ones coming out from different companies. I think Intel just announced their own recently. There&#39;s a lot of other options out there and the Steam Deck raising the price by this much doesn&#39;t seem like a great move to me. it&#39;s a logical one, but a big hike for something so old.
+
+As you say, you do need to be a little bit aware of tech in order to get the best out of it, but it is ultimately a consumer device. I think consumers are now starting to feel what maybe we in the IT industry have known for a few years now, that hardware prices are going up and up and up. And they&#39;re now at the sharp point of this as well.
+
+So along with the AI-triggered memory shortages, right, that&#39;s not the only reason we&#39;re seeing these price increases in the industry, right? Valve also mentioned the global geopolitical situation was affecting its prices too. I know Dan, you wrote about this last month, about the Iran war affecting hardware prices. And I&#39;m guessing things probably haven&#39;t eased up since then.
+
+Well, as far as we know there&#39;s still blockades and the ships aren&#39;t getting through. So what this was causing, there were reports out that it was affecting supply chains with materials and costs for servers. And apparently construction companies were seeing increases of up to 20 percent which was adding to the cost of data centers. And that&#39;s feeding through into various things as well.
+
+And as we know, the memory situation is due to AI, not so much because it&#39;s eating up all the memory, but because the chipmakers have a certain amount of capacity. And the chip types that are used in AI, in the GPUs, those make a much higher margin than memory does for ordinary PCs. So they prefer to make that. And so there just isn&#39;t enough capacity left over to supply the PC makers. That&#39;s been feeding through, as we know, [to] people who&#39;ve been trying to spec up a PC. That&#39;s been feeding through into higher prices.
+
+Some of the memory prices have gone up by a ridiculous amount, they&#39;ve quadrupled since last year and I believe now, I read somewhere that you&#39;re looking at well over $300 in the US for 32 gigabyte modules.
+
+Luckily I haven&#39;t looked lately, I haven&#39;t had a need to. I&#39;m terrified by the idea of one of my machines going bad and having to fix something. It&#39;s not a great time to be a hardware tinkerer, I feel like, right now.
+
+There&#39;s no chips being manufactured in the Middle East, so this is more of a supply chain issue. Are there particular components that come from the Middle East and Iran that that are used in construction of these things, or is it mainly just supply chain being affected by this as as the ripples expand?
+
+It affects the whole supply chain. Some things have to get routed around the Middle East, which makes it cost more to ship things. There were concerns initially that things like helium, which are involved in chip manufacturing, but that doesn&#39;t seem to have become a big issue. So the Iran issue, it&#39;s mainly the oil. It&#39;s going to run out.
+
+At the end of the day it all comes back to that.
+
+But we&#39;re starting to see some of the effects of the memory crunch as well in rising PC prices. And as we&#39;ve covered on The Register, that&#39;s starting to kill off the budget PCs. And some of these manufacturers are now, they&#39;re switching to just focusing on the higher-end systems, higher performance ones.
+
+Right. That&#39;s paid out well for Lenovo, I think, based on a story you just wrote, right?
+
+That was last week when they announced their latest results, yes. They said that they&#39;d managed to keep their margins up, keep their PC business profitable, and that was basically due to just selling higher-spec systems.
+
+How long do you think this is going to go on for, Dan? mean, know, I mean, are we looking at 2027, 2028? I mean, I mean, this can&#39;t go on forever, surely. Or can it?
+
+Hopefully not, fingers crossed. Some of the experts, they think that this could last through to the end of next year.
+
+That&#39;s what I&#39;ve been hearing too…. I understand chip fabs have pretty long lead times, right? Like you&#39;ve gotta get your orders in well in advance if you need x amount of whatever. So if they&#39;re prioritizing these higher-end chips for things like GPUs that can are gonna serve AI workloads, yeah. I mean you know, add on to that supply constraints geopolitics, and you&#39;ve got just this growing backlog of, &quot;if we&#39;ve got space available two years from now, why would we give it to budget RAM and we can give it to NVIDIA for more high-end GPU graphics cards that are going to go into more data centers.&quot; So yeah, we&#39;re looking at at least probably through the end of last next year before this eases.
+
+But even then, right, like Valve said it might not adjust. I mean it didn&#39;t say it wouldn&#39;t, right? But it was very noncommittal. So I wonder if this is going to be a permanent price hike for a lot of businesses.
+
+Well, it could be. Without wishing to get too much into consumer tech, Valve does have some new hardware coming out, the Steam Machine, which the actual  release date and these price have yet to be officially announced. Brandon, I guess as a Steam Deck user, do you think this is going to have an impact on the price of Steam Machine, or maybe might Valve even just put it back for a while and postpone it?
+
+I don&#39;t know, I think we&#39;ve talked about this a bit off air. This could be them trying to soften the soften the blow for a really expensive Steam machine. I don&#39;t know, right? I would hope that this doesn&#39;t mean that it&#39;s gonna be through the roof. Valve has always had a really good reputation with gamers, I feel like, for being reasonable, in their pricing, in their availability, and this is kind of one of those things that I feel like there&#39;s a bit of enshittification creep, right? You can feel it. It&#39;s prices are going up because we need to keep our margins, right? As opposed to serving our customers, which I feel like was sort of where Steam came from originally. I don&#39;t know.
+
+It also makes me wonder sometimes if, like Dan, you were saying that this has had a lot of companies pivoting to higher-end equipment. But it also makes me wonder if prices go up and stay there, are we looking at a situation where, as opposed to companies saying, hey, we&#39;re gonna sell this higher-end stuff, it&#39;s more things like Chromebooks, right? Where it&#39;s this minimally specced machine that&#39;s incredibly dependent on services. It could it be that as opposed to going in the high-end PC direction where they&#39;re looking at margins, they&#39;re looking more at recurring revenue through services. I mean, that could be a possibility too. Any thoughts there, on guys?
+
+The thing about Chromebooks is, although they&#39;re tied to cloud services, people still buy them. They&#39;re not really a subscription product.
+
+I guess that&#39;s true. I was imagining more of an evolution of that platform, right?
+
+I&#39;m thinking, Dan, you wrote a piece, I think yesterday about Qualcomm&#39;s $300 platform, which was an interesting time to pitch that. But I mean, perhaps that could be an option.
+
+Yes, it&#39;s a little awkward for them because they were aiming for a $300 price tag for these laptops, which is their new Arm-powered Snapdragon C platform. But obviously you could quite easily hit $300 just with the memory.
+
+And I see Acer has announced one system, it announced its system yesterday, but it was very cagey, and it didn&#39;t announce a price, and it&#39;s going to have maximum of 8GB of memory. That&#39;s the maximum.
+
+Yeah, I&#39;d worry about Windows 11 running properly on that.
+
+Richard, you&#39;re the Windows guy, what&#39;s the minimum hardware specs for Windows 11 nowadays?
+
+Oh, that&#39;s a tricky one. I always say there&#39;s lies, damn lies and recommended hardware specs for Windows. I mean, you can get away with four gig. The thing is, Microsoft recently got got some flack because they did have some documentation saying you really need 16 gigs. That&#39;s quietly been shelved. And I think possibly as a result of this, this memory chaos that&#39;s going on.
+
+That was for Copilot Plus I believe, isn&#39;t it? 16 gigs.
+
+Yeah, but I can imagine, and I think we&#39;ve written about this before, I can easily see the  AI PC requirements starting to drift downwards because 16 gigabyte machines are now, instead of being the norm are becoming the premium, that&#39;s kind of a premium machine now, whereas a year ago 16 gigs – I mean, crikey, I&#39;ve got a machine down here that&#39;s got 16 gigs of RAM in it which I&#39;m thinking that actually might be quite a canny investment now.
+
+I&#39;ve got a M1 MacBook from 2021 that I&#39;m like, okay, 16 gigs, Apple M1 Pro. I guess I&#39;m hanging on to this until it falls apart at the seams.
+
+Yeah, definitely. Although Mac OS vs Windows 11, Mac OS has traditionally been better with memory than Windows. I&#39;ve been running on a Mac Mini M1 for quite some time and that&#39;s got eight gigs. That&#39;s absolutely fine. I&#39;ve used the Neo, again, eight gigs, absolutely fine. I&#39;m not sure I&#39;d want to run Windows 11 on eight gigs for any length of time. I just think as soon as you start to load up with apps, it&#39;s going to start to struggle. But that is very subjective. I think we&#39;re going to see how this shakes out. But as Dan says, well here you go, here&#39;s the eight-gig laptop, knock yourselves out and we&#39;ll see how it goes
+
+I could easily see that turning into…a recurring revenue model, right? As companies are moving more toward putting everything they have into data centers and not consumer devices.
+
+And I think the other interesting thing is the only – I&#39;ve not seen many people come out and say, the prices will go down again, in a way that say Eben Upton of Raspberry Pi has said, we will reverse the prices when prices come down. Whereas Valve are saying, well, you know, we&#39;ll just let you know what happens when it happens. So no commitments being made. I mean, we could be looking at a new normal now. The current pain we&#39;re going through, this could be how it&#39;s going to be going forward. It&#39;s going to make it interesting for corporates, when we&#39;re purchasing new a laptop fleet, what spec you&#39;re going to buy.
+
+More connected services. More minimal specs, I guess. You know, we&#39;ll see. We&#39;ll see.
+
+So not to completely change the subject. I mean we are still talking about booms, just not market related ones. You guys have probably seen the video of that Blue Origin fireball. That was that was pretty spectacular. I think that happened on Thursday, was that right?
+
+About 9 PM Eastern time, I think it happened.
+
+So do we know what happened, Richard? You wrote the story on that.
+
+We don&#39;t know for sure exactly what happened. I mean, most of us have now seen the video and what was happening was they rolled the rocket. It&#39;s the fourth attempted – well was going to be the fourth attempted launch of a New Glenn rocket. They rolled it out on the pad, they erected it. They were doing some form of test. This might&#39;ve been a static firing test. It might&#39;ve been a wet dress rehearsal. Not quite sure exactly what they were doing, but it involved fueling up the rocket. Now the rocket, I think, is powered by seven B4 engines. And runs on, I think, liquid methane, I&#39;m pretty sure. I&#39;m sorry, I&#39;m looking at my notes here. And they were fueling, or they&#39;d fueled the rocket up and then something happened at the base of the rocket, and it doesn&#39;t look like it was an engine ignition from what I could see. It looks like something happened and it just caused...
+
+The whole thing, I mean, it just kinda rippled. You could see it start at the bottom and ripple up &#39;cause I think one of the last shots visible of the rocket you have is the upper portion of it breaking apart.
+
+I think it&#39;s important to note when we say it happened so fast, it was just suddenly &quot;boom&quot; and it went. When these things go up, and the last one I think I saw was I think SpaceX lost a Falcon 9 on launch pad, and that seemed to kind of rumble and it exploded. Whereas this, it was like it detonated. It was a really sudden explosion and, I mean, obviously that&#39;s – I want to make clear here, nobody was injured, all persons are accounted for. And that&#39;s great. I mean, I don&#39;t know if we&#39;ll find out in the coming weeks if that&#39;s everyone everywhere, because it was such a big explosion.
+
+Heard from miles around. Dan you were were saying earlier, 40-mile radius, I think, was what people were reporting. That&#39;s insane.
+
+Yeah, 40, 50 miles around, yeah. And the sky was turned orange. If you were in the area, if you were in the state, I think you probably would have been aware of what&#39;s happening.
+
+And also this isn&#39;t too long after, I think it was just last week, that they attempted to launch a satellite using one of their rockets, Blue Origin did, and it failed to reach orbit because something went wrong too.
+
+Yeah it was a few months back. That was New Glenn 3, or the third New Glenn launch. And what happened there was there was a failure with the second stage and they didn&#39;t put the satellite, which was the AST Space Mobile Bluebird 7 satellite, was left in the orbit and it came back to Earth and, you know, whatever else. In the last week, the US Federal Aviation Administration, they cleared New Glenn, or Blue Origin, to resume launching the New Glenn rocket because there had been an explanation. Blue Origin had implemented changes and they were good to go. So that&#39;s why the rocket was being rolled with the pad because it was due to launch. I think it was another batch of Amazon Leo satellites, but they weren&#39;t on the rocket at the time, they&#39;re in the facility somewhere in storage. So that&#39;s what they were trying to do.
+
+They&#39;ve basically taken out, I mean, it looks to me as though they&#39;ve taken out the launch pad. There&#39;s not a lot of it left.
+
+I think in your story you mentioned that when Starship exploded… like nearby, right? It took months to bring it back into service, and by all accounts this appears to have been a far worse explosion.
+
+You almost feel like there&#39;s these billionaires having some kind of game of one-upmanship here where Elon Musk managed to crash the Super Heavy booster into the Gulf of Mexico.
+
+Which grounded Starship again, according to the FAA.
+
+Starship is now being grounded … although apart from that, the flight was relatively successful… One of the Raptor vacuum engines failed on that during while it was on its suborbital trajectory, which when they couldn&#39;t do the relight of the engine and that means it can&#39;t be trusted to go into orbit yet, which is a different issue.
+
+And then it&#39;s almost like Blue Origin said, right, hold my beer, watch this.
+
+I think it was the biggest space-related explosion since what was it called? The Soviet rocket that blew up years ago?
+
+I think maybe the one that&#39;s comparable is perhaps the Soviet Union&#39;s N1 rocket from the late 60s, early 70s, that went up. And I think the only way that – it was kept quiet for many, many, many, many years, and think the only reason the Americans were aware of it was they had a spy satellite going overhead. And one day the rocket was there. The next day there&#39;s a big crater, ah, something&#39;s happened there.
+
+I&#39;m interested to see in the coming days what this launch pad looks like once the damage has been done. Blue Origin also just got a contract from NASA, right, to help build this Moon Base. I mean, this is gonna put Artemis in danger again, I imagine.
+
+I think there&#39;s surely only a matter of time now before before NASA admits, yeah, the 2027-2028 thing is just not going to happen now because they&#39;re depending on these two commercial providers, Blue Origin and SpaceX, to effectively provide a landing.
+
+And neither one seems to have its act together.
+
+Exactly and the problem is last week you had SpaceX and that didn&#39;t go well, but at least it made into a suborbital trajectory and deployed some Starlink mockups. But you thought that&#39;s still quite a long way from going to the Moon. But it&#39;s okay, but there&#39;s a backup, there&#39;s Blue Origin. Oh no, there&#39;s not now because that&#39;s also blown up…I mean they&#39;ve yet to send their lunar lander to the moon. That&#39;s the Blue Moon Mark 1, it was supposed to go this year, and then next year they were going to do the Mark 1 [again, it] was going to take NASA&#39;s Viper Rover to the moon. The Blue Moon Mark 2, that&#39;s effectively the crewed, the human lander so that was going to go up. That was going to go up in 2027. Again, this is all relying on the New Glenn. This is a problem. It&#39;s all reliant on the New Glenn.
+
+Then that, and hopefully whatever SpaceX can get ready for the human landing system for Starship was going to go up as well.
+
+And then for Artemis III, NASA was going to practice rendezvousing and other bits and pieces, maybe even get astronauts on board these spacecraft in low Earth orbit. That was the plan.
+
+This means that plan I just think is probably in as a big a crater as the bits that are left of the New Glenn rocket, because I can&#39;t imagine how you&#39;d recover from this in a period of time to actually make what was planned for Artemis III possible. It&#39;s just not possible now. But heck, I would love to be proved wrong.
+
+Me too, right? Like every time this happens, I&#39;m kinda like, hey, look, the billionaires failed to get a rocket into space again. There&#39;s an element of schadenfreude there, but also an element of, come on, guys, let&#39;s just get this working. Right? I want I want it to succeed too without continuously polluting the atmosphere with bits of God-knows-what as they explode in various levels of orbit. It&#39;d be great if this worked.
+
+And of course, you the point you made about the time it&#39;s going to take to get back, mean, you know, with the SpaceX, it was the Amos 6 mission in 2016 that exploded at the launch pad. It took about a year before they were launching Falcon 9 from that launch pad…So I think we&#39;re looking at at least that period of time for this, probably longer. I can remember talking to another boss of a rocket company, think it was Peter Beck, at Rocket Lab, and he said one of the problems you&#39;ve got is building the launch pad is the single most expensive time-consuming thing you can do. So in this instance, it would not have been good if New Glenn were not good, but it would have been less bad if it had launched a little bit off the pad and then blown up, rather than blown up while on the pad, taking out all the infrastructure with it.
+
+These things are just massive bombs though, really, aren&#39;t they? It&#39;s just they release their energy slowly normally when they launch.
+
+Clearly, right? You saw the mushroom cloud coming off that thing. It was insane. It it looked like a nuclear explosion practically. It was it was nuts.
+
+I mean they are horrendous things…Astronauts, they have to sit on top of these things, and it is basically a controlled explosion. That&#39;s how chemical rockets work. They are exploding all this fuel. It&#39;s designed to be highly explosive and very energetic because it&#39;s got to lift this rocket off. If you&#39;ve not seen the video, I&#39;d recommend looking at it because it&#39;s just astonishing.
+
+Yeah, I&#39;ll be sure to include a link to it in the in the in the text copy that I that I add for the recording because yeah, if you haven&#39;t seen it, you definitely need to go watch it.
+
+So all right, well let&#39;s hope that maybe next week we have something a little less  explosive to talk about. But no matter what it is, we&#39;ll be here to talk about it on The Kettle. Thanks for joining us and we will see you next time. ®
+
+Project Headroom could save you big money, too
+
+Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
+
+A billion AI agents walk into a power grid
+
+DIY or die. Just don&#39;t let the CIA buy it
+
+What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
+
+Modern applications are API-driven, interconnected, and often over-permissioned, making them an ideal target for AI-assisted attacks.
+
+Join us to discover how to eliminate infrastructure silos and establish a standardized, enterprise-grade cloud-native platform.
+
+Microsoft 365 is the backbone of enterprise communication, and its native security filters out the known and the noisy.
+
+Step into the chaos of a live ransomware breach, test your response skills, and team up with other IT and security pros to outsmart cybercriminals
+
+Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit event, Escape Ransomware, is now fully virtual.
+
+Join us to learn how to unlock real ROI by driving adoption of AI at scale.
+
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
+Project Headroom could save you big money, too
+
+Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
+
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
+Project Headroom could save you big money, too
+
+Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
+
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
+Project Headroom could save you big money, too
+
+Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Netflix wiz creates app to slash AI bills, then open sources it</div>
+            <div class="meta">2026-05-31</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
             <h2>Netflix wiz creates app to slash AI bills, then open sources it</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-31</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-ml/2026/05/31/netflix-wiz-creates-app-to-slash-ai-bills-then-open-sources-it/5248702">Visit Original Website</a>
@@ -2364,28 +2708,32 @@ Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit even
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Project Headroom could save you big money, too
-
-Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
 
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
-CEO Todd McKinnon says customers including ServiceNow want an off switch</div>
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
+Project Headroom could save you big money, too
+
+Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Wikipedia editors plot strike and banner sabotage after Wikimedia layoffs</div>
             <div class="meta">2026-05-30</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Wikipedia editors plot strike and banner sabotage after Wikimedia layoffs</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-30</strong></p>
             <a class="original-link" href="https://www.theregister.com/software/2026/05/30/wikipedia-editors-plot-strike-and-banner-sabotage-after-wikimedia-layoffs/5248491">Visit Original Website</a>
@@ -2440,28 +2788,32 @@ Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit even
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Project Headroom could save you big money, too
-
-Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
 
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
-CEO Todd McKinnon says customers including ServiceNow want an off switch</div>
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
+Project Headroom could save you big money, too
+
+Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Rocket exhibit at National Space Centre pulls off unintentional NASA SLS impression</div>
             <div class="meta">2026-05-30</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Rocket exhibit at National Space Centre pulls off unintentional NASA SLS impression</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-30</strong></p>
             <a class="original-link" href="https://www.theregister.com/offbeat/2026/05/30/rocket-exhibit-at-national-space-centre-pulls-off-unintentional-nasa-sls-impression/5248248">Visit Original Website</a>
@@ -2506,28 +2858,32 @@ Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit even
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Project Headroom could save you big money, too
-
-Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
 
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
-CEO Todd McKinnon says customers including ServiceNow want an off switch</div>
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
+Project Headroom could save you big money, too
+
+Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">AWS reportedly to tuck Elon Musk's Grok into Bedrock, despite zero enterprise demand</div>
             <div class="meta">2026-05-29</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>AWS reportedly to tuck Elon Musk's Grok into Bedrock, despite zero enterprise demand</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-29</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-ml/2026/05/29/aws-reportedly-to-tuck-elon-musks-grok-into-bedrock-despite-zero-enterprise-demand/5248832">Visit Original Website</a>
@@ -2594,28 +2950,32 @@ Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit even
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Project Headroom could save you big money, too
-
-Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
 
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
-CEO Todd McKinnon says customers including ServiceNow want an off switch</div>
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
+
+Project Headroom could save you big money, too
+
+Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Lone attacker published 14 malicious npm packages mimicking popular OpenSearch, Elasticsearch libraries</div>
             <div class="meta">2026-05-29</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Lone attacker published 14 malicious npm packages mimicking popular OpenSearch, Elasticsearch libraries</h2>
             <p><strong>www.theregister.com - Articles | 2026-05-29</strong></p>
             <a class="original-link" href="https://www.theregister.com/security/2026/05/29/14-malicious-npm-packages-impersonated-opensearch-elasticsearch-libraries/5248792">Visit Original Website</a>
@@ -2670,126 +3030,100 @@ Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit even
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Project Headroom could save you big money, too
-
-Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
 
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
-Project Headroom could save you big money, too
-
-Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
-
-CEO Todd McKinnon says customers including ServiceNow want an off switch</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">Okta writes its own license to kill rogue AI agents</div>
-            <div class="meta">2026-05-29</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Okta writes its own license to kill rogue AI agents</h2>
-            <p><strong>www.theregister.com - Articles | 2026-05-29</strong></p>
-            <a class="original-link" href="https://www.theregister.com/ai-ml/2026/05/29/okta-writes-its-own-license-to-kill-rogue-ai-agents/5248766">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">CEO Todd McKinnon says customers including ServiceNow want an off switch
-
-Rogue agents are dangerous, but eliminating them is never easy.
-
-Jason Bourne, Ethan Hunt, and James Bond have each run afoul of their governance at various junctures, yet stopping them takes sequel after sequel until all the loose ends are tied up and they eventually die or retire, only to get rebooted.
-
-It’s not so different in the world of AI agents.
-
-Okta leaders, citing the company&#39;s own research, say enterprises are deploying AI agents faster than they are securing them, with 92 percent of executives reporting moderate or widespread use of autonomous AI agents, but only 22 percent saying their organizations have identities tied to those agents.
-
-“That is a real problem,” Okta president and chief operating officer Eric Kelleher said during the company&#39;s earnings call on Thursday. “It&#39;s a measurable, quantifiable exposure customers have right now within their companies, and they need to invest to fix it.&quot;
-
-In short, when agents go sideways, someone has to handle the dirty work.
-
-Okta CEO Todd McKinnon told investors that’s what ServiceNow was asking for when the ITSM market leader came calling.
-
-“What they were really interested with Okta was this kill switch capability,” McKinnon said during earnings. “When agents go awry and agents aren&#39;t following the policy, how do you shut them down? … The one thing we do really well, and that they wanted from us, is the ability to sever the connections, the access tokens, the actual logical connection at the authorization layer to the backend resources, and we&#39;re really good at that.”
-
-ServiceNow has previously said its acquisition of Veza could provide that capability. In a statement to The Register, a ServiceNow spokesperson said Okta serves as the logical connection to backend resources at the identity layer, while Veza gives ServiceNow visibility and control over the permissions graph.
-
-&quot;To clarify how the pieces fit together: ServiceNow&#39;s AI Control Tower is the orchestration and governance layer that monitors risk and detects when an agent is behaving outside policy. When that happens, the platform can trigger remediation actions across multiple identity and access systems, including Okta, which handles token revocation at the authorization layer,&quot; the spokesperson said.
-
-Veza, which ServiceNow acquired earlier this year, operates at a different layer, the spokesperson said, mapping permissions across human, machine, and AI identities at scale, and it lets ServiceNow revoke agent permissions directly within the ServiceNow platform, which is its own &quot;kill switch.&quot;
-
-McKinnon said that he has spent the past six months meeting Okta&#39;s largest customers in person, reaching roughly 75 of the company&#39;s top 100 accounts. The pattern he saw across those conversations was that agents are widely deployed, but the controls around them are immature.
-
-“You’ll have a development team that’s using Claude Code, but it&#39;s connected to GitHub and their Jira system with static tokens in the local developer box,” he said. “So that company is using agents, but they’ve really done it in a haphazard, non-secure way.”
-
-He said the company’s two leading products for controlling AI agents – Okta for AI Agents and Auth0 for AI Agents –  are not yet contributing substantially to the company’s revenue, but Okta sees an industry in need just over the horizon.
-
-“It’s going to be big. We’re pouring a lot of R&D effort into this and focused on it. The interest is super high and unlike anything we’ve ever seen,” he said.
-
-McKinnon said that there are several ways to control rogue agents, whether it&#39;s stopping them from running or quarantining them at a network level, but all of that relies on observability and permissions that need to be set from the beginning.
-
-Okta&#39;s proposed answer is to apply the model it already uses for employee and customer access to the AI agents themselves. McKinnon said Okta can identify the agents operating inside an organization, maintain a record of them, and set rules governing what systems each agent may reach.
-
-&quot;We tell you who your agents are. There&#39;s a directory of agents,&quot; he said. &quot;We can scan multiple platforms and multiple systems and give you that source of truth of where your agents are, and we can help you set a policy on what they can connect to.&quot;
-
-For large enterprises running thousands of applications, he said, rewiring each one to accommodate agents is not practical, so Okta instead places an authorization layer around the agents to control their permissions and connections.
-
-Rival identity platform Microsoft Entra also boasts that it has similar capabilities. Autonomous agents authenticate directly with the Microsoft Entra ID platform using their agent identity and the client credentials flow, Microsoft says.
-
-Entra assigns identities to agents, autodiscovers them across an organization, applies Conditional Access rules and permissions, and lets customers disable entire classes of agents in a single operation, Redmond says.
-
-McKinnon said that, while the market is busy hunting for winners and losers in the AI agent race, customers want a secure experience regardless of the vendor. In addition to its work with ServiceNow, Okta partnered with Salesforce last year and AWS this month.
-
-Okta for AI Agents integrates with Amazon Bedrock AgentCore, a fully managed AI service from AWS to provide identity governance for agents, including ownership assignment, lifecycle management, and &quot;the ability to deactivate rogue agents.&quot;
-
-“I think there&#39;s going to be way more working together than people think,” McKinnon said. “We&#39;re really excited about our conversations with Amazon and their AgentCore, Agentforce from Salesforce, and the message from customers is clear. They want this identity layer and this connectivity layer to be independent to give them more flexibility, and I think the industry is coalescing around that.” ®
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
 
 Project Headroom could save you big money, too
 
 Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
 
-A billion AI agents walk into a power grid
-
-DIY or die. Just don&#39;t let the CIA buy it
-
-What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
-
-Modern applications are API-driven, interconnected, and often over-permissioned, making them an ideal target for AI-assisted attacks.
-
-Join us to discover how to eliminate infrastructure silos and establish a standardized, enterprise-grade cloud-native platform.
-
-Microsoft 365 is the backbone of enterprise communication, and its native security filters out the known and the noisy.
-
-Step into the chaos of a live ransomware breach, test your response skills, and team up with other IT and security pros to outsmart cybercriminals
-
-Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit event, Escape Ransomware, is now fully virtual.
-
-Join us to learn how to unlock real ROI by driving adoption of AI at scale.
+This week on The Kettle, we mull over whether the Steam Deck is a canary in the coal mine for the future of hardware prices, and the effect of Blue Origin&#39;s blowout on NASA&#39;s Moon missions
 
 Project Headroom could save you big money, too
 
-Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
-
-Project Headroom could save you big money, too
-
-Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
-
-Project Headroom could save you big money, too
-
-Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools
-
-CEO Todd McKinnon says customers including ServiceNow want an off switch</div>
+Foundation sparks revolt after disbanding team responsible for many community-requested fixes and moderation tools</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">The QD-OLED gaming monitor that started it all got a big upgrade</div>
+            <div class="meta">2026-05-31</div>
+        </div>
+        
+        <div id="content-48" style="display:none;">
+            <h2>The QD-OLED gaming monitor that started it all got a big upgrade</h2>
+            <p><strong>The Verge | 2026-05-31</strong></p>
+            <a class="original-link" href="https://www.theverge.com/games/938956/alienware-computex-tandem-qd-oled-penta-rgb-stripe-gaming-monitors-specs">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Alienware’s kicking off its 30th anniversary with a full range of displays, from Penta Tandem QD-OLEDs to VA LCDs.
+
+Alienware’s kicking off its 30th anniversary with a full range of displays, from Penta Tandem QD-OLEDs to VA LCDs.
+
+Alienware is taking to this year’s Computex 2026 in Taipei to announce some cool gaming monitors, most notably two exciting OLED options that are coming at different points this year. First off, the company is debuting the successor to its very first QD-OLED gaming monitor from 2022 with a refreshed design and high-end specs that’s coming in July (price hasn’t yet been shared).
+
+The AW3426DW is a 34-inch curved 3,440 x 1,440 resolution with an 1800R curve, just like its predecessor. But the new model has the latest QD-OLED Penta Tandem screen tech that boosts the peak brightness to 1,300 nits from 1,000 nit in the previous version. Its refresh rate has been boosted from 240Hz to 280Hz.
+
+Part of the five-layer Penta Tandem tech is an anti-reflective screen coating that supposedly cuts down glare and boosts deep blacks even in well-lit rooms. That’s great since black sometimes appears purple-ish on previous QD-OLED generations. Something that hasn’t changed model-to-model is pixel density; this one’s still at 110 pixels per inch, which is a bit low for this size (many 27-inch OLED monitors have a similar pixel density).
+
+Alienware’s flagship monitor of the show is a 39-inch 5K curved ultrawide monitor coming this fall that uses LG Display’s fourth-generation Primary RGB Tandem screen tech. The AW3926QW is slightly curvier than the QD-OLED model mentioned above, measuring at 1500R, making it more immersive. It can show a peak brightness of 1,300 nits while displaying content at up to 5K at a 165Hz refresh rate, with a pixel density of 143 pixels per inch. It offers a dual mode to knock the resolution down to 1080p, bumping up the refresh rate to 330Hz with support for custom resolutions and aspect ratios.
+
+The two OLED models have some traits in common with each other, despite using different screen technology. For one, both use RGB stripe subpixels to sharpen text and other details. Color-fringed text has been an issue for some people with previous generations of QD-OLED panels, but not as much with OLEDs. Both have VESA DisplayHDR True Black 500 certification, as well as Dolby Vision HDR support, and both support AMD FreeSync Premium Pro and Nvidia G-Sync. Also, they’re protected by Alienware’s great three-year warranty that covers manufacturer defects along with burn-in coverage, plus enhanced pixel shifting and refreshing algorithms to extend their lifespan.
+
+Despite the similarities, the 5K monitor simply offers more features. It has a KVM switch to let you control multiple PCs through the monitor with a single keyboard and mouse, plus a USB-C video port with support for 90W of PD passthrough power. Beyond that, it has two HDMI 2.1 ports with fixed rate link (FRL) to let PCs display its full resolution and refresh rate, one of which supports eARC and ARC. It also boasts a single DisplayPort 2.1 port with fast UHBR20 bandwidth. The 34-inch model has two HDMI 2.1 FRL ports and a DisplayPort 1.4 port. No price has been announced for the 5K display, but these features won’t come cheap.
+
+Finally, Alienware has two VA LCD gaming monitors coming in July for well under $500. The $399.99 34-inch ultrawide AW3426DWM and the $299.99 flat AW3226DM have respectable specs. Both go up to 240Hz refresh rate with 1-millisecond response time and display 1440p resolution. They feature similar design language to Alienware’s higher-end options, and they support Dolby Vision HDR.
+
+It’s nice to have affordable options, though remember that Alienware’s entry-level 27-inch QD-OLED monitor is $399.99, and by nature of its screen tech, offers much better contrast and color accuracy than either of these upcoming models. It’s a stellar value for the price, as I discovered when I put my own money down on one.
+
+A free daily digest of the news that matters most.
+
+Sign in to see your notifications or create an account to join the conversation.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
+            <div class="title">Dell is bringing back the XPS 13 as a MacBook Neo competitor — with a temporary discount to $599</div>
+            <div class="meta">2026-05-31</div>
+        </div>
+        
+        <div id="content-49" style="display:none;">
+            <h2>Dell is bringing back the XPS 13 as a MacBook Neo competitor — with a temporary discount to $599</h2>
+            <p><strong>The Verge | 2026-05-31</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/940498/dell-xps-13-student-laptop-intel-wildcat-panther-lake-computex-price">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">It’ll start with just 8GB of RAM and an Intel Wildcat Lake chip.
+
+It’ll start with just 8GB of RAM and an Intel Wildcat Lake chip.
+
+Dell is making good on its tease from CES and finally announcing a new XPS 13. The XPS 13 returns as a budget-friendly option, launching in July at a promotional student price of $599 — though that introductory deal only runs until September for back-to-school shopping; it’ll start at $699 for everyone else. The $599 promo exactly matches up with the MacBook Neo’s starting price, but students can actually get Apple’s budget laptop for $100 less. That means Dell has its work cut out proving that the XPS 13 is worth the extra money.
+
+This will be Dell’s thinnest and lightest XPS to date, measuring 0.5 inches / 12.7mm thick and weighing just 2.2 pounds / 1kg. It’ll have just two USB-C ports and no 3.5mm audio jack, just like the last XPS 13 that cost much more. It sadly won’t even have a dedicated audio jack on higher end configurations set to arrive later with Intel Panther Lake chips and Thunderbolt 4 — which will go up to 32GB of RAM.
+
+The entry-level configuration will get you a six-core Intel Core 5 320 “Wildcat Lake” chip, 512GB of storage, and a lowly 8GB of RAM. (I’m noticing a trend.) But the good news is that every config of the new XPS 13 will have a 13.4-inch anti-glare touchscreen with 2560 x 1600 resolution, 30-120Hz variable refresh rate, 500 nits of brightness, and 100 percent coverage of the DCI-P3 color space.
+
+The XPS 13 will also have a backlit keyboard and a claimed “streaming” battery life of up to 17 hours. Dell reps say it should be efficient enough to last a student’s full day of classes. There was no mincing of words about what Dell is targeting with the XPS 13, as COO Jeff Clarke called out the MacBook Neo by name in an early media briefing. But while the XPS 13 is lighter than the Neo and has some extras the MacBook lacks like a backlit keyboard and higher-end configurations, using 8GB of RAM on Windows 11 remains the gorilla in the room.
+
+Dell also teased one more thing it’ll show at Computex this week: The return of an XPS with discrete graphics. It should sport some level of Nvidia RTX GPU, an extra-bright tandem OLED screen, a dedicated HDMI port, and an SD card slot. There are no further details so far, but that sounds like a bigger and beefier XPS to compete with some MacBook Pros while the new XPS 13 guns for the Neo.
+
+The XPS 14 and XPS 16 models Dell reintroduced at CES corrected some of the company’s past mistakes when it killed the XPS brand in 2025. But competing at $599 / $699 with the MacBook Neo will be a tougher test for the revitalized brand.
+
+A free daily digest of the news that matters most.
+
+Sign in to see your notifications or create an account to join the conversation.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">Apple’s strategy for smart glasses is the same as smart watches</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>Apple’s strategy for smart glasses is the same as smart watches</h2>
             <p><strong>The Verge | 2026-05-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/940572/apples-strategy-smart-glasses-smart-watches">Visit Original Website</a>
@@ -2811,13 +3145,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">How to watch Nvidia&#8217;s Computex keynote</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>How to watch Nvidia&#8217;s Computex keynote</h2>
             <p><strong>The Verge | 2026-05-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/940540/how-to-watch-nvidias-computex-keynote">Visit Original Website</a>
@@ -2835,13 +3169,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Here’s your first look at ‘A Minecraft Movie Squared’ with Kirsten Dunst as Alex</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Here’s your first look at ‘A Minecraft Movie Squared’ with Kirsten Dunst as Alex</h2>
             <p><strong>The Verge | 2026-05-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/entertainment/940523/minecraft-movie-squared-sequel-kirsten-dunst-alex">Visit Original Website</a>
@@ -2859,13 +3193,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Feeble Little Horse leans into digital weirdness on bitknot</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Feeble Little Horse leans into digital weirdness on bitknot</h2>
             <p><strong>The Verge | 2026-05-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/entertainment/940449/feeble-little-horse-bitknot-music-album-review">Visit Original Website</a>
@@ -2891,92 +3225,6 @@ The back chunk of the record fully embraces the band’s new digital aesthetic. 
 The Feeble Little Horse on Girl with Fish with a great band, but they felt like something of a throwback. On bitknot, they’ve become something more, something special.
 
 Feeble Little Horse’s bitknot is available now on Bandcamp and most major streaming platforms, including Qobuz, Deezer, Apple Music, YouTube Music, and Spotify.
-
-A free daily digest of the news that matters most.
-
-Sign in to see your notifications or create an account to join the conversation.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">United flight forced to turn around because of a Bluetooth speaker name</div>
-            <div class="meta">2026-05-31</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>United flight forced to turn around because of a Bluetooth speaker name</h2>
-            <p><strong>The Verge | 2026-05-31</strong></p>
-            <a class="original-link" href="https://www.theverge.com/transportation/940486/united-flight-236-bluetooth-speaker-name-bomb">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">A ‘certain four-letter word’ sparked a security incident.
-
-A ‘certain four-letter word’ sparked a security incident.
-
-United flight 236 from Newark to Palma de Mallorca on Saturday night was forced to turn around just an hour after takeoff due to security concerns around a Bluetooth signal. Multiple Redditors claimed to be on the flight and reported that the crew repeatedly requested passengers to turn off their Bluetooth. According to one poster, the crew issued a one-minute warning, saying that two devices were still active.
-
-One Redditor reported flight attendants making comments like, “This little joke is ruining it for everyone.”
-
-An archived recording from Air Traffic Control (embedded below) confirms that the root of the issue was the name of a discoverable Bluetooth speaker.
-
-“There’s a security detail out there. Someone had a Bluetooth speaker, and they named it a certain four-letter word. So they have to inspect the whole aircraft, including the cargo area, and the passengers have to evacuate.”
-
-While the recording does not explicitly confirm the speculation that the Bluetooth name in question was “bomb,” it would certainly make sense given the response from the crew and security personnel on the ground. It also serves as a friendly reminder that what you think is a clever WiFi or Bluetooth name probably isn’t.
-
-A free daily digest of the news that matters most.
-
-Sign in to see your notifications or create an account to join the conversation.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">This extravagant gaming laptop could ruin other screens for you</div>
-            <div class="meta">2026-05-31</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>This extravagant gaming laptop could ruin other screens for you</h2>
-            <p><strong>The Verge | 2026-05-31</strong></p>
-            <a class="original-link" href="https://www.theverge.com/tech/940221/asus-rog-strix-scar-18-elmb-gaming-laptop-motion-blur-handson-impressions">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">I still love OLEDs, but the Asus ROG Strix Scar 18’s ELMB Mini LED display is amazing.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-My eyes have seen the PC gaming promised land, and it’s a beautifully bright world without a shred of blurriness. It’s warm, it looks lovely, and it’s impeccably sharp. Also, it’s expensive as hell.
-
-I’ve dipped my toe in this world by testing a pre-production version of the upcoming Asus ROG Strix Scar 18, which was recently announced ahead of Computex 2026. It’s a gigantic 18-inch gaming laptop that comes with a top-of-the-line 24-core Intel Core Ultra 9 290HX CPU and can be fully kitted out with an RTX 5090 Laptop GPU and 128GB of RAM. Asus sent me a model to test that’s maxed out on all specs except storage (it’s got “just” 4TB). And of course, the company isn’t announcing any pricing yet — not even for a base RTX 5080 model. We all know, thanks to RAMageddon, it’s going to be gut-punchingly expensive.
-
-But what makes the Strix Scar 18 especially unique is its screen: a 4K, 240Hz display with an anti-glare matte finish and a special feature called Extreme Low Motion Blur (ELMB). The Mini LED panel has over 2,000 dimming zones and up to 1,600 nits of peak brightness in HDR mode. It’s when you turn HDR mode off that the magic actually happens. This allows you to use ELMB and have all those dimming zones automatically split up the display into smaller horizontal bands of pixels, refreshing them row by row very quickly — kind of like a traditional CRT.
-
-The result is an amazingly crisp picture that shows almost no motion blur during fast action in games. And it achieves this without black frame insertion — a more common method to reduce motion blur that causes a flicker effect and can negatively affect screen brightness.
-
-And as you’d expect, this thing is an absolute beast when it comes to playing the most graphically demanding games. I loaded up Cyberpunk 2077 in 4K on Ultra settings with ray tracing turned on and DLSS set to Balanced, and it maintained a respectable (though beautiful) 45fps. That boosted to about 70fps with DLSS turned to Ultra Performance, but you could easily throttle down some other settings or engage frame generation for much higher frame rates. A less graphically demanding competitive shooter like Counter-Strike 2 could run at high settings and maintain 180 to 200fps.
-
-It’s the “frames win games” kind of titles like Counter-Strike and even MOBAs like League of Legends that the ELMB display complements the most. If you want to have the fastest twitch-level response to what you see onscreen, you want the clearest picture possible — and that means a fast-moving image free of motion blur. But even if you’re not an esports player with god-tier reflexes, it’s quite satisfying to play fast-action games with this level of sharpness and clarity. And when you don’t need it, you can switch off ELMB and turn on HDR to get eye-searing levels of brightness during more cinematic games.
-
-ELMB’s smoothness is very difficult to capture in photos or on video (though I tried my best in the images below). But here’s a simple, repeatable method you can follow along with. At the very least, you can see how your monitor or laptop display handles the same torture tests and compare it to what I describe while doing the same on the Strix Scar 18’s ELMB display.
-
-(Disclaimer: These torture tests feature colorful fast-moving graphics. If you’re prone to motion sickness this could make you a little queasy. User discretion, yada yada. Be cool. Don’t sue us.)
-
-Can you follow the action across the screen and clearly read the character names in this scene from Dota 2? On a normal screen, the motion is a blurry mess. But on the Scar’s ELMB panel, it’s all crystal clear. If I track the action across the screen (before giving myself a headache with these fast-scrolling speeds) I can read names like Lion, Vengeful Spirit, and Dragon Knight with ease. I can also make out what level each hero is and exactly how many bars of health they’re down. If I flip off ELMB to use other features like HDR, things are still somewhat legible but noticeably blurrier, even with the screen’s 240Hz refresh rate. I can no longer make out hero names, health bars, and levels as easily. I have to really focus my eyes and rely on my perception to think, “Oh yeah, that looks like it says Sven.” And by the time I do, it’s off the screen. The action’s gone, and if this were a competitive online game that probably means my reaction time would be slightly slower too.
-
-Here’s one more to try, the classic UFO test:
-
-On the ELMB display, I can easily make out the alien’s three eyes. I can even see that each red panel of the UFO has three distinct vertical lines. It’s all clear as day. When I look at the same test on the Asus ROG Zephyrus G14 laptop I just recently reviewed, which has an excellent 2880 x 1800 / 120Hz OLED display, the alien’s eyes and white panel lines of the spaceship are all blurred. My eyes can’t separate them from each other, even at the G14’s fairly fast 120Hz. Does that mean the Zephyrus is terrible at fast-action gaming? No, but the ROG Strix Scar 18’s ELMB display is better at this stuff. The G14 is a jack-of-all-trades display, while the Strix Scar is purpose-built.
-
-The ELMB Strix Scar 18 can outclass other OLEDs in the motion blur department, too — even speedier ones. I was surprised to find I couldn’t make out the alien’s three eyes on a 27-inch Asus ROG Swift PG27UCDM, which is an excellent 4K / 240Hz gaming monitor. An HP Omen Max 16 with a 2560 x 1600 / 240Hz 16-inch OLED came closer to the ELMB. The Dota 2 test looked pretty crisp on it, with text almost as legible as on the Strix Scar 18. But for the UFO test, the alien’s three eyes and the white lines on its spacecraft remained a bit blurry, even though they didn’t fully melt together.
-
-Most people are not going to notice this stuff while playing games, not unless they had an easy side-by-side comparison. If your game nights consist of socializing with your buddies over friend slop, none of this matters. Even if you’re a pretty sweaty Marathon player, a nice OLED on a more down-to-earth laptop will treat you just fine. Asus is bending over backward to squeeze every drop of performance out of a Mini LED panel for the type of people who have a very specific eye for the tiniest details.
-
-The reason you have to settle for Mini LED on an 18-inch gaming laptop in the first place is actually quite simple: No display supplier makes an 18-inch OLED. Asus, Razer, Alienware, etc. all use some form of LCD in their 18-inch gaming laptops because companies like LG Display and Samsung Display don’t offer an OLED in that size. Instead, you get varying degrees of extra nice-to-have features, like the dual-mode screen of the Razer Blade 18 that goes from 4K / 240Hz to 1200p / 440Hz, the native 300Hz of the Alienware 18 Area-51, and now the ROG Strix Scar 18’s ELMB. There could be more blur-free laptop LCDs on the horizon if Nvidia’s similar G-Sync Pulsar tech eventually makes its way over to smaller panels, but for now it’s only available on a few 27-inch 2.5K / 360Hz desktop monitors.
-
-The Strix Scar 18, on the other hand, will arrive sometime soon and it’s full 4K. But like all over-the-top gaming laptops, it’s only going to be for the most hardcore sect of the most deep-pocketed gamers. I shudder to think what it will cost after the ROG Zephyrus G14 and ROG Zephyrus Duo already debuted at their respective savings account-draining prices. RAMageddon is hitting everything hard, and Asus is just posting through it. Last year’s ROG Strix Scar 18 with an RTX 5090, Intel Core Ultra 9 275HX, 32GB of RAM, and 2TB SSD still costs $4,500 — and that’s with an ELMB-less 2.5K Mini LED.
-
-I wouldn’t be surprised if this new fully kitted-out 18-inch ELMB model I’m testing will cost $6,000 to $7,000. But that’s the kind of cost you’ll have to expect now if you want to be at the cutting edge. Especially if that cutting edge is most visible in tiny details, like a little alien flying by in a UFO.
-
-Photography by Antonio G. Di Benedetto / The Verge
 
 A free daily digest of the news that matters most.
 
@@ -3655,14 +3903,14 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Syria's Sharaa holds phone call with Trump, Syrian presidency says - Reuters</div>
+            <div class="title">Nvidia CEO to kick off and dominate Computex gathering in Taipei - Reuters</div>
             <div class="meta">2026-05-31</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Syria's Sharaa holds phone call with Trump, Syrian presidency says - Reuters</h2>
+            <h2>Nvidia CEO to kick off and dominate Computex gathering in Taipei - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQXzRITzhyOHlrZkN3RUZ6eVkxY3lBQkZIbTNvWG9WWUxzenVZaTZzNTVxUDBWYTV6cmtCTDBDdU5fbE1GZjNsaGszSklXWDF3OW5hdTJSVDdSeF8wM0I2bDVCUTYxZ3JzM0h1S2hINlZhcVlvUWc5cDlSV0dvWERMeUlsZUh0NlJNaVdSNkhXc0lWNEtzczRILXdNbXZKczZBUU5LR3h4VS1DQTdjSzd2N2JwZndsU0h6d0E?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOTzY0VHRMYTFjbjNtOGVXVGtlUUJtS3gtc045endOejNZbXQ4WHpTYWEtRzRSMTlXemFiTWd0Zl81NU9UVzFvMWVGaXVlSkZOVUVIdEs1WjNkMnd3bXNKNjVkckdxVUlZWllCR1QyMGFMSkRLaHB2WkcyYUNUcDJteXd0YnNkU2dwS3RhMV9DajlVSTNKM2JaTTZTQy1VM2hRcHpLZQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3683,28 +3931,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Blast in Myanmar village reportedly kills 55 and injures dozens more - Reuters</div>
+            <div class="title">Syria's Sharaa holds phone call with Trump, Syrian presidency says - Reuters</div>
             <div class="meta">2026-05-31</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>Blast in Myanmar village reportedly kills 55 and injures dozens more - Reuters</h2>
+            <h2>Syria's Sharaa holds phone call with Trump, Syrian presidency says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNalI3YnZRbVZ0VER4eUVqRHFqSHlfVWJlUjdlbkV0WV8tYUZ6SU1aT2lEVlZSWkw1dmg1SGZ1N2RQLUdadnFoTElBa2xuTl9mWE5mMW1zLWE3cUQzUE5qdFFxRjR5ZFpyNEJDcDlodG5CM0syRnhWSHphTDRaZUY4NEpFc05PaGNMYUFtWUVkY0h5OGlibEdYd1VLYXoyalNu?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQXzRITzhyOHlrZkN3RUZ6eVkxY3lBQkZIbTNvWG9WWUxzenVZaTZzNTVxUDBWYTV6cmtCTDBDdU5fbE1GZjNsaGszSklXWDF3OW5hdTJSVDdSeF8wM0I2bDVCUTYxZ3JzM0h1S2hINlZhcVlvUWc5cDlSV0dvWERMeUlsZUh0NlJNaVdSNkhXc0lWNEtzczRILXdNbXZKczZBUU5LR3h4VS1DQTdjSzd2N2JwZndsU0h6d0E?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Two hundred hurt in post-game violence as Paris hails second Champions League triumph - Reuters</div>
+            <div class="title">Berkshire Hathaway to buy Taylor Morrison for $8.5 billion in housing push - Reuters</div>
             <div class="meta">2026-05-31</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>Two hundred hurt in post-game violence as Paris hails second Champions League triumph - Reuters</h2>
+            <h2>Berkshire Hathaway to buy Taylor Morrison for $8.5 billion in housing push - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxOd2stSW1GRC1BS3NDdjBUd1pIVmpuR3dITUJrWVE3bXJxdm5NM1BrNjYxcUk3ZTdnSF9pUHJaUUkxTnhJbjAzLXdva2VIOEhiN3dQY0NwbnZQalAzUlpUVm5YV1I5QUJMRzZrTWlvWkNYVnVsamRPQU5VQzJlZmtNSTZxN1A2cnZrUDJjYTRsT0hoQUtoUFBPRHQ0RHVQMzV4TmMzY2xzSlJTS1BNRTVKWHFhaWVPcWVyOFlEZmMtNV9SUnUxR0ZWRQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNa3F2dWJCMmY3aHhrMEJieXdUcTVwZEhNTWdBVEltdkJUdUZYSzRRbThTMGRScVJBNEVMTUY2VHZLdGVqZTd0LUtVajBCcEFjTzZXYzc0VHFEV2QzSHZMckF0dXd1S1RkNFNvQUpBRjNJelRLc1dzTVc4ajVwX3pFNGxhY3ltcERwUUpZam4wVE5EZFlCMGt3NC00WkxpV3RPbHFYcnk3RGRmNkdVMm9OMmJUc1dXTkV4YmtrMA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3725,14 +3973,14 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Stablecoin demand may soon fade, BoE's Greene says - Reuters</div>
+            <div class="title">Blast in Myanmar village reportedly kills 55 and injures dozens more - Reuters</div>
             <div class="meta">2026-05-31</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Stablecoin demand may soon fade, BoE's Greene says - Reuters</h2>
+            <h2>Blast in Myanmar village reportedly kills 55 and injures dozens more - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOX2RKY1lIZEwtYzlBSXN2Mkx2RU9YYXVqZmlFaWZ5V2piVTRyWWtud0E4UXByUzh2RU94WGZ2R3RVallTTmhkakFVQ21scXI4X3hMOThkT3BxSHp3UzBjaV8tLUFvcEUzbUpRX1JMNkMtTmpyeEZvWFFjQmR5R2ZXc21MejVHZGV5cFVyZVpUclRudkdOWkhQV1hoODdnZ2tNTHF3?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNalI3YnZRbVZ0VER4eUVqRHFqSHlfVWJlUjdlbkV0WV8tYUZ6SU1aT2lEVlZSWkw1dmg1SGZ1N2RQLUdadnFoTElBa2xuTl9mWE5mMW1zLWE3cUQzUE5qdFFxRjR5ZFpyNEJDcDlodG5CM0syRnhWSHphTDRaZUY4NEpFc05PaGNMYUFtWUVkY0h5OGlibEdYd1VLYXoyalNu?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3795,28 +4043,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Scientists Locked ‘Virtual’ Astronauts in a Moon Base with Equipment Failures, Moonquakes and Extreme Radiation. Here’s What Happened. - The Debrief</div>
+            <div class="title">Something Revealed Itself by Bending the Light of a Distant Star in 2019—Now Astronomers Are Racing to Find Out What It Was - The Debrief</div>
             <div class="meta">2026-05-29</div>
         </div>
         
         <div id="content-76" style="display:none;">
-            <h2>Scientists Locked ‘Virtual’ Astronauts in a Moon Base with Equipment Failures, Moonquakes and Extreme Radiation. Here’s What Happened. - The Debrief</h2>
+            <h2>Something Revealed Itself by Bending the Light of a Distant Star in 2019—Now Astronomers Are Racing to Find Out What It Was - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-05-29</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi5wFBVV95cUxNOGtENS1DZlhZNmZuSkI5Nlh4U1dKYWtybWQ1U0k5M0IzQTU0a1ptUkZzWVJDQ1ZYaTBSYVNwMVNnVDduVHZ1aGJLVjFQZ0F4dGI5M3hiVi1ZZzJnRWRPTGpFWlpwOFZ0MTZLSnJBZlk3aEpSSkZfcW1aWFgyNXUtY1lyWnRldHVMd3FOMHNtWGpyRG04UXlaTnNXR0ExVWZ5LW1MUXhZLURWWTJKYzNjTlM0QWdDV2tiV2Mzc0JRV2JMTEpiZE9TcEU5X2hUQWV2YnJmMFlYSE02TlpqVDd1Ym9IalRkSE0?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxObjh2a3lFcm85YjFJLU5VTDA2ajJ2bENTLTU3TXpTd0F2dF9YZ0FTUGNXSEZYQVVORTRtYmJsRThOU3FXYnJSZ2F1YnRYSDY5ajVBcUx1N3VnTmNwMmZjN0RzY0U1M2pSdENWSU9LWDIxWkd3dGxiUGF6cWR3dHRVdmxkdWhsU0Nfck5lRU9rZ1g3WTh3V1pLX0NvX0VUZGE4NkVFemdSQ2JCUWYzVzgyOTlWUWZ0bUpPLUdZdW4yeGdyWVQ3UVdsTmF3aWx0S1JNQUk3eW9WMFJOU3VpQmVJaw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Sealed in an Envelope for a Decade, Another Surprise in the Quest to Unravel the Mystery of Gravity Emerges - The Debrief</div>
-            <div class="meta">2026-05-30</div>
+            <div class="title">Scientists Locked ‘Virtual’ Astronauts in a Moon Base with Equipment Failures, Moonquakes and Extreme Radiation. Here’s What Happened. - The Debrief</div>
+            <div class="meta">2026-05-29</div>
         </div>
         
         <div id="content-77" style="display:none;">
-            <h2>Sealed in an Envelope for a Decade, Another Surprise in the Quest to Unravel the Mystery of Gravity Emerges - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-05-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxQcjN6aGNocTMyOWdxRzdPY3JQaGNVblN6a1NQUV80SC1rQnFKRElzMFZNbmtWVUZpWTRzbHNNNkljSDNxSmhYWEF6cGptSzJlODROQ2pUV2d4X1lGempac3NiNmk1cFVTUWtmLXBocXc0RVh5dTk2Y1RTNHJYNlRUVzdLWElfWVRBbGs0eHV0SE1QUF81eXBNa01hWmh5cVdJSEhrZFdZZnpNNDZnM3FwV21FTXZINHFfS0VlS3FHR0FVTUZ2R0E0SkFB?oc=5">Visit Original Website</a>
+            <h2>Scientists Locked ‘Virtual’ Astronauts in a Moon Base with Equipment Failures, Moonquakes and Extreme Radiation. Here’s What Happened. - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-05-29</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi5wFBVV95cUxNOGtENS1DZlhZNmZuSkI5Nlh4U1dKYWtybWQ1U0k5M0IzQTU0a1ptUkZzWVJDQ1ZYaTBSYVNwMVNnVDduVHZ1aGJLVjFQZ0F4dGI5M3hiVi1ZZzJnRWRPTGpFWlpwOFZ0MTZLSnJBZlk3aEpSSkZfcW1aWFgyNXUtY1lyWnRldHVMd3FOMHNtWGpyRG04UXlaTnNXR0ExVWZ5LW1MUXhZLURWWTJKYzNjTlM0QWdDV2tiV2Mzc0JRV2JMTEpiZE9TcEU5X2hUQWV2YnJmMFlYSE02TlpqVDd1Ym9IalRkSE0?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
