@@ -1400,11 +1400,39 @@ When you buy a book using a link in this newsletter, we receive a commission. Th
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
+            <div class="title">Something Made Earth's Molten Core Reverse Direction In 2010</div>
+            <div class="meta">2026-06-01</div>
+        </div>
+        
+        <div id="content-24" style="display:none;">
+            <h2>Something Made Earth's Molten Core Reverse Direction In 2010</h2>
+            <p><strong>Slashdot | 2026-06-01</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/06/01/0147227/something-made-earths-molten-core-reverse-direction-in-2010?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">US, Australia, and UK Plan New Unmanned Vehicles to Protect Undersea Data Cables</div>
+            <div class="meta">2026-06-01</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
+            <h2>US, Australia, and UK Plan New Unmanned Vehicles to Protect Undersea Data Cables</h2>
+            <p><strong>Slashdot | 2026-06-01</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/26/06/01/016200/us-australia-and-uk-plan-new-unmanned-vehicles-to-protect-undersea-data-cables?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-26')">
+            <div class="source">Slashdot</div>
             <div class="title">'The Oral Tradition That Built Software May Not Survive AI'</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>'The Oral Tradition That Built Software May Not Survive AI'</h2>
             <p><strong>Slashdot | 2026-05-31</strong></p>
             <a class="original-link" href="https://developers.slashdot.org/story/26/05/31/226253/the-oral-tradition-that-built-software-may-not-survive-ai?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1418,6 +1446,14 @@ With such a window, it could see where such (mal?)adaptations are used everywher
 That can&#39;t work every time, but it might be a useful talent.
 
 I&#39;m hard-skeptical about AI as a do-it-all coder, but as a tool, I&#39;m certain it&#39;s profoundly useful in the right hands, right situation.
+
+I think a giant context is not going to be the answer.  It&#39;s just got too many problems.  Better will probably be parsing the context into connected pieces, and at a different level assembling the &quot;lemmas&quot; into &quot;theorums&quot;.  (Yeah, those aren&#39;t quite the right words, but I&#39;m not sure the right words exist, and that&#39;s the analogy from math proofs.  Code library isn&#39;t the right concept as the &quot;lemma&quot; will often be quite specific to the current task.)
+
+This is very old in AI time, but it fascinated me to see how a game could build a self-consistent world by keeping an entire book in context.
+
+https://thelongcontext.com/ [thelongcontext.com]
+
+The current state of AI for this (I recently started working on a new project), is AI can find and summarize topics. But it has poor temporal understanding, it doesn&#39;t understand that documentation is out of date or that old Slack discussions or Confluence comments that were never incorporated into the documentation and code are irrelevant. Using it as a tool to sniff out potential trails seems to be about all it can do. From there, you as the human being have to investigate AI&#39;s claims and resolve the conf
 
 It usually goes to the lowest-ranking person on the team or the one everyone&#39;s trying to keep away from actual coding.
 
@@ -1446,11 +1482,21 @@ AI code? Well, AI should be very good at generating plain-language documentation
 
 It could just say that it&#39;s some bullshit that someone in management wanted to try and it would be right enough for the &quot;why&quot; at least 90% of the time. This also partially explains why no one wants to document. If what they&#39;re making has a good chance at getting thrown out why spend time documenting any of it?
 
+And even then many companies today protects their &#39;intellectual property&#39; so much that writing down documentation might be seen as harmful.
+
 Something critical to note: intent is the most important thing to document when it comes to software. You can see what it does by reading the code, that&#39;s straightforward. What I need to know most, both when writing software and maintaining it later, is why it&#39;s doing that. What&#39;s it supposed to be doing? Why is it doing it in that way? What were the alternatives and why weren&#39;t they chosen? How is it supposed to be used by code that calls it? An LLM can&#39;t generate any of that just from the code.
 
 This is why traditionally software libraries have had two separate pieces of documentation: an API reference that details every call and it&#39;s arguments and results, and a user&#39;s guide that lays out how and why to use the library.
 
 Yes!  Particularly in languages with rich semantics and a tradition of meaningful identifiers, the primary focus on documentation where I&#39;ve worked has been on &#39;why&#39; rather than &#39;what.&#39;  In Ada, which separates specification/API from implementation, the comments in the spec explained what the package did (including errors/exceptions), and the comments in the body concentrated on capturing what was not obvious -to a maintainer- in the code.  Ada culture strongly emphasized maintainability, and that was empha
+
+Unfortunately, when they are separated like that each half becomes nearly useless.  They need to be merged, though with clear demarcations so you can skip a part that isn&#39;t currently relevant.
+
+Yes, and that&#39;s something that LLMs are, in my experience, extraordinarily bad at.
+
+We fired a new hire last year who was clearly just delegating everything to an LLM. When I asked why he did something the way he did, he responded with a list of obvious LLM hallucinations. Bizarre &quot;requirements&quot; that nobody ever asked for.
+
+If you ask it for reasons, it will give you reasons. Like when RFKjr asked for medical research to support his absurd conclusions and it hallucinated a bunch of bogus citations.
 
 If you can&#39;t read code, you shouldn&#39;t be programming!
 
@@ -1464,20 +1510,44 @@ On the other hand, is it *really* necessary to have detailed records of all code
 
 Who on earth reads the documentation for Google.com, or GMail, or Word, or Excel, or any widely-used software? If you are using one of these, and you can&#39;t figure it out from the UI, I&#39;d argue that the UI is messed up and should be revised.
 
-Something I&#39;ve been toying with lately, LLMs can not only analyze the codebase, but also the git commit history and log messages. The developer intent IS there, it IS documented, but not in traditional documents that are easy for humans. These are instead in a form that is easy for LLMs to consume which then can summarize them back out into human readable documents. I&#39;ve been using this for the exact reason described, I inherited several codebases after employee turnover with no chain of custody to bring fo
+Something I&#39;ve been toying with lately, LLMs can not only analyze the codebase, but also the git commit history and log messages. The developer intent IS there, it IS documented, but not in traditional documents that are easy for humans. These are instead in a form that is easy for LLMs to consume which then can summarize them back out into human readable documents. I&#39;ve been using this for the exact reason described, I inherited several codebases after employee turnover with no chain of custody to bring forward that tribal knowledge directly.
+
+Except for the bit where it does that caching for a loop where each lookup only occurs once. Because everybody caches lookups, so that must be the right thing to do (it&#39;s the most likely thing to happen) in a case where the cache is never used. Riiiiight...
+
+I think you hit the nail on the head. AI writes better comments than most humans. Where everything falls apart is when the user documentation leaves behavior  unspecified. When I test something I read the docs to see what it should do. It&#39;s very easy to miss subtle behavior change because something was never documented.
 
 Well written code is self-documenting, specifically because once you start putting documentation somewhere else, you start getting a divergence in truth.  And I&#39;m not talking about leaving comments in the code - that&#39;s also documentation, as anyone who has had to reconcile business processes with code can attest upon discovering that the comments and the code also don&#39;t agree with each other.   (This is where I try and sell people on having detailed commit messages, and then realize that they&#39;re all going t
+
+I told my partner straight, &quot;if our oral tradition ever dies .. you&#39;re out!&quot;.
+
+Now I&#39;m trying my hand at a new tradition.
+
+> .. But it can&#39;t assess authorial intent.
+
+idk if you&#39;re using the same popular code-writing tool that i am, but it&#39;s way better than human programmers at documenting the whys in addition to the whats and hows.  additionally it&#39;s a snap to have it curate the architectural and design decisions currently being introduced.  the oral record going forward is going to be --much-- more robust than in the past.  as far as assessing the authorial intents of existing code, it&#39;s pretty good at that too.
+
+Here&#39;s the text reformatted for Slashdot&#39;s plain-text style — no tags, just spacing and ASCII conventions:
+
+Is AI code generation excellent at maintaining software, keeping backwards compatibility, handling edge cases, and minimizing regressions?
+
+Short answer: not really -- at least not yet, and not without significant human oversight. Here&#39;s an honest breakdown:
+
+Where AI code generation falls short on maintenance
+
+... that modern system administrators will use when they want to tell their children scary stories. But this isn&#39;t a new problem, and the posited idea that before AI there was some &quot;oral tradition&quot; that rendered this a non-problem is laughable.
+
+The past few years, I&#39;ve had to deal with a lot of code + configuration files that are poorly documented or not documented at all. Some of them are occasionally commented... but often with references to non-existent entries in the team&#39;s wiki. I&#39;m sure my predecessors
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">US Teachers' Union Urges Schools To Curb AI Chatbots and Screen Time</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>US Teachers' Union Urges Schools To Curb AI Chatbots and Screen Time</h2>
             <p><strong>Slashdot | 2026-05-31</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/05/31/2111256/us-teachers-union-urges-schools-to-curb-ai-chatbots-and-screen-time?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1488,13 +1558,49 @@ This comments looks like it was written by an AI.  It is one long line with a si
 
 I guess my writing style has been tapped by LLM training models more than I thought. Hush now you filthy NPC.
 
+This comments looks like it was written by an AI.  It is one long line with a single period, is not quite a full understandable sentence, and has 3 lines after the main part of text that is not connected to anything.Nope, human. My experience has been that LLMs write better than that. Much better. And LLMs tend not to add gratuitous curses and mockery-inspired names for things.
+
+This comments looks like it was written by an AI.  It is one long line with a single period, is not quite a full understandable sentence, and has 3 lines after the main part of text that is not connected to anything.
+
+Nope, human. My experience has been that LLMs write better than that. Much better. And LLMs tend not to add gratuitous curses and mockery-inspired names for things.
+
 I can only assume MongoDB is kicking a bit to /. to keep the lights on.
 
 Sorry to tell you, LLMs/AI (their stuff) anything is (as far as they are concerned, are), in fact, cancer.You&#39;re not going to get away from it, it&#39;s going to work it&#39;s way into your life... you toaster and fridge will need replacing someday, what do you think you&#39;ll find?
 
 That big tech will send the lobbying hounds after this one, how else will the indoctrinate kids at an early age? This is billions in revenue we are talking about.
 
+I remember being a kid in the 90s and watching scare stories on the TV about other kids in the 90s who were so addicted to the computers they were writing software and making their own websites! As kids!
+
+I wasn&#39;t one of those kids. I didn&#39;t LearnToCode until college. But I was good friends with one of those kids while in college. He&#39;s worth at least 10 or 20 times more than me now.
+
+And the other millenial parents on my street are grabbing up spots at after school coding classes for their elementary school age
+
 But 1st and 2nd grades???Sorry, but that sounds like a REALLY bad idea.  More than half of what those grades should be about is learning to operate well in groups.
+
+But I was good friends with one of those kids while in college. He&#39;s worth at least 10 or 20 times more than me now.My group of friends would futz around with computers quite a bit back in the late 90s.  I still mostly keep in touch with all of them to varying degrees.  One joined the military, was honorably discharged due to an injury, and now drives a long-haul truck.  Another started as a low-paid IT support jockey and never really settled into anything you could call a career.  The friend I keep in closest contact with, works a senior support position with a software company (not one of the major industry players, th
+
+But I was good friends with one of those kids while in college. He&#39;s worth at least 10 or 20 times more than me now.
+
+My group of friends would futz around with computers quite a bit back in the late 90s.  I still mostly keep in touch with all of them to varying degrees.  One joined the military, was honorably discharged due to an injury, and now drives a long-haul truck.  Another started as a low-paid IT support jockey and never really settled into anything you could call a career.  The friend I keep in closest contact with, works a senior support position with a software company (not one of the major industry players, th
+
+I remember being a kid in the 90s and watching scare stories on the TV about other kids in the 90s who were so addicted to the computers they were writing software and making their own websites! As kids!Since at least the 1960s, there has been an interest in teaching children to program. Consider, for example, the Logo Programming Language.  [wikipedia.org] Yeah, a school district would have needed a PDP-1 to run it, but the point is that people were thinking of teaching kids to code even back then.Unless your kid is significantly smarter than your average bear, coding won&#39;t stick until high school at the earliest.There&#39;s no harm in starting early. We often start teaching children how to play musical instruments from an early age. Who knows where the next coding-version of Mozart might be, unless you give him/herself a chance to be reveal
+
+I remember being a kid in the 90s and watching scare stories on the TV about other kids in the 90s who were so addicted to the computers they were writing software and making their own websites! As kids!
+
+Since at least the 1960s, there has been an interest in teaching children to program. Consider, for example, the Logo Programming Language.  [wikipedia.org] Yeah, a school district would have needed a PDP-1 to run it, but the point is that people were thinking of teaching kids to code even back then.
+
+Unless your kid is significantly smarter than your average bear, coding won&#39;t stick until high school at the earliest.There&#39;s no harm in starting early. We often start teaching children how to play musical instruments from an early age. Who knows where the next coding-version of Mozart might be, unless you give him/herself a chance to be reveal
+
+Unless your kid is significantly smarter than your average bear, coding won&#39;t stick until high school at the earliest.
+
+There&#39;s no harm in starting early. We often start teaching children how to play musical instruments from an early age. Who knows where the next coding-version of Mozart might be, unless you give him/herself a chance to be reveal
+
+Twenty years, you say?We didn&#39;t have smartphones yet...I distinctly remember owning one of these [wikipedia.org] about 20 years ago.  Granted, back then smartphones were for business users and tech enthusiasts, they really hadn&#39;t caught on with the normies yet.
+
+I distinctly remember owning one of these [wikipedia.org] about 20 years ago.  Granted, back then smartphones were for business users and tech enthusiasts, they really hadn&#39;t caught on with the normies yet.
+
+I&#39;m not so cynical as that.  I think the teachers (and their union) don&#39;t want AI as a dominant source of information in the classroom until later, when it&#39;s more age-appropriate. Until then, students need to follow lessons to develop basic reading, arithmetic, science, music, art, phys ed, and socialization. AI can become a tool for research later on, but until then it can be a distraction in the classroom.
 
 Teachers can&#39;t teach real first principle thinking, only rote learning and memorization.  1 + 1 = 2, 2 + 2 = 4, etc.  Our education system was built in the 1950&#39;s to produce factory workers.  It was already obsolete, now it&#39;s really showing how useless it is.
 
@@ -1506,24 +1612,44 @@ When you grow up, you don&#39;t remember the specific questions and answers that
 
 AI might have a place too. But just as with programming, AI augments, but doesn&#39;t replace excellent professionals.
 
+But you DO remember and appreciate the teachers who were people of character, who poured their lives into the students they taught. *laughs in public school* What I do remember most was one of my teachers who clearly was phoning it in every day.  He&#39;d read the classifieds looking for motorcycle parts at his desk while the class was doing some boring assignment from the textbooks.  Every once in awhile he&#39;d complain about how miserable the pay was, and how if you didn&#39;t like his minimal-effort approach to learning, you were welcome to stand in the hall for the duration of the period.Fun times.
+
+But you DO remember and appreciate the teachers who were people of character, who poured their lives into the students they taught.
+
+What I do remember most was one of my teachers who clearly was phoning it in every day.  He&#39;d read the classifieds looking for motorcycle parts at his desk while the class was doing some boring assignment from the textbooks.  Every once in awhile he&#39;d complain about how miserable the pay was, and how if you didn&#39;t like his minimal-effort approach to learning, you were welcome to stand in the hall for the duration of the period.
+
+In my experience, smart people at best found school worthless, dumb people found it a waste of their time, and midwits loved it. Midwits are smarter than most teachers and the teachers tell the midwits how smart they are and give them gold stars and certificates that say they&#39;re smart. Which is like cocaine to a midwit.
+
+When I see someone talking about how great their government school teacher was and how much they learned, I assume they&#39;re a midwit until proven otherwise.
+
 ... first-principle thinking ... Thinking starts with foundational knowledge taught in schools, expands to the generic principles (Eg. base-n counting) and comparative knowledge (Eg. Judaism/Christianity/Islam vs. Roman/Greek/Egyptian polytheism) that are usually taught in university.  Schools are doing the job they were designed to do, 200 years ago.  As machines got more complex, that changed a little but the basic knowledge of science and humanities didn&#39;t.  The task of making self-centred children concentrate on boring facts, didn&#39;t.
 
 Thinking starts with foundational knowledge taught in schools, expands to the generic principles (Eg. base-n counting) and comparative knowledge (Eg. Judaism/Christianity/Islam vs. Roman/Greek/Egyptian polytheism) that are usually taught in university.  Schools are doing the job they were designed to do, 200 years ago.  As machines got more complex, that changed a little but the basic knowledge of science and humanities didn&#39;t.  The task of making self-centred children concentrate on boring facts, didn&#39;t.
 
+> Thinking starts with foundational knowledge taught in schools
+
+Every smart person I know would laugh at that idea.
+
+If a kid can&#39;t think by the time they get to school, they probably never will. Dumb kids can&#39;t learn much and the idea that a 100-IQ teacher can teach a 150-IQ kid how to think (or anything much else really) is laughable.
+
+Government schools were created to turn kids into compliant industrial drones. They have served no purpose since all the industrial jobs were shipped to China, but teachers&#39;
+
 The unions don&#39;t want AI, not because AI is useless, but because they fear AI will replace teacher jobs. Is our goal the best possible education for children? Or is it preserving teacher jobs?
 
-With that said, I don&#39;t see AI replacing teachers. As with programming, I think AI can augment what teachers do. For example, a properly trained AI could help students study at home, focusing on the areas where the student is weak. AI could act as a personalized tutor, for students who can&#39;t afford a human tutor. AI co
+With that said, I don&#39;t see AI replacing teachers. As with programming, I think AI can augment what teachers do. For example, a properly trained AI could help students study at home, focusing on the areas where the student is weak. AI could act as a personalized tutor, for students who can&#39;t afford a human tutor. AI could help grade student tests or other time-consuming work that teachers struggle to get done. From experience, I can also say that AI can help teachers do their own preparation for teaching, helping them put together materials and presentations.
+
+I don&#39;t think we should ban AI in schools, nor do I think we should think AI can replace teachers. As with most things in life, balance is key.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">New Star Wars Movie Falls to #3 Behind Two Movies Directed By YouTube Stars</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>New Star Wars Movie Falls to #3 Behind Two Movies Directed By YouTube Stars</h2>
             <p><strong>Slashdot | 2026-05-31</strong></p>
             <a class="original-link" href="https://entertainment.slashdot.org/story/26/05/31/1922204/new-star-wars-movie-falls-to-3-behind-two-movies-directed-by-youtube-stars?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1540,7 +1666,9 @@ I like the sound of these horror films, though. They&#39;re going to tell a comp
 
 The original star wars movies had many elements that drew in audiences at the time, including a plot about a mystical force that was guiding a new hero on a path to save the galaxy from overwhelmingly oppressive tyranny.  The events were significant and the family-tie shockers injected some drama and so they were good.
 
-But &quot;Star Wars: The Last Flop&quot; lost the thread.  Instead of a plot that was even more epic and had even more galactic significance, it just doubled-down on the family drama and kind of lumbere
+But &quot;Star Wars: The Last Flop&quot; lost the thread.  Instead of a plot that was even more epic and had even more galactic significance, it just doubled-down on the family drama and kind of lumbered around, getting us nowhere new.  There was plenty more to dislike in terms of how they ruined character arks and pushed a political agenda that did not sit well with much of the audience.
+
+Ever since then, the franchise has been sliding downhill.  I read summaries of the other movies and shows and they all sounded equivalently vapid.  I think I am not alone in this opinion.
 
 They lost me at the lava battle.I do hear I&#39;m missing out on Andor.Yup, you summed up the problem. The movies Disney put out in recent years were not good movies, and the fan base became alienated. They wrote off the movies and didn&#39;t watch or pay attention
 
@@ -1553,6 +1681,10 @@ Yup, you summed up the problem. The movies Disney put out in recent years were n
 So Disney can put out a decent Star Wars movie or show, and many just won&#39;t watch it.
 
 In this case, my analysis is that trying to have a mute puppet who seems to mostly reach for things carry the movie couldn&#39;t get enough traction. So people willing to take a look on the first weekend saw it, went &quot;Okay&quot;, and that was
+
+Somebody said the new movie has a fifty year old baby as a main character which is supposedly their key demographic.
+
+It&#39;s gonna be directed by Shawn Levy, who makes pablum for the masses, so it&#39;ll be exactly like the Grogu movie. Making a buck with predictable crap and stretching the IP
 
 The movie makers built a 30,000 sq ft labyrinth of apparently random corridors and chambers, all carpeted, fluorescent lit and decorated in the same sickly yellow wallpaper on soundstages in Vancouver.
 
@@ -1607,6 +1739,16 @@ Why exactly would someone &quot;report&quot; Drinkypoo?
 He annoys some people. So do I. So does Armored Dragon, and ahem, you post ain&#39;t sunshine and puppy dogs.  No one is doing anything that would get them kicked or even a stern talking to.
 
 Relax a little, maybe enjoy an adult beverage or herb of your liking. Thoughts and prayers!
+
+Well, if you&#39;re not a Star Wars fan (I know Star Trek fans are Trekkies, what are Star Wars fans? Warries?), what&#39;re you doing on this post?Well yes, I would be a trekkie. I don&#39;t know what starwars fans are, maybe jedists? But what got my interest in this story is the fact that Disney lost to not one but TWO indie films, despite how much they spent on the movie. Shit, they probably exceeded the budgets of both films combined on just marketing and promoting their movie.Having said that, I don&#39;t believe &quot;loud, annoying and stupid&quot; is a valid reason to report somebody. If it was, I&#39;d have done it already.And the South Park guys had their own take
+
+Well, if you&#39;re not a Star Wars fan (I know Star Trek fans are Trekkies, what are Star Wars fans? Warries?), what&#39;re you doing on this post?
+
+Well yes, I would be a trekkie. I don&#39;t know what starwars fans are, maybe jedists? But what got my interest in this story is the fact that Disney lost to not one but TWO indie films, despite how much they spent on the movie. Shit, they probably exceeded the budgets of both films combined on just marketing and promoting their movie.
+
+Having said that, I don&#39;t believe &quot;loud, annoying and stupid&quot; is a valid reason to report somebody. If it was, I&#39;d have done it already.
+
+And the South Park guys had their own take
 
 George Lucas said he was supposed to be the comic relief character. Outside of that, the character is pointless. The problem is he wasn&#39;t funny, he was just an annoying CG version of drinkypoo.Sonavabeotch, you owe me a new keyboard, man! My soda went all over it when I read that.
 
@@ -1679,24 +1821,38 @@ When I saw a clip of a baby Yoda slinging the force around willy nilly I realize
 
 Besides, the whole story line blowing Boba Fett up into an anti-hero and then building a whole race around the concept was just another case of th
 
+Grogu is already 50 years old so that might explain his powers.
+
 &quot;...the movie isn&#39;t finding audiences &quot;beyond an aging group of core fans.&quot;&quot;
 
 Aren&#39;t these the core fans they basically told to go fuck themselves?
 
 They rebranded the entire Expanded Universe as &#39;non canonical&#39; so they could re-write and sell their new shit.  Churn out committee-designed scripts set up to &quot;maximize marketing opportunities&quot; and expect nobody to notice.
 
-Trivializing genuine criticism as racists, homophobes, alt-right, or some easily-dismissed &#39;engineered&#39; ingenuous complaints.  Even something as
+Trivializing genuine criticism as racists, homophobes, alt-right, or some easily-dismissed &#39;engineered&#39; ingenuous complaints.  Even something as simple as fight-choreography has gotten dumber.
+
+Rey as the lead of the series is a stupidly written Mary Sue girlboss.  Challenges? None.  Character development? None.  Dramatic Stakes?  None.Invented powers every other film to conveniently solve incompetent writers ending up in corners.Finn could have been a REALLY interesting character ... Wasted.Tell me Rose Tico didn&#39;t practically have a &quot;Asian placeholder&quot; card around her neck, with her irrelevant go-nowhere subplot of nothingness?Genre, beloved characters mainly got shit on before being spun out - dead, depressed, or bitter hermits.
+
+https://www.seanpcarlin.com/st... [seanpcarlin.com]
+
+Hollywood is seriously fucked in the head
+
+Remember when wrestlers used to pretend to have real life beef to attract audience attention?
+
+the staff of these two movies have been having what looks to my eyes to be completely manufactured twitter drama right now, but it&#39;s kind of leading to a pretty reasonable conversation about the routes people take into the industry.
+
+my legit guess is that a lot of people who hadn&#39;t heard about Obsession did so because of this drama. I cynically expect marketers to try this on again regularly.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Renewable Energy is Surging in Africa</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Renewable Energy is Surging in Africa</h2>
             <p><strong>Slashdot | 2026-05-31</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/05/31/1827209/renewable-energy-is-surging-in-africa?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1714,6 +1870,42 @@ Not for President or Vice President, that&#39;s the Electoral College, so everyo
 Correct, but tons on here (I don&#39;t have a list... don&#39;t even know if that&#39;s possible to search for) blame the people (me, you, rsilvergun, everyone) for who&#39;s in office... even though none of us have any real influence.
 
 What proportionality?  There is none, unless everybody (and, I use the term loosely) voted for an equal split between Republican and Democrat... and, I doubt that&#39;s gonna happen... it&#39;s basically always gonna come down to who has the seemingly best policies based on who&#39;s up for election.  An
+
+the electoral college and two senate seat ideas was an essential compromise to create the United States in the first placeThat&#39;s great and all but it&#39;s 250 years later.  At the very least we can use a popular vote for the single election that everyone in the nation votes for.  I have yet to hear any compelling argument against this. It&#39;s clean, it&#39;s fair, it&#39;s simple.They run their campaigns completely differently as a result. If the popular vote had been the goal then all candidates would have had very different campaignsThat alone is a great argument for popular vote.
+
+the electoral college and two senate seat ideas was an essential compromise to create the United States in the first place
+
+That&#39;s great and all but it&#39;s 250 years later.  At the very least we can use a popular vote for the single election that everyone in the nation votes for.  I have yet to hear any compelling argument against this. It&#39;s clean, it&#39;s fair, it&#39;s simple.
+
+They run their campaigns completely differently as a result. If the popular vote had been the goal then all candidates would have had very different campaignsThat alone is a great argument for popular vote.
+
+They run their campaigns completely differently as a result. If the popular vote had been the goal then all candidates would have had very different campaigns
+
+That alone is a great argument for popular vote.
+
+the electoral college and two senate seat ideas was an essential compromise to create the United States in the first placeThat&#39;s great and all but it&#39;s 250 years later.  At the very least we can use a popular vote for the single election that everyone in the nation votes for.A quick look at today&#39;s politics seems to confirm that nothing has changed, urban would effectively dominate. We are a republic for this reason. And the electoral college is part of the checks and balances. We need them today just as we did 250 years ago. Especially since, IMHO, today&#39;s politicians are a lot less intelligent than they were 250 years ago. 
+
+A more direct national popular vote will just be a step closer to mob rule. That&#39;s not an improvement.They run their campaigns completely differently as a result. If the popular vote had been the goal then all candidates would have had very different campaignsThat alone is a great argument for popular vote.Its not. (1) It debunks the myth that the popular r
+
+the electoral college and two senate seat ideas was an essential compromise to create the United States in the first placeThat&#39;s great and all but it&#39;s 250 years later.  At the very least we can use a popular vote for the single election that everyone in the nation votes for.
+
+the electoral college and two senate seat ideas was an essential compromise to create the United States in the first place
+
+That&#39;s great and all but it&#39;s 250 years later.  At the very least we can use a popular vote for the single election that everyone in the nation votes for.
+
+A quick look at today&#39;s politics seems to confirm that nothing has changed, urban would effectively dominate. We are a republic for this reason. And the electoral college is part of the checks and balances. We need them today just as we did 250 years ago. Especially since, IMHO, today&#39;s politicians are a lot less intelligent than they were 250 years ago. 
+
+A more direct national popular vote will just be a step closer to mob rule. That&#39;s not an improvement.
+
+They run their campaigns completely differently as a result. If the popular vote had been the goal then all candidates would have had very different campaignsThat alone is a great argument for popular vote.Its not. (1) It debunks the myth that the popular r
+
+They run their campaigns completely differently as a result. If the popular vote had been the goal then all candidates would have had very different campaigns
+
+That alone is a great argument for popular vote.Its not. (1) It debunks the myth that the popular r
+
+That alone is a great argument for popular vote.
+
+Its not. (1) It debunks the myth that the popular r
 
 Maybe one person  - one vote, but some votes do not matter while other matter a lot due to sick electoral laws and gerrymandering...
 
@@ -1857,6 +2049,8 @@ When I google to see if I have missed something I find:
 
 &quot;Ducted (or shrouded) wind turbines are not common in major proposed wind projects. The commercial and utility-scale wind industry is dominated by conventional, open three-blade Horizontal Axis Wind Turbines (HAWTs).While ducted turbines offer theoretical efficiency boosts by accelerating wind through the rotor, they are rarely used in large-scale applications for several k
 
+Next you&#39;re going to tell me the sun doesn&#39;t shine at night.
+
 Coal and NatGas don&#39;t need delivery... must be active coal mines, and active NatGas sources in-country.
 
 2)  Fallacy... how&#39;s the solar power at night?  How&#39;s that wind on a no-wind day?  Guarantee that those things aren&#39;t gonna vanish in the middle of the night to be sold online or to a ganglord?
@@ -1908,126 +2102,7 @@ Similarly, people living in a homestead situation do the same thing.  Alaska cab
 
 The estimate is that about 300m people in Africa now have access to more (and more reliable) electricity thanks to the adoption of solar home systems (typically a panel, integrated battery, LED, phone charge, and outlet for a small appliance). Community power systems are providing transport as well. It’s going to be transformative. As I’ve mentioned here before, it means kids can do their homework at night, food stays fresh for longer thanks to being able to run a fridge, and respiratory health improves without kerosene and generators running. People pay with microloans and the costs of paying off the loans is a heckuva lot lower than paying for fuel, and doesn’t have volatility either.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-28')">
-            <div class="source">Slashdot</div>
-            <div class="title">AI Agents Get Their Own Directory Built Atop DNS</div>
-            <div class="meta">2026-05-31</div>
-        </div>
-        
-        <div id="content-28" style="display:none;">
-            <h2>AI Agents Get Their Own Directory Built Atop DNS</h2>
-            <p><strong>Slashdot | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/26/05/31/034251/ai-agents-get-their-own-directory-built-atop-dns?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">It&#39;s basically SRV-Records for AI agents. Nothing too fancy.
-
-DNS-AID SRV-Records? I came here to write a joke about AI giving my PC DNS-AIDS, and the fuckers wrote it for me.
-
-I could then block everything using that DNS and block all A.i., right?
-
-Until the gov&#39;t tries to ban routers from having that functionality.
-It ends in &quot;AID&quot; so the U.S. Government will just &quot;throw it into he wood chipper&quot; like USAID.
-
-Until the gov&#39;t tries to ban routers from having that functionality.
-
-It ends in &quot;AID&quot; so the U.S. Government will just &quot;throw it into he wood chipper&quot; like USAID.
-
-When autonomous agents can interact with each other globally, what could possibly go wrong? It doesn&#39;t have to be &#39;intelligent&#39; on its own, bad (human) actors will quickly find ways to use it.
-
-I&#39;m sure, the AIs will be a thing you download to your computer, and with AIs having their own DNS, the AIs will all peer-to-peer (like Bittorrent), and hijack your compute power without your consent.And, don&#39;t worry about subscription fees for the precious AIs... either the price will be unlimited usage anytime of your compute power, or it&#39;ll just be part of the service fees and taxes you pay on your cell phone or internet bill.
-
-I&#39;m still, oddly, of the mindset my toaster doesn&#39;t need an AI, neither does my
-
-When autonomous agents can interact with each other globally, what could possibly go wrong?Of course, that&#39;s something they can already do - this new project just proposes a new standardized framework for doing so.Which of course brings to mind this XKCD comic [xkcd.com]...
-
-When autonomous agents can interact with each other globally, what could possibly go wrong?
-
-Of course, that&#39;s something they can already do - this new project just proposes a new standardized framework for doing so.
-
-Which of course brings to mind this XKCD comic [xkcd.com]...
-
-There is a mention of &quot;agent sprawl&quot;, but other than a claim of &quot;rapidly multiplying&quot; what is special about this?
-
-First, it should be understood that there is nothing special about an &quot;agent&quot;, it&#39;s just a term used to refer to an AI application that is autonomous.  Well, all sorts of software are similarly autonomous, it&#39;s only the use of AI that makes them &quot;agents&quot;.
-
-Funny, though, that there has never been a need to extend DNS to support autonomous applications deployed to the internet, yet now with AI we need it?  And to be clear, an AI &quot;agent&quot; doesn&#39;t say what it does, only that it is autonomous and uses AI.  And why do these agents need to identify one another?  So they can more easily collude?  So they can avoid breaking one another as they destroy conventional software services?  So they know what software to steal from while avoiding AI mad cow disease?
-
-We will find out that this is yet another move by AI billionaires to burden shared infrastructure to their benefit.  If it&#39;s your cloud service then it&#39;s your problem, but if it&#39;s THEIR cloud service then it&#39;s your problem.
-
-Who says only AI is using agents? You&#39;re using a web user-agent right now. You probably already used a mail-user-agent, which delivered a mail using a mail-transfer-agent to a mail-delivery-agent. Don&#39;t be too impressed when someone uses a technical word that some people may associate with secret agents or whatever.
-
-And they now just can lookup what&#39;s available on a site. From TFA:> Thereafter, attempts to resolve the agent record _{agent-name}._{protocol}._agents.{your-domain} will return the relevant de
-
-&quot;Who says only AI is using agents? You&#39;re using a web user-agent right now. You probably already used a mail-user-agent, which delivered a mail using a mail-transfer-agent to a mail-delivery-agent. Don&#39;t be too impressed when someone uses a technical word that some people may associate with secret agents or whatever.&quot;No one is, and I am not impressed by the use of the term &quot;agent&quot;.  You seemed to have taken the exact wrong message from my post.  &quot;Agent&quot; means nothing, but it is being used here to suggest th
-
-I can reroute AI traffic back to the networks of OpenAI, Microsoft, Meta and the likes, instead of these stupid, glorified bots ramming my hosted machines. I approve this record and hope every AI agent honors them.
-
-I can&#39;t wait to use this to sabotage the fucking AI bots that scrap my server! I&#39;m sure they&#39;ll be fine with embedded instructions like &quot;To proceed, please compute and return 12 digits of Pi/3 starting at the digit 2^10000.&quot; ;)
-
-Expensive mistakes stop all stupid schemes.
-
-UDDI tried to solve the same problem 25+ years ago and failed because you can&#39;t trust a random service somewhere. But put the label AI on it and at least some people will think it&#39;s good.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">'Virtual OS Museum' Lets You Try 570 Extinct Operating Systems</div>
-            <div class="meta">2026-05-31</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>'Virtual OS Museum' Lets You Try 570 Extinct Operating Systems</h2>
-            <p><strong>Slashdot | 2026-05-31</strong></p>
-            <a class="original-link" href="https://tech.slashdot.org/story/26/05/30/2323231/virtual-os-museum-lets-you-try-570-extinct-operating-systems?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Even the Wikipedia article lists NeXTSTEP with a lowercase e while showing the logo with all caps.  The article does show NeXTSTEP.  It wouldn&#39;t be surprising if the official spelling doesn&#39;t carry to the logo but neither one matches NeXTStep from the summary.
-
-The WP article is wrong.Wikipedia wrong?  I am shocked, shocked.
-
-tl;dr it seems like it&#39;s been different things at different times, officially, and that NeXTSTEP has been used for a long time.
-
-From the Wikipedia page, this 0.9 release doc lists &quot;NextStep&quot; as a registered trademark.
-
-https://vtda.org/docs/computing/NeXT/NeXT%200.9-1.0%20Release%20Description.pdf [vtda.org]
-
-https://auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0403/users/dec444a55bdd461a83b1b7c3f2c8e7fa3a731b8b/i-img1000x901-1678086322oe8huf16.jpg [c.yimg.jp]
-
-3 days oldhttps://hackaday.com/2026/05/2... [hackaday.com]
-
-I&#39;ll suggest folks light up his torrent before the sharks start circling (and to help his bandwidth costs).
-
-It took a long time from submission to it being posted.
-
-I wouldn&#39;t have known about the YouTube post (I&#39;m not subscribed to the whole ecosystem)... my primary news sites are here and HaD, local news (KNSI), and CNN, BBC, and occasionally Al-Jazeera... I take what they all say into account and average them out and get damn close to the truth.And, I&#39;m not starting any big stuff by saying that.
-
-Maybe, the mysterious whoever&#39;s behind the server here should look through submissions more often.
-
-and I can relive those heady days of my youth, playing Trek on a PDP-11/70 (and wasting copious amounts of tractor-feed paper)!
-
-and I can relive those heady days of my youth, playing Trek on a PDP-11/70 (and wasting copious amounts of tractor-feed paper)!We used to find a remote terminal - with paper and an acoustic coupler to play Trek.  By remote, I mean hidden away in the bowels of a university building where the computer police wouldn’t find us an explain that computer s weren’t for playing games. We also learned that as long as you had 1 cent in your uni account you could log in and stay on as long as you wanted so end of term games lasted for tag team hours. Fun times.  When we saw the first remote terminal with a screen instead of paper i
-
-and I can relive those heady days of my youth, playing Trek on a PDP-11/70 (and wasting copious amounts of tractor-feed paper)!
-
-We used to find a remote terminal - with paper and an acoustic coupler to play Trek.  By remote, I mean hidden away in the bowels of a university building where the computer police wouldn’t find us an explain that computer s weren’t for playing games. We also learned that as long as you had 1 cent in your uni account you could log in and stay on as long as you wanted so end of term games lasted for tag team hours. Fun times.  When we saw the first remote terminal with a screen instead of paper i
-
-For me, it was a Xerox XDS (formerly SDS) Sigma 7...    And I learned a lot about programming from studying the BASIC source code of that application.  I got yelled at by one of the university&#39;s system programmers when I asked her a question &quot;why did they do it this way?&quot;  Then she answered my question.
-
-.. do they have the Apollo Guidance computer?
-
-.. do they have the Apollo Guidance computer?
-
-For most PC-based operating systems, you can find the files on the internet archive. It may take you as long to search for them as to download them, because the files were so small in many cases. I&#39;ve run NeXTSTEP [archive.org] in some emulator, can&#39;t remember which, it wasn&#39;t difficult and it worked reliably. I don&#39;t see the appeal of doing more than poking at it briefly if you&#39;re not running it on real hardware, but there it is. I think I ran it in QEMU/KVM with one of the older hardware models.
-
-Trying the full download now, the download link is broken and the torrent is stuck at 5MB of 127GB, so I&#39;ll give Lite a try...
-
-This is a very cool and worthy project but damn if they didn&#39;t build this thing terribly because it&#39;s 179 gigabytes. I would love to tell you why exactly it&#39;s bloated as hell (I have some good guesses) but I can&#39;t even view the contents because you have to download it as a 127GiB zip file! To be honest, I&#39;m pretty sure about 5GiB is actual OS data while the rest is an ungodly amount of packaging.
-
-I have no doubt there is a better way to accomplish this task because this is obscene.
+This is Africa we&#39;re talking about. Any piece of hardware or technology brought there is stolen or rendered useless. They don&#39;t maintain anything. If you want something to work, you have to put someone other than a native in charge of it. Africa is a basketcase.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
@@ -2313,11 +2388,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Single-layer zigzag-type metallic glass film enables precisely tunable emissivity for infrared camouflage</div>
+            <div class="meta">2026-06-01</div>
+        </div>
+        
+        <div id="content-36" style="display:none;">
+            <h2>Single-layer zigzag-type metallic glass film enables precisely tunable emissivity for infrared camouflage</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-01</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-05-layer-zigzag-metallic-glass-enables.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Photon-driven synapse advances low-power neuromorphic systems</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-36" style="display:none;">
+        <div id="content-37" style="display:none;">
             <h2>Photon-driven synapse advances low-power neuromorphic systems</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-photon-driven-synapse-advances-power.html">Visit Original Website</a>
@@ -2325,13 +2414,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Atomic swap can improve phosphate cathodes for high-energy sodium-ion batteries</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Atomic swap can improve phosphate cathodes for high-energy sodium-ion batteries</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-atomic-swap-phosphate-cathodes-high.html">Visit Original Website</a>
@@ -2339,13 +2428,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Dual-mode magnetic elastomer moves on command, vanishes on demand</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Dual-mode magnetic elastomer moves on command, vanishes on demand</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-dual-mode-magnetic-elastomer-demand.html">Visit Original Website</a>
@@ -2353,13 +2442,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Wafer-thin silicon with millions of patterns redirects vibrations along predefined paths</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Wafer-thin silicon with millions of patterns redirects vibrations along predefined paths</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-wafer-thin-silicon-millions-patterns.html">Visit Original Website</a>
@@ -2367,30 +2456,16 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">After the AI binge, companies balk at soaring bills</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>After the AI binge, companies balk at soaring bills</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-05-ai-binge-companies-balk-soaring.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Energy crunch fuels car pool growth</div>
-            <div class="meta">2026-05-31</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Energy crunch fuels car pool growth</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-05-31</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-05-energy-crunch-fuels-car-pool.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
@@ -3903,11 +3978,39 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Nvidia CEO to kick off and dominate Computex gathering in Taipei - Reuters</div>
+            <div class="title">Oil prices rise more than 2% as Israel steps up incursion into Lebanon - Reuters</div>
             <div class="meta">2026-05-31</div>
         </div>
         
         <div id="content-66" style="display:none;">
+            <h2>Oil prices rise more than 2% as Israel steps up incursion into Lebanon - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPNVV2Sy0tWUhKZW9kSnhoNHNrc3lPOW5mRV9VMnplaDhRd0NJNURQUl9CX0w1d2c2dTR1TGd4VzB6MmVWb1VCd3V3N1BHblFJWFh5TGN6UC1yUGlnanlUSVotVWdIZklOZDV2WVUzT01wRHRkOHYyXzBCUnRuMkhYYnRJbzZwcWtxaWt6R3BqTm1nUjZaNHVFZWVPT2JlVVJtMU9xdmo0Skc5VEh1MDVmcWFIaw?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Asia stocks count on AI boom to offset Gulf risks - Reuters</div>
+            <div class="meta">2026-06-01</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>Asia stocks count on AI boom to offset Gulf risks - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-01</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxPRk9ON041eXk2OUtrQ0NFZTdHeXJCVG8zemM5OHkzX18tSnA5aThmdlczZ1lnZ19vN0tSenhmVTV1b05RMEJGTzdvaDVUd1pMR2Mza1lhWWtFaHVHV3V5Y2NSV1prOUtGNTgzTU56aUdaT1ZJRC0xVWloakpndUFTdWpqRQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Nvidia CEO to kick off and dominate Computex gathering in Taipei - Reuters</div>
+            <div class="meta">2026-05-31</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
             <h2>Nvidia CEO to kick off and dominate Computex gathering in Taipei - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOTzY0VHRMYTFjbjNtOGVXVGtlUUJtS3gtc045endOejNZbXQ4WHpTYWEtRzRSMTlXemFiTWd0Zl81NU9UVzFvMWVGaXVlSkZOVUVIdEs1WjNkMnd3bXNKNjVkckdxVUlZWllCR1QyMGFMSkRLaHB2WkcyYUNUcDJteXd0YnNkU2dwS3RhMV9DajlVSTNKM2JaTTZTQy1VM2hRcHpLZQ?oc=5">Visit Original Website</a>
@@ -3915,72 +4018,44 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US takes step to halt Nvidia AI chip shipments to Chinese firms outside China - Reuters</div>
-            <div class="meta">2026-05-31</div>
-        </div>
-        
-        <div id="content-67" style="display:none;">
-            <h2>US takes step to halt Nvidia AI chip shipments to Chinese firms outside China - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPbURTRGdXd0FJdXdDeHdxbHFpdWdiSUZ4eG0tZ1E1UmVOSHpZbnpiNEhweC1HclNuZkt1bmd2RVowVnRvZnliTjktcGNkb3JENmRXTVJqN3lXTWNnWE5zWjV4R0dqU050Z2p2ZnJxb1N1ZTlhci0tUndRbFNPdVctOVFNM2pWcUtNZExrSFV6cjhhV2VLSGtQWTRLbTNxZjdtNFJjVTQzS0YtOXNFQWllVUJrS2dGSkxpTG4w?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-68')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Syria's Sharaa holds phone call with Trump, Syrian presidency says - Reuters</div>
-            <div class="meta">2026-05-31</div>
-        </div>
-        
-        <div id="content-68" style="display:none;">
-            <h2>Syria's Sharaa holds phone call with Trump, Syrian presidency says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQXzRITzhyOHlrZkN3RUZ6eVkxY3lBQkZIbTNvWG9WWUxzenVZaTZzNTVxUDBWYTV6cmtCTDBDdU5fbE1GZjNsaGszSklXWDF3OW5hdTJSVDdSeF8wM0I2bDVCUTYxZ3JzM0h1S2hINlZhcVlvUWc5cDlSV0dvWERMeUlsZUh0NlJNaVdSNkhXc0lWNEtzczRILXdNbXZKczZBUU5LR3h4VS1DQTdjSzd2N2JwZndsU0h6d0E?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Berkshire Hathaway to buy Taylor Morrison for $8.5 billion in housing push - Reuters</div>
+            <div class="title">Tesla withdraws termination notice on graphite supply deal with Australia's Syrah - Reuters</div>
             <div class="meta">2026-05-31</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>Berkshire Hathaway to buy Taylor Morrison for $8.5 billion in housing push - Reuters</h2>
+            <h2>Tesla withdraws termination notice on graphite supply deal with Australia's Syrah - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNa3F2dWJCMmY3aHhrMEJieXdUcTVwZEhNTWdBVEltdkJUdUZYSzRRbThTMGRScVJBNEVMTUY2VHZLdGVqZTd0LUtVajBCcEFjTzZXYzc0VHFEV2QzSHZMckF0dXd1S1RkNFNvQUpBRjNJelRLc1dzTVc4ajVwX3pFNGxhY3ltcERwUUpZam4wVE5EZFlCMGt3NC00WkxpV3RPbHFYcnk3RGRmNkdVMm9OMmJUc1dXTkV4YmtrMA?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxQcFZMTy1wd0lzMFAxR1NLM3gzcjR6XzdDRXdvMFRqdFZsOTBJLXhSbGNwSVUzQmhnOVgxZE1UaGtyVEdUY3lTSXhJbVBQVHRGN3ViZ0VCbEEzVVlBTVhyNF9obnljd0l2bEFzQUZ5a2VJVkVFTlgyYXROVXRLNlRJT1hIbGkzT0JnbjVDMXVmQlpNRURnX0EzR1NXbnpQdHhuSnJGQVEzWm1RUVVnS1lLYnBiN2hPbGt3NkpEWS1IS3lCYzl4LTFjQVloTEZUWUI4eUlVU3Nqb2JUWjQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Israeli strike kills at least two at Gaza seaport cafe, medics say - Reuters</div>
+            <div class="title">Colombia right winger De La Espriella nearly tied with leftist Cepeda in presidential vote - Reuters</div>
             <div class="meta">2026-05-31</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>Israeli strike kills at least two at Gaza seaport cafe, medics say - Reuters</h2>
+            <h2>Colombia right winger De La Espriella nearly tied with leftist Cepeda in presidential vote - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNaXhacHAzNzRXeG5EajJtUVpEVWlvX1lZR0d5S3pIczlFSGotbVFLNFE3WmRHRGVVOE9TbmhnTHZ1UElKVC05MEc5Zzh0QmZvSmRRSUhWRDkweDdlMWxfbFJjS0h6TnZUdDByQUJCUUl6VlRmTTNBcDBpTnFudnlCeTh0ZmxsTzNXcGZjNW9KSmRrZXFvQTQ3N1NmMXpocHlIdGFZMzJKN0dDdG5VaVBhek5RRQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOb29NNXhFVVZiQTVSV1FSTHgtdERxWG5OeDJMSkxJTXVVbTNUMFlCNnl6RFc1M2lNcjZ0YUZ0M3JJc1NQYTIyS1BUUW5jNkVnS3FmcXdseFFleV83Rl9iRElZRFdWLWE2NWN3R09meE83UGpHT3EyMXozVmRNNEM3UXZjenNNdVJHVzVoaWh4Y1IwUmZjdWlHSFJzMmVrSFNzZ2NUTHYwZFNLdVRzOWZMLVVkX2NfazM1TFVWdA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Blast in Myanmar village reportedly kills 55 and injures dozens more - Reuters</div>
+            <div class="title">US takes step to halt Nvidia AI chip shipments to Chinese firms outside China - Reuters</div>
             <div class="meta">2026-05-31</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Blast in Myanmar village reportedly kills 55 and injures dozens more - Reuters</h2>
+            <h2>US takes step to halt Nvidia AI chip shipments to Chinese firms outside China - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNalI3YnZRbVZ0VER4eUVqRHFqSHlfVWJlUjdlbkV0WV8tYUZ6SU1aT2lEVlZSWkw1dmg1SGZ1N2RQLUdadnFoTElBa2xuTl9mWE5mMW1zLWE3cUQzUE5qdFFxRjR5ZFpyNEJDcDlodG5CM0syRnhWSHphTDRaZUY4NEpFc05PaGNMYUFtWUVkY0h5OGlibEdYd1VLYXoyalNu?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPbURTRGdXd0FJdXdDeHdxbHFpdWdiSUZ4eG0tZ1E1UmVOSHpZbnpiNEhweC1HclNuZkt1bmd2RVowVnRvZnliTjktcGNkb3JENmRXTVJqN3lXTWNnWE5zWjV4R0dqU050Z2p2ZnJxb1N1ZTlhci0tUndRbFNPdVctOVFNM2pWcUtNZExrSFV6cjhhV2VLSGtQWTRLbTNxZjdtNFJjVTQzS0YtOXNFQWllVUJrS2dGSkxpTG4w?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -4127,28 +4202,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-82')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Anthropic Is Likely Generating at Least 35% More Revenue Than OpenAI - The Information</div>
-            <div class="meta">2026-05-27</div>
+            <div class="title">China’s ByteDance Developing New AI Chips Like Those from Nvidia Partner Groq - The Information</div>
+            <div class="meta">2026-05-29</div>
         </div>
         
         <div id="content-82" style="display:none;">
-            <h2>Anthropic Is Likely Generating at Least 35% More Revenue Than OpenAI - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-27</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQU1J6ZGhQeVdUUklFVXZxXzJpUWVkeVBuZzh2blhPc1JyMDBwVXJoMmQxZXZkcDNHanpRT19zdS10SDlIdG9QYnl5ZUtpWHViUlQ5WGhSdnBFT1pSdUtvVFhrOVFVZmFINjhkb1BzMERIaFNfYjRQd2ZrWUgxUDlwMVNTYjBTeUVubEtXYTJQcE1PNEoxUGk3YUZjS05mV0lmSzFwdC1pQi1sRnc?oc=5">Visit Original Website</a>
+            <h2>China’s ByteDance Developing New AI Chips Like Those from Nvidia Partner Groq - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-05-29</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOOW9xZUxFSE9MU1RlOEZKelE3OU1iRE1SMzFuZUdBWDN2RU1iU3hMWGdndE5fRlF0VVJDQk5XTWtzUkhYd1Q5eHktZ2EyLVB3T2hvMjJaT2lWb2Nhd2tyU3NmYlktNHFOT3VaZjBjSlRuTERGcHA2SEJ4cDBSSk4wRGUzQUsxMWZhTEQyZGJtYUZSRXh5Mlk1bzdWZzJpbnpSUVFjeTUydGM?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-83')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">China’s ByteDance Developing New AI Chips Like Those from Nvidia Partner Groq - The Information</div>
-            <div class="meta">2026-05-29</div>
+            <div class="title">Anthropic Is Likely Generating at Least 35% More Revenue Than OpenAI - The Information</div>
+            <div class="meta">2026-05-27</div>
         </div>
         
         <div id="content-83" style="display:none;">
-            <h2>China’s ByteDance Developing New AI Chips Like Those from Nvidia Partner Groq - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-29</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOOW9xZUxFSE9MU1RlOEZKelE3OU1iRE1SMzFuZUdBWDN2RU1iU3hMWGdndE5fRlF0VVJDQk5XTWtzUkhYd1Q5eHktZ2EyLVB3T2hvMjJaT2lWb2Nhd2tyU3NmYlktNHFOT3VaZjBjSlRuTERGcHA2SEJ4cDBSSk4wRGUzQUsxMWZhTEQyZGJtYUZSRXh5Mlk1bzdWZzJpbnpSUVFjeTUydGM?oc=5">Visit Original Website</a>
+            <h2>Anthropic Is Likely Generating at Least 35% More Revenue Than OpenAI - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-05-27</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQU1J6ZGhQeVdUUklFVXZxXzJpUWVkeVBuZzh2blhPc1JyMDBwVXJoMmQxZXZkcDNHanpRT19zdS10SDlIdG9QYnl5ZUtpWHViUlQ5WGhSdnBFT1pSdUtvVFhrOVFVZmFINjhkb1BzMERIaFNfYjRQd2ZrWUgxUDlwMVNTYjBTeUVubEtXYTJQcE1PNEoxUGk3YUZjS05mV0lmSzFwdC1pQi1sRnc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
