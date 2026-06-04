@@ -154,12 +154,60 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Flesh-eating screwworm infection detected in South Texas, USDA says</div>
+            <div class="title">Microsoft, Atom Computing, EeroQ update their quantum computing progress</div>
             <div class="meta">2026-06-03</div>
         </div>
         
         <div id="content-0" style="display:none;">
-            <h2>Flesh-eating screwworm infection detected in South Texas, USDA says</h2>
+            <h2>Microsoft, Atom Computing, EeroQ update their quantum computing progress</h2>
+            <p><strong>Ars Technica - All content | 2026-06-03</strong></p>
+            <a class="original-link" href="https://arstechnica.com/science/2026/06/microsoft-atom-computing-eeroq-update-their-quantum-computing-progress/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">With dozens of companies, from small startups to tech giants, pursuing quantum computing, there’s a steady flow of results as they try to find a path to utility. We typically focus on new technologies and major landmarks, which can obscure the fact that any big success will inevitably have been built on a lot of incremental progress.
+
+The past few weeks have seen a number of companies release progress reports on how they’re trying to get the technologies closer to general use. None of these represents a major breakthrough, but all are absolutely necessary for the technology to advance. The idea here is to convey the hard work required to move us closer to something useful.
+
+Microsoft is one of the few companies working on topological qubits, based on the distinct physics that occurs when particles are confined. Microsoft’s system relies on a thin superconducting wire placed on top of a semiconductor. In superconductors, groups of two electrons form Cooper pairs. But if the wire contains an odd number of conducting electrons—meaning there’s a single unpaired electron—it will end up delocalized to both ends of the wire. (Because quantum mechanics is weird.)
+
+That’s the behavior that theorists had described, at least. Before the company could build qubits based on the behavior, it had to confirm that the behavior actually occurred as theorists predicted. It was not smooth sailing. Some of the early work in the area was later retracted, and Microsoft’s attempts to show the physics were solid were met with some skepticism, as the system it was showing off was very noisy. Despite that, the company laid out a roadmap based on building qubits out of pairs of these nanowires.
+
+This week, the company released an update reporting much better performance by changing the materials it used to make its qubits. In its earlier version of its hardware, it used aluminum as a superconductor (the devices are kept near absolute zero). That’s been replaced with lead. The underlying semiconductor was also reformulated to include some tin, which improved the spin-orbit coupling between its electrons and those in the lead.
+
+The devices Microsoft is using have two parallel wires and rely on measuring the parity of the pair (both with one extra electron, both without, or a mixed state) using quantum dots. As mentioned, the original system was very noisy and would often spontaneously change parity state every 10 milliseconds or less. With the new materials, a parity state could sometimes exceed 20 seconds. This sort of stability was always the promise of topological qubits, and why Microsoft originally committed to the system.
+
+That said, the company still has a long road ahead. It still needs to demonstrate the ability to manipulate the parity in a way that allows it to perform computational manipulations on individual qubits and pairs of them. Long term, there will be decisions to be made regarding how to link the individual qubits in a way that enables error correction. But if this manuscript holds up during peer review, it seems the hardware bet Microsoft made was a solid one.
+
+Atom Computing is both a Microsoft competitor and a partner, as its hardware is accessible through Microsoft’s Azure Quantum Cloud service. The companies have also worked together to develop the software and protocols needed to perform error correction on Atom’s hardware.
+
+That’s not “hardware” in the typical computing sense. Most of the solid material involves lasers and optical guides; the computation is done using the nuclear spins of atoms held suspended by an array of laser light. Still, Atom is developing something akin to an architecture in which there’s a storage region, an operations zone, and a collection of backup atoms that can be brought in if one of the others is lost. A configuration of lasers called “optical tweezers” is used to shuffle atoms among these locations.
+
+In a new manuscript, the company shows just how essential having that reserve of spare atoms can be. To hold their state and keep them in the traps, lasers must be used to cool the atoms, which tend to warm up during operations. The cooling is a slow process, but failure to do so tends to leave the hot atoms able to hop out of the laser traps that hold them in a grid, which obviously introduces errors.
+
+So, Atom had a bit of a catch-22: it needed to perform operations to do error correction, but those operations made errors more probable.
+
+Its solution was identifying that it could do the measurements needed for error correction in a way that would swap a spare, pre-cooled atom in to a logical qubit. Doing tests by repeatedly measuring the state of a logical qubit (a linked collection of data-storing and error-detection qubits) showed this made a big difference. Performing error correction on the logical qubit without swapping in cold atoms caused the probability of an error to rise with each successive measurement. Doing the swap kept the probability roughly constant over time.
+
+That doesn’t mean the error-corrected qubit was fully stable. Eventually, one of the errors that inevitably occurred couldn’t be recovered from because too many of its individual atoms changed state at once. But performing normal error correction could keep some of these logical qubits stable for up to 90 rounds.
+
+Again, that’s not good enough for any sort of sophisticated calculation. But it’s a lot closer than the company was before working out this technique.
+
+EeroQ is a startup with a distinct approach to qubits. A number of companies are looking into using the spin of electrons as their qubits, typically because it’s easy to fabricate chips that can manipulate electrons held in quantum dots. EeroQ is making its chips with lots of tiny pools that can hold a drop of liquid helium. When an electron is placed on that drop, it has nowhere to go because helium hates to carry an extra electron. So, the lone electron just floats on the surface.
+
+Which is great, but it was already well-established physics long before the company launched. The problem was that nobody had figured out a method to interact with the electron in useful ways.
+
+Recently, the company released a manuscript describing a new version of its chip, one with a small resonator next to the helium-filled pool. They showed that this resonator could couple with the movement of the electron, which is kept from hitting the walls of the pool by an electrical field. Since the electron’s motional states are quantized, the resonator adopts one or two states during the experimental procedure, which is the potential building block of a qubit.
+
+Again, that’s nowhere near having functional computing hardware. But again, it’s this sort of incremental work that’s needed if any of these technologies is going to live up to its promise.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Possible flesh-eating screwworm infection detected in South Texas, USDA says</div>
+            <div class="meta">2026-06-03</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
+            <h2>Possible flesh-eating screwworm infection detected in South Texas, USDA says</h2>
             <p><strong>Ars Technica - All content | 2026-06-03</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/06/flesh-eating-screwworm-infection-detected-in-south-texas-usda-says/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -196,13 +244,13 @@ Until recently, the screwworm population was kept at bay via a biological barrie
 In response, the US has expanded surveillance and trapping efforts in Texas. It is also constructing a $750 million sterile fly production facility in South Texas. USDA says it is currently dispersing 100 million sterile insects per week in Mexico and along the US-Mexico border to prevent the flies from advancing further.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Google ordered to put clearer links in AI search and let UK publishers opt out</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>Google ordered to put clearer links in AI search and let UK publishers opt out</h2>
             <p><strong>Ars Technica - All content | 2026-06-03</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/google-ordered-to-put-clearer-links-in-ai-search-and-let-uk-publishers-opt-out/">Visit Original Website</a>
@@ -248,14 +296,14 @@ The CMA said the nine-month deadline should provide “sufficient time to carry 
 The News Media Association, a trade group in the UK, said that “the legally enforceable Conduct Requirements for Google Search published today are a significant step towards leveling the playing field and building a fair, transparent digital economy where premium content is properly respected and fairly compensated.” The group called on the UK to implement “robust enforcement.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Dashlane issues opaque advisory warning 20 encrypted vaults were stolen</div>
+            <div class="title">Can't make sense of Dashlane's vault theft notification? You're not alone.</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-2" style="display:none;">
-            <h2>Dashlane issues opaque advisory warning 20 encrypted vaults were stolen</h2>
+        <div id="content-3" style="display:none;">
+            <h2>Can't make sense of Dashlane's vault theft notification? You're not alone.</h2>
             <p><strong>Ars Technica - All content | 2026-06-03</strong></p>
             <a class="original-link" href="https://arstechnica.com/security/2026/06/dashlane-issues-opaque-advisory-warning-20-encrypted-vaults-were-stolen/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -285,16 +333,16 @@ Dashlane said it has contacted fewer than 20 account holders whose encrypted vau
 
 But without more information, we’re left with more questions than we should be. Dashlane has maintained silence for more than 48 hours since publishing the opaque advisory. Company representatives didn’t respond to an email seeking details.
 
-Post updated to add details from a Dashlane user who recived the notifcation.</div>
+Post updated to add details from a Dashlane user who received the notifcation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Google's new Gemma 4 12B model is designed to run on any laptop with 16GB of RAM</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Google's new Gemma 4 12B model is designed to run on any laptop with 16GB of RAM</h2>
             <p><strong>Ars Technica - All content | 2026-06-03</strong></p>
             <a class="original-link" href="https://arstechnica.com/google/2026/06/googles-new-gemma-4-open-ai-model-is-sized-for-your-laptop/">Visit Original Website</a>
@@ -314,13 +362,13 @@ With the new mid-weight model, Google has implemented a streamlined embedding mo
 If you want to check out the new Gemma 4 model, it’s accessible without a download via tools like LM Studio, Google AI Edge Gallery, and more. But the whole idea with Gemma 4 12B is that you can run it locally and on your own terms. If you’ve got the RAM, the model weights are available for download immediately on Kaggle and Hugging Face. It’s just shy of 18GB.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Trump plan to test AI models has a problem—US security teams were gutted by DOGE</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>Trump plan to test AI models has a problem—US security teams were gutted by DOGE</h2>
             <p><strong>Ars Technica - All content | 2026-06-03</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/trumps-ai-executive-order-may-not-prevent-dangerous-deployments/">Visit Original Website</a>
@@ -386,46 +434,6 @@ Nguyen suggested the EO takes necessary steps to create “classified cyber benc
 But the safety testing will have to evolve as fast as the technology does, Nguyen said, otherwise we risk assessing emerging models against “yesterday’s risks.”
 
 That’s why, at its core, the process will depend on an honest exchange between stakeholders with deep technical expertise and confidential national security insights. It’s the only way to ensure the US focuses its energies on protecting the public from the most credible and consequential AI risks, rather than just providing “performative reassurances,” Nguyen wrote.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">New social features further Plex’s evolution from media server business</div>
-            <div class="meta">2026-06-03</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>New social features further Plex’s evolution from media server business</h2>
-            <p><strong>Ars Technica - All content | 2026-06-03</strong></p>
-            <a class="original-link" href="https://arstechnica.com/gadgets/2026/06/new-social-features-further-plexs-evolution-from-media-server-business/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Plex is adding new social features to the platform.
-
-As of today, users can make and share “personalized lists on Plex of any movie, show or episode,” the company said in an announcement. Later this year, users will be able to import lists from other streaming services and react to other people’s lists.
-
-This month, Plex will also launch a community forum that will allow people to “post and comment directly on any movie, show, season, or episode.” Later this year, Plex will introduce “Match Scores” based on a viewer’s history and past ratings to predict how much they’ll like a show or movie, Plex said.
-
-Plex already lets people rate content, and this year it will also allow them to react with emoji. Similarly, Plex will also enable people to respond to reviews and discussions with images. The goal, per Plex’s announcement, is to bring “a new layer of expression to every conversation.”
-
-Finally, a “Follow Anything” feature coming this year will provide users with alerts around movies, shows, actors, and crew members that they follow.
-
-Plex’s announcement claimed that its users have already “made over 100 million watching decisions a month and created more than 45 million watchlists,” making the new capabilities relevant to how people use Plex today.
-
-“The addition of these features marks the next step in Plex’s vision to unify entertainment discovery and help users navigate an increasingly fragmented streaming landscape,” Plex’s announcement said.
-
-Plex is targeting a common challenge for streaming users: finding stuff worth watching across streaming services.
-
-“We believe the future of entertainment discovery is social and trust-driven,” Scott Olechowski, co-founder and chief product officer at Plex, said in a statement.
-
-The new capabilities highlight Plex’s focus on features that go beyond its media server business.
-
-In 2019, Plex started offering free ad-supported streaming television (FAST) channels. By 2024, Plex was selling movie rentals, a stark contrast to its original business, which focused on letting people share their own media with friends and family. The California-headquartered company has since added the ability for users to leave reviews on movies, as well as to comment on other users’ reviews.
-
-Meanwhile, Plex’s changes have raised concerns among some users about its commitment to self-hosting. For instance, Plex last year began removing users’ ability to remotely access a personal media server without paying a subscription fee. Plex also got rid of its Watch Together feature and redesigned its app to look more like a streaming service. And starting next month, the price for a lifetime subscription to Plex’s media server features will increase from $250 to $750. When launched in 2012, the Lifetime Plex Pass cost $75.
-
-Plex’s evolution from its legacy business seems to be paying off. The company’s marketing VP, Scott Hancock, said in 2023 that Plex has had more people using its online streaming service than its media server features since 2022. Ad-supported streaming has also been a top revenue driver for the company, which is key as it seeks profitability.
-
-This all suggests that Plex’s expanding interest in streaming and rentals won’t end anytime soon.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -642,11 +650,51 @@ More on OpenAI: Was This the Moment That AI Psychosis Began?</div>
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
-            <div class="title">Defense tech is flooded with money, but who’s built to last?</div>
+            <div class="title">Lovable signs multiyear deal with Google Cloud to up usage 5x, source says</div>
             <div class="meta">2026-06-03</div>
         </div>
         
         <div id="content-12" style="display:none;">
+            <h2>Lovable signs multiyear deal with Google Cloud to up usage 5x, source says</h2>
+            <p><strong>TechCrunch | 2026-06-03</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/06/03/lovable-signs-multi-year-deal-with-google-cloud-to-up-usage-5x-source-says/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Lovable and Google announced an expanded multiyear collaboration on Wednesday. Lovable, the fast-growing Stockholm vibe-coding startup, has long been a Google Cloud user. Under the new agreement, it will be a much bigger one.
+
+While the companies did not disclose the dollar figure, a person with knowledge of the deal tells TechCrunch it involves a fivefold increase in Lovable’s footprint on Google Cloud, including AI usage. As part of the deal, this individual tells us, Lovable will gain expanded access to both Anthropic’s Claude — the AI model widely used for coding tasks — and Google’s own Gemini models.
+
+The Anthropic piece in particular is interesting. Google invested $10 billion in Anthropic in cash and compute credits in April, promising another $30 billion if Anthropic hits certain performance targets. It made that investment at a $350 billion valuation — just one month before Anthropic raised a staggering $65 billion round that valued the company at nearly $1 trillion. This deal stands to help Anthropic hit those targets, because Lovable is one of Europe’s fastest-growing startups on record. According to Lovable, it crossed $400 million in annualized revenue in February, having added $100 million in a single month with just 146 employees. The company claims that more than half of Fortune 500 companies use its product in some fashion.
+
+The deal also plugs Lovable into several other parts of Google’s ecosystem. Lovable’s new agent will be available through Google Cloud’s enterprise agent marketplace, the Gemini Enterprise Agent Gallery — an arrangement the two companies first telegraphed at Google’s major U.S. cloud conference in April. And to help secure the code that both humans and agents write, Lovable will integrate with Wiz, Google’s biggest ever acquisition at $32 billion, which officially closed in March, a year after it was announced. The integration will allow Wiz to identify and remediate security problems in real time.
+
+By selling Lovable’s agents through Google’s marketplace, the cloud giant says enterprise procurement and billing will be simplified, making it easier for Lovable to land more enterprise customers.
+
+The calculus for Google is simple enough. If it can keep both Lovable and Anthropic growing by attracting deep-pocketed enterprises, the revenue helps fund the $180 billion to $190 billion in capital expenditures Google plans to spend this year. The company is already in the process of selling a record-breaking $85 billion in equity to cover some of that, so only another $100 billion or so to go.
+
+When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
+
+Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
+
+Microsoft launches Scout, an OpenClaw-inspired personal assistant
+
+Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
+
+Strava declares war on scrapers ahead of IPO
+
+‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
+
+I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful
+
+Microsoft under fire for threatening security researcher with criminal investigation</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Defense tech is flooded with money, but who’s built to last?</div>
+            <div class="meta">2026-06-03</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
             <h2>Defense tech is flooded with money, but who’s built to last?</h2>
             <p><strong>TechCrunch | 2026-06-03</strong></p>
             <a class="original-link" href="https://techcrunch.com/video/defense-tech-is-flooded-with-money-but-whos-built-to-last/">Visit Original Website</a>
@@ -668,15 +716,15 @@ Get an inside look at what it takes to scale and succeed from leaders at Mach In
 
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
+Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
+
+Strava declares war on scrapers ahead of IPO
+
 ‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
 
 I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful
 
-Blue Origin’s New Glenn rocket explodes during testing in Florida
-
-Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool
-
-Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders
+Microsoft under fire for threatening security researcher with criminal investigation
 
 Subscribe for the industry’s biggest tech news
 
@@ -691,13 +739,13 @@ Startups are the core of TechCrunch, so get our best coverage delivered weekly.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">Uber to put 500 data-collection vehicles on the road this year</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>Uber to put 500 data-collection vehicles on the road this year</h2>
             <p><strong>TechCrunch | 2026-06-03</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/06/03/uber-to-put-500-data-collection-vehicles-on-the-road-this-year/">Visit Original Website</a>
@@ -741,13 +789,13 @@ Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool
 Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">Alphabet’s record-breaking $85B raise for Google’s AI business is a helluva good signal</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Alphabet’s record-breaking $85B raise for Google’s AI business is a helluva good signal</h2>
             <p><strong>TechCrunch | 2026-06-03</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/06/03/alphabets-record-breaking-85b-raise-for-googles-ai-business-is-a-helluva-good-signal/">Visit Original Website</a>
@@ -787,13 +835,13 @@ Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool
 Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Meta mercifully spun out VR fitness game Supernatural instead of just killing it</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Meta mercifully spun out VR fitness game Supernatural instead of just killing it</h2>
             <p><strong>TechCrunch | 2026-06-03</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/06/03/meta-mercifully-spun-out-vr-fitness-game-supernatural-instead-of-just-killing-it/">Visit Original Website</a>
@@ -826,24 +874,24 @@ Get an inside look at what it takes to scale and succeed from leaders at Mach In
 
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
+Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
+
+Strava declares war on scrapers ahead of IPO
+
 ‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
 
 I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful
 
-Blue Origin’s New Glenn rocket explodes during testing in Florida
-
-Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool
-
-Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders</div>
+Microsoft under fire for threatening security researcher with criminal investigation</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Substack’s new ‘Reply Rules’ feature lets creators control how people respond</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Substack’s new ‘Reply Rules’ feature lets creators control how people respond</h2>
             <p><strong>TechCrunch | 2026-06-03</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/06/03/substacks-new-reply-rules-feature-lets-creators-control-how-people-respond/">Visit Original Website</a>
@@ -876,75 +924,67 @@ Get an inside look at what it takes to scale and succeed from leaders at Mach In
 
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
+Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful
-
-Blue Origin’s New Glenn rocket explodes during testing in Florida
-
-Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool
-
-Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Google’s Dreambeans, its weirdest-named AI tool to date, will turn your life into a cartoon</div>
-            <div class="meta">2026-06-03</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>Google’s Dreambeans, its weirdest-named AI tool to date, will turn your life into a cartoon</h2>
-            <p><strong>TechCrunch | 2026-06-03</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/06/03/googles-dreambeans-its-weirdest-named-ai-tool-to-date-will-turn-your-life-into-a-cartoon/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Google Labs, the tech giant’s team devoted to experimental product design, has launched a new AI-fueled app for iOS and Android that will quite literally animate your life.
-
-Behold, Dreambeans. Why is it called that? We’ll get to that later.
-
-Gozde Oznur, the product lead behind the new app, told TechCrunch that the idea is to use data culled from across your various Google services to generate a curated list of AI-illustrated “stories.” These stories come in a variety of different shapes and forms, although — in general — they seem to be lifestyle suggestions. Oznur describes them as “places to visit, topics to explore, things to try, upcoming trips, events that you should be aware of.”
-
-Dreambeans generates these ideas based on a user’s Google data. “With your permission, Dreambeans uses Personal Intelligence to connect information from Google apps like Gmail, Calendar, Photos, YouTube and Search History, to curate a finite collection of daily stories designed to spark new ideas,” the company says.
-
-So for instance, some stories may be geographical recommendations — like suggesting a new coffee shop near where the user lives that they might be interested in. Or, as is the case in this marketing video, if you’re getting a new dog and that event has been marked in your Google Calendar, Dreambeans might deliver some insights about what it’s like to live with a new puppy. Still other stories may simply be news articles curated from the web, based on a user’s past interests.
-
-Oznur said the app has also been built as a doomscrolling antidote, in that it only provides users with a limited number of stories per day — typically 10 to 14. The idea is to get a few inspirational ideas and then go out and live your life, she said. A lot of companies are currently trying to court the user that is sick of phone addiction. I recently reviewed a startup, Bond, which also uses AI to auto-generate lifestyle suggestions for the user.
-
-According to Oznur, they are pretty solid. The only person with access to the app’s stories is the user, she said. Users can also delete their data whenever they want, and can choose which Google services they want to connect to the tool.
-
-Finally, where did the name “Dreambeans” come from?
-
-The idea for the name was generated, in part, by the way the system works while you are asleep, she said.
-
-“The dream part is literal, because while you sleep, the app is working through everything across your connected apps, because, as you can imagine, it’s a lot of data that it is distilling,” Oznur said. “The beans part is about how you kind of start your day with a freshly brewed cup of coffee. It has processed everything overnight and hands you a concentrated drop of inspiration in the morning.”
-
-Dreambeans is currently only available for eligible U.S.-based Google AI Ultra subscribers on Android and iOS. However, there is also a waitlist that is available to users with a personal Google account.
-
-When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
-
-Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
-
-Microsoft launches Scout, an OpenClaw-inspired personal assistant
+DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
 
 ‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
 
 I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful
 
-Blue Origin’s New Glenn rocket explodes during testing in Florida
-
-Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool
-
-Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders</div>
+Microsoft under fire for threatening security researcher with criminal investigation</div>
         </div>
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
-            <div class="title">Trump Is Remaking Art in His Image</div>
+            <div class="title">We’re About to Hear a Lot More About Iowa</div>
             <div class="meta">2026-06-03</div>
         </div>
         
         <div id="content-18" style="display:none;">
-            <h2>Trump Is Remaking Art in His Image</h2>
+            <h2>We’re About to Hear a Lot More About Iowa</h2>
+            <p><strong>The Atlantic | 2026-06-03</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/politics/2026/06/iowa-results-turek-hinson-sand/687422/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">You could be forgiven for ignoring the recent political goings-on in Iowa. The state, which was once a violet-hued hub of unpredictability, has lately elected and reelected Republicans.
+
+In last night’s primaries, though, Iowa Democrats nominated the kind of candidates the national party has struggled to find. Josh Turek, a two-time Paralympic gold medalist with a record of winning red areas, is the party’s nominee for the state’s open U.S. Senate seat. And Rob Sand, the affably idiosyncratic state auditor who didn’t have a challenger, is officially up for governor. Which means that national Democrats and Republicans are now wrestling with a development that, until this week, had registered as little more than a quiet observation in the broadcast-standard English of farm country: Iowa is competitive again.
+
+Let’s start with Turek, whose primary, in the end, wasn’t even close: He beat Zach Wahls, a 34-year-old Democratic state legislator, by more than 25 points. This isn’t because Turek is better-known or more beloved. It’s because he was perceived by Iowa Democrats as more electable. And the perception of electability is everything to Iowa Democrats right now, as they sense victory like sharks smell blood in the water.
+
+Turek was the Senate candidate that Iowa Republicans did not want, which is, of course, exactly why Democrats had to have him. Turek describes himself as a “poor, disabled kid from Council Bluffs,” a reliably red part of the state. He has previously run against and beaten Republicans in a state House district that also supports Trump. He’s also got a compelling backstory: The 47-year-old was born with spina bifida, caused by his father’s exposure to Agent Orange during the Vietnam War, and has said he underwent 21 surgeries as a child. Before entering politics, Turek was a wheelchair-basketball player, played in four Paralympic games, and worked at a mobility-technology company. During a visit to Iowa in March, I watched as he dragged his chair up hills and stairs to introduce himself to Iowans. “There’s something compelling about a man in a wheelchair making his way up a staircase,” Kurt Meyer, a state Democratic activist, told me. “It’s a visceral positive reaction when you see somebody that’s just that dog-determined.”
+
+The money helped: Even though Turek hasn’t served in the military, VoteVets, an organization that supports veterans, poured several million dollars into his campaign. Given the group’s alignment with Senate Democrats, Wahls attempted to frame Turek as a Chuck Schumer–backed establishment type. Among primary voters, this argument appeared to amount to very little. Turek has a history of winning, one prominent Iowa Democrat told me last month—“and he wins hard, hard places.”
+
+Read: The Democrats might actually win Iowa
+
+Democrats will have to hope so. In November, Turek will be up against Representative Ashley Hinson, the polished former TV journalist who will likely be the best-known and most popular Iowa Republican on the ballot. Hinson, who secured Trump’s early endorsement, once pledged to be Trump’s “top ally” in the Senate, a promise that will continue to feature prominently in Democratic ads. But Hinson doesn’t register as MAGA or far right in the way that many other Trump-endorsed candidates do, and Republicans are hopeful that her presence at the top of the ticket will help pull her downballot colleagues through.
+
+Unlike Turek, Rob Sand has had the Democratic Party’s nomination locked down for a while, even though he seems generally averse to the label. The 43-year-old former prosecutor has positioned himself as a public servant who is frustrated with both parties, an independent who just so happens to have a D next to his name. His strategy to win statewide relies on persuasion and good, old-fashioned Iowan open-mindedness—if such a thing still exists.
+
+But now, in an unexpected twist, Sand will face an opponent that virtually no one was expecting. The GOP front-runner, Representative Randy Feenstra, had been endorsed by Trump but was sideswiped on Election Day by Zach Lahn, a conservative activist and private-school co-founder whose candidacy only recently gained traction. Lahn won, strategists told me, because he took advantage of the fact that Feenstra wasn’t actually showing up: “He had name ID, a ruby-red district in his hands, and a lot of money, but the campaign for some reason chose to keep him under wraps,” David Oman, a state Republican strategist, told me.
+
+Feenstra might have been a more welcome opponent for Sand, given how little excitement he generated among the GOP base. Lahn seems to energize them: He’s the preferred candidate of the “Make America Healthy Again” movement and has pledged to “take on the big ag cartels” as well as Big Pharma.
+
+But Lahn has his own weaknesses. The most obvious is that the “Iowa First” candidate, who was born and attended high school in the state, spent many years living in Kansas and has said he moved back to Iowa only in 2023; he still maintains a Kansas home and flies there regularly. Lahn is also a conservative culture warrior whose ads about resisting “Marxist ideology” and defending the “Western tradition” probably helped earn him the endorsement of former Representative Steve King, who was unseated by Feenstra in 2020 after years of making racist remarks. But the biggest complication for Lahn, who vowed last night in his victory speech to fight “the establishment” at every turn, is that in Iowa Republicans are the establishment.
+
+Iowa has been a red state for a while. And basic math, in politics as in life, so often serves as the great crusher of dreams. So it goes for Democrats in Iowa, who are outnumbered by registered Republican voters by a margin of nearly 200,000.
+
+But Republicans are up against their own set of unfortunate circumstances: Gas prices are high. So is the cost of fertilizer. Trump’s war with Iran isn’t popular, and neither is he. When you add Turek and Sand to the mix, things start to look sunnier for Democrats. The Cook Political Report has recently reassessed both of their races, deeming the Republicans only slightly favored to hold their Senate seat, and the governor’s race a toss-up. Three of Iowa’s four House races might also be in play. “We’re going to see two incredibly colorful and interesting general-election campaigns—and maybe three good House races,” Oman, the GOP strategist, told me. “It’ll be a red-letter political year in Iowa.” He paused, then added, “Maybe I shouldn’t say red.”
+
+Iowa will now join Maine, North Carolina, Ohio, and Alaska on the list of states that Democrats are desperate to flip and Republicans will have to scramble to protect in order to keep their Senate majority. Campaign ads will clog the airwaves. Out-of-state money will flood the zone. The national Democrats prepared to invest hundreds of millions backing James Talarico in Texas might even reconsider. Why not spend a sliver of a fraction of that amount for a possibly better result?
+
+Going forward, not much is certain except for this: We’re about to hear a lot more about Iowa.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">What Trump’s New Plan for the 250th Reveals</div>
+            <div class="meta">2026-06-03</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
+            <h2>What Trump’s New Plan for the 250th Reveals</h2>
             <p><strong>The Atlantic | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/06/trump-art-america-250-concert/687424/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -981,13 +1021,13 @@ Rafaela Jinich contributed to this newsletter.
 When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-20')">
             <div class="source">The Atlantic</div>
             <div class="title"><em>The Atlantic</em> Announces Editorial Fellowship Class for 2026–27</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-20" style="display:none;">
             <h2><em>The Atlantic</em> Announces Editorial Fellowship Class for 2026–27</h2>
             <p><strong>The Atlantic | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/press-releases/2026/06/editorial-fellowship-class-for-2026-2027/687405/?utm_source=feed">Visit Original Website</a>
@@ -1009,13 +1049,13 @@ Jacob Smollen is joining The Atlantic after spending nine months with KCUR, Kans
 Katherine Weyback is a recent graduate of Columbia University’s Graduate School of Journalism, where she was valedictorian of her class. While there, she covered topics such as the fierce debate over e-bikes in New York City and the plight of dogsledders losing snow in Alaska. Before pursuing journalism, she was a hiking and skiing guide in Montana, and she attended the University of Virginia, where her studies focused on the Indian subcontinent. She is thrilled to be returning to The Atlantic, having served as an associate on the Talent & Culture team in 2024 and 2025, as well as coming home to the Washington, D.C., area where she was raised.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">A Gift From the Basketball Gods</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>A Gift From the Basketball Gods</h2>
             <p><strong>The Atlantic | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/06/knicks-spurs-nba-finals-brunson/687421/?utm_source=feed">Visit Original Website</a>
@@ -1041,13 +1081,13 @@ Nothing is guaranteed, of course; my Knicks fandom has long been accompanied by 
 But for the next two weeks, I wish Wembanyama and his formidable young teammates nothing but misery on the court. Tonight I will retreat to my basement, where my wife, Evelyn, and I will turn on the TV and watch, sometimes in silence, sometimes with joyful howls, and often in exquisite pain. (We will text more or less constantly during the game with our two sons, ex–New Yorkers and fervent Knicks fans who live in Houston and San Francisco.) Knicks basketball in June is a gift from the sports gods that is not to be taken for granted.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">Someone Finally Wants to Hire Philosophers</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Someone Finally Wants to Hire Philosophers</h2>
             <p><strong>The Atlantic | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/technology/2026/06/ai-companies-hiring-philosophers/687417/?utm_source=feed">Visit Original Website</a>
@@ -1079,13 +1119,13 @@ Still, the new alliance between philosophy and AI is fraught. The fervor over AI
 More fundamentally, the careful thought that philosophy encourages is at odds with the frenetic pace of AI. “The best philosophy tends to happen slowly, and not in direct response to market demands,” Fogal said. In Silicon Valley, where the categorical imperative is to make money, everything else is simply a means to an end.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">Canned Cocktails Will Smash You to the Ground</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>Canned Cocktails Will Smash You to the Ground</h2>
             <p><strong>The Atlantic | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/health/2026/06/canned-cocktail-cutwater-white-claw-alcohol/687387/?utm_source=feed">Visit Original Website</a>
@@ -1119,27 +1159,38 @@ To be fair, the amount of liquor in these drinks is not a secret. Most alcoholic
 The problem, in short, might be the can. I knew how much liquor was in my mai tai, but as the Cubs game slowed down around the fifth inning, I decided to have another. Even though I knew that this wasn’t the best choice for a Saturday afternoon, I took some solace in the fact that I had only two empties at my feet.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">Photos: A Family’s Final Trip Before the Father’s Self-Deportation</div>
+        <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">Fedora Linux 43 Exposes 20-Year-Old Microsoft Outlook Security Failure</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-23" style="display:none;">
-            <h2>Photos: A Family’s Final Trip Before the Father’s Self-Deportation</h2>
-            <p><strong>The Atlantic | 2026-06-03</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/photography/2026/06/photos-graduation-celebration-and-self-deportation-honduras/687414/?utm_source=feed">Visit Original Website</a>
+        <div id="content-24" style="display:none;">
+            <h2>Fedora Linux 43 Exposes 20-Year-Old Microsoft Outlook Security Failure</h2>
+            <p><strong>Slashdot | 2026-06-03</strong></p>
+            <a class="original-link" href="https://linux.slashdot.org/story/26/06/03/2120212/fedora-linux-43-exposes-20-year-old-microsoft-outlook-security-failure?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+            <div id="article-text">limited to legacy account configurations rather than current versions of OutlookI&#39;m assuming &quot;legacy account configurations&quot; means anyone who hasn&#39;t moved to &quot;Outlook (new)&quot; or whatever they&#39;re calling it this week. Meaning the vast majority of Outlook users.
+
+limited to legacy account configurations rather than current versions of Outlook
+
+I&#39;m assuming &quot;legacy account configurations&quot; means anyone who hasn&#39;t moved to &quot;Outlook (new)&quot; or whatever they&#39;re calling it this week. Meaning the vast majority of Outlook users.
+
+Not real. I never had 110 open and outlook would use the ssl port.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Never put off till run-time what you can do at compile-time.
+		-- D. Gries</div>
         </div>
         
-        <div class="card" onclick="openModal('content-24')">
+        <div class="card" onclick="openModal('content-25')">
             <div class="source">Slashdot</div>
             <div class="title">EU Plots To Abandon US Tech</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>EU Plots To Abandon US Tech</h2>
             <p><strong>Slashdot | 2026-06-03</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/06/03/2028239/eu-plots-to-abandon-us-tech?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1148,21 +1199,66 @@ The problem, in short, might be the can. I knew how much liquor was in my mai ta
 
 If you&#39;re the US you do it on a whim, and it not only never works again but you damage political and business relationships that reduce your nation&#39;s influence and hurt your economy.
 
+AI makes software a much cheaper commodity and Law of Demeter is superceding the aging framework of fiat currency.
+
+https://www.scry.llc/2025/05/0... [scry.llc]
+
+&quot;Monetary reality shapes resource use and efficiency. The Age Of Fiat created enormous dysfunctionality and dislocation of resources which will likely reverse soon&quot;
+
+https://www.scry.llc/2025/12/0... [scry.llc]
+
+&quot;Globalism is an artifact of a transitional condition: widespread acceptance of fiat currency. As its masking power weakens, organizations like the BRICS countries are
+
 US tech is a threat to everyone not of the Epstein class who control it. The US is a business, not a country, and stands for nothing but profit.
 
 That has many practical rewards but no reasons exist to subordinate one&#39;s own nation and people to the American kleptarchy which is best kept at a distance.
 
-The EU has already massively regulated software environment through GDPR, DSA, CRA, the AI Act, and more.Literally all companies currently operating in the EU, including US tech giants are required to comply with these too. There is this fantasy that regulation alone prevents alternative players in the EU when in reality the &quot;persecution&quot; of US tech companies (as the US government would tell the story) is nothing more than actually demonstrating there&#39;s a level playing field.EU companies face so many hurdles around compliance that&#39;s its basically impossible to create a startup without backing by billionairesThe EU has literally countless software companies including startups. One of the major players in AI is French. Heck the *original* AI co
+The Jollaphone with with SailfishOS.  https://sailfishos.org/ [sailfishos.org] is the big one.
+
+I think American&#39;s don&#39;t understand that the US has slowly gone overboard with things like AI that don&#39;t fit the values of other countries.  This website even often has articles about how Europe&#39;s economy is falling behind while ignoring the priorities of people in these countries.
+
+The more I have to interact with AI in private spaces outside of work, the more convinced that the assassination of some of the AI CEOs are coming.  Parti
+
+The EU has already massively regulated software environment through GDPR, DSA, CRA, the AI Act, and more.Literally all companies currently operating in the EU, including US tech giants are required to comply with these too. There is this fantasy that regulation alone prevents alternative players in the EU when in reality the &quot;persecution&quot; of US tech companies (as the US government would tell the story) is nothing more than actually demonstrating there&#39;s a level playing field.EU companies face so many hurdles around compliance that&#39;s its basically impossible to create a startup without backing by billionairesThe EU has literally countless software companies including startups. One of the major players in AI is French. Heck the *original* AI company (now owned by Google) was UK based - back when they were under the full EU regulations. The problem isn&#39;t startups, the problem is getting US companies to fuck off and stop destroying competition through acquisition (e.g. Kyndryl is the world&#39;s largest data services provider with double digit billions in the bank. Why don&#39;t they build their own datacentre in the Netherlands instead of attempting to purchase Solvinity?)many of whom have publicly stated they would never start a software company in the EU for these reasonsYes billionaires prefer to invest is regulatory markets that allow the fucking over of the population and the development of wholesale monopolies. My friend, you can keep your billionaires. Don&#39;t want them.
 
 The EU has already massively regulated software environment through GDPR, DSA, CRA, the AI Act, and more.
 
 Literally all companies currently operating in the EU, including US tech giants are required to comply with these too. There is this fantasy that regulation alone prevents alternative players in the EU when in reality the &quot;persecution&quot; of US tech companies (as the US government would tell the story) is nothing more than actually demonstrating there&#39;s a level playing field.
 
-EU companies face so many hurdles around compliance that&#39;s its basically impossible to create a startup without backing by billionairesThe EU has literally countless software companies including startups. One of the major players in AI is French. Heck the *original* AI co
+EU companies face so many hurdles around compliance that&#39;s its basically impossible to create a startup without backing by billionairesThe EU has literally countless software companies including startups. One of the major players in AI is French. Heck the *original* AI company (now owned by Google) was UK based - back when they were under the full EU regulations. The problem isn&#39;t startups, the problem is getting US companies to fuck off and stop destroying competition through acquisition (e.g. Kyndryl is the world&#39;s largest data services provider with double digit billions in the bank. Why don&#39;t they build their own datacentre in the Netherlands instead of attempting to purchase Solvinity?)many of whom have publicly stated they would never start a software company in the EU for these reasonsYes billionaires prefer to invest is regulatory markets that allow the fucking over of the population and the development of wholesale monopolies. My friend, you can keep your billionaires. Don&#39;t want them.
 
 EU companies face so many hurdles around compliance that&#39;s its basically impossible to create a startup without backing by billionaires
 
-The EU has literally countless software companies including startups. One of the major players in AI is French. Heck the *original* AI co
+The EU has literally countless software companies including startups. One of the major players in AI is French. Heck the *original* AI company (now owned by Google) was UK based - back when they were under the full EU regulations. The problem isn&#39;t startups, the problem is getting US companies to fuck off and stop destroying competition through acquisition (e.g. Kyndryl is the world&#39;s largest data services provider with double digit billions in the bank. Why don&#39;t they build their own datacentre in the Netherlands instead of attempting to purchase Solvinity?)
+
+many of whom have publicly stated they would never start a software company in the EU for these reasonsYes billionaires prefer to invest is regulatory markets that allow the fucking over of the population and the development of wholesale monopolies. My friend, you can keep your billionaires. Don&#39;t want them.
+
+many of whom have publicly stated they would never start a software company in the EU for these reasons
+
+Yes billionaires prefer to invest is regulatory markets that allow the fucking over of the population and the development of wholesale monopolies. My friend, you can keep your billionaires. Don&#39;t want them.
+
+Literally all companies currently operating in the EU, including US tech giants are required to comply with these too. There is this fantasy that The EU can control the entire world through legislation. 
+And then they find out that they can&#39;t. Just look at Clearview. 
+The EU keeps sending out press releases how they have yet again fined Clearview a billion dollars [duckduckgo.com], without realizing that it is a U.S. based company without any operations in the EUSSR. According to Wikipedia [wikipedia.org]:The [Data Protection Agency] stated that the General Data Protection Regulation (GDPR) was applicable despite the fact that Clearview AI has no European branch offices.If the EUSSR can create random legislation that applies in other countries to people and entities without ties to the EUSSR, then the U.S. can do so as well. Bye, abortion. 
+And I
+
+Literally all companies currently operating in the EU, including US tech giants are required to comply with these too. There is this fantasy that
+
+The EU can control the entire world through legislation. 
+And then they find out that they can&#39;t. Just look at Clearview. 
+The EU keeps sending out press releases how they have yet again fined Clearview a billion dollars [duckduckgo.com], without realizing that it is a U.S. based company without any operations in the EUSSR. According to Wikipedia [wikipedia.org]:
+
+The [Data Protection Agency] stated that the General Data Protection Regulation (GDPR) was applicable despite the fact that Clearview AI has no European branch offices.If the EUSSR can create random legislation that applies in other countries to people and entities without ties to the EUSSR, then the U.S. can do so as well. Bye, abortion. 
+And I
+
+The [Data Protection Agency] stated that the General Data Protection Regulation (GDPR) was applicable despite the fact that Clearview AI has no European branch offices.
+
+If the EUSSR can create random legislation that applies in other countries to people and entities without ties to the EUSSR, then the U.S. can do so as well. Bye, abortion. 
+And I
+
+I used to work for a small German software company for 11 years. That company used to be a world leader in its specific niche. Only left after the company has been acquired by an American company which turned everything to shit.EU regulations can be a pain in the arse sometimes, but they aren&#39;t the problem. American businesses having easy access to stupid money that they use to get rid of European competitor is the problem.
+
+You take Unix (Linux nowadays) and C, then develop platform toolboxes like C++ standardize those, you have the European regulatory environment. Beyond that is the Open Source and Regional development efforts that are now mature. The entire world was content to consider Unix and C the standards and rightly so. Going back 40 years or so, we have Java, Office productivity, then corps like SAP very much not just US efforts.
 
 This was always allowed.Allowed != Recommend != Actively promoted. The EU isn&#39;t &quot;allowing&quot; anything with this regulation. If you use the correct word you may answer your own question.
 
@@ -1176,19 +1272,29 @@ What does a defunct US tech firm have to do with this story? Every time I see a 
 
 The story announcing the International Criminal Court (ICC) leaving Microsoft Office is 8 months old now. Is there any status report on the project? Or, have they abandoned the plan already?
 
+These announcements pop-up periodically through the years. When the non us tech inevitably lixus based we will get article able this being the year of the Linux desktop. It&#39;s cyclical and stupid.
+
+Replacing the Digital Equipment Corporation tech is at least 40 years overdue. And for Slashdot to change the logo, too.
+
+And I mean that sincerely. Without meaningful competition, progress tends to slow, and everyone can agree current US tech companies could use some competition at the moment.
+
+That being said, no country on this Earth can completely and absolutely decouple from US made goods and services while maintaining a modern computing and networking stack. China is struggling to do that at the moment, and they have the best potential opportunity to succeed.
+
+The EU cannot produce a modern homegrown CPU that does not have U
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-If a thing&#39;s worth doing, it is worth doing badly.
-		-- G.K. Chesterton</div>
+Never put off till run-time what you can do at compile-time.
+		-- D. Gries</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">MacBook Neo is So Popular That Apple Reportedly Doubled Production</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>MacBook Neo is So Popular That Apple Reportedly Doubled Production</h2>
             <p><strong>Slashdot | 2026-06-03</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/06/03/2021221/macbook-neo-is-so-popular-that-apple-reportedly-doubled-production?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1198,6 +1304,8 @@ If a thing&#39;s worth doing, it is worth doing badly.
 I suspected that when I heard of the macbook neo, but it turns out that the macbook neo is one of the most user-serviceable laptops apple has made in a long time. I heard you can open it up with just a phillips screwdriver set and the battery is not glued in.
 
 Of course, the Neo is intentionally designed for K-12 buyers. they are trying to recapture the K-12 market which is less than impressed with iPad and Chromebooks. Local repair is a greater consideration as a result.
+
+It still seems kind of pricey for public schools.  That&#39;s usually where the lowest bidder prevails and I don&#39;t see Chromebooks losing their budget crown anytime soon.  I suspect making the Neo more reparable was mostly about complying with EU regulations.
 
 The MacBook Neo at $599 is $200 cheaper than the entry-level Mac Mini at $799. They discontinued the cheaper Mini.
 
@@ -1231,6 +1339,14 @@ With the Neo you are not going to be able to do much more than browse the web, u
 
 I think you&#39;re overlooking something seriously important: most people who buy computers these days don&#39;t need serious hardware. They need something to browse the internet with, maybe play some online games and to run something equivalent to Word and Excel. In other words, exactly what you just said.
 
+For the same price you can get a much more capable machine in the Mac mini
+
+It&#39;s rough carrying your monitor around with you.
+
+With the Neo you are not going to be able to do much more than browse the web, use web application, play simple games, and use it as fancy typewriter.
+
+Heavens, what ever did we do before the 2020s? Play simple games and use fancy typewriters I guess. Although I do wonder where the first web app came from, the one that let us make all the other web apps.
+
 Build quality on the Dell is good, but from hands-ons, not *as* good. Touchscreen is not something most people want on a laptop, I think (I know a niche loves them, but most people don&#39;t), but it&#39;s 120 Hz, which is a major advantage over the Neo (and Air for that matter). The touchpad is not as good. The CPU is much slower (at least in bursty tasks). I&#39;ll speculate that speakers and battery life are much worse. Connectivity is a wash (faster second USB port, but no headphone jack). The backlit keyboard is nice. The entry price point is $100 higher. Worst of all, it comes with Windows 11.
 
 Of course this is just based on specsheets, very brief hands-on previews, and speculation, we&#39;ll need to see what real reviews show.
@@ -1243,23 +1359,45 @@ I have both the Neo and a Lenovo Yoga with a Ryzen 5 (Zen 2) CPU and 8GB of RAM.
 
 Yeah, Microsoft probably could address this with some sort of tool that tells you what&#39;s hogging up all your resources and automatically makes suggestions on what to disable, but then you&#39;d have peopl
 
+The backlit keyboard is nice.We recently bought our daughter a Neo. I&#39;ve used it, and it seems pretty nice... but (compared to the various Mac laptops I&#39;ve used/owned over the years) I found I got annoyed by the non-backlit keyboard more than I expected.I would be curious to see whether one can easily load Linux Mint onto that Dell. It might make a really nice portable Linux laptop, if everything worked.
+
+We recently bought our daughter a Neo. I&#39;ve used it, and it seems pretty nice... but (compared to the various Mac laptops I&#39;ve used/owned over the years) I found I got annoyed by the non-backlit keyboard more than I expected.
+
+I would be curious to see whether one can easily load Linux Mint onto that Dell. It might make a really nice portable Linux laptop, if everything worked.
+
 &quot;... confirms that there&#39;s real appetite for premium quality at accessible prices&quot;
 
 Gee, who would&#39;ve thought? Did Dell really need Apple to release a laptop to figure out that little nugget of information?
 
+&quot;... confirms that there&#39;s real appetite for premium quality at accessible prices&quot;Gee, who would&#39;ve thought? Did Dell really need Apple to release a laptop to figure out that little nugget of information?Well, really that was corporate-speak for &quot;... confirms that, if we don&#39;t respond, Apple&#39;s Neo is going to steal a huge chunk of our current customer base.&quot;
+
+&quot;... confirms that there&#39;s real appetite for premium quality at accessible prices&quot;
+
+Gee, who would&#39;ve thought? Did Dell really need Apple to release a laptop to figure out that little nugget of information?
+
+Well, really that was corporate-speak for &quot;... confirms that, if we don&#39;t respond, Apple&#39;s Neo is going to steal a huge chunk of our current customer base.&quot;
+
+You got MS that said out loud they want to spy on you and remove your license anytime they want like they did today with office.
+
+And you got linux whom is almost impossible to get on a computer without paying the MS taxes.
+
+Dell who couldn&#39;t identify the product before Apple, decides they can solve the same problem how they always have.  Good luck with that Dell.
+
+The only way the &quot;old guard&quot; tech are still around is by momentum and (customer) memory loss.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-If a thing&#39;s worth doing, it is worth doing badly.
-		-- G.K. Chesterton</div>
+Never put off till run-time what you can do at compile-time.
+		-- D. Gries</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Google Launches 'Gemma 4 12B' AI Model That Can Run On Your Laptop</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Google Launches 'Gemma 4 12B' AI Model That Can Run On Your Laptop</h2>
             <p><strong>Slashdot | 2026-06-03</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/06/03/1849210/google-launches-gemma-4-12b-ai-model-that-can-run-on-your-laptop?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1271,6 +1409,8 @@ There is none. The Gemma 4 series are pretty solid general purpose models and th
 Get a recent llama.cpp and get started: https://llama.app/ [llama.app]For Gemma-4 12B you may need the latest git version or wait a day for a new build.
 
 Probably in here somewhere: &quot;run locally on your laptop without depending entirely on cloud&quot;
+
+But Iâ(TM)ve been told for years you can build better, more powerful laptops cheaper, so that canâ(TM)t be true.
 
 You can offload layers to CPU or use more aggressive quantization. 12B models fit good in 8GB VRAM. You can go lower, but the speed will not be as good.
 
@@ -1313,17 +1453,17 @@ Guessing the the non-local part is telemetry for training and ad revenue?
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-If a thing&#39;s worth doing, it is worth doing badly.
-		-- G.K. Chesterton</div>
+Never put off till run-time what you can do at compile-time.
+		-- D. Gries</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Google Shares Fitbit Air Blueprints So Anyone Can 3D-Print Accessories</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Google Shares Fitbit Air Blueprints So Anyone Can 3D-Print Accessories</h2>
             <p><strong>Slashdot | 2026-06-03</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/06/03/1734203/google-shares-fitbit-air-blueprints-so-anyone-can-3d-print-accessories?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1332,19 +1472,25 @@ If a thing&#39;s worth doing, it is worth doing badly.
 
 https://www.droid-life.com/202... [droid-life.com]  https://www.msn.com/en-us/news... [msn.com]  https://www.androidauthority.c... [androidauthority.com]  https://kotaku.com/google-fitb... [kotaku.com]
 
+The alerts are so much worse too like &quot;Hey, looks like you slept like shit, should probably take it easy today.&quot; thanks google but not really up to either of us. Already knew that and fitbit was a lot gentler about it...
+
+millimeters? Lets have those in freedom units*.
+
+*As defined by our former colonial masters.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-If a thing&#39;s worth doing, it is worth doing badly.
-		-- G.K. Chesterton</div>
+Never put off till run-time what you can do at compile-time.
+		-- D. Gries</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Microsoft Plans Linux Tools, RTX Spark Desktop For Windows Devs</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Microsoft Plans Linux Tools, RTX Spark Desktop For Windows Devs</h2>
             <p><strong>Slashdot | 2026-06-03</strong></p>
             <a class="original-link" href="https://linux.slashdot.org/story/26/06/03/1727255/microsoft-plans-linux-tools-rtx-spark-desktop-for-windows-devs?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1369,104 +1515,12 @@ Nobody should allow M$ any foothold in F/OSS.
 
 Mr. MS, I&#39;m a Mac user and everything you ever produced for the Mac is about as appetizing as cat vomit. Now you want to do the same for Linux. Please stop and go away.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-If a thing&#39;s worth doing, it is worth doing badly.
-		-- G.K. Chesterton</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Meta Workers Can Opt Out of Workplace Tracking for Up to 30 Minutes</div>
-            <div class="meta">2026-06-03</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Meta Workers Can Opt Out of Workplace Tracking for Up to 30 Minutes</h2>
-            <p><strong>Slashdot | 2026-06-03</strong></p>
-            <a class="original-link" href="https://yro.slashdot.org/story/26/06/03/1713239/meta-workers-can-opt-out-of-workplace-tracking-for-up-to-30-minutes?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">They would never violate anyone&#39;s privacy, pinky swear!
-
-They would never violate anyone&#39;s privacy, pinky swear!
-And the number of times you opt out won&#39;t appear on your performance reviews, or factor into raises, bonuses and retention - double pinky swear ...
-
-They would never violate anyone&#39;s privacy, pinky swear!
-
-And the number of times you opt out won&#39;t appear on your performance reviews, or factor into raises, bonuses and retention - double pinky swear ...
-
-If my whole day is working on a computer, the last thing I&#39;m doing is using the computer on my lunch break. Eat, take a walk outside or something.
-
-I&#39;m as big of a privacy and security advocate as anyone. Heck, I even disconnect my EV&#39;s and only run them over network connections that I fully control. I also rarely use cloud services because they are NOT under my control, but as an IT guy, I fully believe in full control by the OWNER of devices, whether that be a single person or a company. If an employee is using company provided equipment, then they (the company) have a right to know and control every single thing done on it and every single bit of in
-
-I don&#39;t think Meta can have it both ways like this.  Either they respect their employees, or they don&#39;t.
-
-I am just glad I don&#39;t work for Meta.  I feel sad for you all.  I hope you can find something better.
-
-Just don&#39;t work for an employer that tracks their employees to that level.
-
-From what the SWEs tell me, they expect to be fired within 2 years anyway, they&#39;re just cashing in the stupid monery paycheck while they can.
-
-What I&#39;d love to know is the levels of shadow IT people are going through.
-
-by working someplace else.By &quot;someplace else&quot;, you mean the whopping 5% of the corporate workplace that doesn&#39;t engage in some form of all-knowing, all-seeing cloudfare, wholly addicted to the telemetrysphere of the MicroAzureSoft Oracle letting them know of your every mouse move, because the AI needz moar data? I wouldn&#39;t be surprised if they&#39;ve captured zero gravity mouse telemetry by now.
-
-By &quot;someplace else&quot;, you mean the whopping 5% of the corporate workplace that doesn&#39;t engage in some form of all-knowing, all-seeing cloudfare, wholly addicted to the telemetrysphere of the MicroAzureSoft Oracle letting them know of your every mouse move, because the AI needz moar data?
-
-I wouldn&#39;t be surprised if they&#39;ve captured zero gravity mouse telemetry by now.
-
-Nah, this is Slashdot. Of course everyone job is a developer job. Nothing else exist.
-
-For 30 minutes your keystrokes/visibility data goes into a bucket labeled, &quot;target requested no monitoring 00:00 to 30:00.&quot;This is Dickensian.
-
-This. I&#39;m never understood why people do &quot;personal&quot; stuff on their work devices. Your phone can pretty much do anything that needs being done these days and you don&#39;t have to connect to the corporate network with it.
-
-As far as work devices and privacy, get real. You have no privacy on a work device because it&#39;s not your device. Besides, what are you trying to keep secret while at work on a corporate device? If you are busy fucking off all day at work and you are using your work device to do so, you deserve w
-
-This. I&#39;m never understood why people do &quot;personal&quot; stuff on their work devices. Your phone can pretty much do anything that needs being done these days and you don&#39;t have to connect to the corporate network with it.Because their situation might be different. I do personal stuff on my work devices from time to time but my employer explicitly allows minor personal use and in my jurisdiction they are actually prohibited by law from performing behavioural monitoring unless they have a very specific reason.
-
-This. I&#39;m never understood why people do &quot;personal&quot; stuff on their work devices. Your phone can pretty much do anything that needs being done these days and you don&#39;t have to connect to the corporate network with it.
-
-Because their situation might be different. I do personal stuff on my work devices from time to time but my employer explicitly allows minor personal use and in my jurisdiction they are actually prohibited by law from performing behavioural monitoring unless they have a very specific reason.
-
-When they take a 30 minute unpaid Lunch break?
-
-Why should you get paid to eat lunch? Besides, if you are salary, you are paid what you are paid. Hourly, you get paid for the hours you work. If you are at lunch, you are not working.
-
-Good grief, what a hellishly dystopian headline
-
-As O&#39;Brien passed the telescreen a thought seemed to strike him. He stopped, turned aside and pressed a switch on the wall. There was a sharp snap. The voice had stopped.Julia uttered a tiny sound, a sort of squeak of surprise. Even in the midst of his panic, Winston was too much taken aback to be able to hold his tongue.&#39;You can turn it off!&#39; he said.&#39;Yes,&#39; said O&#39;Brien, &#39;we can turn it off. We have that privilege.&#39;
-
-As O&#39;Brien passed the telescreen a thought seemed to strike him. He stopped, turned aside and pressed a switch on the wall. There was a sharp snap. The voice had stopped.
-
-Julia uttered a tiny sound, a sort of squeak of surprise. Even in the midst of his panic, Winston was too much taken aback to be able to hold his tongue.
-
-&#39;Yes,&#39; said O&#39;Brien, &#39;we can turn it off. We have that privilege.&#39;
-
-He was also wrong about Big Brother having to threaten or force people to adopt telescreens.
-
-Of course, they don&#39;t mention that they never stop recording. They just turn off your view of them off, not their view of you.
-
-.. for me to log onto the DoJ server and file my daily undercover surveillance report.
-
-What happens when Big Brother realizes that you&#39;re actually working 12 hour days, but only getting paid for 8 hours, which puts them in violation of state labor laws?In my experience, they just turn a blind eye to the free labor you are providing because they are assholes that will gladly take advantage of you. That&#39;s why you don&#39;t work off the clock. Why give away your industry for free and allow them to profit off your labor? Screw that noise.
-
-What happens when Big Brother realizes that you&#39;re actually working 12 hour days, but only getting paid for 8 hours, which puts them in violation of state labor laws?
-
-In my experience, they just turn a blind eye to the free labor you are providing because they are assholes that will gladly take advantage of you. That&#39;s why you don&#39;t work off the clock. Why give away your industry for free and allow them to profit off your labor? Screw that noise.
-
-...  didn&#39;t really have anything else ... You&#39;d rather &#39;go&#39; work, than &#39;go&#39; home?  That makes you sound boring, mentally unstable and burnt-out.
-
-...  didn&#39;t really have anything else ...
-
-You&#39;d rather &#39;go&#39; work, than &#39;go&#39; home?  That makes you sound boring, mentally unstable and burnt-out.
-
-I mean, you can bring your own lunch that&#39;s vegan. At the same time, you can check your activist bullshit at the door though. That&#39;s not what work is about.
+I got too used to the rat and how quick things are, can&#39;t quite see myself going back to sluggish windows managers.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-If a thing&#39;s worth doing, it is worth doing badly.
-		-- G.K. Chesterton</div>
+Never put off till run-time what you can do at compile-time.
+		-- D. Gries</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1770,11 +1824,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">New AI fitness coach explains bad form in real time to help prevent injuries</div>
+            <div class="title">Online ads are becoming harder to spot—but we're not powerless to stop it</div>
             <div class="meta">2026-06-03</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>Online ads are becoming harder to spot—but we're not powerless to stop it</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-03</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-06-online-ads-harder-powerless.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">New AI fitness coach explains bad form in real time to help prevent injuries</div>
+            <div class="meta">2026-06-03</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>New AI fitness coach explains bad form in real time to help prevent injuries</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-03</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-ai-bad-real-injuries.html">Visit Original Website</a>
@@ -1782,13 +1850,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">How AI can become more transparent and reliable</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>How AI can become more transparent and reliable</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-03</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-ai-transparent-reliable.html">Visit Original Website</a>
@@ -1796,13 +1864,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Finding the best ways for humans and robots to work together requires 'swarm' thinking</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Finding the best ways for humans and robots to work together requires 'swarm' thinking</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-03</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-ways-humans-robots-requires-swarm.html">Visit Original Website</a>
@@ -1810,13 +1878,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">From tough plant waste to everyday products, this light-powered advance opens a path to greener plastics</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>From tough plant waste to everyday products, this light-powered advance opens a path to greener plastics</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-03</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-tough-everyday-products-powered-advance.html">Visit Original Website</a>
@@ -1824,30 +1892,16 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Consistency, not complexity, is the key to teaching robots dexterity, new research suggests</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Consistency, not complexity, is the key to teaching robots dexterity, new research suggests</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-03</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-complexity-key-robots-dexterity.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">ChartNet trains AI to read charts, boosting smaller models past commercial rivals</div>
-            <div class="meta">2026-06-03</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>ChartNet trains AI to read charts, boosting smaller models past commercial rivals</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-03</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-06-chartnet-ai-boosting-smaller-commercial.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
@@ -2476,11 +2530,41 @@ NGMN wants a clear migration path before next-gen network rollouts begin</div>
         
         <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
+            <div class="title">Nintendo confirms it will sell a new Switch 2 with replaceable battery in the EU</div>
+            <div class="meta">2026-06-04</div>
+        </div>
+        
+        <div id="content-48" style="display:none;">
+            <h2>Nintendo confirms it will sell a new Switch 2 with replaceable battery in the EU</h2>
+            <p><strong>The Verge | 2026-06-04</strong></p>
+            <a class="original-link" href="https://www.theverge.com/games/942808/nintendo-switch-2-replaceable-battery-eu">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">﻿It will be available by February 2027, when new EU rules go into effect.
+
+﻿It will be available by February 2027, when new EU rules go into effect.
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+Nintendo is planning to launch versions of Switch 2 hardware in the EU that will let users easily replace the battery. To meet its obligations from a new EU regulation that’s set to go into effect on February 18th, 2027, Nintendo says on its website that it is “implementing measures to comply with these requirements by preparing versions of products to meet the Regulation.”
+
+Thanks to EU regulations, gadgets with user-replaceable batteries are making a comeback, as my colleague Dominic Preston wrote recently. Starting on that February 2027 date, EU rules mandate that many types of gadgets, including portable game consoles, must allow users to relatively easily remove and replace their batteries.
+
+Nintendo doesn’t specify exactly what it will change with this new version of the Switch 2 to make battery replacements easier — currently, taking out the battery in the Switch 2 is an involved, multi-step process, as shown by iFixit. It’s also unclear if a revised model with a replaceable battery will be available in other regions. Nintendo didn’t immediately reply to a request for comment.
+
+On its website, Nintendo says that, “For current products with model numbers starting with ‘BEE’” — which is used with the Switch 2, as shown in Nintendo’s filings with the FCC — “future compliant versions will have unique model numbers and the additional code ‘OSM’ visible on the packaging, designating them as separate products for regulatory purposes.” Switch 2 controllers like the Pro Controller and the Joy-Cons also carry the BEE moniker, and we’ve asked Nintendo if those will have user-replaceable batteries as well.
+
+A free daily digest of the news that matters most.
+
+Sign in to see your notifications or create an account to join the conversation.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
+            <div class="source">The Verge</div>
             <div class="title">Apple is bringing age verification to Texas this week</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-49" style="display:none;">
             <h2>Apple is bringing age verification to Texas this week</h2>
             <p><strong>The Verge | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/942761/apple-texas-age-verification-app-store">Visit Original Website</a>
@@ -2504,13 +2588,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">WiiM expands its whole-home ecosystem with a new soundbar</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>WiiM expands its whole-home ecosystem with a new soundbar</h2>
             <p><strong>The Verge | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/942748/wiim-releases-first-soundbar">Visit Original Website</a>
@@ -2536,13 +2620,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">Nvidia is already planning N2X and N3X chips — the goal is the Star Trek computer</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>Nvidia is already planning N2X and N3X chips — the goal is the Star Trek computer</h2>
             <p><strong>The Verge | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/942588/nvidia-rtx-spark-n2x-n3x-r2-d2-star-trek-star-wars-plan">Visit Original Website</a>
@@ -2584,13 +2668,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">The best Bluetooth trackers for Apple and Android phones</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>The best Bluetooth trackers for Apple and Android phones</h2>
             <p><strong>The Verge | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theverge.com/23769840/best-bluetooth-trackers">Visit Original Website</a>
@@ -2684,13 +2768,13 @@ Sign up to get the best deals on products we’ve found and tested sent to your 
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">The best Qi2 batteries for iPhone and Pixel</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>The best Qi2 batteries for iPhone and Pixel</h2>
             <p><strong>The Verge | 2026-06-03</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/939362/best-magsafe-qi2-2-batteries-power-banks">Visit Original Website</a>
@@ -2740,44 +2824,6 @@ Battery packs are convenient, but slower and less efficient than wired power ada
 Wireless charging is also much less efficient than wired. Qi2 is the least bad, but still loses about a quarter of the battery’s energy compared to charging over USB-C. If you want to squeeze the most charge out of your battery, it’s wired all the way. And finally, claimed charging speeds are typically measured in ideal lab conditions; in my tests, charging speeds were rarely as fast as advertised.
 
 Sign up to get the best deals on products we’ve found and tested sent to your inbox.
-
-Sign in to see your notifications or create an account to join the conversation.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">As AI gets better, it reveals an empty promise</div>
-            <div class="meta">2026-06-03</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>As AI gets better, it reveals an empty promise</h2>
-            <p><strong>The Verge | 2026-06-03</strong></p>
-            <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/942629/as-ai-gets-better-it-reveals-an-empty-promise">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">﻿Your new assistant can schedule a meeting but it can’t fix our broken world.
-
-﻿Your new assistant can schedule a meeting but it can’t fix our broken world.
-
-This week we’ve got tandem hands-ons with Google’s new Gemini AI agent — Spark — from my colleagues David Pierce and Jay Peters. Their takeaways are similar: It’s so effective that it’s scary. Spark knew that David’s dog is named Frida and knew the first name of Jay’s wife, even though neither of them explicitly provided this information to Google. But what’s scary to me is how all of this stuff seems geared toward a future of “productivity” that completely misses what needs to be fixed in our world.
-
-“Productivity” is often pitched as a panacea for what befalls us in our personal lives, even going so far as to implicate our moral worthiness when we are less productive. Productivity lives somewhere in the space between hustle culture and proverb: After all, “idle hands are the devil’s workshop.” I’m not suggesting we should all aspire to be bumps on a log, but we ought to see what we’re being sold for what it really is.
-
-Contemporary tasks on computers have a tendency to feel both important and urgent all of the time, even if they’re not. We’re living under the unholy alliance of the “busy” trap and “software brain.” And that makes AI assistance seem super valuable! But that’s because the companies in charge of all this stuff are now trying to solve a lot of problems that they created. Google, Microsoft, Apple, and others have spent decades blurring the line between office life and personal life. This slow march toward ubiquitous productivity once led the French government to declare a “right to disconnect” from work when leaving the office. (Shame my American sensibilities still convince me that’s a bridge too far.)
-
-As I read about Gemini Spark making it easy for my colleagues to color-code calendars and perform other neat tricks on command, I couldn’t help but vividly remember witnessing as a child all of the hours my mom had to spend carefully cutting coupons so we could afford groceries. Sometimes it got to the point where our living room looked like a giant experiment in collage art. All of that time was stolen from her and our family — for what? Maybe having an AI assistant in the ’90s could have helped find and organize the best deals, but it could never fix an economic system that required them in the first place.
-
-Where does the productivity march end? The people making more money than God right now have professed a vision of a postwork future where robots do everything for us so we can enjoy life without toiling away in the mines. (Well, except for the content mines.) If you’ve seen Elon Musk’s failure bot, you’ll know this is all actually less Battlestar Galactica and more John Adams in his letter to Abigail: “I must study politics and war that my sons may have liberty to study mathematics and philosophy,” and so-on and so-on until the grandchildren can enjoy painting and poetry. So, ideally, after we slog through pre-transcendence, AI will make us all theater kids.
-
-Meanwhile, Mark Zuckerberg is posting up his 387-foot yacht in a city where he just laid off a meaningful part of his workforce to offset his investments in AI. At least AI has freed up the time of these fired workers? I’d say good luck to them in Hollywood, especially because they’re trying to replace newly minted theater kids with AI-generated actors.
-
-There’s a sinister tone lurking beneath some of these advancements in productivity, because the response to increased productivity has been one of the biggest scams of the past century. Well before consumer AI entered the scene, productivity exploded while wages failed to keep pace. Nobody is working less, they’re just earning less. And as more AI-related companies reap trillions in valuation, the current US regime is looting the social safety net — the kind that must exist if we’re all going to become out-of-work theater kids. You simply can’t look at these things separately. If the end result of private companies optimizing the workforce means nobody has to work, then we have to live in a society where people can still have a roof and a meal. Is anyone confident that will happen while leaders are cutting SNAP benefits while building taxpayer-funded ballrooms?
-
-What good is an AI assistant that can help you plan a fun day if you can’t actually afford any free time in your life?
-
-There has always been resistance to new advancements — so much so that the term “luddite” is still potent 200 years after English textile workers revolted against automation in their industry. The AI backlash is genuine, well-informed, and well-argued. Nonetheless, some of those new neat tricks are fun and maybe even pretty useful in our personal lives. But I can’t imagine that paying $99 a month to send emails, make calendar appointments, and create spreadsheets is a promising vision of the future or even a good return on investment. Especially if the broader cost is squandering the splendor of our lands while subjecting us to corporate omniscience.
-
-A free daily digest of the news that matters most.
 
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
@@ -3480,11 +3526,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US House votes for measure that would end Iran war, in blow to Trump - Reuters</div>
+            <div class="title">Israel and Lebanon agree to implement ceasefire - Reuters</div>
             <div class="meta">2026-06-03</div>
         </div>
         
         <div id="content-66" style="display:none;">
+            <h2>Israel and Lebanon agree to implement ceasefire - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-03</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQOHZVSDV2aHBYOHM1bjdsRUdfWGFMSzNySlMxNElEaUhvWElEVmdBdnlXd2dKekZsSnB0RHNpbXMzV2o0ZEhESjJGYUlpZjgwT2x5NWEwUHZ0UnB5bV9zOEhFUEROQlJtZkM3LXdGSG9fLTFJa2RnSk40V3ZVWUNnSnRoa0N2STlsYi1aT0JQckpkM05nSml0VA?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">US House votes for measure that would end Iran war, in blow to Trump - Reuters</div>
+            <div class="meta">2026-06-03</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
             <h2>US House votes for measure that would end Iran war, in blow to Trump - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-03</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOaXZBVGtQRWNUQXJnZ1ZIRy1ESnlmMTR6MXZMeGotWEJEV0JwTnJmVXdHYUJZazB3cjhrU2FLN0gyMk0tUlNPZDVYYUpLMzhhTUZFam9aLWpNWjNManFDVzFVTGFudDBCQnJja0V4YXFLNldHRUtvYTZBdVR5eTlZaHFKb1dHSjBHSXNMRHpZR3JGY21Kb1NONEJ3ckoxR3N4d3c?oc=5">Visit Original Website</a>
@@ -3492,13 +3552,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">SpaceX sets $135 price for blockbuster IPO, upending Wall Street convention - Reuters</div>
+            <div class="meta">2026-06-03</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>SpaceX sets $135 price for blockbuster IPO, upending Wall Street convention - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-03</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPbE5VWTFmUlZWU3B3QjNrS3Joam02ekpVZk9Hd1JJRTh2bjF5TUpYODlxTHMzTWFOYkRxZlZXUnBnaG5qMHhFSGNxSUUtbk1WTVZCMVRDdnpVb0tpMDlGUV9rMHlLMTdLZUFKR2pIWU9hLWF4cXJHc29yYVpsNmdHaEIza250am1mWl9DdFp3Q3JwSEFWTS1TM3FLN282SWdnQXl5Z1BrcnNhV0NMVms4VWE1amFlejUxbXZ4bzVUdw?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Trump signs order to make it easier to fire 8,000 federal workers - Reuters</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-69" style="display:none;">
             <h2>Trump signs order to make it easier to fire 8,000 federal workers - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-03</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQbnJ3Ylc2WnQzTTlJWDRQeGs5aWw3aW42eWRnSC1vMUhGTDlVdmxNVHRtME5pN0lxcVJiWmVkR2dVOW1IRlhVdi13UjhDYS1PdWEteG5zNmhJQjJlVkJWQmpQdFV0cmotUko2OXFKN3p5Tm1xRC1CeGJkRXlGeXNCN2hRbEdIb2plTlBtWEFhWGRnR3F6QU0tZU5BQWY3T2xRRmc?oc=5">Visit Original Website</a>
@@ -3506,13 +3580,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Five Eyes security alliance warns of Chinese espionage threat - Reuters</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>Five Eyes security alliance warns of Chinese espionage threat - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-03</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxOT1BPOTVnQWFwc0puZ18xRF81TEIxcDVhVkxyejVKRFA4QVM4V3d1LUlKcHhERGVuWEg0bEE0MFpzQlFkV3J5eFg4Z0JLUWVPTGFkSk1hT2NwWU1qSTY2MGJhWUtoZFhQQXhuRjdrUHJISDY0Mml5QzIzc1prZ2ZKeXpEOFBOZy1GZ2RLbkxmN2plTDBldmU3dU92dGNpVTVhZV9CbVJnMHZ1MmVqMXc4UlhFbk03SHlQ?oc=5">Visit Original Website</a>
@@ -3520,44 +3594,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Tesla rolls out unsupervised robotaxis in Austin - Reuters</div>
-            <div class="meta">2026-06-03</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>Tesla rolls out unsupervised robotaxis in Austin - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-03</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOSzg2RDFNTnRGeGo4ZEVaUTEzM21FNWVST2JXQWFYY0ZmaUtJeGFRUmN4YzVmN2JQWkJxWHMyTDY4QkZrRVAxdkpZeEpJYmdHdy1JNWhJUVpnUUtqcmlNX2VkcTkwWTg1T0xMc2N1eU5FXzd4VllkRkdmMlZkQW1fbm5UR3djekRXU1F0eFBTcUswb2RucnVQX3pOaEhobmpGZWRiMWUwaU5USkZId0RocA?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Flesh-eating screwworm may have been detected in South Texas, USDA says - Reuters</div>
-            <div class="meta">2026-06-03</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>Flesh-eating screwworm may have been detected in South Texas, USDA says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-03</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxNRlFsaTNQNm9JbUtMTmQxeHdJUFlkQmF3dTVjLXJET3JrbUppY3BGYU04ZjNDMGRNQ19INmZrNnJyMkpvVnRRelJuNFNLSi1uYXlKWlBmQmxaTWZ3N3lHb1Job2pfaG9kVzJzTHNJang2RXVERUlYUXhQRDJFQXA4V3RlU1RyLWJ0QnlXR1ZTWXZJRktWWWhPZEY4U0hSZDNKdDh5dFJreHlyeEhZMjZndmNDWW12VGY3cS1ObldrTTFWVU1uMTdOa25WUVVLRW0xMjRvRFBpQkYxZ1RUTGRJZnhtbw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Broadcom's second-quarter revenue misses estimates as competition bites - Reuters</div>
+            <div class="title">Cuba to suspend Visa and Mastercard transactions, citing US sanctions - Reuters</div>
             <div class="meta">2026-06-03</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Broadcom's second-quarter revenue misses estimates as competition bites - Reuters</h2>
+            <h2>Cuba to suspend Visa and Mastercard transactions, citing US sanctions - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-03</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNYXBDblFJaXMzZ1VkMDNRbS1fQTVzNjhiN3FnNDJ6MWMybFR2dnM3WDVtWGZWekhMT01oV3BPcTRKaGI0MWhnN0YyZHhpMG8yemNuLW1jU3lBaGVGWVBnWDRwVi1HWUt4aFhPWFRDaUxpa3lsbEw2d3AzNldTSHM0Zzl0dEtPeU5mUHNJdnVmckYtS2tKYnBiLXNjQzdtTEVSQmc?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPSlE5YTU5WFFyRFJJcDEzSnBjQ3BWZVc2S001bEMxVllGcnZlcmVzU2E0SkxnSmdTeXRqX0pMaTVTR3J5UmlXeGFwYTltdndBU0g4YjN5U1lJT1pXb0tKeW1FdWhIRHp5MXQ0TFpxWHJHZlEwaEk2dllTVlpQSUl2cmdiQVNObGJNdGVQX2ZmUVdqREMtLXN1S2hEcFZOMTRTenZVN1ZwZHNzaXRVT1RlSGdR?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3606,11 +3652,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">“Explore a Scene from Any Vantage Point You Want”: 3D Volumetric Video Breakthrough Means Streaming in 3D May Soon Be a Reality - The Debrief</div>
+            <div class="meta">2026-06-02</div>
+        </div>
+        
+        <div id="content-75" style="display:none;">
+            <h2>“Explore a Scene from Any Vantage Point You Want”: 3D Volumetric Video Breakthrough Means Streaming in 3D May Soon Be a Reality - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-06-02</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxPVGtIVC1xWUktMUl3VTZwc2E5ckVVUXBPd1RSdDJiT09zM1c0NmVKNXZKSHNvajNSeGp3ZHNiVUVseHBVQlRWV3g2cGpEWkxrZzJSamlOcUFPb0pCemZwWmdwTTFFRkdmbVg0dzNSSVVIYXA1WEpiTFp3cE9nOGtfWTZHREY3bGhFWEROVldvZ0p0SnNWRzVVREFHbTQwQkdBQlNtYzhLSEpTMXhsTkh1LU5HMG1ZMXBtUl9RNzcwWEx4TDZVMGxSVUFOa0psNXJtN3g3Y0JqaTFBVENJUWxfOXdB?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-76')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">One of the Largest Schrödinger’s Cat States Ever Observed Pushes Quantum Weirdness Beyond Its Tiny Limits - The Debrief</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-75" style="display:none;">
+        <div id="content-76" style="display:none;">
             <h2>One of the Largest Schrödinger’s Cat States Ever Observed Pushes Quantum Weirdness Beyond Its Tiny Limits - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-05-31</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPY1c3NENEdUNkQk9aU3pqd3FWa2kycjdFMnJlMlJHNzVoSHhDdWJBUUJtR2JWcFFmOFNWMS00bm1KVEd4M2d3QlZYVjVINUZ2Z1RVTEE0QzNlUmRKN0lnSXJXVnJQVS1ia2tGYlhreEdqdFAzaHh6dGd3Z3U0YTlURzJLcGY1alU0ekxKdXB4NHhSMTVRSTlJWTBGbWhVem9DZS1VaVVfVFp6UDhmc2g2dzQwMG0wbmo1ZmhDRFR6em1zdFg2cGo4?oc=5">Visit Original Website</a>
@@ -3618,13 +3678,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-76')">
+        <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">“The Sun May be Entering a Different Mode of Behavior”: Scientists Say Something is Happening Beneath the Solar Surface - The Debrief</div>
             <div class="meta">2026-05-29</div>
         </div>
         
-        <div id="content-76" style="display:none;">
+        <div id="content-77" style="display:none;">
             <h2>“The Sun May be Entering a Different Mode of Behavior”: Scientists Say Something is Happening Beneath the Solar Surface - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-05-29</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxPZU0tVHZYS0o5RkdZWF9DUWphdmRUSTFVTmZvT2tiYXlPZEN5OU85ODZUbG1VLXVpMXRMN1FZR2lBeE5iazdYZU96Z1pvbVViLVNxc2NlN0dUYmljUlVKSEROZm0tYVh3eXZvMWtmeVFmNUtkcndZM3NLVE9DckdCOG42TE9SWU9vZEpDZHV6akVyZVUzeWNPMV9ZQ1cxUUlsUjh3WWpVWmgxLXNldThFdjBlWHRUX1did1NEbkxyQUhFcThVOS1vaWd1MGtlaVNVUTBQaUNHMA?oc=5">Visit Original Website</a>
@@ -3632,27 +3692,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-77')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Scientists Just Revealed Something Massive Has Been Hiding Beneath This New York Cemetery for More Than a Century - The Debrief</div>
-            <div class="meta">2026-06-02</div>
+        <div class="card" onclick="openModal('content-78')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">Meta Looks to Charge Up to $200 a Month for Planned ‘Hatch’ AI Agent - The Information</div>
+            <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-77" style="display:none;">
-            <h2>Scientists Just Revealed Something Massive Has Been Hiding Beneath This New York Cemetery for More Than a Century - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-06-02</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxNUTFTTHVuSnh4c05ybWlMZVhNdXZNNFdwWlJlTTVWampMOURWaTVZb2QwcDlEdDVFTVJWTWJmbkEtQXNhYURvWFk1Z1A2Qm5TdTJBYUlSRnR0RVl2eUF5RFhhdnJfRW00TnBkc3diRTJueTg0cTNJNE5hZTU5U0hMNmw4MkRuT0h4X3k0U0IzVG9FSE81SkhmZ3FqN2tTVlRoY3RzTzVIUjZvVmZ2cDU4ME5oSDRtdXJ0V1ZQUm1DU2NFdGFuX0cyRGd4d1psYmxHNU8w?oc=5">Visit Original Website</a>
+        <div id="content-78" style="display:none;">
+            <h2>Meta Looks to Charge Up to $200 a Month for Planned ‘Hatch’ AI Agent - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-06-03</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOSHNtZkt0RXFoWkhqcmh3S0c0YkRid3hFOVNQMXZKQ1RRQW1nQms2dmJ4bHdOOVhRSmFVdE0tYl9uRVRjcGZYdjVVZ2ZidllHQV9PTmRUNWVlRk04STRHSFJUOGE1SFI4aXhaM2d5aXVtb2dJRDdIRUxXVFVQYjFObXlCMGVlRG5uZlpMVWVIb0NkLXJ4?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-78')">
+        <div class="card" onclick="openModal('content-79')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Alphabet’s Fine Print Reveals Hidden Cost of the AI Talent War - The Information</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-78" style="display:none;">
+        <div id="content-79" style="display:none;">
             <h2>Alphabet’s Fine Print Reveals Hidden Cost of the AI Talent War - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-06-03</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxPRDlYNWZYSDFzYWh2eEJaYV9aZjhHS2hVUjhoR3IwaGR4ZHFwYmh6eGEwVnAzM3ZTRUpjcnBGTDFSZ180V3Voc25xTVZwS1cwQnZOeU4wdVlQS3c0WkNZRFJ0ZmlweE1pdlVENW1vSVM0T0ZfVU1pcFhaQ2MtOGR1Y2NjSDZCNW5hSlpZNEVpUlVBTUQwcjNpREZNYkt6bjlXX3AyLVV0eUpIRHFhSGJ5UnYyQ3M0cDJSZXpwbWV3?oc=5">Visit Original Website</a>
@@ -3660,13 +3720,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-79')">
+        <div class="card" onclick="openModal('content-80')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Microsoft’s AI Independence Day - The Information</div>
             <div class="meta">2026-05-31</div>
         </div>
         
-        <div id="content-79" style="display:none;">
+        <div id="content-80" style="display:none;">
             <h2>Microsoft’s AI Independence Day - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-05-31</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNbHliaEl1dGhKY1hDTExSZU1iRUYxNGFJQkpUamRaUHpzUWJGMzRiV0ktQ2RtUkU3cXdoWTY2U3IwcjU1aGFycTRGU2tsNHBuU0JvaWRqQUNGT1RwZ2p5TExIMTBCbGpYMUI5OEN1RHR1THRFUWkzLU5vZUkwUkxxNHRnTGZUWmdzdG1qM1ljSQ?oc=5">Visit Original Website</a>
@@ -3674,13 +3734,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-80')">
+        <div class="card" onclick="openModal('content-81')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Anthropic’s Mythos Is a Security Powerhouse. It’s Also a Budget Buster - The Information</div>
             <div class="meta">2026-06-01</div>
         </div>
         
-        <div id="content-80" style="display:none;">
+        <div id="content-81" style="display:none;">
             <h2>Anthropic’s Mythos Is a Security Powerhouse. It’s Also a Budget Buster - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-06-01</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNcEVNVkZEUDM2am1YbW1Pa2FjT280VGJuck5yYUZKV3pxcVlrRk9kcFpuWklGYXBGWmE1SFdpS0t3S21HOUt5QXRwcEo0QjRDcXlFRk1GVGlfV0YyUjNONEtmTWF2c3VxTjZLeDduaHNCbEx0aHg5cDBKR25OTHhpSHpobk5GdTRFNkUzbGVITzdjUG5hb3c?oc=5">Visit Original Website</a>
@@ -3688,13 +3748,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-81')">
+        <div class="card" onclick="openModal('content-82')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">China’s MiniMax Launches New Model as Open-Source AI Coding Battle Heats Up - The Information</div>
             <div class="meta">2026-06-01</div>
         </div>
         
-        <div id="content-81" style="display:none;">
+        <div id="content-82" style="display:none;">
             <h2>China’s MiniMax Launches New Model as Open-Source AI Coding Battle Heats Up - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-06-01</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOZS04YW5yeDFLZWVoa3VuZy0zU0VZU0ViYUhrTTBDQWVERjJCT01sWXF6N2VPWE5JZ3ZaN2xVaGFuRWJSMU9QTkxsaXZudFh1dkxsejZKVHRCd0xqMGVIenphOHhFeWRkektQdVhmV1RiRVVEUDhvSkdRYWtBcmh3NjJKZXp2N2ZYYkl3MDRBWTV5c3BIM1RlQVA1UVJoUHBXMEtpTlQzSEpPckItOWc?oc=5">Visit Original Website</a>
@@ -3702,30 +3762,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-82')">
+        <div class="card" onclick="openModal('content-83')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Meta Memo Outlines Ambitious Hardware Plans, Including New AI Pendant - The Information</div>
             <div class="meta">2026-05-29</div>
         </div>
         
-        <div id="content-82" style="display:none;">
+        <div id="content-83" style="display:none;">
             <h2>Meta Memo Outlines Ambitious Hardware Plans, Including New AI Pendant - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-05-29</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOUmFqamtrZTBibVJVTTJmOU1JdWxaNFpuS1R5OEFNNTctZFJxaUExWWdOWGFSMTloajBmcUVjLUdPRlZHZTNRLWEyakphX0R4Q2h0QWtJVC1Vd3BPU1J5NG5OYVVtYTdEbHRzR1Z4QmNfbW1JYzFlR19BTENtcHhLd2U3elpXLVJRX1Q3dHk0eGh3ZEtqV3ZteklJRjhjenhpNVUxcW5iVFl3V0J1?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-83')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">SpaceX Is Awarded $4 billion Contract with U.S. Space Force - The Information</div>
-            <div class="meta">2026-05-30</div>
-        </div>
-        
-        <div id="content-83" style="display:none;">
-            <h2>SpaceX Is Awarded $4 billion Contract with U.S. Space Force - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNT3NFZ0tHMXBuVEZkblhiUElkNm5FRUZuZGx4Q05BTXEwa2lzc3JpYUZVaUF5Snh1Nm1QLUxra2FXaFlleXM0NVNKQW5WYzdvNEVuWlVTclhfU1NPRExJR2pXQXJxMTJpRkowMExxWWg2cktzcFJuaWpSRnB2Y0daQ1J2RFU3Y05mZTZSVUhLbk91TkJT?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
