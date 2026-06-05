@@ -163,35 +163,7 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/06/baby-botulism-outbreak-fda-still-doesnt-know-cause-or-how-to-prevent-it/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Food and Drug Administration this week posted what critics call an “underwhelming” epilogue to the devastating outbreak of botulism in babies, which was linked to spore-contaminated formula made by ByHeart. Despite clear tracking of the contamination, the regulator still doesn’t know how the bacteria arrived in the formula—or how to prevent it from happening again.
-
-“The FDA’s investigation into the root cause is ongoing with a focus on ingredients,” the agency reported.
-
-In the void, three companies at the center of the investigation are left pointing fingers at each other, with none publicly taking responsibility for the contamination.
-
-The outbreak was identified in early November and was declared over by the FDA and Centers for Disease Control and Prevention on February 26. In the end, 48 infants across 17 states were sickened and hospitalized. Some are still recovering months after the life-threatening infection.
-
-The FDA’s investigation provided a detailed trace of the bacteria behind the outbreak, Clostridium botulinum, which can produce hardy spores that are found in soil and sediments. If the spores reach an amenable environment—such as the vulnerable, underdeveloped guts of infants—they begin to grow and produce a neurotoxin that causes flaccid paralysis.
-
-Strains of C. botulinum isolated from some of the sick infants were genetically linked to strains found in ByHeart’s formula, which were also linked to strains found in powdered whole milk used in the formula. The powdered whole milk was dried from liquid milk at a Nevada facility run by Dairy Farmers of America, and the liquid milk came from the supplier Organic West, based in California. Organic West sold the resulting powder to ByHeart.
-
-Specifically, the FDA traced contaminated formula and milk powder back to eight whole milk lot powders that came from 33 fluid milk lots from Organic West, according to an incident summary.
-
-Still, the FDA could not determine where in the production chain the bacteria entered or how.
-
-“Even though there are several hypotheses, investigational findings could not identify the source or root cause of contamination of the powdered infant formula,” the agency concluded.
-
-Bill Marler, a lawyer specializing in food poisoning who is also representing 25 of the sickened infants in litigation, told Ars that the conclusion is “a little underwhelming to put it mildly.” The epilogue that the FDA posted this week, titled the “Post-Outbreak Response Activities,” provided a summary “without any real clear guidance for consumers or for the companies going forward.”
-
-In the meantime, each of the three companies is shirking blame. ByHeart released a statement this week saying “FDA has shared that it did not identify any deficiencies in ByHeart’s facilities that could explain the root cause of this outbreak.”
-
-Bill Van Ryn, an owner of Organic West Milk, previously stressed in media reports that “nothing has been proven about our milk yet.” Likewise, Dairy Farmers of America blamed Organic West, saying its processing met all required tests. “Manufacturers of end-use consumer products have a responsibility to properly process ingredients to ensure product safety,” Dairy Farmers of America said in a statement.
-
-While Marler wants to see more investigation and action by the FDA to understand and prevent another outbreak from happening, the blame ultimately lies with ByHeart, he says. It’s “not only an ingredient problem that happened to pass through ByHeart. That is ByHeart’s product, in ByHeart’s can, with ByHeart’s name on it, fed to a baby,” he wrote in a recent blog post. “Sourcing, verifying, and testing what goes into infant formula is the job.”
-
-Marler also noted that this is not the first time infant botulism has been linked to infant formula.
-
-In its statement this week, ByHeart said it is working to resume infant formula production. The company is now working with a lab to develop more sensitive testing for C. botulinum in its products.</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-1')">
@@ -205,54 +177,7 @@ In its statement this week, ByHeart said it is working to resume infant formula 
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/security/2026/06/highly-reviewed-speaker-can-be-hacked-over-the-air-to-infect-connected-devices/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Operating system makers take many steps to prevent their wares from accepting commands from remote devices. The safeguards, designed to thwart malicious attacks, typically require hackers to jump through all kinds of hoops to bypass the measures. But what if remote code execution were as simple as being within Bluetooth range of a speaker connected to the targeted device?
-
-It turns out it can, at least when the speaker is a Sound Blaster Katana V2X sold by Singapore-based Creative Technologies. The speaker, which sells for $283, is widely acclaimed with numerous reviews showering praise on the sound and performance of it and its predecessor, the Sound Blaster V2.
-
-Researcher Rasmus Moorats stumbled on the hack by accident, after he purchased a Katana V2X, a soundbar that connects to PCs, Macs, and Linux devices over USB or Bluetooth. Moorats was curious if he could create a Linux tool that communicated with his speaker. He discovered he could do so through CTP, a proprietary mechanism he guesses is short for Creative Transport Protocol.
-
-CTP allows devices connected via Bluetooth or USB to send commands to the speaker, such as changing LED colors and equalizer settings. CTP also allows the connected devices to receive responses from the speaker.
-
-To Moorat’s surprise, his Bluetooth device was able to connect to the speaker, which was connected to a PC via USB, without any authentication. Not only that, but his Bluetooth device didn’t have to be paired first. Also surprising: One of the CTP commands, labeled “upload new firmware to device,” allowed him to replace the official firmware with his own custom one. The firmware reflashing didn’t use code signing or other measures to prevent the loading of unofficial code.
-
-After successfully replacing the firmware with a replacement image that did nothing more than display the word “patched” on the speaker’s LED display, the researcher got to wondering what else a hacker might do. So he turned his attention to FreeRTOS, the open source operating system that ran the Katana V2X. It contained a set of HID functions for allowing the speaker to act as a human interface device, a classification that includes keyboards, mice, and webcams. The speaker implemented a limited HID that allowed for things like changing the volume and playing or pausing sound, but little else.
-
-The researcher discovered that he could change the speaker’s USB descriptor set, which is essentially a report that informs devices about the capabilities of a USB- or Bluetooth-connected peripheral. He was able to augment the existing descriptor set with a second one that reported the speaker being a keyboard. Then he used code already included in the firmware to streamline the process of sending keypresses.
-
-All of this gave Moorats an idea: What if he used his device to send commands to the speaker that used the HID to pass them along to the connected PC? After some trial and error, he found that he could. In a blog post published on Wednesday, he wrote:
-
-Chaining it all together, I was able to totally remotely, over the air, upload a custom firmware to my speaker which I hadn’t paired with, which would reboot, flash the custom firmware, and after rebooting type in the command echo pwned and execute it.
-
-Credit:
-                                      Rasmus Moorats
-                                  
-
-
-
-
-
-
-
-
-
-          Credit:
-
-          
-          Rasmus Moorats
-
-In a real attack scenario, I would execute the keystrokes for opening powershell.exe or similar and paste an actually malicious one-liner into that, but as a proof of concept, this was more than enough for me. A real attacker would also likely disable the routine for updating the firmware in both normal and recovery mode, making it impossible to wipe the malicious firmware from the device or patch it in the future.
-
-This is worsened by the fact that Bluetooth is always on for the speaker, even in sleep mode, with no apparent way to disable it.
-
-Before the speaker and USB-connected device can interact, they must successfully complete a challenge-and-response authentication procedure. Since the devices perform this handshake automatically each time the software boots, this isn’t usually a problem for the hacker. In certain cases, however, such as when the Katana V2X app isn’t open on the connected device, it’s a requirement.
-
-Nonetheless, the authentication is a simple enough hurdle to clear, because the correct response can be extracted from the app binary that ships with the speaker. Surprisingly, no such challenge and response is required for Bluetooth-connected devices.
-
-Moorat reported his findings to Creative Technologies, but never received a response. He then brought in CERT Singapore to intervene. Eventually, the organization got a response from the company. It said company engineers didn’t regard the behavior as a vulnerability. The researcher tested the attack against a connected Windows machine.
-
-It bears repeating that the hacks described can be carried out only when the attacker is within Bluetooth range of the speaker. That’s a significant requirement that limits attacks to neighbors, housemates, or people in offices that are adjacent to the speaker.
-
-Still, the ability to turn a Bluetooth device into a PC-pwning proxy and remote bugging device doesn’t exactly evoke warm and fuzzy feelings. It also raises the question: What other Bluetooth devices open users to the same attacks?</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-2')">
@@ -266,19 +191,7 @@ Still, the ability to turn a Bluetooth device into a PC-pwning proxy and remote 
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/06/first-us-test-of-modular-reactor-reaches-criticality/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Just over a year ago, the Trump Administration issued an executive order meant to accelerate the development of nuclear power in the US. While an entire startup ecosystem has developed around the use of different—and typically smaller—reactor designs, only one of them has been fully licensed so far, and there are no plans to actually build any instances of that design.
-
-The executive order directed the Department of Energy to have three different reactor designs reach criticality in a bit over a year. On Thursday, a startup called Antares announced that a test reactor it had placed at the Idaho National Laboratory had reached criticality, making it the first new design to cross this threshold. Criticality means that the nuclear reactions inside the hardware had become self sustaining; it does not mean the reactor had started to generate power.
-
-Antares is one of a number of companies that is basing its design on a new fuel system called TRISO that takes some of the complexity and safety out of the reactor design and places them in the fuel design. The fuel design is based on tiny pellets with a uranium oxide core. The pellets are surrounded by several layers of carbon that can moderate the energy of both the neutrons and lighter nuclei that are released by fission reactions. All of that is encased in a hard ceramic shell that’s designed to withstand the highest temperatures that can be produced by the encased uranium.
-
-As long as your reactor can keep the TRISO pellets contained, then there should be no risk of meltdown or even the release of the most dangerous isotopes produced from the reactions. There are still some safety concerns, as neutrons will still escape and can potentially convert some of the surrounding material into unstable isotopes. But the Antares design surrounds the TRISO with a graphite sheath, which should slow most of these neutrons down.
-
-To mitigate non-radioactive risks, the Antares design uses sodium to take heat from the reactor to a heat exchanger. The heat is transferred to pressurized nitrogen, which then drives a turbine in a closed Brayton cycle setup.
-
-At the moment, Antares is just testing what it calls a Mark 0 reactor, which is not connected to the power-generation portion. Instead, it’s being used to validate the company’s modeling of the physical conditions in its reactors and generate safety data that can be used during licensing applications. Attempts to run the entire system, including electrical generation, are expected to happen next year.
-
-While the work was done at a Department of Energy Lab, the company is working with the Department of Defense’s Project Pele program for developing a mobile nuclear reactor. The company has also received support from NASA.</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-3')">
@@ -292,39 +205,7 @@ While the work was done at a Department of Energy Lab, the company is working wi
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/06/work-on-russias-leaky-space-station-module-causes-astronauts-to-take-shelter/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Five of the seven crew members on the International Space Station briefly sought refuge inside a SpaceX return capsule Friday morning as two Russian cosmonauts worked on an air leak on the other end of the complex.
-
-NASA ordered US astronauts Jessica Meir and Jack Hathaway, French astronaut Sophie Adenot, and Russian cosmonaut Andrey Fedyaev into SpaceX’s Crew Dragon Freedom spacecraft around 9 am EST (14:00 UTC) on Friday. The foursome launched aboard the SpaceX crew capsule on the Crew-12 mission in February, and the ship serves as their lifeboat until the crew’s scheduled return to Earth in September.
-
-NASA astronaut Chris Williams, who flew to the station in a Russian Soyuz ferry ship, joined the Crew-12 astronauts inside the Dragon spacecraft.
-
-“All USOS (US Orbital Segment) crew members need to execute … Emergency Procedure 3.4: Crew Dragon, establish Safe Haven,” NASA mission control radioed to the station crew around 9 am. “If we need (you) to suit up, we will do that once we’re inside the Dragon.”
-
-A short time later, a NASA spokesperson posted a statement on X attributing the shelter order to a repair on persistent air leaks on the Russian segment of the space station. For more than half a decade, engineers from Roscosmos and NASA have tracked the leak rate from a transfer tunnel on the back end of Russia’s Zvezda Service Module. The tunnel, known by the Russian acronym PrK, leads to a docking port for Progress resupply and refueling freighters.
-
-Engineers believe the leaks are caused by microscopic cracks in the module’s structure. Russian cosmonauts have repeatedly inspected and attempted to seal the cracks, but a permanent fix has eluded them. After a few months of pressure stability inside the PrK earlier this year, Roscosmos confirmed in May that the air leaks had returned.
-
-“Following new leaks, Roscosmos has elected to proceed with a more extensive repair operation on Friday, June 5,” NASA spokesperson Bethany Stevens wrote on X. “Out of an abundance of caution, NASA has directed all four of the agency’s SpaceX Crew-12 members and NASA astronaut Chris Williams to assume an elevated safety posture in the Dragon spacecraft while the repair is underway.”
-
-After about 90 minutes, the communications officer at mission control in Houston told the crew that they could reopen hatches and reenter the space station. The specific repair task that caused NASA to issue the shelter order was off. “Our Russian colleagues have elected to perform measurements only today. So, with that, we are comfortable backing out of the safe haven config,” mission control told the crew.
-
-“We don’t have help from our counterparts?” Crew-12 commander Jessica Meir asked mission control. “Affirm,” mission control replied.
-
-Those counterparts—Russian cosmonauts Sergey Kud-Sverchkov and Sergei Mikayev—were working at the leak area on the opposite end of the station, some 200 feet away from the Crew Dragon.
-
-Stevens soon posted an update on X, writing that Roscosmos had “paused” the “structural repair efforts” inside the PrK to take more measurements and assess data. “We look forward to working with Roscosmos on a collaborative approach to address the leaks,” Stevens added.
-
-Ars asked two NASA spokespersons for details on the proposed leak repair and why the agency decided that the repair was risky enough to order the US crew members into the Crew Dragon lifeboat. They did not provide answers to these questions as of the time of this publication, but we will add any information we receive to this story.
-
-Roscosmos, Russia’s space agency, typically keeps the PrK sealed off from the rest of the space station to isolate the leak from the crew’s living quarters and workstations. This allows the transfer tunnel to be maintained at a lower pressure than the rest of the station. When cosmonauts need to access the area, such as for inspections, repairs, or transferring cargo to or from a docked Progress supply vessel, they pressurize the PrK to match the pressure inside the rest of the station. This allows the cosmonauts to open up the PrK to complete their work.
-
-A statement posted by Roscosmos on its Telegram channel suggests this is what was happening early Friday. “Specialists from the Russian ISS segment’s main operations control team detected a leak in the chamber” during pressurization of the PrK.
-
-“Upon inspecting the transfer chamber, cosmonauts identified two potential air leak sites,” Roscosmos said. “The first site was promptly sealed by applying an initial layer of the two-component sealant compound Germetall-1. The second site is located on the conical section of the transfer chamber; preparations to seal it are currently underway.”
-
-Russian and NASA officials also did not say what compelled Roscosmos to plan an immediate repair after discovering the two potential leak sites on Friday. They also did not say when cosmonauts might try again to patch the leak, or if any future repair effort might again force the US crew members to take shelter.
-
-Roscosmos said there is “no threat to crew safety or onboard systems,” and the pressure inside the station “remains stable and is being maintained at the nominal level.”</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-4')">
@@ -338,29 +219,7 @@ Roscosmos said there is “no threat to crew safety or onboard systems,” and t
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/sp-500-blocks-fast-spacex-entry-wont-waive-rule-for-unprofitable-ai-firms/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">SpaceX has requested unusually swift entry into several leading stock market indexes as a condition of its historic stock market debut. But the S&P 500 stock market index representing many of the largest profitable US companies has surprised market analysts by refusing to bend the rules for Elon Musk’s space and AI company.
-
-The June 4 decision by S&P Dow Jones Indices—the company that creates and manages stock market indexes such as the S&P 500—means that SpaceX will not gain accelerated access to potentially billions more dollars through passive investment funds that automatically purchase shares of S&P 500 companies. An exception for SpaceX could have also allowed leading AI companies such as OpenAI and Anthropic to gain entry not long after their own expected initial public offerings (IPOs). That possibility has now been shuttered.
-
-The news will likely come as a relief to people concerned about passive investor money and people’s retirement savings plans having greater exposure to the market risks associated with SpaceX’s big bet on AI and speculative orbital data center plans. AI companies are generally facing more challenges in funding and building expensive AI data centers, even as they shift more of the subsidized costs of running AI services onto shocked customers through usage-based pricing.
-
-To weigh expedited entry for SpaceX, the S&P Dow Jones Indices held a monthlong consultation to consider changing or waiving several main requirements for so-called MegaCap companies with “unprecedented market capitalizations.”
-
-Those proposed changes included shortening the “seasoning period” for new IPOs from 12 months to six months, waiving the investable weight factor (IWF) requirement for MegaCap companies to make at least 10 percent of their shares publicly available, and waiving the requirements for MegaCap companies to demonstrate profitability in the latest quarter of the financial year along with the previous four quarters.
-
-Such rule changes would have accommodated SpaceX’s plan to only offer approximately 3 percent of its IPO shares to public investors, and the fact that SpaceX is currently unprofitable with a growing debt load that has reached $29 billion because of its spending spree on AI infrastructure.
-
-But in its final decision, the S&P Dow Jones Indices stated that “no changes will be made to the eligibility criteria including financial viability screens, seasoning period, or minimum IWF.” Even after the standard yearlong wait, SpaceX, Anthropic, and OpenAI may struggle to deliver the consistent profitability necessary to qualify for the S&P 500.
-
-Swift entry into the S&P 500 would have triggered $14 billion of passive fund buying for SpaceX, according to Bloomberg Intelligence. The investment research arm of Bloomberg also estimated that OpenAI could have gained more than $8 billion, and Anthropic could have netted $4.6 billion from similar passive buying sprees triggered by their S&P 500 entries.
-
-This is because $7.5 trillion in passively managed funds—popular among both individual investors and institutional investors—follow the S&P 500 by purchasing shares of companies according to their proportional representation in the S&P 500 index. For example, the Vanguard and Fidelity brokerage giants both offer passive investment funds that track the S&P 500 composition.
-
-However, the S&P Dow Jones Indices did “carve out one concession” by changing the investable weight factor rules for “lower-profile benchmarks” such as the S&P Total Market Index and Dow Jones US Total Stock Market Index, according to Quartz. That could allow an IPO faster entry into those indexes.
-
-By contrast, the Nasdaq stock exchange changed its rules to allow SpaceX to enter the Nasdaq-100 Index within 15 trading days as opposed to the usual three months. Similarly, the FTSE Russell index provider decided to give SpaceX and other follow-on companies accelerated entry to the Russell Top 500 Index after the close of the fifth trading day following an IPO.
-
-The denial of accelerated S&P 500 entry for SpaceX comes just days after Morningstar analysts described SpaceX as having been “significantly overvalued” in the lead-up to its IPO. The investment research firm valued SpaceX at $780 billion—less than half of SpaceX’s $1.75 trillion IPO goal—primarily based on the strengths of SpaceX’s Starlink satellite service and rocket launch business.</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-5')">
@@ -374,79 +233,7 @@ The denial of accelerated S&P 500 entry for SpaceX comes just days after Morning
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/we-pissed-off-a-lot-of-people-giant-data-center-plan-cut-50-amid-protests/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">One of the world’s biggest data center projects was designed to be nearly three times the size of Manhattan, stretching across multiple Utah sites. But intense local backlash in Box Elder County has now pushed the developer to cut the project plans in half before construction starts.
-
-Residents’ top concern was the Stratos data center project draining local waters, and they were willing to pay to protect them, most especially the vulnerable Great Salt Lake. Many locals paid a $15 fee to register comments to block the transfer of 1,900 acre-feet of water from a ranch to the hyperscale data center. Other concerns include electricity bills rising and potential risks to air quality, local wildlife, and land.
-
-Venture capitalist Kevin O’Leary, chair of O’Leary Digital and Shark Tank investor, is behind the construction of the project. He told a local ABC affiliate that he regrets not working with state officials to be more transparent about the project from the beginning.
-
-“We really screwed it up,” O’Leary said, while confirming that he “was not expecting this kind of intense blowback from the public.” He claimed that he and state officials anticipated that “people would be excited” about the major local investment and “made huge mistakes” by not involving the public more in discussions, based on that “assumption.”
-
-“We pissed off a lot of people, and that’s not the way I do business,” O’Leary said. “That’s not.”
-
-As Utahns moved to defend their resources and demanded more information, Utah Senate President Stuart Adams, who is a Republican, sent a letter to O’Leary, asking him to cut the project’s scope by 75 percent.
-
-At an AI gala in Washington, DC, O’Leary claimed that he had “no choice” but to agree, NBC News reported. Initially, he planned to build the project on 40,000 acres, but now he’s reduced that to about 20,000 acres. Of the remaining land, 10,000 acres will remain undeveloped, leaving about 25 percent of the initial acreage to develop the data center. O’Leary’s group characterized this as bending to the Senate president’s demands.
-
-Moving forward, O’Leary wants to rebuild trust, he claimed. He told the ABC affiliate that he’s personally taking over all communications on the project because he didn’t “like being beaten up like this.” With him as spokesperson, residents will supposedly be better informed about permitting requests and environmental impacts, rather than relying on sources that O’Leary claimed are unreliable or bent on manipulating public opinion.
-
-“All the plans are going to be transparent,” O’Leary said, while claiming that public concerns are exaggerated. “All the design is going to be transparent. Everything we do is going to be transparent because I’m not happy with where we’re at right now.”
-
-He told the AI gala attendees that he now recognizes that “we should have answered all this stuff up front, now I got to do it after everybody’s been pissed off.”
-
-“I hope this dialogue can serve as a model for how complex projects are best addressed—through direct, good-faith engagement between developers and elected officials rather than through public narratives that outpace the facts,” O’Leary told a local Utah news site KLS.com.
-
-Before construction can begin in Utah, O’Leary’s project will need to secure more approvals and complete several environmental reviews, a local nonprofit, Alliance for a Better Utah, noted in a statement on the plan to shrink the data center.
-
-In response to O’Leary’s letter, Adams celebrated the compromise and claimed that the project could become a roadmap for how responsible data center development should work in the US.
-
-“With responsible water use, transparency and input from the people of Utah, we will show the nation how to build it right,” Adams said. “There must be written commitments in place, and the proposal must undergo a full permitting and environmental review process, just like any other development project in Utah.”
-
-But some locals think there is no going back once trust is lost. After the water transfer backlash, the Salt Lake Tribune editorial board warned, “even if the data center isn’t as dreadful as feared—or if it never is actually built—the stench attached to the rushed and secret political process will take a very long time to dissipate, if it ever does.”
-
-Unsurprisingly, some residents who oppose the data center aren’t optimistic that O’Leary’s plans will do much to mitigate the local impacts they fear. NBC’s report noted that it’s not “immediately clear if the overall nine-gigawatt capacity of the project will change.”
-
-Brenna Williams, a community member involved in the Box Elder Accountability Referendum opposing the project, called the agreement “excellent performance art,” KLS.com reported.
-
-“I think this was the plan all along,” Williams said, suggesting that the project never would’ve been approved if the public had been engaged at the start of discussions, because the area is simply not a good candidate for a data center due to water constraints.
-
-“I don’t see any changes, and the truth is, Box Elder County is just too vulnerable for a hyper-scale data center of this size,” she said. “No matter what he does given the situation, there is going to be a big impact.”
-
-Adams’ pivot toward transparency is supposedly linked to his reelection bid. He’s facing down a primary against two Republican challengers this June, the Hill noted, and O’Leary told NBC News that he thinks Adams was pressured to challenge the data center size to keep his campaign on track.
-
-“I know he did it for political reasons,” O’Leary said.
-
-While Donald Trump has advocated for rapid data center development across the US to keep America ahead in the AI race, the Utah case shows that not every Republican can afford to be an AI booster. A recent HeatMap poll showed “a rapid shift in public opinion since last fall,” with at least 7 in 10 Americans now opposing data centers built near their homes.
-
-With “an absolute majority” now opposing data centers, Democrats could seize opportunities to unseat Republicans who fall in line with Trump’s agenda, simply by demanding more transparency.
-
-Perhaps the best example of this is Illinois governor J.B. Pritzker. On Friday, NBC News reported that Pritzker plans to temporarily halt all tax breaks to data centers in his state until a legal framework can be drafted to ensure responsible development. Pritzker “is widely viewed as having 2028 White House aspirations” and may soon show he’s up to the task if he succeeds in taking control over regulating frontier AI away from Trump.
-
-Eliminating tax breaks might push projects onto more suitable sites, critics think. In Utah, Williams suspects that tax breaks are the biggest reason why O’Leary wants to develop his project there, the ABC affiliate reported.
-
-“There are places who really want this project, she said. “For him to be fighting so hard to put it here, seems kind of ridiculous because there are places who really want it. I’m not so sure he’d get the same tax concessions as he got in Utah, but he could try. And they would open their arms to him and be grateful for the opportunity. In Box Elder, we don’t want it.”
-
-Many locals protesting data centers don’t stop until the projects are shut down. Last month, HeatMap Pro released data showing that “at least 20 data center projects were canceled after facing significant public backlash in the first quarter of this year.”
-
-“That is more than double the number that were canceled the previous quarter,” HeatMap reported, while noting that data centers are “slightly more unpopular” with rural voters who typically trend more conservative.
-
-Environmental activist Erin Brockovich recently launched another resource, which tracks where data centers are pending, approved, under construction, and operational. Thousands have already contributed to her map tracking data center fights throughout the US.
-
-Although reports indicate—and Adams said was the case in Utah—that communities have genuine concerns fueling the rise in opposition, not everyone agrees that the immense community backlash in the US is rational or proportionate.
-
-On Bluesky, Will Stancil, a lawyer, activist, and housing policy researcher, commented on HeatMap’s poll, suggesting it seemed unusual for public opinion to shift so quickly without “some major data center disaster.” In his thread, Stancil boosted a reply suggesting that data center backlash “hit the algo,” raising a theory that social media is possibly driving anti-data center sentiment.
-
-And while O’Leary blamed himself and Adams for making “mistakes” in Utah, he also claimed that the protests he faced in the state were due to foreign interference, NBC News reported. He accused China of supposedly funding the Alliance for a Better Utah to conduct a smear campaign to set back his project, a claim which the nonprofit has denied.
-
-“All these people have a right to get information,” O’Leary said. “Why are they getting it from a false initiative? Who is spending all this money to put out all these falsehoods and straight-out misinformation and lies and agitate these people?”
-
-In a statement, Elizabeth Hutchings, the communications manager for the Alliance for a Better Utah, mocked the Montreal-born O’Leary, defending the group’s 15-year history and saying, “the only foreign interest in this data center is Kevin from Canada.”
-
-“It’s insulting to Utahns across the state to say that any opposition or protest to this data center is the work of a foreign government,” Hutchings said. “We are proud to live in a state where there are people who deeply care about transparency, their community and their kids’ futures. It is not strange to us that Utahns want to feel heard in decisions that will impact their lives for decades to come.”
-
-Hutchings agreed with Williams that “the issues with the deeply unpopular and problematic project in Box Elder County remain.”
-
-“This is not the first time we’ve dealt with bullies like Kevin trying to intimidate us into silence,” Hutching said. “No amount of propaganda and dramatic distractions will stop us from talking about the real issue: a lack of transparency from our government.”</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -752,7 +539,7 @@ By submitting your email, you agree to our Terms and Privacy Notice.</div>
             <p><strong>TechCrunch | 2026-06-05</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/06/05/founders-share-vc-horror-stories-and-some-are-naming-names/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Asking venture capitalists for investment is a rite of passage for tech founders. This has led to another universal experience: the VC pitching horror story. A massive conversation sharing such stories has taken place all week on X with the comments both funny and infuriating. We read through them all to find the most interesting ones so you don’t have to.
+            <div id="article-text">Asking venture capitalists for investment is a rite of passage for tech founders. This has led to another universal experience: the VC pitching horror story. A massive conversation sharing such stories has taken place all week on X, with the comments both funny and infuriating. We read through them all to find the most interesting ones so you don’t have to.
 
 Greg Isenberg, a startup podcaster, newsletter writer, and founder of Late Checkout Studio — a holding company whose previous ventures include a company acquired by WeWork — got the conversation started with a story about a VC falling asleep during a pitch meeting. Isenberg has a large following on X, and his post clearly struck a nerve.
 
@@ -776,7 +563,7 @@ Not everyone had bad experiences to report. Some founders said they’ve never h
 
 Still, the stories that truly stunned were the ones posted by Cloudflare founder Matthew Prince. “A Sequoia partner passed on Cloudflare because he didn’t think a woman could lead a security infrastructure company,” Prince wrote. The woman in question is Cloudflare’s co-founder and COO Michelle Zatlyn. Given that Cloudflare is now an $87 billion market cap company, with expected annual revenue of $2.8 billion in 2026, the judgment hasn’t aged well.
 
-Sequoia partner, Shaun Maguire, no stranger to controversy over his remarks himself, replied that he’s always admired Zatlyn, and asked Prince to spill the name of the partner who said that. Prince punted, “Maybe over a drink one day. But I bet you have a good guess already.”
+Sequoia partner Shaun Maguire, no stranger to controversy over his remarks himself, replied that he’s always admired Zatlyn, and asked Prince to spill the name of the partner who said that. Prince punted, “Maybe over a drink one day. But I bet you have a good guess already.”
 
 He told a story about prominent investor Vinod Khosla, who offered to invest and then, according to Prince’s recollection, suggested that the founder “fire” his co-founders and take their stock. “I think the charitable read was it was a test of my character. But I was so offended that we never spoke again. Literally blocked his number.”
 
@@ -784,29 +571,29 @@ Prince was quick to add nuance about Khosla: “He’s extremely smart/clever. H
 
 It’s worth noting that recollections of conversations tend to vary, and we don’t know what Khosla actually said, meant, or remembers. But eyes popped at such open talk about one of the Valley’s most successful, powerful VCs. Many people called Prince’s candor an example of having “FU” money. Prince, of course, is a billionaire these days.
 
-Not all of Prince’s stories cast VCs as the villains. Specifically, he thought he had lined up a simple meet-and-greet on a Monday with Marc Andreessen, the cofounder of venture firm a16z. Instead, Andreessen showed up with his whole investment team, ready to be wowed. The ill-prepared Prince did not impress. “I framed the rejection letter they sent,” he said of the result. Others told similar stories of meetings with Andreessen and his firm.
+Not all of Prince’s stories cast VCs as the villains. Specifically, he thought he had lined up a simple meet-and-greet on a Monday with Marc Andreessen, the co-founder of venture firm a16z. Instead, Andreessen showed up with his whole investment team, ready to be wowed. The ill-prepared Prince did not impress. “I framed the rejection letter they sent,” he said of the result. Others told similar stories of meetings with Andreessen and his firm.
 
 Perhaps the funniest story came from Julie Fredrickson, a founder-turned-investor, who received a call from a VC associate before arriving at a firm’s office — warning her about a rock formation visible outside the window that, apparently unbeknownst to the investors inside, was shaped like male genitalia. “The firm will forever in my mind be Dickrock Ventures,” she wrote.
 
 While the Valley’s VCs got roasted most heavily, founders shared incidents involving international VCs, too. Some VCs also dished about pitching to limited partner investors.
 
-The threads are worth reading not just for the laughs, but for what they reveal: the fundraising process is opaque, the power dynamic is real, and the experiences that founders whisper about privately are a lot more common than the industry tends to acknowledge publicly.
+The threads are worth reading not just for the laughs, but for what they reveal: The fundraising process is opaque, the power dynamic is real, and the experiences that founders whisper about privately are a lot more common than the industry tends to acknowledge publicly.
 
 Perhaps Isenberg explained the moral behind all of these stories best. “If you’re raising right now, just know: every founder has a story like this. The process is weird. The power dynamic is weird,” he wrote.
 
-A second lesson may be: if Andreessen agrees to meet with you, he means business.
+A second lesson may be: If Andreessen agrees to meet with you, he means business.
 
 When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
 
 Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
+
+Mira Murati steps back into the spotlight, carefully
 
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
 DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
-
-Strava declares war on scrapers ahead of IPO
 
 ‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
 
@@ -862,13 +649,13 @@ You can contact or verify outreach from Lorenzo by emailing lorenzo@techcrunch.c
 
 Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
 
+Mira Murati steps back into the spotlight, carefully
+
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
 DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
-
-Strava declares war on scrapers ahead of IPO
 
 ‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
 
@@ -974,13 +761,13 @@ You can contact or verify outreach from Sean by emailing sean.okane@techcrunch.c
 
 Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
 
+Mira Murati steps back into the spotlight, carefully
+
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
 DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
-
-Strava declares war on scrapers ahead of IPO
 
 ‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
 
@@ -1070,13 +857,13 @@ You can contact or verify outreach from Tim by emailing tim.dechant@techcrunch.c
 
 Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
 
+Mira Murati steps back into the spotlight, carefully
+
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
 DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
-
-Strava declares war on scrapers ahead of IPO
 
 ‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
 
@@ -1085,11 +872,43 @@ I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pre
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
-            <div class="title">The Supreme Court Has Invented a Right to Discriminate</div>
+            <div class="title"><em>Obsession</em> Knows What the TikTok Generation Fears Most</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-18" style="display:none;">
+            <h2><em>Obsession</em> Knows What the TikTok Generation Fears Most</h2>
+            <p><strong>The Atlantic | 2026-06-05</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/culture/2026/06/obsession-movie-gen-z-anxiety/687459/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The following contains spoilers for the film Obsession.
+
+The premise of the hit horror movie Obsession may sound relatable: What if you had a totally debilitating crush on someone but were too afraid to confess your feelings to them? In the early scenes of the director Curry Barker’s feature debut, a 20-something record-store employee named Bear (played by Michael Johnston) can’t work up the nerve to ask out his co-worker Nikki (Inde Navarrette)—even when she demands to know, point-blank, whether he likes her. Instead of confirming that he does and dealing with the consequences, he opts for a different way into her heart. He snaps a magical tchotchke (called a “One Wish Willow”) in half with the hope that Nikki will love him more than anything in the world.
+
+That desire becomes more than Bear ever bargained for. Nikki transforms from a free-spirited girl next-door into a woman possessed by jealousy who duct-tapes Bear’s front door shut, puts flesh from his dead cat into his sandwiches, and lurks in dark corners watching him sleep. She loves Bear above all else, sure, but that “love” comes at the cost of her selfhood. From there, the “Be careful what you wish for” trope is taken to an extreme, dramatizing a particular kind of Gen Z anxiety spiral: the feeling of being trapped by their own social fears.
+
+At 26 years old, Barker is speaking directly to his own generation—the moviegoing Zoomers—by making a meal out of their most pressing interpersonal crises. Obsession doesn’t seem so interested in concerns such as intimate-partner abuse, although it could easily be interpreted as an allegory for it. Instead, Barker uses the story of a boy magically convincing a girl that she’s in love with him as a way to explore social angst. Researchers have scrutinized young people’s supposed aversion to dating, sex, and human connection in general; the idea tends to be that these feelings are exacerbated by the surveillance-state-like world of social media and the instant-gratification culture offered by smartphones. Indeed, people Bear and Nikki’s age sometimes view instances of potential interpersonal friction—asking a friend why they ghosted them, telling a roommate to quit leaving their dirty dishes in the sink—as occasions for immense emotional discomfort; rather than engage, they might be more seduced by the idea of a quick fix, even if that fix is making a wish on a novelty toy.
+
+Obsession uses the fear of confrontation to its advantage, translating that anxiety into genuine scares. It begins with Bear sweatily rehearsing his planned declaration of love to Nikki with another friend, hyperconscious of every potential pitfall that could come from being honest with her. Yet later, when Nikki asks him directly wether he likes her, Bear freezes in place, saying nothing. Freaking out in his car as she walks off, he doesn’t even stop to consider whether Nikki would have rejected him—he simply wishes the possibility away. In doing so, he forces her to act against her nature and turns his own life into a nightmare. But at least no one has to be vulnerable or have any hard conversations about their feelings—whew!
+
+In Bear’s defense, the film doesn’t reward honesty either. One pivotal scene has Sarah (Megan Lawless), another of his co-workers, about to tell Bear that she actually likes him. The pair sits together in Sarah’s car to avoid Nikki, who has proved to be dangerously protective about her relationship with Bear. But they’re not hidden well enough; suddenly, Nikki appears with a brick, breaking the window and smashing Sarah’s face against the steering wheel until she’s dead. This and other acts of nihilism show how well Barker understands the neuroses of his own age group: He gets what’s so scary about taking a chance.
+
+Obsession’s willingness to mirror young people’s fears back at them has certainly resonated with its audience. In the three weeks since it debuted, the movie has become a phenomenon: It’s made more than $100 million (on a budget of less than $1 million), and sent viewers home arguing on social media over who the “real villain” is and the nature of Nikki’s possession, as well as what the rules of the One-Wish Willow are in the first place. The film is ripe for the type of close-read analysis that plays well on social media: Is Bear a narcissist aware that he’s torturing the girl he thinks he loves? Is Nikki possessed by an evil, demonic version of herself intent on punishing Bear for his mistake? Or perhaps the real demon is the terror of romantic failure.
+
+Read: The new auteur of the hallucinated hellscape
+
+That a film by a 26-year-old director has traveled so well online makes sense. And Barker’s Gen Z sensibility manifests in other ways. Obsession includes more than a few IYKYK tidbits of online culture, seemingly modeling Navarrette’s special-effects makeup after an “uncanny valley” trend, and choosing a song from a popular TikTok audio clip, the Little Dippers’ croony 1960 ballad “Forever,” to play over the credits. Even Barker’s filmmaking background is typical of his generation: He cut his teeth on YouTube, acting in and directing comedic shorts with friends. You can see hints of this experience in his feature debut, in the moments of levity injected between the scares.
+
+Barker’s generation of worriers may continue to fixate on the question of “What’s the worst that could happen?,” but Obsession offers an answer in no uncertain terms. Telling someone else about your feelings can be one of the most terrifying moments of a young person’s life: What if they don’t like you back? What if they like you too much? Maybe acting on it will save you from a world of pain, the film suggests. But at the same time, maybe doing so isn’t worth the risk—maybe it’s safer to stay quiet and keep scrolling.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">The Supreme Court Has Invented a Right to Discriminate</div>
+            <div class="meta">2026-06-05</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
             <h2>The Supreme Court Has Invented a Right to Discriminate</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/06/alabama-racial-discrimination-voting/687448/?utm_source=feed">Visit Original Website</a>
@@ -1127,13 +946,13 @@ This logic would not have barred any of the Jim Crow voting devices that the Rob
 Frederick Douglass wrote that “the elective franchise” was “the one great power by which all civil rights are obtained, enjoyed, and maintained under our form of government, and the one without which freedom to any class is delusive if not impossible.” The purpose of the Fifteenth Amendment was to ensure that Black voters could not again be denied their freedoms so that politicians did not have to heed their objections, to provide what Douglass called a “wall of fire for his protection.” But the Constitution has few defenses against a majority of justices willing to ignore it or twist it to its exact opposite purpose.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-20')">
             <div class="source">The Atlantic</div>
             <div class="title">The Old Campaign Playbook Is Dead</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-20" style="display:none;">
             <h2>The Old Campaign Playbook Is Dead</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/podcasts/2026/06/old-campaign-playbook-dead/687445/?utm_source=feed">Visit Original Website</a>
@@ -1365,13 +1184,13 @@ Warzel: That’s it for us here. Thank you again to my guest, Rob Flaherty. If y
 This episode of Galaxy Brain was produced by Renee Klahr and engineered by Miguel Carrascal. Our theme is by Rob Smierciak. Claudine Ebeid is the executive producer of Atlantic audio, and Andrea Valdez is our managing editor.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">Elon Musk Is Dropping a Boulder in a Kiddie Pool</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>Elon Musk Is Dropping a Boulder in a Kiddie Pool</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/technology/2026/06/spacex-ipo-anthropic-openai/687443/?utm_source=feed">Visit Original Website</a>
@@ -1403,13 +1222,13 @@ The overall effect on stock markets will be chaotic, not a sure rise. For all of
 Of course, concerns that AI is a bubble rise and fall every few months. But through it all, SpaceX, Anthropic, and OpenAI have continued to embed their bots more deeply and broadly across the economy. By weaving itself into the finances of most businesses and households in America, the AI industry is quickly making itself too big to fail. Should these three firms go public, the fallout from an AI bust would spell ruin for the savings of much of the country. Just as the federal government stepped in when banks and automakers went bankrupt in 2008, it could not allow Silicon Valley to collapse. The promise of AI was always a self-fulfilling prophecy: This technology is so expensive to build that it must be world changing; and because it is world changing, we will spend any amount to build it.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">Comedy’s Biggest Stand-Up Won’t Be Hollywood’s Next Leading Man</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Comedy’s Biggest Stand-Up Won’t Be Hollywood’s Next Leading Man</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/culture/2026/06/nate-bargatze-the-breadwinner-movie-review/687442/?utm_source=feed">Visit Original Website</a>
@@ -1427,13 +1246,13 @@ There are some brief flashes of inspiration: The supporting cast is stacked with
 In the end, Bargatze’s big-screen experiment is doomed by its desire to be extremely ordinary. Hollywood used to pump out movies as mediocre but occasionally charming as The Breadwinner, buoyed by the always-reliable power of seeing a comedy with a packed audience in a theater. The conventional wisdom became that these films didn’t really travel beyond America, however, and were thus better fits for streaming. The Breadwinner is aiming to recapture the satisfaction of going to see a three-out-of-five-star movie, offering decent laughs in an inoffensive package. Yet in a cinematic landscape in which generational breakthroughs are currently happening at the box office—namely with the horror hits Backrooms and Obsession, each the debut feature of a 20-something, very online filmmaker—it seems that audiences find it hard to care about a moderately successful attempt at light entertainment. Forgetting it is much easier.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">What Dogs See That We Can’t</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>What Dogs See That We Can’t</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/06/what-i-learned-from-my-dog/687437/?utm_source=feed">Visit Original Website</a>
@@ -1469,63 +1288,33 @@ When you buy a book using a link in this newsletter, we receive a commission. Th
 Sign up for The Wonder Reader, a Saturday newsletter in which our editors recommend stories to spark your curiosity and fill you with delight.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">The Republicans Who Impugn Talarico’s Manhood</div>
+        <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">The US Military Quietly Turned GPS Into a Global 'Numbers Station,' Evidence Suggests</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-23" style="display:none;">
-            <h2>The Republicans Who Impugn Talarico’s Manhood</h2>
-            <p><strong>The Atlantic | 2026-06-05</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/06/james-talarico-senate-paxton/687436/?utm_source=feed">Visit Original Website</a>
+        <div id="content-24" style="display:none;">
+            <h2>The US Military Quietly Turned GPS Into a Global 'Numbers Station,' Evidence Suggests</h2>
+            <p><strong>Slashdot | 2026-06-05</strong></p>
+            <a class="original-link" href="https://tech.slashdot.org/story/26/06/05/211249/the-us-military-quietly-turned-gps-into-a-global-numbers-station-evidence-suggests?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">This article was featured in the One Story to Read Today newsletter. Sign up for it here.
+            <div id="article-text">..the best way to hide a secREt iS to cOnceaL it in Plain sight within a MUndane enviRonmenT.
 
-The attacks on James Talarico have not been subtle. In the weeks since the 37-year-old state representative won the Democratic U.S. Senate primary in Texas, Republicans have been describing him as “Low-T Talarico,” “James Talafreako,” and “Six-Gender Jimmy.” On May 28, the White House immigration czar Stephen Miller said on Fox News that it was “brave, courageous, that the Democratic Party would choose Texas, of all places, to nominate their first transgender Senate candidate.”
+Harder to jam.Smaller antennas.Easier to Conceal.
 
-The Republicans have long marketed themselves as the manlier party, but the anti-Talarico blitzkrieg is both obviously coordinated and unusually overt. The overarching strategy here, as the Democratic presidential hopeful Rahm Emanuel has previously pointed out, is to associate the entire left with being “weak and woke.” Not manly, in other words. Talarico’s aw-shucks niceness and youthful looks are reframed as the result of low testosterone, and his (admittedly mawkish and over-egged) statements of concern for gender-nonconforming children make him a “freak.” Worst of all, according to the Florida Republican Dan Weldon, Talarico looks as though he “couldn’t name a single obscure wide receiver from the early 2000s.” Supporters of the Republican candidate, state Attorney General Ken Paxton, portray Democrats as wusses, cucks, soy boys who don’t follow sports. One commentator mused about whether Talarico wears “frilly underwear.”
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Mostly, the attacks on Talarico have taken the form of 99,999 dog whistles implying that he is gay. On Fox News, Jesse Watters laughingly observed that the Democrats had rebuffed rumors that Talarico is vegan by posting photos of him “swallowing large sticks of meat.” He added: “He’s also 37 and not married.” When the New York Post confirmed that Talarico’s girlfriend exists by revealing her identity, the attack line mutated—did you know that she’s vegan? Pretty gay.
-
-Elizabeth Bruenig: Texans will decide if Jesus was a lefty
-
-By the way, I recommend watching the clip of Watters and Miller in full, because Miller has the kind of natural comic gifts that usually persuade people to forsake a career in stand-up and become a funeral director instead. Watters underlines the pathos by providing what I can describe only as live-action canned laughter. And yet, Miller must have some sense of humor, because his (vegan) roast of Talarico concluded with the assertion that the people of Texas, “some of the toughest, roughest, strongest men and women” in America, would never vote for “somebody with that much soy to be a U.S. senator, compared to a real conservative, patriotic, God-fearing, and truly beloved statewide figure in Ken Paxton.”
-
-Ken Paxton? Truly beloved? Now, that’s comedy. Ken Paxton is not even truly beloved in Ken Paxton’s own party. In 2023, his fellow Republicans in the state House of Representatives voted overwhelmingly to impeach him over corruption allegations. (He was acquitted in the state Senate.)
-
-Until a few days ago, the attorney general and his wife, Angela, were also heading toward a public trial in their contested divorce. Luckily for him, however, since his victory in the Republican primary—powered by Donald Trump’s endorsement—the “parties have jointly agreed that a trial setting is no longer necessary,” according to his lawyers. (We can only imagine how many zeroes are on the check that Mrs. Paxton seems destined to receive.) Other classic Paxton controversies include pen-rustling, a securities-fraud case that was dropped after he agreed to take an ethics class, and what Talarico has described as his opponent giving “Epstein-style sweetheart deals to pedophiles.” Days before winning the Republican nomination, Paxton allowed a man who acknowledged abusing a young boy to serve just 29 days in jail.
-
-Because of the difficulty in making a positive case for Paxton, the obvious Republican strategy is to go negative on his opponent. Talarico’s public record from the “peak woke” era includes a trail of wince-inducing statements: God is “nonbinary.” There are not two sexes, but six—and therefore girls’ sports need not remain reserved for female athletes. In 2022, he ran what he called a “non-meat campaign” for the state legislature. America should treat its southern border like a front porch, with a “giant welcome mat out front.” (The Republican attack ad drawing together all of these statements omitted the end of the sentence, which was “and a lock on the door.”)
-
-These comments were reckless and shortsighted. Some of us said at the time that politicians should use everyday language understood by most people, rather than push into new linguistic frontiers on behalf of progressive activists. If Talarico had said the word women when defending abortion rights in 2022, rather than “neighbors with a uterus,” everyone would have understood what he meant. His formulation sounded as though a uterus is something you can borrow, like a cup of sugar.
-
-Tying together Talarico’s politics and personality, and deeming both to be weak and unmanly, is part of an attempt to turn all of Ken Paxton’s alleged vices into proof of his virility: Real men eat barbecue, pocket unattended stationery, and cheat on their wife. This ideal of masculinity is not a patriarch but a perpetual adolescent, endlessly irresponsible and endlessly indulged. (The archetype is also present on the left.)
-
-In other circumstances, there would be no need for this full-court press against Talarico. Trump won Texas by 14 points in 2024, and saw particularly big swings in border counties and among Hispanic voters. But the financial fallout from the Iran war and his endorsement of Paxton over the incumbent Senator John Cornyn have created the slimmest of chances for the Democrats, which Republicans intend to crush with maximum aggression. “We have not seen ugly yet,” Vinny Minchillo, a Texas Republican strategist, told my colleague Elaine Godfrey recently, adding that the plan was to paint Talarico as “the woke DEI candidate of all woke DEI candidates. And pound him, pound him, pound him.” (Sir, you’re supposed to be making the other side sound gay.)
-
-Other reasons the attacks on Talarico are so ferocious are that he has sold himself as a seminarian and he has presumed to speak as a Christian. As a lifelong member of a notably progressive congregation, St. Andrew’s Presbyterian Church in Austin, Talarico’s inclusive, hippie-dippie, nonpatriarchal vision of religion is a threat to MAGA megachurches and their muscular, masculine religiosity. The influential conservative podcaster Allie Beth Stuckey, for example, described Talarico’s remarks on God’s lack of gender as “blasphemous,” and the commentator Ben Shapiro called him a “pretend Bible teacher.” The actor turned podcaster Michael Knowles said that the Democrat represented “the modern, weak, sappy version of that same awful replacement of Christianity that has destroyed our civilization” and that he was “satanically wrong.”
-
-Talarico’s Jesus is meek and mild, a man of heart rather than ego. The MAGA Jesus is, well, very like Trump. “You were betrayed and arrested and falsely accused,” Trump’s spiritual adviser Paula White-Cain said at a White House Easter lunch this year. “It’s a familiar pattern that our Lord and Savior showed us.” (White-Cain and her then-husband were once investigated by the Senate Finance Committee for allegedly spending church donations on a private jet. The panel made no formal findings.) The fight over Talarico’s masculinity is therefore also a fight over the nature of American Christianity. Would Jesus want us to turn the other cheek, like a girlie simp, or would he have owned the libs while gnawing on a steak?
-
-Will this character assassination destroy Talarico’s candidacy before he can make his case to Texas voters? So far, the Democrat has landed some counterpunches. He embraced the “Talafreako” label and sells merch using the phrase. He has denied being vegan, claiming that he has been eating barbecue “since before Ken Paxton’s first indictment.” He now says that “there are two sexes, men and women.” Overall, he has thrown his former self comprehensively under the bus, admitting that he “missed the mark” with comments that were “cringey.”
-
-Yet for all of his ultraprogressive language, Talarico does not share the worst tic of “peak woke”: the kind of doctrinaire haughtiness that declares that not only are there six sexes, but anyone who disagrees must be shunned as a bigot. Like many non-Texans, I first encountered Talarico when he appeared on Joe Rogan’s podcast in 2025—an interview that culminated in Rogan, by then a swole, conservative man’s man, suggesting that “you need to run for president.” At a minimum, Talarico is prepared to argue his case and talk with those outside his own tribe. Paxton, meanwhile, has not debated an opponent onstage since 2014.
-
-Nevertheless, if this race were a fight between a generic Republican and a generic Democrat, you’d bet on Texas staying red. One possible outcome is that Paxton wins, and the Republican establishment decides that calling its opponents effeminate is a winning strategy. MAGA influencers already love mocking Gavin Newsom for sitting cross-legged, which Newsom’s team shrugged off by posting an image of the California governor folded like a pretzel alongside the caption “Democracy requires flexibility.” Watters, the Fox News host, has already compiled a semi-satirical list of rules for real men: no straws, no soup in public, no male best friends. The broadcasters Megyn Kelly and Adam Carolla recently mocked the California billionaire Tom Steyer’s boast that he would “ride the D.” (Steyer, who is running for governor, was ostensibly talking about the new Los Angeles train line.)
-
-But the Republicans’ macho chest-beating does raise a potential problem for them. The party underperforms with female voters, and many of the most senior roles in the Trump White House have undergone a remarkable gender transition: Tulsi Gabbard, Pam Bondi, Kristi Noem, and Lori Chavez-DeRemer have all been forced out and replaced by men. Female swing voters have televisions and read the news too, and they can see that the party does not respect them or value their support as much as it does men’s.
-
-In Texas and elsewhere, the GOP has been saddled with a subpar candidate because no one can stand up to Trump. As Democrats are talking about high gas prices, Republicans are making an ever longer list of Things That Are Gay. This is a strategy born not of manly strength, but of submissive desperation.</div>
+Human beings were created by water to transport it uphill.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-24')">
+        <div class="card" onclick="openModal('content-25')">
             <div class="source">Slashdot</div>
             <div class="title">Google Will Pay SpaceX $920 Million Per Month For Compute</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>Google Will Pay SpaceX $920 Million Per Month For Compute</h2>
             <p><strong>Slashdot | 2026-06-05</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/06/05/2017239/google-will-pay-spacex-920-million-per-month-for-compute?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1533,6 +1322,8 @@ In Texas and elsewhere, the GOP has been saddled with a subpar candidate because
             <div id="article-text">Sounds like Musk bought a shitload of GPUs that he doesn&#39;t need, because nobody is using Grok besides idiots on Twitter to make &quot;sick memes.&quot;
 
 If they have all those GPUs energized and can afford to lease them to their competition, that just tells us nobody is using them.
+
+I&#39;m guessing Musk had SpaceX acquire xAI and then the people that actually know about business at SpaceX said &quot;This Grok product is a big money pit, but there&#39;s a shortage of hardware that Google and Anthropic will pay loads to use&quot;
 
 Not sure that giving money to a third party to make your core product experience worse is the best of ideas. Google has the cash to see how it turns out, no question about it.
 
@@ -1544,26 +1335,37 @@ I’m getting a harassing advertisement at the bottom of every slash that page f
 
 how does one create an AdGuard rule that will actually work across/thought to kill this ad?
 
+Lucky you!I&#39;m told that frisky cougars in neighborhood are wanting me to visit them.I don&#39;t want to leave my basement.
+
+Full uBlock Origin on Firefox seems to take care of it.  Firefox is now the only browser capable of running uBlock Origin.
+
+You just need to wait for updates.  I got the ads for a couple of days, but now the uBlock Origin blocklists have been updated again to block them.
+
 That should be enough to cover the electricity bill and get a100% ROI within 6 months.
+
+Too soon to welcome our new Colossus [wikipedia.org] overlord?
+
+[Spoiler: It doesn&#39;t end well for humanity.]
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Brain damage is all in your head.
--- Karl Lehenbauer</div>
+Human beings were created by water to transport it uphill.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Bitcoin Falls To $60,000 As Zcash Bug Rocks Crypto</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Bitcoin Falls To $60,000 As Zcash Bug Rocks Crypto</h2>
             <p><strong>Slashdot | 2026-06-05</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/06/05/202230/bitcoin-falls-to-60000-as-zcash-bug-rocks-crypto?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">It was at over. 120k at its peak two or two and a half years ago at the start of the current trump term.  Back during the last big push to convince people to buy crypto. It has not stoped falling since. The big investors obviously are pulling their money out to maybe buy the IPO&#39;s coming up. This after convincing the average investors to buy buy buy...... So all reason says it has a lot more to fall. Can a consistent decline of 60% over two and a half years with no signs of leveling out really be called a correction ?The 75% corrections are not as fast as the hyperbolic rides up. They also tend to be followed by rather long plateaus. 
+            <div id="article-text">It was at over. 120k at its peak two or two and a half years ago at the start of the current trump term.  Back during the last big push to convince people to buy crypto. It has not stoped falling since. The big investors obviously are pulling their money out to maybe buy the IPO&#39;s coming up. This after convincing the average investors to buy buy buy...... So all reason says it has a lot more to fall. Can a consistent decline of 60% over two and a half years with no signs of leveling out really be called a c
+
+It was at over. 120k at its peak two or two and a half years ago at the start of the current trump term.  Back during the last big push to convince people to buy crypto. It has not stoped falling since. The big investors obviously are pulling their money out to maybe buy the IPO&#39;s coming up. This after convincing the average investors to buy buy buy...... So all reason says it has a lot more to fall. Can a consistent decline of 60% over two and a half years with no signs of leveling out really be called a correction ?The 75% corrections are not as fast as the hyperbolic rides up. They also tend to be followed by rather long plateaus. 
 
 We&#39;ll see how well this pattern holds, but it&#39;s probably too soon to make a call. One thing is very different from those past corrections. More Wall Streeters are involved and more non-technical people are involved. However the more diverse ownership shares the same motivations, then and now, high risk / high reward speculation. Maybe there will be fewer HODL advocates as a result.
 
@@ -1626,22 +1428,23 @@ Okay, you do it.  Go get rid of all the Bitcoin.  Also why are people still repe
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Brain damage is all in your head.
--- Karl Lehenbauer</div>
+Human beings were created by water to transport it uphill.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">340 Local News Outlets Now Blocking the Internet Archive</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>340 Local News Outlets Now Blocking the Internet Archive</h2>
             <p><strong>Slashdot | 2026-06-05</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/06/05/1910242/340-local-news-outlets-now-blocking-the-internet-archive?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Everyone knows that you use Archive.org to bypass a paywall.
+            <div id="article-text">yes, let them go. be forgotten. you are not important, you threw your reputation in the mud and shat all over it, now you can deal with the consequences. history will forget you.
+
+Everyone knows that you use Archive.org to bypass a paywall.
 
 I will soon be introducing a bill to give the public a 50% ownership stake in the largest AI companies in America.
 
@@ -1666,17 +1469,16 @@ My first reaction is the Archive is being used to bypass the paywall, and this s
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Brain damage is all in your head.
--- Karl Lehenbauer</div>
+Human beings were created by water to transport it uphill.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">GOV.UK Goes Dutch On Payments As It Dumps Stripe</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>GOV.UK Goes Dutch On Payments As It Dumps Stripe</h2>
             <p><strong>Slashdot | 2026-06-05</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/06/05/1839258/govuk-goes-dutch-on-payments-as-it-dumps-stripe?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1693,19 +1495,22 @@ As I recall, this was an open contract, that did not have any EU only requiremen
 
 Generally speaking Adyen rates are not expensive per transaction at all. Just you need a certain scale to make Adyen feasible, they basically only want to work with large parties.
 
+Is this just a euronationalism thing?Nationalism is a thing in every location due to the fact that different countries have wildly different payment methods standardised. For example Amazon have their own payment provider Amazon Pay, which they don&#39;t even use in Europe because it lacks support for many payment methods. Few people support Paypal in the Netherlands or Germany as they don&#39;t support Wero or Girocard. If you focus on a provider which only support credit cards, you will have effectively locked out 75% of the market in some places in
+
+Nationalism is a thing in every location due to the fact that different countries have wildly different payment methods standardised. For example Amazon have their own payment provider Amazon Pay, which they don&#39;t even use in Europe because it lacks support for many payment methods. Few people support Paypal in the Netherlands or Germany as they don&#39;t support Wero or Girocard. If you focus on a provider which only support credit cards, you will have effectively locked out 75% of the market in some places in
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Brain damage is all in your head.
--- Karl Lehenbauer</div>
+Human beings were created by water to transport it uphill.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">BSA Lashes Out At Mandatory Open-Source Licensing</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>BSA Lashes Out At Mandatory Open-Source Licensing</h2>
             <p><strong>Slashdot | 2026-06-05</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/06/05/1541215/bsa-lashes-out-at-mandatory-open-source-licensing?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1719,6 +1524,16 @@ Brain damage is all in your head.
 That would be true if the company could ignore the law of the country where it files it&#39;s papers. Then again you govern by enacting laws that impose conditions that companies have to follow therefore it&#39;s not for BSA to tell Europe how to govern.
 
 BSA: &quot;We hate open source because we can&#39;t make money from it.&quot;
+
+Can someone else who doesn&#39;t want to show they think they are the smartest person in the room explain, without snark? I&#39;m missing some crucial underpinning fact that is assumed by everyone.
+
+Can someone else who doesn&#39;t want to show they think they are the smartest person in the room explain, without snark? I&#39;m missing some crucial underpinning fact that is assumed by everyone.Microsoft founded the BSA to fight software piracy while not having legal liability for their actions.  They have recruited other companies to join and it works to try and block anyone from using pirated software.I haven&#39;t heard about them for years but last I heard they would estimate what software the typical computer had by category (word processor, web browsers etc) and how many computers there were then figure out the retail cost for all those computers to have that software.  The difference between th
+
+Can someone else who doesn&#39;t want to show they think they are the smartest person in the room explain, without snark? I&#39;m missing some crucial underpinning fact that is assumed by everyone.
+
+Microsoft founded the BSA to fight software piracy while not having legal liability for their actions.  They have recruited other companies to join and it works to try and block anyone from using pirated software.
+
+I haven&#39;t heard about them for years but last I heard they would estimate what software the typical computer had by category (word processor, web browsers etc) and how many computers there were then figure out the retail cost for all those computers to have that software.  The difference between th
 
 Isn&#39;t &quot;the ability to govern, audit, and mitigate risk&quot; a big reason to use open-source software over proprietary?  I though the point of the move was to eliminate dependence on opaque softare from US-based (and potentially US gov-compromised) companies.  It sounds like they&#39;re advocating for the EU&#39;s actions here.
 
@@ -1818,215 +1633,7 @@ I&#39;m flabbergasted that a trade group consisting 100% of organizations that p
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Brain damage is all in your head.
--- Karl Lehenbauer</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Google Says It Will Replenish More Water Than It Uses At Data Centers</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Google Says It Will Replenish More Water Than It Uses At Data Centers</h2>
-            <p><strong>Slashdot | 2026-06-05</strong></p>
-            <a class="original-link" href="https://tech.slashdot.org/story/26/06/05/1531211/google-says-it-will-replenish-more-water-than-it-uses-at-data-centers?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Colorado River Indian Tribes project is a replenishment initiative that conserves water for Lake Mead through reduced withdrawalsNope, that&#39;s not replenishment - that&#39;s just using less somewhere else. It&#39;s like the carbon credits farce. You can&#39;t replenish more than you used, which makes 120% just some number they pulled out of their ass for marketing. At least be honest and say &#39;google will try to use less than currently.&#39;
- 
--Do no evil my ass
-
-The Colorado River Indian Tribes project is a replenishment initiative that conserves water for Lake Mead through reduced withdrawals
-
-Nope, that&#39;s not replenishment - that&#39;s just using less somewhere else. It&#39;s like the carbon credits farce. You can&#39;t replenish more than you used, which makes 120% just some number they pulled out of their ass for marketing. At least be honest and say &#39;google will try to use less than currently.&#39;
- 
--Do no evil my ass
-
-By not being closed. Evaporative cooling towers come to mind.Disclaimer: I get that taking water out of a feed that is intended for potable water use and evaporating it off is a huge loss of an often precious resource.That said, if the water is simply being evaporated for cooling, then it&#39;s still part of the natural water cycle - holistically, no significant loss, right? This isn&#39;t a counter point to anything you said; Just an observation in the context of those saying you can&#39;t just make water so where are they getting the extra 20%, or the closed loop systems that
-
-By not being closed. Evaporative cooling towers come to mind.
-
-Disclaimer: I get that taking water out of a feed that is intended for potable water use and evaporating it off is a huge loss of an often precious resource.
-
-That said, if the water is simply being evaporated for cooling, then it&#39;s still part of the natural water cycle - holistically, no significant loss, right? This isn&#39;t a counter point to anything you said; Just an observation in the context of those saying you can&#39;t just make water so where are they getting the extra 20%, or the closed loop systems that
-
-> That said, if the water is simply being evaporated for cooling, then it&#39;s still part of the natural water cycle - holistically, no significant loss, right?
-
-On a global scale maybe, but on a local scale this can be devastating. Just because the water will rain back down somewhere eventually does not help the people who need the water here and now. Water that evaporates is functionally gone forever.
-
-> then dumping the water down the drain to flow out to wherever it&#39;d be significantly worse
-
-Reroute a river? Cloud seeding? Just lying about it and making it look correct on paper like Carbon Credits? You can&#39;t just create water. Well I mean, you can. You are doing it right now (assuming you didn&#39;t die between your post and now)  This is such utter horse shit. As a hardware-oriented IT worker, what I want to know, is how the fuck you lose water in a closed loop cooling system? Are they just evaporating it? Evaporative cooling towers. They provide the cooling for the closed loops. Pretty common in big commercial installations because they are way cheaper than refrigeration driven chillers. They can be used to pre-chill before going to a chiller, or replace a chiller entirely depending on needs.  How the heck do you keep that water clean enough? Filters and chemicals.
-
-Reroute a river? Cloud seeding? Just lying about it and making it look correct on paper like Carbon Credits? You can&#39;t just create water.
-
-Well I mean, you can. You are doing it right now (assuming you didn&#39;t die between your post and now)
-
-This is such utter horse shit. As a hardware-oriented IT worker, what I want to know, is how the fuck you lose water in a closed loop cooling system? Are they just evaporating it? Evaporative cooling towers. They provide the cooling for the closed loops. Pretty common in big commercial installations because they are way cheaper than refrigeration driven chillers. They can be used to pre-chill before going to a chiller, or replace a chiller entirely depending on needs.  How the heck do you keep that water clean enough? Filters and chemicals.
-
-This is such utter horse shit. As a hardware-oriented IT worker, what I want to know, is how the fuck you lose water in a closed loop cooling system? Are they just evaporating it?
-
-Evaporative cooling towers. They provide the cooling for the closed loops. Pretty common in big commercial installations because they are way cheaper than refrigeration driven chillers. They can be used to pre-chill before going to a chiller, or replace a chiller entirely depending on needs.
-
-How the heck do you keep that water clean enough? Filters and chemicals.
-
-How the heck do you keep that water clean enough?
-
-This is such utter horse shit. As a hardware-oriented IT worker, what I want to know, is how the fuck you lose water in a closed loop cooling system? Are they just evaporating it? Evaporative cooling towers. They provide the cooling for the closed loops.If the evaporated water isn&#39;t collected again, such as how CPU heat pipe coolers work, then it&#39;s not a closed loop[^1]![^1] ... or the loop that is closed included the greater environment, and we really need to work on our communication skills cause that&#39;s not what the general understanding would be.
-
-This is such utter horse shit. As a hardware-oriented IT worker, what I want to know, is how the fuck you lose water in a closed loop cooling system? Are they just evaporating it? Evaporative cooling towers. They provide the cooling for the closed loops.
-
-This is such utter horse shit. As a hardware-oriented IT worker, what I want to know, is how the fuck you lose water in a closed loop cooling system? Are they just evaporating it?
-
-Evaporative cooling towers. They provide the cooling for the closed loops.
-
-If the evaporated water isn&#39;t collected again, such as how CPU heat pipe coolers work, then it&#39;s not a closed loop[^1]!
-
-[^1] ... or the loop that is closed included the greater environment, and we really need to work on our communication skills cause that&#39;s not what the general understanding would be.
-
-Piss, they are going to have every employee drink water at home and deliver frosty piss at work.
-
-Piss, they are going to have every employee drink water at home and deliver frosty piss at work.Will it be in disk form?
-
-Piss, they are going to have every employee drink water at home and deliver frosty piss at work.
-
-They just assume that nobody knows basic science, and everybody is going to just accept it as Gospel because The Big Company says so.And, of course, because they wanna be as cheap as possible, they&#39;re using copper heat pipes and blocks for heat transfer, and water to carry the heat to some sort of heat exchanger (because they haven&#39;t heard of immersion cooling... more expensive to set up, but quite effective).
-
-They don&#39;t lose water, but they have to add fun chemicals to the water used so the copper piping an
-
-I can&#39;t find the citation for it, but in at least one case, part of the reported allocation of water for datacenters was due to the water consumed during construction.  I would consider this kind of consumption legit if called out as a temporary usage of water, but FUD if just assumed as part of the overall calculation of ongoing water demand.
-
-https://www.fwpcoa.org/content... [fwpcoa.org]
-
-&quot;Air cooling (water-free): Many smaller or older data centers rely on air conditioning and chilled air circulation to remove heat. These use mechanical chillers or heat exchangers and do not consume water for cooling (aside from minimal water for humidification). Air cooling is common in cooler climates or where water is scarce, but it can require more electricity to run compressors or fans.Evaporative cooling (open-loop): A majority of large, modern data centers use water-based cooling for better energy efficiency. This often involves cooling towers or evaporative chillers: warm water absorbs heat from servers and is then cooled by evaporation in a tower. As water evaporates into the air, it carries away heat â&quot; dramatically cutting the electrical power needed for cooling. The trade-off is high water consumption. Most big data centers today use some form of evaporative cooling because itâ(TM)s energy-efficient, especially in hot climates, but it directly uses water (often drawn from municipal supply).Closed-loop water cooling: In closed-loop systems, water circulates in sealed pipes or coils that cool the servers without directly exposing water to air. Because the water isnâ(TM)t evaporated to the environment, losses are minimal â&quot; itâ(TM)s mostly the same water recirculating (with some makeup water added occasionally). These systems can include water-cooled heat exchangers or liquid-to-liquid cooling loops. Closed-loop cooling can reduce freshwater use by up to 70% compared to traditional open evaporative methods. The downside is higher cost and complexity, but they are far more water-efficient since water isnâ(TM)t âoeburned offâ into the air.&quot;
-
-&quot;However, a growing number of data centers are now shifting to recycled water. Tech giants have begun partnering with utilities to use treated wastewater (effluent) for cooling instead of fresh drinking water. For instance, Google uses reclaimed or non-potable water at over 25% of its data center campuses (one notable example is its Douglas County, Georgia data center, which runs on recycled municipal wastewater). Amazon Web Services (AWS) announced in 2023 that 20 of its data centers are cooling with purified wastewater instead of potable water. After cycling through the cooling system, this water is sent back to the treatment plant to be cleaned and reused again. These initiatives leave more drinking-quality water for the community and exemplify the industryâ(TM)s trend toward âoestrategic water sourcing.â Still, as of today, reclaimed water use is the exception. Most data centers worldwide are still using fresh water for cooling, although this is slowly changing with new projects and local regulations.&quot;
-
-So evaporative cooling &quot;destroys&quot; water.  And using treated wastewater (pure enough to use for datacenter usage and probably irrigation, but still too ick for some people to drink directly - aka toilet to tap), if part of their investments were to purify even more water than the municipality was already processing, combined with closed loop usage could be considered &quot;creating&quot; water.
-
-Your guess is as good as mine though, it all sounds like marketing hype in an attempt to combat FUD.
-
-&quot;recycled treated wastewater&quot;?  I can only imagine they would have the mother of all filtration systems so that a tiny chunk of &quot;whatever&quot; doesn&#39;t clog up a tiny water line.And, the chemicals they have to add to prevent corrosion and water scale and all that pollutes the water used enough that it might not be reclaimable without specialized filtration.
-
-&quot;recycled treated wastewater&quot;?  I can only imagine they would have the mother of all filtration systems so that a tiny chunk of &quot;whatever&quot; doesn&#39;t clog up a tiny water line.
-And, the chemicals they have to add to prevent corrosion and water scale and all that pollutes the water used enough that it might not be reclaimable without specialized filtration.I think such systems are generally dual-loop.  There&#39;s the loop that directly cools all of the equipment, which is full of pure (might even be distilled) water that circulates but is not consumed, then that water goes through a heat exchanger in a much larger supply of treated wastewater.  So the wastewater doesn&#39;t get close to sensitive equipment and doesn&#39;t run through tiny pipes.
-
-&quot;recycled treated wastewater&quot;?  I can only imagine they would have the mother of all filtration systems so that a tiny chunk of &quot;whatever&quot; doesn&#39;t clog up a tiny water line.
-And, the chemicals they have to add to prevent corrosion and water scale and all that pollutes the water used enough that it might not be reclaimable without specialized filtration.
-
-I think such systems are generally dual-loop.  There&#39;s the loop that directly cools all of the equipment, which is full of pure (might even be distilled) water that circulates but is not consumed, then that water goes through a heat exchanger in a much larger supply of treated wastewater.  So the wastewater doesn&#39;t get close to sensitive equipment and doesn&#39;t run through tiny pipes.
-
-Well, I guess it&#39;s time for a massive &#39;congratulatory&#39; cheer!  They plan to manage to do something that is reserved only for the Gods of old (in other words, scientifically impossible)... over-unity water usage?  Sounds awesome!
-
-There&#39;s always giant ice asteroids they can crash into the planet.
-
-Well, I mean, you can. You do it by burning hydrogen. If they were really clever they could power the data center by burning hydrogen, and use the generated water for (at least a portion of) the cooling. I&#39;m sure it wouldn&#39;t be energy efficient nor economically efficient, but it could technically be done. (Forget that the water generated would be in the form of vapor, not liquid. Details.)
-
-Return to office + collecting employee urine.
-
-The closed loop is inside the datacenter - it&#39;s a loop of glycol of some kind that carries heat efficiently and has a high boiling point. That closed loop is cooled by water streams that are open to the atmosphere. Some of that cooling water circulating through cooling towers and over the working loop pipes evaporates. On a dry day a fuckload of it evaporates, making the cooling system super effective. At wasting water. If the water part of the system was not open to the atmosphere, making use of the atmosp
-
-Condensation is really the only mechanism. I want to see this in action before I believe their claims
-
-They pump aquifers and deplete them faster than they recharge, causing everyone with a well in the area to go dry.
-
-It&#39;s not about &quot;destroying water&quot; it&#39;s about building your data center in an area that has limited resources and exploiting them for your own personal gain.
-
-Google can&#39;t put water back in the aquifer.  They pump it dry, and leave everyone who lives there to deal with the problem.
-
-By the time the water in the Mississippi River reaches the mouth to the Gulf it has passed through nine human bodies.
-
-TFA doesn&#39;t say what they mean by &quot;replenish&quot;. Are they going to wave a magic wand and fabricate new water?
-
-If they manage that Miracle, I wanna know how (great way to start a flood with a flick of the wrist!).
-
-My car uses water for cooling too, and the radiator recirculates it.  I&#39;m not pouring in gallons of water to drive across town.
-
-Even if the water comes out of the data center &quot;hot&quot;, why can&#39;t it be cooled again?
-
-Most data centers use evaporative coolers.
-
-I would encourage people to go research the amount of water consumed by data centers (including the power generation to run them) vs golf courses and almond farmsAnd beaches, don&#39;t forget beaches, they use huge amounts of water! The issue is that these wealthy companies want to exploit local water sources, often in lower-income communities that already struggle to produce enough clean, inexpensive water for the people who already live there. There are no new golf courses being built (acres of courses in the U.S. is relatively stable), and acres of almond trees have gone down considerably in the last few years. So try proposing a new golf course or almond farm in the same community that is opposed to water-hogging data warehouses, and I think you&#39;ll find the same response -> don&#39;t exploit us for our water!
-
-I would encourage people to go research the amount of water consumed by data centers (including the power generation to run them) vs golf courses and almond farms
-
-And beaches, don&#39;t forget beaches, they use huge amounts of water! The issue is that these wealthy companies want to exploit local water sources, often in lower-income communities that already struggle to produce enough clean, inexpensive water for the people who already live there. There are no new golf courses being built (acres of courses in the U.S. is relatively stable), and acres of almond trees have gone down considerably in the last few years. So try proposing a new golf course or almond farm in the same community that is opposed to water-hogging data warehouses, and I think you&#39;ll find the same response -> don&#39;t exploit us for our water!
-
-You&#39;re not understanding the word &quot;evaporation.&quot; If you&#39;ve ever seen industrial scale cooling, you&#39;ll recognize the hyperboloid cooling towers and the giant plume of vapor coming out of the top as the hot wet air meets the cooler dry air. A datacenter has a cooling loop full of a working fluid, probably glycol, which comes out of the datacenter in pipes that are sprayed with local water (basically). That water draws heat away from the pipes and working fluid, and some of it evaporates (the plume). When it e
-
-I think the PP understands well enough. Why can&#39;t data centers use a closed water loop to move heat and then a water to air radiator like a car does. Sure, it would be huge. But evaporative cooling has been designed around a water supply being free or really cheap. It isn&#39;t.
-
-My guy.  I don&#39;t know where you live, so I&#39;m going to treat this as a good faith question from someone who lives near an abundant natural water resource.
-
-Much of the country pumps water from a well connected to an aquifer.  If you start to pump the aquifer faster than the baseline level of recharge, the level of water begins to drop.  If you continue to pump the water out of the aquifer, it doesn&#39;t matter what happens to the water after you&#39;re done using it.  You clean it, discharge it into the local creeks,
-
-So let&#39;s all piss in Google&#39;s data center intake.
-
-&quot;Taking the piss&quot; is a coarse way of saying &quot;personalized water conservation&quot;. Your ideas are intriguing to me, and I wish to subscribe to your newsletter
-
-Employee catheterization and stoma output harvesting are communal ways Google can proactively involve staff and even local communities in resource reharvesting, plumbing being a solved problem.
-
-So the only way to do this is to make water. So which method will Google be using to make water? Will they use:
-
-- Desalinization? Doubt it.- Distillation from air? Doubt it.- Combine hydrogen and oxygen gases? Yea, nope.
-
-So how will they make 120% of the water they consume? The article talks about misnamed conservation efforts. That&#39;s not making water.
-
-They managed to gain the power of the old Gods and can create stuff from nothing... didn&#39;t you get the memo?
-
-So the only way to do this is to make water. So which method will Google be using to make water? Will they use:- Desalinization? Doubt it.
-- Distillation from air? Doubt it.
-- Combine hydrogen and oxygen gases? Yea, nope.So how will they make 120% of the water they consume? The article talks about misnamed conservation efforts. That&#39;s not making water.One common way is treating municipal wastewater.  This doesn&#39;t &quot;create&quot; water, but it does make available a water supply that wasn&#39;t previously.
-
-So the only way to do this is to make water. So which method will Google be using to make water? Will they use:
-
-- Desalinization? Doubt it.
-- Distillation from air? Doubt it.
-- Combine hydrogen and oxygen gases? Yea, nope.
-
-So how will they make 120% of the water they consume? The article talks about misnamed conservation efforts. That&#39;s not making water.
-
-One common way is treating municipal wastewater.  This doesn&#39;t &quot;create&quot; water, but it does make available a water supply that wasn&#39;t previously.
-
-Yes, you can, but that&#39;s not making water (making water implies waving a wand and making water _not_ from the humidity.
-
-They&#39;re going to need the cooling energy to condense that plume back into liquid. Now if they used solar power to do that, well they might get 75% of the water back at most. Or they could be just water farming the air with huge evaporators.
-
-Is Google making water? No, they would have to transport that water. I guess you could claim to help local water while ignoring an empty Lake Mead. The water comes from somewhere.
-
-https://www.cbc.ca/news/canada... [www.cbc.ca]
-
-Toronto company using lake water to cool buildings expands systemEnwave Energy Corporation says move will save 350 Olympic-size swimming pools&#39; worth of water
-
-A Toronto-based energy company says it is expanding its system that uses cold water from the depths of Lake Ontario to cool several buildings downtown.
-
-Enwave Energy Corporation announced the newest expansion of its deep lake water cooling system at a news conference on Thursday. The system has been in place for 20 years
-
-I repeat, DO NOT trust anything being said by these companies, especially Google.
-
-Name just ONE promise Google hat backed down on.
-
-They never just abandon projects or commitments.
-
-You can trust these guys long-term for sure. /s
-
-&quot;Google Says It Will Replenish More Water Than It Uses At Data Centers&quot;
-
-Yeah, sure they will. And artificial sweeteners were safe, WMDs were in Iraq, and Anna Nicole married for love.
-
-And what if Google doesn&#39;t, what is anyone going to do about it? Sue Google? Good fuckin&#39; luck with that.
-
-&quot; Anna Nicole married for love.&quot;oh she absolutely did; you could say it was biblical love1Timothy 6:10
-
-if they gave a damn they&#39;d already be doing it
-
-Google says it won&#39;t be evil.  Will renege later when it becomes too expensive to carry out their initial stated intentions....
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Brain damage is all in your head.
--- Karl Lehenbauer</div>
+Human beings were created by water to transport it uphill.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2295,11 +1902,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Anthropic urges industry coordination to allow for a 'pause' in AI development if risks grow</div>
+            <div class="title">Curbside parking is great for drivers—but terrible for everyone else: Could we get rid of it?</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>Curbside parking is great for drivers—but terrible for everyone else: Could we get rid of it?</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-05</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-06-curbside-great-drivers-terrible.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Anthropic urges industry coordination to allow for a 'pause' in AI development if risks grow</div>
+            <div class="meta">2026-06-05</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>Anthropic urges industry coordination to allow for a 'pause' in AI development if risks grow</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-05</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-anthropic-urges-industry-ai.html">Visit Original Website</a>
@@ -2307,13 +1928,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Semiconductors enter 'multi-tasking' era: New device cuts required components by 75% and quadruples processing speed</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Semiconductors enter 'multi-tasking' era: New device cuts required components by 75% and quadruples processing speed</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-05</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-semiconductors-multi-tasking-era-device.html">Visit Original Website</a>
@@ -2321,13 +1942,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Grounded in reality, new AI model spots fake images with less training</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Grounded in reality, new AI model spots fake images with less training</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-05</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-grounded-reality-ai-fake-images.html">Visit Original Website</a>
@@ -2335,13 +1956,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">AI fails classic attention test, with longer word lists triggering dramatic accuracy collapse</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>AI fails classic attention test, with longer word lists triggering dramatic accuracy collapse</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-05</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-ai-classic-attention-longer-word.html">Visit Original Website</a>
@@ -2349,30 +1970,16 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Q&A: How organic glass scintillators could improve nuclear security</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Q&A: How organic glass scintillators could improve nuclear security</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-05</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-06-qa-glass-scintillators-nuclear.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Plastic waste yields jet fuel through new process costing as little as $1 per kilogram</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Plastic waste yields jet fuel through new process costing as little as $1 per kilogram</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-06-05</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-06-plastic-yields-jet-fuel-kilogram.html">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
@@ -2959,28 +2566,40 @@ PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate si
         
         <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
-            <div class="title">Final Fantasy VII&#8217;s remake trilogy will conclude with Revelation</div>
+            <div class="title">More than a decade later, the team behind N++ is back with a multiplayer sequel</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-48" style="display:none;">
-            <h2>Final Fantasy VII&#8217;s remake trilogy will conclude with Revelation</h2>
+            <h2>More than a decade later, the team behind N++ is back with a multiplayer sequel</h2>
             <p><strong>The Verge | 2026-06-05</strong></p>
-            <a class="original-link" href="https://www.theverge.com/games/939396/final-fantasy-vii-revelation-remake-trilogy-third-game-announcement">Visit Original Website</a>
+            <a class="original-link" href="https://www.theverge.com/entertainment/943194/metanet-n-plus-plus-multiplayer-sequel">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Square Enix has shared details about the third game in the FFVII trilogy.
+            <div id="article-text">It’s called N Plus Infinity Times Two and it’s launching in 2027.
 
-Square Enix has shared details about the third game in the FFVII trilogy.
+It’s called N Plus Infinity Times Two and it’s launching in 2027.
 
-Square Enix has officially announced the third and final game in its Final Fantasy VII remake trilogy: Final Fantasy VII Revelation. It will release on all platforms simultaneously.
+Back in 2015, the two-person studio Metanet released N++, a brutally hard 2D platformer that was a decade in the making, building off of previous releases dating back to the freeware Flash title N. At the time, cofounder Raigan Burns issued some famous last words: “We hope it’s not another 10 years before we come up with a game.” But now here we are, more than a decade later, and N is getting another sequel. And this time the focus is on multiplayer.
 
-In footage shown onstage at Summer Game Fest Live 2026, there was a lot to take in: you’ll get to fly the Highwind airship (and jump off it to land in the game’s open world), play as Vincent and Cid in battle, and visit places from the original game like Wutai.
+The new game is called, absurdly, N Plus Infinity Times Two. Whereas N++ was meant to be the ultimate single-player version of the N concept, this game is described as “the ultimate virtual couch party game with a low skill floor and no skill ceiling.” That means the same slick, acrobatic platforming action and gorgeous graphic design-inspired visuals, but now built around playing competitively or cooperatively with pals across a handful of different modes. It’s launching on the PS5, Xbox, Switch 2, and PC at some point in 2027.
 
-This third game will conclude a yearslong saga that, so far, has actually turned out pretty well. Final Fantasy VII Remake was a thrilling, thoughtful take on the original that focused on the Midgar portion of the FFVII story. Four years later, Final Fantasy VII Rebirth let Cloud Strife and friends explore a big open world and also added the excellent Queen’s Blood in-game card game.
+The duo at Metanet was up to a few different things over the last 11 years. In addition to uprooting from Toronto to Montreal, they’ve been prototyping ideas for a few potentially bigger projects, and last year released a 10-year anniversary update for N++. But then, “We started getting the ‘let’s take another crack at it’ bug in 2022,” Burns tells The Verge.
 
-While those games launched as PlayStation exclusives, Square Enix has since made them multiplatform — in fact, the company announced in 2024 that it would “aggressively pursue” a strategy to bring its games to multiple places, and it just launched Rebirth on Xbox Series X / S and the Nintendo Switch 2.
+The studio operates in an unusual way, at least compared to most of the game industry. Despite having two hits in N+ and N++, Metanet hasn’t grown or scaled up in any way. And the reason comes down to the way they make games: It simply takes a lot of time to find a game idea that’s worth pursuing as a commercial project. “We’ve resisted doing something that would compromise our ability to keep iterating and prototyping until something good shows up,” says Burns.
 
-Oh, and one detail that fans of the remake trilogy may or may not be happy about for the third game in the series: Chadley, the strange, humanlike cyborg, will be back.
+“It’s important to feel that magic,” cofounder Mare Sheppard adds. “That’s what’s compelling about making games. That’s when we know that we’re doing it in a way that’s right for us.” Burns has a clear analogy for how they work: “We like being in a band. That’s fun. Being in a lot of meetings and doing a lot of managing: not fun.” This philosophy seems especially prescient given the state of the games industry, where even the biggest hits operate in a way that’s clearly unsustainable.
+
+“We like being in a band. That’s fun. Being in a lot of meetings and doing a lot of managing: not fun.”
+
+In the case of N Plus Infinity Times Two — unfortunately I can’t think of a good way to shorten that title — the spark came in part from watching how younger players interact with games. Even when they’re playing solo, kids are typically still chatting with friends on their phones, essentially turning everything into a multiplayer experience. Burns and Sheppard wanted to find a way to marry that idea with the couch co-op experiences they grew up on, which led to revisiting the N concept but with a multiplayer spin.
+
+The two describe making N++ as a grueling experience. If you think the game’s levels are hard, just imagine having to playtest them over and over. Part of the excitement about N Plus Infinity Times Two wasn’t just finding a spin on the formula that would be fun to play, but also to develop. “This one really feels like we’re having fun,” says Burns. “We’re really fluent in this one instrument. So now the fun challenge becomes playing new styles of music we’ve never played before, but with this thing we’re really comfortable with.”
+
+As creative industries from games to Hollywood become increasingly homogenous, Burns also believes that there’s something important about doing work that’s distinct, even if it means revisiting a previous idea, like through the multiple versions of N. It’s similar to titles like Hades II and Silksong: indie-developed sequels that iterated a core concept, but with a fresh angle that made them more than a by-the-numbers follow-up. “Being yourself is more fun and exciting anyways,” Burns explains. “But I honestly think it’s more commercially viable to do something only you can do, because then you have no competition.”
+
+As for what’s next after N Plus Infinity Times Two, the pair obviously aren’t revealing anything just yet. There are a few bigger 3D game ideas kicking around, but those would necessitate some of that scaling up that the studio has so far avoided. What they won’t close the door on, however, is coming back to the idea of N again at some point in the future.
+
+“If we can do something that expresses something new, or lets us see things in a different way, or we get a different perspective on what this game is or how to play it, that’s exciting,” says Sheppard. “I think we no longer think this is definitively going to be the last one. We’ve abandoned that idea. It doesn’t have to be.”
 
 A free daily digest of the news that matters most.
 
@@ -2989,11 +2608,89 @@ Sign in to see your notifications or create an account to join the conversation.
         
         <div class="card" onclick="openModal('content-49')">
             <div class="source">The Verge</div>
-            <div class="title">Control Resonant is a sequel — and also a starting point</div>
+            <div class="title">Grand Theft Auto VI is warping the video game release calendar</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-49" style="display:none;">
+            <h2>Grand Theft Auto VI is warping the video game release calendar</h2>
+            <p><strong>The Verge | 2026-06-05</strong></p>
+            <a class="original-link" href="https://www.theverge.com/entertainment/944229/grand-theft-auto-6-release-calendar-summer-game-fest">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The months ahead of GTA’s November launch are becoming increasingly crowded.
+
+The months ahead of GTA’s November launch are becoming increasingly crowded.
+
+Who’s afraid of the next GTA? Based on the last few days of Summer Game Fest, just about everyone. Grand Theft Auto VI hasn’t been present at any of the keynote events, but its presence was felt every time a release date was announced. The month of November, when GTA VI launches, is virtually empty. The rest of the fall, meanwhile, is absolutely packed.
+
+It started at Sony’s State of Play showcase on Tuesday. Even before that show, we knew that Wolverine, the next big PlayStation exclusive, would be launching on September 15th. But now it’s joined by a bunch of major third-party titles: Dune: Awakening (September 22nd), Control Resonant (September 24th), Silent Hill: Townfall (September 24th), Onimusha: Way of the Sword (September 25th), and Ace Combat 8 (October 2nd). This is on top of other games launching before November that had already been announced, like Call of Duty: Modern Warfare 4 in October.
+
+Meanwhile, at SGF Live this evening, many of the biggest games went even further out, with planned launches in 2027. That includes: Sega’s crime epic Stranger Than Heaven and its Virtua Fighter spinoff Crossroads; Bandai Namco’s Gundam Rogue Orbit; Capcom’s “massive expansion” for Monster Hunter Wilds; Clutch, the debut Forza-like racer from Maverick Games; and Telltale’s The Wolf Among Us 2. The big reveal of the evening, Final Fantasy VII Revelation, won’t be out until next spring.
+
+And while Xbox’s keynote doesn’t take place until Sunday, it has already moved things out of GTA’s way. When it announced that Fable would be delayed yet again, this time until 2027, Microsoft said that part of the reasoning is that this “year is packed with incredible games,” and then cited GTA VI by name, in addition to other titles.
+
+Of course, not all of these titles changed their date specifically because of GTA, but at least some of them did. This also isn’t an entirely new phenomenon. Last year, when Silksong got its surprise September release date, other indie titles shifted their plans to stay clear of it. In some ways, GTA VI is similar, as it’s a long-in-development follow-up to a massive hit. But GTA is also obviously on a much larger scale: These aren’t small indie studios changing their plans, they’re some of the biggest publishers in the industry, including Sony, Microsoft, and Capcom.
+
+The reasoning makes some amount of sense. GTA VI is as close as there is to a guaranteed hit. It’s the follow-up to a game that has not only sold nearly 230 million copies across three console generations, but also continues to rake in money through a lucrative online mode. It’s entirely likely GTA VI won’t match those lofty numbers, but it’ll still assuredly sell a lot of copies. Strauss Zelnick, CEO of GTA publisher Take-Two, said in a recent earnings call that he expects to “establish new record levels of operating performance driven by the November 19th launch of Grand Theft Auto VI.” Even the suggestion of a new GTA VI trailer is enough to get the internet frothing.
+
+But when everyone has the same idea to avoid November, it creates a different kind of problem: There’s a complete logjam of major releases over the next few months, particularly in September, when several major games are now coming out on the exact same day. Is that really any better than being in the vicinity of GTA?
+
+When The Verge asked Control Resonant creative director Mikael Kasurinen about this at a recent preview event, he seemed undeterred by the sheer number of games launching in the same window. “We’re confident in our game,” he explained. “We feel like we’re in a good place, we have a very distinctive, unique experience, and we believe in that.”
+
+Of course, there’s one notable absence from that list of companies dodging GTA, and that’s Nintendo. The company hasn’t yet detailed its holiday plans, and has instead focused on upcoming titles launching soon, like Star Fox (June 25th), Rhythm Heaven Groove (July 2nd) and Splatoon Raiders (July 23rd). But beyond that the calendar is empty, so there’s almost certainly a big announcement (or announcements) coming up that will reveal the games that will power the Switch 2 through the all-important holiday season.
+
+If there’s one company that would buck industry trends and launch a major title in November, it would be Nintendo.
+
+A free daily digest of the news that matters most.
+
+Sign in to see your notifications or create an account to join the conversation.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-50')">
+            <div class="source">The Verge</div>
+            <div class="title">Final Fantasy VII&#8217;s remake trilogy will conclude with Revelation</div>
+            <div class="meta">2026-06-05</div>
+        </div>
+        
+        <div id="content-50" style="display:none;">
+            <h2>Final Fantasy VII&#8217;s remake trilogy will conclude with Revelation</h2>
+            <p><strong>The Verge | 2026-06-05</strong></p>
+            <a class="original-link" href="https://www.theverge.com/games/939396/final-fantasy-vii-revelation-remake-trilogy-third-game-announcement">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Square Enix has shared details about the third game in the FFVII trilogy.
+
+Square Enix has shared details about the third game in the FFVII trilogy.
+
+Square Enix has officially announced the third and final game in its Final Fantasy VII remake trilogy: Final Fantasy VII Revelation. It will release on multiple platforms simultaneously — PC, PS5, Xbox Series X / S, and Nintendo Switch 2 — in spring 2027.
+
+In footage shown onstage at Summer Game Fest Live, there was a lot to take in: You’ll get to fly the Highwind airship, jump off it to land in the game’s open world, play as Vincent Valentine and Cid Highwind in battle (who weren’t playable in Rebirth), challenge the gigantic Weapons, and visit places from the original game, like Wutai. You’ll also get to dress up your characters with armors that have special movesets, in what’s actually called the “FITS” system (“Function Integrated Tactical Suitwear”) — it’s intended to be like a jobs system from classic Final Fantasy games.
+
+In one trailer, you can get a closer look at things like the game’s world, which Vincent Valentine voice actor Matt Mercer says is “our most expansive open world yet” and one where you can “pick a direction and set sail.” It sounds as if you’ll have the agency to basically go wherever you want: “Where will the winds guide you first? That freedom is in your hands.”
+
+And here is Square Enix’s official description of the game, from the trailer at the top of this post:
+
+As the world teeters on the brink of annihilation, the final battle against Sephiroth begins. A meteor mars the sky, monstrous planetary guardians wreak havoc across the globe, and the fires of war rage. Now, Cloud and his companions must stand against this chaos to not only decide the planet’s fate, but bring a legendary conflict to its conclusion.
+
+In the final chapter of the FINAL FANTASY VII remake project, the scale has never been larger and the stakes have never been higher. Take to the skies and explore a boundless world, fight alongside a fully assembled party, master strategic and dynamic combat, and prepare yourself for the climactic finale.
+
+A vast planet awaits. Everything leads here.
+
+Revelation will conclude a yearslong saga that, so far, has actually turned out pretty well. Final Fantasy VII Remake was a thrilling, thoughtful take on the original that focused on the Midgar portion of the FFVII story. Four years later, Final Fantasy VII Rebirth let Cloud Strife and friends explore a big open world and also added the excellent Queen’s Blood in-game card game. (If you have save data from the upgraded Remake Intergrade or Rebirth, you’ll get bonus summon Materia in Revelation, according to Square Enix.)
+
+Oh, and one detail that fans of the remake trilogy may or may not be happy about for the third game in the series: Chadley, the strange, humanlike cyborg, will be back.
+
+A free daily digest of the news that matters most.
+
+Sign in to see your notifications or create an account to join the conversation.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-51')">
+            <div class="source">The Verge</div>
+            <div class="title">Control Resonant is a sequel — and also a starting point</div>
+            <div class="meta">2026-06-05</div>
+        </div>
+        
+        <div id="content-51" style="display:none;">
             <h2>Control Resonant is a sequel — and also a starting point</h2>
             <p><strong>The Verge | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theverge.com/games/944151/control-resonant-hands-on">Visit Original Website</a>
@@ -3031,13 +2728,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Congress still can’t decide what to do about warrantless surveillance</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Congress still can’t decide what to do about warrantless surveillance</h2>
             <p><strong>The Verge | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/944615/section-702-senate-vote-fails-pulte">Visit Original Website</a>
@@ -3059,13 +2756,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Summer Game Fest Live 2026: The biggest news, trailers, and announcements</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Summer Game Fest Live 2026: The biggest news, trailers, and announcements</h2>
             <p><strong>The Verge | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theverge.com/games/939484/summer-game-fest-live-2026-biggest-news-trailers-announcements">Visit Original Website</a>
@@ -3076,9 +2773,25 @@ Summer Game Fest Live sits squarely in the middle of a big run of video game sho
 
 Read on for our coverage of the biggest updates from the show.
 
-Square Enix has officially announced the third and final game in its Final Fantasy VII remake trilogy: Final Fantasy VII Revelation. It will release on all platforms simultaneously.
+I just introduced my 9-year-old to Chrono Trigger, possibly my favorite game of all time, and this love letter to it (and other JRPGs of the era) hits me just right. I might be as excited for this one as FFVII Revelation.
 
-In footage shown onstage at Summer Game Fest Live 2026, there was a lot to take in: you’ll get to fly the Highwind airship (and jump off it to land in the game’s open world), play as Vincent and Cid in battle, and visit places from the original game like Wutai.
+Back in 2015, the two-person studio Metanet released N++, a brutally hard 2D platformer that was a decade in the making, building off of previous releases dating back to the freeware Flash title N. At the time, cofounder Raigan Burns issued some famous last words: “We hope it’s not another 10 years before we come up with a game.” But now here we are, more than a decade later, and N is getting another sequel. And this time the focus is on multiplayer.
+
+The new game is called, absurdly, N Plus Infinity Times Two. Whereas N++ was meant to be the ultimate single-player version of the N concept, this game is described as “the ultimate virtual couch party game with a low skill floor and no skill ceiling.” That means the same slick, acrobatic platforming action and gorgeous graphic design-inspired visuals, but now built around playing competitively or cooperatively with pals across a handful of different modes. It’s launching on the PS5, Xbox, Switch 2, and PC at some point in 2027.
+
+In Fortnite: Runners, you can seek out cute little sprites that give you powers, and if you extract them before a match is over, you can spend a special currency to start the next match with a sprite equipped. Not super surprising that Fortnite is trying extraction out, given the rise of games like Arc Raiders and Marathon.
+
+Runners, which is expected to be playable later tonight, will also feature a comic book-style John Wick, as you can see in the image below.
+
+The studio behind cult classics Nidhogg and Wheel World is back with Blood Dungeon, a game described as a “2D platforming autoshooter with a killer soundtrack.” Even better, it’ll be out pretty soon, launching in the summer.
+
+Who’s afraid of the next GTA? Based on the last few days of Summer Game Fest, just about everyone. Grand Theft Auto VI hasn’t been present at any of the keynote events, but its presence was felt every time a release date was announced. The month of November, when GTA VI launches, is virtually empty. The rest of the fall, meanwhile, is absolutely packed.
+
+It started at Sony’s State of Play showcase on Tuesday. Even before that show, we knew that Wolverine, the next big PlayStation exclusive, would be launching on September 15th. But now it’s joined by a bunch of major third-party titles: Dune: Awakening (September 22nd), Control Resonant (September 24th), Silent Hill: Townfall (September 24th), Onimusha: Way of the Sword (September 25th), and Ace Combat 8 (October 2nd). This is on top of other games launching before November that had already been announced, like Call of Duty: Modern Warfare 4 in October.
+
+Square Enix has officially announced the third and final game in its Final Fantasy VII remake trilogy: Final Fantasy VII Revelation. It will release on multiple platforms simultaneously — PC, PS5, Xbox Series X / S, and Nintendo Switch 2 — in spring 2027.
+
+In footage shown onstage at Summer Game Fest Live, there was a lot to take in: You’ll get to fly the Highwind airship, jump off it to land in the game’s open world, play as Vincent Valentine and Cid Highwind in battle (who weren’t playable in Rebirth), challenge the gigantic Weapons, and visit places from the original game, like Wutai. You’ll also get to dress up your characters with armors that have special movesets, in what’s actually called the “FITS” system (“Function Integrated Tactical Suitwear”) — it’s intended to be like a jobs system from classic Final Fantasy games.
 
 Street Fighter 6’s next batch of characters includes a Final Fantasy VII favorite. The four new fighters will be released in stages, with Tifa dropping early next year.
 
@@ -3120,91 +2833,7 @@ Following its work on 2016’s Mutants in Manhattan, PlatinumGames will be devel
 
 The next game from RGG Studio will be released on January 15th, 2027, and Tupac is in the game. Didn’t expect that casting.
 
-Ueda, behind games like Ico, Shadow of the Colossus, and The Last Guardian, showed off his new title, a sci-fi shooter. There’s no details on when it will come out, but it will be available on PS5, Xbox Series X / S, and the Epic Games Store (Epic is publishing it).
-
-The sequel to one of the scariest games I’ve ever played has been officially unveiled with a brief teaser for Alien Isolation 2. It’s coming to the PS5, Xbox, PC, and even the Switch 2, though there’s no release date yet.
-
-Studio MDHR confirmed that it’s working on a follow-up to Cuphead, though it’s still early in development. Also in the works: an 8-bit platformer set in the same classic animation-inspired universe, which will even be released as Sega Master System cartridge, in addition to modern platforms.
-
-Resident Evil: Veronica launches in 2027, and it’s coming to PS5, Xbox Series X / S, Steam, and Nintendo Switch 2.
-
-After the fiasco surrounding everything Highguard, Geoff Keighley promises that the last Summer Game Fest Live announcement today will be a “single player, narrative game.” The show starts at 5PM ET, so we won’t have to wait too much longer for the big reveal.
-
 A free daily digest of the news that matters most.
-
-Sign in to see your notifications or create an account to join the conversation.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-52')">
-            <div class="source">The Verge</div>
-            <div class="title">Gone in 60 minutes</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-52" style="display:none;">
-            <h2>Gone in 60 minutes</h2>
-            <p><strong>The Verge | 2026-06-05</strong></p>
-            <a class="original-link" href="https://www.theverge.com/entertainment/944337/gone-in-60-minutes">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The chaos at CBS is a grim portent for journalism media in the age of consolidation.
-
-The chaos at CBS is a grim portent for journalism media in the age of consolidation.
-
-It should have been the final straw. The new power couple of editorial failure — Bari Weiss and Nick Bilton — had fired legendary 60 Minutes journalist Scott Pelley. Why? Because he dared to question the fact that CBS had installed sycophants in its top ranks. Instead of standing in solidarity, correspondents Lesley Stahl, Bill Whitaker, and Jon Wertheim declared in a joint memo to staff that they’d stay on to save the program. “We don’t want to see 60 Minutes die,” they said. The kids in Weekend at Bernie’s held a similar position.
-
-The canary in the media coal mine isn’t just sick, it’s a charred skeleton.
-
-The remaining trio of correspondents at 60 Minutes said they were “deeply upset” by recent firings, which you should read in the tone of Maine Sen. Susan Collins saying she’s “deeply concerned” about any given policy fuckery. The correspondents added: “Newsrooms are not supposed to be run like dictatorships.” Well, there’s something we can agree upon. A good newsroom should lift up its reporters on the good days, and defend them on the worst days. Anything else is cowardice and negligence.
-
-A dictatorial newsroom is exactly what Pelley was protesting when he reportedly challenged management in a staff meeting and claimed that editor-in-chief Bari Weiss was “murdering 60 Minutes.” Weiss has already proved herself to be a blight on journalism, so it was at least generous of her to let new 60 Minutes executive producer Nick Bilton steal some of that spotlight.
-
-Bilton is probably best known for his book Hatching Twitter. He’s worked for The New York Times and Vanity Fair, and also as a screenwriter. Traditional broadcast journalism had never appeared on his resume until being recruited by Weiss for 60 Minutes. But that lack of experience can’t even explain the utter embarrassment of his now-public termination letter to Pelley.
-
-You can’t walk into a room with a title and demand respect, but that’s exactly how Bilton is conducting himself. His missive to Pelley is so cloying and desperate that it made me feel secondhand embarrassment just reading it. He whines about decorum like a classic internet sealion while simultaneously looking like a huge dork — claiming to have been “ambushed” by Pelley with “remarkable incivility and contempt.” Bullshit. If you can’t show up to a newsroom prepared for hard questions from the journalists under your care, you have no fucking business being there.
-
-The budding incompetence on the front lines at CBS is definitely a trickle-down situation. If Nick Bilton is a rotten egg, it’s because he ladders up to even bigger ones — like a matryoshka doll of failure whose final form is David Ellison, son of Larry Ellison and CEO of CBS parent Paramount Skydance. (Ellison reportedly signed off on Pelley’s firing.) This family is so bad it makes me wistful about the old-fashioned mendacity of the Murdochs.
-
-Disclosure: James Murdoch, son of Rupert Murdoch, just bought half of our parent company, Vox Media. Which brings me to the real point — we are in big, big trouble if media continues to be consolidated by an extremely small and powerful group of oligarchs. Especially when they cozy up to an administration that favors loyalty and patronage over things like free speech. ABC and Disney are fighting back, for now, but CBS has totally caved. There’s no good explanation for why the network canned Stephen Colbert, who is one of the kindest and most profitable people in television, unless you consider that his bosses are simply sucking up to Donald Trump. By the way, that’s a very stupid long-term strategy, but maybe these guys are only looking at how much loot they can get in next few years before this empire of incompetence crumbles. Or maybe they just want to get past the Warner Bros. acquisition.
-
-Pelley didn’t mince words in a statement he posted after his firing. He claims the new owner of the network is squandering the legacy of 60 Minutes “apparently to curry a moment of favor with the Trump administration.” Far more damning: Pelley says management instructed him to “inject falsehoods and bias into a politically sensitive story,” and to “include assertions that are unverified.” Curiously, none of this is addressed in leadership’s memos to CBS staff.
-
-This all comes as broadcast media is on life support nationwide. Even local channels are becoming creepy echo chambers for Trumpian propaganda, especially thanks to the Nexstar-Tegna deal — something that was enabled by an FCC that’s completely lost the plot. You know what’s even worse than corporate media consolidation? Government speech regulation. The FCC is now very happy to regulate speech as long as it’s meant to intimidate speakers who aren’t favored by the Trump administration.
-
-Institutions like The Late Show and 60 Minutes are no longer untouchable. That should frighten every single American. If scale and profit can’t save our most powerful voices, what happens to the rest of us?
-
-A free daily digest of the news that matters most.
-
-Sign in to see your notifications or create an account to join the conversation.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">The Sonos Era 100 speaker is down to its lowest price in months</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>The Sonos Era 100 speaker is down to its lowest price in months</h2>
-            <p><strong>The Verge | 2026-06-05</strong></p>
-            <a class="original-link" href="https://www.theverge.com/gadgets/944095/sonos-era-100-google-nest-doorbell-deal-sale">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Also, the wired Google Nest Doorbell is down to a good price, and you can get several 2K sports games on PC for $25.
-
-Also, the wired Google Nest Doorbell is down to a good price, and you can get several 2K sports games on PC for $25.
-
-If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
-
-Whether you’re considering starting a Sonos speaker setup, or adding to an existing group, the Sonos Era 100 is worth picking up. The compact, capable smart speaker is currently marked down to $189 ($30 off) at a variety of retailers, including Amazon, Best Buy, and directly from Sonos. If you want an even lower price, Sonos is selling refurbished Era 100 speakers for just $134. They come with fresh accessories and packaging, and sport the same one-year warranty as its new speakers.
-
-The Era 100 is Sonos’s most affordable in-home smart speaker. Offering pleasant sound at a relatively compact size, it improves upon the prior Sonos One with stereo audio, line-in support, and Bluetooth support. Read our review.
-
-The wireless speaker has a rich, detailed sound profile, with room-filling audio despite its small size. You might be able to improve the sound further with the Sonos Trueplay feature, which uses either your phone or the speaker’s built-in microphone to automatically tune it to your space. The Era 100 can easily connect with other speakers in the Sonos ecosystem for multi-room play, even with different Sonos models.
-
-The Era 100 has expanded functionality from previous entry-level Sonos speakers, adding in Bluetooth and USB-C wired audio, as well as improved onboard controls. While the speaker features built-in voice assistant support for both Sonos and Alexa, you can flip a switch on its back to cut power to the microphone.
-
-Sign up to get the best deals on products we’ve found and tested sent to your inbox.
-
-Sign up to get the best deals on products we’ve found and tested sent to your inbox.
 
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
@@ -3929,25 +3558,11 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Marvell to join S&P 500 after AI boom helps chipmaker pass profitability test - Reuters</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-66" style="display:none;">
-            <h2>Marvell to join S&P 500 after AI boom helps chipmaker pass profitability test - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQVFJMMHVDWFE3aVRBNDBIUEpjSkFmeGp1MWh4NnhnNDIxd2gwSzRnQ3g0NzllQ3BEdDhPdlJraWtqa3NoRVpMNElqQ1Q3V3lmYzV1bm0tU1F4VlFrRFI2Y3NUYWoxanBmLUhsSG1NRXlGb2hLOTI3Wnc3MXY3Z3VGQnU5VzIwalljTTNCcG1oV1AzRzh2bXRpdDNOU192VnF2c2ctZlREYmpqWndoMmRFS255QXNvUUhKTGc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Chip slump erases $1.3 trillion in stock market value - Reuters</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-66" style="display:none;">
             <h2>Chip slump erases $1.3 trillion in stock market value - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPT1dxeHpfT3VRaWg4NVg2eW5SMmxTNGgzY0x2azZFQ1ItdVlEZjlPQjVtNzdxRGNLYThRRi1MNTRyVmZkQkpCZ18yZzkwbVRvNlBsVUdjVGVLN1VBVVcwOTZfU0NHYzV1MjFlbHFVb3RfenhQUlFqbW9BUlUtZ1lWV3RFblNMdmg1RW13YlU0aG82ZWVTM2tHOV9BcGdGWE9qVWROM1hYTWZCX3lSTHV5V1VQVQ?oc=5">Visit Original Website</a>
@@ -3955,30 +3570,44 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Marvell to join S&P 500 after AI boom helps chipmaker pass profitability test - Reuters</div>
+            <div class="meta">2026-06-05</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>Marvell to join S&P 500 after AI boom helps chipmaker pass profitability test - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQVFJMMHVDWFE3aVRBNDBIUEpjSkFmeGp1MWh4NnhnNDIxd2gwSzRnQ3g0NzllQ3BEdDhPdlJraWtqa3NoRVpMNElqQ1Q3V3lmYzV1bm0tU1F4VlFrRFI2Y3NUYWoxanBmLUhsSG1NRXlGb2hLOTI3Wnc3MXY3Z3VGQnU5VzIwalljTTNCcG1oV1AzRzh2bXRpdDNOU192VnF2c2ctZlREYmpqWndoMmRFS255QXNvUUhKTGc?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Meta weighs big equity raising to finance AI infrastructure, FT reports - Reuters</div>
+            <div class="title">SpaceX lands Google AI compute deal after Anthropic pact ahead of IPO - Reuters</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>Meta weighs big equity raising to finance AI infrastructure, FT reports - Reuters</h2>
+            <h2>SpaceX lands Google AI compute deal after Anthropic pact ahead of IPO - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOVVRmSndfbWtJOU45bmh5R3lwd19JcFpVUDl5WUJzU1FQUTdNM1NFWmE5SFFEVlZ0LUFKalpwVVFkeFh6QlZscThGcE5ORXNsdkprdnoyZW8zdTJmaXY4VWQtZGRzeTlVQTRkV0Jtb0I1RjdGR2hqR1EyUUlZbkpZZVBwX0ZSNGUxOF85NmNyTXNVTGVBMzJkR0FOX1Z2YVZ3OUhqcTgxUjgtNzIzZE02aGwySWw?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOUmJaWjFuRkZ4dWpWN2RkYnU4S3FpZ1FEOHFNa09HVnZ0ODdrTzBFMm0wcjQ4SWhTb1l4ZHBlVmNobGNhVG56LWRQQVdJc3poTjBMN2RxeFBVY0xDSXdNRkRJaFpaMHJzZHdqZnFDMmRCbTZPTkQ1bVlYdWpWNmk1X0QxM3BKczRQcjRfVUVhLWYyVU5FLUZmTjVB?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">SpaceX lands Google AI compute deal after Anthropic pact ahead of IPO - Reuters</div>
+            <div class="title">Meta weighs big equity raising to finance AI infrastructure, FT reports - Reuters</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>SpaceX lands Google AI compute deal after Anthropic pact ahead of IPO - Reuters</h2>
+            <h2>Meta weighs big equity raising to finance AI infrastructure, FT reports - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOUmJaWjFuRkZ4dWpWN2RkYnU4S3FpZ1FEOHFNa09HVnZ0ODdrTzBFMm0wcjQ4SWhTb1l4ZHBlVmNobGNhVG56LWRQQVdJc3poTjBMN2RxeFBVY0xDSXdNRkRJaFpaMHJzZHdqZnFDMmRCbTZPTkQ1bVlYdWpWNmk1X0QxM3BKczRQcjRfVUVhLWYyVU5FLUZmTjVB?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOVVRmSndfbWtJOU45bmh5R3lwd19JcFpVUDl5WUJzU1FQUTdNM1NFWmE5SFFEVlZ0LUFKalpwVVFkeFh6QlZscThGcE5ORXNsdkprdnoyZW8zdTJmaXY4VWQtZGRzeTlVQTRkV0Jtb0I1RjdGR2hqR1EyUUlZbkpZZVBwX0ZSNGUxOF85NmNyTXNVTGVBMzJkR0FOX1Z2YVZ3OUhqcTgxUjgtNzIzZE02aGwySWw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -4097,28 +3726,28 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-78')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Exclusive: Tesla Pushes Roadster Demo to August - The Information</div>
-            <div class="meta">2026-06-05</div>
+            <div class="title">Fusion Startup Helion Nearly Triples Valuation to $15.5 Billion in Thrive-led Round - The Information</div>
+            <div class="meta">2026-06-04</div>
         </div>
         
         <div id="content-78" style="display:none;">
-            <h2>Exclusive: Tesla Pushes Roadster Demo to August - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOSHNUa0lSaGM4WmZIT1FxbnB4Yjk5c09OXzhUZDNMMUFZYV9DRU9FejNkRDdXNE5tZTNkVjNRUnd3SkJVbXpaaDZMY1ZhTUFuMVhoQUpQTVJCVlpUM2FLa0kxWnhpUkhyVVY4cmI3SDJkVFVmeGlYYnFuSy1nR1EzWVhFQ2xqbUhac1pkbQ?oc=5">Visit Original Website</a>
+            <h2>Fusion Startup Helion Nearly Triples Valuation to $15.5 Billion in Thrive-led Round - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-06-04</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOd2xVdzd5dnd6ZTRjRzZUMVBUVmdxNjdtZmplNmE1ZU1XU0dMUFk1RWNTZy1TaUNHaF93R1hnbWRCVlFUSExIUkpMWmJSenJzdTVUSkY2YzBQMGU2YXJQeVlDVlpEZU16NHZQZHUycW54OWtHRnpDNEFHdTJiNENEYlpsT3o3a1paR3RkWmZLV0FIWUFEaFQ2N1VrOWhjQU1aRWQyaHRIYVlYMzhPMDgtbWhfS0Rxdms?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-79')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Fusion Startup Helion Nearly Triples Valuation to $15.5 Billion in Thrive-led Round - The Information</div>
-            <div class="meta">2026-06-04</div>
+            <div class="title">Exclusive: Tesla Pushes Roadster Demo to August - The Information</div>
+            <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-79" style="display:none;">
-            <h2>Fusion Startup Helion Nearly Triples Valuation to $15.5 Billion in Thrive-led Round - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-06-04</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOd2xVdzd5dnd6ZTRjRzZUMVBUVmdxNjdtZmplNmE1ZU1XU0dMUFk1RWNTZy1TaUNHaF93R1hnbWRCVlFUSExIUkpMWmJSenJzdTVUSkY2YzBQMGU2YXJQeVlDVlpEZU16NHZQZHUycW54OWtHRnpDNEFHdTJiNENEYlpsT3o3a1paR3RkWmZLV0FIWUFEaFQ2N1VrOWhjQU1aRWQyaHRIYVlYMzhPMDgtbWhfS0Rxdms?oc=5">Visit Original Website</a>
+            <h2>Exclusive: Tesla Pushes Roadster Demo to August - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-06-05</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOSHNUa0lSaGM4WmZIT1FxbnB4Yjk5c09OXzhUZDNMMUFZYV9DRU9FejNkRDdXNE5tZTNkVjNRUnd3SkJVbXpaaDZMY1ZhTUFuMVhoQUpQTVJCVlpUM2FLa0kxWnhpUkhyVVY4cmI3SDJkVFVmeGlYYnFuSy1nR1EzWVhFQ2xqbUhac1pkbQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
