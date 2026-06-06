@@ -163,7 +163,35 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/06/baby-botulism-outbreak-fda-still-doesnt-know-cause-or-how-to-prevent-it/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">The Food and Drug Administration this week posted what critics call an “underwhelming” epilogue to the devastating outbreak of botulism in babies, which was linked to spore-contaminated formula made by ByHeart. Despite clear tracking of the contamination, the regulator still doesn’t know how the bacteria arrived in the formula—or how to prevent it from happening again.
+
+“The FDA’s investigation into the root cause is ongoing with a focus on ingredients,” the agency reported.
+
+In the void, three companies at the center of the investigation are left pointing fingers at each other, with none publicly taking responsibility for the contamination.
+
+The outbreak was identified in early November and was declared over by the FDA and Centers for Disease Control and Prevention on February 26. In the end, 48 infants across 17 states were sickened and hospitalized. Some are still recovering months after the life-threatening infection.
+
+The FDA’s investigation provided a detailed trace of the bacteria behind the outbreak, Clostridium botulinum, which can produce hardy spores that are found in soil and sediments. If the spores reach an amenable environment—such as the vulnerable, underdeveloped guts of infants—they begin to grow and produce a neurotoxin that causes flaccid paralysis.
+
+Strains of C. botulinum isolated from some of the sick infants were genetically linked to strains found in ByHeart’s formula, which were also linked to strains found in powdered whole milk used in the formula. The powdered whole milk was dried from liquid milk at a Nevada facility run by Dairy Farmers of America, and the liquid milk came from the supplier Organic West, based in California. Organic West sold the resulting powder to ByHeart.
+
+Specifically, the FDA traced contaminated formula and milk powder back to eight whole milk lot powders that came from 33 fluid milk lots from Organic West, according to an incident summary.
+
+Still, the FDA could not determine where in the production chain the bacteria entered or how.
+
+“Even though there are several hypotheses, investigational findings could not identify the source or root cause of contamination of the powdered infant formula,” the agency concluded.
+
+Bill Marler, a lawyer specializing in food poisoning who is also representing 25 of the sickened infants in litigation, told Ars that the conclusion is “a little underwhelming to put it mildly.” The epilogue that the FDA posted this week, titled the “Post-Outbreak Response Activities,” provided a summary “without any real clear guidance for consumers or for the companies going forward.”
+
+In the meantime, each of the three companies is shirking blame. ByHeart released a statement this week saying “FDA has shared that it did not identify any deficiencies in ByHeart’s facilities that could explain the root cause of this outbreak.”
+
+Bill Van Ryn, an owner of Organic West Milk, previously stressed in media reports that “nothing has been proven about our milk yet.” Likewise, Dairy Farmers of America blamed Organic West, saying its processing met all required tests. “Manufacturers of end-use consumer products have a responsibility to properly process ingredients to ensure product safety,” Dairy Farmers of America said in a statement.
+
+While Marler wants to see more investigation and action by the FDA to understand and prevent another outbreak from happening, the blame ultimately lies with ByHeart, he says. It’s “not only an ingredient problem that happened to pass through ByHeart. That is ByHeart’s product, in ByHeart’s can, with ByHeart’s name on it, fed to a baby,” he wrote in a recent blog post. “Sourcing, verifying, and testing what goes into infant formula is the job.”
+
+Marler also noted that this is not the first time infant botulism has been linked to infant formula.
+
+In its statement this week, ByHeart said it is working to resume infant formula production. The company is now working with a lab to develop more sensitive testing for C. botulinum in its products.</div>
         </div>
         
         <div class="card" onclick="openModal('content-1')">
@@ -177,7 +205,54 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/security/2026/06/highly-reviewed-speaker-can-be-hacked-over-the-air-to-infect-connected-devices/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Operating system makers take many steps to prevent their wares from accepting commands from remote devices. The safeguards, designed to thwart malicious attacks, typically require hackers to jump through all kinds of hoops to bypass the measures. But what if remote code execution were as simple as being within Bluetooth range of a speaker connected to the targeted device?
+
+It turns out it can, at least when the speaker is a Sound Blaster Katana V2X sold by Singapore-based Creative Technologies. The speaker, which sells for $283, is widely acclaimed with numerous reviews showering praise on the sound and performance of it and its predecessor, the Sound Blaster V2.
+
+Researcher Rasmus Moorats stumbled on the hack by accident, after he purchased a Katana V2X, a soundbar that connects to PCs, Macs, and Linux devices over USB or Bluetooth. Moorats was curious if he could create a Linux tool that communicated with his speaker. He discovered he could do so through CTP, a proprietary mechanism he guesses is short for Creative Transport Protocol.
+
+CTP allows devices connected via Bluetooth or USB to send commands to the speaker, such as changing LED colors and equalizer settings. CTP also allows the connected devices to receive responses from the speaker.
+
+To Moorats’ surprise, his Bluetooth device was able to connect to the speaker, which was connected to a PC via USB, without any authentication. Not only that, but his Bluetooth device didn’t have to be paired first. Also surprising: One of the CTP commands, labeled “upload new firmware to device,” allowed him to replace the official firmware with his own custom one. The firmware reflashing didn’t use code signing or other measures to prevent the loading of unofficial code.
+
+After successfully replacing the firmware with a replacement image that did nothing more than display the word “patched” on the speaker’s LED display, the researcher got to wondering what else a hacker might do. So he turned his attention to FreeRTOS, the open source operating system that ran the Katana V2X. It contained a set of HID functions for allowing the speaker to act as a human interface device, a classification that includes keyboards, mice, and webcams. The speaker implemented a limited HID that allowed for things like changing the volume and playing or pausing sound, but little else.
+
+The researcher discovered that he could change the speaker’s USB descriptor set, which is essentially a report that informs devices about the capabilities of a USB- or Bluetooth-connected peripheral. He was able to augment the existing descriptor set with a second one that reported the speaker being a keyboard. Then he used code already included in the firmware to streamline the process of sending keypresses.
+
+All of this gave Moorats an idea: What if he used his device to send commands to the speaker that used the HID to pass them along to the connected PC? After some trial and error, he found that he could. In a blog post published on Wednesday, he wrote:
+
+Chaining it all together, I was able to totally remotely, over the air, upload a custom firmware to my speaker which I hadn’t paired with, which would reboot, flash the custom firmware, and after rebooting type in the command echo pwned and execute it.
+
+Credit:
+                                      Rasmus Moorats
+                                  
+
+
+
+
+
+
+
+
+
+          Credit:
+
+          
+          Rasmus Moorats
+
+In a real attack scenario, I would execute the keystrokes for opening powershell.exe or similar and paste an actually malicious one-liner into that, but as a proof of concept, this was more than enough for me. A real attacker would also likely disable the routine for updating the firmware in both normal and recovery mode, making it impossible to wipe the malicious firmware from the device or patch it in the future.
+
+This is worsened by the fact that Bluetooth is always on for the speaker, even in sleep mode, with no apparent way to disable it.
+
+Before the speaker and USB-connected device can interact, they must successfully complete a challenge-and-response authentication procedure. Since the devices perform this handshake automatically each time the software boots, this isn’t usually a problem for the hacker. In certain cases, however, such as when the Katana V2X app isn’t open on the connected device, it’s a requirement.
+
+Nonetheless, the authentication is a simple enough hurdle to clear, because the correct response can be extracted from the app binary that ships with the speaker. Surprisingly, no such challenge and response is required for Bluetooth-connected devices.
+
+Moorats reported his findings to Creative Technologies, but never received a response. He then brought in CERT Singapore to intervene. Eventually, the organization got a response from the company. It said company engineers didn’t regard the behavior as a vulnerability. The researcher tested the attack against a connected Windows machine.
+
+It bears repeating that the hacks described can be carried out only when the attacker is within Bluetooth range of the speaker. That’s a significant requirement that limits attacks to neighbors, housemates, or people in offices that are adjacent to the speaker.
+
+Still, the ability to turn a Bluetooth device into a PC-pwning proxy and remote bugging device doesn’t exactly evoke warm and fuzzy feelings. It also raises the question: What other Bluetooth devices open users to the same attacks?</div>
         </div>
         
         <div class="card" onclick="openModal('content-2')">
@@ -191,7 +266,19 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/06/first-us-test-of-modular-reactor-reaches-criticality/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Just over a year ago, the Trump Administration issued an executive order meant to accelerate the development of nuclear power in the US. While an entire startup ecosystem has developed around the use of different—and typically smaller—reactor designs, only one of them has been fully licensed so far, and there are no plans to actually build any instances of that design.
+
+The executive order directed the Department of Energy to have three different reactor designs reach criticality in a bit over a year. On Thursday, a startup called Antares announced that a test reactor it had placed at the Idaho National Laboratory had reached criticality, making it the first new design to cross this threshold. Criticality means that the nuclear reactions inside the hardware had become self sustaining; it does not mean the reactor had started to generate power.
+
+Antares is one of a number of companies that is basing its design on a new fuel system called TRISO that takes some of the complexity and safety out of the reactor design and places them in the fuel design. The fuel design is based on tiny pellets with a uranium oxide core. The pellets are surrounded by several layers of carbon that can moderate the energy of both the neutrons and lighter nuclei that are released by fission reactions. All of that is encased in a hard ceramic shell that’s designed to withstand the highest temperatures that can be produced by the encased uranium.
+
+As long as your reactor can keep the TRISO pellets contained, then there should be no risk of meltdown or even the release of the most dangerous isotopes produced from the reactions. There are still some safety concerns, as neutrons will still escape and can potentially convert some of the surrounding material into unstable isotopes. But the Antares design surrounds the TRISO with a graphite sheath, which should slow most of these neutrons down.
+
+To mitigate non-radioactive risks, the Antares design uses sodium to take heat from the reactor to a heat exchanger. The heat is transferred to pressurized nitrogen, which then drives a turbine in a closed Brayton cycle setup.
+
+At the moment, Antares is just testing what it calls a Mark 0 reactor, which is not connected to the power-generation portion. Instead, it’s being used to validate the company’s modeling of the physical conditions in its reactors and generate safety data that can be used during licensing applications. Attempts to run the entire system, including electrical generation, are expected to happen next year.
+
+While the work was done at a Department of Energy Lab, the company is working with the Department of Defense’s Project Pele program for developing a mobile nuclear reactor. The company has also received support from NASA.</div>
         </div>
         
         <div class="card" onclick="openModal('content-3')">
@@ -205,7 +292,39 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/06/work-on-russias-leaky-space-station-module-causes-astronauts-to-take-shelter/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Five of the seven crew members on the International Space Station briefly sought refuge inside a SpaceX return capsule Friday morning as two Russian cosmonauts worked on an air leak on the other end of the complex.
+
+NASA ordered US astronauts Jessica Meir and Jack Hathaway, French astronaut Sophie Adenot, and Russian cosmonaut Andrey Fedyaev into SpaceX’s Crew Dragon Freedom spacecraft around 9 am EST (14:00 UTC) on Friday. The foursome launched aboard the SpaceX crew capsule on the Crew-12 mission in February, and the ship serves as their lifeboat until the crew’s scheduled return to Earth in September.
+
+NASA astronaut Chris Williams, who flew to the station in a Russian Soyuz ferry ship, joined the Crew-12 astronauts inside the Dragon spacecraft.
+
+“All USOS (US Orbital Segment) crew members need to execute … Emergency Procedure 3.4: Crew Dragon, establish Safe Haven,” NASA mission control radioed to the station crew around 9 am. “If we need (you) to suit up, we will do that once we’re inside the Dragon.”
+
+A short time later, a NASA spokesperson posted a statement on X attributing the shelter order to a repair on persistent air leaks on the Russian segment of the space station. For more than half a decade, engineers from Roscosmos and NASA have tracked the leak rate from a transfer tunnel on the back end of Russia’s Zvezda Service Module. The tunnel, known by the Russian acronym PrK, leads to a docking port for Progress resupply and refueling freighters.
+
+Engineers believe the leaks are caused by microscopic cracks in the module’s structure. Russian cosmonauts have repeatedly inspected and attempted to seal the cracks, but a permanent fix has eluded them. After a few months of pressure stability inside the PrK earlier this year, Roscosmos confirmed in May that the air leaks had returned.
+
+“Following new leaks, Roscosmos has elected to proceed with a more extensive repair operation on Friday, June 5,” NASA spokesperson Bethany Stevens wrote on X. “Out of an abundance of caution, NASA has directed all four of the agency’s SpaceX Crew-12 members and NASA astronaut Chris Williams to assume an elevated safety posture in the Dragon spacecraft while the repair is underway.”
+
+After about 90 minutes, the communications officer at mission control in Houston told the crew that they could reopen hatches and reenter the space station. The specific repair task that caused NASA to issue the shelter order was off. “Our Russian colleagues have elected to perform measurements only today. So, with that, we are comfortable backing out of the safe haven config,” mission control told the crew.
+
+“We don’t have help from our counterparts?” Crew-12 commander Jessica Meir asked mission control. “Affirm,” mission control replied.
+
+Those counterparts—Russian cosmonauts Sergey Kud-Sverchkov and Sergei Mikayev—were working at the leak area on the opposite end of the station, some 200 feet away from the Crew Dragon.
+
+Stevens soon posted an update on X, writing that Roscosmos had “paused” the “structural repair efforts” inside the PrK to take more measurements and assess data. “We look forward to working with Roscosmos on a collaborative approach to address the leaks,” Stevens added.
+
+Ars asked two NASA spokespersons for details on the proposed leak repair and why the agency decided that the repair was risky enough to order the US crew members into the Crew Dragon lifeboat. They did not provide answers to these questions as of the time of this publication, but we will add any information we receive to this story.
+
+Roscosmos, Russia’s space agency, typically keeps the PrK sealed off from the rest of the space station to isolate the leak from the crew’s living quarters and workstations. This allows the transfer tunnel to be maintained at a lower pressure than the rest of the station. When cosmonauts need to access the area, such as for inspections, repairs, or transferring cargo to or from a docked Progress supply vessel, they pressurize the PrK to match the pressure inside the rest of the station. This allows the cosmonauts to open up the PrK to complete their work.
+
+A statement posted by Roscosmos on its Telegram channel suggests this is what was happening early Friday. “Specialists from the Russian ISS segment’s main operations control team detected a leak in the chamber” during pressurization of the PrK.
+
+“Upon inspecting the transfer chamber, cosmonauts identified two potential air leak sites,” Roscosmos said. “The first site was promptly sealed by applying an initial layer of the two-component sealant compound Germetall-1. The second site is located on the conical section of the transfer chamber; preparations to seal it are currently underway.”
+
+Russian and NASA officials also did not say what compelled Roscosmos to plan an immediate repair after discovering the two potential leak sites on Friday. They also did not say when cosmonauts might try again to patch the leak, or if any future repair effort might again force the US crew members to take shelter.
+
+Roscosmos said there is “no threat to crew safety or onboard systems,” and the pressure inside the station “remains stable and is being maintained at the nominal level.”</div>
         </div>
         
         <div class="card" onclick="openModal('content-4')">
@@ -219,7 +338,29 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/sp-500-blocks-fast-spacex-entry-wont-waive-rule-for-unprofitable-ai-firms/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">SpaceX has requested unusually swift entry into several leading stock market indexes as a condition of its historic stock market debut. But the S&P 500 stock market index representing many of the largest profitable US companies has surprised market analysts by refusing to bend the rules for Elon Musk’s space and AI company.
+
+The June 4 decision by S&P Dow Jones Indices—the company that creates and manages stock market indexes such as the S&P 500—means that SpaceX will not gain accelerated access to potentially billions more dollars through passive investment funds that automatically purchase shares of S&P 500 companies. An exception for SpaceX could have also allowed leading AI companies such as OpenAI and Anthropic to gain entry not long after their own expected initial public offerings (IPOs). That possibility has now been shuttered.
+
+The news will likely come as a relief to people concerned about passive investor money and people’s retirement savings plans having greater exposure to the market risks associated with SpaceX’s big bet on AI and speculative orbital data center plans. AI companies are generally facing more challenges in funding and building expensive AI data centers, even as they shift more of the subsidized costs of running AI services onto shocked customers through usage-based pricing.
+
+To weigh expedited entry for SpaceX, the S&P Dow Jones Indices held a monthlong consultation to consider changing or waiving several main requirements for so-called MegaCap companies with “unprecedented market capitalizations.”
+
+Those proposed changes included shortening the “seasoning period” for new IPOs from 12 months to six months, waiving the investable weight factor (IWF) requirement for MegaCap companies to make at least 10 percent of their shares publicly available, and waiving the requirements for MegaCap companies to demonstrate profitability in the latest quarter of the financial year along with the previous four quarters.
+
+Such rule changes would have accommodated SpaceX’s plan to only offer approximately 3 percent of its IPO shares to public investors, and the fact that SpaceX is currently unprofitable with a growing debt load that has reached $29 billion because of its spending spree on AI infrastructure.
+
+But in its final decision, the S&P Dow Jones Indices stated that “no changes will be made to the eligibility criteria including financial viability screens, seasoning period, or minimum IWF.” Even after the standard yearlong wait, SpaceX, Anthropic, and OpenAI may struggle to deliver the consistent profitability necessary to qualify for the S&P 500.
+
+Swift entry into the S&P 500 would have triggered $14 billion of passive fund buying for SpaceX, according to Bloomberg Intelligence. The investment research arm of Bloomberg also estimated that OpenAI could have gained more than $8 billion, and Anthropic could have netted $4.6 billion from similar passive buying sprees triggered by their S&P 500 entries.
+
+This is because $7.5 trillion in passively managed funds—popular among both individual investors and institutional investors—follow the S&P 500 by purchasing shares of companies according to their proportional representation in the S&P 500 index. For example, the Vanguard and Fidelity brokerage giants both offer passive investment funds that track the S&P 500 composition.
+
+However, the S&P Dow Jones Indices did “carve out one concession” by changing the investable weight factor rules for “lower-profile benchmarks” such as the S&P Total Market Index and Dow Jones US Total Stock Market Index, according to Quartz. That could allow an IPO faster entry into those indexes.
+
+By contrast, the Nasdaq stock exchange changed its rules to allow SpaceX to enter the Nasdaq-100 Index within 15 trading days as opposed to the usual three months. Similarly, the FTSE Russell index provider decided to give SpaceX and other follow-on companies accelerated entry to the Russell Top 500 Index after the close of the fifth trading day following an IPO.
+
+The denial of accelerated S&P 500 entry for SpaceX comes just days after Morningstar analysts described SpaceX as having been “significantly overvalued” in the lead-up to its IPO. The investment research firm valued SpaceX at $780 billion—less than half of SpaceX’s $1.75 trillion IPO goal—primarily based on the strengths of SpaceX’s Starlink satellite service and rocket launch business.</div>
         </div>
         
         <div class="card" onclick="openModal('content-5')">
@@ -233,16 +374,168 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/we-pissed-off-a-lot-of-people-giant-data-center-plan-cut-50-amid-protests/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">One of the world’s biggest data center projects was designed to be nearly three times the size of Manhattan, stretching across multiple Utah sites. But intense local backlash in Box Elder County has now pushed the developer to cut the project plans in half before construction starts.
+
+Residents’ top concern was the Stratos data center project draining local waters, and they were willing to pay to protect them, most especially the vulnerable Great Salt Lake. Many locals paid a $15 fee to register comments to block the transfer of 1,900 acre-feet of water from a ranch to the hyperscale data center. Other concerns include electricity bills rising and potential risks to air quality, local wildlife, and land.
+
+Venture capitalist Kevin O’Leary, chair of O’Leary Digital and Shark Tank investor, is behind the construction of the project. He told a local ABC affiliate that he regrets not working with state officials to be more transparent about the project from the beginning.
+
+“We really screwed it up,” O’Leary said, while confirming that he “was not expecting this kind of intense blowback from the public.” He claimed that he and state officials anticipated that “people would be excited” about the major local investment and “made huge mistakes” by not involving the public more in discussions, based on that “assumption.”
+
+“We pissed off a lot of people, and that’s not the way I do business,” O’Leary said. “That’s not.”
+
+As Utahns moved to defend their resources and demanded more information, Utah Senate President Stuart Adams, who is a Republican, sent a letter to O’Leary, asking him to cut the project’s scope by 75 percent.
+
+At an AI gala in Washington, DC, O’Leary claimed that he had “no choice” but to agree, NBC News reported. Initially, he planned to build the project on 40,000 acres, but now he’s reduced that to about 20,000 acres. Of the remaining land, 10,000 acres will remain undeveloped, leaving about 25 percent of the initial acreage to develop the data center. O’Leary’s group characterized this as bending to the Senate president’s demands.
+
+Moving forward, O’Leary wants to rebuild trust, he claimed. He told the ABC affiliate that he’s personally taking over all communications on the project because he didn’t “like being beaten up like this.” With him as spokesperson, residents will supposedly be better informed about permitting requests and environmental impacts, rather than relying on sources that O’Leary claimed are unreliable or bent on manipulating public opinion.
+
+“All the plans are going to be transparent,” O’Leary said, while claiming that public concerns are exaggerated. “All the design is going to be transparent. Everything we do is going to be transparent because I’m not happy with where we’re at right now.”
+
+He told the AI gala attendees that he now recognizes that “we should have answered all this stuff up front, now I got to do it after everybody’s been pissed off.”
+
+“I hope this dialogue can serve as a model for how complex projects are best addressed—through direct, good-faith engagement between developers and elected officials rather than through public narratives that outpace the facts,” O’Leary told a local Utah news site KLS.com.
+
+Before construction can begin in Utah, O’Leary’s project will need to secure more approvals and complete several environmental reviews, a local nonprofit, Alliance for a Better Utah, noted in a statement on the plan to shrink the data center.
+
+In response to O’Leary’s letter, Adams celebrated the compromise and claimed that the project could become a roadmap for how responsible data center development should work in the US.
+
+“With responsible water use, transparency and input from the people of Utah, we will show the nation how to build it right,” Adams said. “There must be written commitments in place, and the proposal must undergo a full permitting and environmental review process, just like any other development project in Utah.”
+
+But some locals think there is no going back once trust is lost. After the water transfer backlash, the Salt Lake Tribune editorial board warned, “even if the data center isn’t as dreadful as feared—or if it never is actually built—the stench attached to the rushed and secret political process will take a very long time to dissipate, if it ever does.”
+
+Unsurprisingly, some residents who oppose the data center aren’t optimistic that O’Leary’s plans will do much to mitigate the local impacts they fear. NBC’s report noted that it’s not “immediately clear if the overall nine-gigawatt capacity of the project will change.”
+
+Brenna Williams, a community member involved in the Box Elder Accountability Referendum opposing the project, called the agreement “excellent performance art,” KLS.com reported.
+
+“I think this was the plan all along,” Williams said, suggesting that the project never would’ve been approved if the public had been engaged at the start of discussions, because the area is simply not a good candidate for a data center due to water constraints.
+
+“I don’t see any changes, and the truth is, Box Elder County is just too vulnerable for a hyper-scale data center of this size,” she said. “No matter what he does given the situation, there is going to be a big impact.”
+
+Adams’ pivot toward transparency is supposedly linked to his reelection bid. He’s facing down a primary against two Republican challengers this June, the Hill noted, and O’Leary told NBC News that he thinks Adams was pressured to challenge the data center size to keep his campaign on track.
+
+“I know he did it for political reasons,” O’Leary said.
+
+While Donald Trump has advocated for rapid data center development across the US to keep America ahead in the AI race, the Utah case shows that not every Republican can afford to be an AI booster. A recent HeatMap poll showed “a rapid shift in public opinion since last fall,” with at least 7 in 10 Americans now opposing data centers built near their homes.
+
+With “an absolute majority” now opposing data centers, Democrats could seize opportunities to unseat Republicans who fall in line with Trump’s agenda, simply by demanding more transparency.
+
+Perhaps the best example of this is Illinois governor J.B. Pritzker. On Friday, NBC News reported that Pritzker plans to temporarily halt all tax breaks to data centers in his state until a legal framework can be drafted to ensure responsible development. Pritzker “is widely viewed as having 2028 White House aspirations” and may soon show he’s up to the task if he succeeds in taking control over regulating frontier AI away from Trump.
+
+Eliminating tax breaks might push projects onto more suitable sites, critics think. In Utah, Williams suspects that tax breaks are the biggest reason why O’Leary wants to develop his project there, the ABC affiliate reported.
+
+“There are places who really want this project, she said. “For him to be fighting so hard to put it here, seems kind of ridiculous because there are places who really want it. I’m not so sure he’d get the same tax concessions as he got in Utah, but he could try. And they would open their arms to him and be grateful for the opportunity. In Box Elder, we don’t want it.”
+
+Many locals protesting data centers don’t stop until the projects are shut down. Last month, HeatMap Pro released data showing that “at least 20 data center projects were canceled after facing significant public backlash in the first quarter of this year.”
+
+“That is more than double the number that were canceled the previous quarter,” HeatMap reported, while noting that data centers are “slightly more unpopular” with rural voters who typically trend more conservative.
+
+Environmental activist Erin Brockovich recently launched another resource, which tracks where data centers are pending, approved, under construction, and operational. Thousands have already contributed to her map tracking data center fights throughout the US.
+
+Although reports indicate—and Adams said was the case in Utah—that communities have genuine concerns fueling the rise in opposition, not everyone agrees that the immense community backlash in the US is rational or proportionate.
+
+On Bluesky, Will Stancil, a lawyer, activist, and housing policy researcher, commented on HeatMap’s poll, suggesting it seemed unusual for public opinion to shift so quickly without “some major data center disaster.” In his thread, Stancil boosted a reply suggesting that data center backlash “hit the algo,” raising a theory that social media is possibly driving anti-data center sentiment.
+
+And while O’Leary blamed himself and Adams for making “mistakes” in Utah, he also claimed that the protests he faced in the state were due to foreign interference, NBC News reported. He accused China of supposedly funding the Alliance for a Better Utah to conduct a smear campaign to set back his project, a claim which the nonprofit has denied.
+
+“All these people have a right to get information,” O’Leary said. “Why are they getting it from a false initiative? Who is spending all this money to put out all these falsehoods and straight-out misinformation and lies and agitate these people?”
+
+In a statement, Elizabeth Hutchings, the communications manager for the Alliance for a Better Utah, mocked the Montreal-born O’Leary, defending the group’s 15-year history and saying, “the only foreign interest in this data center is Kevin from Canada.”
+
+“It’s insulting to Utahns across the state to say that any opposition or protest to this data center is the work of a foreign government,” Hutchings said. “We are proud to live in a state where there are people who deeply care about transparency, their community and their kids’ futures. It is not strange to us that Utahns want to feel heard in decisions that will impact their lives for decades to come.”
+
+Hutchings agreed with Williams that “the issues with the deeply unpopular and problematic project in Box Elder County remain.”
+
+“This is not the first time we’ve dealt with bullies like Kevin trying to intimidate us into silence,” Hutching said. “No amount of propaganda and dramatic distractions will stop us from talking about the real issue: a lack of transparency from our government.”</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
+            <div class="source">Futurism</div>
+            <div class="title">Lads Force Waymo to Play Football</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-6" style="display:none;">
+            <h2>Lads Force Waymo to Play Football</h2>
+            <p><strong>Futurism | 2026-06-06</strong></p>
+            <a class="original-link" href="https://futurism.com/advanced-transport/sports-influencers-waymo-play-football">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+A pair of sports influencers just presented Waymo with its latest test: will it jump the gun on a critical snap?
+
+The two set up in front of the Waymo in a typical football formation, in an attempt to bait the robotaxi into jumping offsides with a tricky cadence. (In American football, offside is an infraction that occurs when a defensive player crosses the line of scrimmage before the ball is in play.)
+
+The Waymo shows elite discipline at the line, refusing to budge even as the clock runs down, forcing the boys to call time. To be clear, the Waymo doesn’t exactly participate; it just sits there like it’s supposed to do when it comes face-to-face with a human.
+
+Still, it’s a good bit given that the Waymo could start rolling despite the humans in front of it, which happens much more often than you might think. As a scathing CNN analysis of Waymo’s safety history found, there have been hundreds of incidents in which the robotaxis have run red lights, driven into oncoming traffic or active emergency scenes, or come to a screeching halt within inches of a pedestrian.
+
+“These are the early warning indicators that all is not well… that’s how companies need to treat them. That’s how regulators should treat them,” University of South Carolina law and technology scholar Bryant Walker Smith told CNN. “This is the story of progress… we replace one set of problems with a new set of problems.”
+
+After a wayward Waymo delayed emergency workers responding to a mass shooting in Austin back in March, Paige Ellis, a member of the Austin City Council, said the “question is not if this is going to turn into a deadly situation for someone, but when.”
+
+Waymo has consistently defended its safety record, though has recently issued a national recall in reaction to their vehicles’ handling of floods in Austin.
+
+“No technology is perfect,” Waymo told CNN in a statement, “but while human drivers can only learn from their individual experiences, Waymo takes community feedback and applies those safety learnings to our entire fleet.”
+
+More on Waymo: Waymo Has a Bike Lane Problem</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
+            <div class="source">Futurism</div>
+            <div class="title">Over 150 Mathematicians Warn Governments Not to “Believe the Hype” About AI</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-7" style="display:none;">
+            <h2>Over 150 Mathematicians Warn Governments Not to “Believe the Hype” About AI</h2>
+            <p><strong>Futurism | 2026-06-06</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/mathematicians-warn-governments-hype-ai">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
+
+Earlier this year, a 23-year-old without any formal mathematics training made headlines by claiming he’d used OpenAI’s ChatGPT to solve one of the “Erdős problems” — a database of challenging conjectures left behind by Hungarian mathematician Paul Erdős.
+
+Then, last month, scholars were taken aback when OpenAI claimed its AI had disproved an 80-year-old “unit distance” conjecture, also devised by Erdős.
+
+“This marks the first time AI has autonomously solved a prominent open problem central to a field of mathematics,” OpenAI boasted at the time.
+
+But whether the frontier AI models powering tools like ChatGPT really represent a major leap in our ability to solve problems that have been plaguing mathematicians for decades remains hotly debated among experts.
+
+In perhaps the strongest public rebuke yet, a new declaration signed by over 150 mathematics experts from around the world warned governments not to “believe the hype” when it comes to AI’s capabilities to solve complex mathematical problems, throwing cold water on claims of a revolution in the field.
+
+In a statement accompanying the 11-page “Leiden Declaration on AI and Mathematics,” International Mathematical Union vice president Ulrike Tillmann argued that AI “raises questions that cannot be left unexamined.”
+
+“The future of mathematical research must be guided by human judgment, fair and transparent practices, and the shared values of the global mathematical community,” Tillmann said.
+
+“There is currently a strong commercial incentive on the part of the technology industry to overstate the capabilities of their products,” the declaration reads, advising policymakers to “consult with experts, including mathematicians, in forming policy decisions rather than relying on press releases or popular reporting of mathematical results.”
+
+Worse yet, AI models may produce convincing-sounding solutions that don’t actually withstand scrutiny.
+
+“Current automated techniques can produce plausible but unreliable (or even incorrect) arguments which are difficult to distinguish from correct mathematical proofs,” said signee and University of Oxford head of computer science Leslie Ann Goldberg in a statement. “This is a serious problem: research in mathematics (and in mathematical disciplines like theoretical Computer Science) almost always builds on previous research, so it is essential for researchers to know that the results in the literature are correct.”
+
+The declaration highlighted the highly precarious position many academics are finding themselves in. Attracting new funding has proven difficult, while interest in AI continues to soar, often forcing them to endorse the tech at all costs.
+
+“We recognize that industry has offered lucrative jobs, monetary rewards, computing resources, and intellectually stimulating opportunities that some mathematicians have found attractive,” it reads. “This has taken place in an era of underfunding of higher education and precarious academic employment.”
+
+The document also noted there were plenty of other reasons to call for regulatory oversight beyond the field of mathematics, noting the AI industry’s “involvement in military and mass surveillance programs, development of technologies which promote misinformation and undermine democracy, and environmental costs.”
+
+In short, it’s a ringing denunciation of the persistent hype surrounding AI, and a call for reining in its use that reverberates far beyond the world of mathematics. The broader scientific community has been reeling from a flood of papers that make heavy use of AI, risking contaminating the peer-review process with hallucinations.
+
+It’s also a pertinent reminder that AI models are being trained on cutting-edge research, often without sign-off from the original authors.
+
+“Mathematicians who never intended to contribute to AI development are having their work used for this purpose without their consent,” Leiden University anthropologist of AI Rodrigo Ochigame, who helped draft the declaration, told Scientific American. “I think that’s a deeply concerning situation.”
+
+More on AI and mathematics: Mathematicians Claim Significant Discovery Using ChatGPT</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">Scientists Find Chunk of Lost Planet in Desert</div>
             <div class="meta">2026-06-06</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Scientists Find Chunk of Lost Planet in Desert</h2>
             <p><strong>Futurism | 2026-06-06</strong></p>
             <a class="original-link" href="https://futurism.com/space/chunk-lost-planet-sahara-desert">Visit Original Website</a>
@@ -276,13 +569,13 @@ In short, it’s a fascinating glimpse into the earliest days of the solar syste
 More on planetary formation: Scientists Spot What Appears to Be a Ring-Shaped “Planet Factory” Deep Out in Space</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">New York Times Roasted for “Profiling” the “AI-Generated Actress” Tilly Northwood</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>New York Times Roasted for “Profiling” the “AI-Generated Actress” Tilly Northwood</h2>
             <p><strong>Futurism | 2026-06-05</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/new-york-times-roasted-profiling-ai-actress">Visit Original Website</a>
@@ -324,13 +617,13 @@ Ergo, Tilly Norwood can’t be art? No, but she could be slop, Brodesser-Akner w
 More on AI: Basketball Fans Disgusted as ESPN Airs AI Slop Version of NBA Champion Tony Parker During the Finals</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">Anthropic Scared, Calls for Global Freeze on AI Advances</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>Anthropic Scared, Calls for Global Freeze on AI Advances</h2>
             <p><strong>Futurism | 2026-06-05</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/anthropic-scared-calls-global-freeze-ai">Visit Original Website</a>
@@ -374,13 +667,13 @@ Regardless of whether Anthropic genuinely thinks it has a remotely realistic sho
 More on AI: CEO Says There Will Be No Raises Because He Spent All the Money on AI</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">You Will Be Shocked to Hear That George Santos Is Under Investigation for Insider Trading on Kalshi</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>You Will Be Shocked to Hear That George Santos Is Under Investigation for Insider Trading on Kalshi</h2>
             <p><strong>Futurism | 2026-06-05</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/george-santos-investigation-insider-trading-kalshi">Visit Original Website</a>
@@ -408,90 +701,6 @@ When Allyn then asked Santos what he meant, the former lawmaker responded: “Yo
 In the wake of NPR’s reporting, Kalshi rival Polymarket cut ties with Santos, who was one of many paid influencers for the platform. Maybe — just maybe — Santos should consider steering clear of platforms as ripe for fraud as prediction markets, given his track record.
 
 More on prediction markets: Sports Betting Scandals Are Tearing College Football Apart</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-10')">
-            <div class="source">Futurism</div>
-            <div class="title">CEO Says There Will Be No Raises Because He Spent All the Money on AI</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-10" style="display:none;">
-            <h2>CEO Says There Will Be No Raises Because He Spent All the Money on AI</h2>
-            <p><strong>Futurism | 2026-06-05</strong></p>
-            <a class="original-link" href="https://futurism.com/future-society/ceo-no-raises-money-ai">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-For years, tech CEOs have used AI as an excuse to justify layoffs. In reality, though, many experts say that what’s really happening is that execs are diverting financial resources into AI at the expense of everything else — including employee retention.
-
-In one of the most egregious examples yet, cloud software company Teradata told its more than 5,000 employees not to expect a raise this year because its budget was being spent on AI instead, according to an internal memo obtained by Business Insider.
-
-“We will fund this AI investment by reallocating the budget from 2026 annual salary adjustments,” Teradata CEO Steve McMillan wrote in the memo.
-
-Besides likely drawing the ire of everybody involved — as if there wasn’t enough of a growing anti-AI sentiment as it is — it may not have been the wisest choice. Tech leaders are starting to question whether sidelining human labor in favor of AI investments was such a good idea after all.
-
-For one, researchers are finding that many of these investments are simply not paying off, leaving leadership to hold the bag. An oft-cited MIT report from last year found that a staggering 95 percent of AI pilot programs at companies are failing and delivering little to no measurable impact on profits.
-
-Then there are the soaring costs of actually replacing human staffers with AI, with employers racking up enormous AI coding usage fees and leading some to wonder whether employing workers was actually cheaper.
-
-In short, the line of thinking that AI will eventually replace workers and bring down costs is being seriously challenged by reality, making moves like cutting raises in favor if AI investments a highly questionable one.
-
-Experts also told BI that Teradata’s unabashed admission marks a notable change in the way tech leaders speak about their decisions.
-
-“Whether that’s more honest or more cynical depends on your read, but it does mark a real shift in what leaders are willing to say in public,” workplace strategist and author Jennifer Moss told the publication. “And what becomes sayable tends to become more doable.”
-
-To some, it’s a sign CEOs are trying to send signals to investors that they’re willing to embrace cutting edge tech at all costs — which could end up backfiring.
-
-“When leaders openly cut human compensation to fund AI, they are trying to project decisive, tech-forward management,” Oxford University economist Jan-Emmanuel De Neve told BI. “However, the actual message traveling to the workforce is that they do not have a secure future in the organization.”
-
-More on AI and labor: Large Study Finds That Replacing Workers With AI Is Backfiring Badly</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">Kevin O’Leary Pleads With Locals to Allow His Massive Data Center If He Shrinks It Down to the Size of One Manhattan</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>Kevin O’Leary Pleads With Locals to Allow His Massive Data Center If He Shrinks It Down to the Size of One Manhattan</h2>
-            <p><strong>Futurism | 2026-06-05</strong></p>
-            <a class="original-link" href="https://futurism.com/artificial-intelligence/kevin-oleary-shrink-data-center">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Can’t-miss innovations from the bleeding edge of science and tech
-
-“Shark Tank” investor Kevin O’Leary wants to build a menacingly large data center facility near the Great Salt Lake in Utah that would be over twice the size of Manhattan.
-
-But his plans for the “Stratos Hyperscale Data Center” has got locals outraged and spooked. And despite his earlier defiance that he would never downsize his project, O’Leary is now agreeing to do just that after state lawmakers demanded he scale back his ambitions.
-
-Going forward, it’ll be the size of just one Manhattan.
-
-“I have no choice,” a defeated O’Leary told NBC News at the Washington AI Network’s AI Honors gala on Wednesday.
-
-The Stratos facility was originally envisioned to span over 40,000 acres on a stretch of unincorporated land in Box Elder County, and was greenlit by the county’s three-member commission last month.
-
-But locals had been fiercely protesting the data center ever since it was proposed and haven’t relented even after its approval, mirroring the widespread backlash to data center construction across the country. The protests are driven by fears over the sprawling facilities’ impact on local water supplies, energy prices, and noise pollution. Water concerns are especially salient in Utah, where the Great Salt Lake has been rapidly shrinking.
-
-On Monday, as the outrage reached a fever pitch, Utah senate president J. Stuart Adams, a Republican, sent O’Leary a letter asking that he reduce the size of the project by 75 percent to “limit impacts on the region and broader environment.”
-
-“I share the concerns of my constituents and hope Mr. O’Leary responds appropriately and implements the changes needed to address them,” Adams said in a statement at the time.
-
-O’Leary quickly let The Salt Lake Tribune know what he thought of Adams’ proposal: it was “outrageous” he told the newspaper, adding that he thought the figure was a typo.
-
-“I’m not walking away,” O’Leary emphasized, barely containing his rage. “It’s not who I am. I don’t work that way.”
-
-But in the end, he did walk away — or at least, bow to the pressure. On Thursday, O’Leary sent a cordial letter to Adams agreeing to cut 19,430 acres from the project, as well as remove a 620-acre parcel in the northeast region of the project near the highway.
-
-It’s a 50 percent reduction rather than 75 percent, but Adams sounded pleased. O’Leary also vowed to address environmental concerns, agree to an independent scientific analysis of the facility’s thermal load, and to put any excess water back into the Great Salt Lake.
-
-“O’Leary’s concessions in response to the demand letter I sent are a positive step forward,” he said that same day, as reported by ABC4 News. “The concerns raised by Utahns are valid, which is why I have pushed for meaningful changes to ensure those issues are addressed before any project can move forward.”
-
-But O’Leary sounded far more bitter about the saga in an interview with NBC News. He accused Adams of demanding the reduction “for political reasons,” and re-litigated his conspiratorial claims that anti data center protestors were being funded by China.
-
-The details of the agreement still need to be hashed out and formalized on paper, however. So our guess is that this saga is far from over.
-
-More on AI: Data Centers Have Become Shockingly Unpopular, Poll Finds</div>
         </div>
         
         <div class="card" onclick="openModal('content-12')">
@@ -599,9 +808,9 @@ Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-Strava declares war on scrapers ahead of IPO
+DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
+Strava declares war on scrapers ahead of IPO</div>
         </div>
         
         <div class="card" onclick="openModal('content-14')">
@@ -661,9 +870,9 @@ Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-Strava declares war on scrapers ahead of IPO
+DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
+Strava declares war on scrapers ahead of IPO</div>
         </div>
         
         <div class="card" onclick="openModal('content-15')">
@@ -719,9 +928,9 @@ Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-Strava declares war on scrapers ahead of IPO
+DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
+Strava declares war on scrapers ahead of IPO</div>
         </div>
         
         <div class="card" onclick="openModal('content-16')">
@@ -773,9 +982,9 @@ Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-Strava declares war on scrapers ahead of IPO
+DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
+Strava declares war on scrapers ahead of IPO</div>
         </div>
         
         <div class="card" onclick="openModal('content-17')">
@@ -869,9 +1078,9 @@ Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-Strava declares war on scrapers ahead of IPO
+DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
+Strava declares war on scrapers ahead of IPO</div>
         </div>
         
         <div class="card" onclick="openModal('content-18')">
@@ -1288,11 +1497,27 @@ In the end, Bargatze’s big-screen experiment is doomed by its desire to be ext
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Small Modular Nuclear Reactor Reaches Criticality In First Test</div>
+            <div class="title">Scientists Find Wind Blowing From Our Milky Way's Black Hole</div>
             <div class="meta">2026-06-06</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Scientists Find Wind Blowing From Our Milky Way's Black Hole</h2>
+            <p><strong>Slashdot | 2026-06-06</strong></p>
+            <a class="original-link" href="https://science.slashdot.org/story/26/06/06/0535213/scientists-find-wind-blowing-from-our-milky-ways-black-hole?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+Think of it!  With VLSI we can pack 100 ENIACs in 1 sq. cm.!</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Small Modular Nuclear Reactor Reaches Criticality In First Test</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Small Modular Nuclear Reactor Reaches Criticality In First Test</h2>
             <p><strong>Slashdot | 2026-06-06</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/06/05/216231/small-modular-nuclear-reactor-reaches-criticality-in-first-test?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1309,19 +1534,9 @@ The output of a SMR is heat. That&#39;s yaddieyaddering away a very important me
 
 That&#39;s yaddieyaddering away a very important metric of just how much it costs to make heat.
 
-A lax regulatory environment and a technology that is outclassed by wind and solar in virtually every single metric except space usage in a country with nothing but space?
+&quot;TDS-infected minds&quot; What? The Maggots? While I agree they are TDS infected (honestly, believing in a two-bit bunko artist from NYC, how daft can one be), I don&#39;t think even they want to accept nuclear waste into their back yards. Yet, if el Bunko made a &quot;deal&quot; with them, I&#39;m sure they&#39;d find a way to accept it.
 
-
-
-Hey what could possibly go wrong?Planting 500 miles of solar panels right in the middle of tornado alley?  You fucking tell me.  Maybe one day you’ll learn a lot can go wrong when your power isn’t secured behind thick concrete walls, but is instead standing naked in a field ready to be razed with every threatening season.  Ask those in the most violent paths of Mother Nature how well the insurance fuckening is going.  Mitigating the costs of that greed might soon outweigh the entire fucking point.  Going green, isn’t defi
-
-A lax regulatory environment and a technology that is outclassed by wind and solar in virtually every single metric except space usage in a country with nothing but space?
-
-
-
-Hey what could possibly go wrong?
-
-Planting 500 miles of solar panels right in the middle of tornado alley?  You fucking tell me.  Maybe one day you’ll learn a lot can go wrong when your power isn’t secured behind thick concrete walls, but is instead standing naked in a field ready to be razed with every threatening season.  Ask those in the most violent paths of Mother Nature how well the insurance fuckening is going.  Mitigating the costs of that greed might soon outweigh the entire fucking point.  Going green, isn’t defi
+Rather an autopen than a blithering idiot who&#39;ll sign anything Project 2025 puts in front of him. The West is drying out because of global warming yet he still fond a way to spend $700 on new coal pl
 
 but if it survives in the wake of the incoming trump depression, the company will likely run to a tax haven to profit from the race to the bottom tax rate the trumpistani states are participating in.
 
@@ -1345,18 +1560,24 @@ Power grids are for high-trust societies. They can&#39;t exist for long in a wor
 
 Localized power is going to be an ever-growing industry over the next few years. We already have multiple companies selling large batteries to power essential home systems during power outages and we&#39;re certainly going to see an increase i
 
+Misery is easy.  It&#39;s happiness we have to work at.
+
+Yes. Also remember that even really large nuclear reactors are not economically viable these days. Small ones will probably perform on the level of LLMs, i.e. some years until stupid investor money dries up and then total crash.
+
+Maybe. Or not. That they reach this early milestone now just shows how disconnected the whole idea of fixing current problems with it is. Obviously, this test says nothing about economic viability and nuclear never had that. Even less so today.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Pie are not square.  Pie are round.  Cornbread are square.</div>
+Think of it!  With VLSI we can pack 100 ENIACs in 1 sq. cm.!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">The US Military Quietly Turned GPS Into a Global 'Numbers Station,' Evidence Suggests</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>The US Military Quietly Turned GPS Into a Global 'Numbers Station,' Evidence Suggests</h2>
             <p><strong>Slashdot | 2026-06-05</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/06/05/211249/the-us-military-quietly-turned-gps-into-a-global-numbers-station-evidence-suggests?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1401,16 +1622,16 @@ But all that&#39;s stored in that message field is 867-5309 [youtu.be].
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Pie are not square.  Pie are round.  Cornbread are square.</div>
+Think of it!  With VLSI we can pack 100 ENIACs in 1 sq. cm.!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Google Will Pay SpaceX $920 Million Per Month For Compute</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Google Will Pay SpaceX $920 Million Per Month For Compute</h2>
             <p><strong>Slashdot | 2026-06-05</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/06/05/2017239/google-will-pay-spacex-920-million-per-month-for-compute?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1443,11 +1664,24 @@ Why spend hundred of millions a month on something that has no revenue and you t
 
 No, I believe that Google and others are convinced that AI is the next big thing. They likely believe AI is as important as smartphones and the Internet if their spending is any guide. It is a crazy bet in my opinion and SpaceX/xAI will probably come out of this better than Anthropic.
 
+Better tell that to Anthropic&#39;s annualized revenue growth.
+
+Dec 2022: $10MDec 2023: $100M (10x in 12 months)Jan 2025: $1B (10x in 13 months)May 2025: $3BOct 2025: $7BDec 2025: $9BFeb 2026: $14BMar 2026: $19BApr 2026: $30BMay 2026: $47B
+
+Why did you not list their lack of profits? Nobody cares about revenue growth, it looks impressive but is made up nonsense full of circle jerk deals among AI companies.
+Investors care about ROI and don&#39;t like capex unless there&#39;s a big payday coming very soon.
+
+Here&#39;s a better number: Anthropic announced their first ever operating profit just ten days ago for Q2. Very suspicious timing given the IPO. And interestingly the profit claim happens to coincide with a compute discount for said Q2 from Elon. No dis
+
 Only temporarily, I suspect. Google and Anthropic are perfectly able to build their own compute-centers, and I suspect would rather do that than feed their competition. Once the hardware is available, of course.That&#39;s the problem: It isn&#39;t. It&#39;s one thing to pay an arm and a leg for CPU, GPU, Memory, SSD,  etc. But high performance tensor units? Doesn&#39;t really matter how much you&#39;re willing to pay, you&#39;re not getting them for at least a few years. You&#39;ve probably heard of China being allowed to buy from Nvidia recently, but the only TPUs they&#39;re allowed to buy are the ones nobody really wants.
 
 Only temporarily, I suspect. Google and Anthropic are perfectly able to build their own compute-centers, and I suspect would rather do that than feed their competition. Once the hardware is available, of course.
 
 That&#39;s the problem: It isn&#39;t. It&#39;s one thing to pay an arm and a leg for CPU, GPU, Memory, SSD,  etc. But high performance tensor units? Doesn&#39;t really matter how much you&#39;re willing to pay, you&#39;re not getting them for at least a few years. You&#39;ve probably heard of China being allowed to buy from Nvidia recently, but the only TPUs they&#39;re allowed to buy are the ones nobody really wants.
+
+Here&#39;s the crazy thing: initially, SpaceX / X.AI didn&#39;t acquire the servers.  Tesla had the contract for them, and then Tesla just gave those rights to X.AI.  Tesla is a public company, while X.AI was Musk&#39;s private company, founded so that he wouldn&#39;t have to share any AI profits with Tesla.
+
+Now, Musk&#39;s excuse was that Tesla&#39;s datacentre wasn&#39;t ready yet, and it cost Tesla nothing. But of course, there was a massive backlog on servers; the rights to early delivery of servers was incredible value.  It let X.
 
 It also tells us he&#39;s making $1B / month, but let&#39;s gloss over that part, lol. Haters gonna hate.
 
@@ -1466,6 +1700,8 @@ I’m getting a harassing advertisement at the bottom of every slash that page f
 how does one create an AdGuard rule that will actually work across/thought to kill this ad?
 
 Lucky you!I&#39;m told that frisky cougars in neighborhood are wanting me to visit them.I don&#39;t want to leave my basement.
+
+Zoophiles with a thing for large cats must get so frustrated by such ads.
 
 Full uBlock Origin on Firefox seems to take care of it.  Firefox is now the only browser capable of running uBlock Origin.
 
@@ -1487,16 +1723,16 @@ i think this is just some headline bait to get retail in so the VCs can dump on 
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Pie are not square.  Pie are round.  Cornbread are square.</div>
+Think of it!  With VLSI we can pack 100 ENIACs in 1 sq. cm.!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Bitcoin Falls To $60,000 As Zcash Bug Rocks Crypto</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Bitcoin Falls To $60,000 As Zcash Bug Rocks Crypto</h2>
             <p><strong>Slashdot | 2026-06-05</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/06/05/202230/bitcoin-falls-to-60000-as-zcash-bug-rocks-crypto?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1600,18 +1836,20 @@ Annual Coin Income: $77k x 165k coins = $12.7 billionAnnual Energy Cost: 169 ter
 
 ...a lot of people online were saying there was an upcoming event called The Halvening that would change everything.
 
+Well, I guess we would need to get rid of the ample idiot population in the human race to eliminate crapto. And so the crime financing and money-laundering continues.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Pie are not square.  Pie are round.  Cornbread are square.</div>
+Think of it!  With VLSI we can pack 100 ENIACs in 1 sq. cm.!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">340 Local News Outlets Now Blocking the Internet Archive</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>340 Local News Outlets Now Blocking the Internet Archive</h2>
             <p><strong>Slashdot | 2026-06-05</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/06/05/1910242/340-local-news-outlets-now-blocking-the-internet-archive?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1645,47 +1883,7 @@ Maybe we can just ban LLM operators spidering content without permission?
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Pie are not square.  Pie are round.  Cornbread are square.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">GOV.UK Goes Dutch On Payments As It Dumps Stripe</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>GOV.UK Goes Dutch On Payments As It Dumps Stripe</h2>
-            <p><strong>Slashdot | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/26/06/05/1839258/govuk-goes-dutch-on-payments-as-it-dumps-stripe?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Well, I&#39;m sure governments get better rates. But yes, it&#39;s likely a nationalism thing. Stripe, being American and Adyen being European. People are dropping American tech when they can switch, and I&#39;m guessing the UK contract was up.
-
-And while they may be expensive, it&#39;s probably cheaper since they can handle card payments online without having to do all the PCI security stuff.
-
-Adyen and Stripe are both rather expensive with their normal rates... Is this just a euronationalism thing? or a way for some politician to get kickbacks? or what?As I recall, this was an open contract, that did not have any EU only requirement (lots of other requirements, of course).  I would guess Adyen just offered a better solution (and/or price) than Stripe.
-
-Adyen and Stripe are both rather expensive with their normal rates... Is this just a euronationalism thing? or a way for some politician to get kickbacks? or what?
-
-As I recall, this was an open contract, that did not have any EU only requirement (lots of other requirements, of course).  I would guess Adyen just offered a better solution (and/or price) than Stripe.
-
-Generally speaking Adyen rates are not expensive per transaction at all. Just you need a certain scale to make Adyen feasible, they basically only want to work with large parties.
-
-A competitor to Stripe and Adyen worth considering is Mollie [mollie.com]. Adyen is focused on large scale enterprises while Mollie wants to work with any size entity.
-
-Fun fact: both Adyen and Mollie are based in Amsterdam, walking distance from each other, and there&#39;s probably a joke or two for the slashdots in there somewhere.
-
-Is this just a euronationalism thing?Nationalism is a thing in every location due to the fact that different countries have wildly different payment methods standardised. For example Amazon have their own payment provider Amazon Pay, which they don&#39;t even use in Europe because it lacks support for many payment methods. Few people support Paypal in the Netherlands or Germany as they don&#39;t support Wero or Girocard. If you focus on a provider which only support credit cards, you will have effectively locked out 75% of the market in some places in
-
-Nationalism is a thing in every location due to the fact that different countries have wildly different payment methods standardised. For example Amazon have their own payment provider Amazon Pay, which they don&#39;t even use in Europe because it lacks support for many payment methods. Few people support Paypal in the Netherlands or Germany as they don&#39;t support Wero or Girocard. If you focus on a provider which only support credit cards, you will have effectively locked out 75% of the market in some places in
-
-Is this just a euronationalism thing?I am keeping a list of articles that show a number of European countries (not just EU ones) moving to increase their digital sovereignty. Given the behaviour of the American administration and the behaviour of American tech companies, this is hardly surprising.
-
-I am keeping a list of articles that show a number of European countries (not just EU ones) moving to increase their digital sovereignty. Given the behaviour of the American administration and the behaviour of American tech companies, this is hardly surprising.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Pie are not square.  Pie are round.  Cornbread are square.</div>
+Think of it!  With VLSI we can pack 100 ENIACs in 1 sq. cm.!</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -3340,307 +3538,317 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">The Next Web</div>
-            <div class="title">Russia readies a smaller Starlink, and a 2027 deadline it keeps moving</div>
-            <div class="meta">2026-06-05</div>
+            <div class="title">EU trade chief wants a new tool to break Europe’s dependence on Chinese chips and rare earths</div>
+            <div class="meta">2026-06-06</div>
         </div>
         
         <div id="content-60" style="display:none;">
-            <h2>Russia readies a smaller Starlink, and a 2027 deadline it keeps moving</h2>
-            <p><strong>The Next Web | 2026-06-05</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/russia-rassvet-starlink-rival-2027">Visit Original Website</a>
+            <h2>EU trade chief wants a new tool to break Europe’s dependence on Chinese chips and rare earths</h2>
+            <p><strong>The Next Web | 2026-06-06</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/eu-sefcovic-diversification-instrument-china-supply-chain">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Russia intends to switch on a commercial version of its homegrown answer to Starlink next year, according to people familiar with the programme cited by Reuters, the latest milestone in a project that has been promising to arrive for most of a decade.
+            <div id="article-text">EU trade chief Šefčovič wants a new law forcing companies in sensitive sectors to have at least three suppliers, modelled on the Energy Union.
 
-The constellation is called Rassvet, the operator is a private aerospace firm called Bureau 1440, and the ambition is deliberately narrower than the American network it is meant to rival.
+EU trade commissioner Maroš Šefčovič has called for a new “diversification instrument“ to reduce Europe’s dependence on single suppliers of chips and rare earths. He made the proposal at the European Policy Center’s Brussels Economic Security Forum on Friday. The tool would force companies in sensitive sectors to source from at least three different suppliers.
 
-The scale tells the story. SpaceX has put thousands of Starlink satellites into low Earth orbit. Bureau 1440 plans to reach commercial service in 2027 with a constellation in the high hundreds, with figures around 288 to 292 satellites cited for the first operational phase, and a longer-term target near 900 by the mid-2030s.
+“If it’s critical supplies, you have to have three different suppliers to make sure that you cannot be punished because of a political reason,” Šefčovič said. He cited the Energy Union as his model, an initiative he previously led to wean Europe off Russian energy after the 2014 annexation of Crimea.
 
-Moscow has, for years, described the goal as something conceptually like Starlink rather than a like-for-like match, and the numbers keep that promise honest.
+The urgency is real. The EU relies on China for more than 90% of its rare earth supplies. Beijing imposed export controls on rare earth magnets last October during a tariff dispute with the United States, and halted chip shipments from Chinese-owned Nexperia after the Dutch government seized control of the company.
 
-The hardware is further along than the rhetoric alone would suggest. In March the company launched 16 operational satellites, on 23 March, following a run of experimental craft in 2023 and 2024 under the Rassvet-1 and Rassvet-2 test programmes.
+Those disruptions hit European carmakers and exposed the bloc’s vulnerability. “Recent industrial cases, in particular supplies of chips and rare earths, have reinforced my conviction that a step change is necessary,” Šefčovič said. “Every high-risk sector must be weaned off single-supplier dependence.”
 
 TNW City Coworking space - Where your best work happens
 
 A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
 
-Bureau 1440 has described the satellites as carrying 5G non-terrestrial-network communications, laser inter-satellite links, an upgraded power system, and plasma thrusters, the standard kit for a modern broadband constellation.
+The EU has since joined forces with Washington and other nations to find alternative sources. Sweden’s discovery of Europe’s largest rare earth deposit offered a long-term glimmer, but mining timelines stretch well beyond a decade. In the meantime, Europe remains exposed.
 
-Dmitry Bakanov, head of the Roscosmos space agency, told Reuters last September that several test vehicles already in orbit had been inspected and the production satellites modified accordingly.
+The proposal comes a day after Šefčovič urged Brussels and Beijing to address the EU’s “unsustainable” trade deficit with China. That deficit widened to €360 billion last year, up 18% from 2024. EU leaders are set to discuss China’s industrial overcapacity and subsidised exports at a summit on 18-19 June.
 
-Throughput targets have been published too. Bureau 1440 has advertised per-subscriber speeds ranging from 50 megabits to one gigabit per second, with planned coverage across more than 70 countries.
+Šefčovič will also meet Chinese counterpart Wang Wentao in Brussels later this month. He told reporters the next step is a formal legal proposal. “We have to specify what to really do with the legal proposal,” he said.
 
-Those figures are claims rather than demonstrated performance, the distinction that separates a constellation on a slide from one carrying paying traffic, and only the commercial launch will test them.
-
-Money has been committed, on paper at least. The Russian government has earmarked 102.8 billion roubles, roughly $1.26bn, for Rassvet, and Bureau 1440 has said it will add some 329 billion roubles, around $4bn, of its own through 2030.
-
-The company has put potential demand at 1.5 to two million subscribers inside Russia and as many as 12 million worldwide, with coverage planned across more than 70 countries.
-
-The 2027 date deserves a footnote. An earlier target slipped amid reported production shortfalls, which is the kind of detail that tends to recur in constellation programmes everywhere, not only in Russia.
-
-Building satellites is one problem; building them fast enough, in the numbers a useful network requires, is a different and harder one. The 16 operational craft now in orbit are a start on a figure that needs to clear 250 before paying customers can be served.
-
-There is a strategic reading that sits underneath the commercial one. A sovereign broadband network that does not depend on a foreign operator is attractive to any government that has watched Starlink become a factor in the war in Ukraine.
-
-Whether Rassvet arrives on schedule, and at the throughput Bureau 1440 advertises, is the question 2027 will answer. The constellation, for now, is mostly a plan with a launch cadence attached.
+The broader push to reduce chip dependency has already produced the EU Chips Act, which aims to double Europe’s share of global chip production to 20%. A Chips Act 2.0 was proposed by the Commission in June 2026 with new measures to cut strategic dependencies further.
 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
         <div class="card" onclick="openModal('content-61')">
             <div class="source">The Next Web</div>
-            <div class="title">Airbnb’s Chesky helped put Sam Altman back in power. Now he’s building an AI lab to compete with him.</div>
-            <div class="meta">2026-06-05</div>
+            <div class="title">Reid Hoffman leaves Microsoft’s board to go ‘founder mode’ with AI drug startup Manus</div>
+            <div class="meta">2026-06-06</div>
         </div>
         
         <div id="content-61" style="display:none;">
-            <h2>Airbnb’s Chesky helped put Sam Altman back in power. Now he’s building an AI lab to compete with him.</h2>
-            <p><strong>The Next Web | 2026-06-05</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/chesky-airbnb-ai-lab-openai-altman">Visit Original Website</a>
+            <h2>Reid Hoffman leaves Microsoft’s board to go ‘founder mode’ with AI drug startup Manus</h2>
+            <p><strong>The Next Web | 2026-06-06</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/reid-hoffman-leaves-microsoft-board-manus">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">TL;DRAirbnb CEO Brian Chesky plans to back a new AI lab focused on user interaction and design, while remaining at Airbnb. The move puts him in competition with Sam Altman, whom he helped reinstate at OpenAI in 2023.
+            <div id="article-text">Reid Hoffman is leaving Microsoft’s board after a decade to focus on Manus, his AI drug discovery startup. The company has raised over $50 million.
 
-Airbnb CEO Brian Chesky plans to back a new AI lab focused on user interaction and design, while remaining at Airbnb. The move puts him in competition with Sam Altman, whom he helped reinstate at OpenAI in 2023.
+Reid Hoffman is stepping down from Microsoft‘s board of directors after nearly a decade. The company disclosed the departure in a regulatory filing on Thursday. Hoffman said he wants to go “founder mode” with Manus, his AI-powered drug discovery startup.
 
-Brian Chesky has spent years as an AI kingmaker. He met Sam Altman through Y Combinator in 2006, advised him on managing OpenAI’s hypergrowth, and helped broker Altman’s return to power after the board fired him in November 2023. He was reportedly considered for a seat on OpenAI’s board.
+Hoffman joined the board in 2016 after Microsoft bought his company LinkedIn for $26.2 billion. His tenure overlapped with some of the most consequential AI deals in the company’s history. He was a board member when Microsoft invested its first $1 billion into OpenAI in 2019, a bet that reshaped the company’s trajectory.
 
-Now he is entering competition with his protégé’s company. Chesky plans to back a new AI lab of his own, Bloomberg first reported on Wednesday, with a focus on user interaction and design. He will remain as Airbnb’s CEO and will not lead the lab himself. The details are early-stage and could change.
-
-The move reflects a frustration Chesky has voiced publicly for more than a year. He said last year that Airbnb had not struck an LLM partnership because existing products were not quite ready for what he wanted to build. His argument is that travel and commerce require a rich visual interface, not the text-based chatbots that OpenAI and Anthropic have popularised.
+Hoffman was also one of OpenAI’s original investors and served on that company’s board until 2023. He stepped down citing too many potential conflicts of interest. Those conflicts multiplied further when Microsoft struck a $650 million acqui-hire deal with Inflection AI, the AI startup Hoffman co-founded.
 
 TNW City Coworking space - Where your best work happens
 
 A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
 
-Airbnb has not been idle on AI. The company hired Ahmad Al-Dahle, who led generative AI work at Meta including the Llama model family, as chief technology officer in January 2026. It has rebuilt its app around a large language model for conversational search, automated 40% of customer support queries with an AI bot, and rolled out AI-generated listing details and review summaries. A voice-based assistant is planned for later this year.
+That deal brought Inflection co-founder Mustafa Suleyman into Microsoft, where he now leads a narrower AI division focused on superintelligence. It also raised regulatory questions about conflicts on Big Tech boards.
 
-But Chesky appears to have concluded that buying AI from frontier labs is not enough. He wants to build at the model layer, not just the application layer.
+Hoffman’s next chapter is Manus, a drug discovery company he co-founded. The startup has raised over $50 million across two seed rounds, with backing from General Catalyst. Its CEO is Dr. Siddhartha Mukherjee, a physician, biologist, and Pulitzer Prize-winning author of “The Emperor of All Maladies.”
 
-Chesky is not alone. Brett Adcock launched Hark late last year with $100 million of his own money to build a universal AI interface, then raised a $700 million Series A at a $6 billion valuation. Hark is also emphasising user interaction and hardware, with the lead iPhone designer from Apple now heading its design effort.
+Hoffman holds the title of co-founder and chairman, not CEO. But he signalled on a recent episode of his “Possible” podcast that he plans to be far more hands-on.
 
-Mira Murati’s Thinking Machines Lab is pursuing “interaction models” that process continuous streams of audio, text, and video in real time. The common thread is a belief that the frontier labs have focused on intelligence at the expense of interface, and that the next defensible layer sits between the model and the user.
+“One of the things I realized over the last month was that, we’re seeing such progress with Manus. I need to get back to founder mode,” he told Microsoft CEO Satya Nadella during the conversation.
 
-The trend carries a broader implication. When founders of Chesky’s stature stop waiting for OpenAI, Anthropic, or Google to deliver what they need and start building their own research capacity, it signals that the application layer has run into the limits of what commodity models can provide.
+Hoffman said Manus is making progress on what he calls “Move 37” AI. The term refers to AI that supersedes human creativity, borrowed from AlphaGo’s famous move against world champion Lee Sedol. He believes the concept applies to chemistry, particularly in discovering novel compounds to combat cancer.
 
-The personal dimension is hard to ignore. Chesky and Altman’s relationship spans nearly two decades. Chesky met Altman through Y Combinator, which incubated Airbnb. When OpenAI took off, Chesky began meeting regularly with Altman to advise on scaling a technology company. During the November 2023 board crisis, Chesky advised Altman on public relations and rallied support among Silicon Valley executives.
-
-Now Chesky is building an operation that will compete, at least in part, with OpenAI’s own ambitions in user-facing AI. It is unclear whether the new lab will train its own models or build specialised systems on top of existing ones. But the direction is clear: Chesky wants proprietary AI research, not an API subscription.
-
-Nearly everything about the lab remains unspecified. There is no name, no announced team, no disclosed funding amount, and no timeline. Chesky’s commitment to remaining at Airbnb raises questions about how much of his attention the new venture will receive, and whoever leads it will inherit a founding chair whom TechCrunch described as “known as a micromanager.”
-
-What is clear is the thesis. Chesky has watched the AI lab landscape from closer than almost anyone outside it, and he has decided that the interface problem, making AI useful in rich, visual, consumer-facing contexts, is important enough to warrant its own research operation. Whether a part-time founder can build one that matters is the open question.
+The departure comes as AI drug discovery heats up across the industry. ByteDance’s Anew Labs recently presented its first AI-designed therapy, and Google DeepMind’s Isomorphic Labs has AI-designed drug candidates entering clinical trials.
 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
         <div class="card" onclick="openModal('content-62')">
             <div class="source">The Next Web</div>
-            <div class="title">Token prices fell 98%. Enterprise AI bills tripled. Now the industry wants a standards body to explain why.</div>
-            <div class="meta">2026-06-05</div>
+            <div class="title">Former IBM cybersecurity exec accuses company of covering up years of Chinese hacking</div>
+            <div class="meta">2026-06-06</div>
         </div>
         
         <div id="content-62" style="display:none;">
-            <h2>Token prices fell 98%. Enterprise AI bills tripled. Now the industry wants a standards body to explain why.</h2>
-            <p><strong>The Next Web | 2026-06-05</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/token-prices-fell-98-enterprise-ai-bills-tripled-now-the-industry-wants-a-standards-body-to-explain-why">Visit Original Website</a>
+            <h2>Former IBM cybersecurity exec accuses company of covering up years of Chinese hacking</h2>
+            <p><strong>The Next Web | 2026-06-06</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/ibm-whistleblower-data-breach-cover-up">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">TL;DREnterprise AI bills are tripling despite a 98% drop in per-token prices, as agentic tools drive consumption 18.6x higher per developer. The Linux Foundation is launching the Tokenomics Foundation to bring cost discipline to AI spending.
+            <div id="article-text">IBM’s ex-threat intel VP alleges the company hid Chinese state hacker breaches from 2013-2016 and never told the feds. The case is now in court.
 
-Enterprise AI bills are tripling despite a 98% drop in per-token prices, as agentic tools drive consumption 18.6x higher per developer. The Linux Foundation is launching the Tokenomics Foundation to bring cost discipline to AI spending.
+A former IBM cybersecurity executive has accused the company of concealing multiple data breaches by Chinese state-linked hackers. William Barlow served as IBM’s vice president of threat intelligence until August 2019. In a whistleblower lawsuit unsealed this week, he alleged IBM knew about the breaches and deliberately failed to notify US authorities.
 
-Uber blew through its entire 2026 AI coding budget by April. Microsoft revoked its developers’ Claude Code licences six months after enabling them. One company reportedly ran up a $500 million Claude bill in a single month after forgetting to set usage limits. A Priceline employee told TechCrunch that a routine Cursor contract renewal came back four to five times more expensive.
+The lawsuit was originally filed under seal in 2020. It centres on a hacking campaign by APT 10, a Chinese government-linked group whose members were indicted in 2018. Then-FBI Director Christopher Wray described the group’s targets as a “Who’s Who” of the global economy.
 
-The pattern is the same everywhere. Per-token prices have collapsed, but the push for autonomous AI agents has sent consumption through the roof. Companies that gorged themselves on all-you-can-eat subscriptions in early 2025 are now scrambling to understand where the money went, and whether any of it produced a return.
+Barlow alleged that an internal IBM investigation found more than 56,000 potential APT 10 intrusions between 2013 and 2016. The scale was enormous. According to an internal report cited in the complaint, attackers accessed nearly 400 compromised accounts and almost 200 systems across every IBM business unit.
 
-GPT-4-equivalent performance now costs roughly $0.40 per million tokens, down from $20 per million in late 2022. That is a 98% reduction. Yet enterprise AI bills have risen by an estimated 320%, according to multiple industry analyses. The average enterprise AI budget has grown from $1.2 million per year in 2024 to $7 million in 2026.
-
-The culprit is volume. Agentic AI tools released since November 2025, including Anthropic’s Claude Opus 4.5, OpenAI’s GPT-5.1, and Google’s Gemini 3 Pro, have multiplied token consumption per task. A simple linear workflow in 2023 cost about $0.04 per interaction. An orchestrated agentic system in 2026 costs roughly $1.20, about 30 times more. Individual engineers at Microsoft were reportedly spending between $500 and $2,000 a month on tokens before the licences were pulled.
+The breach spanned 18 countries and multiple IBM products. The hackers also infiltrated data IBM maintained in partnership with AT&T, which is also named in the lawsuit.
 
 TNW City Coworking space - Where your best work happens
 
 A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
 
-Nicholas Arcolano, head of research at engineering management platform Jellyfish, told TechCrunch that per-developer consumption has risen roughly 18.6 times in nine months. Engineers who used the most tokens were about twice as productive as lighter users, but they spent 10 times the tokens to get there. “Whether extreme spend pays off comes down to the ultimate business value of shipped code, which most companies still can’t measure,” Arcolano said.
+In March 2017, intelligence officials from the Five Eyes alliance warned IBM about the breach. That prompted an internal investigation. But IBM could not fully assess the damage because it had not kept logs of who accessed its network and when, a basic security practice.
 
-“Six months ago, I would have a conversation with a customer and it would be all about ‘What can it do? Is it good enough?’” Alexander Embiricos, OpenAI’s head of enterprise, told TechCrunch. “Now the conversations are about, ‘We’re spending so much. What visibility do you have? What token controls do you have?’”
+Despite those findings, IBM allegedly never disclosed the breaches to authorities. The US government is one of its largest customers. IBM is a major cybersecurity vendor to federal agencies, which makes the alleged concealment particularly significant.
 
-J.R. Storment, executive director of the FinOps Foundation, described the shift bluntly. “In April and May, I started hearing from companies: ‘Oh my god, we are 3x over our entire 2026 token budget and it’s only April.’ The whole conversation shifted from tokenmaxxing and ‘go fast’ to ‘we need guardrails, how do we control this?’”
+Barlow’s complaint described the company’s core network infrastructure as “archaic.” Hackers could “roam almost anywhere undetected,” it claimed.
 
-Priceline’s senior director of IT finance, Chris Reed, drew a comparison to the telecom billing era. “It’s like the crack-cocaine epidemic. They let you try it to get you hooked, and now you’re kind of beholden to it.” The company has begun placing token limits on certain groups. Reed said he is already seeing discrepancies between vendor-reported usage and Priceline’s internal data.
+The breaches extended beyond IBM’s core network. Barlow alleged that Trusteer, a cybersecurity startup IBM acquired in 2013, was breached in 2018. Truven, a healthcare data company IBM bought in 2016 for $2.6 billion, was breached multiple times after the acquisition.
 
-It is against this backdrop that the Linux Foundation this week unveiled plans for the Tokenomics Foundation, a new standards body aiming to bring the same cost discipline to AI tokens that FinOps brought to cloud spending.
+In both cases, he accused IBM of failing to properly investigate or disclose the incidents.
 
-The Foundation plans to build a canonical definition of “tokenomics,” open standards for AI token usage and billing, and new metrics including cost-per-intelligence and tokens-per-watt. A formal launch is planned for July. Nishant Gupta, chief availability officer at Salesforce, said in a statement that “token economics is fundamentally more abstract and opaque than anything we’ve managed at this scale before.”
+IBM spokesperson Miki Carver declined to answer specific questions. She told TechCrunch: “This complaint was filed six years ago, and the U.S. Department of Justice declined to intervene. IBM is confident that our actions followed the letter of the law.”
 
-The challenge is enormous. “Tracking cloud costs is a hundreds-of-millions-of-rows-a-month data problem,” Storment said. “Tracking token costs is a trillions-of-rows-a-month data problem.”
+The DOJ’s decision not to intervene does not end the case. A federal judge in New York ordered the suit unsealed. Barlow’s attorney Jason Brown told TechCrunch his firm is “looking forward to aggressively litigating the matter.”
 
-Startups and established vendors are racing to fill the gap. Pay-i tracks and optimises AI spending. Paid lets developers bill based on actual value rather than subscription fees. Jellyfish, Waydev, and Faros AI provide agent monitoring to prove the ROI of developer tools. Ramp has moved into AI spend management. Datadog and New Relic have added token-level observability.
+Brown added: “You can’t sell cybersecurity to the federal government while allegedly having these security problems within your own company.”
 
-Model routing is emerging as the primary cost lever. Factory, an enterprise AI coding startup, launched a model router this week that automatically picks the cheapest adequate model for each task. Vitaly Gordon, CEO of Faros AI, said frontier labs are already doing this internally. “The financial report for how much you spend on Anthropic, even if you call the Opus model, some of the spend will be on Sonnet or Haiku, because they are smart enough to do it,” he said.
+The case underscores a persistent problem in corporate cybersecurity: breaches that never come to light. Uber paid $148 million in 2018 after concealing a 2016 breach affecting 57 million users. The United Nations was caught hiding a breach of its Geneva and Vienna offices.
 
-Goldman Sachs projects global token usage will multiply 24 times by 2030. The companies already over budget need solutions now, and the Tokenomics Foundation’s first deliverable is still months away. As Gordon put it: “Maybe we created a steam engine, but we still haven’t figured out the assembly line.”
+Since the alleged IBM breaches, new SEC rules have required public companies to disclose material cybersecurity incidents within four business days. Enforcement remains uneven.
 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
         <div class="card" onclick="openModal('content-63')">
             <div class="source">The Next Web</div>
-            <div class="title">Von der Leyen’s AI envoy pick triggers conflict-of-interest backlash weeks after Siemens helped gut the AI Act</div>
-            <div class="meta">2026-06-05</div>
+            <div class="title">Trump wants the American public to own a piece of OpenAI. Nobody knows how that would work.</div>
+            <div class="meta">2026-06-06</div>
         </div>
         
         <div id="content-63" style="display:none;">
-            <h2>Von der Leyen’s AI envoy pick triggers conflict-of-interest backlash weeks after Siemens helped gut the AI Act</h2>
-            <p><strong>The Next Web | 2026-06-05</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/von-der-leyens-ai-envoy-pick-triggers-conflict-of-interest-backlash-weeks-after-siemens-helped-gut-the-ai-act">Visit Original Website</a>
+            <h2>Trump wants the American public to own a piece of OpenAI. Nobody knows how that would work.</h2>
+            <p><strong>The Next Web | 2026-06-06</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/trump-wants-the-american-public-to-own-a-piece-of-openai-nobody-knows-how-that-would-work">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The European Commission has appointed Jim Hagemann Snabe, chairman of Siemens’ supervisory board, as its special envoy for industrial artificial intelligence. He will advise Commission President Ursula von der Leyen and tech sovereignty chief Henna Virkkunen on how to accelerate AI adoption across European industry.
+            <div id="article-text">TL;DRTrump says he will meet AI companies next week on a “partnership” plan to give Americans an equity stake. Altman first pitched the idea in early 2025. Sanders wants 50%. Critics warn government ownership would undermine AI regulation.
 
-The backlash was immediate. Snabe’s appointment lands weeks after Siemens was among the companies that lobbied hardest for the rollback of the EU’s AI Act, the world’s most ambitious AI regulatory framework. Critics say the appointment amounts to handing advisory power over AI policy to the same industry that successfully weakened it.
+Trump says he will meet AI companies next week on a “partnership” plan to give Americans an equity stake. Altman first pitched the idea in early 2025. Sanders wants 50%. Critics warn government ownership would undermine AI regulation.
 
-Snabe, 60, is a Danish executive who co-led SAP as co-CEO from 2010 to 2014 before moving to the supervisory board. He became chairman of Siemens’ supervisory board in 2018. Beyond those roles, he has served on the advisory board of Google Cloud, on the board of US enterprise AI firm C3.ai, and as a board of trustees member at the World Economic Forum.
+President Donald Trump said on Thursday that he will likely meet with AI companies at the White House next week to discuss what he called a federal government “partnership” that would let the American public profit from the industry’s success. “There are concepts where pieces could be given to the American public, where the American public essentially becomes a partner with the companies,” Trump said, adding that the programme could include sending company dividends to Americans.
 
-The Commission says it conducted a thorough conflict-of-interest assessment before the appointment. For the duration of his mandate, which runs until 31 March 2027, Snabe will suspend his Google Cloud and C3.ai memberships. The role is unpaid.
+The idea is not new. OpenAI CEO Sam Altman first pitched the concept of government stakes in major AI firms to the Trump administration in early 2025, and has raised it again in recent weeks. But the president’s public endorsement, combined with a parallel and far more aggressive proposal from Senator Bernie Sanders, has thrust the question of who owns AI’s economic upside into the centre of Washington’s fractured AI policy debate.
 
-The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
+Altman’s version is voluntary. OpenAI’s April policy document proposed a “Public Wealth Fund” that would give every citizen a stake in AI-driven economic growth. Under this framing, OpenAI could donate equity to the government to seed the fund. The pitch positions the company as a willing participant, not a target.
 
-The timing is what makes the appointment politically charged. On 7 May, the Council of the EU and the European Parliament reached a deal to simplify the AI Act through the so-called Digital Omnibus. The headline change was a 16-month delay to high-risk AI obligations, pushing the deadline from August 2026 to December 2027.
+TNW City Coworking space - Where your best work happens
 
-More significantly for Siemens, the deal introduced an industrial AI exemption. AI systems used on factory floors and embedded in machinery will now be covered by separate machinery regulations rather than the AI Act, unless a failure could directly endanger health or safety. Germany, where Siemens is headquartered, led the push for that exemption. Chancellor Friedrich Merz called for freeing industrial AI from the EU’s “regulatory straightjacket” at the Hannover Messe trade fair in April, with Siemens executives alongside him.
+A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
 
-Virkkunen, who drove the simplification through the College of Commissioners, framed the deal as proof that Europe can maintain a rules-based approach while making regulation workable for industry. Snabe’s appointment is the next step in that direction: an explicit signal that industrial competitiveness, not regulatory caution, is now the priority.
+Sanders’ version is not voluntary. The senator announced plans for the AI Sovereign Wealth Fund Act, which would impose a one-time 50% tax on the stock of the largest AI companies, paid in shares rather than cash. The government would manage the resulting fund, use its voting shares to secure board representation, and block decisions it deems harmful. The bill targets firms like OpenAI, Anthropic, and xAI. The legislation is widely considered unlikely to pass, but it has shifted the boundaries of what Washington is willing to discuss.
 
-“My first reaction was just: Wow,” said Kim van Sparrentak, the Dutch Green lawmaker who led the Parliament’s work on the AI Act. “They fought hard against AI rules for themselves, they lobby against technological sovereignty, and now they get to decide how we are going to integrate AI.”
+The gap between the two proposals is vast. Altman is offering a gift. Sanders is proposing a seizure. Trump appears to be somewhere in the middle, publicly warming to the concept without committing to either version’s mechanics.
 
-The concern is not only about Siemens. Snabe’s board positions at Google Cloud and C3.ai place him at the intersection of the three constituencies most directly affected by EU AI policy: European industry, US Big Tech, and the enterprise AI software market. Suspending board seats is not the same as severing ties, and critics argue that an unpaid advisory role with no formal accountability is precisely the kind of arrangement that makes revolving-door governance difficult to scrutinise.
+The most pointed criticism of any government equity arrangement came from Nat Purser of the advocacy group Public Knowledge, who cautioned against any setup that makes the government less inclined to impose or enforce safety regulations because doing so might diminish the value of its own holdings.
 
-The Commission has not disclosed the specific terms of Snabe’s conflict-of-interest assessment. It says one was carried out but has not published the methodology or findings, which makes the assurance hard to evaluate independently.
+The concern is not abstract. Three days before Trump’s profit-sharing comments, he signed an executive order asking AI companies to voluntarily submit frontier models for government testing up to 30 days before public release. The word “voluntarily” is doing a lot of work in that sentence. If the government holds equity in the companies it is supposed to regulate, the incentive to keep that testing voluntary, rather than mandatory, becomes even stronger.
 
-Snabe’s mandate is to advise on how Europe can boost industrial AI adoption, a priority that the Commission has elevated since the AI Act’s passage exposed a tension at the heart of European tech policy: the desire to regulate AI and the fear of falling behind the US and China in deploying it.
+Anthropic has said it is not involved in discussions with the administration about granting equity to the government. No other company has publicly confirmed participation.
 
-The appointment was announced alongside the Commission’s broader technology sovereignty blueprint, which includes the Cloud and AI Development Act, Chips Act 2.0, and new restrictions on US cloud providers handling sensitive European government data. Snabe’s role sits within that framework, theoretically bridging the gap between Brussels’ regulatory ambitions and the corporate reality of getting AI into European factories.
+The Trump administration has already taken equity positions in Intel, IBM, and several quantum and critical minerals companies during the president’s second term. But those stakes came with specific industrial policy objectives, typically tied to subsidies or procurement contracts. An AI equity programme would be structurally different: it would aim to redistribute wealth from an entire category of companies to the general public, not to secure supply chains.
 
-Whether a Siemens chairman is the right person to bridge that gap or simply the most obvious symptom of the gap itself is the question Brussels will be debating for the duration of his mandate.
+The most fundamental obstacle is mechanical. How would a private AI company transfer equity to the federal government? OpenAI, currently valued at more than $850 billion by private investors, is restructuring from a non-profit into a for-profit entity and preparing for an IPO as soon as this year. It closed a record-breaking funding round in March co-led by MGX, backed by Abu Dhabi’s sovereign wealth fund. Anthropic has filed confidentially for an IPO. xAI merged into SpaceX, which is about to conduct the largest IPO in history. Each has a different corporate structure, different investor base, and different fiduciary obligations. A one-size-fits-all equity transfer mechanism does not exist.
+
+Sanders’ bill would use the tax code, but a 50% stock seizure raises obvious constitutional questions. Altman’s voluntary donation model avoids those, but depends entirely on companies choosing to participate, which means the fund would be as large or as small as the industry decides.
+
+The California approach, announced by Governor Gavin Newsom in a separate executive order last month, takes a different path entirely. Newsom is exploring mandatory equity grants for workers displaced by AI, a state-level capital pool funded by taxes on AI productivity gains, and voluntary profit-sharing programmes incentivised by tax breaks. None of these require the federal government to hold shares directly.
+
+Trump said the meeting with AI companies will happen “next week.” No formal agenda has been announced. The planning remains at the discussion stage, with no companies confirmed and no legal framework in place.
+
+The broader context is a country that has spent 18 months unable to agree on basic AI safety rules, let alone ownership structures. The EU has its AI Act. The US has a stalled executive order, a voluntary testing regime, and now two competing proposals to give the public a cut of the profits. Whether any of it results in Americans actually receiving dividends from AI companies, or whether the conversation simply makes the companies look generous while changing nothing, will depend on details that nobody has written yet.
 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
         <div class="card" onclick="openModal('content-64')">
             <div class="source">The Next Web</div>
-            <div class="title">FIFA World Cup 2026 is a cybercriminal’s dream, and the scams are already live</div>
-            <div class="meta">2026-06-05</div>
+            <div class="title">Every VC-backed e-bike company went bust. Bootstrapped Lectric just had its biggest month ever.</div>
+            <div class="meta">2026-06-06</div>
         </div>
         
         <div id="content-64" style="display:none;">
-            <h2>FIFA World Cup 2026 is a cybercriminal’s dream, and the scams are already live</h2>
-            <p><strong>The Next Web | 2026-06-05</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/fifa-world-cup-2026-scams-phishing-malware">Visit Original Website</a>
+            <h2>Every VC-backed e-bike company went bust. Bootstrapped Lectric just had its biggest month ever.</h2>
+            <p><strong>The Next Web | 2026-06-06</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/every-vc-backed-e-bike-company-went-bust-bootstrapped-lectric-just-had-its-biggest-month-ever">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">TL;DROver 4,300 fake FIFA domains, banking malware in pirate streaming apps, and credential-harvesting phishing operations are already targeting World Cup 2026 fans ahead of the 11 June kickoff. The FBI, Group-IB, Fortinet, and Kaspersky have all published warnings.
+            <div id="article-text">The e-bike industry spent the past two years burying its darlings. VanMoof, the Dutch startup that raised over €200 million, went bankrupt in July 2023. Rad Power Bikes, the Seattle company that raised $330 million and was once valued at $1.65 billion, filed for Chapter 11 in December 2025. Its assets were sold for $13.2 million.
 
-Over 4,300 fake FIFA domains, banking malware in pirate streaming apps, and credential-harvesting phishing operations are already targeting World Cup 2026 fans ahead of the 11 June kickoff. The FBI, Group-IB, Fortinet, and Kaspersky have all published warnings.
+Lectric eBikes watched all of this happen from Phoenix, Arizona, where it has never raised venture capital and just posted the biggest sales month in its history. CEO Levi Conlow told TechCrunch that Lectric sold almost 30,000 bikes last month. “I’m not sure anybody has done that before, even at peak COVID,” he said.
 
-The most oversubscribed sporting event in history is also the most phished. With more than 150 million ticket requests in the first 15 days and just six million seats across 16 cities in the US, Canada, and Mexico, the 2026 FIFA World Cup has created exactly the conditions that fraud thrives on: scarcity, urgency, and money moving fast.
+In the past six months, Lectric has launched three new brands. It relaunched Juiced Bikes, an e-bike brand it acquired out of distress in 2025. It created Juiced Powersports, which will ship its first electric moto in August. And this week it spun out Monarc, a premium adventure brand based in Minnesota, led by industry veterans Julia Moran and Ryan Callahan.
 
-Security researchers, the FBI, and multiple cybersecurity firms have published warnings in the past week describing a fraud infrastructure that is already operational, well-resourced, and scaling. The picture that emerges is not a handful of opportunistic phishing pages. It is a layered ecosystem of fake domains, banking malware, credential theft, and social media impersonation, all converging on the same window.
-
-The most detailed findings come from Group-IB, which tracked more than 4,300 fraudulent FIFA domains registered since August 2025. At the centre is a group it calls Ghost Stadium, a Chinese-speaking, financially motivated operation running a single phishing kit across more than 300 of those sites.
-
-The fake is good. The page is a near-perfect copy of fifa.com, mimicking FIFA’s real single sign-on login, run by PingIdentity, down to the genuine client ID copied from the live site. It loads images directly from FIFA’s own servers, so the page looks authentic and slips past tools that flag copied assets.
+Together, Lectric has invested about $10 million across the three initiatives. The company has 170 employees and ships 90% of its products direct to consumers through a website that draws two to four million visitors per month. It shipped 150,000 units in 2025.
 
 TNW City Coworking space - Where your best work happens
 
 A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
 
-The damage is in the details: the fake login also asks to reset the password. Once a victim enters credentials, the attacker locks them out of their real FIFA account and resells any tickets tied to it. Most traffic comes from Facebook ads with reused tracking codes, plus links on Telegram, WhatsApp, and in search results. Payment options include card entry, money-transfer apps like Chime and Nequi, Mexico-only processors, and a crypto option that converts card payments into cryptocurrency. That last one is a reliable tell, since FIFA’s official ticketing never accepts crypto.
+“Others might be pulling back, or raising money. We’re actually deploying and investing,” Conlow said. “I actually don’t think the market is saturated right now.” After listing a dozen companies that had folded or left the US market, he added: “I think the market actually lacks a lot of worthy competition right now.”
 
-FortiGuard Labs counted more than 13,000 World Cup-themed domains registered between January and May, roughly 8.8% of them classified as malicious or suspicious. The FBI’s public service announcement lists dozens of fake FIFA domains, from misspelled lookalikes to phony job pages, and warns more are coming.
+Conlow and co-founder Robby Deziel started Lectric seven years ago as childhood friends. They bootstrapped the business until 2020, when they took an investment from private equity firm Bertram Capital Management. No venture capital was ever involved.
 
-Ticket fraud is just one piece. Group-IB also found counterfeit merchandise shops, bogus streaming sites that take a subscription fee and then install malware, and fake betting platforms that collect passport scans and selfies for identity theft. Bitdefender separately tracked FIFA lottery emails promising payouts of up to $2 million.
+The playbook, bootstrap, stay profitable, let better-funded competitors implode, then expand, is one that founders across hardware categories might study. The venture-backed e-bike companies that collapsed shared a pattern: massive fundraising, aggressive scaling fuelled by pandemic-era demand, and a post-pandemic correction that left them with too many bikes, too much staff, and too little margin.
 
-Group-IB estimates losses from premium and hospitality ticket fraud alone at $71 million to $474 million, with the broader campaign potentially reaching into the billions. Those are projections based on visible infrastructure, not confirmed losses.
+Rad Power’s collapse was especially instructive. The company ended with $32 million in assets against $73 million in liabilities, with US Customs and Border Protection as its largest creditor, owed $8.4 million in unpaid tariffs. From a $1.65 billion valuation to a $13.2 million fire sale in three years.
 
-For fans chasing free match streams, the bigger danger is on the phone. ThreatFabric observed a spike in malicious unofficial streaming apps, many posing as the popular RojaDirecta, around the recent Champions League final and expects a repeat at the World Cup on a larger scale.
+Conlow is deliberate about how he structures the expansion. Each of the three new brands has its own product engineering, branding, marketing, and customer service teams. They share Lectric’s supply chain and purchasing power but operate independently.
 
-Kaspersky tied those apps to two Android banking trojan families: Massiv and Perseus. Neither is distributed through Google Play, so installing one requires clicking past Android’s built-in warnings. Once installed, the malware uses accessibility tools to overlay fake bank login screens on real apps, record keystrokes, intercept one-time codes from SMS and authenticator apps, and control the screen remotely.
+“What we’ve learned is that Lectric cannot be everything to everyone,” Conlow said. Featuring a Juiced model on the Lectric homepage would pull attention from the best-selling XP Series. “You need to be a lot more intentional. When you’re more focused, you can go really deep into that vertical.”
 
-Perseus, built on leaked code from the older Cerberus trojan, even reads note-taking apps for saved passwords and crypto recovery phrases. The simplest red flag, according to ThreatFabric, is a streaming app requesting accessibility access. No legitimate streaming app needs it.
+He even wants the brands to compete with each other. “We don’t want three brands that end up looking and performing the same. There should be healthy competition between them.”
 
-Fortinet counted over 1,700 spoofed FIFA accounts, nearly 90% on Facebook and Instagram, plus a scheme using fake FIFA job ads and calendar invites to redirect applicants to a lookalike Google login. Bitdefender found more than 55 football-themed ad campaigns on Facebook and Instagram pushing counterfeit kits, fake Panini stickers, and phishing pages.
+Monarc’s first product, an all-terrain trail e-bike called the Marker, ships to customers in July. It comes standard with two LG 48-volt 15Ah batteries providing 720 watt-hours each, both UL 2271 certified, an unusual offering in the sector. Other specs include a Bafang motor, Shimano drivetrain, 5-amp fast charger, and a 3.5-inch colour touchscreen that syncs with accessories like rearview radar and smart helmets.
 
-Stolen FIFA logins are already circulating. Fortinet found hundreds of thousands of user credentials, plus more than 4,600 FIFA-related URLs, in data collected by credential-stealing malware families including Vidar, LummaC2, and RedLine.
+The brand is leaning on a five-year warranty and human customer support. Conlow was quick to note that none of its brands will use AI for customer service, a pointed contrast in a year when most companies are racing to automate exactly that function.
 
-Host-city Wi-Fi is its own problem. A Kaspersky survey that drove around Mexico City, Monterrey, and Guadalajara found 10% to 12% of networks open and password-free, with the WPS pairing feature still active on nearly half. Both leave openings for rogue “evil twin” hotspots that copy a real network and quietly intercept traffic.
-
-The scams leave clear tells. Buy tickets only through fifa.com, typed directly, not via an ad or search result. Enable multi-factor authentication, and treat any seller requesting cryptocurrency as a scam. On Android, refuse accessibility permissions for streaming apps. On open Wi-Fi in host cities, use mobile data for banking and email.
-
-Meta says it is now showing warning pop-ups when people search Facebook for FIFA tickets, and it partnered with Visa to take down a Facebook network linked to fake World Cup gambling sites. The FBI is asking victims to report at IC3.
-
-The bigger concern is what has not yet been activated. Group-IB counted roughly 3,800 fraudulent FIFA domains sitting parked and unused, ready to switch on. With ready-made scam kits and ticket-buying bots already for sale, the peak window is easy to predict: 11 June to 19 July, when searches for tickets, streams, and travel will be at their highest.
+Whether Lectric will keep launching brands is an open question. Conlow said the plate is full for now. But the underlying thesis is clear: the e-bike market’s wave of bankruptcies was not a sign of a dying category. It was a sign that the wrong companies, built on the wrong capital structure, were trying to serve it.
 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
         <div class="card" onclick="openModal('content-65')">
             <div class="source">The Next Web</div>
-            <div class="title">Blackstone-backed AirTrunk plans $30bn India data centre push as the country becomes AI’s next construction site</div>
-            <div class="meta">2026-06-05</div>
+            <div class="title">GM’s $900 million bet on a battery chemistry no one has commercialised could slash EV prices by 2028</div>
+            <div class="meta">2026-06-06</div>
         </div>
         
         <div id="content-65" style="display:none;">
-            <h2>Blackstone-backed AirTrunk plans $30bn India data centre push as the country becomes AI’s next construction site</h2>
-            <p><strong>The Next Web | 2026-06-05</strong></p>
-            <a class="original-link" href="https://thenextweb.com/news/airtrunk-blackstone-30-billion-india-data-centres">Visit Original Website</a>
+            <h2>GM’s $900 million bet on a battery chemistry no one has commercialised could slash EV prices by 2028</h2>
+            <p><strong>The Next Web | 2026-06-06</strong></p>
+            <a class="original-link" href="https://thenextweb.com/news/gm-lmr-battery-cell-development-centre-ev-costs">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">TL;DRBlackstone-backed AirTrunk plans to invest $30 billion in India by 2030, building 5GW of data centre capacity across multiple states. The announcement comes six weeks after AirTrunk entered India through its acquisition of Lumina CloudInfra.
+            <div id="article-text">TL;DRGM opened a 500,000-square-foot Battery Cell Development Centre to bridge R&D and factory production for its new LMR battery chemistry. If successful, LMR could cut EV battery costs by $6,000 per vehicle and reach trucks by 2028.
 
-Blackstone-backed AirTrunk plans to invest $30 billion in India by 2030, building 5GW of data centre capacity across multiple states. The announcement comes six weeks after AirTrunk entered India through its acquisition of Lumina CloudInfra.
+GM opened a 500,000-square-foot Battery Cell Development Centre to bridge R&D and factory production for its new LMR battery chemistry. If successful, LMR could cut EV battery costs by $6,000 per vehicle and reach trucks by 2028.
 
-Six weeks ago, AirTrunk did not operate in India. Now it wants to spend $30 billion there.
+Hidden among the landmarks of General Motors’ Warren Tech Center outside Detroit is a pair of nondescript off-white buildings that house the company’s most consequential investment in years. The new Battery Cell Development Centre, spanning 500,000 square feet, is the lynchpin of GM’s plan to bring a new class of cheaper EV batteries to market a year earlier than planned.
 
-The Blackstone-backed hyperscale data centre operator announced on Thursday that it plans to invest more than INR 3,000 billion ($30 billion) in India by 2030, building over 5 gigawatts of digital infrastructure capacity across multiple states and union territories. The figure represents planned spending, not committed capital, and the four-year timeline leaves considerable room for adjustment. Still, if executed, the programme would rank among the largest digital infrastructure commitments in the country’s history.
+The chemistry in question is LMR, or lithium-manganese-rich. GM says it is almost as energy-dense as the nickel-manganese-cobalt (NMC) cells in its current EVs, but at a cost comparable to the lithium-iron-phosphate (LFP) cells that power budget models like the Chevrolet Bolt. In a truck like the Silverado EV, GM claims LMR would preserve most of the vehicle’s 400-plus mile range while cutting at least $6,000 from the battery cost. For a mid-range model, that would bring the sticker price within reach of the petrol equivalent.
 
-Prime Minister Narendra Modi publicly welcomed the commitment, saying it would strengthen India’s position as a global hub for cloud computing and AI. The endorsement followed meetings between AirTrunk founder and CEO Robin Khuda and federal and state government officials in Maharashtra and Andhra Pradesh.
+GM’s EV rollout has been halting. Last year, the automaker took a $1.6 billion charge as it reconfigured production capacity, laid off thousands of workers, and reportedly shelved a refresh of its full-size electric trucks and SUVs. The broader US EV market has softened, and at least a dozen EV models have been discontinued in 2026 as tariffs and the expiration of federal tax credits reshape the landscape.
 
-TNW City Coworking space - Where your best work happens
+The underlying problem is cost. GM bet heavily on NMC chemistry through its Ultium platform, but rising materials prices and China’s dominance of critical minerals have kept EV prices stubbornly high. NMC will not disappear, but at GM it will be restricted to high-end vehicles. LFP is cheaper but less energy-dense, limiting range. LMR is the middle path: roughly 35% nickel and 65% manganese, virtually no cobalt, and reportedly 33% more energy density than LFP at a comparable cost.
 
-A workspace designed for growth, collaboration, and endless networking opportunities in the heart of tech.
+The latest rumblings from the EU tech scene, a story from our wise ol&#39; founder Boris, and some questionable AI art. It&#39;s free, every week, in your inbox. Sign up now!
 
-AirTrunk entered India in April through the acquisition of Lumina CloudInfra, which gave it a 600-megawatt development pipeline across Mumbai, Chennai, and Hyderabad. The new $30 billion plan represents a dramatic escalation of that position.
+“That is really going to be our bread and butter,” Kurt Kelty, GM’s vice president of battery and sustainability and a former Tesla battery chief, told TechCrunch. “That is going to be our main product line.”
 
-The centrepiece is a 3GW campus at the Raigad Penn Growth Centre on the outskirts of Mumbai, for which AirTrunk has signed a letter of intent for land allotment with the Maharashtra government. According to a single industry report, that project alone carries an estimated price tag of $21 billion, though the figure has not been confirmed by AirTrunk or the Maharashtra government.
+Discovering a chemistry is one thing. Manufacturing gigawatt-hours of it is another. GM already has the Wallace Battery Cell Innovation Centre for small-batch R&D (30 to 50 cells per day) and a 2.8-million-square-foot Ultium gigafactory in Tennessee producing roughly 300,000 cells per year. What was missing was a way to connect the two.
 
-“Capital is mobile, and India is creating the conditions for it to thrive,” Khuda said. “India is taking a top-down approach to AI with clear government-led initiatives, a world-class talent pool, and massive availability of renewable energy.”
+The Battery Cell Development Centre fills that gap. When fully operational, it will produce about 2,500 cells per day, or roughly half a gigawatt-hour per year. It is an order of magnitude larger than the Wallace Centre next door, and one or two orders of magnitude smaller than the Tennessee plant. A test run costs about $200,000, far less than at the full-size factory.
 
-India’s data centre market has been accelerating since 2024, but the pace of new commitments in 2026 has been extraordinary. Google has pledged $15 billion for a southern Indian data centre hub. Microsoft has committed $17.5 billion. Amazon is targeting up to $35 billion by 2030. The Adani Group has reportedly outlined a $100 billion programme through 2035, including a 5GW renewable-powered hyperscale platform, though those figures come from industry reports rather than a formal company commitment.
+“The BCDC is intended to bridge the gap,” Mo Gallegos, the facility’s head, told TechCrunch. The equipment is nearly identical to the production line, which should make the handoff smoother. “It shouldn’t be as hard of a handoff,” Kelty added.
 
-The government has matched the private capital with policy. India’s February budget introduced a 20-year tax holiday through 2047 for foreign technology firms using Indian data centres for global cloud services. The IndiaAI Mission has received approximately £1 billion ($1.2 billion) in funding, and the India Semiconductor Mission has been backed with approximately £7.5 billion ($9 billion).
+GM is using AI models and a full digital twin of the facility to compress development timelines. The company has logged over 150 million CPU hours of physics-based simulation on LMR alone, more than most engine programmes consume in their entire development cycle, according to Radu Theyyunni, GM’s director of global virtual electrification.
 
-AI-related colocation leasing more than doubled to 348MW in the past year, now accounting for nearly 20% of total demand. Between March 2025 and April 2026, operators announced roughly 30 large projects adding about 3.5GW of planned capacity across the country. Schneider Electric expects its India data centre business to become its single largest unit within three to five years.
+The digital twin replicates the BCDC down to equipment control boards, wiring, and mixing tank blades. Before TechCrunch’s reporter set foot in the building, the team walked him through the twin in VR. GM has used it to verify equipment clearances, simulate control systems, and shorten debug and ramp-up time. The company says the simulations have saved millions of dollars, though it declined to specify the figure.
 
-AirTrunk is the vehicle through which Blackstone is making its largest infrastructure play in the Asia-Pacific region. The private equity giant acquired AirTrunk in December 2024 for an implied enterprise value of over A$24 billion ($16 billion), alongside Canada Pension Plan Investment Board, which took a 12% stake. It was the largest data centre transaction in history at the time.
+GM needs all the speed it can get. BYD and CATL are already producing cheaper, competitive cells at scale, and the global EV market grew 20% last year even as the US stalled. Multiple automakers are pursuing solid-state battery technology as the next frontier, with Toyota, Nissan, and BMW all targeting commercialisation by the end of the decade.
 
-Blackstone has since been expanding AirTrunk’s footprint aggressively. The platform now spans more than 3GW of operating and planned capacity across 20 campuses in six regions: Australia, Singapore, Japan, Malaysia, Hong Kong, and India. Separately, Blackstone is seeking up to $1.75 billion in a NYSE IPO for its Digital Infrastructure Trust, packaging hyperscaler-leased AI data centres as a public REIT.
+LMR is a different bet. Rather than chasing the revolutionary chemistry that solid-state promises, GM is trying to find a cell that is good enough on energy density and cheap enough on cost to make mass-market EVs competitive with petrol vehicles now, not in five years.
 
-The India push fits a clear pattern. Blackstone had already committed approximately $11 billion to Indian data centres through Lumina before the AirTrunk acquisition. The new $30 billion figure nearly triples that exposure.
-
-The numbers are staggering, but so is the gap between announcements and operational capacity. India’s total live IT capacity exceeded 1.6GW by the end of 2025, the product of years of cumulative buildout. Just 371MW was added in 2025 alone. AirTrunk’s proposed 5GW, combined with the commitments from Google, Microsoft, Amazon, and Adani, would require India to build more capacity in the next four years than it has built in its entire history, several times over.
-
-The discussions between Khuda and government officials reportedly focused on precisely the bottlenecks that could slow that buildout: access to reliable and cost-effective power, renewable energy, sustainable water supply, talent development, streamlined approvals, and coordination between state and federal governments on strategic infrastructure.
-
-India is not the only country chasing hyperscale AI infrastructure investment. Malaysia, Saudi Arabia, and several European nations are offering competing incentive packages. AirTrunk itself recently expanded its Malaysian platform to over 700MW. The $30 billion figure signals intent, but the timeline to 2030 leaves room for the kind of recalibration that large infrastructure programmes routinely undergo.
-
-What is not in question is the direction of travel. Whether the final number is $30 billion or something smaller, India is rapidly becoming one of the world’s primary construction sites for the physical infrastructure that AI requires. The question is whether the country’s grid, water supply, and planning systems can keep pace with the capital flooding in.
+GM plans to start producing LMR cells with joint venture partner LG Energy Solution in 2027, with the cells going into full-size trucks and SUVs from 2028. The first batches are expected to roll off the BCDC line later this year. If the chemistry hits the 85% yield threshold that McKinsey considers the bar for commercial viability within 18 months on a production line, GM will have a genuine cost advantage. If it doesn’t, the timeline slips again, and the competition moves further ahead.
 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump pardons former US congressman convicted of securities fraud - Reuters</div>
+            <div class="title">Russia's Sechin says U.S. companies benefit from the closure of the Strait of Hormuz - Reuters</div>
             <div class="meta">2026-06-06</div>
         </div>
         
         <div id="content-66" style="display:none;">
+            <h2>Russia's Sechin says U.S. companies benefit from the closure of the Strait of Hormuz - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPSHJyOUJ0WVpCMVZ2MFNmNWEtQ1JuZW1LUW5obFNZZTlEZDBmcWE3S3ZYYXI0Q0Y5MHJLNjdGSjI1RnVRYmdtdmtqWGFIWmRINy1RdWMzdGMxTEROWENRQnJlMUxma2FkTHVNN1BDLW83QjdWWHhhdG9nZ3ktU1dGQk5KMFFyR09wZXM4bHhXSGxnWFZEMUJkb3BoRDNkc3FjUW5NODJyR2tRZlB5Q1ltN3RUcjY?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Taiwan says Chinese coast guard, research ships near key S. China Sea islands - Reuters</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>Taiwan says Chinese coast guard, research ships near key S. China Sea islands - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOZFFTeVhDeGJPVmVhYzd6d0hJTXlPTE56LWlqLWI1N3pPMFB2dVNKOGZXZ0NuY05vbXFqcU5KRGJCU2JNUHhxRVRaRGh4V2Y5WEFwTlhDRGdkenZXVXNnalYwRmNnQm5fR29fQWRRZlNnRFVNc0Q2bENEbGhxZjdhWW04c1N6dVlkOHh4bF9BaVREaEhuaFI5NmZuQUQwSGEwQmZJRDNvN0ZydzNDV2hUSVVTVTZnbEVIWnBjOFI3ZUc?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">India's 'Cockroach' youth movement founder arrives in New Delhi to protest Modi - Reuters</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>India's 'Cockroach' youth movement founder arrives in New Delhi to protest Modi - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPWUM3eXNPLUM1NldjSDl1QVplc1lXY0l0cXRhZExSYXpxZ0Uxdl9QVFlyMUZBcEU5a19janRSZlBUcjBMb3pDMGFmZnJmUnhRSlhzdVk0NWVEaEhsTW1yQ1AzNDFhV0NJZEpSdmZpOXBVZU81SEY0MGFhWVhYQkxNSG4tVFJjcUItSTZZMGJPcUJsc0JjV0VQRDFHTUF1c2Nzbm8ydS11d1k0eXM2QUtXbXpQS1ZmNVRpYnc?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Trump pardons former US congressman convicted of securities fraud - Reuters</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
             <h2>Trump pardons former US congressman convicted of securities fraud - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQMmEyZU1NbEdqWXZpSzJfamVMM0VMdzcwaXZSSks2eWtfdXZjd1B2XzVoR0JFTjdZd0tMQ1gzdXpOWlhqNEpfNXZnM1YxOTZLcVliNU85X3gxVXV5azhlWGtkb3VaMFVlTHZEZGxXU05qZkM0U042dVAzVXo2NDNveTUtN2l1eDJ1NXFzTF9sVEQwMndIZHZfM1hCWkZEOWJMYU0wXzFLTlQ1STVBZlE?oc=5">Visit Original Website</a>
@@ -3648,41 +3856,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US attacks Iranian sites after Iran launches drones, in latest Gulf flare-up - Reuters</div>
-            <div class="meta">2026-06-06</div>
-        </div>
-        
-        <div id="content-67" style="display:none;">
-            <h2>US attacks Iranian sites after Iran launches drones, in latest Gulf flare-up - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxOZ1o1RDBJVGVQai1scDRmSmlnaWxVZlZBaDZyZUswRHNMY0c1N25BM053RXdmWGV5aGJkalg3V0lpUnpVOEFpUWY5YTBCY0syV1dmejdaUVlJVXZkc0tNVTQ2RmlTVWlEUVlDYkZEYl9yQVZ1QWtLVzZYNl9RRTBzaENsNlBVMWJCYjJLd0ZtdGlpUTljLVBhV0JlVDFJRWJwdm9YQjhIZ3BqdHdua2Z6TFMzS0xXbHhuZTFuNC0yWDhHaUlWSFo2MQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-68')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Second Texas screwworm case confirmed as outbreak fears grow - Reuters</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-68" style="display:none;">
-            <h2>Second Texas screwworm case confirmed as outbreak fears grow - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOblFxdFc0MEJ5OVd2VXZpQm5MMEhRQzlwS2lWb042ZGx0SFRTb1o3NnZnRjU5STNPR3ZpMk9tQi03MXVjbFBOSWlSeEVLQ0NDWkZLek9ZWGVNVjV5YzVVWmpaNUdWYlZfSlFDYjd3VlRzcVdDZTZ0UVdyWEc0alFVZEtGOVd6Z25fSENsLWdUV3FIR2lsR1Fxd0RFYm5iSEhGbVNyM3NDMl9yWXN2QVhhWWVhZUlmRmpxZmZuRWdLbGF0R1F1UUkzOUdR?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-69')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Jamaica facing nationwide power outage - Reuters</div>
             <div class="meta">2026-06-06</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>Jamaica facing nationwide power outage - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNbUFSeG5wZzZETC1RVE9ORGNzb0Z3dUJqcmdzTjhJRHlYOGM4ZV85YW0xeDZpZGdyTURNUVNDV1lQdGhUb3d5VU5aYjNyZm9PaEtQTkNkQ0lNNGJXcW83Tm5HMjByQm5BMEl3Ni1ScXBWWktjSzJsY1Z0S2JMWjIzd2xGZDBxSWhXRjVGRDZJand1NlFnbDNPOGNXQmJZZlI3eWF3eUFoZlFzWlhYMFBFcA?oc=5">Visit Original Website</a>
@@ -3690,55 +3870,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US strikes Iran radar sites after Iranian drone launch - Reuters</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>US strikes Iran radar sites after Iranian drone launch - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxONE1OaV8yX29rUGpfRjJCbElUcy0tM01SWVZES003OTE3ZVhpaDFJRVBmXzh5ZEY2OEthOHNJU2oyTlBSeU9na0owaEFveC0tZFRWdXc3WjF4VTVfN3dBdFdfcVVzV0tqT1BsRjZyQTlmelBhcDBiWlNhb3NsaDl4OHduY2FVRWxveGlCV21QQ3JldWpQOXlHTW9Xa1p3VHM4cUVqZkVUR09halph?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Five dead in Russian attacks in Ukraine's southern Kherson region - Reuters</div>
+            <div class="title">Musk's SpaceX IPO jolts life back into European retail investing - Reuters</div>
             <div class="meta">2026-06-06</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Five dead in Russian attacks in Ukraine's southern Kherson region - Reuters</h2>
+            <h2>Musk's SpaceX IPO jolts life back into European retail investing - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPeGZRdUVMRUVya1o2T0NvdWJTckkxYWRDU09zRjZyVnJfQUxQSzdDMmVTbWtSUGs2aHlYb2xuNURvaVpYSGV3eHBGZ3FtRGxDX2xKdDU2TThmeW0wSWR4YnloUEFQX3NiWTNsVlpmZDIyei01YWtrbktJREd4OURtZjZZX2k1ZVpQMVdWWnFOR1Y5M3JnRXpsd1ZDdXZzSDVOc2c?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOd3BhSzBzQU9lSHlpeGd1TmxaQXJINEpNMHBKNzI1RjhhTF9zMEtuN2tkQ2lTZTNpSW94OWZySXpkaWdhLXZpZUJuQTNmVkp6ak5jejF0dmpxWmtBclhGcnh1dFR6WGVOZW0wdi1ZMUJ2a3lsaVdjcjNXd3ozd1lJZ01tbzV5c0REVDRCWDcwNU5KRlNDZHRHSkFiSXlRbHRaYVBoYUtmdGZJS2dTaVR6bHdVSFFMcnY0STZV?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-72')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">1 Out of 4 Americans Say They’ve Had Near-Death Experiences, According to Major Survey - The Debrief</div>
-            <div class="meta">2026-06-03</div>
-        </div>
-        
-        <div id="content-72" style="display:none;">
-            <h2>1 Out of 4 Americans Say They’ve Had Near-Death Experiences, According to Major Survey - The Debrief</h2>
-            <p><strong>"site:thedebrief.org" - Google News | 2026-06-03</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOXzhEQmFTRHlMeU1xRWxkX0EwTEt5MXpsMHE2SVdmRmx2X3labjhVdkpqYjNwTklWaDFVLXRVOG9IOVQtNGg5TFR0TGEzdHp4TXMzSGxGaGxoLU9NcDl0aWktbTh3a0d3VFZpaW53SnRCWHNrb2xRbzJYUFVuTlBvMlA0NVBlQ2VNSW9ZS2M5cW9aWEFna3k0QmtmbE1STnJvalkwOV9Lbk9KZG5K?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-73')">
-            <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">NASA Officials Confirm Rare Event Captured in Satellite Images That Caused Loud Booms Heard Throughout New England - The Debrief</div>
             <div class="meta">2026-06-02</div>
         </div>
         
-        <div id="content-73" style="display:none;">
+        <div id="content-72" style="display:none;">
             <h2>NASA Officials Confirm Rare Event Captured in Satellite Images That Caused Loud Booms Heard Throughout New England - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-06-02</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxPZFVkSkx5MmJNOU9HM3k1OFV4Z3R4d0UteUoxeTB0Yk9MUFJBMXVxRFB4Rm4zSm5ZcVRyRHpvSEFHRXFQcjduaTZFZDZMUk5mS2JQcVBiMUVhSWp6eDNWZGo1M3FCVXNSUnA2WjlrQ0J6NC1XbVg5RmNFaHp4TlAteFE2SnNEaDZ5Y1E5SWVVTGM5b3dQQ0RtZFBCcURXVUdFdzQ1eFF6UXpLRVp0cnFVcGlEMU5iVG9SeUs0c2liZVJQWVBOb25DclVXUDVPR21rZV9ieg?oc=5">Visit Original Website</a>
@@ -3746,13 +3898,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-74')">
+        <div class="card" onclick="openModal('content-73')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">NASA Veteran’s Propellantless Propulsion Drive That Physics Says Shouldn’t Work Just Produced Enough Thrust to Overcome Earth’s Gravity - The Debrief</div>
             <div class="meta">2024-04-19</div>
         </div>
         
-        <div id="content-74" style="display:none;">
+        <div id="content-73" style="display:none;">
             <h2>NASA Veteran’s Propellantless Propulsion Drive That Physics Says Shouldn’t Work Just Produced Enough Thrust to Overcome Earth’s Gravity - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2024-04-19</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxQTTdJNVoxRV9mWGdWanBNOVVUWGtJaUJydjJsTmJpS0kyT0xhanlzSmxGbHdDZnZIeWRSUmJ6VzBPUkdKQVBNWGZ4WVNyeU5sTXZ4ZkRSWHV1UEJfVHhXSDU4NVdSNDBCbUh6OHFKeWRaLUZoRk1Wem53ejEtSnB4NU9aWk1nZEhUbmk0enczVms3VldHQzVWV25mdnZhV01KTUw3YzRDRGU4WE9GeGNodXdfMUs5cUpkUjNXMkRVZVN5Y0lnMWRqRDZqNFVYNkN1cVdub0hFUkFBaC0tTGRZYkJoQU8zQVVfOVE?oc=5">Visit Original Website</a>
@@ -3760,13 +3912,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-75')">
+        <div class="card" onclick="openModal('content-74')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Stonehenge Mystery Deepens as New Study Reveals Altar Stone’s 466-Mile Journey Across Ancient Britain - The Debrief</div>
             <div class="meta">2026-06-04</div>
         </div>
         
-        <div id="content-75" style="display:none;">
+        <div id="content-74" style="display:none;">
             <h2>Stonehenge Mystery Deepens as New Study Reveals Altar Stone’s 466-Mile Journey Across Ancient Britain - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-06-04</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPX1NpWHlZVF9mTWFGbnUxeFBadFkxSUFFaS0wODVBMW9BS3MxTEQwN2pla3NnSk5hNVZyNDhKY21XQVV4cG1pWHNtYmZ2MjF4bDQxSm5Bd0ZUd2oyTU9PSDg1czRMUzV2RXd0NjVjenIzRk9vLTdNWk5XOWJ6R0VObWtLamR4UlBkZmNnTmNxMUNIeUhUU21oMlNqVDdTOGIweVVtSGFfbFdEdkhma0FnTi1vVHdqUFY3SXpXX19mdm9yUQ?oc=5">Visit Original Website</a>
@@ -3774,13 +3926,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-76')">
+        <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">NOAA Issues “Severe” Aurora Alert for Thursday—Here’s Where You May Be Able to See the Northern Lights - The Debrief</div>
             <div class="meta">2026-06-04</div>
         </div>
         
-        <div id="content-76" style="display:none;">
+        <div id="content-75" style="display:none;">
             <h2>NOAA Issues “Severe” Aurora Alert for Thursday—Here’s Where You May Be Able to See the Northern Lights - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-06-04</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPbkVwRmNMdVN4SzVWX1FmeE1GeU9GY3d1bEFZTFZTeHdHbzkxOXJQdXA5V1dwdllnTUF0SUdzOXhqSlJTWW9vQ09tSmFEMENJaGY3SzVTWjdxYUlhQlRPVFVpb1VQVEtkMHhYWVB4NkxlRldMS0J2ZW82dU9pOC1YSUxVMGJISV9XWEYtZzRmOWZCNDdxMXJGNnQ1VTJjbjdQRnhOdWhhQWhtZ1oycGpnNHFwNEVpOF9TbXZ5MWYzSzE?oc=5">Visit Original Website</a>
@@ -3788,16 +3940,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-77')">
+        <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Scientists Just Revealed Something Massive Has Been Hiding Beneath This New York Cemetery for More Than a Century - The Debrief</div>
             <div class="meta">2026-06-02</div>
         </div>
         
-        <div id="content-77" style="display:none;">
+        <div id="content-76" style="display:none;">
             <h2>Scientists Just Revealed Something Massive Has Been Hiding Beneath This New York Cemetery for More Than a Century - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-06-02</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxNUTFTTHVuSnh4c05ybWlMZVhNdXZNNFdwWlJlTTVWampMOURWaTVZb2QwcDlEdDVFTVJWTWJmbkEtQXNhYURvWFk1Z1A2Qm5TdTJBYUlSRnR0RVl2eUF5RFhhdnJfRW00TnBkc3diRTJueTg0cTNJNE5hZTU5U0hMNmw4MkRuT0h4X3k0U0IzVG9FSE81SkhmZ3FqN2tTVlRoY3RzTzVIUjZvVmZ2cDU4ME5oSDRtdXJ0V1ZQUm1DU2NFdGFuX0cyRGd4d1psYmxHNU8w?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-77')">
+            <div class="source">"site:thedebrief.org" - Google News</div>
+            <div class="title">A Massive 6000-Year-Old 'Mega-Structure' Unearthed by Archaeologists Reveals Links to a Mysterious Early European Culture - The Debrief</div>
+            <div class="meta">2026-06-03</div>
+        </div>
+        
+        <div id="content-77" style="display:none;">
+            <h2>A Massive 6000-Year-Old 'Mega-Structure' Unearthed by Archaeologists Reveals Links to a Mysterious Early European Culture - The Debrief</h2>
+            <p><strong>"site:thedebrief.org" - Google News | 2026-06-03</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxPOFViRjd5M25MX3R2bkROU01xWHFvOVFURTFscXVIZ2NOZlVwV3BHRFAtWFhaQjVLaGNVYXctaW1rc2tvT0ppazhUZGRibFRlODRKNGJ2NEI1U3FPQUN0Z05jRzFjaml1MTgzOERuR0tfYXVzTm1tMnI2a2E5XzBfOVZlazlhbVpVOXFVUWlSQTVBU2ptakRSSEp3NlBsMHNiV1NULUhMaEltaEk2cVZjR18xTDNVZ0ozbnptWkFnU1o1aUppbUItY2I0QXR1d3JVR0YwcW5GeHhPZw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
