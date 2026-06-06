@@ -163,35 +163,7 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/06/baby-botulism-outbreak-fda-still-doesnt-know-cause-or-how-to-prevent-it/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The Food and Drug Administration this week posted what critics call an “underwhelming” epilogue to the devastating outbreak of botulism in babies, which was linked to spore-contaminated formula made by ByHeart. Despite clear tracking of the contamination, the regulator still doesn’t know how the bacteria arrived in the formula—or how to prevent it from happening again.
-
-“The FDA’s investigation into the root cause is ongoing with a focus on ingredients,” the agency reported.
-
-In the void, three companies at the center of the investigation are left pointing fingers at each other, with none publicly taking responsibility for the contamination.
-
-The outbreak was identified in early November and was declared over by the FDA and Centers for Disease Control and Prevention on February 26. In the end, 48 infants across 17 states were sickened and hospitalized. Some are still recovering months after the life-threatening infection.
-
-The FDA’s investigation provided a detailed trace of the bacteria behind the outbreak, Clostridium botulinum, which can produce hardy spores that are found in soil and sediments. If the spores reach an amenable environment—such as the vulnerable, underdeveloped guts of infants—they begin to grow and produce a neurotoxin that causes flaccid paralysis.
-
-Strains of C. botulinum isolated from some of the sick infants were genetically linked to strains found in ByHeart’s formula, which were also linked to strains found in powdered whole milk used in the formula. The powdered whole milk was dried from liquid milk at a Nevada facility run by Dairy Farmers of America, and the liquid milk came from the supplier Organic West, based in California. Organic West sold the resulting powder to ByHeart.
-
-Specifically, the FDA traced contaminated formula and milk powder back to eight whole milk lot powders that came from 33 fluid milk lots from Organic West, according to an incident summary.
-
-Still, the FDA could not determine where in the production chain the bacteria entered or how.
-
-“Even though there are several hypotheses, investigational findings could not identify the source or root cause of contamination of the powdered infant formula,” the agency concluded.
-
-Bill Marler, a lawyer specializing in food poisoning who is also representing 25 of the sickened infants in litigation, told Ars that the conclusion is “a little underwhelming to put it mildly.” The epilogue that the FDA posted this week, titled the “Post-Outbreak Response Activities,” provided a summary “without any real clear guidance for consumers or for the companies going forward.”
-
-In the meantime, each of the three companies is shirking blame. ByHeart released a statement this week saying “FDA has shared that it did not identify any deficiencies in ByHeart’s facilities that could explain the root cause of this outbreak.”
-
-Bill Van Ryn, an owner of Organic West Milk, previously stressed in media reports that “nothing has been proven about our milk yet.” Likewise, Dairy Farmers of America blamed Organic West, saying its processing met all required tests. “Manufacturers of end-use consumer products have a responsibility to properly process ingredients to ensure product safety,” Dairy Farmers of America said in a statement.
-
-While Marler wants to see more investigation and action by the FDA to understand and prevent another outbreak from happening, the blame ultimately lies with ByHeart, he says. It’s “not only an ingredient problem that happened to pass through ByHeart. That is ByHeart’s product, in ByHeart’s can, with ByHeart’s name on it, fed to a baby,” he wrote in a recent blog post. “Sourcing, verifying, and testing what goes into infant formula is the job.”
-
-Marler also noted that this is not the first time infant botulism has been linked to infant formula.
-
-In its statement this week, ByHeart said it is working to resume infant formula production. The company is now working with a lab to develop more sensitive testing for C. botulinum in its products.</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-1')">
@@ -205,54 +177,7 @@ In its statement this week, ByHeart said it is working to resume infant formula 
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/security/2026/06/highly-reviewed-speaker-can-be-hacked-over-the-air-to-infect-connected-devices/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Operating system makers take many steps to prevent their wares from accepting commands from remote devices. The safeguards, designed to thwart malicious attacks, typically require hackers to jump through all kinds of hoops to bypass the measures. But what if remote code execution were as simple as being within Bluetooth range of a speaker connected to the targeted device?
-
-It turns out it can, at least when the speaker is a Sound Blaster Katana V2X sold by Singapore-based Creative Technologies. The speaker, which sells for $283, is widely acclaimed with numerous reviews showering praise on the sound and performance of it and its predecessor, the Sound Blaster V2.
-
-Researcher Rasmus Moorats stumbled on the hack by accident, after he purchased a Katana V2X, a soundbar that connects to PCs, Macs, and Linux devices over USB or Bluetooth. Moorats was curious if he could create a Linux tool that communicated with his speaker. He discovered he could do so through CTP, a proprietary mechanism he guesses is short for Creative Transport Protocol.
-
-CTP allows devices connected via Bluetooth or USB to send commands to the speaker, such as changing LED colors and equalizer settings. CTP also allows the connected devices to receive responses from the speaker.
-
-To Moorat’s surprise, his Bluetooth device was able to connect to the speaker, which was connected to a PC via USB, without any authentication. Not only that, but his Bluetooth device didn’t have to be paired first. Also surprising: One of the CTP commands, labeled “upload new firmware to device,” allowed him to replace the official firmware with his own custom one. The firmware reflashing didn’t use code signing or other measures to prevent the loading of unofficial code.
-
-After successfully replacing the firmware with a replacement image that did nothing more than display the word “patched” on the speaker’s LED display, the researcher got to wondering what else a hacker might do. So he turned his attention to FreeRTOS, the open source operating system that ran the Katana V2X. It contained a set of HID functions for allowing the speaker to act as a human interface device, a classification that includes keyboards, mice, and webcams. The speaker implemented a limited HID that allowed for things like changing the volume and playing or pausing sound, but little else.
-
-The researcher discovered that he could change the speaker’s USB descriptor set, which is essentially a report that informs devices about the capabilities of a USB- or Bluetooth-connected peripheral. He was able to augment the existing descriptor set with a second one that reported the speaker being a keyboard. Then he used code already included in the firmware to streamline the process of sending keypresses.
-
-All of this gave Moorats an idea: What if he used his device to send commands to the speaker that used the HID to pass them along to the connected PC? After some trial and error, he found that he could. In a blog post published on Wednesday, he wrote:
-
-Chaining it all together, I was able to totally remotely, over the air, upload a custom firmware to my speaker which I hadn’t paired with, which would reboot, flash the custom firmware, and after rebooting type in the command echo pwned and execute it.
-
-Credit:
-                                      Rasmus Moorats
-                                  
-
-
-
-
-
-
-
-
-
-          Credit:
-
-          
-          Rasmus Moorats
-
-In a real attack scenario, I would execute the keystrokes for opening powershell.exe or similar and paste an actually malicious one-liner into that, but as a proof of concept, this was more than enough for me. A real attacker would also likely disable the routine for updating the firmware in both normal and recovery mode, making it impossible to wipe the malicious firmware from the device or patch it in the future.
-
-This is worsened by the fact that Bluetooth is always on for the speaker, even in sleep mode, with no apparent way to disable it.
-
-Before the speaker and USB-connected device can interact, they must successfully complete a challenge-and-response authentication procedure. Since the devices perform this handshake automatically each time the software boots, this isn’t usually a problem for the hacker. In certain cases, however, such as when the Katana V2X app isn’t open on the connected device, it’s a requirement.
-
-Nonetheless, the authentication is a simple enough hurdle to clear, because the correct response can be extracted from the app binary that ships with the speaker. Surprisingly, no such challenge and response is required for Bluetooth-connected devices.
-
-Moorat reported his findings to Creative Technologies, but never received a response. He then brought in CERT Singapore to intervene. Eventually, the organization got a response from the company. It said company engineers didn’t regard the behavior as a vulnerability. The researcher tested the attack against a connected Windows machine.
-
-It bears repeating that the hacks described can be carried out only when the attacker is within Bluetooth range of the speaker. That’s a significant requirement that limits attacks to neighbors, housemates, or people in offices that are adjacent to the speaker.
-
-Still, the ability to turn a Bluetooth device into a PC-pwning proxy and remote bugging device doesn’t exactly evoke warm and fuzzy feelings. It also raises the question: What other Bluetooth devices open users to the same attacks?</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-2')">
@@ -266,19 +191,7 @@ Still, the ability to turn a Bluetooth device into a PC-pwning proxy and remote 
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/06/first-us-test-of-modular-reactor-reaches-criticality/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Just over a year ago, the Trump Administration issued an executive order meant to accelerate the development of nuclear power in the US. While an entire startup ecosystem has developed around the use of different—and typically smaller—reactor designs, only one of them has been fully licensed so far, and there are no plans to actually build any instances of that design.
-
-The executive order directed the Department of Energy to have three different reactor designs reach criticality in a bit over a year. On Thursday, a startup called Antares announced that a test reactor it had placed at the Idaho National Laboratory had reached criticality, making it the first new design to cross this threshold. Criticality means that the nuclear reactions inside the hardware had become self sustaining; it does not mean the reactor had started to generate power.
-
-Antares is one of a number of companies that is basing its design on a new fuel system called TRISO that takes some of the complexity and safety out of the reactor design and places them in the fuel design. The fuel design is based on tiny pellets with a uranium oxide core. The pellets are surrounded by several layers of carbon that can moderate the energy of both the neutrons and lighter nuclei that are released by fission reactions. All of that is encased in a hard ceramic shell that’s designed to withstand the highest temperatures that can be produced by the encased uranium.
-
-As long as your reactor can keep the TRISO pellets contained, then there should be no risk of meltdown or even the release of the most dangerous isotopes produced from the reactions. There are still some safety concerns, as neutrons will still escape and can potentially convert some of the surrounding material into unstable isotopes. But the Antares design surrounds the TRISO with a graphite sheath, which should slow most of these neutrons down.
-
-To mitigate non-radioactive risks, the Antares design uses sodium to take heat from the reactor to a heat exchanger. The heat is transferred to pressurized nitrogen, which then drives a turbine in a closed Brayton cycle setup.
-
-At the moment, Antares is just testing what it calls a Mark 0 reactor, which is not connected to the power-generation portion. Instead, it’s being used to validate the company’s modeling of the physical conditions in its reactors and generate safety data that can be used during licensing applications. Attempts to run the entire system, including electrical generation, are expected to happen next year.
-
-While the work was done at a Department of Energy Lab, the company is working with the Department of Defense’s Project Pele program for developing a mobile nuclear reactor. The company has also received support from NASA.</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-3')">
@@ -292,39 +205,7 @@ While the work was done at a Department of Energy Lab, the company is working wi
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/06/work-on-russias-leaky-space-station-module-causes-astronauts-to-take-shelter/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Five of the seven crew members on the International Space Station briefly sought refuge inside a SpaceX return capsule Friday morning as two Russian cosmonauts worked on an air leak on the other end of the complex.
-
-NASA ordered US astronauts Jessica Meir and Jack Hathaway, French astronaut Sophie Adenot, and Russian cosmonaut Andrey Fedyaev into SpaceX’s Crew Dragon Freedom spacecraft around 9 am EST (14:00 UTC) on Friday. The foursome launched aboard the SpaceX crew capsule on the Crew-12 mission in February, and the ship serves as their lifeboat until the crew’s scheduled return to Earth in September.
-
-NASA astronaut Chris Williams, who flew to the station in a Russian Soyuz ferry ship, joined the Crew-12 astronauts inside the Dragon spacecraft.
-
-“All USOS (US Orbital Segment) crew members need to execute … Emergency Procedure 3.4: Crew Dragon, establish Safe Haven,” NASA mission control radioed to the station crew around 9 am. “If we need (you) to suit up, we will do that once we’re inside the Dragon.”
-
-A short time later, a NASA spokesperson posted a statement on X attributing the shelter order to a repair on persistent air leaks on the Russian segment of the space station. For more than half a decade, engineers from Roscosmos and NASA have tracked the leak rate from a transfer tunnel on the back end of Russia’s Zvezda Service Module. The tunnel, known by the Russian acronym PrK, leads to a docking port for Progress resupply and refueling freighters.
-
-Engineers believe the leaks are caused by microscopic cracks in the module’s structure. Russian cosmonauts have repeatedly inspected and attempted to seal the cracks, but a permanent fix has eluded them. After a few months of pressure stability inside the PrK earlier this year, Roscosmos confirmed in May that the air leaks had returned.
-
-“Following new leaks, Roscosmos has elected to proceed with a more extensive repair operation on Friday, June 5,” NASA spokesperson Bethany Stevens wrote on X. “Out of an abundance of caution, NASA has directed all four of the agency’s SpaceX Crew-12 members and NASA astronaut Chris Williams to assume an elevated safety posture in the Dragon spacecraft while the repair is underway.”
-
-After about 90 minutes, the communications officer at mission control in Houston told the crew that they could reopen hatches and reenter the space station. The specific repair task that caused NASA to issue the shelter order was off. “Our Russian colleagues have elected to perform measurements only today. So, with that, we are comfortable backing out of the safe haven config,” mission control told the crew.
-
-“We don’t have help from our counterparts?” Crew-12 commander Jessica Meir asked mission control. “Affirm,” mission control replied.
-
-Those counterparts—Russian cosmonauts Sergey Kud-Sverchkov and Sergei Mikayev—were working at the leak area on the opposite end of the station, some 200 feet away from the Crew Dragon.
-
-Stevens soon posted an update on X, writing that Roscosmos had “paused” the “structural repair efforts” inside the PrK to take more measurements and assess data. “We look forward to working with Roscosmos on a collaborative approach to address the leaks,” Stevens added.
-
-Ars asked two NASA spokespersons for details on the proposed leak repair and why the agency decided that the repair was risky enough to order the US crew members into the Crew Dragon lifeboat. They did not provide answers to these questions as of the time of this publication, but we will add any information we receive to this story.
-
-Roscosmos, Russia’s space agency, typically keeps the PrK sealed off from the rest of the space station to isolate the leak from the crew’s living quarters and workstations. This allows the transfer tunnel to be maintained at a lower pressure than the rest of the station. When cosmonauts need to access the area, such as for inspections, repairs, or transferring cargo to or from a docked Progress supply vessel, they pressurize the PrK to match the pressure inside the rest of the station. This allows the cosmonauts to open up the PrK to complete their work.
-
-A statement posted by Roscosmos on its Telegram channel suggests this is what was happening early Friday. “Specialists from the Russian ISS segment’s main operations control team detected a leak in the chamber” during pressurization of the PrK.
-
-“Upon inspecting the transfer chamber, cosmonauts identified two potential air leak sites,” Roscosmos said. “The first site was promptly sealed by applying an initial layer of the two-component sealant compound Germetall-1. The second site is located on the conical section of the transfer chamber; preparations to seal it are currently underway.”
-
-Russian and NASA officials also did not say what compelled Roscosmos to plan an immediate repair after discovering the two potential leak sites on Friday. They also did not say when cosmonauts might try again to patch the leak, or if any future repair effort might again force the US crew members to take shelter.
-
-Roscosmos said there is “no threat to crew safety or onboard systems,” and the pressure inside the station “remains stable and is being maintained at the nominal level.”</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-4')">
@@ -338,29 +219,7 @@ Roscosmos said there is “no threat to crew safety or onboard systems,” and t
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/sp-500-blocks-fast-spacex-entry-wont-waive-rule-for-unprofitable-ai-firms/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">SpaceX has requested unusually swift entry into several leading stock market indexes as a condition of its historic stock market debut. But the S&P 500 stock market index representing many of the largest profitable US companies has surprised market analysts by refusing to bend the rules for Elon Musk’s space and AI company.
-
-The June 4 decision by S&P Dow Jones Indices—the company that creates and manages stock market indexes such as the S&P 500—means that SpaceX will not gain accelerated access to potentially billions more dollars through passive investment funds that automatically purchase shares of S&P 500 companies. An exception for SpaceX could have also allowed leading AI companies such as OpenAI and Anthropic to gain entry not long after their own expected initial public offerings (IPOs). That possibility has now been shuttered.
-
-The news will likely come as a relief to people concerned about passive investor money and people’s retirement savings plans having greater exposure to the market risks associated with SpaceX’s big bet on AI and speculative orbital data center plans. AI companies are generally facing more challenges in funding and building expensive AI data centers, even as they shift more of the subsidized costs of running AI services onto shocked customers through usage-based pricing.
-
-To weigh expedited entry for SpaceX, the S&P Dow Jones Indices held a monthlong consultation to consider changing or waiving several main requirements for so-called MegaCap companies with “unprecedented market capitalizations.”
-
-Those proposed changes included shortening the “seasoning period” for new IPOs from 12 months to six months, waiving the investable weight factor (IWF) requirement for MegaCap companies to make at least 10 percent of their shares publicly available, and waiving the requirements for MegaCap companies to demonstrate profitability in the latest quarter of the financial year along with the previous four quarters.
-
-Such rule changes would have accommodated SpaceX’s plan to only offer approximately 3 percent of its IPO shares to public investors, and the fact that SpaceX is currently unprofitable with a growing debt load that has reached $29 billion because of its spending spree on AI infrastructure.
-
-But in its final decision, the S&P Dow Jones Indices stated that “no changes will be made to the eligibility criteria including financial viability screens, seasoning period, or minimum IWF.” Even after the standard yearlong wait, SpaceX, Anthropic, and OpenAI may struggle to deliver the consistent profitability necessary to qualify for the S&P 500.
-
-Swift entry into the S&P 500 would have triggered $14 billion of passive fund buying for SpaceX, according to Bloomberg Intelligence. The investment research arm of Bloomberg also estimated that OpenAI could have gained more than $8 billion, and Anthropic could have netted $4.6 billion from similar passive buying sprees triggered by their S&P 500 entries.
-
-This is because $7.5 trillion in passively managed funds—popular among both individual investors and institutional investors—follow the S&P 500 by purchasing shares of companies according to their proportional representation in the S&P 500 index. For example, the Vanguard and Fidelity brokerage giants both offer passive investment funds that track the S&P 500 composition.
-
-However, the S&P Dow Jones Indices did “carve out one concession” by changing the investable weight factor rules for “lower-profile benchmarks” such as the S&P Total Market Index and Dow Jones US Total Stock Market Index, according to Quartz. That could allow an IPO faster entry into those indexes.
-
-By contrast, the Nasdaq stock exchange changed its rules to allow SpaceX to enter the Nasdaq-100 Index within 15 trading days as opposed to the usual three months. Similarly, the FTSE Russell index provider decided to give SpaceX and other follow-on companies accelerated entry to the Russell Top 500 Index after the close of the fifth trading day following an IPO.
-
-The denial of accelerated S&P 500 entry for SpaceX comes just days after Morningstar analysts described SpaceX as having been “significantly overvalued” in the lead-up to its IPO. The investment research firm valued SpaceX at $780 billion—less than half of SpaceX’s $1.75 trillion IPO goal—primarily based on the strengths of SpaceX’s Starlink satellite service and rocket launch business.</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-5')">
@@ -374,79 +233,7 @@ The denial of accelerated S&P 500 entry for SpaceX comes just days after Morning
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/we-pissed-off-a-lot-of-people-giant-data-center-plan-cut-50-amid-protests/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">One of the world’s biggest data center projects was designed to be nearly three times the size of Manhattan, stretching across multiple Utah sites. But intense local backlash in Box Elder County has now pushed the developer to cut the project plans in half before construction starts.
-
-Residents’ top concern was the Stratos data center project draining local waters, and they were willing to pay to protect them, most especially the vulnerable Great Salt Lake. Many locals paid a $15 fee to register comments to block the transfer of 1,900 acre-feet of water from a ranch to the hyperscale data center. Other concerns include electricity bills rising and potential risks to air quality, local wildlife, and land.
-
-Venture capitalist Kevin O’Leary, chair of O’Leary Digital and Shark Tank investor, is behind the construction of the project. He told a local ABC affiliate that he regrets not working with state officials to be more transparent about the project from the beginning.
-
-“We really screwed it up,” O’Leary said, while confirming that he “was not expecting this kind of intense blowback from the public.” He claimed that he and state officials anticipated that “people would be excited” about the major local investment and “made huge mistakes” by not involving the public more in discussions, based on that “assumption.”
-
-“We pissed off a lot of people, and that’s not the way I do business,” O’Leary said. “That’s not.”
-
-As Utahns moved to defend their resources and demanded more information, Utah Senate President Stuart Adams, who is a Republican, sent a letter to O’Leary, asking him to cut the project’s scope by 75 percent.
-
-At an AI gala in Washington, DC, O’Leary claimed that he had “no choice” but to agree, NBC News reported. Initially, he planned to build the project on 40,000 acres, but now he’s reduced that to about 20,000 acres. Of the remaining land, 10,000 acres will remain undeveloped, leaving about 25 percent of the initial acreage to develop the data center. O’Leary’s group characterized this as bending to the Senate president’s demands.
-
-Moving forward, O’Leary wants to rebuild trust, he claimed. He told the ABC affiliate that he’s personally taking over all communications on the project because he didn’t “like being beaten up like this.” With him as spokesperson, residents will supposedly be better informed about permitting requests and environmental impacts, rather than relying on sources that O’Leary claimed are unreliable or bent on manipulating public opinion.
-
-“All the plans are going to be transparent,” O’Leary said, while claiming that public concerns are exaggerated. “All the design is going to be transparent. Everything we do is going to be transparent because I’m not happy with where we’re at right now.”
-
-He told the AI gala attendees that he now recognizes that “we should have answered all this stuff up front, now I got to do it after everybody’s been pissed off.”
-
-“I hope this dialogue can serve as a model for how complex projects are best addressed—through direct, good-faith engagement between developers and elected officials rather than through public narratives that outpace the facts,” O’Leary told a local Utah news site KLS.com.
-
-Before construction can begin in Utah, O’Leary’s project will need to secure more approvals and complete several environmental reviews, a local nonprofit, Alliance for a Better Utah, noted in a statement on the plan to shrink the data center.
-
-In response to O’Leary’s letter, Adams celebrated the compromise and claimed that the project could become a roadmap for how responsible data center development should work in the US.
-
-“With responsible water use, transparency and input from the people of Utah, we will show the nation how to build it right,” Adams said. “There must be written commitments in place, and the proposal must undergo a full permitting and environmental review process, just like any other development project in Utah.”
-
-But some locals think there is no going back once trust is lost. After the water transfer backlash, the Salt Lake Tribune editorial board warned, “even if the data center isn’t as dreadful as feared—or if it never is actually built—the stench attached to the rushed and secret political process will take a very long time to dissipate, if it ever does.”
-
-Unsurprisingly, some residents who oppose the data center aren’t optimistic that O’Leary’s plans will do much to mitigate the local impacts they fear. NBC’s report noted that it’s not “immediately clear if the overall nine-gigawatt capacity of the project will change.”
-
-Brenna Williams, a community member involved in the Box Elder Accountability Referendum opposing the project, called the agreement “excellent performance art,” KLS.com reported.
-
-“I think this was the plan all along,” Williams said, suggesting that the project never would’ve been approved if the public had been engaged at the start of discussions, because the area is simply not a good candidate for a data center due to water constraints.
-
-“I don’t see any changes, and the truth is, Box Elder County is just too vulnerable for a hyper-scale data center of this size,” she said. “No matter what he does given the situation, there is going to be a big impact.”
-
-Adams’ pivot toward transparency is supposedly linked to his reelection bid. He’s facing down a primary against two Republican challengers this June, the Hill noted, and O’Leary told NBC News that he thinks Adams was pressured to challenge the data center size to keep his campaign on track.
-
-“I know he did it for political reasons,” O’Leary said.
-
-While Donald Trump has advocated for rapid data center development across the US to keep America ahead in the AI race, the Utah case shows that not every Republican can afford to be an AI booster. A recent HeatMap poll showed “a rapid shift in public opinion since last fall,” with at least 7 in 10 Americans now opposing data centers built near their homes.
-
-With “an absolute majority” now opposing data centers, Democrats could seize opportunities to unseat Republicans who fall in line with Trump’s agenda, simply by demanding more transparency.
-
-Perhaps the best example of this is Illinois governor J.B. Pritzker. On Friday, NBC News reported that Pritzker plans to temporarily halt all tax breaks to data centers in his state until a legal framework can be drafted to ensure responsible development. Pritzker “is widely viewed as having 2028 White House aspirations” and may soon show he’s up to the task if he succeeds in taking control over regulating frontier AI away from Trump.
-
-Eliminating tax breaks might push projects onto more suitable sites, critics think. In Utah, Williams suspects that tax breaks are the biggest reason why O’Leary wants to develop his project there, the ABC affiliate reported.
-
-“There are places who really want this project, she said. “For him to be fighting so hard to put it here, seems kind of ridiculous because there are places who really want it. I’m not so sure he’d get the same tax concessions as he got in Utah, but he could try. And they would open their arms to him and be grateful for the opportunity. In Box Elder, we don’t want it.”
-
-Many locals protesting data centers don’t stop until the projects are shut down. Last month, HeatMap Pro released data showing that “at least 20 data center projects were canceled after facing significant public backlash in the first quarter of this year.”
-
-“That is more than double the number that were canceled the previous quarter,” HeatMap reported, while noting that data centers are “slightly more unpopular” with rural voters who typically trend more conservative.
-
-Environmental activist Erin Brockovich recently launched another resource, which tracks where data centers are pending, approved, under construction, and operational. Thousands have already contributed to her map tracking data center fights throughout the US.
-
-Although reports indicate—and Adams said was the case in Utah—that communities have genuine concerns fueling the rise in opposition, not everyone agrees that the immense community backlash in the US is rational or proportionate.
-
-On Bluesky, Will Stancil, a lawyer, activist, and housing policy researcher, commented on HeatMap’s poll, suggesting it seemed unusual for public opinion to shift so quickly without “some major data center disaster.” In his thread, Stancil boosted a reply suggesting that data center backlash “hit the algo,” raising a theory that social media is possibly driving anti-data center sentiment.
-
-And while O’Leary blamed himself and Adams for making “mistakes” in Utah, he also claimed that the protests he faced in the state were due to foreign interference, NBC News reported. He accused China of supposedly funding the Alliance for a Better Utah to conduct a smear campaign to set back his project, a claim which the nonprofit has denied.
-
-“All these people have a right to get information,” O’Leary said. “Why are they getting it from a false initiative? Who is spending all this money to put out all these falsehoods and straight-out misinformation and lies and agitate these people?”
-
-In a statement, Elizabeth Hutchings, the communications manager for the Alliance for a Better Utah, mocked the Montreal-born O’Leary, defending the group’s 15-year history and saying, “the only foreign interest in this data center is Kevin from Canada.”
-
-“It’s insulting to Utahns across the state to say that any opposition or protest to this data center is the work of a foreign government,” Hutchings said. “We are proud to live in a state where there are people who deeply care about transparency, their community and their kids’ futures. It is not strange to us that Utahns want to feel heard in decisions that will impact their lives for decades to come.”
-
-Hutchings agreed with Williams that “the issues with the deeply unpopular and problematic project in Box Elder County remain.”
-
-“This is not the first time we’ve dealt with bullies like Kevin trying to intimidate us into silence,” Hutching said. “No amount of propaganda and dramatic distractions will stop us from talking about the real issue: a lack of transparency from our government.”</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -806,15 +593,15 @@ Get an inside look at what it takes to scale and succeed from leaders at Mach In
 
 Google will pay SpaceX $920M per month for compute
 
+Mira Murati steps back into the spotlight, carefully
+
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
+Strava declares war on scrapers ahead of IPO
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
-
-I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful</div>
+‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
         </div>
         
         <div class="card" onclick="openModal('content-14')">
@@ -868,15 +655,15 @@ Get an inside look at what it takes to scale and succeed from leaders at Mach In
 
 Google will pay SpaceX $920M per month for compute
 
+Mira Murati steps back into the spotlight, carefully
+
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
+Strava declares war on scrapers ahead of IPO
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
-
-I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful</div>
+‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
         </div>
         
         <div class="card" onclick="openModal('content-15')">
@@ -926,15 +713,15 @@ Get an inside look at what it takes to scale and succeed from leaders at Mach In
 
 Google will pay SpaceX $920M per month for compute
 
+Mira Murati steps back into the spotlight, carefully
+
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
+Strava declares war on scrapers ahead of IPO
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
-
-I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful</div>
+‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
         </div>
         
         <div class="card" onclick="openModal('content-16')">
@@ -980,15 +767,15 @@ Get an inside look at what it takes to scale and succeed from leaders at Mach In
 
 Google will pay SpaceX $920M per month for compute
 
+Mira Murati steps back into the spotlight, carefully
+
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
+Strava declares war on scrapers ahead of IPO
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
-
-I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful</div>
+‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
         </div>
         
         <div class="card" onclick="openModal('content-17')">
@@ -1076,15 +863,15 @@ Get an inside look at what it takes to scale and succeed from leaders at Mach In
 
 Google will pay SpaceX $920M per month for compute
 
+Mira Murati steps back into the spotlight, carefully
+
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
-DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
+Strava declares war on scrapers ahead of IPO
 
-‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
-
-I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pretty useful</div>
+‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs</div>
         </div>
         
         <div class="card" onclick="openModal('content-18')">
@@ -1516,7 +1303,29 @@ The output of a SMR is heat.  That heat can be used to power a steam turbine or 
 
 Explosions aside, the ratio between surface and capacity is not exactly optimal with mini reactors. They&#39;ll definitely emit more radiation than conventional plants and the risk of leakage also multipilies.
 
+But what is important, at least in America, is answering the question: will this make important people even richer?
+
+The output of a SMR is heat. That&#39;s yaddieyaddering away a very important metric of just how much it costs to make heat.
+
+That&#39;s yaddieyaddering away a very important metric of just how much it costs to make heat.
+
+A lax regulatory environment and a technology that is outclassed by wind and solar in virtually every single metric except space usage in a country with nothing but space?
+
+
+
+Hey what could possibly go wrong?Planting 500 miles of solar panels right in the middle of tornado alley?  You fucking tell me.  Maybe one day you’ll learn a lot can go wrong when your power isn’t secured behind thick concrete walls, but is instead standing naked in a field ready to be razed with every threatening season.  Ask those in the most violent paths of Mother Nature how well the insurance fuckening is going.  Mitigating the costs of that greed might soon outweigh the entire fucking point.  Going green, isn’t defi
+
+A lax regulatory environment and a technology that is outclassed by wind and solar in virtually every single metric except space usage in a country with nothing but space?
+
+
+
+Hey what could possibly go wrong?
+
+Planting 500 miles of solar panels right in the middle of tornado alley?  You fucking tell me.  Maybe one day you’ll learn a lot can go wrong when your power isn’t secured behind thick concrete walls, but is instead standing naked in a field ready to be razed with every threatening season.  Ask those in the most violent paths of Mother Nature how well the insurance fuckening is going.  Mitigating the costs of that greed might soon outweigh the entire fucking point.  Going green, isn’t defi
+
 but if it survives in the wake of the incoming trump depression, the company will likely run to a tax haven to profit from the race to the bottom tax rate the trumpistani states are participating in.
+
+Good news : an LLM can probably write a browser script to add this feature.
 
 &quot;Just over a year ago, the Trump Administration issued an executive order meant to accelerate the development of nuclear power in the US.&quot;
 
@@ -1528,10 +1337,17 @@ For a moment, I read that as &quot;supercriticality&quot; and was more than a bi
 
 But seriously, that&#39;s great — both that it successfully reached that point and that it did so on the first try.
 
+In reality it isn&#39;t for grid power.  We&#39;re talking something much smaller than SMRs even.  And SMRs will never be economical.
+
+Quote: &quot;..., the company is working with the Department of Defense&#39;s Project Pele program for developing a mobile nuclear reactor. The company has also received support from NASA.&quot;
+
+Power grids are for high-trust societies. They can&#39;t exist for long in a world where you can&#39;t rely on some idiot (or some idiotic AI) thousands of miles away to not do something that takes down the entire grid. The lower trust becomes, the smaller a system we can support.
+
+Localized power is going to be an ever-growing industry over the next few years. We already have multiple companies selling large batteries to power essential home systems during power outages and we&#39;re certainly going to see an increase i
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Business will be either better or worse.
-		-- Calvin Coolidge</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1546,6 +1362,8 @@ Business will be either better or worse.
             <a class="original-link" href="https://tech.slashdot.org/story/26/06/05/211249/the-us-military-quietly-turned-gps-into-a-global-numbers-station-evidence-suggests?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">..the best way to hide a secREt iS to cOnceaL it in Plain sight within a MUndane enviRonmenT.
+
+How is key management the equivalent of numbers stations?  I don&#39;t understand the linkage neither do I see the point of publicly disclosing keying material.
 
 The only way it could make sense is if you use the broadcast data against a one-time pad and then you have a key to decrypt some other data, however distributed.
 
@@ -1569,14 +1387,21 @@ It&#39;s one of those things that only seems obvious in hindsight,Bravo or brava
 
 Back in the 80s, and maybe early 90s too, you could listen on a certain shortwave frequencies and it was just some dude or a commie-sounding chick spitting out numbers. Whoa .. just googled it... turns to some of those stations are STILL operating:
 
-The Buzzer (UVB-76 / MDZhB)The Operator: Russian Military.The Location: Originally near Moscow; currently broadcasted from transmitter sites near St. Petersburg and Pskov.The Sound: It has broadcasted a monotonous, buzzing tone 25 times per minute, 24 hours a day,
+The Buzzer (UVB-76 / MDZhB)The Operator: Russian Military.The Location: Originally near Moscow; currently broadcasted from transmitter sites near St. Petersburg and Pskov.The Sound: It has broadcasted a monotonous, buzzing tone 25 times per minute, 24 hours a day, since the late 1970s. Every few weeks, the buzzer stops, and a live voice reads Russian names and numbers (e.g., &quot;Mikhail, Dmitri, Zhenya, Boris...&quot;).The Status: Active. You can still hear it today on 4.625 MHz.
+
+HM01 The Operator: Cuban Directorate of Intelligence (DI).The Location: Broadcasted from transmitter sites outside Havana, Cuba.The Sound: This station is famous for its technical errors, sometimes accidentally broadcasting radio stations like Radio Havana Cuba or Windows error sounds. It mixes a Spanish-speaking voice reading numbers with loud, screeching digital data bursts.The Status: Active. It regularly targets Cuban agents operating in the United States.
+
+The Lincolnshire Poacher (E03) The Operator: British Secret Intelligence Service (MI6).
+  The Location: Broadcasted from RAF Akrotiri, a military base in Cyprus.
+  The Sound: It began each hour with an electronic music box playing the English folk song &quot;The Lincolnshire Poacher.&quot; A female voice with a crisp British accent then read five-digit number groups.The Status: Inactive. It went off the air in 2008.
 
 I think that these are all just adult album alternative format stations that keep playing that one Wilco record.
 
+But all that&#39;s stored in that message field is 867-5309 [youtu.be].
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Business will be either better or worse.
-		-- Calvin Coolidge</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1613,6 +1438,10 @@ Hold on, I might be wrong about that. I remember hearing a news story about that
 Hold on, I might be wrong about that. I remember hearing a news story about that several decades ago, but can&#39;t confirm it now.
 
 Good stuff with the self correction. I wish people did this more often when they catch themselves out with a confabulation (which everyone does from time to time. Memory is an imperfect mechanism).
+
+Why spend hundred of millions a month on something that has no revenue and you think is &quot;dying&quot; ?
+
+No, I believe that Google and others are convinced that AI is the next big thing. They likely believe AI is as important as smartphones and the Internet if their spending is any guide. It is a crazy bet in my opinion and SpaceX/xAI will probably come out of this better than Anthropic.
 
 Only temporarily, I suspect. Google and Anthropic are perfectly able to build their own compute-centers, and I suspect would rather do that than feed their competition. Once the hardware is available, of course.That&#39;s the problem: It isn&#39;t. It&#39;s one thing to pay an arm and a leg for CPU, GPU, Memory, SSD,  etc. But high performance tensor units? Doesn&#39;t really matter how much you&#39;re willing to pay, you&#39;re not getting them for at least a few years. You&#39;ve probably heard of China being allowed to buy from Nvidia recently, but the only TPUs they&#39;re allowed to buy are the ones nobody really wants.
 
@@ -1654,10 +1483,11 @@ Too soon to welcome our new Colossus [wikipedia.org] overlord?
 
 i think this is just some headline bait to get retail in so the VCs can dump on them
 
+...but big companies reselling each other GPU time is recalling what happened [wikipedia.org] years ago with fiber bandwidth. I am stockpiling popcorn to enjoy the forthcoming show....
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Business will be either better or worse.
-		-- Calvin Coolidge</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1768,10 +1598,11 @@ annual income = # of coins x price per coinannual energy cost = terawatts used x
 
 Annual Coin Income: $77k x 165k coins = $12.7 billionAnnual Energy Cost: 169 terawatts @ $0.105 per kwatt = $17.7 billionAnnual Net
 
+...a lot of people online were saying there was an upcoming event called The Halvening that would change everything.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Business will be either better or worse.
-		-- Calvin Coolidge</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1814,8 +1645,7 @@ Maybe we can just ban LLM operators spidering content without permission?
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Business will be either better or worse.
-		-- Calvin Coolidge</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1841,14 +1671,21 @@ As I recall, this was an open contract, that did not have any EU only requiremen
 
 Generally speaking Adyen rates are not expensive per transaction at all. Just you need a certain scale to make Adyen feasible, they basically only want to work with large parties.
 
+A competitor to Stripe and Adyen worth considering is Mollie [mollie.com]. Adyen is focused on large scale enterprises while Mollie wants to work with any size entity.
+
+Fun fact: both Adyen and Mollie are based in Amsterdam, walking distance from each other, and there&#39;s probably a joke or two for the slashdots in there somewhere.
+
 Is this just a euronationalism thing?Nationalism is a thing in every location due to the fact that different countries have wildly different payment methods standardised. For example Amazon have their own payment provider Amazon Pay, which they don&#39;t even use in Europe because it lacks support for many payment methods. Few people support Paypal in the Netherlands or Germany as they don&#39;t support Wero or Girocard. If you focus on a provider which only support credit cards, you will have effectively locked out 75% of the market in some places in
 
 Nationalism is a thing in every location due to the fact that different countries have wildly different payment methods standardised. For example Amazon have their own payment provider Amazon Pay, which they don&#39;t even use in Europe because it lacks support for many payment methods. Few people support Paypal in the Netherlands or Germany as they don&#39;t support Wero or Girocard. If you focus on a provider which only support credit cards, you will have effectively locked out 75% of the market in some places in
 
+Is this just a euronationalism thing?I am keeping a list of articles that show a number of European countries (not just EU ones) moving to increase their digital sovereignty. Given the behaviour of the American administration and the behaviour of American tech companies, this is hardly surprising.
+
+I am keeping a list of articles that show a number of European countries (not just EU ones) moving to increase their digital sovereignty. Given the behaviour of the American administration and the behaviour of American tech companies, this is hardly surprising.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Business will be either better or worse.
-		-- Calvin Coolidge</div>
+Pie are not square.  Pie are round.  Cornbread are square.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2201,11 +2038,109 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Oxford Uni student data pwned yet again - this time via career platform breach</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-42" style="display:none;">
+            <h2>Oxford Uni student data pwned yet again - this time via career platform breach</h2>
+            <p><strong>www.theregister.com - Articles | 2026-06-06</strong></p>
+            <a class="original-link" href="https://www.theregister.com/security/2026/06/06/oxford-university-data-pwned-again-by-career-platform-breach/5251754">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Totally different attack from the break-in last month. Oh so that&#39;s OK then
+
+Oxford University students seeking work will be dismayed to learn that crooks have breached a second external platform provider for the university in as many months.
+
+The institution’s CareerConnect platform, provided by Group GTI, was the target of the intrusion, which exposed users’ full names and email addresses. Those who don’t use single sign-on (SSO) had their encrypted passwords leaked, too.
+
+CareerConnect forms part of Oxford University’s career services department, supporting students and alumni to find work opportunities. It is available to students, alumni, research staff, and recruiters.
+
+The same underlying technology powering the platform, which GTI markets as TargetConnect, is used by other universities in the UK and overseas, according to its website.
+
+OxfordUni said the May 28 attack was enabled by a “security vulnerability,” which has since been fixed.
+
+GTI has not publicly disclosed the security snafu itself, and did not respond to our requests for more information. The London-based tech company has not confirmed how many individuals were affected by the break-in, nor whether any data was stolen.
+
+It has also not explicitly stated which types of individuals were affected, although Oxford’s announcement listed “alumni, research staff, and employer users” as those who had their passwords forcibly reset following the attack.
+
+“There is no evidence that course information, uploaded files, appointment information, or financial information were involved in this incident,” the announcement went on to say.
+
+“GTI has stated this breach appeared to be focused on gathering credentials which may lead to phishing attempts.”
+
+The university did not list current students as among those affected, but told student newspaper Cherwell that names and email addresses might be compromised, and said the attack was entirely separate from the one which hit Instructure’s Canvas last month.
+
+Oxford University was just one of the circa 8,800 educational institutions affected by the mega breach at Canvas, a separate platform that’s also relied upon by schools, colleges, and universities.
+
+Seemingly timed by ShinyHunters to coincide with exam season, students across multiple countries were left without access to learning materials, tests, and grades at a pivotal time of the year.
+
+The scale of the attack was vast, affecting the usernames, email addresses, course names, enrollment information, and messages of up to 275 million students, teachers, and staff.
+
+The severity of the situation, coupled with the inopportune timing, led to Instructure “reaching an agreement” with ShinyHunters to prevent the criminal gang from leaking all the data online.
+
+In cyberese, this implies Instructure paid the criminals an extortion fee in exchange for their word that they would delete the stolen data.
+
+&quot;We received digital confirmation of data destruction (shred logs),&quot; Instructure said, adding &quot;We have been informed that no Instructure customers will be extorted as a result of this incident, publicly or otherwise.&quot; ®
+
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
+
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
+
+Modern applications are API-driven, interconnected, and often over-permissioned, making them an ideal target for AI-assisted attacks.
+
+Join us to discover how to eliminate infrastructure silos and establish a standardized, enterprise-grade cloud-native platform.
+
+Microsoft 365 is the backbone of enterprise communication, and its native security filters out the known and the noisy.
+
+Step into the chaos of a live ransomware breach, test your response skills, and team up with other IT and security pros to outsmart cybercriminals
+
+Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit event, Escape Ransomware, is now fully virtual.
+
+The identity and access models most organizations rely on were built for human users, not non-human identities operating independently.
+
+The identity and access models most organizations rely on were built for human users, not non-human identities operating independently.
+
+Join us to learn how to unlock real ROI by driving adoption of AI at scale.
+
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
+
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
+
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
+
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">www.theregister.com - Articles</div>
             <div class="title">Start spreading the news: Datacenters may face one-year ban in NY</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>Start spreading the news: Datacenters may face one-year ban in NY</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/legal/2026/06/05/new-york-advances-one-year-datacenter-permit-moratorium/5251911">Visit Original Website</a>
@@ -2240,13 +2175,13 @@ The bill, approved by the Senate on Friday, includes carve-outs for certain indu
 
 One of the first drafts of the bill had called for a three-year pause on datacenter construction. ®
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
 
@@ -2266,13 +2201,7 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
-
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2280,7 +2209,7 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2288,18 +2217,24 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">If you don't fall for these extortionists' calls, they'll show up with USB sticks</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>If you don't fall for these extortionists' calls, they'll show up with USB sticks</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/cyber-crime/2026/06/05/if-you-dont-fall-for-these-extortionists-calls-theyll-show-up-with-usb-sticks/5251891">Visit Original Website</a>
@@ -2356,13 +2291,13 @@ Some of the physical controls include requiring visitors to display official cre
 
 Because the bulk of these intrusions occur without any physical entry into the office, however, companies should also implement remote access conditional access policies to ensure only corporate-owned devices can authenticate to any VDIs or VPNs. Plus, block the installation and execution of unauthorized remote monitoring and support utilities. ®
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
 
@@ -2382,13 +2317,7 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
-
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2396,7 +2325,7 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2404,18 +2333,24 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Yet another Cisco SD-WAN 0-day under attack, and no patch in sight</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Yet another Cisco SD-WAN 0-day under attack, and no patch in sight</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/security/2026/06/05/yet-another-cisco-sd-wan-0-day-under-attack-and-no-patch-in-sight/5251855">Visit Original Website</a>
@@ -2456,13 +2391,13 @@ Also in February, the networking vendor patched a max-severity improper authenti
 
 And while this one isn&#39;t listed as under active exploitation (yet), on Wednesday, Cisco warned about a proof-of-concept exploit for CVE-2026-20230, a critical bug in its Unified Communications Manager that also allows attackers to gain root privileges. ®
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
 
@@ -2482,13 +2417,7 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
-
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2496,7 +2425,7 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2504,18 +2433,24 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Serious ISS air leak forces NASA astronauts to temporarily take shelter in Dragon capsule</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Serious ISS air leak forces NASA astronauts to temporarily take shelter in Dragon capsule</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/science/2026/06/05/new-iss-leaks-send-astronauts-to-dragon-safe-haven/5251831">Visit Original Website</a>
@@ -2546,13 +2481,13 @@ Russian news wire Interfax reported that cosmonauts identified two potential air
 
 We’ll update this story if we hear anything new from NASA, including whether the continued leaks, with cause unknown, could lead to an early retirement for the station. ®
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
 
@@ -2572,13 +2507,7 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
-
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2586,7 +2515,7 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2594,18 +2523,24 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Trump pumps federal funds into coal plants in the name of energy security</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Trump pumps federal funds into coal plants in the name of energy security</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/science/2026/06/05/trump-pumps-federal-funds-into-coal-plants-in-the-name-of-energy-security/5251734">Visit Original Website</a>
@@ -2654,13 +2589,13 @@ Japan&#39;s RIKEN scientific research institute and Fujitsu began working with A
 
 The move makes Japan the first, and so far only, international partner on Genesis. ®
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
 
@@ -2680,13 +2615,7 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
-
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2694,7 +2623,7 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2702,65 +2631,7 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">ZTE showcases AI-driven project management innovations at the 14th IPMA Research Conference 2026</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>ZTE showcases AI-driven project management innovations at the 14th IPMA Research Conference 2026</h2>
-            <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
-            <a class="original-link" href="https://www.theregister.com/networks/2026/06/05/zte-showcases-ai-driven-project-management-innovations-at-the-14th-ipma-research-conference-2026/5251809">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-ZTE Corporation today showcased its pioneering achievements in digital transformation and AI-driven project management at the 14th IPMA Research Conference in Bogotá, Colombia.
-
-During the conference, Wang Yuzhu, Managing Director of Engineering Services at ZTE Colombia, and Jose Perez, Senior Expert in Engineering Delivery Management at ZTE, delivered a keynote speech themed &quot;The Digital and Intelligent Future of Project Management&quot;, highlighting ZTE&#39;s practical experiences and innovative achievements in global project delivery.
-
-To address the evolving challenges of global project delivery, ZTE has developed a digital project management system tailored for complex international scenarios. Built on the &quot;One Team, One System, One Mechanism&quot; tripartite architecture, this system, powered by ZTE’s iEPMS (Intelligent Engineering Project Management System), enables comprehensive management across the entire project lifecycle—spanning planning, cost control, quality assurance, risk mitigation, and resource allocation. Through digital, automated, and intelligent management approaches, the system significantly enhances project management efficiency and precision.
-
-On the intelligence front, ZTE is driving the deep integration of AI with project management. By deploying Optical Character Recognition (OCR), AI Agents, Large Language Models (LLMs), and Retrieval-Augmented Generation (RAG) for knowledge enhancement, ZTE has automated key workflows such as quality reviews, design generation, risk analysis, and reporting. These innovations have yielded outstanding operational benefits: the accuracy of AI-powered quality reviews has reached 98%, and the time required to generate project reports has plummeted from 180 minutes to just 5 minutes, significantly improving delivery efficiency and governance capabilities.
-
-ZTE’s digital delivery achievements are backed by its extensive global footprint and rich network service expertise. Globally, ZTE has delivered over 240,000 projects, deployed over 7 million base stations and over 240,000 kilometers of optical cables, while managing and maintaining over 510,000 kilometers of network cabling. By continuously automating processes and building an intelligent tool ecosystem, ZTE has achieved a 65% reduction in acceptance costs, an 85% drop in site re-entry rates, and a 2.5-fold improvement in network activation efficiency, creating tangible value for global customers.
-
-ZTE also showcased several global benchmark case studies at the conference. In Ecuador’s RAN network project, ZTE integrated its intelligent platform with over 50 Standard Operating Procedures (SOPs) to achieve a seamless, &quot;zero-user-perception&quot; migration during network handovers. Additionally, ZTE’s digital project management solutions have been widely deployed in Colombia across diverse projects, including lithium battery installations, solar energy, microwave, FTTH, and DWDM networks.
-
-Centered on the theme &quot;Project Management Practice in a Disruptive Era: Integrating Technology, Innovation, and Sustainability&quot;, this landmark event gathered experts from over 50 countries. Across key thematic tracks including AI & innovation, project manager 5.0, and sustainability & purposeful management, attendees explored how disruptive technologies are reshaping human leadership and project frameworks in the digital era.
-
-Looking ahead, ZTE will continue to act as a &quot;Driver of Digital Economy&quot;, deepening the integration of AI, big data, and project management to upgrade global delivery models. ZTE remains committed to collaborating with global ecosystem partners to advance both research and practical innovation, contributing to an open, intelligent, and sustainable global project management ecosystem.
-
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
-
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
-
-Modern applications are API-driven, interconnected, and often over-permissioned, making them an ideal target for AI-assisted attacks.
-
-Join us to discover how to eliminate infrastructure silos and establish a standardized, enterprise-grade cloud-native platform.
-
-Microsoft 365 is the backbone of enterprise communication, and its native security filters out the known and the noisy.
-
-Step into the chaos of a live ransomware breach, test your response skills, and team up with other IT and security pros to outsmart cybercriminals
-
-Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit event, Escape Ransomware, is now fully virtual.
-
-The identity and access models most organizations rely on were built for human users, not non-human identities operating independently.
-
-The identity and access models most organizations rely on were built for human users, not non-human identities operating independently.
-
-Join us to learn how to unlock real ROI by driving adoption of AI at scale.
+Totally different attack from the break-in last month. Oh so that&#39;s OK then
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
@@ -2768,25 +2639,7 @@ When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
-
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
-
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
@@ -3783,25 +3636,11 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US attacks Iranian sites after Iran launches drones, in latest Gulf flare-up - Reuters</div>
-            <div class="meta">2026-06-06</div>
-        </div>
-        
-        <div id="content-66" style="display:none;">
-            <h2>US attacks Iranian sites after Iran launches drones, in latest Gulf flare-up - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxOZ1o1RDBJVGVQai1scDRmSmlnaWxVZlZBaDZyZUswRHNMY0c1N25BM053RXdmWGV5aGJkalg3V0lpUnpVOEFpUWY5YTBCY0syV1dmejdaUVlJVXZkc0tNVTQ2RmlTVWlEUVlDYkZEYl9yQVZ1QWtLVzZYNl9RRTBzaENsNlBVMWJCYjJLd0ZtdGlpUTljLVBhV0JlVDFJRWJwdm9YQjhIZ3BqdHdua2Z6TFMzS0xXbHhuZTFuNC0yWDhHaUlWSFo2MQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-67')">
-            <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Trump pardons former US congressman convicted of securities fraud - Reuters</div>
             <div class="meta">2026-06-06</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-66" style="display:none;">
             <h2>Trump pardons former US congressman convicted of securities fraud - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQMmEyZU1NbEdqWXZpSzJfamVMM0VMdzcwaXZSSks2eWtfdXZjd1B2XzVoR0JFTjdZd0tMQ1gzdXpOWlhqNEpfNXZnM1YxOTZLcVliNU85X3gxVXV5azhlWGtkb3VaMFVlTHZEZGxXU05qZkM0U042dVAzVXo2NDNveTUtN2l1eDJ1NXFzTF9sVEQwMndIZHZfM1hCWkZEOWJMYU0wXzFLTlQ1STVBZlE?oc=5">Visit Original Website</a>
@@ -3809,13 +3648,55 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">US attacks Iranian sites after Iran launches drones, in latest Gulf flare-up - Reuters</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>US attacks Iranian sites after Iran launches drones, in latest Gulf flare-up - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxOZ1o1RDBJVGVQai1scDRmSmlnaWxVZlZBaDZyZUswRHNMY0c1N25BM053RXdmWGV5aGJkalg3V0lpUnpVOEFpUWY5YTBCY0syV1dmejdaUVlJVXZkc0tNVTQ2RmlTVWlEUVlDYkZEYl9yQVZ1QWtLVzZYNl9RRTBzaENsNlBVMWJCYjJLd0ZtdGlpUTljLVBhV0JlVDFJRWJwdm9YQjhIZ3BqdHdua2Z6TFMzS0xXbHhuZTFuNC0yWDhHaUlWSFo2MQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
         <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Second Texas screwworm case confirmed as outbreak fears grow - Reuters</div>
+            <div class="meta">2026-06-05</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>Second Texas screwworm case confirmed as outbreak fears grow - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOblFxdFc0MEJ5OVd2VXZpQm5MMEhRQzlwS2lWb042ZGx0SFRTb1o3NnZnRjU5STNPR3ZpMk9tQi03MXVjbFBOSWlSeEVLQ0NDWkZLek9ZWGVNVjV5YzVVWmpaNUdWYlZfSlFDYjd3VlRzcVdDZTZ0UVdyWEc0alFVZEtGOVd6Z25fSENsLWdUV3FIR2lsR1Fxd0RFYm5iSEhGbVNyM3NDMl9yWXN2QVhhWWVhZUlmRmpxZmZuRWdLbGF0R1F1UUkzOUdR?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Jamaica facing nationwide power outage - Reuters</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
+            <h2>Jamaica facing nationwide power outage - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNbUFSeG5wZzZETC1RVE9ORGNzb0Z3dUJqcmdzTjhJRHlYOGM4ZV85YW0xeDZpZGdyTURNUVNDV1lQdGhUb3d5VU5aYjNyZm9PaEtQTkNkQ0lNNGJXcW83Tm5HMjByQm5BMEl3Ni1ScXBWWktjSzJsY1Z0S2JMWjIzd2xGZDBxSWhXRjVGRDZJand1NlFnbDNPOGNXQmJZZlI3eWF3eUFoZlFzWlhYMFBFcA?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">US strikes Iran radar sites after Iranian drone launch - Reuters</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>US strikes Iran radar sites after Iranian drone launch - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxONE1OaV8yX29rUGpfRjJCbElUcy0tM01SWVZES003OTE3ZVhpaDFJRVBmXzh5ZEY2OEthOHNJU2oyTlBSeU9na0owaEFveC0tZFRWdXc3WjF4VTVfN3dBdFdfcVVzV0tqT1BsRjZyQTlmelBhcDBiWlNhb3NsaDl4OHduY2FVRWxveGlCV21QQ3JldWpQOXlHTW9Xa1p3VHM4cUVqZkVUR09halph?oc=5">Visit Original Website</a>
@@ -3823,44 +3704,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Marvell to join S&P 500 after AI boom helps chipmaker pass profitability test - Reuters</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>Marvell to join S&P 500 after AI boom helps chipmaker pass profitability test - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQVFJMMHVDWFE3aVRBNDBIUEpjSkFmeGp1MWh4NnhnNDIxd2gwSzRnQ3g0NzllQ3BEdDhPdlJraWtqa3NoRVpMNElqQ1Q3V3lmYzV1bm0tU1F4VlFrRFI2Y3NUYWoxanBmLUhsSG1NRXlGb2hLOTI3Wnc3MXY3Z3VGQnU5VzIwalljTTNCcG1oV1AzRzh2bXRpdDNOU192VnF2c2ctZlREYmpqWndoMmRFS255QXNvUUhKTGc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-70')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Five dead in Russian attacks in Ukraine's southern Kherson region - Reuters</div>
             <div class="meta">2026-06-06</div>
         </div>
         
-        <div id="content-70" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>Five dead in Russian attacks in Ukraine's southern Kherson region - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPeGZRdUVMRUVya1o2T0NvdWJTckkxYWRDU09zRjZyVnJfQUxQSzdDMmVTbWtSUGs2aHlYb2xuNURvaVpYSGV3eHBGZ3FtRGxDX2xKdDU2TThmeW0wSWR4YnloUEFQX3NiWTNsVlpmZDIyei01YWtrbktJREd4OURtZjZZX2k1ZVpQMVdWWnFOR1Y5M3JnRXpsd1ZDdXZzSDVOc2c?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Taiwan needs to 'spend smarter' on its defence, senior US diplomat says - Reuters</div>
-            <div class="meta">2026-06-06</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>Taiwan needs to 'spend smarter' on its defence, senior US diplomat says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNSTdSOXJmX1h1eHJUT3hzYnB0cFAyWUtsMzl0Ulo2bVg4a1RLdEp1WkJITzRuUFJhYVdaVThObE8zVktPUzBvaTFTZkRmNDNwRmJtUTdfQUY1RFA0Q25ZdEU5ZUptMlF5TTRkdUN0aVJMdFJKOUJmcUN3WTg4ZVlDd3dReEZSUzlDLTRqU2VjaUhiUFpQakxUelU1NlMzMFdVeVJlRVhkNHFGOFFPUWZuMnlZbEQxY1BJVnN5NXpuVEdwbkk?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3951,25 +3804,11 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-78')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Fusion Startup Helion Nearly Triples Valuation to $15.5 Billion in Thrive-led Round - The Information</div>
-            <div class="meta">2026-06-04</div>
-        </div>
-        
-        <div id="content-78" style="display:none;">
-            <h2>Fusion Startup Helion Nearly Triples Valuation to $15.5 Billion in Thrive-led Round - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-06-04</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOd2xVdzd5dnd6ZTRjRzZUMVBUVmdxNjdtZmplNmE1ZU1XU0dMUFk1RWNTZy1TaUNHaF93R1hnbWRCVlFUSExIUkpMWmJSenJzdTVUSkY2YzBQMGU2YXJQeVlDVlpEZU16NHZQZHUycW54OWtHRnpDNEFHdTJiNENEYlpsT3o3a1paR3RkWmZLV0FIWUFEaFQ2N1VrOWhjQU1aRWQyaHRIYVlYMzhPMDgtbWhfS0Rxdms?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-79')">
-            <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Nvidia Buys Enterprise Model-Maker Kumo AI for at Least $400 Million - The Information</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-79" style="display:none;">
+        <div id="content-78" style="display:none;">
             <h2>Nvidia Buys Enterprise Model-Maker Kumo AI for at Least $400 Million - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-06-03</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNbTR0REdsRG9qNjFIYUI5NUM3bDhqNFpfeFlLSGMxMnJSenctWWQzRGNTNE1XNUlncjNSelkxRGpnaWE3NjR5XzRULVRDdFphRTVybUpfZEFJcGZRQTJWOHVZSHJRb0s5WUF4YnA3Tm1JMVZBMEtfVHZKRHVhb09HbzZzYzZ3VHRIUjRGbGhxamM5aGU1V2RDMEVlNlVCWFpnVHc?oc=5">Visit Original Website</a>
@@ -3977,13 +3816,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-80')">
+        <div class="card" onclick="openModal('content-79')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Meta Looks to Charge Up to $200 a Month for Planned ‘Hatch’ AI Agent - The Information</div>
             <div class="meta">2026-06-03</div>
         </div>
         
-        <div id="content-80" style="display:none;">
+        <div id="content-79" style="display:none;">
             <h2>Meta Looks to Charge Up to $200 a Month for Planned ‘Hatch’ AI Agent - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-06-03</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOSHNtZkt0RXFoWkhqcmh3S0c0YkRid3hFOVNQMXZKQ1RRQW1nQms2dmJ4bHdOOVhRSmFVdE0tYl9uRVRjcGZYdjVVZ2ZidllHQV9PTmRUNWVlRk04STRHSFJUOGE1SFI4aXhaM2d5aXVtb2dJRDdIRUxXVFVQYjFObXlCMGVlRG5uZlpMVWVIb0NkLXJ4?oc=5">Visit Original Website</a>
@@ -3991,27 +3830,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-81')">
+        <div class="card" onclick="openModal('content-80')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Exclusive: Tesla Pushes Roadster Demo to August - The Information</div>
-            <div class="meta">2026-06-05</div>
+            <div class="title">Fusion Startup Helion Nearly Triples Valuation to $15.5 Billion in Thrive-led Round - The Information</div>
+            <div class="meta">2026-06-04</div>
         </div>
         
-        <div id="content-81" style="display:none;">
-            <h2>Exclusive: Tesla Pushes Roadster Demo to August - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOSHNUa0lSaGM4WmZIT1FxbnB4Yjk5c09OXzhUZDNMMUFZYV9DRU9FejNkRDdXNE5tZTNkVjNRUnd3SkJVbXpaaDZMY1ZhTUFuMVhoQUpQTVJCVlpUM2FLa0kxWnhpUkhyVVY4cmI3SDJkVFVmeGlYYnFuSy1nR1EzWVhFQ2xqbUhac1pkbQ?oc=5">Visit Original Website</a>
+        <div id="content-80" style="display:none;">
+            <h2>Fusion Startup Helion Nearly Triples Valuation to $15.5 Billion in Thrive-led Round - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-06-04</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOd2xVdzd5dnd6ZTRjRzZUMVBUVmdxNjdtZmplNmE1ZU1XU0dMUFk1RWNTZy1TaUNHaF93R1hnbWRCVlFUSExIUkpMWmJSenJzdTVUSkY2YzBQMGU2YXJQeVlDVlpEZU16NHZQZHUycW54OWtHRnpDNEFHdTJiNENEYlpsT3o3a1paR3RkWmZLV0FIWUFEaFQ2N1VrOWhjQU1aRWQyaHRIYVlYMzhPMDgtbWhfS0Rxdms?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-82')">
+        <div class="card" onclick="openModal('content-81')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Data Center Developer Switch in Talks to Raise Billions at $50 Billion-Plus Valuation - The Information</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-82" style="display:none;">
+        <div id="content-81" style="display:none;">
             <h2>Data Center Developer Switch in Talks to Raise Billions at $50 Billion-Plus Valuation - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-06-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQd01XTDBZX3NnX0FDMnp0aExoQzBFb1Q0ejd0TVJtRzZieGc4MW9vOFpwWXdRMmc0WmV2djJBWkloVWNybDkxRHh3dmlFd1lkY2lhTUw2SWs2bXdxaHB1c254M2VSQW5pbzZ6V3JMd3Vmd093RUhYRWZtNS1CdlljeXVNSnc2OFlBUWQ2elVpLXpfTDEtNjdLZzdveVkxaFVQdmt0ZVlBSUdGX21ablBiYmtCNDlldw?oc=5">Visit Original Website</a>
@@ -4019,16 +3858,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-83')">
+        <div class="card" onclick="openModal('content-82')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Anthropic’s Mythos Is a Security Powerhouse. It’s Also a Budget Buster - The Information</div>
             <div class="meta">2026-06-01</div>
         </div>
         
-        <div id="content-83" style="display:none;">
+        <div id="content-82" style="display:none;">
             <h2>Anthropic’s Mythos Is a Security Powerhouse. It’s Also a Budget Buster - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-06-01</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNcEVNVkZEUDM2am1YbW1Pa2FjT280VGJuck5yYUZKV3pxcVlrRk9kcFpuWklGYXBGWmE1SFdpS0t3S21HOUt5QXRwcEo0QjRDcXlFRk1GVGlfV0YyUjNONEtmTWF2c3VxTjZLeDduaHNCbEx0aHg5cDBKR25OTHhpSHpobk5GdTRFNkUzbGVITzdjUG5hb3c?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-83')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">Meta Memo Outlines Ambitious Hardware Plans, Including New AI Pendant - The Information</div>
+            <div class="meta">2026-05-29</div>
+        </div>
+        
+        <div id="content-83" style="display:none;">
+            <h2>Meta Memo Outlines Ambitious Hardware Plans, Including New AI Pendant - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-05-29</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOUmFqamtrZTBibVJVTTJmOU1JdWxaNFpuS1R5OEFNNTctZFJxaUExWWdOWGFSMTloajBmcUVjLUdPRlZHZTNRLWEyakphX0R4Q2h0QWtJVC1Vd3BPU1J5NG5OYVVtYTdEbHRzR1Z4QmNfbW1JYzFlR19BTENtcHhLd2U3elpXLVJRX1Q3dHk0eGh3ZEtqV3ZteklJRjhjenhpNVUxcW5iVFl3V0J1?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
