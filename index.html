@@ -163,7 +163,35 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/06/baby-botulism-outbreak-fda-still-doesnt-know-cause-or-how-to-prevent-it/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">The Food and Drug Administration this week posted what critics call an “underwhelming” epilogue to the devastating outbreak of botulism in babies, which was linked to spore-contaminated formula made by ByHeart. Despite clear tracking of the contamination, the regulator still doesn’t know how the bacteria arrived in the formula—or how to prevent it from happening again.
+
+“The FDA’s investigation into the root cause is ongoing with a focus on ingredients,” the agency reported.
+
+In the void, three companies at the center of the investigation are left pointing fingers at each other, with none publicly taking responsibility for the contamination.
+
+The outbreak was identified in early November and was declared over by the FDA and Centers for Disease Control and Prevention on February 26. In the end, 48 infants across 17 states were sickened and hospitalized. Some are still recovering months after the life-threatening infection.
+
+The FDA’s investigation provided a detailed trace of the bacteria behind the outbreak, Clostridium botulinum, which can produce hardy spores that are found in soil and sediments. If the spores reach an amenable environment—such as the vulnerable, underdeveloped guts of infants—they begin to grow and produce a neurotoxin that causes flaccid paralysis.
+
+Strains of C. botulinum isolated from some of the sick infants were genetically linked to strains found in ByHeart’s formula, which were also linked to strains found in powdered whole milk used in the formula. The powdered whole milk was dried from liquid milk at a Nevada facility run by Dairy Farmers of America, and the liquid milk came from the supplier Organic West, based in California. Organic West sold the resulting powder to ByHeart.
+
+Specifically, the FDA traced contaminated formula and milk powder back to eight whole milk lot powders that came from 33 fluid milk lots from Organic West, according to an incident summary.
+
+Still, the FDA could not determine where in the production chain the bacteria entered or how.
+
+“Even though there are several hypotheses, investigational findings could not identify the source or root cause of contamination of the powdered infant formula,” the agency concluded.
+
+Bill Marler, a lawyer specializing in food poisoning who is also representing 25 of the sickened infants in litigation, told Ars that the conclusion is “a little underwhelming to put it mildly.” The epilogue that the FDA posted this week, titled the “Post-Outbreak Response Activities,” provided a summary “without any real clear guidance for consumers or for the companies going forward.”
+
+In the meantime, each of the three companies is shirking blame. ByHeart released a statement this week saying “FDA has shared that it did not identify any deficiencies in ByHeart’s facilities that could explain the root cause of this outbreak.”
+
+Bill Van Ryn, an owner of Organic West Milk, previously stressed in media reports that “nothing has been proven about our milk yet.” Likewise, Dairy Farmers of America blamed Organic West, saying its processing met all required tests. “Manufacturers of end-use consumer products have a responsibility to properly process ingredients to ensure product safety,” Dairy Farmers of America said in a statement.
+
+While Marler wants to see more investigation and action by the FDA to understand and prevent another outbreak from happening, the blame ultimately lies with ByHeart, he says. It’s “not only an ingredient problem that happened to pass through ByHeart. That is ByHeart’s product, in ByHeart’s can, with ByHeart’s name on it, fed to a baby,” he wrote in a recent blog post. “Sourcing, verifying, and testing what goes into infant formula is the job.”
+
+Marler also noted that this is not the first time infant botulism has been linked to infant formula.
+
+In its statement this week, ByHeart said it is working to resume infant formula production. The company is now working with a lab to develop more sensitive testing for C. botulinum in its products.</div>
         </div>
         
         <div class="card" onclick="openModal('content-1')">
@@ -177,7 +205,54 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/security/2026/06/highly-reviewed-speaker-can-be-hacked-over-the-air-to-infect-connected-devices/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Operating system makers take many steps to prevent their wares from accepting commands from remote devices. The safeguards, designed to thwart malicious attacks, typically require hackers to jump through all kinds of hoops to bypass the measures. But what if remote code execution were as simple as being within Bluetooth range of a speaker connected to the targeted device?
+
+It turns out it can, at least when the speaker is a Sound Blaster Katana V2X sold by Singapore-based Creative Technologies. The speaker, which sells for $283, is widely acclaimed with numerous reviews showering praise on the sound and performance of it and its predecessor, the Sound Blaster V2.
+
+Researcher Rasmus Moorats stumbled on the hack by accident, after he purchased a Katana V2X, a soundbar that connects to PCs, Macs, and Linux devices over USB or Bluetooth. Moorats was curious if he could create a Linux tool that communicated with his speaker. He discovered he could do so through CTP, a proprietary mechanism he guesses is short for Creative Transport Protocol.
+
+CTP allows devices connected via Bluetooth or USB to send commands to the speaker, such as changing LED colors and equalizer settings. CTP also allows the connected devices to receive responses from the speaker.
+
+To Moorat’s surprise, his Bluetooth device was able to connect to the speaker, which was connected to a PC via USB, without any authentication. Not only that, but his Bluetooth device didn’t have to be paired first. Also surprising: One of the CTP commands, labeled “upload new firmware to device,” allowed him to replace the official firmware with his own custom one. The firmware reflashing didn’t use code signing or other measures to prevent the loading of unofficial code.
+
+After successfully replacing the firmware with a replacement image that did nothing more than display the word “patched” on the speaker’s LED display, the researcher got to wondering what else a hacker might do. So he turned his attention to FreeRTOS, the open source operating system that ran the Katana V2X. It contained a set of HID functions for allowing the speaker to act as a human interface device, a classification that includes keyboards, mice, and webcams. The speaker implemented a limited HID that allowed for things like changing the volume and playing or pausing sound, but little else.
+
+The researcher discovered that he could change the speaker’s USB descriptor set, which is essentially a report that informs devices about the capabilities of a USB- or Bluetooth-connected peripheral. He was able to augment the existing descriptor set with a second one that reported the speaker being a keyboard. Then he used code already included in the firmware to streamline the process of sending keypresses.
+
+All of this gave Moorats an idea: What if he used his device to send commands to the speaker that used the HID to pass them along to the connected PC? After some trial and error, he found that he could. In a blog post published on Wednesday, he wrote:
+
+Chaining it all together, I was able to totally remotely, over the air, upload a custom firmware to my speaker which I hadn’t paired with, which would reboot, flash the custom firmware, and after rebooting type in the command echo pwned and execute it.
+
+Credit:
+                                      Rasmus Moorats
+                                  
+
+
+
+
+
+
+
+
+
+          Credit:
+
+          
+          Rasmus Moorats
+
+In a real attack scenario, I would execute the keystrokes for opening powershell.exe or similar and paste an actually malicious one-liner into that, but as a proof of concept, this was more than enough for me. A real attacker would also likely disable the routine for updating the firmware in both normal and recovery mode, making it impossible to wipe the malicious firmware from the device or patch it in the future.
+
+This is worsened by the fact that Bluetooth is always on for the speaker, even in sleep mode, with no apparent way to disable it.
+
+Before the speaker and USB-connected device can interact, they must successfully complete a challenge-and-response authentication procedure. Since the devices perform this handshake automatically each time the software boots, this isn’t usually a problem for the hacker. In certain cases, however, such as when the Katana V2X app isn’t open on the connected device, it’s a requirement.
+
+Nonetheless, the authentication is a simple enough hurdle to clear, because the correct response can be extracted from the app binary that ships with the speaker. Surprisingly, no such challenge and response is required for Bluetooth-connected devices.
+
+Moorat reported his findings to Creative Technologies, but never received a response. He then brought in CERT Singapore to intervene. Eventually, the organization got a response from the company. It said company engineers didn’t regard the behavior as a vulnerability. The researcher tested the attack against a connected Windows machine.
+
+It bears repeating that the hacks described can be carried out only when the attacker is within Bluetooth range of the speaker. That’s a significant requirement that limits attacks to neighbors, housemates, or people in offices that are adjacent to the speaker.
+
+Still, the ability to turn a Bluetooth device into a PC-pwning proxy and remote bugging device doesn’t exactly evoke warm and fuzzy feelings. It also raises the question: What other Bluetooth devices open users to the same attacks?</div>
         </div>
         
         <div class="card" onclick="openModal('content-2')">
@@ -191,7 +266,19 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/06/first-us-test-of-modular-reactor-reaches-criticality/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Just over a year ago, the Trump Administration issued an executive order meant to accelerate the development of nuclear power in the US. While an entire startup ecosystem has developed around the use of different—and typically smaller—reactor designs, only one of them has been fully licensed so far, and there are no plans to actually build any instances of that design.
+
+The executive order directed the Department of Energy to have three different reactor designs reach criticality in a bit over a year. On Thursday, a startup called Antares announced that a test reactor it had placed at the Idaho National Laboratory had reached criticality, making it the first new design to cross this threshold. Criticality means that the nuclear reactions inside the hardware had become self sustaining; it does not mean the reactor had started to generate power.
+
+Antares is one of a number of companies that is basing its design on a new fuel system called TRISO that takes some of the complexity and safety out of the reactor design and places them in the fuel design. The fuel design is based on tiny pellets with a uranium oxide core. The pellets are surrounded by several layers of carbon that can moderate the energy of both the neutrons and lighter nuclei that are released by fission reactions. All of that is encased in a hard ceramic shell that’s designed to withstand the highest temperatures that can be produced by the encased uranium.
+
+As long as your reactor can keep the TRISO pellets contained, then there should be no risk of meltdown or even the release of the most dangerous isotopes produced from the reactions. There are still some safety concerns, as neutrons will still escape and can potentially convert some of the surrounding material into unstable isotopes. But the Antares design surrounds the TRISO with a graphite sheath, which should slow most of these neutrons down.
+
+To mitigate non-radioactive risks, the Antares design uses sodium to take heat from the reactor to a heat exchanger. The heat is transferred to pressurized nitrogen, which then drives a turbine in a closed Brayton cycle setup.
+
+At the moment, Antares is just testing what it calls a Mark 0 reactor, which is not connected to the power-generation portion. Instead, it’s being used to validate the company’s modeling of the physical conditions in its reactors and generate safety data that can be used during licensing applications. Attempts to run the entire system, including electrical generation, are expected to happen next year.
+
+While the work was done at a Department of Energy Lab, the company is working with the Department of Defense’s Project Pele program for developing a mobile nuclear reactor. The company has also received support from NASA.</div>
         </div>
         
         <div class="card" onclick="openModal('content-3')">
@@ -205,7 +292,39 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/06/work-on-russias-leaky-space-station-module-causes-astronauts-to-take-shelter/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Five of the seven crew members on the International Space Station briefly sought refuge inside a SpaceX return capsule Friday morning as two Russian cosmonauts worked on an air leak on the other end of the complex.
+
+NASA ordered US astronauts Jessica Meir and Jack Hathaway, French astronaut Sophie Adenot, and Russian cosmonaut Andrey Fedyaev into SpaceX’s Crew Dragon Freedom spacecraft around 9 am EST (14:00 UTC) on Friday. The foursome launched aboard the SpaceX crew capsule on the Crew-12 mission in February, and the ship serves as their lifeboat until the crew’s scheduled return to Earth in September.
+
+NASA astronaut Chris Williams, who flew to the station in a Russian Soyuz ferry ship, joined the Crew-12 astronauts inside the Dragon spacecraft.
+
+“All USOS (US Orbital Segment) crew members need to execute … Emergency Procedure 3.4: Crew Dragon, establish Safe Haven,” NASA mission control radioed to the station crew around 9 am. “If we need (you) to suit up, we will do that once we’re inside the Dragon.”
+
+A short time later, a NASA spokesperson posted a statement on X attributing the shelter order to a repair on persistent air leaks on the Russian segment of the space station. For more than half a decade, engineers from Roscosmos and NASA have tracked the leak rate from a transfer tunnel on the back end of Russia’s Zvezda Service Module. The tunnel, known by the Russian acronym PrK, leads to a docking port for Progress resupply and refueling freighters.
+
+Engineers believe the leaks are caused by microscopic cracks in the module’s structure. Russian cosmonauts have repeatedly inspected and attempted to seal the cracks, but a permanent fix has eluded them. After a few months of pressure stability inside the PrK earlier this year, Roscosmos confirmed in May that the air leaks had returned.
+
+“Following new leaks, Roscosmos has elected to proceed with a more extensive repair operation on Friday, June 5,” NASA spokesperson Bethany Stevens wrote on X. “Out of an abundance of caution, NASA has directed all four of the agency’s SpaceX Crew-12 members and NASA astronaut Chris Williams to assume an elevated safety posture in the Dragon spacecraft while the repair is underway.”
+
+After about 90 minutes, the communications officer at mission control in Houston told the crew that they could reopen hatches and reenter the space station. The specific repair task that caused NASA to issue the shelter order was off. “Our Russian colleagues have elected to perform measurements only today. So, with that, we are comfortable backing out of the safe haven config,” mission control told the crew.
+
+“We don’t have help from our counterparts?” Crew-12 commander Jessica Meir asked mission control. “Affirm,” mission control replied.
+
+Those counterparts—Russian cosmonauts Sergey Kud-Sverchkov and Sergei Mikayev—were working at the leak area on the opposite end of the station, some 200 feet away from the Crew Dragon.
+
+Stevens soon posted an update on X, writing that Roscosmos had “paused” the “structural repair efforts” inside the PrK to take more measurements and assess data. “We look forward to working with Roscosmos on a collaborative approach to address the leaks,” Stevens added.
+
+Ars asked two NASA spokespersons for details on the proposed leak repair and why the agency decided that the repair was risky enough to order the US crew members into the Crew Dragon lifeboat. They did not provide answers to these questions as of the time of this publication, but we will add any information we receive to this story.
+
+Roscosmos, Russia’s space agency, typically keeps the PrK sealed off from the rest of the space station to isolate the leak from the crew’s living quarters and workstations. This allows the transfer tunnel to be maintained at a lower pressure than the rest of the station. When cosmonauts need to access the area, such as for inspections, repairs, or transferring cargo to or from a docked Progress supply vessel, they pressurize the PrK to match the pressure inside the rest of the station. This allows the cosmonauts to open up the PrK to complete their work.
+
+A statement posted by Roscosmos on its Telegram channel suggests this is what was happening early Friday. “Specialists from the Russian ISS segment’s main operations control team detected a leak in the chamber” during pressurization of the PrK.
+
+“Upon inspecting the transfer chamber, cosmonauts identified two potential air leak sites,” Roscosmos said. “The first site was promptly sealed by applying an initial layer of the two-component sealant compound Germetall-1. The second site is located on the conical section of the transfer chamber; preparations to seal it are currently underway.”
+
+Russian and NASA officials also did not say what compelled Roscosmos to plan an immediate repair after discovering the two potential leak sites on Friday. They also did not say when cosmonauts might try again to patch the leak, or if any future repair effort might again force the US crew members to take shelter.
+
+Roscosmos said there is “no threat to crew safety or onboard systems,” and the pressure inside the station “remains stable and is being maintained at the nominal level.”</div>
         </div>
         
         <div class="card" onclick="openModal('content-4')">
@@ -219,7 +338,29 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/sp-500-blocks-fast-spacex-entry-wont-waive-rule-for-unprofitable-ai-firms/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">SpaceX has requested unusually swift entry into several leading stock market indexes as a condition of its historic stock market debut. But the S&P 500 stock market index representing many of the largest profitable US companies has surprised market analysts by refusing to bend the rules for Elon Musk’s space and AI company.
+
+The June 4 decision by S&P Dow Jones Indices—the company that creates and manages stock market indexes such as the S&P 500—means that SpaceX will not gain accelerated access to potentially billions more dollars through passive investment funds that automatically purchase shares of S&P 500 companies. An exception for SpaceX could have also allowed leading AI companies such as OpenAI and Anthropic to gain entry not long after their own expected initial public offerings (IPOs). That possibility has now been shuttered.
+
+The news will likely come as a relief to people concerned about passive investor money and people’s retirement savings plans having greater exposure to the market risks associated with SpaceX’s big bet on AI and speculative orbital data center plans. AI companies are generally facing more challenges in funding and building expensive AI data centers, even as they shift more of the subsidized costs of running AI services onto shocked customers through usage-based pricing.
+
+To weigh expedited entry for SpaceX, the S&P Dow Jones Indices held a monthlong consultation to consider changing or waiving several main requirements for so-called MegaCap companies with “unprecedented market capitalizations.”
+
+Those proposed changes included shortening the “seasoning period” for new IPOs from 12 months to six months, waiving the investable weight factor (IWF) requirement for MegaCap companies to make at least 10 percent of their shares publicly available, and waiving the requirements for MegaCap companies to demonstrate profitability in the latest quarter of the financial year along with the previous four quarters.
+
+Such rule changes would have accommodated SpaceX’s plan to only offer approximately 3 percent of its IPO shares to public investors, and the fact that SpaceX is currently unprofitable with a growing debt load that has reached $29 billion because of its spending spree on AI infrastructure.
+
+But in its final decision, the S&P Dow Jones Indices stated that “no changes will be made to the eligibility criteria including financial viability screens, seasoning period, or minimum IWF.” Even after the standard yearlong wait, SpaceX, Anthropic, and OpenAI may struggle to deliver the consistent profitability necessary to qualify for the S&P 500.
+
+Swift entry into the S&P 500 would have triggered $14 billion of passive fund buying for SpaceX, according to Bloomberg Intelligence. The investment research arm of Bloomberg also estimated that OpenAI could have gained more than $8 billion, and Anthropic could have netted $4.6 billion from similar passive buying sprees triggered by their S&P 500 entries.
+
+This is because $7.5 trillion in passively managed funds—popular among both individual investors and institutional investors—follow the S&P 500 by purchasing shares of companies according to their proportional representation in the S&P 500 index. For example, the Vanguard and Fidelity brokerage giants both offer passive investment funds that track the S&P 500 composition.
+
+However, the S&P Dow Jones Indices did “carve out one concession” by changing the investable weight factor rules for “lower-profile benchmarks” such as the S&P Total Market Index and Dow Jones US Total Stock Market Index, according to Quartz. That could allow an IPO faster entry into those indexes.
+
+By contrast, the Nasdaq stock exchange changed its rules to allow SpaceX to enter the Nasdaq-100 Index within 15 trading days as opposed to the usual three months. Similarly, the FTSE Russell index provider decided to give SpaceX and other follow-on companies accelerated entry to the Russell Top 500 Index after the close of the fifth trading day following an IPO.
+
+The denial of accelerated S&P 500 entry for SpaceX comes just days after Morningstar analysts described SpaceX as having been “significantly overvalued” in the lead-up to its IPO. The investment research firm valued SpaceX at $780 billion—less than half of SpaceX’s $1.75 trillion IPO goal—primarily based on the strengths of SpaceX’s Starlink satellite service and rocket launch business.</div>
         </div>
         
         <div class="card" onclick="openModal('content-5')">
@@ -233,7 +374,79 @@
             <p><strong>Ars Technica - All content | 2026-06-05</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/06/we-pissed-off-a-lot-of-people-giant-data-center-plan-cut-50-amid-protests/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">One of the world’s biggest data center projects was designed to be nearly three times the size of Manhattan, stretching across multiple Utah sites. But intense local backlash in Box Elder County has now pushed the developer to cut the project plans in half before construction starts.
+
+Residents’ top concern was the Stratos data center project draining local waters, and they were willing to pay to protect them, most especially the vulnerable Great Salt Lake. Many locals paid a $15 fee to register comments to block the transfer of 1,900 acre-feet of water from a ranch to the hyperscale data center. Other concerns include electricity bills rising and potential risks to air quality, local wildlife, and land.
+
+Venture capitalist Kevin O’Leary, chair of O’Leary Digital and Shark Tank investor, is behind the construction of the project. He told a local ABC affiliate that he regrets not working with state officials to be more transparent about the project from the beginning.
+
+“We really screwed it up,” O’Leary said, while confirming that he “was not expecting this kind of intense blowback from the public.” He claimed that he and state officials anticipated that “people would be excited” about the major local investment and “made huge mistakes” by not involving the public more in discussions, based on that “assumption.”
+
+“We pissed off a lot of people, and that’s not the way I do business,” O’Leary said. “That’s not.”
+
+As Utahns moved to defend their resources and demanded more information, Utah Senate President Stuart Adams, who is a Republican, sent a letter to O’Leary, asking him to cut the project’s scope by 75 percent.
+
+At an AI gala in Washington, DC, O’Leary claimed that he had “no choice” but to agree, NBC News reported. Initially, he planned to build the project on 40,000 acres, but now he’s reduced that to about 20,000 acres. Of the remaining land, 10,000 acres will remain undeveloped, leaving about 25 percent of the initial acreage to develop the data center. O’Leary’s group characterized this as bending to the Senate president’s demands.
+
+Moving forward, O’Leary wants to rebuild trust, he claimed. He told the ABC affiliate that he’s personally taking over all communications on the project because he didn’t “like being beaten up like this.” With him as spokesperson, residents will supposedly be better informed about permitting requests and environmental impacts, rather than relying on sources that O’Leary claimed are unreliable or bent on manipulating public opinion.
+
+“All the plans are going to be transparent,” O’Leary said, while claiming that public concerns are exaggerated. “All the design is going to be transparent. Everything we do is going to be transparent because I’m not happy with where we’re at right now.”
+
+He told the AI gala attendees that he now recognizes that “we should have answered all this stuff up front, now I got to do it after everybody’s been pissed off.”
+
+“I hope this dialogue can serve as a model for how complex projects are best addressed—through direct, good-faith engagement between developers and elected officials rather than through public narratives that outpace the facts,” O’Leary told a local Utah news site KLS.com.
+
+Before construction can begin in Utah, O’Leary’s project will need to secure more approvals and complete several environmental reviews, a local nonprofit, Alliance for a Better Utah, noted in a statement on the plan to shrink the data center.
+
+In response to O’Leary’s letter, Adams celebrated the compromise and claimed that the project could become a roadmap for how responsible data center development should work in the US.
+
+“With responsible water use, transparency and input from the people of Utah, we will show the nation how to build it right,” Adams said. “There must be written commitments in place, and the proposal must undergo a full permitting and environmental review process, just like any other development project in Utah.”
+
+But some locals think there is no going back once trust is lost. After the water transfer backlash, the Salt Lake Tribune editorial board warned, “even if the data center isn’t as dreadful as feared—or if it never is actually built—the stench attached to the rushed and secret political process will take a very long time to dissipate, if it ever does.”
+
+Unsurprisingly, some residents who oppose the data center aren’t optimistic that O’Leary’s plans will do much to mitigate the local impacts they fear. NBC’s report noted that it’s not “immediately clear if the overall nine-gigawatt capacity of the project will change.”
+
+Brenna Williams, a community member involved in the Box Elder Accountability Referendum opposing the project, called the agreement “excellent performance art,” KLS.com reported.
+
+“I think this was the plan all along,” Williams said, suggesting that the project never would’ve been approved if the public had been engaged at the start of discussions, because the area is simply not a good candidate for a data center due to water constraints.
+
+“I don’t see any changes, and the truth is, Box Elder County is just too vulnerable for a hyper-scale data center of this size,” she said. “No matter what he does given the situation, there is going to be a big impact.”
+
+Adams’ pivot toward transparency is supposedly linked to his reelection bid. He’s facing down a primary against two Republican challengers this June, the Hill noted, and O’Leary told NBC News that he thinks Adams was pressured to challenge the data center size to keep his campaign on track.
+
+“I know he did it for political reasons,” O’Leary said.
+
+While Donald Trump has advocated for rapid data center development across the US to keep America ahead in the AI race, the Utah case shows that not every Republican can afford to be an AI booster. A recent HeatMap poll showed “a rapid shift in public opinion since last fall,” with at least 7 in 10 Americans now opposing data centers built near their homes.
+
+With “an absolute majority” now opposing data centers, Democrats could seize opportunities to unseat Republicans who fall in line with Trump’s agenda, simply by demanding more transparency.
+
+Perhaps the best example of this is Illinois governor J.B. Pritzker. On Friday, NBC News reported that Pritzker plans to temporarily halt all tax breaks to data centers in his state until a legal framework can be drafted to ensure responsible development. Pritzker “is widely viewed as having 2028 White House aspirations” and may soon show he’s up to the task if he succeeds in taking control over regulating frontier AI away from Trump.
+
+Eliminating tax breaks might push projects onto more suitable sites, critics think. In Utah, Williams suspects that tax breaks are the biggest reason why O’Leary wants to develop his project there, the ABC affiliate reported.
+
+“There are places who really want this project, she said. “For him to be fighting so hard to put it here, seems kind of ridiculous because there are places who really want it. I’m not so sure he’d get the same tax concessions as he got in Utah, but he could try. And they would open their arms to him and be grateful for the opportunity. In Box Elder, we don’t want it.”
+
+Many locals protesting data centers don’t stop until the projects are shut down. Last month, HeatMap Pro released data showing that “at least 20 data center projects were canceled after facing significant public backlash in the first quarter of this year.”
+
+“That is more than double the number that were canceled the previous quarter,” HeatMap reported, while noting that data centers are “slightly more unpopular” with rural voters who typically trend more conservative.
+
+Environmental activist Erin Brockovich recently launched another resource, which tracks where data centers are pending, approved, under construction, and operational. Thousands have already contributed to her map tracking data center fights throughout the US.
+
+Although reports indicate—and Adams said was the case in Utah—that communities have genuine concerns fueling the rise in opposition, not everyone agrees that the immense community backlash in the US is rational or proportionate.
+
+On Bluesky, Will Stancil, a lawyer, activist, and housing policy researcher, commented on HeatMap’s poll, suggesting it seemed unusual for public opinion to shift so quickly without “some major data center disaster.” In his thread, Stancil boosted a reply suggesting that data center backlash “hit the algo,” raising a theory that social media is possibly driving anti-data center sentiment.
+
+And while O’Leary blamed himself and Adams for making “mistakes” in Utah, he also claimed that the protests he faced in the state were due to foreign interference, NBC News reported. He accused China of supposedly funding the Alliance for a Better Utah to conduct a smear campaign to set back his project, a claim which the nonprofit has denied.
+
+“All these people have a right to get information,” O’Leary said. “Why are they getting it from a false initiative? Who is spending all this money to put out all these falsehoods and straight-out misinformation and lies and agitate these people?”
+
+In a statement, Elizabeth Hutchings, the communications manager for the Alliance for a Better Utah, mocked the Montreal-born O’Leary, defending the group’s 15-year history and saying, “the only foreign interest in this data center is Kevin from Canada.”
+
+“It’s insulting to Utahns across the state to say that any opposition or protest to this data center is the work of a foreign government,” Hutchings said. “We are proud to live in a state where there are people who deeply care about transparency, their community and their kids’ futures. It is not strange to us that Utahns want to feel heard in decisions that will impact their lives for decades to come.”
+
+Hutchings agreed with Williams that “the issues with the deeply unpopular and problematic project in Box Elder County remain.”
+
+“This is not the first time we’ve dealt with bullies like Kevin trying to intimidate us into silence,” Hutching said. “No amount of propaganda and dramatic distractions will stop us from talking about the real issue: a lack of transparency from our government.”</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -587,7 +800,7 @@ When you purchase through links in our articles, we may earn a small commission.
 
 Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
 
-Mira Murati steps back into the spotlight, carefully
+Google will pay SpaceX $920M per month for compute
 
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
@@ -649,7 +862,7 @@ You can contact or verify outreach from Lorenzo by emailing lorenzo@techcrunch.c
 
 Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
 
-Mira Murati steps back into the spotlight, carefully
+Google will pay SpaceX $920M per month for compute
 
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
@@ -707,13 +920,13 @@ When you purchase through links in our articles, we may earn a small commission.
 
 Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
 
+Google will pay SpaceX $920M per month for compute
+
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
 Hackers hijacked Instagram accounts by tricking Meta AI support chatbot into granting access
 
 DuckDuckGo makes its ‘no-AI’ search engine easier to access as its traffic booms
-
-Strava declares war on scrapers ahead of IPO
 
 ‘What a joke’: GitHub Copilot’s new token-based billing spurs consternation among devs
 
@@ -761,7 +974,7 @@ You can contact or verify outreach from Sean by emailing sean.okane@techcrunch.c
 
 Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
 
-Mira Murati steps back into the spotlight, carefully
+Google will pay SpaceX $920M per month for compute
 
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
@@ -857,7 +1070,7 @@ You can contact or verify outreach from Tim by emailing tim.dechant@techcrunch.c
 
 Get an inside look at what it takes to scale and succeed from leaders at Mach Industries, Founders Fund, and Shinkei Systems. Through candid fireside chats and high-impact networking, you’ll walk away with valuable insights and new connections.
 
-Mira Murati steps back into the spotlight, carefully
+Google will pay SpaceX $920M per month for compute
 
 Microsoft launches Scout, an OpenClaw-inspired personal assistant
 
@@ -872,11 +1085,47 @@ I put Google’s 24/7 AI assistant Gemini Spark to work, and it’s actually pre
         
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
+            <div class="title">The J6 Rioter Now Working at the Pentagon</div>
+            <div class="meta">2026-06-06</div>
+        </div>
+        
+        <div id="content-18" style="display:none;">
+            <h2>The J6 Rioter Now Working at the Pentagon</h2>
+            <p><strong>The Atlantic | 2026-06-06</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/06/jg-rioter-pentagon-role-clearance/687460/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">This is an edition of The Atlantic Daily, a newsletter that guides you through the biggest stories of the day, helps you discover new ideas, and recommends the best in culture. Sign up for it here.
+
+On January 6, 2021, 19-year-old Elias Irizarry was among the members of a violent mob that broke into the U.S. Capitol and attempted to overturn the recent presidential election. He was convicted of trespassing on government grounds, and videos from that day show him entering through a window with a metal pole in his hand. Now he may have access to sensitive national-security information as an employee of the Department of Defense.
+
+As part of his deal with then-President Biden’s Justice Department, Irizarry pleaded guilty to the misdemeanor charge of entering and remaining in a restricted building or grounds, and was sentenced to 14 days in jail. But as with almost all of the other January 6ers, he was fully pardoned on Donald Trump’s return to office last year. The Washington Post reported this week that Irizarry, now 25, works at the Pentagon’s Special Operations and Low Intensity Conflict office. He’s been tasked with guarding the country against terrorist threats—but he himself participated in an attack on the U.S. government just over five years ago. His trajectory aligns with Trump’s ongoing effort to reframe the January 6 insurrectionists as “patriots” acting in support of a righteous cause, and reflects the White House’s tendency to reward illegal actions performed in the service of the president and his agenda.
+
+At the time of the riot, Irizarry was a freshman at the Citadel, a public military college in South Carolina. He was suspended from school after his guilty plea; after he apologized for his involvement in the riot at his 2023 sentencing, he reapplied and was accepted. The judge even wrote him a recommendation letter. Irizarry ran for Congress in 2024, and his campaign website explained that he’d “truly seen the good, the bad, and the ugly of America.” (He lost in the Republican primary, although he did capture 28 percent of the vote.) But does the fact that Irizarry apologized, and that a DOD spokesperson says that he believes Irizarry is qualified, mean that he should have access to the nation’s most closely guarded secrets?
+
+Part of the reason government jobs are so coveted is that many careers in public service are rewarded with stability, pensions, and other benefits. These positions can come with immense responsibility—and although it’s unclear what Irizarry’s motivations are for taking this particular role, his hiring is part of a concerning trend. He isn’t the first January 6 defendant to hold a position in the Trump administration: Jared Wise, who was caught on tape encouraging insurrectionists to “kill” Capitol Police officers, was until recently an employee of the Department of Justice. He resigned because he believed that he couldn’t “fully expose the abuses by the FBI and DOJ against J6 defendants” from within the federal government. A former FBI agent himself, Wise was hired specifically for the DOJ’s Weaponization Working Group, which was formed to investigate supposed abuses of prosecutorial power during the Biden administration. (My colleague Quinta Jurecic has argued that the project has unintentionally thrown light on the Trump administration’s own abuses.)
+
+One major concern over Irizarry’s job: his security clearance. All positions in the Special Operations and Low Intensity Conflict office require top-secret clearance, according to The Washington Post, which is typically granted only after a rigorous vetting process. (The Pentagon did not respond to my questions about the specifics of Irizarry’s role.) In part because Americans with security clearances can be targets for foreign agents, they’re routinely advised to watch for “insider threats”—red flags among co-workers who could potentially mishandle classified information, voluntarily or under duress. One of those tells, as my colleague Tom Nichols has written, is hostility to the U.S. government. Prosecutors alleged that, in the months after January 6, Irizarry sent texts to another rioter about potentially joining Russia’s military if America’s wouldn’t accept him.
+
+The Trump administration is still trying to paper over the history of January 6. In November of last year, Trump also announced mostly symbolic pardons for the election deniers who plotted to keep him in office. A month later, Trump pardoned Tina Peters, the Colorado county clerk who was convicted of election interference in 2024. The order didn’t carry legal signifiance—convicted only at the state level, Peters was technically beyond the president’s reach—but eventually, Colorado’s Democratic governor, Jared Polis, did what Trump couldn’t, commuting Peters’s prison sentence. Immediately following her release, she went on Steve Bannon’s podcast and suggested that she was jailed for exposing a Democratic plot to steal the election.
+
+The decision to pardon those involved in January 6, and to give some of the insurrectionists jobs in government, sends the message that crimes can be forgiven as long as they serve the aims of those in power. Government agencies cultivate public trust in part by demonstrating that they’re hiring the right people; not so long ago, Irizarry would have been an active security risk. In this administration, loyalty is the qualification that matters most.
+
+First, here are three new stories from The Atlantic:
+
+Explore. Nate Bargatze’s new movie, The Breadwinner (in theaters now), tries to recapture the magic of the mid-tier comedy, David Sims writes. But the stand-up comedian’s big-screen experiment is a bust.
+
+Read. Land, a new novel by the Hamnet author Maggie O’Farrell, showcases her genius for infusing painful stories with flashes of pure bliss, Hillary Kelly writes.
+
+When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
             <div class="title"><em>Obsession</em> Knows What the TikTok Generation Fears Most</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-18" style="display:none;">
+        <div id="content-19" style="display:none;">
             <h2><em>Obsession</em> Knows What the TikTok Generation Fears Most</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/culture/2026/06/obsession-movie-gen-z-anxiety/687459/?utm_source=feed">Visit Original Website</a>
@@ -902,13 +1151,13 @@ That a film by a 26-year-old director has traveled so well online makes sense. A
 Barker’s generation of worriers may continue to fixate on the question of “What’s the worst that could happen?,” but Obsession offers an answer in no uncertain terms. Telling someone else about your feelings can be one of the most terrifying moments of a young person’s life: What if they don’t like you back? What if they like you too much? Maybe acting on it will save you from a world of pain, the film suggests. But at the same time, maybe doing so isn’t worth the risk—maybe it’s safer to stay quiet and keep scrolling.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-20')">
             <div class="source">The Atlantic</div>
             <div class="title">The Supreme Court Has Invented a Right to Discriminate</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-20" style="display:none;">
             <h2>The Supreme Court Has Invented a Right to Discriminate</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/06/alabama-racial-discrimination-voting/687448/?utm_source=feed">Visit Original Website</a>
@@ -946,13 +1195,13 @@ This logic would not have barred any of the Jim Crow voting devices that the Rob
 Frederick Douglass wrote that “the elective franchise” was “the one great power by which all civil rights are obtained, enjoyed, and maintained under our form of government, and the one without which freedom to any class is delusive if not impossible.” The purpose of the Fifteenth Amendment was to ensure that Black voters could not again be denied their freedoms so that politicians did not have to heed their objections, to provide what Douglass called a “wall of fire for his protection.” But the Constitution has few defenses against a majority of justices willing to ignore it or twist it to its exact opposite purpose.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">The Old Campaign Playbook Is Dead</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>The Old Campaign Playbook Is Dead</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/podcasts/2026/06/old-campaign-playbook-dead/687445/?utm_source=feed">Visit Original Website</a>
@@ -1184,13 +1433,13 @@ Warzel: That’s it for us here. Thank you again to my guest, Rob Flaherty. If y
 This episode of Galaxy Brain was produced by Renee Klahr and engineered by Miguel Carrascal. Our theme is by Rob Smierciak. Claudine Ebeid is the executive producer of Atlantic audio, and Andrea Valdez is our managing editor.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">Elon Musk Is Dropping a Boulder in a Kiddie Pool</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>Elon Musk Is Dropping a Boulder in a Kiddie Pool</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/technology/2026/06/spacex-ipo-anthropic-openai/687443/?utm_source=feed">Visit Original Website</a>
@@ -1222,13 +1471,13 @@ The overall effect on stock markets will be chaotic, not a sure rise. For all of
 Of course, concerns that AI is a bubble rise and fall every few months. But through it all, SpaceX, Anthropic, and OpenAI have continued to embed their bots more deeply and broadly across the economy. By weaving itself into the finances of most businesses and households in America, the AI industry is quickly making itself too big to fail. Should these three firms go public, the fallout from an AI bust would spell ruin for the savings of much of the country. Just as the federal government stepped in when banks and automakers went bankrupt in 2008, it could not allow Silicon Valley to collapse. The promise of AI was always a self-fulfilling prophecy: This technology is so expensive to build that it must be world changing; and because it is world changing, we will spend any amount to build it.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">Comedy’s Biggest Stand-Up Won’t Be Hollywood’s Next Leading Man</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-22" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>Comedy’s Biggest Stand-Up Won’t Be Hollywood’s Next Leading Man</h2>
             <p><strong>The Atlantic | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/culture/2026/06/nate-bargatze-the-breadwinner-movie-review/687442/?utm_source=feed">Visit Original Website</a>
@@ -1246,48 +1495,6 @@ There are some brief flashes of inspiration: The supporting cast is stacked with
 In the end, Bargatze’s big-screen experiment is doomed by its desire to be extremely ordinary. Hollywood used to pump out movies as mediocre but occasionally charming as The Breadwinner, buoyed by the always-reliable power of seeing a comedy with a packed audience in a theater. The conventional wisdom became that these films didn’t really travel beyond America, however, and were thus better fits for streaming. The Breadwinner is aiming to recapture the satisfaction of going to see a three-out-of-five-star movie, offering decent laughs in an inoffensive package. Yet in a cinematic landscape in which generational breakthroughs are currently happening at the box office—namely with the horror hits Backrooms and Obsession, each the debut feature of a 20-something, very online filmmaker—it seems that audiences find it hard to care about a moderately successful attempt at light entertainment. Forgetting it is much easier.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">What Dogs See That We Can’t</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-23" style="display:none;">
-            <h2>What Dogs See That We Can’t</h2>
-            <p><strong>The Atlantic | 2026-06-05</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/newsletters/2026/06/what-i-learned-from-my-dog/687437/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">This is an edition of the Books Briefing, our editors’ weekly guide to the best in books. Sign up for it here.
-
-Humans used to spend a lot of time thinking about what separated us from animals. René Descartes, who wrote, “I think, therefore I am,” practiced vivisection on rabbits and dogs because he thought that they lacked consciousness. Then Charles Darwin argued convincingly that humans are indeed animals—and now, in the time of AI, we tend to think a lot more about what separates us from machines. I certainly have been, especially after reading Michael Pollan’s recent book on consciousness, A World Appears, and seeing his ideas reverberate in the Atlantic staff writer Judith Shulevitz’s article this week about the depiction of dogs in art.
-
-First, here are five stories from The Atlantic’s Books section:
-
-Shulevitz begins her essay, about Thomas W. Laqueur’s new book, The Dog’s Gaze: A Visual History, by describing a sensation familiar to most dog owners (and to me as I write this and my terrier gazes up from under my desk): that we are being stared at. “People speak with their eyes all the time,” Shulevitz writes, “but every so often I’d be struck with wonder that a consciousness as radically different from mine” as a dog’s “could communicate so effectively.” Laqueur’s book dwells on the way that canines often function in art—as seers of things that people miss. In Giovanni Battista Tiepolo’s The Finding of Moses, a dog spies a young girl whose presence unlocks the painting’s meaning. In Francisco de Goya’s Blind Beggar With Dog, a man has his eyes closed, “but the dog’s eyes are open and piercing,” Shulevitz writes, “providing a center of consciousness and a conscience.”
-
-In Pollan’s exploration of consciousness, which he frames as our most vexing scientific conundrum, animals feature mostly in a chapter on feeling. Charles Finch, who wrote about Pollan’s book in The Atlantic, believes that this section contains “the book’s finest passages.” He quotes one that neatly summarizes an important scientific shift on the subject: “It is one of the paradoxes of computer science that the ‘higher’ capabilities we once thought of as uniquely human—reason, language, intelligence—have proved easier for machines to master than the more elemental capacities we share with animals, including feelings and emotions.”
-
-Pollan’s book is not explicitly about AI, but he is thinking about it as much as many other writers are at this moment. He believes that the biggest question on that topic is not what machines can do but what they can’t. Among our non-machine capabilities are many that are not uniquely human: sentience, emotion, and the kind of felt experience that drives intuition. AI’s lack of these qualities might explain why machine-made art is lackluster, and why large language models might fool some editors and prize juries but—at least for the moment—fall far short of brilliance. “Artists use dogs to do what both they and dogs are good at: telling us where to look,” Shulevitz writes. Maybe if Descartes had known that, he would have come up with a more enduring theory of consciousness. And maybe he would have left those poor pups alone.
-
-Why are there so many canines in fine art? Read the full article.
-
-The irony of contemporary digital culture is that, although it democratizes communication and information, it also encourages circular rhetoric, ennui, and claustrophobia. I’m not the first person to lament the ubiquity of screens and the dangers of social media, though I may be the first to recommend the cleansing properties of Muir’s Nature Writings to those in search of something beyond their smartphone. I’m confident in saying that this more-than-900-page book, full of the 19th-century naturalist’s carefully written odes to the awe-inspiring forests and granite cathedrals of Central California, is pretty close to a perfect antidote to the cynicism undergirding so much digital slop. The essays and stories here argue for approaching life with unapologetic earnestness: The wonder of the Earth is yours for the taking (the taking-in, that is) if you just pay attention, Muir seems to be saying. I, for one, am listening.  — Anna Holmes
-
-From our list: Read these books by the time you graduate.
-
-📚 Cleanup on Aisle Five: Essential Work, Poverty Wages, and the View From Behind the Supermarket Register, by Ann Larson
-
-📚 Daughters of the Sun and Moon, by Lisa See
-
-The meanings of words such as honor, sacrifice, and humility have been leaking away from American civic life like red blood cells from an anemic. But if there’s one place where they retain their rich, sticky, life-giving force, it’s surely in the air around the Lincoln Memorial and Arlington National Cemetery.
-
-The cemetery is where Americans remember those who sacrificed their lives for the nation. The memorial is where they remember their greatest president—the man who proclaimed an end to slavery and kept the union intact, though the cost was staggering. The air between these two places is the medium through which Lincoln gets to speak with his war dead, and vice versa.
-
-When you buy a book using a link in this newsletter, we receive a commission. Thank you for supporting The Atlantic.
-
-Sign up for The Wonder Reader, a Saturday newsletter in which our editors recommend stories to spark your curiosity and fill you with delight.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
             <div class="title">The US Military Quietly Turned GPS Into a Global 'Numbers Station,' Evidence Suggests</div>
@@ -1301,11 +1508,27 @@ Sign up for The Wonder Reader, a Saturday newsletter in which our editors recomm
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">..the best way to hide a secREt iS to cOnceaL it in Plain sight within a MUndane enviRonmenT.
 
+The only way it could make sense is if you use the broadcast data against a one-time pad and then you have a key to decrypt some other data, however distributed.
+
+There aren&#39;t enough unique messages to be the data payload itself. Regular key rotation makes some sense.
+
+Instead of a key it could be a pointer to another data source too. Frequency, satellite channel, URL, whatever.
+
+It does seem premature to conclude the content. No doubt there are many other possibilities.
+
 Harder to jam.Smaller antennas.Easier to Conceal.
+
+This was freakin&#39; genius.  Not only did they hide a secret communication system inside a military radio system, but there is more.    The US graciously &#39;gave&#39; permission for civilian use of the previously military only technology, allowing it to be spread throughout the world.
+
+This way their agents could openly use the &#39;civilian&#39; equipment to receive encrypted military information.
+
+There is some genius American out there that for decades has been unable to brag.  Maybe they can give him a medal now.
+
+It&#39;s one of those things that only seems obvious in hindsight,Bravo or brava to the engineer who proposed it.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Human beings were created by water to transport it uphill.</div>
+It is better to give than to lend, and it costs about the same.</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1325,11 +1548,31 @@ If they have all those GPUs energized and can afford to lease them to their comp
 
 I&#39;m guessing Musk had SpaceX acquire xAI and then the people that actually know about business at SpaceX said &quot;This Grok product is a big money pit, but there&#39;s a shortage of hardware that Google and Anthropic will pay loads to use&quot;
 
+[...] the people that actually know about business at SpaceX said &quot;This Grok product is a big money pit, but there&#39;s a shortage of hardware that Google and Anthropic will pay loads to use&quot;Only temporarily, I suspect. Google and Anthropic are perfectly able to build their own compute-centers, and I suspect would rather do that than feed their competition. Once the hardware is available, of course.Companies do help their competitors out from time to time when production-loads become unbalanced. (Pepsi has canned Coke and vice-versa, for example.) But, as I said, only temporarily.
+
+[...] the people that actually know about business at SpaceX said &quot;This Grok product is a big money pit, but there&#39;s a shortage of hardware that Google and Anthropic will pay loads to use&quot;
+
+Only temporarily, I suspect. Google and Anthropic are perfectly able to build their own compute-centers, and I suspect would rather do that than feed their competition. Once the hardware is available, of course.
+
+Companies do help their competitors out from time to time when production-loads become unbalanced. (Pepsi has canned Coke and vice-versa, for example.) But, as I said, only temporarily.
+
+(Pepsi has canned Coke and vice-versa, for example.)Hold on, I might be wrong about that. I remember hearing a news story about that several decades ago, but can&#39;t confirm it now.
+
+(Pepsi has canned Coke and vice-versa, for example.)
+
+Hold on, I might be wrong about that. I remember hearing a news story about that several decades ago, but can&#39;t confirm it now.
+
+It also tells us he&#39;s making $1B / month, but let&#39;s gloss over that part, lol. Haters gonna hate.
+
 Not sure that giving money to a third party to make your core product experience worse is the best of ideas. Google has the cash to see how it turns out, no question about it.
 
 I am also very skeptical that there is any path to make the costs for LLM-based search the same as traditional search. I don&#39;t think Google can charge much more for advertising services either.
 
 Of course, my bias is that people want predictable results when interacting with a search engine. Maybe I am wrong about that.
+
+Google is not comparing the costs or usability of chatbots versus traditional search.  They are comparing someone else getting chatbots to replace a significant amount of their search traffic compared to Google doing the same and cannibalizing their own traditional search.  It&#39;s not a gross margin question for Google but an existential question.
+
+Tesla is not part of SpaceX, xAI is now part of SpaceX.
 
 I’m getting a harassing advertisement at the bottom of every slash that page for Victor. I’m pro ads to support this site , but this is annoying and harassing.
 
@@ -1343,13 +1586,17 @@ You just need to wait for updates.  I got the ads for a couple of days, but now 
 
 That should be enough to cover the electricity bill and get a100% ROI within 6 months.
 
+In other news, Google is selling $80 billion in new stock to fund AI infrastructure. So, as I said in a post above, I suspect Google is only a temporary customer of SpaceX/xAI.
+
+The fact that Google/Alphabet would risk stock dilution rather than just sell some bonds tells me that it sees a serious upside to the AI game, and needs flexible no-strings cash (i.e., without repayment schedules) to drive it forward. And the fact that it&#39;s renting GPU cycles from SpaceX means that it needs this compute-structure rig
+
 Too soon to welcome our new Colossus [wikipedia.org] overlord?
 
 [Spoiler: It doesn&#39;t end well for humanity.]
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Human beings were created by water to transport it uphill.</div>
+It is better to give than to lend, and it costs about the same.</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1375,25 +1622,27 @@ The 75% corrections are not as fast as the hyperbolic rides up. They also tend t
 
 We&#39;ll see how well this pattern holds, but it&#39;s probably too soon to make a call. One thing is very different from those past corrections. More Wall Streeters are involved and more non-technical people are involved. However the more diverse ownership shares the same motivations, then and now, high risk / high reward speculation. Maybe there will be fewer HODL advocates as a result.
 
-Then crypto is meant to be a currency.That is just the aspiration of many tech enthusiasts.I am sure most people who invested over the last 3 years did not expect their stable currency trade for crypto to be worth 1/2 or less than what they went in for.No one imagined it is stable. Even those who buy/sell goods/services with bitcoin tend not to hold it. Buy and transfer immediately, receive and sell immediately, it avoids the volatility risk. As mentioned earlier, &quot;investors&quot; tend to know it is high risk/reward, very speculative.Some people at the top of this pyramid scheme ...It&#39;s not a pyramid scheme. It&#39;s a &quot;greater fool&quot; scheme. Pyramid involves some sort of interest or dividends, greater fool involves increasing prices.But they didn&#39;t plan for this severe of a systematic collapse.75-80% drops are not system
+Then crypto is meant to be a currency.That is just the aspiration of many tech enthusiasts.I am sure most people who invested over the last 3 years did not expect their stable currency trade for crypto to be worth 1/2 or less than what they went in for.No one imagined it is stable. Even those who buy/sell goods/services with bitcoin tend not to hold it. Buy and transfer immediately, receive and sell immediately, it avoids the volatility risk. As mentioned earlier, &quot;investors&quot; tend to know it is high risk/reward, very speculative.Some people at the top of this pyramid scheme ...It&#39;s not a pyramid scheme. It&#39;s a &quot;greater fool&quot; scheme. Pyramid involves some sort of interest or dividends, greater fool involves increasing prices.But they didn&#39;t plan for this severe of a systematic collapse.75-80% drops are not systematic collapses for bitcoin, its a run of the mill post-run up correction.
 
 That is just the aspiration of many tech enthusiasts.
 
-I am sure most people who invested over the last 3 years did not expect their stable currency trade for crypto to be worth 1/2 or less than what they went in for.No one imagined it is stable. Even those who buy/sell goods/services with bitcoin tend not to hold it. Buy and transfer immediately, receive and sell immediately, it avoids the volatility risk. As mentioned earlier, &quot;investors&quot; tend to know it is high risk/reward, very speculative.Some people at the top of this pyramid scheme ...It&#39;s not a pyramid scheme. It&#39;s a &quot;greater fool&quot; scheme. Pyramid involves some sort of interest or dividends, greater fool involves increasing prices.But they didn&#39;t plan for this severe of a systematic collapse.75-80% drops are not system
+I am sure most people who invested over the last 3 years did not expect their stable currency trade for crypto to be worth 1/2 or less than what they went in for.No one imagined it is stable. Even those who buy/sell goods/services with bitcoin tend not to hold it. Buy and transfer immediately, receive and sell immediately, it avoids the volatility risk. As mentioned earlier, &quot;investors&quot; tend to know it is high risk/reward, very speculative.Some people at the top of this pyramid scheme ...It&#39;s not a pyramid scheme. It&#39;s a &quot;greater fool&quot; scheme. Pyramid involves some sort of interest or dividends, greater fool involves increasing prices.But they didn&#39;t plan for this severe of a systematic collapse.75-80% drops are not systematic collapses for bitcoin, its a run of the mill post-run up correction.
 
 I am sure most people who invested over the last 3 years did not expect their stable currency trade for crypto to be worth 1/2 or less than what they went in for.
 
 No one imagined it is stable. Even those who buy/sell goods/services with bitcoin tend not to hold it. Buy and transfer immediately, receive and sell immediately, it avoids the volatility risk. As mentioned earlier, &quot;investors&quot; tend to know it is high risk/reward, very speculative.
 
-Some people at the top of this pyramid scheme ...It&#39;s not a pyramid scheme. It&#39;s a &quot;greater fool&quot; scheme. Pyramid involves some sort of interest or dividends, greater fool involves increasing prices.But they didn&#39;t plan for this severe of a systematic collapse.75-80% drops are not system
+Some people at the top of this pyramid scheme ...It&#39;s not a pyramid scheme. It&#39;s a &quot;greater fool&quot; scheme. Pyramid involves some sort of interest or dividends, greater fool involves increasing prices.But they didn&#39;t plan for this severe of a systematic collapse.75-80% drops are not systematic collapses for bitcoin, its a run of the mill post-run up correction.
 
 Some people at the top of this pyramid scheme ...
 
 It&#39;s not a pyramid scheme. It&#39;s a &quot;greater fool&quot; scheme. Pyramid involves some sort of interest or dividends, greater fool involves increasing prices.
 
-But they didn&#39;t plan for this severe of a systematic collapse.75-80% drops are not system
+But they didn&#39;t plan for this severe of a systematic collapse.75-80% drops are not systematic collapses for bitcoin, its a run of the mill post-run up correction.
 
 But they didn&#39;t plan for this severe of a systematic collapse.
+
+75-80% drops are not systematic collapses for bitcoin, its a run of the mill post-run up correction.
 
 With top tier governments like the state of Texas, El Salvador, and even the US going all in with cryptocurrencies
 
@@ -1415,6 +1664,8 @@ As long as it is permanently unused, it&#39;s worth infinite money.  That is how
 
 Crypto Religion, just hang on and believe
 
+That statement was AI Slop, there is no reason to put any weight behind it whatsoever.
+
 The vulnerability, if exploited, could have allowed an attacker to create an unlimited number of counterfeit ZEC tokens, completely undetected.
 Each token needs a serial number so fake ones can be detected. ;-)
 
@@ -1428,7 +1679,7 @@ Okay, you do it.  Go get rid of all the Bitcoin.  Also why are people still repe
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Human beings were created by water to transport it uphill.</div>
+It is better to give than to lend, and it costs about the same.</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1467,9 +1718,11 @@ Perhaps Congress can give the Library of Congress the authority to compel the ne
 
 My first reaction is the Archive is being used to bypass the paywall, and this stops it.
 
+Maybe we can just ban LLM operators spidering content without permission?
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Human beings were created by water to transport it uphill.</div>
+It is better to give than to lend, and it costs about the same.</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1501,7 +1754,7 @@ Nationalism is a thing in every location due to the fact that different countrie
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Human beings were created by water to transport it uphill.</div>
+It is better to give than to lend, and it costs about the same.</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1631,9 +1884,13 @@ Douchy BSA wonk doesn&#39;t like the EU guarding the golden goose a little bit m
 
 I&#39;m flabbergasted that a trade group consisting 100% of organizations that publish closed-source software would be worried about having to comply with other people&#39;s licenses that require opening any changes / modifications / reuse made.
 
+Ernie Ball - the guitar string company - was raided by the BSA and subsequently humiliated publicly, all in the name of selling software licenses.  Sterling Ball was not impressed - he went totally open source after that.  Wonder if the BSA has told France about this fun episode?
+
+https://www.cnet.com/tech/tech... [cnet.com]
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Human beings were created by water to transport it uphill.</div>
+It is better to give than to lend, and it costs about the same.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -1986,11 +2243,105 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">www.theregister.com - Articles</div>
-            <div class="title">If you don't fall for these extortionists' calls, they'll show up with USB sticks</div>
+            <div class="title">Start spreading the news: Datacenters may face one-year ban in NY</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-42" style="display:none;">
+            <h2>Start spreading the news: Datacenters may face one-year ban in NY</h2>
+            <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
+            <a class="original-link" href="https://www.theregister.com/legal/2026/06/05/new-york-advances-one-year-datacenter-permit-moratorium/5251911">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+New York lawmakers have approved a bill imposing new labor, energy, environmental, and community-benefit requirements on datacenters, including a one-year moratorium on certain permits for facilities drawing 20 MW or more.
+
+The bill now heads to New York Gov. Kathy Hochul for a signature. A spokesperson for the governor told the New York Post she would review the legislation, but gave no signal as to whether she would sign it. Hochul has previously said she hoped to leave regulating datacenter construction to the local communities.
+
+“Today we face an unprecedented wave of proposed large-scale data center development across New York,” the bill’s sponsor Assemblymember Anna Kelles wrote in a statement posted to Instagram. “My legislation seeks to provide New York with the time necessary to fully evaluate the environmental, energy, water, and ratepayer impacts of these facilities and to develop appropriate regulatory safeguards before additional projects move forward.”
+
+The Assembly approved the bill on Thursday, the same day Anthropic, the AI giant behind Claude, called for a pause on LLM development sprints as developers believe the models could soon be capable of building themselves. In light of that possibility, researchers at Anthropic said the world would benefit from a slowdown in the race to make models more powerful.
+
+In New York, lawmakers hope to protect consumers from higher energy bills by creating a special classification for datacenter electrical customers and mandating that all necessary infrastructure upgrades, administrative expenses, and operational costs be assigned entirely to the datacenter.
+
+The bill also outlines electricity-sourcing requirements for datacenters with a peak load of at least 5 MW, requiring a phased shift toward renewable energy, with one-third of electricity coming from renewable sources between 2030 and 2034, two-thirds between 2035 and 2039, and 90 percent from 2040 onward.
+
+For trade workers who are employed to build the facilities and maintain the buildings later, the bill requires the datacenters to meet prevailing wage requirements, unless the workers are operating under a collective bargaining agreement. Additionally, it demands datacenter companies help host communities with renewable energy initiatives, and mitigate the strain on local wastewater treatment facilities.
+
+Business leaders are urging Hochul to reject the bill, saying it was rushed through at the end of a legislative session and presented without appropriate debate.
+
+In a statement provided to The Register, Julie Samuels, president and CEO of Tech:NYC, which promotes the state’s technology industry, said a blanket moratorium on datacenters would slow investment in the next generation of infrastructure projects.
+
+“Energy usage, grid capacity, and the community impact of data centers must be addressed, and the Governor’s Public Service Commission is already pursuing the right approach by ensuring data centers pay their fair share for grid upgrades and energy usage,” Samuels wrote in a statement.
+
+Republican Assemblymember Phil Palmesano argued that datacenters were being unfairly targeted when other technology companies were given tax incentives to build, pointing to the recent groundbreaking of the Micron chip fab in Clay, New York, which is expected to create 50,000 New York jobs throughout construction, and up to 90,000 nationally.
+
+The bill, approved by the Senate on Friday, includes carve-outs for certain industrial computing applications, including manufacturing.
+
+“If we told Micron they had to power their energy demands strictly using renewable resources, they wouldn’t be here,” Palmesano said, according to the NY Post.
+
+One of the first drafts of the bill had called for a three-year pause on datacenter construction. ®
+
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
+
+Modern applications are API-driven, interconnected, and often over-permissioned, making them an ideal target for AI-assisted attacks.
+
+Join us to discover how to eliminate infrastructure silos and establish a standardized, enterprise-grade cloud-native platform.
+
+Microsoft 365 is the backbone of enterprise communication, and its native security filters out the known and the noisy.
+
+Step into the chaos of a live ransomware breach, test your response skills, and team up with other IT and security pros to outsmart cybercriminals
+
+Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit event, Escape Ransomware, is now fully virtual.
+
+The identity and access models most organizations rely on were built for human users, not non-human identities operating independently.
+
+The identity and access models most organizations rely on were built for human users, not non-human identities operating independently.
+
+Join us to learn how to unlock real ROI by driving adoption of AI at scale.
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
+
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">If you don't fall for these extortionists' calls, they'll show up with USB sticks</div>
+            <div class="meta">2026-06-05</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
             <h2>If you don't fall for these extortionists' calls, they'll show up with USB sticks</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/cyber-crime/2026/06/05/if-you-dont-fall-for-these-extortionists-calls-theyll-show-up-with-usb-sticks/5251891">Visit Original Website</a>
@@ -2073,21 +2424,13 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
 DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
 
 When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
@@ -2097,16 +2440,24 @@ DoE wants to keep 13 coal-fired power generators going at the same time as fundi
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven</div>
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Yet another Cisco SD-WAN 0-day under attack, and no patch in sight</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>Yet another Cisco SD-WAN 0-day under attack, and no patch in sight</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/security/2026/06/05/yet-another-cisco-sd-wan-0-day-under-attack-and-no-patch-in-sight/5251855">Visit Original Website</a>
@@ -2173,21 +2524,13 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
 DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
 
 When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
@@ -2197,16 +2540,24 @@ DoE wants to keep 13 coal-fired power generators going at the same time as fundi
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven</div>
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Serious ISS air leak forces NASA astronauts to temporarily take shelter in Dragon capsule</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Serious ISS air leak forces NASA astronauts to temporarily take shelter in Dragon capsule</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/science/2026/06/05/new-iss-leaks-send-astronauts-to-dragon-safe-haven/5251831">Visit Original Website</a>
@@ -2263,21 +2614,13 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
 DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
 
 When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
@@ -2287,16 +2630,24 @@ DoE wants to keep 13 coal-fired power generators going at the same time as fundi
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven</div>
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Trump pumps federal funds into coal plants in the name of energy security</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Trump pumps federal funds into coal plants in the name of energy security</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/science/2026/06/05/trump-pumps-federal-funds-into-coal-plants-in-the-name-of-energy-security/5251734">Visit Original Website</a>
@@ -2371,21 +2722,13 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
 DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
 
 When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
@@ -2395,16 +2738,24 @@ DoE wants to keep 13 coal-fired power generators going at the same time as fundi
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven</div>
+The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
+
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
+
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
+
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
+
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">ZTE showcases AI-driven project management innovations at the 14th IPMA Research Conference 2026</div>
             <div class="meta">2026-06-05</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>ZTE showcases AI-driven project management innovations at the 14th IPMA Research Conference 2026</h2>
             <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theregister.com/networks/2026/06/05/zte-showcases-ai-driven-project-management-innovations-at-the-14th-ipma-research-conference-2026/5251809">Visit Original Website</a>
@@ -2453,22 +2804,6 @@ The identity and access models most organizations rely on were built for human u
 
 Join us to learn how to unlock real ROI by driving adoption of AI at scale.
 
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
-
 When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
@@ -2477,91 +2812,23 @@ DoE wants to keep 13 coal-fired power generators going at the same time as fundi
 
 PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">China Mobile Jiangsu and ZTE unveil intelligent complaint analysis agent to reshape core network O&M</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>China Mobile Jiangsu and ZTE unveil intelligent complaint analysis agent to reshape core network O&M</h2>
-            <p><strong>www.theregister.com - Articles | 2026-06-05</strong></p>
-            <a class="original-link" href="https://www.theregister.com/networks/2026/06/05/china-mobile-jiangsu-and-zte-unveil-intelligent-complaint-analysis-agent-to-reshape-core-network-om/5251564">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
+When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
-ZTE has joined forces with China Mobile Jiangsu under the guidance of China Mobile&#39;s Network Division to pioneer the implementation of core network complaint agent capabilities, marking a significant step forward in accelerating intelligent network operations and maintenance (O&M) transformation.
+Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
-Both parties innovatively introduce the multi-modal signaling model and agent technology to reconstruct the complaint handling process, implement automatic signaling analysis, and efficiently locate customer complaints. This solution sets a new benchmark for digital and intelligent O&M in the industry.
+DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
 
-At present, the complexity of service signaling interaction in mobile communication networks increases dramatically. Manual analysis of original signaling to locate problems has a high technical threshold, which relies on expert experience. In 2024, the Network Division of China Mobile Communications Group proposed a planning framework for intelligent agent-based complaint handling, leveraging agent and large model architectures to intelligently process complaint work orders. China Mobile Jiangsu and ZTE innovatively launched the complaint agent solution, and implemented it in 2025, breaking through the bottleneck of the industry through three core technologies.
-
-Modal Signaling Large Model: Learn massive raw signaling rules to train a core network multi-modal signaling large model, achieving end-to-end automatic signaling parsing and anomaly detection. The system inherits signaling expert knowledge to significantly enhance signaling interpretation efficiency.
-
-In customer complaint scenarios, the complaint agent automatically orchestrates the analysis workflow by integrating the signaling analysis large model and core network configuration data. It enables precise localization of issues in complex scenarios such as international roaming.
-
-Knowledge-based Complaint Handling: Intelligently recommend complaint handling suggestions based on complaint localization results to assist operations personnel in making rapid decisions. It can drive the transformation of complaint handling from &quot;experience-driven&quot; to &quot;knowledge-driven&quot; and close the loop on complaint resolution tickets.
-
-In the future, China Mobile Jiangsu and ZTE will continue to focus on digital and intelligent transformation, driven by value-oriented scenarios, to extend coverage to all scenarios and processes of core network operations and maintenance.
-
-It will continuously produce core network operations and maintenance agents and large models tailored to diverse maintenance scenarios, forming an agent cluster to enhance analytical capabilities in complex scenarios and empower industrial digital transformation.
-
-Through in-depth integration of AI and communications technologies, ZTE has created a new O&M mode to improve user experience and satisfaction.
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
 
 The bill awaits Gov. Hochul&#39;s signature after passing the state legislature
 
 When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
 
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-What does data sovereignty actually mean for your network, which trade-offs are unavoidable? Learn more.
-
-Modern applications are API-driven, interconnected, and often over-permissioned, making them an ideal target for AI-assisted attacks.
-
-Join us to discover how to eliminate infrastructure silos and establish a standardized, enterprise-grade cloud-native platform.
-
-Microsoft 365 is the backbone of enterprise communication, and its native security filters out the known and the noisy.
-
-Step into the chaos of a live ransomware breach, test your response skills, and team up with other IT and security pros to outsmart cybercriminals
-
-Ransomware attacks aren’t slowing down, and neither are we. Druva’s hit event, Escape Ransomware, is now fully virtual.
-
-The identity and access models most organizations rely on were built for human users, not non-human identities operating independently.
-
-The identity and access models most organizations rely on were built for human users, not non-human identities operating independently.
-
-Join us to learn how to unlock real ROI by driving adoption of AI at scale.
-
 Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
 
 DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
 
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven
-
-When &#39;Chatty Spider&#39; morphs into tech services cosplay spider
-
-Business is back to normal in the orbital station, but one of two newly discovered leaks is still unrepaired
-
-DoE wants to keep 13 coal-fired power generators going at the same time as funding nuclear research
-
-PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects
-
-PARTNER CONTENT: Leveraging multi-modal LLMs and agent technology to automate signaling analysis and shift core network O&M from experience to knowledge-driven</div>
+PARTNER CONTENT: Integrating AI into the iEPMS platform to achieve a 98% quality review accuracy rate and slash report generation times, leveraging experience from 240,000 global projects</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
@@ -2767,11 +3034,15 @@ Sign in to see your notifications or create an account to join the conversation.
             <p><strong>The Verge | 2026-06-05</strong></p>
             <a class="original-link" href="https://www.theverge.com/games/939484/summer-game-fest-live-2026-biggest-news-trailers-announcements">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Geoff Keighley’s annual June celebration of games is here. Summer Game Fest Live, the big live show that will feature a whole bunch of gaming news and announcements, begins at 5PM ET and is set to run for two hours. The event itself will take place in person at the Dolby Theatre in Los Angeles, but it will also be streaming live on YouTube.
+            <div id="article-text">Geoff Keighley’s annual June showcase for videos games has officially happened, and it was a big one. Across a two hour event — and another hour for Day of the Devs — we got news about the third Final Fantasy VII remake game, a new look at Control Resonant, the reveal of Tupac for RGG Studio’s Stranger Than Heaven, a July 1.0 launch date for Palworld, and a whole lot of 2027 release dates as developers steer clear of GTA VI in November.
 
-Summer Game Fest Live sits squarely in the middle of a big run of video game showcases; PlayStation hosted a State of Play on Tuesday, and the Xbox Games Showcase takes place on Sunday. That doesn’t mean there won’t be some big surprises, though. Last year, for example, Capcom used the show to announce Resident Evil Requiem. According to this year’s livestream’s description, expect a “live look at what’s next in video games, with new game announcements, surprise special guests and more,” and while that’s not very specific, Keighley probably has some flashy news in store.
+Summer Game Fest Live sits squarely in the middle of a big run of video game showcases. PlayStation hosted a State of Play on Tuesday that featured more footage of September’s Wolverine and the announcement of a new God of War game, God of War Laufey. On Saturday, there are shows like the Wholesome Direct and the Future Games Show, and the Xbox Games Showcase and PC Gaming Show take place on Sunday.
 
-Read on for our coverage of the biggest updates from the show.
+Read on for our coverage of the biggest updates from Summer Game Fest Live.
+
+The team behind Duck Detective announced what they describe as a Knives Out-inspired mystery, which is really all I need to hear to be curious about Apple Crumble. It’s launching on PC at some point this year.
+
+The mind-bending game comes out on September 10th. A free demo is available now.
 
 I just introduced my 9-year-old to Chrono Trigger, possibly my favorite game of all time, and this love letter to it (and other JRPGs of the era) hits me just right. I might be as excited for this one as FFVII Revelation.
 
@@ -2828,10 +3099,6 @@ Chronologically, Control Resonant is a sequel to 2019’s Control. But in most o
 When Resonant was first revealed last year, creative director Mikael Kasurinen said you can play the games in any order. The world of Control is reality-bending in lots of ways, but the general linear progression of time isn’t really one of them — how would someone start with the sequel?
 
 I’m not entirely sure what’s going on in this co-op survival game, which is called Haex, but I’m down for the vibes — and the cubes. It launches in 2027.
-
-Following its work on 2016’s Mutants in Manhattan, PlatinumGames will be developing Teenage Mutant Ninja Turtles: The Last Ronin, a new AAA action-adventure game based on the graphic novels. The Last Ronin will be published by the newly announced Paramount Games Studio.
-
-The next game from RGG Studio will be released on January 15th, 2027, and Tupac is in the game. Didn’t expect that casting.
 
 A free daily digest of the news that matters most.
 
@@ -3558,14 +3825,14 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Chip slump erases $1.3 trillion in stock market value - Reuters</div>
+            <div class="title">Iran has launched multiple drones towards the Strait of Hormuz, CNN reports - Reuters</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Chip slump erases $1.3 trillion in stock market value - Reuters</h2>
+            <h2>Iran has launched multiple drones towards the Strait of Hormuz, CNN reports - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPT1dxeHpfT3VRaWg4NVg2eW5SMmxTNGgzY0x2azZFQ1ItdVlEZjlPQjVtNzdxRGNLYThRRi1MNTRyVmZkQkpCZ18yZzkwbVRvNlBsVUdjVGVLN1VBVVcwOTZfU0NHYzV1MjFlbHFVb3RfenhQUlFqbW9BUlUtZ1lWV3RFblNMdmg1RW13YlU0aG82ZWVTM2tHOV9BcGdGWE9qVWROM1hYTWZCX3lSTHV5V1VQVQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxPaWNoMWljcEVLeTNSU09PSGdTTllERnBWUXVqRlNrSGI2S3I1Y1VZdlRBY05FbXNlX0tudmZlalJKYV9VaVpJZHBRTWFqTThMQ01TakJDVXVnTGJ2OVBmNmxNdVRRRXNKRThuWnFDUzRDZlFyQkt4Uy1EUDlqVzVMNW56U0tvZzAtYmNoby1tdnpTaGNrWkV3eHk4TGhTUWdaVGg4S3dHakNRaTNpR2tFTnNiYTFmaDl0cjk3eU9R?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3586,25 +3853,39 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">SpaceX lands Google AI compute deal after Anthropic pact ahead of IPO - Reuters</div>
+            <div class="title">Chip slump erases $1.3 trillion in stock market value - Reuters</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>SpaceX lands Google AI compute deal after Anthropic pact ahead of IPO - Reuters</h2>
+            <h2>Chip slump erases $1.3 trillion in stock market value - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOUmJaWjFuRkZ4dWpWN2RkYnU4S3FpZ1FEOHFNa09HVnZ0ODdrTzBFMm0wcjQ4SWhTb1l4ZHBlVmNobGNhVG56LWRQQVdJc3poTjBMN2RxeFBVY0xDSXdNRkRJaFpaMHJzZHdqZnFDMmRCbTZPTkQ1bVlYdWpWNmk1X0QxM3BKczRQcjRfVUVhLWYyVU5FLUZmTjVB?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPT1dxeHpfT3VRaWg4NVg2eW5SMmxTNGgzY0x2azZFQ1ItdVlEZjlPQjVtNzdxRGNLYThRRi1MNTRyVmZkQkpCZ18yZzkwbVRvNlBsVUdjVGVLN1VBVVcwOTZfU0NHYzV1MjFlbHFVb3RfenhQUlFqbW9BUlUtZ1lWV3RFblNMdmg1RW13YlU0aG82ZWVTM2tHOV9BcGdGWE9qVWROM1hYTWZCX3lSTHV5V1VQVQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Meta weighs big equity raising to finance AI infrastructure, FT reports - Reuters</div>
+            <div class="title">Palestinian baby killed by Israeli gunfire in occupied West Bank, health ministry says - Reuters</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-69" style="display:none;">
+            <h2>Palestinian baby killed by Israeli gunfire in occupied West Bank, health ministry says - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQMWxYVWpjUC1mQkpudGNfVWdWSjRCQVVfSGs2Q0s0UFpfUWRkWkM2bnl2enltdEl0bjJ6TXR3eVh4MEZaNFVCdTY1TU9JdmtVRnFVUExLdEtfWHNPU2ZxNEIxQ3daV09xel8xU3BfSzVqelBXZk43M1Nnb1lvcFQyMFluVVdSQXRTUVUtQjhOdXBvZjRSVWowWDhneW51ekpoa0JtRWhsQnZNQ3Vmb2FhTlU4MVI0MXYwOS1xc2NPZF95RmpOZ0tlZUlUSQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-70')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Meta weighs big equity raising to finance AI infrastructure, FT reports - Reuters</div>
+            <div class="meta">2026-06-05</div>
+        </div>
+        
+        <div id="content-70" style="display:none;">
             <h2>Meta weighs big equity raising to finance AI infrastructure, FT reports - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOVVRmSndfbWtJOU45bmh5R3lwd19JcFpVUDl5WUJzU1FQUTdNM1NFWmE5SFFEVlZ0LUFKalpwVVFkeFh6QlZscThGcE5ORXNsdkprdnoyZW8zdTJmaXY4VWQtZGRzeTlVQTRkV0Jtb0I1RjdGR2hqR1EyUUlZbkpZZVBwX0ZSNGUxOF85NmNyTXNVTGVBMzJkR0FOX1Z2YVZ3OUhqcTgxUjgtNzIzZE02aGwySWw?oc=5">Visit Original Website</a>
@@ -3612,30 +3893,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">SpaceX IPO running at two times oversubscribed, sources say - Reuters</div>
-            <div class="meta">2026-06-05</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>SpaceX IPO running at two times oversubscribed, sources say - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQX0J6ZDFyMUROYWtZQWZPckNHdjllc3laLVNtWXF0dFp5Q1JkME5pNkhyNXVXNzhTdUh2TzMwdXltb0VCNzBFM29IQ0xsM1pGcERSR1ptLUhRbVc5UVNERG1TUThpUWJlUEo2cnF6NWpHNTlEY3h2OVN5S2YwQm5sc0dlazR5OHlFMUh6WDc3cDViX0x4YmVZMVdRcEs4UGR4dFVGMElERERpVnkw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Exclusive: US states preparing lawsuit to block Paramount's acquisition of Warner Bros, sources say - Reuters</div>
+            <div class="title">SpaceX lands Google AI compute deal after Anthropic pact ahead of IPO - Reuters</div>
             <div class="meta">2026-06-05</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Exclusive: US states preparing lawsuit to block Paramount's acquisition of Warner Bros, sources say - Reuters</h2>
+            <h2>SpaceX lands Google AI compute deal after Anthropic pact ahead of IPO - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-06-05</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQcC1pRHRKWUl1RVFGaVZUMGx3Uy1yeEd4ZUllTXpxTEc1amVEZ29USy1uZlYyX3lvMnVNMFFLQ2pfQ3JlQzItLXRjbmdOMUsta0tESm5SSjdMUGhrM0VKNk9wQllpUWk4TFVodndQZmJtaGY4dC12NGlabWdqVDlnZF9iQWpKdi1qRTRZellyMkNhUjRaci1wOFhqUmRVX19OdUV4cW80WWl4RkphR3llNjVZbm8?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOUmJaWjFuRkZ4dWpWN2RkYnU4S3FpZ1FEOHFNa09HVnZ0ODdrTzBFMm0wcjQ4SWhTb1l4ZHBlVmNobGNhVG56LWRQQVdJc3poTjBMN2RxeFBVY0xDSXdNRkRJaFpaMHJzZHdqZnFDMmRCbTZPTkQ1bVlYdWpWNmk1X0QxM3BKczRQcjRfVUVhLWYyVU5FLUZmTjVB?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3796,14 +4063,14 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-83')">
             <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Microsoft’s AI Independence Day - The Information</div>
-            <div class="meta">2026-05-31</div>
+            <div class="title">Anthropic’s Mythos Is a Security Powerhouse. It’s Also a Budget Buster - The Information</div>
+            <div class="meta">2026-06-01</div>
         </div>
         
         <div id="content-83" style="display:none;">
-            <h2>Microsoft’s AI Independence Day - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-05-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNbHliaEl1dGhKY1hDTExSZU1iRUYxNGFJQkpUamRaUHpzUWJGMzRiV0ktQ2RtUkU3cXdoWTY2U3IwcjU1aGFycTRGU2tsNHBuU0JvaWRqQUNGT1RwZ2p5TExIMTBCbGpYMUI5OEN1RHR1THRFUWkzLU5vZUkwUkxxNHRnTGZUWmdzdG1qM1ljSQ?oc=5">Visit Original Website</a>
+            <h2>Anthropic’s Mythos Is a Security Powerhouse. It’s Also a Budget Buster - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-06-01</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNcEVNVkZEUDM2am1YbW1Pa2FjT280VGJuck5yYUZKV3pxcVlrRk9kcFpuWklGYXBGWmE1SFdpS0t3S21HOUt5QXRwcEo0QjRDcXlFRk1GVGlfV0YyUjNONEtmTWF2c3VxTjZLeDduaHNCbEx0aHg5cDBKR25OTHhpSHpobk5GdTRFNkUzbGVITzdjUG5hb3c?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
