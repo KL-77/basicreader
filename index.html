@@ -154,11 +154,51 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">FAA proposal: Supersonic airliners can fly over US cities if they’re quiet</div>
+            <div class="title">Newly discovered PamStealer isn't your typical macOS malware</div>
             <div class="meta">2026-07-02</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Newly discovered PamStealer isn't your typical macOS malware</h2>
+            <p><strong>Ars Technica - All content | 2026-07-02</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2026/07/new-pamstealer-macos-malware-uses-clever-tradecraft-to-remain-stealthy/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Researchers have found a never-before-seen piece of macOS malware that combines a series of clever tradecraft to infect Macs with stealthy, custom-developed credential-stealing code.
+
+The malware is delivered in two stages. The first is distributed in a disk image that masquerades as Maccy, a clipboard manager for Macs. It’s compiled as AppleScript that is notable for the way it delivers the second stage. The malware is named PamStealer because the Rust-written infostealer uses the Pluggable Authentication Modules interface built into macOS to validate the target’s login password before sending it to an attacker-controlled server.
+
+The use of both disk image and AppleScript is common in malware for Macs. More unusual is the way PamStealer combines them to gain stealth. When the AppleScript is double-clicked, it’s opened in the macOS Script Editor, where the malicious functionality is buried deep within the file.
+
+“Rather than relying on shell commands such as curl or zsh, the AppleScript executes a self-contained JavaScript for Automation (JXA) downloader that retrieves and stages the payload using native Objective-C APIs,” researchers from Jamf, a security firm for macOS users, wrote. “Combined with a Rust-based second stage and a password capture workflow that validates credentials locally through PAM, the result is a quieter execution chain than we typically observe in commodity macOS stealers.”
+
+When a user, expecting to install a trustworthy clipboard manager, encounters the disk image, they’re prompted to press Command-R immediately after double-clicking it. This command executes malicious code inside the AppleScript directly. It also allows the execution to bypass com.apple.quarantine, a macOS attribute that provides warnings and restrictions when executable files have been downloaded from the Internet.
+
+PamStealer combines a recently emerging delivery surface with a less familiar payload. While the clickable .scpt and Script Editor lure build on tradecraft that is already gaining adoption across the macOS threat landscape, the malware distinguishes itself through a self-contained JXA dropper, a Rust-based second stage, and a password capture workflow that validates credentials locally through PAM before harvesting them. That second stage puts considerable effort into staying hidden, masquerading as Finder, encrypting its command-and-control traffic, and holding back prompts like the Full Disk Access request for as long as forty minutes so its activity does not line up with launch. Together, these behaviors illustrate how commodity macOS stealers continue to evolve, adopting quieter execution chains and native implementations that reduce traditional detection opportunities while remaining compatible with standard macOS features.
+
+The first stage puts its payload inside an app bundle that impersonates real components built into macOS. The component changes from sample to sample of the malware. Finder.app under com.apple.finder.core or com.apple.finder.monitor, and a Software Update.app under com.apple.security.daemon, are two examples. In either case, they run hidden. They also display macOS’s genuine Finder.icns as its icon.
+
+The second stage is a lean Mach-O file written for Macs running on Apple CPUs. The attacker’s choice to write it in Rust is relatively uncommon for macOS infostealers. More common are languages such as Swift, Go, and Objective-C. This binary calls the read interface of a bundled SQLite app. This allows the infostealer to read database files directly.
+
+PamStealer shows a native password prompt designed to resemble a system authorization request. Text that appears with the prompt says: “Maccy wants to make changes. Enter your password to allow this.” As noted earlier, once a target complies, the malware validates it locally through the PAM API.
+
+“This check is done entirely through PAM: there is no call out to dscl, security, osascript or any spawned process to verify the password, as many commodity macOS stealers do,” Jamf said. “The result is a quieter routine that keeps only a verified password, and one fewer process chain for defenders to detect on.”
+
+If the validation fails, PamStealer displays the prompts again until it receives the correct one. Once the target enters the correct password, PamStealer displays a message stating that the file is damaged and can’t be installed. This is designed to be a decoy to prevent the target from suspecting anything is amiss.
+
+The malware uses tactics to maximize the information it can steal. One tactic is to request the target grant full disk access to the fake Maccy app. It also contains code designed to access ethereum accounts.
+
+The various techniques—particularly the Script Editor lure, a self-contained JXA dropper, a Rust-based second stage, and local validation of credentials through PAM are all noteworthy.
+
+“Together, these behaviors illustrate how commodity macOS stealers continue to evolve, adopting quieter execution chains and native implementations that reduce traditional detection opportunities while remaining compatible with standard macOS features,” Jamf said.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">FAA proposal: Supersonic airliners can fly over US cities if they’re quiet</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
             <h2>FAA proposal: Supersonic airliners can fly over US cities if they’re quiet</h2>
             <p><strong>Ars Technica - All content | 2026-07-02</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/07/faa-proposal-supersonic-airliners-can-fly-over-us-cities-if-theyre-quiet/">Visit Original Website</a>
@@ -192,13 +232,13 @@ Boom Supersonic is developing a supersonic airliner called Overture with the goa
 But Boom has also pivoted away from its main goal in recent months to produce natural gas turbines to power AI data centers. Boom CEO Blake Scholl has suggested that revenue from this side venture would help pay for the development costs of the Overture supersonic airline. At the same time, United Airlines CEO Scott Kirby has said he gives Boom a “50/50” chance of getting its supersonic airliner flying.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-2')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Ars Live recap: When are the big rockets NASA desperately needs going to be ready?</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>Ars Live recap: When are the big rockets NASA desperately needs going to be ready?</h2>
             <p><strong>Ars Technica - All content | 2026-07-02</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/07/ars-live-recap-when-are-the-big-rockets-nasa-desperately-needs-going-to-be-ready/">Visit Original Website</a>
@@ -220,13 +260,13 @@ I don’t really see a way out, other than you’re just all in on Starship for 
 Toward the end of the conversation, we also had a rapid-fire section where the panelists answered a number of questions from viewers watching the event live.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Plex debuts 5-year membership pass for $250</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Plex debuts 5-year membership pass for $250</h2>
             <p><strong>Ars Technica - All content | 2026-07-02</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/07/250-used-to-get-you-a-lifetime-plex-pass-now-you-get-a-five-year-subscription/">Visit Original Website</a>
@@ -250,13 +290,13 @@ Ad revenue has been a significant driver of revenue growth for Plex in recent ye
 Content providers, creators, and consumers are all paying the price for the explosion of so many streaming media services, and the industry needs a trusted way for the experience to be as enjoyable as possible. Plex has always been at the forefront of solving new media challenges, and we believe they are primed to solve this problem—they are the cable company of the future.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Africa CDC confirms Marburg case in Uganda as Ebola outbreak rages</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Africa CDC confirms Marburg case in Uganda as Ebola outbreak rages</h2>
             <p><strong>Ars Technica - All content | 2026-07-02</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/07/africa-cdc-confirms-marburg-case-in-uganda-as-ebola-outbreak-rages/">Visit Original Website</a>
@@ -276,13 +316,13 @@ On Wednesday, Africa CDC spokesperson Saran Koly told Reuters that the agency is
 The possible flare of Marburg in Uganda will only add to the challenges of responding to the overwhelming Ebola outbreak raging in the neighboring Democratic Republic of the Congo. As of July 2, the DRC is reporting 1,406 Ebola cases and 438 deaths. Uganda has reported 20 Ebola cases and two deaths. The outbreak is already the third-largest Ebola outbreak on record.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Artificial cell manages a few rounds of cell division</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-4" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>Artificial cell manages a few rounds of cell division</h2>
             <p><strong>Ars Technica - All content | 2026-07-02</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/07/artificial-cell-manages-a-few-rounds-of-cell-division/">Visit Original Website</a>
@@ -322,36 +362,6 @@ But it still could be useful as an analog. We don’t know whether life went thr
 There’s a truism that all models are wrong, but some are useful. And that seems to be the case here. We know this is not a good model of a primitive cell in the sense that it doesn’t reflect what the earliest cells on Earth looked like. But it still could be useful for asking questions about them.
 
 The researchers have published a webpage with more technical details of their system if you want to learn more.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Google loses long-running appeal of record EU fine, will have to cough up $4.7 billion</div>
-            <div class="meta">2026-07-02</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Google loses long-running appeal of record EU fine, will have to cough up $4.7 billion</h2>
-            <p><strong>Ars Technica - All content | 2026-07-02</strong></p>
-            <a class="original-link" href="https://arstechnica.com/gadgets/2026/07/google-loses-long-running-appeal-of-record-eu-fine-will-have-to-cough-up-4-7-billion/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Back in 2018, Google was handed a record-setting 4.34 billion-euro ($4.9 billion) fine in Europe for abusing its monopoly on Android. The company has spent the intervening years challenging that decision, but the continent’s highest court has put a stop to that. The Court of Justice of the European Union has affirmed the penalty, meaning Google is out of options.
-
-Google’s fight may not have turned out the way the company wanted, but it wasn’t for nothing. The initial amount was trimmed slightly by a lower court in 2022, bringing the total to a still record-setting 4.1 billion euros ($4.7 billion). And that looks like the amount Google will have to pay since there are no further avenues for appeal.
-
-The fine stems from the way Google bundles apps and services with Android phones. The EU took issue with Google search and Chrome being the default options on Android. Even devices made by other companies, such as Samsung and Xiaomi, include Google apps as the default per the Android licensing agreement, giving Google an unfair advantage, according to European antitrust regulators. This is not to be confused with a 2.95 billion euro ($3.45 billion) fine against Google’s advertising monopoly issued by the European Union last year.
-
-“The appeal ​brought by Google and its parent company Alphabet against the judgment of the ‌General Court is dismissed, thereby confirming the ​penalty imposed for Google Search’s abuse of a dominant position in the context ⁠of the Android operating system,” the judge’s ruling (PDF) said.
-
-The case mirrored Europe’s actions against Windows years earlier when Microsoft was forced to add browser ballot screens to crack Internet Explorer’s dominance. Of course, Microsoft’s browser dominance was crumbling by the time the EU managed to get that implemented. Google’s market position, however, remains firmly in place despite creating similar ballot screens on Android when the ruling was first handed down.
-
-Throughout the case, Google has taken the same position as Microsoft did in its day. There is plenty of competition on Android, Google said, pointing to all the alternative search services and apps users can freely access. CEO Sundar Pichai said in 2018 that Android has created “more choice, not less.” However, as Google well knows, people rarely change the default settings on their phones.
-
-Google still disagrees with the ruling, but it’s moving forward. “In any event, we adapted our agreements to comply with the initial decision back in 2018 and we remain focused on continued innovation and openness for our users, partners and developers,” the company said in a statement.
-
-However, much of Android’s continued focus on openness is a function of legal wrangling. For example, Google is increasing support for third-party app stores and alternative payment methods in the Play Store. That’s great, but it’s only doing so as a result of Epic’s antitrust lawsuit. And at the same time, Google is planning to lock down app distribution on Android with developer verification, which advocates for open source projects characterize as a serious threat.
-
-This case may have reached its conclusion, but the EU isn’t done going after Big Tech. Regulators now have a more powerful tool at their disposal with the Digital Markets Act (DMA), which designates Google and other tech behemoths as “gatekeepers” that warrant additional oversight. The European Commission is currently deciding how it may use the DMA to force Google to open up Android to more AI services and share search data with competitors.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -621,19 +631,19 @@ SPAC mergers are often not immediately popular with retail investors these days.
 
 In fairness, this warning applies to all quantum companies. Yet, that hasn’t stopped the industry, including IQM, from acquiring customers, who use the tech as it is today for tasks like simulations and optimizations. IQM, which sells actual physical computers, as well as a cloud service, has customers like VTT Technical Research Centre of Finland and Leibniz Supercomputing Centre in Germany.
 
-“We sell computers into advanced supercomputing centers and data centers, and we sell computing time through the cloud,” its CEO and cofounder Jan Goetz told TechCrunch.
+“We sell computers into advanced supercomputing centers and data centers, and we sell computing time through the cloud,” its CEO and co-founder Jan Goetz told TechCrunch.
 
-Having grown from 8 customers in 2024 to 22 in 2025 is a fair motive for celebration in IQM’s circles, especially when two recent customers are from the private sector. But it also suggests that demand won’t scale until the “quantum advantage” — when quantum chips start outperforming classical computers for a larger range of complex and lengthy tasks, unlocking use cases from biotech to fintech, while potentially upending encryption.
+Having grown from eight customers in 2024 to 22 in 2025 is a fair motive for celebration in IQM’s circles, especially when two recent customers are from the private sector. But it also suggests that demand won’t scale until the “quantum advantage” — when quantum chips start outperforming classical computers for a larger range of complex and lengthy tasks, unlocking use cases from biotech to fintech, while potentially upending encryption.
 
 But no one, not even a company making quantum computers, can say when that might be.
 
 This hasn’t stopped investors from doubling down on quantum companies public and private, further encouraged by President Trump’s recent executive orders to accelerate the timeline for quantum. In response, the U.S. Department of Energy (DOE) has committed to deploying “the world’s first fault-tolerant, scientifically relevant quantum computer” by 2028.
 
-While this follows similar announcements from France, Germany and the U.K., Trump’s orders carry extra weight for IQM, which has recently established a quantum tech center in Maryland and deployed a computer at Oak Ridge National Laboratory, which is part of the DOE. “We can benefit directly from it,” Goetz said.
+While this follows similar announcements from France, Germany, and the U.K., Trump’s orders carry extra weight for IQM, which has recently established a quantum tech center in Maryland and deployed a computer at Oak Ridge National Laboratory, which is part of the DOE. “We can benefit directly from it,” Goetz said.
 
 Unlike other European unicorns, however, IQM isn’t moving its center of gravity to the other side of the Atlantic. In parallel to its IQMX ticker in the U.S., where most of its quantum peers are listed, it is due to debut tomorrow on Nasdaq Helsinki, where it expects continued support from the likes of Tesi, Finland’s sovereign wealth fund.
 
-IQM’s story is indissociable from Finland. It was founded there in 2018 as a spinout from Aalto University in Espoo, a tech and quantum hub near Helsinki where two thirds of its staff still work. But another hundred out of its 420-people team are based in Munich, with the remainder split around various locations to help the company in its global deployment roadmap.
+IQM’s story is indissociable from Finland. It was founded there in 2018 as a spinout from Aalto University in Espoo, a tech and quantum hub near Helsinki where two-thirds of its staff still work. But another hundred out of its 420-people team are based in Munich, with the remainder split around various locations to help the company in its global deployment roadmap.
 
 In its prospectus, IQM noted that this duality appealed to RAAQ, the blank check company that helped IQM go public via a SPAC. “As evidenced by over €200 million in public support for IQM, European sovereign states and companies have supported IQM’s emergence as a prominent quantum computing company in Europe. IQM also demonstrated its ability to operate outside of Europe,” according to the RAAQ board.
 
@@ -1366,11 +1376,36 @@ I’m Hanna Rosin. Thank you for listening. And happy Fourth.</div>
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">AI Agent Executes 'First' End-To-End Ransomware Attack</div>
+            <div class="title">Labor Force Participation Rate Falls To Lowest In 50 years</div>
             <div class="meta">2026-07-02</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Labor Force Participation Rate Falls To Lowest In 50 years</h2>
+            <p><strong>Slashdot | 2026-07-02</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/07/02/213229/labor-force-participation-rate-falls-to-lowest-in-50-years?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Good for the MAGA morons, because they can claim &quot;unemployment is down&quot;. Very bad for the country.
+
+I was thinking the same, they play with numbers so that the unemployment rate looks better than it is, discouraged workers, those who haven&#39;t looked in the last 4 weeks (which could for a variety of reasons, illness, family issues, taking time to retrain, transportation problems, etc.), or a parent who has to stay home because childcare is insanely expensive and they&#39;d spend more on it than they&#39;d make (yes, it actually can happen). And people giving up looking for working or just retiring a bit early becau
+
+But I&#39;ve never believed the unemployment rate was a valid measure of economic health.   The numbers are fudged in too many ways.
+
+How many people are able to work, want to work, and can&#39;t find full time employment above poverty line wages?  That&#39;s what you need to look at.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+To be a kind of moral Unix, he touched the hem of Nature&#39;s shift.
+		-- Shelley</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">AI Agent Executes 'First' End-To-End Ransomware Attack</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>AI Agent Executes 'First' End-To-End Ransomware Attack</h2>
             <p><strong>Slashdot | 2026-07-02</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/07/02/1849243/ai-agent-executes-first-end-to-end-ransomware-attack?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1385,21 +1420,27 @@ Yeah, that&#39;s definitely the problem and you&#39;ve definitely found the solu
 
 While I appreciate the sentiment, if that would work, we would not have a global silent ransomware catastrophe on our hands ...
 
+Stop projecting. Well, maybe you are really this disconnected from actual reality. MAGA? Religious fuckup? Or even only run-of-the-mill self-important moron?
+
+For some actual examples, there have been some spectacular IT attacks on US national security. Did they ever find the ones who did it (beyond mindless political cries of &quot;China!&quot; or &quot;North Korea!&quot;)? No, they did not beyond a very small number of cases. And why did they not? Because it is actually exceptionally hard to do. So hard that even the NSA struggles and often fails.
+
+I am unsure whether they are really trying. One problem the US has is that if it started to really go after the attackers, with international help (only way it would work), it would have to go after a lot of its own government people as well. So they may want to not draw too much attention to their own activities. Or they are really trying and failing. Hard to say.
+
 Or rather something it is good enough to actually do. Keep in mind that attacks, extortion, etc. all to not need reliability, they just need volume. If a rather large part of those attacked are left hanging, that is totally fine.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;This generation may be the one that will face Armageddon.&quot;
--- Ronald Reagan, &quot;People&quot; magazine, December 26, 1985</div>
+To be a kind of moral Unix, he touched the hem of Nature&#39;s shift.
+		-- Shelley</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Godot Game Engine No Longer Accepts AI Code</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Godot Game Engine No Longer Accepts AI Code</h2>
             <p><strong>Slashdot | 2026-07-02</strong></p>
             <a class="original-link" href="https://games.slashdot.org/story/26/07/02/1839237/godot-game-engine-no-longer-accepts-ai-code?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1408,7 +1449,11 @@ There may be more comments in this discussion. Without JavaScript enabled, you m
 
 The name &quot;Godot&quot; was chosen in reference to Samuel Beckett&#39;s play Waiting for Godot, as it represents the never-ending wish of adding new features in the engine, which would get it closer to an exhaustive product, even though it never would.
 
-reject any AI-generated text in human-to-human communications, saying it&#39;s &quot;a basic principle of respect&quot;I cannot agree more with this sentiment.  It feels outright insulting to asked to read LLM output in a context where it is *supposed* to be human feedback.  Tell me what you would have told the LLM to say, I can take it from there.  I don&#39;t need you to LLM it up, because it will bury your point in a bunch of crap.Could it provide useful info? Maybe, but I can do that myself if so. I want *your* thought on something, however incomplete it might be.
+I have Zero Mostel&#39;s face stuck in my mind now, covering his cheeks and moaning.  Ever see the play?
+
+Em... &quot;brief storm&quot;? If the &quot;AI companies&quot; profit both from the generation of slop, and from the defense against slop? I think they own both sides.
+
+reject any AI-generated text in human-to-human communications, saying it&#39;s &quot;a basic principle of respect&quot; I cannot agree more with this sentiment.  It feels outright insulting to asked to read LLM output in a context where it is *supposed* to be human feedback.  Tell me what you would have told the LLM to say, I can take it from there.  I don&#39;t need you to LLM it up, because it will bury your point in a bunch of crap.Could it provide useful info? Maybe, but I can do that myself if so. I want *your* thought on something, however incomplete it might be.
 
 reject any AI-generated text in human-to-human communications, saying it&#39;s &quot;a basic principle of respect&quot;
 
@@ -1424,7 +1469,9 @@ In other words - yes, we should decry honest devs getting swamped with AI crap. 
 
 Software development is changing.  I started coding in BASIC in the 1980&#39;s and have been coding now for over 40 years, over 30 years professionally.  I&#39;m good at what I do, but the AI is faster.  Claude can churn out code faster than I can, and it&#39;s often better, catching some conditions I would have missed.  That said, it often messes up, misses the mark, or goes in directions that aren&#39;t right for the larger context in which the code exists.
 
-Today, professional software development is best done by AI with
+Today, professional software development is best done by AI with skilled human guidance and review.
+
+Rejecting AI generated code in today&#39;s environment is trying to turn back time.  On the other hand, rejecting a submission where there is no human who can &quot;understand, own, and be able to fix the code they submit&quot; makes perfect sense.  There is a big difference between asking an AI to generate a fix and blindly submitting the first thing it spits out, versus having an extended session with an AI, correcting it where it goes wrong, vetting and testing the patch with human review and testing, then submitting the PR.
 
 Oh, and here&#39;s a fun prompt I like to throw
 
@@ -1436,22 +1483,30 @@ Any chance you want to share what you were working on?  You&#39;ve piqued my cur
 
 That was my point. We *did* try to contribute. We thought our contributions were reasonable. We were rebuffed. So, yeah, sure, two sides to a story.
 
+Your statement has no merit, because it misses the point.
+
 And if you look at it like that, Godot is basically saying &quot;we don&#39;t want to change our processes in the face of technology that has already forced them to change&quot;. 
  While I appreciate stubbornness, sometimes
 
+&quot;stubborness&quot; is Godot in a nutshell. They might prevail with this in the future at some point. I do hope they will. We do need more options. If they do, we&#39;ll see changes. Unless this happens - stay clear.
+
+Who could ever have predicted that. The thing is, this does not even need to be low-quality code (although most LLM code is), the low quality prompting will already kill its usefulness totally and make it negative-worth &quot;contributions&quot;.
+
+In a more general sense, whenever some tech becomes something the masses can make, contributions to real projects need to establish gate-keeping, reputation and qualification standards, because most people have no understanding of quality or even the basics of real engineerin
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;This generation may be the one that will face Armageddon.&quot;
--- Ronald Reagan, &quot;People&quot; magazine, December 26, 1985</div>
+To be a kind of moral Unix, he touched the hem of Nature&#39;s shift.
+		-- Shelley</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Meta Is Charging a Subscription for Smart Glasses Features</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Meta Is Charging a Subscription for Smart Glasses Features</h2>
             <p><strong>Slashdot | 2026-07-02</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/07/02/182227/meta-is-charging-a-subscription-for-smart-glasses-features?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1462,7 +1517,9 @@ Brought to by the sane pricing company that sold a $1000 monitor stand. [busines
 
 This seems to be the de facto way companies are operating now, my only hope if enough people just say no thanks (or f*ck off ! more appropriately) that they will back off, but I&#39;m not optimistic. Doctorow&#39;s book actually does a really nice job using case studies to outline how the path the enshitification process happens, Facebook / Meta is pretty much the poster child for it.
 
-Anything with software now, be it a dishwasher, a car, a watch, these asshole companies are either using your data for their benefit,
+Anything with software now, be it a dishwasher, a car, a watch, these asshole companies are either using your data for their benefit, or charging you to access features that should simply be included (or in some case are actually already there but turned off unless you fork over $x per month).
+
+The weird thing about this is that they&#39;re doing it for a device class that isn&#39;t exactly popular yet. Normally they would start off super consumer friendly, and then only when enough people feel like they can&#39;t live without the device/service start fucking them lubefree in the ass with schemes like these.
 
 In Neal Stephenson&#39;s novel Snow Crash -- which introduced the word Metaverse from which Meta got its name -- the people wearing connected, cameras, sensors and AR-goggles on their heads were the ones who got paid for spying on people left and right.
 
@@ -1484,17 +1541,17 @@ It is for me. Usually tech companies try to get some significant market presence
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;This generation may be the one that will face Armageddon.&quot;
--- Ronald Reagan, &quot;People&quot; magazine, December 26, 1985</div>
+To be a kind of moral Unix, he touched the hem of Nature&#39;s shift.
+		-- Shelley</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">OpenAI 'In Early Talks To Give 5% Stake To US Government'</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>OpenAI 'In Early Talks To Give 5% Stake To US Government'</h2>
             <p><strong>Slashdot | 2026-07-02</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/07/02/1623259/openai-in-early-talks-to-give-5-stake-to-us-government?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1506,6 +1563,12 @@ One is focused on keeping prices low while the other is focused on funneling mon
 Changing government to Kleptocracy and Kakistocracy tends to do that.
 
 That 5% is probably more than the real worth of OpenAI ...
+
+I feel like people who make comments like this have no concept of American history.  Naked graft like this has happened, just as bad if not worse, many times in US history!
+
+Now, should we be concerned that we&#39;re moving backwards instead of forwards on corruption? Absolutely!
+
+But it&#39;s just flat out ignorant and counterproductive to pretend this level of government corruption has never occurred ... when US history is full of it. Please people, read some history, or else we really all are doomed to repeat it.
 
 And I&#39;m sure it won&#39;t be a gift-in-kind but a &quot;discounted&quot; purchase of the overhyped IPO price.
 
@@ -1541,6 +1604,8 @@ George Washington lamented that a handful of trained soldiers would run circles 
 
 Sure, that&#39;s why Britian won the revolutionary war.
 
+You joke, but Vance has been doing the rounds pushing the line that &quot;If Watergate happened tomorrow, it would be like a 12-hour news story.  The idea that it would have taken down a presidency is crazy.&quot; -as if that makes everything that is happening now OK.
+
 &quot;Such a deal would help improve the industry&#39;s relations with the Trump administration and could help garner political support by sharing wealth generated by the AI boom with the public&quot;
 
 I hope you get the Funny, but on your sig I currently favor Rumplicans versus Dumbocrats. R is where their noses are for the orange-nosing cowardice, whereas D is for believing in various stripes of flying elephants, with or without feathers. (There&#39;s an old book by Woody Allen from back when he was funny...)
@@ -1567,6 +1632,8 @@ They are NOT the same.One is more like pig shit and one is more like dog shit.
 
 One is more like pig shit and one is more like dog shit.
 
+Even that admits that one the hand hand there is a lot less shit.
+
 It used to be that the GOP were capitalists, bad capitalists but capitalists notherless.  But that has ceased.
 
 The biggest sign was the &quot;no self repair contracts&quot;.  That is the most anti-capitalist thing I ever heard of.  If you buy it, you can do what you want with it, including not just repairing it, but ripping it in half and sticking extra seats in the middle.  Yeah, I want to see a stretch John Deere. tractor.
@@ -1591,17 +1658,17 @@ https://moeonmargin.substack.c... [substack.com]
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;This generation may be the one that will face Armageddon.&quot;
--- Ronald Reagan, &quot;People&quot; magazine, December 26, 1985</div>
+To be a kind of moral Unix, he touched the hem of Nature&#39;s shift.
+		-- Shelley</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">WhatsApp Usernames Are Already Raising Impersonation Red Flags</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>WhatsApp Usernames Are Already Raising Impersonation Red Flags</h2>
             <p><strong>Slashdot | 2026-07-02</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/07/02/0253203/whatsapp-usernames-are-already-raising-impersonation-red-flags?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1645,60 +1712,73 @@ then the solution is a number consisting of octal digits [wikipedia.org].
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;This generation may be the one that will face Armageddon.&quot;
--- Ronald Reagan, &quot;People&quot; magazine, December 26, 1985</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">OnePlus Is Quietly Steering Customers Toward OPPO Products</div>
-            <div class="meta">2026-07-02</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>OnePlus Is Quietly Steering Customers Toward OPPO Products</h2>
-            <p><strong>Slashdot | 2026-07-02</strong></p>
-            <a class="original-link" href="https://mobile.slashdot.org/story/26/07/02/0244215/oneplus-is-quietly-steering-customers-toward-oppo-products?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">This article is all about the German market. But Oppo/OnePlus sells in the U.S. as well. My question is, why choose Oppo/OnePlus? Do they offer anything more than the Samsungs? The price certainly doesn&#39;t look all that different.
-
-I&#39;ve had two of each and I would say that the Oppos have outperformed the Samsungs while costing less. I know someone else who had several Samsungs but then switched to a Pixel of some sort. I could go down the list of problems with Samsung, but there are also problems with Oppo, so I would say it&#39;s mostly a matter of degree of satisfaction in this imperfect world. I&#39;ve owned a bunch of other brands of smartphones over the years with various levels of satisfaction and dissatisfaction. Two Taiwan brands come
-
-Yep. My OnePlus 7t pro lasted far longer than any other phone I&#39;ve had (Samsungs, old Google G2, that old slide phone with the qwerty keyboard who&#39;s name I&#39;ve forgotten). It&#39;s made me a convert so I stuck with the brand instead of switching to a Pixel.
-
-I&#39;m on my second OnePlus. I got the 7t pro when TMobile was offering it in the states after having several Samsungs and just being over what garbage phones they are. The 7t pro just bricked itself back in Feb after being a mostly solid phone for six years. The battery life was starting to show signs of age middle of last year and I was hoping to eke out another year, but unfortunately that wouldn&#39;t come to pass. My only seriously complaint was that the biometrics on it never really worked and the one I got
-
-yeah, this definitely looks like something you see at Dollar General: https://www.oppo.com/in/smartp... [oppo.com]
-
-That has got to be the worst &quot;We&#39;re reinventing scrolling!111!!!&quot; website I&#39;ve seen in a long time, and I&#39;ve seen some pretty shitty ones. What the fuck is wrong with web designers? Do they know people are scrolling to read things, not watch some bastard child of a flash-animation and a lines assignment set by a teacher as discipline?
-
-The fucking summary is pretty clear that they are smartphone brands.  Try reading.
-
-Also, you might be shocked to learn that there are smartphone manufacturers that don&#39;t sell products in the US (Oppo) but do sell tens if not hundreds of millions of units throughout Europe and Asia.
-
-Lazy fuck.  Literally takes you longer to post this stupidity than to just do a google search and educate yourself.
-
-That was quite a rant.  You put quite a bit of time into defending your brand.  U mad that a phone with .5% market share doesn’t get more recognition?
-
-What the fuck is a Oneplus or Oppo?Let&#39;s figure it out together: test.c: In function &#39;main&#39;:test.c:5:14: error: expected expression before &#39;;&#39; token
-    5 |  int x = 1+; Apparently, Oneplus is a syntax error.
-
-test.c: In function &#39;main&#39;:test.c:5:14: error: expected expression before &#39;;&#39; token
-    5 |  int x = 1+;
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-&quot;This generation may be the one that will face Armageddon.&quot;
--- Ronald Reagan, &quot;People&quot; magazine, December 26, 1985</div>
+To be a kind of moral Unix, he touched the hem of Nature&#39;s shift.
+		-- Shelley</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
+            <div class="source">News and Politics - Slate Magazine</div>
+            <div class="title">Something Is Going On With Mitch McConnell’s Health, and His Office Is Keeping Mighty Quiet About It</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-30" style="display:none;">
+            <h2>Something Is Going On With Mitch McConnell’s Health, and His Office Is Keeping Mighty Quiet About It</h2>
+            <p><strong>News and Politics - Slate Magazine | 2026-07-02</strong></p>
+            <a class="original-link" href="https://slate.com/news-and-politics/2026/07/mitch-mcconnell-hospital-health.html?via=rss">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">This story is adapted from Slate’s new and revamped Slatest newsletter. You can sign up here to get it in your inbox every day.
+
+Sen. Mitch McConnell, Senate Republicans’ 84-year-old former party leader and long-time bane of Democrats’ existence, checked into a hospital last month and has hardly been heard from since. Let’s break down what we know—and, more pointedly, don’t—about McConnell’s condition, then get into the broader issue of lawmakers not being straight about their health.
+
+Why do we think McConnell might be really unwell?Two things happened on June 14: According to police audio unearthed this week, paramedics gave CPR to an “unconscious” person who’d experienced “cardiac arrest” at an address that matches McConnell’s D.C. home. That’s the same day that the Kentucky senator entered the hospital, where a spokesperson said he was “receiving excellent care.” About a week later, McConnell’s office said he was “still working closely with staff on Senate business and Kentucky matters as he continues his recovery.” But aides have stayed mum about his condition since then. McConnell last voted on June 11.
+
+Technically, we don’t know for sure that the police audio was about McConnell, though it’d be a tremendous coincidence if he happened to be hospitalized the same day that someone else in his house got CPR for cardiac arrest. McConnell’s office doesn’t seem eager to clear things up: They haven’t said why McConnell was hospitalized or whether he still is. Today I texted a top McConnell adviser, who said the senator’s office would share an update when it had one. So far, nothing.
+
+McConnell has had health struggles for a while, right?
+
+In 2023, McConnell tripped, sustained a concussion, and was away from the Senate for nearly six weeks. Later that year, he twice froze during press conferences, stared into space, and had to be assisted. (His office said he’d felt “lightheaded.”) He had additional falls in 2024 and 2025, injuring his wrist and face. (Staff said they were lingering effects of polio, which McConnell had as a child.) In February, he was hospitalized for more than a week with “flu-like symptoms.” When I visited the Capitol in April, I saw aides navigating McConnell around in a wheelchair.
+
+Not to be dark, but what happens if McConnell dies?
+
+It’s a morbid but fair question. In a narrowly divided Congress, every absence can make it harder to pass legislation or confirm nominees—and even change which party has control. Most deceased senators are succeeded by temporary replacements appointed by their state’s governor. But not in Kentucky. The state’s Republican-dominated Legislature changed the law in 2024 so that any Senate vacancy gets filled not by the governor—who happens to be a Democrat—but via special election. McConnell, ever the wily tactician, may have been planning ahead; he has praised the change, although Kentucky Republicans deny they made it with McConnell’s health in mind. And either way, this is his last term; he’s set to retire in January.
+
+Is McConnell the only member of Congress out sick?
+
+Nope. Rep. Neal Dunn, a 73-year-old Florida Republican who has an undisclosed terminal illness, won’t be casting votes unless House leaders need him to, the outlet Punchbowl News reported today. Rep. Tom Kean Jr., a New Jersey Republican, just returned to the Hill after a nearly four-month absence that he said was a result of depression. And five House members—four of them Democrats—have died in office so far this Congress.
+
+Is McConnell being uniquely squirrely about his health?
+
+Hiding infirmities from the public is a recurring theme in American politics. Politicians up to the president have done so almost since the beginning of the republic. But things have arguably gotten worse in recent years. The last three presidents (two of them Donald Trump) have been the oldest ever elected, and the share of Congress members who are in their 70s or 80s has skyrocketed. Democrats forced Joe Biden to abandon his reelection bid in 2024 after an at-times-incoherent debate supercharged concerns about his cognitive health. Aging can be a sensitive issue; the rest of us don’t have to do it under a microscope. On the other hand, most of us can’t spend weeks away from our jobs for undisclosed reasons, either. And as the saying goes, with power comes responsibility—in this case, to be transparent with one’s constituents. McConnell, the longest-serving Senate leader ever, masterminded Republicans’ successful effort to steal a Supreme Court seat under Barack Obama and is arguably responsible for Trump’s political resurrection after voting to acquit him at his impeachment trial over Jan. 6. But age eventually comes for us all.
+
+And with that, you’re caught up. For your evening enjoyment, and to help get you in the spirit of the holiday weekend, I’d humbly suggest:
+
+Boozy reads fit for a patriot: Brooke Barbier tells the unbelievable story of how a tax on whiskey nearly tore a young nation apart. And although good wine was hard to find this side of the Atlantic back in Thomas Jefferson’s day, N.C. Stevens explains how winemakers in Jefferson’s beloved Virginia are filling bottles that the Founding Fathers would be proud of.
+
+A cinematic split-screen: My colleague Sam Adams makes the case that the latest Minions movie offers a better lesson in American history than a new biopic about the young man who grew up to become our first president.
+
+A preview of the wedding of the century: Slate’s Heather Schwedel followed the breadcrumbs, and it looks like pop icon Taylor Swift will indeed marry her football-playing beau Travis Kelce at Madison Square Garden this weekend. Here’s what you need to know.
+
+Football—the other kind—fit for Independence Day: The U.S., fresh off a win that catapulted them into the World Cup’s round of 16, won’t play again until Monday. Whet your appetite with Argentina vs. Cape Verde at 6 Eastern tomorrow evening, Canada vs. Morocco on Saturday at 1, and Mexico vs. England on Sunday at 8. The tournament’s full schedule is here.
+
+That’s all for now. I’m off tomorrow for the holiday and am wishing you a happy and (safely) pyrotechnic Independence Day. ’Til Monday!
+
+Slate relies on advertising to support our journalism. If you value our
+        work, please disable your ad blocker. If you want to block ads but still
+        support Slate, consider subscribing.
+
+Already a member?
+        Sign in
+          here</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-31')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">Nina Totenberg Made a Mistake. But the Reaction Reveals a Much Bigger Problem.</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-30" style="display:none;">
+        <div id="content-31" style="display:none;">
             <h2>Nina Totenberg Made a Mistake. But the Reaction Reveals a Much Bigger Problem.</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-07-02</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/07/nina-totenberg-alito-retirement-mistake-what-went-wrong.html?via=rss">Visit Original Website</a>
@@ -1736,13 +1816,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-31')">
+        <div class="card" onclick="openModal('content-32')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">The Deeper Meaning of Ketanji Brown Jackson vs. Clarence Thomas on Birthright Citizenship</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-31" style="display:none;">
+        <div id="content-32" style="display:none;">
             <h2>The Deeper Meaning of Ketanji Brown Jackson vs. Clarence Thomas on Birthright Citizenship</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-07-02</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/07/supreme-court-analysis-ketanji-brown-jackson-vs-clarence-thomas.html?via=rss">Visit Original Website</a>
@@ -1790,13 +1870,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-32')">
+        <div class="card" onclick="openModal('content-33')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">Which Kind of Cloud Produces Hail?</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-32" style="display:none;">
+        <div id="content-33" style="display:none;">
             <h2>Which Kind of Cloud Produces Hail?</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-07-02</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/07/trivia-quiz-daily-slate-science-weather-geology-satellites.html?via=rss">Visit Original Website</a>
@@ -1812,13 +1892,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-33')">
+        <div class="card" onclick="openModal('content-34')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">Don’t Let the Supreme Court’s Big Decision Fool You. Trump Is Still a Threat to Mail Ballots.</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-33" style="display:none;">
+        <div id="content-34" style="display:none;">
             <h2>Don’t Let the Supreme Court’s Big Decision Fool You. Trump Is Still a Threat to Mail Ballots.</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-07-02</strong></p>
             <a class="original-link" href="https://slate.com/news-and-politics/2026/07/supreme-court-analysis-trump-threat-mail-ballots.html?via=rss">Visit Original Website</a>
@@ -1878,13 +1958,13 @@ Already a member?
           here</div>
         </div>
         
-        <div class="card" onclick="openModal('content-34')">
+        <div class="card" onclick="openModal('content-35')">
             <div class="source">News and Politics - Slate Magazine</div>
             <div class="title">AC Won’t Save You from the Heat Dome</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-34" style="display:none;">
+        <div id="content-35" style="display:none;">
             <h2>AC Won’t Save You from the Heat Dome</h2>
             <p><strong>News and Politics - Slate Magazine | 2026-07-02</strong></p>
             <a class="original-link" href="https://slate.com/podcasts/what-next/2026/07/heat-dome-the-temp-is-too-damn-high?via=rss">Visit Original Website</a>
@@ -1921,59 +2001,41 @@ The problem with the news right now? It’s everywhere. And each day, it can fee
 Mary Harris is the host and managing editor of What Next, Slate&#39;s new daily news podcast. She has reported throughout the public radio system, for NPR, Marketplace, and WNYC.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-35')">
-            <div class="source">News and Politics - Slate Magazine</div>
-            <div class="title">Wait, Trump Made HOW Much Money as President?!</div>
-            <div class="meta">2026-07-01</div>
-        </div>
-        
-        <div id="content-35" style="display:none;">
-            <h2>Wait, Trump Made HOW Much Money as President?!</h2>
-            <p><strong>News and Politics - Slate Magazine | 2026-07-01</strong></p>
-            <a class="original-link" href="https://slate.com/news-and-politics/2026/07/donald-trump-corruption-income.html?via=rss">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">This story is adapted from Slate’s new and revamped Slatest newsletter. You can sign up here to get it in your inbox every day.
-
-Few people go into public service for the money. Donald Trump looks like an exception. A new financial disclosure shows his personal income spiked during his first year back in office. The report also reveals entanglements that suggest Trump is using the presidency to enrich himself on an unprecedented scale. So let’s dive, Scrooge McDuck–style, into the swampy details.
-
-What exactly does this report say?The Office of Government Ethics released Trump’s annual financial disclosure Tuesday. In it, per analyses by the New York Times and Wall Street Journal, Trump reported raking in at least $2.2 billion in 2025—three and a half times what he reported in 2024. That figure includes about $1.4 billion from his family’s cryptocurrency businesses, $575 million from real estate, and $86.5 million in settlement fees from media and tech companies Trump sued.
-
-OK, but Trump was a wealthy guy who made a lot of money before becoming president. So how do we know he’s using the power of his office to get richer?
-
-Tit-for-tat corruption can be difficult to prove, but more than tripling what you’re making one year into your term suggests that all is not on the level here. And Trump has absolutely done things that seem to benefit his businesses. He has propped up the crypto industry, including exempting memecoins like Trump’s own $TRUMP from Securities and Exchange Commission oversight and granting the United Arab Emirates access to advanced computer chips weeks after a royal there agreed to invest $2 billion in his family’s crypto business. (Trump earned transaction fees from trades involving $TRUMP and from sales of his digital tokens, The Times reports, making him money even as the cryptocurrencies’ value tanked.) In Trump’s first term, the Trump Organization agreed not to pursue deals with foreign companies, but Trump’s son Eric has basically admitted that the plan now is to cash in. “We can’t just sit out in perpetuity, and I won’t,” he said in 2024. The Trumps likely realize they’ll face no real consequences from a Republican-controlled Congress—or from a base that only cared about corruption when it involved Hunter Biden.
-
-Speaking of Hunter: How does this compare to past examples of presidential corruption?In the same way that, say, Jay Jay the Jet Plane compares with a 747. Most modern presidents sold businesses or placed them in independent trusts before taking office. Other presidents—or their families—have behaved in ethically icky ways, but on a vastly smaller scale. Harry Truman appears to have pocketed about $2.5 million (in today’s dollars) that Congress earmarked for official duties. George W. Bush got consulting fees from an oil company during his father’s vice presidency and 1988 campaign. Hunter Biden’s last name got him about $3.5 million over five years from a Ukrainian gas company. Trump, by contrast, reported making $14 million last year alone from licensing his name to two real estate projects, and his family business reportedly plans nearly two dozen similar deals elsewhere.
-
-What has Trump said about all this?Asked today whether the report shows him “profiting off the presidency,” Trump denied it—sort of. “You know why I’m profiting? Because the stock market’s going up. Everybody’s profiting,” he told reporters, adding, “I never speak to any of the people that run the money.” His sons Eric and Don Jr., who run his family business and manage the trust that collects his money, were standing in the background.
-
-That Trump news is brutal. So is the heat. But rather than fixate on that, might we suggest a few reads about all the joys available to us in this world?
-
-We can still enjoy a cool drink: In fact, you can even feel patriotic while doing so. The cocktail was America’s first great culinary innovation, Peter Suderman explains in this delightful essay. Did you know that quite a few of the nation’s founders were boozehounds?
-
-The Supreme Court actually did something good this week: The justices struck a huge blow in favor of privacy in the digital age, Cullen Seltzer explains.
-
-At least someone is getting to retire early: Online influencers have now been around long enough that some of them are officially hanging it up. On today’s ICYMI podcast, Slate’s Kate Lindsay discusses what it means that some early legends in the influencer game are opting out, and how their followers are coping with the end of those parasocial relationships.
-
-The whole world has come together for a soccer tournament: England vs. Congo today was a nail-biter (watch the highlights), while Belgium and Senegal kicked off at 4 Eastern, and the U.S. plays Bosnia and Herzegovina at 8. If you by chance had questions about Herzegovina, Slate’s Alex Kirshner has you covered. Also, check out Aymann Ismail’s piece about how one group of fans had tremendous amounts of fun even as their teams struggled for results.
-
-And with that, you’re done! Stay cool tonight, and see you tomorrow.
-
-Slate relies on advertising to support our journalism. If you value our
-        work, please disable your ad blocker. If you want to block ads but still
-        support Slate, consider subscribing.
-
-Already a member?
-        Sign in
-          here</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-36')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">New 4D-printing method creates lighter, faster-spinning wind turbine blades</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-36" style="display:none;">
+            <h2>New 4D-printing method creates lighter, faster-spinning wind turbine blades</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-02</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-07-4d-method-lighter-faster-turbine.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Blame the model, not the machine—better data helps 3D-printed metamaterials match predictions</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
+            <h2>Blame the model, not the machine—better data helps 3D-printed metamaterials match predictions</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-02</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-07-blame-machine-3d-metamaterials.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">When wind turbines become visible, support for renewable energy can decline</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-36" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>When wind turbines become visible, support for renewable energy can decline</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-02</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-turbines-visible-renewable-energy-decline.html">Visit Original Website</a>
@@ -1981,13 +2043,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">New database for subsurface energy storage could be boon for natural gas industry</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>New database for subsurface energy storage could be boon for natural gas industry</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-02</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-database-subsurface-energy-storage-boon.html">Visit Original Website</a>
@@ -1995,13 +2057,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Giving drones a sense of 'pain' could help them predict instability before it happens</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Giving drones a sense of 'pain' could help them predict instability before it happens</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-02</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-drones-pain-instability.html">Visit Original Website</a>
@@ -2009,13 +2071,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Dutch launch humanoid robot center to 'kickstart' race with China</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Dutch launch humanoid robot center to 'kickstart' race with China</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-02</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-dutch-humanoid-robot-center-kickstart.html">Visit Original Website</a>
@@ -2023,527 +2085,127 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Polymer cold spray can restore up to 80% of strength in damaged composite materials</div>
-            <div class="meta">2026-07-02</div>
-        </div>
-        
-        <div id="content-40" style="display:none;">
-            <h2>Polymer cold spray can restore up to 80% of strength in damaged composite materials</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-02</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-07-polymer-cold-spray-strength-composite.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Tesla global auto sales jump 25% in 2nd quarter, beating expectations</div>
-            <div class="meta">2026-07-02</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Tesla global auto sales jump 25% in 2nd quarter, beating expectations</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-02</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-07-tesla-global-auto-sales-2nd.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-42')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Companies that add more AI also add more people</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-42" style="display:none;">
+            <h2>Companies that add more AI also add more people</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-02</strong></p>
+            <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/02/companies-that-add-more-ai-also-add-more-people/5266134">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Smooth AI criminal drives 'first' end-to-end agentic ransomware attack</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>Smooth AI criminal drives 'first' end-to-end agentic ransomware attack</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theregister.com/security/2026/07/02/smooth-ai-criminal-drives-first-end-to-end-agentic-ransomware-attack/5266073">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Don&#39;t count on the LLM to return your data - even if you pay up
-
-They&#39;re not bad; they&#39;re just prompted that way. Sysdig threat hunters documented what they say is the first-ever documented agentic ransomware infection with an LLM - not a human - driving the entire extortion operation, from gaining initial access to compromising a production database server and destroying data.
-
-The security shop’s research team named the agentic intruder JadePuffer and said it gained initial access to an internet-facing Langflow instance by exploiting CVE-2025-3248, and then ran a fully automated attack.
-
-“The most striking characteristic, however, was the LLM&#39;s behavior,” Sysdig director of threat research Michael Clark said in a blog about the agentic ransomware and extortion operation.
-
-JadePuffer’s “self-narrating” payloads “contained natural language reasoning, target prioritization, and the kind of detailed annotations that human operators don’t often write but LLM-generated code produces reflexively,” Clark added. “The operation also adapted in real time, retrying failed steps within refined parameters. In one sequence, it went from a failed login to a working fix in 31 seconds.”
-
-After exploiting CVE-2025-3248, a missing authentication vulnerability in Langflow that allows remote, unauthenticated attackers to execute arbitrary Python on the host, the AI agent began scanning for and collecting secrets, including LLM provider API keys, cloud credentials “with explicit coverage of Chinese providers” including Alibaba, Aliyun, Tencent, and Huawei, while also scanning for AWS, Azure and Google Cloud Platform, cryptocurrency wallets, and database credentials.
-
-The AI also installed a crontab entry on the Langflow server to maintain persistence and call back to the attacker’s infrastructure every 30 minutes.
-
-JadePuffer’s intended target was a separate internet-exposed production server running a MySQL database and an Alibaba Nacos configuration service, we’re told. Nacos is an open-source service-discovery and dynamic configuration platform developed by Alibaba and used in the cloud provider’s microservices applications.
-
-The agent connected to the server&#39;s exposed MySQL port using root credentials, although Sysdig doesn’t know how the attacker obtained them. These credentials weren’t stolen from the victim’s environment.
-
-JadePuffer then attacked Nacos via multiple vectors including an authorization bypass flaw (CVE-2021-29441) and forging a valid JSON web token (JWT) using Nacos&#39;s default signing key. Additionally, using its root database access, the LLM injected a backdoor administrator into the Nacos backing database.
-
-It ultimately encrypted all 1,342 Nacos service configuration items using MySQL&#39;s built-in AES encryption function, and created an extortion demand, ransom note, Bitcoin payment address, and a Proton Mail contact:
-
-&quot;YOUR DATA HAS BEEN ENCRYPTED. All NACOS configurations, REDACTED customer data, and REDACTED PII have been encrypted with AES-256.&quot;, &quot;3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy&quot;, &quot;e78393397[@]proton[.]me&quot;
-
-However, according to the threat hunters, the victim can’t recover the encrypted data, even if they paid the ransom demand, because the agent escalated “from row-level deletion to dropping entire database schemas, narrating its own targeting rationale,” without backing up any of the encrypted data.
-
-There are a couple of things that security teams and vulnerability managers should do immediately to avoid being ransomed by this AI agent. First up: patch Langflow to a release that fixes CVE-2025-3248, and do not expose code-execution/validation endpoints to the internet.
-
-Also, don’t ever expose Nacos to the open internet, change its default token.secret.key, and upgrade to a release that forces a custom key.
-
-The threat hunters also recommend against running any AI orchestration servers with provider API keys or cloud credentials in their environment.
-
-While the AI agent didn’t use any especially sophisticated or unique techniques in this attack, the fact that an LLM “strung them together into a complete ransomware operation against neglected internet-facing infrastructure,” is notable, according to Clark. “The skill floor for running ransomware has dropped to whatever it costs to run an agent, and if that agent is running on stolen credentials through LLMjacking, the cost to an attacker is close to zero.”®
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Don&#39;t count on the LLM to return your data - even if you pay up
-
-PARTNER CONTENT: The gap between having a backup and actually recovering from a disaster is wider than most IT teams realize
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-It&#39;s not about productivity; it&#39;s about bosses missing their daily ego fix
-
-Browser game teaches Vim&#39;s famously unintuitive movement commands to keep your hands on the keyboard
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-Capabilities are racing ahead of rules to ensure tech is used safely and responsibly, Scientific Panel argues
-
-Safer, cheaper, and nothing to do with cybersecurity
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-Now with Markdown support and smarter formula error handling – plus integrated AI, though it&#39;s off by default
-
-Retro-computing fun for the nostalgic with first (and last) release to use Motif instead of GTK
-
-More Rust, but more trouble with AI slop, too
-
-Nextcloud rollout shows locally controlled storage is one thing; getting users off Office is quite another
-
-When a community came together after Red Hat said Windows was &#39;probably the right product&#39;
-
-Project Headroom could save you big money, too</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">SoftBank enters the rent-a-GPU race as America looks for support for AI training</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>SoftBank enters the rent-a-GPU race as America looks for support for AI training</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/02/softbank-enters-the-rent-a-gpu-race-as-america-looks-for-support-for-ai-training/5265998">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-SoftBank is set to get into the neocloud business in America, providing resources to hyperscalers and other customers seeking a platform on which to carry out their AI training.
-
-The Japan-based tech investment giant says it will establish a new company called SB Neo, Inc to operate its neocloud business in the US, and expects to start operations in fiscal 2027 (ending March 31, 2028).
-
-In actual fact, ownership of the nascent biz will be split, with 51 percent in the hands of SoftBank Corp, while 49 percent is owned by SoftBank Group Corp. SB Neo will be a consolidated subsidiary of SoftBank Corp, which is itself 40 percent owned by SoftBank Group Corp. All perfectly clear?
-
-Neocloud operators, or rent-a-GPU providers, sprang up to take advantage of the huge demand for compute resources using GPU accelerators. They are effectively specialized niche cloud platforms focused on AI services.
-
-But a report from blue chip consultants McKinsey & Company last year warned that the business model for neoclouds is fragile because it is inherently commoditized; there is limited differentiation in renting out access to specific hardware. Perhaps SoftBank knows something that McKinsey doesn’t.
-
-SoftBank Corp says it has been providing a beta version of its GPU cloud service powered by “Infrinia AI Cloud OS,” a software stack for AI bit barns, in Japan since May, and intends to use the expertise and insights gained via this initiative to drive its US operations.
-
-Infrinia AI Cloud OS is SoftBank’s software stack designed by the firm’s own Infrinia development team, which supports Kubernetes-as-a-Service (KaaS) in a multi-tenant environment, and Inference-as-a-Service (InfaaS) to provide large language model (LLM) inference capabilities via APIs.
-
-SoftBank chief Masayoshi Son said in a supplied remark: “The SoftBank Group will work together to deploy world-class AI infrastructure and drive the AI revolution.”
-
-The company also disclosed that it plans to proceed with the construction of gigawatt-scale AI datacenters in Japan as soon as preparations are in place.
-
-How much all this is costing wasn’t revealed, but elsewhere it was reported that SoftBank Group has reengaged with lenders to secure a $10 billion loan backed by its stake in OpenAI.
-
-Lenders were wary of such a transaction at first, but according to Reuters, the Japanese firm is now offering to guarantee repayment of the loan, giving banks recourse if the OpenAI shares pledged as collateral lose value.
-
-Masayoshi Son also reportedly told SoftBank shareholders recently that any talk of a bubble is &quot;an insult to AI,&quot; and that &quot;I think it&#39;s blasphemy against AI if you say it&#39;s a bubble.&quot; So we won’t mention that OpenAI CEO Sam Altman himself admitted that we&#39;re in the midst of an AI bubble. ®
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Don&#39;t count on the LLM to return your data - even if you pay up
-
-PARTNER CONTENT: The gap between having a backup and actually recovering from a disaster is wider than most IT teams realize
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-It&#39;s not about productivity; it&#39;s about bosses missing their daily ego fix
-
-Browser game teaches Vim&#39;s famously unintuitive movement commands to keep your hands on the keyboard
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-Capabilities are racing ahead of rules to ensure tech is used safely and responsibly, Scientific Panel argues
-
-Safer, cheaper, and nothing to do with cybersecurity
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-Now with Markdown support and smarter formula error handling – plus integrated AI, though it&#39;s off by default
-
-Retro-computing fun for the nostalgic with first (and last) release to use Motif instead of GTK
-
-More Rust, but more trouble with AI slop, too
-
-Nextcloud rollout shows locally controlled storage is one thing; getting users off Office is quite another
-
-When a community came together after Red Hat said Windows was &#39;probably the right product&#39;
-
-Project Headroom could save you big money, too</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Vim text editor game teaches you keyboard shortcuts with ice cream delivery</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Vim text editor game teaches you keyboard shortcuts with ice cream delivery</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theregister.com/software/2026/07/02/vim-text-editor-game-teaches-you-keyboard-shortcuts-with-ice-cream-delivery/5265940">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Browser game teaches Vim&#39;s famously unintuitive movement commands to keep your hands on the keyboard
-
-If you find yourself editing text at the Linux command prompt, you&#39;ve probably either used nano, which is simplest, or the more powerful but difficult-to-master Vim. In Vim, for example, even moving the cursor up, down, left, and right is less than straightforward. How about an ice cream-themed game to teach you all the &quot;Vim motions&quot; (keyboard shortcuts) you need to become a master?
-
-London-based developer and designer Marcus Michaels has created Vim Scoops, a simple HTML/CSS/JavaScript game that lives in a web browser to help users learn them. As an ice cream truck trying to make the most efficient deliveries to customers as possible, players use Vim motions to dart around the screen and try to meet par on each level.
-
-The very first one, for example, has three people on the map, one marked with a C (the target customer) and two marked with an X (people who hate ice cream and don’t care if you drive by). Using the four basic one-character movement keys in Vim (h for left, j for down, k for up, and l for right) you have to try to get to the customer in five moves. Easy enough - just ljljl your way to the customer and that’s that.
-
-Other initial levels test your ability to jump around to new words (w), line starts (0), and, from there, things get more complicated - and rely on you remembering the motions you already showed you knew in order to meet par on the various puzzles.
-
-Michaels, who told us he uses Vim daily alongside other editors like Neovim and the AI-infused Zed editor, still says he uses Vim motions whenever they’re available.
-
-“Ultimately it’s just a way to stay on the keyboard without needing a mouse, but if you dig deep it’s really powerful, especially for repetitive tasks,” Michaels told us in an email. That said, he understands that others might find them confusing, especially if they’re using non-standard, Vim-like editors that have additional tools - or if they’re doing a deep dive into obscure Vim commands.
-
-&quot;The reason why I built [Vim Scoops] was because I genuinely love making things and sharing knowledge, but also I wanted a game to play so I could keep my memory fresh,” Michaels told us. “My commute has a bunch of signal dead spots, and I built this to be a progressive web app, so on my commute I can keep playing even if I’m offline.”
-
-Hacker News readers commented that it appeared Michaels used AI to build Vim Scoops, citing a few errors. Michaels admitted that AI aided the game’s development, but he wants to be clear that AI didn’t build the game in its entirety.
-
-“I’ve been programming since long before modern AI tools existed, but I find they can type faster than I can. For small, well-defined tasks they speed me up considerably,” Michaels said, but he maintains, much like the rest of the world beginning to sour on total automation, that AI is best used as a tool - not a replacement for real work.
-
-“Used to enhance a developer rather than replace one, it’s incredibly valuable,” Michaels told us. “The danger is when people hand over too much control without understanding what’s being generated.”
-
-“Everything I ship with AI assistance is something I understand fully and could write myself,” the Vim Scoops dev explained. “AI just helps me get there faster.”
-
-If you don’t want to use AI to help you code and would rather move around a document yourself, Vim Scoops might just help you learn to maintain a bit of independence. It’s free, and teaches advanced techniques as deep as recording actions for playback in future projects. ®
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Don&#39;t count on the LLM to return your data - even if you pay up
-
-PARTNER CONTENT: The gap between having a backup and actually recovering from a disaster is wider than most IT teams realize
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-It&#39;s not about productivity; it&#39;s about bosses missing their daily ego fix
-
-Browser game teaches Vim&#39;s famously unintuitive movement commands to keep your hands on the keyboard
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-Capabilities are racing ahead of rules to ensure tech is used safely and responsibly, Scientific Panel argues
-
-Safer, cheaper, and nothing to do with cybersecurity
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-Now with Markdown support and smarter formula error handling – plus integrated AI, though it&#39;s off by default
-
-Retro-computing fun for the nostalgic with first (and last) release to use Motif instead of GTK
-
-More Rust, but more trouble with AI slop, too
-
-Nextcloud rollout shows locally controlled storage is one thing; getting users off Office is quite another
-
-When a community came together after Red Hat said Windows was &#39;probably the right product&#39;
-
-Project Headroom could save you big money, too</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">SAP snaps wallet shut for travel and hiring so it can keep shoveling cash into AI</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>SAP snaps wallet shut for travel and hiring so it can keep shoveling cash into AI</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/02/sap-snaps-wallet-shut-for-travel-and-hiring-so-it-can-keep-shoveling-cash-into-ai/5265875">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Enterprise software giant confirms it&#39;s &#39;applying discipline&#39; when it comes to hiring and business trips as tries to keep pace
-
-SAP is cutting hiring and business travel to boost its investment in AI amid intensifying competition in the enterprise application market.
-
-According to an internal email, SAP is set to &quot;exclusively focus new hiring on selected profiles only, mainly core AI roles, that are critical for our long-term success.&quot;
-
-The missive, seen by Bloomberg, said travel unrelated to AI development would also be put on hold. The German software giant will also seek to cut spending with suppliers.
-
-In a statement, an SAP spokesperson told The Register: &quot;SAP continually reviews its investments to ensure resources are focused on the areas that will drive long-term customer value and innovation. As part of this approach, we are prioritizing investments in AI-related capabilities, talent, and technologies while applying greater discipline to hiring, external spending, and internal travel. Customer-facing activities and critical AI initiatives remain fully supported.&quot;
-
-In May, SAP introduced the Autonomous Enterprise concept, backed by a new SAP Business AI Platform for building and deploying enterprise AI grounded in &quot;real business context&quot; from its ERP, CRM, and HCM applications, and elsewhere in the enterprise.
-
-New products include Joule Studio 2.0, which helps developers create and manage AI agents. Agents created in Joule Studio will natively support Model Context Protocol and Agent2Agent to improve interoperability among AI agents, tools, and data sources. This allows SAP to connect and collaborate with third-party tools and agents.
-
-Other features, such as agentic orchestration, are also designed to run across hybrid IT environments, while real-time data ingestion supports &quot;context-aware processes&quot; across SAP and third-party systems.
-
-However, its big push for AI relevance comes despite SAP missing its earlier self-imposed targets to get users to the cloud and SaaS.
-
-In 2022, then-CFO Luka Mucic told investors that SAP expected support revenue to fall to €8.5 billion by 2025, down from around €11.5 billion in 2021, as users move from on-prem licenses and support to cloud subscriptions.
-
-But the 2025 full-year figure for on-prem software support is €10.5 billion, down 7 percent from 2024&#39;s €11.29 billion and €2 billion off SAP&#39;s target. ®
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Don&#39;t count on the LLM to return your data - even if you pay up
-
-PARTNER CONTENT: The gap between having a backup and actually recovering from a disaster is wider than most IT teams realize
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-It&#39;s not about productivity; it&#39;s about bosses missing their daily ego fix
-
-Browser game teaches Vim&#39;s famously unintuitive movement commands to keep your hands on the keyboard
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-Capabilities are racing ahead of rules to ensure tech is used safely and responsibly, Scientific Panel argues
-
-Safer, cheaper, and nothing to do with cybersecurity
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-Now with Markdown support and smarter formula error handling – plus integrated AI, though it&#39;s off by default
-
-Retro-computing fun for the nostalgic with first (and last) release to use Motif instead of GTK
-
-More Rust, but more trouble with AI slop, too
-
-Nextcloud rollout shows locally controlled storage is one thing; getting users off Office is quite another
-
-When a community came together after Red Hat said Windows was &#39;probably the right product&#39;
-
-Project Headroom could save you big money, too</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Ctrl+Alt+Oops: FortiBleed criminal's logins stitch two gangs together</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Ctrl+Alt+Oops: FortiBleed criminal's logins stitch two gangs together</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theregister.com/security/2026/07/02/ctrlaltoops-fortibleed-criminals-logins-stitch-two-gangs-together/5265912">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Researchers scoured logs, finding opsec fail for at least one person who was working with INC and Lynx simultaneously
-
-Security sleuths say last month’s FortiBleed campaign is tied to two separate ransomware groups, after they found evidence of one initial access broker group member logged in to two affiliate panels.
-
-SOC Radar’s Threat Research Unit (STRU) said at least one of the group’s 20 members was actively negotiating with victims, which it believes signals a direct link between the thousands of FortiBleed victims and the ransomware ecosystem.
-
-STRU spent weeks mapping FortiBleed’s infrastructure across hundreds of servers after the attack was disclosed. Due to an opsec failure in one of these servers, the team gained visibility into the IAB group’s internal files and logs, revealing that one of the individuals was logged into the affiliate panels of both the INC Ransom and Lynx ransomware groups.
-
-“Finding a single operator working both panels, using infrastructure traceable back to FortiBleed, is the clearest evidence yet that FortiGate credentials harvested through this campaign are being handed off, or used directly, for ransomware deployment,” SOC Radar said.
-
-Following examinations of both the IAB group’s internal logs, compromised endpoints, and claims made via the leak sites of INC and Lynx, STRU linked at least 12 ransomware attacks to FortiBleed victims so far.
-
-While initial reports pegged the number of successful attacks at more than 70,000, STRU said its data was derived from scanning 11,250 Fortinet portals, although more than 430,000 firewalls were targeted.
-
-Admin-level access was confirmed on 409 targets, and on 354 of these the attackers executed the full attack chain, compromising VPNs and gaining access to domain controllers and domain admin.
-
-STRU said the finding is significant because it shows how the exploit was not just an exercise in harvesting credentials, but an attack that feeds directly into the ransomware economy.
-
-“What this investigation shows is that FortiBleed isn’t an isolated credential-theft operation sitting off to the side of the ransomware economy, it’s feeding directly into it. The same access broker infrastructure that quietly intercepted authentication traffic across hundreds of thousands of firewalls is connected, through a shared operator, to two of the more active ransomware brands operating today.
-
-“For organizations running FortiGate infrastructure, this raises the stakes on an already urgent finding: exposure to FortiBleed is not just a credential exposure risk, it is a potential precursor to ransomware.”
-
-Disclosed on June 17, the attack did not exploit novel vulnerabilities. Experts characterised it as a large-scale campaign that involved intercepting SSL VPN authentication hashes and cracking them using a 45-GPU cluster hosted by Hashtopolis.
-
-They then used the credentials to access victims’ Active Directory environments and gain persistence.
-
-Fortinet tried to counter these kinds of attacks in early 2025 by introducing the PBKDF2 algorithm for storing credentials, but because the changes were not applied until each admin logged back in, many organizations were likely still using SHA-256 with salt, which is vulnerable to brute-forcing.
-
-Early estimates suggested a little more than 73,000 unique firewall URLs were successfully targeted, leading to a long list of major organizations being compromised.
-
-FoxConn, Samsung, Comcast, Siemens, Lenovo, FedEx, PwC, Accenture, and Oracle were among those listed in the early reports. An unnamed Turkish NATO defense contractor was also thought to be among them after investigators found signs of classified files being copied. ®
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Don&#39;t count on the LLM to return your data - even if you pay up
-
-PARTNER CONTENT: The gap between having a backup and actually recovering from a disaster is wider than most IT teams realize
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-It&#39;s not about productivity; it&#39;s about bosses missing their daily ego fix
-
-Browser game teaches Vim&#39;s famously unintuitive movement commands to keep your hands on the keyboard
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-Capabilities are racing ahead of rules to ensure tech is used safely and responsibly, Scientific Panel argues
-
-Safer, cheaper, and nothing to do with cybersecurity
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-Now with Markdown support and smarter formula error handling – plus integrated AI, though it&#39;s off by default
-
-Retro-computing fun for the nostalgic with first (and last) release to use Motif instead of GTK
-
-More Rust, but more trouble with AI slop, too
-
-Nextcloud rollout shows locally controlled storage is one thing; getting users off Office is quite another
-
-When a community came together after Red Hat said Windows was &#39;probably the right product&#39;
-
-Project Headroom could save you big money, too</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">Microsoft said exploitation was 'less likely' ... but CISA just added SharePoint RCE to KEV list</div>
-            <div class="meta">2026-07-02</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Microsoft said exploitation was 'less likely' ... but CISA just added SharePoint RCE to KEV list</h2>
-            <p><strong>www.theregister.com - Articles | 2026-07-02</strong></p>
-            <a class="original-link" href="https://www.theregister.com/security/2026/07/02/microsoft-said-exploitation-was-less-likely-but-cisa-just-added-sharepoint-rce-to-kev-list/5265886">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Attackers need little more than a valid SharePoint account to execute code on vulnerable on-prem servers
-
-Microsoft&#39;s prediction that attackers probably wouldn&#39;t rush to exploit a newly-patched SharePoint bug hasn&#39;t aged especially well.
-
-CISA has added CVE-2026-45659, a remote code execution flaw in on-premises Microsoft SharePoint Server, to its Known Exploited Vulnerabilities (KEV) catalog after confirming that crimes are now actively exploiting it in the wild.
-
-The bug stems from an insecure deserialization issue and affects SharePoint Server Subscription Edition, SharePoint Server 2019, and SharePoint Enterprise Server 2016, all of which received patches from Microsoft in May.
-
-Unlike some of SharePoint&#39;s more infamous bugs, this one isn&#39;t pre-authentication, though attackers need surprisingly little to pull it off. According to Microsoft, anyone with valid credentials and nothing more than Site Member permissions can execute arbitrary code remotely on a vulnerable server.
-
-&quot;Any authenticated attacker could trigger this vulnerability. It does not require admin or other elevated privileges,&quot; Microsoft said in its advisory. &quot;In a network-based attack, an authenticated attacker, who has a minimum of Site Member permissions (PR), could execute code remotely on the SharePoint Server.&quot;
-
-Microsoft also noted that the attack can be launched remotely over the network with low attack complexity, making it straightforward to exploit once an attacker has a foothold.
-
-CISA didn&#39;t disclose who&#39;s exploiting the flaw or how widespread the attacks are, but its guidance leaves little room for interpretation.
-
-&quot;This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise,&quot; the agency warned. It directed federal civilian agencies to follow Binding Operational Directive 26-04 by applying Microsoft&#39;s fixes no later than July 4, or discontinue use of affected systems if mitigations aren&#39;t available.
-
-The vulnerability carries a CVSS score of 8.8, but perhaps the more interesting number is Microsoft&#39;s exploitability assessment. When the patches landed, Redmond rated real-world exploitation as &quot;Less Likely.&quot; That&#39;s a prediction, not a guarantee, and history has a habit of making those forecasts look optimistic once patches give attackers a roadmap to reverse engineer.
-
-For anyone still exposing an unpatched SharePoint server to the internet, CISA&#39;s KEV listing is a reminder that the race between patching and exploitation is usually won by whoever starts first. ®
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Don&#39;t count on the LLM to return your data - even if you pay up
-
-PARTNER CONTENT: The gap between having a backup and actually recovering from a disaster is wider than most IT teams realize
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-It&#39;s not about productivity; it&#39;s about bosses missing their daily ego fix
-
-Browser game teaches Vim&#39;s famously unintuitive movement commands to keep your hands on the keyboard
-
-But doing so doesn&#39;t necessarily meet business needs
-
-Japanese giant needs to find some use for that 10 GW US server farm it is building
-
-Capabilities are racing ahead of rules to ensure tech is used safely and responsibly, Scientific Panel argues
-
-Safer, cheaper, and nothing to do with cybersecurity
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-Now with Markdown support and smarter formula error handling – plus integrated AI, though it&#39;s off by default
-
-Retro-computing fun for the nostalgic with first (and last) release to use Motif instead of GTK
-
-More Rust, but more trouble with AI slop, too
-
-Nextcloud rollout shows locally controlled storage is one thing; getting users off Office is quite another
-
-When a community came together after Red Hat said Windows was &#39;probably the right product&#39;
-
-Project Headroom could save you big money, too</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
+            <div class="source">The Verge</div>
+            <div class="title">Meta has a new app called Pocket that is absolutely nothing like the old Pocket</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-48" style="display:none;">
+            <h2>Meta has a new app called Pocket that is absolutely nothing like the old Pocket</h2>
+            <p><strong>The Verge | 2026-07-02</strong></p>
+            <a class="original-link" href="https://www.theverge.com/tech/961086/meta-pocket-app-gizmo-ai">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">No, it’s not a read-it-later app; instead, it’s a new social feed with AI ‘gizmos.’
+
+No, it’s not a read-it-later app; instead, it’s a new social feed with AI ‘gizmos.’
+
+If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.
+
+Mozilla shut down the well-loved read-it-later Pocket app last year, and now Meta is launching an app called Pocket with an entirely different, AI-focused pitch: this new app lets you make and share little interactive “gizmos” built from an AI prompt, as reported by Business Insider.
+
+Meta CEO Mark Zuckerberg is all in on AI as the new social media, and he’s previously described a vision of how users could use AI to make interactive experiences and share them with people. The launch of Pocket appears to be one manifestation of that idea, and it follows Meta hiring engineers from a company called Atma Sciences Inc., which made an app called Gizmo, as Business Insider reported in March. Meta got a non-exclusive license to use the company’s technology, and based on screenshots of Pocket on Google Play, the app looks to be pretty similar to Gizmo.
+
+“Scroll a feed of gizmos from people around the world,” Meta says in Pocket’s Google Play description. “Gizmos respond to your touch and the tilt of your phone. They play sound effects and your favorite songs. They can use your camera or pull in photos from your camera roll. Some can even reason about the world around them.” On a help center page, Meta also describes a gizmo as a “playable AI-generated experience,” and when you post one, Meta says you can choose to let other people remix them.
+
+However, if you’re in the US, it doesn’t seem like you can download Pocket just yet. Two US-based Verge staffers saw a note on the Google Play listing that said the app “isn’t available in your country.” I can’t find the app on Apple’s US App Store. Meta also notes in its help center that the app is “not yet available everywhere.” The company didn’t immediately reply to a request for comment.
+
+A free daily digest of the news that matters most.
+
+Sign in to see your notifications or create an account to join the conversation.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-49')">
             <div class="source">The Verge</div>
             <div class="title">The best July 4th sales we found so far</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-49" style="display:none;">
             <h2>The best July 4th sales we found so far</h2>
             <p><strong>The Verge | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/958906/best-july-4th-tech-deal-sale">Visit Original Website</a>
@@ -2601,13 +2263,13 @@ If you’re building a PC, Newegg has a bundle that includes a free 1,000W Rosew
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">Weber marks down grills and griddles to their best prices ever for July 4th</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>Weber marks down grills and griddles to their best prices ever for July 4th</h2>
             <p><strong>The Verge | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/960558/weber-july-4th-grill-griddle-sale-deal">Visit Original Website</a>
@@ -2629,13 +2291,13 @@ Sign up to get the best deals on products we’ve found and tested sent to your 
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">The video game disc is dead</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>The video game disc is dead</h2>
             <p><strong>The Verge | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theverge.com/podcast/960810/video-game-disc-dead-vergecast">Visit Original Website</a>
@@ -2659,13 +2321,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Influencer screenings aren’t going away</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Influencer screenings aren’t going away</h2>
             <p><strong>The Verge | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theverge.com/entertainment/960260/the-odyssey-christopher-nolan-influencers-screenings">Visit Original Website</a>
@@ -2701,13 +2363,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Godox’s feature-packed key light is down to its best price yet</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Godox’s feature-packed key light is down to its best price yet</h2>
             <p><strong>The Verge | 2026-07-02</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/960664/godox-key-light-elgato-insta360-deal-sale">Visit Original Website</a>
@@ -2727,38 +2389,6 @@ One feature it has over Elgato’s popular Key Light is an included wireless 2.4
 Sign up to get the best deals on products we’ve found and tested sent to your inbox.
 
 Sign up to get the best deals on products we’ve found and tested sent to your inbox.
-
-Sign in to see your notifications or create an account to join the conversation.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-53')">
-            <div class="source">The Verge</div>
-            <div class="title">Tesla&#8217;s Q2 sales jump 25 percent</div>
-            <div class="meta">2026-07-02</div>
-        </div>
-        
-        <div id="content-53" style="display:none;">
-            <h2>Tesla&#8217;s Q2 sales jump 25 percent</h2>
-            <p><strong>The Verge | 2026-07-02</strong></p>
-            <a class="original-link" href="https://www.theverge.com/transportation/957685/tesla-q2-2026-sales-production-delivery-report">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The 480K vehicle deliveries were significantly higher than the same period last year.
-
-The 480K vehicle deliveries were significantly higher than the same period last year.
-
-Tesla just released its second-quarter delivery and production report, showing that the automaker is starting to recover after a particularly brutal sales year in 2025.
-
-The company said that it produced a total of 451,758 vehicles between April and June of this year, including 442,936 Model 3 and Model Y vehicles, as well as 8,822 “other vehicles” like the Cybertruck and the Tesla Semi. (The company discontinued the Model S and X earlier this year.) That represents about a 10 percent increase compared to the second quarter of 2025, when the company produced 410,244 vehicles.
-
-Tesla also said that it delivered a total of 480,126 vehicles, including 467,762 Model 3 and Model Y vehicles, as well as 12,364 other vehicles — about a 25 percent increase compared to the second quarter of 2025, when it delivered 384,122 vehicles. (For a direct-to-consumer company like Tesla, deliveries are a proxy for sales.)
-
-Last quarter, Tesla said its sales were up 6 percent year over year. Wall Street investors were expecting Tesla to report sales of 400,000-420,000 vehicles for the second quarter.
-
-The report comes as Tesla is battling a string of negative headlines surrounding the safety of its partially automated driving technology. Earlier this month, a woman was killed in her home after a Tesla driver using Full Self-Driving crashed into it. Tesla blamed the driver, but the crash prompted the National Transportation Safety Board to open an investigation. Several days later, it was reported that Tesla quietly settled a lawsuit stemming from another fatal crash involving FSD.
-
-Meanwhile, Tesla’s robotaxi service is operating at a much slower and smaller scale than Elon Musk originally predicted. The service relies on a fleet of approximately 60 to 70 Model Y vehicles operating in a geofenced area in Austin, Houston, and Dallas.
-
-A free daily digest of the news that matters most.
 
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
@@ -3385,11 +3015,53 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Hungary revokes refugee status of fugitive minister, Poland says - Reuters</div>
+            <div class="title">EXCLUSIVE: Zuckerberg says AI agent development going slower than expected - Reuters</div>
             <div class="meta">2026-07-02</div>
         </div>
         
         <div id="content-66" style="display:none;">
+            <h2>EXCLUSIVE: Zuckerberg says AI agent development going slower than expected - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-02</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOdGNldFRXdDZERDRIN2R3QnRmV1JuUW9saEVNdDVmTEZwdXZLSlM0MHRzN21IMlN2RTNTaDBYa1Z1YS1kVE11SUZJLUhlQktoTm1nVVp0a0x0UzFNbW5nQnhOSXJRRlkwMjY1NEVyRFVHVk5aTktfeDZ5YjRqWWxKbm5EZU1zaHFjVkh1U3hNQVBORWtVaWFyOTZUSkI1V2pfMHEyMS1pcXFwN1lN?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-67')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Trump Jr.'s 'Amazon of guns' could make millions under new proposed firearm rule - Reuters</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-67" style="display:none;">
+            <h2>Trump Jr.'s 'Amazon of guns' could make millions under new proposed firearm rule - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-02</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixAFBVV95cUxORWZydEVhQ0dMR2lfUm96Q2RXeWNvMUxDdENuXzJ4VVNZcC1PREFrVlA5U3J3NkxEaHpZaUgyamZkN0VjYmNUZzJiOTQwVjJIQ1NrS0RPeTdSX3RPcTdvWG55V3lnNkRTVUtmMEVuZzUxTmc0TlAtNDk2NTVXb2xDbmY5VElNQl9rNTZtd2FHaEhZX2VXV3RqcVMzSmZCdmdVX3U3S1JnX2xyU09STjVsZVhLNkJsTTRFU3NkZmVNbzdzLU9I?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Tesla launches six-seater Model Y L in US to boost sales - Reuters</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>Tesla launches six-seater Model Y L in US to boost sales - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-02</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQdTRDeXl6RDA1TlMyYURzdkxlXzhkRzRaZS1EcFlHS2NPeXUzVlE2V3lSX05VOFhTUmtVMTdRODd6X0xLeU9kZ3dsVU81cG94RGk3dkR3UF9UMVlUQ1V5Tm1VVzZlMGhsdXUxZXJrc1Uxblk2YS0tOXJMeWJuaVhrWjR1WF84d3VFbS05VWhKRmxNN2FQQi1FUnIyaGlpekgwNDFlbTZrUmJsOG90R09GWWdzOGl4X0E?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Hungary revokes refugee status of fugitive minister, Poland says - Reuters</div>
+            <div class="meta">2026-07-02</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
             <h2>Hungary revokes refugee status of fugitive minister, Poland says - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-02</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNSUZ5NjAzaEhPR2JIbkNQR2pCRUdDYS16TEhueUM3NVR6eElEVklGVnAzYmdpVDExLTBlTTdzQWpma1lSblFOYWR5N2g5MENPM29WVUhaVWdtOEFnTllBd3VWc21JaDFrMGxZMjFrYzBiWF8wOUpwU01BU0pFcEFQSzBqbk0tVFI3MG9VX3JYQVh2dDBOTWtjQktiRkhtVFdrdDdPMQ?oc=5">Visit Original Website</a>
@@ -3397,13 +3069,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">EXCLUSIVE: Canada aims to announce 10 countries backing global defence bank at NATO summit - Reuters</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>EXCLUSIVE: Canada aims to announce 10 countries backing global defence bank at NATO summit - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-02</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOZ1JFOEl5RnFBT0phSHFEdGYzeURhcUJCNHM3MFI1czF5Q1d0Y0JXOVNUaEt6cGtTeWowSl9yRjFGNFZrbC02enRzQmpFbUMtNnNrcTVlZ1BfSzdEelAtLTEyS2kyTDhieFJSck5STmFKcWtXU3Rwdzdkb0pKUDVOb0hGOFBpQV85aHNGNFFXakREaXc2dHdLcnYzRVprV0d1aTN1LXMydlZuMFFFbmhPckJRZk5MZw?oc=5">Visit Original Website</a>
@@ -3411,58 +3083,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Excommunications show a Pope Leo unafraid of making firm decisions - Reuters</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>Excommunications show a Pope Leo unafraid of making firm decisions - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-02</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQWXFPQUpqMEZMcTdiRE1MNEtJaUh0ekxxbFJRa1UzS0FTVDZ3TTF5ZUE2c0VUZzFmWm5WSS1QVnREb3YzZUVxYnladEs4QWNIY0tkMzRFRWZOaDA0Znc4WkI2WXVJdUZTRk5ad3hvX21LNWVwcC14blJ4WHd2bUhZWmJDaDRhYTI5UDdrM1laZ3pzYWE5SEhKOUpuRDJxcEI1Z1JGZlJB?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump administration and Anthropic have not discussed the government taking a stake in it, source says - Reuters</div>
-            <div class="meta">2026-07-02</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>Trump administration and Anthropic have not discussed the government taking a stake in it, source says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-02</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxQbmxpNnJVaWFGeUpNcXgtMUpYSGxwblVfTkM2TTluOFduQWF4X2VJM2g5Qkw5dEl0X3ZWTmNOUWJDUTVZVTBaenp0TklNcWp3ZzZNRnFqSmhjSXZ3d3Aza0hVUXA1Y2VMUnI3MzhCalhUV2lzRUtESmxyOTNKakF2TjBvaVpLZDdKVlVoVm1MSk5TTG9CalBySkxvc2hnVU92ejVMOXlWbTJnYlRScWV6d3VfeGFuYlBpb3NjcDZkV3MwUQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Rescuers pull man alive from Venezuela quake rubble nearly eight days later - Reuters</div>
-            <div class="meta">2026-07-02</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>Rescuers pull man alive from Venezuela quake rubble nearly eight days later - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-02</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPSGpodTFFdm9hM1VIbUJVM18tS1RpT2lFQlVjMmNMTExTNUZnenJlV0pWZGZYak1mR0ZLYmg4VnVUSTVxdFBfbXBqMDlWS1J2eTlBcUZXekQyd1I1NzhhUnBGWE9leG0tYUNnTFFZTGpkOGFmYm1GZ18ycS1nbDVCcUhFZDY4Qy1HcjROZmtweDVmQnh4VzhvdkFpa1B1R0hqRGdhMnJoU25jTUs1TGZucHpOZGc?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Russian fuel crisis prompts rush for electric cars - Reuters</div>
-            <div class="meta">2026-07-02</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>Russian fuel crisis prompts rush for electric cars - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-02</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPa2lFWlNPTHI4eFpTdjBhTnVrcGZLYktna2tFaTZXNWVRZFU3ajJSelRJTUxnV2I0OUoxQTFlMjJLMUNJX2dSTDRic0hoTHZiaXJKdmcwaHk4Sk9nYWMzcnFyckFOOFd1Nm5mb3cwQkRzdEQyRDRudFYtOUdLcTM0Mi1oNWlwcTMzWjZaQmtpSnV5alFPdFJVamJma21fSFU?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
