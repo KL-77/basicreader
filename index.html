@@ -154,11 +154,97 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">China recovered its first reusable rocket and showed a new way to do it</div>
+            <div class="title">Quantum error correction can constantly recalibrate a processor</div>
             <div class="meta">2026-07-10</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Quantum error correction can constantly recalibrate a processor</h2>
+            <p><strong>Ars Technica - All content | 2026-07-10</strong></p>
+            <a class="original-link" href="https://arstechnica.com/science/2026/07/quantum-error-correction-can-constantly-recalibrate-a-processor/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">There are some obvious big picture issues that stand between us and useful quantum computing. Issues like whether we can make enough high-quality hardware qubits to connect into the error-corrected logical qubits we need, and how we generate the states needed to perform universal computation on those logical qubits. But there are also many less prominent challenges that will need to be solved before we can perform calculations.
+
+One of those challenges, which only affects some types of hardware, is calibration. For devices we manufacture, like superconducting qubits, there are always subtle variations among individual qubits. (This is not true when we use something like an atom to hold the qubit, but the lasers that control them can drift.) As a result, this hardware is put through a process called calibration, where we test different frequencies and amplitudes of the microwave pulses that control them to find the combination that produces the lowest error rates, and then save those settings for use in calculations.
+
+However, you can’t perform the typical calibration process while e you’re doing calculations, which means drift becomes an issue for long and complicated algorithms. Google, though, has figured out that it’s possible to do calibration using the same data that’s used for error correction.
+
+The hardware that Google and a number of other companies rely on are transmons. They consist of a loop of superconducting wire connected to a resonator, and they’re controlled by pulses of microwave photons. Those pulses are controlled by hardware that is kept outside of the refrigeration, including classical computers and the microwave sources they control. This hardware is used to test different combinations of wavelengths and amplitudes during calibration.
+
+This equipment can also drift from its initial settings due to random factors, such as the hardware heating up as it’s used. And that could be an issue for the sorts of complicated algorithms we ultimately intend to run on quantum computers, like those that could crack current encryption. Currently, if the system shows signs of drifting away from calibration, Google says that it simply stops the computations and recalibrates. However, that is not going to be an option partway through a complicated calculation.
+
+These computations will be taking place using error-corrected qubits, in which measurements on a subset of the hardware qubits are used to detect and characterize any errors that occur on the ones that hold the data. As the Google researchers point out in their paper, some of the errors they’ll detect will be the product of calibration failures: “errors from imperfect calibrations produce detectable syndromes just like all other errors.” In theory, we could use the same error detection to identify both random errors and those produced by calibration issues.
+
+The challenge is telling the two apart. The team’s solution? Reinforcement learning, in which the computer tries different configurations of the 1,000 or so control parameters it has access to, and scores their effectiveness at limiting errors. “We deliberately apply small, simultaneous perturbations to all control parameters during the computation to explore the control space,” the team wrote. “These perturbations translate into subtle changes in the statistics of error-detection events.”
+
+Using that information, the system can infer how adjusting these parameters can minimize certain errors. If those errors start to show up, it can make the appropriate adjustments. And that can be done in parallel with the error detection and correction system that manages the logical qubit.
+
+The system was put in charge of two logical qubits hosted on a calibrated system. The two were using different error correction schemes (a surface code and a color code). These were set in a specific state, and the error-correction system was then used with and without reinforcement-learning-driven corrections. Having the system active led to a 20 percent increase in the ability to detect and correct errors in the logical qubits.
+
+The limitation of this approach is that it works only if the drift keeps the system reasonably close to the state the system was trained in. The corrections that might bring things back into alignment from one state might not be effective when the system’s in a significantly different state.
+
+The solution to this is to constantly re-evaluate the effectiveness of different changes. But this has an obvious problem: You can’t simply randomize all the potential control configurations in the middle of a calculation. Even with limited variation, the system will necessarily operate outside its optimal error correction. So, the question was whether the frequent sub-optimal error correction paid off by keeping drift from causing even larger problems. “The favourable resolution of the exploration–exploitation trade-off would mean that the aggregate performance of all sampled policy candidates, most of which are worse than [the optimal one], is still better than the performance without reinforcement learning steering,” the researchers write.
+
+Performing many simulations with a very small error-corrected qubit showed that the trade-off worked out, provided that drift was slow enough. The team showed that it could work in real time with a large error-corrected qubit, in which the reinforcement learning system had control over roughly 40,000 parameters.
+
+This is clearly not a solution for the present; we can only keep systems operating for long enough to perform relatively short, simple algorithms, so drift isn’t even a concern. Ultimately, our intention is to build hardware that can perform the sorts of calculations where issues like this will matter. And there’s some value in demonstrating that something we know could be a problem can be dealt with.
+
+Nature, 2026. DOI: 10.1038/s41586-026-10759-2 (About DOIs).</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Increased drone surveillance of illegal July 4th fireworks led to $100K fine</div>
+            <div class="meta">2026-07-10</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
+            <h2>Increased drone surveillance of illegal July 4th fireworks led to $100K fine</h2>
+            <p><strong>Ars Technica - All content | 2026-07-10</strong></p>
+            <a class="original-link" href="https://arstechnica.com/gadgets/2026/07/on-americas-250th-more-cities-used-drone-surveillance-to-spot-illegal-fireworks/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">More cities and towns deployed drones to spot illegal fireworks during the Fourth of July celebrations commemorating America’s 250th anniversary—leading to a $100,000 fine in one instance and coming as part of a broader national trend of first responders turning to drone surveillance.
+
+Police and fire departments have described using both increased drone surveillance and steep fines to deter people from shooting off illegal fireworks, with many departments publicizing their drone videos on social media and warning that their drones will be watching in the future. Incidents involving illegal fireworks have led to costly fires, injuries, and even multiple deaths each year, along with creating local air and noise pollution for residential neighborhoods.
+
+This year, the $100,000 fine for illegal fireworks came from the Sacramento Fire Department in Northern California deploying its own drones for the first time on the Fourth of July, according to CBS News Sacramento. Sacramento Fire Captain Justin Sylvia described the fire department’s drones as being capable of recording scenes in high-resolution video to help investigators identify the house or closest location using Google Maps.
+
+Such drone capabilities allowed the fire department to count the fireworks being fired from a gathering near a home in the Del Paso Heights neighborhood of Sacramento, according to the TV news station KCRA 3. The drone also showed a U-Haul trailer containing fireworks catching fire at one point, although the people at the gathering managed to put it out.
+
+The resulting $100,000 fine came from counting the number of fireworks and possibly other factors. Sacramento County assigns fines for illegal fireworks starting at $1,000 per device and as high as $10,000 per device used near sensitive areas such as schools or parks. But felony criminal charges punishable by imprisonment are also possible if illegal fireworks cause a fire that leads to property damage or bodily injury.
+
+The Sacramento Fire Department issued 70 citations on July 4, totaling $300,000 in fines. But the department was also looking to assign additional citations on July 2 and July 3. Sylvia told KCRA 3 that the department had previously issued a $1 million fine to a single individual in 2025.
+
+In Central California, the Salinas Fire Department posted a promotional sizzle reel to Instagram featuring drone footage of various illegal fireworks activities and warning that it expected to issue nearly 100 citations from the Fourth of July weekend. The department first began training a dozen of its firefighters to become certified drone pilots in 2022, Monterey County Now reported.
+
+The trend of first responders deploying drones has accelerated significantly since 2025, when the US Federal Aviation Administration reworked its regulations to enable faster approvals of waivers enabling police and fire departments to fly drones beyond the operator’s visual line of sight.
+
+Several police departments in Southern California also deployed drone teams for the first time in 2026 to identify the locations of illegal fireworks activity. The Anaheim Police Department used drones to help issue 40 citations and confiscate 2,500 pounds of illegal fireworks, according to The Orange County Register.
+
+The newspaper also confirmed that the Santa Ana Police Department deployed drones for the first time this year. The drones assisted the department in issuing 107 citations—though the citations were issued to property owners at addresses where illegal fireworks activity took place rather than to specific perpetrators.
+
+The Santa Ana Police Department further claimed that its drone operators assisted in the seizure of nearly 1,300 pounds of illegal fireworks in a promotional reel posted to social media, which played the “Bad Boys” music of the American TV show Cops as the soundtrack.
+
+Meanwhile, the La Habra Police Department posted a less flashy video to Facebook showing a drone video of a person lighting a firework in the middle of a residential street. It described its drone unit as helping with the issuance of “numerous citations” and leading to arrests in some cases for fireworks violations.
+
+The Riverside Police Department has attributed its increase in citations for illegal fireworks to having deployed drones starting in 2025, according to the Los Angeles Times. The newspaper also listed other California cities such as Downey, Artesia, Brea, San Bernardino, Stanton, Chino, Hemet, and San Jose as deploying drones over the Fourth of July holiday.
+
+California cities may be the most aggressive in using drones to hunt down illegal fireworks so far, but there are examples elsewhere. This year, the Lewisville Police Department in Texas shared footage with CBS News of its drone responding to 19 fireworks incidents on July 4, and reported several instances in which people firing off fireworks decided to stop and clear out once the drone arrived.
+
+Washington state’s Renton Police Department also posted drone video from this past Fourth of July weekend and has deployed drones for the past three years to spot people setting off illegal fireworks in the suburb of Seattle, according to MyNorthwest.
+
+This all fits a broader trend of “drone as first responder” programs growing across the United States, as tech companies pitch law enforcement on drones equipped with a variety of surveillance capabilities. More than 1,800 police departments and sheriff’s offices have operated drones in the United States, according to the Electronic Frontier Foundation’s Atlas of Surveillance database. Such drones “should require clear policies around retention, audits, and use, including when the cameras shouldn’t be recording,” according to Beryl Lipton, a senior investigative researcher at the Electronic Frontier Foundation.
+
+Incidentally, some US communities used drones on America’s 250th anniversary for a very different purpose—supplementing or even replacing official fireworks displays with drone swarms that put on coordinated and colorful shows in the sky. Such displays are both cleaner and quieter than fireworks, while significantly lowering the risk of starting fires in dry summer conditions.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-2')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">China recovered its first reusable rocket and showed a new way to do it</div>
+            <div class="meta">2026-07-10</div>
+        </div>
+        
+        <div id="content-2" style="display:none;">
             <h2>China recovered its first reusable rocket and showed a new way to do it</h2>
             <p><strong>Ars Technica - All content | 2026-07-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/space/2026/07/china-recovered-its-first-reusable-rocket-and-showed-a-new-way-to-do-it/">Visit Original Website</a>
@@ -216,13 +302,13 @@ The proliferation of Chinese rocket companies, scattered across four land-based 
 “There’s nothing wrong with competition as long as it’s peaceful,” Galbreath said. “That can drive innovation, but I’m concerned that the historic example of Chinese behavior has not always remained peaceful. So, we have to look at everything they do carefully. On the one hand, they’re competing with SpaceX, but we know that because of the way China has organized its military, its space capabilities, all under military control, that there is significant utility that their armed forces will receive from this race.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Check out the first images of Quest shipwreck</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Check out the first images of Quest shipwreck</h2>
             <p><strong>Ars Technica - All content | 2026-07-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/07/expedition-captures-first-images-of-shackletons-last-ship/">Visit Original Website</a>
@@ -250,13 +336,13 @@ Initial sonar images in 2024 gave the team hope about the ship’s overall condi
 WHOI biologist Kirstin Meyer-Kaiser told Canadian Geographic that the Quest shipwreck has been transformed into a thriving underwater ecosystem. The surviving structures and materials are now host to various marine life: soft corals clustered around the top of the bow, for example, and threatened species such as the spotted wolffish. “It’s really cool to me that the impact of human history is that we’re creating a habitat,” she said. “We’re increasing biodiversity on the local scale of the wreck, and maybe also on the regional scale because now it’s a stepping stone for some of those things to spread.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Ransomware negotiator hired to represent victims was working for the attackers</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Ransomware negotiator hired to represent victims was working for the attackers</h2>
             <p><strong>Ars Technica - All content | 2026-07-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/07/ransomware-negotiator-helped-attackers-extort-his-own-clients-gets-6-year-sentence/">Visit Original Website</a>
@@ -310,13 +396,13 @@ DigitalMint said Martino evaded the company’s internal safeguards that attempt
 Sygnia told CNN and other media outlets in November that it terminated Goldberg “immediately upon learning of the situation.” Sygnia said the company itself was not a target of the investigation and that it was working closely with the FBI.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Study shows how toxic RFK Jr.’s change to measles vaccine is for US toddlers</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>Study shows how toxic RFK Jr.’s change to measles vaccine is for US toddlers</h2>
             <p><strong>Ars Technica - All content | 2026-07-10</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/07/anti-vaccine-changes-under-rfk-jr-will-hurt-vulnerable-toddlers-study-confirms/">Visit Original Website</a>
@@ -348,76 +434,6 @@ The study’s findings “are not surprising,” they wrote. “Combination vacc
 The study has the limitation of only examining MMRV use in one county in one state, Cope and Carroll note. But, they said, “If similar patterns exist in less well-resourced settings, the resulting equity implications could be even more pronounced.”
 
 The two experts stop short of suggesting Kennedy’s anti-vaccine agenda directly swayed his ACIP members to make this ill-conceived recommendation, saying it can’t be determined from the public record. But “[w]hat can be determined is that multiple structural safeguards, historically intended to preserve ACIP independence, were absent simultaneously,” they write.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-4')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Valve's new Steam Machine verification system is silent on these Steam Deck-busters</div>
-            <div class="meta">2026-07-10</div>
-        </div>
-        
-        <div id="content-4" style="display:none;">
-            <h2>Valve's new Steam Machine verification system is silent on these Steam Deck-busters</h2>
-            <p><strong>Ars Technica - All content | 2026-07-10</strong></p>
-            <a class="original-link" href="https://arstechnica.com/gaming/2026/07/valves-steam-machine-verified-ratings-offer-more-questions-than-answers/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">About a month ago, Valve announced that it would expand its long-standing Steam Deck Verified program to the now-shipping Steam Machine, offering a separate rating of Steam games’ compatibility and playability for the fresh living room-focused hardware. Now that those ratings started appearing on Steam store pages last night (under a “Learn More” link next to Steam Deck Compatibility), we’ve found that Valve is frustratingly “still learning about” Steam Machine compatibility for dozens of games that the Steam Deck is too weak to run capably.
-
-The Steam Machine compatibility for many Steam games is pretty simple to figure out, of course. If a game is already verified on Steam Deck, it is seemingly guaranteed to be verified on the Steam Machine, as far as we can tell. On the other side, games that have already been confirmed not to work with SteamOS (which can happen for various reasons) obviously won’t work on the SteamOS-powered Steam Machine.
-
-The messy middle is where a Steam Machine Verified badge could come in most handy. These are games that Valve has confirmed will load on SteamOS, but which the aging, portable Steam Deck can’t handle at the 1200×800, 30 fps standard that Valve requires at default settings (for the Steam Machine, this requirement grows to 1080p and 30 fps). On the Steam Store, these games show up as “Unsupported” on Steam Deck because “the game’s graphics settings cannot be configured to run well on Steam Deck” or “this game requires manual configuration of graphics settings to perform well on Steam Deck.”
-
-Thus far, every such graphically unsupported Steam Deck game we’ve found on the Steam store is currently listed with an “Unknown” Steam Machine compatibility status. For all of these titles, Valve merely says it is “still learning about” the game and that “we do not currently have further information regarding Steam Machine compatibility.”
-
-That’s a shame, because many of these games that struggle on the Steam Deck can no doubt run just fine on the much more powerful Steam Machine hardware. And new Steam Machine owners will surely want to know whether their fresh living room box can play these games, many of which have appeared on Steam’s Top Sellers list (either currently or in the past).
-
-There is some good news for Steam Machine users in last night’s Verification update, though. Games with text that is too small to read on the Steam Deck are perfectly fine when played on a big TV. That means Steam Deck “Playable” games like 007: First Light and Lies of P get bumped up to “Verified” status on the Steam Machine. But games that Valve bumps down to “Playable” on Steam Deck for requiring an on-screen keyboard still get a similar warning on the Steam Machine, so you might want to keep a wireless keyboard nearby on your couch.
-
-We’ve included a list of nearly two dozen games we’ve found that Valve says can run on SteamOS but can’t run well on Steam Deck, and that Valve has yet to test on the Steam Machine. Hopefully they’ll get the helpful up or down Steam Machine rating they deserve soon (a Valve representative was unavailable to immediately respond to a request for comment from Ars).
-
-A (very partial) list of SteamOS-compatible games with “Unknown” Steam Machine compatibility (and “Unsupported” Steam Deck status due to graphical requirements):</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Firmware update bricks Hue Bridge Pro devices; Philips gives free replacements</div>
-            <div class="meta">2026-07-10</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Firmware update bricks Hue Bridge Pro devices; Philips gives free replacements</h2>
-            <p><strong>Ars Technica - All content | 2026-07-10</strong></p>
-            <a class="original-link" href="https://arstechnica.com/gadgets/2026/07/firmware-update-bricks-hue-bridge-pro-devices-philips-gives-free-replacements/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">A firmware update is behind recent reports that some Hue Bridge Pro smart hubs are no longer working, Ars Technica has confirmed.
-
-In late June, there were reports of some Hue Bridge Pro devices not working properly after installing a firmware update. Philips released firmware version 2071353020 in early June, saying that it included “several small changes” to make Hue Bridge Pros work “better.” But some customers had a different experience: Their devices stopped responding and displayed a red LED.
-
-A Reddit user going by the name statelymachine is one of the people online who reported that the update “bricked” their device.
-
-“My Hue Bridge Pro updated a few days ago, and I immediately got the solid red light. I ordered a replacement because I didn’t feel like dealing with a support agent, but now I see what a pain it’s going to be to reset my 50+ lights to attach them to the new bridge. … I’m pissed,” they wrote.
-
-A Signify Philips Hue spokesperson confirmed to Ars that firmware 2071353020 caused the devices to break:
-
-We have identified a firmware issue affecting a limited number of Philips Hue Bridge Pro devices under a very specific software update scenario. The issue affects users who disabled automatic software updates, remained on an older software version for an extended period, and then manually installed a firmware update after the update package had been stored on the Bridge for more than 10 days.
-
-The spokesperson said that Signify didn’t have any more information about why the problem occurred.
-
-Regarding the number of devices affected, Signify’s representative said, “Our data shows fewer than 100 Philips Hue Bridge Pro devices have been impacted.”
-
-When asked about the update’s purpose, the spokesperson noted that Signify “regularly provides software updates that deliver improvements, security updates, and bug fixes,” without providing further detail.
-
-“We have identified the root cause and are implementing a fix to prevent additional users from being affected. As this relates to a specific technical implementation, we won’t go into further engineering detail,” Signify’s representative said.
-
-Philips has started rolling out an update to prevent additional devices from being bricked. Customers whose devices are already broken should contact the Philips Hue support team, the company rep said. They added:
-
-We will replace affected Philips Hue Bridge Pro devices free of charge, regardless of warranty status.
-
-It’s encouraging to see a company taking responsibility for broken products and trying to compensate customers. However, affected customers must still spend time connecting their devices and inputting their settings into a new Hue Bridge Pro. This will be especially tedious for people with dozens of lights and accessories, as well as many customized scenes and automations.
-
-The firmware problem highlights the Hue Bridge ecosystem’s lack of backup features, as some affected parties have noted. While Hue users can migrate all their connected devices from a standard Hue Bridge to a Hue Bridge Pro, there’s no way to migrate devices from a Hue Bridge Pro to a Hue Bridge, or from a Hue Bridge to another Hue Bridge.
-
-“Kept resetting it without any luck,” Reddit user Muted-Improvement-76 said. “Went out and bought another regular bridge and had to painstakingly add all the lights again. It was a nightmare!”</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -1462,11 +1478,45 @@ Sign up for The Wonder Reader, a Saturday newsletter in which our editors recomm
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Russia Hacks Doorbell Cameras To Spy On NATO Bases</div>
+            <div class="title">Brown Professor Suspects Majority of His Class Used AI To Cheat</div>
             <div class="meta">2026-07-10</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Brown Professor Suspects Majority of His Class Used AI To Cheat</h2>
+            <p><strong>Slashdot | 2026-07-10</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/07/10/2215249/brown-professor-suspects-majority-of-his-class-used-ai-to-cheat?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Even if you hate welfare, and want to kill everyone on it - studying the economics of it will help you do that.
+
+Also, this is not about a Brown professor, it&#39;s about Brown students.
+
+This can only get unintentionally funnier.
+
+First of all, props to student 22 who clearly didn&#39;t cheat on the midterm and managed to do better on the final, but it looks like about 85 out of 89 students cheated.
+
+With cheating being so easy, professors really need to be having in-person tests to see if the students are learning anything.  I wonder if giving students the exact same test out of class and then in class would show who cheated more clearly
+
+AI is too easy to use, when the work is done at home. And I say, good riddance. Homework has for decades been a substitute for learning. AP classes aren&#39;t actually &quot;advanced&quot; they just require more homework. If AI kills all those extra hours of busywork, that&#39;s a good thing. Exercises and essays and workbooks can be done in school.
+
+All the teachers use AI now to grade papers. Seem like turnabout is fair play!
+
+This is the punchline.Gold star for everyone!
+
+If your exams are so easy students can cheat on them, that is a professor problem.I had classes in college where you could have had the internet and phone a friend and still probably would not pass the exam without properly knowing the material; I respected those subjects.The classes where you were not allowed to bring a back pack, nor wear a baseball hat, and only could use a #2 pencil to the exam were a joke; nothing taught, nothing learned.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+May Euell Gibbons eat your only copy of the manual!</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Russia Hacks Doorbell Cameras To Spy On NATO Bases</div>
+            <div class="meta">2026-07-10</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Russia Hacks Doorbell Cameras To Spy On NATO Bases</h2>
             <p><strong>Slashdot | 2026-07-10</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/07/10/1957214/russia-hacks-doorbell-cameras-to-spy-on-nato-bases?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1478,6 +1528,12 @@ Russian hackers have been hijacking unsecured internet-connected cameras
 
 The article doesn&#39;t say why they think it&#39;s Russians. 
 Taking control of a device with a default password is not really a heavy hacking task. It doesn&#39;t require nation state resources. You could probably do it yourself in an afternoon, if you were motivated.
+
+If it is possible to walk into cameras on NATO bases like that, honestly they deserve it. This shit should be locked behind seven layers of impossible.Per TFA,it&#39;s civilian cameras on transit routes, so what it sounds like is they look for cameras along major roads and hack into them to follow shipments.  It would not surprise me if they were trying to hack phones/watches/fitness bands or anything that can track individual then look at data to try to find the drivers by correlating the data with traffic data.
+
+If it is possible to walk into cameras on NATO bases like that, honestly they deserve it. This shit should be locked behind seven layers of impossible.
+
+Per TFA,it&#39;s civilian cameras on transit routes, so what it sounds like is they look for cameras along major roads and hack into them to follow shipments.  It would not surprise me if they were trying to hack phones/watches/fitness bands or anything that can track individual then look at data to try to find the drivers by correlating the data with traffic data.
 
 Kremlin-based hackers accessed the devices to monitor the transfer of military equipment to UkraineAgain, it doesn&#39;t say why they think they were &quot;Kremlin based hackers.&quot; 
 I personally tracked the IP address of an open webcam I was monitoring, and I found it was hacked by redmid17 - 1217076. I have all the proxy traceroute logs. Very suspicious.
@@ -1493,20 +1549,24 @@ Ukraine is not a NATO member state. If you know anything about the conflict, you
 
 Seriously, who writes these summaries?NATO supporters?
 
+Seriously, who writes these summaries? https://en.wikipedia.org/wiki/... [wikipedia.org]
+
+https://en.wikipedia.org/wiki/... [wikipedia.org]
+
+Importantly, there was a comma before Ukraine in TFA, so it may not be automatically incorrect after all.  Not a clear cut case for using a semicolon there either, as that would be a more substantial pause than needed.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;By the time they had diminished from 50 to 8, the other dwarves began
-to suspect &quot;Hungry.&quot;
--- a Larson cartoon</div>
+May Euell Gibbons eat your only copy of the manual!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Feds Demand Autonomous Vehicle Companies Stop Interfering With First Responders</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Feds Demand Autonomous Vehicle Companies Stop Interfering With First Responders</h2>
             <p><strong>Slashdot | 2026-07-10</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/07/10/1947248/feds-demand-autonomous-vehicle-companies-stop-interfering-with-first-responders?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1555,20 +1615,48 @@ Just wait until there&#39;s an actual mass casualty event - earthquake, terror, 
 
 Programmers rarely live in reality and have no idea how the world works.
 
+Just wait until there&#39;s an actual mass casualty event - earthquake, terror, something like that, and these all things go comatose in intersections like they did in SF last year.You just described what happens to real drivers in emergencies as well. There&#39;s literally never been any of the things you listed that haven&#39;t resulted in utter traffic chaos in and around the area where it has occurred.That said I do agree with your premise. These companies do need to work on it, especially the concept of &quot;breaking&quot; laws in emergencies, like when you need to pull into an intersection on a red light to make space for an ambulance or something like that.
+
+Just wait until there&#39;s an actual mass casualty event - earthquake, terror, something like that, and these all things go comatose in intersections like they did in SF last year.
+
+You just described what happens to real drivers in emergencies as well. There&#39;s literally never been any of the things you listed that haven&#39;t resulted in utter traffic chaos in and around the area where it has occurred.
+
+That said I do agree with your premise. These companies do need to work on it, especially the concept of &quot;breaking&quot; laws in emergencies, like when you need to pull into an intersection on a red light to make space for an ambulance or something like that.
+
+Humans can also coordinate with each other when things aren&#39;t working. You can&#39;t communicate with a Waymo to coordinate, they don&#39;t pick up contextual cues from other drivers&#39; behavior, and the way they &#39;fail safe&#39; really depends on everything else around them working correctly for the &#39;safe&#39; part .
+
+Having both failure modes at the same time is very likely to be a much bigger shitshow than m
+
+While that is true in general it does rely on the idea of emergency services working with you as well in some situations. Take the mobile phone situation. It&#39;s already done. The concept of interoperability is baked into standards on a protocol level. As a critical feature it is utterly trivial to implement. On the flip side working with emergency services on the road is probably the single most complex coding task you know. The premise is literally: &quot;Forget every law you know, carefully anticipate movements
+
+How is it that when human drivers want to drive on public roads they need to pass a driving test but robotaxis don&#39;t? We should have a complex robotaxi driving test range and every time they release a new version of automatic driving software, they should be tested and recertified before allowing them to drive on our roads.
+
+At no point of a driving test do you break laws to make space for emergency vehicles. Robo taxi companies would have absolutely zero problem passing the standard driving test, and do so without making the errors that are permitted.
+
+Even in Germany where driving tests are hard this isn&#39;t a component of it.
+
+Have you even taken a driving test? There&#39;s a reason the roads are full of abject morons.
+
+You misunderstood me. When I meant &quot;complex&quot; test range, I meant a hard, all-usecases-included, full-highway-code test range. Testing absolutely anything and everything. Essentially, unit tests for cars.
+
+... all the V2V and V2X telematics that the experts have promised? Oh, that&#39;s right. This stuff won&#39;t work unless 100% of the traffic adopts the protocols. Poor people, say goodby to your 10 year old sedan*.
+
+Seriously, it&#39;s just a matter of installing Opticom receivers on autonomous vehicles. Or a radar detector receiver that can handle SWS (Safety Warning System) messages. And then put transmitters in emergency vehicles.
+
+*Basing traffic safety on V2V/V2X communications is a lost cause. Because bicycles wo
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;By the time they had diminished from 50 to 8, the other dwarves began
-to suspect &quot;Hungry.&quot;
--- a Larson cartoon</div>
+May Euell Gibbons eat your only copy of the manual!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">NYC To Become First In US To Ban Deceptive Subscription Practices</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>NYC To Become First In US To Ban Deceptive Subscription Practices</h2>
             <p><strong>Slashdot | 2026-07-10</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/07/10/1940229/nyc-to-become-first-in-us-to-ban-deceptive-subscription-practices?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1605,20 +1693,24 @@ Of course, it was too hard for the &quot;other&quot; politicians because they we
 
 Laissez faire capitalism is great if everyone is honest.   But in this reality there are a lot of incredibly dishonest people who will do anything for a buck.  A modicum of base regulation is desirable to keep consumers from getting swindled at every turn.   I applaud efforts like these.
 
+Under socialism, they don&#39;t permit all these add-on fees and services. It&#39;s all bundled together. With your food.
+
+You did want food, didn&#39;t you? Welcome to your city-owned supermarket. [cloudfront.net]
+
+They should not be permitted to say something is &#39;Free&#39; if they require you to pay for shipping.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;By the time they had diminished from 50 to 8, the other dwarves began
-to suspect &quot;Hungry.&quot;
--- a Larson cartoon</div>
+May Euell Gibbons eat your only copy of the manual!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Disable Autoplay and Infinite Scroll Or Risk Massive Fines, EU Tells Meta</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Disable Autoplay and Infinite Scroll Or Risk Massive Fines, EU Tells Meta</h2>
             <p><strong>Slashdot | 2026-07-10</strong></p>
             <a class="original-link" href="https://meta.slashdot.org/story/26/07/10/1737224/disable-autoplay-and-infinite-scroll-or-risk-massive-fines-eu-tells-meta?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1643,6 +1735,18 @@ Endless scroll forces you to read until the gap between the top and where you le
 
 They are selling your attention and so they are optimizing how much content gets your attention. They are not optimizing for you to use the app effectively, they optimize for the ads to catch your attention.
 
+&quot;Stop trying to extend your authority over our citizens&quot;, doesn&#39;t sound unreasonable to me.Literally no one is extending authority over your citizens. They are exercising the authority to regulate how companies work with *their* citizens. Meta already geofence their products so they behave differently in different regions. All tech companies do.&quot;Discard convenient features because we have a bug up our ass&quot;, does.The gambling addict says the dopamine hit he gets from winning a hand while being down thousands of dollars is really convenient to keep him going so that he will strike lucky, just like he feels. Only people with bugs up their ass would regulate addictive
+
+&quot;Stop trying to extend your authority over our citizens&quot;, doesn&#39;t sound unreasonable to me.
+
+Literally no one is extending authority over your citizens. They are exercising the authority to regulate how companies work with *their* citizens. Meta already geofence their products so they behave differently in different regions. All tech companies do.
+
+&quot;Discard convenient features because we have a bug up our ass&quot;, does.The gambling addict says the dopamine hit he gets from winning a hand while being down thousands of dollars is really convenient to keep him going so that he will strike lucky, just like he feels. Only people with bugs up their ass would regulate addictive
+
+&quot;Discard convenient features because we have a bug up our ass&quot;, does.
+
+The gambling addict says the dopamine hit he gets from winning a hand while being down thousands of dollars is really convenient to keep him going so that he will strike lucky, just like he feels. Only people with bugs up their ass would regulate addictive
+
 Given the US current economy and the GOP prospects for the coming election, the absolute worst thing Trump could do for the GOP is to enact new economic measures.
 
 If he messes up enough he will be impeached again.  Just takes a few more democrats in the senate.
@@ -1657,9 +1761,17 @@ Yeah, I know we&#39;re discussing social media and not unhealthy food, but there
 
 Large companies are adopting similar patterns leaving the user without a choice to help themselves. Do you expect to chat with your friends in Slashdot comments? If you want a social network where your contacts are, you can choose if Meta, Google, or Musk provides you endless scroll. If you want a social network without endless scroll, you can choose one of the few and be pretty lonely there.
 
+So let&#39;s all blame the scapegoat.The &quot;scapegoat&quot; literally employed people from the gambling industry in an attempt to make their product as addictive to possible to the sheep, and openly admitted doing so under oath in front of congress.Let&#39;s not blame the &quot;scapegoat&quot;. Let&#39;s outright slaughter it and grill it, and then wear it&#39;s coat as a warning to others. That&#39;s what the &quot;scapegoat&quot; deserves.
+
+The &quot;scapegoat&quot; literally employed people from the gambling industry in an attempt to make their product as addictive to possible to the sheep, and openly admitted doing so under oath in front of congress.
+
+Let&#39;s not blame the &quot;scapegoat&quot;. Let&#39;s outright slaughter it and grill it, and then wear it&#39;s coat as a warning to others. That&#39;s what the &quot;scapegoat&quot; deserves.
+
 Ironically, Reddit already doesn&#39;t let me doomscroll.  I think I&#39;m not subscribed to enough subs, so it eventually just runs out of content to show me.
 
 Who says these companies are not targeted by the law? This is the article about Meta, when they continue with TikTok Slashdot will probably also report about it.
+
+Yes. They fucking will. Only to rip off hard working, honest American corporations. And right so. Pages out of order for freedom! EU! EU! EU! In your face, America!
 
 I managed to get Facebook to behave almost the way I want it to using the Social Fixer extension.Chronological order, no ads, only posts from people and pages I&#39;m actually following, no autoplay, no stories. But as a side effect it seems to reload the page multiple times and sometimes stalls for a while, so it ends up too much of a hassle to check it more than a couple times a day anyway.
 
@@ -1677,20 +1789,30 @@ I believe that Meta both assessed those risks and - based on those assessments -
 
 Addicted people whose wills have been compromised by psychological manipulation are better targets for ads, propaganda, etc. Therefore, they&#39;re more profitable; and profit is the god to which virtually all Capitalists kneel, whether or not they admit that fact to themselves or others. Zuck is a high priest in that tawdry religion.
 
+I believe that Meta both assessed those risks and - based on those assessments - altered their design to maximize the risks.Believe? My friend you don&#39;t need to believe, Meta admitted it in 2018 when they got dragged in front of various governments to explain their site and the cambridge analytical scandal.
+
+I believe that Meta both assessed those risks and - based on those assessments - altered their design to maximize the risks.
+
+Believe? My friend you don&#39;t need to believe, Meta admitted it in 2018 when they got dragged in front of various governments to explain their site and the cambridge analytical scandal.
+
+But why do they still allowed things like cigarettes, why not ban those altogether?Cigarettes are heavily regulated and taxed. We could only dream of a world where Facebook is as heavily regulated as cigarettes. Let&#39;s apply this shall we?- Cigarettes are banned for minors, we should ban minors from Facebook.- Cigarettes are subject to huge taxes in a great part to disincentivise smoking. We should make Facebook pay per use.- Cigarettes are banned from marketing in many places. We should ban Meta from placing any adds on Facebook.- Cigarettes are banned from having flavours which make them
+
+But why do they still allowed things like cigarettes, why not ban those altogether?
+
+Cigarettes are heavily regulated and taxed. We could only dream of a world where Facebook is as heavily regulated as cigarettes. Let&#39;s apply this shall we?- Cigarettes are banned for minors, we should ban minors from Facebook.- Cigarettes are subject to huge taxes in a great part to disincentivise smoking. We should make Facebook pay per use.- Cigarettes are banned from marketing in many places. We should ban Meta from placing any adds on Facebook.- Cigarettes are banned from having flavours which make them
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;By the time they had diminished from 50 to 8, the other dwarves began
-to suspect &quot;Hungry.&quot;
--- a Larson cartoon</div>
+May Euell Gibbons eat your only copy of the manual!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Disney+ Explores a Free Tier As YouTube Draws TV Viewers</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Disney+ Explores a Free Tier As YouTube Draws TV Viewers</h2>
             <p><strong>Slashdot | 2026-07-10</strong></p>
             <a class="original-link" href="https://entertainment.slashdot.org/story/26/07/10/1727227/disney-explores-a-free-tier-as-youtube-draws-tv-viewers?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1763,31 +1885,7 @@ There are literally less ads on Xumo. For the moment...
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;By the time they had diminished from 50 to 8, the other dwarves began
-to suspect &quot;Hungry.&quot;
--- a Larson cartoon</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">OpenAI to Retire ChatGPT Atlas Browser Less Than a Year After Launch</div>
-            <div class="meta">2026-07-10</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>OpenAI to Retire ChatGPT Atlas Browser Less Than a Year After Launch</h2>
-            <p><strong>Slashdot | 2026-07-10</strong></p>
-            <a class="original-link" href="https://slashdot.org/story/26/07/10/0852224/openai-to-retire-chatgpt-atlas-browser-less-than-a-year-after-launch?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The list doesn&#39;t look too useful. Obviously inspired by the Google list in that style it mostly lists deprecated models being phased out. It&#39;s not like they killing for example GPT-5.1 left a gap. GPT-5.2 was a drop-in replacement and they didn&#39;t promise GPT-5.1 to exist for longer.
-
-It surely spies on you and your browsing habits.  So, that&#39;s bad.It also bypasses ads to summarize content for you.  So, that&#39;s good.Unless you are hosting a site and rely on add revenue.  Then its bad.  Especially if it is successful at answering captchas.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-&quot;By the time they had diminished from 50 to 8, the other dwarves began
-to suspect &quot;Hungry.&quot;
--- a Larson cartoon</div>
+May Euell Gibbons eat your only copy of the manual!</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2185,12 +2283,170 @@ John Dickerson is host of CBS News Prime Time With John Dickerson, co-host of th
         </div>
         
         <div class="card" onclick="openModal('content-42')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Slothful summer app lets you scroll simply by tilting your head</div>
+            <div class="meta">2026-07-10</div>
+        </div>
+        
+        <div id="content-42" style="display:none;">
+            <h2>Slothful summer app lets you scroll simply by tilting your head</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-10</strong></p>
+            <a class="original-link" href="https://www.theregister.com/personal-tech/2026/07/10/slothful-summer-app-lets-you-scroll-simply-by-tilting-your-head/5270096">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Destructive Windows backdoor stuffs multiple wipers and ransomware code into a single package</div>
+            <div class="meta">2026-07-10</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
+            <h2>Destructive Windows backdoor stuffs multiple wipers and ransomware code into a single package</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-10</strong></p>
+            <a class="original-link" href="https://www.theregister.com/security/2026/07/10/destructive-windows-backdoor-stuffs-multiple-wipers-and-ransomware-code-into-a-single-package/5270053">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Microsoft says GigaWiper combines at least 3 malware families into one modular tool
+
+A newly identified destructive Windows backdoor combines ransomware-like encryption with multiple data-wiping features, according to Microsoft.
+
+Last October, the Redmond threat-hunting team first spotted attacks using the Golang-based implant they&#39;ve named GigaWiper.
+
+Its developers stuffed multiple malware families into the software as on-demand commands, giving criminals a Swiss Army knife of command-and-control (C2) and destructive capabilities, including multiple wiping commands and file encryption without any possibility of decryption.
+
+“The consolidation of multiple destructive capabilities into a modular backdoor reflects a notable shift in wiper malware, which are typically designed purely to destroy rather than to extort and carry real-world consequences,” Microsoft Threat Intelligence wrote in a Thursday blog.
+
+Microsoft declined to answer The Register&#39;s questions about the scale and scope of GigaWiper attacks.
+
+In the blog, Redmond’s malware analysts said they uncovered two types of GigaWiper samples in victims’ environments, and both are unstripped portable executable files written in Golang.
+
+One is a standalone wiper that operates at the physical disk level, as opposed to deleting individual files. It overwrites raw disk content, removes partition metadata, and then reboots the system using Windows shutdown functionality with restart and zero-delay.
+
+The second sample is the more interesting one. It includes the same disk-wiping functionality, but that’s just one component of the backdoor. This malware also establishes persistence and sets up C2 communication using RabbitMQ over AMQP for receiving commands from the C2 server, and Redis for updating command status and output.
+
+GigaWiper also organizes its commands into different categories, including &quot;always run&quot; for tasks such as continuous screen recording, &quot;manage command&quot; for system management functions, and separate &quot;special command&quot; and &quot;shell command&quot; modes for executing additional functionality.
+
+These include the standalone wiper command, along with another command that disables Windows recovery, triggers a blue screen of death (BSOD), and leaves the device unable to boot.
+
+It also has a destructive command based largely on Crucio ransomware. It encrypts files with randomly generated keys that are never saved, which means victim organizations will never be able to decrypt these files.
+
+Another command bulk encrypts or decrypts files with AES-256 in Cipher Block Chaining (CBC) mode, while a different command uses MinIO Client (mc) to upload stolen files to remote storage.
+
+The malware also runs PowerShell commands, takes screen shots and recordings of the compromised device, collects system info, clears Windows event logs, and allows remote control over the system along with keyboard and mouse control - among other capabilities that attackers can use at will.
+
+According to Redmond, GigaWiper combines components from at least three previously separate malware families, including Crucio ransomware, a Go reimplementation of FlockWiper, and a standalone disk wiper.
+
+“Overall, these findings show the evolution of the actor’s tooling over time,” the security sleuths wrote. “Functionality was merged into a single robust backdoor, granting the actor more ways to control and destroy infected systems.” ®
+
+ScrollPods is Mac-only, and you&#39;ll need compatible AirPods
+
+Microsoft says GigaWiper combines at least 3 malware families into one modular tool
+
+PARTNER CONTENT: Why platform teams are swapping DIY Kubeflow for Canonical&#39;s managed service
+
+Open source recreation costs a fraction of the original and may even work with Twiggy drives
+
+Some ideas need workshopping, others need a warning light
+
+Green groups want licenses frozen before a million satellites litter the exosphere
+
+Firm faces quandary of wanting to help the environment, but also wanting to force AI on everyone
+
+With GPT-Live, talking, listening, and formulating answers all happen at once
+
+The newly renamed SpaceXAI wants you to believe little ol&#39; Grok is all grown up
+
+Third-party testing shows heterogeneous compute platform combining H200s and SN50 RDUs churning out 763 tok/s in MiniMax M2.7
+
+As GitHub struggles to manage AI load, challengers take aim
+
+PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
+
+PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
+
+Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
+
+Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
+
+On the plus side, infosec&#39;s a good bet for a long, stable career
+
+Next version of Linux Mint’s desktop has both kinds of display server
+
+6.7 is now current, and in 6.8 you&#39;re getting Wayland whether you like it or not
+
+Now with Markdown support and smarter formula error handling – plus integrated AI, though it&#39;s off by default
+
+Retro-computing fun for the nostalgic with first (and last) release to use Motif instead of GTK
+
+More Rust, but more trouble with AI slop, too
+
+Nextcloud rollout shows locally controlled storage is one thing; getting users off Office is quite another</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-44')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">LisaFPGA brings Apple's magnificent misfire back in programmable logic</div>
+            <div class="meta">2026-07-10</div>
+        </div>
+        
+        <div id="content-44" style="display:none;">
+            <h2>LisaFPGA brings Apple's magnificent misfire back in programmable logic</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-10</strong></p>
+            <a class="original-link" href="https://www.theregister.com/personal-tech/2026/07/10/lisafpga-brings-apples-magnificent-misfire-back-in-programmable-logic/5269951">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-45')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Orbital datacenter gold rush needs an environmental review, FCC told</div>
+            <div class="meta">2026-07-10</div>
+        </div>
+        
+        <div id="content-45" style="display:none;">
+            <h2>Orbital datacenter gold rush needs an environmental review, FCC told</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-10</strong></p>
+            <a class="original-link" href="https://www.theregister.com/on-prem/2026/07/10/orbital-datacenter-gold-rush-needs-an-environmental-review-fcc-told/5269863">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-46')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">OpenAI's Atlas browser doesn't make it to its first birthday</div>
+            <div class="meta">2026-07-10</div>
+        </div>
+        
+        <div id="content-46" style="display:none;">
+            <h2>OpenAI's Atlas browser doesn't make it to its first birthday</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-10</strong></p>
+            <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/10/openais-atlas-browser-doesnt-make-it-to-its-first-birthday/5269818">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-47')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">AI-driven datacenter builds drive Microsoft's emissions up a quarter in one year</div>
+            <div class="meta">2026-07-10</div>
+        </div>
+        
+        <div id="content-47" style="display:none;">
+            <h2>AI-driven datacenter builds drive Microsoft's emissions up a quarter in one year</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-10</strong></p>
+            <a class="original-link" href="https://www.theregister.com/on-prem/2026/07/10/ai-driven-datacenter-builds-drive-microsofts-emissions-up-a-quarter-in-one-year/5269924">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
             <div class="title">The FCC is cracking down on DJI tech that dodged the foreign drone ban</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-48" style="display:none;">
             <h2>The FCC is cracking down on DJI tech that dodged the foreign drone ban</h2>
             <p><strong>The Verge | 2026-07-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/964342/fcc-crack-down-dji-front-companies-xtra-skyrover-sgs-lab">Visit Original Website</a>
@@ -2203,7 +2459,7 @@ Last year, we told you about Xtra, the company that lets DJI sneak its popular c
 
 But it appears the FCC is finally doing something about “DJI front companies,” as watcher Konrad Iturbe dubbed them last year. Today, the FCC is fining eight of them $25,000 each — and giving them until Monday, July 20th, just 10 calendar days, to answer the FCC’s questions before the agency takes further action.
 
-Those companies include Cogito Tech, Fixaxo Technology, Lyno Dynamics, Skyhigh Tech, Spatial Hover, SZ Knowact (the company behind Skyrover), WaveGo Tech, and Xtra Technology. All are being fined because they didn’t answer the FCC’s letters to begin with.
+Those companies include Cogito Tech, Fixaxo Technology, Lyno Dynamics, Skyhigh Tech, Spatial Hover, SZ Knowact and WaveGo Tech (both of whom are behind Skyrover), and Xtra Technology. All are being fined because they didn’t answer the FCC’s letters to begin with.
 
 In order to import, sell, and market any gadget in the United States that uses radio frequencies, you need the FCC to authorize that device’s radios — but on December 22nd, the FCC added all foreign drone companies to its Covered List, which keeps the FCC from issuing authorizations to those companies because of supposed national security risks.
 
@@ -2234,13 +2490,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-49')">
             <div class="source">The Verge</div>
             <div class="title">Apple sues OpenAI for allegedly stealing hardware secrets</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-49" style="display:none;">
             <h2>Apple sues OpenAI for allegedly stealing hardware secrets</h2>
             <p><strong>The Verge | 2026-07-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/964350/apple-openai-lawsuit-trade-secrets">Visit Original Website</a>
@@ -2282,13 +2538,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">A decade later, Pokémon Go finally made good on its original promise</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>A decade later, Pokémon Go finally made good on its original promise</h2>
             <p><strong>The Verge | 2026-07-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/games/964022/pokemon-go-10th-anniversary-mewtwo-nyc-go-fest-2026">Visit Original Website</a>
@@ -2320,13 +2576,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">ICE is threatening to deport witnesses of its latest shooting</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>ICE is threatening to deport witnesses of its latest shooting</h2>
             <p><strong>The Verge | 2026-07-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/964294/ice-shooting-houston-lorenzo-salgado-araujo">Visit Original Website</a>
@@ -2368,13 +2624,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Nvidia&#8217;s biggest RAM supplier just had a trillion-dollar debut on Wall Street</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Nvidia&#8217;s biggest RAM supplier just had a trillion-dollar debut on Wall Street</h2>
             <p><strong>The Verge | 2026-07-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/964121/sk-hynix-nvidia-ram-stock-market-debut">Visit Original Website</a>
@@ -2394,13 +2650,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-47')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">Spotify will let you fine-tune your weekly Release Radar playlist</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-47" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Spotify will let you fine-tune your weekly Release Radar playlist</h2>
             <p><strong>The Verge | 2026-07-10</strong></p>
             <a class="original-link" href="https://www.theverge.com/entertainment/964021/spotify-release-radar-algorithm-controls">Visit Original Website</a>
@@ -2420,13 +2676,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-48')">
+        <div class="card" onclick="openModal('content-54')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The Download: Claude’s inner workings and OpenAI’s “super app”</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-54" style="display:none;">
             <h2>The Download: Claude’s inner workings and OpenAI’s “super app”</h2>
             <p><strong>MIT Technology Review | 2026-07-10</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/10/1140316/the-download-anthropic-claude-hidden-space-openai-super-app/">Visit Original Website</a>
@@ -2475,13 +2731,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-55')">
             <div class="source">MIT Technology Review</div>
             <div class="title">Sperm donors need limits, says a European fertility group</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-55" style="display:none;">
             <h2>Sperm donors need limits, says a European fertility group</h2>
             <p><strong>MIT Technology Review | 2026-07-10</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/10/1140289/sperm-donors-need-limits-says-a-european-fertility-group/">Visit Original Website</a>
@@ -2550,13 +2806,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-56')">
             <div class="source">MIT Technology Review</div>
             <div class="title">Anthropic found a hidden space where Claude puzzles over concepts</div>
             <div class="meta">2026-07-09</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-56" style="display:none;">
             <h2>Anthropic found a hidden space where Claude puzzles over concepts</h2>
             <p><strong>MIT Technology Review | 2026-07-09</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/09/1140293/anthropic-found-a-hidden-space-where-claude-puzzles-over-concepts/">Visit Original Website</a>
@@ -2629,13 +2885,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-57')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The Download: a nuclear landmark, and China eyes Nvidia chips</div>
             <div class="meta">2026-07-09</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-57" style="display:none;">
             <h2>The Download: a nuclear landmark, and China eyes Nvidia chips</h2>
             <p><strong>MIT Technology Review | 2026-07-09</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/09/1140283/the-download-nuclear-power-milestone-nvidia-china-ai-chips/">Visit Original Website</a>
@@ -2686,13 +2942,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-58')">
             <div class="source">MIT Technology Review</div>
             <div class="title">Four nuclear reactors hit a big milestone in the US</div>
             <div class="meta">2026-07-09</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-58" style="display:none;">
             <h2>Four nuclear reactors hit a big milestone in the US</h2>
             <p><strong>MIT Technology Review | 2026-07-09</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/09/1140235/nuclear-reactor-milestone-criticality/">Visit Original Website</a>
@@ -2747,13 +3003,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-53')">
+        <div class="card" onclick="openModal('content-59')">
             <div class="source">MIT Technology Review</div>
             <div class="title">EmTech AI 2026: The Rise of the AI Platform</div>
             <div class="meta">2026-07-08</div>
         </div>
         
-        <div id="content-53" style="display:none;">
+        <div id="content-59" style="display:none;">
             <h2>EmTech AI 2026: The Rise of the AI Platform</h2>
             <p><strong>MIT Technology Review | 2026-07-08</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/08/1140223/emtech-ai-2026-the-rise-of-the-ai-platform/">Visit Original Website</a>
@@ -2776,13 +3032,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-54')">
+        <div class="card" onclick="openModal('content-60')">
             <div class="source">The Next Web</div>
             <div class="title">Volkswagen will halve its model range, but stays silent on the 100,000 job cuts</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-54" style="display:none;">
+        <div id="content-60" style="display:none;">
             <h2>Volkswagen will halve its model range, but stays silent on the 100,000 job cuts</h2>
             <p><strong>The Next Web | 2026-07-10</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/volkswagen-halve-model-lineup-capacity-cuts">Visit Original Website</a>
@@ -2836,13 +3092,13 @@ That gap is the whole story. Volkswagen has told the world how many cars it will
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-55')">
+        <div class="card" onclick="openModal('content-61')">
             <div class="source">The Next Web</div>
             <div class="title">New ‘Ex-Elon’ ETFs let investors track the market while skipping Musk’s companies</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-55" style="display:none;">
+        <div id="content-61" style="display:none;">
             <h2>New ‘Ex-Elon’ ETFs let investors track the market while skipping Musk’s companies</h2>
             <p><strong>The Next Web | 2026-07-10</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/subversive-ex-elon-etfs-exclude-musk-companies">Visit Original Website</a>
@@ -2880,13 +3136,13 @@ For now, the pitch is simple, and narrow. If you want the index without one part
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-56')">
+        <div class="card" onclick="openModal('content-62')">
             <div class="source">The Next Web</div>
             <div class="title">The first flights of the US air-taxi program carried organs, not passengers</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-56" style="display:none;">
+        <div id="content-62" style="display:none;">
             <h2>The first flights of the US air-taxi program carried organs, not passengers</h2>
             <p><strong>The Next Web | 2026-07-10</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/beta-evtol-first-flights-us-pilot-program">Visit Original Website</a>
@@ -2924,13 +3180,13 @@ For now, the US programme has produced something concrete, real flights doing us
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-57')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">The Next Web</div>
             <div class="title">Europe torched its own rulebook to please business, and business is still unhappy</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-57" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>Europe torched its own rulebook to please business, and business is still unhappy</h2>
             <p><strong>The Next Web | 2026-07-10</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/eu-red-tape-bonfire-industry-unhappy-digital-omnibus">Visit Original Website</a>
@@ -2970,13 +3226,13 @@ For now, Europe has lit its bonfire and satisfied few who gathered round it. The
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-58')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">The Next Web</div>
             <div class="title">Monitoring systemic drift may guide the next phase of organizational resilience</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-58" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>Monitoring systemic drift may guide the next phase of organizational resilience</h2>
             <p><strong>The Next Web | 2026-07-10</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/systemic-drift-ai-organizational-resilience">Visit Original Website</a>
@@ -3012,13 +3268,13 @@ As Hyman and Rachlin’s work suggests, anticipating systemic drift may compleme
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-59')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">The Next Web</div>
             <div class="title">What makes the best stablecoin payment solution?</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-59" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>What makes the best stablecoin payment solution?</h2>
             <p><strong>The Next Web | 2026-07-10</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/what-makes-the-best-stablecoin-payment-solution">Visit Original Website</a>
@@ -3068,13 +3324,13 @@ For most businesses, the best starting point is the payment flow itself: custome
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-60')">
+        <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Apple sues OpenAI, two former employees for trade secrets theft - Reuters</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-60" style="display:none;">
+        <div id="content-66" style="display:none;">
             <h2>Apple sues OpenAI, two former employees for trade secrets theft - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-10</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQU2NSa1NYbHVibGtrWnV6T2hRd180dUp6WWxFQ2c0bm1POHhGeHk1TlpBQXV6dDBKZVh0MWpkbUVacjlFczV4RmQ2N3ctYVEtcTVrWjdXYTJ1WmRkZ2U5WEh2Q3Nkc05LREJaM19IQS1lRzQ5Q051aGdKRjh1QnIyaENVR2FxWllSMzUycmczRXV5MnVRNFBOMG5RUU5jYkpjYVdiMmMzNjcwdVBZd3AtREJSNEVpdVFnd2JQOHRDM1ZUWjFCS1JMTQ?oc=5">Visit Original Website</a>
@@ -3082,13 +3338,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">US insists Iran commit to stopping attacks in Hormuz strait, say US officials - Reuters</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-67" style="display:none;">
             <h2>US insists Iran commit to stopping attacks in Hormuz strait, say US officials - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-10</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxOTDI4WnJQY1UzQVd1QjZQMXRFUkM2SHdzNV9EYmd2cTQ2a1h3cTN0NTlza0JSMWFlbFhibmY0SnVRSHU0U2ZsRGpoMEhMamd5RXNZUXZRVUJRQnVzVGhtajFJbHdXSUtjNy1iOGpTODU3dG5YLUphaGlYRDRXLUZSdXF2U3laZDhaeTVvalFJbjlGOGJYaTFFdnRuMUJmZXE3U1Z0LTRxaUtiNTNnQnQ2bGdDZEVhUzV4OHdBVlBTSVVBdw?oc=5">Visit Original Website</a>
@@ -3096,13 +3352,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">King Charles meets Prince Harry's children for first time since 2022 - Reuters</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-68" style="display:none;">
             <h2>King Charles meets Prince Harry's children for first time since 2022 - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-10</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPRzhGeGdRU081emxVYlF3cE5VVy1Ib1h0cHBnRHN5ZlVRMWt3M0ZrcVVfU2hkV19iT29hY2NJNFpBNmJCQTE4T3JteGtVdjJ6QmJ3bmlKOUhwQ3VQQTJKU1NjeWNwZVdEcld0T2FRUlhQV0dMdGhuWjc4U1dOMmlVaFJxMFlLRTc2cHZyMjV0NlctRURZY2FweEwwN3lsb1FnVHR0WFRfWnRXZ0ZpM2VaVGQ4eWJoUVhYSU9XS1JoV0w?oc=5">Visit Original Website</a>
@@ -3110,13 +3366,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">US senators say agreement reached with Trump on Russia sanctions bill - Reuters</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-69" style="display:none;">
             <h2>US senators say agreement reached with Trump on Russia sanctions bill - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-10</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPMG9jWDI1MnV3NXctZEhMVGpDb0ZmdTI5U1ZBV2xZTUN6bU52SUxRVmRIZURoOUtfcDYwN200WTRCZ1FuRWVOX215eFBKTlM1TDVHLWZHTlJJYmNPRXU4TlBDYWtKaE1oZUlLWk1Ta0JvRmpwOTNvaG1jNW5sWlU3ekc0ZkxFQ2dpMVdpOENlUXdnSlB4NmlJTDhtakNQSjhScHJLakxhb2ZEcXExeVlDMw?oc=5">Visit Original Website</a>
@@ -3124,13 +3380,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">SK Hynix CEO sees worst memory shortage in 2027, demand to outstrip supply beyond 2030 - Reuters</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-64" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>SK Hynix CEO sees worst memory shortage in 2027, demand to outstrip supply beyond 2030 - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-10</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxPYjVueXBiSlgxQ3VUNFpJWWRsZlJtSkVUeEgyaWNDOThCcERWVHZVZnJxQm5XRUExZy1xTC1PT3JRZDVrbUprT0NlajM3SGwtT3AwbFc3aDhMZ3lGblgzbW5zOXFjOUE4Z25PdW5sR1BOZDlFdkNnYkMzZkRmSUhjNjE3c0wwLTBDOEtMMFVqYUQwTmdjeVB6NXE3SXlWRnRobjRUSXJnMWhxS2lYQ1RXVkw4d2hVVS01V0Q4cUFZa21SOUNwRnlWdnpVUWE?oc=5">Visit Original Website</a>
@@ -3138,13 +3394,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-65')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">US makes it easier to export Nvidia AI chips and military equipment to the UAE - Reuters</div>
             <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-65" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>US makes it easier to export Nvidia AI chips and military equipment to the UAE - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-10</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPd0RpM0tkVDY3RXZ5NzBYZnZKR1hkME1NSVE2TVdNYUJCSjY5VWk1LUhfUFd3NTlMdktER1MtOHhEUjVVOHRhSHcxTGh2TFlFMTNsZmt2dzk0WTdFbHUxZm5SNExFX3JyNldDWHpYcHg1dFRGWGdoX2Y5QU1UUGR1TmpodmktT3lXenhad3JqOTMtUERoZmpFX0dMTFh1VEtQdEp5ZERMRGJYNjloTG94X05Ka2pYQWFlU1NENjFTd0tTN002dFBOb3g0d0QxUQ?oc=5">Visit Original Website</a>
@@ -3152,13 +3408,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-66')">
+        <div class="card" onclick="openModal('content-72')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Intelligence Officials Say U.S. Has Retrieved Craft of Non-Human Origin - The Debrief</div>
             <div class="meta">2023-06-05</div>
         </div>
         
-        <div id="content-66" style="display:none;">
+        <div id="content-72" style="display:none;">
             <h2>Intelligence Officials Say U.S. Has Retrieved Craft of Non-Human Origin - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2023-06-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPWlRlRmpBMjViUjE2TWNHQ25obk9PYmIxcjJrYTRjYXo1cGxFZEVvZzN1TXFCNWlRTWtJYlNxbUdKUVhfdHE5WFI0bmZBZVgwVVloZllsTnBjakxRQnhoNl9PeDlObTV0SlRwSmpkMFlsbklQVFdxRE11ZzJ3bTQtcHRZVHRCeGt6Nkxkdg?oc=5">Visit Original Website</a>
@@ -3166,13 +3422,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
+        <div class="card" onclick="openModal('content-73')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Earth Has a ‘Quasi-Moon’ Lurking Nearby, and These Are the First Images of the Space Object That Prove It - The Debrief</div>
             <div class="meta">2026-07-07</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-73" style="display:none;">
             <h2>Earth Has a ‘Quasi-Moon’ Lurking Nearby, and These Are the First Images of the Space Object That Prove It - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-07</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMixAFBVV95cUxOYlhDeDhZNVh6dE1XelZhOXAtV1Z3OTBOVW1MYkFpLTBvUnVTZ1R5S0xaZjFiY2JqQ3JGbDl0SXdNUU1Ncy1hU0pXRG83bGUyOGEtYTgwMFJCNDhxeVpwSlhHTTdxc0ZJYlBoeERKcS1HR2Y5amhQd1lQVndwcHpXa2xMMFB2MEVoOXBBRHBuaDh3RFlhTEZCbE44WlkyaWp4NHZZaTFZQkNkXzRzMlFnV3RpWklzV2g0RDZNQzFDTnplbm5Q?oc=5">Visit Original Website</a>
@@ -3180,13 +3436,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-74')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Know No Mercy: The Russian Cops Who Tried To Storm Kyiv By Themselves - The Debrief</div>
             <div class="meta">2022-05-20</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-74" style="display:none;">
             <h2>Know No Mercy: The Russian Cops Who Tried To Storm Kyiv By Themselves - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2022-05-20</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPZ2p1c2NieTFuTUNhRE1UT09ZcGw2WENrbFRsSGs1UHNvU1ZtcHZMbkl3Slp3U1VGbG8xaThOUl96b2ZDZjhNby1xd3RCNDJVMFg0UVhxcGJpQUVvSmtnbWtMaExncVdTTDdneWc2N2JNU29FaGZKN2VrQ05DTTlsN1BQRUVKUEhwT2g2bmEtTGRteklwYkZz?oc=5">Visit Original Website</a>
@@ -3194,13 +3450,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
+        <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Look: Japan’s Hayabusa2 Spacecraft Just Had a Close Encounter with the Mysterious Asteroid ‘Torifune’ - The Debrief</div>
             <div class="meta">2026-07-06</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-75" style="display:none;">
             <h2>Look: Japan’s Hayabusa2 Spacecraft Just Had a Close Encounter with the Mysterious Asteroid ‘Torifune’ - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxOX043OC1yaXdySFJZLWZBcnVERmxLNm1ic21zT0tpYVFVa1haVlEyaWtIN01CeG9JT3d1dUIxS0FOZEMyMUdzM1M0ejZGd2VRNVNLQ3Q4R29WOGE4WDdkU3J6bmE0RUZvZHkzclFsQ3lmdENMWE9NMTdqN281VzhDOEJZNFl0NS1WdW9mTUpjVnhqUE9GVWJRVGl0ZXFZWVRqTGliU3ZjLV9tcWpVUi1rc0Q4ek45Q2tDbWFqaS1n?oc=5">Visit Original Website</a>
@@ -3208,13 +3464,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
+        <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Archaeologists Opened a Chinese Lord’s 2,600-Year-Old Tomb—and Discovered Dozens of “Deactivated” Metallic Artifacts - The Debrief</div>
             <div class="meta">2026-07-07</div>
         </div>
         
-        <div id="content-70" style="display:none;">
+        <div id="content-76" style="display:none;">
             <h2>Archaeologists Opened a Chinese Lord’s 2,600-Year-Old Tomb—and Discovered Dozens of “Deactivated” Metallic Artifacts - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-07</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxNV0EtXzhmU3NtOGMycTdMT2RoTlIyUHRrdnZ5NzB4SEk5TkpUbmJWdS1sMGxwMUZOZFE5NmM2X2xTbHV5V3NOalF1bTdBN2c2eGc4NlY0WlJKZzlXelFWY0ZfRGFoYjBCR2ZsUU5ESFpqV0d3MTRKcTBKVW1IaHRPcTY3TGN3RnZ5cm5NU0xLUTBJdVVRU0twM0JnSmV5WmxOQVhNM2xmaTBpTm5raUVwLWl3TmhPLVBaQkVVYmlrSURrUjYxQ3BwcWJ0VHJPMVFCYXc?oc=5">Visit Original Website</a>
@@ -3222,13 +3478,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-71')">
+        <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">“A Potential Minefield” in Earth’s Orbit Has Scientists Sounding the Alarm Over Hidden Objects Threatening Critical Satellites - The Debrief</div>
             <div class="meta">2026-07-09</div>
         </div>
         
-        <div id="content-71" style="display:none;">
+        <div id="content-77" style="display:none;">
             <h2>“A Potential Minefield” in Earth’s Orbit Has Scientists Sounding the Alarm Over Hidden Objects Threatening Critical Satellites - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-09</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxOc2ExcGtLTjlXNTdFZGptVXhBVEREX1pTeDYzV2FFYTdTMkxIVTl6SEEzYjBUcUp2QVlrQVVmdWlBQVN3MUZBY0NRV0FDLURRbWxzUmQyUlE5cHBDZFcyb2VxUDZIRUVvcmNBQWR6eW9CaGx5V1d0YjI5Vl92RDh4ZXMwc2RPZy1HWndkbFJaWktjZl9wZ0N4X2dlQXhSWlZYeHFYbkc4VU9Jb2NaN2tlTlNxY1ptN293ZDdMVUh2b2p1OGVnbjEzUkxVWTd6NlZ1STVINVhJbGNyYUhONnN2WQ?oc=5">Visit Original Website</a>
@@ -3236,13 +3492,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-72')">
+        <div class="card" onclick="openModal('content-78')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">China Plans to Let Top AI Firms Buy Limited Amount of Nvidia H200 Chips - The Information</div>
             <div class="meta">2026-07-08</div>
         </div>
         
-        <div id="content-72" style="display:none;">
+        <div id="content-78" style="display:none;">
             <h2>China Plans to Let Top AI Firms Buy Limited Amount of Nvidia H200 Chips - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-08</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOeHc1TnlkaGh6RlRMaTlkZmlQWk9ORjBYSFdiMGNmUW9SN2xxcnVFLTJ0UWR5RWRFU242X0ozZWQ1SkVrd2RBdU5BZlhCQmV0a2ZEVHVUWU5QTkpoSHpLOHhMWVNweFppUWdCemZKS1UyQ0hselFpcnFBX0FadHRZVTBOTVpJeldKbkVlTlJ4WE9sUGtYT3J5S3dSV0Q1bU1PcVFyMnZ4cUE?oc=5">Visit Original Website</a>
@@ -3250,27 +3506,41 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-73')">
+        <div class="card" onclick="openModal('content-79')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Exclusive: Elon Musk Tells Tesla Staff to Move to Using Grok - The Information</div>
-            <div class="meta">2026-07-09</div>
+            <div class="meta">2026-07-10</div>
         </div>
         
-        <div id="content-73" style="display:none;">
+        <div id="content-79" style="display:none;">
             <h2>Exclusive: Elon Musk Tells Tesla Staff to Move to Using Grok - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-07-09</strong></p>
+            <p><strong>"site:theinformation.com" - Google News | 2026-07-10</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNZ1ZabE1wcm5hVFFCclZ6VzdBX1VqeTRPclhXYzB0ZVE5RG5EaXJfRXdnR1R1RzdXUDBxZlh6ZjdlX0s1bkVOOGE4dTQ2b3ZhbWk4clVtT1JxN2dsWmhYbjZfMHBYMHpLMHVPeE1xeFhhSW5ERUQ3TUtkWG40TWNaanBZWDFLUXY5WXFkdi1feF9PUDFndkl4VS1n?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-74')">
+        <div class="card" onclick="openModal('content-80')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">Power Developer Behind OpenAI’s Stargate Data Center Is In Talks to Sell Stake - The Information</div>
+            <div class="meta">2026-07-09</div>
+        </div>
+        
+        <div id="content-80" style="display:none;">
+            <h2>Power Developer Behind OpenAI’s Stargate Data Center Is In Talks to Sell Stake - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-07-09</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQLWMwTnZaRzZyN2JMdHEwdjlnNDVlb3ZXUkcweWUyMGpiOVhPSUNyUFppM3lzZ184ajlkTEV0Q1A2WlRCanR6by1UQ0Z0ek5VbjdGcDdXZ3dpTW5xS3J6VkZYd2M5S2dFdVBNWC15bk5OSVN3bUJJZ0ZYM0REYTBmM0xCME9vR21wSzkxOENkbGc4Nm8tRTBiVDBLdG41ajBWbmdDMGY1U0V2VWhP?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-81')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Exclusive: SpaceXAI Plans to Launch New Model with Cursor as Soon as Wednesday - The Information</div>
             <div class="meta">2026-07-07</div>
         </div>
         
-        <div id="content-74" style="display:none;">
+        <div id="content-81" style="display:none;">
             <h2>Exclusive: SpaceXAI Plans to Launch New Model with Cursor as Soon as Wednesday - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-07</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPR3dvZzVNOWwxMUhnaTFwaHYwd3JXT3NJeXRCLTZmM1FJc2FXckcwVGg2dUF4WXRKdFdFR1VmSHZqYnd4MmJUNGZWcGljaG9qc3d6dnRoTy12VXlOUExOZ1cyVXNBakpsZTl3b2tNRjI3bGU2SU5tV3RQU0Nidy1icGZQclNGc0dEUXU0SWlxZ2lDQ2hqWlhfUDdFMHlZMmNfaTNhb3BVUQ?oc=5">Visit Original Website</a>
@@ -3278,13 +3548,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-75')">
+        <div class="card" onclick="openModal('content-82')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">When Andreessen Horowitz Has a Sticky Situation to Solve, It Calls ‘The Wolf’ - The Information</div>
             <div class="meta">2026-07-07</div>
         </div>
         
-        <div id="content-75" style="display:none;">
+        <div id="content-82" style="display:none;">
             <h2>When Andreessen Horowitz Has a Sticky Situation to Solve, It Calls ‘The Wolf’ - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-07</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNWk54N2RCTGZNWHVuQmROZW1wS2RkTE5rTlZUczF3ZDRkLXNKWWY1Xzh6R291eGU5eVc2WnlRWUlZU19ETlRvR2hJY3lCWTlrNG5JaTRtSFVBN1p4THYyVzk5cTlkZ0czSUMxMk9XWGNxWlZiQ3VERnVBRWZ0cTBOQkpVSUdyeXZXelptVmJlbDA0V3MtLVJuWA?oc=5">Visit Original Website</a>
@@ -3292,30 +3562,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-76')">
+        <div class="card" onclick="openModal('content-83')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Microsoft Memo Details AI App Overhaul to ‘Earn the Right to Exist’ - The Information</div>
             <div class="meta">2026-07-02</div>
         </div>
         
-        <div id="content-76" style="display:none;">
+        <div id="content-83" style="display:none;">
             <h2>Microsoft Memo Details AI App Overhaul to ‘Earn the Right to Exist’ - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-02</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPSnE2S2hsMkd0MlZNZUNTeTRLMUNtSGxPZFVLQWNWTnRGTE5Oa1hhOXZqbVVhblpPa28xTWRmUXVrRFZVdEkwS2VCYTdUSHZfbVBCUTJYZzRUOVNCMEdtT0xzV1hTbTNOalZZMXZzamY1TXVVcEpMcjIzb19Cb21VVExRd0dTVmJHYkUyUWpCOGZLd3lYU1NydDFOVQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-77')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">OpenAI Discovers New Way to Cut Inference Costs in Half - The Information</div>
-            <div class="meta">2026-06-30</div>
-        </div>
-        
-        <div id="content-77" style="display:none;">
-            <h2>OpenAI Discovers New Way to Cut Inference Costs in Half - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-06-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNSVFNUHpDQkVVazdjUmloMlM2eFZzc1J6bXVXQnJQdHFtQXppWm85V2pJcTIyM3FsUnpxSDh0YmNpQzBnZ3E5WTU3STk1b1d6TDBLdjRkX0NJanp1eG83Vnp0bTdfOGtieWpnREtpdTBmd0RWQndHbkxmTWg4UkY1ZDZrSl9iQXhUUDJIOHJETDJSZi1iVW9wLWxCdjJER2E2Znp6RA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
