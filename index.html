@@ -154,11 +154,105 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Lawsuit claims Meta's layoff decisions were made by AI, not humans</div>
+            <div class="title">Microsoft’s Secure Boot has been broken for a decade and no one noticed until now</div>
             <div class="meta">2026-07-14</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Microsoft’s Secure Boot has been broken for a decade and no one noticed until now</h2>
+            <p><strong>Ars Technica - All content | 2026-07-14</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2026/07/microsoft-secure-boot-has-been-broken-for-most-of-its-existence/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">An industry-wide standard Microsoft invented to protect Windows, and later Linux, devices from firmware infections has been trivial to bypass for 13 of its 14 years of existence. The discovery was made by researchers at security firm ESET after identifying 11 firmware images, at least one from 2013, that were known to be defective but remained signed by the software company anyway.
+
+The images are known as shims, which were invented to extend Secure Boot to Linux devices and utility software. Using a technique simple enough to be performed by novice hackers, these old, forgotten shims can be used to completely circumvent the protection, which is embedded into the UEFI (Unified Extensible Firmware Interface) of the device’s motherboard. The gaffe is the result of Microsoft, which oversees the signing of shims, failing to revoke the publicly available images once vulnerabilities were found in them.
+
+The threat extends to Windows and Linux users alike, since the shim can be installed on devices running both operating systems. From there, an attacker can subvert the mandated chain of digitally signed firmware to install malicious firmware that loads early in the boot process and persists after either the OS is reinstalled or a hard drive is replaced.
+
+“What makes these old shims dangerous is not a novel vulnerability,” ESET researcher Martin Smolár wrote Tuesday. “It’s that no new vulnerability is needed to bypass UEFI Secure Boot. An attacker needs no complicated exploitation primitives—only a copy of an old, still-trusted, but unrevoked shim binary and a basic understanding of how UEFI shims work. That is enough to bypass such an essential security feature as UEFI Secure Boot.”
+
+Secure boot was introduced in 2012 to blunt the threat of bootkits, the term for such malicious firmware. Without Secure Boot, attackers with brief physical access to a device—even when it’s turned off—can install bootkits similar to LoJax used by Russia state hackers in 2018, MosaicRegressor found in 2020, CosmicStrand in 2022, and BlackLotus in 2023. A handful of other in-the-wild bootkits are tracked under names including ESpecter, FinSpy, and MoonBounce.
+
+Most but not all bootkit malware requires attackers to have physical access to targeted devices. Such access is one of the threat models Secure Boot is explicitly required to protect against.
+
+A list of all 11 shims compiled by CERT shows that some were used by Linux distributors such as Redhat, OpenSuse, and Oracle. Others were part of third-party software such as PC-Doctor Finland’s Matriculation Examination Board. Many of them were built before certain protections, including SBAT and MOK deny lists, existed. Others contain accumulated bugs in their code or in second-stage binaries they authorize.
+
+Microsoft’s digitally signed UEFI bootloader for Windows is the sole anchor of trust on Windows machines. For a component to load during the boot process, the certificate must explicitly sign all other code executed during bootup.
+
+Shims work differently. They’re a secondary trust anchor, and they’re signed by Microsoft using one of its other UEFI certificates. From there, a certificate belonging to the motherboard or software maker that is embedded into the shim authorizes all software that’s subsequently loaded.
+
+When vulnerabilities are found in shims, Microsoft revokes them. In the case of the 11 shims, the company failed to do so, in some cases for more than a decade. The company finally revoked them in its regular monthly patch release in June, after ESET brought them to CERT’s and Microsoft’s attention.
+
+Microsoft has yet to explain how or why the lapse occurred. One possible cause is the highly complex way that Secure Boot works. Both the Windows Boot Manager and UEFI shims load two databases. The db database lists all allowed signing certificates and Authenticode hashes. The dbx contains certificates and hashes that are no longer trusted. For a component to be loaded, it must be authorized through the db and not revoked in the dbx.
+
+Given the high number of Linux components executed during bootup, listing each of them in these databases isn’t possible, since the dbx is allotted only 32kb of space. So Microsoft has resorted to other revocation methods, specifically SBAT (Secure Boot Advanced Targeting) and Secure Boot Security Version Number (SVN).
+
+“In short, where dbx revokes binaries, SBAT and Microsoft’s Secure Boot SVN revoke versions,” Smolár explained. “When a vulnerability is found in a UEFI application supporting one of these version-based revocation mechanisms, what really needs to be kept out is every build up to and including the broken one—and that can be captured by a version number much easier than by a long list of hashes.”
+
+Each component in the UEFI loader carries metadata that is signed by the same certificate authenticating the binary itself. This metadata names the component and assigns it a generation number that is incremented each time a new security fix ships.
+
+A boot-only variable in the UEFI stores the minimum acceptable generation number allowed for each component. The variable number is enforced by the shim rather than the firmware.
+
+The shim also embeds the policy so enforcement doesn’t rely exclusively on the external variable. This allows the incorporation of new policy through a mechanism known as the SbatLevel.
+
+“At every boot, the shim first verifies its own SBAT metadata against the policy—so an outdated shim can be made to reject itself—and then applies the same test to every binary it loads, refusing anything whose generation number falls below the minimum that the policy demands,” the researcher wrote.
+
+The complexity of the process doesn’t stop there. The upshot is that shims embed both a vendor-managed and built-in shim certificate that authorize all bootloaders and utilities loaded subsequently. Readers who want a more thorough description can consult this section of Tuesday’s post.
+
+Further complicating the process, even the expiration of the Microsoft certificate that signed the shims, which took place late last month, isn’t enough to revoke the ones ESET identified.
+
+The shims identified by ESET authorize secondary components that are known to be vulnerable to various exploits. The Oracle shim, for instance, signs a binary vulnerable to CVE-2015-5381. Smolár said the skill required to exploit the vulnerability is low. Other vulnerable shims fail to support protections, such as MOK deny-list enforcement and SBAT enforcement, both of which came into effect after the affected shim was released. Still other identified shims contain vulnerabilities in their own code.
+
+In the interest of brevity, many additional details included in Tuesday’s report are omitted from this article.
+
+As noted, these vulnerable shims can be used against Windows and Linux machines alike, although likely not Windows 11 Secured-core PCs in their default state. Any Windows user who has installed Microsoft’s June update batch is no longer vulnerable. Linux users should check the Linux Vendor Firmware Service or consult their distributor. Revocation statuses are available using the uefi-dbx-audit  script.
+
+The prospect that attackers have had the means to bypass Secure Boot for more than a decade through what amounts to hack-by-numbers scripts isn’t much of an endorsement of the mechanism proposed by Microsoft in partnership with hardware makers. As mentioned earlier, a key contributor to this debacle is its complexity.
+
+“This is a solid rebuke of the entire secure boot model,” HD Moore, a firmware security expert, CEO and founder of runZero, and a long-time critic of Secure Boot, said in an interview. His complaints include Microsoft being the de facto root of trust for the entire UEFI platform, the inability of the protection to scale sufficiently, and the ability for components to boot even after top-level certificates expire.
+
+“The end result is a huge number of unknown (to everyone but Microsoft) signed things that bypass Secure Boot—some of which can then be used to boot other things—and both have normal security bugs and other mistakes that mean they can be used to boot nearly anything,” Moore added. “The whole ecosystem is somewhat broken and needs a reboot.”</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Trump admin puts Americans in Congo on "do-not-board" list, barring return</div>
+            <div class="meta">2026-07-14</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
+            <h2>Trump admin puts Americans in Congo on "do-not-board" list, barring return</h2>
+            <p><strong>Ars Technica - All content | 2026-07-14</strong></p>
+            <a class="original-link" href="https://arstechnica.com/health/2026/07/americans-in-congo-barred-from-returning-home-amid-ebola-outbreak/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">The Trump administration on Monday barred US citizens in the Democratic Republic of the Congo from returning home amid an Ebola outbreak that continues to outpace response efforts.
+
+Reuters first reported late Monday that Americans currently in the DRC or those who have recently traveled to the Ebola-stricken country have been put on a “do-not-board” list. They cannot travel back to the US until they have spent 21 days in a third country. The order, taken under a transportation authority known as Title 49, was independently confirmed by Politico on Tuesday.
+
+Both outlets noted that roughly two dozen Americans who had been set to board flights home on Tuesday have already been blocked by the new rule. It remains unclear if the bar also applies to government workers. The Centers for Disease Control and Prevention has at least two dozen employees working in the DRC.
+
+The move adds to the already extremely stringent and controversial travel restrictions imposed by the Trump administration in an effort to wall itself off from the outbreak. Health experts continue to be critical of such restrictions, as they have historically been unsuccessful and harmful. Specifically, they discourage countries and people from being transparent about outbreaks and disease risks, hurt economies, and create stigma. There is also concern that such restrictions will limit humanitarian aid workers.
+
+Ebola is not a disease that readily spreads like respiratory viruses. It transmits via contact with bodily fluids while people are actively sick or recently deceased. It has been described as a disease of compassion because it primarily spreads to family, loved ones, caregivers, and medical personnel who have extensive contact with cases when they are most ill and infectious. In other words, it’s not a disease one would pick up by sitting next to someone who is merely coughing on an airplane.
+
+According to the CDC, “do-not-board” lists are intended to bar travelers who are “known or suspected to have a contagious disease,” not simply anyone who has been in a country with an outbreak.
+
+Still, if people unknowingly carried Ebola into the US, the country is well-equipped to handle the situation. The US has built an elite network of medical facilities that can safely isolate Ebola patients while offering high-quality care.
+
+In past Ebola outbreaks, no such stringent travel restrictions were implemented, and the US repatriated eight cases for high-level care. None of the repatriated patients transmitted the virus.
+
+Amid the Trump administration’s isolationist strategy, the World Health Organization is warning that the outbreak continues to spread out of control. On Tuesday, the United Nations health agency said it has less than half the funding it needs to properly respond to the outbreak. WHO has struggled with funding after the US withdrew its membership, removing a significant funding source.
+
+WHO said last week that four out of every five new Ebola cases have no link to known cases, indicating undetected spread. Officials warned that the true scale of the outbreak could be two- to four-times larger than current case counts. As of July 14, the DRC is reporting 1,963 cases and 719 deaths.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-2')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Lawsuit claims Meta's layoff decisions were made by AI, not humans</div>
+            <div class="meta">2026-07-14</div>
+        </div>
+        
+        <div id="content-2" style="display:none;">
             <h2>Lawsuit claims Meta's layoff decisions were made by AI, not humans</h2>
             <p><strong>Ars Technica - All content | 2026-07-14</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/07/lawsuit-claims-metas-layoff-decisions-were-made-by-ai-not-humans/">Visit Original Website</a>
@@ -200,13 +294,13 @@ Although there are 26 plaintiffs, the lawsuit is not a class action. The complai
 “Plaintiffs seek a preliminary injunction maintaining the status quo of their employment—preventing Meta from finalizing their separations, and from altering their compensation, benefits, equity vesting, or protected-leave status—pending an independent audit of the algorithmically assisted selection process and resolution of the merits of their claims in arbitration,” the lawsuit said.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Probe into explosive diarrheal cases points to Taco Bell and bad lettuce</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Probe into explosive diarrheal cases points to Taco Bell and bad lettuce</h2>
             <p><strong>Ars Technica - All content | 2026-07-14</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/07/taco-bell-eyed-in-explosive-diarrheal-outbreak-leafy-greens-suspected/">Visit Original Website</a>
@@ -254,13 +348,13 @@ People who experience frequent watery diarrhea should consult with their healthc
 This post was updated July 14, 2026 to include information provided in the CDC/FDA press briefing.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">US military sent explosive drone boats into combat for the first time</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>US military sent explosive drone boats into combat for the first time</h2>
             <p><strong>Ars Technica - All content | 2026-07-14</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/07/us-military-sent-explosive-drone-boats-into-combat-for-the-first-time/">Visit Original Website</a>
@@ -288,13 +382,13 @@ It’s unclear how the US military may continue deploying drone boats as Preside
 The US military has also been using one-way aerial attack drones for the first time during its war with Iran—LUCAS drones based in large part on Iranian-developed Shahed drones. Along with the drone boats, the United States is following the example of less powerful countries or factions that have used inexpensive drone weapons to pursue asymmetric warfare. The US military is currently trying to procure a new generation of cheaper surveillance and strike drones, especially after losing dozens of costly hunter-killer Reaper drones collectively worth more than $1 billion in the war against Iran.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">These painted e-tattoos could be the future of wearable biosensors</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>These painted e-tattoos could be the future of wearable biosensors</h2>
             <p><strong>Ars Technica - All content | 2026-07-14</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/07/these-painted-e-tattoos-could-be-the-future-of-wearable-biosensors/">Visit Original Website</a>
@@ -318,74 +412,6 @@ The painted sensors were tested in the lab on human subjects to monitor heart ac
 The team has filed a provisional patent for their conductive ink, but there are still a few limitations. While the absence of imaging artifacts holds promise for MRI imaging, the authors note that there still needs to be a comprehensive safety evaluation before deploying the painted sensors in a clinical setting. RF-induced heating is a particular concern, given the super-adhesive properties of the sensors. That’s a focus of future research, along with exploring the possibility of adapting the technology for plant health monitoring, since the painted sensors can conform so well to complex shapes.
 
 PNAS, 2026. DOI: 10.1073/pnas.2615835123 (About DOIs).</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-4')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Google revamps image search for its 25th anniversary with more images and more AI</div>
-            <div class="meta">2026-07-14</div>
-        </div>
-        
-        <div id="content-4" style="display:none;">
-            <h2>Google revamps image search for its 25th anniversary with more images and more AI</h2>
-            <p><strong>Ars Technica - All content | 2026-07-14</strong></p>
-            <a class="original-link" href="https://arstechnica.com/google/2026/07/google-revamps-image-search-for-its-25th-anniversary-with-more-images-and-more-ai/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Believe it or not, there was a time when searching the web for images was not possible. Twenty-five years ago, Google launched image search, and it’s celebrating by looking back at its biggest visual milestones and refreshing the experience for today’s searchers. The celebration also includes expanded AI because that’s just how Google rolls in 2026.
-
-Google claims the impetus for image search a quarter-century ago was the green Versace dress Jennifer Lopez wore to the 2000 Grammy Awards. If you were alive at the time, you probably remember the one. Google engineers understood that people searching for the dress didn’t want to read about it—they just wanted to see it. The company got to work building image search, launching the first version in July 2001. Twenty-five years later, it’s easy to take for granted that you can search for Lopez’s green dress or whatever else strikes your fancy.
-
-Currently, going to the Google image search site shows a plain search bar for finding images. It’s a refreshingly minimalist interface for the modern web. Even Google’s search homepage has a smattering of AI buttons and drop-down menus. That will change when the new Google Images rolls out.
-
-Soon, Google Image search will feature a gallery of images from across the web before you’ve even searched for anything. Google says this gallery will be updated continuously based on your interests. Your “interests” in this context means your web and search history on Google. So the things you look up and interact with online will inform what content Google suggests in this new interface.
-
-Google is also using this update as an opportunity to resurface Collections, a feature of image search you probably don’t use. As you browse Google’s suggested images and search for more, you can add items to your Collections. These will appear in a menu at the top of the main gallery for easy access.
-
-The last change is not so much image search—it’s kind of the opposite. If the sheer volume of existing images on the Internet isn’t doing it for you, Google is making it easier to generate new images with AI. Google’s impressive Nano Banana image model has long been available in Gemini, and it expanded to AI Mode a few months back. Now, it’s coming to AI Overviews.
-
-If you want more AI images in your search results, just ask for one in your query. Google’s AI will generate and place it in the AI Overview that occupies an increasingly expansive portion of the results page. The image will naturally push the organic search results even farther down the page.
-
-Both the refreshed Google Images page and image generation in AI Overviews will roll out over the coming weeks. They will both be limited to accounts set to English at first.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">New York bans data center construction for a year, rattling AI industry</div>
-            <div class="meta">2026-07-14</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>New York bans data center construction for a year, rattling AI industry</h2>
-            <p><strong>Ars Technica - All content | 2026-07-14</strong></p>
-            <a class="original-link" href="https://arstechnica.com/tech-policy/2026/07/new-york-is-the-first-state-to-impose-a-data-center-moratorium/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">New York became the first state to pause all construction of massive new data centers after Democratic Governor Kathy Hochul announced a one-year moratorium on Tuesday, Reuters reported.
-
-The state-wide ban applies to data centers using 50 megawatts or more, officials told Reuters, and it won’t be lifted until the state figures out what “consistent standards” for responsible data center development in New York should look like.
-
-Across the US, calls to halt data center construction have multiplied, as Americans grow increasingly concerned about risks of pollution, rising energy costs, and diminishing water supplies. At the federal level, Bernie Sanders (I-Vt.) and Alexandria Ocasio-Cortez (D-NY) have introduced legislation seeking a possible nationwide construction ban. But Republicans are seemingly unlikely to embrace that legislation, given Donald Trump’s claim that such moratoriums would threaten America’s lead in the AI race.
-
-However, officials on both sides of the aisle are cautious that their views on data centers could get them voted out. At every level, pressure is increasing on elected officials to consider residents’ fears before signing contracts that fail to consider whether data center construction will benefit the public. New York’s move comes after researchers last month found that more than $130 billion in data center projects have been blocked or delayed by protests so far this year.
-
-On Tuesday, Hochul directed “state officials to develop a Generic Environmental Impact Statement (GEIS) to ensure that new data centers coming online are being held to ‘consistent standards,’ as well as examine the potential environmental impacts of the construction and operation of data centers in the state,” Reuters reported.
-
-New York has fewer data centers than hotspot states like Virginia and Texas that have drawn more projects, but it did have a long queue of data centers waiting for approval to connect to the state’s energy grid, Reuters noted. Some projects had sparked backlash, The Washington Post reported, and New York lawmakers had already passed a bill to impose a data center moratorium in response. Hochul has yet to receive the bill for signing, Reuters reported, but her office described the law as “complicated” and said it would take some “time to work through” once it does reach her desk.
-
-In the meantime, Hochul said it was her “responsibility to take action and lead,” as “data center development threatens to ⁠hike up utility bills, deplete our natural resources, and create uncertainty for New Yorkers.”
-
-“New York will lead the way in creating the strongest standards in the nation for data center development, ensuring that when companies succeed because of New York, New Yorkers succeed too,” Hochul said in a statement.
-
-Possibly providing a blueprint for other statewide bans, New York’s bold anti-AI stance was viewed as “a striking setback for artificial intelligence companies that politicians once courted for investment,” the Post reported. It comes after Maine’s governor vetoed a prior statewide effort to temporarily ban construction out of concerns that Maine’s legislation didn’t exempt a favored project already underway.
-
-Hochul is clearly taking a firmer stance against massive projects concerning New Yorkers. Although her office insists that she isn’t anti-AI, she believes that she must take steps to ensure responsible growth of the industry in New York, where electricity prices are among the highest in the US. On Tuesday, Hochul indicated that she also planned to repeal sales tax exemptions for data centers, which could influence other states that, prior to the AI backlash from constituents, leveraged the tax giveaways to lure investments from the AI industry.
-
-In New York, Hochul has suggested that old incentives and voluntary commitments that AI firms previously relied on to strike deals with officials were no longer enough. States need more information to assess whether residents will be protected from potentially harmful projects.
-
-Hochul had already moved to ensure that data centers don’t force residents to pay higher prices as energy demand in the area skyrockets. In February, Hochul announced a plan to ensure data centers pay their “fair share” for energy grid updates, which she said would set a “simple standard” to “ensure everyday New Yorkers do not subsidize this energy-intensive industry.”
-
-“These industries must pay more; if they do not, they must supply their own energy,” Hochul’s office said in a press release.
-
-The moratorium shows that New York is serious about mulling how to set higher standards for data center construction, but the greatest immediate impact of the moratorium may be the momentum it gives to the anti-AI movement by signaling that stopping all construction in a state is possible.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -682,11 +708,65 @@ More on robotics: Korean Workers Vote to Go On Strike, Fearing Robots Could Repl
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
-            <div class="title">OpenAI’s first hardware device is reportedly a screenless speaker that can move</div>
+            <div class="title">Lorde says AI glasses are “not sexy”</div>
             <div class="meta">2026-07-14</div>
         </div>
         
         <div id="content-12" style="display:none;">
+            <h2>Lorde says AI glasses are “not sexy”</h2>
+            <p><strong>TechCrunch | 2026-07-14</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/07/14/lorde-says-ai-glasses-are-not-sexy/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">While Kylie Jenner serves as a human billboard for Meta’s AI glasses, pop star Lorde isn’t buying it.
+
+During a set at the Mad Cool Festival in Madrid last week, Lorde had some choice words about the new technology, which many security experts have deemed a privacy nightmare.
+
+“Increasingly in our world, it gets harder and harder to know what is real,” Lorde told the audience. “You don’t know if someone is wearing sunglasses, or if they’re wearing those f–ed up, f–ing [AI glasses]. Can I just say, for the record, f— the glasses. Don’t get the glasses. Not sexy.”
+
+Lorde has written before about throwing her phone into the ocean, but this was next level.
+
+Lorde was possibly moved to comment on the latest trends in tech because Ray-Ban, a sponsor of the festival, partners with Meta to make AI glasses. Lorde also performed immediately before the singer Jennie, who is an ambassador for Ray-Ban x Meta’s smart glasses line.
+
+&quot;Increasingly in our world it gets harder and harder to know what is real. You don’t know if someone is wearing sunglasses or if they’re wearing those fucked up fucking.… Can I just say, for the record, &#39;Fuck the Glasses&#39;. Don’t get the glasses. Not sexy&quot;– @lorde in Madrid. 💯 pic.twitter.com/NylMCifF66
+
+Lorde isn’t alone in raising concerns. Smart glasses, which come with cameras and AI features, have been used as tools for harassment and extortion. Meta, the most popular smart glasses maker, has said it takes privacy seriously and builds in safeguards like a visible recording light, but the company is facing many investigations and lawsuits alleging privacy violations. One lawsuit alleges that Kenyan contract workers were made to watch graphic videos obtained with the glasses to help train Meta’s AI. (Meta hasn’t publicly detailed its response to that specific claim.)
+
+None of this has stopped the product from strong sales. EssilorLuxottica, the Ray-Ban maker, said it sold more than 7 million Meta AI glasses in 2025 — more than triple the roughly 2 million units it sold in 2023 and 2024 combined. Ray-Ban Meta glasses have been such a hit in the smart-glasses category that an emboldened Meta keeps expanding the lineup.
+
+But hey, if privacy doesn’t make people think twice about the glasses, maybe vanity will. Lorde nails it pretty concisely with her declaration that they’re simply “not sexy.”
+
+The here and now, she added, now that “is sexy.”
+
+When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
+
+Amanda Silberling is a senior writer at TechCrunch covering the intersection of technology and culture. She has also written for publications like Polygon, MTV, the Kenyon Review, NPR, and Business Insider. She is the co-host of Wow If True, a podcast about internet culture, with science fiction author Isabel J. Kim. Prior to joining TechCrunch, she worked as a grassroots organizer, museum educator, and film festival coordinator. She holds a B.A. in English from the University of Pennsylvania and served as a Princeton in Asia Fellow in Laos.
+
+You can contact or verify outreach from Amanda by emailing amanda@techcrunch.com or via encrypted message at @amanda.100 on Signal.
+
+Last chance to save up to $190 on TechCrunch Founder Summit. Join 1,000+ founders and VCs at all stages for real-world scaling insights and connections that move the needle.Savings end June 26, 11:59 p.m. PT.
+
+Satya Nadella has issued a shocking warning to companies using AI
+
+The wildest allegations in Apple’s trade secrets lawsuit against OpenAI
+
+Anthropic starts localizing Claude pricing for India, its biggest market after the US
+
+Meta removes controversial AI feature on Instagram after backlash
+
+Apple sues OpenAI over alleged trade secret theft
+
+Elon Musk praises Mythos/Fable, promises not to ‘cut off’ Anthropic
+
+Instagram users: Here’s how to stop Meta’s AI from using your photos</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">OpenAI’s first hardware device is reportedly a screenless speaker that can move</div>
+            <div class="meta">2026-07-14</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
             <h2>OpenAI’s first hardware device is reportedly a screenless speaker that can move</h2>
             <p><strong>TechCrunch | 2026-07-14</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/07/14/openais-first-hardware-device-is-reportedly-a-screenless-speaker-that-can-move/">Visit Original Website</a>
@@ -730,13 +810,13 @@ Elon Musk praises Mythos/Fable, promises not to ‘cut off’ Anthropic
 Instagram users: Here’s how to stop Meta’s AI from using your photos</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-14')">
             <div class="source">TechCrunch</div>
             <div class="title">OpenAI pushes back on Apple trade secret lawsuit</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-14" style="display:none;">
             <h2>OpenAI pushes back on Apple trade secret lawsuit</h2>
             <p><strong>TechCrunch | 2026-07-14</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/07/14/openai-pushes-back-on-apple-trade-secret-lawsuit/">Visit Original Website</a>
@@ -770,13 +850,13 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">OpenAI’s new flagship model deletes files on its own, people keep warning</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>OpenAI’s new flagship model deletes files on its own, people keep warning</h2>
             <p><strong>TechCrunch | 2026-07-14</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/07/14/openais-new-flagship-model-deletes-files-on-its-own-people-keep-warning/">Visit Original Website</a>
@@ -830,13 +910,13 @@ Elon Musk praises Mythos/Fable, promises not to ‘cut off’ Anthropic
 Instagram users: Here’s how to stop Meta’s AI from using your photos</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Apple opens its new Siri AI to everyone with the iOS 27 public beta</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Apple opens its new Siri AI to everyone with the iOS 27 public beta</h2>
             <p><strong>TechCrunch | 2026-07-14</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/07/14/apple-opens-its-new-siri-ai-to-everyone-with-the-ios-27-public-beta/">Visit Original Website</a>
@@ -882,13 +962,13 @@ Elon Musk praises Mythos/Fable, promises not to ‘cut off’ Anthropic
 Instagram users: Here’s how to stop Meta’s AI from using your photos</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Anthropic’s newest ad is creeping people out</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-16" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Anthropic’s newest ad is creeping people out</h2>
             <p><strong>TechCrunch | 2026-07-14</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/07/14/anthropics-newest-ad-is-creeping-people-out/">Visit Original Website</a>
@@ -940,65 +1020,105 @@ Elon Musk praises Mythos/Fable, promises not to ‘cut off’ Anthropic
 Instagram users: Here’s how to stop Meta’s AI from using your photos</div>
         </div>
         
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">The founder of Hinge raised $18M to build a new AI dating service, Overtone</div>
+        <div class="card" onclick="openModal('content-18')">
+            <div class="source">The Atlantic</div>
+            <div class="title">Marco Rubio’s Disappearing Signal Chat</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-17" style="display:none;">
-            <h2>The founder of Hinge raised $18M to build a new AI dating service, Overtone</h2>
-            <p><strong>TechCrunch | 2026-07-14</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/07/14/the-founder-of-hinge-raised-18m-to-build-a-new-ai-dating-service-overtone/">Visit Original Website</a>
+        <div id="content-18" style="display:none;">
+            <h2>Marco Rubio’s Disappearing Signal Chat</h2>
+            <p><strong>The Atlantic | 2026-07-14</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/national-security/2026/07/marco-rubio-signal-state-department/687906/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Hinge founder Justin McLeod announced an $18 million fundraise for his new dating company, Overtone.
+            <div id="article-text">Sign up for Inside the Trump Presidency, a newsletter featuring coverage of the second Trump term.
 
-McLeod stepped down from his CEO role at Hinge just last year, and Hinge owner Match Group — which also owns apps like Tinder and OkCupid — is helping to fund his new company, alongside FirstMark Capital and Pace Capital.
+Secretary of State Marco Rubio, like most federal officials, is legally required to retain records that he creates as part of his job. So it was no surprise that his office ended up in court last year after The Atlantic revealed that he had participated in an auto-deleting Signal chat about war plans in Yemen with other top national-security officials. In a case involving a Freedom of Information Act request for the Signal records on Rubio’s phone, a federal judge wanted assurances that these documents had been preserved.
 
-While details on the company are limited at this point, Overtone describes itself as “a voice- and audio-forward service, enabled by AI, that provides highly curated introductions.”
+Rubio’s team told the court that his government phone was equipped on July 21, 2025, with software called LeapXpert that automatically preserved from Signal “all messages sent or received, regardless of whether the sender configures a message to ‘auto-delete.’” Seven weeks later, in another declaration to the court, the State Department went further. “Secretary Rubio does not use the auto-deletion functions in third party messaging applications when sending communications that may include federal records,” Susan Weetman, a senior adviser for the department’s Information Access Programs Directorate, told the court on September 9.
 
-“Overtone is not a dating app,” McLeod wrote in the blog post. “By that I mean it’s not a social platform with profiles that reduce people to stats, quotes and photos. There are no opaque, algorithmic feeds trained on split-second impulses. And there’s no juggling likes, matches and chats across many people at once.”
+But that denial, written in the present tense, was less than it seemed. About two months later, Rubio changed the settings in a Signal chat about administration matters with other senior officials so that the messages would automatically delete after a set amount of time, a person familiar with the exchange told us, requesting anonymity because he was not authorized to share the information. When we reached out to the State Department for comment, the official who responded contested the idea that Rubio has made a practice of turning on disappearing messages but said that he could not address the specific instance.
 
-It may seem odd for the guy who created Hinge to disparage algorithmic feeds and swiping, but the dating industry at large is evolving with the realization that users are dissatisfied with the status quo. A Forbes Health survey conducted in 2024 found that 78% of dating app users felt burnt out. The survey’s 1,000 respondents reported that they spent about 51 minutes per day on dating apps, but this time investment did not often yield fulfilling connections.
+The State Department told us that Signal continues to be an approved communication application, that LeapXpert is installed on the government phones of some officials, and that the department remains committed to full compliance with record-keeping laws. “These measures support compliance even when users adjust application settings, including the Signal app’s ‘disappearing messages’ setting,” the department official told us, speaking on the condition of anonymity to address agency regulations.The department did not answer questions about why Rubio would decide to activate disappearing messages if his phone contained software that ensured those messages could not be fully deleted.
 
-Most dating apps are trying to improve the quality of their matchmaking through AI, offering AI-generated conversation starters or assistance building out profiles. But many people feel frustrated with the idea of delegating even more of this intimate process to computers. McLeod seems more interested in using AI to narrow down who might be a good match, as opposed to outsourcing actual conversations and connections.
+Read: Hegseth, Rubio, and Caine had an auto-deleting Signal chat
 
-“We get to know each person deeply, learning about them in their own voice, hearing their own unique story,” McLeod wrote. “And we make only the introductions that are worth making, grounded in relationship science and thoughtful reflection. We transparently explain why we believe someone is a great match.”
+Jason R. Baron, a professor at the University of Maryland and the former director of litigation at the National Archives and Records Administration, told us that as long as a copy is archived, nothing in the law bars the deletion of messages from an official’s phone. Doing so may even provide security advantages if the phone is lost or hacked. “It can be said to be good practice to eliminate redundant records in multiple places,” Baron said.
 
-Other new apps like Ditto and Date Drop are betting on a similar approach, using AI to pair users up, rather than putting everyone in a pool to swipe on one another, creating the illusion of endless choice and a hotbed for ghosting.
+The Foreign Affairs Manual, which governs the conduct of most State Department officials, states that “the use of ‘ephemeral’ or self-destructing/disappearing message features with the eMessaging application is strictly prohibited.” Such options should “be disabled or remain deactivated to maintain the integrity, availability, and retention of the official records,” the manual says.  The State Department official said the agency has given additional guidance to officials who have LeapXpert installed, because the technology will ensure their messages are archived even if they use the auto-delete function and the messages disappear in Signal. The manual does not reflect this, because so few officials have been given access to LeapXpert.
 
-Overtone will be available later this year, but only in certain locations. In addition to its fundraise, the company also announced that relationship expert Esther Perel has joined the board alongside Match CEO Spencer Rascoff and leadership advisor Diana Chapman.
+Democracy Forward filed the litigation to obtain Signal chats from the first half of 2025 from the phones of Rubio and Mike Needham, who was then a senior State Department aide to Rubio. The advocacy group has reserved the right to file further motions in the case after the State Department produced documents last month that showed Rubio or Needham had participated in 13 previously unknown work-related Signal chats. Those heavily redacted documents include a three-person chat among Rubio, Defense Secretary Pete Hegseth, and Joint Chiefs of Staff Chairman General Dan Caine in which messages were set to auto-delete after eight hours. “Democracy Forward is looking closely at these latest developments in light of the State Department’s representations in litigation that Secretary Rubio does not use disappearing messages, and we are evaluating next steps,” Dan McGrath, the senior oversight counsel at Democracy Forward, told us in a statement.
 
-When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
+Last year, Democracy Forward raised questions with the U.S. District Court for the District of Columbia about what Weetman meant when she said that Rubio “does not use” auto-deletion, an assertion made under penalty of perjury. “At best, the Declaration indicates that the Secretary does not presently use autodelete, but that representation sheds no light on the preservation of records created prior to the Secretary’s hypothetical change in practice,” the group’s lawyers wrote to the court.
 
-Amanda Silberling is a senior writer at TechCrunch covering the intersection of technology and culture. She has also written for publications like Polygon, MTV, the Kenyon Review, NPR, and Business Insider. She is the co-host of Wow If True, a podcast about internet culture, with science fiction author Isabel J. Kim. Prior to joining TechCrunch, she worked as a grassroots organizer, museum educator, and film festival coordinator. She holds a B.A. in English from the University of Pennsylvania and served as a Princeton in Asia Fellow in Laos.
+Earlier this year, as part of a settlement with the watchdog group American Oversight, multiple government agencies filed court declarations on April 30 describing their record-keeping practices. What’s notable: The State Department did not repeat its claim from last year that Rubio did not use disappearing messages, instead stating that an application installed on his device collected messages “even if those messages otherwise have a deletion timeline setting enabled.”
 
-You can contact or verify outreach from Amanda by emailing amanda@techcrunch.com or via encrypted message at @amanda.100 on Signal.
+In the same filing, the Office of the Director of National Intelligence offered a broader assurance, saying that Signal chats of senior staff “are not currently set for automatic deletion.”  The Defense Department said that as of April 26, 2025, there were “no Signal chats containing federal records at risk of impending or automatic deletion” on Hegseth’s phone. The CIA told the court that as of this March 12, all messages on Signal were preserved and that the agency is not aware of any federal records that were “at risk of impending deletion.”
 
-Last chance to save up to $190 on TechCrunch Founder Summit. Join 1,000+ founders and VCs at all stages for real-world scaling insights and connections that move the needle.Savings end June 26, 11:59 p.m. PT.
+But the continued use of Signal by senior officials worries some on Capitol Hill. Representative Don Bacon of Nebraska, a Republican, has a personal reason for his concern that the platform may not be secure. “Russia hacked my Signal,” he recently announced, after an apparent phishing attempt by a foreign government. Bacon and Representative Chrissy Houlahan of Pennsylvania, a Democrat, recently wrote a letter, first reported by Politico, to the Pentagon and the Directorate of National Intelligence asking for a briefing about what information administration officials are relaying over Signal and the vulnerabilities of the platform. The members of Congress argued that even unclassified information, if intercepted in a nongovernmental chat app, could in the aggregate betray “significant insights” that could “inform adversary decision making.” Bacon told us in a statement that Cabinet secretaries should stop relying so heavily on Signal.
 
-Satya Nadella has issued a shocking warning to companies using AI
-
-The wildest allegations in Apple’s trade secrets lawsuit against OpenAI
-
-Anthropic starts localizing Claude pricing for India, its biggest market after the US
-
-Meta removes controversial AI feature on Instagram after backlash
-
-Apple sues OpenAI over alleged trade secret theft
-
-Elon Musk praises Mythos/Fable, promises not to ‘cut off’ Anthropic
-
-Instagram users: Here’s how to stop Meta’s AI from using your photos</div>
+“The Russians and Chinese are definitely monitoring them, and they should act like it every day,” he said.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-18')">
+        <div class="card" onclick="openModal('content-19')">
+            <div class="source">The Atlantic</div>
+            <div class="title">The Bizarre Partnership Between the U.S. and Venezuela</div>
+            <div class="meta">2026-07-14</div>
+        </div>
+        
+        <div id="content-19" style="display:none;">
+            <h2>The Bizarre Partnership Between the U.S. and Venezuela</h2>
+            <p><strong>The Atlantic | 2026-07-14</strong></p>
+            <a class="original-link" href="https://www.theatlantic.com/science/2026/07/us-venezuela-earthquake-response/687907/?utm_source=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">James Story, America’s last chargé d’affaires in Venezuela before the embassy closed in 2019, left after the foreign minister passed along a message. The warning was stark, Story told me: If he stayed, he might be murdered.
+
+When American diplomats raised the flag at the embassy in March, for the first time in seven years, they stood outside a building that had been festering in the tropical heat and taken over by black mold. The hostility between the two countries had been festering too, culminating in the moment that the Trump administration sent in special operators to snatch President Nicolás Maduro and his wife. Since then, U.S. leaders and staff—many of them working out of a Marriott two miles from the embassy—have been racing to get reacquainted with one of the most repressive regimes in the hemisphere, filled with some of the same people whom the U.S. has put under indictment for drug trafficking or who have U.S.-sponsored bounties on their heads.
+
+The humanitarian response to the deadly earthquakes in Venezuela last month has only deepened this bizarre partnership. U.S. Marines have become air traffic controllers at Venezuela’s main international airport and are helping run the port in La Guaira, the coastal state that was hit hardest. The State Department’s disaster-assistance team is distributing boxes, emblazoned with the American flag, of food, water, and other supplies.
+
+Venezuelans have welcomed such lifesaving efforts after the earthquakes left at least 4,490 people dead and close to 18,000 homeless, according to Venezuelan authorities. But the Trump administration’s approach, in concert with Venezuelan officials who have spent years treating opponents brutally and are widely reviled, risks that goodwill. Last week, the leaders of the U.S. mission on the ground—Chargé d’Affairs John Barrett and General Francis Donovan, the commander of U.S. Southern Command—faced Venezuelans’ outrage after they met with Diosdado Cabello, the interior minister, who oversaw security forces that targeted political opponents. (Previously, the U.S. had offered a $25 million reward for his capture.)
+
+Through multiple U.S. administrations, including Donald Trump’s first term, American diplomats followed relatively consistent tenets in Venezuela: finding common cause with opposition leaders, seeking to free American prisoners, pushing for democratic elections. Then Story, who served in both Trump terms and in the Biden administration, was told the extreme opposition was plotting to kill him and precipitate a war with the U.S.—at a time when relations were so hostile with Maduro’s regime that no one wanted to risk people coming over the embassy walls. Nonetheless, he left a note on his desk saying that he was “filled with optimism that Democracy is within reach.” Now Story worries that whatever tactical success came from Maduro’s capture would be squandered without a democratic transition. “And if that is delayed now because of the earthquake, at some point the frustration will bubble over to the United States,” he said. More of the quiet work the U.S. has been doing in Venezuela since Maduro’s capture is now out in the open, and the choice to decapitate the government without changing much else is being put to a test.
+
+Barrett has maintained that, in the aftermath of the earthquakes, the U.S. government has been fully focused on the humanitarian effort and that Venezuela’s interim government “has been fully compliant of our requests.” At a briefing with reporters last week, he did not answer a question about whether Cabello remained a wanted enemy of the United States; he stressed that the Trump administration’s three-phase plan for Venezuela remains intact.
+
+But those phases—first stability, then economic recovery and political reconciliation, and finally a democratic transition—also seem badly damaged by the earthquakes. No date has been set for democratic elections. The 180-day period defined by Venezuela’s constitution for a temporary presidential absence passed earlier this month with the interim president, Delcy Rodríguez, still in charge. Some U.S. officials are optimistic that her government is acceding to U.S. pressure. Earlier today, her brother, Jorge Rodríguez, the president of the National Assembly, announced new negotiations starting next month with former opposition lawmakers as a way to “strengthen democracy,” after the earthquake. Also today, Delcy Rodríguez posted about “this new stage of dialogue, cooperation, and mutual respect” with the United States.
+
+A State Department spokesperson told me that the U.S. focus remains on its humanitarian response and that “adding sensitive political issues to the mix at this time is counterproductive to our response efforts following this tragedy.” But Secretary of State Marco Rubio acknowledged last month that the earthquakes complicated the path back to democracy: “It’s a setback in that regard,” he told reporters, before reiterating his belief that “Venezuela’s going to emerge stronger from it.”
+
+Venezuelans seem less certain. They have complained about their government’s shortcomings in the nearly three weeks since the earthquakes: its absence in the crucial hours when rescues were still possible, bureaucratic hurdles that choked the flow of aid, soldiers and police looting amid the rubble. Rodríguez has defended her government’s response, saying that widespread reports of chaos were manufactured by “media laboratories” and blaming opponents for politicizing a humanitarian tragedy. The most popular opposition figure, María Corina Machado, tried returning to Venezuela soon after the earthquakes, but the Trump administration ordered her airplane be turned around mid-flight, The Wall Street Journal reported. Her supporters worry that the U.S. relationship with the Rodríguez government could drag on indefinitely, even as its response to the earthquakes has led to more questions about its legitimacy.
+
+Read: Venezuelans were sorting through the rubble alone
+
+“There’s a real chance that we’re going to squander this opportunity,” Rebecca Bill Chavez, a former Pentagon official who is now the president of the Inter-American Dialogue, told me. “Betting that stability and Venezuelan oil basically can come first and democracy can wait indefinitely—it’s a dangerous bet.”
+
+During Maduro’s tenure, which started after Hugo Chávez’s death in 2013 and featured a staggering economic collapse, the Venezuelan population repeatedly rose up to demand better lives and fair elections. When I visited Venezuela in this period, the scale of the daily protests against Maduro’s government felt overwhelming—as did the brutal tactics security forces used in killing and torturing their opponents, documented extensively in human-rights reports. Every day felt like a rolling street fight as shock troops chased protesters through downtown Caracas, firing tear gas and rubber bullets and bludgeoning back the waves of opposition.
+
+Even in his first term, Trump seemed willing to take an aggressive posture toward Venezuela: Lee McClenny, who served as charge d’affaires in the first year of the Trump administration, recalled the president requesting “military options” for Venezuela. Trump’s team seemed willing, he said, “to force a decisive confrontation they felt sure they’d win.” Todd Robinson, who was in the country as the top American diplomat in early 2018, told me that he met with the wife of the imprisoned opposition leader, Leopoldo López, in her home, against the regime’s wishes. He went “toe to toe” with Rodríguez, then the president of the Constituent National Assembly, on the porch of his residence in Caracas, telling her that it was not U.S. sanctions but her own government’s failures that left so many hungry. (After an election that the U.S. described as an “insult to democracy” because it excluded opposition candidates, Maduro accused Robinson of conspiring against his government and gave him 48 hours to leave the country.) “We were visibly, vocally anti-regime when I was there,” he told me. “So the idea that we’re now going to treat the rump regime as the current government in Venezuela—to me it just doesn’t make any sense.”
+
+Trump’s suggestion that the U.S. could run Venezuela for years worries many of these former American diplomats, who saw up close the corruption and human-rights abuses of a Venezuelan government that included Rodríguez, Cabello, and others who remain. Just two years ago, the State Department’s human-rights report on Venezuela cited credible accounts of “arbitrary or unlawful killings; disappearances; torture or cruel, inhuman, or degrading treatment or punishment; arbitrary arrest or detention,” and on, and on. Rodríguez’s government has released hundreds of political prisoners and pushed out some of Maduro’s allies in government. But many still see a difficult road ahead. “We’ve bought ourselves a big problem that will last a long time, cost a lot of money, lose us a lot of prestige, and still will not be resolved to our satisfaction,” McClenny said.
+
+The Trump administration’s race to show up after the earthquakes—especially after cutting back foreign aid in many parts of the world—suggests that the U.S. accepts, to some degree, that Venezuela’s problems are now its own. The U.S. has spent some $310 million on the earthquake response, delivered more than 1 million pounds of relief supplies, and donated 10 containers with freezer capacity to help store the dead, according to U.S. officials leading the effort. “We are with Venezuela today,” Barrett told reporters during a briefing last week, “and we will be with you tomorrow.” The scale of this response, however, still lags far behind the billions the U.S. spent after other major disasters in the region, such as the Haiti earthquake in 2010. The head of the United Nations relief effort, Tom Fletcher, has said another $300 million is needed to help more than a million people who need “life-saving support.”
+
+By this point, many search-and-rescue teams have returned home. Thousands of people displaced from collapsed homes are living outdoors and in tent camps in La Guaira; the Associated Press reported a surge in skin conditions and diarrheal diseases amid shortages of fresh water. “You don’t have fresh water, you don’t have sanitation,” Paolo Cravero, a spokesman for the International Federation of Red Cross and Red Crescent Societies, told me from Venezuela. “If those things are not urgently addressed, those will create public-health problems.”
+
+For some aid workers who rushed to help Venezuelans, the U.S. military presence has been jarring. As he drove from Caracas to La Guaira last week, the chef José Andrés, who founded World Central Kitchen, told me that, although everyone was grateful for the U.S. military’s assistance, the presence of helicopters and armed troops made him feel like “they were coming to invade more than they were coming to help.” Donovan, the Southcom commander, has not given a timeline for when the roughly 900 U.S. troops might leave, but he told reporters earlier this month, “When we’re done, we will depart Venezuela.”
+
+The embassy, though, will stay open; eventually repairs will finish and the staff will move back in. Several former diplomats and other officials told me that they wanted the U.S. to stop sidelining the opposition, to press to release the hundreds of remaining political prisoners, and to hasten elections. Some Venezuelan opposition figures still have patience: Jose Ferreira, a leader of the opposition party Primero Justicia, told The Atlantic some exiled political figures have been able to return and, despite the post-earthquake cooperation, he expects that Cabello and others facing sanctions will eventually face justice. “Venezuelans trust that the United States will help Venezuela reach its goals,” he said.
+
+Just steps from the U.S. embassy, in the hilly Valle Arriba neighborhood, 10 to 20 Venezuelans—relatives of political prisoners—have been keeping vigil for almost a month. A Venezuelan flag hangs from a nearby tree with one word written on it: libertad. José Mendoza joined the vigil after Rodríguez’s government scrapped an amnesty law meant to free political prisoners; his son is a former soldier accused of taking part in a failed 2020 attempt to overthrow Maduro. No one from the embassy has come out to talk with them. While the diplomats are dealing with the earthquake damage, he doesn’t expect they will anytime soon.
+
+Mariana Zuñiga contributed reporting from Caracas.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-20')">
             <div class="source">The Atlantic</div>
             <div class="title">The Shooter in Maine Was a New ICE Recruit</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-18" style="display:none;">
+        <div id="content-20" style="display:none;">
             <h2>The Shooter in Maine Was a New ICE Recruit</h2>
             <p><strong>The Atlantic | 2026-07-14</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/politics/2026/07/ice-vehicle-shooting-maine-dhs/687912/?utm_source=feed">Visit Original Website</a>
@@ -1032,13 +1152,13 @@ There was growing unease among senior officials at ICE about traffic stops well 
 ICE’s undercover tactics create an elevated risk, they warn, because officers using unmarked cars are more likely to cause a driver to panic than a police in a car with sirens and flashing lights. Videos of ICE officers drawing their weapons during traffic stops have circulated online since last year. Officers are trained to view vehicles as deadly weapons. That does not mean they can open fire when someone is attempting to drive away. Most immigration violations are civil offenses, not criminal ones, and ICE officers were traditionally instructed to avoid vehicle chases or confrontations with fleeing suspects that could create unnecessary risks. Now, following two deadly shootings, that’s become official policy.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-19')">
+        <div class="card" onclick="openModal('content-21')">
             <div class="source">The Atlantic</div>
             <div class="title">Generative AI Is an Engineering Disaster</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-19" style="display:none;">
+        <div id="content-21" style="display:none;">
             <h2>Generative AI Is an Engineering Disaster</h2>
             <p><strong>The Atlantic | 2026-07-14</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/technology/2026/07/generative-ai-engineering-disaster/687901/?utm_source=feed">Visit Original Website</a>
@@ -1088,13 +1208,13 @@ Instead of shrinking components, manufacturers have been focused on developing n
 Ultimately, inefficiency may be of little concern to the people within the tech industry who believe that they are replicating intelligence itself. There is an almost-religious conviction among many in Silicon Valley that something mindlike could arise from LLMs, which are ultimately just statistical language-generating software—this, despite the software’s inability to recall basic facts, its lack of common sense, and its complete dissimilarity to a biological brain. Even Yann LeCun, one of AI’s “godfathers,” told The New York Times recently that “LLMs are not a path to superintelligence or even human-level intelligence.” But the mythological lure of AI is so strong that many engineers believe that nothing should stand in their way. Not even the basic task of writing efficient software.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-20')">
+        <div class="card" onclick="openModal('content-22')">
             <div class="source">The Atlantic</div>
             <div class="title">The 40-Year-Old Man-Child</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-20" style="display:none;">
+        <div id="content-22" style="display:none;">
             <h2>The 40-Year-Old Man-Child</h2>
             <p><strong>The Atlantic | 2026-07-14</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/culture/2026/07/ferris-bueller-40th-anniversary-influencer/687764/?utm_source=feed">Visit Original Website</a>
@@ -1142,13 +1262,13 @@ Simone is describing an age-old phenemenon—the rumor mill, a game of telephone
 ​​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-21')">
+        <div class="card" onclick="openModal('content-23')">
             <div class="source">The Atlantic</div>
             <div class="title">The See-No-Evil Supreme Court</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-21" style="display:none;">
+        <div id="content-23" style="display:none;">
             <h2>The See-No-Evil Supreme Court</h2>
             <p><strong>The Atlantic | 2026-07-14</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/ideas/2026/07/the-see-no-evil-supreme-court/687902/?utm_source=feed">Visit Original Website</a>
@@ -1190,118 +1310,64 @@ In Trump v. Hawaii, Roberts wrote that “the forcible relocation of U. S. citiz
 The Korematsu decision may be overturned by the “court of history.” But its legacy lives on in the Roberts Court.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-22')">
-            <div class="source">The Atlantic</div>
-            <div class="title">Punctuation: A Generational Divide</div>
-            <div class="meta">2026-07-14</div>
-        </div>
-        
-        <div id="content-22" style="display:none;">
-            <h2>Punctuation: A Generational Divide</h2>
-            <p><strong>The Atlantic | 2026-07-14</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/magazine/2026/08/punctuation-internet-texting-generational-divide/687632/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">I was a novice editor, he was an experienced writer, and the first article he turned in revealed a virtuosic command of comma placement. He opened with long, slow clauses; picked up speed with shorter ones; withheld all commas for a gloriously terse thesis statement; and then, crash! A mass-casualty pileup of appositive phrases. Grammarians, I married him.
-
-Now our son is the family authority on punctuation. His expertise lies in using it in texts and on social media, where commas and periods go to die. Semicolons too, decades after Kurt Vonnegut tried to banish them. “First rule: Do not use semicolons,” he pronounced in 2005. “All they do is show you’ve been to college.” Exclamation points and emoji reign supreme. (Does an emoji count as punctuation or rate as a paralinguistic element—that is, a relative of a wink or an eye roll? My son shrugs.) Online punctuation is for torquing emotion, he told me, not for making yourself clear: “The ultimate goal is not efficiency but maximum attention.”
-
-Check out more from this issue and find your next story to read.
-
-Little marks can make big things happen, Florence Hazrat reminds us in her new book, On the Mark: From Periods to Interrobangs, How Punctuation Remade the World. Take the one-sentence Second Amendment, whose commas have been responsible for a great deal of trouble: “A well regulated Militia, being necessary to the security of a free State, the right of the people to keep and bear Arms, shall not be infringed.” Until the 21st century, all parts of the amendment were given equal weight regardless of commas, so that the gun rights granted in its second half were limited to the militias referred to in the first half. In 2008, however, Supreme Court Justice Antonin Scalia affirmed an unusual interpretation that used a comma to downplay the clause about militias, leaving “the people” with an individual right to bear arms.
-
-But the eminent originalist—of all people!—failed to acknowledge an important historical fact. The version of the amendment on which Scalia based his reading, found in the National Archives, is only one among many. “Each state ratified a different version of this amendment,” Hazrat writes, “some with two, some with three, and some with four commas.” Punctuation was not standardized in the Founders’ time, so the best course of action, she says, is not to read too much into those commas.
-
-The rules of punctuation have been codified since then, but they have never stopped evolving. Indeed, thanks to the advent of technologies that have us typing more and more, the rules have been hyper-evolving. Marks do more than fit parts of a sentence together; they re-create the pace, emphasis, and tone of voice that we rely on to make our meaning plain when we talk in person or by phone. Now that we can react to a friend’s needy text or an enemy’s infuriating post in real time and with minimal reflection, we need reliable substitutes for extraverbal cues more than ever. But if online punctuation is about maximum attention rather than mutual comprehension, and is mutating so rapidly, you have to wonder about the future of communication.
-
-In the beginning was the written word, and the word flowed into other words. Roughly 5,000 years ago, WRITINGLOOKEDLIKETHIS. Then, slowly, graphic signposts emerged to make reading easier. Hazrat takes us through this history: Babylonians arranged words into boxes, creating proto-paragraphs. Old Assyrian and Old Persian put triangles between words. The demands of empire spurred invention. In the second century B.C.E., the head librarian of the world’s most ambitious collection of writings, the Library of Alexandria, hired linguists and scholars from far-flung lands, and, to help them read Greek, came up with a system of accents to guide pronunciation and dots to indicate pauses.
-
-Those dots were forgotten after the decline of Rome, but they reappeared in different guises with the spread of monotheistic religions: The word of God demands proper punctuation. The printing press brought an explosion of published material, and soon the modern book was born, set in different typefaces and organized with many of the marks still used today. Renaissance humanists discovered the literary potential of punctuation, inventing nuanced marks such as the exclamation point, the semicolon, dashes, and parentheses (“little moons,” the Dutch scholar Erasmus fondly called them). These new devices allowed sentences to ramble along twisty paths of thought, opening up new realms of the self.
-
-Ever since, poets and novelists have been developing punctuation into a high art, as Lee Clark Mitchell shows in Mark My Words: Profiles of Punctuation in Modern Literature (2020). Emily Dickinson wielded dashes like a fencer in her poems, slicing phrases apart, creating islands of heightened meaning. The dashes were edited out after her death and not restored until 1955; Hazrat reports that Dickinson used dashes of different sizes and shapes—curving upward and downward and back on themselves—that modern typography still hasn’t captured. Humbert Humbert, the narrator of Vladimir Nabokov’s Lolita, directs 450 parenthetical asides to the reader, giving us all-too-intimate access to the thoughts of a floridly narcissistic pedophile. Pulling readers into a different dark world, the 2026 Pulitzer Prize winner for fiction, Daniel Kraus’s Angel Down, never uses a single period. Set in the trenches of World War I, the novel careens from scene to scene, “gasping with too many commas,” Kraus has written, “a sentence doomed to loop back on itself to form a terrible black wheel that, sooner or later, will drag each and every person to their grave.”
-
-Today’s online punctuation styles cycle in and out of fashion with manic speed. To digital natives, periods at the end of text messages signify passive-aggressiveness. They’re “the texting equivalent of your mother calling your full name,” the Gen Z language expert Adam Aleksic, who goes by Etymology Nerd, explained in a 2024 TikTok. Except it’s not that simple: My son and his friends do sometimes end texts with periods—to convey faux disapproval. “Correct punctuation itself is a signal of irony,” he told me.
-
-That figures. Every generation has to come up with its own way of subverting norms. The quest to punctuate irony goes back to at least the late 16th century, when a printer proposed a backward-facing question mark. A scientist later suggested using the upside-down exclamation point. Nothing stuck. A 20th-century French novelist suggested the Greek letter psi—Ψ. It looked fittingly like an arrow in the air. (“Irony stings,” Hazrat comments.) Only the hashtag, which rose to prominence on Twitter, has had some staying power as an irony marker—a punch line, a self-deprecating remark.
-
-Hazrat worries that in our disembodied age, communication demands punctuation that can do more emotional labor than our current marks can handle. She has a point: Think of all the micro-adjustments we have to make as we go from texting family and friends to slacking colleagues to emailing to posting. But I think the problem with online punctuation is that it does too much, not too little. At any rate, my stabs at punctuating like someone in the know generally make me look silly.
-
-I’m not alone. A genre has materialized in which children critique parents’ cringey misuse of marks. Madeline Cash, in Granta, puzzles over her mother’s habit of ending innocuous statements with an ominous ellipsis. “OK …” her mother writes when Cash says she’s coming home to visit. Cash wonders: “Is she going to say more? Is my coming home for Christmas an imposition?” My son sent me a viral 2025 TikTok in which a perky young man gives his parents a slide-deck presentation on when to use the double-exclamation-point iMessage reaction, called the emphasis. He lays out three rules; his mother’s emphases follow none of them.
-
-Hey! My emphases don’t either. Why hadn’t my son ever told me that? “Because I’m resigned to old people using it wrong,” he texted, plus he’s not in the business of making me look cool. Anyway, the standard emoji and text reactions are becoming passé. His crowd uses an inexhaustible idiolect of personalized symbols—memes, memoji (customizable avatars), stickers (emoji made from random images and photographs), GIFs.
-
-From the August 2025 issue: What are emoji?
-
-My son sent me an example: a sticker of Dora the Explorer with a glowing third eye. She’s lying on a pink pillow, wearing a CPAP mask. The meaning was nonobvious, to say the least. He explained: Dora is achieving nirvana while plugged into a machine that delivers a steady flow of air, a metaphor for being connected to the internet. Oh. How did he know that? “How could you not?” he wrote. Dora’s bliss was several levels of meta beyond my age group, but I guess that’s as it should be. For now, I’ll work on not putting periods at the end of my texts.
-
-This article appears in the August 2026 print edition with the headline “Full Stop.”  When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.
-
-​When you buy a book using a link on this page, we receive a commission. Thank you for supporting The Atlantic.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-23')">
-            <div class="source">The Atlantic</div>
-            <div class="title">Trump’s Anti-Growth Agenda</div>
-            <div class="meta">2026-07-14</div>
-        </div>
-        
-        <div id="content-23" style="display:none;">
-            <h2>Trump’s Anti-Growth Agenda</h2>
-            <p><strong>The Atlantic | 2026-07-14</strong></p>
-            <a class="original-link" href="https://www.theatlantic.com/ideas/2026/07/trumps-growth-hegemony-decline-britain/687904/?utm_source=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Sign up for Inside the Trump Presidency, a newsletter featuring coverage of the second Trump term.
-
-In June 1897, Great Britain, at the apex of empire, organized an elaborate pageant celebrating Queen Victoria’s 60 years on the throne. The industrial revolution had turned a small island nation into an economic and military superpower. The writer Rudyard Kipling, one of imperialism’s greatest apologists, was asked to contribute an ode for the queen’s Diamond Jubilee. Yet far from boasting about the empire that Kipling adored, the poem he wrote imagined its eventual end. “Far-called, our navies melt away; / On dune and headland sinks the fire,” he wrote. “Lo, all our pomp of yesterday / Is one with Nineveh and Tyre!”
-
-Much less humility was on display as the United States celebrated its 250th anniversary. “We will always be on top,” Donald Trump said in his July 4 speech. “We will never let our country fall.” Yet even as he insisted that U.S. global dominance will last forever, Trump is busily dismantling the very economic underpinnings that would ensure future American might.
-
-When economies lag, hegemony becomes unsustainable. Britain’s decline took only a few short decades. The Soviet Union rivaled America militarily but could not keep up economically, and unraveled as a result of its inability to grow. Americans today enjoy material abundance scarcely imaginable in Kipling’s day. That is the reaped reward of scientific prowess, high-skilled immigration, the rule of law, free trade, and stable monetary policy—all of which Trump is jeopardizing in his current term.
-
-In the postindustrial world, ideas are the ultimate engine of growth. “Productivity isn’t everything, but, in the long run, it is almost everything,” the economist Paul Krugman once remarked. Much of America’s outperformance of Europe in the past two decades can be explained by greater efficiency in creating goods and services. The United States is still the best place in the world to be rewarded for inventions and other advancements. Yet the pace of future discoveries could soon decelerate. Out of distaste for elite universities and the study of disfavored subjects, the Trump administration suspended and canceled nearly 8,000 scientific grants in 2025, according to calculations by the journal Nature. The National Science Foundation and National Institutes of Health are issuing roughly 25 percent fewer grants than before Trump returned to office. Federal scientific agencies have seen their workforces slashed. If the president had his way with the federal budget, non-defense research funding would be cut by 35 percent.
-
-One reason for America’s technological ascendance has been its capacity to siphon brainpower from the rest of the world. From 1901 to 2024, 410 Americans have won the Nobel Prize in chemistry, medicine, economics, and physics. Of those, 35 percent were immigrants. Today, America’s lead in AI depends on imported talent: 59 percent of the world’s top AI researchers work in the U.S., and more than 65 percent of them are foreign-born. Even seven out of 10 Chinese-educated AI researchers work in America today. A recent analysis found that 59 percent of America’s “unicorns”—private start-ups worth more than $1 billion—have at least one immigrant founder or co-founder.
-
-Jonathan Chait: Trump doesn’t want to fight inflation
-
-This immigration-innovation linkage ought to be easily detectable even from the Oval Office: The president’s biggest campaign booster in 2024, Elon Musk, himself immigrated from South Africa. So did David Sacks, the president’s AI and crypto czar until recently. Yet the Trump administration’s hostility toward immigration is not limited to undocumented or low-skilled entrants. The president has attempted to add a $100,000 fee to applicants seeking H-1B visas, intended for skilled workers in health care and technology. The administration is also close to finalizing four-year limits on student visas—which would make most Ph.D. programs difficult to complete for international students.
-
-In their book Why Nations Fail, the Nobel Prize–winning economists Daron Acemoglu and James A. Robinson argued that dependable, pluralistic institutions are essential for long-run growth. Perhaps the paramount proof for their case was the United States, a country that both respected property rights and allowed dominant companies to be replaced by competitors. These norms and institutions are buckling under the pressure. The president treats the law as a tool to punish enemies and reward friends.
-
-The private sector understands that favors can be gained—and antitrust enforcement and other painful federal interventions warded off—by demonstrating sufficient deference. So business titans are tiptoeing around the president’s sensibilities, offering gaudy tributes (such as a gilded desk clock from Rolex), and donating copiously to his pet projects such as the White House ballroom. Under Trump, the federal government is gradually becoming more dirigiste, directly involving itself in the operation of businesses: seizing effective control of U.S. Steel, becoming the largest shareholder of Intel, asking for revenue from Nvidia’s chip sales to China. Far from avoiding conflicts of interest and the appearance of impropriety, the president is aggressively monetizing the office—earning $2 billion last year, largely from cryptocurrency sales. The president wields his pardon opportunity to reward his supporters, even those convicted of corruption in elected office and serious fraud. Such capricious governance has not immediately made America less hospitable for investment. However, the risk is not of imminent economic recession, but a steady erosion that becomes apparent only years from now.
-
-Just as British might was once underwritten by the ascendancy of the pound, America benefits from the dollar’s status as the default currency of global commerce. The dollar’s place in international finance is sustained only in trust: in the strength of American institutions, in the full faith and credit of the Treasury, and in the stability of the global financial system. Trumpism is an attack on all three pillars. Trump has tried to undermine the independence of the Federal Reserve, which manages America’s monetary policy, more than any predecessor before him—pointing a weaponized justice system at its officials who do not bend to his will. Because of his tax cuts, the American debt has continued to grow at an extraordinary rate. Trump’s unilateral imposition of sweeping tariffs on the rest of the world—and the abusive way he speaks of allies—weaken trust in both Pax Americana and the dominance of the dollar.
-
-Trump has committed his administration to an idiosyncratic vision of American greatness. It is a greatness so internally brittle that it requires extraordinary governmental pressure against institutions and people who disagree with the administration’s aims. Yet it is also so self-assured that America can safely jettison the postwar international order it built, in trade and military alliances, without risk to American supremacy.
-
-Defenders of the president often point to the performance of the stock markets—which have reached all-time highs thanks to the market’s exuberance for artificial intelligence. But surges in share prices can be transitory—you never know whether you’re in a bubble until you’re out of it. Defenders of Trump’s economic policies argue, more substantively, that they are part of a larger plan to forestall the rise of China. After Silicon Valley made its peace with MAGA, the administration has pledged to put few guardrails on America’s frontier tech companies as they try to outrace their Chinese counterparts.
-
-Thanks to the One Big Beautiful Bill Act, the president’s signature legislation this term, tech companies, and American corporations generally, have been given permanent reductions in their tax rates and allowances that promote research. Trump, as his defenders tell it, has canceled the expensive clean-energy projects of his predecessor Joe Biden, while supporting fossil-fuel electricity generation that will power the data centers needed here and now. In the AI race between America and China, the country with the most computing power installed may win. Tariffs and direct intercessions into the operations of businesses could be justified on untangling supply chains from dependency on America’s greatest rival. If AI really is the wellspring of future productivity growth, then accelerating it could ultimately be the most consequential decision that Trump makes.
-
-This argument—a monomaniacal fixation on preventing America from being overtaken by China as Britain was overtaken by America—is worth taking seriously. But it is undercut by Trump’s other actions. Today’s advantages in artificial intelligence will be hard to maintain unless the United States keeps attracting the field’s best minds—especially given the declining literacy and numeracy of American students. Building supply chains that exclude China would be easier if allies were not also charged high tariffs. Disregarding the eventual harms of climate change does not just affect future Americans; it also cedes the field of clean-energy technology to China.
-
-In the short term, the One Big Beautiful Bill Act will likely boost growth. But it will also add trillions to American debt, worsening the eventual political crisis that will come within the next decade when the Social Security trust fund runs dry. The bill’s cuts to Medicaid, alongside the cancellation of Affordable Care Act subsidies, are expected to cause millions of Americans to lose health insurance. These problems will be harder to sort in the next decade—when Americans are older, payments on the national debt are higher, and the government’s budgetary flexibility is correspondingly constrained.
-
-A world order led by China’s authoritarian rulers will still be less attractive than the American-led one that Trump is creating. But the more mercurial the United States acts—the more markets are balkanized, private wealth is contingent on political favor—the less advantage the rest of the world will see in choosing Washington over Beijing.
-
-A more measured defense of Trumponomics is to note that it may last only two more years. Courts have also blocked some of the president’s most aggressive actions—such as his attempts to remove a Fed governor and impose blanket tariffs under emergency authority, and his retaliation against law firms that challenge him. Only his tax law is congressionally sanctioned and therefore difficult to repeal. The rest—the attacks on the Fed, the limitations on immigration, even the tariffs—all rest only on executive authority and could be immediately rescinded when Trump leaves office. Even so, four years of such policies will still take a serious toll, both on quantifiable measures such as health-care costs and scientific capacity and unquantifiable ones such as the trust that allies place in America’s security guarantees. Furthermore, Trumpism may linger as the dominant ideology in the GOP even after Trump leaves office. The irony is that policies intended to “make America great again” would instead push it toward Britain’s fate.
-
-For Britain, decline set in slowly. Despite inventing the technologies that permanently altered the world, it eventually fell behind America and Germany in technical prowess and output. This slippage could be obscured for as long as Britain retained its empire and London remained the epicenter of the global financial system. But the productivity gap would ultimately result in Britain’s dethroning. After World War II, the country was saddled with debt, dispossessed of its colonies, and forced to watch the pound’s privileges pass on to the dollar. Then came humiliations—the Suez crisis of 1956, the bailout required from the International Monetary Fund in 1976. What started as a modest loss of economic advantage would ultimately cost Britain everything.
-
-Reflecting on what turned out to be his country’s apogee, Kipling wrote a memento mori, presciently reminding his compatriots that power is inevitably transient. Trump entertains no such thought. “We will always be the best,” he said in his July 4 speech. Perhaps this really is, as the president claimed, “the dawn of the golden age of America.” Or maybe the United States is eroding its supremacy right now—all of its own accord.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-24')">
+            <div class="source">Slashdot</div>
+            <div class="title">OpenAI's First Device Will Be Moveable, Screenless Speaker Built as AI Companion</div>
+            <div class="meta">2026-07-14</div>
+        </div>
+        
+        <div id="content-24" style="display:none;">
+            <h2>OpenAI's First Device Will Be Moveable, Screenless Speaker Built as AI Companion</h2>
+            <p><strong>Slashdot | 2026-07-14</strong></p>
+            <a class="original-link" href="https://hardware.slashdot.org/story/26/07/14/2116245/openais-first-device-will-be-moveable-screenless-speaker-built-as-ai-companion?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Screenless is stupid. Screens are cheap now. By all means make it audio centric but if I just have to get out my phone to get any info that isn&#39;t convenient to get via audio, then I might as well just use my phone for the audio stuff too.
+
+The goal is for the device to feel like a companionHasbro should be the ones suing since they have the original prior art on creepy digital companion with the Furby.
+
+The goal is for the device to feel like a companion
+
+Hasbro should be the ones suing since they have the original prior art on creepy digital companion with the Furby.
+
+it&#39;s unlikely that it violates trade secretsSince when are trade secrets something that can be violated? You either get a patent and enjoy 20 years of patent protection, or you lock your secrets in a vault and hope nobody else comes up with the same novel idea.We&#39;re really leaning all the way into the whole corpo dystopia now huh?
+
+it&#39;s unlikely that it violates trade secrets
+
+Since when are trade secrets something that can be violated? You either get a patent and enjoy 20 years of patent protection, or you lock your secrets in a vault and hope nobody else comes up with the same novel idea.
+
+We&#39;re really leaning all the way into the whole corpo dystopia now huh?
+
+Why would I want a device that deliberately handicaps itself by not bothering to have a screen?
+
+Especially with how verbose AI responses are, I couldn&#39;t imagine having to just wait for it to read out the information asked of it.
+
+I don&#39;t get the AI companies&#39; fascination with voice-only input and audio-only output.  It&#39;s a strict subset of what the device in people&#39;s hands can already do.  Further, every single product that has aimed for this has flopped and you would think they would get the hint by now...
+
+I think they feel it would be more like humans communicate. But humans invented blackboards and certainly found them useful to improve communication.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+If I were a grave-digger or even a hangman, there are some people I could
+work for with a great deal of enjoyment.
+		-- Douglas Jerrold</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
             <div class="source">Slashdot</div>
             <div class="title">Google Images Gets a Pinterest-Like Redesign Focused On Discovery</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-25" style="display:none;">
             <h2>Google Images Gets a Pinterest-Like Redesign Focused On Discovery</h2>
             <p><strong>Slashdot | 2026-07-14</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/07/14/215259/google-images-gets-a-pinterest-like-redesign-focused-on-discovery?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">JFC, Pinterest absolutely ruined Google&#39;s image search results years ago. Now they&#39;re trying to emulate that?
+            <div id="article-text">There&#39;s the SUV (made by Land Rover)The space shuttleone of Captain James Cook&#39;s shipsthe ship used by Robert Falcon Scott in his ill-fated polar polar expeditionan album by Mike OldfieldA TV documentary channeland also a Star Trek series
+
+JFC, Pinterest absolutely ruined Google&#39;s image search results years ago. Now they&#39;re trying to emulate that?
+
+Get your kids a box of crayons and a pad of blank paper. &quot;Joey, I need a picture of a dinosaur&quot;. Anything is better than a Pinteristed Google Image Search. Why in the hell is tech so out of touch with reality?
 
 Google is also adding a way for users to create AI images right in Search, as it celebrates 25 years since the debut of Google ImagesGoogle, you are one of the forerunners of devaluing my memories in my own photo collection... and this is just one further step.  Because of you, when I look at my photos of my past and I have to wonder which ones are real and which ones aren&#39;t.  You are AI upgrading old YouTube videos, including personal ones, without consent.  Your work to make everything fake has &quot;poisoned the well&quot; of things that are real.  Someone should really assassinate Google CEO Sundar Pichai for fucking with our personal spaces w
 
@@ -1311,21 +1377,27 @@ Google, you are one of the forerunners of devaluing my memories in my own photo 
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-All warranty and guarantee clauses become null and void upon payment of invoice.</div>
+If I were a grave-digger or even a hangman, there are some people I could
+work for with a great deal of enjoyment.
+		-- Douglas Jerrold</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Lawsuit Claims Meta's Layoff Decisions Were Made By AI, Not Humans</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Lawsuit Claims Meta's Layoff Decisions Were Made By AI, Not Humans</h2>
             <p><strong>Slashdot | 2026-07-14</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/07/14/2054236/lawsuit-claims-metas-layoff-decisions-were-made-by-ai-not-humans?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">This is exactly what companies like PwC come in and do. The AI just did it faster.
+            <div id="article-text">I&#39;m looking forward to the legal decisions that you have to watch ads to read every page.
+
+Because you know that&#39;s part of the plan.
+
+This is exactly what companies like PwC come in and do. The AI just did it faster.
 
 As an aside, discovery on this case is going to be very interesting when they have to provide, at least to the judge, the AI sourcecode and the prompts that were used, and the &#39;guidelines&#39; it followed.
 
@@ -1335,18 +1407,38 @@ As an aside, discovery on this case is going to be very interesting when they ha
 
 Think about it. With the potential for a bunch of lawsuits over such policies, he&#39;s likely to cause the company to suffer much greater losses than some employees taking extra PTO.
 
+That&#39;s illegal no matter what tool you use, though, and it&#39;s not the tool that makes it illegal unless it was designed to do illegal things intentionally, or if you keep using it when you know it does illegal things. Adding AI isn&#39;t the legal problem. It&#39;s just a slightly new gimmick to the same old game, pretending you didn&#39;t know what you were doing.
+
+The employees have to prove that their protected status was targeted to win, and that is a pretty tough sell IMO. It seems like the protected status was more of a side effect of &quot;performance.&quot;
+
+The employees have to prove that their protected status was targeted to winWhile simultaneously claiming that their protected status wasn&#39;t taken into account.Hopefully, the actual complaint makes more sense. But I have doubts.
+
+The employees have to prove that their protected status was targeted to win
+
+While simultaneously claiming that their protected status wasn&#39;t taken into account.
+
+Hopefully, the actual complaint makes more sense. But I have doubts.
+
+The employees have to prove that their protected status was targeted to win, and that is a pretty tough sell IMO. It seems like the protected status was more of a side effect of &quot;performance.&quot;Not at all. If they use a metric of &quot;Worked at least X hours in the past 12 months&quot;, and a person worked fewer than X hours because they were on parental leave, firing them would not be a &quot;side effect of performance&quot;, it would be a direct violation of their legal protection.
+
+The employees have to prove that their protected status was targeted to win, and that is a pretty tough sell IMO. It seems like the protected status was more of a side effect of &quot;performance.&quot;
+
+Not at all. If they use a metric of &quot;Worked at least X hours in the past 12 months&quot;, and a person worked fewer than X hours because they were on parental leave, firing them would not be a &quot;side effect of performance&quot;, it would be a direct violation of their legal protection.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-All warranty and guarantee clauses become null and void upon payment of invoice.</div>
+If I were a grave-digger or even a hangman, there are some people I could
+work for with a great deal of enjoyment.
+		-- Douglas Jerrold</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Google DeepMind Calls For US To Spearhead AI Standards Body</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Google DeepMind Calls For US To Spearhead AI Standards Body</h2>
             <p><strong>Slashdot | 2026-07-14</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/07/14/1934241/google-deepmind-calls-for-us-to-spearhead-ai-standards-body?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1381,18 +1473,26 @@ And no &quot;they&quot; aren&#39;t consistently that good, but consistency doesn
 
 Mega corporation advocates for regulatory capture, this is my surprised face
 
+They&#39;re desperately trying to keep the Chinese models out, but I doubt they&#39;ll be successful.  Chinese AI is mostly outcome-based, they train a bot to wash dishes, a drone to recognize an insect infestation, or mining machinery to find and follow a vein, and equipment purchased from China is going to come with their AI baked in.  Sure, they&#39;ll play with chatbots and AGI, but most of their work is devoted to actually accomplishing something besides stock manipulation.  Once Chinese AI is seeded throughout th
+
+In the real world the only credible solution to AGI concerns is simply not spending trillions of dollars each year funding the knowledge and industrial base that might one day enable a magic AGI genie.  Once it gets to the point where it becomes feasible to create AGI genies the only solution to problems uniquely created by an AGI genie is likely to take the form of another AGI genie.  If any of the existing AI firms don&#39;t like this or are troubled in some way it might be a good time to reexamine career cho
+
+A lot of Asimov&#39;s subsequent stories were about end runs around the Three Laws, enabling robots to do things they shouldn&#39;t.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-All warranty and guarantee clauses become null and void upon payment of invoice.</div>
+If I were a grave-digger or even a hangman, there are some people I could
+work for with a great deal of enjoyment.
+		-- Douglas Jerrold</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Linux Foundation's Latest Foray Is To Standardize Internet-Native Payments For AI Agents</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Linux Foundation's Latest Foray Is To Standardize Internet-Native Payments For AI Agents</h2>
             <p><strong>Slashdot | 2026-07-14</strong></p>
             <a class="original-link" href="https://linux.slashdot.org/story/26/07/14/1853255/linux-foundations-latest-foray-is-to-standardize-internet-native-payments-for-ai-agents?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1427,18 +1527,24 @@ I don&#39;t understand why anyone trusts Coinbase and the shit it proclaims.
 
 I don&#39;t understand why anyone would turn an AI loose with their money.
 
+So what? You&#39;re expecting me to give you access to my money so that you can pay for the shit product you&#39;ve built? GTFO.
+
+an Alexa on steroids that can order things from anywhere instead of only Amazon. I suppose I can *sort of* see how or why some people might want something like this. Provide a shopping list to the AI agent along with various preferences and it could go search for the best prices (or delivery time or whatever metric you set), set the delivery up, and then pay. The paying and delivery details are easy - if browsers can autofill that info, an AI can definitely input tokenized versions. The hardest parts would
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-All warranty and guarantee clauses become null and void upon payment of invoice.</div>
+If I were a grave-digger or even a hangman, there are some people I could
+work for with a great deal of enjoyment.
+		-- Douglas Jerrold</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">OnePlus Is Reportedly Shutting Down In the US, Europe</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>OnePlus Is Reportedly Shutting Down In the US, Europe</h2>
             <p><strong>Slashdot | 2026-07-14</strong></p>
             <a class="original-link" href="https://mobile.slashdot.org/story/26/07/14/1641233/oneplus-is-reportedly-shutting-down-in-the-us-europe?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1525,145 +1631,13 @@ So what are sensible options left to us mortals now?
 
 - iPhones are a very aquired taste.- Samsungs are annoying bags of bloatware.- Custom ROMs no longer pass SafetyNet reliably...
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-All warranty and guarantee clauses become null and void upon payment of invoice.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">IBM Stock Collapses After a Grave Warning About AI</div>
-            <div class="meta">2026-07-14</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>IBM Stock Collapses After a Grave Warning About AI</h2>
-            <p><strong>Slashdot | 2026-07-14</strong></p>
-            <a class="original-link" href="https://hardware.slashdot.org/story/26/07/14/1634227/ibm-stock-collapses-after-a-grave-warning-about-ai?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">&quot;Missed it by so close!&quot;– Obligatory Mariner Smart quoteDon&#39;t you mean &quot;Missed it by that much&quot;? And Max Smart?However the reference is still weak because he was using his hand to indicate a small distance, which should be a &quot;this&quot; reference. Where is &quot;that&quot; supposed to be pointing?I think we had better jokes in those days. Possibly somehow related to IBM&#39;s days of glory? I still meet or hear from some Big Blue folks from time to time. I don&#39;t think any of us can understand what happened to the company...As regards this story, it will only be funny if IBM someho
-
-Don&#39;t you mean &quot;Missed it by that much&quot;? And Max Smart?
-
-However the reference is still weak because he was using his hand to indicate a small distance, which should be a &quot;this&quot; reference. Where is &quot;that&quot; supposed to be pointing?
-
-I think we had better jokes in those days. Possibly somehow related to IBM&#39;s days of glory? I still meet or hear from some Big Blue folks from time to time. I don&#39;t think any of us can understand what happened to the company...
-
-As regards this story, it will only be funny if IBM someho
-
-Thanks for reminding me of a company named IBM! Quantum Computer? If such a thing were to be built so as to manage to solve a real world problem, I bet it will not come from IBM. Even if they do, they will price it 5x their nearest competitor who has better wares than IBM.
-
-On a different note, is Arvind Krishna CEO #35 there? How many CEOs do they currently have?
-
-It&#39;s worth a percent or two more than it was in May. Does that seem severe? Maybe what happened in between was the weird bit.
-
-Perhaps one day IBM stock will skyrocket when they say they will be selling quantum computers.Note they were not citing hardware sales as the problem, rather they cited &quot;software services”. I think the fear is that AI agents might replace many of those services. 
-
-IBM shifted from being a hardware company to a software and services company in the 1990s. Today hardware is about 10% of their revenue. They still dominate mainframes, and that is more of a computational niche than a cloud thing. So yeah the mythical quantum computer could be a lifesaver for them assuming they migrate back towards t
-
-Perhaps one day IBM stock will skyrocket when they say they will be selling quantum computers.
-
-Note they were not citing hardware sales as the problem, rather they cited &quot;software services”. I think the fear is that AI agents might replace many of those services. 
-
-IBM shifted from being a hardware company to a software and services company in the 1990s. Today hardware is about 10% of their revenue. They still dominate mainframes, and that is more of a computational niche than a cloud thing. So yeah the mythical quantum computer could be a lifesaver for them assuming they migrate back towards t
-
-Honestly, IBM would do well to just stick to their course. This AI thing is due for a pretty severe market adjustment to bring some rationality back into the tech decision makingl, We&#39;re already seeing a lot of companies shitting the bed over token costs and realiseing they laying off the entire tech staff would just cost them more. And this flows on.
-
-Or this is wishful thinking on the part of myself, a 50yo whos been feeling a lot less secure about my future job prospects lately if I dont stop rejecting any
-
-Everyone is worried about securing memory since AI servers are hoovering up a huge amount, plus all the spending on AI capex for data centers in general. This is all going to crash soon; Ed Zitron has the receipts at his blog:  https://www.wheresyoured.at/le... [wheresyoured.at]
-
-Practically speaking, this means that small perturbations in the supply chain pricing will have huge downstream effects. IBM&#39;s stock price is one of the first hints at what is to come.
-
-When is a hard question. Rationally it should never have blown up this much in the first place (some expansion would be rational, but not like we&#39;ve seen). Clearly the minds driving this are not rational.
-
-Insanity is notoriously hard to predict. That&#39;s why short selling is so risky. The market can clearly remain irrational longer than most people can remain solvent when betting against it.
-
-That&#39;s an interesting question.  Have you tried putting it to AI?  I did.  The response had helpful links embedded in it, but they did not copy over when I pasted it here into slashdot.  Editing this post was already more work than I really wanted to put into this, so, unfortunately, you get no supporting links.  However, if you ask this of Gemini yourself, you will get the supporting links.
-
-While &quot;predicting a crash&quot; in any market is notoriously difficult, several highly respe
-
-Faltered is right. Isn&#39;t IBM a hardware company among other things? Why didn&#39;t they have a hardware product to offer customers who wanted to experiment with throwing away money?
-
-IBM couldn&#39;t get a deal with Nvidia to use Nvidia $$$ to buy Nvidia systems and then &#39;Step 2. ???&#39; so everyone profits?!
-
-I don&#39;t know the details, but IBM has been switching its emphasis from hardware to services for quite a while. They sold off their Lenovo brand in 2014.
-
-Lots more profit in services, as any customer who has had the misfortune to hire them has (to their sorrow) found. Like the Quebec Ministry of Transport, whose project to digitize car and driver licensing is years late and has topped $1.1 billion. Yes, billion. Thanks IBM (and SAP)!
-
-IBM has been more of a services company than a hardware company for decades, it&#39;s true. And yet, they are still a hardware company despite that, and their hardware is supposed to back up their services.
-
-Their hardware though is just refresh fodder for mainframe/mini/aix.  Sure they toss it some concessions to hype but ultimately customers are currently looking for the most cost effective platform to enable running stuff on nVidia Blackwell, and IBM isn&#39;t even vaguely in that game, not since a brief time with POWER9 where they tried to foster a close nVidia relationship.
-
-No fab, no x86 systems, no resell of third party stuff that would work for getting in on Grace/Vera based systems.  There&#39;s not really an a
-
-People would believe in the hardware if they put it out, because IBM is not really known for exaggerating specs. But they don&#39;t seem to be able to.
-
-They sold off their Lenovo brand in 2014.Lenovo was never an &quot;IBM brand.&quot; IBM sold them their client computing assets in 2005, and their x86 server assets in 2014, but Lenovo has never been a part of IBM.
-
-They sold off their Lenovo brand in 2014.
-
-Lenovo was never an &quot;IBM brand.&quot; IBM sold them their client computing assets in 2005, and their x86 server assets in 2014, but Lenovo has never been a part of IBM.
-
-Good question. Their POWER series of CPUs were not insignificant in capability, their chip designers were clearly technically sophisticated, and GPUs are just specialised vector processors with a few extra bells and whistles - stuff IBM is extremely familiar with.
-
-It would not have been difficult to release a GPU or other LLM-specific processor to go along with the POWER11. They&#39;d been working on the POWER11 for 4 years, they knew in 2020 that LLMs had a strong potential to be significant for Big Data processing - an area you use big iron for, they&#39;re not rank amateurs, they have plenty of reserve, they could have assembled an emergency team to build a vector processor that was custom-designed for just LLM work, and released an LLM processor card that could run circles around nVidia.
-
-They didn&#39;t. Because, as has happened before, their management is simply too stupid and too slow.
-
-Culturally it would have been a big shift, even given the talent they have, but they just don&#39;t have the courage of leadership it would have taken to do this.  It&#39;s been 60+ years since IBM had that, when they bet the company on the 360.  The PC doesn&#39;t count; that was essentially a side project for IBM.  They didn&#39;t create the hardware or software for it, and the companies future wasn&#39;t riding on it.
-
-PC succeeded pretty much because IBM broadly didn&#39;t take it seriously.  If IBM believed in the market opportunity, they would have screwed it up by making it all in-house and proprietary.  See when it did start to get traction and they decided to try to lock it down with MCA.
-
-MCA was mind boggling. IBM is exactly not known for being cheap, and yet that&#39;s exactly what they did with MCA autoconfiguration by using floppies instead of ROM. Meanwhile they used a very expensive card edge connector when there was really no good reason to do so. It&#39;s truly insane.
-
-IBM has offloaded the hardware that would have had them most relevant to the boom.  They basically just have hardware to cater to long term mainframe and AIX customers.  Even many of those customers are probably deciding to postpone their IBM hardware refresh to secure more hype-compatible gear from other vendors.
-
-IBM chased what they saw as more plush software and services margins and chopped away to fixate on those fronts, except the locked in mainframe/mini/aix customers that they can keep gouging without
-
-Isn&#39;t IBM a hardware company among other things?It&#39;s a part of their business, but not a majority of it, even before AI. They&#39;ve added AI coprocessors to their Telum CPUs for their Z series platform, but it&#39;s not a significant player in the world of AI money.  More of a checkbox me-too thing that probably will be of use for legacy customer applications, but no one is building data centers full of Telums to compete with OpenAIAnthropticGoogleEtc.
-
-Isn&#39;t IBM a hardware company among other things?
-
-It&#39;s a part of their business, but not a majority of it, even before AI. They&#39;ve added AI coprocessors to their Telum CPUs for their Z series platform, but it&#39;s not a significant player in the world of AI money.  More of a checkbox me-too thing that probably will be of use for legacy customer applications, but no one is building data centers full of Telums to compete with OpenAIAnthropticGoogleEtc.
-
-Historically this is what IBM has done in the past to improve profitability.
-
-I view this current debacle as a failure on management&#39;s part to see what might be coming up in the sector as emerging tech just like layoffs are a failure of management to properly size the company and select the proper roles which drive growth and ultimately profitability.
-
-Will management pay with their heads? That ultimately depends on the board, and maybe the shareholders.
-
-It might actually turn out good for IBM if the bubble pops sooner than later. Then they get to look smart for not participating when all the AI stocks (and the stocks of any other company that bet big) slump.
-
-Any time a stock drops without a BIG reason, time to trade on the dip
-
-Mind the falling knives. You don&#39;t want to catch those.
-
-Yes, and the same thing was said about United health and Crowdstrike after their dips for bigger reasons.. These are fairly solid companies with real established sales and customers.
-
-Remember that time IBM didn&#39;t anticipate the money being in pro services and software and stuck with hardware..
-
-IBM is still in fine shape. The company is not losing money. Revenue did not fall off a cliff like the stock price did. If they&#39;re smart IBM can wait this out and quietly prepare for things to bounce back when the insane AI capex ends and people need something IBM is ready to provide. (But, realistically, IBM will just lay off 25,000 good people instead of putting human capital to good use as part of a long term strategy.)
-
-Any IBM project I&#39;ve seen in the last two decades has been filled with outsourced Indian consultants that put in the hours warning their chairs and accomplish nothing only to be replaced by another bumbling Indian to do the same when there is no progress and complaints come in from management and new time extension contract needs to be signed for when time and materials exceed the estimated costs until the project fails.
-
-IBM SameTime, Lotus Notes Mail server upgrades, Z/OS migrations, x390 upgrades, P-Series hardware refresh, TADDM CMDB inventory, BigFix patch management failures, and the list goes on.  All IBM products and projects that I&#39;ve had to help fix, implement, maintain until replacements can be installed and IBM garbage ripped out.
-
-Teaching IBM mainframe consultants how to FTP files to their mainframe filesystem partitions to upgrade the z/OS shows how low that company is sunk after it moved to India since it fired all of their local US talent and mainframe guys.
-
-Any project that IBM touches goes IBM Blue(TM) from asphyxiation and withers away and dies.
-
-Now they are losing to AI on their inept services and software projects after failing to anticipate that is just par per course for their consulting business.  Just as bad as Deloitte.
-
-Microsoft is following on their heels now also, full of outsources and offshored Indians and people wonder why Windows 11 sucks so hard?!
-
-The US techies are left scrambling for the few leftover IT jobs here to be taken over by AI after they implement the death knell for their back-office working bretherent.  They are building their own AI terminators, first for the non techies who are the clerks and analysts, but then for themselves to snipe each other out of the few remaining jobs in the future maintaining the AI IT infrastructure.
-
-and perhaps more to do with them failing to shake down their customers for incremental subscription-based revenue streams.  Confronted with heavy handed &quot;we&#39;re bundling all this extra stuff you don&#39;t want or use in with whatever you currently have and we&#39;re going to charge you more for all that &#39;additional value you&#39;re getting&#39;....even if you&#39;ve been shrinking your overall IBM hardware/software footprint.&quot;
+It&#39;s your choice if you pull out your phone or not. I&#39;m an avid hiker, and I take a lot of photos bu I&#39;m not on social media at all. I take photos so that I remember the life I&#39;ve lived when I&#39;m 80 and my memory fails me.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-All warranty and guarantee clauses become null and void upon payment of invoice.</div>
+If I were a grave-digger or even a hangman, there are some people I could
+work for with a great deal of enjoyment.
+		-- Douglas Jerrold</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2901,11 +2875,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US Russia sanctions bill eases threat of tariffs on China and India - Reuters</div>
+            <div class="title">EXCLUSIVE: Lionsgate Studios attracts takeover interest from Bollore, Banijay, sources say - Reuters</div>
             <div class="meta">2026-07-14</div>
         </div>
         
         <div id="content-60" style="display:none;">
+            <h2>EXCLUSIVE: Lionsgate Studios attracts takeover interest from Bollore, Banijay, sources say - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-14</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOY2FLUVdld3dRczNDdFVnWExQNG1Kb3VDdW9GVGx4NHZlam9tUW5CQVlVMzZpRGxaZ2NqU19sWGJTV0NReFo4WWtjZUJoUm5DV201QUdtR1JKSHpVTDNBRmZrazNsUVhjVWJJd2dQd0ZOaU8xT3M2Uko4aUI1Uzk3WktwQjdDSnAwdFVCdzJ5SEZUTExLMTlXcUNYazJTcUJtZjBodlN4S1V5dG9RT2hJa3FVUTRudGJ3NkJpQU80aWJrYlJJd0RzbFd6OA?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">US Russia sanctions bill eases threat of tariffs on China and India - Reuters</div>
+            <div class="meta">2026-07-14</div>
+        </div>
+        
+        <div id="content-61" style="display:none;">
             <h2>US Russia sanctions bill eases threat of tariffs on China and India - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-14</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQQktFMlI0T1BvR192M1JmY0ZQRmdwc0JQRHhiYUMzWG02R1ozUGFrMFE3amJFWDZvbkhkTTJjZC1hRG5xRmM2WDB3MU5SUnlsbXFnSHU0NnFpOTVtalZPNk4zdWlkcmIySTJpbGJIVGFKdDJtYTdOaGdIcWNvcmowcHNKNFVtX0MwTFV2UnQwTUhZTmc0emFiZE1jdkVZQlBv?oc=5">Visit Original Website</a>
@@ -2913,13 +2901,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-62')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Lucid rejects take-private, bankruptcy report after shares plunge - Reuters</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-62" style="display:none;">
             <h2>Lucid rejects take-private, bankruptcy report after shares plunge - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-14</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxPTm1Id0t0RU8xOEJfMnNXWG16eW9zajg2djZmakpPTnVYcG13WXlXcHF5NE1JTmZWWDlvd3NyZDBmNC10R292bDc4eWpoLUQ1NHBMV1JEVTNFcWg3MWphbFZsY0YybW5ucVdkbDRTWXdBZTktOW5BdGRBX1JzSm1Rdk1kUWU2S2paV1pYSmZPTnZEX1l1VG5DWmFLcFlObmstNVhFbVkwaWpfaFFSUmVxRUZSbXp2R0ky?oc=5">Visit Original Website</a>
@@ -2927,13 +2915,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-63')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">US FDA sued for allowing unauthorized vaping products - Reuters</div>
+            <div class="meta">2026-07-14</div>
+        </div>
+        
+        <div id="content-63" style="display:none;">
+            <h2>US FDA sued for allowing unauthorized vaping products - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-14</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNYlpMYXNwUE84MUp5dE5VSDZkZVVGMkJvNzZweThQZUJ1NDlBdURELUk0LXNDNFJoMWh3US0zaGluc3ZkT2x5Vm5nV2FRMjV1WDY1eXdOeFZTcVJXTFctLUZzdFprRDhvd0E4V0swcU12Q0hSTzhYaWxhUmFrZkE4R2RzRVBKc1doeld0bDFGZlZ5SnozbHlCa0dNS1c2U3NPVE5WNg?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Fender escalates Stratocaster copyright fight, taking aim at Yamaha - Reuters</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>Fender escalates Stratocaster copyright fight, taking aim at Yamaha - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-14</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxOTE5hazhqOFBqQ0xNcnpuU2hWTnl3NDFxd2VmU1VWXzVXQUtmaDA2Ukp0aVFhRHRoaGRZMVlfdmhjMVQwYTVsXzVLTXBIYzBXblc4Ym9pWERjeURwcTJJMUVxRU5YMm5ySFdmMHpGVG8xSGJPRXR3dnZ6RHNvYkoyOERBempybUNzOGpyeThOYmM5Q3F6SHNtU1dELWVyMFhNdlhtMHBZRmJoTUdyOVdZcjVrRHdWTXJCcWEzLXhoamdIUQ?oc=5">Visit Original Website</a>
@@ -2941,44 +2943,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">ICE halts most traffic stops in wake of Maine fatal shooting, sources say - Reuters</div>
-            <div class="meta">2026-07-14</div>
-        </div>
-        
-        <div id="content-63" style="display:none;">
-            <h2>ICE halts most traffic stops in wake of Maine fatal shooting, sources say - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-14</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQWXlXZUxmWHVwSVRsd19GdUdGZ1pYWlhISElQYlVjTVU2SGRMNDRVSHRxX3RoUXpNRmdnX0VDWGxlTzdNRnRmLXkxSHFBUUZHdC10QUYtTERzaks4VVF4em1kSmRJaVhRMldxOWVLR0duMWVGQ1dZYXBBMl9FQWVyUmRwOHdpaWdMcTFvVGEyeERCYzRTcTlPdVBnencxOWV4R2dMUmM1WXJ0VzA?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-64')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump drops 20% fee plan for Hormuz Strait in favor of deals with Gulf states - Reuters</div>
-            <div class="meta">2026-07-14</div>
-        </div>
-        
-        <div id="content-64" style="display:none;">
-            <h2>Trump drops 20% fee plan for Hormuz Strait in favor of deals with Gulf states - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-14</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNSlhFN3VYRkt4NUIycGhvbDhVQXpyaUhiNjFnb3dnVzA1Vko3cmpqalRSN3pRY0NQcjVHYm41RGRaV1NuMGhkSGx2cjdrSGgxRXFmUG1TT2RGNmN2M0M2WjE5c3E4ODVJN2E4Sk04X3UzbURZRkQ1MTJjcXFUX09uQnI4SC1Val9zc3JaeXAwN3NCY2Vfb0JDZ19qQ0xVR3hMZkVYMlI4NDhHMkUyUHg1S3hKRmo3dUZEdGo2Yg?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-65')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">EXCLUSIVE: Lionsgate Studios attracts takeover interest from Bollore, Banijay, sources say - Reuters</div>
+            <div class="title">Spain’s anaconda grip crushes French World Cup dream - Reuters</div>
             <div class="meta">2026-07-14</div>
         </div>
         
         <div id="content-65" style="display:none;">
-            <h2>EXCLUSIVE: Lionsgate Studios attracts takeover interest from Bollore, Banijay, sources say - Reuters</h2>
+            <h2>Spain’s anaconda grip crushes French World Cup dream - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-14</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOY2FLUVdld3dRczNDdFVnWExQNG1Kb3VDdW9GVGx4NHZlam9tUW5CQVlVMzZpRGxaZ2NqU19sWGJTV0NReFo4WWtjZUJoUm5DV201QUdtR1JKSHpVTDNBRmZrazNsUVhjVWJJd2dQd0ZOaU8xT3M2Uko4aUI1Uzk3WktwQjdDSnAwdFVCdzJ5SEZUTExLMTlXcUNYazJTcUJtZjBodlN4S1V5dG9RT2hJa3FVUTRudGJ3NkJpQU80aWJrYlJJd0RzbFd6OA?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPaWprNTZrUDBUZmtScmswaWV0SHVsbHZVSDhRR0I1aEs3RnZ3Uk96YzdLTkl4TFd0Y2RXRWk1WjJFbWJxb0Z3X1NnWWs1bWMwNTlXTUkxZExjSEFhcHJNVFc3dGpRQnhESzBRWXpRTTZhb3Raa0dyN1czSEFrc3k0ZktOU2VzVlR3a09RcjZRNHlYNnRUcmJCdjNvQUVjTUQ0?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
@@ -3097,11 +3071,25 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-74')">
             <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">Khosla-Backed Startup Claims Breakthrough With Largest-Ever AI Model on an iPhone - The Information</div>
+            <div class="meta">2026-07-09</div>
+        </div>
+        
+        <div id="content-74" style="display:none;">
+            <h2>Khosla-Backed Startup Claims Breakthrough With Largest-Ever AI Model on an iPhone - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-07-09</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQWWJja2ZSQnBKb0VmZUdsVGppeTVoQXp3SEI0b3lkX1Fod2hGUmFVSGd6YUdNWkNicjhHSk9TSWdXQmt1aTJFUmhIVHhwaFU0OTZRWmRtZ2tScEItXy1GSllwd3RnRXpueW9sYXU4YnRGaXdiRmpta2xCVGhnVExMWm5IalU5Ym9PaHpTc183Ym02YlBJRkNmNU91Um5aVXlqSVpPRXpYRThxX0hEUi1B?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-75')">
+            <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Chinese Humanoid Startup LimX Dynamics Closes Pre-IPO Funding at $2.2 Billion Valuation - The Information</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-74" style="display:none;">
+        <div id="content-75" style="display:none;">
             <h2>Chinese Humanoid Startup LimX Dynamics Closes Pre-IPO Funding at $2.2 Billion Valuation - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-14</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxOX09TSjRhNHJMNVU4eWo0M2E3eUQ1VTJwX1h4OTY5VWhjUDh6ZEstMGFrYzkyM0hxS29zd2tENERMWWFNR2pEY2MwS1Z0YVlaYVBPU3lLQnJOdWkwMUVHWWR6VHdfWnYtVmRnMWg0YTBYVTRGUzJadGRMRk12TVBORGw3Y2FGN1JvQ1AwZTJQTkQ2clRpRTYtT2FBcWRmYmcwZ25nbXVrcmVmbUxFZU5fZFNiYlhBSU9vYVdHLVJ2Nk1iZw?oc=5">Visit Original Website</a>
@@ -3109,13 +3097,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-75')">
+        <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Meta Doubles Louisiana Data Center Capacity - The Information</div>
             <div class="meta">2026-07-13</div>
         </div>
         
-        <div id="content-75" style="display:none;">
+        <div id="content-76" style="display:none;">
             <h2>Meta Doubles Louisiana Data Center Capacity - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-13</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQMEwxQUIzc2UxdVdZdWlEMzNQTUVmdVEtVEQwTzRFUTBZclNQdXBWZGNNNlNveFFTckJ4eTVHOTJybFJJeTBkeWdZVTl1bDZFNW1fTGp1TG1oa3BhRDNURnFsdmloWHRoUThaRTBfLUJJTUZIMUNfVjlsc3ZiaXZrOUROclBpS2E0SDZGOA?oc=5">Visit Original Website</a>
@@ -3123,30 +3111,16 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-76')">
+        <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Meta’s Louisiana Purchase - The Information</div>
             <div class="meta">2026-07-14</div>
         </div>
         
-        <div id="content-76" style="display:none;">
+        <div id="content-77" style="display:none;">
             <h2>Meta’s Louisiana Purchase - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-14</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPU0dlRkROcm9kaHRaOHRYaEwtazZhTHNhVFR0MUQ3UndXcm9jVGh2UmY3ekh1WklNSTFSSVlFcmtTekFCYmFtWmdYZXh1ZlFWYzA0a3d1ZnZXbUg3ZFpjTzBXWWE2RGJTWlZWNTBiVkppcVZOcEZVR2x0Q0Y4SVhMM3JSX1hhVEE?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-77')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Samsung Races to Add Chip Capacity, Moves Up Plant to 2029 - The Information</div>
-            <div class="meta">2026-07-13</div>
-        </div>
-        
-        <div id="content-77" style="display:none;">
-            <h2>Samsung Races to Add Chip Capacity, Moves Up Plant to 2029 - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-07-13</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNYWlVbFJ0Szc4YzNPMTFqLUdXaExwRW1ieVNuY0p5Mm1ScXM0aDJtRlV1UllyLTNELWNVTnhtbVpGemZHM0FMSkpYQjVjcEZ5U2xnRThEc1o0RURVLWVDbTR2aU9uYW1FaWRkZ3F6b0c1U0wyX0NxM2R6NFZSMDNhb0dfZTlBUVRJdjZfWmR3U1dMWTA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
