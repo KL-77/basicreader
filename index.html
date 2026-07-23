@@ -1364,18 +1364,60 @@ Despite the memorandum being replete with violations, vagaries, and tough-to-ful
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Microsoft Responds to LG Monitors Installing McAfee Ads On Windows</div>
+            <div class="title">Oracle Signs 10-Year Software Contract With Pentagon Worth Up To $7 Billion</div>
             <div class="meta">2026-07-23</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Oracle Signs 10-Year Software Contract With Pentagon Worth Up To $7 Billion</h2>
+            <p><strong>Slashdot | 2026-07-23</strong></p>
+            <a class="original-link" href="https://developers.slashdot.org/story/26/07/23/2142251/oracle-signs-10-year-software-contract-with-pentagon-worth-up-to-7-billion?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Exactly. The government does develop technology, like Siri at IARPA and it hands it out to billionaires in private sector (Apple)
+
+Kirsten Davies, the Department of Defense&#39;s chief information officer, said in the release that the agency is saving at least $441 million for taxpayers &quot;by fundamentally improving how we procure on-premises Oracle capabilities.&quot;So, it&#39;s $441M saved, by improvements in procurement. Not sure what that means. Does that mean Oracle gave them a $441M discount, or they found a way to reduce $441M in wasted money on the procurement process? Or something else?In any case, this sounds like puffery.
+
+Kirsten Davies, the Department of Defense&#39;s chief information officer, said in the release that the agency is saving at least $441 million for taxpayers &quot;by fundamentally improving how we procure on-premises Oracle capabilities.&quot;
+
+So, it&#39;s $441M saved, by improvements in procurement. Not sure what that means. Does that mean Oracle gave them a $441M discount, or they found a way to reduce $441M in wasted money on the procurement process? Or something else?
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Microsoft Responds to LG Monitors Installing McAfee Ads On Windows</div>
+            <div class="meta">2026-07-23</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Microsoft Responds to LG Monitors Installing McAfee Ads On Windows</h2>
             <p><strong>Slashdot | 2026-07-23</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/07/23/2137202/microsoft-responds-to-lg-monitors-installing-mcafee-ads-on-windows?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Meh, they&#39;ll probably build future ads directly into the monitor firmware, so even people using them on Linux will get them as the monitor powers up.  Won&#39;t that be lovely?
+            <div id="article-text">Yes but this is literally required for hardware. Hardware needs drivers, and since the days of plug and play we&#39;ve had drivers automatically install for hardware.
+
+&quot;Literally required&quot;? Such nonsense. Sane driver installation is just as subject to sysadmin consent as all other software installation. What do you think how this goes if somebody manages a supply-chain attach on this, especially on, say, an industrial control system that cannot simply be turned off?
+
+Windows has built-in default drivers that work for most standard device types.  Installing the specific driver package that includes advanced features specific to a particular make/model of the device should be something that the user has control of.
+
+A monitor will work with default drivers.  A mouse will work with default drivers.  A keyboard will work with default drivers.  The special features may need an application installed.  Windows Update can detect the device ID and offer to install the software for
+
+Indeed. Insecure by design. In a rational world, this designed-in vulnerability would exclude Windows from most uses.
+
+Meh, they&#39;ll probably build future ads directly into the monitor firmware, so even people using them on Linux will get them as the monitor powers up.  Won&#39;t that be lovely?
+
+Except WHQL explicitly does allow this, the driver manifest can point to associated apps in the Microsoft Store and WHQL certification doesn&#39;t extend to the apps. Fun fact LG monitors have done this for years. The difference is that in the past the software automatically installed was actually wanted, e.g. LG Calibration studio is  was automatically installed when I first plugged in my LG monitor I bought 3 years ago.
+
+But from what I understand they don&#39;t allow you to do what LG did. It&#39;s explicitly forbidden in the guidelines for a Windows certified driver. Guidelines that get reluctantly enforced only when things blow up are not worth anything.
+
+But from what I understand they don&#39;t allow you to do what LG did. It&#39;s explicitly forbidden in the guidelines for a Windows certified driver.
+
+Guidelines that get reluctantly enforced only when things blow up are not worth anything.
 
 Would you like to install this software?- Yes, please.- No, and never ask again.
+
+And 3 - light the CEO of the company that create this on fire.
 
 I&#39;m guessing Microsoft&#39;s reasoning is that since you trust the driver, you probably also trust the companion app from the same vendor. On the flip side, what&#39;s stopping LG from pushing the adware into the driver itself? Unfortunately, this is an issue with every OS that has a monolithic kernel.
 
@@ -1383,23 +1425,34 @@ LG slips McAfee adware via Windows Update.  What a collaboration of scumbags!
 
 If you don&#39;t create a non-admin account for day to day use, you&#39;re inviting this kind of crap. Granted, non-admin accounts don&#39;t stop everything, but they certainly stop the word of it.
 
+You don&#39;t need admin privileges to install software from the Microsoft Store or for Windows update to provision drivers. An unprivileged account doesn&#39;t fix this.
+
+Are you installing your AMD/NVidia drivers and companion apps without admin?
+
+The root cause of this debacle is Windows update dutifully installing the LG driver, and its companion app. Drivers don&#39;t happen without admin permissions.
+
+My point is that, in this scenario, it doesn&#39;t matter in the least what type of user account you use. Windows Plug-n-Play automatically installed the driver and app. Windows update uses the SYSTEM user, which has full root permissions.
+
 That you would even try something like this and assume it will go down smoothly means that if you got an MRI, they&#39;d find nothing but cork inside your skull.
 
 People have a super-difficult time imagining the hateful experiences they want to impose on others. Anyone who comes up with an idea like this ought to have to live inside their own design for an ad-soaked Hell for a solid month before they&#39;re allowed to put it forward.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+Clearly. This LG crap-show is just one more indicator, but the fundamental problem is all Microsoft.
 
-Living on Earth may be expensive, but it includes an annual free trip
-around the Sun.</div>
+The &quot;issue&quot; here is a feature that has existed in Windows since the early days of Windows 11 and has a specific toggle in the settings should you want to disable it. That &quot;issue&quot; allows users to use their hardware&#39;s features (some of which require apps to control) without trawling the internet looking for the software from the website of the peripheral manufacturer.
+
+The only real issue here is that LG shat the bed by including unwanted non-related software. MS should police this, but ultimately the software
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">EU Fines Google $1 Billion For Breaking Digital Antitrust Regulations</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>EU Fines Google $1 Billion For Breaking Digital Antitrust Regulations</h2>
             <p><strong>Slashdot | 2026-07-23</strong></p>
             <a class="original-link" href="https://search.slashdot.org/story/26/07/23/2034235/eu-fines-google-1-billion-for-breaking-digital-antitrust-regulations?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1422,19 +1475,18 @@ Or loosen regulations and maybe Europe can develop a functional tech economy of 
 
 aka Google-speak for &quot;they haven&#39;t installed non-Play or sideloaded apps on their device.&quot;
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+In your analogy, you (Google), is selling their own items in their garage. In a better analogy, Google operates a flea market where independent sellers come to sell their items, and Google obliges every seller must use Google Pay even when customers have cash, and sellers must eat Google Sawndwiches even they you could use Uber Eats.Another difference is your garage sale grew to 45 million monthly customers, which the law defines as &quot;dominant position&quot; where the additional obligations apply, such as being o
 
-Living on Earth may be expensive, but it includes an annual free trip
-around the Sun.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Amazon Is Bringing Games to Prime Video</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Amazon Is Bringing Games to Prime Video</h2>
             <p><strong>Slashdot | 2026-07-23</strong></p>
             <a class="original-link" href="https://games.slashdot.org/story/26/07/23/1830257/amazon-is-bringing-games-to-prime-video?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1459,24 +1511,25 @@ Basic Luna service is already included with Amazon Prime. Amazon must be despera
 
 I have an NVDIA Shield Pro, which has GeForce NOW cloud gaming. I have yet to use it but it looks like all I need now is a wireless controller. Anyone use GeForce NOW regularly instead of running Windows or Steam on local hardware?
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Living on Earth may be expensive, but it includes an annual free trip
-around the Sun.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Sony's Decision To Ditch Discs Was Practically Inevitable, Data Shows</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Sony's Decision To Ditch Discs Was Practically Inevitable, Data Shows</h2>
             <p><strong>Slashdot | 2026-07-23</strong></p>
             <a class="original-link" href="https://games.slashdot.org/story/26/07/23/1825217/sonys-decision-to-ditch-discs-was-practically-inevitable-data-shows?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">For gaming, that ship sailed when most games started requiring server-side infrastructure.  Even if you do own the physical disc, a lot of good it&#39;ll do you if the servers have been shut down.
+
+I would semi-seriously recommend &quot;invest in a stacked tower of old Dell OptiPlex computers&quot; but the eWaste industry appears to have been partially cooked by the pandemic lockdowns and now the used Ram/SSD price madness on new components spilling into the used markets.
+
+A bit too much &quot;no lowballz, I know what I got&quot; on 4GB DDR4 sticks and ~128GB SSDs shucked from ex lease PCs.
 
 The problem I always had, historically, with games on DVD is they&#39;d kind of &quot;beat up&quot; the optical drive, seeking all over the disc constantly while the game was loading and then being played.
 
@@ -1493,6 +1546,10 @@ This isn&#39;t such a bad deal, but the difference here is Sony&#39;s user-hosti
 Take Steam as a counter-example. I own many titles that have been delisted, originally published by a company that went out of business, was purchased by someone else, re-published under a new listing... yet I still &quot;own&quot; the original title. It&#39;s still in my library. I can still download and play it, even if it&#39;s broken on Windows 11 and I need to start up a VM or spend hour applying mods to get it to work. I&#39;m not privy to all the horse trading that goes on when they negotiate these contracts, but I have some trust in Valve that they won&#39;t screw over their users to save a few bucks.
 
 I know I don&#39;t really own it--I never did--but I have my copy and a few implied rights that they won&#39;t take it away from me at a whim. That&#39;s all people ask, and nobody trusts Sony to deliver.
+
+False trust, is false.  Now tell us about all those delisted games that didn&#39;t ever come back in the pseudo-magical way you described.On Steam? NONE.  Zero.  Zip.  Zilch.
+
+False trust, is false.  Now tell us about all those delisted games that didn&#39;t ever come back in the pseudo-magical way you described.
 
 Discs have only been a distribution mechanism now for 2+ generations.  You don&#39;t run the game off the disc it just installs it to the HD.  (Then layers in a 12 GB patch anyways).  Two sets of people benefit: those that want to resell the title and those that don&#39;t want the gigantic download.  The no download crew is pretty much lost as you generally need &quot;day 0&quot; patch to make the game anything but a buggy mess, so this is 100% about resale.
 
@@ -1528,23 +1585,22 @@ The reason why it will never happen this way, is because NVMe drives, even at So
 
 People wouldn&#39;t miss their discs so much if Sony did a better job protecting access to digital libraries.
 
+While I&#39;m not a &quot;never say never&quot; person, I haven&#39;t had the disappearing purchase problem as an Xbox owner that I hear about from Sony folks.  I&#39;ve been quite impressed with how well MS has kept my purchased catalog alive even after the game has been removed from sale for future folks.
+
 Sony could install a rootkit on your computer from a download just as easily as from a CD. Why would you trust Sony?
 
 Fuck Sony, I don&#39;t need anything Sony touches.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Living on Earth may be expensive, but it includes an annual free trip
-around the Sun.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">In a First, Apple Maps Navigation To Be Embedded In Ford UEV Pickups</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>In a First, Apple Maps Navigation To Be Embedded In Ford UEV Pickups</h2>
             <p><strong>Slashdot | 2026-07-23</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/07/23/1626218/in-a-first-apple-maps-navigation-to-be-embedded-in-ford-uev-pickups?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1596,6 +1652,10 @@ I don&#39;t care about what&#39;s more popular.  I want a small EV pickup truck.
 I DO NOT want a giant bro-dozer even if it&#39;s an EV.  And I absolutely do not want to spend $50K+ on it either.
 
 The only reason I don&#39;t already have one is because no one has one to sell.  I&#39;m hoping the Slate truck is mature eno
+
+I don&#39;t care about what&#39;s more popular.And that is fine, neither do I, so long as you understand that if you want something that is not popular there won&#39;t be a big selection, or you will pay a premium, or both. This is true of most things, not just vehicles.
+
+And that is fine, neither do I, so long as you understand that if you want something that is not popular there won&#39;t be a big selection, or you will pay a premium, or both. This is true of most things, not just vehicles.
 
 Slate https://www.slate.auto/en [slate.auto]
 
@@ -1699,41 +1759,7 @@ This, coming from an auto-making industry who just took a financial fucking bath
 
 To be fair though, the auto industry was just trying to roll with the political tides.  That was never going to end well when one political party thinks EVs are the second coming of Jesus, the other has a raging hate boner for them, and the American public keeps flip-flopping between the two of them every 4 years for every election cycle since Obama.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Living on Earth may be expensive, but it includes an annual free trip
-around the Sun.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Four Young Mathematicians Awarded the 2026 Fields Medals</div>
-            <div class="meta">2026-07-23</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Four Young Mathematicians Awarded the 2026 Fields Medals</h2>
-            <p><strong>Slashdot | 2026-07-23</strong></p>
-            <a class="original-link" href="https://science.slashdot.org/story/26/07/23/1616208/four-young-mathematicians-awarded-the-2026-fields-medals?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">You seem to know what you&#39;re talking about, so if you know and it isn&#39;t any trouble, can you explain that and how
-
-I think I can explain this.  I&#39;m not sure how well, I&#39;ll do but I can try.
-
-For &quot;nice&quot; objects, we all have an intuition about how many dimensions the object is, which is roughly how many variables it takes to specify a given location on the object. For example, on a line embedded in your standard Cartesian two dimensions, say y=3x+2, you can just tell someone the x coordinate and they know exactly where they are. This works in general, so typical 3 dimensional space needs 3 coordinates. Etc. Similar, a circle (even though it lives in 2 dimensions) just needs 1 variable to tell someone where you are on it because you can take an angle from the center.
-
-However, lots of objects turn out to have a notion of dimension that doesn&#39;t quite match up this way. This is roughly what people mean when they call something a &quot;fractal&quot; (although some people use fractal more to mean a thing deifned by a recursive procedure. Defining it precisely is tough.) Now, to talk about objects that are fractals, like say the Koch snowflake https://en.wikipedia.org/wiki/Koch_snowflake [wikipedia.org] we want a notion of dimension that makes sense for them. Ideally, for a given object we want a notion of &quot;dimension&quot; which gives the correct value of dimension when we apply it to an object that is a traditional object with a known dimension, like a line, or sphere or ball. The Minkowski dimension is one such approach. It is easiest to explain in 2 dimensions, but the same basic idea looks in any number of dimensions. Roughly speaking, you take the object you want, and you pick some tiny number epsilon, and then you make a grid on the plane of little boxes each which are epsilon by epsilon, and then you ask how many tiny boxes does it take to cover the object? Then, you take that number and divide it by log (epsilon), and then you let epsilon go to zero. This essentially measures how pointy thick the object is. If the object is thick this will just be two. If it is just a few isolated points (even infinitely many but not a lot) this will be zero. It isn&#39;t obvious that this is the right thing to count but turns out to work pretty well. You then generalize this to any number of dimensions for your space your object lives in by using boxes of the corresponding dimension number. So, for a fractal which lives on the real line, you use intervals of length epsilon, in 3 dimensions you use cubes of side length epsilon and so on.
-
-Now, the Minkowski dimension is not the only notion of dimension we have that works this way. There&#39;s a related idea called the Hausdorff dimension which is defined in a more complicated fashion but turns out to often be easier to calculate. For example, it is not too hard to show that the Hausdorff dimension of the Koch snowflake is (ln 4)/(ln 3) which is about 1.26. (This reflects the intuition one might have that the Koch snowflake is much closer to being a thing made of lines than it is to being a thing with normal area). Now, it turns out that the Minkowski is always at least as large as the Hausdorff dimension, and they are equal in many situations. But there are some annoyingly simple situations where they are not.  For example, if you take the interval of points between 0 and 1 and just take the rational points, then it has has Hausdorff dimension zero and Minkowski dimension one, which is about as far as you could want. Sometimes we&#39;ll calculate Haussdorff dimension for an object but really care about the Minkowski dimension, where finding that takes more work.
-
-In the case of Hong Wang&#39;s work. She and Zahl proved that if you had what is called a Kakeya set in 3 dimensions (where you want a set that can fit a needle in every direction but you don&#39;t care about rotating it around, you just want a needle to fit at any orientation you choose), is that the Haussdorf dimension of the  set, and the Minkowski  dimension have to be equal and in fact equal to 3. But note that this isn&#39;t obvious in part because one doesn&#39;t have the rotation requirement here.
-
-I blame school scheduling for that.  From Jr High on through college, all my math classes were fi
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Living on Earth may be expensive, but it includes an annual free trip
-around the Sun.</div>
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2077,11 +2103,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Airbus, Boeing fly in different directions at Farnborough</div>
+            <div class="title">China has cracked down on AI companions: What can we learn from this?</div>
             <div class="meta">2026-07-23</div>
         </div>
         
         <div id="content-36" style="display:none;">
+            <h2>China has cracked down on AI companions: What can we learn from this?</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-23</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-07-china-ai-companions.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Airbus, Boeing fly in different directions at Farnborough</div>
+            <div class="meta">2026-07-23</div>
+        </div>
+        
+        <div id="content-37" style="display:none;">
             <h2>Airbus, Boeing fly in different directions at Farnborough</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-23</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-airbus-boeing-fly-farnborough.html">Visit Original Website</a>
@@ -2089,13 +2129,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Novel method lets multimodal AI update knowledge without losing earlier information</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Novel method lets multimodal AI update knowledge without losing earlier information</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-23</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-method-multimodal-ai-knowledge-earlier.html">Visit Original Website</a>
@@ -2103,13 +2143,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Prototype device polarizes light with heat for denser optical signals</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Prototype device polarizes light with heat for denser optical signals</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-23</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-prototype-device-polarizes-denser-optical.html">Visit Original Website</a>
@@ -2117,13 +2157,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">AI extracts hidden material rules from microscopic data to predict large-scale behavior</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>AI extracts hidden material rules from microscopic data to predict large-scale behavior</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-23</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-ai-hidden-material-microscopic-large.html">Visit Original Website</a>
@@ -2131,13 +2171,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Ultraprecise battery scan maps nanoscale electrode thickness variations to improve EV fire safety</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Ultraprecise battery scan maps nanoscale electrode thickness variations to improve EV fire safety</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-23</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-ultraprecise-battery-scan-nanoscale-electrode.html">Visit Original Website</a>
@@ -2145,201 +2185,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Rotating metamaterial units could enable long-range wave control beyond conventional limits</div>
-            <div class="meta">2026-07-23</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Rotating metamaterial units could enable long-range wave control beyond conventional limits</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-23</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-07-rotating-metamaterial-enable-range-conventional.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-42')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">AMD and Cerebras join forces against Nvidia’s Groq LPUs</div>
-            <div class="meta">2026-07-23</div>
-        </div>
-        
-        <div id="content-42" style="display:none;">
-            <h2>AMD and Cerebras join forces against Nvidia’s Groq LPUs</h2>
-            <p><strong>www.theregister.com - Articles | 2026-07-23</strong></p>
-            <a class="original-link" href="https://www.theregister.com/systems/2026/07/23/amd-and-cerebras-join-forces-against-nvidias-groq-lpus/5277817">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-43')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">OpenAI won't let some customers export their chats, but this tool will</div>
-            <div class="meta">2026-07-23</div>
-        </div>
-        
-        <div id="content-43" style="display:none;">
-            <h2>OpenAI won't let some customers export their chats, but this tool will</h2>
-            <p><strong>www.theregister.com - Articles | 2026-07-23</strong></p>
-            <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/23/openai-wont-let-some-customers-export-their-chats-but-this-tool-will/5277795">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-44')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">Codeberg gives vibe-coded projects the toss, promotes human FLOSS</div>
-            <div class="meta">2026-07-23</div>
-        </div>
-        
-        <div id="content-44" style="display:none;">
-            <h2>Codeberg gives vibe-coded projects the toss, promotes human FLOSS</h2>
-            <p><strong>www.theregister.com - Articles | 2026-07-23</strong></p>
-            <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/23/codeberg-gives-vibe-coded-projects-the-toss-promotes-human-floss/5277717">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-45')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">AMD attacks the rack with Helios systems that rival Nvidia's</div>
-            <div class="meta">2026-07-23</div>
-        </div>
-        
-        <div id="content-45" style="display:none;">
-            <h2>AMD attacks the rack with Helios systems that rival Nvidia's</h2>
-            <p><strong>www.theregister.com - Articles | 2026-07-23</strong></p>
-            <a class="original-link" href="https://www.theregister.com/systems/2026/07/23/amd-attacks-the-rack-with-helios-systems-that-rival-nvidias/5277246">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-46')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">Year-long Russian attacks infect users as soon as they look at an email</div>
-            <div class="meta">2026-07-23</div>
-        </div>
-        
-        <div id="content-46" style="display:none;">
-            <h2>Year-long Russian attacks infect users as soon as they look at an email</h2>
-            <p><strong>www.theregister.com - Articles | 2026-07-23</strong></p>
-            <a class="original-link" href="https://www.theregister.com/patches/2026/07/23/year-long-russian-attacks-infect-users-as-soon-as-they-look-at-an-email/5277358">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">Model Context Protocol prepares to break with its stateful past</div>
-            <div class="meta">2026-07-23</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Model Context Protocol prepares to break with its stateful past</h2>
-            <p><strong>www.theregister.com - Articles | 2026-07-23</strong></p>
-            <a class="original-link" href="https://www.theregister.com/devops/2026/07/23/model-context-protocol-prepares-to-break-with-its-stateful-past/5276722">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Biggest overhaul since launch ditches sessions, guts little-used features, and leaves homebrew implementations facing a slog
-
-AI seemed simpler in 2024 when Anthropic released the first version of the Model Context Protocol (MCP), an open standard for connecting AI applications to external systems.
-
-Back then, developers primarily used the protocol on their personal computers. As those laptop-bound demos were adapted for multi-client enterprise use, MCP servers moved into the cloud, where the original design quickly created scalability problems.
-
-On July 28, MCP&#39;s maintainers plan to finalize the protocol&#39;s 2026-07-28 revision, bringing many changes – including some that aren&#39;t backward compatible – that reflect some &quot;hard lessons&quot; the core MCP team learned over the past two years, said Anthropic technical staff member David Soria Parra in a livestream Tuesday.
-
-The 2026-07-28 revision will come with the &quot;most substantial changes we have made to the specification, probably since adding authorization,&quot; Parra said. &quot;A lot of things that made MCP are gone.&quot;
-
-Parra claims the new MCP will be easier to deploy and use. If users have been updating their SDKs, they shouldn&#39;t have much problem upgrading.
-
-But he also warned that the underlying data transfer mechanism has totally been rebuilt, which &quot;makes things on the wire a bit more complicated than they used to be.&quot; Protocol-level session tracking will no longer be required.
-
-For those who rolled their own MCP engine, some long days of reconfiguration may be ahead. &quot;If you built your own implementation, it&#39;s going to be a lot of uplift to make this correct,&quot; Parra admitted.
-
-Anthropic donated MCP in 2025 to the AAIF, a Linux Foundation fund co-founded by Anthropic, Block, and OpenAI. By that time, the SDK was being downloaded over 97 million times a month and at least 10,000 MCP servers had been set up.
-
-The chief change is that the new revision removes protocol-level sessions, allowing each request to be handled independently. This &quot;stateless&quot; approach, common in the cloud-native world, is used to scale web services behind a fleet of load balancers.
-
-Anthropic originally built MCP so that servers could be built to expose resources, tools, and prompts. An LLM-connected application can host clients to communicate with these servers via JSON-RPC 2.0.
-
-However, this approach came with excessive complexity and operational difficulties, especially creating and supervising protocol sessions for every individual action. As Parra acknowledged, the original specification failed to properly define how session details should be preserved, leading to complications. Furthermore, routing grew overly intricate when extra resources were required.
-
-The solution was simple. Under the new revision, information about the protocol version, client identity, and capabilities travels in the _meta parameter with each request, eliminating the need for protocol session tracking.
-
-MCP now operates very much like the Claude Messages API, also stateless, which provides the interface for sending and receiving messages with Anthropic&#39;s models.
-
-&quot;I think that it&#39;s a very smart and nice way to just move… state away from the server onto the wire protocol and hope that bandwidth is for free,&quot; Parra said.
-
-MCP&#39;s routing mechanism was also totally gutted. The original messages were sent over JSON-RPC HTTP POST payloads, with the actual operation buried in the JSON body. The new revision also mirrors routing information in HTTP headers, allowing networking gear to route requests without tracking session status or inspecting the JSON-RPC body.
-
-A number of features in the original MCP have also been deprecated. One is sampling, which seemed useful at the time but turned out to be used rarely. It allowed an MCP server to ask the client&#39;s model to generate a completion, but the semantics were confusing and hard to implement, Parra said.
-
-Roots was also deprecated. It allows clients to tell servers which file system locations are relevant to a session. It was &quot;a very niche thing,&quot; Parra said. Logging also got its notice for being excessively chatty, and developers were advised to just use stderr, stdio, or OpenTelemetry.
-
-&quot;We are widening the surface to the things we thought were useful, but we are also realistic about narrowing [MCP] down to the good pieces that everybody is actively using,&quot; Parra said.
-
-MCP also has been enhanced with extensibility. &quot;I think the extensions are a model for us to really test out things in the protocol before we bake them into the protocol,&quot; said Den Delimarsky, an Anthropic technical staff member who also joined the conversation.
-
-There are many use cases that are domain specific where an extension would be helpful, but the potential user base is not big enough to warrant rolling that feature out to everyone. And experimental features will be tested through extensions.
-
-Extensions can be bundled with the protocol, but have their own release schedule. One official extension is MCP Apps, which allows the MCP to present the user with an interactive app, built in JavaScript, instead of just text or an image.
-
-MCP&#39;s Tasks feature, used for managing long-running operations, has been moved out of the core protocol and into an extension.
-
-In addition to officially recognized extensions, users can build their own, following the instructions and suggestions in the specification, Parra said.
-
-Features formally marked as deprecated will remain functional for at least 12 months, according to Stacklok&#39;s &quot;Enterprise Readiness Guide for the July 2026 MCP Spec Update.&quot; Stacklok, which offers an MCP platform, warns that this is not a blanket guarantee of interoperability with legacy implementations. Servers using the 2026-07-28 revision may not work with older clients, and vice versa.
-
-&quot;Compatibility requires both sides to share a supported protocol era, or for one side to implement deliberate fallback or translation,&quot; the report noted.
-
-MCP’s move to statelessness was a necessary one, in the view of Stacklok CEO (and co-creator of the very stateless Kubernetes), Craig McLuckie.“The stateful nature of MCP was really a by-product of its origin as a way to support developers using coding tools (that tend to run locally) to access things. The broader AI community is now embracing MCP as a mechanism to allow enterprises to intermediate access to production systems,” McLuckie told the Register.“This gives cyber teams a unified control point to apply agent aware policy and is delivered in a form factor that platform teams are comfortable with running.” ®
-
-ChatGPT Business and Enterprise users lack the standard chat export option, so third-party utilities like scrapemychats fill the gap
-
-PARTNER CONTENT: How Envision is reversing the datacenter playbook by making computing chase abundant desert power, not the other way around
-
-AI no longer welcome in human-focused community
-
-Spec for spec, the House of Zen&#39;s first rack-scale AI compute platform is bigger and faster than Nvidia&#39;s Vera Rubin by nearly every metric, but that&#39;s only on paper
-
-AI no longer welcome in human-focused community
-
-Spec for spec, the House of Zen&#39;s first rack-scale AI compute platform is bigger and faster than Nvidia&#39;s Vera Rubin by nearly every metric, but that&#39;s only on paper
-
-Biggest overhaul since launch ditches sessions, guts little-used features, and leaves homebrew implementations facing a slog
-
-Optimus remains &#39;very complex&#39; and Robotaxis will try not to flatten your cat
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
-
-New Debian versions hit FOSSland in the form of 13.6 and 12.15
-
-Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
-
-Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
-
-Next version of Linux Mint’s desktop has both kinds of display server
-
-6.7 is now current, and in 6.8 you&#39;re getting Wayland whether you like it or not</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
             <div class="title">Alexa Plus is getting an AI update to handle more complicated instructions</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-42" style="display:none;">
             <h2>Alexa Plus is getting an AI update to handle more complicated instructions</h2>
             <p><strong>The Verge | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/970399/amazon-alexa-plus-ai-update-smart-home-devices">Visit Original Website</a>
@@ -2363,13 +2215,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-43')">
             <div class="source">The Verge</div>
             <div class="title">The Echo Show 21 is a great smart home hub that’s $80 off</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-43" style="display:none;">
             <h2>The Echo Show 21 is a great smart home hub that’s $80 off</h2>
             <p><strong>The Verge | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/970254/amazon-echo-show-21-deal-sale">Visit Original Website</a>
@@ -2395,13 +2247,13 @@ Sign up to get the best deals on products we’ve found and tested sent to your 
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">The Verge</div>
             <div class="title">FCC Chairman Brendan Carr’s war on the First Amendment</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>FCC Chairman Brendan Carr’s war on the First Amendment</h2>
             <p><strong>The Verge | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.theverge.com/policy/970284/brendan-carr-fcc-chairman-first-amendment">Visit Original Website</a>
@@ -2453,13 +2305,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">The Verge</div>
             <div class="title">Claude’s voice mode is now available for Opus and Sonnet</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Claude’s voice mode is now available for Opus and Sonnet</h2>
             <p><strong>The Verge | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.theverge.com/ai-artificial-intelligence/970065/anthropic-voice-mode-claude-opus-sonnet-haiku-ai">Visit Original Website</a>
@@ -2483,13 +2335,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">The Verge</div>
             <div class="title">Patreon is laying off 20 percent of workers</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>Patreon is laying off 20 percent of workers</h2>
             <p><strong>The Verge | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/970211/patreon-layoffs-ai">Visit Original Website</a>
@@ -2513,13 +2365,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-53')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">The Verge</div>
             <div class="title">Corsair’s PC case with a panoramic glass design is $70 off</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-53" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Corsair’s PC case with a panoramic glass design is $70 off</h2>
             <p><strong>The Verge | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/960331/corsair-frame-4500x-deal-pc-case-sale">Visit Original Website</a>
@@ -2543,13 +2395,13 @@ Sign up to get the best deals on products we’ve found and tested sent to your 
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-54')">
+        <div class="card" onclick="openModal('content-48')">
             <div class="source">MIT Technology Review</div>
             <div class="title">Supercooled kidneys have been transplanted into pigs in a “landmark achievement”</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-54" style="display:none;">
+        <div id="content-48" style="display:none;">
             <h2>Supercooled kidneys have been transplanted into pigs in a “landmark achievement”</h2>
             <p><strong>MIT Technology Review | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/23/1140765/supercooled-kidneys-have-been-transplanted-into-pigs-in-a-landmark-achievement/">Visit Original Website</a>
@@ -2620,13 +2472,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-55')">
+        <div class="card" onclick="openModal('content-49')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The Download: energy transmission and US threats against Chinese AI</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-55" style="display:none;">
+        <div id="content-49" style="display:none;">
             <h2>The Download: energy transmission and US threats against Chinese AI</h2>
             <p><strong>MIT Technology Review | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/23/1140753/the-download-energy-transmission-and-us-threats-chinese-ai/">Visit Original Website</a>
@@ -2689,13 +2541,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-56')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">MIT Technology Review</div>
             <div class="title">How AI helps scientists design the next generation of medicines</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-56" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>How AI helps scientists design the next generation of medicines</h2>
             <p><strong>MIT Technology Review | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/23/1140346/how-ai-helps-scientists-design-the-next-generation-of-medicines/">Visit Original Website</a>
@@ -2762,13 +2614,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-57')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The power line that could reshape New York’s grid is hitting snags</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-57" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>The power line that could reshape New York’s grid is hitting snags</h2>
             <p><strong>MIT Technology Review | 2026-07-23</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/23/1140739/power-line-grid-chpe/">Visit Original Website</a>
@@ -2827,13 +2679,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-58')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The Download: NASA’s new space telescope and OpenAI’s autonomous hacker</div>
             <div class="meta">2026-07-22</div>
         </div>
         
-        <div id="content-58" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>The Download: NASA’s new space telescope and OpenAI’s autonomous hacker</h2>
             <p><strong>MIT Technology Review | 2026-07-22</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/22/1140717/the-download-nasa-space-telescope-openai-hugging-face-hack/">Visit Original Website</a>
@@ -2908,13 +2760,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-59')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">MIT Technology Review</div>
             <div class="title">Shape-shifting mirrors on NASA’s new space telescope could unveil Jupiters like our own</div>
             <div class="meta">2026-07-22</div>
         </div>
         
-        <div id="content-59" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>Shape-shifting mirrors on NASA’s new space telescope could unveil Jupiters like our own</h2>
             <p><strong>MIT Technology Review | 2026-07-22</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/22/1140701/shape-shifting-mirrors-roman-space-telescope/">Visit Original Website</a>
@@ -2983,13 +2835,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-60')">
+        <div class="card" onclick="openModal('content-54')">
             <div class="source">The Next Web</div>
             <div class="title">Ford is switching from Google to Apple Maps for its next-generation EVs</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-60" style="display:none;">
+        <div id="content-54" style="display:none;">
             <h2>Ford is switching from Google to Apple Maps for its next-generation EVs</h2>
             <p><strong>The Next Web | 2026-07-23</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/ford-apple-maps-ev-navigation-bluecruise-uev">Visit Original Website</a>
@@ -3011,13 +2863,13 @@ The electric pickup launching on Ford’s Universal Electric Vehicle platform wi
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-55')">
             <div class="source">The Next Web</div>
             <div class="title">Musk says Optimus will be the hardest product Tesla has ever scaled</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-55" style="display:none;">
             <h2>Musk says Optimus will be the hardest product Tesla has ever scaled</h2>
             <p><strong>The Next Web | 2026-07-23</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/musk-optimus-hardest-product-scale-manufacturing-tesla">Visit Original Website</a>
@@ -3039,13 +2891,13 @@ Musk’s compensation deal ties part of his payout to delivering one million Opt
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-56')">
             <div class="source">The Next Web</div>
             <div class="title">AMD unveils Helios rack and MI455X accelerator in bid to close the gap with Nvidia</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-56" style="display:none;">
             <h2>AMD unveils Helios rack and MI455X accelerator in bid to close the gap with Nvidia</h2>
             <p><strong>The Next Web | 2026-07-23</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/amd-advancing-ai-helios-mi455-cerebras-nvidia">Visit Original Website</a>
@@ -3069,13 +2921,13 @@ The Venice Epyc processor, meanwhile, is AMD’s answer to Nvidia’s push into 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-57')">
             <div class="source">The Next Web</div>
             <div class="title">Four former DOGE staffers raised $160 million at a $1.4 billion valuation for an AI military cyber startup</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-57" style="display:none;">
             <h2>Four former DOGE staffers raised $160 million at a $1.4 billion valuation for an AI military cyber startup</h2>
             <p><strong>The Next Web | 2026-07-23</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/cathedral-doge-alumni-military-cyber-startup-1-4-billion">Visit Original Website</a>
@@ -3091,13 +2943,13 @@ The $1.4 billion valuation for a company with no disclosed revenue or contracts 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
+        <div class="card" onclick="openModal('content-58')">
             <div class="source">The Next Web</div>
             <div class="title">Jeff Bezos has been approached to buy a stake in Liverpool FC. Amazon already holds the Premier League TV rights.</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-64" style="display:none;">
+        <div id="content-58" style="display:none;">
             <h2>Jeff Bezos has been approached to buy a stake in Liverpool FC. Amazon already holds the Premier League TV rights.</h2>
             <p><strong>The Next Web | 2026-07-23</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/jeff-bezos-liverpool-fc-stake-consortium-fsg">Visit Original Website</a>
@@ -3119,13 +2971,13 @@ Liverpool is one of the most successful clubs in English football history, with 
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-65')">
+        <div class="card" onclick="openModal('content-59')">
             <div class="source">The Next Web</div>
             <div class="title">Travis Kalanick raised $1.7B for his robotics comeback, and Uber chipped in</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-65" style="display:none;">
+        <div id="content-59" style="display:none;">
             <h2>Travis Kalanick raised $1.7B for his robotics comeback, and Uber chipped in</h2>
             <p><strong>The Next Web | 2026-07-23</strong></p>
             <a class="original-link" href="https://thenextweb.com/news/travis-kalanick-atoms-1-7-billion-industrial-ai-a16z-uber">Visit Original Website</a>
@@ -3161,13 +3013,13 @@ He turned the movement of people into a software business once. Now, with $1.7 b
 Get the most important tech news in your inbox each week.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-66')">
+        <div class="card" onclick="openModal('content-60')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Trump administration to impose new global tariffs - Reuters</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-66" style="display:none;">
+        <div id="content-60" style="display:none;">
             <h2>Trump administration to impose new global tariffs - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOZjlYNnVfaDJNN2FOQldfTTRPclB4cmxtTWxaSDkyUGJJZHhtYjJEVUZnRmxhNjZEV0daUkZJS1ZHWHFJM1hSNDlBcVlwUlRIdVN4ZmVzVmgtbUpxM1NyVlotQVA3NmhUb090NVFzamlaUkhCTjFuRzZWTjVTUTYxMzhBLXNld09NWGdadEx1bXdnemUwbWdtbzg1X0I2Y3VJZFpiOFk0blpFSS1ieklCeFItZzQ4UQ?oc=5">Visit Original Website</a>
@@ -3175,13 +3027,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Nvidia, Amkor strike $1.5 billion chip packaging deal - Reuters</div>
+            <div class="meta">2026-07-23</div>
+        </div>
+        
+        <div id="content-61" style="display:none;">
+            <h2>Nvidia, Amkor strike $1.5 billion chip packaging deal - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-23</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbkZla1VnYlBjdGloZHdvdGxxNGlEd2JQSnl3ay1XblB4WDNJOGV2ZWRmTXVwVGF4Qm1UWFJpeTc2V2tLOXh4UTY0SHN1WEN2bVlaczk3dnZOZUt4MzUzaTdYMDdGdnU0X3BpcDFFTHBwNDhOQXVycy02cVFpLUFuSDgwR3JUaFpmcDhDZ0tGNmgtZVBhYjdON0VRZnBkeWV0UkRtZF83ZlA?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-62')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Intel forecast crushes estimates as AI boom boosts chip demand; shares jump - Reuters</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-62" style="display:none;">
             <h2>Intel forecast crushes estimates as AI boom boosts chip demand; shares jump - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxNY1JRa3lMd0xIRC1RRGxjWWFMTmZqYmtPMnV1ZXlURS1KX0dQOFRRMXNhbDMwV0NieEhCYkc0QjNlVGlCSnE3OGYwZ1lUR1ZuTndhR2RBNVBxNnFnN043Z2NZM1BiemNBSUNvT3RRc1hSM0o5WjB0MTNkampodGcwSVFndUJwLWdaRXRHZHFKbzdNZFNNT245SHczYjdTX2NBVC0xNS1HcHc0Y1V6ZTFmQzMwcG1FR1NIUHVldlZn?oc=5">Visit Original Website</a>
@@ -3189,13 +3055,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Trump says Xi will visit US on September 24 - Reuters</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>Trump says Xi will visit US on September 24 - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxORlBrT0p2bjlRMEc0aFlVTTRtdWRLZ19iRTZER0RrZ0E0ZXNacElpeHUtdGFwSHhyVFF6WXFrMDdxVEdvSzB6VWdoWEFNT3lacnJtYWZnc1MzZUlxeFhWa2RlV2ZCR0ZQaVpSMG5FV09wb0U3UnNyczIyeWhTVjFoeWg0WmxuMTFiQ0dXVlVfNUhkLWN5enp1VUx3OA?oc=5">Visit Original Website</a>
@@ -3203,13 +3069,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Trading Day: Burn, baby, burn - Reuters</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>Trading Day: Burn, baby, burn - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOakF3eC14ckVsWnZacXBxWTh0eklJQ1dmVjludUFDWURBV0phQzdKN2FaeHg0VnNNd1R1bUVhaTQ0a0R6Sl9wY0szTWRKaElNWTdpWlNhcnlhLXUzREVsTGhDWVc5MUdMVTExcjlvN1RSczIyM0R4WmxiR29yTXkxMjM4VmYzN3M3VE5TWl9zLTllTkZWY1hqYU9KN3FZOHZsN0ZkT2Fn?oc=5">Visit Original Website</a>
@@ -3217,41 +3083,27 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">UK says armed forces ready to defend country after Iran warning over US bombers - Reuters</div>
+            <div class="title">US states sue Trump administration for conditioning disaster funds on election changes - Reuters</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-70" style="display:none;">
-            <h2>UK says armed forces ready to defend country after Iran warning over US bombers - Reuters</h2>
+        <div id="content-65" style="display:none;">
+            <h2>US states sue Trump administration for conditioning disaster funds on election changes - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-23</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxOSUtaMHdwUWNQbXpNb0IzUXMxZm5sUFRDVlJGclZmak52YVFySlE1LUV1aTBiRDhqT055V2pIMWFQNmFILW1GSnRCRTBLYi1oSVY0Vm0tRjJPX19CazNmeUQtQkdDUXZmbVU2TFlhcnFKZVNMbVFZS05ZR1VlenRFSXRUa3d2dzhlSTNBeDQyOFA2Z3k1RXBYSWQ1Rm5Bd1FKT3ItT0UzT19nYkEwcmpPQlc0TDZSdlBCT3owXzJGMHFCRmp3dklCU0NJWmNFeTZTVy0yVy1n?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOVjVHY09nWlRDVXBZdnpvZXVUSWhZWDQ5NE56ajV2UFVjTmkxa2cwVkhTTkNiU3c1T2pmaWl1em50NERUME1iVURaU2lSOTRrWU9TWjN1ZXhxS1ZWYTU2bG9DdkR3elFuZEFBSE93M2NhYm1udzNGRHNmLTJrTnNaNkViTWY3X28xOEhqSGNKY1AzVno4WjlQY2M2d0U5MVJLcnZsZnJ6bE5BNVUzYWJnOGY5aUx1N3A1TXRzTXVvRzZnbm1jeHFUQWdPWjY?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-71')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Eric Trump-backed Foundation partners with AMD to develop humanoid robots - Reuters</div>
-            <div class="meta">2026-07-23</div>
-        </div>
-        
-        <div id="content-71" style="display:none;">
-            <h2>Eric Trump-backed Foundation partners with AMD to develop humanoid robots - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-23</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQOU1UZFFxR1dJeGxNbGNiTkVMb3NDM3pFOXhGaFNoUXBhcjZ5Y3kwZ3owVmw1bGVaLWdFOGZHOGJpNUZCYkthVmg3bV91UjlWTFdQYWhTSzBxUDR4bklVR0FCcmJMS3hTWnptUHNxXzN6dWtuNFl2SHp4dzNZMlNjbXNrTFBZc1lFeXNjUElqbmtTN3g4Rk9uaGRONTk2aW1kY2dMeE9rY3M3YWdkaUV0MU5Ud0s1UQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-72')">
+        <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">An ‘Asteroid’ Tracked Since 1998 Made an Unexplained Orbital Shift—Now Astronomers Say It’s Something Far More Mysterious - The Debrief</div>
             <div class="meta">2026-07-16</div>
         </div>
         
-        <div id="content-72" style="display:none;">
+        <div id="content-66" style="display:none;">
             <h2>An ‘Asteroid’ Tracked Since 1998 Made an Unexplained Orbital Shift—Now Astronomers Say It’s Something Far More Mysterious - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-16</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxQMVYzbUNpMFZQRjFjZ2tEbmRjbGM0enlHMUpsMFM0bWMyYkkwS0U2Z0Rob2dmTm1HNWQwd0pHaVpWekhja0tkMGlsX2Z5THhDMThmZUhSMHdjTHFodDdOTmFnNWxEVjNMWGFKaDMxRFgzR2ZuanR3cko4UUpERkdXel93NS1SYlh5SFg4R3VVV3FLamhtUC1GT181Nk1kVmFPSWJZblN3R25IMUN0U1dqaVRkZm96eXczeC05SmMwSWtmNElSOGd5a1VFWC1Gby13YWxuVV9vX2prZw?oc=5">Visit Original Website</a>
@@ -3259,13 +3111,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-73')">
+        <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Intelligence Officials Say U.S. Has Retrieved Craft of Non-Human Origin - The Debrief</div>
             <div class="meta">2023-06-05</div>
         </div>
         
-        <div id="content-73" style="display:none;">
+        <div id="content-67" style="display:none;">
             <h2>Intelligence Officials Say U.S. Has Retrieved Craft of Non-Human Origin - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2023-06-05</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPWlRlRmpBMjViUjE2TWNHQ25obk9PYmIxcjJrYTRjYXo1cGxFZEVvZzN1TXFCNWlRTWtJYlNxbUdKUVhfdHE5WFI0bmZBZVgwVVloZllsTnBjakxRQnhoNl9PeDlObTV0SlRwSmpkMFlsbklQVFdxRE11ZzJ3bTQtcHRZVHRCeGt6Nkxkdg?oc=5">Visit Original Website</a>
@@ -3273,13 +3125,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-74')">
+        <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">"Forever Chemical" Breakthrough Rapidly Degrades Synthetic Substances Linked to Cancer and Other Health Problems - The Debrief</div>
             <div class="meta">2026-07-20</div>
         </div>
         
-        <div id="content-74" style="display:none;">
+        <div id="content-68" style="display:none;">
             <h2>"Forever Chemical" Breakthrough Rapidly Degrades Synthetic Substances Linked to Cancer and Other Health Problems - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-20</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxNemdiYnZIbzZCaGVvY0p2YnhFS2dvTEtzLUZ2S1RMdHBtMGM0RldNdE16aDVHOHJvSktSS2ZUamtsY01QclFDcXMtXzk4a3p0bVk3N25feFlSeUIxSGZGYjFnNVNDalQtOC1qOUk3aHNWa1l2YzJSSzB6cFFHc292Qm5RLUlBYkF5UFhQMUJQaHRsa2NfU3RwOWhXSEdkWlZhdWVWSS02ZFJDcURrTUlURzVhdE9iVkVtdDBrajVTdHB5ZE02N19wRFNaTTVoWHc?oc=5">Visit Original Website</a>
@@ -3287,13 +3139,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-75')">
+        <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Four Submarines All Vanished in the Early Months of 1968. The Story Behind Their Disappearances Remains a Cold War Mystery. - The Debrief</div>
             <div class="meta">2021-09-09</div>
         </div>
         
-        <div id="content-75" style="display:none;">
+        <div id="content-69" style="display:none;">
             <h2>Four Submarines All Vanished in the Early Months of 1968. The Story Behind Their Disappearances Remains a Cold War Mystery. - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2021-09-09</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxPaDFoclZOTURRUGZaX0RuWWFhV1pOQnZXTV9veGpSaXZrM0toZ3lHc283Q1dVVE9XbWZJMkRUQjVNRjgyN2VqdlZ6Zjk1NlpibWFuZm1qWUNZM3hqREREbDlHbXd5Z25xWmxibkNMc0ZrcnBNZHRSYWZBSEFsR19ERWtZU2RVdVVlcEJBZlhZb2VvME1aNHRCUWdieFlfLXFMMTZXbzF2Mk0tQmxOUmd0dzkxS2JKc0JnRmJHTzlUNHRSMjFmS2RnY284RWZEXzMzRHpSa2FVSHIzdkpWVmc?oc=5">Visit Original Website</a>
@@ -3301,13 +3153,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-76')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">“This Upper Limit is an Illusion”: NASA Study Warns There May Be “No Limit” to How Solar Storms Impact Earth - The Debrief</div>
             <div class="meta">2026-07-18</div>
         </div>
         
-        <div id="content-76" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>“This Upper Limit is an Illusion”: NASA Study Warns There May Be “No Limit” to How Solar Storms Impact Earth - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-18</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNSUg1ZzJzSGhydG9yNG1lN25GWWRPRmtEUmQ1NjFlVVZtalI0Mm5fb21qMGJXZm9jWkQyUE9pODZiSlcxc3dEbzRreEw2QnY5QlJyOGVxUGN2VWN4aVpLNS0xZFRXNURpcEgxcUtJaHc1NFRpcXlJRWt1TUZqVWNFQkhvcUI0ZlY5dVJ5eFh6bjJYMmdxY0tsTk5OT0o4NHhCQU43SE0xdTlMZXVVdFIyMGFLTFk5RTd6MVVKZllUZDVTWFVvRUE?oc=5">Visit Original Website</a>
@@ -3315,13 +3167,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-77')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Scientists Warn Something is Vanishing from Earth’s Oceans at an Alarming Rate, Driving the Planet Into an “Unsafe Space” - The Debrief</div>
             <div class="meta">2026-07-21</div>
         </div>
         
-        <div id="content-77" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>Scientists Warn Something is Vanishing from Earth’s Oceans at an Alarming Rate, Driving the Planet Into an “Unsafe Space” - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-21</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxOcTYydHNwdFVUT1FpekJUT2xEM012cE5ndzZ2NDVyZTd0R19PaVVpZ092QUlCSDk4OVd2M1pMZ2FiU2FuMjFZYTlJMzctZkRJVU92VktQV1ByajdmR21WWEQzVjd5eUxTTmxIVWIzQnJoc1NuTnNzOC03V2tuU0RnWjF3b2R6TWZ3cElWZjZsQlFSYVhteURLckd0dHhtd3RMNy1mZ1kyVndGWV9GblpqSmVWLWlwQmxwWnhyUzFBZmsxakFzaWZqaF9JVTV5eElaTjZWdWFyWGQ?oc=5">Visit Original Website</a>
@@ -3329,13 +3181,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-78')">
+        <div class="card" onclick="openModal('content-72')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Stripe Minted $3.2 Billion in Cash in 2025, Setting Up Acquisition Hunt - The Information</div>
             <div class="meta">2026-07-22</div>
         </div>
         
-        <div id="content-78" style="display:none;">
+        <div id="content-72" style="display:none;">
             <h2>Stripe Minted $3.2 Billion in Cash in 2025, Setting Up Acquisition Hunt - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNZjBCODZFSVN6NFBGdmtwUjRhY0gtbnRKOXdMemJKdmhOdDQ4RG1zd3c0UDNBbkEzSmJ3TEZCN1VkNmhieUVENnM2WUhJNUNjUnFHVzRBZlJCemVxTUM2T2ozMFEyS0dneWU4YXBrbm1YSnN6YzZOTEJCR21rTTQ5SEVqa0hyZ1BOY2lUUHp6MG5WZ1NYTDhLV2pyai1EUWI0T0E?oc=5">Visit Original Website</a>
@@ -3343,13 +3195,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-79')">
+        <div class="card" onclick="openModal('content-73')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Monday.com to Cut 20% of Workforce - The Information</div>
             <div class="meta">2026-07-22</div>
         </div>
         
-        <div id="content-79" style="display:none;">
+        <div id="content-73" style="display:none;">
             <h2>Monday.com to Cut 20% of Workforce - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMid0FVX3lxTE1qVlB0ekVSYm1Zbm91LXpBZWN1ODFvVHNiblhyY3dFQWhidC1iZm9PdV8yUEpYOFRQQXRvX3RIenV2cmM2QTZPLXVGRE1tNXZobjF1WktTMGh4ZE5Qa1F3c2NxZE50OFpoZHBUQ3RaU2NOeFVJNXYw?oc=5">Visit Original Website</a>
@@ -3357,27 +3209,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-80')">
-            <div class="source">"site:theinformation.com" - Google News</div>
-            <div class="title">Mercor’s Fast Growth Relies on Biggest AI Companies, Documents Show - The Information</div>
-            <div class="meta">2026-07-21</div>
-        </div>
-        
-        <div id="content-80" style="display:none;">
-            <h2>Mercor’s Fast Growth Relies on Biggest AI Companies, Documents Show - The Information</h2>
-            <p><strong>"site:theinformation.com" - Google News | 2026-07-21</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPUGd6azh1WTVnY1pib3hxaGh0YWhyTlpFcU9HRXI5RzFURnFWTlBReUFlTFVzejROa0QwT1Y2QVU0Ti1xNl9vamQ1M2R5SE9MS3YxRVdMWVJObllRNGRGU1BXeVdONnFtTHM3Yzc4Q1JsYzFjNEd4dFlhUlhwdFEwR2Z2aERsOEo0Y1hfeF9pblJaNHJMUVBtN2RZTzRDM1BwVzJpag?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-81')">
+        <div class="card" onclick="openModal('content-74')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Anthropic’s Robot Ambition; Nvidia Ramps Up Vera Rubin - The Information</div>
             <div class="meta">2026-07-21</div>
         </div>
         
-        <div id="content-81" style="display:none;">
+        <div id="content-74" style="display:none;">
             <h2>Anthropic’s Robot Ambition; Nvidia Ramps Up Vera Rubin - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-21</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQV0wwb2ktUGtWMk5EcXoxUjJqcUZzNk5XTjluR0xkdV8tamhFSG9tWF9aOXQ4aGE5bURNSlhuV0t3MHVrYjFCMENkekJyblQ2dTRSXzJ3a3p5ay1NZE1OdDdSb1pWRkpzd3lrdzlYQVgwcnpvYi1fV0Y1SVo5UmNXTjYxdGpRLTBodER0UXdaS2g5NXVObVI0d1hfaXN2VWNjSTJDSA?oc=5">Visit Original Website</a>
@@ -3385,13 +3223,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-82')">
+        <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Department of Energy Partners with American Open-Weight Model Provider Arcee - The Information</div>
             <div class="meta">2026-07-22</div>
         </div>
         
-        <div id="content-82" style="display:none;">
+        <div id="content-75" style="display:none;">
             <h2>Department of Energy Partners with American Open-Weight Model Provider Arcee - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-22</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxNV08zTS04YVZIZlMwODdObDdQS0tZRDZJUTBxT3pVc2NZTy1NSk8yYlpaTS02LUpBZENTUUVTYlU3X0hsTGlxVzJmUGpwTGZDMmtTUnRKREFGQ0tCRnUyaFNkaXplTjRna3NlYXFPdThVSHV2NVpKZDdNSnNIR1U0bkZJOEwxaWY5VC1CSTRVczdXb2VRc0dfWDdSV2NLQ0xhbFZzTGF4X0NrNjRScWc?oc=5">Visit Original Website</a>
@@ -3399,16 +3237,30 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-83')">
+        <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Exclusive: Oracle Data Centers Face Multibillion-Dollar Cost Surprises - The Information</div>
             <div class="meta">2026-07-18</div>
         </div>
         
-        <div id="content-83" style="display:none;">
+        <div id="content-76" style="display:none;">
             <h2>Exclusive: Oracle Data Centers Face Multibillion-Dollar Cost Surprises - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-18</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxQM0Nha0hoc0NpLWVzaURMLTRiaTFPMGRBaVB2OWdvWUpWdnZsZExTOEt0ODNXVndqQ2p1b2YyYnZpUXBHUjJBMXYtVVR2UC1iRTBaaHpWQ3lUYl9pU2ZkRUdOSTZnRHdrRXhKdlI4Um1pM2t4WmtkeTFpQVAzRldBTmt3cEtOTjFxRXU3eDFWbFliSGxqZVdMc0pLSUVvRktRZzdZUERyV3VFMzBwaTYwYXJGejVKbklCSDlqYW92bmdHVjlIdm95dktn?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-77')">
+            <div class="source">"site:theinformation.com" - Google News</div>
+            <div class="title">IBM Cuts Revenue Target as AI Eats Into Its Sales - The Information</div>
+            <div class="meta">2026-07-22</div>
+        </div>
+        
+        <div id="content-77" style="display:none;">
+            <h2>IBM Cuts Revenue Target as AI Eats Into Its Sales - The Information</h2>
+            <p><strong>"site:theinformation.com" - Google News | 2026-07-22</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPQ3hIa05sS19OaVlOaWVTVVZRdzhwSTBKRHBDTC1adVRtNWNrcjk0cm1NaW1sSTM0R2hZTUhxV3I3c3NHZlhGQ25qZ0ZOVFJ1TFlZeG1TTGV0RTRjd3Mwd252Um1wb241NkxleU1Ibm1BM2NmcjVtWkdQZVJwNjM1dEdWcEc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
