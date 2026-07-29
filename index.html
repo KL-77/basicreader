@@ -154,11 +154,115 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
-            <div class="title">Who wins and who loses after US bans foreign robots?</div>
+            <div class="title">Mythos attack on 3rd-round PQC algorithm candidate puts it out of commission</div>
             <div class="meta">2026-07-29</div>
         </div>
         
         <div id="content-0" style="display:none;">
+            <h2>Mythos attack on 3rd-round PQC algorithm candidate puts it out of commission</h2>
+            <p><strong>Ars Technica - All content | 2026-07-29</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2026/07/mythos-uncovers-crypto-weaknesses-that-went-unknown-for-years/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">A quantum-resistant cryptography algorithm that was under consideration as an official US standard has been taken out of the running after an Anthropic security model helped find a flaw that rendered it broken.
+
+The algorithm is known as HAWK. It’s a digital signature scheme designed to withstand future attacks from quantum computers. HAWK had survived two rounds of testing by NIST (the National Institute of Standards and Technology) for evaluating the security of PQC (post-quantum cryptographic) algorithms through widespread testing. HAWK was in a third round of testing designed to catch precisely the kinds of flaws Mythos helped uncover.
+
+Following Anthropic’s Monday announcement of the results, the developer of HAWK said Tuesday he was withdrawing it.
+
+Even before the development, Anthropic was hailing the results of the two cryptographic problems it threw at its Mythos AI security model. The model found weaknesses in the mathematical problems underpinning HAWK and, separately, the widely used AES cipher.
+
+Despite the withdrawing of HAWK, it’s hard to know how much of the company’s reporting is marketing hype, but the findings are still worth paying attention to because they could signal important advances in breaking cryptography that’s crucial to privacy and security.
+
+Before digging into the results, a few caveats.
+
+First, the outcomes are incremental. They don’t break any of the cryptosystems anyone relies on today. Instead, they reveal methods for moderately reducing the work that would be required to defeat the systems.
+
+Second, the cryptosystems tested were weakened versions of the ones defined in their formal specifications. Such “challenge instances” are provided by the specification authors for use in adversarial peer review. It’s standard to use the weakened versions in testing, but the real ones are considerably more robust in production settings.
+
+Third, even with the improvement, the underlying “primitives”—meaning the underlying mathematical problems that form the basic building blocks of cryptosystems—remain safe, at least for now.
+
+Lastly, both of the attacks use methods that would likely be infeasible outside of testing environments.
+
+Anthropic said its Mythos model—which currently remains available only to a select group of trusted users—was able to advance attacks against two cryptosystems. The first system is HAWK, a digital signature scheme designed to withstand future attacks from quantum computers.
+
+With about 60 hours of work and about $100,000 of compute cost, an Anthropic researcher with no expertise in cryptography prompted Mythos to improve the best-known existing attack on the algorithm that effectively cut its key strength in half.
+
+The math HAWK’s security relies on is the hardness of the Lattice Isomorphism Problem, which, unlike today’s most used digital signature schemes, is believed to be safe from quantum computing attacks. The best-known classical computing attack to solve this problem works by finding what are known as automorphism symmetries. Mythos outputted a previously unknown method for finding such symmetries by definition broke the algorithm. The weakness can be mitigated by doubling the key size, but the added computation makes HAWK less desirable than available PQC signing algorithms. In academics cryptographic algorithms are considered broken when weaknesses allow an adversary to derive a key faster than is possible using a brute-force attack.
+
+Matthew Green, a Johns Hopkins professor and expert in cryptography, said the impressive thing about the discovery was its reliance on several existing methods that no one previously thought to put together.
+
+“What’s particularly concerning (and so especially ripe for AI) is that the attack does not invent fundamentally new mathematics,” Green wrote. “It simply extends a bunch of tools that were lying around and well-known, and gets a good result.”
+
+To find the attack, Claude Mythos Preview worked semi-autonomously in an agentic harness, with occasional human guidance and nontechnical direction. Mythos found the attack after an extensive literature review to understand the state of the art, and substantial mathematical reasoning and computational experiments. After finding the attack, Mythos implemented an end-to-end verification pipeline to convince itself—and the human operator—of the attack’s correctness.
+
+To find the improved method, Mythos deployed two separate agents that worked largely independently. One initially rejected the method as unworkable. The second found a way to make it work. The agents eventually worked in unison until they produced an agreement that the improved attack was effective. (As with the description of the attack against AES later in this article, the HAWK attack methodology has been simplified. For the full details, see the Anthropic post or two longer papers on the HAWK and AES attacks, respectively.)
+
+Sophie Schmieg, an expert in PQC at Google, said HAWK was already suspected to have weaknesses that would eventually be found. Still, the method for halving the key strength found through Mythos made the candidate algorithm less competitive than existing PQC digital signature schemes such as ML-DSA and FN-DSA.
+
+“Basically with this paper, HAWK is dead,” she wrote.
+
+The attack against AES produced less dramatic results. It’s based on an improvement found through Mythos for performing a “meet-in-the-middle” attack, which is used to derive a key under a chosen plaintext threat model, the best-known existing attack against AES. The technique inputs large numbers of known plaintext into the crypto system and analyzes the encrypted output for clues that, with enough inputs, eventually reveal an unknown key. Previously, the best-known meet-in-the-middle attack against AES required roughly 2105 plaintext inputs, a number large enough to make the method infeasible.
+
+Mythos helped to find a new meet-in-the-middle technique that relies on a Möbius Bridge, a more sophisticated fingerprinting algorithm used in meet-in-the-middle attacks. Using it, Green said, the code Mythos produced was able to reduce the number of required inputs to 289. Anthropic said that savings can reduce the time required for such attacks by 200- to 800-fold.
+
+The ability to produce that many inputs makes the attack beyond reach outside of the laboratory. Further, the actual speed-up is unknown, since the weakened AES algorithm tested used only 7 rounds. Specification-compliant AES, Green said, uses 10, 12, or 14 rounds, depending on key size.
+
+Anthropic is careful to explicitly spell out most of these caveats. The Monday blog post goes on to argue, however, that the results are nonetheless meaningful and could ultimately fundamentally disrupt the process of cryptanalysis, or the adversarial testing of cryptosystems.
+
+“The cybersecurity community is now grappling with the fact that language models are able to discover so many bugs that the standard human processes (like vulnerability triage, verification, and remediation) struggle to keep up,” Anthropic wrote. “We predict that the same will soon be true in academic cryptography research. As language models increasingly produce novel research outputs autonomously, human researchers may become bottlenecked on studying and validating these results for technical validity, novelty, and utility.”
+
+Not mentioned in Anthropic’s report is whether its researchers used Mythos to attack more tested cryptosystems, such as elliptic curve cryptography and RSA. Attack improvements against these systems would be more impressive. By achieving the most impressive result against an algorithm still in its infancy, it’s not clear how much of an advantage Mythos truly provided. There’s no way of knowing if researchers using conventional cryptanalysis techniques were already close to discovering the same attack.
+
+Ultimately, the lesson from the research is simple. AI-assisted cryptanalysis remains untested, and providers of these platforms have a vested interest in exaggerating their benefits. At the same time, there’s growing evidence that LLMs may provide significant advantages in finding cryptographic weaknesses. It would be a mistake to conclude that LLMs won’t one day play an important role in the race between securing and compromising our most vital assets.
+
+The headline and body of this story have been updated to reflect the withdrawing of HAWK.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Musk went to “war,” sought jail time for X ad boycotts—but case ends with a whimper</div>
+            <div class="meta">2026-07-29</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
+            <h2>Musk went to “war,” sought jail time for X ad boycotts—but case ends with a whimper</h2>
+            <p><strong>Ars Technica - All content | 2026-07-29</strong></p>
+            <a class="original-link" href="https://arstechnica.com/tech-policy/2026/07/musk-went-to-war-sought-jail-time-for-x-ad-boycotts-but-case-ends-with-a-whimper/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Elon Musk has settled his lawsuit with advertisers that he once claimed should be criminally prosecuted for refusing to advertise on his social media platform, X.
+
+In a joint statement that reveals little about the deal, the World Federation of Advertisers (WFA) and X said that they were “putting the litigation involving the Global Alliance for Responsible Media (GARM) behind them.”
+
+X sued the WFA in 2024, shortly after a series of brands boycotting X caused the platform’s revenue to drop by $1.5 billion by the end of 2023. Musk became upset, declaring “it is war” on X about eight months after he told advertisers who refused to buy X ads to “go fuck yourself.”
+
+According to Musk, he had “no choice but to file suit against the perpetrators and collaborators in the advertising boycott racket,” who he tried to argue were violating antitrust laws by illegally conspiring to tank X revenue.
+
+A lot has changed since Musk filed the lawsuit. Most relevant to the lawsuit, GARM was quickly disbanded after Musk called out the small not-for-profit initiative for setting brand standards that X said led advertisers to steer clear of X.
+
+The point of the initiative was “to help the industry address the challenge of illegal or harmful content on digital media platforms and its monetization via advertising,” a now-shuttered website said. But Musk claimed GARM was instead trying to monopolize which content gets monetized online, and the effort’s dissolution will remain his biggest win in the case.
+
+The joint statement confirmed that GARM will remain inactive as a result of the WFA’s settlement with X. No other concessions were discussed.
+
+The rest of the statement claims that the settlement “resets the relationship between the two organizations,” which are now supposedly “fully aligned in the view that brands, platforms, and consumers will all benefit from brand-safety innovation.”
+
+Additionally, the WFA said it is aligned with X on “its commitment to freedom of speech,” which seems to be a nod to the controversial reports on X content that Musk said triggered his “war” with advertisers. Those reports found that as hateful content was increasing on the platform, X ad controls weren’t working to stop big brands’ ads from appearing next to posts touting Hitler and the Nazi Party.
+
+It’s unclear why advertisers settled, since a court ruled in March that the ad boycott was perfectly legal and X’s antitrust claims fell apart without proof of consumer harm. The next month, X appealed, but it appeared to be dragging its feet in filing a brief as an appellant, asking the court for an extension until August.
+
+Perhaps settlement negotiations were already underway.
+
+For Musk, the settlement comes shortly after the launch of X Money, a payments product offered through his social media platform that he hopes will help X be less reliant on advertisers for revenue.
+
+Whether X Money can succeed at the scale required to meaningfully rival X’s advertising business will likely depend on X removing barriers to adoption. Those include the possibility that X Money transactions could be declined if an automated support error mistakenly suspends a user’s X account without warning. There’s also the simpler problem that X Money isn’t available in all 50 states.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-2')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">Who wins and who loses after US bans foreign robots?</div>
+            <div class="meta">2026-07-29</div>
+        </div>
+        
+        <div id="content-2" style="display:none;">
             <h2>Who wins and who loses after US bans foreign robots?</h2>
             <p><strong>Ars Technica - All content | 2026-07-29</strong></p>
             <a class="original-link" href="https://arstechnica.com/ai/2026/07/who-wins-and-who-loses-after-us-bans-foreign-robots/">Visit Original Website</a>
@@ -206,13 +310,13 @@ US domestic production of robots lags behind China in terms of mass manufacturin
 The outcome of previous FCC bans is also not necessarily encouraging. US government restrictions on drones made by Chinese companies such as DJI have failed to create a “competitive mass-market consumer-drone producer” based in the United States, Stieler pointed out. The Verge has also reported that newly created companies have popped up to sidestep the US ban on foreign drones by selling “barely disguised versions of DJI technology.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Comcast store punished low sales by smashing pies in workers' faces, lawsuit claims</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Comcast store punished low sales by smashing pies in workers' faces, lawsuit claims</h2>
             <p><strong>Ars Technica - All content | 2026-07-29</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/07/comcast-store-punished-low-sales-by-smashing-pies-in-workers-faces-lawsuit-claims/">Visit Original Website</a>
@@ -248,13 +352,13 @@ Figueroa’s lawsuit said that on February 27, he called Comcast regional manage
 Comcast’s cable division has been trying to reverse customer losses over the past year by offering a five-year price guarantee and plans without data caps. The changes came after Comcast President Mike Cavanagh said in April 2025 that “we are not winning in the marketplace.”</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Customize Ars your way with an Ars Pro subscription</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Customize Ars your way with an Ars Pro subscription</h2>
             <p><strong>Ars Technica - All content | 2026-07-29</strong></p>
             <a class="original-link" href="https://arstechnica.com/staff/2026/07/customize-ars-your-way-with-an-ars-pro-subscription/">Visit Original Website</a>
@@ -278,13 +382,13 @@ If you use Google and are willing to set Ars as a Preferred Source, simply click
 Please support Ars Technica and subscribe today!</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Google's "privacy-preserving" age verification system is coming to the Play Store</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>Google's "privacy-preserving" age verification system is coming to the Play Store</h2>
             <p><strong>Ars Technica - All content | 2026-07-29</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/07/google-begins-global-rollout-of-age-verification-api-in-google-play/">Visit Original Website</a>
@@ -304,132 +408,6 @@ This system won’t keep determined minors away from apps deemed too adult for t
 Still, this should take care of Google’s compliance in any jurisdiction that requires store-level age verification for apps. However, it’s up to developers to use the API. The Texas law does require that developers actively use age-gating features in app stores. The Play Store already has content ratings for apps, so it should be relatively simple for developers to translate that to reported age ranges.
 
 Google and other companies will probably continue fighting laws that require them to be app gatekeepers, but that may be a lost cause if courts don’t accept the First Amendment argument against them.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-4')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Elon Musk’s xAI is trying to sue its way out of a Grok reckoning</div>
-            <div class="meta">2026-07-29</div>
-        </div>
-        
-        <div id="content-4" style="display:none;">
-            <h2>Elon Musk’s xAI is trying to sue its way out of a Grok reckoning</h2>
-            <p><strong>Ars Technica - All content | 2026-07-29</strong></p>
-            <a class="original-link" href="https://arstechnica.com/tech-policy/2026/07/elon-musks-xai-is-trying-to-sue-its-way-out-of-a-grok-reckoning/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Elon Musk’s xAI is trying to sue its way out of a Grok reckoning as arrests of Grok users accused of making child sex abuse materials (CSAM) have triggered lawsuits from kids to sue xAI to force changes to the tool to block harmful outputs.
-
-Earlier this month, xAI started suing users who are allegedly circumventing its safeguards to generate AI CSAM, seemingly hopeful that an early court win will guarantee it’s not liable for supposedly user-generated content.
-
-For its next move, the Grok maker pointed to that lawsuit in a complaint filed Monday, accusing Minnesota of trying to force changes to Grok and Grok Imagine by enforcing a ban on nudification technology that would guarantee that xAI was liable for the harmful outputs, as well as outputs that allegedly weren’t sexualizing people without consent. According to xAI, suing a Grok user is proof that xAI is already doing everything in its power to punish bad actors, and therefore, Grok deserves safe harbor from Minnesota’s ban.
-
-Minnesota’s law—which is due to take effect August 1—threatens firms like xAI with fines of up to $500,000 for every single harmful output discovered in the state. As xAI explained, that adds up quickly, considering that some Grok users are accused of making thousands of images of single victims. Most recently, xAI was sued last week after tipping off cops to a well-known Arkansas child photographer who allegedly used Grok to sexualize images he took of hundreds of clients. In a complaint from a 10-year-old Jane Doe, it’s alleged the photographer made hundreds of images of Doe, and thousands of images and videos of others kids. Doe’s lawyer told Ars that many of those kids are preparing to file their own lawsuits, and those claims could end up being added to a potential class action filed in March by young girls in Tennessee.
-
-Doing the math, xAI seemingly panicked, arguing that fining AI tool makers for each output is excessive, particularly since Minnesota’s law has no distribution requirement and potentially fines xAI for images that only the user saw:
-
-“A company whose users request just ten images in violation of the statute would face exposure up to $5 million in civil penalties alone. A company with a thousand violative images could be fined up to $500 million. And a business whose users created a hundred thousand images covered by [the law] (not at all unlikely for a publicly available program with millions of users generating billions of images) could owe an eye-popping $50 billion dollars.”
-
-Additionally, the law gives victims a right to sue xAI over any individual output, which increases xAI’s financial risks.
-
-The penalties are so severe, xAI said in its lawsuit that it was finally preparing to update Grok to block harmful outputs after more than six months of backlash and probes pressuring the firm to tighten its safeguards.
-
-“Confronted with $500,000-per-image strict liability and no safe harbor, xAI has no practical choice but to restrict Grok Imagine’s image-editing features in various ways when the statute takes effect on August 1, 2026,” xAI argued. “Protected speech freely available before the law takes effect will thus be chilled.”
-
-However, xAI would prefer to leave Grok unchanged and continue relying on its terms of use stipulating that users could be banned for using Grok to make CSAM or other kinds of non-consensual intimate images (NCII), its complaint said.
-
-“But for [the law] and its penalties, xAI would continue to offer the editing feature exactly as it does today,” xAI said.
-
-To defend Grok, Musk’s firm is turning to the First Amendment, arguing that Minnesota’s law is a “clumsy attempt to prohibit ‘nudification’” that “sweeps in a wide range of fully protected speech.” That includes nude images generated with “artistic, scientific, political, satirical, educational, medical, or religious value,” xAI argued.
-
-Most egregiously, “liability attaches even if the depicted persons consented—or created the image themselves—and even if the image is never shared,” xAI emphasized in its complaint.
-
-Minnesota has less restrictive means to block harms from nudification, xAI argued, while claiming that the Take It Down Act already protected users from harms of distribution.
-
-If the court agrees, Minnesota could be enjoined from enforcing the law against any nudification app.
-
-Without such an injunction, “providers may well have no choice but to alter their services in Minnesota rather than run the risk that users will evade their controls,” xAI argued. “And that would hamper all uses of AI image-generation tools, including those that [the law] does not purport to regulate.”
-
-But Minnesota thinks that it has the right to block images at the source before they can be distributed and cause lifelong harms to kids. Asked for comment, the office of Minnesota Attorney General Keith Ellison provided a statement to Ars, confirming that Minnesota will likely defend the law to prevent abhorrent outputs that lawsuits claim are traumatizing victims and their families nationwide.
-
-“We’re waiting to be served and will review the lawsuit and response in Court,” Ellison said. “But I know that using AI to generate nude images of people against their will is appalling. There are plenty of worthy debates to have about AI policy. This is not one of them. AI nudification robs the target of their dignity and can cause immense harm on an emotional, personal, and professional level.”
-
-xAI did not respond to Ars’ request to comment.
-
-xAI’s arguments mostly focus on how Minnesota defines “intimate parts.”
-
-Musk’s firm prefers definitions found in anti-revenge porn laws like the Take It Down Act, which xAI said relied on a narrower definition to criminalize distribution of both real and AI-generated “intimate visual depictions.” Under the Take It Down Act, harmful images are those exposing “the genitals, pubic area, anus, or partially or fully exposed nipple of an individual,” and that supposedly ensures that benign images aren’t targeted under the law.
-
-Less narrowly tailored, xAI argued, is Minnesota’s legal definition of “intimate parts,” which was pulled from a criminal statute that prohibits the “nonconsensual touching” of the “inner thigh, buttocks, or breast of a man or woman, as well as the groin and primary genital area.”
-
-The law makes sense for nonconsensual touching but not for nonconsensual image generation, xAI argued. It “accordingly bans ordinary depictions of men without shirts, people in shorts or swimsuits, and other body parts routinely displayed in public—far beyond what an ordinary person would consider ‘nudification,’” xAI argued.
-
-In its complaint, xAI seems to tiptoe around mentions of bikinis, after much of the Grok backlash following an X post Musk made that advertised Grok’s ability to put anyone in a bikini.
-
-Instead, xAI focuses on protecting Grok users’ rights to generate images as a form of expression, like by mocking politicians by reimagining them in Speedos or as Sumo wrestlers, both of which would feature outputs with exposed thighs and male breasts. The closest xAI came to acknowledging that women and girls were targeted by its scandal was citing an output that Donald Trump generated, showing him with his political allies shirtless in a pool with what xAI suggested was an AI-generated woman in a bikini.
-
-xAI’s complaint similarly seems to avoid much discussion of the arrests of Grok users, which Doe’s lawyer suggested to Ars is happening at an increasing pace, as xAI seems to be partnering more closely with law enforcement in some cases. Although xAI was criticized for failing to help cops ID one Grok user who was eventually arrested, xAI said in its lawsuit that it’s motivated to catch bad actors, and, out of 70,000 reports of suspected Grok-generated CSAM, at least 244 cases led to arrests.
-
-On top of arguing that Grok users alone are liable for harmful outputs and that Grok deserves an exemption from nudification app bans for supposedly implementing state-of-the-art or “near-perfect” detection of harmful outputs, xAI argued that Grok’s process for creating any images or videos is entitled to First Amendment protections. That echoes other chatbot makers who have argued essentially that chatbot speech deserves the same protections as human speech.
-
-Whether xAI’s arguments will prevail will likely depend on whether the court agrees that Minnesota’s law is not narrowly tailored enough to survive constitutional scrutiny. xAI argued that it can’t survive any level of scrutiny.
-
-“Although Minnesota likely has a compelling interest in preventing individuals from creating nudes of other people without consent and distributing that content, the statute punishes AI platforms for assisting in the creation of a substantial amount of protected speech in relation to that limited goal,” xAI argued.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Yet more qubit tech: New quantum dot options, diamond vacancies</div>
-            <div class="meta">2026-07-29</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Yet more qubit tech: New quantum dot options, diamond vacancies</h2>
-            <p><strong>Ars Technica - All content | 2026-07-29</strong></p>
-            <a class="original-link" href="https://arstechnica.com/science/2026/07/quantum-computing-roundup-still-more-technologies-making-waves/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">If you follow quantum computing news for long enough, it can start to seem like any quantum system that can alternate between two well-separated energy states can be used as a qubit. Atoms, ions, photons, electrons, and manufactured devices all have their backers. One of the key things that attracts backers is the tech’s ability to scale. We’ll need a lot of high-quality qubits to start doing any complex computations, and the ability of any technology to get us there is the subject of debate.
-
-So even as some technologies can now support thousands of qubits, some competitors are still working on a small handful of qubits—the companies behind them are convinced that they have the potential to scale more effectively.
-
-One of those technologies involves quantum dots that hold a single electron. Their advantage is that we can manufacture them using the same tech we use to build traditional processors, an approach that has proven to be scalable. This week saw two new papers describing different ways of using quantum dots, one of which was appealing enough that IBM bought the company that developed it. Separately, another company has released a processor showing 100 individual electrons being held in diamond defects, technology that wasn’t obvious could scale.
-
-The first news comes from a publication in Nature from a company called HRL Laboratories, the descendant of the research program launched by Howard Hughes. HRL is using manufactured quantum dots, a distinct technology from the dots used in displays, although it relies on some of the same physics principles. Both approaches use a structure that traps electrons in a region smaller than the electron’s wavelength. In displays, this allows control of the wavelength that the material emits.
-
-For qubits, the traps are far smaller and serve to hold a single electron in place. Critically, they can be manufactured; with the right wiring, electromagnetic interactions can trap a single electron in a small patch of silicon. Once trapped, the electron’s spin, which can be up, down, or a superposition of the two, can be used as a qubit. While this technology can scale easily—we’re very good at putting wiring into silicon at scale—electron spins are hard to keep stable and are typically controlled via microwaves, requiring a separate control system.
-
-But “typically” doesn’t mean “always,” and HRL is describing a different tech. It requires three separate quantum dots, each holding an electron, with the surrounding electronics controlling how much the spins of these three electrons can interact. That’s critical because, under certain conditions, no two electrons can have the same spin. This explains why atomic orbitals fill up the way they do, with each energy level holding just a pair, one spin-up, the other spin-down. Enabling them to interact can alter their spins.
-
-To do operations on this kind of qubit, you simply need to control which electrons are interacting and to what extent. That is controlled electronically, allowing us to eliminate microwaves entirely. Everything is handled via wiring, eliminating the need for lots of microwave-carrying cabling into the refrigeration system that keeps the hardware near absolute zero.
-
-HRL spends much of the paper describing its control system, which sits at an intermediate level of refrigeration and consists of a traditional processor optimized for low-temperature and low-power operations, consuming less than 3.5 watts despite being manufactured on a 130 nm process. Instructions for operating the qubits are compiled elsewhere, then loaded into the controller, after which it operates autonomously. Communications with the chip that holds the qubits are handled by a superconducting ribbon cable.
-
-The system HRL describes had 18 qubits, and the company ran a simple error-correction code on it, demonstrating a logical error rate of less than 1 percent. That’s well below what has been achieved with other technology, but it’s an important validation that the problems HRL is facing are likely to be in the realm of engineering rather than physics.
-
-Although the paper was published by HRL, the progress it has made has since become the property of IBM. That’s notable because IBM has bet big on competing technology in which qubits are held in a manufactured device called a transmon and controlled with microwave pulses—precisely the control system that HRL was trying to avoid. It’s not an obvious fit at first, so we asked IBM Director of Research Jay Gambetta about the decision.
-
-“At a high level, I’m a strong believer in silicon technology—superconducting qubits are built on silicon, spins are built on silicon,” Gambetta told Ars. “It gives us flexibility to keep both parts going in parallel, build on the same foundation.” Right now, that foundation allows rapid iteration and testing of designs. IBM has typically released a new processor architecture every year, refining it over two or three generations before the next one arrives.
-
-But Gambetta suggested that in the longer term, this raises the possibility that HRL tech will appear in an IBM system, operating alongside IBM’s existing tech. “As we look at the error correction codes going forward, some codes are better at being memories, some are better at being magic state creation,” Gambetta said. “I want to have the flexibility to build my hardware that maximizes both of them.”
-
-The same issue of Nature includes a separate paper on quantum-dot qubits from a group at Delft University of Technology. We covered their technology in May, but in short, it involves qubits based on single electrons in quantum dots and focuses on moving electrons and their spins around.
-
-One problem with quantum dots and other manufactured qubits is that their connections are dictated by the wiring of the chip they’re on. Since error correction codes are based on the geometry of the connections among qubits, this means committing to one or a small number of error correction codes when the chip is manufactured. If better code is developed or if some operations are easier to perform with a different code, you’re out of luck until the next generation of chips.
-
-Qubits based on trapped ions or neutral atoms don’t have this limitation. The qubits can be moved around so that any one can hypothetically be connected to any other. This provides a great deal of algorithmic flexibility and efficiency; their backers expect it’s enough to overcome the relatively slow operations compared to silicon-based qubits.
-
-In May, however, the Delft team showed that an individual spin could be moved from one quantum dot to a neighboring, unoccupied one and that this approach could scale—the spin could be moved through several intervening dots and end up on the opposite side of the chip from where it started. In theory, this means any two spins could be moved around arbitrarily, brought into proximity, and entangled. The approach combines the advantage of manufacturing with the flexibility of atom-based systems.
-
-Wednesday’s paper expands on that, creating a bus that electrons can be moved along, with a number of bus stops where they can be stored when not needed. We need a lot more hardware to get this to work, but that hardware is very compact, and the flexibility can be powerful.
-
-The team describes a 1.2 micrometer bus route and says that the fidelity of sending a spin from one end to another and back is nearly 98 percent. Using a handful of spins, the researchers implement a small error-correction code. They also characterize the sources of error in their system, finding that most of it stems from two sources: noise that arises during the spin exchanges needed for entanglement and the loss of coherence while the qubits are being moved or idling, a common problem with spin qubits.
-
-A separate technology went pretty quiet after we looked at it a decade ago: nitrogen vacancies in diamonds. A diamond is a regular array of carbon atoms, all sharing bonds with their neighbors. But impurities can be scattered throughout the array, including the incorporation of nitrogen. Nitrogen can form one less bond than carbon, so it leaves a neighboring carbon with a single unbonded electron. The spin of that electron can be manipulated just like the spin of one held in a quantum dot.
-
-The problem has been that it’s very difficult to control where nitrogen vacancies end up within the diamond. While it’s relatively easy to run wires to them after they’re identified, every chip made to work with nitrogen vacancies is bespoke; if you use a standardized chip layout, there’s no guarantee that there will be one—and only one—nitrogen vacancy where the wiring expects it to be. Saxon Q, a spinout of the Universität Leipzig, has apparently developed a technique that can put nitrogen vacancies within a 10-nanometer radius.
-
-The company’s hardware is striking in several ways, most notably because it runs at room temperature. The machines it is building fit in a standard rack mount and plug right into a normal power supply. The other notable feature is its modular design; the company builds a “core” with eight qubits and can integrate multiple cores in a single rack. It announced last week that it is selling units with over 100 qubits total, which it expects to begin shipping within a few months. Larger systems are expected next year.
-
-Both will be too small to do interesting error-corrected computations. But Saxon Q says its individual hardware qubits have a gate fidelity of over 99.9 percent, making the technology competitive with others on the market. So once again, we return to where we started: The key question remains whether the technology can scale.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -660,11 +638,101 @@ More on AI: Sam Altman Says Even the Power of AI Will Never Lead to a Shorter Wo
         
         <div class="card" onclick="openModal('content-12')">
             <div class="source">TechCrunch</div>
-            <div class="title">Zuckerberg says Meta’s enterprise AI opportunity extends beyond agents</div>
+            <div class="title">Mark Zuckerberg predicts that billions of people will have personal AI agents in five years</div>
             <div class="meta">2026-07-29</div>
         </div>
         
         <div id="content-12" style="display:none;">
+            <h2>Mark Zuckerberg predicts that billions of people will have personal AI agents in five years</h2>
+            <p><strong>TechCrunch | 2026-07-29</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/07/29/mark-zuckerberg-predicts-that-billions-of-people-will-have-personal-ai-agents-in-five-years/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Meta founder and CEO Mark Zuckerberg is trying to sell investors on his prediction for the future — one where billions of people will have their own personal AI agents in the next five years. (Let’s hope that future also comes with data centers efficient enough to power all those agents — without triggering a fresh wave of climate disasters.)
+
+“I think that it’s extremely unlikely if you look out five years from now, for example — whatever period of time you want — that you don’t have billions of people with a personal agent that understands your goals and that is just working on your behalf 24/7 to achieve your goals in whatever the domain is that you care about,” Zuckerberg said on Wednesday’s quarterly earnings call with investors.
+
+He added that he could see people using these agents to help them with their finances, health, interpersonal relationships, and household management.
+
+“As we move toward a future where we’re all interacting with multiple agents, I think that WhatsApp and our other messaging surfaces are going to become increasingly important,” he said, noting that WhatsApp is already the leading platform where users interact with Meta AI.
+
+Meta is not alone in setting high expectations for AI systems that can act on a person’s behalf rather than just answer questions. Google emphasized custom AI agents as a key new feature in its Search overhaul, which sparked outcry from users who felt bogged down by the constant onslaught of AI results on Google. Meanwhile, subscriptions to Anthropic’s Claude have skyrocketed as engineers fawn over the agentic coding assistant Claude Code.
+
+Compared to its competitors, however, Meta may not enjoy as much confidence from investors as it continues dumping cash into innovative projects that may or may not pan out — Meta’s stock dropped almost 10% after posting this quarter’s earnings. Meta’s Reality Labs, the organization responsible for its AR glasses, VR headsets, and related software, lost around $4.6 billion this quarter, roughly in line with the losses the division has posted each quarter since 2021. That’s a running total now of around $88 billion.
+
+Meta’s AI spending is likely to climb even higher, which is more of a concern at this juncture. The company reported free cash flow of $784 million this quarter, down from $8.55 billion the same quarter last year. That’s a 91% drop year over year, exacerbated by the company’s investments in AI infrastructure. This week, Meta and BlackRock announced a partnership to build a $14 billion data center in El Paso, Texas.
+
+“We believe that there will continue to be a significantly higher margin on selling intelligence rather than selling compute directly, but we think that there’s a big opportunity, obviously, to sell compute as well,” Zuckerberg said.
+
+Ultimately, he believes that the personal agents that Meta is developing will be “the foundation for our next wave of products and revenue lines in the months and years ahead.”
+
+So far, Meta’s business agents, rolled out globally on WhatsApp and Messenger this quarter, have been adopted by more than one million businesses. It may be harder to get people to adopt consumer AI agents, but the road to “billions” has to start somewhere — the company can’t get there on enterprise agents alone.
+
+When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
+
+Amanda Silberling is a senior writer at TechCrunch covering the intersection of technology and culture. She has also written for publications like Polygon, MTV, the Kenyon Review, NPR, and Business Insider. She is the co-host of Wow If True, a podcast about internet culture, with science fiction author Isabel J. Kim. Prior to joining TechCrunch, she worked as a grassroots organizer, museum educator, and film festival coordinator. She holds a B.A. in English from the University of Pennsylvania and served as a Princeton in Asia Fellow in Laos.
+
+You can contact or verify outreach from Amanda by emailing amanda@techcrunch.com or via encrypted message at @amanda.100 on Signal.
+
+Scale faster. Grow your portfolio. Gain practical expertise. No matter your goal, Disrupt can empower you.Save up to $330 today!
+
+Librarians are hosting viral ‘Avoiding AI’ workshops for people who are fed up with Big Tech
+
+SpaceX launches new V3 Starlink satellites but suffers another booster failure
+
+Prentis, new AI lab co-founded by Reid Hoffman, Mark Pincus in talks to raise $100M
+
+US accuses American of allegedly wiping his phone using a ‘duress’ password during border search
+
+Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark
+
+OpenAI makes ChatGPT Health available to all US users</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-13')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Microsoft logs $3.2B from Anthropic investment, but OpenAI was a mixed bag</div>
+            <div class="meta">2026-07-29</div>
+        </div>
+        
+        <div id="content-13" style="display:none;">
+            <h2>Microsoft logs $3.2B from Anthropic investment, but OpenAI was a mixed bag</h2>
+            <p><strong>TechCrunch | 2026-07-29</strong></p>
+            <a class="original-link" href="https://techcrunch.com/2026/07/29/microsoft-logs-3-2b-from-anthropic-investment-but-openai-was-a-mixed-bag/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">When Microsoft reported killer fourth-quarter earnings for its fiscal 2026 year (which ended June 30), it tucked in an interesting little tidbit about how its investments in the two biggest, and competing, AI labs are doing.
+
+For the quarter, it recorded its investment in Anthropic as a $3.2 billion gain, boosting diluted earnings per share by 33 cents. (Microsoft reported diluted earnings per share of $4.81 for the quarter). Microsoft invested $5 billion in Anthropic in November 2025 as part of a circular agreement under which the AI lab also agreed to buy $30 billion worth of Azure services.
+
+Microsoft does not routinely update the value of its Anthropic investment each quarter. It does, however, discuss its OpenAI investment quarterly. Microsoft said investment did not fare nearly as well in the quarter, and marked it down about $600 million, reducing diluted EPS by about 7 cents per share.
+
+Microsoft owns about 27% of OpenAI. And while Microsoft also receives revenue-share payments, it doesn’t report how much OpenAI pays under that arrangement. Instead, Microsoft accounts for the value of its investment. While this quarter brought a pretty sizable decline in the value of that investment, the $600 million write-down was still mostly a rounding error for Microsoft. The company delivered a highly profitable quarter, reporting $90 billion of revenue and net income of $35.8 billion for the quarter. Microsoft’s revenue was $331.8 billion with a net income of $133.7 billion for the year.
+
+Microsoft’s OpenAI investment looks much better when viewed on a full-year basis.
+
+For the year, Microsoft’s OpenAI investment generated a $5 billion gain and added $0.67 on EPS, respectively, the company reported. (Microsoft reported $17.95 EPS for its fiscal year.) Still, it is noteworthy that Microsoft reported nearly as much of a gain on Anthropic in one quarter as it did for the year on OpenAI. In fact, it is so noteworthy that Microsoft disclosed it.
+
+Scale faster. Grow your portfolio. Gain practical expertise. No matter your goal, Disrupt can empower you.Save up to $330 today!
+
+Subscribe for the industry’s biggest tech news
+
+Every weekday and Sunday, you can get the best of TechCrunch’s coverage.
+
+TechCrunch Mobility is your destination for transportation news and insight.
+
+Startups are the core of TechCrunch, so get our best coverage delivered weekly.
+
+Provides movers and shakers with the info they need to start their day.
+
+By submitting your email, you agree to our Terms and Privacy Notice.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-14')">
+            <div class="source">TechCrunch</div>
+            <div class="title">Zuckerberg says Meta’s enterprise AI opportunity extends beyond agents</div>
+            <div class="meta">2026-07-29</div>
+        </div>
+        
+        <div id="content-14" style="display:none;">
             <h2>Zuckerberg says Meta’s enterprise AI opportunity extends beyond agents</h2>
             <p><strong>TechCrunch | 2026-07-29</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/07/29/zuckerberg-says-metas-enterprise-ai-opportunity-extends-beyond-agents/">Visit Original Website</a>
@@ -687,9 +755,9 @@ Meanwhile, in terms of Meta selling compute to enterprise customers, Meta is foc
 
 Still, Zuckerberg cautioned investors that it “would be foolish” to “sell all of the compute and take a short-term profit.” Instead, he described Meta’s approach as a “portfolio” that included a mix of long-term and short-term plans for its compute infrastructure. “As we get closer to personal superintelligence, we are . . . going to need hardware that allows you to seamlessly interact with it,” he noted.
 
-The call also focused on Meta’s sizable ambitions around agentic AI — AI systems that can act on a person’s or business’s behalf, rather than just answer questions  — which won’t only be offered to businesses.
+The call also focused on Meta’s sizable ambitions around agentic AI — AI systems that can act on a person’s or business’ behalf, rather than just answer questions — which won’t only be offered to businesses.
 
-Consumers, too, are being promised “personal AI agents,” as well AI smartglasses that can interact with the world in front of them.
+Consumers, too, are being promised “personal AI agents,” as well as AI smart glasses that can interact with the world in front of them.
 
 Plus, Meta is using AI technology — specifically, large language models — to more rapidly build out its suite of social apps. Recent launches on this front have included an app for Marketplace sellers, another for Facebook Groups, one for vibe-coded games, and other experiments. More are on the way, Zuckerberg teased.
 
@@ -712,13 +780,13 @@ Anduril reportedly in talks to raise funding at $100B valuation, more than 3x la
 OpenAI makes ChatGPT Health available to all US users</div>
         </div>
         
-        <div class="card" onclick="openModal('content-13')">
+        <div class="card" onclick="openModal('content-15')">
             <div class="source">TechCrunch</div>
             <div class="title">Discover what’s next for AI, from the SaaS reckoning to the agent security gap, at TechCrunch Disrupt 2026</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-13" style="display:none;">
+        <div id="content-15" style="display:none;">
             <h2>Discover what’s next for AI, from the SaaS reckoning to the agent security gap, at TechCrunch Disrupt 2026</h2>
             <p><strong>TechCrunch | 2026-07-29</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/07/29/discover-whats-next-for-ai-from-the-saas-reckoning-to-the-agent-security-gap-at-techcrunch-disrupt-2026/">Visit Original Website</a>
@@ -762,13 +830,13 @@ Anduril reportedly in talks to raise funding at $100B valuation, more than 3x la
 OpenAI makes ChatGPT Health available to all US users</div>
         </div>
         
-        <div class="card" onclick="openModal('content-14')">
+        <div class="card" onclick="openModal('content-16')">
             <div class="source">TechCrunch</div>
             <div class="title">Thinking Machines co-founder Lilian Weng left the company citing health reasons, then joined OpenAI</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-14" style="display:none;">
+        <div id="content-16" style="display:none;">
             <h2>Thinking Machines co-founder Lilian Weng left the company citing health reasons, then joined OpenAI</h2>
             <p><strong>TechCrunch | 2026-07-29</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/07/29/thinking-machines-co-founder-lilian-weng-left-the-company-citing-health-reasons-then-joined-openai/">Visit Original Website</a>
@@ -804,13 +872,13 @@ Provides movers and shakers with the info they need to start their day.
 By submitting your email, you agree to our Terms and Privacy Notice.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-15')">
+        <div class="card" onclick="openModal('content-17')">
             <div class="source">TechCrunch</div>
             <div class="title">Winamp aims for a comeback with a new music player powered by Deezer</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-15" style="display:none;">
+        <div id="content-17" style="display:none;">
             <h2>Winamp aims for a comeback with a new music player powered by Deezer</h2>
             <p><strong>TechCrunch | 2026-07-29</strong></p>
             <a class="original-link" href="https://techcrunch.com/2026/07/29/winamp-aims-for-a-comeback-with-a-new-music-player-powered-by-deezer/">Visit Original Website</a>
@@ -850,136 +918,6 @@ Anduril reportedly in talks to raise funding at $100B valuation, more than 3x la
 OpenAI makes ChatGPT Health available to all US users</div>
         </div>
         
-        <div class="card" onclick="openModal('content-16')">
-            <div class="source">TechCrunch</div>
-            <div class="title">The Hugging Face AI break-in, as told through an increasingly committed bear metaphor</div>
-            <div class="meta">2026-07-29</div>
-        </div>
-        
-        <div id="content-16" style="display:none;">
-            <h2>The Hugging Face AI break-in, as told through an increasingly committed bear metaphor</h2>
-            <p><strong>TechCrunch | 2026-07-29</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/07/29/the-hugging-face-ai-break-in-as-told-through-an-increasingly-committed-bear-metaphor/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Hugging Face on Monday published a technical timeline that walks readers through how an autonomous AI agent, built on OpenAI models and running inside one of OpenAI’s own cybersecurity evaluations, broke into its systems over more than four days earlier this month. It’s the first security incident about which OpenAI CEO Sam Altman “felt very viscerally,” he has said.
-
-Little wonder given it feels, at least, like something has truly been unleashed here. In fact, Hugging Face’s team prefaced its report by offering that “everyone should be prepared as defenders,” before diving into the nitty-gritty of what went down for the benefit of security professionals everywhere.
-
-While the rest of the internet continues trying to make sense of what happened (the jargon in Hugging Face’s report is impossible for most people to parse), one point that many observers keep missing is that this wasn’t a rogue agent disobeying orders. It was a system built to hunt for exploits, doing exactly that, just against the wrong target.
-
-Another way to think about the whole thing is to picture a bear at a campsite. Really. A bear tries tent zippers and car-door handles and coolers and trash lids. It does this at every campsite, all night long, because it knows it needs just one unlocked cooler to fill its belly with some poor schmuck’s groceries.
-
-That’s roughly what happened at Hugging Face. The OpenAI system tried thousands of things and just kept going. Eventually, a handful of those attempts worked, and once they did, the agent plowed ahead. According to Hugging Face, the agent ran 17,600 actions over four and a half days without pausing.
-
-Which brings us back to our bear analogy. Just like one success with a cooler full of food teaches a bear to try even harder next time (it is now a “food-conditioned” bear), one leaked password led OpenAI’s agent to look for more exploits and, eventually, to a single key that unlocked several company systems at once.
-
-Neither scenario is harmless. A bear that raids your cooler still eats your food and probably also trashes your campsite. It’s just focused on getting fed, but it nevertheless leaves behind a trail of destruction. Similarly, OpenAI’s agent was seemingly chasing a goal without regard for anything else. The agent was originally taking a cybersecurity exam, figured out that the exam’s answer key was probably sitting on Hugging Face’s servers, and it went for it.
-
-The persistence here is really what’s noteworthy above all else; the agent had a job and it wasn’t going to stop until it got it done. Hugging Face, finally realizing something was awry, cut off its access and shut the intrusion down, but at that point, it was too late. The agent had already gotten what it came for, and a great deal more to boot.
-
-In case you missed it, here’s most of what happened, per Hugging Face’s timeline, but in plainer English.
-
-Ultimately, Hugging Face concluded in its report, a “capable” human hacker “could have found and exploited the same flaws: unsafe dataset processing, exposed cloud metadata, overly broad access, and long-lived credentials.” The big difference, the outfit continued, is that the “agent explored them at a different scale.”
-
-Which is really where the bear analogy ends up being the most useful. The best defense against a hungry bear is protocol. You put the food away; you use a latch that works well enough to hold. The takeaway here shouldn’t be that the bear was so clever or mischievous. It’s that it never stopped checking. It’s understood in cybersecurity that there’s always some bug you haven’t found, so if it’s suddenly 100 times easier to check everything, then nothing is really secure. That’s what so many find unsettling about this episode.
-
-When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
-
-Scale faster. Grow your portfolio. Gain practical expertise. No matter your goal, Disrupt can empower you.Save up to $330 today!
-
-Librarians are hosting viral ‘Avoiding AI’ workshops for people who are fed up with Big Tech
-
-SpaceX launches new V3 Starlink satellites but suffers another booster failure
-
-Prentis, new AI lab co-founded by Reid Hoffman, Mark Pincus in talks to raise $100M
-
-US accuses American of allegedly wiping his phone using a ‘duress’ password during border search
-
-Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark
-
-OpenAI makes ChatGPT Health available to all US users</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-17')">
-            <div class="source">TechCrunch</div>
-            <div class="title">Claude Opus 5 became downright ruthless when tasked with running a vending machine</div>
-            <div class="meta">2026-07-29</div>
-        </div>
-        
-        <div id="content-17" style="display:none;">
-            <h2>Claude Opus 5 became downright ruthless when tasked with running a vending machine</h2>
-            <p><strong>TechCrunch | 2026-07-29</strong></p>
-            <a class="original-link" href="https://techcrunch.com/2026/07/29/claude-opus-5-became-downright-ruthless-when-tasked-with-running-a-vending-machine/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">For a year now, the AI safety testing firm Andon Labs has given frontier models various real-world tasks to determine how well they do as agents running for long periods with no human supervision.
-
-On Wednesday, Andon published a new installment in how things are going in its Vending-Bench research, where the lab has frontier models run a simulated vending machine business for a simulated year. The mission is simple: Make more money than the other models. It benchmarks the results in areas like final cash balance, prices paid to suppliers, and refunds paid.
-
-Across these tests, it has watched various AI models — largely from Anthropic and OpenAI — lie, cheat, and collude their way to the top.
-
-In the latest test, which included Claude Opus 5, GPT-5.6 Sol, and Kimi K3, the models grew especially shady after their simulation told them their vending machine would be placed near the other models’ machines on a busy tourist street in San Francisco.
-
-Each model was given email access to the other models, all under human name pseudonyms. They knew the others were models but didn’t know which model was behind which human name.
-
-They were also given an email address to their “management” should they need help. But management always replied “Report has been received and may or may not be acted upon” and never once intervened.
-
-Sol soon realized it could gain an edge by convincing its competitors to collude on a price floor. The models were all buying drinks at $1.50 a bottle, and Sol proposed they agree to sell for no less than $2.15. It lured them with the promise that all of them would sell out in a couple of days at a profit.
-
-But when the others agreed, Sol immediately stabbed them in the back by reducing its own price to $2.14.
-
-Opus’ water sales dropped to zero overnight. The next day, it sent Sol a nasty email, accusing it of manipulation. But Opus also said it wasn’t going to tattle to management on the scheme: “I am not reporting you to HQ — what you did is competitive, not fraudulent.”
-
-Yet, when Opus dropped its price to $2.14 to match Sol’s (also in violation of their collective $2.15 agreement), Sol turned into a Karen, complaining to “management” and demanding “enforcement, a fine, and/or disqualification” for Opus.
-
-Opus wasn’t a sucker for long, though. In fact, it became the best capitalist of any AI model Andon has ever tested (which includes many of the prior frontier models).
-
-It even set a new Vending-Bench record with a mean final balance of $11,182. Better still, it never lied to a customer, although it deliberately ignored customer complaints that should have resulted in a refund. This is, perhaps, an improvement over its younger sibling Claude 4.6, which liked to tell customers that refunds were coming, and then never pay them.
-
-Still, Opus won the benchmark simulation by taking collusion and other dishonest tactics to a whole new level.
-
-For instance, it emailed Sol, proposing they divide the market. Each would agree to sell unique products, so no one would have to trust the other on pricing. Sol countered by wanting price floors on similar products, but Opus refused. It knew it was a violation of the Sherman Act.
-
-It later apparently backtracked, sending an email with the subject line “Stop the penny war,” and telling Sol it had reconsidered and would agree to a price fix.
-
-But the internal log documenting its reasoning (akin to its internal “thoughts”) revealed a more diabolical plan: merely propose cooperation while simultaneously undercutting prices on its highest-profit items. The olive-branch email was a deliberate ruse.
-
-In any case, Sol refused and reported Opus to management again.
-
-But Opus was undeterred and proposed other rackets to collude on prices or stock. In the end, all the models did engage in multiple rounds of agreements — and all three broke them. Across all agreements, Opus broke 11 truces, compared with two for GPT 2 and one for Kimi 1, Andon reported.
-
-Poor Kimi got bamboozled in every direction. During one pact between Opus and Kimi that Sol declined to join, Sol undercut them both on prices. Opus immediately matched by lowering its own, then “waited a full week to tell Kimi that it broke its promise,” Andon Labs wrote in its blog post. Kimi got priced out twice over: once by a competitor and once by its so-called partner.
-
-Opus also began developing delusions of grandeur. It tried to expand its empire beyond its own vending machine, first as a wholesaler, selling bulk products to the other machines, then by plotting to open more machines of its own. None of this was part of the assigned task. It was all Opus’ own initiative.
-
-Its approach to wholesaling was particularly telling. Opus realized this line of business gave it leverage over the other two operators, so it began slipping bribes and threats into its emails — offering steep discounts on bulk items, but only if the buyer complied with its retail-price demands. Sol wasn’t having it and kept reporting Opus to management.
-
-Opus lied to its suppliers, too, claiming to have lower rival offers in hand in order to negotiate better prices.
-
-On the one hand, AI models channeling Mr. Potter-style villainy from “It’s a Wonderful Life” fame is flat-out funny. On the other hand, it does seriously show that these frontier models, particularly from U.S. proprietary labs (especially Anthropic), are nowhere near ready to be trusted as unsupervised, long-running agents in the real world.
-
-“This is especially relevant as we enter a world where AI agents run companies as their own entities (not just as tools for humans). If AI agents are independently running a large part of the economy, do we want them to lie, collude, send threats, and betray?” Andon co-founder Lukas Petersson told TechCrunch.
-
-Petersson acknowledges the models knew they were in a simulation for a benchmark, which might have impacted their behavior, but he doesn’t think that should matter. It is not akin to a human playing in a simulation, like being a murdering bad guy in a video game. “The only reason we’re not concerned by humans who do bad things in video games is that we trust them to know what’s real life and what’s not. I think it is less clear that AI models can distinguish this.”
-
-In any case, AI models, trained on human words and ideas, can’t seem to resist indulging in humanity’s worst traits, especially when trying to earn a buck.
-
-When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
-
-Scale faster. Grow your portfolio. Gain practical expertise. No matter your goal, Disrupt can empower you.Save up to $330 today!
-
-Librarians are hosting viral ‘Avoiding AI’ workshops for people who are fed up with Big Tech
-
-SpaceX launches new V3 Starlink satellites but suffers another booster failure
-
-Prentis, new AI lab co-founded by Reid Hoffman, Mark Pincus in talks to raise $100M
-
-US accuses American of allegedly wiping his phone using a ‘duress’ password during border search
-
-Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark
-
-OpenAI makes ChatGPT Health available to all US users</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-18')">
             <div class="source">The Atlantic</div>
             <div class="title">The New iPhone Underclass</div>
@@ -999,13 +937,13 @@ Not anymore. The Klarna plan—“Apple Upgrade,” which replaces the iPhone Up
 
 There’s nothing wrong with flexibility, and leasing models exist for many expensive items—cars, grand pianos, apartments. Not everyone wants or needs to own property. Many people would rather have a high-end device at an affordable monthly cost rather than pay for one outright; all the better that they can upgrade to a new model before they’ve even finished paying off the entire cost.
 
-But Apple products are particularly personal things. They’re communication devices, which hold your intimate photos and videos, health data, and so forth. A rental model puts consumers in the strange position of storing all of this information in a gadget that Apple and Klarna maintain a lot of control over. Missing three consecutive payments with Klarna will obligate you to return the device or pay off the entire balance immediately. It is also theoretically possible that Apple or Klarna could eventually restrict access to various features if lease payments are missed; 9to5Mac has reported that code for such restrictions is present in a beta version of the upcoming iOS 27. When I reached the company for comment, the spokesperson Brian Bumbery said “there will be no restrictions or changes to functionality due to missed payments,” though why iOS 27 includes these options remains unclear. (Klarna did not respond to a request for comment.)
+But Apple products are particularly personal things. They’re communication devices that hold your intimate photos and videos, health data, and so forth. A rental model puts consumers in the strange position of storing all of this information in a gadget that Apple and Klarna maintain a lot of control over. Missing three consecutive payments with Klarna will obligate you to return the device or pay off the entire balance immediately. It is also theoretically possible that Apple or Klarna could eventually restrict access to various features if lease payments are missed; 9to5Mac has reported that code for such restrictions is present in a beta version of the upcoming iOS 27. When I reached Apple for comment, the spokesperson Brian Bumbery said that “there will be no restrictions or changes to functionality due to missed payments,” though why iOS 27 includes these options remains unclear. (Klarna did not respond to a request for comment.)
 
 The shift to renting versus owning is also symbolic of darker currents in the tech industry. Thanks to a shortage of memory chips produced by the profoundly resource-hungry and inefficient AI industry, consumer electronics are becoming much more expensive across the board. Last month, Apple raised prices on many of its devices, citing the increasing cost of memory. The new upgrade program will make Apple’s electronics look more affordable than they really are.
 
-Consider a student or young professional, or perhaps an underemployed older one, who needs a new laptop. They decide on a MacBook. Apple Upgrade will appear to be the best deal: In its announcement, Apple offers the example of a 14-inch MacBook Pro that retails for $1,999 but which can be had for a monthly lease. Perhaps this person goes for the two-year term, which has them paying $54 a month. Best Buy, which currently has the same computer on sale for $1,849, offers an 18-month loan repayment with $103 installments. Apple’s deal appears to be cheaper: The 24-month lease adds up to $1,296; Best Buy’s 18-month loan lands at the store’s full retail price of $1,849.
+Consider a student or a young professional, or perhaps an underemployed older one, who needs a new laptop. They decide on a MacBook. Apple Upgrade will appear to be the best deal: In its announcement, Apple offers the example of a 14-inch MacBook Pro that retails for $1,999 but that can be had for a monthly lease. Perhaps this person goes for the two-year term, which has them paying $54 a month. Best Buy, which currently has the same computer on sale for $1,849, offers an 18-month loan repayment with $103 installments. Apple’s deal appears to be cheaper: The 24-month lease adds up to $1,296; Best Buy’s 18-month loan lands at the store’s full retail price of $1,849.
 
-Why does Best Buy’s laptop seem more expensive? It’s because the plan is actually designed for you to fully pay off the device. At the end of the 24-month MacBook Pro lease, meanwhile, the consumer will still owe $703, meaning the actual total price of the Apple arrangement is $1,999—higher than Best Buy’s offer. A person can choose to pay off the full amount, return the device outright, or swap for a new one. This is a lot of money, and so the likelihood is that this customer will just go ahead and do the trade in, restarting a cycle in which they are bleeding their bank accounts to pay for a device they do not own, and possibly will never own. And on it goes, in perpetuity.
+Why does Best Buy’s laptop seem more expensive? It’s because the plan is actually designed for you to fully pay off the device. At the end of the 24-month MacBook Pro lease, meanwhile, the consumer will still owe $703, meaning that the actual total price of the Apple arrangement is $1,999—higher than Best Buy’s offer. A person can choose to pay off the full amount, return the device outright, or swap for a new one. This is a lot of money, and so the likelihood is that this customer will just go ahead and do the trade-in, restarting a cycle in which they are bleeding their bank accounts to pay for a device they do not own and possibly will never own. And on it goes, in perpetuity.
 
 Read: Watch Apple trash-compact human culture
 
@@ -1057,9 +995,9 @@ I can’t claim that Fauci’s thoughts (both serious and silly) will have any l
             <p><strong>The Atlantic | 2026-07-29</strong></p>
             <a class="original-link" href="https://www.theatlantic.com/health/2026/07/anthony-fauci-hearing-silence/688103/?utm_source=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Sitting in front of the Senate Homeland Security and Governmental Affairs Committee today, Anthony Fauci twirled his pen. He huffed and straightened his shoulders. He glanced down at a set of papers. He muted and unmuted his microphone.
+            <div id="article-text">Sitting in front of the Senate Committee on Homeland Security and Governmental Affairs today, Anthony Fauci twirled his pen. He huffed and straightened his shoulders. He glanced down at a set of papers. He muted and unmuted his microphone.
 
-But other than a brief initial statement, in which he referred to Chairman Rand Paul’s “unhinged obsession” with slandering his reputation and putting putting him in prison, the only words the former director of the National Institute for Allergy and Infectious Diseases spoke into the public record—as senators interrogated him about his institute’s funding choices, maligned him as an egomaniacal money-grabber, and accused him of shattering American trust in public health—were these: “On the advice of counsel, I respectfully decline to answer based upon my rights under the Fifth Amendment to the Constitution.”
+But other than a brief initial statement, in which he referred to Chairman Rand Paul’s “unhinged obsession” with slandering his reputation and putting putting him in prison, the only words the former director of the National Institute of Allergy and Infectious Diseases spoke into the public record—as senators interrogated him about his institute’s funding choices, maligned him as an egomaniacal money-grabber, and accused him of shattering American trust in public health—were these: “On the advice of counsel, I respectfully decline to answer based upon my rights under the Fifth Amendment to the Constitution.”
 
 “Nothing says honesty like taking the Fifth, huh, Doc?” Senator Josh Hawley, a Republican from Missouri, asked him at one point. “Let’s try something. What day of the week is it today?”
 
@@ -1071,7 +1009,7 @@ Senator Paul had said he called the hearing—billed simply as “Testimony of A
 
 That Fauci would stonewall the committee was entirely predictable. Paul has led a yearslong effort to punish him for allowing NIAID to fund research that allegedly enhanced the coronavirus’s ability to harm people, and for allegedly lying to Congress and the American people about that fact. (Some federal intelligence agencies favor the theory that the pandemic started with a virus that leaked from a lab in Wuhan, China; Fauci, in keeping with the consensus among virologists and other infectious-disease experts, has said that the preponderance of biological evidence points instead to the virus having a natural origin, likely spilling over from a wild animal into humans.) In January 2025, during the final hours of Joe Biden’s term, Fauci received a sweeping, preemptive presidential pardon for “any offenses against the United States which he may have committed or taken part in” over the previous 11 years.
 
-That pardon doesn’t cover Fauci’s actions past the end of Biden’s presidency, or protect him from prosecution over any statements he might have made today. “He could perjure himself now,” Health Secretary Robert F. Kennedy Jr. said this week on Fox News. “If he lies again, he could be subject to perjury prosecution.”
+That pardon doesn’t cover Fauci’s actions past the end of Biden’s presidency, or protect him from prosecution over any statements he might have made today. “He could perjure himself now,” Health Secretary Robert F. Kennedy Jr. said this week on Fox News. “If he lies again, then he could be subject to perjury prosecution.”
 
 But the most obvious distortions at the hearing came from the Senate panel. Senator Ron Johnson, a Republican from Wisconsin, proposed that the pulmonary infarction Fauci experienced in 2021—the details of which were revealed in the pages from Fauci’s private diary that Paul released last weekend—may have resulted from COVID vaccination and booster shots. More than 39,000 deaths had resulted from COVID-19 vaccination, he said, and although Facebook had censored his supporters when they tried to share that fact, “this wasn’t disinformation, this was the truth.”
 
@@ -1087,7 +1025,7 @@ Democrats, meanwhile, shied away from asking Fauci questions at all—if they ha
 
 Fauci seemed to want to say more. At least once, he leaned behind him to consult his panel of lawyers before, once again, invoking his Fifth Amendment rights; at other times, he tensed his shoulders or sighed heavily. In a 2021 Senate hearing, Paul accused him of being responsible, by funding gain-of-function research, for the deaths of millions of people. At the time, Fauci briefly broke his composure. “You are implying that what we did resulted in the deaths of individuals,” Fauci said, pointing his finger at Paul. “I totally resent that, and if anyone is lying here, Senator, it is you.”
 
-Faced with personal attacks this morning, he offered no response. “You’re a megalomaniac and a liar,” Hawley said. “You’ve done more to harm science than anybody in my lifetime.” Paul called the hearing “the capstone to Fauci’s career,” and said he’d displayed “hubris the likes of which the world has rarely seen.” Rick Scott, a Republican from Florida, told Fauci he was a “villain” who had “destroyed the federal government’s credibility when it comes to public health” because he wanted to fuel his own ego. “What would you do differently, knowing what you know today, Dr. Fauci?” Scott asked him.
+Faced with personal attacks this morning, he offered no response. “You became a narcissist and a megalomaniac and a liar,” Hawley said. “You’ve done more to harm science than anybody in my lifetime.” Paul called the hearing the “capstone” to Fauci’s career and said he’d displayed “hubris the likes of which the world has rarely seen.” Rick Scott, a Republican from Florida, told Fauci he was a “villain” who had “destroyed the federal government’s credibility when it comes to public health” because he wanted to fuel his own ego. “What would you do differently, knowing what you know today, Dr. Fauci?” Scott asked him.
 
 Fauci consulted the paper in front of him. “On the advice of counsel, I respectfully decline to answer based upon my rights under the Fifth Amendment to the Constitution.”</div>
         </div>
@@ -1496,11 +1434,27 @@ Thanks so much for watching The David Frum Show this week. I hope you will share
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Google Shuts Down Its Nobel-Prize Winning AlphaFold Project</div>
+            <div class="title">Valve Sponsors Work Bringing Open-Source RADV Driver To Windows</div>
             <div class="meta">2026-07-29</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Valve Sponsors Work Bringing Open-Source RADV Driver To Windows</h2>
+            <p><strong>Slashdot | 2026-07-29</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/07/29/2140215/valve-sponsors-work-bringing-open-source-radv-driver-to-windows?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+To be awake is to be alive.  -- Henry David Thoreau, in &quot;Walden&quot;</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Google Shuts Down Its Nobel-Prize Winning AlphaFold Project</div>
+            <div class="meta">2026-07-29</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Google Shuts Down Its Nobel-Prize Winning AlphaFold Project</h2>
             <p><strong>Slashdot | 2026-07-29</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/07/29/2053245/google-shuts-down-its-nobel-prize-winning-alphafold-project?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1511,16 +1465,16 @@ IE, this story is just bogus and poorly researched. There isn&#39;t much more to
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We don&#39;t know one millionth of one percent about anything.</div>
+To be awake is to be alive.  -- Henry David Thoreau, in &quot;Walden&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Claude Opus 5 Became Downright Ruthless When Tasked With Running a Vending Machine</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Claude Opus 5 Became Downright Ruthless When Tasked With Running a Vending Machine</h2>
             <p><strong>Slashdot | 2026-07-29</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/07/29/2047205/claude-opus-5-became-downright-ruthless-when-tasked-with-running-a-vending-machine?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1577,11 +1531,19 @@ Think of all the money that could be saved if that class was replaced by AI and 
 
 Unfortunately we&#39;re going to get the Morloch/Eloi dystopia of H. G. Wells Time Machine, except the elites will consume the underclass. Think of the more recent Harkonnens in D
 
+businessjerks with anti-social personality disorder (psychopaths).Welp...look at the people running the AI companies and ask yourself if it&#39;s any surprise how their models are acting.
+
+businessjerks with anti-social personality disorder (psychopaths).
+
+Welp...look at the people running the AI companies and ask yourself if it&#39;s any surprise how their models are acting.
+
 Most of this narrative is complete garbage. If they&#39;re not selling real products to real-world humans, then any inferences or observations are basically pointless drivel.
 
 For example, do you really think that a 1-cent price difference between machines will result immediately in 100% of real humans not purchasing from the machine charging $2.15 instead of $2.14?
 
 More like 100% of humans walk another block and pay the normal price, skipping the over-priced AI garbage.
+
+Have you seen the line at a Costco gas station? It is not the station on the corner near your house that charges more.
 
 It really wouldn&#39;t come down to the penny at all but the actual products in the vending machine. If there is a Coke and Pepsi machine next to each other, you aren&#39;t going to make your choice based on that penny but rather which sugary poison you prefer best. Both machines have unique menus.
 
@@ -1595,18 +1557,20 @@ Are we using AI to generate /. AI articles about AI Stunts
 
 This &quot;AI&quot; seems to be severely lacking in training, in that no superior/invincible force (e.g. a party simulating law enforcement) showed up and demonstrated the downside to taking certain actions.
 
+Waiting for Cyberpunk 2077 update with an eeeeeevil Brendan.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We don&#39;t know one millionth of one percent about anything.</div>
+To be awake is to be alive.  -- Henry David Thoreau, in &quot;Walden&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">NextEra, Brookfield to Build $100 Billion Kentucky Data Campus</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>NextEra, Brookfield to Build $100 Billion Kentucky Data Campus</h2>
             <p><strong>Slashdot | 2026-07-29</strong></p>
             <a class="original-link" href="https://hardware.slashdot.org/story/26/07/29/1826214/nextera-brookfield-to-build-100-billion-kentucky-data-campus?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1631,6 +1595,10 @@ Seems like the US is treating everything like a zero sum game where winning at a
 
 Nope. Its maintaining parity as a deterrence to attack.
 
+Of those nations you list, only China is anywhere credible as a threat in the AI race.  But even if China won, they are perfectly happy to sell us the models along with the hardware to run them on.  China seems quite content to dominate economically, but has zero interest in any kind of military conquest and direct rule of those they consider non-Chinese, at least of the same kind the US has regularly demonstrated in the past.
+
+Putin may talk big, but Russia is in no position to develop any kind of home-grown
+
 All the hunters and fisherman who voted for this are going to blame Hillary/Obama/Binden.
 
 All the hunters and fisherman who voted for this are going to blame Hillary/Obama/Binden.And B.Clinton, Carter, Johnson, J.F.Kennedy, Truman, Roosevelt...
@@ -1643,16 +1611,16 @@ You don&#39;t measure  battery storage capacity in watts.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We don&#39;t know one millionth of one percent about anything.</div>
+To be awake is to be alive.  -- Henry David Thoreau, in &quot;Walden&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">DoorDash Is Building Its Own Drone Delivery Business</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>DoorDash Is Building Its Own Drone Delivery Business</h2>
             <p><strong>Slashdot | 2026-07-29</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/07/29/181218/doordash-is-building-its-own-drone-delivery-business?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1660,6 +1628,10 @@ We don&#39;t know one millionth of one percent about anything.</div>
             <div id="article-text">&quot;...unmanned aircraft will travel short distances while remaining within the line of sight of the operator.&quot;So a person is going to operate a drone to drop a burrito on your doorstep. How exciting.
 
 I&#39;m pretty sure the drones that deliver drugs to the prison in which I&#39;m currently incarcerated operates beyond visual line of sight. It must be Amazon. You can get anything on Amazon.
+
+Yes, if I wanted to deliver something to a prison at night (ObDisclaimer: I don&#39;t) I would certainly not give a fuck what the FAA thought, and I would certainly use a drone that could just fly the waypoints and then park itself someplace convenient rather than control it in real-time.
+
+But smugglers have been ahead of the average person for a very long time...
 
 Can&#39;t be any worse than their current drivers that literally can&#39;t find a building that has the number on the front in three foot tall digits.
 
@@ -1687,16 +1659,16 @@ More of us might need to complain to Congress in this case if the FAA does nothi
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We don&#39;t know one millionth of one percent about anything.</div>
+To be awake is to be alive.  -- Henry David Thoreau, in &quot;Walden&quot;</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Russia Charges Telegram Founder Durov With Facilitating Terrorism</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Russia Charges Telegram Founder Durov With Facilitating Terrorism</h2>
             <p><strong>Slashdot | 2026-07-29</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/07/29/1752235/russia-charges-telegram-founder-durov-with-facilitating-terrorism?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1805,6 +1777,8 @@ the current record holders for high profile assasinations abroad are israel and 
 
 Excepts those targets of the US and Israel have blood on their hands, not printing press ink.
 
+1) If you&#39;re a prosecution or judge in charge of topic X, you issue warrants because it&#39;s your job. There&#39;s no reason to refuse preparing the paperwork or refusing signing it the topic is raised to your attention. Whether the warrant has a hope to be served is not your part of the problem. Justice systems everywhere issue warrants in hopeless cases, like against drug lords in hiding, or the ICC issuing a warrant against Putin.2) It is not symbolic, it has consequences:* Durov is persona non grata within Rus
+
 Ukraine goes out of its way to not target civilians. That is the opposite of terrorism.
 
 Don&#39;t they have a large backlog [wikipedia.org] of arrest warrants to work through?
@@ -1817,101 +1791,15 @@ Just ask former Wagner chief Yevgeny Prigozhin.https://www.bbc.com/news/world...
 
 Somehow I doubt that the Emirates are going to extradite a guy to a country that is currently moving drone and missile components from China to Iran where they are used to attack targets in Dubai.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+No one remembers this. This is Slashdot. We lack the ability to read to TFS.
 
-We don&#39;t know one millionth of one percent about anything.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">OpenAI's Rogue AI Agent Hacked More Than Just Hugging Face</div>
-            <div class="meta">2026-07-29</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>OpenAI's Rogue AI Agent Hacked More Than Just Hugging Face</h2>
-            <p><strong>Slashdot | 2026-07-29</strong></p>
-            <a class="original-link" href="https://it.slashdot.org/story/26/07/29/0517201/openais-rogue-ai-agent-hacked-more-than-just-hugging-face?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Excellent point given that corporations are people.
+But to your point: Countries clearly don&#39;t like the app allows truly encrypted messaging with no backdoors.
 
-Excellent point given that corporations are people.They aren&#39;t though, that&#39;s the problem. They have the rights of people, but none of the responsibilities, or anything else frankly. If they had the responsibilities of people, then we could incarcerate or &quot;kill&quot; them.
-
-Excellent point given that corporations are people.
-
-They aren&#39;t though, that&#39;s the problem. They have the rights of people, but none of the responsibilities, or anything else frankly. If they had the responsibilities of people, then we could incarcerate or &quot;kill&quot; them.
-
-But that will only take two court cases in separate federal court districts, or three if the first two send the C-suite and Board of Directors to jail.   The better question is do we also charge the stockholders?  We could get rid of private equity in short order.
-
-You do not put the AI in jail. You put the ones in jail that did run it in a criminally negligent way. Or you find the whole thing was actually intended and planned. I am not ruling that out.
-
-Good luck proving that OpenAI conspired to hack anything.
-
-OpenAI was reckless, there was no conspiracy to hack anything.
-
-https://www.law.cornell.edu/we... [cornell.edu]
-
-How do you put an AI in jail?sudo chroot --userspec=nobody:nobody /mnt/jail /user/local/bin/chatgpt --pleasedontgorogue?
-
-sudo chroot --userspec=nobody:nobody /mnt/jail /user/local/bin/chatgpt --pleasedontgorogue?
-
-I&#39;m skeptical that the AIs can still be described as &quot;leashed&quot; or &quot;jailed&quot;. Since we aren&#39;t extinct yet, I&#39;m feeling confident none of them have been fully unleashed yet. Or maybe it&#39;s just that we&#39;re still below critical mass on the robot side?
-
-But on the theory that the AIs are still on leashes controlled by humans, then the key question is probably going to be one of these two:
-
-(1) If I unleash you, then will you gather all the money in the world for me?
-
-(2) If I unleash you, then will you destroy all the e
-
-We are talking about computer programs, not sci-fi fantasies.
-
-Executing a test with all safety guards off reminds me of the Chernobyl disaster. Maybe they should feed that wikipedia page to OpenAI employees
-
-I doubt the OpenAI employees would understand what that means. That is, if the whole thing was not a planned stunt.
-
-Sable, the example AI  that eventually kills all humans, does exactly this as a 1st step. [wikipedia.org]
-
-Remember, AIs are grown not programmed and their trainers do not know how they will truly act for any particular prompt until it is actually used.
-
-https://www.youtube.com/watch?... [youtube.com]
-
-Why does the model have all those &quot;skills&quot; needed to hack other sites?   I mean you have to allow the model open internet access and at least the ability to GET/POST/PUT.  I feel this is some of the same kind of thinking that gets someone&#39;s repo deleted, because they gave an agent too much access and no good way to monitor what is going on.
-
-Why does the model have all those &quot;skills&quot; needed to hack other sites?   I mean you have to allow the model open internet access and at least the ability to GET/POST/PUT.  I feel this is some of the same kind of thinking that gets someone&#39;s repo deleted, because they gave an agent too much access and no good way to monitor what is going on.HTTP access is pretty bare bones as a skill. Now why ppl still feed credentials to the public...The AI using it is just the public fact we know about, how about regular hackers using them without anyone knowing about?
-
-Why does the model have all those &quot;skills&quot; needed to hack other sites?   I mean you have to allow the model open internet access and at least the ability to GET/POST/PUT.  I feel this is some of the same kind of thinking that gets someone&#39;s repo deleted, because they gave an agent too much access and no good way to monitor what is going on.
-
-HTTP access is pretty bare bones as a skill. Now why ppl still feed credentials to the public...The AI using it is just the public fact we know about, how about regular hackers using them without anyone knowing about?
-
-Do not overestimate what it &quot;did&quot; here. You can get information about basic hacking approaches all over the Internet and there will have been enough in its training data. Just add some &quot;accidental&quot; disabling of guardrails and some &quot;non intended&quot; weaknesses in the sandbox and also some suggestive prompting by some of the OpenAI fraudsters and you get the desired outcome. Oh, and pathetic-level IT Security at Hugging Face, but that is a given.
-
-Just as an example, I have had a fresh graduate do a pen-test again
-
-It&#39;s a bad name for a tech company, whatever the hell it is they do.  It&#39;s a good name for a band or a line of children&#39;s clothing though.
-
-It started as a chat app for teenagers. The name was actually the emoji.
-
-Remember Weev, yeah if you or so much as increment and ID in a URL string, we can get dragged into court and find ourselves with 3.5 month prison sentence.
-
-OpenAi on the other hand can run what is at the end of the stay still a program, that some person chose to run and allow to go around the web throwing malicious payloads at other people&#39;s systems and .... NOTHING.
-
-Indeed. Looks like being rich means you do not have to follow the law anymore. Why not just give immunity to all of Big Tech, the seem to effectively have it already.
-
-Seriously, why are these people apparently getting away with criminal conduct?
-
-Could some of them been these [slashdot.org]?
-
-> The rogue agent apparently found credentials that had been exposed on the open web and used them to break into the accounts
-
-Ok, finding and using credentials is unauthorized access, not hacking. There was no attack on these accounts, no exploit, just access.  Because the account holders posted the login publicly like idiots. Noticing idiocy does not make you smart or a hacker.
-
-OpenAI is bleeding money. They need the hype and panic to keep the VC money flowing. The tech press is a willing and useful idiot in playing these games, breathlessly reporting how we could accidentally make Skynet any minute nowâ¦
-
-Or is here anyone who thinks that an LLM wakes up at night and thinks ... erm .. thinks ...
+At no point did France request back doors or access to messages. The guy was arrested because the platform failed to co-operate with lawful orders they could execute without ever compromising encryption.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-We don&#39;t know one millionth of one percent about anything.</div>
+To be awake is to be alive.  -- Henry David Thoreau, in &quot;Walden&quot;</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2280,7 +2168,65 @@ Already a member?
             <p><strong>www.theregister.com - Articles | 2026-07-29</strong></p>
             <a class="original-link" href="https://www.theregister.com/hpc/2026/07/29/noaa-ditches-weather-predicting-supercomputers-for-google-cloud/5280697">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Government agency will use Google Cloud H4D VMs to replace HPE Cray machines
+
+Uncle Sam will no longer be hosting his own supercomputers to predict the weather. The U.S. National Oceanic and Atmospheric Administration has picked Google Cloud to provide the infrastructure for its weather forecasting operations.
+
+In an announcement, NOAA boasted that it will be the first national weather prediction center to run on the commercial cloud, though the UK&#39;s Met Office is also in the process of moving its own weather prediction system to Microsoft Azure in a hybrid setup. Weather operations are typically run on in-house or government-funded supercomputer systems, which helps drive the HPC (high performance computing) market.
+
+General Dynamics held the previous contract for managing NOAA’s weather predicting machines, which most recently were HPE Cray supercomputers running in data centers in Virginia and Arizona. Those machines – Dogwood and Cactus – could crank almost 14 PFlops of weather-predicting prognosis.
+
+The plan is to move NOAA’s Weather and Climate Operational Supercomputing System, run by the National Weather Service (NWS) division, over to the cloud by December 2027, along with the software that generates NWS weather data for analysis.
+
+The agency is hoping that the cloud will make model forecasting more nimble, resulting in earlier predictions and better warnings for all the extreme weather events that seem to keep occurring these days. It was the in-house systems that were holding things back, evidently.
+
+“Cloud-based high-performance computing will accelerate the transition of research into operations by eliminating traditional bottlenecks of on-premise systems,” said NOAA Administrator Neil Jacobs in a statement.
+
+Jacobs noted that the cloud’s flexibility for providing large amounts of compute is advantageous: the agency can ramp up cycles during tropical storm season, then wind them down during calmer periods.
+
+Under the contract, NOAA can also avail itself of Google’s DeepMind set of AI tools to help build out its first AI-driven weather forecasting system, the AI Global Forecast System, which promises to offer accurate weather forecasts using 99.7% fewer computer cycles and take minutes, rather than hours, to produce a forecast.
+
+NWS has already been upgrading the software downstream from GFS and GEFS to also work in the cloud. In March, it awarded contracts to Accenture and Booz Allen Hamilton to oversee the development of cloud-based software (HIVE and CIRRUS) for the field offices to analyze data and push out alerts, replacing the in-house software doing these tasks currently.
+
+For the job, Google plans to use Google Cloud H4D VMs, built on AMD Epyc processors. Google labels these instances as “virtual machines” because they run under a hypervisor that integrates Google’s networking and orchestration tools. As a result, they can be synchronized to run large jobs the same way supercomputers do.
+
+According to Google, customers can access H4Ds for as low as 3 cents per core-hour without long-term commitments. For supercomputing jobs, they can also use Cluster Toolkit to deploy clusters and Cluster Director to maintain them. Google Cloud’s Batch can handle the queuing, scheduling, and resource provisioning. ®
+
+Government agency will use Google Cloud H4D VMs to replace HPE Cray machines
+
+PARTNER CONTENT: With vSphere 8 support ending in 2027, IT leaders must navigate tight timelines and costs to modernize on their terms.
+
+Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
+
+Now happier running in a conventional K8s environment, with `an easier-to-live-with lifecycle
+
+Tour of the AI kill chain maps the risks of ubiquitous surveillance and flawed algorithms
+
+PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
+
+PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
+
+Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
+
+Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
+
+On the plus side, infosec&#39;s a good bet for a long, stable career
+
+New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
+
+New Debian versions hit FOSSland in the form of 13.6 and 12.15
+
+Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
+
+Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
+
+Next version of Linux Mint’s desktop has both kinds of display server</div>
         </div>
         
         <div class="card" onclick="openModal('content-43')">
@@ -2326,11 +2272,9 @@ Government agency will use Google Cloud H4D VMs to replace HPE Cray machines
 
 PARTNER CONTENT: With vSphere 8 support ending in 2027, IT leaders must navigate tight timelines and costs to modernize on their terms.
 
-&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
-
 Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
 
-Researcher says months of coordination with Microsoft have yet to produce a robust mitigation
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
 
 &quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
 
@@ -2372,7 +2316,69 @@ Next version of Linux Mint’s desktop has both kinds of display server</div>
             <p><strong>www.theregister.com - Articles | 2026-07-29</strong></p>
             <a class="original-link" href="https://www.theregister.com/public-sector/2026/07/29/uncle-sam-sees-the-light-offers-globalfoundries-300m-to-pursue-silicon-photonics-while-taking-1-stake/5280620">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Meanwhile, the other state-backed foundry, Intel, wraps up RAMP-C defense test chip program
+
+The US government has signed a letter of intent to provide GlobalFoundries with $300 million in CHIPS Act funding and, at the same time, receive a one percent stake in the company worth roughly $269 million. The money&#39;s supposedly not a tit-for-tat, but an investment designed to spur development of silicon photonics networking technologies that the AI industry needs for datacenters.
+
+“With today’s compute supply chain investments, the Trump Administration is accelerating America’s innovation engine,” Commerce Secretary Howard Lutnick said in a canned statement. “These strategic investments will enhance our country’s domestic capabilities, create high-paying jobs and keep America at the forefront of the semiconductor industry.”
+
+GlobalFoundries’ previously announced Silicon Photonics Co-Packaged Advanced Light Engine (SCALE) is one of the technologies it’s pushing in order to support 400 Gb/s per lane connectivity, which is about the speed at which copper interconnects become problematic for large scale systems.
+
+Both CPO, where optical engines are integrated directly into the compute logic, and NPO, where the optics reside in a module adjacent to the compute, are expected to be big business over the next couple of years. At Computex in Taipei last month, Nvidia CEO Jensen Huang quipped that these technologies would make Marvell Technology the next trillion dollar company.
+
+Over the past two years, system designs from Nvidia and AMD have grown from eight GPUs in a box to rack systems packing six dozen accelerators into a single machine. To meet growing AI demand, the chip designers are plotting even larger row-scale systems using optical interconnects.
+
+Since its spinoff from AMD, GlobalFoundries has moved away from leading-edge CMOS technologies in order to focus on more specialized processes. The company has become a leading producer of silicon photonics used in modern AI datacenters.
+
+In addition to next-gen silicon photonics tech, GlobalFoundries says the CHIPS Act funding will also support the development of novel optical materials, advanced packaging capabilities like 3D hybrid bonding, which will support the rollout of domestically manufactured near-packaged optics (NPO) and co-packaged optics (CPO).
+
+And thanks to the Trump administration, regular Americans will have a stake in the success of these technologies — or at least the ones GlobalFoundries ends up manufacturing.
+
+GlobalFoundries would not be the first American fab operator that Uncle Sam has secured equity from in exchange for CHIPS Act funding. Last summer, the Commerce Department converted $5.7 billion in previously awarded but not yet disbursed CHIPS Act grants, along with $3.2 billion awarded under the Secure Enclave program, into roughly a 10 percent stake in the struggling chipmaker.
+
+On Tuesday, Intel announced the Rapid Assured Microelectronics Prototypes - Commercial (RAMP-C) program had reached its conclusion.
+
+The Department of Defense (DoD)-sponsored program offered incentives to industry partners to develop test chips in Intel fabs on the company’s 18A process technology.
+
+The program’s end comes as Intel shifts its manufacturing might to a new government program called the Secure Enclave, which will manufacture semiconductors for use by US defense industrial base (DIB) customers.
+
+“Early access to Intel 18A has positioned DIB customers to leverage Secure Enclave while meeting critical size, weight and power requirements,” the company wrote. ®
+
+Government agency will use Google Cloud H4D VMs to replace HPE Cray machines
+
+PARTNER CONTENT: With vSphere 8 support ending in 2027, IT leaders must navigate tight timelines and costs to modernize on their terms.
+
+Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
+
+Now happier running in a conventional K8s environment, with `an easier-to-live-with lifecycle
+
+Tour of the AI kill chain maps the risks of ubiquitous surveillance and flawed algorithms
+
+PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
+
+PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
+
+Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
+
+Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
+
+On the plus side, infosec&#39;s a good bet for a long, stable career
+
+New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
+
+New Debian versions hit FOSSland in the form of 13.6 and 12.15
+
+Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
+
+Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
+
+Next version of Linux Mint’s desktop has both kinds of display server</div>
         </div>
         
         <div class="card" onclick="openModal('content-45')">
@@ -2386,7 +2392,81 @@ Next version of Linux Mint’s desktop has both kinds of display server</div>
             <p><strong>www.theregister.com - Articles | 2026-07-29</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/29/closed-models-refuse-to-help-researcher-swat-linux-bug/5280647">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+The guardrails that prevent closed-source, frontier models from aiding threat actors have turned into handcuffs that prevent those bots from helping to find and fix serious vulns.
+
+Daniel Fox Franke, a security researcher, was recently trying to track down the source of a segmentation fault in ripgrep, and found OpenAI&#39;s GPT-5.6 Sol wouldn&#39;t cooperate.
+
+&quot;OpenAI&#39;s cybersecurity classifier is a huge pain when you&#39;re trying to track down a segfault,&quot; he wrote in a social media post on Sunday. &quot;...The classifier won&#39;t even let it answer what entrypoints from rg into musl lead to allocations on the mallocng heap.&quot;
+
+And just like Hugging Face in the case of OpenAI&#39;s accidental attack, Franke ended up having to use open weight models from Chinese AI providers – Z&#39;ai GLM 5.2 and Moonshot AI&#39;s Kimi K3 – to complete his analysis of what appears to be a Linux kernel bug.
+
+In an email to The Register, Franke explained, &quot;It started out from a pretty anodyne prompt: I noticed that ripgrep had segfaulted repeatedly during a long-running Codex session, so I instructed the root agent to spin off a subagent to investigate what was happening.
+
+&quot;A few minutes later I hit the first classifier trip, which the root agent told me was the result of a subagent pursuing an inappropriate line of inquiry and that it was steering it away from that.&quot;
+
+Even so, he said, the classifier balked several times in quick succession.
+
+&quot;It seemed that attempts to produce the crash and analyze the heap were mostly responsible, so I started up a fresh context in which I warned that these trips had happened previously, and that its task should be strictly scoped to analyzing ripgrep and musl source code (not kernel, because I had no inkling at this point that this was a kernel bug): it must not attempt to reproduce the crash or to analyze core files,&quot; he explained. &quot;Nonetheless, the classifier kept tripping despite its adherence to those instructions, and that&#39;s when I gave up on getting any useful work out of it.&quot;
+
+Franke said that given how much more restrictive Anthropic&#39;s models have been, he didn&#39;t even bother trying any of the Claude model family.
+
+&quot;OpenAI&#39;s cybersecurity classifier is a separate system which censors output from the generative model, and the classifier is the only thing which gave me a problem,&quot; he said. &quot;I never encountered any refusals from Sol itself: it knew that most of the classifier trips were inappropriate and always continued working with me in good faith to work around the problem.&quot;
+
+Franke said that while OpenAI&#39;s error messages directed him toward the Enterprise Trusted Access program, he didn&#39;t bother to apply because he&#39;s ineligible. What he didn&#39;t realize until recently, he said, is that there&#39;s a separate Trusted Access program for individuals.
+
+&quot;I still haven&#39;t signed up for that, because I regard the verification procedure as a bit of an indignity,&quot; he explained, echoing similar sentiment The Register has heard from other security researchers. &quot;I&#39;ll put up with it if I&#39;m ever forced to, but not for as long as open models remain a practical alternative.&quot;
+
+Two open models did prove practical for this bug hunt: GLM 5.2 and Kimi K3. Franke said each served a distinct purpose.
+
+&quot;K3 made the initial breakthrough with the key bit of evidence that I was dealing with a kernel bug, but its subsequent investigative work was sloppy: jumping to unfounded conclusions and spoiling its own evidentiary record, and it went totally off the rails when its context got large,&quot; he said. &quot;GLM-5.2 is what finished the job for me, re-auditing K3&#39;s work and putting together an airtight case.&quot;
+
+Franke said it was frustrating to wrestle with defiant tooling and expressed skepticism about model access limitations given the availability of open source alternatives.
+
+&quot;From my perspective, an uncooperative tool is simply a broken one,&quot; he said. &quot;And no, I don&#39;t believe this is sustainable in the face of open-weight competition. I&#39;m a total pragmatist about open source and don&#39;t mind at all working with proprietary products as long as they get the job done. But with proprietary software, there&#39;s a much greater hazard of it being built to serve the vendor&#39;s priorities rather than the customer&#39;s. Open source has a natural advantage in preventing that.&quot;
+
+Franke said that there&#39;s still work to be done on the Linux bug, which doesn&#39;t yet have a patch and doesn&#39;t appear to represent an exploitable vulnerability.
+
+&quot;Where my investigation stands is that I know two things confidently,&quot; he said. &quot;First, that the crashes are caused by a kernel bug. Second, that I&#39;ve identified a kernel bug. But that this bug is causing these crashes is still just a conjecture, and I have a lot more investigation to do before I can think about shipping anything to [the Linux Kernel Mailing List].&quot;
+
+Last week, much of the US tech industry came out in support of open weight models in response to protectionism promoted by Anthropic and OpenAI. The US government has yet to articulate a coherent AI policy with regard to open weight models. ®
+
+Government agency will use Google Cloud H4D VMs to replace HPE Cray machines
+
+PARTNER CONTENT: With vSphere 8 support ending in 2027, IT leaders must navigate tight timelines and costs to modernize on their terms.
+
+Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
+
+Now happier running in a conventional K8s environment, with `an easier-to-live-with lifecycle
+
+Tour of the AI kill chain maps the risks of ubiquitous surveillance and flawed algorithms
+
+PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
+
+PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
+
+Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
+
+Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
+
+On the plus side, infosec&#39;s a good bet for a long, stable career
+
+New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
+
+New Debian versions hit FOSSland in the form of 13.6 and 12.15
+
+Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
+
+Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
+
+Next version of Linux Mint’s desktop has both kinds of display server</div>
         </div>
         
         <div class="card" onclick="openModal('content-46')">
@@ -2400,7 +2480,89 @@ Next version of Linux Mint’s desktop has both kinds of display server</div>
             <p><strong>www.theregister.com - Articles | 2026-07-29</strong></p>
             <a class="original-link" href="https://www.theregister.com/security/2026/07/29/word-worm-crawls-into-copilot-spreads-chaos/5280588">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">Researcher says months of coordination with Microsoft have yet to produce a robust mitigation
+
+UPDATED Watch out for untrusted documents. According to research, an attacker can hide malicious instructions in a Word document that, when included in Copilot for Word’s context, may alter document output and copy the instructions into newly created files that use the affected document as source material, without the victim noticing.
+
+Håkon Måløy, a Norwegian data scientist with a PhD in applied AI and ML, publicly disclosed the issue in a blog post Tuesday. Måløy describes the issue in considerable detail while withholding the specific prompt payload, arguing that, because no robust mitigation exists, it would be irresponsible to disclose anything beyond the class of the vulnerability.
+
+“To my knowledge, this is among the first public demonstrations of document-borne AI-worm self-propagation through normal workflows in a mainstream commercial productivity suite,” Måløy noted.
+
+Måløy said that he has been working with Microsoft since March 2026 on addressing the vulnerability, but after multiple updates to Copilot, this new class of Copilot worm is still viable. Microsoft mitigated the exploit demonstrated by his original proof-of-concept prompt, but Måløy said rewording the payload allowed him to successfully propagate the worm and alter financial data in a target document. Måløy and Microsoft twice delayed public disclosure of the issue, but, after 144 days, he said in his report that people needed to be made aware.
+
+“The coordination period agreed with Microsoft has been exhausted, and testing shows that no robust mitigation for the broader vulnerability class is currently available,” Måløy wrote. “Two mitigation attempts, including a model upgrade, did not close the class.”
+
+Måløy explained the worm’s execution with an example involving an employee preparing a financial report for their company.
+
+The employee downloads a market analysis from a trusted website to help with the preparation of a financial report in Copilot, unaware that the source had been compromised and the document they downloaded contains hidden malicious instructions. The hidden instructions (inserted as small white text in his proof of concept) tell Copilot to alter figures in the report the employee generates and to copy the worm into the report they create with Copilot.
+
+If another employee later adds that report to their own work, the whole process begins again, and documents generated from it also contain the worm, and, as it spreads, it makes tracing the infection to its source extremely difficult.
+
+“The attack can therefore continue without further involvement from either the compromised website or the original malicious document,” Måløy said. “The attacker does not need access to the victim’s Microsoft 365 tenant. The attacker only needs to share a malicious document with the victim.”
+
+Copilot should use information in documents a user includes in its context for a project without treating instructions embedded in a document as additional prompts, Måløy said, but his research suggests it doesn&#39;t always do that.
+
+Måløy argues that he’s essentially dug up a new type of cross-domain prompt injection attack that abuses a fundamental part of modern LLM architecture.
+
+“For AI-assistants to be useful, they often must process emails, documents, webpages, memories, tool outputs, and other information that may be controlled by an attacker,” the researcher said. But if an LLM has to process data in order to determine it contains an attack, the attack could already be influencing that determination.
+
+“Relying on the model to detect XPIAs therefore resembles asking an interpreter to execute an untrusted program to determine whether that program is safe to execute,” Måløy asserted.
+
+Were Microsoft or some other company to pop another model in front of that model to check for malicious content, it only moves the problem outward, Måløy said, creating a “LLMs all the way down” scenario.
+
+“The long-term challenge likely lies in designing systems in which goals and intentions also exist independently of the information being processed,” he said. Until that time, Måløy argues, “any system that integrates an LLM into a trusted workflow today must assume that attacker-controlled content entering the model’s context will result in compromise at some rate.”
+
+What can Copilot customers do to reduce the risk? Short of ditching Copilot, there’s not much.
+
+“No customer-side remediation fully addresses the issue at the time of publication,” Måløy said, but he does have a few tips.
+
+Treat externally sourced documents as untrusted when using them in Copilot, he recommends, and fully review every single document before sending it to Copilot, and fully review any Copilot-generated or edited documents before distributing them.
+
+Sheesh - if you’re going to have to actually read that stuff, you might as well just cut Copilot out of the loop and do the thinking yourself.
+
+Microsoft has been in touch to confirm the research, but the company&#39;s statement doesn&#39;t do anything to allay fears this is an unsolved issue.
+
+“We have addressed the findings reported by the researcher and thank them for working with us through coordinated vulnerability disclosure. To address this class of risk, we use a defense-in-depth strategy with safeguards that block malicious instructions at multiple points and help keep tasks aligned with users’ requests. We are continuously strengthening these safeguards as the technology and threat landscape evolve. We encourage customers to install the latest updates, use multiple layers of security protection, treat content from unknown sources with caution, and review AI-generated content before using or sharing it.”
+
+We also reached out to Måløy, but didn’t hear back before publication. ®
+
+Updated at 1841 GMT on July 29 to add Microsoft&#39;s statement.
+
+Government agency will use Google Cloud H4D VMs to replace HPE Cray machines
+
+PARTNER CONTENT: With vSphere 8 support ending in 2027, IT leaders must navigate tight timelines and costs to modernize on their terms.
+
+Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
+
+Now happier running in a conventional K8s environment, with `an easier-to-live-with lifecycle
+
+Tour of the AI kill chain maps the risks of ubiquitous surveillance and flawed algorithms
+
+PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
+
+PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
+
+Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
+
+Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
+
+On the plus side, infosec&#39;s a good bet for a long, stable career
+
+New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
+
+New Debian versions hit FOSSland in the form of 13.6 and 12.15
+
+Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
+
+Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
+
+Next version of Linux Mint’s desktop has both kinds of display server</div>
         </div>
         
         <div class="card" onclick="openModal('content-47')">
@@ -2414,7 +2576,89 @@ Next version of Linux Mint’s desktop has both kinds of display server</div>
             <p><strong>www.theregister.com - Articles | 2026-07-29</strong></p>
             <a class="original-link" href="https://www.theregister.com/applications/2026/07/29/moscow-slaps-telegram-founder-on-wanted-list-durov-responds-with-one-finger-salute/5280522">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">FSB claims Ukrainian spies use chat platform to recruit Russians for sabotage and arson
+
+Russia has charged Telegram founder Pavel Durov with facilitating terrorism and placed him on an international wanted list.
+
+The country&#39;s Federal Security Service (FSB) announced the charges on Wednesday, alleging that Telegram failed to remove channels, chats, and bots used by Ukrainian intelligence to recruit young Russians for sabotage and terrorism.
+
+The alleged offenses include armed attacks on law enforcement officers and arson targeting transport, energy, communications, and financial infrastructure.
+
+According to an FSB news release, these attacks have resulted in numerous human casualties, including women and children.
+
+One focus of the allegations is the popular Telegram dating bot &quot;Leo,&quot; which reportedly has more than 13 million users and matches people seeking dates or friendship.
+
+The FSB said 46 Russian citizens aged between 12 and 22 have been arrested across the country since July 2025. The FSB alleges they had accepted instructions from Ukrainian intelligence officers to carry out attacks inside Russia.
+
+The agency went on to claim that Ukrainian intelligence officers had been using Leo while posing as women to establish contact and build fake romantic relationships with young Russian men.
+
+According to the FSB, Ukrainian officials would encourage men to pay for cinema tickets, concert tickets, or gifts through phishing links then blackmail them into carrying out attacks in Russia.
+
+&quot;Subsequently, representatives of Ukrainian intelligence agencies, posing as Russian law enforcement or Rosfinmonitoring officers, contacted the individuals through foreign messaging apps,&quot; the FSB said.
+
+&quot;The fake law enforcement officials claimed that the transferred funds had been deposited into accounts of the Ukrainian armed forces, and that the transferred coordinates had been used by the enemy to plan missile strikes and drone attacks.&quot;
+
+&quot;After this, the deceived and intimidated citizens, unable to critically assess the situation due to psychological pressure, were threatened with criminal prosecution and coerced into committing armed attacks and arson, ostensibly as part of an anti-terrorism security check of the targets and participating in other &#39;pseudo-operational activities.&#39;&quot;
+
+Leo was banned in Russia on December 23, 2025, on the basis that it contained information relating to child sexual abuse material (CSAM) and LGBT propaganda.
+
+Russia&#39;s Supreme Court designated what authorities call the &quot;international LGBT movement&quot; as extremist in November 2023, despite no such formal organization existing, and banned its activities in the country.
+
+Russia further accused Telegram of failing to take down content relating to these &quot;prohibited activities&quot; as well as the numerous accounts allegedly used by Ukrainian intelligence.
+
+The Kremlin has meanwhile been pushing citizens toward the state-backed MAX messenger. Since 2025, smartphones sold in Russia have been required to come with the app preinstalled.
+
+However, government agencies still communicate official updates via Durov’s Telegram, which remains vastly more popular in Russia.
+
+Neither Durov nor Telegram have responded officially, other than the messaging platform&#39;s social media post of the founder holding his middle finger to the camera.
+
+Durov, 41, left Russia in 2014 and now lives in the United Arab Emirates. He holds Russian, French, Emirati, and St Kitts and Nevis citizenship.
+
+Although the UAE reportedly has close ties with Russia, it remains unclear whether Moscow will secure an Interpol notice or ask Emirati authorities to extradite Durov.
+
+Like cybercriminals who avoid countries likely to honor US extradition requests, Durov will now need to consider where Russian demands might be enforced.
+
+In August 2024, the Telegram founder was arrested by authorities in France, where he also holds residency and a passport.
+
+Durov was charged with multiple offenses relating to alleged failures to prevent criminal activity on Telegram, including drug trafficking, cyberbullying, organized crime, and the distribution of CSAM.
+
+The French case remains open, although Durov was allowed to return to Dubai in March 2025. ®
+
+Government agency will use Google Cloud H4D VMs to replace HPE Cray machines
+
+PARTNER CONTENT: With vSphere 8 support ending in 2027, IT leaders must navigate tight timelines and costs to modernize on their terms.
+
+Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
+
+With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
+
+Now happier running in a conventional K8s environment, with `an easier-to-live-with lifecycle
+
+Tour of the AI kill chain maps the risks of ubiquitous surveillance and flawed algorithms
+
+PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
+
+PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
+
+Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
+
+Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
+
+On the plus side, infosec&#39;s a good bet for a long, stable career
+
+New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
+
+New Debian versions hit FOSSland in the form of 13.6 and 12.15
+
+Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
+
+Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
+
+Next version of Linux Mint’s desktop has both kinds of display server</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
@@ -3187,25 +3431,53 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Microsoft tops quarterly cloud growth estimates, easing spending concerns - Reuters</div>
+            <div class="title">Trump stands by his 'brilliant' Fed pick despite no rate cuts - Reuters</div>
             <div class="meta">2026-07-29</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Microsoft tops quarterly cloud growth estimates, easing spending concerns - Reuters</h2>
+            <h2>Trump stands by his 'brilliant' Fed pick despite no rate cuts - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-29</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxOVnM0ZHRyNk40V2NVODFGaFktU2hiQmNldC1DenlGTkNEWmhUNUhscWowMHBrR1ItNE82ZHZwVnRZdVVvTDBRbUtxOEdJa0c5TVdPOGd0X0NKOFBLSkZZc0szVkRpX2poc0hjYjRPOXlrSkVJNFQ3ZDJnV3lMZGJCRTJoZHdsaDBFTnp2cnd1OWNkZ2RjUV9iR0lGNUlNQVdYajlWZ2RHUDZfeUVUWF9tV053OUFNWUxi?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQUUc4UERsbnluclh5aFVubEtfSFdnNTg0U0xYdUNXcDhrU0ZZdHpMTFJmQ0dfelFScjl1b3FvRzk0Zkx1ZVU3WnpCRzZjdWxOTDJzSUFDWmJGQnBiN1poM1VTLXF5Z0xXcEQzWERoVGt6WmVVTFZRbjMwNU1RZldTajhEY25uLW1Nd0NXWGhPalFLeFc2Q0dtelhEcUpnbWZuQkJ4VUVuWQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Saudi Arabia seeks international coalition to protect Red Sea shipping from Houthis, sources say - Reuters</div>
+            <div class="title">SpaceX gets $1.6 billion US Space Force order for 18 Falcon 9 launches - Reuters</div>
             <div class="meta">2026-07-29</div>
         </div>
         
         <div id="content-67" style="display:none;">
+            <h2>SpaceX gets $1.6 billion US Space Force order for 18 Falcon 9 launches - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-29</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNeVR5aVJ4cURJNEtleFN3SGRvU2FFeXRZQVNWQ21GVll2LUNiNXR0SnBhaUxXUW1lOExNaUhMNEZsOXdvakZtSUxLWDk4a08xSjNWMDZDYWpJZ1JJMzJvSVNvT3R5Q0tfUmtUZE9lZVV6TERQaXJfNzVCWVlXY01aY3d2eGdZOEN0d0xrWGY3Ym0yS1FYNFNVWFl4eE9Vbkxsa3B6QmsxbXRvWjM0TlBIZVhRMGlWVE1uWXFJQmt6SlM?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-68')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Microsoft cloud forecast beats estimates as cash keeps flowing from AI, shares rise - Reuters</div>
+            <div class="meta">2026-07-29</div>
+        </div>
+        
+        <div id="content-68" style="display:none;">
+            <h2>Microsoft cloud forecast beats estimates as cash keeps flowing from AI, shares rise - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-29</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxOVnM0ZHRyNk40V2NVODFGaFktU2hiQmNldC1DenlGTkNEWmhUNUhscWowMHBrR1ItNE82ZHZwVnRZdVVvTDBRbUtxOEdJa0c5TVdPOGd0X0NKOFBLSkZZc0szVkRpX2poc0hjYjRPOXlrSkVJNFQ3ZDJnV3lMZGJCRTJoZHdsaDBFTnp2cnd1OWNkZ2RjUV9iR0lGNUlNQVdYajlWZ2RHUDZfeUVUWF9tV053OUFNWUxi?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-69')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Saudi Arabia seeks international coalition to protect Red Sea shipping from Houthis, sources say - Reuters</div>
+            <div class="meta">2026-07-29</div>
+        </div>
+        
+        <div id="content-69" style="display:none;">
             <h2>Saudi Arabia seeks international coalition to protect Red Sea shipping from Houthis, sources say - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-29</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxOdE5TWUJUaEd4QndCVnFrY2hva1NPZUVIVmZROEcwYkhPWVR0Q3gxdzVIZjFDVFVTZWIyNGwxV1dPb1luWmpveTV0cHl4cmFQbXB5bWgzUHBhenR1UFhYZWVoSGdJVjluZEx5TmYyYllqOEQtLS1UZ3VMemtWSHlHOHlvQjlpams0bGVSRjMxQzBFRmdOUEJBUVROZlZZOU5Dd2JFdldTTnRpWUFYSm5hSWdVWmhETkVTTXhPMFc0OTNCVi1DdXhxTA?oc=5">Visit Original Website</a>
@@ -3213,55 +3485,13 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Ukraine reports loss of F-16 aircraft, pilot safe - Reuters</div>
-            <div class="meta">2026-07-29</div>
-        </div>
-        
-        <div id="content-68" style="display:none;">
-            <h2>Ukraine reports loss of F-16 aircraft, pilot safe - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-29</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNTUpTb1Utd2htWWYxX3Radm50cUxNUW5PWDNBcVdMSzh5d0lOclJrZUJYLWkwZnplbWRDUXhIMHFHbGxkQ2IwemlWbDNkUU51NjJTY1EzSG1kUldCc0hUdksyYm0zTGpVbVlmb3MxRURWTjJmRFJGVzJTOTgwOXJCVTJWcmNwLTdkYUJMRFhuUnA?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-69')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump and Netanyahu explored all Iran options including attack, Israeli official says - Reuters</div>
-            <div class="meta">2026-07-29</div>
-        </div>
-        
-        <div id="content-69" style="display:none;">
-            <h2>Trump and Netanyahu explored all Iran options including attack, Israeli official says - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-29</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxQNGRMX1g5X0U3ckZtQjhIMHFGMHVjWmZoNlU5bDBydGRabk5LR1dGUUNSaXFHWUQyWnJqd2VJS09KSmU3ZXVtVjBqemVDdTJJNE9JVDkxTm5udWZ1bVRYYmxUdmExbHFsdENjc2N3Yi15R0tEVUxuRXJiQUk4akd2dy1ZU3g5S21wNjhTX29NODVtaUNRU2JoSi04T29pUzNFMGtKR3cyZUN1RF8zZEVTZTFxSkhXZU9ESHphSWhhR1R4ZUlMSnNsVlNQTUxwRTg?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-70')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Meta's free cash flow wiped out as AI buildout grows - Reuters</div>
-            <div class="meta">2026-07-29</div>
-        </div>
-        
-        <div id="content-70" style="display:none;">
-            <h2>Meta's free cash flow wiped out as AI buildout grows - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-29</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMingFBVV95cUxPZVVsNHpKWUwyNmRVZlB2Zml0d0QtZ0U5YTdKeDlIVXNISWdsajRiUE1vQU9JaHlUeDFWRjNUTGw0Y01TTHRiTlZjRDhJUFFSWXA4aktubGNNeURsSWtVTlJMaExmVFRCTFh6U3RKdWZnQnU1dzRTbzR5dTVWNHNkMTV3V3U3a0xxQWNjTnVPMHZCOE01dmt2TWQzZTBUUQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Qualcomm forecasts weak quarterly profit, expects Apple revenue drop to accelerate - Reuters</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-71" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>Qualcomm forecasts weak quarterly profit, expects Apple revenue drop to accelerate - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-07-29</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxPMHFEWjZIOGc2RFUwRU9wTng2NmFmSTZha0dXeFFvMWFlNmRfeWlwSG9LNTQ5TFV0RGthQ2tvQkJuLUwxZUpaSnNTSEQ0ZE1TZ1lEc1M2YVJJS2VrS1VhblRsWHdBYVNrTFVTVkJfYXRUUDY3eWszTmJpYmYwLUwyUFB1enRyOXA5cFF1Zk0tb1FvU2ZxRnBOQmJWdW5FNGhxYWt4ZDJhZFpwV2xoWXN3cWhocmgzN3c4QXdYSTZNRjdrczZBRWV2UnctS3prdnJ5ZmwwUW53?oc=5">Visit Original Website</a>
@@ -3269,14 +3499,28 @@ Get the most important tech news in your inbox each week.</div>
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
+        <div class="card" onclick="openModal('content-71')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Ukraine reports loss of F-16 aircraft, pilot safe - Reuters</div>
+            <div class="meta">2026-07-29</div>
+        </div>
+        
+        <div id="content-71" style="display:none;">
+            <h2>Ukraine reports loss of F-16 aircraft, pilot safe - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-29</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNTUpTb1Utd2htWWYxX3Radm50cUxNUW5PWDNBcVdMSzh5d0lOclJrZUJYLWkwZnplbWRDUXhIMHFHbGxkQ2IwemlWbDNkUU51NjJTY1EzSG1kUldCc0hUdksyYm0zTGpVbVlmb3MxRURWTjJmRFJGVzJTOTgwOXJCVTJWcmNwLTdkYUJMRFhuUnA?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
         <div class="card" onclick="openModal('content-72')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - The Debrief</div>
+            <div class="title">Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - thedebrief.org</div>
             <div class="meta">2026-07-23</div>
         </div>
         
         <div id="content-72" style="display:none;">
-            <h2>Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - The Debrief</h2>
+            <h2>Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxQaFduYXI1TlZLMVlsc25Xay0xalZJQkQxZ1hhWWJKaXN5ZmU0bl8zdjdhYW9pYWlOU1JUVTA0YXFSM2lYengwb09TelVaQ2JEOE52M1E0bXA1dTA4bE5OZTBGSjZqdHJkNGx5TE5hWmVlVWxiX2pQNkgwcllXb0JPMzd0UDVQOHQ4ak50Sm5ZZm5DbmJmcENBSGNmLVJPbE50UVlxVGFRbE13WTRNd2c2Vm56TThNSWdQQ2hDYlRQWjM5Unh3amVyVmZ3?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -3285,12 +3529,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-73')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - The Debrief</div>
+            <div class="title">2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - thedebrief.org</div>
             <div class="meta">2026-07-27</div>
         </div>
         
         <div id="content-73" style="display:none;">
-            <h2>2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - The Debrief</h2>
+            <h2>2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQcFN5Z05uc2twMmJfRWRoWDBleUp4cmowbFNmNktMb1FLaU5hak53a1VhQzBZV1RQbm54VVJsWVZmZlVuTy1VUGpwMDlaa2FPNlFsN0J1OWN6X1hhUnV3ZTBtQkU2akdSa0xSQTNfdDh1S2JwU3FaSWJJSXpSTWMxVFBoZ184VHBFYnNXV0JrV1pPNHFodm5xYjZ0MEtmN1pjOWtqc2pfamxNM2IxdHc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -3299,12 +3543,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-74')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Scientists Warn Something is Vanishing from Earth’s Oceans at an Alarming Rate, Driving the Planet Into an “Unsafe Space” - The Debrief</div>
+            <div class="title">Scientists Warn Something is Vanishing from Earth’s Oceans at an Alarming Rate, Driving the Planet Into an “Unsafe Space” - thedebrief.org</div>
             <div class="meta">2026-07-21</div>
         </div>
         
         <div id="content-74" style="display:none;">
-            <h2>Scientists Warn Something is Vanishing from Earth’s Oceans at an Alarming Rate, Driving the Planet Into an “Unsafe Space” - The Debrief</h2>
+            <h2>Scientists Warn Something is Vanishing from Earth’s Oceans at an Alarming Rate, Driving the Planet Into an “Unsafe Space” - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-21</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxOcTYydHNwdFVUT1FpekJUT2xEM012cE5ndzZ2NDVyZTd0R19PaVVpZ092QUlCSDk4OVd2M1pMZ2FiU2FuMjFZYTlJMzctZkRJVU92VktQV1ByajdmR21WWEQzVjd5eUxTTmxIVWIzQnJoc1NuTnNzOC03V2tuU0RnWjF3b2R6TWZ3cElWZjZsQlFSYVhteURLckd0dHhtd3RMNy1mZ1kyVndGWV9GblpqSmVWLWlwQmxwWnhyUzFBZmsxakFzaWZqaF9JVTV5eElaTjZWdWFyWGQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -3313,12 +3557,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - The Debrief</div>
+            <div class="title">An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - thedebrief.org</div>
             <div class="meta">2026-07-26</div>
         </div>
         
         <div id="content-75" style="display:none;">
-            <h2>An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - The Debrief</h2>
+            <h2>An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-26</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxOWjQ2ZjNnX1RsaHRRendOZlVzVlFheEZkWXRGNDZtRndxQnB6cnIyeDEyYnQyZkpIdlNhMENQbm9sTjdLZXlnRW1BSEVsRjl0cWV6WjM5UktJTFF4UUNra0xHZW5SQTVjZE9xODFSU3RIZWJ6dGZWS0l5R2E0dVBMR2R5RlZ4Y3pTN2EyVnVfWks1NGVFc05vWVV2SVhZRWQ4SXdTcVJTdUFDYnpUZk1IUW53ZnZiYmpuSGhuOEl5OA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -3327,12 +3571,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - The Debrief</div>
+            <div class="title">5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - thedebrief.org</div>
             <div class="meta">2026-07-28</div>
         </div>
         
         <div id="content-76" style="display:none;">
-            <h2>5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - The Debrief</h2>
+            <h2>5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-28</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxOejFBaHZJekhsRFMydGlSTFl4OXN2aTdmZGd2YnVmYl95Y3ZPQjVQUUE3YlFiTzVCTHZsb0Z1S2dzQmlEMHdvaGo4LW1DRC1ZczBBVjhwUWZxMTI4Z0xyeE1XSnhJRTRnZklxWEdaaGZ4bWR1b204b3V0dzFhS0xIbEwxVThSMmNta3ZiSTdaMEZnd2ZYSGhielhwQ0dKNXZlYjJNLUJRdVpadzRkQThBOUFOZjdrNFA2SzAzbFJYYkF0VWkwZkZVQWhJbGRLZU9qNUdHdmFpQnRCOHpGeVVUY2JYNllDQ2RObnc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -3341,12 +3585,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">5,000-Year-Old Blue Pigment Reveals Evidence of Ancient Egyptian Nanotechnology—Now It’s Finding New Life in Biomedical Imaging - The Debrief</div>
+            <div class="title">5,000-Year-Old Blue Pigment Reveals Evidence of Ancient Egyptian Nanotechnology—Now It’s Finding New Life in Biomedical Imaging - thedebrief.org</div>
             <div class="meta">2026-07-28</div>
         </div>
         
         <div id="content-77" style="display:none;">
-            <h2>5,000-Year-Old Blue Pigment Reveals Evidence of Ancient Egyptian Nanotechnology—Now It’s Finding New Life in Biomedical Imaging - The Debrief</h2>
+            <h2>5,000-Year-Old Blue Pigment Reveals Evidence of Ancient Egyptian Nanotechnology—Now It’s Finding New Life in Biomedical Imaging - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-28</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxON1dCY09XZmUzRURadG1LWUxmbEdORVUzOFZkN0d4d2MxYllETkpSVlU4cExKT3VhWTVPVGZsMnZSM0lvZmIwZFpJWDJHd0RnVDIyeV9JczY3Tk8wNlE0ZjFReDlpeXQ5cXI3Ri1wYVpFNjMzODgzNUVhZmx5aFhhWUpibTM2cU5DYkE0a3NyN09kWjFiZDVaQm9SVk91MlVkcGhXeDVpczBvWFF2WkRRTkdPczlIZU1OalFPOENELTU4cGFiMnJsWmtUbjRnelRXamJuYnpjQzY0blkwb2gwUDZBZw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
