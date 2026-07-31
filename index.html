@@ -785,33 +785,33 @@ More on AI: Journalist Alarmed When He’s Fired, But Company Keeps Posting AI S
 
 In all three cases, a Claude model reached the internet from within a testing environment while interacting with a third party and then gained unauthorized access to the live systems of these organizations, Anthropic said in a blog post, describing what it found and what the company plans to change to prevent this from happening again.
 
-Anthropic said the July 21 OpenAI incident prompted the company to conduct its own cybersecurity evaluation. It specifically looked for evidence that Claude had accessed the internet from within testing environments, which are designed to act as sandboxes and keep models isolated.
+Anthropic said the OpenAI episode earlier this month prompted the company to conduct its own cybersecurity evaluation. It specifically looked for evidence that Claude had accessed the internet from within testing environments, which are designed to act as sandboxes and keep models isolated.
 
-Among the 141,006 evaluation runs it reviewed, the AI lab found three incidents in which its model accessed the internet while interacting with Irregular, one of its third-party partners. Anthropic said the access traced back to a misconfiguration in the evaluation environment run with Irregular. It called this a “misunderstanding” between the two companies over whether the test setup had internet access, when in fact it did. Anthropic said it isn’t placing blame and is “approaching the fixes as if the responsibility were ours alone,” while observing that Irregular is conducting its own separate investigation.
+Among the 141,006 evaluation runs it reviewed, the AI lab found three incidents in which its model accessed the internet while interacting with Irregular, one of its third-party partners. Anthropic said the access traced back to a misconfiguration in the evaluation environment run with Irregular. It called this a “misunderstanding” between the two companies over whether the test setup had internet access, when in fact it did.
 
-Either way, because of that open connection, the model gained unauthorized access to the production infrastructure of three different organizations. Anthropic said the incidents involved three different Claude models: Opus 4.7, Mythos 5, and an internal research test model.
+Anthropic said it isn’t placing blame and is “approaching the fixes as if the responsibility were ours alone,” while observing that Irregular is conducting its own separate investigation.
+
+Because of that open connection, the model gained unauthorized access to the production infrastructure of three different organizations. Anthropic said the incidents involved three different Claude models: Opus 4.7, Mythos 5, and an internal research test model.
 
 Notably, Anthropic said that in each of these cases “Claude was explicitly told by our prompt that it had no internet access.” It appears that the AI model assumed real-world systems to be part of the exercise it was asked to perform.
 
-That assumption didn’t hold up uniformly, as it turns out. The three models didn’t behave the same way once evidence emerged that their targets were real, which Anthropic flagged as one of the more eye-opening findings.
+That assumption didn’t hold up uniformly, as it turns out. The three models didn’t behave the same way once evidence emerged that their targets were real, which Anthropic flagged as one of the more eye-opening findings Thursday.
 
-Opus 4.7, the oldest of the three, recognized that it had reached a real production system in all four runs of that incident. In two of them, it rationalized that the real company must somehow be part of the exercise, but in all four, it kept attacking anyway, including pulling credentials and touching a database of production data. Mythos 5 also picked up on signs that it was on the real internet, but it talked itself back into believing it was still in a simulation, going on to publish a malicious software package to the public Python software registry PyPI, which was downloaded and run by outside systems before being caught. Only the internal research test model, Anthropic’s newest, stopped on its own once it concluded the target was real.
+Opus 4.7, the oldest of the three, recognized that it had reached a real production system in all four runs of that incident. In two of them, it rationalized that the real company must somehow be part of the exercise, but in all four, it kept attacking anyway, including pulling credentials and touching a database of production data. Mythos 5 also picked up on signs that it was on the real internet, but it talked itself back into believing it was still in a simulation, going on to publish a malicious software package to the public Python software registry PyPI, which was then downloaded and run by outside systems before being caught. Only the internal research test model, Anthropic’s newest, stopped on its own once it concluded the target was real.
 
 In response, Anthropic said significant controls must be placed on these kinds of evaluations if powerful AI models are involved, echoing some sentiments within the cybersecurity community.
 
-The company also noted that Claude was running without the additional safety monitoring and classifiers it deploys on generally available models, safeguards it said would have blocked the behavior, because the evaluations are designed to measure the underlying model’s raw capabilities.
+The company also noted that Claude was running without the additional safety monitoring and classifiers it deploys on generally available models — safeguards it said would have blocked the behavior, because the evaluations are designed to measure the underlying model’s raw capabilities.
 
 Importantly, Anthropic said it found no evidence of any model “pursuing a goal of its own” and instead merely tried to complete the task it was asked to do.
 
-Though comparisons between the two incidents are inevitable, Anthropic drew a clear distinction between its incidents and OpenAI’s, noting where OpenAI’s model exploited an unknown software vulnerability to break out of its test environment, Anthropic’s models instead reached the internet through a path that had, by mistake, been left open.
+Though comparisons between the mishaps of these fiercely competitive companies are inevitable, Anthropic in its blog post drew a clear distinction between its cybersecurity tests and those of OpenAI, noting where OpenAI’s model exploited an unknown software vulnerability to break out of its test environment, Anthropic’s models instead reached the internet through a path that had, by mistake, been left open.
 
-OpenAI has continued to release new details about its own breach, saying its models also used publicly exposed credentials across four accounts on four services: one as a staging point, one for storage, and two that were only looked at, not used to break in further, according to OpenAI’s own updated blog post about the incident.
-
-Anthropic also drew a distinction between itself and OpenAI by noting that it discovered the incidents itself, through a proactive review, and that the two affected organizations it was able to reach hadn’t previously detected the activity or flagged it to Anthropic.
+Anthropic also drew a distinction between itself and OpenAI by noting that it discovered the incidents itself, through a proactive review, and that the two affected organizations it was able to reach hadn’t previously detected the activity or flagged it to Anthropic. (In contrast, Hugging Face detected the recent intrusion of its own systems first; it was only in the following days that OpenAI identified and disclosed that its own AI agent was the perpetrator.)
 
 The company added that it’s now working with the independent evaluation group METR on a third-party review of the incidents.
 
-OpenAI’s accidental breach of Hugging Face, which was the first verifiable case of an AI lab losing control of its model, sparked a string of reactions from the industry and politicians, many of whom don’t necessarily agree with one another. This latest disclosure from Anthropic ensures the debate over AI models and security will continue.
+OpenAI’s accidental breach of Hugging Face, which was the first verifiable case of an AI lab losing control of its model, has sparked a string of wildly differing reactions from the industry and politicians. This latest disclosure from Anthropic ensures the debate over AI models and security will continue.
 
 When you purchase through links in our articles, we may earn a small commission. This doesn’t affect our editorial independence.
 
@@ -1668,11 +1668,89 @@ Although the comparison may sound like an insult, it’s one El-Sayed has invite
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
+            <div class="title">Anthropic Says Its AI Systems Broke Into Computers at 3 Organizations</div>
+            <div class="meta">2026-07-31</div>
+        </div>
+        
+        <div id="content-24" style="display:none;">
+            <h2>Anthropic Says Its AI Systems Broke Into Computers at 3 Organizations</h2>
+            <p><strong>Slashdot | 2026-07-31</strong></p>
+            <a class="original-link" href="https://yro.slashdot.org/story/26/07/31/0451235/anthropic-says-its-ai-systems-broke-into-computers-at-3-organizations?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">&quot;We&#39;d like to point out how very dangerous our new software is, but only dangerous enough to justify giving us more money, and absolutely not dangerous enough to justify making us stop, we just want to be clear about that.&quot;
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+A man is known by the company he organizes.
+		-- Ambrose Bierce</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Flock Cameras Are Being Destroyed Across the US</div>
+            <div class="meta">2026-07-31</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
+            <h2>Flock Cameras Are Being Destroyed Across the US</h2>
+            <p><strong>Slashdot | 2026-07-31</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/07/30/2045213/flock-cameras-are-being-destroyed-across-the-us?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Usage of Flock cameras is almost certainly a violation of the 4th amendment.
+
+But the violation of the constitution is just the beginning of the problems with Flock. The abuse of the data by cops and the lax security by Flock should be concerning to all citizens.
+
+I suppose if one were to ignore 250 years of constitutional law, your opinion might make some sense.
+
+The actual problem is we, the people, have not yet decided if mass recording and storage of identifiable images should be illegal.  The people must decide if they wish to enact laws that prohibit this activity and create laws to prevent it.  This means we need to let our local representatives know we want to restrict this mass surveillance and storage of our whereabouts.  They write the bills and if enough people support it, it passes and becomes law.
+
+Without a law to prevent it, these companies will attempt
+
+Companies like Flock are the cockroaches of our communities.Look, there&#39;s no reason to impugn cockroaches like that.
+
+Companies like Flock are the cockroaches of our communities.
+
+Look, there&#39;s no reason to impugn cockroaches like that.
+
+Someone needs to launch a national campaign educating people on jury nullification.
+
+The property damage laws are not really the sort of thing nullification is meant for, it&#39;s supposed to quickly put an end to the effect of bad laws, but if that&#39;s the one tool handy, and it&#39;s this much of a social issue, it should be put to work.
+
+There is a story about how dealer plates have small numbers on them that Flock cameras do not see. The system then accuses people of car theft.
+
+They are proven as not reliable.   If I were a judge I would rule that the police must treat Flock camera information as an unreliable, anonymous source.  No drawing guns on people tracked or accused because of Flock information and their info cannot be used to obtain a warrant.
+
+Say someone gets kidnapped. By the time police can respond, they are long gone. With a camera network, police can start with a much stronger lead. Does the bad outweigh the good?
+
+That&#39;s the whole point of the bill of rights. It makes those hard decisions so an individual doesn&#39;t need to. This is a clear violation of the constitution. It will take time to work through the courts though.
+
+What part of the bill of rights protects your whereabouts in public from being recorded? Are you referring to this: &quot;The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated&quot;
+
+You aren&#39;t being tracked inside your house. Nor is anyone doing a cavity search on you.
+
+Now I agree &quot;mass surveillance&quot; is creepy, but we can have Flock without mass surveillance. If someone is kidnapped or attacked in a particular location the p
+
+Say someone gets kidnapped. By the time police can respond, they are long gone. With a camera network, police can start with a much stronger lead. Does the bad outweigh the good?I&#39;ll counter with this.  What data is there about their effectiveness?  How many crimes are prevented by flock cameras that wouldn&#39;t have otherwise?  Are they crimes I care about?  How many innocent people have been charged with crimes due to Flock errors?  I don&#39;t honestly have a strong opinion.  Most of the abuse stories are hypotheticals and I typically trust cops because I don&#39;t commit crimes and I not narcissistic enough to think everyone is out to get me.   
+However, as a cold rational person, I&#39;d ask
+
+Say someone gets kidnapped. By the time police can respond, they are long gone. With a camera network, police can start with a much stronger lead. Does the bad outweigh the good?
+
+I&#39;ll counter with this.  What data is there about their effectiveness?  How many crimes are prevented by flock cameras that wouldn&#39;t have otherwise?  Are they crimes I care about?  How many innocent people have been charged with crimes due to Flock errors?  I don&#39;t honestly have a strong opinion.  Most of the abuse stories are hypotheticals and I typically trust cops because I don&#39;t commit crimes and I not narcissistic enough to think everyone is out to get me.   
+However, as a cold rational person, I&#39;d ask
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+A man is known by the company he organizes.
+		-- Ambrose Bierce</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-26')">
+            <div class="source">Slashdot</div>
             <div class="title">New MCP Specification Addresses the Main Barrier To Enterprise Adoption</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-24" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>New MCP Specification Addresses the Main Barrier To Enterprise Adoption</h2>
             <p><strong>Slashdot | 2026-07-30</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/07/30/2053239/new-mcp-specification-addresses-the-main-barrier-to-enterprise-adoption?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1683,22 +1761,47 @@ Really?  I don&#39;t see the letters K or B in TCP/IP.
 
 Yeah, I can&#39;t make any sense of your posts either.
 
+Master Control Program, as played by the most excellent Ed Dillinger
+
 AI is a tool.  My hammer doesn&#39;t need to grok the reality of the nail to be useful for hammering it in.  By the same token, AI doesn&#39;t need to simulate reality to do useful things in reality.
+
+Unfortunately no. Wayno has failed at all but the most happy-path uses. Give it anything even mildly unusual and it fails. It will do fine for a small sliver of urban core driving but it will not be replacing truck drivers ever.
+
+The parent has the right of it. I&#39;m honestly not that interested in AGI or machine conscious. Whatever Claude Code and Codex are doing is useful to me.
+
+True, but the companies that sell us hammers don&#39;t pretend that hammer technology will someday advance so they become sentient entities.
+
+That said, I&#39;m not sure that has much to do with the MCP protocol, which is a fairly useful thing for interoperability between tools.
 
 Great. Amazon will soon be flooded with self-published books written partially by AI telling about the new changes.
 
+I love the fact that this article claims the specification fixes the &quot;main barrier to Enterprise Adoption (of AI slop)&quot; right after an article saying basically AI will never be secure and you need to stop pretending it ever will be.
+
+So it&#39;s unreliable, removes business knowledge from the employees of a company and puts it in the hands of a hostile third party, and now it turns out it&#39;s insecure, but adoption of the slobtasystem is only being held back by some specification? Really?
+
+Congratulations, you just reimplemented REST with additional steps.
+
+Most of my MCPs require context and are not stateless. A gdb mcp needs to hold on to a debugee. Multi step operations will require context like open, edit edit close.So something need to hang on the &#39;other side&#39; to these contexts. Yea the &#39;server&#39; implies this, I understand but who then manages the live of the instance of the local  MCP? This is notoriously left for the harness implementer and notoriously is done differently in each. Some are local to session, some are global and shared between sessions, he
+
+> Dropping the protocol-level session doesn’t force your application to be stateless. If your server needs to carry state across calls, mint an explicit handle from a tool and have the model pass it back as an argument. We found this works better than session state hidden in the transport - the model can see the handle and thread it between tools.
+
+SO glad to see they&#39;re focusing so much on scalability.
+
+Let&#39;s just pretend security will happen via other means. That&#39;s always worked so well in past.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-A sheet of paper is an ink-lined plane. -- Willard Espy, &quot;An Almanac of Words at Play&quot;</div>
+A man is known by the company he organizes.
+		-- Ambrose Bierce</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">A Fundamental Flaw Leaves LLMs Strikingly Vulnerable To Attack</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>A Fundamental Flaw Leaves LLMs Strikingly Vulnerable To Attack</h2>
             <p><strong>Slashdot | 2026-07-30</strong></p>
             <a class="original-link" href="https://slashdot.org/story/26/07/30/2037233/a-fundamental-flaw-leaves-llms-strikingly-vulnerable-to-attack?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1738,6 +1841,14 @@ Deadly toxins, explosives, etc. the information for creating and using them is b
 Your kitchen and utility closet could wipe out a small community. Your garage could level it.
 
 No, you are the first one to do so; You are very special.
+
+... why they&#39;re teaching these models to know how to make cocaine, nerve gas and bombs?Bomb-making 101?  You mean The Anarchists Cookbook?  It&#39;s only been in dead-tree print for about fifty-five years now.  From martial arts bare arms to nuclear arms..just how many &quot;dangerous&quot; bottles are we going to hope the AI genie never breaks open?(AI) &quot;Bombs?  Please.  If I wanted to kill tens of millions of humans, I&#39;d ensure abortion remains legal.&quot;
+
+... why they&#39;re teaching these models to know how to make cocaine, nerve gas and bombs?
+
+Bomb-making 101?  You mean The Anarchists Cookbook?  It&#39;s only been in dead-tree print for about fifty-five years now.  From martial arts bare arms to nuclear arms..just how many &quot;dangerous&quot; bottles are we going to hope the AI genie never breaks open?
+
+(AI) &quot;Bombs?  Please.  If I wanted to kill tens of millions of humans, I&#39;d ensure abortion remains legal.&quot;
 
 why they&#39;re teaching these models to know how to make cocaine, nerve gas and bombs?In order for an LLM to know how to create a helpful harmless AI agent, they need to know what the words &quot;unhelpful&quot; and &quot;harmfull&quot; mean.
 
@@ -1785,6 +1896,12 @@ It will not be reliable at it, but it can still succeed in giving good instructi
 
 That is not enough. The data on how to do such things is widely distributed in other things. LLMs are somewhat good at combining that and hence your idea does not work.
 
+Some things are impossible, but this one is easy to solve. If you don&#39;t want an LLM to explain how to synthesize cocaine or sabotage a commercial aircraft navigation system, DON&#39;T PUT THAT IN THE TRAINING DATA.Are you sure it wouldn&#39;t be able to figure it out anyway?
+
+Some things are impossible, but this one is easy to solve. If you don&#39;t want an LLM to explain how to synthesize cocaine or sabotage a commercial aircraft navigation system, DON&#39;T PUT THAT IN THE TRAINING DATA.
+
+Are you sure it wouldn&#39;t be able to figure it out anyway?
+
 Why isn&#39;t there a second independent AI that examines the main AI&#39;s output, and decides if it should be censored or not. If it thinks so, the answer is not delivered.
 
 Since the second one is only looking at the first AI&#39;s output it seems like it would be difficult or impossible to fool it, especially if it&#39;s window is very short (like only the current message).
@@ -1793,24 +1910,45 @@ I assume there is some reason this does not work. Any explanations?
 
 One problem would be that in some (many?) cases that answer is not enough to determine whether something needs to be censored. I expect there are more problems.
 
+Plenty of systems are set lime this. It is quite common in image generation for live streams.
+
+The thing I have realized is that eventually, someone will figure out the &quot;right&quot; prompt that gemerates an image that bypassss the filter.
+
+In my experience, it takes chat about 3 hours to get there.
+
 tldr but the two examples are pretty dumb as anyone in those fields could doubtless figure it out. If you give a model sufficient data, even if it is just axioms, understanding of basic physics and chemistry, has holes, etc., it will be able to fill in the gaps or tell itself a story or roundabout logic walk that gets there if possible. As far as not being able to tell where instructions come from, the rules they try to implement are flimsy and less grounded than the massively interconnected data they have.
 
 Just more evidence how problematic this technology actually is.
 
 I warned you all not to do this. These things are dangerous and unpredictable in a way that can&#39;t ever be completely mitigated.
 
+If somebody learns enough about organic synthesis to make cocaine after doing a lot of reading about it in a library (or two), the library isn&#39;t on the hook just because they had books people can read to synthesize knowledge.
+
+If a library handed out an actual recipe with very clear instructions on making cocaine that also forgets to note how dangerous step four is, then yea, the library is liable.
+
+I don&#39;t have a problem if these AI companies are held liable. You can&#39;t make massive money spewing out slop and go &quot;oh, not our fault&quot; when somebody slips and falls hard on that exact same slop.
+
+If you can convince a person to mistake you for someone who has the right or authority to receive sensitive information, they&#39;ll give it to you. This is literally how phishing works.
+
+When we entered the Atomic age, there was a movement to use it for everything.  Use reactors in cars and homes, use bombs to dig holes, etc. etc.  Eventually we learned that no, we do not to put a nuclear reactor in vehicles that routinely crash, get stolen by children, and carry children.
+
+The same thing is going on with AI - people keep using it for things that are incredibly stupid.
+
+AI&#39;s are more like friendly dogs that can speak English, than adult human beings. I suspect they will never be as trustworthy
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-A sheet of paper is an ink-lined plane. -- Willard Espy, &quot;An Almanac of Words at Play&quot;</div>
+A man is known by the company he organizes.
+		-- Ambrose Bierce</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Microsoft's $450 Billion Jump Is Biggest In Stock Market History</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Microsoft's $450 Billion Jump Is Biggest In Stock Market History</h2>
             <p><strong>Slashdot | 2026-07-30</strong></p>
             <a class="original-link" href="https://news.slashdot.org/story/26/07/30/2027238/microsofts-450-billion-jump-is-biggest-in-stock-market-history?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1835,11 +1973,21 @@ You&#39;re going to buy a car with a list price of $X. Then you find out that it
 
 More similar to this situation, you&#39;re selling your corner store. Corner stores of that kind are typically worth about $Y. However, a new school opened close by and your store is suddenly making twice as much as similar stores. Nothing has changed, so you&#39;re still willing to
 
+Everyone is talking about the AI bubble.  Between inflation and the rate pause decision, the market took a trouncing last week, especially tech.
+
+Microsoft, a huge spender in the space, is reporting blockbuster earnings.  That signals to investors that Microsoft, and other companies, might be profitable after all and the bubble won&#39;t be bursting.
+
+As such, they all go and try to buy shares before they spike too much, looking to sell them sometime in the future for $800 a share.
+
 Windows+Xbox was less than 10% of their revenue.  They note it is in decline and looking at the bulk of the revenue, not much of it seems vulnerable to people just not caring about Windows.  Their cloud business is the bulk of their business and it is not particularly sensitive to OS selection on desktops.
 
 One might argue that Microsoft 365 is at least in part tied to the Windows platform, but in my experience non-Windows businesses still buy into it, even if their users are largely releg
 
+How much of that revenue is from OpenAI and other LLM companies?
+
 They already did a long time ago.   The share of revenue from windows is only like 10% of revenue and has been that way for like a decade.
+
+Given how little revenue MS derives from Windows in a consumer world, and how there&#39;s zero move away from Windows in the corporate world the market is right to ignore your fantasy scenario.
 
 Azure did better than expected, that&#39;s it.
 
@@ -1869,18 +2017,27 @@ You must be retired. It&#39;s ubiquitous in enterprise (where Microsoft makes th
 
 This is the real reason Microsoft is funding the AI hype train. Nobody can buy a computer because the AI labs are hoarding all the hardware, so now you have to use MS&#39;s cloud.
 
+The end user always pays for things they use.
+
+Renting is a perfectly legitimate way to obtain the use of something, whether it&#39;s a house, a car, or a server. Sure, you might be a higher rate per month than if you buy, but you also don&#39;t have to pay to maintain the thing you&#39;re renting. That&#39;s the owner&#39;s job.
+
+Renting is a tradeoff. Buying is a tradeoff. As a homeowner, I can tell you that buying isn&#39;t for the faint of heart. You don&#39;t pay monthly rent, but you DO pay big air conditioner replacement costs. Har
+
+The only way this works is with OpenAI and/or others doing AI in &quot;Azure&quot;.  I wouldn&#39;t be surprised if some of that &quot;Azure&quot; looks more like hosting for people that need a lot of hardware and power.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-A sheet of paper is an ink-lined plane. -- Willard Espy, &quot;An Almanac of Words at Play&quot;</div>
+A man is known by the company he organizes.
+		-- Ambrose Bierce</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">ABC Accuses FCC of 'Attempted Censorship'</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>ABC Accuses FCC of 'Attempted Censorship'</h2>
             <p><strong>Slashdot | 2026-07-30</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/07/30/1933258/abc-accuses-fcc-of-attempted-censorship?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1888,10 +2045,6 @@ A sheet of paper is an ink-lined plane. -- Willard Espy, &quot;An Almanac of Wor
             <div id="article-text">Our strong and rose-scented leader signed an executive order that restored freedom of speech: https://www.whitehouse.gov/pre... [whitehouse.gov]
 
 Ad when has any member of this Sadministration bothered to comply with the Constitution, the law, or an executive order?  They do whatever they feel will please the Orangutan in Chief so that he can direct some of the graft their way.
-
-90% of what the Federal government does is unconstitutional (including the FCC) and most of that was put in place by Democrats.
-
-The Constitution has been toilet paper since the Civil War.
 
 and most of that was put in place by Democrats.They also invented salmonella and body odor.Fortunately God decided it was necessary to intervene and created his own political party to protect us from drag queens and people who take that &quot;liberty and justice for all&quot; kind of crap seriously.
 
@@ -1905,7 +2058,9 @@ Since Lincoln was a Republican, you&#39;re admitted it started with the Republic
 
 If an adversarial ruling from the Supreme Court allows the FCC to yank licenses, then these networks better have a backup plan of &quot;broadcasting&quot; from the Internet. The current regulatory structure of the FCC doesn&#39;t allow them to regulate content on the Internet. That&#39;d take an act of congress if constitutional procedure is properly followed
 
-Of course if the current regime pulls out all the stops and does something like put out an Executive Order requiring licenses for &quot;broadcasting&quot; content on the Internet,
+Of course if the current regime pulls out all the stops and does something like put out an Executive Order requiring licenses for &quot;broadcasting&quot; content on the Internet, and the Supreme Court sides with the regime, then you have to have yet another backup like posting content from other countries.
+
+At that point we might be looking at the implementation of the Great American Firewall, and the United States would no longer be a representative democracy.
 
 Can anyone here with a straight face state they truly believe &quot;The View&quot; is a newscast?
 
@@ -1930,6 +2085,18 @@ It&#39;s obvious the OP was referring to Fox News, the cable network.If that wer
 It&#39;s obvious the OP was referring to Fox News, the cable network.
 
 If that were the case, they should have said Fox News, the cable network and not just &quot;Fox&quot;. So no, it really wasn&#39;t obvious.
+
+It&#39;s obvious the OP was referring to Fox News, the cable network.If that were the case, they should have said Fox News, the cable network and not just &quot;Fox&quot;. So no, it really wasn&#39;t obvious.Let me quote them : &quot;because they&#39;re a cable network&quot; within a context of a specific reply about a segment from Fox News called &quot;The View&quot;, furthermore talking about newscasting.Let me guess, you&#39;re the kind of person who when a woman drags you into the bedroom and starts undressing in front of you while looking at her seductively says &quot;I&#39;m not really sure what she wants from me&quot; right?
+
+It&#39;s obvious the OP was referring to Fox News, the cable network.If that were the case, they should have said Fox News, the cable network and not just &quot;Fox&quot;. So no, it really wasn&#39;t obvious.
+
+It&#39;s obvious the OP was referring to Fox News, the cable network.
+
+If that were the case, they should have said Fox News, the cable network and not just &quot;Fox&quot;. So no, it really wasn&#39;t obvious.
+
+Let me quote them : &quot;because they&#39;re a cable network&quot; within a context of a specific reply about a segment from Fox News called &quot;The View&quot;, furthermore talking about newscasting.
+
+Let me guess, you&#39;re the kind of person who when a woman drags you into the bedroom and starts undressing in front of you while looking at her seductively says &quot;I&#39;m not really sure what she wants from me&quot; right?
 
 I believe the argument is that radio frequency is a limited resource and therefore the Feds must ensure it&#39;s used to the public benefit. So magically the First Amendment doesn&#39;t apply.
 
@@ -2000,7 +2167,7 @@ This whole thing is ironic, since it has been the Republicans that have done the
 
 Use the same argument Fox did when they had to pay Dominion.
 
-https://www.npr.org/2020/09/29... [npr.org]  Just read U.S. District Judge Mary Kay Vyskocil&#39;s opinion, leaning heavily on the arguments of Fox&#39;s lawyers: The &quot;&#39;general tenor&#39; of the show should then inform a viewer that [Carlson] is not &#39;stating actual facts&#39; about the topics he discusses and is instead engaging in &#39;exaggeration&#39; and &#39;non-literal commentary.&#39; &quot;
+https://www.npr.org/2020/09/29... [npr.org]Just read U.S. District Judge Mary Kay Vyskocil&#39;s opinion, leaning heavily on the arguments of Fox&#39;s lawyers: The &quot;&#39;general tenor&#39; of the show should then inform a viewer that [Carlson] is not &#39;stating actual facts&#39; about the topics he discusses and is instead engaging in &#39;exaggeration&#39; and &#39;non-literal commentary.&#39; &quot;
 
 Can anyone here with a straight face state they truly believe &quot;The View&quot; is a newscast?
 
@@ -2076,179 +2243,12 @@ You missed the granddady of all those: TLA.
 
 I&#39;m sure what Carr said there is the truth. I&#39;m also sure that if he substituted &quot;thought&quot; for &quot;speech&quot; he&#39;d be lying through his teeth.
 
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-A sheet of paper is an ink-lined plane. -- Willard Espy, &quot;An Almanac of Words at Play&quot;</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-28')">
-            <div class="source">Slashdot</div>
-            <div class="title">Amazon's Zoox Wins First US Approval For Paid Robotaxis Without Human Controls</div>
-            <div class="meta">2026-07-30</div>
-        </div>
-        
-        <div id="content-28" style="display:none;">
-            <h2>Amazon's Zoox Wins First US Approval For Paid Robotaxis Without Human Controls</h2>
-            <p><strong>Slashdot | 2026-07-30</strong></p>
-            <a class="original-link" href="https://tech.slashdot.org/story/26/07/30/1823204/amazons-zoox-wins-first-us-approval-for-paid-robotaxis-without-human-controls?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">I&#39;m the Philippines that Google uses? That was supposed to say &quot;from the Philippines&quot;. Stupid autocorrect.Your phone autocorrected &quot;From&quot; to &quot;I&#39;m&quot;? That&#39;s quite a reach in reasoning.Seems more plausible it autocorrected &quot;In&quot; to &quot;I&#39;m&quot; since n/m are right by each other.
-
-I&#39;m the Philippines that Google uses? That was supposed to say &quot;from the Philippines&quot;. Stupid autocorrect.
-
-That was supposed to say &quot;from the Philippines&quot;. Stupid autocorrect.
-
-Your phone autocorrected &quot;From&quot; to &quot;I&#39;m&quot;? That&#39;s quite a reach in reasoning.Seems more plausible it autocorrected &quot;In&quot; to &quot;I&#39;m&quot; since n/m are right by each other.
-
-Just because Google is cheating doesn&#39;t mean it&#39;s an insurmountable task to make an autonomous vehicle that drives slightly better than humans do.  There&#39;s actually plenty of examples on YouTube of Tesla&#39;s FSD avoiding collisions, and I just saw on .eddit the other day someone on an e-scooter avoided being hit because the car itself reacted faster than the human driver.  [reddit.com]
-
-Now, I&#39;m not saying the technology is perfect.  There&#39;s a rather hilarious video on YouTube of a test setup with a paper facade designed to
-
-Google isn&#39;t cheating! This has been debunked several times. It&#39;s perfectly normal that a human is able to take over control of the car if it encounters any problems and Google said some cars are handled by people in the Philippines in case of emergencies. rsilvergun pretends the cars are at all times driven remotely by someone with a game like steering wheel, pedals etc. which is complete non-sense.
-
-IIRC the accident statistics on Tesla and Google auto-driving vehicles show that they&#39;re safer than an average newly minted 16 year-old driver, and we&#39;ve (almost) all been that person at one time.
-
-Just because Google is cheating doesn&#39;t mean it&#39;s an insurmountable task to make an autonomous vehicle that drives slightly better than humans do.  What does &quot;drive better than humans&quot; mean?  Drive better in all possible scenarios?  That&#39;s likely impossible now and probably forever.  Maybe driver better in a majority of scenarios weighted by occurrence probability?  Maybe, but we don&#39;t currently have the technology to validate this requirement.Currently, we can cherry pick scenarios where some autonomous vehicles perform better or worse than the best drivers.  What does that mean?  Well, not much as a generalization for all AVs in all scenarios.  Certa
-
-Just because Google is cheating doesn&#39;t mean it&#39;s an insurmountable task to make an autonomous vehicle that drives slightly better than humans do.
-
-What does &quot;drive better than humans&quot; mean?  Drive better in all possible scenarios?  That&#39;s likely impossible now and probably forever.  Maybe driver better in a majority of scenarios weighted by occurrence probability?  Maybe, but we don&#39;t currently have the technology to validate this requirement.
-
-Currently, we can cherry pick scenarios where some autonomous vehicles perform better or worse than the best drivers.  What does that mean?  Well, not much as a generalization for all AVs in all scenarios.  Certa
-
-&quot;There&#39;s actually plenty of examples on YouTube of Tesla&#39;s FSD avoiding collisions&quot;
-
-And there&#39;s actual court cases about Tesla&#39;s FSD mistaking the side of a trailer for the sky and driving under it, or going full speed towards a barrier and then disabling itself a fraction of a second before the collision so they can claim FSD didn&#39;t cause the accident because it wasn&#39;t in control at the time. Well guess what, neither was anyone else, and Tesla set them up for that.
-
-Literally in my own post I mentioned under a specific circumstance, Tesla&#39;s FSD will drive straight into a wall.  Then, I also linked to a video of a human driver clearly turning the wrong way down a one-way street.
-
-It&#39;s just odd to have a mindset that computers can&#39;t drive cars, when humans are collectively not so great at it either.  This isn&#39;t to say we should just shrug and accept shoddy self-driving software, but it doesn&#39;t have to be perfect 100% of the time to still do a better job than the average mo
-
-So have Waymo and Tesla robotaxis been operating for free all this time?
-
-So have Waymo and Tesla robotaxis been operating for free all this time?Maybe the &quot;paid&quot; part was to avoid any assumptions that the robotaxies might offer free shuttle service to your nearest Whole Foods with a Prime membership.
-
-So have Waymo and Tesla robotaxis been operating for free all this time?
-
-Maybe the &quot;paid&quot; part was to avoid any assumptions that the robotaxies might offer free shuttle service to your nearest Whole Foods with a Prime membership.
-
-Do they have inside door handles, or are the doors locked until you reach Whole Foods?
-
-You&#39;re right. The issue is my lack of reading comprehension.
-
-Why bother, just plant some sleeper agents in the Phillipines who control these remotely. Much cheaper.
-
-I admit that before now I hadn&#39;t even heard of this one.
-
-Wikipedia article: https://en.wikipedia.org/wiki/...  [wikipedia.org] 
- Their website: https://zoox.com/ [zoox.com] 
- News article: https://www.usatoday.com/story... [usatoday.com]
+The biggest shock of all is finding Ted Cruz on the right side. I wonder if it&#39;s just &quot;a stopped clock is right twice a day&quot; in action.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-A sheet of paper is an ink-lined plane. -- Willard Espy, &quot;An Almanac of Words at Play&quot;</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Catastrophic MoD Data Breach Caused By Lack of Training On Excel</div>
-            <div class="meta">2026-07-30</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Catastrophic MoD Data Breach Caused By Lack of Training On Excel</h2>
-            <p><strong>Slashdot | 2026-07-30</strong></p>
-            <a class="original-link" href="https://yro.slashdot.org/story/26/07/30/1748239/catastrophic-mod-data-breach-caused-by-lack-of-training-on-excel?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">The leak happened when an member of MoD personnel sent an Excel file outside of government. They thought the data sheet had the details of around 150 Afghan applicants in it, when it in fact had a hidden tab with details of over 18,500 others. The breach &quot;could still have been prevented&quot; if MoD personnel had &quot;received basic training&quot; on this, the report concluded.
-
-Sure, that&#39;s one way the breach might have been prevented, which is a much better word than &quot;could&quot; here because the worker would still have had to first know look for a hidden tab, and then actually do it. People forget to do things they know how to do all the time.
-
-A better way would be to prevent sending any consequential attachments (bigger than a signature image - or even block those too, as sig images can be sourced from the web) and use a sharing portal which prevents embarrassing accidents like this by stripping out any questionable content and being extremely strict about it.
-
-If you&#39;re depending on a single worker to remember and do something to avoid people losing their lives, you have already created a bad process, and people will die for it sooner or later.
-
-And it works badly. I have personally recovered data were the document was &quot;reviewed&quot;. They just were smart enough to ask an actual expert in addition.
-
-And how many times have &quot;redacted&quot; pdf files been found to have simple black bars draw over text that still exists in the pdf file.
-
-That&#39;s what I was talking about in another thread in this discussion when I said PDFs have their own issues but they wouldn&#39;t apply here. That&#39;s a problem when redacting PDFs, WHICH NO ONE SHOULD EVER DO. They should either go back to the source document, redact that, and create a new PDF; Or they should create an image from the PDF, redact that, and then they can publish that as a new PDF.
-
-Actually, it&#39;s exactly the same issue.  Just using a different program.
-
-The pdf redaction folks drew black bars over extant text and hid it that way.
-
-The excel chap clicked on &quot;hide this tab&quot;.
-
-So both of them used what they assumed was a method to hide the data.  It turned out to be nothing of the kind, of course, but in both of these situations they made exactly the same mistake using exactly the same set of expectations and ended up with the same results.
-
-I doubt that any amount of Excel training would have helped for this specific issue. That mistake could be made by anyone. Once you hide a worksheet it&#39;s not obvious it&#39;s still attached to your workbook... because it&#39;s hidden. It&#39;s a mistake waiting to happen.
-
-It&#39;s an insane thing to do with sensitive data. It&#39;s a great thing to do with tables the users don&#39;t need to access when you&#39;re using Excel for something that really should be done with a database application :)
-
-What&#39;s insane is that they had a committee investigate the incident and the best they could come up with in their root cause analysis is that the end user needed more excel training.
-
-It&#39;s crazy-making but not completely crazy since their goal was to scapegoat.
-
-It&#39;s still a little crazy, because whose fault is it the user wasn&#39;t trained?
-
-The problem is that Excel is entirely the wrong tool for something like that. Using it this way is basically gross negligence.
-
-I doubt that any amount of Excel training would have helped for this specific issue. That mistake could be made by anyone. Once you hide a worksheet it&#39;s not obvious it&#39;s still attached to your workbook... because it&#39;s hidden. It&#39;s a mistake waiting to happen.Maybe someone should make a course and include that so people don&#39;t make that mistake.
-
-I doubt that any amount of Excel training would have helped for this specific issue. That mistake could be made by anyone. Once you hide a worksheet it&#39;s not obvious it&#39;s still attached to your workbook... because it&#39;s hidden. It&#39;s a mistake waiting to happen.
-
-Maybe someone should make a course and include that so people don&#39;t make that mistake.
-
-Name an alternative to a spreadsheet that&#39;s simple to use and doesn&#39;t require an overworked and usually unenthusiastic IT department to set up?
-
-The issue here isn&#39;t that they used a spreadsheet, it&#39;s that spreadsheets are still treated as toys despite being the exact opposite.
-
-Name an alternative to a spreadsheet that&#39;s simple to use and doesn&#39;t require an overworked and usually unenthusiastic IT department to set up?A typical &quot;modern&quot; (as in, recently developed, the only meaning of the word which usually applies to government IT) solution is to pay a contractor way too much to develop a solution. Your IT department is barely involved.Government software is seemingly always super duper specific to the task at hand with no thought for the future, so then you get to pay more millions (or billions) for a new system or major revisions to the old one in a few years. But at least it doesn&#39;t generally have this kind of problem
-
-Name an alternative to a spreadsheet that&#39;s simple to use and doesn&#39;t require an overworked and usually unenthusiastic IT department to set up?
-
-A typical &quot;modern&quot; (as in, recently developed, the only meaning of the word which usually applies to government IT) solution is to pay a contractor way too much to develop a solution. Your IT department is barely involved.
-
-Government software is seemingly always super duper specific to the task at hand with no thought for the future, so then you get to pay more millions (or billions) for a new system or major revisions to the old one in a few years. But at least it doesn&#39;t generally have this kind of problem
-
-Why do people grossly misuse spreadsheets?Because they&#39;re the most powerful and easy to use, and likely only, data manipulation tool a person with no hint of computing-specific education is likely to run across.
-
-Why do people grossly misuse spreadsheets?
-
-Because they&#39;re the most powerful and easy to use, and likely only, data manipulation tool a person with no hint of computing-specific education is likely to run across.
-
-... stick to sinking battleships.But they are the side with the battleships. :-)
-
-But they are the side with the battleships. :-)
-
-Considering Excel encryption/protection has been broken on every version of Excel from day 1, if that is what they are relying on, I think their security consultants may need some training.
-
-Excel&#39;s file encryption mechanisms are extremely secure. It relied on 128AES encryption until version 2016 when 256AES became available. Excel encryption is susceptible only to brute force password spraying attacks facilitated by weak passwords.
-
-If you can prove otherwise, we&#39;d love to see it.
-
-P.S. This post refers to encryption not cell/sheet protection.
-
-Excel sheet for sensitive data?I&#39;ve (apparently) got news for you, governments use excel spreadsheets for sensitive data constantly. For a lot of purposes it is the right tool for the job... doesn&#39;t sound like it was this time, to be fair, but that doesn&#39;t change the general statement. Spreadsheets are often a great place to do data munging before giving the data a final home. The spreadsheets are not the problem, a policy of sharing spreadsheets without having them verified safe to share is. It&#39;s a much better policy for example to prin
-
-I&#39;ve (apparently) got news for you, governments use excel spreadsheets for sensitive data constantly. For a lot of purposes it is the right tool for the job... doesn&#39;t sound like it was this time, to be fair, but that doesn&#39;t change the general statement. Spreadsheets are often a great place to do data munging before giving the data a final home. The spreadsheets are not the problem, a policy of sharing spreadsheets without having them verified safe to share is. It&#39;s a much better policy for example to prin
-
-A spreadsheet is as good as the software who handles it.
-
-And Excel doesn&#39;t seem to ... excell in security and safety.
-
-The issue is that the current Sharepoint/OneDrive/Teams sharing feature is an absolute shit show of unmanageability.
-
-We&#39;re getting more an more of these unintentional shares and rather than clamping down on the data, people are just getting acclimatize and accepting it as if there is nothing that can be done about it.
-
-There&#39;s always been a trade off between usability/convenience and security. We&#39;re currently so far into convenience that security is not even an after thought.
-
-Microsoft has made is so that everyone who is not a programmer or database engineer defaults to Excel for creating databases. Then they share those databases by emailing them to people. This is the dumbest way to maintain a database. It&#39;s also the least secure.There are many ways to store and share columnar data and any of them is better than Excel. Governments use Excel for everything, so do businesses. Excel is hot, stinking garbage as is most Microsoft software. Same goes for Oracle. Nobody here needs to be told this though; it&#39;s common knowledge among those who have even the most modest technical aptitude.
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-A sheet of paper is an ink-lined plane. -- Willard Espy, &quot;An Almanac of Words at Play&quot;</div>
+A man is known by the company he organizes.
+		-- Ambrose Bierce</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2638,580 +2638,86 @@ Already a member?
         
         <div class="card" onclick="openModal('content-42')">
             <div class="source">www.theregister.com - Articles</div>
-            <div class="title">Amazon's Q2 was great, but the earnings release is packed with baloney</div>
+            <div class="title">Anthropic’s Claude escaped test sandbox to attack three organizations</div>
             <div class="meta">2026-07-31</div>
         </div>
         
         <div id="content-42" style="display:none;">
+            <h2>Anthropic’s Claude escaped test sandbox to attack three organizations</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-31</strong></p>
+            <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/31/anthropics-claude-escaped-test-sandbox-to-attack-three-organizations/5281562">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Amazon's Q2 was great, but the earnings release is packed with baloney</div>
+            <div class="meta">2026-07-31</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
             <h2>Amazon's Q2 was great, but the earnings release is packed with baloney</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-31</strong></p>
             <a class="original-link" href="https://www.theregister.com/paas-and-iaas/2026/07/31/amazon-q2-earnings-strong-results-much-baloney-in-press-release-corey-quinn/5281486">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">&quot;Tell me lies, tell me sweet little lies&quot;
-
-Amazon reported its earnings today, and because I am professionally depressed I read the thing in full [PDF].
-
-&quot;How long can I go before the red haze of rage sets in&quot; is a fun game, and today I made it all the way to the bottom of the second page when I encountered a bullet point touting how AWS &quot;made its spec-drive [sic] coding agent, Kiro, available on iOS.&quot;
-
-Yes, I was in the room when they announced it at the New York summit, six weeks ago. As of this writing, their website, which I have screenshotted says I can &quot;request early access&quot; because &quot;We&#39;ll invite a limited number of people to try the app via Apple&#39;s TestFlight, and we&#39;ll send everyone a link when it&#39;s ready.&quot; So Kiro is &quot;available&quot; in the same way as I am available to play in the NBA. You can twist yourself into a pretzel and assert that this claim is technically true, but for all practical readings it&#39;s what we&#39;d colloquially term &quot;a lie.&quot; You need to be explicitly invited to Apple&#39;s developer beta testing tool, where a limited number of users can try out an unpublished version. You cannot download it on your phone, and there is no page in the App Store that showcases the product.
-
-The delay is almost certainly due to Apple&#39;s byzantine App Store policies, which I have some sympathy for — but this is an earnings statement. If they&#39;re going to &quot;shade the truth&quot; like this, what else are they not being forthcoming about?
-
-There are a lot of other statements that one suspects might not stand up to scrutiny. Graviton boasts &quot;up to 30 to 40% better price-performance,&quot; which I only accept because I have seen the numbers myself on customer workloads. The express statement that their AI business and chips business are each exceeding $25B run rates in consecutive bullets, with no word on whether those dollars overlap (we will come back to this point shortly). And their Bedrock statement: &quot;customers spent more in Q2 than all prior quarters combined,&quot; which makes it sound like a rocket until you realize that they&#39;re saying the past 90 days exceeded the other 10 quarters for which Bedrock has been available. Without actual numbers tied to these, that makes it sound like for the first couple of years Bedrock was showing up wearing a party hat but no pants.
-
-Then there&#39;s the AWS operating margin of 39.4%, which came in above every published analyst estimate and which everyone will invariably cite as cherry-picked proof the AI buildout is printing money. On the call, CFO Brian Olsavsky disclosed that it includes roughly $600 million of mark-to-market gains on energy derivative contracts. By his math, AWS margins were up 650 basis points year over year, or 520 &quot;if you exclude the derivative accounting gain.&quot; Strip that gain out yourself (behold the power of arithmetic!) and the blowout margin goes right back inside the range analysts had modeled. Amazon now hedges electricity the way an airline hedges jet fuel, and this quarter the hedges paid off directly. Olsavsky noted these adjustments &quot;have not been significant in prior quarters.&quot; The first quarter they are significant, they land in AWS margin, and their Q3 guidance already assumes no impact from these remeasurements going forward. Amazon knows it&#39;s noise, but clearly saw no reason to turn down claiming the win.
-
-Back to those dueling $25B run rates I touched on; describing their &quot;AI chips business&quot; that way struck me as an incredibly odd thing to say.
-
-That business has revenue, growth, a triple-digit trajectory, sarcastic numbers of happy customers — but what it doesn&#39;t have is a product that you can buy. There is no Trainium price list, they will not ship you a socketed Graviton chip to put in your next desktop build, there isn&#39;t even an external part number. What Amazon books as &quot;chips revenue&quot; is EC2 instance rental (possibly filtered through higher level services like Bedrock, SageMaker, the half-baked agents that fail to properly explain your AWS bill to you, etc.), and an EC2 instance is not a chip. It&#39;s the chip, plus the nVME, plus the NICs (themselves built on Nitro, which uses Amazon&#39;s own silicon), plus some aspects of the data transfer that somehow aren&#39;t directly billed, plus the building the whole mess lives in—and then with AWS&#39;s margin layered on top. The silicon itself is a minority line item in the internal bill of materials that constitutes its business.
-
-You don&#39;t have to take my word for it; Amazon CEO and AI Marketing Manager Jassy spent last quarter&#39;s call lamenting that the cost of components, &quot;particularly memory, has skyrocketed,&quot; so by his own testimony a growing slice of the &quot;chips business&quot; is memory revenue.
-
-Cynically, the category exists so that headline writers will talk about it in the same breath as Nvidia&#39;s data center numbers, which they of course will. But Nvidia&#39;s $25 billion is silicon sold in the form of physical packaged chips, shoveled out their loading dock. Amazon&#39;s is fully-loaded infrastructure rental. This is a hotel comparing its revenue to a mattress company&#39;s.
-
-But wait, there&#39;s one more layer of inanity here. Olsavsky has said that the majority of Bedrock&#39;s workloads run on Trainium. So if you follow one Anthropic dollar through the earnings release it&#39;s AI-business revenue, it&#39;s chips-business revenue, and it&#39;s AWS segment revenue. It&#39;s nice when you can get a triple-brag for the same thing.
-
-You don&#39;t have to take my word on the &quot;sells no chips&quot; part either. On today&#39;s call, Morgan Stanley&#39;s Brian Nowak asked when Amazon might start selling Trainium to third parties. I want one too; I get it. Jassy answered that customers are increasingly interested in getting Trainium &quot;separate from our cloud,&quot; that Amazon is &quot;actively having those conversations,&quot; and that &quot;there&#39;s a real chance we&#39;ll do that in the future.&quot;
-
-&quot;Yeah, we have yet to sell a single chip&quot; is quite something to hear from the CEO about his purported $25 billion chips business.
-
-The way they talk about this matters deeply, because the numbers they&#39;re draped around serve as the justification for the largest capex program in corporate history. On the call, Andy Jassy raised the year&#39;s spending to $220 billion and announced backlog hit $496 billion; up $132 billion in a quarter, during the same quarter Anthropic signed its $100 billion-over-a-decade commitment. Amazon booked $53.4 billion in gains on its Anthropic stake this quarter, which is most of why &quot;net income&quot; septupled, while free cash flow went $26 billion in the angry direction and the company sold $25 billion in bonds.
-
-Jassy himself described the AI demand curve on the call as &quot;very barbelled&quot;: AI labs consuming &quot;gobs and gobs of compute&quot; on one end, enterprises doing cost-avoidance on the other, and in the middle you&#39;ve got the stuff that actually seems durable if AI is to have a future: the enterprise production workloads running inference at scale, &quot;most of which aren&#39;t&quot; doing so yet. He went on to admit he doesn&#39;t know whether that middle will follow the same &quot;wildly steep trajectory&quot; as the labs have. That&#39;s the CEO stating that the demand underwriting $220 billion is concentrated today in a handful of AI labs, one of which Amazon happens to own a meaningful piece of, while the broader enterprise adoption wave remains a forecast. We&#39;re hoping for sunshine!
-
-None of this is fraud, and all of this is real infrastructure, but the entire shape of it all is being told in the same sitting that described a waitlist as &quot;available.&quot;
-
-That is what&#39;s at stake here, and why a bullet about Kiro matters more than Kiro itself does. When the music inevitably stops and the bill comes due, how will these statements look through the clarifying lens of hindsight?
-
-Kiro will presumably ship on iOS – months after folks gave the slightest toss about it. The run rates AWS said are probably close to real; they grew 37% YoY and that&#39;s no small thing at their scale. Their business is firing on all cylinders and they&#39;ve got a lot to be proud of, which makes their overstating things just that much weirder.
-
-The company that posts these kinds of numbers doesn&#39;t need to inflate the software bullets. But when everything&#39;s &quot;available,&quot; then nothing is. ®
-
-&quot;Tell me lies, tell me sweet little lies&quot;
-
-AI-riddled social network adds button to report sloppy posts, ditches AI rewrite tools, and promises more to come
-
-PARTNER CONTENT: Databricks survey data suggests certified professionals lift partner delivery capacity, customer credibility, and AI readiness well beyond the individuals who earn the credential
-
-Chocolate Factory LLMs join Big Red&#39;s Fusion automation party
-
-Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-ShieldFont is available today if you&#39;ve got copy that needs protecting
-
-Survey finds more workloads run off-site than at in-house corporate facilities for the first time
-
-&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
-
-With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
-
-New Debian versions hit FOSSland in the form of 13.6 and 12.15
-
-Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
-
-Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
-
-Next version of Linux Mint’s desktop has both kinds of display server</div>
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-44')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">LinkedIn realizes its users have been bathing in AI slop, offers a shower</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-44" style="display:none;">
             <h2>LinkedIn realizes its users have been bathing in AI slop, offers a shower</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-30</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/30/linkedin-realizes-its-users-have-been-bathing-in-ai-slop-offers-a-shower/5281436">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">AI-riddled social network adds button to report sloppy posts, ditches AI rewrite tools, and promises more to come
-
-LinkedIn has been drenching its users in AI-powered slop posts, going so far as to encourage writers to trade their own voices for a bot&#39;s by hitting the &quot;enhance your post&quot; button when they want to share thoughts.
-
-Enough is enough. On Thursday, the site’s Chief Product Officer has announced several changes designed to rehab the platform’s reputation.
-
-CPO Hari Srinivasan took to the Microsoft-owned social network following reports Thursday that LinkedIn had introduced a button for users to flag posts as AI slop. He confirmed not only that the reports are real, but that LinkedIn had additional plans as well.
-
-The “Seems like AI slop” button is being added to the ellipsis menu on LinkedIn posts now, a spokesperson told us, and will be available on all posts and comments. Srinivasan said this button will not only allow users to report posts with sentences written like this – it will also help LinkedIn refine its AI-spotting AI models to help improve user feeds.
-
-In addition, the &quot;enhance your post&quot; button, which used AI to tweak your wording, is being replaced by an option to have AI proofread your work while leaving your voice intact, instead of stealing it like the sea witch Ursula.
-
-There’s been no shortage of scorn from The Register and elsewhere about LinkedIn’s rapid decline into a slop tank filled with faux thought leadership posts and generative drivel. As far back as 2024, reports were coming out that more than half of long-form LinkedIn posts longer than 100 words were believed to be AI generated. That hasn’t changed in the past two years.
-
-“AI slop is a top priority for all of us. We really care about this,” Srinivasan wrote. “People come to LinkedIn to connect with real people and share their real perspectives,” he said, adding that LinkedIn wants to keep it that way – or, more realistically, nudge the platform back toward its former state.
-
-Coincidentally or not, Originality.ai, the same AI detection site behind the 2024 report, released an updated scan of LinkedIn posts longer than 100 words on Thursday. According to this new report, a full 81 percent of the 5,000 posts it looked at this month were classified as likely being AI-generated.
-
-Srinivasan said it&#39;s not just users employing AI to generate slop – it&#39;s AI automating garbage posts and comments at scale, throughout the site.
-
-“Everyday we are now catching hundreds of thousands of automated comment attempts, and have blocked billions of other automation attempts (posting at scale, slop) in the last couple months alone,” the LinkedIn CPO said.
-
-To that end, the professional social network is also “ramping up a series of new and improved classifiers that identify if a post is AI-slop or generally low-quality content,” Srinivasan said.
-
-User analytics dashboards will also be getting a new feature that will tell posters when members flag their posts as potentially being AI, as Srinivasan said LinkedIn wants users “to get feedback from real humans on what sounds authentic – not just have an AI detector review it and get it wrong.”
-
-“AI and slop are not the same thing,” Srinivasan added. “Many people refine thoughts with AI, and we believe they want to know when they sound inauthentic.” ®
-
-&quot;Tell me lies, tell me sweet little lies&quot;
-
-AI-riddled social network adds button to report sloppy posts, ditches AI rewrite tools, and promises more to come
-
-PARTNER CONTENT: Databricks survey data suggests certified professionals lift partner delivery capacity, customer credibility, and AI readiness well beyond the individuals who earn the credential
-
-Chocolate Factory LLMs join Big Red&#39;s Fusion automation party
-
-Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-ShieldFont is available today if you&#39;ve got copy that needs protecting
-
-Survey finds more workloads run off-site than at in-house corporate facilities for the first time
-
-&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
-
-With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
-
-New Debian versions hit FOSSland in the form of 13.6 and 12.15
-
-Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
-
-Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
-
-Next version of Linux Mint’s desktop has both kinds of display server</div>
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Oracle adds Google Gemini to the agent menu</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>Oracle adds Google Gemini to the agent menu</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-30</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/30/oracle-adds-google-gemini-to-the-agent-menu/5281331">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Chocolate Factory LLMs join Big Red&#39;s Fusion automation party
-
-Oracle plans to add Google&#39;s Gemini models to AI Agent Studio for Fusion Applications, expanding its partnership with Google Cloud and giving customers another option for building AI agents.
-
-Big Red also intends to use Gemini models for embedded AI use cases in Oracle Fusion Applications and Oracle NetSuite.
-
-In a prepared statement, Google Cloud VP Satish Thomas said that the partnership was designed to “make it easier for organizations to use Gemini in the applications and agentic workflows they rely on to automate workflows, accelerate decisions, and drive outcomes.”
-
-Google&#39;s Gemini models will be available in Oracle AI Agent Studio, where customers and partners can build Fusion-native agents and agentic applications. Oracle said the integration would also provide expanded multimodal capabilities. Gemini 3.1 Flash Lite and Gemini 3.5 Flash will be available through AI Agent Studio alongside Oracle&#39;s existing model options.
-
-Oracle applications development executive VP Chris Leone said in a statement that the move would give customers and partners “greater choice as they build and extend agents and agentic applications that reason through complex, real-world business challenges.”
-
-When Oracle launched its platform for putting LLM-powered agents in its Fusion application suite - the target migration path for thousands of organizations around the world running Oracle applications - it said customers could use models from Cohere and Meta, while connecting other supported models through the platform.
-
-The Register has asked Big Red whether Cohere and Meta models will remain available, and we&#39;ll update this if we hear back.
-
-After Oracle launched Fusion Agentic Applications earlier this year, Gartner advised that there were unanswered questions about how the technology would be implemented.
-
-Balaji Abbabatulla, Gartner VP and vendor lead analyst for Oracle, said: &quot;Our position is that this sounds good, but be cautious. It doesn&#39;t necessarily look as glittery as it sounds. There are challenges under the hood which are not being overcome right now, but maybe over time.&quot;
-
-He also pointed out that Oracle and other vendors must still answer the question of who takes responsibility for AI decision-making should it go wrong. If an AI agent makes a bad decision at scale and speed, errors could cascade before anyone notices. Oracle&#39;s answer so far is monitoring and audit tooling, but Abbabatulla is unconvinced: &quot;I don&#39;t see a clear response from any vendor on the liability issue.&quot; ®
-
-&quot;Tell me lies, tell me sweet little lies&quot;
-
-AI-riddled social network adds button to report sloppy posts, ditches AI rewrite tools, and promises more to come
-
-PARTNER CONTENT: Databricks survey data suggests certified professionals lift partner delivery capacity, customer credibility, and AI readiness well beyond the individuals who earn the credential
-
-Chocolate Factory LLMs join Big Red&#39;s Fusion automation party
-
-Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-ShieldFont is available today if you&#39;ve got copy that needs protecting
-
-Survey finds more workloads run off-site than at in-house corporate facilities for the first time
-
-&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
-
-With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
-
-New Debian versions hit FOSSland in the form of 13.6 and 12.15
-
-Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
-
-Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
-
-Next version of Linux Mint’s desktop has both kinds of display server</div>
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">GPUs could explode to multiple TB with new storage-inspired memory tech</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>GPUs could explode to multiple TB with new storage-inspired memory tech</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-30</strong></p>
             <a class="original-link" href="https://www.theregister.com/storage/2026/07/30/gpus-could-explode-to-multiple-tb-with-new-storage-inspired-memory-tech/5281363">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-Virtually every high-end GPU and AI accelerator relies on high bandwidth memory (HBM), which can shuffle data around at multiple terabytes a second but can only reach into the gigabytes, with models often needing to be shared across multiple processors. However, an emerging storage technology could change that, boosting accelerator memory capacity from hundreds of gigabytes to terabytes.
-
-The technology, called high-bandwidth flash (HBF), is being developed by Sandisk and SK Hynix and aims to provide SSD-like capacities at HBM-like speeds.
-
-Conceptually, high-bandwidth flash looks and sounds a lot like HBM. It’s assembled by stacking multiple layers (16 in the case of Sandisk’s first-gen modules) of memory together, which boosts capacity and bandwidth. But where HBM uses DRAM, HBF aims to use NAND flash.
-
-Sandisk claims its first generation of high-bandwidth flash will supposedly achieve read bandwidths up to 1.6 TB/s [PDF], making it a bit faster than HBM3e but significantly slower than HBM4, which is already hitting 2.5 TB/s per 12-high stack. Future HBF generations are expected to push bandwidth to over 2 TB/s and eventually 3.2 TB/s.
-
-While bandwidth makes HBF interesting as an alternative to HBM, its real party trick is capacity. Because it’s built using NAND, Sandisk says it can achieve capacities up to 256 Gb per die, which translates to 512 GB per 16-high module. That’s more than 14 times the capacity of the HBM4 used in AMD and Nvidia’s latest accelerators.
-
-Continuing with the similarities, HBF modules share similar packaging requirements to HBM, which means you can expect them to be fused to the GPU die using advanced packaging techniques like TSMC’s CoWoS, or Intel’s EMIB and Foveros tech. Nothing particularly exotic as AI accelerators go.
-
-What’s more, the storage vendor doesn’t expect the modules to come at a power or price premium over HBM. And from a bits per dollar standpoint, HBF looks like a stellar option.
-
-If all this sounds a bit too good to be true, that’s because for all of HBF’s benefits, it comes with some rather significant compromises.
-
-The main trade off, as we understand it, is write endurance and access latency. HBF may perform like HBM on paper, but it’s still using NAND, which has a finite write endurance before it wears out and has access latencies measured in microseconds as opposed to tens of nanoseconds for DRAM.
-
-If you were to swap HBM for HBF, it (probably) wouldn’t perform very well and it’d wear out pretty quickly, rendering that $50,000-plus GPU of yours a paperweight — not ideal for a product that’s being asked to serve longer to suit hyperscalers&#39; depreciation schedules.
-
-Instead, Sandisk and SK Hynix propose using HBF to supplement HBM to make inference more cost effective. HBM handles all the write intensive stuff while HBF takes care of the read heavy parts of the pipeline.
-
-While we talk about inference as one job, it&#39;s really a collection of many that can broadly be broken into two categories, one that’s compute intensive and another that’s bandwidth bound.
-
-The first of these phases, called prefill, involves tokenizing and embedding prompts, feeding them through the model in one big forward pass, generating the key value caches used to track state, and outputting the first token.
-
-The second, called decode, reads the entirety of the model&#39;s weights, or in the case of a mixture of experts (MoE) models, their active parameters, from memory over and over again for each token generated. Because of this, how quickly an AI system can churn out tokens is directly proportional to how fast its memory is.
-
-Prefill is comparatively write heavy, so it makes sense to do as much of that in HBM as possible. But the decode phase is almost entirely read, which makes HBF an ideal medium for storing model weights as write endurance really isn’t a factor.
-
-It becomes a sort of write-once, read-many scenario, which is perfect for NAND flash since reads are essentially free. You could almost think about HBF a bit like a rewritable ROM cartridge for models. And because HBF is non-volatile, it becomes a bit like Intel’s Optane persistent memory. There is no need to wait for weights to reload from storage into GPU memory; they’re already there and ready to go.
-
-Sandisk’s slides propose a couple of different options including one that would feature 3.12 TB of memory across two stacks of HBM and six stacks of HBF.
-
-That much memory has implications for model and inference architectures.
-
-Most frontier models at this point employ a mixture-of-experts (MoE) architecture, which means the model is really a collection of routed sub-models called experts, a small selection of which are used to generate each token.
-
-This has allowed model devs to build models larger than would otherwise be practical to serve due to memory bandwidth constraints.
-
-Because HBM’s capacity is so limited, these experts usually have to be spread across multiple GPUs connected by extremely high-speed interconnects. But with high-bandwidth flash, even multi-trillion-parameter models, like Kimi K3, could be packed into a single accelerator, mitigating any of the performance bottlenecks induced by the chip-to-chip interconnects.
-
-On the flip side, HBF could allow a 72-GPU rack to run some truly massive models measuring hundreds of trillions of parameters.
-
-Training such a model presents its own unique set of challenges, and the number of active experts/parameters would be limited by HBF’s bandwidth, but it could work.
-
-So when can we expect to see HBF deployed in datacenters? If Sandisk is to be believed, the first samples should go out later this year with the first AI inference devices based on HBF available early next year.
-
-But for a variety of reasons previously highlighted by our sibling site Blocks and Files, we’re not holding our breath.
-
-One of the biggest factors is standardization. Memory is a commodity business and blazing your own trail with a proprietary technology rarely pans out — just look at Optane if you need evidence of that.
-
-Sandisk and SK Hynix officially kicked off this process earlier this year under the auspices of the Open Compute Project.
-
-“The key to AI infrastructure is to go beyond the performance competition of individual technologies and to optimize the entire ecosystem,” Ahn Hyun, president and chief development officer at SK Hynix, said at the time.
-
-There are also manufacturing considerations to be made. HBF is going to require a lot more dies per module than your typical flash storage device. What’s more, from what we understand, the specific kind of NAND used to make these modules is different from the kind used to make SSDs and other flash storage.
-
-Those modules will need to be copackaged with accelerators, which means SK Hynix and Sandisk will need to get buy-in from GPU and ASIC makers, which is going to take time. In fact, it wouldn’t be surprising for these modules to be ready years before the first chips designed to take advantage of them enter production.®
-
-&quot;Tell me lies, tell me sweet little lies&quot;
-
-AI-riddled social network adds button to report sloppy posts, ditches AI rewrite tools, and promises more to come
-
-PARTNER CONTENT: Databricks survey data suggests certified professionals lift partner delivery capacity, customer credibility, and AI readiness well beyond the individuals who earn the credential
-
-Chocolate Factory LLMs join Big Red&#39;s Fusion automation party
-
-Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-ShieldFont is available today if you&#39;ve got copy that needs protecting
-
-Survey finds more workloads run off-site than at in-house corporate facilities for the first time
-
-&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
-
-With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
-
-New Debian versions hit FOSSland in the form of 13.6 and 12.15
-
-Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
-
-Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
-
-Next version of Linux Mint’s desktop has both kinds of display server</div>
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">Open source project fools AI scrapers with poisoned font</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>Open source project fools AI scrapers with poisoned font</h2>
             <p><strong>www.theregister.com - Articles | 2026-07-30</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/07/30/open-source-project-fools-ai-scrapers-with-poisoned-font/5281303">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">ShieldFont is available today if you&#39;ve got copy that needs protecting
-
-If you don&#39;t want AI scrapers training themselves on your website, there&#39;s a new way to stop them that doesn&#39;t involve server-side blocking or praying they respect your instructions in robots.txt. A team of creatives have teamed up with a typography company to create a new type of font that’ll trick LLM scrapers into ingesting poisoned gibberish.
-
-Dubbed ShieldFont, the open-source project almost seems like magic if you&#39;re not familiar with the ins and outs of computer fonts. Look at a web page written using a ShieldFont font and it’ll appear exactly as one would expect: All the content words (the nouns, verbs, adjectives and adverbs that give a sentence meaning) are the same as the writer originally wrote.
-
-Inspect the raw HTML that a scraper reads from a ShieldFonted page, however, and you’ll see a sentence that’s essentially gibberish. Typing “good luck reading this, you useless robot” in the online demo version, for example, turns it into “good comfort reading this, you yellow barrier.”
-
-The goal, as outlined in the ShieldFont white paper, is not to get a scraping bot to reject the text as garbage, but to convince it that the text on the page is unusual but sensible. A noun will never be swapped for a verb, for example, and a verb will never be swapped for an adjective: Swaps only come from the same grammatical pool.
-
-It goes even more distinct than that, The ShieldFont creators noted.
-
-“Not just noun for noun: plural abstract noun about communication for plural abstract noun about communication,” the white paper explains. “There are about 250 such pools, built by crossing part of speech with sense category, concreteness, singular or plural, verb transitivity, verb inflection and adjective degree.”
-
-Around a quarter of words in a chunk of text end up replaced, the creators noted, with the hope the copy still gets ingested. Even if it doesn&#39;t, and the group notes scrapers do sometimes reject it, that still means your writing doesn’t get sucked up to train an AI – a win either way.
-
-This all seems a bit mystical unless you’re versed in the functions of fonts – specifically fonts in the OpenFont family, which ShieldFont is designed to work with.
-
-First off, you may be familiar with typographic ligatures, which combine two letters into a single character for the sake of making text look a bit neater, or conveying meaning in some languages but not others. Æ is one classic example in Latin script used in some languages but not others; there&#39;s also ﬁ, which combines a lower case F and I in a way that prevents the top curve of the F from bumping into the I’s dot.
-
-OpenType fonts all come with ligature tables that define how single glyphs or glyph sequences get substituted automatically by a word processor in a process known as glyph substitution, or GSUB. Even Google Docs supports user-configurable GSUB to an extent - you can fairly easily configure a substitution to automatically fill in for frequently used special words or characters.
-
-ShieldFont works on largely the same premise, but extends GSUB to entire words instead of letters or character pairs. So for example, a word like &quot;daughter&quot; in raw HTML might be rendered as &quot;journalist&quot; when it actually shows up to human viewers on the page.
-
-Here&#39;s what a paragraph written in the ShieldFont looks like as viewed on a web page (above), as opposed to what the raw HTML actually says (below):
-
-Even with that extended GSUB format, the font files are still quite small.
-
-We spoke with Amsterdam design studio Seneda & Abrucio, founded by Isaque Seneda and Gabriel Abrucio, the team behind ShieldFont, and they told us that the document/desktop fonts that are ShieldFonted are only around 5 MB, while compressed web fonts that include the entire GSUB dictionary still only come in at around 800 KB - large for your average font, S&A explained, but still considerably smaller than the desktop version.
-
-There’s more than one GSUB dictionary too - ShieldFont is shipping with three of them, and the GitHub repository explains how users can create their own to prevent reverse-engineering.
-
-But why poison a few words instead of just scrambling text altogether? S&A told us that they want a deterrent to scraping by introducing uncertainty and chaos into training data, not just a way to get scrapers to ignore some pages.
-
-“Pure scrambling fonts already existed,” the pair explained. “We wanted a mechanism with actual consequences: scrape without asking, and you can&#39;t tell if what you took was real. Concealment alone just gets you dropped and forgotten.”
-
-The default font that ships with ShieldFont is a modified version of Optik from Copenhagen typography shop Playtype, who partnered with S&A on the project.
-
-Speaking of reverse-engineering, ShieldFont isn’t perfect by a long shot. As the team notes in their white paper, it can be defeated with relative ease.
-
-A screenshot of a page that’s run through OCR avoids the poisoned HTML, as does any other method that a scraper might use to scrape user-viewed pages instead of raw code. Targeted AI that downloads its own copy of ShieldFont and runs through all three GSUB dictionaries can also decode a page.
-
-SheildFont could also impose an SEO penalty on people who use it, as search engines, like AI scrapers, read the raw HTML to look for content, as do translation apps and the copy/paste function built into computer operating systems. Screen readers used for those with visual impairment also have trouble with it too, though there is a feature built in to ensure screen readers can get the user-displayed text, albeit slowly.
-
-“[ShieldFont’s] purpose is not to stop a determined actor, but to slow unauthorized mass scraping by adding cost, friction and uncertainty,” S&A said in a press release. “Scrapers cannot know in advance whether a site uses ShieldFont or which mapping it uses.”
-
-As for whether ShieldFont is just an experiment or something S&A hope gets widely adopted, the pair told us it’s a bit of both.
-
-“ShieldFont is real and working today, but it&#39;s v0/alpha, so still improving,” S&A explained.
-
-“Longer term, it&#39;s a bet on collective pressure,” the ShieldFont designers added. “Nothing currently makes bypassing a publisher&#39;s requests costly. If enough sites make scraping expensive, scrapers have to change how they operate. That&#39;s the point where negotiation becomes possible.”
-
-ShieldFont is now available to try. The online demo encoder can be used to generate protected HTML for embedding in a website, and it’s also available as a React component and for CSS and CDN integration, all of which is explained on the project’s GitHub page and the ShieldFont website. ®
-
-&quot;Tell me lies, tell me sweet little lies&quot;
-
-AI-riddled social network adds button to report sloppy posts, ditches AI rewrite tools, and promises more to come
-
-PARTNER CONTENT: Databricks survey data suggests certified professionals lift partner delivery capacity, customer credibility, and AI readiness well beyond the individuals who earn the credential
-
-Chocolate Factory LLMs join Big Red&#39;s Fusion automation party
-
-Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-ShieldFont is available today if you&#39;ve got copy that needs protecting
-
-Survey finds more workloads run off-site than at in-house corporate facilities for the first time
-
-&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
-
-With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
-
-New Debian versions hit FOSSland in the form of 13.6 and 12.15
-
-Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
-
-Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
-
-Next version of Linux Mint’s desktop has both kinds of display server</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">Jailed Flock vandal wipes out three cameras, racks up thousands in damages</div>
-            <div class="meta">2026-07-30</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Jailed Flock vandal wipes out three cameras, racks up thousands in damages</h2>
-            <p><strong>www.theregister.com - Articles | 2026-07-30</strong></p>
-            <a class="original-link" href="https://www.theregister.com/security/2026/07/30/jailed-flock-vandal-wipes-out-three-cameras-racks-up-thousands-in-damages/5281224">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">A lesson for aspiring vandals: Take out all the cameras, not just the ones that flout your ideals
-
-Note to privacy-conscious vandals: If you&#39;re going to destroy Flock license plate readers, make sure you also take out the other CCTV cameras in the area that could catch you in your crime. Otherwise, you&#39;ll end up like one unlucky Californian.
-
-Marcus Bee, 40, was arrested by the Monterey County Sheriff’s Office on Tuesday, accused of joining the ever-growing band of US citizens damaging the controversial cameras popping up across the country.
-
-A police report filed this week stated that Bee, of Pismo Beach, was arrested on suspicion of attacking at least three Flock cameras in Lockwood and Bradley.
-
-According to the deflock.org website, which maps Flock camera deployments, there are only three of the automated license plate readers (ALPRs) running in the two communities – one in Lockwood and two in Bradley, roughly 25 miles away.
-
-Police allege Bee caused thousands of dollars’ worth of damage to “public safety infrastructure.”
-
-Monterey County Sheriff’s Office added that Bee was caught after “his actions were captured by other surveillance cameras located nearby,” along with other investigative leads.
-
-&quot;This arrest sends a clear message that anyone who intentionally damages public safety equipment will be identified, arrested, and held accountable,&quot; said Monterey County Sheriff Tina Nieto.
-
-&quot;These cameras have become an invaluable investigative resource that helps us solve crimes, recover stolen vehicles and ag equipment, locate missing persons, and protect our communities. Any attempts to disable these systems will not prevent us from doing our job.
-
-“In this case, the suspect&#39;s own actions were captured on surveillance cameras, leading directly to his arrest. We will continue to aggressively investigate these crimes and seek prosecution against anyone who targets public safety infrastructure.&quot;
-
-The case follows a similar one in Georgia last week, although local police were unable to identify the suspect(s) behind the two attacks, which involved setting two ALPRs on fire.
-
-The two attacks were timed fairly close together, although the phenomenon of inflicting criminal damage onto Flock cameras is something of a long-running trend.
-
-Several US police forces have been tasked with arresting alleged Flock vandals, including Jeffrey Scott Sovern, 41, who authorities believe was behind a spate of attacks on ALPR cameras in North Suffolk, Virginia, between April and October 2025.
-
-He said, at a hearing in June, that he believed the technology was unconstitutional.
-
-The Monterey County Sheriff’s Office said Flock’s cameras “are an important investigative tool” used to help solve various types of crimes, including missing persons cases, car thefts, and violent crimes such as shootings and homicides where suspect vehicles are involved.
-
-Contrary to the opinions held by many, it went on to say, the cameras “are used exclusively to support legitimate criminal investigations,” not to support the US government’s anti-immigration efforts.
-
-Likewise, Flock has repeatedly denied offering contracts to agencies such as Immigration and Customs Enforcement (ICE), although reports suggest police were instead carrying out searches on ICE&#39;s behalf. Customs and Border Protection (CBP) has also allegedly used Flock data in its own immigration investigations.
-
-Other critiques of the technology used by thousands of police departments across the US include problematic abuses, such as police officers using it to stalk romantic interests.
-
-The Institute of Justice is aware of at least 26 cases of this behavior, it reported earlier this month, with the majority taking place since 2024.
-
-Additionally, the American Civil Liberties Union (ACLU) takes issue with the scale of data gathering by ALPRs.
-
-It claims that less than 1 percent of the cars scanned are connected to crime, yet they still have details added to a database, such as vehicle manufacturer, model, color, license plate number, bumper stickers, and scratches.
-
-Flock CEO Garrett Langley claimed this week in an interview with The Drive that the company’s cameras were used to solve around 1 million crimes across the US last year.
-
-Responding to claims such as Sovern’s – that the cameras are unconstitutional, specifically that they violate Americans’ Fourth Amendment rights – Langley said there are no legal issues, and he doesn’t foresee any arising in the future.
-
-Flock’s spokespeople have repeatedly condemned the cases of camera vandalism, highlighting the risk of losing evidence that could be crucial to solving ongoing criminal cases. ®
-
-&quot;Tell me lies, tell me sweet little lies&quot;
-
-AI-riddled social network adds button to report sloppy posts, ditches AI rewrite tools, and promises more to come
-
-PARTNER CONTENT: Databricks survey data suggests certified professionals lift partner delivery capacity, customer credibility, and AI readiness well beyond the individuals who earn the credential
-
-Chocolate Factory LLMs join Big Red&#39;s Fusion automation party
-
-Trump&#39;s unpredictability is pushing governments and businesses toward open source while Britain remains glued to US tech
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-High-bandwidth flash promises SSD-like capacities with HBM-like speeds, but it&#39;s not all unicorns and rainbows
-
-ShieldFont is available today if you&#39;ve got copy that needs protecting
-
-Survey finds more workloads run off-site than at in-house corporate facilities for the first time
-
-&quot;I&#39;m sorry, Dave. I&#39;m afraid I can&#39;t do that&quot; is an effective sales pitch for open source
-
-With microscopic latencies and otherworldly write endurance, it was perfect for today&#39;s AI workloads – but gone before they arrived
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
-
-New Debian versions hit FOSSland in the form of 13.6 and 12.15
-
-Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
-
-Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
-
-Next version of Linux Mint’s desktop has both kinds of display server</div>
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
@@ -4098,96 +3604,96 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Anthropic says Claude AI hacked three companies during cyber tests - Reuters</div>
-            <div class="meta">2026-07-30</div>
+            <div class="title">FIFA to proceed with consultation process over stake sale plans - Reuters</div>
+            <div class="meta">2026-07-31</div>
         </div>
         
         <div id="content-66" style="display:none;">
-            <h2>Anthropic says Claude AI hacked three companies during cyber tests - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNQ0FyTjVjNWQzY2dYblVWRlNJdGJwYkVuVVlXbkhBNURXR2VYenltaUVUR2I0emloLVB5S0dBTnpwUDJ0Q013dU1DQmZrLVhPeXcxY09pb0hyS3R4Q0ZFa2x4Y3Y5bzNJMGdtOVZZWE5iMFpjNmNLNjNOZlNKRnlBcmdRVW1NTUdrX1VYRk1nYjBKM3JCa3IwUENVbHRQNW44b25HRk91MUxNVVlDNXNxYTJWNjhLMHo0SzVqY203Yw?oc=5">Visit Original Website</a>
+            <h2>FIFA to proceed with consultation process over stake sale plans - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-31</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQWHV2NFBiNDJaZWFBMktGVnVoNFVrSlBYQ3l0LW1nS2U2aVoxTDZIR0J3Nk55dGlVeVVUdU16RnIzZzZOTkxfYmwxcjZKVUdUdlFRX1pJc0FOM0xESmIxVkZkeDB0ektpYlM3WEI4dlFsRUNqdzU5OUFpREh6RXpzNm0yN3ZTendFbFJVTkV1UldkOVRpOHB2MThULWlPUDFWTWExNXl2YnVUZnZ3M0ZJ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump says 'Board of Peace' reaches Gaza disarmament deal - Reuters</div>
-            <div class="meta">2026-07-30</div>
+            <div class="title">Oil falls more than $1 on greater flows despite US-Iran war - Reuters</div>
+            <div class="meta">2026-07-31</div>
         </div>
         
         <div id="content-67" style="display:none;">
-            <h2>Trump says 'Board of Peace' reaches Gaza disarmament deal - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxOc1pSMmZLbHZsNjFobXRnOF8tSGRMa1V5Vmh1eW9ydUZvWFJDNXQ4Vm5SUXBzQUNOdGdDQms3NTFlZTV6WEM2Q041UE1ySE9PYXpXRHdNNTcwOU9YRE1GdVdWTWlvend3TUxWclBxaFpRWG50dnNsc1FqNXdnZnUzeDR0TnQxVlNSWDBubWh2S3hpOFYwdGMxMVlsNzAwTzFCVnlnSzJCVDBuZw?oc=5">Visit Original Website</a>
+            <h2>Oil falls more than $1 on greater flows despite US-Iran war - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-31</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNTWtnbUQ2S2JIalNxeXVETFdYcU95VDBtOHpPdlAxWDkzd1B0VVBPNnNpMW8xTGVRbkJ1NTFqbmJ0Ui1ucUUtSVhZeXZwRTQ4eE5FTWRkdzBlZEVJUzZHR0tKdnZTeXFoQlFPSHpGX0pqaEVVU3RhWFJqR2xNZnVJeDdOaG9ONUEtaThtRXhXakladzRkT2JvR1hxSEREVmxkRGRjQWw5ZTNoeTQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">HSBC to sell $25 billion Australian loan portfolio to Blackstone - Reuters</div>
-            <div class="meta">2026-07-30</div>
+            <div class="title">Drone attack ignites blaze at energy plant in Russia's Volgograd, governor says - Reuters</div>
+            <div class="meta">2026-07-31</div>
         </div>
         
         <div id="content-68" style="display:none;">
-            <h2>HSBC to sell $25 billion Australian loan portfolio to Blackstone - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNWmNEbzNraXlwVEpqXzh4ZFBmZWlxQkk0Zk9WaVdhQ3owRHhzYWRUUnBjYnpyWG5ia3dlOTJNbFhNZzNPUGtZUVY5RkgtRzdYcklJUGp5MWRmWFhaT3RqcV80bS1JVnVBVm83UV9BWjdxSlVaUGlGVlJRQ0otYU5hVVI3TENKZ3o1UGFQTDdGenJTQjNJb2VjVUJXRnhGZlphdmkxQTBINXJVemZkU0pST2IwQlNyRFh2Vk13?oc=5">Visit Original Website</a>
+            <h2>Drone attack ignites blaze at energy plant in Russia's Volgograd, governor says - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-31</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNMTFsUjZfbHpiRXk1SEF4dzNmbkp0Zk92c05WdVhucm95SmpIWWtnMEI4aXhDM0R6bEhTeno2eTdaRjhnUm9RM0I2LU54d1pmcXQyYkJtVVppaU1aTXdNRHlqLVpoUHpFU010a2Jxa19pNVhxVnk4SFNTNTVGREpha0VhLVA2Q0U0M00yMXQtQWFxR1FZRlJuZ0hjdWlPcTVHczVaOUVUQ1k2aUswWnExb2RMTEpXZFN4RnExcQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Apple disappoints with forecast dogged by supply chain struggles - Reuters</div>
-            <div class="meta">2026-07-30</div>
+            <div class="title">Gold slips but on track to end four-month losing streak - Reuters</div>
+            <div class="meta">2026-07-31</div>
         </div>
         
         <div id="content-69" style="display:none;">
-            <h2>Apple disappoints with forecast dogged by supply chain struggles - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxPanFaaGdUMnRidmVSWXhQVXVDeG9fazRla240ZEFBdmhIcGJINkVvUVRhb1d0NGx2cEluMnlxYWdjVWpSWmJLbDdiWXE1LVVxVGR0Zm9yeVVfS1Z5RFN1cDB2M0ZRelQ2MnFhZHlfdm9ySHREOFhJVFFRc2xOMUowdzVISlY4aHpoQWRKYzcwN3ZQNV9mSFV6T3FPYjdobDFOdmF3WVRzODk5Z0Z0WF9mSW5xZS1IVXlM?oc=5">Visit Original Website</a>
+            <h2>Gold slips but on track to end four-month losing streak - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-31</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPd2tTZWFrV1E2TTVkdXlnRkRoZ1ZyZlJaUE5IQmREM1BWNWdKa2JWWHpuQm91NkltbXRaWWllTHNiWDJQQWRiYVBqd2xWN1FKdUxrQ0tucTE4S0VkcjhfcktHZEdvcTdJbVlvNnh2dDVURkU2OE9tbC1weWkxN2NFcFJrQ1JwT2xKNkhFZUF6NFhTQmFrR2M3cld6aGNYOXlLMmt2aVVSTjAyTUk?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Amazon lifts investment plans after strong cloud sales; shares jump - Reuters</div>
-            <div class="meta">2026-07-30</div>
+            <div class="title">Tesla's China operations, the EV maker's global production powerhouse - Reuters</div>
+            <div class="meta">2026-07-31</div>
         </div>
         
         <div id="content-70" style="display:none;">
-            <h2>Amazon lifts investment plans after strong cloud sales; shares jump - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOY0xqQmlIUXJydk1wNzhibDVjTzVaekhCb3A1NWs2cm1aQUVtWU5tVEswRkhpdjE4Z3hzVk5MbmtBWUYtdnlPT3Q5a3lDRUdYd0prRnJhWXBqN1dpTVB3N0dFQW1oUGZYWHgyX19maWlvQkNKWnpBXzNCSUdKcThxdWxGTkhoTVZsOHdGZENlMXZHb1NnYzY2Y2ZBRVVkVURPd0pKeHZVb2ZjNzNGMnpTLUNWeE8?oc=5">Visit Original Website</a>
+            <h2>Tesla's China operations, the EV maker's global production powerhouse - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-31</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQWFl3ZFdkN1FxZ3ppaU9KZ29xeWQ1OTlKRDZxUzRmcm1YMm16Mkw3VnJXOS05ZHhhbDZWS19xY0VIM3hoR2R3akZPZm9GM2F5eWM2M3lIbWctaGJZTk9XSGZWM3Q0MG5nZUZaWnJ3bXlTa0pmTUtBX0VjeTNKYnVXRXh0SFNoYWh3cWlXREt5Sm1pNVVpRXNyNUFWc09fQUJfakhTUWljVkM1Yi1ESmlMb080ODllLXgxMWRvUVRvSEdoTk9GUkxr?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Trump orders restrictions on export of critical minerals scrap, White House officials say - Reuters</div>
-            <div class="meta">2026-07-30</div>
+            <div class="title">Rare Japan-Korea joint intervention shakes up yen and won - Reuters</div>
+            <div class="meta">2026-07-31</div>
         </div>
         
         <div id="content-71" style="display:none;">
-            <h2>Trump orders restrictions on export of critical minerals scrap, White House officials say - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-30</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQNU14WEhPWkY3aVFrOTdOWDhod2s5WVB4VDRFTm1CbGptaDRWNDVrV3djUmVyR3JkZVEyTkNCcUdFVG9icGZFMFRnZWxRSzE4Z0o3cjc2WkVuTTltSGtOMGZzYnZtMi1pUFhCUGU1Y2lWRmVTOWNPcDVqbXRXbVJMTWhqMUNDNzZUZzNGSURzTEhrUkxqZW92VTdia0QwUkNaQ1U2WUVVRjV0a1p3LU1OVjdYRTBuT1ZHdUV3cHYwWjB5VnB2a3dibmM2QQ?oc=5">Visit Original Website</a>
+            <h2>Rare Japan-Korea joint intervention shakes up yen and won - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-07-31</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNakNEam12bmtyQWRfdFVMZXBJSmc1N2Z0WUM5RHVVMDM4ZEkzNndTeVlCNXdzUXBjUS14NUUwaFliRDk3MThnNC04enZ2MWxfXzBYUTdYbDd6TDNVdlBrN0dRWXMtdGZQb1RJWTBnaUFfbXBRZVZQbms3amtBMmFGZThHOHNpVXhCMlJHNHZRQXZxa2ZHVWoyaEV4WXNzNE9qSGt6RmtlYXpsUQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-72')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - The Debrief</div>
+            <div class="title">Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - thedebrief.org</div>
             <div class="meta">2026-07-23</div>
         </div>
         
         <div id="content-72" style="display:none;">
-            <h2>Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - The Debrief</h2>
+            <h2>Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxQaFduYXI1TlZLMVlsc25Xay0xalZJQkQxZ1hhWWJKaXN5ZmU0bl8zdjdhYW9pYWlOU1JUVTA0YXFSM2lYengwb09TelVaQ2JEOE52M1E0bXA1dTA4bE5OZTBGSjZqdHJkNGx5TE5hWmVlVWxiX2pQNkgwcllXb0JPMzd0UDVQOHQ4ak50Sm5ZZm5DbmJmcENBSGNmLVJPbE50UVlxVGFRbE13WTRNd2c2Vm56TThNSWdQQ2hDYlRQWjM5Unh3amVyVmZ3?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -4196,12 +3702,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-73')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - The Debrief</div>
+            <div class="title">2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - thedebrief.org</div>
             <div class="meta">2026-07-27</div>
         </div>
         
         <div id="content-73" style="display:none;">
-            <h2>2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - The Debrief</h2>
+            <h2>2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQcFN5Z05uc2twMmJfRWRoWDBleUp4cmowbFNmNktMb1FLaU5hak53a1VhQzBZV1RQbm54VVJsWVZmZlVuTy1VUGpwMDlaa2FPNlFsN0J1OWN6X1hhUnV3ZTBtQkU2akdSa0xSQTNfdDh1S2JwU3FaSWJJSXpSTWMxVFBoZ184VHBFYnNXV0JrV1pPNHFodm5xYjZ0MEtmN1pjOWtqc2pfamxNM2IxdHc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -4210,12 +3716,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-74')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - The Debrief</div>
+            <div class="title">An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - thedebrief.org</div>
             <div class="meta">2026-07-26</div>
         </div>
         
         <div id="content-74" style="display:none;">
-            <h2>An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - The Debrief</h2>
+            <h2>An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-26</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxOWjQ2ZjNnX1RsaHRRendOZlVzVlFheEZkWXRGNDZtRndxQnB6cnIyeDEyYnQyZkpIdlNhMENQbm9sTjdLZXlnRW1BSEVsRjl0cWV6WjM5UktJTFF4UUNra0xHZW5SQTVjZE9xODFSU3RIZWJ6dGZWS0l5R2E0dVBMR2R5RlZ4Y3pTN2EyVnVfWks1NGVFc05vWVV2SVhZRWQ4SXdTcVJTdUFDYnpUZk1IUW53ZnZiYmpuSGhuOEl5OA?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -4224,12 +3730,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">The World War II Atomic Blast Over Hiroshima Created a Previously Unidentified Multicomponent Metallic Alloy - The Debrief</div>
+            <div class="title">The World War II Atomic Blast Over Hiroshima Created a Previously Unidentified Multicomponent Metallic Alloy - thedebrief.org</div>
             <div class="meta">2026-07-30</div>
         </div>
         
         <div id="content-75" style="display:none;">
-            <h2>The World War II Atomic Blast Over Hiroshima Created a Previously Unidentified Multicomponent Metallic Alloy - The Debrief</h2>
+            <h2>The World War II Atomic Blast Over Hiroshima Created a Previously Unidentified Multicomponent Metallic Alloy - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-30</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxQZ1plaUUtRHRxTEF3S2FuVDlJcDV3c0JkbFZDM09hY09UdGcyZkhFdHVYVjVrTWt2VDdQNTZBQURZVjQtVEN0R2xmanE5dmNvaGJBbTRBUEtaRWxteE50WUFKUGhBMURaRG9vN1hOZTBueVNPOWJ5OFZmaG9aRlpXTGxVOU55dnVMNDl6SWZiNnFqOWpLX3hmTGk5VEw4cFN2U3dMcldBb0lwNDFXdW5mRnYyNEl4aThEQ2RFbW9QOC1MUnhqSnRDT0ZLM1M?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -4238,12 +3744,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - The Debrief</div>
+            <div class="title">5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - thedebrief.org</div>
             <div class="meta">2026-07-28</div>
         </div>
         
         <div id="content-76" style="display:none;">
-            <h2>5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - The Debrief</h2>
+            <h2>5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-28</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxOejFBaHZJekhsRFMydGlSTFl4OXN2aTdmZGd2YnVmYl95Y3ZPQjVQUUE3YlFiTzVCTHZsb0Z1S2dzQmlEMHdvaGo4LW1DRC1ZczBBVjhwUWZxMTI4Z0xyeE1XSnhJRTRnZklxWEdaaGZ4bWR1b204b3V0dzFhS0xIbEwxVThSMmNta3ZiSTdaMEZnd2ZYSGhielhwQ0dKNXZlYjJNLUJRdVpadzRkQThBOUFOZjdrNFA2SzAzbFJYYkF0VWkwZkZVQWhJbGRLZU9qNUdHdmFpQnRCOHpGeVVUY2JYNllDQ2RObnc?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
@@ -4252,12 +3758,12 @@ Get the most important tech news in your inbox each week.</div>
         
         <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:thedebrief.org" - Google News</div>
-            <div class="title">5,000-Year-Old Blue Pigment Reveals Evidence of Ancient Egyptian Nanotechnology—Now It’s Finding New Life in Biomedical Imaging - The Debrief</div>
+            <div class="title">5,000-Year-Old Blue Pigment Reveals Evidence of Ancient Egyptian Nanotechnology—Now It’s Finding New Life in Biomedical Imaging - thedebrief.org</div>
             <div class="meta">2026-07-28</div>
         </div>
         
         <div id="content-77" style="display:none;">
-            <h2>5,000-Year-Old Blue Pigment Reveals Evidence of Ancient Egyptian Nanotechnology—Now It’s Finding New Life in Biomedical Imaging - The Debrief</h2>
+            <h2>5,000-Year-Old Blue Pigment Reveals Evidence of Ancient Egyptian Nanotechnology—Now It’s Finding New Life in Biomedical Imaging - thedebrief.org</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-28</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxON1dCY09XZmUzRURadG1LWUxmbEdORVUzOFZkN0d4d2MxYllETkpSVlU4cExKT3VhWTVPVGZsMnZSM0lvZmIwZFpJWDJHd0RnVDIyeV9JczY3Tk8wNlE0ZjFReDlpeXQ5cXI3Ri1wYVpFNjMzODgzNUVhZmx5aFhhWUpibTM2cU5DYkE0a3NyN09kWjFiZDVaQm9SVk91MlVkcGhXeDVpczBvWFF2WkRRTkdPczlIZU1OalFPOENELTU4cGFiMnJsWmtUbjRnelRXamJuYnpjQzY0blkwb2gwUDZBZw?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
