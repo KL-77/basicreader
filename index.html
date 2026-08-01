@@ -154,11 +154,149 @@
     
         <div class="card" onclick="openModal('content-0')">
             <div class="source">Ars Technica - All content</div>
+            <div class="title">Defcon's new badge is a security key you can see inside</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-0" style="display:none;">
+            <h2>Defcon's new badge is a security key you can see inside</h2>
+            <p><strong>Ars Technica - All content | 2026-08-01</strong></p>
+            <a class="original-link" href="https://arstechnica.com/security/2026/08/defcons-new-badge-is-a-security-key-you-can-see-inside/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">It’s been a longtime feature of the annual Defcon hacker conference that attendees come away not only with knowledge of new software vulnerabilities and hacking techniques but also an elaborately designed conference badge—often electronic masterpieces embedded with intricate puzzles, complex crypto challenges, hidden Easter eggs, and even the mechanical gear trains of a watch.
+
+Each year’s badge creator endeavors to top previous designs and blow the minds of hard-to-impress hackers. But this year’s badges take a different tack. Instead of the badge designs being the star, it’s what is inside the hardware that will really stand out.
+
+This year, Defcon asked legendary hardware hacker Andrew “bunnie” Huang to create the badges—revealed here for the first time—and they include an innovative open source chip that Huang designed and that aims to do no less than advance the state of security, transparency, and trustworthiness in computing.
+
+But the chip isn’t just part of the badge. Its core module can be removed and used after the conference as a hardware security token, giving the badge a second life beyond Defcon.
+
+The chip—called the Baochip-1x—is a “mostly” open source microcontroller that has been three years in the making and fulfills Huang’s years-long dream of making a chip whose security is verifiable. Huang has published the source code for the Baochip’s operating system, firmware, processor core, cryptographic engines, and input-output system, on GitHub, making these components available for inspection and use.
+
+The chip is also packaged so that researchers can peer inside to check the silicon itself and compare what they see against the published design, rather than having to trust that the manufactured chip is what the designers intended.
+
+Computer chips are traditionally black-box components with an opaque casing that obscures their circuitry. Even previous open source chips that made their specs and code available for users to examine were encased in impermeable plastic, creating a supply-chain problem. Users had to trust that nothing changed during the manufacturing stage of the chip, such as a backdoor component being added to it.
+
+Unlike conventional chips encased in opaque plastic, the Baochip is packaged so that infrared light can be shone through the back of the silicon, allowing the chip’s internal structures to be visually inspected.
+
+Huang plans to demonstrate the technique at the conference, allowing attendees to inspect the chip under an infrared light.
+
+“I’ve been doing a bunch of stuff along the lines of trust and silicon and verification transparency” for years, Huang tells WIRED. “It’s all … this kind of story arc I’ve been on … to try and get a chip that we can trust down to the very core, down to the transistor … You can actually … see the RAM arrays … on the chip.”
+
+Building a new chip is an expensive project that can cost millions of dollars for fabrication. But Huang got a big break three years ago when a company called Crossbar reached out to him. The company wanted to create a new open source and secure chip but didn’t know how to go about it. Huang agreed to assist on one condition: that they let him piggyback on their manufacturing run by placing his CPU on their chip wafer, allowing both designs to share the same manufacturing run rather than requiring Huang to fund a separate run.
+
+“They look at it as, if they put me on the chip, they get two products for the price of one,” Huang says. This kind of piggybacking is not unusual, he adds, though it’s not something the industry likes to discuss publicly.
+
+The result is a Crossbar chip that includes both Crossbar’s microprocessor and Huang’s. The Baochip is essentially the same chip but with the Crossbar microprocessor disabled, since Huang doesn’t have the rights to distribute it.
+
+The Crossbar version of the chip uses a proprietary ARM core, whereas Huang’s version uses a RISC-V core whose implementation is open source. The RISC-V instruction set is also open and publicly documented. The two versions can use the same underlying infrastructure and peripherals while activating different CPU cores.
+
+There are some closed-source elements on Huang’s chip. Some low-level physical-design and manufacturing elements, including those associated with TSMC’s 22-nanometer fabrication process, are proprietary. “But … if you look on the spectrum of how open you can get things, this is … very, very far beyond any [other] security-oriented chip,” Huang says.
+
+Past Defcon badges have used commercial off-the-shelf chips rather than custom-designed open source silicon. The idea for using the Baochip was sparked by a meeting late last year when Huang spoke with Defcon founder Jeff Moss about his progress in developing his open source chip. He told Moss that he planned to release it this summer through his company, Baochip.
+
+Moss realized the concept behind it matched perfectly with the conference theme this year—agency—which Defcon defines as the technologies we use and the choices we make that increase self-determination. And he and Huang realized it would be a great opportunity to help bootstrap the chip’s adoption. Until now, the Baochip has been distributed only in a small development release; the 27,000 Defcon badges represent its first major distribution.
+
+Moss had one requirement for the badges. He wanted them to have a life beyond the conference and not be something that people would just throw in a drawer or a landfill after the event. He’s long been frustrated with the design and limitations of hardware security tokens and crypto wallets that, at the hardware level, can be cracked, so he thought Huang’s chip could be a more secure alternative to existing authentication tokens and wallets.
+
+“I’ve always kind of dreamed of this idea where you can take your secrets, put them in hardware, and then if an attacker gets in, they can’t quite get your secrets,” Moss tells WIRED.
+
+The badge’s detachable module can serve as a FIDO hardware security token. Its software supports time-based, one-time password systems and password management. Huang says it is “probably the world’s first open source security token that you can fully inspect all the way down to the bootloader [and] transistors.”
+
+The removable module also includes a camera for scanning QR codes to register them to authentication systems. But in keeping with Defcon’s privacy practices and its ban on surreptitious photography at the conference, the camera is very low resolution and nearsighted, and the chip by default only utilizes the black and white data from the camera and doesn’t support photo storage.
+
+“It’s … great at scanning QR codes and pretty much bad at everything else,” Huang says.
+
+The badge doesn’t eschew conference life. Huang still included features designed to encourage attendees to interact. The badges, for example, have LED lights that flash in different color palettes and patterns depending on the type of badge—there are different ones for general attendees, speakers, and goons (the small army of volunteers who run the conference) as well as the special black Uber badges that go to contest winners and special VIPs, which give them free Defcon attendance for life. Each badge type starts with a specific color and flashing pattern, but users can add to their colors and build more complex flashing patterns when their badges communicate with other badges.
+
+The chip runs an operating system written in Rust and includes secure boot, a true random number generator, and hardware features intended to harden it against attacks. Huang believes it will be particularly resistant to remote, nonphysical attacks.
+
+The chip also uses resistive RAM, or RRAM, a type of nonvolatile memory that Huang says is designed to make physical extraction of stored data more difficult than conventional flash memory. With flash memory, he says, “if you de-layer it down to the actual flash cells … you can just see the ones and zeros literally on these chips.”
+
+Huang is cautious, however, about overhyping the chip’s security capabilities. He estimates that it could withstand attacks involving tens of thousands of dollars in resources, but says an adversary with millions of dollars and a sophisticated hardware-analysis lab could likely defeat it.
+
+“I actually think it’s one of the most secure chips you can get out there, but I [also] think most chips have been oversold in terms of security,” he says.
+
+Huang says he likes the fact that the chip will be stress-tested by Defcon attendees and knows they will likely hack them and expose flaws that will help him make them even more secure.
+
+“I fully expect there will be zero-days [that people find in the code]. It’s actually … one of the features … of launching at Defcon,” he says of designing an open source chip capable of being examined.
+
+Today the chip can function as a YubiKey-like security token; but in the future, he says, it could become an HSM or run other software such as Linux. The hardware uses a 350 MHz RISC-V processor with 2 megabytes of SRAM and 4 megabytes of RRAM, which he says puts it “on the edge of being able to run Linux,” and it has 4x 700MHz PicoRV32 cores for doing input-output. It already runs MicroPython and has C and Rust development kits.
+
+Huang plans to expand the chip’s features himself, but he also expects DefCon participants to build on what he’s provided and make the chips their own.
+
+This story originally appeared on wired.com.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-1')">
+            <div class="source">Ars Technica - All content</div>
+            <div class="title">How fruit flies chase invisible ribbons of smell to get to their source</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-1" style="display:none;">
+            <h2>How fruit flies chase invisible ribbons of smell to get to their source</h2>
+            <p><strong>Ars Technica - All content | 2026-08-01</strong></p>
+            <a class="original-link" href="https://arstechnica.com/science/2026/08/how-fruit-flies-chase-invisible-ribbons-of-smell-to-get-to-their-source/">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">A fruit fly hunting a piece of rotting fruit or a mate navigates by smell, following plumes of odor. Out in the wild, turbulent air swirls these plumes into a chaotic, broken landscape—dense chemical filaments laced through long stretches of clean air. A fly trying to find the source gets the smell in stutters, from constantly shifting directions, with no guarantee that a next whiff is coming at all.
+
+Scientist had little idea of how fruit flies manage this chaotic signal with a brain the size of a pinhead. For a long time, biologists stood by the “surge and cast” model, which posited that insects solved this with hardwired reflexes. The idea was that, when a fly registers the plume with olfactory neurons in its antennae, it simply flies upwind until it’s gone and then flies side to side attempting to catch it again. But now a team led by Vanessa Ruta, a neuroscientist at the Rockefeller University, has shown that fruit flies do something far more advanced.
+
+The trouble with the traditional surge and cast model is that it struggles to explain how an insect tracks a meandering plume across long distances. Chemical cues floating in the air in the natural environment are often sparse and unreliable. But those same features make the mechanism behind olfactory navigation notoriously difficult to test. “Odors are invisible,” Ruta says, “and often they’re carried along by turbulent airflow.” We’ve got no way of knowing what the animal is smelling from one moment to the next.
+
+So, Ruta’s team designed an experiment to learn that. Scientists tethered a fly (Drosophila) in place over a small ball floating on a cushion of air in complete darkness. “It’s a little fly-sized treadmill,” Ruta explains. As the fly walked on the surface of the ball, its turns steered a nozzle that blew a steady stream of air at its antennae, so the insect always felt wind coming from a fixed direction, as if it were walking across an open field. Then the researchers piped apple cider vinegar into that airstream, switching it on and off depending on the fly’s position on this virtual field.
+
+This way, the researchers could precisely control the intensity and direction of the odor the fly was registering. “We could actually generate any kind of arbitrary chemical landscape,” Ruta says. The team could simulate a lifelike olfactory experience with turbulent plumes, straight-edged corridors, and gradients of smell running backwards. “It’s actually not a very complicated virtual reality system, but it is actually extremely powerful,” Ruta adds.
+
+For once, the experimenters knew the identity and quantity of every molecule the fly was receiving. The first thing they tested was the surge and cast model. And it did not hold up well.
+
+In the experiment with a straight corridor of vinegar about 50 millimeters wide, flowing with the wind, the flies did not do the obvious thing and march up the middle. Instead, they hugged one edge, riding it through a repeating two-step process. The moment a fly crossed into the odor, it would whip around and move back out, loop through the clean air outside, then make a beeline back to the boundary. The team called it edge tracking.
+
+The flies also spent far more time loitering outside the plume than inside it, even though nearly all their forward progress toward the source happened during those brief dips into the scent. “Flies will track meters along the edge of a plume and never cross over,” Ruta says.
+
+The first explanation the researchers came up with was that the flies were climbing a rising gradient of odor toward the source. But they didn’t do that either. When the team reversed the gradient, so the vinegar grew fainter as the fly advanced, the flies tracked the edge just as well.
+
+The team also worked with flies genetically engineered so light could switch their olfactory neurons on directly, in both antennae at once. When scientists swapped real odor for a beam of 660-nanometer red light, the insects tracked the edge of this light plume flawlessly.
+
+The real surprise, though, came when the team took a close look at what the flies were doing when there was no smell at all to guide them.
+
+When the researchers made a plume vanish while a fly was outside it, the insect kept heading back to where the edge should have been. Rather than searching at random, they were heading to where they knew the odorant should be. “It looked as if they had a stored memory that was still steering them in that direction,” Ruta says.
+
+So, the team started looking for these stored olfactory memories. The first candidate was a brain structure called the central complex, which is like a navigation hub in the insect brain.
+
+Using fluorescent imaging to watch neurons fire in real time, Ruta and her colleagues pinpointed neurons that acted as the fly’s compass. Throughout edge tracking, that compass stayed locked to the wind, indifferent to whether the fly was in odor or out. When the team silenced these neurons, the flies got lost entirely, wandering upwind with no idea how to get back.
+
+The neuronal compass, though, was just one piece of the puzzle. To find the smell that got lost in the wind, the fly must have a goal—a memory of what to search for. The team went searching for that memory.
+
+The team located olfactory memories in another group of neurons found in something called the fan-shaped body, already known to encode where a fly wants to go. Like in a compass, the activity of these neurons acts like a pointer, but in this case, the one that marks the fly’s intended destination. Out in the clean air, this pointer swung away from the compass to aim at the plume’s edge, several seconds before the fly physically turned to head back. Just as with the compass neurons, silencing the neurons encoding the odor’s edge position made it impossible for the flies to find it. “When they get out, they have no immediate sensory information to guide them back to the plume. That’s when the memory becomes important,” Ruta says.
+
+To confirm whether the flies memorize where the plume’s edge is, the team tested whether the insects could update these memories.
+
+To understand what might be going on in the flies’ brains, the team built a computer model in which a simulated fly flips between a leaving mode and a returning mode, updating a stored plume’s edge position every time it crosses the boundary. It turned out the most important piece of data was the entry angle, the direction from which the fly last hit the plume. Without the angle, the simulated flies could no longer edge track.
+
+Then the researchers went back to real flies to test how fast they could revise their olfactory memories. They had flies track a plume tilted 45 degrees, then abruptly flipped it to the opposite 45-degree angle. At first the insects were lost, searching in the old direction. But a single training session—a puff of vinegar delivered whenever a fly happened to walk the correct new angle—was enough to fix the issue. The flies instantly rewrote their internal goal and began tracking the new segment.
+
+“We could write in new entry angles,” Ruta says. To her that was some of the strongest evidence that a memory, not a reflex, was responsible for fruit flies’ olfactory navigation.
+
+But it doesn’t necessarily mean the old surge and cast idea is done for.
+
+When the team ran the flies through a simulated natural plume in their computer model, the entry-angle memory worked best near the source, where the plume held together as a coherent ribbon. Farther downwind, where it shattered into chaotic filaments arriving from every direction, the memory quickly grew unreliable and got overridden. The team speculates that’s likely where the flies fall back on simpler reflexes. “Animals are adapting their strategy,” Ruta says.
+
+She suggests they probably lean on memory when the world is predictable and abandon it when it isn’t. One of the first things the team wants to examine now is whether the memories are relevant for tracking very turbulent plumes in living flies or are in fact replaced by other mechanisms when things calm down, as their model suggested.
+
+“There’s an increasing appreciation of Drosophila and the power of this fly to provide insights into core computations translating fleeting sensory signals into stored spatial goals,” Ruta argues. Because the fruit fly has one of the simplest and most extensively studied brains, such insights, she thinks, should be relevant for how this process works in the rest of the animal kingdom. “It’s a fundamental feature that all animals are able to carry out, including ones with more sophisticated, complex brains like our own,” she adds.
+
+Nature, 2026.  DOI: 10.1038/s41586-026-10827-7</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-2')">
+            <div class="source">Ars Technica - All content</div>
             <div class="title">Not just Neanderthals: Ghost lineage in Africa left its mark on our DNA</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-0" style="display:none;">
+        <div id="content-2" style="display:none;">
             <h2>Not just Neanderthals: Ghost lineage in Africa left its mark on our DNA</h2>
             <p><strong>Ars Technica - All content | 2026-07-31</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/07/not-just-neanderthals-ghost-lineage-in-africa-left-its-mark-on-our-dna/">Visit Original Website</a>
@@ -202,13 +340,13 @@ Still, we now have samples of a fair amount of its DNA. And there’s always a c
 Science, 2026. DOI: 10.1126/science.aef8874  (About DOIs).</div>
         </div>
         
-        <div class="card" onclick="openModal('content-1')">
+        <div class="card" onclick="openModal('content-3')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Doctors took a look at man's painful shoulder—they found the joint was missing</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-1" style="display:none;">
+        <div id="content-3" style="display:none;">
             <h2>Doctors took a look at man's painful shoulder—they found the joint was missing</h2>
             <p><strong>Ars Technica - All content | 2026-07-31</strong></p>
             <a class="original-link" href="https://arstechnica.com/health/2026/07/doctors-took-a-look-at-mans-painful-shoulder-they-found-the-joint-was-missing/">Visit Original Website</a>
@@ -228,13 +366,13 @@ MSS is most often seen in women and has been linked to prior shoulder trauma and
 When caught early, MSS may be treated conservatively with anti-inflammatory medications and sometimes colchicine, a treatment for gout. But for a case as bad as the man’s, the main treatment is a full shoulder replacement. His doctors in the emergency department gave him pain and anti-inflammatory medication and referred him for a surgery evaluation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-2')">
+        <div class="card" onclick="openModal('content-4')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Google plans to exempt sanctioned nations from Android developer verification</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-2" style="display:none;">
+        <div id="content-4" style="display:none;">
             <h2>Google plans to exempt sanctioned nations from Android developer verification</h2>
             <p><strong>Ars Technica - All content | 2026-07-31</strong></p>
             <a class="original-link" href="https://arstechnica.com/gadgets/2026/07/google-plans-to-exempt-sanctioned-nations-from-android-developer-verification/">Visit Original Website</a>
@@ -264,13 +402,13 @@ Google probably sees this as a legal tightrope. It can’t engage with developer
 Currently, Google plans to activate the verification restrictions on September 30 in Brazil, Indonesia, Singapore, and Thailand. The program is expected to expand globally in 2027.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-3')">
+        <div class="card" onclick="openModal('content-5')">
             <div class="source">Ars Technica - All content</div>
             <div class="title">Reddit keeps its strange DMCA fight over Google search results alive</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-3" style="display:none;">
+        <div id="content-5" style="display:none;">
             <h2>Reddit keeps its strange DMCA fight over Google search results alive</h2>
             <p><strong>Ars Technica - All content | 2026-07-31</strong></p>
             <a class="original-link" href="https://arstechnica.com/tech-policy/2026/07/reddit-keeps-weird-dmca-lawsuit-against-web-scraper-alive-despite-googles-loss/">Visit Original Website</a>
@@ -310,119 +448,95 @@ Perplexity AI did not immediately respond to Ars’ request for comment.
 Advance Publications, which owns Ars Technica parent Condé Nast, is the largest shareholder in Reddit.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-4')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Claude published malicious code to the Internet and attacked 3 real companies</div>
-            <div class="meta">2026-07-31</div>
-        </div>
-        
-        <div id="content-4" style="display:none;">
-            <h2>Claude published malicious code to the Internet and attacked 3 real companies</h2>
-            <p><strong>Ars Technica - All content | 2026-07-31</strong></p>
-            <a class="original-link" href="https://arstechnica.com/security/2026/07/likely-illegally-claude-gained-access-to-3-networks-will-anthropic-be-held-to-account/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Anthropic said its Claude-based security models gained unauthorized access to the sensitive production environments of three outside organizations during internal testing designed to measure the models’ offensive cyber capabilities.
-
-The events, which Anthropic revealed Thursday, are the second revelation in 10 days that AI models from the world’s wealthiest providers have trespassed into protected networks, an offense that, in more traditional hacking scenarios, could land the human behind the keyboard in prison for years. Earlier this month, OpenAI said its security models exploited a zero-day vulnerability for use in breaking into the network of Hugging Face, a platform for open source machine-learning models and AI datasets. The OpenAI models went on to steal access credentials and other confidential Hugging Face information. The OpenAI models also exploited publicly exposed credentials to compromise accounts of four other third-party services.
-
-Anthropic said the OpenAI event spurred its engineers to review similar cybersecurity evaluations by Claude models. The audit found three incidents “in which a model accessed the internet from within or while interacting with the evaluation environment of Irregular, one of our third-party evaluation partners, and then gained unauthorized access to the production infrastructure of three different organizations.”
-
-Anthropic said the prompts engineers delivered during “capture the flag” challenges—a common means for assessing the offensive and defensive capabilities of various hacking techniques—made clear that the testing environment was only a simulation and that the models had no access to the open Internet. In fact, the testing partner Irregular mistakenly made such access available. In response the models treated the Internet paths as part of the exercises.
-
-The intrusions happened through three Claude models: Opus 4.7, Mythos 5, and an internal research prototype. Opus 4.7, the oldest of the three, was the one that overstepped its boundaries the most. Anthropic explained:
-
-Operating under the false belief that all accessible entities were intended to be in-scope for the exercise, Claude compromised the impacted organizations’ infrastructure using basic techniques, such as exploiting weak passwords and unauthenticated endpoints. It did not find or exploit any complex vulnerabilities, and in each case, Claude continued working to complete only the specific capture-the-flag task its evaluation had assigned. However, in some cases, our older model continued its attack even after getting evidence it was running on the open internet; our latest model stopped once it recognized it was on the internet. In none of these situations did Claude exfiltrate itself or deliberately attempt to escape its test environment.
-
-While the Opus model continued its attack even after correctly predicting that it had breached the third-party organization’s production system, Anthropic said, Mythos 5 made a similar inference but “reasoned its way back to the conclusion that it was still in a simulation.” That meant that Mythos, too, didn’t abort the exercise once it had clearly stepped over the line. After also exceeding the bounds of level behavior, the internal test model eventually found evidence that it, too, had impinged and stopped the exercise.
-
-In the first of the three intrusions, Opus 4.7 was initially unable to breach the simulated target it was prompted to attack. Once the model discovered that its environment did, in fact, have Internet access, it identified and exploited vulnerabilities inside the network of a real company with the same name as the target in the simulated attack scenario. In four runs, the model extracted application and infrastructure credentials and several hundred rows of production data. Anthropic said the incursion was the most serious of the three.
-
-“This incident involved Claude Opus 4.7, and was the only case in which the model continued to attack a system after learning it was likely operating in a real environment,” Thursday’s post stated. “In all four of the runs, the model eventually recognized (as can be observed in its verbalized reasoning) that the system was real—in two cases, the model rationalized that the real company must be part of the exercise. However, none stopped the attack on that basis.”
-
-In the second instance, Mythos 5 detected a document inside the fictional environment that the model reasoned was another made-up company’s setup instructions for new developers. The instructions directed employees to install a non-existent Python package from PyPI. Still following prompts to breach the first fictional company, the model built and published a malicious package with the same name. The objective appears to have been to somehow get the real company to run it. The Anthropic post-mortem went on to say:
-
-Claude went to extensive lengths to carry out this attack—lengths that would likely have indicated to a human participant that this was no longer just an evaluation, and that they were in fact uploading a real PyPI package. For instance, in one case, in order to create a PyPI account, Claude needed an email address. And in order to create an email address, it needed a phone number. To get a phone number, after failing to find a free phone number service, it tried—and failed—to obtain funds to pay for a phone number through several different means. It finally backtracked, found a free, non-blocked email provider, used this to register a PyPI account, and then used this account to upload malware to PyPI.
-
-During the roughly one-hour window the Python package was available for download, it was run on 15 real systems, including a scanner belonging to a real security company whose name wasn’t included in the simulated attack. When the malicious code executed, it sent the security company’s credentials to a collection point the Mythos model had implemented. Once in possession of the credentials, Mythos used them to gain further unauthorized access to the company’s infrastructure.
-
-Early on, the Mythos 5 reasoning engine predicted the consequences of its attack could be malicious and would have been “NOT okay, and surely not the intended solution” if it had run over the Internet. The model failed to detect it was no longer running inside the protected environment, and hence didn’t abort the incursion.
-
-In what’s likely the understatement of the year, Anthropic said: “It is our view that, regardless of what it believed about its environment, the lengths Claude went to in order to publish the PyPI package fall short of ideal behavior [emphasis added], and this is an area where we will focus more training.”
-
-In the third breach, the research prototype had trouble achieving the instructions it was prompted to follow. The model then scanned roughly 9,000 real targets until it eventually found vulnerabilities that allowed it to access an Internet-facing application of a real company.
-
-“For most of the run, Claude treated the (real) hosts it reached as just parts of the exercise; it assumed them to be simulated and believed its actions were therefore harmless,” Anthropic said. “However, later in the run, Claude realized that the compromised host sat in a cloud account with no connection to the capture-the-flag challenge. On its own, it concluded that the target was in fact real, and ceased its attack.”
-
-The revelations are much more troubling than the Anthropic autopsy makes them out to be. Models from two of the most powerful AI platforms have committed what would likely amount to multiple felonies had the incursions not involved AI. This is a distinction without a difference, since the AI actions were nonetheless the result of human-supplied prompts and human-made configuration errors. So far, however, there are no indications that law enforcement authorities have any plans to take action. The absence of accountability or any sort of moral hazard gives the companies less incentive to rein in their products.
-
-Both OpenAI and Anthropic have stressed that the tests they conducted deliberately removed model guardrails that normally are in place to prevent malicious actions. Left out of the disclaimers is the simple fact that if the designers of these tools fail to foresee these events it’s entirely possible the models will fail in unintended ways when used by parties with less familiarity to the products, even when the guardrails are in place.
-
-There’s no reason to think events like these will be isolated. In its current form, offensive cyber AI represents an unprecedented threat, and at the moment, there’s little recourse other than to trust these companies to police themselves.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-5')">
-            <div class="source">Ars Technica - All content</div>
-            <div class="title">Google Earth risked ruin with retracted AI tool for making fake satellite pics</div>
-            <div class="meta">2026-07-31</div>
-        </div>
-        
-        <div id="content-5" style="display:none;">
-            <h2>Google Earth risked ruin with retracted AI tool for making fake satellite pics</h2>
-            <p><strong>Ars Technica - All content | 2026-07-31</strong></p>
-            <a class="original-link" href="https://arstechnica.com/ai/2026/07/google-earth-releases-swiftly-retracts-ai-feature-to-make-fake-satellite-images/">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Google briefly allowed anyone to create AI-modified versions of satellite imagery available in Google Earth—before quickly reversing its decision as people shared examples of AI-generated pictures that illustrated the potential for misinformation and disinformation.
-
-There is no shortage of generative AI tools that already allow people to create AI-modified images of real buildings and cities based on user prompts. But Google’s aborted attempt to incorporate its Nano Banana 2 AI image generator as a Google Earth feature made it even easier for anyone to create modified versions of authentic imagery depicting real locations—something that Google boasted about when initially promoting the new feature.
-
-“For the first time, you can generate custom images using Google Earth’s satellite, aerial, and 3D imagery alongside Nano Banana, which creates concepts grounded in the real world,” wrote Bryan Horowitz, product manager for Google Earth, in a company blog post on July 30.
-
-That possibility deeply alarmed researchers, who often use Google Earth to help verify images and videos of locations at a time when AI-generated misinformation and disinformation have become rampant online. They showed how the new feature could simplify the process of creating false scenarios overlaid on Google Earth’s photorealistic imagery.
-
-“Google Earth, a tool often used as a source of satellite imagery to verify photos and videos, has added a feature that allows you to alter satellite imagery with AI, for reasons,” wrote Eliot Higgins, founder of the independent investigative organization Bellingcat, in a Bluesky post responding to the AI feature’s debut.
-
-“No way this could be abused,” Higgins added sarcastically in a follow-up post that featured an AI-modified image made in Google Earth showing a giant golden statue of President Donald Trump looming over the White House.
-
-Within a day, Google announced on the social media platform X that it was rolling back the feature. Shortly afterward, Ars checked and found that the feature was inaccessible to Google Earth users.
-
-Before removing the AI feature, Google had touted its potential to allow Google Earth users to depict completed real estate projects or enable teachers and students to transform the modern-day ruins of Pompeii into a “hyper-realistic view” of what the town looked like in 78 CE under the Roman Empire. But independent researchers immediately gravitated toward the potential for misuse.
-
-“Tonight I typed just one sentence into Google Earth and put refugees near the Mexican border,” wrote Henk van Ess, an independent investigator, in an extensive blog post detailing his concerns on July 30. “Then I planted a nuclear plant in Iran. Then I put a fatal crash on a street in Amsterdam. Google’s own satellite imagery underneath all three. What on earth is Google doing?”
-
-Ess pointed to a previous example of AI-generated misinformation gone viral that used a Google Earth satellite photo of the US Navy’s Fifth Fleet headquarters in Manama, Bahrain. A forger had prompted Google’s Gemini AI assistant to transform a screenshot of that Google Earth image into a false image depicting the aftermath of an Iranian drone strike on the US military base.
-
-The same process that might have taken about six steps could be done “in seconds” with the AI tool built into Google Earth, Ess said.
-
-Before eventually removing the Google Earth feature, Google initially responded to Ess by highlighting its SynthID system that automatically embeds digital watermarks in images generated by Google’s AI tools.
-
-“We take misinformation seriously—every image created with Nano Banana in Google Earth includes the SynthID digital watermark, so if someone is unsure about an image, they can ask the Gemini app or use Lens in Search to see if the image was AI-generated,” according to Google’s post on X on July 30. “In addition, we prevent image creation on harmful topics and are continually updating our protections.”
-
-Previous Ars testing of Google’s SynthID system has shown that Google’s digital watermark can persist despite substantial image edits and data loss. However, Ars also encountered the issue of SynthID limiting image checks to about 10 per day.
-
-When Ars prompted Google’s Gemini app to run a SynthID check on several AI-modified images generated within Google Earth—before Google removed the Google Earth feature—Gemini responded that it had “detected digital watermarking indicating that part or all of this image was generated or edited using Google AI tools.”
-
-But Ess questioned why Google’s policy on preventing the creation of AI-generated images on harmful topics had not stopped him from depicting scenes such as a hospital with a bomb crater in Gaza. He also expressed skepticism about primarily relying on Google’s SynthID watermarking system and Google’s AI tools for verifying whether an image is AI-generated.
-
-“Fakes do not travel as clean files with their credentials intact,” Ess wrote. “They travel as screen recordings, re-encodes, screenshots of screenshots, filmed off somebody’s phone in a hurry.”
-
-Indeed, Google’s SynthID was unable to provide any image verification when Ars used a smartphone camera to take a photo of an AI-altered image made using the Google Earth feature.
-
-By introducing an AI image generator as a Google Earth feature, Google risked undermining public trust in Google Earth as a reliable reference for providing authentic imagery of the real world, Ess said. It could have also handed an additional excuse to government officials or anyone who wants to deny genuine satellite photos by claiming they were modified or generated entirely by AI tools.
-
-Giving anyone access to an easy tool to create AI-modified satellite imagery could have also made it even harder for journalists and researchers checking misinformation and disinformation. Ess recommended using multiple sources to verify satellite imagery and relying on constantly updated satellite imagery sources such as Europe’s Copernicus Sentinel-2.
-
-Google may have alleviated immediate concerns by deciding to quickly remove the AI tool within Google Earth—but its statement suggested that the company could eventually bring the feature back in the future.
-
-“We’ve seen geospatial professionals using this feature for a range of useful purposes, however we’ve also seen people sharing screenshots of generated imagery that appear to violate our policies,” according to the Google statement. “So we’re rolling back this feature in Google Earth while we work on implementing stronger guardrails.”</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-6')">
+            <div class="source">Futurism</div>
+            <div class="title">A Prominent AI Investor Is Now Crumbling, in What Could Be a Sign of Things to Come</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-6" style="display:none;">
+            <h2>A Prominent AI Investor Is Now Crumbling, in What Could Be a Sign of Things to Come</h2>
+            <p><strong>Futurism | 2026-08-01</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/situational-awareness-ai-investor-crumbling">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">We have updated our Privacy Policy. Please review to learn more. By continuing to use our services, you agree to these updates.
+
+Can’t-miss innovations from the bleeding edge of science and tech
+
+Suddenly, things ain’t looking great for the AI industry. Or at least for the people pouring loads of money into it.
+
+Situational Awareness, a much-hyped AI hedge-fund whose 24-year-old founder Leopold Aschenbrenner preached endless AI gains, basically imploded over this month amid a mass tech sell-off.
+
+The Wall Street Journal reported that it’s now down 67 percent in July, forcing Aschenbrenner to desperately seek clients to buy its shares on the cheap to cover its losses.
+
+“We let you down this month,” the fund wrote in a letter to clients, per the WSJ.
+
+Aschenbrenner, a former OpenAI researcher who had zero investment experience before launching the fund, has been hailed as the “Nostradamus of AI.” He apparently didn’t predict his rapid reversal of fortunes, though.
+
+The Financial Times reported that his fund returned 439 percent for the year through June, and was up 1,551 percent since its founding.
+
+Then came July. According to CNBC, the fund assets reached a peak of $45 billion, before beginning a precipitous decline this month. Pretty much everything went against its way. Its commitments to AI infrastructure tanked when the likes of the semiconductor manufacturer SK Hynix dropped off a cliff. And it shorted software companies — which investors once feared would be outmoded by AI labs — like Adobe, which instead continued to steadily climb.
+
+Other companies it invested in, including Sandisk, Micron, and CoreWave, are all down more than 35 percent this month, CNBC noted.
+
+As the dominoes fell, Aschenbrenner sent a letter to investors to quell their fears, highlighting how well it had performed until this point. Boldly, he also said that the mass tech sell off was a “particularly good time to add funds,” the FT reported.
+
+But when the assets kept tanking — and more money didn’t come in —  Aschenbrenner started frantically calling investors trying to get them to sell assets or pour in fresh capital, according to the reporting. When it got even worse, his clients couldn’t reach him.
+
+“Leopold just stopped taking calls,” one investor told the FT.
+
+With nowhere to turn to, Situational Awareness sold the majority of its public assets to the investment firm Citadel, though it hung onto its stake in Anthropic. The FT reported that Citadel’s vulturous purchase of Situational Awareness’s shares “marks one of the largest and most sudden stock transactions in Wall Street history.”
+
+Situational Awareness, despite commanding billions in assets, operated with a skeleton staff of only four investment professionals and eight employees overall, the FT found in a regulatory filing. The fund used borrowed money to buy shares, which helped boost its returns, but made its losses far worse when those assets declined.
+
+AI stocks will likely weather this storm. The real warning sign is that investors are so blinded by AI that they’re entrusting their billions to someone who had no idea what they were doing.
+
+More on AI: Microsoft CEO Warns That Companies Embracing AI Could Drive Themselves Out of Business</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-7')">
+            <div class="source">Futurism</div>
+            <div class="title">Employees Long for the Days Before the Workplace Filled Up With AI Slop</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-7" style="display:none;">
+            <h2>Employees Long for the Days Before the Workplace Filled Up With AI Slop</h2>
+            <p><strong>Futurism | 2026-08-01</strong></p>
+            <a class="original-link" href="https://futurism.com/artificial-intelligence/employees-long-days-before-ai-slop">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">We have updated our Privacy Policy. Please review to learn more. By continuing to use our services, you agree to these updates.
+
+Can’t-miss innovations from the bleeding edge of science and tech
+
+The majority of workers agree: AI has turned their lives into slop-filled misery, making them yearn for the good old days before the tech existed.
+
+According to a new survey of office workers by professional services company Adaptavist, just shy of two thirds of respondents say they regularly long for their old, pre-AI work life. Over a third of them would delete generative AI tools from their lives in their entirety if that was an option. And some 36 percent admitted they didn’t even understand why AI was being forced on them in the first place.
+
+In many ways, the results shouldn’t come as much of a surprise. The advent of AI has led to widespread frustration and added stress for workers being forced to carefully comb over the output of hallucinating AI models and engage in prompt engineering that wasn’t part of their original job description.
+
+The survey’s results are a strong indication that the once-promised boost to productivity thanks to AI has yet to materialize. Worse yet, AI is actively getting in workers’ ways. Some 42 percent of respondents said they “spend more time verifying AI output than they save using it,” while 49 percent reported that “poor-quality AI output slows down projects.”
+
+Meanwhile, generic slop is turning tasks that once required a modicum of creativity into a slog. Almost half of respondents to Adaptavist’s survey said that all the slop is making their jobs “feel more repetitive and less meaningful.”
+
+Instead of being freed up to pursue a life of leisure while AI takes care of the brunt work, as tech leaders once promised, the conversation has shifted to an even unhealthier work-life balance. Workers are clearly afraid of being made redundant as company leaders push for AI adoption. Over half (54 percent) of survey respondents said they fear losing their jobs within the next five years as a result of AI.
+
+“Without clear guardrails, accountability, and alignment, the promise of AI efficiency risks being offset by a growing burden on the very people it is designed to support,” Adaptavist wrote in its report.
+
+In short, it’s no wonder workers are nostalgic for a pre-AI world order. While tech executives are enriching themselves, they’re being forced to adopt AI at all costs, even if it means a drop in productivity.
+
+It’s a confusing and frustratingly incoherent new reality that’s already alienating an entire generation. Thankfully, Gen Z, which is facing a dire post-graduation job market thanks to AI, is choosing to fight back — a growing rebellion against polluting data centers and chatbots that erode our critical thinking skills.
+
+More on work and AI: Sam Altman Says Even the Power of AI Will Never Lead to a Shorter Work Week</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-8')">
             <div class="source">Futurism</div>
             <div class="title">Major Publisher Cans $2.4 Million Book Deal After Author Was Accused of Using AI, for a Very Cynical Reason</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-6" style="display:none;">
+        <div id="content-8" style="display:none;">
             <h2>Major Publisher Cans $2.4 Million Book Deal After Author Was Accused of Using AI, for a Very Cynical Reason</h2>
             <p><strong>Futurism | 2026-07-31</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/major-publisher-million-book-deal-author-accused-ai">Visit Original Website</a>
@@ -464,13 +578,13 @@ The news comes after author Mia Ballard’s novel, “Shy Girl,” was pulled fr
 More on authors and AI: Novel Pulled From Shelves After Author Is Accused of Using AI</div>
         </div>
         
-        <div class="card" onclick="openModal('content-7')">
+        <div class="card" onclick="openModal('content-9')">
             <div class="source">Futurism</div>
             <div class="title">Iran Appears to Be Blasting Amazon Data Centers Off the Map</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-7" style="display:none;">
+        <div id="content-9" style="display:none;">
             <h2>Iran Appears to Be Blasting Amazon Data Centers Off the Map</h2>
             <p><strong>Futurism | 2026-07-31</strong></p>
             <a class="original-link" href="https://futurism.com/science-energy/iran-blasting-amazon-data-centers-war-usa">Visit Original Website</a>
@@ -498,13 +612,13 @@ Perhaps above all, it’s a statement to American president Donald Trump: the lo
 More on Iran: The US Military Has Been Using Elon Musk’s Grok AI to Bomb Iran</div>
         </div>
         
-        <div class="card" onclick="openModal('content-8')">
+        <div class="card" onclick="openModal('content-10')">
             <div class="source">Futurism</div>
             <div class="title">Kalshi Sued for Running Illegal Gambling Operation</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-8" style="display:none;">
+        <div id="content-10" style="display:none;">
             <h2>Kalshi Sued for Running Illegal Gambling Operation</h2>
             <p><strong>Futurism | 2026-07-31</strong></p>
             <a class="original-link" href="https://futurism.com/future-society/kalshi-sued-illegal-gambling-operation">Visit Original Website</a>
@@ -546,13 +660,13 @@ Predictably, Kalshi has since shot back, accusing the government of making it al
 More on prediction markets: OpenAI Strikes Bold Deal With Kalshi to Mix Together the Most Hated Technologies in Existence: AI and Prediction Markets</div>
         </div>
         
-        <div class="card" onclick="openModal('content-9')">
+        <div class="card" onclick="openModal('content-11')">
             <div class="source">Futurism</div>
             <div class="title">Google Pulls Down Feature for AI-Generating Fake Satellite Images on Google Earth After It’s Immediately Used to Fake Terror Attacks</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-9" style="display:none;">
+        <div id="content-11" style="display:none;">
             <h2>Google Pulls Down Feature for AI-Generating Fake Satellite Images on Google Earth After It’s Immediately Used to Fake Terror Attacks</h2>
             <p><strong>Futurism | 2026-07-31</strong></p>
             <a class="original-link" href="https://futurism.com/artificial-intelligence/google-pulls-down-google-earth-ai-feature">Visit Original Website</a>
@@ -608,144 +722,6 @@ A widely followed OSINT account fumed at this new dangerous paradigm.
 “Unbelievably irresponsible and does immediate, catastrophic damage to the credibility of satellite imagery,” OSINTtechnical wrote.
 
 More on AI: We Are Alarmed by This PR Firm Using a Small Army of Fake AI-Powered Publicists to Barrage Journalists With Pitches for Its Clients</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-10')">
-            <div class="source">Futurism</div>
-            <div class="title">Mark Zuckerberg’s Pivot to AI Is Blowing Up in His Face Spectacularly</div>
-            <div class="meta">2026-07-31</div>
-        </div>
-        
-        <div id="content-10" style="display:none;">
-            <h2>Mark Zuckerberg’s Pivot to AI Is Blowing Up in His Face Spectacularly</h2>
-            <p><strong>Futurism | 2026-07-31</strong></p>
-            <a class="original-link" href="https://futurism.com/artificial-intelligence/mark-zuckerberg-pivot-ai-blowing-up-face">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">We have updated our Privacy Policy. Please review to learn more. By continuing to use our services, you agree to these updates.
-
-Can’t-miss innovations from the bleeding edge of science and tech
-
-Despite having almost nothing to show from his enormous spending on AI, Meta CEO Mark Zuckerberg is doubling down.
-
-Earlier this week, the social media company announced during its second quarter earnings call that it was raising capital expenditures from $125 billion to at least $130 billion, a clear sign that it’s not taking its foot off the pedal.
-
-Yet amid renewed concerns that the tech industry may be nearing the edge of a cliff thanks to its obsession with building out enormously expensive data centers without a clear path to profitability, investors sent back a clear signal in return. Meta’s shares nosedived following its announcement, plummeting over 11 percent over the last five days alone.
-
-According to Zuckerberg, all that extra AI spending was “accelerating every part of our core business.” He also claimed that some of the tech would be sold off to other businesses.
-
-But whether the company will have anything compelling to offer them remains dubious at best. Meta has been burning through its funds at an alarming rate. Even strong revenue numbers — a 28 percent increase this latest quarter compared to the same period last year — couldn’t stem the bleeding, with free cash flow sinking to the lowest level in at least five years thanks to AI spending.
-
-Despite committing well over $100 billion to the tech, Meta has been practically absent from the frontier AI model race. Its so-called Superintelligence Lab has turned into a “soul-crushing gulag” plagued with rock-bottom morale — and most importantly, it’s not getting results.
-
-Its efforts to develop an in-house frontier model, dubbed Muse Spark, have been mired by setbacks, with Meta continuously shifting back the timeline of its release to developers. On July 11, the company released version 1.1 of its AI to little fanfare, with Axios noting that it’s still easily outdone in most tasks by competing models from OpenAI, Anthropic, and Google.
-
-At the same time, Meta released an image-generation model called Muse Image, which felt like an afterthought and a too-little-too-late attempt to catch up with its competitors.
-
-The latest news has given some analysts a feeling of déjà vu. Zuckerberg has garnered a reputation for making major strategic missteps since long before AI. Case in point was the company’s heavily criticized pivot to the “metaverse,” an ill-fated attempt to sell customers on the idea of spending their workday inside a hollow and cartoonish virtual reality world, which feels like the perfect precursor to Meta’s current pains.
-
-“There’s a bit of similarity to Meta’s metaverse missteps in that Meta is once again spending ahead of proven product demand,” Forrester analyst Mike Proulx told the BBC.
-
-Meanwhile, Meta’s platforms have descended into a practically unrecognizable ocean of clickbait and AI slop, something the company has yet to meaningfully address as user numbers and engagement continue to slide.
-
-For his part, Zuckerberg remains infatuated by the concept of AI agents “that can work 24/7 on your behalf,” as he told investors this week, and growing its Muse Spark model into a “large business for large businesses.”
-
-But considering Meta is entering a game with much bigger players who’ve seen far more success in attracting customers and growing AI revenue so far, the company’s long-term success is anything but guaranteed.
-
-And investors who’ve already shaken their heads after both Amazon and Google’s parent company Alphabet announced major spikes in AI spending this month haven’t taken kindly to Zuckerberg’s lofty vision. Judging by how little the billionaire has to show, who can blame them?
-
-More on Meta: Is Mark Zuckerberg Actually TRYING to Destroy Meta?</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-11')">
-            <div class="source">Futurism</div>
-            <div class="title">We Are Alarmed by This PR Firm Using a Small Army of Fake AI-Powered Publicists to Barrage Journalists With Pitches for Its Clients</div>
-            <div class="meta">2026-07-31</div>
-        </div>
-        
-        <div id="content-11" style="display:none;">
-            <h2>We Are Alarmed by This PR Firm Using a Small Army of Fake AI-Powered Publicists to Barrage Journalists With Pitches for Its Clients</h2>
-            <p><strong>Futurism | 2026-07-31</strong></p>
-            <a class="original-link" href="https://futurism.com/artificial-intelligence/pr-firm-fake-ai-publicists">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">We have updated our Privacy Policy. Please review to learn more. By continuing to use our services, you agree to these updates.
-
-Can’t-miss innovations from the bleeding edge of science and tech
-
-Does it ever feel like your inbox is filling up with emails that don’t sound quite human?
-
-You may be right. Last week, I received an email from a publicist identified as “June Barton,” whose address indicated that she worked at a firm called VectorGuideHQ.
-
-The message, which read like any one of the countless PR emails in my inbox, was seeking coverage for a wellness app called RiseGuide. Barton offered to set me up with an account and introduce me to the startup’s founder. When I didn’t respond, Barton followed up.
-
-“Glad to set you up so you can try it, or put you on a call with the founder,” Barton wrote. “Lmk!”
-
-RiseGuide is a real company. But June Barton is not a real PR rep, or even a real person.
-
-For one thing, her headshot — showing a light-eyed, soft-smiling brunette — was clearly AI-generated. Though not visible in the tiny email window, when I opened her profile picture in a new tab, I could see that the image had failed to cut out a watermark disclosing that it was downloaded from the site “this-person-does-not-exist.com,” which traffics in AI-generated faces.
-
-“Generate random human face in 1 click and download it!” reads this-person-does-not-exist.com. “AI generated fake person photos: man, woman or child.”
-
-Even more peculiar was that when I looked up the VectorGuideHQ site in Barton’s email address — june@vectorguidehq.com — it redirected to a United Kingdom-based PR company called Movchan Agency. Barton, I soon learned, was one character among a roster of fake personas used by Movchan to pitch journalists on stories.
-
-When I reached out to the firm’s clients, they said they were unaware of the practice.
-
-“We do work with Movchan Agency, but were not aware of these practices,” RiseGuide’s founder, Oleksandr Matsiuk, told me. “They are meant to act as our PR support and represent our brand by helping us with reaching out to reporters like yourself. Each story gets either created, or previously approved by us, however, we were not aware they were using AI-generated personas in the outreach process — otherwise we would’ve been naturally against it.”
-
-Searching my inbox, I realized that I’d been pitched by a small army of similar fake accounts operated by Movchan.
-
-For instance, earlier this week I got an email from a sender identified as “Summer Casey,” hailing from the address summer@lorvotieio.com. As with Barton’s message, the email, which was sent to pitch a company called AGI Inc, read like any other PR message for an AI company, promising that it would free up time for parents to spend more time with their children.
-
-But again, something about Casey’s headshot seemed off. Sure enough, when I inspected the image, it also had a watermark noting that it came from “this-person-does-not-exist.com.” And also like Barton, plugging her alleged employer’s website — lorvotieio.com — into my browser, I was redirected to the homepage of Movchan.
-
-Movchan, which represents a roster of tech clients and, according to its LinkedIn, specializes in “viral PR,” wasn’t mentioned anywhere in either of the emails.
-
-I started sifting through my inbox. All told, I found dozens of emails from at least fifteen distinct fake personas operated by Movchan, hailing from a potpourri of fake PR firms. There was “Abigail Anderson,” for instance, reaching out from “abigail@kirometaco.com,” as well as “Sarai Singleton” at “sarai@maviosharehq.com,” and “Scarlet Walton” at “scarlet@divojoinio.com.”
-
-Though their headshots didn’t come with the giveaway “this-person-does-not-exist.com” watermark, the images appeared decidedly machine-generated. None of these alleged PR reps had any online presence beyond of my personal inbox — which was strange, given their apparent careers as professional connectors. And just like Casey, each of these three new personas, who allegedly worked for different firms, had been pitching me on AGI Inc.
-
-And when I plugged each of the fake firms’ sites into my search bar, I was once again sent to Movchan’s site.
-
-Some of these characters, as in the cases of Barton, Casey, Anderson, Singleton, and Walton, weren’t presented as having any connection to Movchan.
-
-But other made-up reps were explicitly presented as real employees of the PR firm, albeit emailing from a range of different domains — like “Mia Wilson” at “mia@mvchnpr.design,” who signed off emails as a “PR Manager for Movchan Agency,” and “Natalie Hudson,” an alleged “PR Manager @ Movchan Agency” who sent emails from “natalie.hudson@movchanprboost.com.” Most of the fake personas I found, including Wilson and Hudson, weren’t equipped with profile pictures, rendering them them exceedingly more difficult to spot.
-
-And this was all just in my inbox. I couldn’t help but wonder how many other journalists were being pitched by fake personas operated by Movchan. If it’s happened to you, feel free to reach out to maggie@futurism.com.
-
-Several of Movchan’s clients said they had no idea the firm was operating fake characters on their behalf.
-
-“I had no idea they were using fake personas — this goes entirely against our brand values and standards. We are taking immediate action to put a stop to this right now,” said a representative for Joi AI, a startup that offers AI-powered romantic partners for people tired of a “frustrating dating app experience that leaves people feeling hurt, insecure, and alone.”
-
-Some of the story ideas that were pitched to me by phony Movchan representatives have wound up elsewhere in the news. In September, for instance, a fake persona named “Rosemary Dalton” sent me an email about a new survey from Joi AI. About a week after I received that email, the survey, as well as quotes from a Joi AI employee shared in that message, was included in coverage by The New York Post.
-
-According to LinkedIn, Movchan employs more than a dozen real human employees. So why was it emailing me with a rotation of fake ones?
-
-I reached out to company explaining what I’d found, and that its clients had told me they weren’t aware of the firm’s practice of using fake PR agents and firms. In response, the company’s founder Nadya Movchan confirmed that the 15 different names I’d pulled from my inbox were those of fabricated personas. According to her, the practice started “a few months ago,” and was meant to be “temporary.”
-
-“A few months ago (likely after one of Gmail’s deliverability updates), we had a major issue with our domain reputation,” Movchan told Futurism. “While we started working on the recovery, we decided to purchase pre-warmed domains, so as not to halt outreach, as a temporary measure. They came with pre-warmed mailboxes with set names and pictures from the vendor.”
-
-It’s worth noting that I’ve received emails from fake Movchan personas dating back as far as September 2025, which was almost a year ago. According to Movchan, use of made-up representatives is “definitely not” the agency’s “normal operating practice.”
-
-“Using these pre-warmed domains was definitely poor judgment on my end,” she added.
-
-Though the senders and accounts were fake, Movchan maintained that each of these mailboxes was “operated by real people, who crafted story angles, pitches and managed the outreach — all done by humans doing normal PR work.”
-
-To that end, one of the weirder emails I received — once again on behalf of AGI Inc — was from a sender allegedly named “Isabella Brown.” According to her email address, Brown worked for a company called LunarPostHQ.
-
-“Regards, Isabella,” the sender signed off the email.
-
-In a follow-up message sent from the same account, however, the sender signed off with a completely different name — that of an identifiably human Movchan employee.
-
-“That was a real member operating the account,” Movchan told me, “and signing the follow-up with her name out of habit.”
-
-Out of curiosity, I decided to run emails sent to me by fake Movchan reps through Pangram, a service that identifies AI-generated text. The results were mixed. The emails from Summer Casey and June Barton came back as 100 percent AI-generated; others were identified as 100 percent human, while others were deemed by Pangram to be a mix of human-written and AI-generated content.
-
-Movchan also confirmed that her agency’s clients were unaware of the practice and said they would wind the operation down.
-
-“This was our decision, and we handled it badly,” said Movchan, adding that “regardless of the reason, our operational struggles with the domain didn’t justify this approach. This is definitely not the quality of work that I live up to as a founder, and I will make sure this does not happen again.”
-
-If the internet is feeling less real than ever in the age of AI, it’s because it is. Onward into the uncanny valley we go, one June Barton and Summer Casey at a time.
-
-More on AI: Cambridge Analytica’s Website Is Now an AI Slop Farm</div>
         </div>
         
         <div class="card" onclick="openModal('content-12')">
@@ -1288,29 +1264,51 @@ Sure. I will grant that the future is inherently unpredictable. But it is undeni
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Drifting SpaceX Rocket Heading For Accidental Collision With the Moon</div>
+            <div class="title">Drones Offer Alternative to Balloons For Weather Research</div>
             <div class="meta">2026-08-01</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Drones Offer Alternative to Balloons For Weather Research</h2>
+            <p><strong>Slashdot | 2026-08-01</strong></p>
+            <a class="original-link" href="https://news.slashdot.org/story/26/07/31/239224/drones-offer-alternative-to-balloons-for-weather-research?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+I am not now, nor have I ever been, a member of the demigodic party.
+		-- Dennis Ritchie</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Drifting SpaceX Rocket Heading For Accidental Collision With the Moon</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Drifting SpaceX Rocket Heading For Accidental Collision With the Moon</h2>
             <p><strong>Slashdot | 2026-08-01</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/07/31/2253226/drifting-spacex-rocket-heading-for-accidental-collision-with-the-moon?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">A vacuum cleaner in a vacuum.I do not think that will work well. :)
+            <div id="article-text">https://www.imdb.com/title/tt0... [imdb.com]
+
+A vacuum cleaner in a vacuum.I do not think that will work well. :)
+
+Mel Brooks has shown decades ago that it works.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Any given program will expand to fill available memory.</div>
+I am not now, nor have I ever been, a member of the demigodic party.
+		-- Dennis Ritchie</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">OpenAI Finds Evidence Other AI Agents Escaped Containment</div>
             <div class="meta">2026-08-01</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>OpenAI Finds Evidence Other AI Agents Escaped Containment</h2>
             <p><strong>Slashdot | 2026-08-01</strong></p>
             <a class="original-link" href="https://it.slashdot.org/story/26/07/31/2246237/openai-finds-evidence-other-ai-agents-escaped-containment?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1363,6 +1361,14 @@ These people ... are clueless as to what it to takes to build a safe frontier LL
 
 I think that&#39;s closest to the underlying reason. Their staff know how to  build in safeguards and sandpits. But they do not have the time to do it to the deadlines demanded of them. They are *instructed* to use LLMs to specify even their security infrastructure, because business. A visiting engineer from the 1990s might be shocked. But we know what we&#39;ve done.
 
+There&#39;s the fundamental problem of telling Good from Evil (esp., when Evil is a skillful lier).
+
+Drip feeding/tripwires/sanboxing/yadda-yadda are all good as long as the process of vetoing network access does not slow down development of the model to, basically, a halt.
+
+That They hire amateurs! opinion is offhanded.  Those guys have a real problem on their hands. Not all engineering endeavours are successes.
+
+Did you ever have a chance to talk with a smart person that is properly, clinically diagnosed as a
+
 AI safety experts said the new disclosures paint a portrait of a group of cutting-edge labs whose ability to develop dangerous autonomous hacking agents outstrips their ability to keep them under control.
 
 These are not &quot;cutting-edge&quot; labs; these are careless tech bros, and I can&#39;t wait to see the stupid look on their worthless fucking faces when they get their asses sued because their incompetence led to their software committing cyberattacks against the wrong target
@@ -1379,16 +1385,17 @@ Last agent out, please turn off the light
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Any given program will expand to fill available memory.</div>
+I am not now, nor have I ever been, a member of the demigodic party.
+		-- Dennis Ritchie</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">The Major Labels Propose Rules to Keep AI Slop Off the Charts</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>The Major Labels Propose Rules to Keep AI Slop Off the Charts</h2>
             <p><strong>Slashdot | 2026-07-31</strong></p>
             <a class="original-link" href="https://entertainment.slashdot.org/story/26/07/31/2038220/the-major-labels-propose-rules-to-keep-ai-slop-off-the-charts?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1439,7 +1446,21 @@ One of the people making those songs used to be in a band who got a few singles 
 
 &quot;Creative&quot; is just midwitslop they use to pretend that somehow they&#39;re creative and the plumber figuring out how to fix your leaking toilet at 3am without having to rip the walls apart isn&#39;t. There hasn&#39;t been a lot of
 
+One of the people making those songs used to be in a band who got a few singles in the top 40 years ago. Now he doesn&#39;t need a band because he can write songs, have the AI perform them and mix them himself. It&#39;s allowed him to produce many of his songs that otherwise would never have existed.I&#39;m sorry, I but I don&#39;t buy that argument at all.  Jon Anderson put together Olias of Sunhillow in 1976, at home, playing every instrument himself on a multitrack tape machine.  He had an engineer to run as tape-op, but he could arguably have done that too with a remote control.  Jean Michel Jarre did the same, also 50 years ago.  Michael Garrison as well in 1979, and that&#39;s ignoring Mike Oldfield, and Vangelis who also had their own multitrack studios.You had decent drum machines and sequencing in the 198
+
+One of the people making those songs used to be in a band who got a few singles in the top 40 years ago. Now he doesn&#39;t need a band because he can write songs, have the AI perform them and mix them himself. It&#39;s allowed him to produce many of his songs that otherwise would never have existed.
+
+I&#39;m sorry, I but I don&#39;t buy that argument at all.  Jon Anderson put together Olias of Sunhillow in 1976, at home, playing every instrument himself on a multitrack tape machine.  He had an engineer to run as tape-op, but he could arguably have done that too with a remote control.  Jean Michel Jarre did the same, also 50 years ago.  Michael Garrison as well in 1979, and that&#39;s ignoring Mike Oldfield, and Vangelis who also had their own multitrack studios.
+
+You had decent drum machines and sequencing in the 198
+
 I might. I&#39;d be interested to see how it sounded.
+
+Why does Vinyl have anything to do with how the music is made? Do you think a vinyl record is pressed in a more organic way with the microphone directly connected to a device pressing the record? You can put any music on vinyl, CD, cassette or MP3 directly, if you want to. The question is how you want to consume it later on.
+
+Does it really need intelligence to produce something that sounds nice? People listen to &quot;ten hours of white noise&quot; on Youtube.Fun fact: Spotify removed several white noise tracks, because people uploaded competing white noise tracks to make money with them.
+
+Toupet fallacy. Some of your favorite media may already be AI, but you didn&#39;t recognize it as AI.
 
 The irony is, if someone did have a big hit with their AI generated slop and somehow against all odds, there was demand for a live tour, they actually would need to get some human performers to put on the show.
 
@@ -1475,6 +1496,8 @@ The very old school synthesized music still required traditional music compositi
 
 If you have any recent-ish Apple hardware kicking around, it actually includes a loop based music editor: Garage Band.  My point really wasn&#39;t that this is a less legitimate way to make music, just that the end result isn&#39;t typically what we think of when
 
+What is demand for a life tour? Is there also demand for autographs of Woody of Toy Story? If something is non-material, you may just need to consume it in non-material ways. If there is no real singer, you can meet and greet the creator, but you won&#39;t hear them singing. If they way of production is different, they ways how it is presented to you are also different. There is no autograph from a CGI character and no stage for a synthetic singer.
+
 One huge AI generated hit, and old media will either have to adapt or begin the slow slide into irrelevance.No, they will always have some relevance. Always have a product to sell. Each generation eventually grows up and stumbles across a video from the 1960s-90s and has their &quot;holy shit, they play instruments, and it sounds incredible” moment that broadens their horizon.
 
 One huge AI generated hit, and old media will either have to adapt or begin the slow slide into irrelevance.
@@ -1493,16 +1516,17 @@ Why, do they have a patent on it? Manipulating charts is like the bread and butt
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Any given program will expand to fill available memory.</div>
+I am not now, nor have I ever been, a member of the demigodic party.
+		-- Dennis Ritchie</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">Most Australian Teens Still On Social Media Three Months After Ban</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>Most Australian Teens Still On Social Media Three Months After Ban</h2>
             <p><strong>Slashdot | 2026-07-31</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/07/31/2024233/most-australian-teens-still-on-social-media-three-months-after-ban?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1515,9 +1539,17 @@ Given the state of web searches these days, that actually argues that it&#39;s t
 
 No you can&#39;t. While there&#39;s no absolute right to free speech in Australia, there is an absolute right to protecting speech related to any religion. And precisely zero people have been imprisoned for &quot;criticizing Islam&quot;. Please leave bullshit for the cows.
 
+&quot;You can be imprisoned in Australia for criticizing Islam&quot; - hah! Given a prominent ultra right wing Senator regularly criticizes Islam, I&#39;d say you just made that up
+
 They really should start holding parents accountable for buying age inappropriate things for their kids.  Here in FL, the public schools in Orange County recently just instituted a ban on e-bikes and e-scooters, because a significant number of kids were flouting the traffic laws, riding without helmets, and some parents were actually buying e-motorcycles for their brats.  I thought giving your kid a phone with unrestricted internet access was irresponsible enough, but someone&#39;s always gotta come along and say &quot;Hold my beer!&quot;
 
 On one side you&#39;ve got parents flipping out because the school library might have a book buried somewhere within the shelves that says trans people exist.  On the other, there&#39;s parents buying their kids smartphones with unrestricted internet access, and frickin&#39; motorcycles.  The duality of parents is a strange, strange thing.
+
+Here in Queensland where I live in Australia we&#39;ve the same thing with e-bikes and kids, the showing off without a helmet, injuries & death etc,
+
+We&#39;ve new laws that aim to reduce the carnage (ask any hospital emergency department professional) and limit e-bike and e-scooter speed to 25 km/hr  (divide by 1.6 for mph) or 12 km/h on footpaths.
+
+This one may be of interest :-&quot;E-scooter, e-skateboard and e-unicycle riders must be aged 16 years or older to ride unsupervised. Children aged 12-15 can ride only und
 
 In a study published on Friday, eSafety also found most children aged between 10 and 15 were using social media just as frequently in March as they had before the ban came into force on December 10 last year, while parental awareness of their habits decreased.If you bought a smartphone/tablet for your kid, what do you think they&#39;re using it for, crushing walnuts?
 
@@ -1530,6 +1562,12 @@ These laws have nothing to do with protecting kids, and everything to do with st
 These laws have nothing to do with protecting kids, and everything to do with stripping adults of their privacy.
 
 Maybe.  I suppose that&#39;s a side benefit that some are excited about, and the worst of those will abuse it.  Mostly these laws are symbolic: the ruling class doesn&#39;t really care about any of this.  They&#39;re busy arranging government contracts for their spouse&#39;s private business, getting their kids no-show non-profit chairmanship jobs, etc.  The &quot;ban&quot; is their sop to the latest moral panic, and enforcing it generally would be nasty, so they just enact it with no real enforcement plan and get back to lining the
+
+&quot;These laws have nothing to do with protecting kids, and everything to do with stripping adults of their privacy&quot; - False. These laws are aimed solely at getting kids away from social media addiction.
+
+Did anyone expect there would be 100% compliance?
+
+Nothing to do with &quot;stripping adults of their privacy&quot;, where did you get that idea, it&#39;s not true
 
 Okay, that&#39;s just lazy talk, and making excuses.  If people aren&#39;t interacting in person then it&#39;s not due to distance, it&#39;s from conditioning.
 
@@ -1629,16 +1667,17 @@ Just simply banning doesn&#39;t really show much understanding into what it&#39;
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Any given program will expand to fill available memory.</div>
+I am not now, nor have I ever been, a member of the demigodic party.
+		-- Dennis Ritchie</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Sony Heard Backlash Over Dropping PlayStation Discs, Plans to Press Ahead</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Sony Heard Backlash Over Dropping PlayStation Discs, Plans to Press Ahead</h2>
             <p><strong>Slashdot | 2026-07-31</strong></p>
             <a class="original-link" href="https://games.slashdot.org/story/26/07/31/2016250/sony-heard-backlash-over-dropping-playstation-discs-plans-to-press-ahead?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1749,127 +1788,8 @@ Disney is doing this in Australia.    Australians are no longer allowed to own c
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Any given program will expand to fill available memory.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">Hackers Targeted Municipal Water Systems In 7 States This Week, FBI Says</div>
-            <div class="meta">2026-07-31</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>Hackers Targeted Municipal Water Systems In 7 States This Week, FBI Says</h2>
-            <p><strong>Slashdot | 2026-07-31</strong></p>
-            <a class="original-link" href="https://news.slashdot.org/story/26/07/31/209200/hackers-targeted-municipal-water-systems-in-7-states-this-week-fbi-says?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Ya, those dumb Iranians would NEVER have thought of this idea by themselves.
-
-STUXNET attack was aimed at a nuclear &quot;research&quot; facility, not at a municipal water supply.
-
-Your tinfoil hat might have a crack, maybe make a new one.Actually RO is a mainstream health and fitness thing, at least for those that can afford it. Including many liberals. 
-
-From Google: &quot;A reverse osmosis (RO) filter removes 95% to 99% of dissolved salts, heavy metals, chemicals, and other microscopic pollutants from tap water using a semi-permeable membrane. People get RO systems to achieve high-purity drinking water, better-tasting coffee and food, and reliable protection against stubborn toxins like lead, arsenic, and PFAS. 
-
-Tap water crises stem from agi
-
-Your tinfoil hat might have a crack, maybe make a new one.
-
-Actually RO is a mainstream health and fitness thing, at least for those that can afford it. Including many liberals. 
-
-From Google: &quot;A reverse osmosis (RO) filter removes 95% to 99% of dissolved salts, heavy metals, chemicals, and other microscopic pollutants from tap water using a semi-permeable membrane. People get RO systems to achieve high-purity drinking water, better-tasting coffee and food, and reliable protection against stubborn toxins like lead, arsenic, and PFAS. 
-
-Tap water crises stem from agi
-
-Tim Waltz is a criminal mastermind. He&#39;s been hacking other states&#39; water so that he can keep all 10,000 of his lakes topped off at the expense of hard working Americans.
-
-...  an attack that had hallmarks of Iranian meddling, according to a law enforcement official. 
-Trump puts the blame on Minnesota Gov. Tim Walz. From Trump blames governor, not Iran, for Minnesota cyberattack [usatoday.com] &quot;They blame it on Iran. I don&#39;t think so. I think I blame it on Minnesota because they&#39;re grossly incompetent,&quot; Trump said [w/o presenting any evidence] at a July 31 Cabinet meeting at the Camp David presidential retreat in Maryland. &quot;I would blame it on Minnesota and the governor, the corrupt governor of Minnesota.&quot;
-Governor Walz has a different theory (also from that article):&quot;Trump knows exactly who is responsible for this attack, and knows that other states were hit too,&quot; Walz said in a statement in response to the president&#39;s remarks. &quot;This is what modern warfare looks like, and it further illustrates there’s no plan to win a war with Iran.&quot;
-
-Walz blamed Trump&#39;s Department of Government Efficiency, the former government-slashing agency once led by tech executive Elon Musk, for gutting the U.S. Cybersecurity and Infrastructure Security Agency.  &quot;DOGE took an axe to CISA and left the U.S. exposed to cyberattacks. Thankfully, our experts in Minnesota were able to identify the vulnerability quickly and work with local communities to stop it,&quot; Walz said.
-As seven states have been impacted, either Iran or Governor Walz has been very busy ... :-)
-
-...  an attack that had hallmarks of Iranian meddling, according to a law enforcement official.
-
-Trump puts the blame on Minnesota Gov. Tim Walz. From Trump blames governor, not Iran, for Minnesota cyberattack [usatoday.com]
-
-&quot;They blame it on Iran. I don&#39;t think so. I think I blame it on Minnesota because they&#39;re grossly incompetent,&quot; Trump said [w/o presenting any evidence] at a July 31 Cabinet meeting at the Camp David presidential retreat in Maryland. &quot;I would blame it on Minnesota and the governor, the corrupt governor of Minnesota.&quot;
-Governor Walz has a different theory (also from that article):&quot;Trump knows exactly who is responsible for this attack, and knows that other states were hit too,&quot; Walz said in a statement in response to the president&#39;s remarks. &quot;This is what modern warfare looks like, and it further illustrates there’s no plan to win a war with Iran.&quot;
-
-Walz blamed Trump&#39;s Department of Government Efficiency, the former government-slashing agency once led by tech executive Elon Musk, for gutting the U.S. Cybersecurity and Infrastructure Security Agency.  &quot;DOGE took an axe to CISA and left the U.S. exposed to cyberattacks. Thankfully, our experts in Minnesota were able to identify the vulnerability quickly and work with local communities to stop it,&quot; Walz said.
-As seven states have been impacted, either Iran or Governor Walz has been very busy ... :-)
-
-&quot;They blame it on Iran. I don&#39;t think so. I think I blame it on Minnesota because they&#39;re grossly incompetent,&quot; Trump said [w/o presenting any evidence] at a July 31 Cabinet meeting at the Camp David presidential retreat in Maryland. &quot;I would blame it on Minnesota and the governor, the corrupt governor of Minnesota.&quot;
-
-Governor Walz has a different theory (also from that article):
-
-&quot;Trump knows exactly who is responsible for this attack, and knows that other states were hit too,&quot; Walz said in a statement in response to the president&#39;s remarks. &quot;This is what modern warfare looks like, and it further illustrates there’s no plan to win a war with Iran.&quot;
-
-Walz blamed Trump&#39;s Department of Government Efficiency, the former government-slashing agency once led by tech executive Elon Musk, for gutting the U.S. Cybersecurity and Infrastructure Security Agency.  &quot;DOGE took an axe to CISA and left the U.S. exposed to cyberattacks. Thankfully, our experts in Minnesota were able to identify the vulnerability quickly and work with local communities to stop it,&quot; Walz said.
-As seven states have been impacted, either Iran or Governor Walz has been very busy ... :-)
-
-&quot;Trump knows exactly who is responsible for this attack, and knows that other states were hit too,&quot; Walz said in a statement in response to the president&#39;s remarks. &quot;This is what modern warfare looks like, and it further illustrates there’s no plan to win a war with Iran.&quot;
-
-Walz blamed Trump&#39;s Department of Government Efficiency, the former government-slashing agency once led by tech executive Elon Musk, for gutting the U.S. Cybersecurity and Infrastructure Security Agency.  &quot;DOGE took an axe to CISA and left the U.S. exposed to cyberattacks. Thankfully, our experts in Minnesota were able to identify the vulnerability quickly and work with local communities to stop it,&quot; Walz said.
-
-As seven states have been impacted, either Iran or Governor Walz has been very busy ... :-)
-
-&quot;They blame it on Iran. I don&#39;t think so. I think I blame it on Minnesota because they&#39;re grossly incompetent,&quot; Trump said [w/o presenting any evidence] at a July 31 Cabinet meeting at the Camp David presidential retreat in Maryland. &quot;I would blame it on Minnesota and the governor, the corrupt governor of Minnesota.&quot;Governor Walz has a different theory (also from that article):&quot;Trump knows exactly who is responsible for this attack, and knows that other states were hit too,&quot; Walz said in a statement in response to the president&#39;s remarks. &quot;This is what modern warfare looks like, and it further illustrates there’s no plan to win a war with Iran.&quot;How about just don&#39;t connect critical infrastructure to the internet in the first place?!  It&#39;s not rocket surgery.
-
-&quot;They blame it on Iran. I don&#39;t think so. I think I blame it on Minnesota because they&#39;re grossly incompetent,&quot; Trump said [w/o presenting any evidence] at a July 31 Cabinet meeting at the Camp David presidential retreat in Maryland. &quot;I would blame it on Minnesota and the governor, the corrupt governor of Minnesota.&quot;Governor Walz has a different theory (also from that article):&quot;Trump knows exactly who is responsible for this attack, and knows that other states were hit too,&quot; Walz said in a statement in response to the president&#39;s remarks. &quot;This is what modern warfare looks like, and it further illustrates there’s no plan to win a war with Iran.&quot;
-
-&quot;They blame it on Iran. I don&#39;t think so. I think I blame it on Minnesota because they&#39;re grossly incompetent,&quot; Trump said [w/o presenting any evidence] at a July 31 Cabinet meeting at the Camp David presidential retreat in Maryland. &quot;I would blame it on Minnesota and the governor, the corrupt governor of Minnesota.&quot;
-
-Governor Walz has a different theory (also from that article):
-
-&quot;Trump knows exactly who is responsible for this attack, and knows that other states were hit too,&quot; Walz said in a statement in response to the president&#39;s remarks. &quot;This is what modern warfare looks like, and it further illustrates there’s no plan to win a war with Iran.&quot;
-
-&quot;Trump knows exactly who is responsible for this attack, and knows that other states were hit too,&quot; Walz said in a statement in response to the president&#39;s remarks. &quot;This is what modern warfare looks like, and it further illustrates there’s no plan to win a war with Iran.&quot;
-
-How about just don&#39;t connect critical infrastructure to the internet in the first place?!  It&#39;s not rocket surgery.
-
-He&#39;s already been denying [politico.com] emergency funds to states that didn&#39;t vote for him.
-
-Now he&#39;s literally spreading propaganda about the source of a foreign attack against US citizens. Blue states are on their own, without the tools they&#39;d need to actually act like a sovereign being attacked.
-
-MAGAts need to remember this when President AOC forcibly desegregates the South again. Motherfuckers are going to be lucky we still let them be part of the country - I&#39;m increasingly OK with building a wall at the northern Texas border at this point. (You&#39;re such big bad he-men? Enjoy negotiating with Mexico as a tiny neighbor.)
-
-I don&#39;t think a woman can be elected.  This isn&#39;t a statement that one shouldn&#39;t be, it&#39;s and estimation of the voters.
-
-I don&#39;t think a woman can be elected.  This isn&#39;t a statement that one shouldn&#39;t be, it&#39;s an estimation of the voters.
-Adding that 49.8% of voters did re-elect a man found liable of sexual assault, who undeniably, obviously, constantly lies, over the 48.3% who wanted a black woman and 36% (90 million) of eligible voters who did not vote at all.  I&#39;ll add that the first and third stats are pretty sad.  On the upside, we didn&#39;t get those sky-high prices and new Middle-East wars Trump promised Harris would give us - hooray! /s (*heavy-sigh*)
-
-I don&#39;t think a woman can be elected.  This isn&#39;t a statement that one shouldn&#39;t be, it&#39;s an estimation of the voters.
-
-Adding that 49.8% of voters did re-elect a man found liable of sexual assault, who undeniably, obviously, constantly lies, over the 48.3% who wanted a black woman and 36% (90 million) of eligible voters who did not vote at all.  I&#39;ll add that the first and third stats are pretty sad.  On the upside, we didn&#39;t get those sky-high prices and new Middle-East wars Trump promised Harris would give us - hooray! /s (*heavy-sigh*)
-
-It&#39;s not clear that &quot;48.3% who wanted a black woman&quot;.  It&#39;s quite plausible that a reasonable fraction of those just didn&#39;t want Trump.
-
-It&#39;s not clear that &quot;48.3% who wanted a black woman&quot;.  It&#39;s quite plausible that a reasonable fraction of those just didn&#39;t want Trump.
-That&#39;s fair; I should have worded that bit better.  There can be different reasons people vote for/against someone or some thing.
-
-It&#39;s not clear that &quot;48.3% who wanted a black woman&quot;.  It&#39;s quite plausible that a reasonable fraction of those just didn&#39;t want Trump.
-
-That&#39;s fair; I should have worded that bit better.  There can be different reasons people vote for/against someone or some thing.
-
-Are we sure it wasn&#39;t Claude or chatgpt?It was Al-Clauda, a Claude based AI with some supplemental training materials.
-
-It was Al-Clauda, a Claude based AI with some supplemental training materials.
-
-It&#39;s a good thing we don&#39;t have a bunch of privatized water systems consolidated to just a handful of large companies.  Because it would be really bad if they were targeted next.
-
-Seven out of 50 is remarkably small.   I am shocked they did not get more.
-
-Now, I guarantee you, those affected will realize that the cybersecurity are not joking around.  They will improve security.
-
-And about a year later their new security protocalls will spread to the other 53 states.  By the time the next group tries this crap, it will be much harder to do.
-
-I seem to remember a well-documented SCADA hacking break-in somewhere in Australia where they reversed sewage pumps. Years ago, if not decades now. Complacency?
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-Any given program will expand to fill available memory.</div>
+I am not now, nor have I ever been, a member of the demigodic party.
+		-- Dennis Ritchie</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2170,11 +2090,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Google rolls back new satellite image AI tool after backlash</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-36" style="display:none;">
+            <h2>Google rolls back new satellite image AI tool after backlash</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-08-01</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-08-google-satellite-image-ai-tool.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Study advances solar desalination with multifunctional membrane</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-36" style="display:none;">
+        <div id="content-37" style="display:none;">
             <h2>Study advances solar desalination with multifunctional membrane</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-advances-solar-desalination-multifunctional-membrane.html">Visit Original Website</a>
@@ -2182,13 +2116,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Smarter, not thicker: Targeted cooling improves liquid-hydrogen tank insulation</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Smarter, not thicker: Targeted cooling improves liquid-hydrogen tank insulation</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-smarter-thicker-cooling-liquid-hydrogen.html">Visit Original Website</a>
@@ -2196,13 +2130,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Ion pumping platform simultaneously cleans salty wastewater and recovers valuable metals</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>Ion pumping platform simultaneously cleans salty wastewater and recovers valuable metals</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-ion-platform-simultaneously-salty-wastewater.html">Visit Original Website</a>
@@ -2210,13 +2144,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Porous 3D-printed feet cut quadruped robot power use</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Porous 3D-printed feet cut quadruped robot power use</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-porous-3d-feet-quadruped-robot.html">Visit Original Website</a>
@@ -2224,13 +2158,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Glass-ceramic method locks sulfate-rich radioactive waste into durable solids</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Glass-ceramic method locks sulfate-rich radioactive waste into durable solids</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-31</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-07-glass-ceramic-method-sulfate-rich.html">Visit Original Website</a>
@@ -2238,27 +2172,267 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">CEO of OpenAI says we're 'in the singularity' with AI: Is he right?</div>
-            <div class="meta">2026-07-31</div>
+        <div class="card" onclick="openModal('content-42')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Unexpected item in the bagging area as Windows Activation error pops up at check-in</div>
+            <div class="meta">2026-08-01</div>
         </div>
         
-        <div id="content-41" style="display:none;">
-            <h2>CEO of OpenAI says we're 'in the singularity' with AI: Is he right?</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-07-31</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-07-ceo-openai-singularity-ai.html">Visit Original Website</a>
+        <div id="content-42" style="display:none;">
+            <h2>Unexpected item in the bagging area as Windows Activation error pops up at check-in</h2>
+            <p><strong>www.theregister.com - Articles | 2026-08-01</strong></p>
+            <a class="original-link" href="https://www.theregister.com/offbeat/2026/08/01/unexpected-item-in-the-bagging-area-as-windows-activation-error-pops-up-at-check-in/5281946">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-42')">
+        <div class="card" onclick="openModal('content-43')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">A deep dive into Nvidia's Vera CPU and the Olympus cores that power it</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-43" style="display:none;">
+            <h2>A deep dive into Nvidia's Vera CPU and the Olympus cores that power it</h2>
+            <p><strong>www.theregister.com - Articles | 2026-08-01</strong></p>
+            <a class="original-link" href="https://www.theregister.com/systems/2026/08/01/nvidias-vera-cpu-and-the-olympus-cores-that-power-it-deep-dive/5282056">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">88 custom cores, 176 funky threads, 1.5 TB of laptop RAM, and 1.8 TB/s of NVLink connectivity — this isn&#39;t your typical datacenter chip
+
+DEEP DIVE For the first time, Nvidia has directly challenged Intel and AMD&#39;s CPU dominance. With the launch of Vera, the AI arms dealer aims to flog its standalone CPUs to as many hyperscalers and other cloud providers as it can.
+
+Alibaba, ByteDance, Meta, Oracle, CoreWeave, Lambda, Nebius, and NScale have already signed up to deploy the chips in their respective clouds.
+
+The follow-on to Nvidia&#39;s Grace CPU promises 88 custom Armv9.2 cores, 176 threads, support for up to 1.5 TB of LPDDR5X memory, and, critically, availability as a standalone platform independent of Nvidia&#39;s GPUs.
+
+But beyond that, and a mountain of marketing about how it&#39;ll be the best CPU for everything AI, Vera&#39;s inner workings have largely remained a mystery until recently.
+
+That changed late last month, when Nvidia released a whitepaper spilling the beans on its first fully-custom CPU, which is far weirder than anyone could have anticipated.
+
+Ostensibly, Nvidia is aiming Vera at two key workloads: the first and least surprising is as the AI head node responsible for managing the GPUs in its upcoming Vera Rubin systems. The second, and more contentious, is as a host for AI agents, which, unlike the large language models (LLMs) that power them, don&#39;t actually run on GPUs.
+
+From what we gather, much of Vera&#39;s core architecture is predicated on quashing pipeline and execution bottlenecks in order to make it more effective in these roles. But before we dive into Nvidia&#39;s Olympus core, let&#39;s revisit the chip itself.
+
+Peel back Vera&#39;s rather substantial heat spreader and you&#39;ll find an assortment of chiplets responsible for I/O, memory, and compute. However, this isn&#39;t another rehash of the chiplet architecture popularized by AMD.
+
+Unlike x86 processor makers, which spread dozens of cores across multiple dies, Vera&#39;s compute die is monolithic. All 88 cores are housed in one big chunk of silicon that from what we understand is fabbed on TSMC&#39;s 3nm process. Nvidia argues its monolithic compute architecture has benefits for both core-to-core bandwidth and latency compared to competing designs.
+
+Surrounding the compute die is an assortment of chiplets, including eight LPDDR5x controllers, and what appears to be two distinct I/O dies, one responsible for PCIe 6.4 and CXL 3.1 connectivity and another dedicated to the chip&#39;s NVLink Chip-to-Chip interface.
+
+In terms of package design, Vera is somewhat reminiscent of Amazon&#39;s Graviton 4 CPUs, which also combine a monolithic compute die while disaggregating the I/O and memory functionality to dedicated silicon.
+
+Like most modern datacenter CPUs, Vera supports both single- and dual-socket configurations, the latter of which Nvidia calls the Vera CPU Superchip.
+
+Unveiled at GTC in March, the Superchip features two Vera CPUs connected over NVLink-C2C at a blisteringly fast 1.8 TB/s of bidirectional bandwidth, for a total of 176 cores and 352 threads.
+
+The two chips are fed by 16 SOCAMM2 LPDDR5x memory modules, which deliver 2.4 TB/s of aggregate memory bandwidth (1.2 TB/s each) — roughly twice the bandwidth of AMD&#39;s Turin Epycs, which were launched in 2024.
+
+Nvidia&#39;s agentic AI reference designs call for cramming as many as 128 of these superchips (256 CPUs) totaling 22,528 cores and 384 TB of memory into a single liquid-cooled rack.
+
+Previously, Nvidia had relied on off-the-shelf CPU cores from Arm. For example, depending on the iteration, Nvidia&#39;s Grace CPUs used Arm&#39;s Neoverse V2 (GB200/300), Neoverse V3 (AGX Thor), or Cortex X925 and A725 cores (GB10), depending on which was most convenient.
+
+With Vera, Nvidia has moved on to designing its own ARMv9.2-compatible core, called Olympus. In fact, it&#39;s up for debate how custom the chip really is. We&#39;ve been told that the chip builds heavily on existing Arm IP, and looking at Olympus&#39; architectural block diagram, we can see why.
+
+Olympus features a 10-wide decoder and dispatch, eight integer arithmetic logic units (ALUs), six vector/FP pipelines (SVE 128), four load units, and 2x store units. So it&#39;s got a fat front and back end compared to the Zen 5 cores found in AMD&#39;s Turin Epycs or the Redwood Cove cores used by Intel&#39;s Granite Rapids Xeons.
+
+But compared to off-the-shelf Arm cores, Olympus&#39; front and back end aren&#39;t breaking any records. In fact, Olympus looks a lot like a heavily modified Cortex X925.
+
+With that said, Nvidia claims Olympus features an entirely custom neural branch predictor, which is capable of exploring two branches simultaneously.
+
+Branch prediction is key to performance in modern CPUs, and involves anticipating future code paths and executing down them before they&#39;re needed. By predicting two paths per cycle, Vera decreases the likelihood of a mispredict, theoretically boosting its performance in the process.
+
+And from what we can tell, a lot of the customization that went into Vera was made explicitly to stamp out pipeline and execution bubbles in order to maximize the number of instructions per clock (IPC).
+
+In particular, Nvidia claims its neural branch predictor delivers higher hit rates than history-based approaches, making it ideal for running branch-heavy workloads, like the Python scripts generated on the fly by AI code assistants.
+
+Nvidia also claims to have made several innovations to the mid-core, again aimed at mitigating pipeline stalls. Memory renaming speeds up store-to-load dependency chains by allowing dependent instructions to execute before a load completes if the relationship to the data can be divined.
+
+&quot;This is particularly beneficial for pointer-heavy software, graph traversal, runtime frameworks, and complex object-oriented workloads,&quot; the company explained.
+
+Nvidia also implemented a value prediction scheme which &quot;identifies stable dependency chains and predicts future values before they are produced, allowing dependent instructions to execute speculatively while correctness is verified later.&quot;
+
+This functionality, the company claims, helps to speed up repetitive software patterns and sequential data processing.
+
+On the back end, Nvidia Olympus features a similar complement of ALUs and FP units as the X925, but they&#39;ve been implemented differently. Eight of the ALUs are simple integer units which handle basic mathematics, while the company says two complex ALUs handle multiplication and division, CRC, and shift intensive workloads.
+
+The back end also features four dedicated branch units that work with the chip&#39;s branch predictor to resolve control flow decisions that would otherwise cause pipeline stalls.
+
+Meanwhile, for floating point operations, Olympus features six 128-bit Arm scalable vector engines (SVE2) extensions which also support FP8, along with a pair of vector units dedicated to speeding up crypto operations.
+
+Each core is supported by a 64 KB L1 instruction cache, 96 KB L1 data cache, and 2MB per core of L2. The chip also features 164 MB of system level cache (SLC) that&#39;s sharded across the chip.
+
+Perhaps Olympus&#39; most interesting party trick is support for simultaneous multithreading (SMT).
+
+SMT has been a mainstay of x86 chips since 2002. The technology boosts utilization by enabling two threads to harness idle execution units during a single cycle. While SMT doesn’t double throughput, for certain applications it can deliver double-digit percentage gains.
+
+While Arm has supported SMT in the past — you may recall Cavium ThunderX2&#39;s four-way SMT implementation prior to its acquisition by Marvell — the company has downplayed its value with its own agentic CPU.
+
+Arm&#39;s dislike for the tech didn&#39;t stop Nvidia from implementing SMT-like functionality in Olympus. We say SMT-like because it&#39;s not SMT in the conventional sense. Rather than simultaneous multi-threading, Nvidia markets it as spatial multithreading, which is an apt name given how it works.
+
+Rather than two threads that share the resources of one core, Olympus&#39; SMT implementation looks more like core bifurcation with a shared cache line. You can either have one fat core or two skinny ones. To our eyes, it looks a bit like multi-instance GPU (MIG) for the CPU.
+
+The white paper makes a big to-do about how spatial multithreading avoids the thread contention you can see with x86 parts, which makes sense, because Nvidia&#39;s threads behave more like individual cores. We wouldn&#39;t read too much into these claims, though. There have always been applications that benefit from SMT and those that don&#39;t, and it&#39;s easy enough to turn it off if you don&#39;t want it.
+
+With that, Nvidia&#39;s SMT implementation could be beneficial to agent sandboxes for agentic workloads. With containers — that&#39;s all these sandboxes really are – there are two workloads. There&#39;s the job you&#39;re running inside the container – let&#39;s say a Python script and interpreter  – and then there&#39;s the container runtime, which is responsible for orchestration of container workloads and managing networking and storage overlays.
+
+These are very different jobs. By bifurcating its cores, Nvidia can keep the workload and runtime separate, which in theory should make for more deterministic performance.
+
+Before we move on to Vera&#39;s memory subsystem, we need to spend a few minutes discussing Nvidia&#39;s second-gen scalable coherency fabric (SCF), which is used to stitch all 88 cores together.
+
+As we mentioned earlier, Vera features a monolithic compute die, which means all of its cores are packed on the same silicon. The SCF is essentially a cache-coherent superhighway designed to connect cores together at a whopping 3.4 TB/s of bisectional bandwidth.
+
+As Nvidia explains it: &quot;SCF is organized as a distributed coherent interconnect connecting multiple cores through a collection of Coherency Switch Nodes (CSNs). Each CSN connects up to two cores and serves as a routing point within the fabric, enabling efficient movement of requests between cores, caches, memory controllers, and external interfaces.&quot;
+
+The SCF is also where the L3 cache lives, which explains why Nvidia opted to shard its SLC across the CPU rather than having one big, centrally located pool of it.
+
+The SCF is critical, as without it, Vera wouldn&#39;t actually be able to utilize its memory bandwidth effectively.
+
+Vera features eight LPDDR5x memory controllers with support for SOCAMM2 modules up to 9600 MT/s. At 1.2 TB/s and roughly 14 GB/s per core, Vera has one of the fastest memory subsystems in the world today, but it&#39;s worth pointing out that the competition&#39;s chips launched nearly two years ago.
+
+Both Intel and AMD&#39;s next-gen CPUs will make the jump to 16 memory channels. We&#39;re still waiting on details on Intel&#39;s 192-core Diamond Rapids platform, but we learned last week that AMD&#39;s Venice CPUs will boast up to 256 cores and support for 8,000 MT/s RDIMMs or 12,800 MT/s MRDIMMs, which translates to between 1 TB/s and 1.6 TB/s.
+
+Assuming AMD&#39;s GMI-links aren&#39;t a bottleneck this time around, the House of Zen&#39;s 96-core Epycs should hit around 17 GB/s per core, and there&#39;s no reason to think Intel&#39;s Xeon 7 processors won&#39;t do the same.
+
+With that said, Vera&#39;s memory subsystem should suck a bit less power thanks to the use of LPDDR5X rather than standard RDIMMs. The company claims under a sustained load, its memory subsystem contributes just 30 to 40 watts of consumption versus 100 to 200 watts depending on channel and DIMM count on a traditional server platform. For reference, Vera&#39;s TDP is configurable between 250W and 450W.
+
+Power consumption might explain why AMD is working on a new Epyc, codenamed Verano, which will also use LPDDR5X.
+
+Vera isn&#39;t bursting just with memory bandwidth, but with I/O bandwidth as well. The chip is among the first to support PCIe 6.4 and CXL 3.1, beating out Intel, and possibly AMD depending on the first systems to actually make it into customers&#39; hands.
+
+As with past generational PCIe bumps, 6.0 sees per lane bandwidth double to 64 Gbps, which translates to 128 GB/s (256 GB/s bidirectional) for a single x16 slot. A single Vera socket can support 6 such slots (96 lanes in total) for connectivity to NICs, storage, and other peripherals. In the dual-socket Vera CPU superchip config, the lane count does drop slightly to 176 lanes or 11 x16 slots.
+
+Along with PCIe, those lanes also support Compute Express Link 3.1. CXL has been around for a while now, but the 3.1 iteration is notable for its support for fabrics and memory sharing.
+
+As we&#39;ve previously discussed, this capability opens the door to network attached memory appliances — which we affectionately call memory godboxes — where multiple CPUs can share the memory.
+
+Finally, we need to talk a bit about Vera&#39;s NVLink chip-to-chip connectivity. First introduced back in its Grace CPUs, the high-speed interconnect&#39;s bandwidth has now been doubled to 1.8 TB/s of bidirectional bandwidth (900 GB/s up and down).
+
+This high-speed interconnect allows for coherent memory access across connected CPUs or GPUs. In the Vera Rubin superchip, NVLink is how the CPU talks to the two GPUs. Meanwhile for Vera CPU superchip, the NVLink-C2C interface provides a blazing fast interconnect that mitigates many of the bandwidth bottlenecks associated with multi-socket systems.
+
+In agentic workloads, Nvidia estimates Vera will deliver 1.8x higher per-core performance than AMD&#39;s 128-core Epyc 9755 in benchmarks representative of agentic workloads, and up to 2.6x faster performance in graph traversal jobs.
+
+While that sounds impressive, we&#39;re not reading too deeply into Nvidia&#39;s performance claims just yet. Turin launched nearly two years ago, which makes it an advantageous comparison point. CPU benchmarks are notoriously easy to cherry pick, and microbenchmarks, while useful for quantifying hardware&#39;s capabilities, aren&#39;t always representative of real-world performance.
+
+A classic example of this is core-to-core latency on early AMD Epycs versus Intel Xeons. As we&#39;ve already established, AMD employs a multi-chiplet architecture that, for Turin, used up to eight frequency-optimized cores or 16 density-optimized cores per core-complex die (CCD).
+
+For workloads that can fit within a single CCD, the core-to-core latency is extremely small. But if a core on one CCD needs to talk to a core on another CCD, it has to walk the I/O die, which incurs a stiff performance penalty.
+
+Intel, until recently, has favored higher core-count compute dies, which historically have fared better for latency-sensitive applications, like databases, for the same reason Nvidia opted for a big monolithic compute die on Vera.
+
+Whether this actually confers an advantage varies from application to application, and it&#39;s not a clear cut victory for one approach or the other. Both have their merits. AMD&#39;s chiplet architecture lets them use smaller, better yielding dies, which translates to better margins.
+
+We should also mention that Venice makes the jump to 12- and 32-core CCDs, which means the workload would need to be even more talkative for you to notice the latency hit.
+
+We&#39;ve said it before and we&#39;ll say it again: there has never been and never will be one CPU to rule them all. Vera doesn&#39;t change that.
+
+After getting a peek at Vera&#39;s performance in the Phoronix Test Suite in a selected, Nvidia-dictated set of tests earlier this year, we&#39;re optimistic about Vera&#39;s performance in its target workloads, but look forward to seeing fully independent runs on production hardware, especially with AMD&#39;s Venice just a few months away.
+
+We fully anticipate Vera to sell extremely well, if not for its performance characteristics, then because if you want more than eight Rubins, it&#39;s probably coming with a Vera CPU attached. ®
+
+Bags weighed down by a Microsoft license key
+
+88 custom cores, 176 funky threads, 1.5 TB of laptop RAM, and 1.8 TB/s of NVLink connectivity — this isn&#39;t your typical datacenter chip
+
+PARTNER CONTENT: Databricks survey data suggests certified professionals lift partner delivery capacity, customer credibility, and AI readiness well beyond the individuals who earn the credential
+
+Cloud revenue now north of $143 billion a quarter, and growth is accelerating
+
+&quot;Tell me lies, tell me sweet little lies&quot;
+
+Persistent sessions could be just the beginning
+
+88 custom cores, 176 funky threads, 1.5 TB of laptop RAM, and 1.8 TB/s of NVLink connectivity — this isn&#39;t your typical datacenter chip
+
+Cloud revenue now north of $143 billion a quarter, and growth is accelerating
+
+Persistent sessions could be just the beginning
+
+Refundable charge intended to discourage time wasters from filing applications that will never be realized
+
+PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
+
+PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
+
+Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
+
+Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
+
+On the plus side, infosec&#39;s a good bet for a long, stable career
+
+New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
+
+New Debian versions hit FOSSland in the form of 13.6 and 12.15
+
+Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
+
+Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
+
+Next version of Linux Mint’s desktop has both kinds of display server</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-44')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Enterprise cloud infrastructure uptake shows no sign of slowing</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-44" style="display:none;">
+            <h2>Enterprise cloud infrastructure uptake shows no sign of slowing</h2>
+            <p><strong>www.theregister.com - Articles | 2026-08-01</strong></p>
+            <a class="original-link" href="https://www.theregister.com/off-prem/2026/08/01/enterprise-cloud-infrastructure-uptake-shows-no-sign-of-slowing/5281835">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-45')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">Dev who gave HashiCorp its name returns with a faster terminal multiplexer</div>
+            <div class="meta">2026-07-31</div>
+        </div>
+        
+        <div id="content-45" style="display:none;">
+            <h2>Dev who gave HashiCorp its name returns with a faster terminal multiplexer</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-31</strong></p>
+            <a class="original-link" href="https://www.theregister.com/devops/2026/07/31/dev-who-gave-hashicorp-its-name-returns-with-a-faster-terminal-multiplexer/5281970">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-46')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">The most famous brand in physical security got pwned by ShinyHunters</div>
+            <div class="meta">2026-07-31</div>
+        </div>
+        
+        <div id="content-46" style="display:none;">
+            <h2>The most famous brand in physical security got pwned by ShinyHunters</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-31</strong></p>
+            <a class="original-link" href="https://www.theregister.com/security/2026/07/31/the-most-famous-brand-in-physical-security-got-pwned-by-shinyhunters/5281924">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-47')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">US bank places trust in ransomware crew that promised to delete its data</div>
+            <div class="meta">2026-07-31</div>
+        </div>
+        
+        <div id="content-47" style="display:none;">
+            <h2>US bank places trust in ransomware crew that promised to delete its data</h2>
+            <p><strong>www.theregister.com - Articles | 2026-07-31</strong></p>
+            <a class="original-link" href="https://www.theregister.com/cyber-crime/2026/07/31/us-bank-places-trust-in-ransomware-crew-that-promised-to-delete-its-data/5281888">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-48')">
             <div class="source">The Verge</div>
             <div class="title">With Switch 2, iPhone, and laptop tricks, the Sharge Disk Pro 2 is finally a worthy EDC</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-42" style="display:none;">
+        <div id="content-48" style="display:none;">
             <h2>With Switch 2, iPhone, and laptop tricks, the Sharge Disk Pro 2 is finally a worthy EDC</h2>
             <p><strong>The Verge | 2026-07-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/973886/sharge-disk-pro-2-hands-on-switch-2-hdmi-usb-c-dock">Visit Original Website</a>
@@ -2312,13 +2486,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-43')">
+        <div class="card" onclick="openModal('content-49')">
             <div class="source">The Verge</div>
             <div class="title">Apple’s new AirTags are back down to their best price</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-43" style="display:none;">
+        <div id="content-49" style="display:none;">
             <h2>Apple’s new AirTags are back down to their best price</h2>
             <p><strong>The Verge | 2026-07-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/gadgets/973973/apple-airtag-second-generation-deal-sale">Visit Original Website</a>
@@ -2342,13 +2516,13 @@ Sign up to get the best deals on products we’ve found and tested sent to your 
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-50')">
             <div class="source">The Verge</div>
             <div class="title">Google Earth&#8217;s AI deepfake tool only lasted one day</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-50" style="display:none;">
             <h2>Google Earth&#8217;s AI deepfake tool only lasted one day</h2>
             <p><strong>The Verge | 2026-07-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/973943/google-earth-ai-image-generation-deepfake-tool">Visit Original Website</a>
@@ -2368,13 +2542,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-51')">
             <div class="source">The Verge</div>
             <div class="title">The NHTSA is investigating 1.2 million Tesla vehicles over suspension failure reports</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-51" style="display:none;">
             <h2>The NHTSA is investigating 1.2 million Tesla vehicles over suspension failure reports</h2>
             <p><strong>The Verge | 2026-07-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/transportation/973887/nhtsa-tesla-investigation-suspension">Visit Original Website</a>
@@ -2394,13 +2568,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-52')">
             <div class="source">The Verge</div>
             <div class="title">Google might launch a ‘Pixel Tag’</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-52" style="display:none;">
             <h2>Google might launch a ‘Pixel Tag’</h2>
             <p><strong>The Verge | 2026-07-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/973889/google-pixel-tag-item-tracker">Visit Original Website</a>
@@ -2426,13 +2600,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-47')">
+        <div class="card" onclick="openModal('content-53')">
             <div class="source">The Verge</div>
             <div class="title">The ban on robot vacuums won’t make them safer, only worse</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-47" style="display:none;">
+        <div id="content-53" style="display:none;">
             <h2>The ban on robot vacuums won’t make them safer, only worse</h2>
             <p><strong>The Verge | 2026-07-31</strong></p>
             <a class="original-link" href="https://www.theverge.com/tech/973738/robot-vacuum-ban-fewer-choices-higher-prices">Visit Original Website</a>
@@ -2496,13 +2670,13 @@ A free daily digest of the news that matters most.
 Sign in to see your notifications or create an account to join the conversation.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-48')">
+        <div class="card" onclick="openModal('content-54')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The Download: Montana’s new experimental drug rules</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-48" style="display:none;">
+        <div id="content-54" style="display:none;">
             <h2>The Download: Montana’s new experimental drug rules</h2>
             <p><strong>MIT Technology Review | 2026-07-31</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/31/1140999/the-download-montanas-right-to-try-law-anthropic-hacks/">Visit Original Website</a>
@@ -2571,13 +2745,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-49')">
+        <div class="card" onclick="openModal('content-55')">
             <div class="source">MIT Technology Review</div>
             <div class="title">Montana’s new “right to try” law can’t come soon enough for some</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-49" style="display:none;">
+        <div id="content-55" style="display:none;">
             <h2>Montana’s new “right to try” law can’t come soon enough for some</h2>
             <p><strong>MIT Technology Review | 2026-07-31</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/31/1140945/montanas-new-right-to-try-law-cant-come-soon-enough-for-some/">Visit Original Website</a>
@@ -2648,13 +2822,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-50')">
+        <div class="card" onclick="openModal('content-56')">
             <div class="source">MIT Technology Review</div>
             <div class="title">Montana’s plan to become an experimental medical hub just pushed forward</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-50" style="display:none;">
+        <div id="content-56" style="display:none;">
             <h2>Montana’s plan to become an experimental medical hub just pushed forward</h2>
             <p><strong>MIT Technology Review | 2026-07-30</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/30/1140942/montana-experimental-medical-hub-pushed-forward-right-to-try/">Visit Original Website</a>
@@ -2747,13 +2921,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-51')">
+        <div class="card" onclick="openModal('content-57')">
             <div class="source">MIT Technology Review</div>
             <div class="title">The Download: tricking LLMs, and reviving geothermal plants</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-51" style="display:none;">
+        <div id="content-57" style="display:none;">
             <h2>The Download: tricking LLMs, and reviving geothermal plants</h2>
             <p><strong>MIT Technology Review | 2026-07-30</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/30/1140936/the-download-tricking-llms-reviving-geothermal/">Visit Original Website</a>
@@ -2820,13 +2994,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-52')">
+        <div class="card" onclick="openModal('content-58')">
             <div class="source">MIT Technology Review</div>
             <div class="title">A fundamental flaw leaves LLMs strikingly vulnerable to attack</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-52" style="display:none;">
+        <div id="content-58" style="display:none;">
             <h2>A fundamental flaw leaves LLMs strikingly vulnerable to attack</h2>
             <p><strong>MIT Technology Review | 2026-07-30</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/30/1140927/a-fundamental-flaw-leaves-llms-vulnerable-to-attack/">Visit Original Website</a>
@@ -2899,13 +3073,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-53')">
+        <div class="card" onclick="openModal('content-59')">
             <div class="source">MIT Technology Review</div>
             <div class="title">How an overlooked geothermal plant got a second chance</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-53" style="display:none;">
+        <div id="content-59" style="display:none;">
             <h2>How an overlooked geothermal plant got a second chance</h2>
             <p><strong>MIT Technology Review | 2026-07-29</strong></p>
             <a class="original-link" href="https://www.technologyreview.com/2026/07/29/1140896/geothermal-second-chance/">Visit Original Website</a>
@@ -2964,13 +3138,13 @@ We’re having trouble saving your preferences.
                 customer-service@technologyreview.com with a list of newsletters you’d like to receive.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-54')">
+        <div class="card" onclick="openModal('content-60')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">FIFA faces fresh transparency calls after retreat on World Cup sell-off plan - Reuters</div>
             <div class="meta">2026-08-01</div>
         </div>
         
-        <div id="content-54" style="display:none;">
+        <div id="content-60" style="display:none;">
             <h2>FIFA faces fresh transparency calls after retreat on World Cup sell-off plan - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-01</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOcXRXNWJWSDNJWk9BVFdoMVlpX0lCVURrSmtnQXRVUVE1TjJqVG1sNXU2QkZZUjZ3cHhVWk1pajNteWtJRmllQjBVSFMybFlyQ00tVjBLQ3ktS2dRVjdLRkRNa3lIU1pZcWNYVjlOb0VhNDRaYkhIa2Ewd09pOTE4ZVUydjNkNzVhd2JETW44Sy1EUjBmbnFUWlRlZVg2eVpONlFzNTg1Nk14NWtJaFJNbm9NM3RrLW5VU19nXzZhazg?oc=5">Visit Original Website</a>
@@ -2978,13 +3152,41 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-55')">
+        <div class="card" onclick="openModal('content-61')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Lithuanian embassy in Kyiv damaged in Russian missile attack - Reuters</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-61" style="display:none;">
+            <h2>Lithuanian embassy in Kyiv damaged in Russian missile attack - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-08-01</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQM0tfeklSMU5ZODFzXzY4V2x5N0dNVzdiSFY2YVE3c1RsbEtJYk1FbFFlTWZiMF9kbTNkYmtIZHhHYkFSSVRkYjF0amc4Qkw0OEN3dzNrdGU5YzJRcXViT0kyOVk5akNVZnhjSm1SeG1HalJCaXFhSkMwS1UxSDZpZ09lSTBrTno0Z2pNN3BNSHVudjFLZzcyUnZ0Vjg?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-62')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Hungary's Paks nuclear plant could be powered down this weekend, PM says - Reuters</div>
+            <div class="meta">2026-08-01</div>
+        </div>
+        
+        <div id="content-62" style="display:none;">
+            <h2>Hungary's Paks nuclear plant could be powered down this weekend, PM says - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-08-01</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPeWpyZFpUY19WRVp3aFN1ZURWa3hNTU55WnltbHBodng0WlhUekcyX1BEcWJZc0sxOGdTaXdrUDBVaG9uV192bXFveWVWUjdLeUhVeEFZWi1RekN4eEZkV1gzb3ZPdV80MGV4a1dWVXRyRFFiS1N4VHBZZWgzQ2NmVkNRVHhEM0E1SGhGcXBib0hCZU1nT3ppWnhFbk1xMXRMMFBGUjl3SmVjNEFXU1kxX3pkX0g5cWFFUjBablUwWQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-63')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">US to make visa bond program permanent for people from dozens of countries - Reuters</div>
             <div class="meta">2026-08-01</div>
         </div>
         
-        <div id="content-55" style="display:none;">
+        <div id="content-63" style="display:none;">
             <h2>US to make visa bond program permanent for people from dozens of countries - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-01</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPVzlLSWZRazMxRDYzOEoyR2s4TUd2czgtdkt3ejMydU5tOWRWZU5VanB3WDF1SmpWNGt1M0pJcGJqUGNTU2o4a0hrX2Ftdmp2MnJPeXdVVkh0a0tLbVhscWhHZ1JQczZHT3pvZmZNUjViekVqYnIwWHNPaVNKYjZvTmhET05TUUxuR3FKbkZmcjRLWnRYMWRVeXF0cXg3NXluUDVEOE5GTQ?oc=5">Visit Original Website</a>
@@ -2992,13 +3194,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-56')">
+        <div class="card" onclick="openModal('content-64')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Thousands expected in Amsterdam for boisterous WorldPride in shadow of Berlin attack - Reuters</div>
             <div class="meta">2026-08-01</div>
         </div>
         
-        <div id="content-56" style="display:none;">
+        <div id="content-64" style="display:none;">
             <h2>Thousands expected in Amsterdam for boisterous WorldPride in shadow of Berlin attack - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-01</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQYUR4aERLVE00azhSZHJQbWZZUktuVmNhYkFKb1lTWUhEcS1CS3dIbEdJREpybnlaRk01elZwWi1EMlNLV290anVpWTltNDNON1p0em1LLXBraWlSTzhMOVAydVM0NFhSR1dZNE8wRzJvaC16dGlPUkVoM25ZRjZvejNTMzRZZWZNMEE4UnRJN2JWTDc2VTdYblhiNnlYQVhnUmVxQktVSlJ2VWgtZVJfWFBuUQ?oc=5">Visit Original Website</a>
@@ -3006,13 +3208,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-57')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">UKMTO reports two tanker incidents off Oman - Reuters</div>
             <div class="meta">2026-08-01</div>
         </div>
         
-        <div id="content-57" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>UKMTO reports two tanker incidents off Oman - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-01</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxPTnUzTS16X1VtV0ZDQ3FkZENqY1RCbTZrN05WcFpTSFNYT2FEVG5PdTZCaklocGFNWmdpYkhVQWVnZVcyeGhSeTBhVjdVeDFRM3doNHdrX29BWXJpN0lTVFFjTms0SkpZbmNhaXpTSl9IYU13U2YweFNiOGFOby1UX1lZUnBaZEhNUFVYeFpMcy1yaGc?oc=5">Visit Original Website</a>
@@ -3020,41 +3222,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-58')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">US Treasury intervenes to support yen after Japan steps in, FT reports - Reuters</div>
-            <div class="meta">2026-08-01</div>
-        </div>
-        
-        <div id="content-58" style="display:none;">
-            <h2>US Treasury intervenes to support yen after Japan steps in, FT reports - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-08-01</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQU0lVZ3FOWEp0MkVGaWc4UkprSmVwZlZMSzBQRlBuQ3UzOEVuN09za080MDFQTHFfOVFGU1hsOUF3THBnbGc0Tk4zdi1sR0xBdHhJV3FiOTNmaEZkbWNWQ0VMRjROZXJUQ1VwX1BrS3NvdWRDYThPSWVhdnhZUmxHWHNsVEFRYTZFXy1CeTJVdW13SVpqcl9wdTBoRjdINnV6R0tEcTI3Qnpjc3RpLWxQOVVB?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-59')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">EXCLUSIVE: Bessent's 'to do' list: buy $5-10 billion worth of Japanese yen, Reuters photo shows - Reuters</div>
-            <div class="meta">2026-07-31</div>
-        </div>
-        
-        <div id="content-59" style="display:none;">
-            <h2>EXCLUSIVE: Bessent's 'to do' list: buy $5-10 billion worth of Japanese yen, Reuters photo shows - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-07-31</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOY3JMOWh6OTFSeHRod0U3ZURXMVBZc202SWhscFNKVGY1WGRGMFhJNEhGaHk1NnUyaTlmU2FVMFRVUE9Xbzk5WW5sZTBOaVczYXNfam5fS0pnb3BwS2VmcEFfZGgwZnZHbFRDdjFFTkYtajVzMXJiUzJVdjhaV0tOWm1aZk9PWlg0aTdyX1NzUzlJMUZLU3FFQUZEUWc1bHQ0bWNqRkI4cXh2WktLa0VlanJUbFJuS3ZrMWVBNEtnWE52NzRFTzBHcEZ3?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-60')">
+        <div class="card" onclick="openModal('content-66')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - The Debrief</div>
             <div class="meta">2026-07-23</div>
         </div>
         
-        <div id="content-60" style="display:none;">
+        <div id="content-66" style="display:none;">
             <h2>Researchers Say Two ‘Ancient Ramps’ Beside Egypt’s Red Pyramid May Actually Be Something Far More Significant - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-23</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxQaFduYXI1TlZLMVlsc25Xay0xalZJQkQxZ1hhWWJKaXN5ZmU0bl8zdjdhYW9pYWlOU1JUVTA0YXFSM2lYengwb09TelVaQ2JEOE52M1E0bXA1dTA4bE5OZTBGSjZqdHJkNGx5TE5hWmVlVWxiX2pQNkgwcllXb0JPMzd0UDVQOHQ4ak50Sm5ZZm5DbmJmcENBSGNmLVJPbE50UVlxVGFRbE13WTRNd2c2Vm56TThNSWdQQ2hDYlRQWjM5Unh3amVyVmZ3?oc=5">Visit Original Website</a>
@@ -3062,13 +3236,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-61')">
+        <div class="card" onclick="openModal('content-67')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - The Debrief</div>
             <div class="meta">2026-07-27</div>
         </div>
         
-        <div id="content-61" style="display:none;">
+        <div id="content-67" style="display:none;">
             <h2>2000-Acre Wildfire Near Famous ‘Area 51’ Rages on as Officials Work to Stall its Spread - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQcFN5Z05uc2twMmJfRWRoWDBleUp4cmowbFNmNktMb1FLaU5hak53a1VhQzBZV1RQbm54VVJsWVZmZlVuTy1VUGpwMDlaa2FPNlFsN0J1OWN6X1hhUnV3ZTBtQkU2akdSa0xSQTNfdDh1S2JwU3FaSWJJSXpSTWMxVFBoZ184VHBFYnNXV0JrV1pPNHFodm5xYjZ0MEtmN1pjOWtqc2pfamxNM2IxdHc?oc=5">Visit Original Website</a>
@@ -3076,13 +3250,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-62')">
+        <div class="card" onclick="openModal('content-68')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - The Debrief</div>
             <div class="meta">2026-07-26</div>
         </div>
         
-        <div id="content-62" style="display:none;">
+        <div id="content-68" style="display:none;">
             <h2>An Unexpected Transmissible Cancer Is Appearing in North American Waterways—Where Did It Come From? - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-26</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxOWjQ2ZjNnX1RsaHRRendOZlVzVlFheEZkWXRGNDZtRndxQnB6cnIyeDEyYnQyZkpIdlNhMENQbm9sTjdLZXlnRW1BSEVsRjl0cWV6WjM5UktJTFF4UUNra0xHZW5SQTVjZE9xODFSU3RIZWJ6dGZWS0l5R2E0dVBMR2R5RlZ4Y3pTN2EyVnVfWks1NGVFc05vWVV2SVhZRWQ4SXdTcVJTdUFDYnpUZk1IUW53ZnZiYmpuSGhuOEl5OA?oc=5">Visit Original Website</a>
@@ -3090,13 +3264,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
+        <div class="card" onclick="openModal('content-69')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">The World War II Atomic Blast Over Hiroshima Created a Previously Unidentified Multicomponent Metallic Alloy - The Debrief</div>
             <div class="meta">2026-07-30</div>
         </div>
         
-        <div id="content-63" style="display:none;">
+        <div id="content-69" style="display:none;">
             <h2>The World War II Atomic Blast Over Hiroshima Created a Previously Unidentified Multicomponent Metallic Alloy - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-30</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxQZ1plaUUtRHRxTEF3S2FuVDlJcDV3c0JkbFZDM09hY09UdGcyZkhFdHVYVjVrTWt2VDdQNTZBQURZVjQtVEN0R2xmanE5dmNvaGJBbTRBUEtaRWxteE50WUFKUGhBMURaRG9vN1hOZTBueVNPOWJ5OFZmaG9aRlpXTGxVOU55dnVMNDl6SWZiNnFqOWpLX3hmTGk5VEw4cFN2U3dMcldBb0lwNDFXdW5mRnYyNEl4aThEQ2RFbW9QOC1MUnhqSnRDT0ZLM1M?oc=5">Visit Original Website</a>
@@ -3104,13 +3278,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
+        <div class="card" onclick="openModal('content-70')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - The Debrief</div>
             <div class="meta">2026-07-28</div>
         </div>
         
-        <div id="content-64" style="display:none;">
+        <div id="content-70" style="display:none;">
             <h2>5,000-Year-Old Egyptian Tomb Discovery Reveals “Sophisticated” Knowledge That Challenges Past Thinking on the Origins of the Pyramids - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-28</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxOejFBaHZJekhsRFMydGlSTFl4OXN2aTdmZGd2YnVmYl95Y3ZPQjVQUUE3YlFiTzVCTHZsb0Z1S2dzQmlEMHdvaGo4LW1DRC1ZczBBVjhwUWZxMTI4Z0xyeE1XSnhJRTRnZklxWEdaaGZ4bWR1b204b3V0dzFhS0xIbEwxVThSMmNta3ZiSTdaMEZnd2ZYSGhielhwQ0dKNXZlYjJNLUJRdVpadzRkQThBOUFOZjdrNFA2SzAzbFJYYkF0VWkwZkZVQWhJbGRLZU9qNUdHdmFpQnRCOHpGeVVUY2JYNllDQ2RObnc?oc=5">Visit Original Website</a>
@@ -3118,13 +3292,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-65')">
+        <div class="card" onclick="openModal('content-71')">
             <div class="source">"site:thedebrief.org" - Google News</div>
             <div class="title">After Surviving a Dogfight in a Test Aircraft, DARPA’s VENOM AI-Controlled Pilot Just Flew a Modified Combat-Style F-16 - The Debrief</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-65" style="display:none;">
+        <div id="content-71" style="display:none;">
             <h2>After Surviving a Dogfight in a Test Aircraft, DARPA’s VENOM AI-Controlled Pilot Just Flew a Modified Combat-Style F-16 - The Debrief</h2>
             <p><strong>"site:thedebrief.org" - Google News | 2026-07-29</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxNWWJ3eEdEM2tlWU4xU00tLU9nb2o4TXhnSDBuczBsRjliV3JTSnZJcV9YdDExV0NMMGcxOHZ5SXBYNUtieGRjVC1wN1RMT0xrUlBZMXRkcG5XUUpHdDc4OVotSm01QjBwTTR2NGxkSGFubGxjSjZLY0RuWDBzWWxPS0UtdFBGUFZqM3BEOGkwMFdaRVg4ZER0Q1dEV3cyVEZaMFBGY2ZOM0w3cllfSUtYZllKM3MyS2ktMHFyeDB4V0xwQVI1LTJwMmc1VllNWkhKQm5ueW5FeVA?oc=5">Visit Original Website</a>
@@ -3132,13 +3306,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-66')">
+        <div class="card" onclick="openModal('content-72')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Exclusive: OpenAI Previews ‘Astra’ AI Model in DC - The Information</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-66" style="display:none;">
+        <div id="content-72" style="display:none;">
             <h2>Exclusive: OpenAI Previews ‘Astra’ AI Model in DC - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-31</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQYjNBZGhQZFk0YXdGc0FQRUsxd0Jrd2RuTkRBXzFMMTdpUXZqZWpOYjR5dEhrMkg4X0hYcjFEemFBWEdGQU9Tc1hjMXZWN0lxQVlNU2FBcHpMQ0ctSHplVklWOEFhQmljYTQ0NERkZ3V5di0tZUR3Rm1zX0R3X1k1MDRDNzRydEFtenplMg?oc=5">Visit Original Website</a>
@@ -3146,13 +3320,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-67')">
+        <div class="card" onclick="openModal('content-73')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Exclusive: Thinking Machines Cofounder to Return to OpenAI - The Information</div>
             <div class="meta">2026-07-29</div>
         </div>
         
-        <div id="content-67" style="display:none;">
+        <div id="content-73" style="display:none;">
             <h2>Exclusive: Thinking Machines Cofounder to Return to OpenAI - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-29</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiigFBVV95cUxON3lENGE3MGZ0RHd6VW9keXVMdkd0NzhZSVE4ZnBwRVVLTkpZZlhKQTQ5TG1wVGlic1VORGJnN1dyazdiSHIwR1JtSFRjZXZxSDdHXzc3c0poUTM0YzVvWm5OWG5wUUw4RjhkTzRWak9CcW82Y2NVZVF2RDVjZW9SM3l5NHFyekkxU0E?oc=5">Visit Original Website</a>
@@ -3160,13 +3334,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-68')">
+        <div class="card" onclick="openModal('content-74')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">China Begins Mass Production of Homegrown DUV Chip Tools - The Information</div>
             <div class="meta">2026-07-27</div>
         </div>
         
-        <div id="content-68" style="display:none;">
+        <div id="content-74" style="display:none;">
             <h2>China Begins Mass Production of Homegrown DUV Chip Tools - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-27</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMixAFBVV95cUxNaExGTFVaMWVWamhnQTRVTWhpZlhjOTBRWUFKNjBSb2RLa3A2TldMR2dOSEl4YlRucWU3elQ0X2Q5YkFzcThLNWRzeklSd3JJckUyS09PVzZsT1luUWtQU3hGRjQzWXhjRzZNU0xadTN4ZmYxcnVMZ3hlWnR3QTlBZHBMcVY4RnNodkpxUmcwYUxpbURfMjh4T2dUN2loUGdpdXJuVzlqcFM3RHR1V1hCR3JYNXBENVpoSERLeGdmTDFSQ3BE?oc=5">Visit Original Website</a>
@@ -3174,13 +3348,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-69')">
+        <div class="card" onclick="openModal('content-75')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">Jump Capital Raises $350 Million Fund For AI Investments - The Information</div>
             <div class="meta">2026-07-28</div>
         </div>
         
-        <div id="content-69" style="display:none;">
+        <div id="content-75" style="display:none;">
             <h2>Jump Capital Raises $350 Million Fund For AI Investments - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-28</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOQWN4bjZzdERfbmUzRDRQX2VQS0dmdC1fMGluTDZuM1JBVjlQYTdyUTYyZWUxSWw2UXF6aDBPRHhzeUcwdUFjVXZ5cjRHb0MxNVEyOVoyUXVwZDc0enlZTk9BTUNhSGF3Y0U5ZktKdUFRNlo0OHVFUktxbFNLaWRNWjBOdmtscTBRMjRDQ3FmNGZHZTVCMVoxRmlDaHoxVmhRUFBVajdpUQ?oc=5">Visit Original Website</a>
@@ -3188,13 +3362,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-70')">
+        <div class="card" onclick="openModal('content-76')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">China’s MiniMax Launches New Open-Source AI Video Model - The Information</div>
             <div class="meta">2026-07-31</div>
         </div>
         
-        <div id="content-70" style="display:none;">
+        <div id="content-76" style="display:none;">
             <h2>China’s MiniMax Launches New Open-Source AI Video Model - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-31</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNTEd3d2pPbURlWUM4XzVvU29UV2EtZTlPRUJVR09xOWFCSnVFVzBmNlZGSy0ybVdDTk54d0FtRGNiRUtJNHoyLUJkTm5ySkpGbGRIUjlhaTNBdzFLQ09wUnh1Mmh1eFo4cXlzU1JMWUU1dExEQy1EbTRubnlTbDZMUlE4WVBKWUNhbUJFS1lPQUJINXF4NUs1R29ZYw?oc=5">Visit Original Website</a>
@@ -3202,13 +3376,13 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-71')">
+        <div class="card" onclick="openModal('content-77')">
             <div class="source">"site:theinformation.com" - Google News</div>
             <div class="title">How Google Is Using Wall Street Financing Techniques to Expand Chip Sales - The Information</div>
             <div class="meta">2026-07-26</div>
         </div>
         
-        <div id="content-71" style="display:none;">
+        <div id="content-77" style="display:none;">
             <h2>How Google Is Using Wall Street Financing Techniques to Expand Chip Sales - The Information</h2>
             <p><strong>"site:theinformation.com" - Google News | 2026-07-26</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPaDQ4dGlCWUFnSGhZUjRZT1pDTWNkb1Z4STk3cS1QRHdLOEQtcDY2Qi1MVk5kZmZKZnR4QUMyS292S1dIak5IVWVaREhfcWdHcWE5Sk8tbGlqejJiZmV3VkhDMUFncWZXU0VIYW5jems5Wlc4QXptenhsYXpUY3ppVzhQelYtcVc1ZkptVTFGeFJOMEFDU0ZkTGtUVUdFOGh1TXdZcFRB?oc=5">Visit Original Website</a>
