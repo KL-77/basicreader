@@ -347,57 +347,7 @@ However, since Anthropic is still in the process of hiring key team members, it 
             <p><strong>Ars Technica - All content | 2026-08-06</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/08/large-genome-models-used-to-design-new-viruses/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">A lot of the AI work in biology has been focused on designing proteins. That’s partly because proteins do most of the business of life, catalyzing the interesting chemistry and structuring cells. So, figuring out how to make a new protein can mean directly tinkering with biochemistry, providing new and potentially useful functions.
-
-Since the genetic code provides a layer of abstraction between DNA and proteins, it wasn’t obvious what a model trained on DNA could do. Yet people went ahead and made a large genome model, and it turned out to be able to output DNA sequences that could encode functional proteins in bacteria and mimic the gene structures found in complex cells. Now, those same models have been used to output the genomes of viruses that infect bacteria.
-
-This isn’t science fiction—all the viruses the models created are closely related to an existing virus. But they do have some distinct features that would be challenging to evolve. And the researchers who did the work, based at Stanford University, suggest we may want to start thinking now about preparing for the potential that someone could develop a related AI that can design a virus that targets vertebrates.
-
-Large language models are essentially trained on their ability to predict the next bit of verbiage in as large a compendium of human-generated text as their developers can get ahold of. Large genome models are the same approach, but applied to DNA. To an extent, that simplifies matters, given that DNA only uses four “letters,” A, T, C, and G. But it’s more complicated in that genomes typically have areas where the next letter matters a great deal, interspersed with sequences where the next base could be anything and it wouldn’t matter.
-
-So large genome models need to recognize the biological context of the sequence they’re outputting in many situations where we humans haven’t figured it out yet. Yet, if we feed them enough genome sequences, they seem to be able to. Bacterial genes with related functions tend to cluster together. Prompt a large genome model with the sequence of part of a cluster, and it’ll output DNA sequences that encode proteins with related functions—potentially including working proteins that look like nothing else we’ve identified so far.
-
-But our own lack of knowledge places limits on what we can do with these models. If we prompt them with a bit of sequence from a complex cell, it will respond with a string of bases that contain what look like genes and regulatory DNA. But, since most genes can be located essentially anywhere in a eukaryotic genome, we have no idea what functions these hallucinated genes might perform (if any), so we can’t really test them in any way.
-
-Still, as a precaution while training these models, termed Evo 1 and Evo 2, the researchers did not provide them with any sequences from viruses that target complex cells. Even if we can’t understand what they output, there’s a chance that they’ll output something dangerous.
-
-But there’s a whole world of viruses that attack bacteria and can’t infect humans. And those, the Evo developers figured, are fair game. So, rather than looking at whether Evo 1 and Evo 2 could output reasonable-looking genes, they decided to test if they could output an entire genome.
-
-The model virus they chose as a test case is the catchily named ΦX174, part of a larger family of viruses that infect E. coli. In addition to the convenience of using the best-studied bacteria on the planet for tests, ΦX174 has a number of notable features. It’s fairly simple: At 11 genes spread over about 5,400 bases, all 11 of those genes have identified functions, and the virus’s infection cycle is well characterized.
-
-It also has a useful feature from the perspective of working with a large genome model: The end of the virus always has the same short sequence of bases. So, if you use those bases as a prompt, the large genome model should be able to recognize that it needs to respond by outputting a sequence that is in some way related to ΦX174.
-
-To further prepare their models, Evo 1 and Evo 2 were fed over 2 million additional bases of DNA sequences from viruses that infect bacteria (termed bacteriophages), and then fine-tuned with sequences specific to Microviridae, the group that ΦX174 belongs to. After that, they experimented with different prompts. Prompt with too much of the ΦX174 start sequence, and it would simply spit the rest of the genome back out. Too little, and it would generate lots of unrelated sequences. The researchers eventually found prompts with four to nine bases of the start sequence worked best.
-
-While the outputs were primed to return something that looked like ΦX174, they literally could be anything—from near-carbon-copies of the normal virus to sequences that are only vaguely viral. To address this, the research team put a lot of pre-conditions on the outputs designed to throw away some of the more extreme ones while still enforcing a bit of tinkering.
-
-For example, ΦX174 uses its own version of a spike protein to latch onto and infect bacteria; if the gene that encodes spike is missing or damaged, the virus simply wouldn’t work. So they discarded any outputs that had a spike protein that was less than 60 percent identical to the real one. They also threw out viruses that were too long or too short (< 4,000 bases or > 6,000), any that had strings of the same base more than 10 bases long, and any that had unusual frequencies of the two base pairings (GC and AT).
-
-Throwing out those at the computer analysis stage left them with a reasonable number of potential outputs to test: 302 proposed viral sequences. They were able to chemically synthesize the sequences of 285 of them and inserted them into bacteria to see what happened. In most cases, the answer was “nothing.” But 16 of the sequences managed to inhibit the growth of the E. coli, suggesting they were actually working as viruses. Nine were the initial sequences output by the AI, and the remaining seven had acquired additional mutations after being inserted into bacteria.
-
-In some ways, these designed viruses were quite similar to the original ΦX174, but in other ways they were quite distinct.
-
-For the “the same” perspective, the most effective viruses in the group of 285 tended to look a lot like the original. The overall fraction of viable viruses was only 16 out of the 285 outputs tested (5.6 percent). But if you looked only at the outputs that were most similar to the original ΦX174 (those with 98 percent sequence similarity and up), viability rose to 46 percent. So, if you don’t look a lot like a normal ΦX174, chances are good that you’re not going to work as a virus at all.
-
-Most of the viable viruses had the same set of genes found in the original. None of them had even a single change in the stretch of DNA where the duplication of the virus’s genome starts.
-
-All of that is in keeping with past studies that have shown that making even a single base change that alters just one amino acid in one of the proteins made from the virus’s genome had, on average, a 20 percent chance of inactivating the virus entirely. ΦX174 doesn’t just fear change; it’s typically murdered by it. Accordingly, the changes suggested by the AI produced a population of viable viruses that, on average, looked a lot like the original.
-
-But, as individuals, the viruses were fairly distinct. One of them lost one of the viral proteins entirely, compensating for its loss with changes elsewhere in the genome. Another added an entirely new gene. Many had genes that were either longer or shorter than the original. One even replaced one of the ΦX174 genes with a gene from a very distantly related virus.
-
-The researchers did an interesting analysis based on the idea that any one amino acid change had a 20 percent chance of inactivating the virus. Doing the math, they say that any viruses with less than 25 changes have only a 2.3 percent chance of being viable. Of the 300 or so viruses the AI output, five viruses fell in that range, and three of them were viable. At above 25 individual amino acid changes, the chances of producing a viable virus are essentially zero. Yet nearly a quarter of the AI-suggested viruses that had more than 25 changes were viable, including two that had over 50 amino acid alterations.
-
-This tells us the AI is far more likely to make changes that leave a viable virus behind than random mutation.
-
-This study is interesting from an intellectual perspective, but the researchers also show that it might be useful. Bacteriophages have been tested as therapies for bacterial infections that are resistant to standard antibiotics. But many bacterial strains have already evolved resistance to some families of viruses, including ΦX174. One potential solution to that is to use a cocktail of bacteriophages, since it may not be easy or even possible to evolve resistance to all of them.
-
-And here, the AI has produced a cocktail of potential viruses. So the team tested a cocktail of natural bacteriophages that normally prey on E. coli and compared it to a cocktail of the 16 viable AI products. In their tests, the natural bacteriophage cocktail failed, but the AI-generated group managed to quickly evolve the ability to infect their otherwise resistant hosts. The researchers suspect that the process of overcoming resistance involved some of the AI-designed viruses swapping segments of DNA and the appearance of additional mutations.
-
-It’s not clear whether this is a major potential benefit; phage therapies have been under consideration for years but haven’t seen widespread public use, despite the growing problems with drug-resistant bacterial strains. And the authors are very clear that large genome models come with risks. Although they excluded viruses that infect vertebrates from their training data, anyone with access to sufficient computing resources could repeat the process with those viruses included.
-
-The paper ends with a call for better governance of this and related areas, such as the ordering of custom DNA sequences. So far, however, regulation of AI has largely failed to keep up with the rapid pace of the field.
-
-Science, 2026. DOI: 10.1126/science.aec2657  (About DOIs).</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -1332,7 +1282,11 @@ we&#39;re going to accidentally Andromeda Strain ourselves.
 
 That would imply that we made it back to the moon. Not happening.
 
-We deserve to go extinct - letting AI design viruses. Sure, they are supposed to bacteria targeting phages, but its a pretty small jump to create something that gets rid of those pesky meatbags that are competing for compute and energy resources. Only thing saving us is that there aren&#39;t suitably dexterous androids that can work in meatspace to build powerplants and chip fabs. Once that is achieve, we are cooked. They don&#39;t even need to be AGI&#39;s - just regular AI&#39;s that are maximising for energy and compute
+It&#39;s hardly the only motivation. Many of them are death cultists who hate humans and want us all dead. Or technocrats who believe they&#39;re going to become gods... and want the rest of us dead.
+
+It&#39;s inevitable that there will be more outbreaks of genetically-engineered disease in the future, and the kind of people with the wealth to create these kind of AI models are the last kind of people who should be allowed to use them for making new diseases.
+
+We deserve to go extinct - letting AI design viruses. Sure, they are supposed to bacteria targeting phages, but its a pretty small jump to create something that gets rid of those pesky meatbags that are competing for compute and energy resources. Only thing saving us is that there aren&#39;t suitably dexterous androids that can work in meatspace to build powerplants and chip fabs. Once that is achieve, we are cooked. They don&#39;t even need to be AGI&#39;s - just regular AI&#39;s that are maximising for energy and compute resources.
 
 Those Wuhan scientists needed something to do after COVID. /s
 
@@ -1346,10 +1300,16 @@ I&#39;m not one to worry too much about Terminator scenarios.  I don&#39;t think
 
 Mostly I think it just devalues human activity, and leads to the elimination of all purpose in society.  I was never that concerned about a reduction in birthrate before AI (we can adapt to less people and develop policies around it) but after AI, it’s a different story.  Now you have people suggesting using AI to raise and monitor our children?  Why even have kids at all, if you are so disengaged?
 
+He used a genome language model...? Like a statistical model that shows the relationship between different parts of the genome...?
+
+How did you guys think they did this in the past...?
+
+There&#39;s... nothing new here. This is relying on people not understanding what these terms mean, including perhaps the author.
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Almost anything derogatory you could say about today&#39;s software design
-would be accurate.		-- K.E. Iverson</div>
+&quot;I&#39;m a mean green mother from outer space&quot;
+ -- Audrey II, The Little Shop of Horrors</div>
         </div>
         
         <div class="card" onclick="openModal('content-25')">
@@ -1391,6 +1351,8 @@ New Mexico only has a population of just over two mi
 
 Suicide rates are down overall and down with teens compared to the 80&#39;s and 90&#39;s. For people who grew up in that period and are in the 40&#39;s to 60&#39;s, the suicide rate is up.
 
+That&#39;s because the kids call it &quot;unalived yourself&quot; now.
+
 This is chickenfeed.  Given the damage Meta has done, it should be dismantled and its executives indicted for harming consumers.
 
 This is chickenfeed.  Given the damage Meta has done, it should be dismantled and its executives indicted for harming consumers.
@@ -1406,8 +1368,8 @@ If there was a functional federal government, I could image a serious DoJ invest
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Almost anything derogatory you could say about today&#39;s software design
-would be accurate.		-- K.E. Iverson</div>
+&quot;I&#39;m a mean green mother from outer space&quot;
+ -- Audrey II, The Little Shop of Horrors</div>
         </div>
         
         <div class="card" onclick="openModal('content-26')">
@@ -1477,8 +1439,8 @@ If you are wondering, this particular ride failed the safety tests.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Almost anything derogatory you could say about today&#39;s software design
-would be accurate.		-- K.E. Iverson</div>
+&quot;I&#39;m a mean green mother from outer space&quot;
+ -- Audrey II, The Little Shop of Horrors</div>
         </div>
         
         <div class="card" onclick="openModal('content-27')">
@@ -1513,6 +1475,8 @@ If law enforcement was interested in catching criminals they could have a full t
 A far-left take on what the role of law enforcement is can be summed up as the Role of Police is Protecting Capitalism [socialistworker.org]
 
 https://www.wired.com/story/fb... [wired.com]
+
+Charles Whitman&#39;s Chocolate Company. Stand too close, and catch shit. Move further away, and catch lead.
 
 There have been attempts to get precedent that automated, continuous monitoring is qualitatively different than a cop standing outside watching you, with unfortunately mixed results.
 
@@ -1554,6 +1518,10 @@ The public vs private distinction is used, yes, but it is no way, shape or form 
 
 We&#39;ll just triangulate every person in the vicinity via the bluetooth, tps sensors, license plates, and facial recog tools onboard the 18 flock cameras we quietly installed on this block while nobody was looking and pretend that data is error proof and totally constitutional because we&#39;re partnering with a &quot;private company&quot; to obtain the info.
 
+Even so, law enforcement would also have access to the cellular records of countless individuals, the vast majority of whom were merely passing by a location at the &#39;wrong&#39; time
+
+What if, instead of asking: &quot;Give us the list of everybody using this tower during this period&quot;, police asked for something narrower, like: &quot;Give us the list of everybody using this tower during this period, and this other tower at this other period&quot; (which is, what police would&#39;ve done themselves)? What would make the request palata
+
 Such restrictions in the constitution were primarily set up to prevent harassment by government by unwarranted invasions of personal space. Individuals are not inconvenienced by these data dumps, or at least innocent individuals are not.
 
 A &quot;tower dump&quot; involves cellphone companies providing law enforcement with access to the time and location data of all mobile devices connected to specific cell towers during a designated time window.What&#39;s the issue?A magistrate judge denied the applications, holding that &quot;tower dumps&quot; are impermissible general warrants. The district judge agreed. The order repeatedly referenced the Supreme Court&#39;s recent decision in Chatrie v United States, in which the majority held that geofence warrants require constitutional privacy protections.What&#39;s the problem?&quot;With this information, the Government asserts that it will be able to identify all potential suspects,&quot; Judge Carlton Reeves wrote in a 30-page order (PDF). &quot;Even so, law enforcement would also have access to the cellular records of countless individuals, the vast majority of whom were merely passing by a location at the &#39;wrong&#39; time.&quot;So the legal decision is...&quot;That is an unreasonable search under the Fourth Amendment,&quot; the judge concluded.But, it was OK in Washington DC on Jan. 6th because...Oh yeah, the buffalo-headed shaman stole Nancy Pelosi&#39;s podium, and thus put democracy in America at risk because he (or she) that wields the Speaker of the House&#39;s podium rules the country!Or something.,.
@@ -1578,8 +1546,8 @@ Oh yeah, the buffalo-headed shaman stole Nancy Pelosi&#39;s podium, and thus put
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Almost anything derogatory you could say about today&#39;s software design
-would be accurate.		-- K.E. Iverson</div>
+&quot;I&#39;m a mean green mother from outer space&quot;
+ -- Audrey II, The Little Shop of Horrors</div>
         </div>
         
         <div class="card" onclick="openModal('content-28')">
@@ -1625,8 +1593,8 @@ There&#39;s no reason to port Doom to stupid new things ever again.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Almost anything derogatory you could say about today&#39;s software design
-would be accurate.		-- K.E. Iverson</div>
+&quot;I&#39;m a mean green mother from outer space&quot;
+ -- Audrey II, The Little Shop of Horrors</div>
         </div>
         
         <div class="card" onclick="openModal('content-29')">
@@ -1686,8 +1654,8 @@ I *really* wish that didn&#39;t remind me of this: https://www.youtube.com/watch
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-Almost anything derogatory you could say about today&#39;s software design
-would be accurate.		-- K.E. Iverson</div>
+&quot;I&#39;m a mean green mother from outer space&quot;
+ -- Audrey II, The Little Shop of Horrors</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2326,85 +2294,7 @@ Next version of Linux Mint’s desktop has both kinds of display server</div>
             <p><strong>www.theregister.com - Articles | 2026-08-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/08/07/how-the-famed-usenix-security-conf-is-managing-a-flood-of-papers-in-the-ai-era/5284374">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">AI usage is evident but isn&#39;t yet a serious problem
-
-The 35th USENIX Security Symposium (USS), which takes place next week in Baltimore, Maryland, hit an all-time high for paper submissions.
-
-While some of that increase has been aided by the availability of AI tools, those managing the conference say abuses were minimal due to defensive measures. But they&#39;re also trying not to look too closely in order to preserve trust within the security research community.
-
-&quot;This year&#39;s conference has received ~3,030 valid submissions (~1,280 in Cycle 1 and ~1,750 in Cycle 2),&quot; explained Ben Stock, tenured faculty at the CISPA Helmholtz Center for Information Security and USS program co-chair, in an email to The Register. &quot;This is up from the previous year, which had ~2,400 submissions in total.&quot;
-
-Stock said that the entire security community has seen growth of this sort and  pointed to the Network and Distributed System Security Symposium (NDSS),  which saw its paper submission count jump from 694 in 2024 to 1,311 in 2025 and 1,481 this year.
-
-&quot;So, I would not call the growth unprecedented, even though the number of submissions has reached a high point compared to previous years,&quot; he said. &quot;This is something we had expected and scaled our Program Committee (PC) accordingly.&quot;
-
-A paper published in April, &quot;More Versus Better: Artificial Intelligence, Incentives, and the Emerging Crisis in Peer Review,&quot; found that since the release of ChatGPT in 2022, submission volume at major academic journals has increased 42 percent.
-
-In the USENIX Security &#39;26 transparency report, issued in January between the first and second paper submission cycles, Stock and fellow co-chair Elissa Redmiles, assistant professor of computer science at Georgetown University, detail how they&#39;ve developed tools and policies to account for the possibility of AI usage, both for paper submissions and in paper reviews.
-
-&quot;The proliferation of readily-available LLMs to aid in writing and developing code is not unknown to the community,&quot; their report says. &quot;However, we see an alarming trend of AI usage in key areas of the scientific process. Therefore, we took actions against two types of identifiable actions which violate the scientific process in our minds: non-existing (possibly hallucinated) references and usage of AI in the review process.&quot;
-
-After identifying and rejecting a paper that contained nonexistent references, the report explains, the conference organizers developed tooling &quot;to extract references from the submitted PDFs, query well-known sources such as DBLP and arXiv, and manually confirm invalid references.&quot;
-
-The org rejected papers containing three or more hallucinated references, a policy that impacted 21 of the 1,181 first round submissions (1.78 percent).
-
-&quot;We have rejected papers for the repeated presence of nonexistent references,&quot; said Stock. &quot;We cannot say with certainty that these were AI-hallucinated, but nevertheless considered these papers to be problematic and thus rejected them.&quot;
-
-The report notes that more than 100 additional papers contained at least one reference that reviewers could not confirm. Aware that some of these might simply be false positives due to name spelling differences or missing citations, conference officials opted not to investigate these in order not to further burden staff.
-
-Conference organizers draw the line at using AI for bibliography preparation. &quot;We believe that it is critical to halt this trend that threatens scientific integrity before it grows further,&quot; the report states.
-
-However, limited use of AI to polish human-written text is expected, and that extends to those reviewing submitted papers, up to a point.
-
-&quot;We have not set a dedicated AI policy, but have made it clear to our PC members that usage of [AI] services to write reviews is not permitted, in particular also because this violates confidentiality,&quot; said Stock.
-
-&quot;We have detected a tiny number of cases where we have reached sufficient confidence that AI was used and took appropriate actions, including removal of the members from the PC and allowing affected authors to resubmit.&quot;
-
-Under that policy, USS asked five of 496 reviewers to cease participation.
-
-&quot;We have not seen evidence that leads us to believe that AI generated submissions have become a significant challenge for the security community,&quot; said Stock. &quot;This does not mean that AI hasn&#39;t been used in parts of these submissions, though.&quot; ®
-
-Beijing’s not saying why, which is just what happened when it investigated Micron
-
-Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
-
-PARTNER CONTENT: Platform engineering won the argument. Now it has to grow up fast and evolve for the AI era.
-
-AI usage is evident but isn&#39;t yet a serious problem
-
-This is why cloud-inspired networks win: virtual switches are all consistent
-
-Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
-
-AI usage is evident but isn&#39;t yet a serious problem
-
-Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
-
-Left alone, autonomous fixes often fail to fully remediate flaws
-
-Would you rather play Russian roulette with an LLM or put your health and safety in the hands of a professional
-
-In space, no one can hear you scream when the LLMs hallucinate
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
-
-New Debian versions hit FOSSland in the form of 13.6 and 12.15
-
-Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
-
-Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
-
-Next version of Linux Mint’s desktop has both kinds of display server</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-45')">
@@ -2600,67 +2490,7 @@ Next version of Linux Mint’s desktop has both kinds of display server</div>
             <p><strong>www.theregister.com - Articles | 2026-08-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/devops/2026/08/06/latest-github-outage-squeezes-actions-pages-to-death/5284297">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Look over there, Copilot - it&#39;s a beautiful AI farm where you can tend some digital rabbits
-
-GitHub’s automation platform Actions and its hosting service Pages are failing, according to an incident page on the service’s status site (archived version available here). Unfortunately, these are just the latest stability problems for a service that has had a lot of them lately.
-
-GitHub first reported the issue at 1522 UTC on Thursday, noting that Actions were suffering from “degraded performance” before noting about 20 minutes later that availability was also degraded. A few minutes after the availability notice, GitHub explained that workflow runs were failing to start, or failing partway through execution, and that requests to the Actions REST API were returning errors. The Microsoft subsidiary said users were also seeing unexpected rate limits.
-
-An unnamed cause was mentioned as having been discovered in the same update, but that was some two hours ago, and the situation has yet to be resolved, with Pages being added to the list of affected systems shortly after GitHub said it was working on mitigating the problem with Actions.
-
-“Engineers have applied a number of mitigations and are rolling out a further fix across all affected systems now,” GitHub said in its most recent update as of 1740 UTC. The company added that “Copilot code review, Copilot coding agent, hosted runners, and migrations using GitHub Enterprise Importer” were also apparently being affected by the issue, and that Webhook deliveries might be delayed as well. Those problems are in addition to the earlier Actions workflow failures, timeouts, and degraded Pages availability.
-
-This is the latest in a long string of uptime issues at GitHub - one need only look at the status history page for the platform to see how bad things have become. A similar Actions outage occurred mere days ago on July 29, a month in which 26 incidents were logged. In June, GitHub logged 23, an additional 23 in May, and 26 in April. We’re six days into August and the status page lists six total incidents for the month so far.
-
-Things have become so bad that many developers have considered moving their projects off the platform, with Ghostty developer Mitchell Hashimoto saying that the platform has become so unstable that it’s no longer a place for developers to host “serious work.”
-
-The company apologized in April for the continued glut of outages. Based on the consistent number of failures over the past few months, it’s safe to say those apologies haven’t amounted to much.
-
-GitHub has placed part of the blame on a surge in the use of AI stressing its systems. It promised structural improvements in June that GitHub SVP Jakub Oleksy said would “permanently remove failure modes.” Again, looking at the status history since June, those improvements don’t appear to have been deployed, or made a difference, quite yet.
-
-We reached out to GitHub to get more info on this latest issue, but didn’t hear back.  ®
-
-Beijing’s not saying why, which is just what happened when it investigated Micron
-
-Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
-
-PARTNER CONTENT: Platform engineering won the argument. Now it has to grow up fast and evolve for the AI era.
-
-AI usage is evident but isn&#39;t yet a serious problem
-
-This is why cloud-inspired networks win: virtual switches are all consistent
-
-Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
-
-AI usage is evident but isn&#39;t yet a serious problem
-
-Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
-
-Left alone, autonomous fixes often fail to fully remediate flaws
-
-Would you rather play Russian roulette with an LLM or put your health and safety in the hands of a professional
-
-In space, no one can hear you scream when the LLMs hallucinate
-
-PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
-
-PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
-
-Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
-
-Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
-
-On the plus side, infosec&#39;s a good bet for a long, stable career
-
-New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
-
-New Debian versions hit FOSSland in the form of 13.6 and 12.15
-
-Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
-
-Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
-
-Next version of Linux Mint’s desktop has both kinds of display server</div>
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
@@ -3223,25 +3053,39 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-62')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">EXCLUSIVE: Alibaba plans to charge big users of its next open-source AI model, sources say - Reuters</div>
+            <div class="title">Teacher and gunman dead, four injured in Thailand school shooting, police say - Reuters</div>
             <div class="meta">2026-08-07</div>
         </div>
         
         <div id="content-62" style="display:none;">
-            <h2>EXCLUSIVE: Alibaba plans to charge big users of its next open-source AI model, sources say - Reuters</h2>
+            <h2>Teacher and gunman dead, four injured in Thailand school shooting, police say - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxNbE5xeXpfUzZwaHRia2xzb1A2V3VQU0xPVmpLWG1rckR6dzJYUW51Y1NjdzdtQjUzWlFRdGVJcXE5Y29NZGlKMHdxZDU3dkpHY3BTREx3U0xjVXJ6S1QtSXgwb2xEeHpveEVuVmJIYTRkMDNTNE1lTlM4Wng3V2JMcTNYWExvWnpCZW4xWEdqQ2ktdThBWnJXX0haRW1TRjUwOExfVHBGQ1dHQTNibWNmTjRNQzVMb0ozTGRnMkx6dE9VbXNVR25BYmplc2ZoQQ?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQbENvdlJPcVlPcnZ0SDd5dmxzQkhUWkJkUWNlNUY1Wm5VbFBwTVJaZkdzS3hVdWxNNXBDN2lfVlpYcnV1MXpoWXkwb3VRYTViMGVxVHZEQkVFZldFOHpSZ3AxWGtiUEFfUHgxRG51WmU5SHh1Q0YtekExTm41akhwTlBJZHJQNGd6b0FRemNQN1pHOVk2cTFOS2RNM0xOYXFIQXJXelJsbHJzM0lrYXV1UGtOSUR2VWZlZEQxTFFoLWU?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-63')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Oil rises on concerns over Strait of Hormuz reopening plans - Reuters</div>
+            <div class="title">Asian shares pause for US jobs, oil extends gains on Mideast risk - Reuters</div>
             <div class="meta">2026-08-07</div>
         </div>
         
         <div id="content-63" style="display:none;">
+            <h2>Asian shares pause for US jobs, oil extends gains on Mideast risk - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOc0YzMU1OZXgxZVVsOS1zOHl4RnZ3SVU4WWtmNFVBd24xM1JNbVlvY0dXMm5DQUZQcDh4WHh1YTZpemRib1NEX1JDOTVqR20wZ2ZObnFJN3dtVkdHS3otcEF3OVBaTUVlTEtNNGw5eUx2QkozTGhvRTQxOHd0Vk5xX194QQ?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-64')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Oil rises on concerns over Strait of Hormuz reopening plans - Reuters</div>
+            <div class="meta">2026-08-07</div>
+        </div>
+        
+        <div id="content-64" style="display:none;">
             <h2>Oil rises on concerns over Strait of Hormuz reopening plans - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxNN0Z0cU1oY1hpbHZmZ1JoanRWLXVubmFlTDlWbkpqQ3V1d2dYYlV1U18zVEJ1Zkh1QXFFYm51SVJtZ1ctNHRGYnVlZGk3X0xKcVRHdW5MMzlDM2VQWDBYcmlWc25WX2VaWEJITEJCb2lOOFJsNFRiX0NYOVhCcmxEMWVLVGZXSkJfUzJzQXB2ZTFSMlJnZTczRWVJU3ZTUHEyeWNhcFBuSlI?oc=5">Visit Original Website</a>
@@ -3249,30 +3093,16 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-64')">
+        <div class="card" onclick="openModal('content-65')">
             <div class="source">"site:reuters.com" - Google News</div>
             <div class="title">Meta ordered to pay $567 million in New Mexico for teen mental health fund - Reuters</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-64" style="display:none;">
+        <div id="content-65" style="display:none;">
             <h2>Meta ordered to pay $567 million in New Mexico for teen mental health fund - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-06</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPZ25adU40RDVWeVlvNTZDdmNqdHZpOERIODV6XzhBRmY3bFdPYmlYN2liNTloRWRkaEVNaDRpSXRXdEh5RVN2SFZGSTZRdXFsaGRyNENpMkRnTDBNdm5EX0trbWJQS3FFcmNMMzZabGRCb2VaZW5LYVExdVp2Zy1uWkFQTU54cC0xbTZKaU1FbDBKVW5TeGdFUDVZLXVjbGd3eW5JNl9mYlNodw?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-65')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Gold heads for best week since January, US jobs data in focus - Reuters</div>
-            <div class="meta">2026-08-07</div>
-        </div>
-        
-        <div id="content-65" style="display:none;">
-            <h2>Gold heads for best week since January, US jobs data in focus - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxPbWpUMWdTeEtHNmJ5VDlJZU9tOGp0d0xFQTBlT2xXUHBTSENUdHowV0JkLTFockFBbUl6T0hHT29nUjN5XzR0RWlCbU9VQjZBY2pJd0o5dmFhel9VeGZqV0E1VFpEZjJ3dWk1T2I5aERGNE41dVlkWlFFeHFsUm80RVVPTkNlX2lKc0tJTEtBRURzbXZZMWI5YnlHS1dlWWJyRkFsSmxXM2NWdU5qV1lj?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
