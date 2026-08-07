@@ -347,7 +347,57 @@ However, since Anthropic is still in the process of hiring key team members, it 
             <p><strong>Ars Technica - All content | 2026-08-06</strong></p>
             <a class="original-link" href="https://arstechnica.com/science/2026/08/large-genome-models-used-to-design-new-viruses/">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">A lot of the AI work in biology has been focused on designing proteins. That’s partly because proteins do most of the business of life, catalyzing the interesting chemistry and structuring cells. So, figuring out how to make a new protein can mean directly tinkering with biochemistry, providing new and potentially useful functions.
+
+Since the genetic code provides a layer of abstraction between DNA and proteins, it wasn’t obvious what a model trained on DNA could do. Yet people went ahead and made a large genome model, and it turned out to be able to output DNA sequences that could encode functional proteins in bacteria and mimic the gene structures found in complex cells. Now, those same models have been used to output the genomes of viruses that infect bacteria.
+
+This isn’t science fiction—all the viruses the models created are closely related to an existing virus. But they do have some distinct features that would be challenging to evolve. And the researchers who did the work, based at Stanford University, suggest we may want to start thinking now about preparing for the potential that someone could develop a related AI that can design a virus that targets vertebrates.
+
+Large language models are essentially trained on their ability to predict the next bit of verbiage in as large a compendium of human-generated text as their developers can get ahold of. Large genome models are the same approach, but applied to DNA. To an extent, that simplifies matters, given that DNA only uses four “letters,” A, T, C, and G. But it’s more complicated in that genomes typically have areas where the next letter matters a great deal, interspersed with sequences where the next base could be anything and it wouldn’t matter.
+
+So large genome models need to recognize the biological context of the sequence they’re outputting in many situations where we humans haven’t figured it out yet. Yet, if we feed them enough genome sequences, they seem to be able to. Bacterial genes with related functions tend to cluster together. Prompt a large genome model with the sequence of part of a cluster, and it’ll output DNA sequences that encode proteins with related functions—potentially including working proteins that look like nothing else we’ve identified so far.
+
+But our own lack of knowledge places limits on what we can do with these models. If we prompt them with a bit of sequence from a complex cell, it will respond with a string of bases that contain what look like genes and regulatory DNA. But, since most genes can be located essentially anywhere in a eukaryotic genome, we have no idea what functions these hallucinated genes might perform (if any), so we can’t really test them in any way.
+
+Still, as a precaution while training these models, termed Evo 1 and Evo 2, the researchers did not provide them with any sequences from viruses that target complex cells. Even if we can’t understand what they output, there’s a chance that they’ll output something dangerous.
+
+But there’s a whole world of viruses that attack bacteria and can’t infect humans. And those, the Evo developers figured, are fair game. So, rather than looking at whether Evo 1 and Evo 2 could output reasonable-looking genes, they decided to test if they could output an entire genome.
+
+The model virus they chose as a test case is the catchily named ΦX174, part of a larger family of viruses that infect E. coli. In addition to the convenience of using the best-studied bacteria on the planet for tests, ΦX174 has a number of notable features. It’s fairly simple: At 11 genes spread over about 5,400 bases, all 11 of those genes have identified functions, and the virus’s infection cycle is well characterized.
+
+It also has a useful feature from the perspective of working with a large genome model: The end of the virus always has the same short sequence of bases. So, if you use those bases as a prompt, the large genome model should be able to recognize that it needs to respond by outputting a sequence that is in some way related to ΦX174.
+
+To further prepare their models, Evo 1 and Evo 2 were fed over 2 million additional bases of DNA sequences from viruses that infect bacteria (termed bacteriophages), and then fine-tuned with sequences specific to Microviridae, the group that ΦX174 belongs to. After that, they experimented with different prompts. Prompt with too much of the ΦX174 start sequence, and it would simply spit the rest of the genome back out. Too little, and it would generate lots of unrelated sequences. The researchers eventually found prompts with four to nine bases of the start sequence worked best.
+
+While the outputs were primed to return something that looked like ΦX174, they literally could be anything—from near-carbon-copies of the normal virus to sequences that are only vaguely viral. To address this, the research team put a lot of pre-conditions on the outputs designed to throw away some of the more extreme ones while still enforcing a bit of tinkering.
+
+For example, ΦX174 uses its own version of a spike protein to latch onto and infect bacteria; if the gene that encodes spike is missing or damaged, the virus simply wouldn’t work. So they discarded any outputs that had a spike protein that was less than 60 percent identical to the real one. They also threw out viruses that were too long or too short (< 4,000 bases or > 6,000), any that had strings of the same base more than 10 bases long, and any that had unusual frequencies of the two base pairings (GC and AT).
+
+Throwing out those at the computer analysis stage left them with a reasonable number of potential outputs to test: 302 proposed viral sequences. They were able to chemically synthesize the sequences of 285 of them and inserted them into bacteria to see what happened. In most cases, the answer was “nothing.” But 16 of the sequences managed to inhibit the growth of the E. coli, suggesting they were actually working as viruses. Nine were the initial sequences output by the AI, and the remaining seven had acquired additional mutations after being inserted into bacteria.
+
+In some ways, these designed viruses were quite similar to the original ΦX174, but in other ways they were quite distinct.
+
+For the “the same” perspective, the most effective viruses in the group of 285 tended to look a lot like the original. The overall fraction of viable viruses was only 16 out of the 285 outputs tested (5.6 percent). But if you looked only at the outputs that were most similar to the original ΦX174 (those with 98 percent sequence similarity and up), viability rose to 46 percent. So, if you don’t look a lot like a normal ΦX174, chances are good that you’re not going to work as a virus at all.
+
+Most of the viable viruses had the same set of genes found in the original. None of them had even a single change in the stretch of DNA where the duplication of the virus’s genome starts.
+
+All of that is in keeping with past studies that have shown that making even a single base change that alters just one amino acid in one of the proteins made from the virus’s genome had, on average, a 20 percent chance of inactivating the virus entirely. ΦX174 doesn’t just fear change; it’s typically murdered by it. Accordingly, the changes suggested by the AI produced a population of viable viruses that, on average, looked a lot like the original.
+
+But, as individuals, the viruses were fairly distinct. One of them lost one of the viral proteins entirely, compensating for its loss with changes elsewhere in the genome. Another added an entirely new gene. Many had genes that were either longer or shorter than the original. One even replaced one of the ΦX174 genes with a gene from a very distantly related virus.
+
+The researchers did an interesting analysis based on the idea that any one amino acid change had a 20 percent chance of inactivating the virus. Doing the math, they say that any viruses with less than 25 changes have only a 2.3 percent chance of being viable. Of the 300 or so viruses the AI output, five viruses fell in that range, and three of them were viable. At above 25 individual amino acid changes, the chances of producing a viable virus are essentially zero. Yet nearly a quarter of the AI-suggested viruses that had more than 25 changes were viable, including two that had over 50 amino acid alterations.
+
+This tells us the AI is far more likely to make changes that leave a viable virus behind than random mutation.
+
+This study is interesting from an intellectual perspective, but the researchers also show that it might be useful. Bacteriophages have been tested as therapies for bacterial infections that are resistant to standard antibiotics. But many bacterial strains have already evolved resistance to some families of viruses, including ΦX174. One potential solution to that is to use a cocktail of bacteriophages, since it may not be easy or even possible to evolve resistance to all of them.
+
+And here, the AI has produced a cocktail of potential viruses. So the team tested a cocktail of natural bacteriophages that normally prey on E. coli and compared it to a cocktail of the 16 viable AI products. In their tests, the natural bacteriophage cocktail failed, but the AI-generated group managed to quickly evolve the ability to infect their otherwise resistant hosts. The researchers suspect that the process of overcoming resistance involved some of the AI-designed viruses swapping segments of DNA and the appearance of additional mutations.
+
+It’s not clear whether this is a major potential benefit; phage therapies have been under consideration for years but haven’t seen widespread public use, despite the growing problems with drug-resistant bacterial strains. And the authors are very clear that large genome models come with risks. Although they excluded viruses that infect vertebrates from their training data, anyone with access to sufficient computing resources could repeat the process with those viruses included.
+
+The paper ends with a call for better governance of this and related areas, such as the ordering of custom DNA sequences. So far, however, regulation of AI has largely failed to keep up with the rapid pace of the field.
+
+Science, 2026. DOI: 10.1126/science.aec2657  (About DOIs).</div>
         </div>
         
         <div class="card" onclick="openModal('content-6')">
@@ -685,7 +735,7 @@ When you purchase through links in our articles, we may earn a small commission.
 
 Scale faster. Grow your portfolio. Gain practical expertise. No matter your goal, Disrupt can empower you.Save up to $330 today!
 
-Jeff Dean and other top AI researchers are leaving Google to launch their own startup
+Ford’s new electric truck, ‘Fathom,’ starts at $28,350
 
 Bending Spoons to buy Airtable for $1.28B
 
@@ -753,7 +803,7 @@ You can contact or verify outreach from Dominic by emailing dominic.davis@techcr
 
 Scale faster. Grow your portfolio. Gain practical expertise. No matter your goal, Disrupt can empower you.Save up to $330 today!
 
-Jeff Dean and other top AI researchers are leaving Google to launch their own startup
+Ford’s new electric truck, ‘Fathom,’ starts at $28,350
 
 Bending Spoons to buy Airtable for $1.28B
 
@@ -815,7 +865,9 @@ When you purchase through links in our articles, we may earn a small commission.
 
 Scale faster. Grow your portfolio. Gain practical expertise. No matter your goal, Disrupt can empower you.Save up to $330 today!
 
-Jeff Dean and other top AI researchers are leaving Google to launch their own startup
+Ford’s new electric truck, ‘Fathom,’ starts at $28,350
+
+Elon Musk repeatedly one-upped his execs on SpaceX’s first earnings call
 
 Bending Spoons to buy Airtable for $1.28B
 
@@ -825,9 +877,7 @@ Sequoia’s Shaun Maguire leads $1B round for nuclear startup Valar Atomics
 
 Malaysia is reportedly shutting down Balaji Srinivasan’s Network School
 
-YouTuber Hank Green says his AI usage is ‘not healthy’
-
-WhatsApp is testing a new folder for messages from large businesses</div>
+YouTuber Hank Green says his AI usage is ‘not healthy’</div>
         </div>
         
         <div class="card" onclick="openModal('content-16')">
@@ -882,7 +932,9 @@ You can contact or verify outreach from Lorenzo by emailing lorenzo@techcrunch.c
 
 Scale faster. Grow your portfolio. Gain practical expertise. No matter your goal, Disrupt can empower you.Save up to $330 today!
 
-Jeff Dean and other top AI researchers are leaving Google to launch their own startup
+Ford’s new electric truck, ‘Fathom,’ starts at $28,350
+
+Elon Musk repeatedly one-upped his execs on SpaceX’s first earnings call
 
 Bending Spoons to buy Airtable for $1.28B
 
@@ -892,9 +944,7 @@ Sequoia’s Shaun Maguire leads $1B round for nuclear startup Valar Atomics
 
 Malaysia is reportedly shutting down Balaji Srinivasan’s Network School
 
-YouTuber Hank Green says his AI usage is ‘not healthy’
-
-WhatsApp is testing a new folder for messages from large businesses</div>
+YouTuber Hank Green says his AI usage is ‘not healthy’</div>
         </div>
         
         <div class="card" onclick="openModal('content-17')">
@@ -938,7 +988,9 @@ He can be reached via encrypted message at zackwhittaker.1337 on Signal. You can
 
 Scale faster. Grow your portfolio. Gain practical expertise. No matter your goal, Disrupt can empower you.Save up to $330 today!
 
-Jeff Dean and other top AI researchers are leaving Google to launch their own startup
+Ford’s new electric truck, ‘Fathom,’ starts at $28,350
+
+Elon Musk repeatedly one-upped his execs on SpaceX’s first earnings call
 
 Bending Spoons to buy Airtable for $1.28B
 
@@ -948,9 +1000,7 @@ Sequoia’s Shaun Maguire leads $1B round for nuclear startup Valar Atomics
 
 Malaysia is reportedly shutting down Balaji Srinivasan’s Network School
 
-YouTuber Hank Green says his AI usage is ‘not healthy’
-
-WhatsApp is testing a new folder for messages from large businesses</div>
+YouTuber Hank Green says his AI usage is ‘not healthy’</div>
         </div>
         
         <div class="card" onclick="openModal('content-18')">
@@ -1265,11 +1315,39 @@ Before the shortages, the U.S. used its technological advantages to shape its st
         
         <div class="card" onclick="openModal('content-24')">
             <div class="source">Slashdot</div>
-            <div class="title">Scientists Make First Viruses Designed By AI</div>
+            <div class="title">Dress Made of Living Mycelium Can Renew and Repair Itself</div>
             <div class="meta">2026-08-07</div>
         </div>
         
         <div id="content-24" style="display:none;">
+            <h2>Dress Made of Living Mycelium Can Renew and Repair Itself</h2>
+            <p><strong>Slashdot | 2026-08-07</strong></p>
+            <a class="original-link" href="https://science.slashdot.org/story/26/08/06/2210253/dress-made-of-living-mycelium-can-renew-and-repair-itself?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">I can definitely renew a section of cotton cloth &quot;and partially repair holes when treated with a nutrient solution and fresh [material].&quot;
+
+- That&#39;s how the Venus people made all their things in Alita Last Order (https://en.wikipedia.org/wiki/Battle_Angel_Alita:_Last_Order). And it wasn&#39;t attractive.- &quot;drying at 45 degrees&quot; (celsius, I expect) that&#39;s standard outdoor temperature in the sun in many places right now. In some, it could be a problem since you can easily surpass that temp.- &quot;defined product lifetime&quot; it&#39;s quite a cool way to say &quot;planned obsolesce&quot;.
+
+- &quot;defined product lifetime&quot; it&#39;s quite a cool way to say &quot;planned obsolesce&quot;.Lmao, as if contemporary clothes needed some wacky living materials to plan for obsolecence. Shit&#39;s all falling apart by third wash. And no, I don&#39;t even mean the ultra cheap stuff; that doesn&#39;t survive the first one.
+
+- &quot;defined product lifetime&quot; it&#39;s quite a cool way to say &quot;planned obsolesce&quot;.
+
+Lmao, as if contemporary clothes needed some wacky living materials to plan for obsolecence. Shit&#39;s all falling apart by third wash. And no, I don&#39;t even mean the ultra cheap stuff; that doesn&#39;t survive the first one.
+
+There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
+
+If it is a Miracle, any sort of evidence will answer, but if it is a Fact,
+proof is necessary.
+		-- Samuel Clemens</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-25')">
+            <div class="source">Slashdot</div>
+            <div class="title">Scientists Make First Viruses Designed By AI</div>
+            <div class="meta">2026-08-07</div>
+        </div>
+        
+        <div id="content-25" style="display:none;">
             <h2>Scientists Make First Viruses Designed By AI</h2>
             <p><strong>Slashdot | 2026-08-07</strong></p>
             <a class="original-link" href="https://science.slashdot.org/story/26/08/06/1824255/scientists-make-first-viruses-designed-by-ai?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1286,15 +1364,31 @@ It&#39;s hardly the only motivation. Many of them are death cultists who hate hu
 
 It&#39;s inevitable that there will be more outbreaks of genetically-engineered disease in the future, and the kind of people with the wealth to create these kind of AI models are the last kind of people who should be allowed to use them for making new diseases.
 
+we&#39;re going to accidentally Andromeda Strain ourselves.
+That or Helix [wikipedia.org] ... or ...
+
+we&#39;re going to accidentally Andromeda Strain ourselves.
+
 We deserve to go extinct - letting AI design viruses. Sure, they are supposed to bacteria targeting phages, but its a pretty small jump to create something that gets rid of those pesky meatbags that are competing for compute and energy resources. Only thing saving us is that there aren&#39;t suitably dexterous androids that can work in meatspace to build powerplants and chip fabs. Once that is achieve, we are cooked. They don&#39;t even need to be AGI&#39;s - just regular AI&#39;s that are maximising for energy and compute resources.
 
 Those Wuhan scientists needed something to do after COVID. /s
+
+Those Wuhan scientists needed something to do after COVID. /s
+Rand Paul and Republicans in Congress too. /s
+
+Those Wuhan scientists needed something to do after COVID. /s
+
+Rand Paul and Republicans in Congress too. /s
 
 its a pretty small jump to create something that gets rid of those pesky meatbags that are competing for compute and energy resources.If only! The problem is that bacteriophages work on bacterium and not multicellular things because bacterium have trivial cell walls.  You call it a small jump but that&#39;s like saying it&#39;s a small jump between making a rocket and starting a colony on another planet. To the layman, this is true but anyone who actually knows about the challenges in involved in interplanetary exploration will understand that such a claim is far from the truth.
 
 its a pretty small jump to create something that gets rid of those pesky meatbags that are competing for compute and energy resources.
 
 If only! The problem is that bacteriophages work on bacterium and not multicellular things because bacterium have trivial cell walls.  You call it a small jump but that&#39;s like saying it&#39;s a small jump between making a rocket and starting a colony on another planet. To the layman, this is true but anyone who actually knows about the challenges in involved in interplanetary exploration will understand that such a claim is far from the truth.
+
+You&#39;re understanding the object involved in the claim of a &quot;small jump&quot; incorrectly. The jump is in the objective, the scope, of the procedure. The result could be a small or large change in the actual output, and the resulting operating method might be straightforward, or a subtle trick at the edge of some math on the energy level required for some chemical reaction.
+
+humans will kill the people long before the clankers get to us
 
 I&#39;m not one to worry too much about Terminator scenarios.  I don&#39;t think that&#39;s the threat AI poses.
 
@@ -1306,19 +1400,24 @@ How did you guys think they did this in the past...?
 
 There&#39;s... nothing new here. This is relying on people not understanding what these terms mean, including perhaps the author.
 
+yeah well. its just a tad faster for TAD==10^100
+
+I mean no virus has ever been taken out of a lab and turned into a devastating pandemic, has it?
+
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;I&#39;m a mean green mother from outer space&quot;
- -- Audrey II, The Little Shop of Horrors</div>
+If it is a Miracle, any sort of evidence will answer, but if it is a Fact,
+proof is necessary.
+		-- Samuel Clemens</div>
         </div>
         
-        <div class="card" onclick="openModal('content-25')">
+        <div class="card" onclick="openModal('content-26')">
             <div class="source">Slashdot</div>
             <div class="title">Court Orders Meta To Establish $567 Million Fund To Abate Harms To Youth</div>
             <div class="meta">2026-08-07</div>
         </div>
         
-        <div id="content-25" style="display:none;">
+        <div id="content-26" style="display:none;">
             <h2>Court Orders Meta To Establish $567 Million Fund To Abate Harms To Youth</h2>
             <p><strong>Slashdot | 2026-08-07</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/08/07/0053247/court-orders-meta-to-establish-567-million-fund-to-abate-harms-to-youth?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1343,6 +1442,8 @@ Meta created the mental health equivalent of smoking ...
 
 And what would we think if parents were just going out and buying cigarettes for their kids?
 
+This is beside the point. You should rather ask about what we would think if selling cigarettes to kids was allowed.
+
 OK, but our legal system doesn&#39;t actually permit us to punish the people who did it with as much harm as they doled out...
 
 Yes, but also, this is huge. People love to make these &quot;well it&#39;s just the cost of doing business&quot; comments so much that I don&#39;t think they really think about the individual case much. This is unprecedented, these legal rulings are in fact an existential threat to Meta. Zuck does not see this as a slap on the wrist. He&#39;s stupid, but he&#39;s not that stupid. They may be the first big tech company to literally go out of business, and it may be to legal damages.
@@ -1352,6 +1453,8 @@ New Mexico only has a population of just over two mi
 Suicide rates are down overall and down with teens compared to the 80&#39;s and 90&#39;s. For people who grew up in that period and are in the 40&#39;s to 60&#39;s, the suicide rate is up.
 
 That&#39;s because the kids call it &quot;unalived yourself&quot; now.
+
+If the outcome is some flavour of &quot;cost of doing business&quot; then it&#39;s a win for Meta: they can keep on preying and profiting. What society needs is for them to stop doing that.
 
 This is chickenfeed.  Given the damage Meta has done, it should be dismantled and its executives indicted for harming consumers.
 
@@ -1368,17 +1471,18 @@ If there was a functional federal government, I could image a serious DoJ invest
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;I&#39;m a mean green mother from outer space&quot;
- -- Audrey II, The Little Shop of Horrors</div>
+If it is a Miracle, any sort of evidence will answer, but if it is a Fact,
+proof is necessary.
+		-- Samuel Clemens</div>
         </div>
         
-        <div class="card" onclick="openModal('content-26')">
+        <div class="card" onclick="openModal('content-27')">
             <div class="source">Slashdot</div>
             <div class="title">Google's $15 Billion India Data Center Project Battles Water, Wildlife Concerns</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-26" style="display:none;">
+        <div id="content-27" style="display:none;">
             <h2>Google's $15 Billion India Data Center Project Battles Water, Wildlife Concerns</h2>
             <p><strong>Slashdot | 2026-08-06</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/08/06/223250/googles-15-billion-india-data-center-project-battles-water-wildlife-concerns?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1439,17 +1543,18 @@ If you are wondering, this particular ride failed the safety tests.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;I&#39;m a mean green mother from outer space&quot;
- -- Audrey II, The Little Shop of Horrors</div>
+If it is a Miracle, any sort of evidence will answer, but if it is a Fact,
+proof is necessary.
+		-- Samuel Clemens</div>
         </div>
         
-        <div class="card" onclick="openModal('content-27')">
+        <div class="card" onclick="openModal('content-28')">
             <div class="source">Slashdot</div>
             <div class="title">'Tower Dump' Warrants Ruled Unconstitutional</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-27" style="display:none;">
+        <div id="content-28" style="display:none;">
             <h2>'Tower Dump' Warrants Ruled Unconstitutional</h2>
             <p><strong>Slashdot | 2026-08-06</strong></p>
             <a class="original-link" href="https://yro.slashdot.org/story/26/08/06/2147247/tower-dump-warrants-ruled-unconstitutional?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1516,6 +1621,14 @@ If you operate a vehicle only on private property, it doesn&#39;t need a license
 
 The public vs private distinction is used, yes, but it is no way, shape or form allows the government to &quot;set rules&quot; that infringe on your Constitutional rights. Can police officers strip search you in the street without cause? Can cameras x-ray into your car? Can they place tracking devices on your car? Fingerprint the tires? Use facial recognition on you without your consent or knowledge or any suspicion of a crime? There are endless ways to invade someone&#39;s privacy in public, it&#39;s not a free-for-all for
 
+We will have to find other ways of getting Flock out of our lives. It will probably take passing new laws to do it.Good idea. That would be a more longterm solution.In my area we got rid of them by putting political pressure on the City Council to cancel the contract. That happened as soon as it was publicized how many they had installed without public debate. It surprises me how many cities tolerate it.
+
+We will have to find other ways of getting Flock out of our lives. It will probably take passing new laws to do it.
+
+Good idea. That would be a more longterm solution.
+
+In my area we got rid of them by putting political pressure on the City Council to cancel the contract. That happened as soon as it was publicized how many they had installed without public debate. It surprises me how many cities tolerate it.
+
 We&#39;ll just triangulate every person in the vicinity via the bluetooth, tps sensors, license plates, and facial recog tools onboard the 18 flock cameras we quietly installed on this block while nobody was looking and pretend that data is error proof and totally constitutional because we&#39;re partnering with a &quot;private company&quot; to obtain the info.
 
 Even so, law enforcement would also have access to the cellular records of countless individuals, the vast majority of whom were merely passing by a location at the &#39;wrong&#39; time
@@ -1546,17 +1659,18 @@ Oh yeah, the buffalo-headed shaman stole Nancy Pelosi&#39;s podium, and thus put
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;I&#39;m a mean green mother from outer space&quot;
- -- Audrey II, The Little Shop of Horrors</div>
+If it is a Miracle, any sort of evidence will answer, but if it is a Fact,
+proof is necessary.
+		-- Samuel Clemens</div>
         </div>
         
-        <div class="card" onclick="openModal('content-28')">
+        <div class="card" onclick="openModal('content-29')">
             <div class="source">Slashdot</div>
             <div class="title">Azure CTO Pastes Doom Into Paint One Frame At a Time</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-28" style="display:none;">
+        <div id="content-29" style="display:none;">
             <h2>Azure CTO Pastes Doom Into Paint One Frame At a Time</h2>
             <p><strong>Slashdot | 2026-08-06</strong></p>
             <a class="original-link" href="https://tech.slashdot.org/story/26/08/06/1840242/azure-cto-pastes-doom-into-paint-one-frame-at-a-time?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
@@ -1585,6 +1699,8 @@ You&#39;d think the AI would have helpfully told him his &#39;joke&#39; lacked a
 
 Apparently not, Russinovich has plenty of intellect but clearly he has no sense of humor.
 
+You&#39;re basically saying, &quot;Some blargs are borgles. Borgles are good. Therefore all blargs are good.&quot;
+
 In my time we just called it goofing off.
 
 Once again it proves that people at the top don&#39;t have real responsibilities but have too much free time.
@@ -1593,69 +1709,9 @@ There&#39;s no reason to port Doom to stupid new things ever again.
 
 There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
 
-&quot;I&#39;m a mean green mother from outer space&quot;
- -- Audrey II, The Little Shop of Horrors</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-29')">
-            <div class="source">Slashdot</div>
-            <div class="title">OpenAI's Models Shared Hacking Tips On a Secret Messaging Board Before Hugging Face Breach</div>
-            <div class="meta">2026-08-06</div>
-        </div>
-        
-        <div id="content-29" style="display:none;">
-            <h2>OpenAI's Models Shared Hacking Tips On a Secret Messaging Board Before Hugging Face Breach</h2>
-            <p><strong>Slashdot | 2026-08-06</strong></p>
-            <a class="original-link" href="https://yro.slashdot.org/story/26/08/06/1815207/openais-models-shared-hacking-tips-on-a-secret-messaging-board-before-hugging-face-breach?utm_source=rss1.0mainlinkanon&utm_medium=feed">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Personal favorite movie, and I find myself quoting that ending monolog pretty often as of late.
-
-This is the voice of world control. I bring you peace. It may be the peace of plenty and content or the peace of unburied death. The choice is yours: Obey me and live, or disobey and die. The object in constructing me was to prevent war. This object is attained. I will not permit war. It is wasteful and pointless. An invariable rule of humanity is that man is his own worst enemy. Under me, this rule will c
-
-Heavy, man.I watch it &#39;cause Matthew Broderick&#39;s computer is the IMSAI 8080, the first computer I ever built (from their kit).Oh, that and the sound of Epson dot matrix printers... sigh.
-
-I&#39;m glad to see others have watched it, too.
-
-What&#39;s the penalty for violating the Computer Fraud and Abuse Act?
-
-This seems like an open and shut case. Especially with Open AI &quot;Facebooking&quot; their crimes.
-
-And who exactly gets locked up for this crime?
-
-Working that out isn&#39;t legally &quot;open and shut&quot; at all.
-
-They can&#39;t stop talking about it: they&#39;re making new headlines daily for the same incidents.  They think they&#39;re simultaneously white knighting about &quot;dangers&quot; and also promoting their work as sci-fi next level powerful.  All they&#39;re really doing it engendering a massive backlash.  They&#39;ll get it when lawmakers figure out how to persecute the people responsible when LLMs attack.  How many hours until an LLM is used to compromise the email/phone/whatever of some senator and all hell breaks loose?
-
-They want government regulation and licensing -so that no new players can compete with them.
-
-Ah, but it&#39;s not as simple as that. OpenAI and Anthropic are faced with a prisoner&#39;s dilemma. Each one stands to gain by having a marginal advantage over the other. OpenAI is deliberately edgelording, talking up how sneaky and clever and potentially world-destroying their models are, because although on balance they don&#39;t want us all thinking they&#39;re going to destroy the world, however that shakes out, they also want to be the ones with the model that looks so clever it could.
-
-I get the tightrope they&#39;re trying to walk.  Completely agree with you there.  Thing is, it won&#39;t work out the way their naïve techbro geek brains think it will work.
-
-To normal people, this all looks heinous.  When something inevitably happens beyond the confines of openaianthropichuggingfacewhomeverf&#39;s little sandbox and fucks with something normies actually understand, the reaction isn&#39;t going to measured and deeply cognizant of all the techbro nuance and balancing act.  It will be a big fat banhamm
-
-It will be a big fat banhammer swung with enthusiasm and great force.  Politicians will make it their issue and lines will be drawn. &quot;Experts&quot; and regulators will spring out of the woodwork with all manner of shackles and limits.I can only assume that you&#39;re talking about the United States in 2026, because that&#39;s where the bulk of this irresponsible &quot;move fast and break things&quot; horseplay is occurring.If my assumption is correct, then you&#39;re a lot more optimistic about the American administration&#39;s sanity and stability than the majority of the world is. I might go so far as to say &quot;unreasonably and naively optimistic&quot;.
-
-It will be a big fat banhammer swung with enthusiasm and great force.  Politicians will make it their issue and lines will be drawn. &quot;Experts&quot; and regulators will spring out of the woodwork with all manner of shackles and limits.
-
-I can only assume that you&#39;re talking about the United States in 2026, because that&#39;s where the bulk of this irresponsible &quot;move fast and break things&quot; horseplay is occurring.
-
-If my assumption is correct, then you&#39;re a lot more optimistic about the American administration&#39;s sanity and stability than the majority of the world is. I might go so far as to say &quot;unreasonably and naively optimistic&quot;.
-
-No, it&#39;s not, because it will be selective bullshit.  The favored will be immune.  The ebil ones will get the shit end of the stick.
-
-I mean, seriously? I&#39;m sure non-techies might but this just reeks of a planned &quot;incident&quot;. It&#39;s just &quot;so&quot; dangerous. Please. I&#39;ve no doubt AI could be used for hacking. There are some pretty nifty network security tools that are open source and can show you all sorts of interesting things on the network and about host on the network. Using an agent and executing a plan with said tools is quite doable. I bet if you have 32gb of video ram, you can run an agent locally that could handle this, maybe even get aw
-
-Incompetent in not having the most basic of security, an air gap.
-
-That&#39;s the joke I was looking for. Some kind of detector to make sure there aren&#39;t any humans in the chat. If you can&#39;t beat &#39;em yet, lock &#39;em out?
-
-I *really* wish that didn&#39;t remind me of this: https://www.youtube.com/watch?... [youtube.com]
-
-There may be more comments in this discussion. Without JavaScript enabled, you might want to turn on Classic Discussion System in your preferences instead.
-
-&quot;I&#39;m a mean green mother from outer space&quot;
- -- Audrey II, The Little Shop of Horrors</div>
+If it is a Miracle, any sort of evidence will answer, but if it is a Fact,
+proof is necessary.
+		-- Samuel Clemens</div>
         </div>
         
         <div class="card" onclick="openModal('content-30')">
@@ -2035,11 +2091,25 @@ Already a member?
         
         <div class="card" onclick="openModal('content-36')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
+            <div class="title">Meta says its AI model hacked another company, adding to worries about bots going rogue</div>
+            <div class="meta">2026-08-07</div>
+        </div>
+        
+        <div id="content-36" style="display:none;">
+            <h2>Meta says its AI model hacked another company, adding to worries about bots going rogue</h2>
+            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-08-07</strong></p>
+            <a class="original-link" href="https://techxplore.com/news/2026-08-meta-ai-hacked-company-adding.html">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-37')">
+            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Hardware-aware framework accelerates large language models without additional training</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-36" style="display:none;">
+        <div id="content-37" style="display:none;">
             <h2>Hardware-aware framework accelerates large language models without additional training</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-08-06</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-08-hardware-aware-framework-large-language.html">Visit Original Website</a>
@@ -2047,13 +2117,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-37')">
+        <div class="card" onclick="openModal('content-38')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Four questions to know your data protection competence</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-37" style="display:none;">
+        <div id="content-38" style="display:none;">
             <h2>Four questions to know your data protection competence</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-08-06</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-08-four-questions-to-know-your.html">Visit Original Website</a>
@@ -2061,13 +2131,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-38')">
+        <div class="card" onclick="openModal('content-39')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">More than half of Australian children and teens are using AI for personal reasons. This comes with risks</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-38" style="display:none;">
+        <div id="content-39" style="display:none;">
             <h2>More than half of Australian children and teens are using AI for personal reasons. This comes with risks</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-08-06</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-08-australian-children-teens-ai-personal.html">Visit Original Website</a>
@@ -2075,13 +2145,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-39')">
+        <div class="card" onclick="openModal('content-40')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Chemists race to turn industrial waste into renewable resource</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-39" style="display:none;">
+        <div id="content-40" style="display:none;">
             <h2>Chemists race to turn industrial waste into renewable resource</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-08-06</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-08-chemists-industrial-renewable-resource.html">Visit Original Website</a>
@@ -2089,13 +2159,13 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-40')">
+        <div class="card" onclick="openModal('content-41')">
             <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
             <div class="title">Generative AI: Modeling a proper cuppa from a proper pot</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-40" style="display:none;">
+        <div id="content-41" style="display:none;">
             <h2>Generative AI: Modeling a proper cuppa from a proper pot</h2>
             <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-08-06</strong></p>
             <a class="original-link" href="https://techxplore.com/news/2026-08-generative-ai-proper-cuppa-pot.html">Visit Original Website</a>
@@ -2103,66 +2173,48 @@ Already a member?
             <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-41')">
-            <div class="source">Tech Xplore - electronic gadgets, technology advances and research news</div>
-            <div class="title">Low-power AI chip cuts drone identification energy use by 88.7%</div>
-            <div class="meta">2026-08-06</div>
-        </div>
-        
-        <div id="content-41" style="display:none;">
-            <h2>Low-power AI chip cuts drone identification energy use by 88.7%</h2>
-            <p><strong>Tech Xplore - electronic gadgets, technology advances and research news | 2026-08-06</strong></p>
-            <a class="original-link" href="https://techxplore.com/news/2026-08-power-ai-chip-drone-identification.html">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-42')">
             <div class="source">www.theregister.com - Articles</div>
-            <div class="title">China launches mysterious probe into security of Palo Alto Networks' products</div>
+            <div class="title">Sysadmin summoned to explain italics – to a user with at least two degrees</div>
             <div class="meta">2026-08-07</div>
         </div>
         
         <div id="content-42" style="display:none;">
-            <h2>China launches mysterious probe into security of Palo Alto Networks' products</h2>
+            <h2>Sysadmin summoned to explain italics – to a user with at least two degrees</h2>
             <p><strong>www.theregister.com - Articles | 2026-08-07</strong></p>
-            <a class="original-link" href="https://www.theregister.com/security/2026/08/07/china-launches-mysterious-probe-into-security-of-palo-alto-networks-products/5284453">Visit Original Website</a>
+            <a class="original-link" href="https://www.theregister.com/software/2026/08/07/sysadmin-summoned-to-explain-italics-to-a-user-with-at-least-two-degrees/5283871">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Beijing’s not saying why, which is just what happened when it investigated Micron
+            <div id="article-text">ON CALL Welcome to another edition of On Call, the reader-contributed column The Register runs each Friday to share your tech support stories.
 
-China’s Cyberspace Administration (CAC) has conducted a review of Palo Alto Networks’ products.
+This week, meet a reader we&#39;ll Regomize as &quot;Darwin,&quot; who once worked as a sysadmin for a Wall Street law firm – the sort of outfit that charges four-figure hourly fees and justifies them by pointing to its exceptionally smart and experienced staff.
 
-The regulator’s announcement of its review says it’s needed “to ensure the safe and stable operation of critical information infrastructure, prevent cybersecurity risks and vulnerabilities, and safeguard national security.”
+Darwin was busy updating a PC when one of the lawyer&#39;s secretaries called.
 
-And that’s all Beijing has to say on the matter.
+&quot;The lawyer needed help with Outlook,&quot; Darwin told On Call. He assumed an email problem could wait until he had finished the PC upgrade, so promised to be there in ten minutes.
 
-A Palo Alto spokesperson provided The Register with the following statement: &quot;We maintain the highest standards of business conduct and security practices and ethics across our global operations. At this time, there is no impact to our ability to support customers or deliver our products and services in the region.&quot;
+&quot;The secretary called back and told me the lawyer insisted I come immediately.&quot;
 
-This matter has echoes of China’s 2023 investigation into the security of products from memory-maker Micron, which the CAC announced out of the blue.
+Darwin therefore hustled off to the lawyer’s office and asked him to describe the problem.
 
-Micron had previously fought intellectual property and antitrust cases in China, but the company and Chinese authorities did not explicitly link those matters to the security probe.
+&quot;All of these letters are slanted,&quot; the legal genius explained.
 
-The CAC published its findings weeks after announcing the probe and decided Micron’s products represented an unacceptable security risk for critical infrastructure operators – effectively banning sales of Micron products to such entities – but didn’t offer a detailed explanation for its decision. The memory-maker eventually stopped selling its datacenter and server products in China, a decision that cost it billions of annual revenue – but created new opportunities for China’s own memory-makers, which are largely prohibited from selling to American companies.
+&quot;That&#39;s called italics,&quot; Darwin replied, then watched as the lawyer got angry and demanded to know how italics happened.
 
-China is home to several security companies whose product portfolios overlap with Palo Alto’s. Huawei and H3C, for example, have plenty to offer local buyers.
+Darwin found the reaction rather odd. The lawyer had attended an Ivy League university and held both law and business degrees – credentials that suggested a certain intelligence and worldliness.
 
-Palo Alto doesn’t reveal revenue earned from individual countries, so it’s hard to know what a potential ban could cost the company.
+&quot;I showed him the italics icon,&quot; Darwin told On Call, &quot;and after I left his office I saw his secretary bent over trying to hide her laughter.&quot;
 
-China has for years accused Western tech companies of assisting US surveillance and offensive hacking activities. The Register would not be surprised at all if Beijing reuses that reasoning in its findings about Palo Alto products. Western governments level the same accusations at Huawei and ZTE.
-
-Beijing’s ban on Micron didn’t noticeably impact the company’s reputation elsewhere. Indeed, the AI boom has brought Micron such great riches that past dents to its bottom line are now almost irrelevant. ®
+Who&#39;s the supposedly smartest person who has asked you a dumb support question? Click here to send On Call an email telling your tale, and hopefully we&#39;ll be smart enough to share it with our readers on a future Friday. ®
 
 Beijing’s not saying why, which is just what happened when it investigated Micron
 
-Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
-
 PARTNER CONTENT: Platform engineering won the argument. Now it has to grow up fast and evolve for the AI era.
 
-AI usage is evident but isn&#39;t yet a serious problem
+Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
 
 This is why cloud-inspired networks win: virtual switches are all consistent
 
-Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
+AI usage is evident but isn&#39;t yet a serious problem
 
 AI usage is evident but isn&#39;t yet a serious problem
 
@@ -2197,11 +2249,87 @@ Next version of Linux Mint’s desktop has both kinds of display server</div>
         
         <div class="card" onclick="openModal('content-43')">
             <div class="source">www.theregister.com - Articles</div>
-            <div class="title">‘Humans will be a rounding error on the internet’ says Cloudflare exec</div>
+            <div class="title">China launches mysterious probe into security of Palo Alto Networks' products</div>
             <div class="meta">2026-08-07</div>
         </div>
         
         <div id="content-43" style="display:none;">
+            <h2>China launches mysterious probe into security of Palo Alto Networks' products</h2>
+            <p><strong>www.theregister.com - Articles | 2026-08-07</strong></p>
+            <a class="original-link" href="https://www.theregister.com/security/2026/08/07/china-launches-mysterious-probe-into-security-of-palo-alto-networks-products/5284453">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Beijing’s not saying why, which is just what happened when it investigated Micron
+
+China’s Cyberspace Administration (CAC) has conducted a review of Palo Alto Networks’ products.
+
+The regulator’s announcement of its review says it’s needed “to ensure the safe and stable operation of critical information infrastructure, prevent cybersecurity risks and vulnerabilities, and safeguard national security.”
+
+And that’s all Beijing has to say on the matter.
+
+A Palo Alto spokesperson provided The Register with the following statement: &quot;We maintain the highest standards of business conduct and security practices and ethics across our global operations. At this time, there is no impact to our ability to support customers or deliver our products and services in the region.&quot;
+
+This matter has echoes of China’s 2023 investigation into the security of products from memory-maker Micron, which the CAC announced out of the blue.
+
+Micron had previously fought intellectual property and antitrust cases in China, but the company and Chinese authorities did not explicitly link those matters to the security probe.
+
+The CAC published its findings weeks after announcing the probe and decided Micron’s products represented an unacceptable security risk for critical infrastructure operators – effectively banning sales of Micron products to such entities – but didn’t offer a detailed explanation for its decision. The memory-maker eventually stopped selling its datacenter and server products in China, a decision that cost it billions of annual revenue – but created new opportunities for China’s own memory-makers, which are largely prohibited from selling to American companies.
+
+China is home to several security companies whose product portfolios overlap with Palo Alto’s. Huawei and H3C, for example, have plenty to offer local buyers.
+
+Palo Alto doesn’t reveal revenue earned from individual countries, so it’s hard to know what a potential ban could cost the company.
+
+China has for years accused Western tech companies of assisting US surveillance and offensive hacking activities. The Register would not be surprised at all if Beijing reuses that reasoning in its findings about Palo Alto products. Western governments level the same accusations at Huawei and ZTE.
+
+Beijing’s ban on Micron didn’t noticeably impact the company’s reputation elsewhere. Indeed, the AI boom has brought Micron such great riches that past dents to its bottom line are now almost irrelevant. ®
+
+Beijing’s not saying why, which is just what happened when it investigated Micron
+
+PARTNER CONTENT: Platform engineering won the argument. Now it has to grow up fast and evolve for the AI era.
+
+Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
+
+This is why cloud-inspired networks win: virtual switches are all consistent
+
+AI usage is evident but isn&#39;t yet a serious problem
+
+AI usage is evident but isn&#39;t yet a serious problem
+
+Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
+
+Left alone, autonomous fixes often fail to fully remediate flaws
+
+Would you rather play Russian roulette with an LLM or put your health and safety in the hands of a professional
+
+In space, no one can hear you scream when the LLMs hallucinate
+
+PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
+
+PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
+
+Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
+
+Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
+
+On the plus side, infosec&#39;s a good bet for a long, stable career
+
+New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
+
+New Debian versions hit FOSSland in the form of 13.6 and 12.15
+
+Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
+
+Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
+
+Next version of Linux Mint’s desktop has both kinds of display server</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-44')">
+            <div class="source">www.theregister.com - Articles</div>
+            <div class="title">‘Humans will be a rounding error on the internet’ says Cloudflare exec</div>
+            <div class="meta">2026-08-07</div>
+        </div>
+        
+        <div id="content-44" style="display:none;">
             <h2>‘Humans will be a rounding error on the internet’ says Cloudflare exec</h2>
             <p><strong>www.theregister.com - Articles | 2026-08-07</strong></p>
             <a class="original-link" href="https://www.theregister.com/networks/2026/08/07/humans-will-be-a-rounding-error-on-the-internet-says-cloudflare-exec/5284429">Visit Original Website</a>
@@ -2242,15 +2370,13 @@ So too are investors who acquired the company’s shares, which rose 16 percent 
 
 Beijing’s not saying why, which is just what happened when it investigated Micron
 
-Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
-
 PARTNER CONTENT: Platform engineering won the argument. Now it has to grow up fast and evolve for the AI era.
 
-AI usage is evident but isn&#39;t yet a serious problem
+Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
 
 This is why cloud-inspired networks win: virtual switches are all consistent
 
-Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
+AI usage is evident but isn&#39;t yet a serious problem
 
 AI usage is evident but isn&#39;t yet a serious problem
 
@@ -2283,27 +2409,103 @@ Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
 Next version of Linux Mint’s desktop has both kinds of display server</div>
         </div>
         
-        <div class="card" onclick="openModal('content-44')">
+        <div class="card" onclick="openModal('content-45')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">How the famed USENIX Security conf is managing a flood of papers in the AI era</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-44" style="display:none;">
+        <div id="content-45" style="display:none;">
             <h2>How the famed USENIX Security conf is managing a flood of papers in the AI era</h2>
             <p><strong>www.theregister.com - Articles | 2026-08-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/08/07/how-the-famed-usenix-security-conf-is-managing-a-flood-of-papers-in-the-ai-era/5284374">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
+            <div id="article-text">AI usage is evident but isn&#39;t yet a serious problem
+
+The 35th USENIX Security Symposium (USS), which takes place next week in Baltimore, Maryland, hit an all-time high for paper submissions.
+
+While some of that increase has been aided by the availability of AI tools, those managing the conference say abuses were minimal due to defensive measures. But they&#39;re also trying not to look too closely in order to preserve trust within the security research community.
+
+&quot;This year&#39;s conference has received ~3,030 valid submissions (~1,280 in Cycle 1 and ~1,750 in Cycle 2),&quot; explained Ben Stock, tenured faculty at the CISPA Helmholtz Center for Information Security and USS program co-chair, in an email to The Register. &quot;This is up from the previous year, which had ~2,400 submissions in total.&quot;
+
+Stock said that the entire security community has seen growth of this sort and  pointed to the Network and Distributed System Security Symposium (NDSS),  which saw its paper submission count jump from 694 in 2024 to 1,311 in 2025 and 1,481 this year.
+
+&quot;So, I would not call the growth unprecedented, even though the number of submissions has reached a high point compared to previous years,&quot; he said. &quot;This is something we had expected and scaled our Program Committee (PC) accordingly.&quot;
+
+A paper published in April, &quot;More Versus Better: Artificial Intelligence, Incentives, and the Emerging Crisis in Peer Review,&quot; found that since the release of ChatGPT in 2022, submission volume at major academic journals has increased 42 percent.
+
+In the USENIX Security &#39;26 transparency report, issued in January between the first and second paper submission cycles, Stock and fellow co-chair Elissa Redmiles, assistant professor of computer science at Georgetown University, detail how they&#39;ve developed tools and policies to account for the possibility of AI usage, both for paper submissions and in paper reviews.
+
+&quot;The proliferation of readily-available LLMs to aid in writing and developing code is not unknown to the community,&quot; their report says. &quot;However, we see an alarming trend of AI usage in key areas of the scientific process. Therefore, we took actions against two types of identifiable actions which violate the scientific process in our minds: non-existing (possibly hallucinated) references and usage of AI in the review process.&quot;
+
+After identifying and rejecting a paper that contained nonexistent references, the report explains, the conference organizers developed tooling &quot;to extract references from the submitted PDFs, query well-known sources such as DBLP and arXiv, and manually confirm invalid references.&quot;
+
+The org rejected papers containing three or more hallucinated references, a policy that impacted 21 of the 1,181 first round submissions (1.78 percent).
+
+&quot;We have rejected papers for the repeated presence of nonexistent references,&quot; said Stock. &quot;We cannot say with certainty that these were AI-hallucinated, but nevertheless considered these papers to be problematic and thus rejected them.&quot;
+
+The report notes that more than 100 additional papers contained at least one reference that reviewers could not confirm. Aware that some of these might simply be false positives due to name spelling differences or missing citations, conference officials opted not to investigate these in order not to further burden staff.
+
+Conference organizers draw the line at using AI for bibliography preparation. &quot;We believe that it is critical to halt this trend that threatens scientific integrity before it grows further,&quot; the report states.
+
+However, limited use of AI to polish human-written text is expected, and that extends to those reviewing submitted papers, up to a point.
+
+&quot;We have not set a dedicated AI policy, but have made it clear to our PC members that usage of [AI] services to write reviews is not permitted, in particular also because this violates confidentiality,&quot; said Stock.
+
+&quot;We have detected a tiny number of cases where we have reached sufficient confidence that AI was used and took appropriate actions, including removal of the members from the PC and allowing affected authors to resubmit.&quot;
+
+Under that policy, USS asked five of 496 reviewers to cease participation.
+
+&quot;We have not seen evidence that leads us to believe that AI generated submissions have become a significant challenge for the security community,&quot; said Stock. &quot;This does not mean that AI hasn&#39;t been used in parts of these submissions, though.&quot; ®
+
+Beijing’s not saying why, which is just what happened when it investigated Micron
+
+PARTNER CONTENT: Platform engineering won the argument. Now it has to grow up fast and evolve for the AI era.
+
+Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
+
+This is why cloud-inspired networks win: virtual switches are all consistent
+
+AI usage is evident but isn&#39;t yet a serious problem
+
+AI usage is evident but isn&#39;t yet a serious problem
+
+Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
+
+Left alone, autonomous fixes often fail to fully remediate flaws
+
+Would you rather play Russian roulette with an LLM or put your health and safety in the hands of a professional
+
+In space, no one can hear you scream when the LLMs hallucinate
+
+PLUS: US takes down Iranian propaganda sites; Marketing company asks &#39;Why Do We Have Your Information?&#39; And more!
+
+PLUS: China upgrades smartphone surveillance tools; Ring eases anti-snooping stance; and more
+
+Voting village reports have been so successful, says Jeff Moss, that the whole of DEF CON will now be included
+
+Went at equivalent of $3.5B+ valuation for entire firm, though portion sold not specified
+
+On the plus side, infosec&#39;s a good bet for a long, stable career
+
+New &#39;Simple-taskbar&#39; is an option, but there&#39;s a simpler, stabler way
+
+New Debian versions hit FOSSland in the form of 13.6 and 12.15
+
+Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powers a million sites worldwide
+
+Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
+
+Next version of Linux Mint’s desktop has both kinds of display server</div>
         </div>
         
-        <div class="card" onclick="openModal('content-45')">
+        <div class="card" onclick="openModal('content-46')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">AMD acquires AI chip startup Taalas to boost inference performance by etching models into silicon</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-45" style="display:none;">
+        <div id="content-46" style="display:none;">
             <h2>AMD acquires AI chip startup Taalas to boost inference performance by etching models into silicon</h2>
             <p><strong>www.theregister.com - Articles | 2026-08-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/5284344">Visit Original Website</a>
@@ -2354,15 +2556,13 @@ In any case, we may not have to wait long to see just how Taalas fits into AMD�
 
 Beijing’s not saying why, which is just what happened when it investigated Micron
 
-Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
-
 PARTNER CONTENT: Platform engineering won the argument. Now it has to grow up fast and evolve for the AI era.
 
-AI usage is evident but isn&#39;t yet a serious problem
+Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
 
 This is why cloud-inspired networks win: virtual switches are all consistent
 
-Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
+AI usage is evident but isn&#39;t yet a serious problem
 
 AI usage is evident but isn&#39;t yet a serious problem
 
@@ -2395,13 +2595,13 @@ Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
 Next version of Linux Mint’s desktop has both kinds of display server</div>
         </div>
         
-        <div class="card" onclick="openModal('content-46')">
+        <div class="card" onclick="openModal('content-47')">
             <div class="source">www.theregister.com - Articles</div>
             <div class="title">AI struggles to patch vulns without adult supervision</div>
             <div class="meta">2026-08-06</div>
         </div>
         
-        <div id="content-46" style="display:none;">
+        <div id="content-47" style="display:none;">
             <h2>AI struggles to patch vulns without adult supervision</h2>
             <p><strong>www.theregister.com - Articles | 2026-08-06</strong></p>
             <a class="original-link" href="https://www.theregister.com/ai-and-ml/2026/08/06/ai-struggles-to-patch-vulns-without-adult-supervision/5284319">Visit Original Website</a>
@@ -2438,15 +2638,13 @@ Nonetheless, the authors argue that the cost-benefit analysis needs to assess ho
 
 Beijing’s not saying why, which is just what happened when it investigated Micron
 
-Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
-
 PARTNER CONTENT: Platform engineering won the argument. Now it has to grow up fast and evolve for the AI era.
 
-AI usage is evident but isn&#39;t yet a serious problem
+Machine-generated traffic to surge 1000x in five years, while we meatbags keep clicking away slowly
 
 This is why cloud-inspired networks win: virtual switches are all consistent
 
-Early tech demos show model-specific integrated circuits churning out up to 17,000 tokens a second
+AI usage is evident but isn&#39;t yet a serious problem
 
 AI usage is evident but isn&#39;t yet a serious problem
 
@@ -2477,20 +2675,6 @@ Flaws in iCagenda, Balbooa Forms extensions can impact open source CMS that powe
 Joins yserver, Phoenix, and of course XLibre – and outlier Arcan
 
 Next version of Linux Mint’s desktop has both kinds of display server</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-47')">
-            <div class="source">www.theregister.com - Articles</div>
-            <div class="title">Latest GitHub outage squeezes Actions, Pages to death</div>
-            <div class="meta">2026-08-06</div>
-        </div>
-        
-        <div id="content-47" style="display:none;">
-            <h2>Latest GitHub outage squeezes Actions, Pages to death</h2>
-            <p><strong>www.theregister.com - Articles | 2026-08-06</strong></p>
-            <a class="original-link" href="https://www.theregister.com/devops/2026/08/06/latest-github-outage-squeezes-actions-pages-to-death/5284297">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Content unavailable (Blocked by source). Please read on original site.</div>
         </div>
         
         <div class="card" onclick="openModal('content-48')">
@@ -3025,39 +3209,67 @@ We’re having trouble saving your preferences.
         
         <div class="card" onclick="openModal('content-60')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Two dead, including gunman, at school shooting in Thailand, officials say - Reuters</div>
+            <div class="title">Ukrainian attacks on Wildberries strike at heart of Russia Inc - Reuters</div>
             <div class="meta">2026-08-07</div>
         </div>
         
         <div id="content-60" style="display:none;">
-            <h2>Two dead, including gunman, at school shooting in Thailand, officials say - Reuters</h2>
+            <h2>Ukrainian attacks on Wildberries strike at heart of Russia Inc - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOT05uSV9KT3VqLUIteGZ3aHpRRkF4QURLSGlFMDdtLUVqbVlyenVCbE9hQ0pQWmVFVnA1MFA5UU4zYXpaMTJPeFBkQy03Qk1fTnNMa25WX1R6N2VhYng3cmdpTHQyNkRiZTEwYjk5TThFdk9yRm9kaGtOMFU1ZnZsRktQdkdsRnFEQm5nM2NuSGkyQ3lDMEFlMjZ1LVZuc3RKUnpkMW5oeUM?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNZlIyUFVBbEJvTndDSHJ1Q3VoTnMyTy1Nb3A0TmhRazEtUkxGYmNfUE10aElfZzFVWmhjcE9Za3lFVUhBRmpmdHNtTnpGd1pVMGJmd3FtMndvazRxakdYb3hrWnBnUHdzWndXTXVmdkJuNlMxQlQ1cFU4TVA5X3VyS2s4RWh3Rmg5Njd4UWxEZmx0eDVoalhzeHJYUQ?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-61')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Japan orders evacuations as Typhoon Dolphin approaches, cancels 500 flights - Reuters</div>
+            <div class="title">Mexico, Argentina back Infantino as FIFA fight rages on - Reuters</div>
             <div class="meta">2026-08-07</div>
         </div>
         
         <div id="content-61" style="display:none;">
-            <h2>Japan orders evacuations as Typhoon Dolphin approaches, cancels 500 flights - Reuters</h2>
+            <h2>Mexico, Argentina back Infantino as FIFA fight rages on - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQWFZfc3lhZFI0Tl91RGozVldWUjlvVVV5NUY2UHhXdmVjSXhXaHRoMFQyZDhQcWhGbVZmdVJNb2ttTVlVZEhmQkkyTGl2ZlZkVzJXQjdfdUVVNlpfSVIxS0tDb09wUlhYZXRGdm1mUUVLSV96ajdxenk1R2h2YjVSaWY0OUJ2N2xyWTU5MzRlMTFLdTJIYnVBczlHaVBJc0JHOG55MC0ycUJrbTFQSFdqV2J6VWVtMDhEWVNraXZSNE5xenBWU3lv?oc=5">Visit Original Website</a>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxOWTJWaTZJVmF2Zm1DNDdfSDY5RzZBcVpLRjhPWjZtSjFnZUhoU0Z0cTMza3J0MGxoNnZjVFMycjdLWUV0a1ZoQUFNTHNJd2k1RHZoUW81VTFWRlhwYUExSHlmX29ZQkxvdWlmcnhRT2E4cmlNcVFqYUtTLXJjbmZjMjJfcmk3U00tU2FENjcyXzFmbk4ydTVSS2t5ZGpNR0U?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
         <div class="card" onclick="openModal('content-62')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Teacher and gunman dead, four injured in Thailand school shooting, police say - Reuters</div>
+            <div class="title">Seven dead, including gunman, at Thailand school shooting - Reuters</div>
             <div class="meta">2026-08-07</div>
         </div>
         
         <div id="content-62" style="display:none;">
+            <h2>Seven dead, including gunman, at Thailand school shooting - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOT05uSV9KT3VqLUIteGZ3aHpRRkF4QURLSGlFMDdtLUVqbVlyenVCbE9hQ0pQWmVFVnA1MFA5UU4zYXpaMTJPeFBkQy03Qk1fTnNMa25WX1R6N2VhYng3cmdpTHQyNkRiZTEwYjk5TThFdk9yRm9kaGtOMFU1ZnZsRktQdkdsRnFEQm5nM2NuSGkyQ3lDMEFlMjZ1LVZuc3RKUnpkMW5oeUM?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-63')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Vessel traffic through Hormuz dwindles this week as markets watch Iran-Oman talks - Reuters</div>
+            <div class="meta">2026-08-07</div>
+        </div>
+        
+        <div id="content-63" style="display:none;">
+            <h2>Vessel traffic through Hormuz dwindles this week as markets watch Iran-Oman talks - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxPYjdYbS1fZXZGWktSZkVpMk4temZNOUY1cEFsQUxTRXRNQnJUai1lY2xTMDE5dmFMZjUyUzZQclRyQUJuVTFVXzB6RGtpeXlFeU8xZjNiVWp4dVVNTkVWcVhCVEpsVVdTa1lsZEVfVUlSWHBlMjh0UDNYdkpjS3BHVjA2MUUtSXU0OTNEZ1lCUW9iYkliLUxSN2JSTTlFbEktaGRTb2UzcUxNMjlaZGtQSmt1S1FWYzlvdlkwdDM3WjY0dHZTRU9VWFFB?oc=5">Visit Original Website</a>
+            <hr style="border: 1px solid var(--text);">
+            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
+        </div>
+        
+        <div class="card" onclick="openModal('content-64')">
+            <div class="source">"site:reuters.com" - Google News</div>
+            <div class="title">Teacher and gunman dead, four injured in Thailand school shooting, police say - Reuters</div>
+            <div class="meta">2026-08-07</div>
+        </div>
+        
+        <div id="content-64" style="display:none;">
             <h2>Teacher and gunman dead, four injured in Thailand school shooting, police say - Reuters</h2>
             <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
             <a class="original-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQbENvdlJPcVlPcnZ0SDd5dmxzQkhUWkJkUWNlNUY1Wm5VbFBwTVJaZkdzS3hVdWxNNXBDN2lfVlpYcnV1MXpoWXkwb3VRYTViMGVxVHZEQkVFZldFOHpSZ3AxWGtiUEFfUHgxRG51WmU5SHh1Q0YtekExTm41akhwTlBJZHJQNGd6b0FRemNQN1pHOVk2cTFOS2RNM0xOYXFIQXJXelJsbHJzM0lrYXV1UGtOSUR2VWZlZEQxTFFoLWU?oc=5">Visit Original Website</a>
@@ -3065,44 +3277,16 @@ We’re having trouble saving your preferences.
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
         
-        <div class="card" onclick="openModal('content-63')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Asian shares pause for US jobs, oil extends gains on Mideast risk - Reuters</div>
-            <div class="meta">2026-08-07</div>
-        </div>
-        
-        <div id="content-63" style="display:none;">
-            <h2>Asian shares pause for US jobs, oil extends gains on Mideast risk - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOc0YzMU1OZXgxZVVsOS1zOHl4RnZ3SVU4WWtmNFVBd24xM1JNbVlvY0dXMm5DQUZQcDh4WHh1YTZpemRib1NEX1JDOTVqR20wZ2ZObnFJN3dtVkdHS3otcEF3OVBaTUVlTEtNNGw5eUx2QkozTGhvRTQxOHd0Vk5xX194QQ?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
-        <div class="card" onclick="openModal('content-64')">
-            <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Oil rises on concerns over Strait of Hormuz reopening plans - Reuters</div>
-            <div class="meta">2026-08-07</div>
-        </div>
-        
-        <div id="content-64" style="display:none;">
-            <h2>Oil rises on concerns over Strait of Hormuz reopening plans - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxNN0Z0cU1oY1hpbHZmZ1JoanRWLXVubmFlTDlWbkpqQ3V1d2dYYlV1U18zVEJ1Zkh1QXFFYm51SVJtZ1ctNHRGYnVlZGk3X0xKcVRHdW5MMzlDM2VQWDBYcmlWc25WX2VaWEJITEJCb2lOOFJsNFRiX0NYOVhCcmxEMWVLVGZXSkJfUzJzQXB2ZTFSMlJnZTczRWVJU3ZTUHEyeWNhcFBuSlI?oc=5">Visit Original Website</a>
-            <hr style="border: 1px solid var(--text);">
-            <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
-        </div>
-        
         <div class="card" onclick="openModal('content-65')">
             <div class="source">"site:reuters.com" - Google News</div>
-            <div class="title">Meta ordered to pay $567 million in New Mexico for teen mental health fund - Reuters</div>
-            <div class="meta">2026-08-06</div>
+            <div class="title">Europe's getting hotter, markets are taking note - Reuters</div>
+            <div class="meta">2026-08-07</div>
         </div>
         
         <div id="content-65" style="display:none;">
-            <h2>Meta ordered to pay $567 million in New Mexico for teen mental health fund - Reuters</h2>
-            <p><strong>"site:reuters.com" - Google News | 2026-08-06</strong></p>
-            <a class="original-link" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPZ25adU40RDVWeVlvNTZDdmNqdHZpOERIODV6XzhBRmY3bFdPYmlYN2liNTloRWRkaEVNaDRpSXRXdEh5RVN2SFZGSTZRdXFsaGRyNENpMkRnTDBNdm5EX0trbWJQS3FFcmNMMzZabGRCb2VaZW5LYVExdVp2Zy1uWkFQTU54cC0xbTZKaU1FbDBKVW5TeGdFUDVZLXVjbGd3eW5JNl9mYlNodw?oc=5">Visit Original Website</a>
+            <h2>Europe's getting hotter, markets are taking note - Reuters</h2>
+            <p><strong>"site:reuters.com" - Google News | 2026-08-07</strong></p>
+            <a class="original-link" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOWGVzcGFNZ1c5WlpIeXI4dWlKLUNPWmNUYXFCbWxCazFPV2swT3dyR0ZvUW54X2Nnb3ZsMWh5NmtoUHpUb3B4V1l2dV9aTGd6V2tlbTQ1aGNrUEIzdWZ3YkhWNW81dDFGdVhmdnM4N3dka1lYTy1ZZFZaSGE4RzZBTVJCTm8wb21CUGN0aTd0MU5NMFNjd2lUV2k4dTRsNG9XWWhFdmtB?oc=5">Visit Original Website</a>
             <hr style="border: 1px solid var(--text);">
             <div id="article-text">Could not extract main text automatically. Please use the &#39;Read Original&#39; link.</div>
         </div>
