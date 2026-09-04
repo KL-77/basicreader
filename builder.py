@@ -12,6 +12,7 @@ FEED_URLS = [
     "https://www.siliconrepublic.com/feed/",
     "https://futurism.com/feed",
     "https://techcrunch.com/feed/",
+    "https://time.com/feed",
     "https://feeds.feedburner.com/TheAtlantic",
     "https://rsshub.app/reuters/technology",
     "https://rsshub.app/reuters/world",
