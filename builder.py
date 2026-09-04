@@ -8,6 +8,8 @@ import random
 # --- CONFIGURATION ---
 FEED_URLS = [
     "https://feeds.arstechnica.com/arstechnica/index",
+    "https://fortune.com/feed/",
+    "https://www.siliconrepublic.com/feed/",
     "https://futurism.com/feed",
     "https://techcrunch.com/feed/",
     "https://feeds.feedburner.com/TheAtlantic",
@@ -21,10 +23,8 @@ FEED_URLS = [
     "https://www.theverge.com/rss/index.xml",
     "https://www.technologyreview.com/topnews.rss",
     "https://thenextweb.com/feed/",
-    "https://www.theinformation.com/feed",
     "https://news.google.com/rss/search?q=site%3Areuters.com&hl=en-US&gl=US&ceid=US%3Aen",
     "https://news.google.com/rss/search?q=site%3Athedebrief.org&hl=en-US&gl=US&ceid=US%3Aen",
-    "https://news.google.com/rss/search?q=site%3Atheinformation.com&hl=en-US&gl=US&ceid=US%3Aen"
 ]
 # Limit articles to keep things fast
 ARTICLES_PER_FEED = 6
